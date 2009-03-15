@@ -7,9 +7,11 @@ require 'libxml'
 require 'nokogiri'
 
 ASSETS  = File.expand_path(File.join(File.dirname(__FILE__), 'assets'))
-N       = (ENV['N'] || 100).to_i
 
+puts
 puts "Nokogiri: #{Nokogiri::VERSION}"
+puts "LibXML: #{LibXML::XML::VERSION}"
+puts
 
 module XmlTruth
   module Tms
@@ -35,7 +37,7 @@ module XmlTruth
       tms = old_measure(label, &block)
       tms.extend(XmlTruth::Tms)
       tms.stat  = @stat
-      tms.n     = N
+      tms.n     = @n
       print label.ljust(@width)
       print tms.format
     end
