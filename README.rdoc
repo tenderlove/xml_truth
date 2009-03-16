@@ -3,3 +3,18 @@
 This project is a repository of benchmarks comparing features and speed of
 the current XML/HTML parsing players in the Ruby world.
 
+== Results
+
+This test is for measuring the difference between parse times in different
+XML parsers.  The test was conducted with two XML files, one small xml file
+at 18k, and one large XML file at 7.0M.  N is adjusted in the small document
+parse runs to make sure that the amount of xml run through each system was
+approximately the same.
+
+These tests were conducted with:
+
+ * stock ruby 1.8.6 on OS X 10.5
+ * libxml2 version 2.7.3
+ * Hpricot version 0.6.170 (hpricot does not have a VERSION constant)
+ * N being the number of iterations in each test
+

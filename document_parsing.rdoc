@@ -1,0 +1,179 @@
+= Document Parsing
+
+In this test, Hpricot and REXML are only listed where N=2 because they were
+found to be prohibitively slow when using larger N.
+
+== N = 2
+
+In the N = 2 test, we see that nokogiri and libxml-ruby are the top two in
+speed for all four tests.  In all four tests, nokogiri's throughput is 15
+to 20 percent more than libxml-ruby per second.
+
+It took a little over 1 minute for hpricot to parse 14M of XML and rexml over
+2 minutes, so they will be removed for the rest of the document parsing
+benchmarks.
+
+  Nokogiri: 1.2.2
+  LibXML: 1.1.2
+  
+  Loaded suite test/dom/xml/test_large_document_parsing
+  Started
+  
+  test_IO_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=2
+                    user     system      total        real   kBps
+  null          0.430000   0.040000   0.470000 (  0.477970) 29810.78
+  nokogiri      1.220000   0.180000   1.400000 (  1.408751) 10114.39
+  libxml-ruby   1.670000   0.040000   1.710000 (  1.721740) 8275.73
+  hpricot      73.120000   0.920000  74.040000 ( 74.342554) 191.66
+  rexml       150.180000   0.860000 151.040000 (151.647898) 93.96
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=2
+                    user     system      total        real   kBps
+  null          0.860000   0.010000   0.870000 (  0.872426) 16332.23
+  nokogiri      2.470000   0.040000   2.510000 (  2.514397) 5666.83
+  libxml-ruby   2.850000   0.030000   2.880000 (  2.892127) 4926.71
+  hpricot      73.820000   0.400000  74.220000 ( 74.483093) 191.30
+  rexml       136.000000   0.570000 136.570000 (137.034817) 103.98
+  .
+  test_IO_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=777
+                    user     system      total        real   kBps
+  null          0.950000   0.060000   1.010000 (  1.018504) 13978.50
+  nokogiri      2.240000   0.070000   2.310000 (  2.318921) 6139.56
+  libxml-ruby   2.680000   0.080000   2.760000 (  2.769398) 5140.89
+  hpricot      30.340000   0.320000  30.660000 ( 30.792691) 462.36
+  rexml        63.510000   0.380000  63.890000 ( 64.127190) 222.01
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=777
+                    user     system      total        real   kBps
+  null          0.940000   0.000000   0.940000 (  0.951877) 14956.93
+  nokogiri      2.610000   0.050000   2.660000 (  2.674813) 5322.67
+  libxml-ruby   3.020000   0.060000   3.080000 (  3.086919) 4612.09
+  hpricot      30.060000   0.210000  30.270000 ( 30.394336) 468.41
+  rexml        58.570000   0.240000  58.810000 ( 58.988131) 241.36
+  .
+  Finished in 663.429031 seconds.
+  
+  4 tests, 0 assertions, 0 failures, 0 errors
+
+== N = 10
+
+In this test, as well as the rest of the document parsing tests, hpricot and
+rexml have been removed.  This test shows nokogiri still ahead.  Nokogiri's
+throughput in this test ranges between 10 and 15 percent higher than
+libxml-ruby.
+
+  Nokogiri: 1.2.2
+  LibXML: 1.1.2
+  
+  Loaded suite test/dom/xml/test_large_document_parsing
+  Started
+  
+  test_IO_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=10
+                    user     system      total        real   kBps
+  null          2.100000   0.180000   2.280000 (  2.295364) 31037.91
+  nokogiri      7.780000   0.370000   8.150000 (  8.171552) 8718.45
+  libxml-ruby   9.780000   0.240000  10.020000 ( 10.063794) 7079.17
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=10
+                    user     system      total        real   kBps
+  null          3.080000   0.040000   3.120000 (  3.135862) 22718.89
+  nokogiri      8.230000   0.130000   8.360000 (  8.386180) 8495.32
+  libxml-ruby   9.060000   0.130000   9.190000 (  9.231400) 7717.50
+  .
+  test_IO_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=3888
+                    user     system      total        real   kBps
+  null          2.090000   0.270000   2.360000 (  2.378218) 29955.52
+  nokogiri      6.270000   0.340000   6.610000 (  6.630886) 10743.78
+  libxml-ruby   7.010000   0.320000   7.330000 (  7.363300) 9675.11
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=3888
+                    user     system      total        real   kBps
+  null          3.160000   0.020000   3.180000 (  3.192408) 22315.68
+  nokogiri      6.050000   0.200000   6.250000 (  6.276588) 11350.24
+  libxml-ruby   6.950000   0.230000   7.180000 (  7.208386) 9883.04
+  .
+  Finished in 76.875235 seconds.
+  
+  4 tests, 0 assertions, 0 failures, 0 errors
+  
+== N = 100
+
+N has been increased by a power of 10, and nokogiri is still ahead.
+Nokogiri's throughput in this test ranges between 10 and 25 percent higher
+than libxml-ruby.
+
+  Nokogiri: 1.2.2
+  LibXML: 1.1.2
+  
+  Loaded suite test/dom/xml/test_large_document_parsing
+  Started
+  
+  test_IO_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=100
+                    user     system      total        real   kBps
+  null         20.230000   1.650000  21.880000 ( 21.956262) 32447.83
+  nokogiri     86.620000   2.440000  89.060000 ( 89.409650) 7968.19
+  libxml-ruby  96.420000   2.330000  98.750000 ( 99.134173) 7186.55
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=100
+                    user     system      total        real   kBps
+  null         30.100000   0.350000  30.450000 ( 30.572049) 23303.41
+  nokogiri     85.480000   1.300000  86.780000 ( 87.085411) 8180.85
+  libxml-ruby  98.200000   1.380000  99.580000 ( 99.941853) 7128.48
+  .
+  test_IO_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=38881
+                    user     system      total        real   kBps
+  null         19.680000   2.700000  22.380000 ( 22.486623) 31682.21
+  nokogiri     58.150000   3.160000  61.310000 ( 61.542096) 11576.24
+  libxml-ruby  69.800000   3.300000  73.100000 ( 73.398682) 9706.25
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=38881
+                    user     system      total        real   kBps
+  null         29.420000   0.120000  29.540000 ( 29.635819) 24039.36
+  nokogiri     55.390000   1.860000  57.250000 ( 57.449228) 12400.97
+  libxml-ruby  69.300000   2.240000  71.540000 ( 71.809794) 9921.01
+  .
+  Finished in 747.07912 seconds.
+  
+  4 tests, 0 assertions, 0 failures, 0 errors
+
+== N = 1000
+
+Both parsers are dealing with a little under 7G of XML in this test, and
+nokogiri still holds the lead.  Nokogiri's throughput is between 14 and 24
+percent higher than libxml-ruby in this test, which results in over 2 minute
+time savings in some tests.
+
+  Nokogiri: 1.2.2
+  LibXML: 1.1.2
+  
+  Loaded suite test/dom/xml/test_large_document_parsing
+  Started
+  
+  test_IO_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=1000
+                    user     system      total        real   kBps
+  null        208.930000  17.220000 226.150000 (227.046035) 31378.35
+  nokogiri    873.320000  23.520000 896.840000 (900.192461) 7914.23
+  libxml-ruby 1090.520000  25.710000 1116.230000 (1120.404723) 6358.71
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::LargeDocumentParsingTest) N=1000
+                    user     system      total        real   kBps
+  null        350.080000   3.330000 353.410000 (354.899751) 20074.20
+  nokogiri    905.130000  14.660000 919.790000 (923.839022) 7711.66
+  libxml-ruby 1050.560000  14.880000 1065.440000 (1069.348717) 6662.31
+  .
+  test_IO_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=388813
+                    user     system      total        real   kBps
+  null        203.430000  31.880000 235.310000 (236.301345) 30149.28
+  nokogiri    593.550000  35.540000 629.090000 (631.526449) 11281.10
+  libxml-ruby 684.550000  34.600000 719.150000 (721.846732) 9869.57
+  .
+  test_in_memory_parsing(XmlTruth::DOM::XML::SmallDocumentParsingTest) N=388813
+                    user     system      total        real   kBps
+  null        332.380000   1.390000 333.770000 (335.052463) 21263.28
+  nokogiri    584.380000  20.860000 605.240000 (607.497158) 11727.32
+  libxml-ruby 716.080000  25.860000 741.940000 (744.587887) 9568.13
+  .
+  Finished in 7876.25476 seconds.
+  
+  4 tests, 0 assertions, 0 failures, 0 errors
+

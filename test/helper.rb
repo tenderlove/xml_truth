@@ -45,7 +45,7 @@ module XmlTruth
     alias :old_bm :bm
     def bm(label_width = 0, *labels, &blk)
       @width = label_width
-      c = "#{CAPTION.chomp}   kbps\n"
+      c = "#{CAPTION.chomp}   kBps\n"
       benchmark(" "*label_width + c, label_width, FMTSTR, *labels, &blk)
     end
   end
