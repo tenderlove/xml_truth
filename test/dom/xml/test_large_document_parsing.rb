@@ -72,7 +72,7 @@ module XmlTruth
 
             GC.start
             measure('hpricot') do @n.times {
-              File.open(@filename) { |xml| Hpricot(xml) }
+              File.open(@filename) { |xml| Hpricot.XML(xml) }
             } end
 
             if ENV['SLOW']
