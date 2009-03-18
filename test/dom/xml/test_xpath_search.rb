@@ -55,6 +55,32 @@ module XmlTruth
             end
           end
         end
+
+        def test_medium_xpath
+          bm(12) do |x|
+            GC.start
+            measure('nokogiri') do @n.times {
+              @ndoc.xpath('//key[text() = "Rating"]').length
+            } end
+
+            GC.start
+            measure('libxml-ruby') do @n.times {
+              @ldoc.find('//key[text() = "Rating"]').length
+            } end
+
+            if ENV['SLOW']
+              GC.start
+              measure('hpricot') do @n.times {
+                @hdoc.search('//key[text() = "Rating"]').length
+              } end
+
+              GC.start
+              measure('rexml') do @n.times {
+                REXML::XPath.match(@rdoc, '//key[text() = "Rating"]').length
+              } end
+            end
+          end
+        end
       end
     end
   end
