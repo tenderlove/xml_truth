@@ -17,9 +17,9 @@ module XmlTruth
 
           @ndoc = Nokogiri::XML(@xml)
           @ldoc = LibXML::XML::Parser.string(@xml).parse
+          @hdoc = Hpricot.XML(@xml)
 
           if ENV['SLOW']
-            @hdoc = Hpricot(@xml)
             @rdoc = REXML::Document.new(@xml)
           end
 
@@ -42,12 +42,12 @@ module XmlTruth
               @ldoc.find('//integer').length
             } end
 
-            if ENV['SLOW']
-              GC.start
-              measure('hpricot') do @n.times {
-                @hdoc.search('//integer').length
-              } end
+            GC.start
+            measure('hpricot') do @n.times {
+              @hdoc.search('//integer').length
+            } end
 
+            if ENV['SLOW']
               GC.start
               measure('rexml') do @n.times {
                 REXML::XPath.match(@rdoc, '//integer').length
@@ -68,12 +68,12 @@ module XmlTruth
               @ldoc.find('//key[text() = "Rating"]').length
             } end
 
-            if ENV['SLOW']
-              GC.start
-              measure('hpricot') do @n.times {
-                @hdoc.search('//key[text() = "Rating"]').length
-              } end
+            GC.start
+            measure('hpricot') do @n.times {
+              @hdoc.search('//key[text() = "Rating"]').length
+            } end
 
+            if ENV['SLOW']
               GC.start
               measure('rexml') do @n.times {
                 REXML::XPath.match(@rdoc, '//key[text() = "Rating"]').length
