@@ -1,0 +1,1079 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!-- InstanceBegin template="/Templates/devarticle.dwt" codeOutsideHTMLIsLocked="true" -->
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en-us" />
+
+<meta name="robots" content="noodp" />
+<!-- Master Template Version: 1.2 -->
+
+<!-- InstanceParam name="locale" type="text" value="en_us" -->
+<!-- InstanceParam name="dropdown,pod,tab,tree,map" type="text" value="dropdown" -->
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />  
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+<script type="text/javascript" src="http://wwwimages.adobe.com/www.adobe.com/lib/com.adobe/_all.js"></script>
+<script type="text/javascript" src="http://wwwimages.adobe.com/www.adobe.com/lib/yui/_all_adc_yui.js"></script>
+<script type="text/javascript">
+/*
+	Setting height of contentBody height to match rightNav if less than rightNav
+	$Id: equalizePanes_js.ssi,v 1.7 2008/02/13 18:18:16 mok Exp $
+*/
+EqualizePaneHeights = function() {
+		
+	var contentBody	= $('L6C1');
+	var rightNav 	= $('L6C2');
+	
+	if(!rightNav) { return; }
+		
+	var contentBodyHeight = contentBody.getHeight();
+	var rightNavHeight = rightNav.getHeight();
+
+	if(adobe.hostEnv.ieV != 6) {
+		contentBody.style.minHeight = (rightNavHeight-16)+'px';
+	} else {
+		contentBody.style.height = rightNavHeight + "px";
+	}
+	
+} 
+
+if (adobe.hostEnv.ieV == 7) { 
+	setTimeout("EqualizePaneHeights()",1600); 
+} else {
+	registerOnLoadFunc(EqualizePaneHeights);
+}
+</script>
+<link type="text/css" rel="stylesheet" href="http://wwwimages.adobe.com/www.adobe.com/lib/com.adobe/template/devcenter/screen.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="http://wwwimages.adobe.com/www.adobe.com/lib/com.adobe/template/devcenter/print.css" media="print" />
+<!-- 
+	DEVNET ACCORDION MENU LOADER
+	$Id: loader.ssi,v 1.6 2008/08/25 18:26:00 nearora Exp $
+-->
+<script type="text/javascript">
+var pageLoad = function() 
+{	
+	
+	// ADC Accordions for sub pages
+	var MyAccordions = [
+		
+		// Content Accordion Menu
+		{ 
+			accordion: 'products-technologies-accordion', 
+			accordionCfg: { 
+				control: "products-technologies", 
+				expandedHeight: 33, 
+				expandDuration: 0.2,
+				collapseDuration: 0.35,
+				sizeUnit: "em"
+			} 
+		},
+		
+		// Resources Main Accordion Menu
+		{ 
+			accordion: 'resources-accordion', 
+			accordionCfg: { 
+				control: "resources", 
+				expandedHeight: 30, 
+				expandDuration: 0.2,
+				collapseDuration: 0.35,
+				sizeUnit: "em"
+			} 
+		}
+	];
+	
+	
+	var AccordionLoad = function(elements) {
+		elements.each(function(element) {
+			var accordion = element.accordion;
+			var accordionCfg = element.accordionCfg;
+			var _new = new YAHOO.Accordion(accordion,accordionCfg);
+		});
+	};
+	
+	AccordionLoad(MyAccordions);
+
+};
+YAHOO.util.Event.addListener(window, 'load', pageLoad);
+</script>
+<noscript>
+<style type="text/css">
+.accordion-handle,
+.accordion-handle a { background-color: #9e9e9e !important; color: #fff !important; text-transform: uppercase; }
+.accordion-content { position: relative; _zoom: 1; background: #eee; width: 983px; }
+.teaser { display: none; }
+.accordion-column { width: 47%; }
+</style>
+</noscript>
+
+<script type="text/javascript">adobe.Dwt.require("accordion","user","swf","dropdown");</script>
+
+<!-- Article Template Version: 1.11 -->
+<!-- InstanceParam name="page_number" type="number" value="1" -->
+<!-- InstanceParam name="page_total" type="number" value="4" -->
+<!-- InstanceParam name="author" type="text" value="Derek Wischusen" -->
+<!-- InstanceParam name="author2" type="text" value="" -->
+<!-- InstanceParam name="author3" type="text" value="" -->
+<!-- InstanceParam name="products" type="text" value="" -->
+<!-- InstanceParam name="contentarea" type="text" value="Developer Center" -->
+<!-- InstanceParam name="article_title" type="text" value="Integrating Flex 2 and Ruby on Rails" -->
+<!-- InstanceParam name="file_name" type="text" value="flex2_rails" -->
+<!-- InstanceParam name="user_level" type="number" value="3" -->
+<!-- InstanceParam name="printLayout" type="boolean" value="false" -->
+<!-- InstanceParam name="rev_datecreated" type="text" value="9 October 2006" -->
+<!-- InstanceParam name="rev_datemodified" type="text" value="9 October 2006" -->
+<!-- InstanceParam name="ssi_header" type="boolean" value="true" -->
+<!-- InstanceParam name="commentWidget" type="boolean" value="true" -->
+<title>Adobe - Developer Center : Integrating Flex 2 and Ruby on Rails</title>
+<meta name="lang" content="en-us" />
+<meta name="author" content="Derek Wischusen" />
+<meta name="datecreated" content="9 October 2006" />
+<meta name="page" content="main" />
+
+<link rel="index" href="flex2_rails.html" />
+<link rel="next" href="flex2_rails_02.html" />
+
+<link type="text/css" href="http://comment.adobe.com/comment/ionComments.css" rel="stylesheet" /> 
+
+<!--$Revision: 1.7 $-->
+<style type="text/css" media="screen">
+
+#bio {
+	border-top: 1px solid #CCC;
+	border-bottom-style: none;
+	background-color: transparent;
+	padding-top: 1em;
+	margin-top: 2em !important;
+}
+
+/*	ARTICLE COLUMN EXTENSIONS */
+
+#article-C1,
+#article-C01 {
+	font-size: 1.085em;
+	line-height: 1.35;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	width: 25%;
+	text-align:right;
+	font-style: italic;
+}
+
+#article-C1 h3 { 
+	margin-top: 0.3em; 
+	position: relative; 
+	top: 4px; 
+	background-color: transparent !important; 
+	color: #333 !important; 
+	border: none !important;
+	margin-bottom: 0.5em !important;
+}
+
+#article-C1 h4 { font-weight: normal }
+
+#article-C1 .meta dt,
+#article-C1 .meta dd {
+	width: auto;
+	float: none;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #666;
+	font-style: normal;
+	font-size: 0.925em;
+}
+
+#article-C1 .meta dt {
+	margin-top: .5em;
+}
+
+#article-C2,
+#article-C02 { width: 71%; _width: 71% }
+
+#article-C2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 1.25em;
+}
+
+#article-C2 .requirements h3,
+#article-C2 .requirements h4,
+#article-C2 .requirements p,
+#article-C2 .requirements li {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.85em;
+	color: #111;
+}
+
+.requirements h3 { 
+	border-top: 1px solid #ccc; 
+	padding-top: 1.5em; 
+	margin-bottom: 0
+}
+
+#article-C2 * {
+	line-height: 1.6em;
+}
+
+#article-C2 h1 {
+	line-height: 1em;
+}
+
+
+/*	ADDRESS EXTENSION */
+
+.bio address {
+	display: block;
+	margin-bottom: 1.5em;
+}
+
+/*	PAGE */
+.page dt,
+.page .next,
+.page .prev {
+	float: none;
+}
+
+.page dt {
+	font-size: 1em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.page {
+	text-align: right;
+	border-top: 1px solid #ccc;
+	padding-top: 1em;
+	font-style: italic;
+}
+
+/*--- Other menus ---*/
+.toc,
+.utility { 
+	text-align: right;
+	margin-bottom: 2em;
+}
+
+.toc > *,
+.utility > * { margin-right: 0 }
+
+.toc li { margin-right: 0; }
+
+.utility {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: normal;
+	border-top: 1px solid #ccc;
+}
+
+/*--- Content ---*/
+h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #111;
+	font-size: 2.165em;
+	line-height: 1.2em;
+}
+
+h3 { margin-top: 0 !important; }
+
+#article-C2.columns-2-aaB-B  #ionCom h3  {
+	border-bottom:1px solid #BDBDBD;
+	border-top:1px solid #BDBDBD;
+	margin:15px 0px -2px;
+	padding:0px 8px;
+	text-transform:uppercase;
+	color:#333;
+}
+
+#ionComList {
+	border-top:none;
+}
+
+#comment-output {margin:0px 0px 25px;}
+
+#ionCom h3 {
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-size: 14px;
+	font-weight:bold;
+	border-bottom:1px solid #333;
+	margin-bottom:2px;
+	padding-bottom:2px;
+}
+
+#comCount {display:none;}
+
+
+</style>
+
+	
+
+
+<!-- InstanceBeginEditable name="head" -->
+<!-- Start: meta tag script -->
+
+<meta name="product" content="flex" />
+<!-- End: meta tag script -->
+<meta name="area" content="devnet" />
+<meta name="page" content="main" />
+<meta name="product" content="flex" />
+<meta name="author" content="Derek Wischusen" />
+<meta name="keywords" content="RoR, Ruby on Rails, framework, architecture, paradigm, Ruby, Rails, REST, HTTP, CRUD, XML over HTTP" />
+<meta name="datecreated" content="9 October 2006" />
+<meta name="datemodified" content="9 October 2006" />
+<meta name="level" content="beginner" />
+<meta name="shorttitle" content="Integrating Flex 2 and Ruby on Rails" />
+<meta name="blurb" content="Learn how to the Ruby on Rails framework with Flex as you build an issue-tracker application." />
+<meta name="topiccenter" content="novalue" />
+<meta name="columntype" content="article" />
+<meta name="editor" content="Amy Wong" />
+
+
+<!-- InstanceEndEditable -->
+</head>
+<body>
+<!--googleoff: index--><a href="/help/accessibility.html" tabindex="1" id="accesslink">Accessibility</a><!--googleon: index-->
+
+<form name="searchform" action="/go/gnav_search" method="get" class="en" id="adc-globalnav-search">
+	<dl id="globalnav" class="menu clear-after">
+		<dt id="adc-adobe-link"><a href="/">Adobe.com</a></dt>
+		<dd id="adc-globalnav-utilities">
+			<ul class="menu pipe">
+				<li id="greeting" style="display: none;"><a>Welcome <span id="screenName"></span></a></li>
+				<li id="account" style="display: none;"><a href="/cfusion/membership/index.cfm?loc=en_us&nl=1&ogn=EN_US-gn_your_account">Your account</a></li>
+				<li id="signin" style="background-image: none;"><a href="/go/join_adc">Sign in and join ADC</a></li>
+				<li id="signout" style="display: none;"><a href="/cfusion/membership/logout.cfm?ogn=EN_US-gn_signout&returnURL=/devnet">Sign out</a></li>				
+				<li><a href="http://rss.adobe.com/developer_center_tutorials.rss?locale=en" class="icon rss-file">RSS</a></li>
+				<li id="international"><a href="/go/gn_intl">United States (Change)</a></li>
+			</ul>
+			<script type="text/javascript">
+				// <![CDATA[
+				var greeting = document.getElementById('greeting'),
+screenName = document.getElementById('screenName'),
+account = document.getElementById('account'),
+signin = document.getElementById('signin'),
+signout = document.getElementById('signout');
+
+if(greeting && signout && screenName) {					
+	var screenNameValue = adobe.Cookie.get("SCREENNAME"),
+		rememberMe = adobe.Cookie.get('RMID'),
+		authenticAdobeId = adobe.Cookie.get("ADC_MEMBER") || adobe.Cookie.get('AUID');
+		
+	if(screenNameValue) {
+		if(adobe.hostEnv.ieV!=6) { 
+			screenName.innerHTML = screenNameValue; 
+		} else {
+			registerOnLoadFunc(function() {
+				/*--- if not in regOnRdy, then other JS dom rewrites don't happen in IE6 ---*/					
+				screenName.innerHTML = screenNameValue;
+			});
+		}
+	}
+	
+	if(rememberMe) {
+		greeting.style.display="";
+		account.style.backgroundImage = "";
+	}
+	
+	if(authenticAdobeId) {
+		greeting.style.display="";
+		if(adobe.hostEnv.ieV==6) { greeting.style.display="inline"; }
+		signout.style.display="";
+		account.style.display="";
+		signin.style.display = "none";
+	}	
+}
+				// ]]>
+			</script>
+		</dd>
+		<dt id="adc-logo"><a href="/devnet/">Adobe Developer Connection</a></dt>
+		<dd id="adc-site-search">
+			<input type="text" id="adc-search-input" name="term" title="Search for..." />
+			<script type="text/javascript">
+				adobe.InputTitleOverlay.init("adc-search-input");
+			</script>
+            <select name="category" id="adc-search-categories" title="Search in" >
+                <option value="cat=all&loc=en_us&term=" selected>All Adobe.com</option>
+                <option value="cat=support&loc=en_us&term=">Support</option>
+            </select>
+            <input type="hidden" name="siteSection" value="devnet" />
+			<button type="submit" id="adc-site-search button" class="button" name="search" value="Search" title="Search">Search</button>
+		</dd>
+	</dl>
+</form>
+<script type="text/javascript">
+// <![CDATA[
+	// $Id: search.js,v 1.2 2008/02/05 21:39:51 mok Exp $
+// observe the submitAction to prevent double submit in IE
+$(document.searchform).observe("submit",getURL);
+function getURL(event)
+{
+	event.stop(); // stop submit and gather info
+	var term = encodeURIComponent(document.searchform.term.value);
+	var category =  document.searchform.category.value;
+	
+	term = (term == "Search%20for...") ? "" : term;
+	
+	if(term.substring(0,5) == 'site:')
+	{
+		if(term.indexOf(' ') < 0)
+			term="";
+		else
+			term = term.substring(term.indexOf(' '),term.length) ;	
+	}
+	var collection = category+term;			// create query string that CF search will parse
+	document.searchform.method = 'post';	// change to post for JS submit
+	document.searchform.action = '/cfusion/search/index.cfm?'+collection;
+	document.searchform.submit();
+	return false;	
+}
+// ]]>
+</script>
+
+<div id="layoutLogic" class="L6">
+	<div id="adc-accordion" class="clear-after">	
+  <div id="products-technology">
+  	<!--Product Technology Control Handle-->
+    <div id="products-technologies" class="accordion-controller">
+      <div class="accordion-handle">Products</div>
+      <div class="accordion-handle">Technologies</div>
+      <br class="clear-both" />
+    </div>
+    <!--Product Technology Teaser Accordion-->
+    <div id="products-technologies-teaser" class="teaser accordion">
+      <div class="accordion-content">
+        <div id="products-teaser" class="columns-2-AB-A accordion-column">
+          <ul class="link-list menu">
+            <li><a href="/devnet/acrobat/">Acrobat</a></li>
+            <li><a href="/devnet/coldfusion/">ColdFusion</a></li>            
+            <li><a href="/devnet/flash/">Flash Professional</a></li>
+            <li><a href="/devnet/flex/">Flex</a></li>
+            <li><a href="/devnet/air/">Adobe AIR</a></li>
+            <li><a href="/devnet/dreamweaver/">Dreamweaver</a></li>
+            <li><a href="/devnet/flashplayer/">Flash Player</a></li>
+            <li><a href="/devnet/livecycle/">LiveCycle</a></li>
+          </ul>
+        </div>
+        <div id="technology-teaser" class="columns-2-AB-B accordion-column">
+          <ul class="link-list menu">
+            <li><a href="/devnet/actionscript/">ActionScript</a></li>
+            <li><a href="/devnet/dreamweaver/css.html">CSS</a></li>
+            <li><a href="/devnet/pdf/">PDF</a></li>
+            <li><a href="/devnet/swf/">SWF</a></li>
+            <li><a href="/devnet/ajax/">Ajax</a></li>
+            <li><a href="/devnet/devices/">Mobile and devices</a></li>
+            <li><a href="/devnet/security/">Security</a></li>         
+            <li><a href="/devnet/video/">Video</a></li>
+          </ul>
+        </div>
+        <br class="clear-both" />
+      </div>
+    </div>
+    <!--Product Technology Main Accordion-->
+    <div id="products-technologies-accordion" class="accordion">
+      <div class="accordion-content">
+      	<!--Product Technology Accordion - Products Panel (left) -->
+        <div id="all-products" class="columns-2-AB-A accordion-column">
+          <div class="columns-3-ABC-A">
+            <h3>A&#8211;C</h3>
+            <ul class="link-list">
+              <li><a href="/devnet/acrobat/">Acrobat</a></li>
+              <li><a href="/devnet/acrobatconnect/">Acrobat Connect </a></li>
+              <li><a href="/devnet/acrobat3d/">Acrobat 3D</a></li>
+              <li><a href="/devnet/air/">Adobe AIR</a></li>
+              <li><a href="/devnet/mediaplayer/">Adobe Media Player</a></li>
+              <li><a href="/devnet/readermobile/">Adobe Reader Mobile</a></li>
+              <li><a href="/devnet/aftereffects/">After Effects</a></li>
+              <li><a href="/devnet/audition/">Audition</a></li>
+              <li><a href="/devnet/authorware/">Authorware</a></li>
+              <li><a href="/devnet/bridge/">Bridge</a></li>
+              <li><a href="/devnet/captivate/">Adobe Captivate</a></li>
+              <li><a href="/devnet/coldfusion/">ColdFusion</a></li>
+              <li><a href="/devnet/contentserver/">Content Server 3</a></li>
+              <li><a href="/devnet/contribute/">Contribute</a></li>
+              <li><a href="/devnet/webpublishingsystem/">Contribute Publishing Server</a></li>
+            </ul>
+          </div>
+          <div class="columns-3-ABC-B">
+            <h3>D&#8211;H</h3>
+            <ul class="link-list">  
+              <li><a href="/devnet/livecycle/dataservices.html">Data Services</a></li>            
+              <li><a href="/devnet/devicecentral/">Device Central</a></li>
+              <li><a href="/devnet/director/">Director</a></li>
+              <li><a href="/devnet/documentserver/">Document Server</a></li>
+              <li><a href="/devnet/dreamweaver/">Dreamweaver</a></li>
+              <li><a href="/devnet/fireworks/">Fireworks</a></li>
+              <li><a href="/devnet/flash/">Flash Professional</a></li>
+              <li><a href="/devnet/devices/flashlite.html">Flash Lite</a></li>
+              <li><a href="/devnet/flashmediaserver/">Flash Media Server</a></li>
+              <li><a href="/devnet/flashplayer/">Flash Player</a></li>
+              <li><a href="/devnet/flashremoting/">Flash Remoting</a></li>
+              <li><a href="/devnet/flex/">Flex</a></li>
+              <li><a href="/devnet/framemaker/">FrameMaker</a></li>
+              <li><a href="/devnet/golive/">GoLive</a></li>
+            </ul>
+          </div>
+          <div class="columns-3-ABC-C">
+            <h3>I&#8211;Z</h3>
+            <ul class="link-list">              
+              <li><a href="/devnet/illustrator/">Illustrator</a></li>
+              <li><a href="/devnet/flex/ilog/index.html">ILOG Elixir for Adobe AIR and Flex</a></li>
+              <li><a href="/devnet/indesign/">InDesign / InCopy / InDesign Server</a></li>
+              <li><a href="/devnet/java/">JRun</a></li>
+              <li><a href="/devnet/livecycle/">LiveCycle</a></li>
+              <li><a href="/devnet/pagemaker/">PageMaker</a></li>
+              <li><a href="/devnet/photoshop/">Photoshop</a></li>
+              <li><a href="/devnet/photoshoplightroom/">Photoshop Lightroom</a></li>
+              <li><a href="/devnet/premiere/">Premiere Pro</a></li>
+              <li><a href="/devnet/reader/">Reader</a></li>
+              <li><a href="/devnet/robohelp/">RoboHelp</a></li>
+              <li><a href="/devnet/soundbooth/">Soundbooth</a></li>
+              <li><a href="/devnet/typemanager/">Type Manager</a></li>
+              <li><a href="/devnet/versioncue/">Version Cue</a></li>
+            </ul>
+          </div>
+          <br class="clear-both" />
+        </div>
+        <!--Product Technology Accordion - Technology Panel (right) -->
+        <div id="all-technologies" class="columns-2-AB-B accordion-column">
+          <div class="columns-2-AB-A">
+            <ul class="link-list">
+              <li><a href="/devnet/topics/3d.html">3D</a></li>
+              <li><a href="/accessibility/">Accessibility</a></li>
+              <li><a href="/devnet/actionscript/">ActionScript</a></li>
+              <li><a href="/devnet/activecontent/">Active content/IE changes</a></li>
+              <li><a href="/devnet/postscript/">Adobe PostScript</a></li>
+              <li><a href="/devnet/ajax/">Ajax</a></li>
+              <li><a href="/devnet/topics/architecture.html">Architecture</a></li>
+              <li><a href="/devnet/dreamweaver/css.html">CSS</a></li>
+              <li><a href="/devnet/topics/databases.html">Databases</a></li>        
+              <li><a href="/devnet/digitalpublishing/">Digital Publishing</a></li>
+              <li><a href="/devnet/flv/">FLV/F4V </a></li>
+              <li><a href="/devnet/opentype/">Font / Type / OpenType</a></li>
+              <li><a href="/devnet/intuit/">Intuit</a></li>
+              <li><a href="/devnet/java/">Java</a></li>
+              <li><a href="/devnet/devices/">Mobile and devices</a></li>
+              <li><a href="/devnet/pdf/">PDF</a></li>
+              <li><a href="/devnet/salesforce/">Salesforce.com</a></li>
+              <li><a href="/devnet/sap/">SAP</a></li>
+              <li><a href="/devnet/scripting/">Scripting</a></li>
+              <li><a href="/devnet/security/">Security</a></li>
+            </ul>
+          </div>
+          <div class="columns-2-AB-B">
+            <ul class="link-list">
+              <li><a href="/devnet/seo/">SEO</a></li>
+              <li><a href="/devnet/spry/">Spry framework for Ajax</a></li>
+              <li><a href="http://support.adobe.com/devsup/devsup.nsf/svgkb.htm">SVG</a></li>
+              <li><a href="/devnet/swf/">SWF</a></li>
+              <li><a href="http://partners.adobe.com/public/developer/tiff/index.html">TIFF</a></li>
+              <li><a href="/devnet/flash/video.html">Video</a></li>
+              <li><a href="/devnet/topics/xml.html">XML</a></li>
+              <li><a href="/devnet/xmp">XMP</a></li>
+            </ul>
+            <h3>Developer services</h3>
+            <ul class="link-list"><li><a href="/go/acrobat_com_dev_en">Acrobat.com Document Services</a></li>
+              <li><a href="http://learn.adobe.com/wiki/display/kulerdev/Home" target="_blank">Kuler Services</a> </li>
+              <li><a href="http://learn.adobe.com/wiki/display/services" target="_blank" class="link-more">All services</a><a href="/devnet/devices/?navID=gettingstarted"></a></li>
+            </ul>
+            <h3>Project centers</h3>
+            <ul class="link-list">
+              <li><a href="/devnet/projects/interactive/">Interactive experiences</a></li>
+              <li><a href="/devnet/devices/?navID=gettingstarted">Mobile</a></li>
+              <li><a href="/devnet/projects/ria/">Rich Internet applications (RIAs)</a></li>
+              <li><a href="/devnet/projects/websites/">Websites</a></li>
+              <li><a href="/devnet/video/">Video on the web</a></li>
+            </ul>
+          </div>
+          <br class="clear-both" />
+        </div>
+        <br class="clear-both" />
+      </div>
+    </div>
+  </div>
+  
+  <div id="resources-container">
+  	<!--Developer Resources Control Handle-->
+    <div id="resources" class="accordion-controller clear-after">
+      <div class="accordion-handle">Developer resources</div>
+    </div>
+    <!--Developer Resources Teaser Accordion-->
+    <div id="resources-teaser" class="teaser accordion">
+      <div class="accordion-content">
+      	<div class="columns-2-AB-A accordion-column">
+        	<ul class="link-list menu">
+            <li><a href="http://weblogs.macromedia.com/mxna/FeedList.cfm#Adobe_Feeds" target="_blank">Adobe blogs</a></li>
+            <li><a href="http://weblogs.macromedia.com/" target="_blank">Blog aggregator</a></li>
+            <li><a href="/support/documentation/">Documentation</a></li>
+            <li><a href="/cfusion/exchange/index.cfm">Exchanges</a></li>            
+            <li><a href="/devnet/archive/">Article archive</a></li>
+            <li><a href="/go/cssadvisor">CSS Advisor</a></li>
+            <li><a href="/newsletters/edge/">Edge newsletter</a></li>
+            <li><a href="http://bugs.adobe.com/jira/secure/BrowseProject.jspa" target="_blank">Bug base</a></li>
+          </ul>
+        </div>
+      	<div class="columns-2-AB-A accordion-column">
+        	<ul class="link-list menu">           
+            <li><a href="/go/flex_cookbook">Flex cookbook</a></li>
+            <li><a href="http://labs.adobe.com/" target="_blank">Adobe Labs</a></li>
+            <li><a href="/support/">Support</a></li>
+            <li><a href="/downloads/">Trial downloads</a></li>
+            <li><a href="/support/forums/">Forums</a></li>
+            <li><a href="/devnet/sdks.html">SDKs</a></li>
+            <li><a href="/training/">Training</a></li>
+            <li><a href="http://opensource.adobe.com" target="_blank">Adobe Open Source</a></li>
+   	      </ul>
+        </div>
+        <br class="clear-both" />        
+      </div>
+    </div>
+    <!--Developer Resources Main Accordion-->
+    <div id="resources-accordion" class="accordion">
+      <div class="accordion-content">
+        <div class="columns-2-AB-A accordion-column">
+          <div class="columns-2-AB-A">
+            <h3>Community resources</h3>
+            <ul class="link-list"><li><a href="/go/flex_cookbook/">Flex cookbook</a> <span class="note">(share code)</span></li>
+              <li><a href="/go/air_cookbook">Adobe AIR cookbook</a> <span class="note">(share code)</span></li>
+              <li><a href="/go/cssadvisor">CSS Advisor</a> <span class="note">(browser bug fixes)</span></li>
+              <li><a href="/cfusion/exchange/index.cfm">Exchanges</a> <span class="note">(share components)</span></li>
+              <li><a href="http://labs.adobe.com/" target="_blank">Adobe Labs</a></li>
+              <li><a href="http://opensource.adobe.com">Adobe Open Source</a></li>
+              <li><a href="/support/forums/">Forums</a></li>
+              <li><a href="/support/rss/">RSS feeds</a></li>            
+              <li><a href="http://bugs.adobe.com/jira/secure/BrowseProject.jspa" target="_blank">Bug base</a></li>
+              <li><a href="http://groups.adobe.com" target="_blank">User groups</a></li>
+              <li><a href="/communities/experts/">Adobe Community Experts (ACE)</a></li>
+              <li><a href="/devnet/events/">Developer events</a></li>
+            </ul>
+            <p>&nbsp;</p>
+          </div>
+          <div class="columns-2-AB-B">
+            <h3>Product documentation</h3>
+            <ul class="link-list">
+              <li><a href="/support/documentation/">All products</a></li>
+              <li><a href="/support/documentation/en/flash/#actionScript">ActionScript Language Reference</a></li>
+              <li><a href="/support/documentation/en/air/">Adobe AIR</a></li>
+              <li><a href="/support/documentation/en/coldfusion/">ColdFusion</a></li>
+              <li><a href="/support/documentation/en/dreamweaver/">Dreamweaver</a></li>
+              <li><a href="/support/documentation/en/flash/">Flash</a></li>
+              <li><a href="/support/documentation/en/flex/">Flex</a></li>
+              <li><a href="/go/learn_lc_documentation">LiveCycle ES</a></li>              
+              <li><a href="http://help.adobe.com/en_US/Spry/1.4/index.html" target="_blank">Spry</a></li>
+            </ul>
+            <h3>Downloads</h3>
+            <ul class="link-list">
+              <li><a href="/downloads/">Trial downloads</a></li>
+              <li><a href="/devnet/sdks.html">SDKs</a></li>
+            </ul>
+            <h3>Samples</h3>
+            <ul class="link-list">
+              <li><a href="/devnet/topics/sample_apps.html">Sample applications</a></li>
+              <li><a href="/cfusion/showcase/index.cfm">Showcase</a></li>
+            </ul>
+          </div>
+          <br class="clear-both" />
+        </div>
+        <div class="columns-2-AB-B accordion-column">
+          <div class="columns-2-AB-A">
+            <h3>Training and books</h3>
+            <ul class="link-list">
+              <li><a href="/training/self_paced_training/">Online training</a></li>
+              <li><a href="http://partners.adobe.com/public/partnerfinder/tp/show_find.do">Classroom training</a></li>
+              <li><a href="/support/certification/">Certification</a></li>
+              <li><a href="http://www.oreilly.com/store/series/adl.csp" target="_blank">Adobe Developer Library</a></li>
+              <li><a href="http://www.adobepress.com/" target="_blank">Adobe Press</a></li>
+              <li><a href="http://my.safaribooksonline.com/14daysfree?portal=my&uicode=adobe" target="_blank">Safari Books Online</a></li>
+            </ul>
+            <h3>Newsletters</h3>
+            <ul class="link-list">
+              <li><a href="/newsletters/edge/">Edge newsletter</a></li>
+              <li><a href="/cfusion/resourcecenter/rc_driver.cfm?pagename=des_dev_nl">ADC Update e-mail</a></li>
+            </ul>
+            <h3>Blogs</h3>
+            <ul class="link-list">
+              <li><a href="http://weblogs.macromedia.com/" target="_blank">MXNA</a> <span class="note">(blog aggregator)</span></li>
+              <li><a href="http://weblogs.macromedia.com/mxna/FeedList.cfm#Adobe_Feeds" target="_blank">Adobe blogs</a></li>
+            </ul>
+          </div>
+          <div class="columns-2-AB-B">
+            <h3>Archives</h3>
+            <ul class="link-list">
+              <li><a href="/devnet/archive/">ADC articles  by date</a></li>
+              <li><a href="/devnet/spotlight/">Developer Spotlight</a></li>
+              <li><a href="/devnet/logged_in/">Logged In</a></li>
+              <li><a href="/devnet/videos/?tab:videos=1">Video</a></li>
+            </ul>
+            <h3>ADC program</h3>
+            <ul class="link-list"><li><a href="/go/join_adc" class="link-more">Sign in or join  ADC</a></li>
+              <li><a href="/devnet/logged_in/jwall_dev_connection.html">ADC program overview</a></li>
+            </ul>
+            <h3>Additional resources</h3>
+            <ul class="link-list">
+              <li><a href="/designcenter/">Design Center</a></li>
+              <li><a href="/support/">Support</a></li>
+              <li><a href="/devnet/security/">Security information</a></li>
+              <li><a href="http://partners.adobe.com/public/main.html" target="_blank">Partners</a></li>
+              <li><a href="http://www.flex.org/" target="_blank">Flex.org</a></li>
+              <li><a href="/devnet/edu/">Education Developer Center</a></li>
+            </ul>
+          </div>
+          <br class="clear-both" />
+        </div>
+        <br class="clear-both" />
+      </div>
+    </div>
+  </div>
+</div>
+	<div id="L6C1" class="columns-1-A-A">
+		<ol id="depthpath" class="path menu compact">
+	<li><a href="/">Home</a></li>
+	<li><a href="/devnet/">Developer Connection</a></li>
+	<li><a href="/devnet/flex/">Flex Developer Center</a></li>
+</ol>
+<h1 class="adobe">Flex Article</h1>
+
+		<div id="article-C01" class="columns-2-aaB-aa">&nbsp;</div>
+		<div id="article-C02" class="columns-2-aaB-B">
+			<h2>Integrating Flex 2 and Ruby on Rails</h2>
+		</div><br class="clear-both" />
+		<div id="article-C1" class="columns-2-aaB-aa">
+			<!-- InstanceBeginEditable name="AuthorPhoto" --><img src="/devnet/images/160x160/derek_wischusen.jpg" width="160" height="160" alt="Derek Wischusen" /><!-- InstanceEndEditable --><h4>Derek Wischusen</h4>
+<p><a href="http://www.flexonrails.net" target="_blank">www.flexonrails.net</a></p>
+
+
+
+
+
+
+
+
+			
+			<h3>Table of Contents</h3>
+			<ol class="toc link-list">
+				<li><a href="/devnet/flex/articles/flex2_rails.html">Introduction</a></li>
+<li><a href="/devnet/flex/articles/flex2_rails_02.html">Building the user interface</a></li>
+<li><a href="/devnet/flex/articles/flex2_rails_03.html">Setting up your Rails application</a></li>
+<li><a href="/devnet/flex/articles/flex2_rails_04.html">Integration</a></li>
+			</ol>			
+			<ul class="link-list utility">
+				<li><a href="flex2_rails_print.html">Printable version</a></li>
+				<li><a href="/cfusion/resourcecenter/rc_driver.cfm?pagename=des_dev_nl">Get an e-mail update of new articles</a></li>
+				<!--
+This include will add list items to the utility list on the left side 
+of the article template.  Multiple items bay be added, but each should 
+be in an <li> tag.  Only <li> tags should be present in this include. 
+
+Example:
+<li><a href="#">Go do this now</a></li>
+
+This file must always exist on the server.  To remove links, simply
+delete the <li> tags.  Do not delete the file from the server.
+-->
+<li>
+<!-- AddThis Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="/devnet/images/misc/add_this.png" width="125" height="16" border="0" alt="Bookmark and Share" /></a> <script type="text/javascript">var addthis_pub = 'adc_button';</script><script type="text/javascript" src="http://s7.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Button END -->
+</li>
+
+			</ul>
+			<a href="#" id="comCount">Comments</a>
+<script type="text/javascript">
+	//show comment link
+	$('comCount').style.display="block";
+</script>
+
+			<dl class="meta">
+				<dt>Created:</dt><dd>9 October 2006</dd>
+				<dt>User Level:</dt><dd>Intermediate</dd>
+			</dl>
+		</div>
+		<div id="article-C2" class="columns-2-aaB-B"><!-- InstanceBeginEditable name="ArticleContent" -->
+        		  <p class="note"><em><strong>Note:</strong> This article was created based on Flex 2. Minor changes in the description and code may be necessary before it can be applied to Flex 3.</em></p>
+
+			<p>In this article you will learn how to integrate Flex 2 with <a href="http://www.rubyonrails.org/" target="_blank">Ruby on Rails</a> and a MySQL database by building a simple issue tracker application.  By following the steps in this tutorial, you will also learn how to add functionality to the application, such as adding a new bug to the database, reading existing bugs, updating a bug, and deleting a bug.</p>
+			
+			<h3>Requirements</h3>
+			
+			<h4>Flex Builder 2</h4>
+			<ul class="link-list compact">
+            	<li class="icon download"><a href="/go/devcenter_flex_try">Try</a></li>
+            	<li class="icon buy"><a href="/go/devcenter_flex_buy">Buy</a></li>
+			</ul>
+			
+			<h4>Ruby 1.8.4+</h4>
+			
+			<ul class="link-list compact">
+				<li class="icon download"><a href="http://rubyforge.org/frs/?group_id=167" target="_blank">Download</a></li>
+			</ul>
+			
+			<h4>Rails Gem 1.1.6+</h4>
+			
+			<ul class="link-list compact">
+				<li class="icon download"><a href="http://www.rubyonrails.org/down" target="_blank">Download</a></li>
+			</ul>
+			
+			<h4>MySQL 4+</h4>
+				<ul class="link-list compact">
+				<li class="icon download"><a href="http://www.mysql.com/" target="_blank">Download</a></li>
+			</ul>
+				<h4>Recommended: RadRails </h4>
+			
+			<ul class="link-list compact">
+				<li class="icon download"><a href="http://www.radrails.org/page/download" target="_blank">Download</a></li>
+			</ul>
+			
+			<h4>Sample files:</h4>
+			
+			<ul class="link-list">
+				<li class="icon download"><a href="http://download.macromedia.com/pub/developer/flex_rails_issue_tracker.zip">flex_rails_issue_tracker.zip <span class="stamp-fileinfo">(ZIP, 1 MB)</span></a></li>
+
+			</ul>
+			
+			<h4>Prerequisite knowledge:</h4>
+			<p>Basic understanding of ActionScript, MXML, and Flex Builder.</p>
+			
+			<h3>Why Rails?</h3>
+			
+			<p>When using Flex you have several options to choose from for back-end server software.  So why might you want to choose Rails?  Ruby on Rails, like Flex, is a well thought out, elegantly simple framework.  As you will see, Rails uses code generation and metaprogramming to make it incredibly easy to integrate with a database using almost no SQL code.  Furthermore, when you use Rails, you also get to use Ruby, a programming language that is both extremely powerful and easy to use.  Using Flex and Ruby on Rails, you will be able to get more done with less code.</p>
+			
+			<p>Flex + Rails + Ruby = RIA Nirvana.</p>
+			
+			
+			
+
+			
+		<!-- InstanceEndEditable -->
+			<dl class="page menu compact">
+				<dt>Page 1 of 4</dt>
+				<dd class="prev"></dd>
+				<dd class="next"><a href="flex2_rails_02.html">Next Page</a></dd>
+			</dl>
+			<h3 id="bio">About the author</h3>
+			<div class="bio">
+				<address><p>Derek Wischusen is a developer who has been creating applications using the Flash platform since 2000.  He runs a blog on using Flex with Ruby on Rails, and he helps run the Flex side of the <a href="http://www.pfpaug.org/core/about.php" target="_blank">Philly Flash Platform Users Group</a>.</p></address>
+			</div>
+			<script src="http://comment.adobe.com/comment/ionComments.js" type="text/javascript"></script> 
+
+<div id="comment-output">
+	<noscript><span style="color:#990000;font-style:italic;">To view/add comments, you must enable JavaScript in your browser.</span></noscript>
+</div>
+	 
+<script type="text/javascript">
+	var html = document.getElementsByTagName('html')[0];
+	var lang = html.getAttribute('lang');
+	var db_key = location.protocol + "//" + location.host + location.pathname;
+	
+	var pathArray = window.location.pathname.split( '/' );
+	
+	if ((pathArray[1] == "de") || (pathArray[1] == "es") || (pathArray[1] == "fr") || (pathArray[1] == "it") || (pathArray[1] == "jp")  || (pathArray[1] == "cn") || (pathArray[1] == "tw") || (pathArray[1] == "kr")) {
+		var lan = pathArray[1];
+		pathArray[1] = pathArray[2];
+		pathArray[2] = pathArray[3];
+	}
+	
+	var ionComSite = pathArray[1].toString();
+	var ionComProd = pathArray[2].toString() + "_product_adobelr";
+	
+	ionComAddLoadEvent(function(){
+	
+		var resource = encodeURIComponent(db_key);
+     	
+		if(lan=="de")
+		 	{
+	      ionComments.setup(resource, 'de_DE', 'comment-output', {comAnchor: 'comCount', productLabel: ionComProd, siteArea: ionComSite });
+	   	    }
+			
+		else if (lan=="fr")
+			
+			{
+	    		ionComments.setup(resource, 'fr_FR', 'comment-output', {comAnchor: 'comCount', productLabel: ionComProd, siteArea: ionComSite });
+			}
+			
+		else if (lan=="jp")
+			
+			{
+							  	 	
+				ionComments.setup(resource, 'ja_JP', 'comment-output', {comAnchor: 'comCount', productLabel: ionComProd, siteArea: ionComSite });
+			}
+	
+		else
+			
+			{
+		 		ionComments.setup(resource, 'en_US', 'comment-output', {comAnchor: 'comCount', productLabel: ionComProd, siteArea: ionComSite });
+			}
+	
+	});
+	
+		
+
+
+
+
+</script>
+		</div><br class="clear-both" />
+</div>
+</div>
+<!--googleoff: index--><!-- devnet global footer $Revision: 1.8 $ -->
+<div id="globalfooter">
+    <ul class="pipe menu">
+        <li><a href="/go/gftray_foot_adc">ADC Home</a></li>
+        <li><a href="/go/gftray_foot_privacy_security">Online Privacy Policy</a></li>
+        <li><a href="/go/gftray_foot_terms">Terms of Use</a></li>
+        <li><a href="/go/gftray_foot_contact_adobe">Contact us</a></li>
+        <li><a href="/go/gftray_foot_accessibility">Accessibility</a></li>
+        <li><a href="/go/gftray_foot_report_piracy">Report piracy</a></li>
+        <li><a href="/go/gftray_foot_permissions_trademarks">Permissions and trademarks</a></li>
+        <li><a href="/go/gftray_foot_feedback">Send feedback</a></li>
+        <li><a href="/go/gftray_foot_home">Adobe.com Home</a></li>
+    </ul>
+    <div class="pullout-right right-125">
+        <p class="pullout-item"><a href="/go/gftray_foot_truste" target="_blank"><img src="/images/globalnav/truste_seal_eu.gif" alt="Reviewed by TRUSTe: site privacy statement" width="116" height="33" id="trustelogo" /></a></p>
+        <p id="copyright">Copyright &#169; 2009 Adobe Systems Incorporated. <a href="/go/gftray_all_rights_reserved">All rights reserved</a>.</p>
+        <p id="terms">Use of this website signifies your agreement to the <a href="/go/gftray_foot_terms">Terms of Use</a> and <a href="/go/gftray_foot_privacy_security">Online Privacy Policy (updated 07-08-2008)</a>.</p>
+        <p id="searchengine">Search powered by <a href="http://www.google.com/" target="new">Google&trade;</a></p>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/fsrscripts/oeTriggerParams.js"></script>
+
+<script type="text/javascript" src="/js/fsrscripts/oeLauncher.js"></script>
+
+<script type="text/javascript">
+
+try { 
+
+	ForeCStdSetCookie(triggerParms["oecpp_ABXTesting"], ForeCStdGetCookie('LAYOUT'), null,"/",triggerParms["domain"]);
+
+	if (triggerParms["oeMode"] == 1) {
+
+		    ForeCStdSetCookie('currentURL', window.location.href, null,'/',triggerParms["domain"]);
+
+	}
+
+	var FSRcurrentURL = "";
+	//var FSRreferrerURL = "";
+
+	FSRcurrentURL = (window.location.href).toLowerCase();
+	FSRreferrerURL = (document.referrer).toLowerCase();
+
+	 try { 
+	FSRcurrentURL = (window.location.href).toLowerCase();
+	FSRreferrerURL = (document.referrer).toLowerCase();
+
+
+
+	if (FSRcurrentURL.indexOf("adobe.com/products/acrobat/readstep2.html") > -1  ||
+	FSRcurrentURL.indexOf("adobe.com/products/acrobat/readstep3.html") > -1  ||
+	FSRcurrentURL.indexOf("adobe.com/downloads") > -1 ||
+	FSRcurrentURL.indexOf("adobe.com/shockwave/download") > -1)
+	{
+
+		    if (FSRreferrerURL.indexOf("adobe.com") > -1) {
+				openFSRTracker(1);
+		    }
+
+	} else {
+		   openFSRTracker(1);
+	}                                                              
+	} catch (err) {}
+	
+} catch (err) {}    
+
+</script>
+
+<!--googleon: index-->
+
+
+<!-- InstanceBeginEditable name="analytics" -->
+<div style="display: none;">
+<!-- SiteCatalyst code version: H.15.2 Copyright 2002 Omniture, Inc. More info available at http://www.omniture.com -->
+<script type="text/javascript">var s_code=' ';</script>
+<script language="JavaScript" src="/uber/js/omniture_s_code.js" type="text/javascript"></script>
+<script type="text/javascript"><!--
+var s_accountName;
+var s_docHost = window.location.hostname.toLowerCase();
+var s_docURL = window.location.pathname.toLowerCase();
+
+if ((s_docHost.indexOf(".dev.adobe.") != -1) || (s_docHost.indexOf("stage.") != -1) || (s_docHost.indexOf("staging.") != -1) || (s_docHost.indexOf(".sea.adobe") != -1) || (s_docHost.indexOf(".corp.adobe") != -1)) {  	s_accountName="mxadobetest";
+}
+else {
+	s_accountName="mxmacromedia";
+}
+if (s_docURL.indexOf("/devnet/") != -1) {
+  s_channel="DevNet";
+  // Track Tabs as Pages when targeted directly
+  if (document.URL.indexOf("navID=") != -1) {
+    var s_pairs = window.location.search.substring(1).split("&");
+	for (i=0;i<s_pairs.length;i++) {
+	  if (s_pairs[i].indexOf("navID=") != -1)
+  		s_pageName=document.URL.substring(0, document.URL.indexOf("?")+1) + s_pairs[i];
+		s_pageName=s_pageName.toLowerCase();
+	}
+  }
+}
+else if (s_docHost.indexOf("help.adobe.com") != -1) {
+  // Tracking Learning Resources help.adobe.com
+  s_channel="Support Help.adobe.com";
+  var s_title=document.title;
+  if (s_title.indexOf("*") != -1) { 
+    s_title=document.title.substring(0,document.title.indexOf("*"));
+  }
+  s_pageName="Support help.adobe.com: " + s_title;
+  s_prop23=document.URL;
+}
+else if (s_docHost.indexOf("kb.adobe.com") != -1) {
+  // Tracking Support Knowledgebase Knova
+  s_channel="Support Knowledgebase";
+  if (s_docURL.indexOf("searchentry.do") != -1) {
+  	try {
+		var SearchStringValue = adobe.Element.getElementsByClassName($("simple-options"),"input","textfield")[0].value;
+		var s_prop11=SearchStringValue.toLowerCase();
+		var s_eVar21=s_prop11;
+	} catch (ex) { 
+	}
+  }
+  else if (s_docURL.indexOf("microsite.do") != -1) {
+     var s_pageName = document.URL.toLowerCase();
+     if (s_pageName.indexOf(';') != -1) {
+       s_pageName=s_pageName.substring(0,s_pageName.indexOf(';'));
+     }
+  }
+}
+if (!window.scMMInclude) {
+	var s_wd=window,s_tm=new Date;
+	if(s_code!=' '){
+		s_code=s_dc(s_accountName);
+		if(s_code)document.write(s_code)
+	} 
+} else {
+	s_wds(s_accountName);s_ca(s_accountName); 
+}	
+
+function sendAnalyticsEvent(str){var ns=s_accountName;if(str!=null)ns+=","+str;void(s_gs(ns));}
+function sendLinkEvent(accnt,lnkname,type){
+accnt=s_accountName;s_linkType=type;s_lnk=true;s_linkName=lnkname;void(s_gs(accnt));}
+var searchForm = (document.forms["globalnav-search"]) || (document.forms["adc-globalnav-search"]);
+if(searchForm) {
+	if (typeof s_channel == "undefined") { var s_channel; }
+	s_pageName_input_value = (s_pageName!="" && s_pageName != null) ? s_pageName : window.location.href.split("?");
+	s_channel_input_value = (s_channel!="") ? s_channel : "Channel:n/a";
+	var s_pageName_input = new Element('input');
+	s_pageName_input.writeAttribute({
+		 "name" : "s_pageName",
+		 "type" : "hidden",
+		 "value": s_pageName_input_value[0]
+	});
+	var s_channel_input = new Element('input');
+	s_channel_input.writeAttribute({
+		 "name" : "s_channel",
+		 "type" : "hidden",
+		 "value": s_channel_input_value
+	});
+	Element.insert(searchForm, s_pageName_input ).insert(s_channel_input);
+}
+//--></script>
+<noscript><img src="http://stats.adobe.com/b/ss/mxmacromedia/1/G.9-XELvs" height="1" width="1" border="0" alt="" /></noscript>
+<!-- End SiteCatalyst code version: H.15.2. -->
+</div>
+<!-- InstanceEndEditable -->
+<img id="flash_pixel" name="flash_pixel" src="/images/pixel.gif" width="1" height="1" alt="" />
+</body>
+<!-- InstanceEnd --></html>

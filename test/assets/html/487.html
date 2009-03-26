@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="http://rubylearning.org/class/theme/standard/styles.php" />
+<meta name="description" content=" Online Ruby Programming Courses by Satish Talim" />
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" href="http://rubylearning.org/class/theme/standard/styles_ie7.css" />
+<![endif]-->
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://rubylearning.org/class/theme/standard/styles_ie6.css" />
+<![endif]-->
+
+
+    <meta name="keywords" content="ruby programming,ruby on rails,ruby training,ruby course,ruby learning class,free online course,online courseA Ruby Learning Hub " />
+    <title>A Ruby Learning Hub</title>
+    <link rel="icon" type="image/ico" href="http://rubylearning.com/images/favicon.ico" />
+    <!--<style type="text/css">/*<![CDATA[*/ body{behavior:url(http://rubylearning.org/class/lib/csshover.htc);} /*]]>*/</style>-->
+
+<script type="text/javascript" src="http://rubylearning.org/class/lib/javascript-static.js"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/javascript-mod.php"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/overlib/overlib.js"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/overlib/overlib_cssstyle.js"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/cookies.js"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/ufo.js"></script>
+<script type="text/javascript" src="http://rubylearning.org/class/lib/dropdown.js"></script>  
+
+<script type="text/javascript" defer="defer">
+//<![CDATA[
+setTimeout('fix_column_widths()', 20);
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+function openpopup(url,name,options,fullscreen) {
+  fullurl = "http://rubylearning.org/class" + url;
+  windowobj = window.open(fullurl,name,options);
+  if (fullscreen) {
+     windowobj.moveTo(0,0);
+     windowobj.resizeTo(screen.availWidth,screen.availHeight);
+  }
+  windowobj.focus();
+  return false;
+}
+
+function uncheckall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=0);
+  }
+}
+
+function checkall() {
+  void(d=document);
+  void(el=d.getElementsByTagName('INPUT'));
+  for(i=0;i<el.length;i++) {
+    void(el[i].checked=1);
+  }
+}
+
+function inserttext(text) {
+  text = ' ' + text + ' ';
+  if ( opener.document.forms['theform'].message.createTextRange && opener.document.forms['theform'].message.caretPos) {
+    var caretPos = opener.document.forms['theform'].message.caretPos;
+    caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ? text + ' ' : text;
+  } else {
+    opener.document.forms['theform'].message.value  += text;
+  }
+  opener.document.forms['theform'].message.focus();
+}
+
+function getElementsByClassName(oElm, strTagName, oClassNames){
+	var arrElements = (strTagName == "*" && oElm.all)? oElm.all : oElm.getElementsByTagName(strTagName);
+	var arrReturnElements = new Array();
+	var arrRegExpClassNames = new Array();
+	if(typeof oClassNames == "object"){
+		for(var i=0; i<oClassNames.length; i++){
+			arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)"));
+		}
+	}
+	else{
+		arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)"));
+	}
+	var oElement;
+	var bMatchesAll;
+	for(var j=0; j<arrElements.length; j++){
+		oElement = arrElements[j];
+		bMatchesAll = true;
+		for(var k=0; k<arrRegExpClassNames.length; k++){
+			if(!arrRegExpClassNames[k].test(oElement.className)){
+				bMatchesAll = false;
+				break;
+			}
+		}
+		if(bMatchesAll){
+			arrReturnElements.push(oElement);
+		}
+	}
+	return (arrReturnElements)
+}
+//]]>
+</script>
+</head>
+
+<body  class="course course-1 notloggedin dir-ltr lang-en_utf8" id="site-index">
+
+<div id="page">
+<a class="skip" href="#maincontent">Skip to main content</a>
+
+    <div id="header-home" class=" clearfix">        <h1 class="headermain"><img src="http://rubylearning.org/class/theme/standard/pix/logo.gif" alt="" />A Ruby Learning Hub</h1>
+        <div class="headermenu"><div class="logininfo">You are not logged in. (<a  href="http://rubylearning.org/class/login/index.php">Login</a>)</div></div>
+    </div>        <hr />
+    <!-- END OF HEADER -->
+    <div id="content">
+
+<table id="layout-table" summary="layout">
+  <tr>
+  <td style="width: 210px;" id="left-column"><div><a href="#sb-1" class="skip-block">Skip Gold Sponsor</a><div  id="inst3529" class="block_html sideblock"><div class="header"><div class="title"><h2>Gold Sponsor</h2></div></div><div class="content"><p><a href="http://joshsoftware.com/" title="Josh Software for Rails"><img alt="Josh Software for Rails" src="http://rubylearning.com/images/joshbannerad.jpg" style="border:none; display: block; margin-left: auto; margin-right: auto;" /></a></p>
+</div></div><span id="sb-1" class="skip-block-to"></span><a href="#sb-2" class="skip-block">Skip Silver Sponsor</a><div  id="inst3584" class="block_html sideblock"><div class="header"><div class="title"><h2>Silver Sponsor</h2></div></div><div class="content"><p><a href="http://www.projectlocker.com/" title="ProjectLocker: Software Quality on Demand"><img alt="ProjectLocker" src="http://rubylearning.com/images/ProjectLocker180x180.gif" style="border:none; display: block; margin-left: auto; margin-right: auto;" /></a></p>
+</div></div><span id="sb-2" class="skip-block-to"></span><a href="#sb-3" class="skip-block">Skip </a><div  id="inst3582" class="block_html sideblock"><div class="header"><div class="title"><h2></h2></div></div><div class="content"><p><a href="http://railsware.com/" title="Railsware develops premium-quality web applications for internet startups based on Ruby On Rails."><img alt="Agile Rails Development" src="http://rubylearning.com/images/Railsware180x180.png" style="border:none; display: block; margin-left: auto; margin-right: auto;" /></a></p>
+</div></div><span id="sb-3" class="skip-block-to"></span><a href="#sb-4" class="skip-block">Skip </a><div  id="inst3580" class="block_html sideblock"><div class="header"><div class="title"><h2></h2></div></div><div class="content"><p><a href="http://www.1steasy.com/rubylearning.htm" title="UK based Rails Hosting"><img alt="UK based Rails Hosting" src="http://rubylearning.com/images/rubylearning180.gif" style="border:none; display: block; margin-left: auto; margin-right: auto;" /></a></p>
+</div></div><span id="sb-4" class="skip-block-to"></span><a href="#sb-5" class="skip-block">Skip Course categories</a><div  id="inst2494" class="block_course_list sideblock"><div class="header"><div class="title"><h2>Course categories</h2></div></div><div class="content">
+<ul class='list'>
+<li class="r0"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=4">Teachers Lounge</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=9">Merb</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=12">Sinatra</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=10">Shoes</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=13">FXRuby</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=14">Twitter</a></div></li>
+<li class="r0"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=11">Git-GitHub</a></div></li>
+<li class="r1"><div class="icon column c0"><img src="http://rubylearning.org/class/pix/i/course.gif" class="icon" alt="Course category" /></div><div class="column c1"><a  href="http://rubylearning.org/class/course/category.php?id=2">Core Ruby</a></div></li>
+</ul>
+<div class="footer"><a href="http://rubylearning.org/class/course/index.php">All courses</a> ...</div></div></div><span id="sb-5" class="skip-block-to"></span><a href="#sb-6" class="skip-block">Skip Blog Posts</a><div  id="inst3409" class="block_rss_client sideblock"><div class="header"><div class="title"><h2>Blog Posts</h2></div></div><div class="content"><div class="title">RubyLearning</div><ul class="list">
+<li><div class="link"><a href="http://rubylearning.com/blog/2009/03/24/rubylearnings-sponsor-projectlocker/" onclick="this.target='_blank'" >RubyLearning’s Sponsor: ProjectLocker</a></div>
+</li>
+<li><div class="link"><a href="http://rubylearning.com/blog/2009/03/22/rubylearnings-sponsor-railsware/" onclick="this.target='_blank'" >RubyLearning’s Sponsor: Railsware</a></div>
+</li>
+</ul>
+<div class="title">The Red Gem of Programming</div><ul class="list">
+<li><div class="link"><a href="http://feedproxy.google.com/~r/RubyMusings/~3/vCFdO6ORhE8/launched-shoes-gangs-clock-3.html" onclick="this.target='_blank'" >Launched Shoes Gangs Clock 3</a></div>
+</li>
+<li><div class="link"><a href="http://feedproxy.google.com/~r/RubyMusings/~3/-zMAdfg6EBs/shoes-twitter-search-v01.html" onclick="this.target='_blank'" >Shoes Twitter Search v0.1</a></div>
+</li>
+</ul>
+<div class="title">RubyLearning Screencasts</div><ul class="list">
+<li><div class="link"><a href="http://vimeo.com/channels/rubylearning#2678288" onclick="this.target='_blank'" >Forum Subscription - How to unsubscribe from forums</a></div>
+</li>
+<li><div class="link"><a href="http://vimeo.com/channels/rubylearning#2678177" onclick="this.target='_blank'" >Display Options in Forums - RubyLearning</a></div>
+</li>
+</ul>
+</div></div><span id="sb-6" class="skip-block-to"></span><a href="#sb-7" class="skip-block">Skip Main Menu</a><div  id="inst1" class="block_site_main_menu sideblock"><div class="header"><div class="title"><h2>Main Menu</h2></div></div><div class="content">
+<ul class='list'>
+<li class="r0"><div class="icon column c0"><img src="http://rubylearning.org/class/mod/forum/icon.gif" class="icon" alt="" /></div><div class="column c1"><a title="Forums"   href="http://rubylearning.org/class/mod/forum/view.php?id=14">Site news</a></div></li>
+</ul>
+</div></div><span id="sb-7" class="skip-block-to"></span></div></td><td id="middle-column"><span id="maincontent"></span><div><div class="generalbox sitetopic box">  <div style="font-family:'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif; font-size: 90%; width: 460px;">
+  <h3><strong>Online Ruby Programming Courses at RubyLearning</strong></h3>
+
+  <p style="float: right; margin-left: 10px; margin-bottom: 10px;"><a href="http://shortyawards.com/"><img src="http://rubylearning.com/images/satransparent.png" alt="Winner in Education category at Shorty Awards" title="Winner in Education category at Shorty Awards" /></a></p>
+
+  <p><strong>Introduction to Merb - 3rd batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+  <ul>
+    <li>Start date: <strong>Saturday, 28th Mar. 2009</strong></li>
+    <li>Period: The course runs for 2 weeks.</li>
+    <li><a href="http://rubylearning.com/blog/2009/03/02/introduction-to-merb-3rd-batch/">Course Details</a>.</li>
+    <li>Join <a href="http://rubylearning.org/class/course/view.php?id=29">here</a>.</li>
+    <li>Registrations have started. Early bird discounts offered.</li>
+    <li>Interview with Merb Guru - <a href="http://rubylearning.com/blog/2008/12/18/matt-aimonetti-why-on-earth-would-you-ignore-merb/">Matt Aimonetti</a></li>
+  </ul>
+  <p><strong>Git &amp; GitHub - 3rd batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+  <ul>
+    <li>Start date: <strong>Saturday, 28th Mar. 2009</strong>.</li>
+    <li>Period: The course runs for 2 weeks.</li>
+    <li><a href="http://rubylearning.com/blog/2009/02/10/git-and-github-a-free-course/">Course Details</a>.</li>
+    <li>Join <a href="http://rubylearning.org/class/course/view.php?id=26">here</a>.</li>
+    <li>Registrations started. Use Enrollment key: <b>GGHBATCH3</b></li>
+    <li>The course is <strong>FREE</strong> and exclusively sponsored by <b><a href="http://joshsoftware.com/">Josh Software</a></b>.</li>
+    <li>Interview with <a href="http://rubylearning.com/blog/2009/02/21/interview-chris-wanstrath-of-github/">Chris Wanstrath</a> - the guy who started GitHub!</li>
+  </ul>
+  <p><strong>Ruby with Shoes - 4th batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+  <ul>
+    <li>Start date: <strong>Saturday, 11th Apr. 2009</strong></li>
+    <li>Period: The course runs for 2 weeks.</li>
+    <li><a href="http://rubylearning.com/blog/2009/03/15/new-a-revamped-ruby-with-shoes-course-announced/">Course Details</a>.</li>
+    <li>Join <a href="http://rubylearning.org/class/course/view.php?id=31">here</a>.</li>
+    <li>Registrations have started. Early bird discounts offered.</li>
+  </ul>
+  <p><strong>Using Twitter with Ruby - 1st batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+  <ul>
+    <li>Start date: <strong>Saturday, 18th Apr. 2009</strong></li>
+    <li>Period: The course runs for a week.</li>
+    <li><a href="http://rubylearning.com/blog/2009/03/13/new-course-using-twitter-with-ruby/">Course Details</a>.</li>
+    <li>Join <a href="http://rubylearning.org/class/course/view.php?id=30">here</a>.</li>
+    <li>Registrations have started. Use Enrollment key: <b>UTWR101</b>.</li>
+    <li>The course is <strong>FREE</strong> and created by <b><a href="http://rubylearning.com/blog/2009/03/17/interview-michael-morin-creator-of-using-twitter-with-ruby-course/">Michael Morin</a></b> of <a href="http://ruby.about.com/b/">About.com</a> a part of <a href="http://www.nytco.com/">The New York Times Company</a>.</li>
+  </ul>
+    <p><strong>Introduction to Sinatra - 2nd batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+    <ul>
+      <li>Start date: <strong>Saturday, 2nd May 2009</strong></li>
+      <li>Period: The course runs for a week.</li>
+      <li><a href="http://rubylearning.com/blog/2009/03/02/introduction-to-merb-3rd-batch/">Course Details</a>.</li>
+      <li>Join <a href="http://rubylearning.org/class/course/view.php?id=32">here</a>.</li>
+      <li>Registrations have started. Early bird discounts offered.</li>
+      <li>Interview with Sinatra Gurus - <a href="http://rubylearning.com/blog/2009/03/03/interview-adam-keys-on-sinatra/">Adam Keys</a>, <a href="http://rubylearning.com/blog/2009/03/20/interview-aaron-quint-on-sinatra/">Aaron Quint</a>, and <a href="http://rubylearning.com/blog/2009/03/20/interview-ryan-tomayko-on-sinatra/">Ryan Tomayko</a>.</li>
+    </ul>
+  <p><strong>Core Ruby - 12th batch</strong> <img height="11" width="28" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/nw.gif" alt="New" title="New" /></p>
+  <ul>
+    <li>Start date: <strong>Saturday, 9th May 2009</strong>.</li>
+    <li>Period: The course runs for 2 months.</li>
+    <li><a href="http://rubylearning.com/satishtalim/tutorial.html">Syllabus</a>.</li>
+    <li><a href="http://rubylearning.com/satishtalim/faq.html#q5">Course Details</a>.</li>
+    <li>Enrollment Key: <strong>SMT12BATCH</strong></li>
+    <li>Join <a href="http://rubylearning.org/class/course/view.php?id=33">here</a>.</li>
+    <li>The course is <strong>FREE</strong> and exclusively sponsored by <strong><a href="http://www.locaweb.com.br/portal.asp?utm_campaign=Rails&amp;utm_source=rubylearning&amp;utm_medium=banner">Locaweb</a></strong>.</li>
+  </ul>
+  <p><strong>Ruby ActiveRecord, DataMapper on MySQL, SQLite3</strong>: 2nd batch sometime in May.<br />
+  <strong>JRuby Programming</strong>: 2nd batch sometime in May.<br />
+  <strong>FXRuby</strong>: 2nd batch sometime in May.</p>
+  <p>For all the answers to your questions, please read the <strong><a href="http://rubylearning.com/satishtalim/faq.html">FAQ</a></strong>.<br />
+  (This site is best viewed with a <a href="http://www.spreadfirefox.com/node&amp;id=244299&amp;t=309">Firefox</a> browser)<img height="20" width="60" style="border: 0px none" src="http://rubylearning.org/class/file.php/1/important.png" alt="Important" title="Important" /></p>
+  </div>
+<ul class="section img-text">
+<li class="activity label" id="module-15">  <div style="font-family:'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif; font-size: 90%; width: 460px;">
+    <h3><span style="color: rgb(173, 11, 3);">Announcements</span></h3>
+    <ul>
+      <li>RubyLearning winner of the <a href="http://shortyawards.com/category/education">Shorty Award in Education</a>.</li>
+      <li><a href="http://www.rubyinside.com/rubys-top-teacher-in-2008-satish-talim-1396.html">Ruby’s Top Teacher in 2008 - Satish Talim</a></li>
+      <li><a href="http://www.locaweb.com.br/portal.asp?utm_campaign=Rails&amp;utm_source=rubylearning&amp;utm_medium=banner">Locaweb</a> are the Exclusive Sponsors of all courses under FORPC101</li>
+    </ul>
+
+    <h3><span style="color: rgb(173, 11, 3);">For the Participants</span></h3>
+    <p>As of today, over 8000 people have registered on this site.<br /><br /><strong>Graduates, click on the link below for your certificates:</strong></p>
+
+    <!-- http://www.smashingmagazine.com/2008/08/13/top-10-css-table-designs/ -->
+    <table id="box-table-a" summary="Course Summary">
+        <thead>
+            <tr>
+                <th scope="col">Graduates</th>
+                <th scope="col">Participants</th>
+                <th scope="col">Period</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>POIRPWMC101-3I</td>
+                <td>Registrations Open</td>
+                <td>28 Mar to 10 Apr 2009</td>
+            </tr>
+            <tr>
+                <td>POIRPWMC101-2I</td>
+                <td>100+</td>
+                <td>10 Jan to 23 Jan 2009</td>
+            </tr>
+            <tr>
+                <td>POIRPWMC101-1I</td>
+                <td>35+</td>
+                <td>29 Nov to 12 Dec 2008</td>
+            </tr>
+
+            <tr>
+                <td>POIRSC101-2I</td>
+                <td>Registrations Open</td>
+                <td>2 May to 8 May 2009</td>
+            </tr>
+            <tr>
+                <td>POIRSC101-1I</td>
+                <td>50+</td>
+                <td>21 Mar to 27 Mar 2009</td>
+            </tr>
+
+            <tr>
+                <td>POIRPWSC101-4I</td>
+                <td>Registrations Open</td>
+                <td>11 to 24 Apr 2009</td>
+            </tr>
+            <tr>
+                <td>POIRPWSC101-3I</td>
+                <td>50+</td>
+                <td>14 to 27 Feb 2009</td>
+            </tr>
+            <tr>
+                <td>POIRPWSC101-2I</td>
+                <td>50+</td>
+                <td>13 to 26 Dec 2008</td>
+            </tr>
+            <tr>
+                <td>POIRPWSC101-1I</td>
+                <td>30+</td>
+                <td>15 to 28 Nov. 2008</td>
+            </tr>
+
+            <tr>
+                <td>FOFXR101-1I</td>
+                <td>30+</td>
+                <td>14 to 20 Mar. 2009</td>
+            </tr>
+
+            <tr>
+                <td>FOUTWRC101-1I</td>
+                <td>Registrations Open</td>
+                <td>18 Apr to 24 Apr 2009</td>
+            </tr>
+
+            <tr>
+                <td>FOGGHC101-3I</td>
+                <td>Registrations Open</td>
+                <td>28 Mar to 10 Apr 2009</td>
+            </tr>
+            <tr>
+                <td>FOGGHC101-2I</td>
+                <td>400+</td>
+                <td>21 Feb to 27 Feb 2009</td>
+            </tr>
+            <tr>
+                <td>FOGGHC101-1I</td>
+                <td>30+</td>
+                <td>7 Feb to 10 Feb 2009</td>
+            </tr>
+
+            <tr>
+                <td>FORPC101-12C</td>
+                <td>Registrations Open</td>
+                <td>May '09 to July '09</td>
+            </tr>
+            <tr>
+                <td>FORPC101-11C</td>
+                <td>700+</td>
+                <td>Mar '09 to May '09</td>
+            </tr>
+            <tr>
+                <td>FORPC101-10C</td>
+                <td>830+</td>
+                <td>Jan '09 to Mar '09</td>
+            </tr>
+            <tr>
+                <td>FORPC101-9C</td>
+                <td>300+</td>
+                <td>Dec '08 to Jan '09</td>
+            </tr>
+            <tr>
+                <td>FORPC101-8C</td>
+                <td>260+</td>
+                <td>Oct to Dec 2008</td>
+            </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg7">FORPC101-7C</a></td>
+      <td>400+</td>
+      <td>Sept to Oct 2008</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg6">FORPC101-6C</a></td>
+      <td>450+</td>
+      <td>July to Aug 2008</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg5">FORPC101-5C</a></td>
+      <td>450+</td>
+      <td>May to June 2008</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg4">FORPC101-4</a></td>
+      <td>450+</td>
+      <td>Mar to May 2008</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg3">FORPC101-3</a></td>
+      <td>2200+</td>
+      <td>Jan to Mar 2008</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg2">FORPC101-2</a></td>
+      <td>500+</td>
+      <td>Aug to Oct 2007</td>
+    </tr>
+    <tr>
+      <td><a href="http://rubylearning.com/satishtalim/ruby_course_graduates.html#bg1">FORPC101-1</a></td>
+      <td>100+</td>
+      <td>Aug to Oct 2006</td>
+    </tr>
+
+            <tr>
+                <td>POIRPWDC101-1I</td>
+                <td>30+</td>
+                <td>1 to 9 Nov. 2008</td>
+            </tr>
+            <tr>
+                <td>POIRPC101-1I</td>
+                <td>80+</td>
+                <td>Sept. to Oct. 2008</td>
+            </tr>
+    <tr>
+      <td>POJRPC101-1</td>
+      <td>40+</td>
+      <td>9 to 11 Aug. 2008</td>
+    </tr>
+        </tbody>
+    </table>
+
+    <h3><span style="color: rgb(173, 11, 3); font-weight: bold;">Credits</span></h3>
+    <p>Thanks to <strong>Jim Pryke</strong> who maintains this site on SliceHost.</p>
+    <p>These courses have been a grand success, thanks to the tireless efforts of these:</p>
+    <ul>
+      <li><strong>Patrons</strong> - Brad Coish, Chris Porter, José Carlos Monteiro, Marcos Ricardo, Michael Uplawski, Satoshi Asakawa and Victor Goff.<br /></li>
+      <li><strong>Mentors</strong> - Al Snow, Daniel Kotowski, Doug Sparling, George Thompson, <em>Ian Dees</em>, Jeff Hales, Jerry Anning, Mareike Hybsier, <em>Matt Aimonetti</em>, Michael Kohl, <em>Michael Morin</em>, Michèle Garoche, Peter Crawford, Takaaki Kato and Willian Molinari.</li>
+      <li><span style="font-weight: bold;">Asst. Teachers</span> - Ahmed Hazem, Dalton Pinto, Dave Lilley, Dylan Clendenin, Hector Sansores, James Silberbauer, Krzysztof Wicher, Lowell V, Massimiliano Giroldi, Paul Harris, Roy Stannard and Suman Gurung.</li>
+    </ul>
+    <p><strong>Guys/Gals, you rock!<br /></strong></p>
+
+    <p style="border: 1px solid rgb(153, 100, 0); padding: 5px; background-color: rgb(255, 233, 191); margin-top: 20px; font-size: 70%; width: 460px; clear: both;"><strong>Note</strong>: The Ruby Logo is Copyright (c) 2006, Yukihiro Matsumoto. I have made extensive references to information, related to Ruby, available in the public domain (wikis and the blogs, articles of various <strong>"Ruby Gurus"</strong>) and much of the material in the course here is drawn <strong>primarily</strong> from the <strong>Programming Ruby book</strong>, available from <a href="http://pragprog.com/titles/ruby3/programming-ruby-3">The Pragmatic Bookshelf</a>. My acknowledgment and thanks to all of them.</p>
+  </div>
+</li>
+<li class="activity resource" id="module-445"><a  onclick="this.target='resource296'; return openpopup('/mod/resource/view.php?inpopup=true&amp;id=445','resource296','resizable=1,scrollbars=1,directories=1,location=1,menubar=1,toolbar=1,status=1,width=620,height=450');" href="http://rubylearning.org/class/mod/resource/view.php?id=445"><img src="http://rubylearning.org/class/mod/resource/icon.gif" class="activityicon" alt="" /> <span>Privacy Policy<span class="accesshide " > Resource</span></span></a></li>
+</ul><!--class='section'-->
+
+</div><h2 class="headingblock header ">Site news</h2><div class="forumnodiscuss">(No news has been posted yet)</div>
+<br /></div></td><td style="width: 210px;" id="right-column"><div><a href="#sb-8" class="skip-block">Skip Login</a><div  id="inst27" class="block_login sideblock"><div class="header"><div class="title"><h2>Login</h2></div></div><div class="content">
+<form class="loginform" id="login" method="post" action="http://rubylearning.org/class/login/index.php"><div class="c1 fld username"><label for="login_username">Username</label><input type="text" name="username" id="login_username" value="" /></div><div class="c1 fld password"><label for="login_password">Password</label><input type="password" name="password" id="login_password" value="" /></div><div class="c1 btn"><input type="submit" value="Login" /></div></form>
+<div class="footer"><div><a href="http://rubylearning.org/class/login/signup.php">Create new account</a></div><div><a href="http://rubylearning.org/class/login/forgot_password.php">Lost password?</a></div></div></div></div><span id="sb-8" class="skip-block-to"></span><a href="#sb-9" class="skip-block">Skip Diamond Sponsor</a><div  id="inst2611" class="block_html sideblock"><div class="header"><div class="title"><h2>Diamond Sponsor</h2></div></div><div class="content"> <br /><a href="http://www.locaweb.com.br/" title="Support our sponsors, Support our site!"><img alt="Locaweb" style="border: 0px none; display: block; margin-left: auto; margin-right: auto;" src="http://rubylearning.com/images/locaweb.jpg" /></a></div></div><span id="sb-9" class="skip-block-to"></span><a href="#sb-10" class="skip-block">Skip Media Partners</a><div  id="inst3496" class="block_html sideblock"><div class="header"><div class="title"><h2>Media Partners</h2></div></div><div class="content"> <a href="http://www.jaxindia.com/"><img src="http://rubylearning.com/images/JAX_India_2009.gif" style="border: 0px none; display: block; margin-left: auto; margin-right: auto;" alt="JAX India 2009" title="JAX India 2009" /></a></div></div><span id="sb-10" class="skip-block-to"></span><a href="#sb-11" class="skip-block">Skip </a><div  id="inst2974" class="block_html sideblock"><div class="header"><div class="title"><h2></h2></div></div><div class="content"> <a href="http://conferences.oreilly.com/oscon"><img src="http://ug.oreilly.com/banners/oscon/125x125.gif" style="border: 0px none; display: block; margin-left: auto; margin-right: auto;" alt="OSCON 2009" title="OSCON 2009" /></a></div></div><span id="sb-11" class="skip-block-to"></span><a href="#sb-12" class="skip-block">Skip About Satish Talim</a><div  id="inst3364" class="block_html sideblock"><div class="header"><div class="title"><h2>About Satish Talim</h2></div></div><div class="content">
+<p style="float: right; margin-left: 10px; margin-bottom: 10px;"><img src="http://rubylearning.org/class/file.php/1/avatar.jpg" alt="Satish Talim Ruby Evangelist" title="Satish Talim Ruby Evangelist" /></p>
+<p style="font-family: helvetica;"><font size="2"><a href="http://satishtalim.com/">Satish Talim</a>, is an author, trainer, speaker</font><font size="2"> and programmer </font><font size="2">and also the man behind <span style="font-weight: bold;">RubyLearning</span>. He has been teaching <strong>Ruby programming</strong> for the last three years and Java since 1995. <br /><br />You can contact him by email at <strong>mail [at] satishtalim [dot] com</strong><br />Follow <a style="font-weight: bold;" href="http://twitter.com/IndianGuru">Satish Talim</a> and <a style="font-weight: bold;" href="http://twitter.com/RubyLearning">RubyLearning</a> on Twitter and stay connected.</font></p></div></div><span id="sb-12" class="skip-block-to"></span><a href="#sb-13" class="skip-block">Skip Calendar</a><div  id="inst3411" class="block_calendar_month sideblock"><div class="header"><div class="title"><h2>Calendar</h2></div></div><div class="content"><div id="overDiv" style="position: absolute; visibility: hidden; z-index:1000;"></div><script type="text/javascript" src="http://rubylearning.org/class/calendar/overlib.cfg.php"></script>
+<div class="calendar-controls"><a class="previous" href="index.php?cal_m=2&amp;cal_y=2009" title="Previous month"><span class="arrow ">&#x25C4;</span><span class="accesshide " >&nbsp;Previous month</span></a><span class="hide"> | </span><span class="current"><a href="http://rubylearning.org/class/calendar/view.php?view=month&amp;course=1&amp;cal_d=1&amp;cal_m=03&amp;cal_y=2009">March 2009</a></span><span class="hide"> | </span><a class="next" href="index.php?cal_m=4&amp;cal_y=2009" title="Next month"><span class="accesshide " >Next month&nbsp;</span><span class="arrow ">&#x25BA;</span></a>
+<span class="clearer"><!-- --></span></div>
+<table class="minicalendar" summary="Data table, March 2009 Calendar"><tr class="weekdays"><th scope="col"><abbr title="Sunday">Sun</abbr></th>
+<th scope="col"><abbr title="Monday">Mon</abbr></th>
+<th scope="col"><abbr title="Tuesday">Tue</abbr></th>
+<th scope="col"><abbr title="Wednesday">Wed</abbr></th>
+<th scope="col"><abbr title="Thursday">Thu</abbr></th>
+<th scope="col"><abbr title="Friday">Fri</abbr></th>
+<th scope="col"><abbr title="Saturday">Sat</abbr></th>
+</tr><tr><td class="weekend day">1</td>
+<td class="day">2</td>
+<td class="day">3</td>
+<td class="day">4</td>
+<td class="day">5</td>
+<td class="day">6</td>
+<td class="weekend day">7</td>
+</tr><tr><td class="weekend day">8</td>
+<td class="day">9</td>
+<td class="day">10</td>
+<td class="day">11</td>
+<td class="day">12</td>
+<td class="day">13</td>
+<td class="weekend day event_global event_global"><a href="http://rubylearning.org/class/calendar/view.php?view=day&amp;cal_d=14&amp;cal_m=03&amp;cal_y=2009" onmouseover="return overlib('&lt;div&gt;&lt;img class=&quot;icon&quot; src=&quot;http://rubylearning.org/class/pix/c/site.gif&quot; alt=&quot;&quot; /&gt;&lt;a href=&quot;http://rubylearning.org/class/calendar/view.php?view=day&amp;amp;cal_d=14&amp;amp;cal_m=03&amp;amp;cal_y=2009#event_325&quot;&gt;11th Core Ruby batch starts&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;img class=&quot;icon&quot; src=&quot;http://rubylearning.org/class/pix/c/site.gif&quot; alt=&quot;&quot; /&gt;&lt;a href=&quot;http://rubylearning.org/class/calendar/view.php?view=day&amp;amp;cal_d=14&amp;amp;cal_m=03&amp;amp;cal_y=2009#event_326&quot;&gt;FXRuby (beta) batch starts&lt;/a&gt;&lt;/div&gt;', CAPTION, 'Saturday,  14 March events');" onmouseout="return nd();">14</a></td>
+</tr><tr><td class="weekend day duration_global">15</td>
+<td class="day duration_global">16</td>
+<td class="day duration_global">17</td>
+<td class="day duration_global">18</td>
+<td class="day duration_global">19</td>
+<td class="day duration_global">20</td>
+<td class="weekend day event_global duration_global event_global"><a href="http://rubylearning.org/class/calendar/view.php?view=day&amp;cal_d=21&amp;cal_m=03&amp;cal_y=2009" onmouseover="return overlib('&lt;div&gt;&lt;img class=&quot;icon&quot; src=&quot;http://rubylearning.org/class/pix/c/site.gif&quot; alt=&quot;&quot; /&gt;&lt;a href=&quot;http://rubylearning.org/class/calendar/view.php?view=day&amp;amp;cal_d=21&amp;amp;cal_m=03&amp;amp;cal_y=2009#event_327&quot;&gt;First Introduction to Sinatra batch starts&lt;/a&gt;&lt;/div&gt;', CAPTION, 'Saturday,  21 March events');" onmouseout="return nd();">21</a></td>
+</tr><tr><td class="weekend day duration_global">22</td>
+<td class="day duration_global">23</td>
+<td class="day duration_global">24</td>
+<td class="day duration_global">25</td>
+<td class="day duration_global">26</td>
+<td class="day duration_global today eventnone"><span class="accesshide " >Today Friday,  27 March </span><a href="#" onmouseover="return overlib('No events', CAPTION, 'Today Friday,  27 March');" onmouseout="return nd();">27</a></td>
+<td class="weekend day event_global duration_global event_global"><a href="http://rubylearning.org/class/calendar/view.php?view=day&amp;cal_d=28&amp;cal_m=03&amp;cal_y=2009" onmouseover="return overlib('&lt;div&gt;&lt;img class=&quot;icon&quot; src=&quot;http://rubylearning.org/class/pix/c/site.gif&quot; alt=&quot;&quot; /&gt;&lt;a href=&quot;http://rubylearning.org/class/calendar/view.php?view=day&amp;amp;cal_d=28&amp;amp;cal_m=03&amp;amp;cal_y=2009#event_328&quot;&gt;3rd Introduction to Merb batch starts&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;img class=&quot;icon&quot; src=&quot;http://rubylearning.org/class/pix/c/site.gif&quot; alt=&quot;&quot; /&gt;&lt;a href=&quot;http://rubylearning.org/class/calendar/view.php?view=day&amp;amp;cal_d=28&amp;amp;cal_m=03&amp;amp;cal_y=2009#event_329&quot;&gt;3rd Git &amp;amp; GitHub batch starts&lt;/a&gt;&lt;/div&gt;', CAPTION, 'Saturday,  28 March events');" onmouseout="return nd();">28</a></td>
+</tr><tr><td class="weekend day duration_global">29</td>
+<td class="day duration_global">30</td>
+<td class="day duration_global">31</td>
+<td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td><td class="dayblank">&nbsp;</td></tr></table></div></div><span id="sb-13" class="skip-block-to"></span><a href="#sb-14" class="skip-block">Skip Participant of the Week</a><div  id="inst1523" class="block_html sideblock"><div class="header"><div class="title"><h2>Participant of the Week</h2></div></div><div class="content"><p style="background-color: rgb(204, 204, 204);"><img border="0" title="Nick Sardo" alt="Nick Sardo" src="http://rubylearning.com/images/participants/NickSardo.jpg" /><font size="2"><br />Nick Sardo is a 42 year old Professional Programmer, working for a .com in Las Vegas, NV. He is looking forward to broadening and deepening his knowledge in all things Ruby. He is very impressed with the RubyLearning site, and so far really enjoying the classes.</font><br /><br /><strong>Nick Sardo, USA</strong></p></div></div><span id="sb-14" class="skip-block-to"></span><a href="#sb-15" class="skip-block">Skip </a><div  id="inst3454" class="block_html sideblock"><div class="header"><div class="title"><h2></h2></div></div><div class="content"><p><script src="http://s9.smrtlnks.com/users/GenerateBlueLinks.php?feedUrl=http%3A%2F%2Fwww.oreillynet.com%2Fpub%2Ffeed%2F29&amp;title=New%20Books&amp;skin=white&amp;width=180&amp;numItems=1&amp;type=list&amp;display=both&amp;auto=yes&amp;topLogo=oreilly.jpg&amp;logoLink=http://www.oreilly.com&amp;feedTitleLink=viewall&amp;xsl=oreilly.xsl&amp;blueSiteId=oreilly&amp;blueAmazonId=satishtalimsw-20" type="text/javascript"></script></p></div></div><span id="sb-15" class="skip-block-to"></span><a href="#sb-16" class="skip-block">Skip Online Users</a><div  id="inst379" class="block_online_users sideblock"><div class="header"><div class="title"><h2>Online Users</h2></div></div><div class="content"><div class="info">(last 5 minutes)</div><ul class='list'>
+<li class="listentry"><div class="user"><img class="userpicture defaultuserpic" src="http://rubylearning.org/class/pix/u/f2.png" height="16" width="16" alt=""  />Guest User</div></li>
+</ul><div class="clearer"><!-- --></div></div></div><span id="sb-16" class="skip-block-to"></span></div></td>
+  </tr>
+</table>
+
+</div><div id="footer"><p class="helplink"></p><div class="logininfo">You are not logged in. (<a  href="http://rubylearning.org/class/login/index.php">Login</a>)</div><div class="sitelink"><a title="Moodle 1.9.4 (Build: 20090128)" href="http://moodle.org/"><img style="width:100px;height:30px" src="pix/moodlelogo.gif" alt="moodlelogo" /></a></div><p> <strong>&copy; 2008-2009 RubyLearning.org : A Ruby Learning Hub</strong></p>Friday, March 27, 2009 02:14 hrs  India Time</div>
+</div>
+
+<script src="http://73515.hittail.com/mlt.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-59044-14");
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

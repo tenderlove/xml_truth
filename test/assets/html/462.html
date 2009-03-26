@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Programming Ruby</title>
+	<script type="text/javascript" src="includes/common.js"></script>
+<script type="text/javascript">
+window.onload=function(){
+	var useIndex = location.keyVals.index;
+	var contentPage = location.keyVals.content;
+	if (useIndex && useIndex!='false' && useIndex!='0') frames.toc.location.href='lang_index.html';
+	if (contentPage){
+		frames.pickaxe.location.href=contentPage;
+		//frames.pickaxe.location.reload(true);
+	}
+}
+</script>
+
+</head>
+<frameset cols="220,*">
+	<frame src="toc.html" name="toc" id="toc">
+	<!--frameset rows="70%,*"-->
+		<frame src="cover.html" name="pickaxe" id="pickaxe">
+		<!--frame src="http://www.rubygarden.org/ruby?ProgrammingRubyTwo" name="wiki" id="wiki"-->
+	<!--/frameset-->
+</frameset>
+</html>

@@ -1,0 +1,1574 @@
+
+	<script language="JavaScript">	
+       // Determining JavaScript cookie support in client's browser
+       var cookieEnabled=(navigator.cookieEnabled)? true : false
+       if (typeof navigator.cookieEnabled=="undefined" && !cookieEnabled){ // if not IE4+ nor NS6+
+	      document.cookie="testcookie"
+	      cookieEnabled=(document.cookie.indexOf("testcookie")!=-1)? true : false
+       }	
+	
+       if (cookieEnabled) {
+       	   window.location = 'http://www.eweek.com/prestitial.php?type=rest&url=http%3A%2F%2Fwww.eweek.com%2Fc%2Fa%2FApplication-Development%2FCan-Ruby-Rails-Make-Developers-Shine-in-a-Downturn%2F&ref=';
+       }
+       
+	</script> 
+	
+	
+	
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="alternate" type="application/rss+xml" title="eWEEK Technology News" href="http://www.eweek.com/rss-feeds-13.xml" />
+<title>Can Ruby, Rails Make Developers Shine in a Downturn?</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<meta name="keywords" content="rails, developers, developers, ruby, say, financial, Can, Ruby, Rails, Make, Developers, Shine, in, a, Downturn" />
+<meta name="description" content="Will specialty coding skills help developers ride out the financial crisis? Some say environments like Ruby and Ruby on Rails may enable developers to fare better in times of financial stress because they can do more with less and be more productive. Others say that..." />
+
+
+<base href="http://www.eweek.com/" />
+
+<script language="JavaScript1.2" src="http://www.eweek.com/includes/js/rollover.js" type="text/javascript"></script>
+<script language="JavaScript1.2" src="http://www.eweek.com/includes/js/mambojavascript.js" type="text/javascript"></script>
+
+
+<link rel="STYLESHEET" type="text/css" href="/images/eweek_new.css">
+<link rel="STYLESHEET" type="text/css" href="/templates/devshed/css/fpstyles.css">
+<link rel="SHORTCUT ICON" href="/favicon.ico">
+
+
+
+
+<script language="javascript">
+
+/**********************
+***********************
+*********************** DART FUNCTIONS FOR ZDE
+***********************
+**********************/
+
+var n_mpu = 0;
+var n_leader = 0;
+var n_skyscraper = 0;
+var n_micro = 0;
+var n_bottom = 0;
+var tile_cntr = 0;
+
+function showdart(typ, siz, ret, tilecntr) {
+
+	var thistile=0;
+
+	// Override optional args if they arent passed
+	if (arguments.length < 4) {
+		tilecntr=-1;
+	}
+	if (arguments.length < 3) {
+		ret=0;
+	}
+
+	tile_cntr++;
+
+	if (typ=="MPU") {
+		n_mpu++;
+		thistile = n_mpu;
+	}
+	if (typ=="LEADER") {
+		n_leader++;
+		thistile = n_leader;
+	}
+	if (typ=="SKY") {
+		n_skyscraper++;
+		thistile = n_skyscraper;
+	}
+	if (typ=="MICRO") {
+		n_micro++;
+		thistile = n_micro;
+	}
+        if (typ=="BOTTOM") {
+                n_bottom++; 
+                thistile = n_bottom;
+        }
+	if (thistile < 1) {thistile=1};
+
+	// retval = "tile=" + thistile + ";";
+
+	if (tilecntr < 9999) {
+		retval = "tile=" + tile_cntr + ";";
+	} else {
+		thistile = 3;
+		retval = "tile=3;";
+	}
+
+	//var tmt = typ + ' ' + retval;
+	//alert(tmt);
+
+	if (thistile==1) {
+		retval = retval + "pos=top;dcopt=ist;";
+	}
+	else {
+		retval = retval + "pos=bottom;";
+	}
+
+	//var tmt = typ + ' tile:' + thistile + ' :***:' + retval;
+	//alert(tmt);
+
+	var tvar = '<' + 'script type="text/javascript" language="JavaScript" src="http://ad.doubleclick.net/adj/entzd.eweek/appdev;zdtopic=appdev;zdtopic=cloudcomputing;zdtopic=webservices;zdtopic=;zdtopic=;zdid=a49854;zdtype=opinion;zdaudience=;zdproduct=;zdcompany=;zdpagetype=;u=zdtopic=appdev|zdtopic=cloudcomputing|zdtopic=webservices|zdid=a49854|zdtype=opinion|zdaudience=|zdproduct=|zdcompany=|zdpagetype=;' + retval + 'sz=' + siz + ';ord=18861?"' + '><' + '/script>';
+
+	// alert(tvar);
+	if (ret==1) {
+		return(tvar);
+	} else {
+		document.write(tvar);
+	}
+}
+
+
+function showdart2(typ, siz, ret, tilecntr) {
+
+	var thistile=0;
+
+	// Override optional args if they arent passed
+	if (arguments.length < 4) {
+		tilecntr=-1;
+	}
+	if (arguments.length < 3) {
+		ret=0;
+	}
+
+	tile_cntr++;
+
+	if (typ=="MPU") {
+		n_mpu++;
+		thistile = n_mpu;
+	}
+	if (typ=="LEADER") {
+		n_leader++;
+		thistile = n_leader;
+	}
+	if (typ=="SKY") {
+		n_skyscraper++;
+		thistile = n_skyscraper;
+	}
+	if (typ=="MICRO") {
+		n_micro++;
+		thistile = n_micro;
+	}
+	if (thistile < 1) {thistile=1};
+
+	// retval = "tile=" + thistile + ";";
+	if (tilecntr < 0) {
+		retval = "tile=" + tile_cntr + ";";
+	} else {
+		thistile = 3;
+		retval = "tile=3;";
+	}
+
+	if (thistile==2) {
+		retval = retval + "pos=top;dcopt=ist;";
+	}
+	else {
+		retval = retval + "pos=bottom;";
+	}
+
+	tvar = 'http://ad.doubleclick.net/adi/entzd.eweek/appdev;zdtopic=appdev;zdtopic=cloudcomputing;zdtopic=webservices;zdtopic=;zdtopic=;zdid=a49854;zdtype=opinion;zdaudience=;zdproduct=;zdcompany=;zdpagetype=;' + retval + 'sz=' + siz + ';ord=';
+	return tvar;
+}
+
+</script>
+
+
+<script language="javascript">
+function displayPopUnder() {
+	var cookieExist = getCookie("eWEEK");
+	if (document.referrer&&document.referrer.indexOf('altavista')==-1) {
+        if (document.referrer.indexOf('google')==-1) {
+            if (cookieExist == null) {
+			    setCookie("eWEEK","eWEEK");
+		    	var promopopup = window.open("http://circ.ziffdavisenterprise.com/popups/ewkpop.html","promopopup","width=336,height=280");
+		    	self.focus();
+		    }
+        }
+    }
+}
+</script>
+
+<script language="JavaScript" type="text/javascript" src="/js/common_util_js.js"></script>
+
+<link href="/images/evideo-mod.css" rel="stylesheet" type="text/css"></link>
+<script src="/images/evideo-scroller.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/images/eweek_header_styles.css" />
+
+</head>
+<body onUnload="displayPopUnder();">
+
+<img src="http://switch.atdmt.com/action/MSFT_ZiffAppDev" height="1" width="1">
+
+
+<div id="main_container">
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2464436-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+<!-- SiteCatalyst code version: H.17.
+Copyright 1997-2008 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="/js/s_code_remote_new.js"></script>
+
+<script language="JavaScript"><!--
+s.pageName="Can Ruby, Rails Make Developers Shine in a Downturn?-Page001-49854"
+s.referrer = ""
+s.server=""
+s.channel="eWEEK Home>Application Development"
+s.pageType=""
+s.prop1="Can Ruby, Rails Make Developers Shine in a Downturn?"
+s.prop2="Application Development"
+s.prop3="Darryl K. Taft"
+s.prop4="Opinion"
+s.prop5="Online"
+s.prop6="Opinion"
+s.prop7="Unregistered"
+s.prop8=""
+s.prop9=""
+s.prop10=""
+s.prop11="2008-10"
+s.prop12="entzd.eweek/appdev"
+s.prop13=""
+s.prop17="appdev;cloudcomputing;webservices"
+s.campaign=""
+
+
+s.state=""
+s.zip=""
+s.events="event4"
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2=""
+s.eVar3=""
+s.eVar4=""
+s.eVar5=""
+s.hier1="eWEEK>Home>Application Development>Can Ruby, Rails Make Developers Shine in a Downturn?"
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><a href="http://www.omniture.com" title="Web Analytics"><img
+src="http://ziffdaviseweek.112.2O7.net/b/ss/ziffdaviseweek/1/H.17--NS/0"
+height="1" width="1" border="0" alt="" /></a></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.17. -->
+
+
+<div id="TopBarNew">
+   <table cellspacing="0" cellpadding="0">
+       <tr valign="absmiddle">
+	<form action="/googlecse.html" id="cse-search-box">
+        <td width="50%">Application Development - eWeek</td>
+        <td align="right" valign="middle">
+        <img src="/images/search.gif" align="top">
+    <input type="hidden" name="cx" value="partner-pub-6422417422167576:4k6rak-81xu" />
+    <input type="hidden" name="cof" value="FORID:11" />
+    <input type="hidden" name="ie" value="ISO-8859-1" />
+        <span class="Search"><input type="text" name="q" size="30"></span>
+        <input type="image" name="sa" value="Search" align="top" src="/images/but-search.gif" height="15" border="0">
+        </td>
+	</form>
+      </tr>
+   </table>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en"></script>
+</div>
+
+<script>
+document.write('<div class="bigheader_top"><div id="site_logo"><a href="/" target="_top"><img src="/images/zde/eweek-logo.gif" alt="eWeek.com" /></a>');
+document.write('</div><div id="subscribe_container"><div class="zde_header_logo"><a rel="nofollow" href="http://www.ziffdavisenterprise.com/">');
+document.write('<img src="/images/zde/zde-logo-white-background.gif" alt="Ziff Davis Enterprise"/></a></div><div id="member_login"></div>');
+document.write('<div id="subscribe_padding"></div><div id="subscribe_links"><a href="http://www.omeda.com/ziff/ewk/ewk.cgi?&amp;t=whback&amp;p=lz3home" target="_top">');
+document.write('<map name="subscribe-to-map"><area href="http://www.eweek.com/c/a/Past-News/Ziff-Davis-Enterprise-RSS-Feeds/" alt="eWeek RSS Feeds" coords="162,1,219,13">');
+document.write('<area rel="nofollow" href="http://www.omeda.com/ziff/ewk/ewk.cgi?&amp;t=whback&amp;p=lz3home" alt="eWeek Magazine" coords="222,1,253,13">');
+document.write('<area href="/newsletter-manage/" alt="eWeek Newsletters" coords="256,1,325,13"></map>');
+document.write('<img src="/images/zde/subscribe-to.gif" alt="Subscribe" usemap="#subscribe-to-map" width="338" height="13" /></a></div></div></div><p>');
+</script>
+
+
+<script>
+
+document.write('<ul id="primary_navbar">');document.write('<li id="prinav0" class="tabOff"><a href="/">HOME</a></li>');document.write('<li id="prinav1" class="tabOff"><a href="/c/s/News/">NEWS</a></li>');document.write('<li id="prinav2" class="tabOff"><a href="/c/s/Reviews/">REVIEWS</a></li>');document.write('<li id="prinav3" class="tabOff"><a href="/c/s/Data-Storage/">DATA STORAGE</a></li>');document.write('<li id="prinav4" class="tabOff"><a href="/c/s/Security/">SECURITY</a></li>');document.write('<li id="prinav5" class="tabOff"><a href="/c/s/Desktops-and-Notebooks/">DESKTOPS/NOTEBOOKS</a></li>');document.write('<li id="prinav6" class="tabOff"><a href="/c/s/Mobile-and-Wireless/">MOBILE/WIRELESS</a></li>');document.write('<li id="prinav7" class="tabOn"><a href="/c/s/Application-Development/">APP DEV</a></li>');document.write('<li id="prinav8" class="tabOff"><a href="http://blogs.eweek.com/">BLOGS</a></li>');document.write('<li id="prinav9" class="tabOff"><a href="/c/s/Videos/">VIDEOS</a></li>');document.write('<li id="prinav10" class="tabOff"><a href="http://www.channelinsider.com/">THE CHANNEL</a></li>');document.write('<li id="prinav11" class="tabOff"><a href="http://www.webbuyersguide.com/brand/eweek/default.aspx?sitename=eweek">BUYERS GUIDE</a></li>');document.write('</ul>');document.write('<div id="secondary_nav_container">');document.write('<ul id="subnav0" style="display: block;">');document.write('<li><a href="/c/s/Windows/">Windows</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Apple/">Apple</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Linux-and-Open-Source/">Open Source</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Database/">Databases</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Enterprise-Applications/">Enterprise Apps</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Web-Services-Web-20-and-SOA/">Web Services & SOA</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Search-Engines/">Search Engines</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/Midmarket/">Midmarket</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/IT-Management/">IT Management</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="http://www.devshed.com/">DevShed</a>');document.write('<span>|</span>');document.write('</li>');document.write('<li><a href="/c/s/All-Topics-and-Industries/">All eWeek Topics</a>');document.write('</li>');document.write('</div>');</script>
+
+
+
+<div style="clear:both"></div>
+<p>
+
+
+<div id="sponsor_banner" style="display: block;">
+
+        <div class="leaderboard_ad">
+<script language="JavaScript" type="text/javascript">
+showdart('LEADER', '728x90');</script>
+        </div>
+        
+        <div class="micro_ad">
+              <img src="http://www.channelinsider.com/images/careers/vertical_advertisement.gif" alt="" border="0" />
+                 
+<script language="JavaScript" type="text/javascript">
+showdart('MICRO', '160x90');</script>
+        </div>
+
+</div>
+<div style="clear:both"></div>
+<!-- ------------------PERSONAL NAV BAR------------------------------------- -->
+<div id="NavBarPersonalNew">
+        <table cellspacing="0">
+                <tr>
+                        <td align="right">
+                                <ul id="aroundTheWorld">
+                                        <li class="us"><a rel="nofollow" href="http://www.eweek.com/"> </a></li>
+                                        <li class="uk"><a rel="nofollow" href="http://www.eweekeurope.co.uk/"> </a></li>
+                                        <li class="de"><a rel="nofollow" href="http://www.eweekeurope.de/"> </a></li>
+                                        <li class="fr"><a rel="nofollow" href="http://www.eweekeurope.fr/"> </a></li>
+                                        <li class="it"><a rel="nofollow" href="http://www.eweekeurope.it/"> </a></li>
+                                        <li class="es last"><a rel="nofollow" href="http://www.eweekeurope.es/"> </a></li>
+                                </ul>
+
+<div class="pathwaybg" align=left><span class="pathwaybg"><a rel=nofollow href="http://www.eweek.com/" class="pathwaybg"><span class=pathwaybg><u>Home</u></span></a>  <span class="pathwaybg"><img src="/images/M_images/arrow_black.png" border="0" alt="arrow" />  <a rel=nofollow href="http://www.eweek.com/c/s/Application-Development/" class="pathwaybg"><span class=pathwaybg><u>Application Development</u></span></a>  <span class="pathwaybg"><img src="/images/M_images/arrow_black.png" border="0" alt="arrow" />  Can Ruby, Rails Make Developers Shine in a Downturn? </span></span></span></div>
+
+</td>
+
+                </tr>
+        </table>
+</div>
+<!--end cached nav bar-->
+
+<div style="clear:both"></div>
+<div align=center>
+	<div id=resultframe>
+	  <table border="0" cellpadding="0" cellspacing="0" width="1004" bgcolor="FFFFFF">	
+<!-- google_ad_region_start=devshed1 -->
+     <tr>
+	  <td valign=top width=120>
+	    
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<script>
+showdart('SKY','160x600');
+</script>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<a target="_new" href="http://eweekmedia.com/editorial_cal.html"><img border="0" src="/images/eweek_ed_calendar.jpg" alt="" /></a>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<table width="160" cellspacing="0" cellpadding="0" border="0" class="Module_BG"><tbody><tr><td width="1" class="Module_Border"><br />
+</td><td style=" padding: 3px 4px 4px;" width="160" valign="middle" align="center" class="Module_Border"><img width="145" height="43" border="1" align="middle" src="/images/stories/White_Paper_Mod.gif" alt="" title="" /> </td><td width="1" class="Module_Border"><img width="1" height="1" src="/images/spacer.gif" alt="" /></td></tr><tr><td width="1" class="Module_Border"><img width="1" height="1" src="/images/spacer.gif" alt="" /></td><td valign="top" align="left" class="Module_Content">
+<div style="padding: 0px 5px;" class="modulepadding_body"><!--Begin Module Content--><br />
+<div><img width="13" height="16" border="1" align="left" src="/images/stories/White_Paper_Bullet.gif" alt="" title="" />
+<div style="float: left; width: 120px;" align="left"><!--First whitepaper and link here --><a href="http://www.webbuyersguide.com/resource/brief.aspx?id=13363&category=88&sitename=eweek&kc=eweekleft012109&src=eweekleft012109">Small Business Servers: It's Time for a Change</a><!--end first whitepaper --></div></div><br clear="all" />
+<br />
+<div><img width="13" height="16" border="1" align="left" src="/images/stories/White_Paper_Bullet.gif" alt="" title="" />
+<div style="float: left; width: 120px;" align="left"><!--Second whitepaper and link here --><a href="http://www.webbuyersguide.com/resource/brief.aspx?id=8786&category=88&sitename=eweek&kc=eweekleft012109&src=eweekleft012109">Defrag Myth Busters: What You Should Know</a><!--endsecond whitepaper --></div></div><br clear="all" />
+<br />
+<div>
+<div><img width="13" height="16" border="1" align="left" src="/images/stories/White_Paper_Bullet.gif" alt="" title="" />
+<div style="float: left; width: 120px;" align="left"><!-- Third whitepaper and link here --><a href="http://www.webbuyersguide.com/resource/brief.aspx?id=12552&category=88&sitename=eweek&kc=eweekleft012109&src=eweekleft012109">Solving the Password Management Paradox</a><!-- end third whitepaper --></div></div><br clear="all" />
+<br />
+<div>
+<div style="float: right;"><a href="http://www.webbuyersguide.com/resource/rllibrary.aspx?sitename=webbuyersguide">See All
+Resources &gt;</a></div></div>
+<p><!--End Module Content--></p></div></div></td><td width="1" class="Module_Border"><img width="1" height="1" src="/images/stories/White_Paper_Bullet.gif" alt="" /></td></tr><tr><td colspan="3" class="Module_Border"><img width="1" height="1" src="/images/spacer.gif" alt="" /></td></tr></tbody></table>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<script type="text/javascript"><!--
+google_ad_client = "pub-6422417422167576";
+/* Left Sky eWeek 160x600, created 12/8/08 */
+google_ad_slot = "6006934805";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+	  </td>
+	  <td width=5>
+	  </td>	  
+      <td valign=top width=*>
+        
+<table cellpadding=0 cellspacing=0 border=0 style="border-bottom: 1px solid rgb(204, 204, 204); margin: 5px 10px 5px 20px;"><tr><td>
+
+<table width='100%' border='0' cellpadding='0' cellspacing='0'><tr><td class='SuperSite_Header' width=424 height=37>
+  &nbsp;&nbsp;<span class=Section_Header>Application Development</span></td>
+  </tr></table><img src='/images/ew_spacer.gif' width='1' height='1'><br style='font-size:5px'><BR>  
+
+  <h1>Can Ruby, Rails Make Developers Shine in a Downturn?</h1>
+  <span class="authorsource">By</span>&nbsp;<span class="authorsource"><a rel=nofollow href="http://www.eweek.com/cp/bio/Darryl-K.-Taft/">Darryl K. Taft</a></span><BR>
+  <span class="Article_Date">2008-10-06
+		<BR><BR>
+		<span class="Article_Date">Article Views: 21039<BR>
+			<span class="content_rating">
+	Article Rating:<img src="http://www.eweek.com/images/M_images/rating_star.png" width="11" height="10" border="0" alt="star" valign="middle" /><img src="http://www.eweek.com/images/M_images/rating_star.png" width="11" height="10" border="0" alt="star" valign="middle" /><img src="http://www.eweek.com/images/M_images/rating_star.png" width="11" height="10" border="0" alt="star" valign="middle" /><img src="http://www.eweek.com/images/M_images/rating_star.png" width="11" height="10" border="0" alt="star" valign="middle" /><img src="http://www.eweek.com/images/M_images/rating_star.png" width="11" height="10" border="0" alt="star" valign="middle" />&nbsp;/&nbsp;11	</span>
+ 
+                <br/>
+		
+                
+<style type="text/css">
+
+.toctxt {
+    color:#000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size:11px;
+    padding-left:20px;
+}
+A.tocnav:link, A.tocnav:hover, A.tocnav:visited, A.tocnav:active, A.tocnav{ 
+    color:#000000;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    line-height: 16px;
+    font-size:11px;
+}
+ol {
+    list-style-position:outside;
+}
+</style>
+
+<BR>
+<table id=toctable width="100%" border="1" style="border-collapse:collapse;" bordercolor="#cccccc" cellspacing="0" cellpadding="0">
+		<tr> 
+	       	<td width="134" height="22" valign="middle" bgcolor="#CCCCCC">&nbsp;&nbsp;<span class="titblack">Table of Contents:</span></td>
+		</tr>
+		<tr> 
+	       	<td align=left class="toctxt">
+				<ol style="list-style-type:decimal;">
+				
+								   
+				   <li><a class="tocnav" href="http://www.eweek.com/c/a/Application-Development/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/">Can Ruby, Rails Make Developers Shine in a Downturn?</a></li>
+				   
+								   
+				   <li><a class="tocnav" href="http://www.eweek.com/c/a/Application-Development/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/1/">Is the Ruby on Rails Advantage Wishful Thinking?</a></li>
+				   
+								   
+				   <li><a class="tocnav" href="http://www.eweek.com/c/a/Application-Development/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/2/">What's Hot in a Chilly Economy</a></li>
+				   
+								   
+				   
+	            </ol>
+			</td>
+		</tr>
+			
+	   </table>
+<br/>&nbsp;<br/>
+
+<table cellpadding=0 cellspacing=0 border=0>
+<tr>
+
+<td valign=top>
+<style type="text/css">
+<!--
+#ArticleWidgets {
+font-family: Arial, Verdana, Helvetica, sans-serif;
+font-size: 11px;
+font-weight: none;
+text-decoration: none;
+margin-bottom: 0px;
+}
+#ArticleWidgets {
+color: #003399;
+font-weight: none;
+text-decoration: none;
+line-height: 16px;
+}
+#ArticleWidgets.a, ArticleWidgets.a:hover {
+color: #003399;
+font-weight: none;
+text-decoration: underline;
+line-height: 16px;
+}
+
+#position {padding:5px 0px 5px 5px;}
+#spacer {height:5px; line-height:5px;}
+.add2head_new {
+        font-size: 11px;
+        font-weight: bold;
+        width: 200px;
+        margin-left:8px;
+        margin-right:8px;
+        display:block;
+        float:right;
+}
+.ArticleWidgetsHeadline {
+font-size:11px;
+font-weight:bold;
+}
+-->
+</style>
+
+<script language="JavaScript" type="text/javascript">
+var addtoMethod=1;
+var AddURL = document.location.href;
+var AddTitle = escape(document.title);
+</script>
+<script language="JavaScript" src="/includes/js/add2.js" type="text/javascript"></script>
+<span class="add2head_new">
+<table width="200" cellspacing="0" cellpadding="0" border="1" style="border-collapse:collapse;" bordercolor="#cccccc">
+<tr><td class="ArticleWidgetsHeadline" height="20" bgcolor="#CCCCCC" align="center">Rate This Article:</td><tr>
+<tr>
+    <td width="100" valign="middle"><div id="position"><div id="ArticleWidgets">
+        <span class="Article_Date" style="line-height:16px;">
+                		<table class="Article_Date" cellpadding=0 cellspacing="0">
+		<form method="post" action="http://www.eweek.com/">
+		<tr><td align="center"><nobr>
+		Poor
+		<input type="radio" style="position:relative; left:-5px;" name="user_rating" value="1" />
+		<input type="radio" style="position:relative; left:-5px;" name="user_rating" value="2"/>
+		<input type="radio" style="position:relative; left:-5px;" name="user_rating" value="3"/>
+		<input type="radio" style="position:relative; left:-5px;" name="user_rating" value="4"/>
+		<input type="radio" style="position:relative; left:-5px;" name="user_rating" value="5" checked />
+		Best</nobr>
+		<div align="right"><input type="submit" class="txt" name="submit_vote" value="Rate" /></div>
+		<input type="hidden" name="task" value="vote" />
+		<input type="hidden" name="pop" value="0" />
+		<input type="hidden" name="option" value="content" />
+		<input type="hidden" name="Itemid" value="28" />
+		<input type="hidden" name="cid" value="49854" />
+		<input type="hidden" name="url" value="/index.php?option=content&task=view&id=49854&Itemid=28&limit=&limitstart=" />
+		</td></tr>
+		</form>
+		</table>
+        </span> 
+    </td>
+</tr>
+<tr><td class="ArticleWidgetsHeadline" height="20" bgcolor="#CCCCCC" align="center">Add This Article To:</td><tr>
+<td><table border="0">
+<tr>
+    <td width="100" valign="middle"><div id="position"><div id="ArticleWidgets">
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Digg" onclick="addto(3)"><img src="http://images.devshed.com/cmn/add2/AddTo_Digg.gif" border="0"> <a id="1">Digg this</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Delicious" onclick="addto(2)"><img src="http://images.devshed.com/cmn/add2/AddTo_Delicious.gif" border="0"> <a id="1">Del.icio.us</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Slashdot" onclick="addto(9)"><img src="http://images.devshed.com/cmn/add2/AddTo_Slashdot.gif" border="0"> <a id="1">Slashdot</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Yahoo! MyWeb" onclick="addto(7)"><img src="http://images.devshed.com/cmn/add2/AddTo_Yahoo.gif" border="0"> <a id="1">Y! My Web</a></span><br>
+	<div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Email Article To Friend" onclick="javascript:void window.open('http://www.eweek.com/index2.php?option=content&task=emailform&id= 49854', 'win2', 'status=no,toolbar=no,scrollbars=no,titlebar=no,menubar=no,resizable=yes,width=400,height=200,directories=no,location=no');"><img src="http://www.eweek.com/images/stories/eTools/email-icon.gif" border="0"> <a id="1">E-mail</a></span><br>
+	<div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Print Version of this Article" onclick="javascript:void window.open('http://www.eweek.com/index2.php?option=content&task=view&id=49854&pop=1&hide_ads=1&page=0&hide_js=1', 'win2', 'status=no,toolbar=yes,scrollbars=yes,titlebar=no,menubar=yes,resizable=yes,width=640,height=480,directories=no,location=no');"><img src="http://www.eweek.com/images/stories/eTools/print-icon.gif" border="0"> <a id="1">Print</a></span><br>
+        </div></div>
+        </td>
+    <td width="100" valign="top"><div id="position"><div id="ArticleWidgets">
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Furl" onclick="addto(4)"><img src="http://images.devshed.com/cmn/add2/AddTo_Furl.gif" border="0"> <a id="1">Furl</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Google" onclick="addto(5)"><img src="http://images.devshed.com/cmn/add2/AddTo_Google.gif" border="0"> <a id="1">Google</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Simpy" onclick="addto(6)"><img src="http://images.devshed.com/cmn/add2/AddTo_Simpy.gif" border="0"> <a id="1">Simpy</a></span><br>
+        <div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="Add this page to Spurl" onclick="addto(8)"><img src="http://images.devshed.com/cmn/add2/AddTo_Spurl.gif" border="0"> <a id="1">Spurl!</a></span><br>
+	<div id="spacer">&nbsp;</div>
+        <span style="cursor:hand;cursor:pointer;" title="PDF Version Of Article" onclick="javascript:void window.open('http://www.wrightsreprints.com/reprints/?magid=1964', 'win2', 'status=yes,toolbar=yes,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,directories=yes,location=yes');"><img src="http://www.eweek.com/images/stories/eTools/pdf-icon.gif" border="0"> <a id="1">PDF Version</a></span><br>
+        </div></div>
+        </td>
+</tr>
+</table>
+</td></tr>
+</table>
+</span>
+	<div id='intelliTxt' class="txt">
+
+<span class="contentpagetitle"><B>Can Ruby, Rails Make Developers Shine in a Downturn?</b></span> <BR>(
+Page 1 of 3 )<BR><BR><strong>Will specialty coding skills help developers ride out the financial crisis? Some say environments like Ruby and Ruby on Rails may enable developers to fare better in times of financial stress because they can do more with less and be more productive. Others say that argument is a stretch.</strong><p>When the going gets tough ... well, you know the saying … the tough get
+going. However, in the case of software development, in times of financial
+crisis—like we're in—when belt-tightening begins, some developers and
+development shops might be better suited to roll with the turbulent times than
+others.</p>
+<p>These folks include Ruby and <a rel=nofollow title="" href="http://www.webbuyersguide.com/product/44789/Ruby-on-Rails&amp;kc=eweekarticle100608&amp;src=eweekarticle100608">Ruby
+on Rails</a> developers, and other programmers who focus on dynamic
+languages or provide specialty programming skills that many people claim enable
+them to do more with fewer resources.</p>
+<p>Whether that's totally true or not, I don't know. Ruby and Ruby on Rails
+developers typically boast of large productivity gains from moving to those
+environments—whether they get performance gains is another story.</p>
+<p>&quot;I think Rails developers are much better positioned to weather the
+storm as they generally stand for delivering more with less faster,&quot; said
+David Heinemeier Hansson, creator of the Ruby on Rails Web application
+framework. &quot;It's the traditional mainstream environments that are going to
+see much more pressure to deliver.&quot;</p><span id="related-resources">
+<table width="205" cellspacing="0" cellpadding="0" border="1" style="border-collapse:collapse;" bordercolor="#cccccc">
+<tr><td class="ArticleWidgetsHeadline" height="20" bgcolor="#CCCCCC" align="center">Resource Library:</td><tr>
+<tr>
+    <td valign="middle">
+                <div id="related_resources_content" />
+    </td>
+</tr>
+</table>
+</span>
+
+<p>Lance Walley, CEO of Engine Yard, a Ruby
+and Ruby on Rails hosting and deployment service provider, said, &quot;A
+slowing economy will likely lead to constrained IT budgets. There's a good
+chance this will have a positive impact on the uptake of open-source options,
+such as Linux, Ruby and Rails.&quot;</p>
+<p align="center"><a rel=nofollow href="/c/a/Application-Development/Engine-Yard-Advances-Ruby-Rails/"><strong>Click here to read about Engine Yard's drive to use Ruby and Ruby on Rails to build large, scalable applications.<br />
+</strong></a></p>
+<p>Indeed, Walley said, in Engine Yard's experience, &quot;developing Web
+applications with Ruby and Rails results in a five-to-six-times project time
+reduction and a project completion probability increase from the industry
+average of 10 percent to well over 50 percent. We see this over and over from
+Engine Yard customers. With many hundreds of customers, this is not a fluke of
+one customer or a few customers but real, proven savings.&quot;</p>
+<p>Echoing Hansson, Walley added, &quot;When times are lean, IT managers are
+forced to do more with less. Ruby and Rails present a way to do just that.
+Developers are [rarer] and more expensive in terms of hourly rates, but
+projects can be cut down from 30 man-months to six man-months. That's a huge
+cost savings, plus it's always good to be done sooner than later.&quot;</p>
+<p>Meanwhile, Doug Levin, the CEO and founder
+of a new stealth startup company and founder of several other startups,
+including Black Duck Software six years ago, said: </p>
+<blockquote>
+<div align="left">
+<p>Rails is very hot and Erlang is
+super-hot at this time. This is because there is more expertise in the market,
+people are understanding their strengths and weaknesses, more support is
+available and these technologies have recently improved. Specialty coding shops
+always do well. They will net out positively during these times: Some companies
+will avoid them because of the risk and uncertainty; some will double down with
+new projects because they see opportunity.</p></div></blockquote>
+<p>Even non-Ruby or open-source-related observers said they believe there could
+be a connection between the language/framework platform and productivity and
+savings. </p>
+<p>For instance, Jonathan Lindo, CEO and
+co-founder of Replay Solutions, said he also believes specialty coding shops
+could fare well in a down economy. &quot;Companies that have IT requirements
+but don't have the stomach to hire a team or build an off-shore operation may
+increasingly turn to specialty shops to deliver smaller, well-scoped
+projects,&quot; Lindo said. &quot;I believe there is good opportunity here for
+trusted shops to do well.&quot;</p>
+<p>Hansson added:</p>
+<blockquote>
+<p>I think now is exactly the time to
+follow what we've been preaching with Getting Real for all these years. Build
+less software with fewer resources! Build half a product, not a half-assed one.
+Don't do preemptive hiring. Charge money for your software. Try to 'underdo'
+your competition.</p></blockquote>
+<p>Moreover, Engine Yard's Walley predicted, &quot;If there is a downturn in IT
+spending, it may very well be a boost to Ruby and Rails and companies like
+Engine Yard, as well as the many Engine Yard customers who are specialized Ruby
+and Rails development shops.&quot;</p>
+<p><div class="pagenavbar" align="center"><div align="center"><a rel=nofollow rel=nofollow href="http://www.eweek.com/c/a/Application-Development/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/1/"><div class="biglinknext">Next: Is the Ruby on Rails Advantage Wishful Thinking? &gt;&gt;</div></a></div><BR>
+<br clear=all><BR><div align=center><script>showdart('BOTTOM','350x50');</script></div><BR><table width=100% cellpadding=1 cellspacing=0 bgcolor=black border=0><TR><TD><table width=100% cellpadding=0 cellspacing=0 bgcolor=white border=0 class=contentpaneopen><tr bgcolor=#123B70><td width=5> </td><td align=center><a rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><font color=#FFFFFF><B>Discuss Can Ruby, Rails Make Developers Shine in a Downturn?</b></font></a></td><td width=5> </td></tr><tr bgcolor=#EEEEEE><td width=5> </td><td> &nbsp;</td><td width=5> </td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>re: "Finally, Rails shops are typically more agile than their traditional Java...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>TFA said that Rails shops are more agile, not more Agile. The difference is...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>Examples of it becoming a straight jacket within it's problem domain please!</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>not "within it's domain", but rather "but for anything else, it quickly becomes a...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>I wanted to comment on this article but this post (above) covers most of what I...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>I love that someone always has to mention Twitter 'hitting the limits' of Rails when...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><U>Projects will get done faster with the right team dynamics, proper methodologies and...</u></a></td><td></td></tr><tr height=8 bgcolor=#EEEEEE><td></td><td></td><td></td></tr><tr bgcolor=#EEEEEE><td></td><td align=left><font color=blue>>>></font> <a rel=nofollow rel=nofollow href=/showblog/49799/Can-Ruby-Rails-Make-Developers-Shine-in-a-Downturn/ class=sidenav><B><U>Post your comment now!</u></b></a> </td><td></td></tr><tr bgcolor=#EEEEEE><td width=5> </td><td> &nbsp;</td><td width=5> </td></tr></table></td></tr></table></div><br clear=all><br clear=all>
+<table><TR><td height=3><img src=/images/spacer.gif></td></tr></table><table width=100% cellpadding=1 cellspacing=0 bgcolor=black border=0><TR><TD><table width=100% cellpadding=0 cellspacing=0 bgcolor=white border=0 class=contentpaneopen><tr bgcolor=#123B70><td width=5> </td><td>&nbsp;</td><td width=5> </td></tr><tr bgcolor=lightyellow><td width=5> </td><td> &nbsp;</td><td width=5> </td></tr><tr bgcolor=lightyellow><td></td><td><font color=blue>&gt;&gt;&gt;</font> <a rel=nofollow rel=nofollow href=http://www.eweek.com/c/b/Application-Development/ class=sidenav><U><B>More Application Development Articles</b></u></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=blue>&gt;&gt;&gt;</font> <a rel=nofollow rel=nofollow href='http://www.eweek.com/cp/bio/Darryl-K.-Taft/' class=sidenav><U><B>More By Darryl K. Taft</b></u></a></td><td></td></tr><tr bgcolor=lightyellow><td width=5> </td><td> &nbsp;</td><td width=5> </td></tr></table></td></tr></table><BR></p> 
+
+</div>
+
+<span class="Article_Date">
+                                <br /><div align=center>
+                <a rel=nofollow href="javascript:void window.open('http://www.eweek.com/index2.php?option=content&task=emailform&id= 49854', 'win2', 'status=no,toolbar=no,scrollbars=no,titlebar=no,menubar=no,resizable=yes,width=400,height=200,directories=no,location=no');">Email Article To Friend</a>
+                &nbsp;&diams;&nbsp;<a rel=nofollow href="javascript:void window.open('http://www.eweek.com/index2.php?option=content&task=view&id=49854&pop=1&hide_ads=1&page=0&hide_js=1', 'win2', 'status=no,toolbar=yes,scrollbars=yes,titlebar=no,menubar=yes,resizable=yes,width=640,height=480,directories=no,location=no');">Print Version Of Article</a>
+                &nbsp;&diams;&nbsp;<a rel=nofollow href="javascript:void window.open('http://www.eweek.com/index2.php?option=content&do_pdf=1&id=49854', 'win2', 'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');">PDF Version Of Article</a><br />
+
+                </div>
+</span>
+</td>
+</tr>
+</table>
+</td></tr></table>
+
+
+	    
+
+<!-- Loading Module 'mod_secreviews' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			    		<tr>
+    			<td>
+			    			</td>
+			</tr>
+      	</table>
+
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module 'mod_secreviews' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<div align="center"><img width="420" height="155" border="0" usemap="#fp1008_Map" alt="" src="http://internet.ziffdavisenterprise.com/promos/fp1008.jpg" /></div>
+<map name="fp1008_Map">
+<area href="http://ad.doubleclick.net/clk;177229496;23024566;o?http://www.windowsfordevices.com" coords="359,126,419,143" alt="Go" shape="rect" />
+<area href="http://ad.doubleclick.net/clk;167254180;23024566;b?http://www.devsource.com" coords="359,102,416,124" alt="Go" shape="rect" />
+<area href="http://ad.doubleclick.net/clk;166718202;23024566;a?http://innovations.ziffdavisenterprise.com/" coords="360,81,413,98" alt="Go" shape="rect" />
+<area href="http://ad.doubleclick.net/clk;205832577;23024566;g?http://www.scalablenasroom.com/" coords="363,60,413,77" alt="Go!" shape="rect" /></map>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<!-- start side by side Ad module -->
+<table style="border-right: rgb(204,204,204) 1px solid; border-top: rgb(204,204,204) 1px solid; margin: 5px 10px 5px 20px; border-left: rgb(204,204,204) 1px solid; border-bottom: rgb(204,204,204) 1px solid;" cellspacing="0" cellpadding="0" width="500" border="0">
+<tbody>
+<tr valign="top">
+<td width="50%" height="100%"><!---- Start left side ---->
+<table height="100%" cellspacing="10" cellpadding="0" width="100%" border="0">
+<tbody>
+<tr class="AdModule_BG">
+<td style="padding-right: 7px; padding-left: 7px; padding-bottom: 7px; padding-top: 7px;" class="AdModule_Hdr" align="center" height="40"><strong>FEATURED SPONSOR MESSAGE</strong></td></tr>
+<tr>
+<td><span class="AdModule_ContentLarge">
+<ul><a href="http://ad.doubleclick.net/clk;212576025;23051668;a?http://www.surftoiprism.com/default.asp?kc=EWK032009SRF1&amp;oc=896" target="new"><b>Cut Your Web Filtering Expense and Get a T-shirt!</b>
+</b /></a><br />
+<br />
+</a />Dude, where's your Surf control? Catch the next wave in Web Filtering with iPrism. Sign up for a Web Demo today and get a free WIPEOUT T-shirt. Plus, you may be elgible for a free Surfboard! </ul></span>
+<center>Brought to You By<br />
+<a href="http://ad.doubleclick.net/clk;212576025;23051668;a?http://www.surftoiprism.com/default.asp?kc=EWK032009SRF1&amp;oc=896"><img alt="" src="/images/stories/html-modules/stbernard_logo.gif" border="0" /></a></center></td></tr></tbody></table></td>
+<td style="border-right: #ccc 1px solid; padding-right: 1px;"><br />
+</td>
+<td width="50%" height="100%"><!-- End left/ Start right side -->
+<table height="100%" cellspacing="10" cellpadding="0" width="100%" border="0">
+<tbody>
+<tr class="AdModule_BG">
+<td style="padding-right: 7px; padding-left: 7px; padding-bottom: 7px; padding-top: 7px;" class="AdModule_Hdr" align="center" height="40"><strong>FEATURED SPONSORED MESSAGE</strong></td></tr>
+<tr>
+<td><span class="AdModule_ContentLarge">
+<ul><a href="http://ad.doubleclick.net/clk;212997286;23051668;q?http://www.redhat.com/dell/?sc_cid=70160000000HjSkAAK" target="new"><b>Simplify your IT. Migrate to JBoss on Dell.</b>
+</b /></a><br />
+<br />
+</a />You get the value you expect from open source middleware along with the flexibility to choose the operating system that works best for your environment.<br />
+<br />
+<b><a href="http://ad.doubleclick.net/clk;212997286;23051668;q?http://www.redhat.com/dell/?sc_cid=70160000000HjSkAAK" target="new">Click Here to Learn More! </a></b></ul></span>
+<center>Brought to You By<br />
+<a href="http://ad.doubleclick.net/clk;212997286;23051668;q?http://www.redhat.com/dell/?sc_cid=70160000000HjSkAAK"><img alt="" src="http://internet.ziffdavisenterprise.com/promos/redhat_50x50.gif" border="0" /></a></center></td></tr></tbody></table></td></tr></tbody></table><!-- end side by side Ad module -->    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<br />
+<div style="margin: 5px 10px 5px 20px;">
+<div style="margin-bottom: 10px; width: 500px; border-bottom: rgb(206,207,206) 1px solid;"><img style="margin-left: 20px;" alt="" src="/images/zde/ew_advertisement_homepage.gif" border="0" /></div>
+<div style="border-right: rgb(192,192,192) 1px solid; border-top: rgb(192,192,192) 1px solid; margin-bottom: 10px; border-left: rgb(192,192,192) 1px solid; width: 500px; border-bottom: rgb(192,192,192) 1px solid; background-color: rgb(255,255,255);">
+<div style="width: 500px; background-color: rgb(153,153,153);">
+<div style="border-right: black 1px solid; padding-right: 0px; border-top: black 1px solid; padding-left: 0px; font-weight: bold; font-size: 11px; padding-bottom: 5px; border-left: black 1px solid; color: rgb(255,255,255); line-height: 13px; padding-top: 3px; border-bottom: black 1px solid;" class="ongrey">Sponsors</div></div>
+<div style="margin: 7px 7px 7px 9px;" class="hp_link_online_classifieds"><!--Cisco-DataCenter--4/25/09--KTurtz-->
+<li><a href="http://ad.doubleclick.net/clk;211465768;23051668;k?http://www.cisco.com/go/unifiedcomputing" target="_blank" rel="nofollow"><span class="PubFooterCopy">Cisco Transforms the Data Center</span></a><br />
+<!--RIM-Enterprise--4/30/09--KTurtz--></li>
+<li><a href="http://ad.doubleclick.net/clk;212933521;34243532;t" target="_blank" rel="nofollow"><span class="PubFooterCopy">Register for WES 2009 by April 10 and save $200. </span></a><br />
+</li>
+<li><a href="http://ad.doubleclick.net/clk;211159199;23051668;i?http://www.redhat.com/dell/?sc_cid=70160000000HjSkAAK" target="_blank" rel="nofollow"><span class="PubFooterCopy">Simplify your IT. Migrate to JBoss on Dell</span></a><br />
+<!--MS VisualStudio--03/31/09--MGlasner--></li>
+<li><a href="http://ad.doubleclick.net/clk;212555104;23051668;v?http://clk.atdmt.com/MRT/go/124427153/direct/01/" target="_blank" rel="nofollow"><span class="PubFooterCopy">Save 30% &amp; Upgrade to Visual Studio</span></a><br />
+<!--Network Instruments--7/31/09--DBulkstein--></li>
+<li><a href="http://ad.doubleclick.net/clk;212545984;23051668;k?http://www.networkinstruments.com/downloads/observer_form.html" target="_blank" rel="nofollow"><span class="PubFooterCopy">Test drive an analyzer capable of managing any LAN</span></a><br />
+<!--CDW-Healtcare--12/31/09--JVlock--></li>
+<li><a href="http://ad.doubleclick.net/clk;212121587;33539948;m?http://www.cdwg.com/Default.aspx?Seg=7&amp;cm_mmc=Healthcare%20Brand-_-eWeek-%20Healthcare%20Industry%20Channel-_-Text-_-text%20" target="_blank" rel="nofollow"><span class="PubFooterCopy">Visit CDWHealthcare.com for all your IT needs </span></a><br />
+<!--DataDeposit CPC--3/16/09--KTurtz--></li>
+<li><a href="http://ad.doubleclick.net/clk;212290306;23051668;v?http://www.datadepositbox.com/?promoid=1&amp;source=channelinsider&amp;adid=text_award" target="_blank" rel="nofollow"><span class="PubFooterCopy">Award Winning Online Backup For Small Business.</span></a><br />
+<!--Symantec--3/10/09--RLincoln--></li>
+<li><a href="http://ad.doubleclick.net/clk;212164142;23051668;t?http://www.managefusion.com" target="_blank" rel="nofollow"><span class="PubFooterCopy">Secure &amp; manage your company’s most critical asset</span></a><br />
+<!--HP Storage FY09 Q2--04/30/09--RGordon--></li>
+<li><a href="http://ad.doubleclick.net/clk;211620455;33153600;m" target="_blank" rel="nofollow"><span class="PubFooterCopy">HP StorageWorks – Control. Consolidation. Confidence.</span></a><br />
+<!--Business Objects-SAP--03/31/08--Jonthan Vlock--></li>
+<li><a href="http://ad.doubleclick.net/clk;211360397;32901729;e" target="_blank" rel="nofollow"><span class="PubFooterCopy">Interactive, Real-Time Reporting: 60-Day Trial</span></a><img alt="" src="http://ad.doubleclick.net/ad/N5072.eWeek.com/B3398876.16;sz=1x1" /><br />
+<!--MS UCQ3--3/31/09--MGlasner--></li>
+<li><a href="http://ad.doubleclick.net/clk;211474319;23051668;c?http://clk.atdmt.com/MRT/go/zffdeitp0600010555mrt/direct/01/" target="_blank" rel="nofollow"><span class="PubFooterCopy">Don't rip &amp; replace. VoIP as you are.</span></a><br />
+<!--Seagate-EWD Q3--3/31/09--JSupinski--></li>
+<li><a href="http://ad.doubleclick.net/clk;211154119;23051668;v?http://easydecision.seagatestorage.com/?src=na_easyfa_ci_ob8" target="_blank" rel="nofollow"><span class="PubFooterCopy">New Look. New Revenue. Same Easy Decision.</span></a><br />
+<!--Cisco--3/31/09--RLincoln--></li>
+<li><a href="http://ad.doubleclick.net/clk;208672839;23051668;p?http://www.track.bleutrax.com/cisco/link/z3x1m4b9" target="_blank" rel="nofollow"><span class="PubFooterCopy">Let Cisco Transform Your Business With 802.11n</span></a><br />
+<!--HP-TSG-ESS--01/31/09--RGordon--></li>
+<li><a href="http://ad.doubleclick.net/clk;208446360;30210942;t" target="_blank" rel="nofollow"><span class="PubFooterCopy">ProLiant technology, affordably priced.</span></a><br />
+<!--WBG Textlink--12/31/09--MaryHeart--></li>
+<li><a href="http://ad.doubleclick.net/clk;212164339;23051668;b?http://www.webbuyersguide.com/Resource/brief.aspx?id=13362&amp;category=88&amp;sitename=webbuyersguide&amp;kc=zdetextlink&amp;src=zdetextlink" target="_blank" rel="nofollow"><span class="PubFooterCopy">A New Approach to Software – Free Tech Brief by IBM</span></a><br />
+<!--WBG Textlink--12/31/09--MaryHeart--></li>
+<li><a href="http://ad.doubleclick.net/clk;212164841;23051668;z?http://www.webbuyersguide.com/resource/brief.aspx?id=13363&amp;category=88&amp;sitename=webbuyersguide&amp;kc=zdetextlink&amp;src=zdetextlink" target="_blank" rel="nofollow"><span class="PubFooterCopy">5 Reasons You Need to Upgrade Your Small Business</span></a><br />
+<!--WBG Textlink--12/31/09--MaryHeart--></li>
+<li><a href="http://ad.doubleclick.net/clk;212164841;23051668;z?http://www.webbuyersguide.com/resource/brief.aspx?id=13363&amp;category=88&amp;sitename=webbuyersguide&amp;kc=zdetextlink&amp;src=zdetextlink" target="_blank" rel="nofollow"><span class="PubFooterCopy">3 Reasons Tape is a Bad Disaster Recovery Solution</span></a><br />
+</li></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div></div></div>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<div style="margin: 5px 10px 5px 20px; width: 500px;" id="marketplace">
+<div style="background: transparent url(/images/stories/marketplace-hdr-bg.gif) repeat-x scroll center bottom; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;" class="hdr">
+<h3 style="margin: 0pt; padding: 0pt; background: transparent url(/images/stories/marketplace-hdr.gif) no-repeat scroll left bottom; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; position: relative; height: 23px;">&nbsp;</h3></div>
+<div style="border: 1px solid rgb(153, 153, 153); text-align: left;padding-left:20px;">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6422417422167576";
+//MP-Eweek-AP 336x280, created 1/22/08
+google_ad_slot = "2732704938";
+google_ad_width = 336;
+google_ad_height = 280;
+//--></script>
+<script src="http://pagead2.googlesyndication.com/pagead/show_ads.js" type="text/javascript">
+</script></div></div>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+	  </td>
+	  <td width=5>
+	  </td>
+      <td valign=top width=336>
+	    
+
+<!-- Loading Module 'mod_related_content_solr' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			    		<tr>
+    			<td>
+			<!-- solr --><!-- cached related content --><!-- SiteCatalyst code version: H.19.4.
+Copyright 1997-2009 Omniture, Inc. More info available at
+http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="http://www.baselinemag.com/js/s_code_relcon_new.js"></script>
+
+<script language="JavaScript" type="text/javascript"><!--
+
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+s.pageName="Related Content Widget"
+s.prop1="Related Content Widget"
+s.prop2=document.title
+s.prop3=document.url
+s.prop4=document.domain
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><a href="http://www.omniture.com" title="Web Analytics"><img
+src="http://emgrelatedcontent.112.2O7.net/b/ss/emgrelatedcontent/1/H.19.4--NS/0"
+height="1" width="1" border="0" alt="" /></a></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.19.4. -->
+
+<script language=JavaScript>
+
+function rctracker(obj) {
+  var s=s_gi('emgrelatedcontent');
+  s.linkTrackVars='prop1,prop5,prop6,prop7,prop8,eVar1,events';
+  s.linkTrackEvents='event5';
+  s.events='event5';
+  s.prop1='Related Content Article Click';
+  s.prop5=document.title;
+  s.prop6=document.URL;
+  s.prop7=document.domain;
+  s.prop8=obj.href;
+  s.eVar1='Related Content Article Click';
+  s.tl(obj,'e','');
+}
+</script>
+
+<script type="text/javascript">
+    function toggleContent(param,rnd) {
+	    if (param==0) {
+		    document.getElementById("articles_tab_" + rnd).setAttribute("class", "rel-tab-on");
+		    document.getElementById("labs_tab_" + rnd ).setAttribute("class", "rel-tab-off");
+		    document.getElementById("media_tab_" + rnd).setAttribute("class", "rel-tab-off");
+		    document.getElementById("articles_tab_" + rnd).setAttribute("className", "rel-tab-on");
+		    document.getElementById("labs_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("media_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("articles_" + rnd).style.visibility="visible";
+		    document.getElementById("labs_" + rnd).style.visibility="hidden";
+		    document.getElementById("media_" + rnd).style.visibility="hidden";
+		    document.getElementById("articles_" + rnd).style.display="block";
+		    document.getElementById("labs_" + rnd).style.display="none";
+		    document.getElementById("media_" + rnd).style.display="none";
+		}
+		if (param==1) {
+		    document.getElementById("articles_tab_" + rnd).setAttribute("class", "rel-tab-off");
+		    document.getElementById("labs_tab_" + rnd).setAttribute("class", "rel-tab-on");
+		    document.getElementById("media_tab_" + rnd).setAttribute("class", "rel-tab-off");
+		    document.getElementById("articles_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("labs_tab_" + rnd).setAttribute("className", "rel-tab-on");
+		    document.getElementById("media_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("articles_" + rnd).style.visibility="hidden";
+		    document.getElementById("labs_" + rnd).style.visibility="visible";
+		    document.getElementById("media_" + rnd).style.visibility="hidden";
+		    document.getElementById("articles_" + rnd).style.display="none";
+		    document.getElementById("labs_" + rnd).style.display="block";
+		    document.getElementById("media_" + rnd).style.display="none";
+		}
+		if (param==2) {
+		    document.getElementById("articles_tab_" + rnd).setAttribute("class", "rel-tab-off");
+		    document.getElementById("labs_tab_" + rnd).setAttribute("class", "rel-tab-off");
+		    document.getElementById("media_tab_" + rnd).setAttribute("class", "rel-tab-on");
+		    document.getElementById("articles_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("labs_tab_" + rnd).setAttribute("className", "rel-tab-off");
+		    document.getElementById("media_tab_" + rnd).setAttribute("className", "rel-tab-on");
+		    document.getElementById("articles_" + rnd).style.visibility="hidden";
+		    document.getElementById("labs_" + rnd).style.visibility="hidden";
+		    document.getElementById("media_" + rnd).style.visibility="visible";
+		    document.getElementById("articles_" + rnd).style.display="none";
+		    document.getElementById("labs_" + rnd).style.display="none";
+		    document.getElementById("media_" + rnd).style.display="block";									
+		}
+	}
+   
+    var related_resource_contents="<br/><a target='_new' onClick='rctracker(this)' href='http://www.eseminarslive.com/c/a/Enterprise-Applications/IBM030909/' title='How to Survive and Succeed in Tough Economic Times in the Retail Industry'>How to Survive and Succeed in Tough Economic Times in the Retail Industry</a><br/><a target='_new' onClick='rctracker(this)' href='http://www.webbuyersguide.com/resource/brief.aspx?id=11075&sitename=webbuyersguide&kc=contmod&src=contmod' title='SOA Governance: Necessary Protection for a Strategic Business Investment'>SOA Governance: Necessary Protection for a Strategic Business Investment</a><br/><a target='_new' onClick='rctracker(this)' href='http://www.webbuyersguide.com/resource/brief.aspx?id=13455&sitename=webbuyersguide&kc=contmod&src=contmod' title='Untangle the Knot: Developing a Comprehensive Data Integration Strategy'>Untangle the Knot: Developing a Comprehensive Data Integration Strategy</a><br/><a target='_new' onClick='rctracker(this)' href='http://www.webbuyersguide.com/resource/brief.aspx?id=13640&sitename=webbuyersguide&kc=contmod&src=contmod' title='Building and Managing a Performance Center of Excellence'>Building and Managing a Performance Center of Excellence</a>";
+    document.getElementById('related_resources_content').innerHTML=related_resource_contents + '<br/>';
+
+</script>
+<div id="related-content">
+	<div id="related-content-header">
+	  <h4>Related Content</h4>
+	<div id="related-content-tabs">
+		<a id="articles_tab_142" onclick="toggleContent(0,142);" class="rel-tab-on"><b>Articles</b></a>
+		<a id="labs_tab_142" onclick="toggleContent(1,142);" class="rel-tab-off"><b>Labs/How-To</b></a>
+		<a id="media_tab_142" onclick="toggleContent(2,142);" class="rel-tab-off"><b>Multimedia</b></a>
+	</div>
+	<div id="related-content-body">
+		<div>
+			<ol id="articles_142" style="visibility:visible;">
+
+    <li><div><b>1: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/CodeGear-Delivers-Ruby-on-Rails-IDE/"><img title="eWeek News: CodeGear Delivers Ruby on Rails IDE" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/CodeGear-Delivers-Ruby-on-Rails-IDE/" title="CodeGear Delivers Ruby on Rails IDE">CodeGear Delivers Ruby on Rails IDE&nbsp;<span class='related-content-date'>(2007-09-19)</span></a></div></li>
+    <li><div><b>2: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Ruby-Ruby-When-Will-You-Be-Mine/"><img title="eWeek News: Ruby, Ruby, When Will You Be Mine?" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Ruby-Ruby-When-Will-You-Be-Mine/" title="Ruby, Ruby, When Will You Be Mine?">Ruby, Ruby, When Will You Be Mine?&nbsp;<span class='related-content-date'>(2007-02-26)</span></a></div></li>
+    <li><div><b>3: </b><span><a onClick="rctracker(this)" href="http://www.baselinemag.com/c/a/Tools-Primers-hold/Ruby-on-Rails-What-It-Can-Do-for-You/"><img title="Baseline Magazine News: Ruby on Rails: What It Can Do for You" src="/images/icons/icon_baseline.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.baselinemag.com/c/a/Tools-Primers-hold/Ruby-on-Rails-What-It-Can-Do-for-You/" title="Ruby on Rails: What It Can Do for You">Ruby on Rails: What It Can Do for You&nbsp;<span class='related-content-date'>(2007-07-31)</span></a></div></li>
+    <li><div><b>4: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Ruby-Ruby-on-Rails-Gain-Steam/"><img title="eWeek News: Ruby, Ruby on Rails Gain Steam" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Ruby-Ruby-on-Rails-Gain-Steam/" title="Ruby, Ruby on Rails Gain Steam">Ruby, Ruby on Rails Gain Steam&nbsp;<span class='related-content-date'>(2008-01-11)</span></a></div></li>
+    <li><div><b>5: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Merb-Ruby-on-Rails-Meets-the-Enterprise/"><img title="eWeek News: Merb: Ruby on Rails Meets the Enterprise" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Merb-Ruby-on-Rails-Meets-the-Enterprise/" title="Merb: Ruby on Rails Meets the Enterprise">Merb: Ruby on Rails Meets the Enterprise&nbsp;<span class='related-content-date'>(2008-10-14)</span></a></div></li>
+    <li><div><b>6: </b><span><a onClick="rctracker(this)" href="http://www.devsource.com/c/a/Architecture/Developers-Warm-to-Ruby-on-Rails-23-Update/"><img title="DevSource News: Developers Warm to Ruby on Rails 2.3 Update" src="/images/icons/icon_devsource.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.devsource.com/c/a/Architecture/Developers-Warm-to-Ruby-on-Rails-23-Update/" title="Developers Warm to Ruby on Rails 2.3 Update">Developers Warm to Ruby on Rails 2.3 Update&nbsp;<span class='related-content-date'>(2009-02-04)</span></a></div></li>
+    <li><div><b>7: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Engine-Yard-Advances-Ruby-Rails/"><img title="eWeek News: Engine Yard Advances Ruby, Rails" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Engine-Yard-Advances-Ruby-Rails/" title="Engine Yard Advances Ruby, Rails">Engine Yard Advances Ruby, Rails&nbsp;<span class='related-content-date'>(2008-05-21)</span></a></div></li>
+    <li><div><b>8: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Making-Ruby-on-Rails-Scale/"><img title="eWeek News: Making Ruby on Rails Scale" src="/images/icons/icon_eweek.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Making-Ruby-on-Rails-Scale/" title="Making Ruby on Rails Scale">Making Ruby on Rails Scale&nbsp;<span class='related-content-date'>(2008-05-01)</span></a></div></li>
+			</ol>
+			<ol id="labs_142" style="visibility:hidden;display:none;">
+      
+    <li><div><b>1: </b><span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=9788&sitename=webbuyersguide&kc=contmod&src=contmod"><img title="Whitepaper: Ruby on Rails Proves It Deserves the Hype" src="/images/icons/icon_whitepaper.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=9788&sitename=webbuyersguide&kc=contmod&src=contmod" title="Ruby on Rails Proves It Deserves the Hype">Ruby on Rails Proves It Deserves the Hype</a></div></li>
+      
+    <li><div><b>2: </b><span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=9490&sitename=webbuyersguide&kc=contmod&src=contmod"><img title="Whitepaper: Eclipse Shines on Development" src="/images/icons/icon_whitepaper.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=9490&sitename=webbuyersguide&kc=contmod&src=contmod" title="Eclipse Shines on Development">Eclipse Shines on Development</a></div></li>
+      
+    <li><div><b>3: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/RightScale-Eases-Developing-on-Amazon-EC2/"><img title="Review: RightScale Eases Developing on Amazon EC2" src="/images/icons/icon_review2.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/RightScale-Eases-Developing-on-Amazon-EC2/" title="RightScale Eases Developing on Amazon EC2">RightScale Eases Developing on Amazon EC2</a></div></li>
+      
+    <li><div><b>4: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Security/eWEEK-Labs-on-IBMSun-Directory-That-Lives-Competes-More-Strongly-with-Microsoft-Active-Directory-749/"><img title="Review: eWEEK Labs on IBM/Sun: Surviving Directory Would Challenge Microsoft Active Dire" src="/images/icons/icon_review2.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Security/eWEEK-Labs-on-IBMSun-Directory-That-Lives-Competes-More-Strongly-with-Microsoft-Active-Directory-749/" title="eWEEK Labs on IBM/Sun: Surviving Directory Would Challenge Microsoft Active Dire">eWEEK Labs on IBM/Sun: Surviving Directory Would Challenge Microsoft Active Dire</a></div></li>
+      
+    <li><div><b>5: </b><span><a onClick="rctracker(this)" href="http://www.devsource.com/c/a/Add-Ons/PrimalScript-Pro-Script-Editing-is-Just-the-Start/"><img title="Review: PrimalScript Pro: Script Editing is Just the Start" src="/images/icons/icon_review2.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.devsource.com/c/a/Add-Ons/PrimalScript-Pro-Script-Editing-is-Just-the-Start/" title="PrimalScript Pro: Script Editing is Just the Start">PrimalScript Pro: Script Editing is Just the Start</a></div></li>
+      
+    <li><div><b>6: </b><span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=8687&sitename=webbuyersguide&kc=contmod&src=contmod"><img title="Whitepaper: Faster Computers' Faster Service: Diskeeper Keeps the Food Coming at Ruby Tuesday" src="/images/icons/icon_whitepaper.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.webbuyersguide.com/resource/brief.aspx?id=8687&sitename=webbuyersguide&kc=contmod&src=contmod" title="Faster Computers' Faster Service: Diskeeper Keeps the Food Coming at Ruby Tuesday">Faster Computers' Faster Service: Diskeeper Keeps the Food Coming at Ruby Tuesday</a></div></li>
+      
+    <li><div><b>7: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Linux-and-Open-Source/eWEEK-Labs-on-IBMSun-OpenSource-Community-Would-Win-453473/"><img title="Review: eWEEK Labs on IBM/Sun: Open-Source Community Would Win" src="/images/icons/icon_review2.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Linux-and-Open-Source/eWEEK-Labs-on-IBMSun-OpenSource-Community-Would-Win-453473/" title="eWEEK Labs on IBM/Sun: Open-Source Community Would Win">eWEEK Labs on IBM/Sun: Open-Source Community Would Win</a></div></li>
+      
+    <li><div><b>8: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Eclipse-Europa-Needs-Some-Polishing/"><img title="Review: Eclipse Europa Needs Some Polishing" src="/images/icons/icon_review2.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Eclipse-Europa-Needs-Some-Polishing/" title="Eclipse Europa Needs Some Polishing">Eclipse Europa Needs Some Polishing</a></div></li>
+			</ol>	
+			<ol id="media_142" style="visibility:hidden;display:none;">
+      
+    <li><div><b>1: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/12-Things-You-Need-to-Know-About-Ruby-on-Rails/"><img title="Slideshow: 12 Things You Need to Know About Ruby on Rails" src="/images/icons/icon_slideshow.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/12-Things-You-Need-to-Know-About-Ruby-on-Rails/" title="12 Things You Need to Know About Ruby on Rails">12 Things You Need to Know About Ruby on Rails</a></div></li>
+      
+    <li><div><b>2: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Video/RailsSpace-Ruby-on-Rails-Tutorial-Video-Training-1/"><img title="Video: RailsSpace Ruby on Rails Tutorial (Video Training) 1" src="/images/icons/icon_video.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Video/RailsSpace-Ruby-on-Rails-Tutorial-Video-Training-1/" title="RailsSpace Ruby on Rails Tutorial (Video Training) 1">RailsSpace Ruby on Rails Tutorial (Video Training) 1</a></div></li>
+      
+    <li><div><b>3: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Video/RailsSpace-Ruby-on-Rails-Tutorial-Video-Training-2/"><img title="Video: RailsSpace Ruby on Rails Tutorial (Video Training) 2" src="/images/icons/icon_video.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Video/RailsSpace-Ruby-on-Rails-Tutorial-Video-Training-2/" title="RailsSpace Ruby on Rails Tutorial (Video Training) 2">RailsSpace Ruby on Rails Tutorial (Video Training) 2</a></div></li>
+      
+    <li><div><b>4: </b><span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Past-News/The-Top-100-Most-Influential-People-in-IT/"><img title="Slideshow: The Top 100 Most Influential People in IT" src="/images/icons/icon_slideshow.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Past-News/The-Top-100-Most-Influential-People-in-IT/" title="The Top 100 Most Influential People in IT">The Top 100 Most Influential People in IT</a></div></li>
+      
+    <li><div><b>5: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Enterprise-Applications/BI-Are-We-There-Yet/"><img title="Podcast: BI: Are We There Yet?" src="/images/icons/icon_audio.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Enterprise-Applications/BI-Are-We-There-Yet/" title="BI: Are We There Yet?">BI: Are We There Yet?</a></div></li>
+      
+    <li><div><b>6: </b><span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Technology/Technology-Web-Services/"><img title="Slideshow: Technology: Web Services" src="/images/icons/icon_slideshow.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Technology/Technology-Web-Services/" title="Technology: Web Services">Technology: Web Services</a></div></li>
+      
+    <li><div><b>7: </b><span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Eclipse-Shines-on-Development/"><img title="Podcast: Eclipse Shines on Development" src="/images/icons/icon_audio.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.eweek.com/c/a/Application-Development/Eclipse-Shines-on-Development/" title="Eclipse Shines on Development">Eclipse Shines on Development</a></div></li>
+      
+    <li><div><b>8: </b><span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Special-Reports/The-Top-100-CIOs-Part-3/"><img title="Slideshow: The Top 100 CIOs, Part 3" src="/images/icons/icon_slideshow.png" height="20" border="0" /></a></span><a onClick="rctracker(this)" href="http://www.cioinsight.com/c/a/Special-Reports/The-Top-100-CIOs-Part-3/" title="The Top 100 CIOs, Part 3">The Top 100 CIOs, Part 3</a></div></li>
+			</ol>						
+		</div>
+		<div id="related-content-bottom">
+		    <img src="/images/related_content/slices2/zde_mini.jpg" vspace="2" />
+		</div>
+	</div>
+</div>
+    			</td>
+			</tr>
+      	</table>
+
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module 'mod_related_content_solr' -->
+
+
+
+<!-- Loading Module 'mod_mostpopall' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			    		<tr>
+    			<td>
+			    			</td>
+			</tr>
+      	</table>
+
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module 'mod_mostpopall' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<script>
+showdart('MPU','336x280');
+</script>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<script src="/scripts/video/Scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+<script type="text/javascript">
+function ipHideEvideo(){var cont1=document.getElementById("ipEvideo-cont-1"),cont2=document.getElementById("ipEvideo-cont-2");var tab1=document.getElementById("ipEvideo-tab-1"),tab2=document.getElementById("ipEvideo-tab-2");cont1.style.display="none";cont1.className="ipEvideo-wrapper";cont2.style.display="none";cont2.className="ipEvideo-wrapper";tab1.removeAttribute("class");tab1.removeAttribute("className");tab2.removeAttribute("class");tab2.removeAttribute("className");}function ipToggleDivs(thisWhat,ipEl,ipState){ipHideEvideo();var tab=document.getElementById(ipEl);tab.style.display="block";thisWhat.className="active-tab";}
+</script>
+<div id="ipEvideo-module">
+<div id="ipEvideo-tabs">
+<ul>
+<li class="active-tab" id="ipEvideo-tab-1"><a onclick="javascript:ipToggleDivs(this.parentNode,'ipEvideo-cont-1','on');" href="javascript:void(0);">eWeek Videos</a></li>
+<li id="ipEvideo-tab-2"><a onclick="javascript:ipToggleDivs(this.parentNode,'ipEvideo-cont-2','on');" href="javascript:void(0);">NewsBreak Videos</a></li>
+<li><a href="/c/s/Videos/">All Videos</a></li></ul> </div>
+<div id="ipEvideo-container">
+<div class="ipEvideo-wrapper" id="ipEvideo-cont-1">
+<script type="text/javascript">
+		AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','300','height','300','src','http://www.eweek.com/scripts/video/eweek','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','http://www.eweek.com/scripts/video/eweek' ); //end AC code
+	</script> </div>
+<div class="ipEvideo-wrapper" id="ipEvideo-cont-2">
+<script type="text/javascript">
+		AC_FL_RunContent( 'codebase','http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0','width','300','height','300','src','http://www.eweek.com/scripts/video/newsbreak','quality','high','pluginspage','http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash','movie','http://www.eweek.com/scripts/video/newsbreak' ); //end AC code
+	</script> </div> </div></div>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<div align="right"><font size="1">Videos Sponsored by:</font></div>
+<div style="margin-bottom: 6px;" align="right">
+
+<a href="http://www.eweek.com/c/a/Windows/Ensuring-Smooth-Upgrade-Path-with-Windows-Vista/">
+<img border="0" title="" alt="" src="http://internet.ziffdavisenterprise.com/advertising/logos/server2008.jpg" /></a>
+
+<a href="http://www.eweek.com/c/a/Green-IT/Intelligent-Power-Management/">
+<img width="99" height="33" border="0" title="" alt="" src="http://internet.ziffdavisenterprise.com/advertising/logos/IBM_Logo.jpg" /></a>
+
+</div>
+
+
+    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<br />
+<script>
+showdart('MPU','336x280');
+</script>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<table style="border-bottom: 1px solid rgb(30, 67, 125);" width="336" cellspacing="0" cellpadding="0" border="0" bgcolor="#e3eff3" class="Module_BG"><tbody><tr><td valign="middle" bgcolor="#ffffff" align="right"><img border="0" alt="" src="/images/newsletter_title.gif" /></td></tr><tr bgcolor="#e3eff3"><td style=" padding: 10px;" valign="top" align="left" class="Module_Content"><br />
+<strong>EWEEK E-MAIL NEWSLETTERS</strong> bring you reliable, timely
+information to stay on top of the business of technology -- and
+technology in business -- and get more out of the Web.
+Make your choices and start your subscriptions today!<br />
+</td></tr><tr bgcolor="#e3eff3"><td valign="center" bgcolor="#e3eff3" align="center"><a href="/newsletter-manage/"><img border="0" src="/images/subscribe_button.jpg" alt="" /></a><br />
+&nbsp;</td></tr></tbody></table><br />
+<table style="border-bottom: 1px solid rgb(30, 67, 125);" width="336" cellspacing="0" cellpadding="0" border="0" bgcolor="#e3eff3" class="Module_BG"><tbody><tr><td valign="middle" bgcolor="#ffffff" align="right"><img border="0" alt="" src="/images/rss_title.gif" /></td></tr><tr bgcolor="#e3eff3"><td style=" padding: 10px;" valign="top" align="left" class="Module_Content"><br />
+<strong>EWEEK RSS NEWS FEEDS</strong> contain a daily feed of our latest stories from over 30 different categories including Enterprise Apps, Business Intelligence, Security, VOIP and more!<br />
+&nbsp;<br />
+Subscribe to our RSS feeds today for free...
+</td></tr><tr bgcolor="#e3eff3"><td valign="center" bgcolor="#e3eff3" align="center"><a href="/c/a/Past-News/Ziff-Davis-Enterprise-RSS-Feeds/"><img border="0" src="/images/subscribe_rss.jpg" alt="" /></a><br />
+&nbsp;</td></tr></tbody></table>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<!-- ############  Begin eWEEK Subscription Module ############ -->
+<form target="form_results" method="post" action="http://www.omeda.com/ziff/ewk/ewk.cgi?amp;t=whback&p=embed" onsubmit="window.open('','form_results','width=700,height=600,scrollbars,status');" name="order" id="Form1">
+<table width="336" height="484" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td align="left" colspan="2"><img width="93" height="35" border="0" src="http://circ.ziffdavisenterprise.com/graphics/forms/ewk/eweek_com_sub_module/ewk_submod_081705/ewk_sub_module_801705_03.gif" alt="" /> <img width="115" height="10" border="0" src="http://circ.ziffdavisenterprise.com/graphics/forms/ewk/eweek_com_sub_module/ewk_submod_081705/gr_separator.gif" alt="" /> <img width="61" height="10" border="0" src="http://circ.ziffdavisenterprise.com/graphics/forms/ewk/eweek_com_sub_module/ewk_submod_081705/subscribe_header.gif" alt="" /></td></tr><tr><td height="31" colspan="2"><font size="-2" face="arial, helvetica, sans serif" class="Thank_you">APPLY FOR A FREE SUBSCRIPTION BELOW: </font></td></tr><tr><td width="168"><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">First Name:</font></td><td width="168"><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Last Name:</font></td></tr><tr><td>
+<input type="text" name="FNAME" value="" maxlength="10" id="FNAME" /></td><td>
+<input type="text" name="LNAME" value="" maxlength="18" id="LNAME" /></td></tr><tr><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Title:</font></td><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Company:</font></td></tr><tr><td>
+<input type="text" name="TITLE" value="" maxlength="18" id="TITLE" /></td><td>
+<input type="text" name="Company" value="" maxlength="28" id="Company" /></td></tr><tr><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Address:</font></td><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">City:</font></td></tr><tr><td>
+<input type="text" name="ADDRESS2" value="" maxlength="28" id="ADDRESS2" /></td><td>
+<input type="text" name="CITY" value="" maxlength="28" id="CITY" /></td></tr><tr><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">State:</font></td><td><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Zip Code:</font></td></tr><tr><td><select name="STATE" size="1" tabindex="7" id="Select1">
+<option selected="selected" value="SELECT ONE">&nbsp;</option>
+<option value="AL">AL</option>
+<option value="AK">AK</option>
+<option value="AZ">AZ</option>
+<option value="AR">AR</option>
+<option value="CA">CA</option>
+<option value="CO">CO</option>
+<option value="CT">CT</option>
+<option value="DE">DE</option>
+<option value="DC">DC</option>
+<option value="FL">FL</option>
+<option value="GA">GA</option>
+<option value="GU">GU</option>
+<option value="HI">HI</option>
+<option value="ID">ID</option>
+<option value="IL">IL</option>
+<option value="IN">IN</option>
+<option value="IA">IA</option>
+<option value="KS">KS</option>
+<option value="KY">KY</option>
+<option value="LA">LA</option>
+<option value="ME">ME</option>
+<option value="MD">MD</option>
+<option value="MA">MA</option>
+<option value="MI">MI</option>
+<option value="MN">MN</option>
+<option value="MS">MS</option>
+<option value="MO">MO</option>
+<option value="MT">MT</option>
+<option value="NE">NE</option>
+<option value="NV">NV</option>
+<option value="NH">NH</option>
+<option value="NJ">NJ</option>
+<option value="NM">NM</option>
+<option value="NY">NY</option>
+<option value="NC">NC</option>
+<option value="ND">ND</option>
+<option value="OH">OH</option>
+<option value="OK">OK</option>
+<option value="OR">OR</option>
+<option value="PA">PA</option>
+<option value="PR">PR</option>
+<option value="RI">RI</option>
+<option value="SC">SC</option>
+<option value="SD">SD</option>
+<option value="TN">TN</option>
+<option value="TX">TX</option>
+<option value="UT">UT</option>
+<option value="VT">VT</option>
+<option value="VI">VI</option>
+<option value="VA">VA</option>
+<option value="WA">WA</option>
+<option value="WV">WV</option>
+<option value="WI">WI</option>
+<option value="WY">WY</option>
+<option value="SELECT ONE">--</option>
+<option value="AE">AE</option>
+<option value="AP">AP</option>
+<option value="SELECT ONE">--</option>
+<option value="54">AB</option>
+<option value="55">BC</option>
+<option value="56">MB</option>
+<option value="57">NB</option>
+<option value="58">NF</option>
+<option value="59">NS</option>
+<option value="60">NT</option>
+<option value="61">ON</option>
+<option value="62">PE</option>
+<option value="63">QC</option>
+<option value="64">SK</option>
+<option value="65">YT</option></select></td><td>
+<input type="text" name="ZIPCODE" value="" size="11" maxlength="11" id="ZIPCODE" /></td></tr><tr><td height="21"><font size="1" face="arial, helvetica, sans serif" class="BODYCOPYFINEPRINT">Email:</font></td></tr><tr><td height="27" colspan="2">
+<input type="text" name="EMAIL_ADDRESS" value="" size="28" maxlength="28" id="EMAIL_ADDRESS" /></td></tr><tr><td align="center" colspan="2">
+<input style="margin: 4px 0pt;" width="100" type="image" height="34" align="middle" name="APPLY" value="Submit" src="http://circ.ziffdavisenterprise.com/graphics/forms/ewk/eweek_com_sub_module/ewk_submod_081705/ewk_sub_module_801705_30.gif" alt="Subscribe to eWEEK FREE!" tabindex="10" id="Submit1" /></td></tr><tr><td colspan="2">
+<div><img width="336" height="10" border="0" src="http://circ.ziffdavisenterprise.com/graphics/forms/ewk/eweek_com_sub_module/ewk_submod_081705/gr_separator.gif" alt="" />
+<table width="168" height="88" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td valign="top"><font size="2"><a rel="nofollow" target="_blank" href="http://www.eweek-digital.com/eweek/sample/">Try digital eWEEK</a></font></td></tr><tr><td valign="top"><font size="2"><a rel="nofollow" target="_blank" href="http://www.omeda.com/ziff/ewk/ewk.cgi?t=whback&p=lzrenew">Renew today</a></font></td></tr><tr><td valign="top"><font size="2"><a rel="nofollow" target="_blank" href="http://circ.ziffdavisenterprise.com/cust_serv.html" title="">Subscription help</a></font></td></tr><tr><td valign="top"><font size="2"><a rel="nofollow" target="_blank" href="http://circ.ziffdavisenterprise.com/forms/free_offers.html"><span class="news_ts2_section style4">More FREE Subscriptions</span></a></font></td></tr></tbody></table><br />
+</div>
+<div>&nbsp;</div></td></tr></tbody></table>
+<div>&nbsp;</div></form><!-- ############  End eWEEK Subscription Module ############ -->    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+
+
+<!-- Loading Module 'mod_ibinternal' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			    		<tr>
+    			<td>
+			<div id='hp_special_reports'>
+	
+	
+<table width="336" border="0" cellpadding="1">
+  <tr>
+    <td><script type="text/javascript" src="http://jlinks.industrybrains.com/jsct?sid=768&amp;ct=EWEEK_ROS&amp;tr=INTERNAL_PAGE&amp;num=3&amp;layt=1&amp;fmt=simp"></script></td>
+  </tr>
+</table>	
+	
+	
+	</div>
+    			</td>
+			</tr>
+      	</table>
+
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module 'mod_ibinternal' -->
+
+
+
+<!-- Loading Module 'mod_sec_linkexperts' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+			    		<tr>
+    			<td>
+			<!-- Reloading data -->     			</td>
+			</tr>
+      	</table>
+
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module 'mod_sec_linkexperts' -->
+
+
+
+<!-- Loading Module '' -->
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+		    		<tr>
+    			<td>
+      				<div align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6422417422167576";
+/* Right Rect, 336x280, created 12/10/08 */
+google_ad_slot = "2609547742";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>    			</td>
+			</tr>
+      	</table>
+
+	<table><tr><td height=2><img src='/images/spacer.gif'></td></tr></table>
+
+
+<!-- End of Module '' -->
+
+	  </td>
+	 </tr> 	  
+<!-- google_ad_region_end=devshed1 -->		
+	  </table>
+	</div>
+</div>
+<div id=clear>
+</div>
+  
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="1004" bordercolor="#ff0000">
+
+<tr align="left" valign="middle">
+<td colspan="2">
+	<div class="Footer_Pub">
+	<a href="/previous_issues" rel="nofollow">Issue Index</a> | 
+	<a rel="nofollow" href="http://www.ziffdavisenterprise.com/contactus.html">Contact Us</a> | 
+	<a rel="nofollow" href="http://www.eweek.com/c/a/Past-News/About-Us/">About</a> | 
+	<a href="http://www.eweekmedia.com/" rel="nofollow">Advertise</a> | 
+	<a rel="nofollow" href="http://www.omeda.com/custsrv/ewk">Magazine Customer Service</a> | 
+	<a href="/sitemap.html">Site Map</a></div></td>
+</tr>
+ <tr>
+  <td valign="top" align="center" style="padding:7px; width:120px;"><img  border="0" src="http://www.channelinsider.com/images/careers/quicklinks.gif" width="108" height="21" alt="eWEEK Quick LInks"  title="eWEEK Quick LInks"  /></td>
+  <td>
+<p class="Footer_Text" style="margin-top:5">
+<div class="footerbox"><strong>Security:</strong><br/>
+<a href="http://www.eweek.com/c/s/Security/">Enterprise Security</a><br/>
+<a href="http://www.eweek.com/c/s/Enterprise-Networking/">Network Security</a><br/>
+<a href="http://www.eweek.com/c/s/IT-Infrastructure/">Infrastructure Security</a><br/>
+<a href="http://www.eweek.com/c/a/Security/How-to-Avoid-the-Next-Data-Breach/">How To: Data</a><br/>
+<a href="http://www.eweek.com/c/s/Security/News/">IT Security News</a><br/>
+<a href="http://blogs.eweek.com/cheap_hack/" target="_new">Cheap Hack Blog</a><br/>
+<a href="http://securitywatch.eweek.com/" target="_new">Security Watch Blog</a><br/></div>
+
+<div class="footerbox"><strong>Storage:</strong><br/>
+<a href="http://www.eweek.com/c/s/Data-Storage/">Data Storage</a><br/>
+<a href="http://www.eweek.com/c/s/Cloud-Computing/">Cloud Storage</a><br/>
+<a href="http://www.eweek.com/c/s/Virtualization/">Storage Virtualization</a><br/>
+<a href="http://www.scalablenasroom.com/" target="_new">Network Access Storage</a><br/>
+<a href="http://www.eweek.com/c/s/Data-Storage/Reviews/">Storage Reviews</a><br/>
+<a href="http://www.eweek.com/c/s/Data-Storage/News/">Data Storage News</a><br/>
+<a href="http://www.eweek.com/c/a/Enterprise-Applications/How-to-Discover-the-Hidden-Meaning-in-Unstructured-Data/">How To: Storage</a><br/>
+<a href="http://blogs.eweek.com/storage_station/" target="_new">Storage Station Blog</a><br/></div>
+
+<div class="footerbox"><strong>Computing:</strong><br/>
+<a href="http://www.eweek.com/c/s/Apple/">Apple OSX</a><br/>
+<a href="http://www.eweek.com/c/s/Linux-and-Open-Source/">Linux Systems</a><br/>
+<a href="http://www.eweek.com/c/s/Windows/">Windows Vista</a><br/>
+<a href="http://www.eweek.com/c/s/Printers/">Managed Print Services</a><br/>
+<a href="http://www.eweek.com/c/s/Cloud-Computing/">Cloud Computing</a><br/>
+<a href="http://www.eweek.com/c/s/Desktops-and-Notebooks/">PC Reviews</a><br/>
+<a href="http://www.microsoft-watch.com/">Microsoft Watch Blog</a><br/>
+<a href="http://blogs.eweek.com/applewatch" target="_new">Apple Watch Blog</a><br/>
+<a href="http://googlewatch.eweek.com/" target="_new">Google Watch Blog</a><br/></div>
+
+<div class="footerbox"><strong>Communications:</strong><br/>
+<a href="http://www.eweek.com/c/s/VOIP-and-Telephony/">VoIP Solutions</a><br/>
+<a href="http://www.eweek.com/c/s/Mobile-and-Wireless/">Wireless Technology</a><br/>
+<a href="http://www.eweek.com/c/s/Messaging-and-Collaboration/">Messaging Software</a><br/>
+<a href="http://www.eweek.com/c/s/Web-Services-Web-20-and-SOA/">Web Services</a><br/>
+<a href="http://www.eweek.com/c/s/Cloud-Computing/">Mobile Applications</a><br/>
+<a href="http://www.eweek.com/c/s/Mobile-and-Wireless/News/">Wireless News</a><br/>
+<a href="http://www.eweek.com/c/s/Mobile-and-Wireless/Reviews/">Mobile Reviews</a><br/></div>
+
+<div class="footerbox"><strong>Apps & Development:</strong><br/>
+<a href="http://www.eweek.com/c/s/Application-Development/">Application Development</a><br/>
+<a href="http://www.eweek.com/c/s/Enterprise-Applications/">SAAS</a><br/>
+<a href="http://www.eweek.com/c/s/Search-Engines/">Search Engines</a><br/>
+<a href="http://www.eweek.com/c/s/Database/">Database Software</a><br/>
+<a href="http://www.eweek.com/c/s/Web-Services-Web-20-and-SOA/">Web 2.0</a><br/>
+<a href="http://www.eweek.com/c/s/IT-Management/">IT Project Management</a><br/>
+<a href="http://etech.eweek.com/" target="_new">Emerging Tech Blog</a><br/>
+<a href="http://blogs.cioinsight.com/" target="_new">CIO Insight Blogs</a><br/>
+<a href="http://www.cioinsight.com/" target="_new">CIOs</a><br/></div>
+</p></td>
+</tr><tr><td valign="top"><a rel="nofollow" href="http://www.ziffdavisenterprise.com" name="Ziff Davis Enterprise Inc." title="Ziff Davis Enterprise Inc." class="Footer_ZD"><img src="/images/zde/zde-logo-white-background.gif" align="left" border=0></a></td>
+  <td>
+<p class="Footer_Text" style="margin-top:5">
+<div class="footerbox"><strong>Vertical Markets:</strong><br/>
+<a href="http://www.eweek.com/c/s/Government-IT/">Federal Government IT</a><br/>
+<a href="http://www.eweek.com/c/s/Health-Care-IT/">Health Care IT</a><br/>
+<a href="http://www.eweek.com/c/s/Finance-IT/">Finance IT</a><br/>
+<a href="http://www.eweek.com/c/s/Midmarket/">Mid-Market</a><br/>
+<a href="http://www.eweek.com/c/s/Channel/">Channel Partners</a><br/>
+<a href="http://blogs.eweek.com/careers/" target="_new">Careers Blog</a><br/>
+<a href="http://www.channelinsider.com/" target="_new">Value Added Resellers</a><br/></div>
+
+<div class="footerbox"><strong>More eWeek Links:</strong><br/>
+<a href="http://www.eweek.com/c/s/Green-IT/">Green Computing Center</a><br/>
+<a href="http://www.eweek.com/c/s/IT-Knowledge-Center/">Tech Knowledge Center</a><br/>
+<a href="http://www.eweek.com/newsletter-manage/">Tech Newsletters</a><br/>
+<a href="http://www.eweek.com/c/a/Past-News/Ziff-Davis-Enterprise-RSS-Feeds/">Tech RSS Feeds</a><br/>
+<a href="http://www.webbuyersguide.com/bguide/Whitepaper/Wplibrary.asp_Q_sitename_E_webbuyersguide" target="_new">White Papers</a><br/>
+<a href="http://www.eweek.com/c/s/Podcasts/">Tech Podcasts</a><br/>
+<a href="http://www.eweek.com/c/s/Videos/">Tech Videos</a><br/>
+<a href="http://www.omeda.com/ziff/ewk/ewk.cgi?&t=whback&p=lz3home" target="_new">eWeek Magazine Subscriptions</a><br/></div>
+
+<div class="footerbox"><strong>Enterprise Websites:</strong><br/>
+<a href="http://www.ziffdavisenterprise.com" target="_new">ZDE Home</a><br/>
+<a href="http://www.baselinemag.com" target="_new">Baseline</a><br/>
+<a href="http://www.channelinsider.com/" target="_new">Channel Insider</a><br/>
+<a href="http://www.cioinsight.com/" target="_new">CIO Insight</a><br/>
+<a href="http://www.eseminarslive.com/" target="_new">eSeminars</a><br/>
+<a href="http://www.midmarket.eweek.com/" target="_new">eWeek Mid-Market</a><br/>
+<a href="http://www.publish.com/" target="_new">Publish Online</a><br/>
+<a href="http://www.webbuyersguide.com/" target="_new">Web Buyers Guide</a><br/></div>
+
+<div class="footerbox"><strong>Developer Websites:</strong><br/>
+<a href="http://www.devshed.com" target="_new">Dev Shed</a><br/>
+<a href="http://www.developershed.com/" target="_new">DeveloperShed</a><br/>
+<a href="http://www.aspfree.com/" target="_new">ASP Free</a><br/>
+<a href="http://www.devsource.com/" target="_new">MS DevSource</a><br/>
+<a href="http://www.seochat.com/" target="_new">SEO Chat</a><br/>
+<a href="http://www.codewalkers.com/" target="_new">Codewalkers</a><br/>
+<a href="http://www.tutorialized.com/" target="_new">Tutorialized</a><br/>
+<a href="http://www.scripts.com/" target="_new">Scripts.com</a><br/>
+<a href="http://www.devmechanic.com/" target="_new">Dev Mechanic</a><br/>
+<a href="http://www.devarticles.com/" target="_new">Dev Articles</a><br/>
+<a href="http://www.webhosters.com/" target="_new">Web Hosters</a><br/>
+<a href="http://www.devhardware.com/" target="_new">Dev Hardware</a><br/></div>
+
+<div class="footerbox"><strong>Technology Websites:</strong><br/>
+<a href="http://www.deviceforge.com" target="_new">Device Forge</a><br/>
+<a href="http://www.desktoplinux.com/" target="_new">Desktop Linux</a><br/>
+<a href="http://www.linuxdevices.com/" target="_new">Linux Devices</a><br/>
+<a href="http://www.windowsfordevices.com/" target="_new">Windows for Devices</a><br/>
+<a href="http://www.igrep.com/" target="_new">iGrep Search Engine</a><br/>
+<a href="http://www.pdfzone.com/" target="_new">PDF Zone</a><br/>
+<a href="http://www.linux-watch.com/" target="_new">Linux Watch</a><br/></div>
+</p></td>
+
+
+ </tr>
+<tr align="left" valign="top" bgcolor="#ffffff">
+	<td><img src="/images/spacer.gif" width="108" align="left" height="15"></td>
+	<td><p class="Footer_Text" style="margin-top:5">Use of this site is governed by our <a rel="nofollow" href="http://www.ziffdavisenterprise.com/TermsofService.htm">Terms of Use</a> and <a rel="nofollow" href="http://www.ziffdavisenterprise.com/PrivacyPolicy.htm">Privacy Policy</a><br/>Copyright &copy;1996-2009 <a href="http://www.ziffdavisenterprise.com" title="Ziff Davis Enterprise Holdings Inc." class="Footer_ZD">Ziff Davis Enterprise Holdings Inc.</a> All Rights Reserved. eWEEK and Spencer F. Katt are trademarks of Ziff Davis Enterprise Holdings, Inc. Reproduction in whole or in part in any form or medium without express written permission of Ziff Davis Enterprise Inc. is prohibited.<br/>eWeek is your best source for the latest <a href="/">Technology News</a>.<br/>
+ZDE Cluster 4 hosted by <span class="botoverlink" onClick="window.location='http://www.hostway.com'"><font color=blue>Hostway</font></span>.&nbsp;</span></p><p/></td>
+</tr>
+
+</table>
+<!-- end footer -->
+
+
+</center>
+
+</div>
+
+<!-- survey thing -->
+
+
+
+
+<!-- start Vibrant Media IntelliTxt script section -->
+<STYLE type="text/css">
+.iTt{
+    FONT-FAMILY:       Verdana, Arial, Helvetica;
+    FONT-SIZE:         11px;
+    FONT-STYLE:        normal;
+    FONT-WEIGHT:       normal;
+    COLOR:             black;
+    BACKGROUND-COLOR:  lightyellow;
+    BORDER:            black 1px solid;
+    PADDING:           2px;
+}
+</STYLE>
+<script type="text/javascript" src="http://eweek.us.intellitxt.com/intellitxt/front.asp?ipid=12627"></script> 
+<!-- end Vibrant Media IntelliTxt script section -->
+
+</body>
+</html>
+
+
+
+<!-- Generated in 4.678937 sec. --> 
+
+
+
+

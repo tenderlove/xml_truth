@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
+
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name='author' content="Bruce Williams (http://codefluency.com), for
+Ruby Central (http://rubycentral.org)">
+	<title>RubyForge: One-Click Ruby Installer: Project Filelist</title>
+  <link rel="alternate" type="application/rss+xml" title="Recent gems" href="http://gems.rubyforge.org/index.rss" />
+<link rel="alternate" type="text/xml" title="RSS" href="http://rubyforge.org/export/rss_sfnews.php"/>
+        <link rel="Shortcut Icon" href="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/favicon.ico"/>
+	<script language="JavaScript" type="text/javascript">
+	<!--
+	function help_window(helpurl) {
+		HelpWin = window.open( 'http://rubyforge.org' + helpurl,'HelpWindow','scrollbars=yes,resizable=yes,toolbar=no,height=400,width=400');
+	}
+	// -->
+	</script>
+
+<style type="text/css">
+	<!--
+
+        body {
+          margin: 0px;
+          background: #fff;
+        }
+
+	OL,UL,P,BODY,TR,TD,TH,FORM {
+		font-family: Lucida Grande,verdana,arial,helvetica,sans-serif;
+		font-size:13px;
+		color: #202020;
+	}
+
+	HR { margin: 2px 0px 2px 0px }
+
+
+	H1 { font-size: x-large; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+	H2 { font-size: large; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+	H3 { font-size: medium; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+	H4 { font-size: small; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+	H5 { font-size: x-small; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+	H6 { font-size: xx-small; font-family: Lucida Grande,verdana,arial,helvetica,sans-serif; }
+
+	PRE,TT { font-family: 'Bitstream Vera Sans Mono',courier,sans-serif }
+  a {
+    color: #cc3333;
+    text-decoration: none;
+  }
+  a img {
+    border: 0px;
+  }
+  table em {
+    font-style: normal;
+    font-weight: bold;
+    color: #666;
+    margin-left: 0px;
+  }
+  hr { /* unfortunately hrs are hardcoded */
+    height: 2px;
+    color: #e6e6e6;
+    background: #e6e6e6;
+    border: 0px;
+  }
+  td hr {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+        #header {
+          height: 79px;
+          background: #fff url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/header-bg.png) bottom left repeat-x;
+          margin: 0px;
+        }
+        #header-right {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          width: 40%;
+        }
+        #search {
+          margin: 10px;
+        }
+        #controls {
+          padding: 0px;
+          height: 20px;
+          line-height: 20px;
+          vertical-align: middle;
+          background: url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/controls-bg.png) top left repeat-x;
+        }
+        #controls img {
+          float: left;
+          margin-right: 1em;
+        }
+        #controls a {
+          padding: 0px;
+          margin: 0px;
+          color: #fff;
+          text-decoration: none;
+          margin-right: 1em;
+        }
+        #controls a:hover {
+          color: #ffffcc;
+        }
+        #content {
+          padding-left: 2em;
+          padding-right: 2em;
+        }
+        .tabs {
+          clear: both;
+          margin: 0px;
+          height: 26px;
+          padding: 0px;
+        }
+        #outer-tabs {
+          background: #fff url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/tabs-bg.png) top left repeat-x;
+        }
+        #inner-tabs {
+          background: #fff url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/inner-tabs-bg.png) top left repeat-x;
+        }
+        .tabs li {
+          padding: 4px;
+          padding-left: 10px;
+          padding-right: 10px;
+          float: left;
+          display: block;
+          margin-left: 0.5em;
+        }
+        .tabs li a {
+          color: #444;
+          text-decoration: none;
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .tabs li a:hover {
+          color: red; }
+        #outer-tabs li.active {
+          background: url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/active-tab-bg.png) top left repeat-x;
+        }
+        #inner-tabs li a {
+          font-size: 13px; }
+        #inner-tabs li.active {
+          background: url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/active-inner-tab-bg.png) top left repeat-x;
+        }
+        .tabs li.active a {
+          color: #000;
+        }
+        #fade { 
+          background: url(http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/bottom-fade-bg.png) bottom left repeat-x;
+          height: 13px;
+        }
+
+        .titlebar {
+          background: #FFFFCC;
+          padding: 4px;
+          font-size: 14px;
+          font-weight: bold;
+          border-bottom: 1px #fab444 solid; }
+        .files-header td {
+          background: #ffffcc;
+          border: 1px #fab444 solid;
+        }
+        .files-header td * {
+          background: none;
+          border: 0px; }
+        .files-header + tr td {
+          background: #ddd;
+        }
+        .files-header + tr td * {
+          background: none;
+          border: 0px;
+          color: #666;
+        }
+        .package td {
+          background: #ffffcc;
+        }
+	-->
+  </style>
+</head>
+<body>
+
+<div id='header'><div id='header-right'>
+    <div id='controls'><img alt='' src='http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/controls-left.png'/>
+      				<a href="/account/login.php">Log In</a>
+				<a href="/projects/support/">Support</a>
+				<a href="/account/register.php">New Account</a>
+          </div>
+    <div id='search'>
+		<form action="/search/" method="get">
+		<table border="0" cellpadding="0" cellspacing="0">
+		<tr><td>
+		<div align="center" style="font-size:smaller"><select name="type_of_search"><option value="trackers">This project's trackers</option>
+<option value="forums">This project's forums</option>
+<option value="tasks">This project's tasks</option>
+<option value="frs">This project's releases</option>
+<option value="docs">This project's documents</option>
+<option value="news">This project's news</option>
+<option value="soft">Software/Group</option>
+<option value="people">People</option>
+<option value="skill">Skill</option>
+</select></div></td><td>&nbsp;<input type="hidden" value="167" name="group_id" /></td><td><input type="text" size="12" name="words" value="" /></td><td>&nbsp;</td><td><input type="submit" name="Search" value="Search" /></td>
+					<td width="10">&nbsp;</td>
+					<td><b><a style="color: #FFFFFF" href="/search/advanced_search.php?group_id=167"> Advanced search</a></b></td></tr></table></form></div>
+  </div>
+  <a href='/' title='Back to Homepage'><img alt='RubyForge' src='http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/header.png'/></a>
+  <a href='http://en.oreilly.com/rails2009/'><img alt='RailsConf 2009' src='/images/rails2009_small.jpg'/></a>
+  <a href='http://goruco.com/'><img alt='GoRuCo 2009' src='/images/goruco-small-2-1.png'/></a>
+</div>
+<ul id="outer-tabs"
+class="tabs"><li><a href='/'>Home</a></li><li><a href='/my/'>My&nbsp;Page</a></li><li><a href='/softwaremap/'>Project&nbsp;Tree</a></li><li><a href='/snippet/'>Code&nbsp;Snippets</a></li><li><a href='/people/'>Project&nbsp;Openings</a></li><li class='active'><a href='/projects/rubyinstaller/'>One-Click&nbsp;Ruby&nbsp;Installer</a></li></ul><ul id="inner-tabs"
+class="tabs"><li><a href='/projects/rubyinstaller/'>Summary</a></li><li><a href='/tracker/?group_id=167'>Tracker</a></li><li><a href='/mail/?group_id=167'>Lists</a></li><li><a href='/news/?group_id=167'>News</a></li><li><a href='/scm/?group_id=167'>SCM</a></li><li class='active'><a href='/frs/?group_id=167'>Files</a></li><li><a href='/plugins/usemodwiki/include/?group_id=167'>Wiki</a></li></ul><div id='fade'></div>
+
+<div id='content'>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+
+			<tr>
+				<td><img
+					src="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/clear.png" width="10" height="1" alt="" /></td>
+				<td valign="top" width="99%">
+	
+			<p><strong>
+				<a href=/frs/?group_id=167>Files</a> | 
+				<a href=/frs/admin/?group_id=167>Admin</a></strong></p><p>Below is a list of all files of the project. Before downloading, you may want to read Release Notes and ChangeLog (accessible by clicking on release version).
+</p>
+
+<table width="100%" border="0" cellspacing="1" cellpadding="1">
+		<!-- multiTableRow -->
+		<tr class="files-header" align="center" ><td rowspan="2" ><span class="titlebar">Package</span></td><td rowspan="2" ><span class="titlebar">Release &amp; Notes</span></td><td rowspan="2" ><span class="titlebar">Filename</span></td><td colspan="4" ><span class="titlebar">Date</span></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr  align="center" ><td ><span class="titlebar">Size</span></td><td ><span class="titlebar">D/L</span></td><td ><span class="titlebar">Arch</span></td><td ><span class="titlebar">Type</span></td></tr>
+		<!-- end multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3"><h3>One-Click Installer - Windows
+	<a href="/frs/monitor.php?filemodule_id=178&group_id=167&start=1"><img src="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/ic/mail16w.png" alt="Monitor this package" border="0" width="20" height="20" /></a></h3></td><td colspan="4">&nbsp;</td></tr>
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=28426">1.8.6-27 Release Candidate 2</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2008-11-19 18:02</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/47082/ruby186-27_rc2.exe">ruby186-27_rc2.exe</a></td><td align="right" >24.42 MB</td><td align="right" >99,024</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/47083/ruby186-27_rc2.md5">ruby186-27_rc2.md5</a></td><td align="right" >54 bytes</td><td align="right" >6,890</td><td >Universal</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=26150">1.8.6-27 Release Candidate 1</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2008-09-14 13:52</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/43428/ruby186-27_rc1.exe">ruby186-27_rc1.exe</a></td><td align="right" >24.39 MB</td><td align="right" >45,666</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/43429/ruby186-27_rc1.md5">ruby186-27_rc1.md5</a></td><td align="right" >54 bytes</td><td align="right" >3,827</td><td >Universal</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=17128">1.8.6-26 Final Release</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-12-14 23:13</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/29263/ruby186-26.exe">ruby186-26.exe</a></td><td align="right" >23.72 MB</td><td align="right" >804,829</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/29264/ruby186-26.md5">ruby186-26.md5</a></td><td align="right" >34 bytes</td><td align="right" >24,736</td><td >Other</td><td >Other Source File</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=15923">1.8.6-26 Release Candidate 2</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-10-29 23:15</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/27227/ruby186-26_rc2.exe">ruby186-26_rc2.exe</a></td><td align="right" >23.41 MB</td><td align="right" >93,508</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/27228/ruby186-26_rc2.md5">ruby186-26_rc2.md5</a></td><td align="right" >34 bytes</td><td align="right" >4,231</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=15495">1.8.6-26 Release Candidate 1</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-10-16 16:01</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/26691/ruby186-26_rc1.exe">ruby186-26_rc1.exe</a></td><td align="right" >23.39 MB</td><td align="right" >14,261</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/26690/ruby186-26_rc1.md5">ruby186-26_rc1.md5</a></td><td align="right" >32 bytes</td><td align="right" >1,991</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=10461">1.8.6-25</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-03-18 01:17</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/18566/ruby186-25.exe">ruby186-25.exe</a></td><td align="right" >22.86 MB</td><td align="right" >576,231</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/18565/ruby186-25.md5">ruby186-25.md5</a></td><td align="right" >154 bytes</td><td align="right" >18,440</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9803">1.8.5-24</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-02-18 16:55</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17647/ruby185-24.exe">ruby185-24.exe</a></td><td align="right" >22.75 MB</td><td align="right" >57,973</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17648/ruby185-24.md5">ruby185-24.md5</a></td><td align="right" >153 bytes</td><td align="right" >4,564</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9780">1.8.5-23</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-02-18 03:30</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17624/ruby185-23.exe">ruby185-23.exe</a></td><td align="right" >22.67 MB</td><td align="right" >3,312</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17625/ruby185-23.md5">ruby185-23.md5</a></td><td align="right" >153 bytes</td><td align="right" >1,308</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9601">1.8.5-22 Final</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-02-10 02:42</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17357/ruby185-22.exe">ruby185-22.exe</a></td><td align="right" >22.65 MB</td><td align="right" >24,564</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17358/ruby185-22.md5">ruby185-22.md5</a></td><td align="right" >153 bytes</td><td align="right" >2,418</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9509">1.8.5-22 Release Candidate 3</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-02-05 14:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17200/ruby185-22_rc3.exe">ruby185-22_rc3.exe</a></td><td align="right" >22.65 MB</td><td align="right" >6,552</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/17203/ruby185-22_rc3.md5">ruby185-22_rc3.md5</a></td><td align="right" >157 bytes</td><td align="right" >1,470</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9267">1.8.5-22 Release Candidate 2</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-01-27 01:04</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/16862/ruby185-22_rc2.exe">ruby185-22_rc2.exe</a></td><td align="right" >22.6 MB</td><td align="right" >8,354</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/16863/ruby185-22_rc2.md5">ruby185-22_rc2.md5</a></td><td align="right" >158 bytes</td><td align="right" >1,662</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=9220">185-22 Release Candidate 1</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2007-01-24 11:21</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/16770/ruby185-22_rc1.exe">ruby185-22_rc1.exe</a></td><td align="right" >24.43 MB</td><td align="right" >4,126</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/16771/ruby185-22_rc1.md5">ruby185-22_rc1.md5</a></td><td align="right" >157 bytes</td><td align="right" >1,300</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=6672">1.8.5-21</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-08-29 08:39</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/12751/ruby185-21.exe">ruby185-21.exe</a></td><td align="right" >26.36 MB</td><td align="right" >327,543</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/12750/ruby185-21.md5">ruby185-21.md5</a></td><td align="right" >153 bytes</td><td align="right" >9,918</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=6163">1.8.4-20 stable</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-07-24 00:26</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11926/ruby184-20.exe">ruby184-20.exe</a></td><td align="right" >27.28 MB</td><td align="right" >109,653</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11925/ruby184-20.md5">ruby184-20.md5</a></td><td align="right" >154 bytes</td><td align="right" >6,966</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=5922">1.8.4-19 Final</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-07-08 04:59</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11488/ruby184-19.exe">ruby184-19.exe</a></td><td align="right" >24.41 MB</td><td align="right" >32,050</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11487/ruby184-19.md5">ruby184-19.md5</a></td><td align="right" >152 bytes</td><td align="right" >3,586</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=5869"> 1.8.4-18 release candidate 3</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-07-03 03:03</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11394/ruby184-18_rc3.exe">ruby184-18_rc3.exe</a></td><td align="right" >24.41 MB</td><td align="right" >5,801</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/11393/ruby184-18_rc3.md5">ruby184-18_rc3.md5</a></td><td align="right" >156 bytes</td><td align="right" >1,769</td><td >Any</td><td >Other</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=5246"> 1.8.4-17 release candidate 2</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-05-03 01:23</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/10286/ruby184-17_rc2.exe">ruby184-17_rc2.exe</a></td><td align="right" >21.47 MB</td><td align="right" >37,612</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=4729"> 1.8.4-16 release candidate 1</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-03-28 15:39</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/9417/ruby184-16_rc1.exe">ruby184-16_rc1.exe</a></td><td align="right" >21.45 MB</td><td align="right" >146,717</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=4153">1.8.4-16 preview3</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-02-01 19:50</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/8338/ruby184-16p3.exe">ruby184-16p3.exe</a></td><td align="right" >21.18 MB</td><td align="right" >24,288</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=4133">1.8.4-16 preview2</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-01-30 17:49</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/8300/ruby184-16p2.exe">ruby184-16p2.exe</a></td><td align="right" >21.13 MB</td><td align="right" >112,808</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=4129">1.8.4-16 preview1</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2006-01-30 01:48</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/8295/ruby184-16p1.exe">ruby184-16p1.exe</a></td><td align="right" >21.09 MB</td><td align="right" >2,427</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=2049">1.8.2-15 Stable Release</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2005-04-20 06:42</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/4174/ruby182-15.exe">ruby182-15.exe</a></td><td align="right" >14.78 MB</td><td align="right" >385,618</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=1346">1.8.2-14 Final</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2005-01-01 04:19</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/2407/ruby182-14.exe">ruby182-14.exe</a></td><td align="right" >12.5 MB</td><td align="right" >79,924</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=1324"> 1.8.2-14_rc11</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-12-26 23:43</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/2354/ruby182-14RC11.exe">ruby182-14RC11.exe</a></td><td align="right" >12.5 MB</td><td align="right" >3,446</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=1168">1.8.2-14_rc10</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-11-28 04:33</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/2037/ruby182-14RC10.exe">ruby182-14RC10.exe</a></td><td align="right" >11.37 MB</td><td align="right" >5,274</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=684">1.8.2-14_rc7</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-07-30 15:31</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/1105/ruby182-14_rc7a.exe">ruby182-14_rc7a.exe</a></td><td align="right" >10.55 MB</td><td align="right" >4,281</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=434">1.8.1-13</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-04-26 01:43</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/626/ruby181-13.exe">ruby181-13.exe</a></td><td align="right" >9.42 MB</td><td align="right" >15,231</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=414">1.8.1-12</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-04-18 01:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/535/ruby181-12.exe">ruby181-12.exe</a></td><td align="right" >9.05 MB</td><td align="right" >3,136</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=413">1.8.1-11</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2004-01-30 01:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/534/ruby181-11.exe">ruby181-11.exe</a></td><td align="right" >9.25 MB</td><td align="right" >2,010</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=412">1.8.0-10</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2003-08-12 01:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/533/ruby180-10.exe">ruby180-10.exe</a></td><td align="right" >8.69 MB</td><td align="right" >2,687</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=411">1.6.8-8</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2003-01-08 01:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/532/ruby168-8.exe">ruby168-8.exe</a></td><td align="right" >7.78 MB</td><td align="right" >3,253</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan="3" >&nbsp;<strong>
+				<a href="shownotes.php?release_id=410">1.7.3-8</a></strong></td><td colspan="4" align="middle" >&nbsp;<strong>
+				2002-11-25 01:00</strong></td></tr>
+		<!-- end multiTableRow -->
+		
+		<!-- multiTableRow -->
+		<tr bgcolor="#FFFFFF"><td colspan=3 ><dd>
+						<a href="/frs/download.php/531/ruby173-8.exe">ruby173-8.exe</a></td><td align="right" >7.8 MB</td><td align="right" >4,217</td><td >i386</td><td >.exe (Windows executable)</td></tr>
+		<!-- end multiTableRow -->
+		<tr><td colspan="8">&nbsp;</tr>
+<tr><td><strong>Project totals</strong></td><td align="right"><strong><em>32</em></strong></td><td align="right"><strong><em>48</em></strong></td><td align="right"><strong><em>602.41 MB</em></strong></td><td align="right"><strong><em>3141452</em></strong></td><td colspan="3">&nbsp;</td></tr>
+</table>
+
+
+			&nbsp;<p>
+			<!-- end main body row -->
+
+
+				</td>
+				<td width="10"><img
+					src="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/clear.png" width="2" height="1" alt="" /></td>
+			</tr>
+			<tr>
+				<td><img
+					src="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/clear.png" width="1" height="1" alt="" /></td>
+			</tr>
+			</table>
+
+		<!-- end inner body row -->
+
+		</td>
+		<td width="10"><img src="http://static.rubyforge.vm.bytemark.co.uk/themes/rubyforge/images/clear.png" width="2" height="1" alt="" /></td>
+	</tr>
+	<tr>
+		<!-- some extra space to make it look nicer -->
+		<td height="100">&nbsp;</td>
+    
+	</tr>
+</table>
+
+    </div>
+  </body>
+</html>

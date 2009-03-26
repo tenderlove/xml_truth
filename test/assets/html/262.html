@@ -1,0 +1,633 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <title>IntelliJ IDEA :: Ruby on Rails IDE for quick reach web application development</title>
+    <meta name="robots" content="all"/>
+    <meta name="copyright" content="JetBrains, Inc., http://www.jetbrains.com"/>
+
+     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    
+          <meta class="local" name="description" content="Ruby on Rails IDE for quick reach web application development"/>     
+        <link rel="Shortcut Icon" href="/idea/favicon.ico" type="image/x-icon"/>
+            
+         <script type="text/javascript" src="../../js2/feature.js"></script>      <script type="text/javascript" src="../../js2/prototype.js"></script>      <script type="text/javascript" src="../../js2/behaviour.js"></script>      <script type="text/javascript" src="../../js2/tree.js"></script>      
+    <link rel="stylesheet" type="text/css" media="screen" href="styleset1.css"/>
+        <link rel="stylesheet" type="text/css" media="handheld" href="/styles2/mobile.css"/>
+    <link rel="alternate stylesheet" type="text/css" media="screen"
+          href="/styles2/alternate_styles/alternate_style.css" title="textmode"/>
+                <script type="text/javascript" src="../../js2/tocNew.js"></script>                     <script type="text/javascript" src="../../js2/pr.js" language="JavaScript"></script>                 <script defer="defer" type="text/javascript" src="http://www.google-analytics.com/ga.js"></script>
+    <noscript>
+        <link rel="stylesheet" type="text/css" media="screen" href="/styles2/noscript.css"/>
+    </noscript>
+    </head>
+<body id="products" class="idea features"  onload="createTOC();" >
+<div id="container">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--start_noindex-->
+<div id="header">
+<div id="jb_nav">
+    <a href="/index.html" class="jb_logo"><img src="/img/logo_bw.gif" alt="JetBrains home"/></a>
+    <ul>
+        <li class="home"><a href="/index.html">Home</a></li>
+
+        <li class="products"><a href="/products.html">Products</a></li>
+
+        <li class="download"><a href="/downloads.html">Downloads</a></li>
+
+        <li class="support"><a href="/support/index.html">Support</a></li>
+
+        <li class="devnet"><a href="/devnet/index.html">Community</a></li>
+
+        <li class="company"><a href="/company/index.html">Company</a></li>
+
+        <li class="partners"><a href="/partners/index.html">Partners</a></li>
+
+        <li class="yourcart"><a href="/eshop/shopping/displayCartDetails.do">Cart</a></li>
+        <li class="search">
+            <form method="get" action="/scripts/search" name="formSearch" onsubmit="return checkWords(this);">
+                <input type="hidden" name="restrict" id="restrict" value="">
+                <input type="hidden" name="exclude" id="exclude" value="/idea/docs/|/idea/openapi/|/resharper/documentation/">
+                <input type="hidden"  name="method" value="and">
+                <input type="hidden"  name="sort" value="score">
+                <input type="text" name="words" class="words" value="SEARCH" onKeyUp="DokeyupOn(document.forms['formSearch'])" onblur="blurOn(document.forms['formSearch'])" onfocus="focusOn(document.forms['formSearch'])"/>
+                <input type="image" class="image" src="/img/newdesign/search.gif" value="Search" alt="Search" title="Search" />
+            </form>
+        </li>
+     </ul>
+</div>
+
+<div id="page_header">
+    <!--<div id="language">English / <a class="japan" href="../statistics.stat?japan" target="statistics" onclick="location.href='http://www.xlsoft.com/jp/products/JetBrains/idea/index.html'">&nbsp;</a></div>-->
+    <!--<div id="language">English / <a class="japan" href="http://www.xlsoft.com/jp/products/JetBrains/idea/index.html">&nbsp;</a></div>-->
+    <h1>IntelliJ&reg; IDEA <span>7.0</span></h1>
+
+   <div class="navIE7bugfix"> <ul class="nav">
+
+        <li><a href="/idea/index.html">Overview</a></li>
+
+        <li class="current"><a href="/idea/features/index.html">Features & Screenshots</a></li>
+
+        <li><a href="/idea/download/index.html">Download</a></li>
+
+        <li><a href="/idea/plugins/index.html">Plugins</a></li>
+
+        <li><a href="/idea/documentation/index.html">Documentation</a></li>
+
+        <li><a href="/idea/training/index.html">Demos &amp Tutorials</a></li>
+
+        <li><a href="/idea/buy/index.jsp">Licensing &amp; Upgrade</a></li>
+
+    </ul></div>
+</div>
+
+</div>
+
+
+<div id="bc"><a href="/">Home</a><img src="/img/bc.gif" alt=">"/>
+
+<a href="/products.html">Products</a><img src="/img/bc.gif" alt=">"/>
+
+
+    <a href="/idea/index.html">IntelliJ IDEA</a><img src="/img/bc.gif" alt=">"/>
+    <a href="/idea/features/index.html">Features & Screenshots</a><img src="/img/bc.gif" alt=">"/>
+    <span>Ruby/ JRuby & Rails
+    </span>
+    
+</div>
+
+
+
+<!--end_noindex-->
+<iframe style="display:none;" name="statistics" frameborder="0" width="1" height="1"></iframe>
+
+
+
+     
+    <div id="subcontent">
+                            
+
+
+
+
+
+
+
+
+
+
+<div class="featureTree" id="featureTree">
+    <ul class='tree'>
+<li class='closed'>
+<span>Advanced Code Editing</span><ul>
+<li> <a href='code_assistance.html' title='Intelligent Coding Assistance''>Intelligent Coding Assistance</a> </li>
+<li> <a href='code_generation.html' title='Code Generation''>Code Generation</a> </li>
+<li> <a href='code_style.html' title='Code Style''>Code Style</a> </li>
+<li> <a href='javadoc.html' title='Code Documentation''>Code Documentation</a> </li>
+<li> <a href='search_replace.html' title='Navigation & Search''>Navigation & Search</a> </li>
+<li> <a href='code_analysis.html' title='On-the-fly Code Analysis''>On-the-fly Code Analysis</a> </li>
+<li> <a href='properties_file_editor.html' title='Properties file editor''>Properties file editor</a> </li>
+<li> <a href='i18n_support.html' title='Internationalization''>Internationalization</a> </li>
+<li> <a href='gui_builder.html' title='Swing GUI Designer''>Swing GUI Designer</a> </li>
+<li> <a href='uml_class_diagram.html' title='UML Class Diagram''>UML Class Diagram</a> </li>
+</ul>
+</li>
+<li class='closed'>
+<span>Code Quality Features</span><ul>
+<li> <a href='refactoring.html' title='Multi-language Refactorings''>Multi-language Refactorings</a> </li>
+<li> <a href='code_inspection.html' title='Code Inspections & Fixes''>Code Inspections & Fixes</a> </li>
+<li> <a href='annotation_java.html' title='Contract Annotations''>Contract Annotations</a> </li>
+<li> <a href='code_duplicate.html' title='Code Duplicates Detection''>Code Duplicates Detection</a> </li>
+<li> <a href='dependency_analysis.html' title='Dependency Analysis''>Dependency Analysis</a> </li>
+</ul>
+</li>
+<li class='open'>
+<span class='active_node'>Supported Languages</span><ul>
+<li> <a href='code_editor.html' title='Java''>Java</a> </li>
+<li> <a href='javascript_editor.html' title='JavaScript/ Flex''>JavaScript/ Flex</a> </li>
+<li> <a href='html_css_editor.html' title='HTML/ XHTML/ CSS''>HTML/ XHTML/ CSS</a> </li>
+<li> <a href='xml_editor.html' title='XML/ XSL''>XML/ XSL</a> </li>
+<li> <a href='ruby_rails.html' title='Ruby/ JRuby''><strong>Ruby/ JRuby</strong></a> </li>
+<li> <a href='groovy_grails.html' title='Groovy''>Groovy</a> </li>
+<li> <a href='sql.html' title='SQL''>SQL</a> </li>
+<li> <a href='freemarker_velocity.html' title='FreeMarker/Velocity''>FreeMarker/Velocity</a> </li>
+</ul>
+</li>
+<li class='open'>
+<span class='active_node'>Technologies & Frameworks</span><ul>
+<li> <a href='jsp_editor.html' title='JSP''>JSP</a> </li>
+<li> <a href='javaserver_faces.html' title='JSF''>JSF</a> </li>
+<li> <a href='java_ejb.html' title='EJB''>EJB</a> </li>
+<li> <a href='ajax.html' title='Ajax''>Ajax</a> </li>
+<li> <a href='gwt.html' title='GWT''>GWT</a> </li>
+<li> <a href='jakarta_struts.html' title='Struts''>Struts</a> </li>
+<li> <a href='struts2.html' title='Struts2''>Struts2</a> </li>
+<li> <a href='jboss_seam.html' title='JBoss Seam''>JBoss Seam</a> </li>
+<li> <a href='spring_framework.html' title='Spring''>Spring</a> </li>
+<li> <a href='java_hibernate.html' title='Hibernate/ JPA''>Hibernate/ JPA</a> </li>
+<li> <a href='java_web_services.html' title='Web Services''>Web Services</a> </li>
+<li> <a href='ruby_rails.html' title='Rails''><strong>Rails</strong></a> </li>
+<li> <a href='groovy_grails.html' title='Grails''>Grails</a> </li>
+<li> <a href='j2me.html' title='Java ME: DoJa/MIDP/CLDC''>Java ME: DoJa/MIDP/CLDC</a> </li>
+</ul>
+</li>
+<li class='closed'>
+<span>Integrated Environment</span><ul>
+<li> <a href='version_control.html' title='Version Control Integrations''>Version Control Integrations</a> </li>
+<li> <a href='local_history.html' title='Local History & Diff Tool''>Local History & Diff Tool</a> </li>
+<li> <a href='compiler.html' title='Compiling/Running/Debugging''>Compiling/Running/Debugging</a> </li>
+<li> <a href='ant_maven.html' title='Ant/ Maven''>Ant/ Maven</a> </li>
+<li> <a href='junit_testng.html' title='JUnit/ TestNG''>JUnit/ TestNG</a> </li>
+<li> <a href='code_coverage.html' title='Integrated Code Coverage''>Integrated Code Coverage</a> </li>
+<li> <a href='application_server.html' title='Application Servers''>Application Servers</a> </li>
+</ul>
+</li>
+<li class='closed'>
+<span>Teamwork Facilitation</span><ul>
+<li> <a href='teamcity_integration.html' title='TeamCity Integration''>TeamCity Integration</a> </li>
+<li> <a href='ide_talk.html' title='IDE Talk''>IDE Talk</a> </li>
+<li> <a href='eclipse_java.html' title='Eclipse Interoperability''>Eclipse Interoperability</a> </li>
+<li> <a href='shared_settings.html' title='Team-Shared Settings''>Team-Shared Settings</a> </li>
+</ul>
+</li>
+<li class='closed'>
+<span>Customization & Extensibility</span><ul>
+<li> <a href='project_configuration.html' title='Project Configuration''>Project Configuration</a> </li>
+<li> <a href='ide_customization.html' title='IDE Customization''>IDE Customization</a> </li>
+<li> <a href='open_api_plugin_manager.html' title='Open API & Plugins''>Open API & Plugins</a> </li>
+<li> <a href='settings_sync.html' title='Settings Synchronization''>Settings Synchronization</a> </li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+
+                            
+    <jsp:include page="../../inc/features.jsp" flush="true"/>
+
+                
+                 <ul class="buttons">
+                                    <li class="download"><a href="/idea/download/index.html?top"
+                                    title="Try IntelliJ IDEA for 30 days">download</a></li>
+            <li class="buy"><a href="/idea/buy/index.jsp?top" title="Buy IntelliJ IDEA">buy</a></li>
+                                </ul>
+                            </div>
+        <div id="content_enclosure">
+        <div id="content">
+             
+<h2>Ruby, JRuby and Rails</h2>
+
+<div class="leftfloated importance information block50">
+    <p class="bigtext">You can get Ruby plug-in from <a href="http://plugins.intellij.net/plugin/?id=1293">Plugins
+        Repository</a>
+        or via IntelliJ IDEA Plug-in Manager.
+    </p>
+</div>
+<div class="leftfloated importance information rubyIDE block25 ">
+    <p class="bigtext">
+        <a class="blue" href="../../ruby">JetBrains RubyMine &raquo;</a><br/> Dedicated Ruby on Rails IDE
+    </p>
+</div>
+<div class="clearedL block25 leftfloated"><strong>Ruby:&nbsp;&nbsp;</strong>
+    <ul class="starlist">
+        <li><a href="#rubySyntax">Syntax highlighting</a></li>
+        <li><a href="#rubyNav">Navigation</a></li>
+        <li><a href="#rubyCompletion">Code completion</a></li>
+        <li><a href="#rubyAnalysis">Refactorings and code analysis</a></li>
+    </ul>
+</div>
+<div class="block25 leftfloated"><strong>JRuby:</strong>
+    <ul class="starlist">
+        <li><a href="#jrubyCompletion">Code completion</a></li>
+        <li><a href="#jrubyAnalysis">Refactorings and code analysis</a></li>
+    </ul>
+</div>
+<div class="block20 leftfloated"><strong>Rails:&nbsp;&nbsp;</strong>
+    <ul class="starlist">
+        <li><a href="#railsLang">Languages</a></li>
+        <li><a href="#railsNav">Navigation</a></li>
+        <li><a href="#railsCompletion">Code completion</a></li>
+        <li><a href="#railsGeneration">Code generation</a></li>
+    </ul>
+</div>
+<div class="block20 leftfloated">
+    <strong>Common:</strong>
+    <ul class="starlist">
+        <li><a href="#tests">Testing Support</a></li>
+        <li><a href="#misc">Miscellaneous</a></li>
+    </ul>
+</div>
+<br class="clearedL"/>
+<hr/>
+<p>IntelliJ IDEA supports Ruby, <a class="external" href="http://jruby.codehaus.org/" target="_blank">JRuby</a> and <a
+        class="external" href="http://www.ruby-lang.org/en/" target="_blank">Ruby</a> on <a class="external"
+                                                                                            href="http://www.rubyonrails.org/"
+                                                                                            target="_blank">Rails</a>,
+    the open source Ruby framework, for productive Ruby on Rails application development.
+</p>
+<p>IntelliJ IDEA is the smart Ruby and Ruby on Rails application development environment, with intelligent Ruby code
+    editor, which provides the complete Ruby coding assistance, with smart Ruby code completion, Ruby syntax
+    highlighting and other productivity-aimed features: on-the-fly code inspections, error highlighting, quick-fixes,
+    refactorings, and intention actions. Plus, the built-in unit testing, JRuby support, RDoc lookup and live templates,
+    and more.</p>
+<p>
+    <a class="live_demo" href="../training/demos/ruby.html"><em>Live Demo</em>: Productive Ruby Development with IntelliJ IDEA</a>
+    <a class="live_demo" href="../training/demos/rails.html"><em>Live Demo</em>: IntelliJ IDEA on Rails</a>
+</p>
+<h3 class="underline" id="rubySyntax">Ruby and JRuby Support</h3>
+
+<p>IntelliJ IDEA supports JRuby for running Ruby applications, with cross-resolution of classes between Ruby and
+    Java.</p>
+
+<div class="feature">
+    <h4 class="new">Ruby debugger, capable of debugging Ruby and Rails applications and Rake tasks</h4>
+    <ul class="starlist">
+        <li>Works with Matz Ruby and JRuby interpreters</li>
+        <li>Supports breakpoints both in Ruby files and in view templates</li>
+        <li>Call stack, local and global variables, watches and threads view
+            <a href="javascript://" class="noborder" onclick="openBrWindow('../features/screenshots/80/ruby/rails_debugger.html','StrutsReadyRefactorings','menubar=no,scrollbars=no,resizable=yes, width=726,height=284');return BOPlaceMark();">
+                <img src="../features/screenshots/80/ruby/rails_debugger_small.png" alt="Rails Debugger"/> <br/><span
+                    class="smalltext">Click to enlarge</span>
+            </a>
+        </li>
+        <li>Expression evaluation and smart display of arrays and hashes with highlighting of recently modified values
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <ul class="starlist">
+        <li>Ruby code syntax and error highlighting<br/> IntelliJ IDEA provides automatic Ruby code syntax and error
+            highlighting for statements, keywords, comments and other language elements.
+        </li>
+        <li class="screenshot">
+            <img src="screenshots/80/ruby/syntax_highlighting.png" alt="Ruby code syntax and error highlighting, with brace matching and folding">
+        </li>
+        <li>Automatic Ruby code styling<br/> IntelliJ IDEA supports automatic Ruby code styling, with brace matching and
+            folding, custom formatting, indentation and TODO marks.
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="rubyNav">Advanced Ruby code and project navigation</h4>
+    <p>With IntelliJ IDEA you can navigate your Ruby projects in a variety of ways, view and examine documentation,
+        method parameters, context info, etc.</p>
+    <ul class="starlist">
+        <li>Ruby-aware structure view, quick structure popup</li>
+        <li>Go to Ruby class, file, symbol and declaration actions</li>
+        <li class="screenshot">
+            <img class="noborder" src="screenshots/70/ruby_jruby_rails/gotoDeclaration.gif"
+                 alt="Go to Ruby class, file, symbol and declaration actions">
+        </li>
+        <li>Quick declaration view, context and method parameter info</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/parameters.gif"
+                 alt="Quick declaration view, context and method parameter info">
+        </li>
+        <li>Ruby code documentation lookup with hyperlinks and navigation</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/multihelp.gif"
+                 alt="Ruby code documentation lookup with hyperlinks and navigation">
+        </li>
+        <li>Quick overriding of classes, modules and methods with active navigation gutters</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/override2.gif"
+                 alt="Quick overriding of classes, modules and methods with active navigation gutters">
+        </li>
+        <li>Ruby code usage search for local variables, method parameters, class fields and constants</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/localVarUsages.gif"
+                 alt="Ruby code usage search for local variables, method parameters, class fields and constants">
+        </li>
+        <li class="new">Goto Super (Ctrl-U), Goto Type Declaration (Ctrl-Shift-B) navigation actions</li>
+        <li class="new">Supertypes hierarchy for Ruby classes (Ctrl-H)</li>
+        <li class="new">Previous/Next Method navigation (Alt-Up/Down)</li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="rubyCompletion">Smart, scope based Ruby code completion</h4>
+    <p>IntelliJ IDEA provides intelligent code completion for Ruby language, which includes:</p>
+    <ul class="starlist">
+        <li>Automatic completion of built-in methods</li>
+        <li>Smart Ruby statements completion</li>
+        <li>Completion and automatic resolution in require and load calls</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/completion.gif" alt="Smart, scope based Ruby code completion">
+        </li>
+        <li>Type inference-aware code completion<br/> IntelliJ IDEA dynamically checks types for variables and method
+            return values when you are typing the code and offers the according coding assistance.
+        </li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/type_inference.gif" alt=""/>
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="rubyAnalysis">Smart Ruby code analysis</h4>
+    <p>IntelliJ IDEA performs on-the-fly code analysis and offers one-click quick-fixes for spotted problems. </p>
+
+    <p>
+        <img src="screenshots/70/ruby_jruby_rails/localinsp.gif" alt="On-the-fly Ruby code analysis with quick-fixes">
+    </p>
+
+    <p>Various Ruby-aware Intention Actions are available for transforming the source code.</p>
+
+    <p>
+        <img class="noborder" src="screenshots/70/ruby_jruby_rails/relativeToAbs.gif"
+             alt="JRuby and Ruby-aware intention actions">
+    </p>
+    <ul class="starlist">
+        <li class="new">Type inference for block variables within block calls <img src="../features/screenshots/80/ruby/type_inference_for_yield.png" alt="Type Inference For Yield"/>
+        </li>
+        <li class="new">Incomplete hashes detection (with value missing after =&gt;)</li>
+        <li class="new">Spot unreachable code<br/> <img src="../features/screenshots/80/ruby/unreachable_code.png" alt="Unreachable Code"/>
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4>Multiple Ruby-aware refactorings</h4>
+    <p>IntelliJ IDEA features the rich set of Ruby-aware refactorings, all ready to help you transform your project code
+        quickly and efficiently:</p>
+    <ul class="starlist">
+        <li>Rename refactoring (for classes, methods, variables, constants, method params etc.)</li>
+        <li>Introduce variable</li>
+        <li>Override method</li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<h3 class="underline">JRuby Support</h3>
+
+<div class="feature">
+    <h4 id="jrubyCompletion">JRuby code completion</h4>
+    <ul class="starlist">
+        <li>Alternative method naming (both <strong class="lib">boolean_value</strong> and <strong class="lib">booleanValue</strong>
+            styles supported)
+        </li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/ruby_style_getters_for_cla.gif" alt="Alternative method naming"/>
+        </li>
+        <li>Both Ruby and Java-style getters and setters (both <strong class="lib">setSize</strong> and <strong class="lib">size =</strong> styles supported)
+        </li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/ruby_style_getters_for_java.gif" alt="Ruby and Java-style getters and setters"/>
+        </li>
+        <li class="new">JRuby code completion</li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="jrubyAnalysis">JRuby code inspections with instant quick-fixes</h4>
+    IntelliJ IDEA checks your Ruby code on-the-fly, highlighting various kinds of errors. <img src="screenshots/70/ruby_jruby_rails/inspection_unimplemented_ja.gif"
+                                                                                               alt="unimplemented methods are highlighted and a quickfix"/>
+
+    <p>For all problems discovered, IntelliJ IDEA offers automatic quick-fixes.</p>
+    <img src="screenshots/70/ruby_jruby_rails/implement_method_from_java_.gif"
+         alt="implemented methods are highlighted and a quickfix"/>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<h3 class="underline">Rails Support</h3>
+
+<div class="feature">
+    <h4 id="railsLang">RHTML support</h4>
+    <p>IntelliJ IDEA fully supports RHTML, with smart code completion for both Ruby, JavaScript code and HTML tags.</p>
+
+    <p>
+        <img class="noborder" src="screenshots/70/ruby_jruby_rails/html_complete.gif"
+             alt="RHTML support, with smart code completion, including HTML tags">
+    </p>
+
+    <p>It also provides automatic RHTML code styling and formatting, with braces and syntax highlighting and various
+        RHTML-aware code inspections and quick-fixes. </p>
+
+    <p>
+        <img src="screenshots/70/ruby_jruby_rails/rhtml_overview.gif"
+             alt="RHTML code style and formatting, with braces and syntax highlighting">
+    </p>
+    <ul class="starlist">
+        <li class="new">Improved support for embedded CSS in RHTML files</li>
+        <li class="new">Surround With (Ctrl-Alt-T) can enclose and RHTML fragment with an XML tag or with a Ruby control
+            statement
+        </li>
+        <li class="new">Smart Enter (Ctrl-Shift-Enter) can inserts the closing &lt;% end %&gt; tag for a control
+            statement <img src="../features/screenshots/80/ruby/smart_enter_before_after.png" alt="Smart Enter Before After"/>
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4>YAML Support</h4>
+    <p>The plugin now supports syntax highlighting and error highlighting for YAML files, based on the <a href="https://jvyaml.dev.java.net/">JvYAML library</a>.
+    </p>
+    <img src="screenshots/70/ruby_jruby_rails/yml_highloghting.gif" alt=""/>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="railsNav">Advanced Rails project navigation</h4>
+    <p>IntelliJ IDEA features the smart Rails project navigation with dedicated structure views, one-click switching
+        between views and controllers and quick context menus for calling Rake tasks.</p>
+
+    <p>
+        <img src="screenshots/70/ruby_jruby_rails/rails_view.gif" alt="Advanced Rails project view with navigation">
+    </p>
+
+    <p>You can use the one-click active icons to quickly navigate around your application.</p>
+    <ul class="starlist">
+        <li>Switch to view</li>
+        <li class="screenshot"><img src="screenshots/70/ruby_jruby_rails/switch_to_view.gif" alt="Rails switch to view">
+        </li>
+        <li>Switch to action</li>
+        <li class="screenshot"><img src="screenshots/70/ruby_jruby_rails/switch_to_action.gif" alt="Rails switch to action"></li>
+        <li>Switch to layout</li>
+        <li>Switch to controller</li>
+    </ul>
+    <ul class="starlist">
+        <li class="new">Navigation between model, controller, helper, unit/functional/RSpec tests (Alt-Shift-N) <img src="../features/screenshots/80/ruby/rails_navigation_beetwen_model_controller_etc.png"
+                                                                                                                     alt="Rails Navigation Beetwen Model Controller etc"/>
+        </li>
+        <li class="new">Context toolbar for opening the corresponding page in a browser from Rails views <img src="../features/screenshots/80/ruby/contex_toolbar_to_open_rails_view_in_browser.png"
+                                                                                                              alt="Contex Toolbar To Open Rails View In Browser"/>
+        </li>
+        <li class="new">View navigation actions suggest to create a view if none is found (Ctrl-Alt-W)</li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="railsCompletion">Autocompletion for rails controllers, helpers and views</h4>
+    <ul class="starlist">
+        <li>Rails specific completion for Controllers, Helpers, Views</li>
+        <li>Completion specific for methods like <strong class="lib">url_for</strong>, <strong class="lib">redirect_to</strong>, etc.
+        </li>
+        <li class="screenshot"><img src="screenshots/70/ruby_jruby_rails/smart_completion_for_method.gif" alt="code completion specific for methods"/></li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<div class="feature">
+    <h4 id="railsGeneration">Rails code generation</h4>
+    <ul class="starlist">
+        <li>Automated generation of Rails skeleton applications</li>
+        <li>Advanced tools for developing Rails generators, models, etc</li>
+        <li>Quick insert action in action controller</li>
+        <li class="screenshot">
+            <img src="screenshots/70/ruby_jruby_rails/insertAction.gif" alt="Quick insert action in action controller">
+        </li>
+    </ul>
+</div>
+<h3 class="underline" id="tests">Testing Support</h3>
+
+<div class="feature">
+    <p>IntelliJ IDEA supports unit testing for Ruby projects, with:</p>
+    <ul class="starlist">
+        <li>Quick tests launching for a specified method, class or set of tests</li>
+        <li>Support for RSpec and Test::Unit frameworks</li>
+    </ul>
+    <p>
+        <img src="screenshots/70/ruby_jruby_rails/test_for_method.png" alt="refactoring">
+    </p>
+
+    <p class="new">GUI runner for Test::Unit and RSpec tests with support for Rake tasks.</p>
+
+    <a href="javascript://" class="noborder" onclick="openBrWindow('../features/screenshots/80/ruby/test_runner.html','StrutsReadyRefactorings','menubar=no,scrollbars=no,resizable=yes, width=710,height=215');return BOPlaceMark();">
+        <img src="../features/screenshots/80/ruby/test_runner_small.png" alt="Test Runner"/> <br/><span class="smalltext">Click to enlarge</span>
+    </a>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+<h3 class="underline" id="misc">Miscellaneous</h3>
+
+<div class="feature">
+    <ul class="starlist">
+        <li>Stack trace analysis with one-click Ruby code navigation</li>
+        <li>More than 50 Ruby and RSpec live templates</li>
+        <li>Plugin page with plugin version, build and useful links in setting</li>
+        <li>Dedicated Ruby run configuration and quick script execution<br/> IntelliJ IDEA lets you quickly run your
+            scripts through dedicated configuration, plus supports shortcuts for Rake tasks, generators, RSpec, etc.
+        </li>
+        <li>Dedicated Rails run configurations with support for standard Rails servers (WEBrick, Mongrel, etc)</li>
+        <li>Convenient view for Rails server logs <img src="screenshots/80/ruby/rails_log_with_ansi_colors.png" alt="Rails Log With Ansi Colors">
+        </li>
+    </ul>
+</div>
+<p class="top"><a href="#content">to the top</a></p>
+         </div>
+    </div>
+    <script type="text/javascript" src="/js2/matching_columns.js" language="JavaScript"></script>
+    </div>
+<div id="footer">
+        <div id="inner">
+            <dl>
+                <dt>Products</dt>
+                <dd><a href="/idea/index.html">IntelliJ IDEA</a></dd>
+                <dd><a href="/resharper/index.html">ReSharper</a></dd>
+                <dd><a href="/profiler/index.html">dotTrace Profiler</a></dd>
+                <dd><a href="/teamcity/index.html">TeamCity</a></dd>
+                <dd><a href="/ruby/index.html">RubyMine</a></dd>
+                <dd><a href="/omea/index.html">Omea</a></dd>
+                <dd class="last"><a href="/mps/index.html">MPS</a></dd>
+                <dd class="last rightfloated">Contact: <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#97;&#108;&#101;&#115;&#64;&#106;&#101;&#116;&#98;&#114;&#97;&#105;&#110;&#115;&#46;&#99;&#111;&#109;">Sales Department</a>, <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#101;&#98;&#109;&#97;&#115;&#116;&#101;&#114;&#64;&#106;&#101;&#116;&#98;&#114;&#97;&#105;&#110;&#115;&#46;&#99;&#111;&#109;">Webmaster</a></dd>
+            </dl>
+            <dl>
+                <dt>Help</dt>
+                <dd><a href="http://www.jetbrains.net/devnet">Developer Community</a></dd>
+                <dd><a href="/support/index.html">Support</a></dd>
+                <dd><a href="/idea/webhelp/"><span>IntelliJ IDEA Web Help</span></a></dd>
+                <dd class="last"><a href="/resharper/webhelp/"><span>ReSharper Web Help</span></a></dd>
+                <dd class="last rightfloated">
+                    <dl>
+                        <dd><a href="/company/privacy.html">Privacy Policy</a></dd>
+                        <dd><a href="/company/useterms.html">Terms of Use</a></dd>
+                        <dd class="last"><a href="/map.html">Site map</a></dd>
+                    </dl>
+                </dd>
+            </dl>
+            <dl>
+                <dt>Company</dt>
+                <dd><a href="/company/">About</a></dd>
+                <dd><a href="/company/contacts/">Contact Us</a></dd>
+                <dd><a href="/company/customers/customer_list.html">Customer List</a></dd>
+                <dd><a href="/company/customers/testimonials.html">Testimonials</a></dd>
+                <dd class="last"><a href="http://blogs.jetbrains.com/">Blogs</a></dd>
+                <dd class="last rightfloated">&copy;2000-2009 JetBrains. All rights reserved</dd>
+            </dl>
+        </div>
+</div>
+        <script defer="defer" type="text/javascript" src="/js2/search.js" language="JavaScript"></script>
+
+
+
+<script defer="defer" type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-940435-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<script defer="defer" type="text/javascript">                           
+    try {
+    var pageTracker = _gat._getTracker("UA-940435-1");
+    pageTracker._trackPageview();
+}   catch(err) {}
+</script>
+</body>
+</html>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<!--
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+-->
+
+
+
+<title>Ruby Cookbook | O'Reilly Media</title>
+<meta name="subtitle" content="Recipes for Object Oriented Scripting" />
+<meta name="object.type" content="book" />
+<meta name="book.title" content="Ruby Cookbook" />
+<meta name="book.author" content="Leonard Richardson, Lucas Carlson" />
+<meta name="book.isbn" content="9780596523695" />
+<meta name="book.year" content="2006" />
+<meta name="book.link" content="http://oreilly.com/catalog/9780596523695/" />
+<meta name="book.image" content="http://oreilly.com/catalog/covers/0596523696_bkt.gif" />
+<meta name="book.tags" content="oreilly,ruby" />
+<meta name="target" content="Ruby Cookbook, 0596523696, 0-596-52369-6, 9780596523695" />
+<meta name="status" content="100" />
+<meta name="reference" content="9780596523695" />
+<meta name="isbn" content="0596523696" />
+<meta name="ean" content="9780596523695" />
+<meta name="graphic" content="/catalog/covers/0596523696_sm.gif" />
+<meta name="graphic_medium" content="/catalog/covers/0596523696_bkt.gif" />
+<meta name="graphic_large" content="/catalog/covers/9780596523695_cat.gif" />
+<meta name="safari" content="Safari" />
+<meta name="book_title" content="Ruby Cookbook" />
+<meta name="author" content="Leonard Richardson, Lucas Carlson" />
+<meta name="keywords" content="Ruby Cookbook, ruby,rails,web development,database,programming,xml,dynamic languages, 0-596-52369-6, 0596523696, Leonard Richardson, Lucas Carlson, Lucas Carlson &amp; Leonard Richardson,oreilly, O'Reilly, o'reilly" />
+<meta name="description" content="From data structures and algorithms, to integration with cutting-edge technologies, the Ruby Cookbook has something for every programmer. When you need to solve a problem, don't reinvent the wheel: look it up in the Cookbook." />
+<meta name="date" content="Jul. 19, 2006" />
+<meta name="search_date" content="2006-07-19" />
+<meta name="publisher" content="O'Reilly" />
+<meta name="series" content="Cookbook" />
+<meta name="Category" content="Books" />
+	<meta name="edition" content="1" />
+	<meta name="edition_full" content="First Edition" />
+	<meta name="sr" content="270" />
+<meta name="SubCategory" content="Format~Format~Format~Publisher" />
+<meta name="SubCategory_Value" content="Print~Ebook~Safari Books Online~O'Reilly" />
+<meta name="bookeditionsorder" content="1st Edition" />
+<meta name="bookeditionsreference" content="9780596523695" />
+
+
+
+
+<!-- common javascript, css and hitbox -->
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/all.css?2" type="text/css"/>
+
+<script language="JavaScript" type="text/javascript" src="http://www.oreillynet.com/engine.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="http://www.oreillynet.com/common.js"></script>
+
+
+<script type="text/javascript" src="http://content.atomz.com/static/ac/1.0/autocomplete.js"></script>
+<link rel="stylesheet" type="text/css" href="http://content.atomz.com/pb000035c5/publish/autocompletestyles.css" />
+
+
+ <!--WEBSIDESTORY CODE HBX1.0 (Universal)-->
+    <!--COPYRIGHT 1997-2004 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com / privacy-->
+    <script language="javascript" type="text/javascript">
+    var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+    var hbx=_hbEvent("pv");hbx.vpc="HBX0100u";hbx.gn="ehg-oreilly.hitbox.com";
+
+    //"BCB: oreilly.com,/b/2471, DM52032830WV";
+
+    hbx.acct="DM52032830WV;DM520404M4ZR"; //ACCOUNT NUMBER(S)
+    hbx.pn="PUT+PAGE+NAME+HERE"; //PAGE NAME(S)
+    hbx.mlc="/b/2471;/OReilly/b/2471"; //MULTI-LEVEL CONTENT CATEGORY
+    hbx.pndef="title"; //DEFAULT PAGE NAME
+    hbx.ctdef="full"; //DEFAULT CONTENT CATEGORY
+
+    hbx.lt="auto"; //LINK TRACKING 
+    hbx.dlf="n"; //DOWNLOAD FILTER
+    hbx.dft="n"; //DOWNLOAD FILE NAMING
+    hbx.elf="n"; //EXIT LINK FILTER
+
+    //SEGMENTS AND FUNNELS
+    hbx.seg=""; //VISITOR SEGMENTATION
+    hbx.fnl=""; //FUNNELS
+
+    //CAMPAIGNS
+    hbx.cmp=""; //CAMPAIGN ID
+    hbx.cmpn="CMP"; //CAMPAIGN ID IN QUERY
+    hbx.hra=""; //RESPONSE ATTRIBUTE
+    hbx.hqsr=""; //RESPONSE ATTRIBUTE IN REFERRAL QUERY
+    hbx.hqsp="ATT"; //RESPONSE ATTRIBUTE IN QUERY
+    hbx.hlt=""; //LEAD TRACKING
+    hbx.hla=""; //LEAD ATTRIBUTE
+    hbx.gp=""; //CAMPAIGN GOAL
+    hbx.gpn=""; //CAMPAIGN GOAL IN QUERY
+    hbx.hcn=""; //CONVERSION ATTRIBUTE
+    hbx.hcv=""; //CONVERSION VALUE
+    hbx.cp="null"; //LEGACY CAMPAIGN
+    hbx.cpd=""; //CAMPAIGN DOMAIN
+
+    //CUSTOM VARIABLES
+    hbx.ci="";//CUSTOMER ID
+    hbx.hc1="";//CUSTOM 1
+    hbx.hc2="";//CUSTOM 2
+    hbx.hc3="";//CUSTOM 3
+    hbx.hc4="";//CUSTOM 4 
+    hbx.pec="";//ERROR CODES
+    </script><script language="javascript1.1" defer="defer"  src="http://www.oreillynet.com/hbx.js" type="text/javascript"></script><!--//-->  
+    <!-- END WEBSIDESTORY CODE  -->
+ 
+
+ 
+<script type="text/javascript" src="http://www.oreillynet.com/tabber.js"></script>
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/store2.css?2" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreilly.com/styles/catalog.css" />
+
+<link rel="stylesheet" rev="stylesheet" href="http://catalog.oreilly.com/buy_buttons.css" />
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/tabs.css" media="screen">
+<link rel="stylesheet" rev="stylesheet"  href="http://www.oreillynet.com/styles/tabs-print.css" media="print">
+
+
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function checkBookWrap(bookList) {
+	if (document.getElementById) {
+                if ( document.getElementById(bookList) ) {
+		var pList = document.getElementById(bookList);
+		var bookRowPos = 0;
+		
+		// For the book list, run through each node.
+		for (var i = 0; i < pList.childNodes.length; i++) {
+			listObj = pList.childNodes[i];
+			
+			// If the childNode has no value (it's probably an empty text node)...
+			if (listObj.childNodes[0] != null) {
+				// Find the position of the book list node.
+				var pos = findPos(pList.childNodes[i]);
+				
+				// If the position of the book is below the last one...
+				if (pos[1] > bookRowPos) {
+					// Clear left so this node jumps to the next row.
+					if (pList.childNodes[i].setAttribute) {
+						//Create a new list element
+						var spacerLi = document.createElement("LI");
+						spacerLi.style.clear = "left";
+						
+						//Insert the new list element before the current one.
+						pList.insertBefore(spacerLi, pList.childNodes[i]);
+						//Adds one to "i" because a new node was inserted.
+						i++;
+						
+						// Find the new position of this node.
+						pos = findPos(pList.childNodes[i]);
+						// Replace bookRowPos with the new position.
+						bookRowPos = pos[1];
+					}
+				}
+			}
+                        }
+		}
+	}
+}
+
+// Finds the distance of the object from the left and top of the window.
+function findPos(obj) {
+	var curleft = curtop = 0;
+	if (obj.offsetParent) {
+		curleft = obj.offsetLeft
+		curtop = obj.offsetTop
+		while (obj = obj.offsetParent) {
+			curleft += obj.offsetLeft
+			curtop += obj.offsetTop
+		}
+	}
+	return [curleft,curtop];
+}
+
+function wopen(url, name, w, h)
+{
+// Fudge factors for window decoration space.
+ // In my tests these work well on all platforms & browsers.
+w += 58;
+h += 130;
+ var win = window.open(url,
+  name,
+  'width=' + w + ', height=' + h + ', ' +
+  'location=no, menubar=no, ' +
+  'status=no, toolbar=no, scrollbars=no, resizable=no');
+ win.resizeTo(w, h);
+ win.focus();
+}
+// -->
+</script>
+
+</head>
+<body onload="setMenu();checkBookWrap('booklist1');checkBookWrap('booklist2');" id="store">
+
+
+<div id="page">
+
+
+<div id="header" class="noindex">
+
+<script language="JavaScript" type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/assets/js/common.js"></script>
+
+<div id="logo">
+<a href="http://oreilly.com">
+<img alt="O'Reilly" src="http://oreilly.com/images/oreilly/oreilly.gif"/>
+</a>
+</div>
+
+
+<ul>
+
+<li><a href="https://members.oreilly.com/" class="acct">My Account</a></li>
+<li><a href="https://epoch.oreilly.com/shop/cart.orm" class="cart">View Cart</a></li>
+</ul>
+<span id="animal">
+</span>
+</div><!-- /#header -->
+
+
+<div id="nav" class="noindex">
+<ul>
+<li><a href="http://oreilly.com/">Home</a></li>
+<li><a href="http://community.oreilly.com/">Community</a></li>
+<li class="nav_selected"><a href="http://oreilly.com/store/">Books & Videos</a></li>
+<li><a href="http://safari.oreilly.com/?cid=orm-nav-global">Safari Books Online</a></li>
+<li><a href="http://conferences.oreillynet.com/">Conferences</a></li>
+<li><a href="http://training.oreilly.com/">Training</a></li>
+<li><a href="http://www.oreillyschool.com/">School of Technology</a></li>
+<li><a href="http://oreilly.com/about/">About</a></li>
+</ul>
+</div><!-- /#nav -->
+
+<div id="subnav" class="noindex">
+<ul>
+<li>
+<a href="http://oreilly.com/store/complete.html">Complete List</a></li>
+
+<li>
+<a href="http://oreilly.com/store/bestsellers.html">Bestsellers</a></li>
+
+<li>
+<a href="http://oreilly.com/store/newreleases.html">New Releases</a></li>
+
+<li>
+<a href="http://oreilly.com/roughcuts/">Rough Cuts</a></li>
+
+<li>
+<a href="http://oreilly.com/store/upcoming.html">Upcoming Titles</a></li>
+
+<li>
+<a href="http://oreilly.com/ebooks">Ebooks</a></li>
+
+<li>
+<a href="http://oreilly.com/store/publisher.html">By Publisher</a></li>
+
+<li>
+<a href="http://oreilly.com/store/series.html">By Series</a></li>
+
+<li>
+<a href="http://oreilly.com/store/outofprint.html">Out of Print</a></li>
+
+<li>
+<a href="http://oreilly.com/store/order.html">Order Info</a></li>
+</ul>
+</div><!-- /#subnav -->
+
+<!-- new search box -->
+
+<div id="search-box">
+ 
+<form method="get" action="http://search.oreilly.com" id="search-form" name="searchfield">
+<fieldset>
+ <span id="search-title" style="color:#474747">Search</span>
+                    <span id="search-input">
+                        <span id="search-input-top">
+                            <span id="search-input-bot">
+                                <span id="search-field"><input style="//height: 25px;" id="q" name="q" type="text" maxlength="64" accesskey="s" value="" /></span>
+                                <span id="search-button"><input type="image" name="submit" src="/images/oreilly/search_bar_btn.gif" alt="Submit" onclick="return searchverif();" /></span>
+                                <span class="clear"></span>
+                            </span>
+   
+                            <div id="autocomplete"></div>
+</span>
+                    </span>
+                                <script type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/autocompletelist.js"></script>
+                     
+                    <span id="search-tips"><a href="http://www.oreillynet.com/search/tips.csp" target="_blank">Search Tips</a></span>
+                </fieldset>
+            </form><br clear="all" />
+        </div><!-- /#search-box -->
+
+
+
+<!-- begin content -->
+<!-- print.view -->
+
+<div id="content_store">
+
+
+<!-- TEMP promotion actions code -->
+<div id="actions2">
+
+<!-- ########## Reg Books ########### -->
+
+
+
+
+<!-- ######### EBooks ######### -->
+
+
+
+<script src="http://catalog.oreilly.com/catalog/9780596523695/widgets/buy_buttons.js" type="text/javascript"></script>
+
+
+<div class="tellfriend" align="center">
+<img src="http://oreilly.com/images/icons/envelope.gif" width="18" height="11" alt="Envelope" align="absbottom" /> <a href="http://oreilly.com/catalog/email_page.csp?nick=9780596523695">Tell a friend</a>
+</div> <!-- tellfriend -->
+
+
+
+
+
+<!-- ########## Sitepoint Kits  ########### -->
+
+
+
+
+<!-- ########## POD Books no book button ########### -->
+
+
+
+
+<!-- ############### DVDs ############# -->
+
+
+
+
+<!-- ############### TOC Keynote Videos ############# -->
+
+
+
+
+
+<!-- ############### Out of Print OOP ############# -->
+
+
+
+
+
+
+<!-- ############## PDFs / Short Cuts ############# -->
+
+
+
+
+<!-- ############# Rough Cuts ########## -->
+
+
+
+
+
+<!-- ############ MAKE ########### -->
+
+
+
+
+<!-- ######## CRAFT  ###########-->
+
+
+<!-- ######### END of all catalog pages ######### -->
+
+</div> <!-- /#actions -->
+
+<a name="top"></a>
+<h1 class="book-title">
+Ruby Cookbook
+
+</h1>
+
+
+<span class="subtitle">Recipes for Object Oriented Scripting</span>
+
+
+
+<!--
+<csfield name="subtitle" before="<span class='subtitle'>" after="</span>">
+-->
+<p class="book-details">
+
+By <span style="white-space: nowrap;"><a href="http://www.oreillynet.com/pub/au/2555">Lucas Carlson</a></span>, <span style="white-space: nowrap;"><a href="http://www.oreillynet.com/pub/au/2556">Leonard Richardson</a></span><br />
+
+
+
+
+
+
+
+
+July 2006
+
+
+
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+<!-- new for DVD -->
+
+Pages: 906 <br />
+
+
+<!-- new book details here -->
+
+
+
+ 
+
+
+
+  Series: <a href="http://www.oreilly.com/store/series/cookbooks.html">Cookbooks</a><br />
+  
+
+
+
+
+
+
+
+
+
+
+
+
+ISBN 10: 0-596-52369-6 | 
+ISBN 13: 9780596523695<br />
+
+
+<!-- Press Releases -->
+
+
+
+
+<!-- end Press Releases -->
+
+
+
+
+<!-- end moved book details -->
+
+<!-- TEMP Art book -->
+
+
+
+
+<img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"> <span class="details">(<a href="#rr">Average of 7 Customer Reviews</a>)</span>
+
+
+
+ <!-- TEMP Art book -->
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+
+<!-- Buy 2 Get 1 Free -->
+<a href="http://www.oreilly.com/oreilly/cs/b2g1f.html" onmouseover="MM_swapImage('Buy 2 Get 1 Free','','/images/oreilly/b2g1f-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/b2g1f-button-off.gif" alt="Buy 2 Get 1 Free" name="Buy 2 Get 1 Free" style="padding:0;margin:0;" id="b2g1f" /></a>
+
+
+<a href="http://www.oreilly.com/news/freeshipping_0703.html" onmouseover="MM_swapImage('Free Shipping','','/images/oreilly/free_shipping-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/free_shipping-button-off.gif" alt="Free Shipping" name="Free Shipping" style="padding:0;margin:0;" id="freeshipping" /></a><a href="http://www.oreilly.com/oreilly/cs/guarantee.csp" onmouseover="MM_swapImage('Guarantee','','/images/oreilly/guarantee-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/guarantee-button-off.gif" alt="Guarantee" name="Guarantee" style="padding:0;margin:0;" id="guarantee" /></a></p>
+
+
+
+
+<!-- TEMP for Art book -->
+
+
+<span class="book-subtitle">Description</span>
+
+<p class="book-details"><p>From data structures and algorithms, to integration with cutting-edge technologies, the <i>Ruby Cookbook</i> has something for every programmer. When you need to solve a problem, don't reinvent the wheel: look it up in the Cookbook.</p>
+<br />
+<a href="#top" onclick="toggleSheet('fulldesc'); return true" id="fulldescButton" class="rollup">Full Description</a>
+
+</p>
+
+<div id="fulldesc"><p>
+Do you want to push Ruby to its limits? The <i>Ruby Cookbook</i>
+is the most comprehensive problem-solving guide to today's hottest
+programming
+language. It gives you hundreds of solutions to real-world problems,
+with clear explanations and thousands of lines of code you can use in
+your own projects.</p>
+<p></p>
+<p>From data structures and algorithms, to integration with
+cutting-edge technologies, the <i>Ruby Cookbook</i> has
+something for every programmer. Beginners and advanced Rubyists
+alike will learn how to program with:</p>
+<ul>
+  <li>Strings and numbers</li>
+  <li>Arrays and hashes</li>
+  <li>Classes, modules, and namespaces</li>
+  <li>Reflection and metaprogramming</li>
+  <li>XML and HTML processing</li>
+  <li>Ruby on Rails (including Ajax integration)</li>
+  <li>Databases</li>
+  <li>Graphics</li>
+  <li>Internet services like email, SSH, and BitTorrent</li>
+  <li>Web services</li>
+  <li>Multitasking</li>
+  <li>Graphical and terminal interfaces</li>
+</ul>
+<p></p>
+<p>If you need to write a web application, this book shows you
+how to get started with Rails. If you're a system administrator who
+needs to
+rename thousands of files, you'll see how to use Ruby for this and
+other everyday tasks. You'll learn how to read and write Excel
+spreadsheets, classify text with Bayesian filters, and create PDF
+files. We've even included a few silly tricks that were too cool to
+leave out, like how to blink the lights on your keyboard.</p>
+<p>
+The <i>Ruby Cookbook</i> is the most useful book yet
+written about Ruby. When you need to solve a problem, don't reinvent
+the wheel: look it up in
+the Cookbook.</p></div>
+
+
+<div style="clear:left;"></div>
+
+ <!-- TEMP for Art book -->
+
+<!-- AK here -->
+<!-- #### AK Begin #### -->
+
+
+
+<hr>
+
+<div style="clear:right;"></div>
+
+<!--
+<div class="recommended_div">
+-->
+
+
+<a id="akAPI"></a>
+
+<script type="text/javascript">
+    var akApiKey = 'RecEngine-49CCF850-02C7-B730-5489-DB7D929405CD';
+
+    var akTarget = 'http://oreilly.com/catalog/9780596523695';
+      var akDescription = 'format: print, ebook, '; 
+    var akItemTitle = 'Ruby Cookbook,';
+
+ var akThumbnailUrl = 'http://oreilly.com/catalog/covers/0596523696_bkt.gif';
+
+   
+    var akTargetType = 'book';
+    var akRegion = 'catalog';
+    var akIntent = 'VIEW';
+    var _akOurPrice ='49.99';
+    var akKeywords=' ean:9780596523695.BOOK';
+
+
+
+
+
+    var akScript = document.createElement('script');
+    akScript.setAttribute('src','http://api.aggregateknowledge.com/2007/01/15/js/' + (new Date()).valueOf() % 3600000 + '.js');
+    document.getElementsByTagName('head')[0].appendChild(akScript);
+</script>
+
+
+<!--
+
+</div>
+-->
+
+<div style="clear:left;"></div>
+
+
+<!-- ########## AK end ####### -->
+
+
+
+ 
+
+<hr />
+
+<!-- TEMP for Art book -->
+
+<a name="rr"></a>
+<br />
+<span class="book-subtitle">Featured customer reviews</span>
+
+
+
+
+<p><a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_disc/15629&x-lr2=b/2471&x-t=rr_create.form"><img src="/images/button_review.gif" border="0" width="116" height="20" alt="Write a Review" /></a></p>
+
+
+<br />
+
+
+
+
+
+
+<span class="headline">Ruby for beginners and experts!</span>, &nbsp;<em>January 29 2009</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+javajosh9001
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/97891&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/97891">View</a>]<br /><br />
+Published by acclaimed authors Lucas Carlson and Leonard Richardson, The Ruby Cookbook is both an excellent learning tool and reference manual.  It is organized into 23 chapters delineating all capabilities of the object-oriented scripting language.  Each chapter is broken down into numerous subcategories describing operations, tips and tricks, common problems and their solutions, and other concepts pertaining to the topic of the chapter.  Finding what you are looking for is not an issue since all topics are structured seamlessly.<br />
+<br />
+Unlike many other programming books I have read, this one does not cut corners and overlook the menial steps experts, such as the authors themselves, would assume the reader to know intuitively.  I find this aspect to be exceedingly beneficial in learning how the language behaves and what discrepancies may present themselves as a result of coding between a number of programming languages.  While reading this book and learning the language, I had never been confused as a result of missing or vague information.  The writing style is captivating, concise, and understandable.  I enjoyed reading this book.<br />
+<br />
+What I prefer most about the manual is that it is suited for newbies as well as experts.  The introductory topics include the common data structures and how they are implemented, while the later chapters specify advanced functionality and extensions to the language.  I recommend this book for all of those who have had some object-oriented programming experience as well as to those who have not but are interested in learning a computing language.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">A really good book</span>, &nbsp;<em>January 28 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Jeremiah
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/88772&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/88772">View</a>]<br /><br />
+This book is a must-have for any programmer just discovering Ruby.  The examples are straight forward and relevant.  Combine this with a good Rails book and you have just what you need to get started on a serious project.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">Ruby Cookbook Review</span>, &nbsp;<em>December 21 2006</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Vince W.
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/87595&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/87595">View</a>]<br /><br />
+This review was originally published for RubyDC on Urbanpuddle.com:<br />
+<br />
+Life is short, proclaims the authors of O'Reilly's Ruby Cookbook. You have real problems and this book is here to solve them, they go on. Weighing in at around 850 pages, there certainly is a chance that what ever problem you have could be addressed in this book. But is it all cartoon foxes or a tale with descriptions and plot twists worthy of reading in your bathrobe over a cup of chamomile? Thankfully no. In this book, O'Reilly delivers a densely packed tome filled with information, most of it unrelated, intended to solving real problems.<br />
+<br />
+If you've never used a recipe book before, the premise is simple. They teach you how to put together code to create a particular effect or output. Reading tons of code on paper can be awfully boring but thankfully Ruby lends itself well to these types of books largely because it's a human readable language and packs a lot of functionality in very little space. For instance, you can expect:<br />
+&lt;% 3 times.do %&gt; yeah<br />
+<br />
+Will output yeah yeah yeah as you would expect when reading<br />
+three times, do 'yeah'. In the Ruby Cookbook, authors Lucas Carlson and Leonard Richardson have divided the problems into these logical groups:<br />
+<br />
+   1. Strings<br />
+   2. Numbers<br />
+   3. Date & Time<br />
+   4. Arrays<br />
+   5. Hashes<br />
+   6. Files & Directories<br />
+   7. Code Blocks & Iterations<br />
+   8. Objects & Classes<br />
+   9. Modules & Namespaces<br />
+  10. Reflections & Metaprogramming<br />
+  11. XML & HTML<br />
+  12. Graphics and Other File Formats<br />
+  13. Databases & Persistence<br />
+  14. Internet Services<br />
+  15. Web Development: Ruby on Rails<br />
+  16. Web Services and Distributed Programming<br />
+  17. Testing, Debugging, Optimizing, and Documenting<br />
+  18. Packaging and Distributing Software<br />
+  19. Automating Tasks with Rake<br />
+  20. Multitasking and Multithreading<br />
+  21. User Interface<br />
+  22. Extending Ruby with Other Languages<br />
+  23. System Administration<br />
+<br />
+As you can see there is a lot of information in this book. &lt;tangent&gt;As I was flipping through it I began to wonder how I could possibly make room in my brain for all this knowledge. If I absorbed it all I'd probably have to discard some pretty fundamental things like remembering to zip up my fly. Trust me, nobody wants that. My guess is that Mssrs. Carlson & Richardson are in similar predicaments and my thanks to go them and their Significant Others for potentially sacrificing valuable basic skills in order to bring you all this wonderful code. &lt;/tangent&gt;<br />
+<br />
+Each recipe in the book is divided into three sections: Problem, Solution, and Discussion. As you can infer, the problem gives a concise description of the issue that the Solution will then resolve. The Solution portion is where most of the code is and, like all O'Reilly books, they do a good job of separating the text from code so there's never any confusion. The Discussion is often the longest part of the recipe and contains not only details on the solution but the occasional alternative approach as well.<br />
+<br />
+I can't say that each recipes contained in this book is staggeringly useful. For instance, I personally do not foresee ever needing 2.14: Doing Math with Roman Numbers. But I guess some would-be gladiators out there might find that helpful. But the recipes that I did find interesting were very valuable and made the price of the book well worthwhile. I particularly enjoyed the recipes on Classifying Text with a Bayesian Analyzer, Documenting Your Website, and Checking a Credit Card Checksum.<br />
+<br />
+Other recipes, while not urgently required, can add a polish and professionalism to your code to set you apart from your peers. For instance there is a very simple recipe for wrapping text which you can use as an alternative to truncating:<br />
+<br />
+def wrap(s, width=78)<br />
+   s.gsub(/(.{1,#{width}})(\s+|Z)/, "\\1\n")<br />
+end<br />
+<br />
+Using it like: puts wrap("This text is not too short to be wrapped.", 20)<br />
+<br />
+I did find some solutions a little lacking. The Sending Mails with Rails recipe is different enough from the similar recipe in Chad Fowler's Rails Recipes book to make it useful. Neither solution independently helped me craft a newsletter function for my website but both combined gave me the knowledge I needed to write my code the way I needed it. Likewise, Generating PDF Files recommended using PDF-Writer which I found slow for the amount of fields (> 200) and records (> 500) that I need for my application. Based on a recommendation from a fellow RubyDC member, I will be checking out Ruport and RTex to see if it helps. Honestly, it could be that all solutions give me the same headaches.<br />
+<br />
+Overall I was really impressed with the book. As with any recipes book, the utility is directly proportional to your need. Ruby Cookbook is no different there. It makes sense that, since each program is unique, some proposed solutions won't fit perfectly. Yet they will still otherwise give you a great launching point towards finding your own answer! Most importantly, as the types of applications you need to code change and as their complexity grow, you will find methods to avoid many of the usual speedbumps along the way within these pages.<br /><br />
+<p><a href="#rr" onclick="toggleSheet('reviews'); return true" id="reviewsButton" class="rollup">Read all reviews</a></p>
+
+<div id="reviews">
+<br />
+
+
+
+
+
+
+<span class="headline">Ruby Cookbook Review</span>, &nbsp;<em>November 30 2006</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Brian Anderson
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/87082&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/87082">View</a>]<br /><br />
+I've looked at a couple programming “cookbooks” over the few years I've been programming, and none have ever really captured my attention. Most of them I found were lacking in useful recipes for novice programmers, or the recipes used an outdated code style or covered specific areas of a programming language. And with others,  I just found it difficult to find useful tips or tricks.<br />
+<br />
+The Ruby Cookbook however, provides fresh, easy to read recipes that are full of neat tips and awesome tricks. And it's all provided in an easy to read, and more importantly easy to find, format.   Programmers from novice to highly experienced will find this book useful.<br />
+<br />
+The book is laid out using general data types as chapters at first, then moves into more abstract topics such as code blocks and modules; databases and persistence; web services and task automation with Rake.<br />
+<br />
+Start with the table of contents to learn about a specific area, or thumb your way through the index to find specific topics or that fast piece of code you need to complete your project. No matter how you use it, the Ruby Cookbook is a must have book for any Ruby or Ruby on Rails programmer.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">This Book is a Gem!</span>, &nbsp;<em>October 03 2006</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Dave Walz-Burkett
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/85770&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/85770">View</a>]<br /><br />
+Sometimes, the difference between getting a project off the ground and watching it linger on the launchpad is finding an example of how to do something in code.<br />
+<br />
+Perhaps you're working on a project and you'd like to send an email using Ruby. Maybe you'd like to know how to read and write zip files or create thumbnail images from full size graphics files. Sometimes cruising through the API documentation just doesn't quite give you enough info.<br />
+<br />
+The Ruby Cookbook fills the void for a portable version of a Ruby code snippet search engine. For each example, there is a <b><i>Problem</i></b> description, a <b><i>Solution</i></b> section containing one or more chunks of Ruby code and a <b><i>Discussion</i></b> section for follow-up. Most examples also have a <b><i>See Also</i></b> section for cross reference.<br />
+<br />
+A huge amount of material is covered. Topics range from simple stuff like strings, numbers, hashes, arrays and objects to more challenging subjects like code blocks, reflection, metaprogramming and multithreading. It has chapters on Internet services, Web services and distributed programming, and Web development with Ruby on Rails.<br />
+<br />
+I'm only just skimming the surface here, this is a <b>big</b> book with 873 pages. It is quite simply <i>packed</i> with goodies. There is something in this book for Ruby programmers at every level. The book is well written and easy to read. You can download a zip file containing all of the code samples from the O'Reilly website.<br />
+<br />
+If you want to learn Ruby and Ruby on Rails, there are three books that will help you more than anything else: Programming Ruby by Dave Thomas, Agile Web Development with Rails by Dave Thomas and David Heinemeier Hansson and the Ruby Cookbook by Lucas Carlson and Leonard Richardson.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">A 'must -have' book</span>, &nbsp;<em>August 05 2006</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Satish Talim
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/84516&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/84516">View</a>]<br /><br />
+This book is a '<b>must-have</b>' for all the Ruby enthusiasts. I hope they put up a .zip file of all the programs here.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">Excellent Book</span>, &nbsp;<em>July 25 2006</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Vinodh Kumar
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/84228&amp;x-lr2=b/2471" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/84228">View</a>]<br /><br />
+Super book from Beginers to Advanced.<br /><br />
+</div> <!-- /reviews -->
+
+ 
+
+<!-- staff pick? -->
+
+
+
+
+<hr />
+<a name="media"></a>
+<span class="book-subtitle">Media reviews</span>
+
+
+
+
+
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"I've lost count of the times I've googled for ages for some ruby trick and found it in the Cookbook in about 10 seconds.  It's brilliant, and the discussion sections always highlight something useful. "<br />
+-- Ashley Moran, Business Analyst, Codeweavers.net, <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/34bf36bd3e8d7160/000e3ffae7579b4f?lnk=st&q=%22ruby+cookbook%22&rnum=2">Comp.lang.ruby</a>
+
+
+<br /><br />
+<!--
+</div>
+-->
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"If you would like to become a serious Ruby hacker, don&#146;t hesitate to buy this book. In my opinion it is absolutely worth every cent - and even more. My only problem is that there are no more recipes - however this is not a critique but rather a compliment: you simply can not get enough - not even from nearly 900 pages. One could argue that some things are missing or he would rather see this instead of that (I believe the authors themselves have had some tough time deciding these matters) - but I guess everyone agrees that the material which made it to the book is absolutely top-notch. 5 out of 5 stars - a great addition to anyone&#146;s Ruby bookshelf.
+
+"<br />
+-- Peter Szinek, MSc, <a href="http://www.rubyrailways.com/book-review-ruby-cookbook/">RubyRailways</a>
+
+
+<br /><br />
+<!--
+</div>
+-->
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"...906 pages of shiny, nearly perfect Ruby code with detailed explanations of everything, this book is a fantastic way to learn Ruby."<br />
+-- Joel Spolsky, <a href="http://www.joelonsoftware.com/items/2006/11/30.html">Joel on Software</a>
+
+
+<br /><br />
+<!--
+</div>
+-->
+
+
+
+
+
+
+<br /><br />
+<a href="http://oreilly.com/catalog/9780596523695/reviews.html#media">Read all reviews</a>
+
+
+
+ <!-- TEMP for Art book -->
+
+</div> <!--  /#content  -->
+
+<!-- Note: this is in use with print.view now -->
+
+<style type="text/css">
+ul {
+    margin: 0 0 0 1.2em;
+    padding: 1px 0 1px 0;
+    line-height:1.3em;
+}  
+</style>
+
+<div id="cover">
+
+
+
+
+<!-- if cover -->
+
+<!-- Google book search preview OR deli TOC -->
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596523695']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>
+<script type="text/javascript">
+var found = "no";  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<ul id="browsebook">');
+      document.write('<li class="coverimage">');
+      document.write('<a href="http://oreilly.com/catalog/9780596523695/preview.html">'); 
+      document.write('<img ' + 'src="/images/oreilly/browse.gif" ' + 'width="180" height="20" alt="Browse Book" />'); document.write('<\/a><br \/>'); 
+      document.write('<a href="http://oreilly.com/catalog/9780596523695/preview.html">');
+      found = "yes";
+      break; 
+   } 
+} 
+if (found == "no") {
+   document.write('<ul id="browsebook">');
+   document.write('<li class="coverimage">');
+   document.write('<a href="http://oreilly.com/catalog/9780596523695/toc.html">'); 
+   document.write('<img ' + 'src="/images/oreilly/browse.gif" ' + 'width="180" height="20" alt="Browse Book" />');  
+   document.write('<\/a><br \/>'); 
+   document.write('<a href="http://oreilly.com/catalog/9780596523695/cover.html">');
+}
+</script>
+<img src="/catalog/covers/9780596523695_cat.gif" alt="Ruby Cookbook" border="0" />
+</a>
+</li>   
+</ul> <br />
+<div align="center"> 
+<span class="details"><a href="/catalog/9780596523695/cover.html">See larger cover</a></span><br />
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596523695']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>  
+<script type="text/javascript">  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<br /><a href="http://oreilly.com/catalog/9780596523695/preview.html">'); 
+      document.write('<img ' + 'src="/images/oreilly/gbs_preview_button1.gif" ' + 'style="border:0; margin:3px;" />'); document.write('<\/a>'); 
+      break; 
+   } 
+} 
+</script>
+ 
+ <!-- /deli TOC -->
+
+</div> <!-- /div align=center -->
+
+ <!-- if cover exists -->
+
+<!-- TEMP for Art book -->
+
+
+<hr />
+
+<!-- supporting links -->
+<ul>
+
+
+<!-- instructor supplement --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end instructor supp -->
+
+
+<!-- oreilly only -->
+
+<!-- no need to display TOC, Index or Sample Chapters if book is on GBS. -->
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596523695']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>  
+<script type="text/javascript">  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<style type="text/css">.browselink{display:none;}<\/style>');
+      document.write('<style type="text/css">.toclink{display:none;}<\/style>');
+      break; 
+   } 
+} 
+</script>
+
+ <li class="toclink"><a href="toc.html">Table of Contents</a></li>
+  <li><b><a href="http://examples.oreilly.com/rubyckbk/">Examples</a></b></li>
+ 
+
+
+
+
+
+<li>
+
+<a href="http://register.oreilly.com/">Register Your Book</a> 
+
+</li>
+ <!-- edoc -->
+
+
+
+<li><a href="/catalog/9780596523695/errata/">View/Submit Errata</a></li>
+
+
+
+ <!-- end oreilly only -->
+
+
+<li><a href="/catalog/9780596523695#rr">View/Submit Review</a></li>
+
+</ul>
+
+<!-- VIDEO -->
+
+<!-- End VIDEO -->
+
+<!-- book blog -->
+
+
+<!-- forum -->
+
+
+<!-- ######### Get Satisfaction removed per Laura A. 2/20/09 -->
+
+<!-- END ########## Get Satisfaction -->
+
+<!-- quote -->
+<p class="quote">"This sort of book lives and dies by two criteria - the quality of the code and the usefulness of the recipe selection. <i>Ruby Cookbook</i> wins on both. "<br />
+--<span class="quote_author">Tony Williams, <a href="http://books.honestpuck.com/wordpress/?p=101">Honestpuck.com</a></span></p>
+ 
+
+<!-- TEMP for Art book -->
+
+</div><!--  /#cover  -->
+<!-- end content -->
+
+<div id="footer" class="noindex">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4591498-1");
+pageTracker._trackPageview();
+</script>
+
+<!-- Start Quantcast tag -->
+
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+
+ <!-- End Quantcast tag -->
+
+<table border="0">
+<tr><td valign="top" align="left" width="25%" style="padding-left: 20px; padding-right: 20px;">
+<a href="http://oreilly.com/"><img src="http://www.oreillynet.com/images/oreilly/oreilly-logo-footer.gif" border="0" width="155" height="35" alt="O'Reilly Media" style="border-style:none;" /></a><br />
+&copy; 2009, O'Reilly Media, Inc.<br />(707) 827-7000 / (800) 998-9938<br />
+All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.
+</td>
+
+<td valign="top"  width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>About O'Reilly</strong><br />
+
+<a href="http://academic.oreilly.com/">Academic Solutions</a><br />
+<a href="http://oreilly.com/authors/">Authors</a><br />
+<a href="http://oreilly.com/contact.html">Contacts</a><br /> 
+
+<a href="http://oreilly.com/oreilly/cs/">Customer Service</a><br /> 
+<a href="http://jobs.oreilly.com/">Jobs</a><br />
+<a href="http://elists.oreilly.com/">Newsletters</a><br />
+<a href=" http://labs.oreilly.com">O'Reilly Labs</a><br />
+<a href="http://press.oreilly.com/">Press Room</a><br />
+<a href="http://oreilly.com/oreilly/privacy.csp">Privacy Policy</a><br />
+<a href="http://oreilly.com/feeds/">RSS Feeds</a><br />
+
+<a href="http://oreilly.com/terms/">Terms of Service</a><br />
+
+<a href="http://ug.oreilly.com/">User Groups</a><br />
+
+
+<a href="http://oreilly.com/oreilly/author/intro.csp">Writing for O'Reilly</a><br />
+
+
+</td>
+
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Other O'Reilly Sites</strong><br />
+<a href="http://radar.oreilly.com/">O'Reilly Radar</a><br />
+
+<a href="http://ignite.oreilly.com/">Ignite</a><br /> 
+<a href="http://toc.oreilly.com/">Tools of Change for Publishing</a><br /> 
+<a href="http://digitalmedia.oreilly.com/">Digital Media</a><br /> 
+<a href="http://digitalmedia.oreilly.com/iphone/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=iphone">Inside iPhone</a><br />
+<a href="http://fyi.oreilly.com">O'Reilly FYI</a><br /> 
+<a href="http://makezine.com/">makezine.com</a><br /> 
+<a href="http://craftzine.com">craftzine.com</a><br /> 
+<a href="http://hackszine.com">hackszine.com</a><br /> 
+<a href="http://perl.com/">perl.com</a><br /> 
+<a href="http://xml.com/">xml.com</a><br /> 
+</td>
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Partner Sites</strong><br />
+
+<a href="http://insideria.com/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=ria">InsideRIA</a><br />
+<a href="http://java.net/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=java">java.net</a><br />
+</td>
+</tr>
+</table>
+</div><!-- /#footer -->
+
+
+</div></body><!-- /#page -->
+
+</html>

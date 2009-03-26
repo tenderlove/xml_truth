@@ -1,0 +1,260 @@
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<TITLE>Ralphs Ruby Page</TITLE>
+</HEAD>
+<BODY >
+<!-- following code added by server. PLEASE REMOVE -->
+<!-- preceding code added by server. PLEASE REMOVE -->
+<table  border=0 cellpadding=0 cellspacing=0>
+<tr><td width=600>
+<FONT >
+<P align=left><FONT  color=red size=7 face=Arial>Ralphs Ruby 
+Pages  
+</FONT></P><FONT face=Arial color=red>
+<P><FONT size=1><FONT color=blue >WARNING: This page contains examples 
+MS technology being used with open source code.&nbsp; If you have your open source blinders on 
+and can not fathom why anyone uses anything other than 'free' operating systems, or think I am sleeping with the Gates devil, 
+ save yourself - leave while you still can. Consider yourself 
+warned.</FONT> </FONT></FONT></P>
+<P><FONT face=Arial>Ruby... what a gem, that's all I can 
+say.</FONT>   </P>
+<P><FONT face=Arial>After 10 
+      years with C++, VB and COM and associated MS technologies 
+ruby is a lovely breath of fresh air to me.&nbsp; Just playing with it makes 
+me smile. Ruby is a joy to use, with a great community.&nbsp; Also as it's&nbsp;new (in language terms anyway), it's 
+still not quite 'set'. This means that you can help, be involved and 
+make your own little part of it. </FONT>                 
+       </P>
+<P><FONT face=Arial>The aim of this page is to help create 
+awareness of ruby, and promote ruby on Windows.</FONT>                
+</P>
+<P><FONT size=5><FONT color=red><STRONG><FONT face=Arial> Coming soon, watch this 
+space:</FONT>&nbsp; </STRONG> 
+      </FONT></FONT><FONT face=Arial>&nbsp; </FONT>     </P>
+      <UL>
+  <LI><FONT face=Arial>Ruby on Windows tips &amp; tricks 
+  and hints. </FONT>        
+  <LI><FONT face=Arial>My future 
+        Ruby projects Ideas:</FONT>
+        <UL>        
+  <LI><FONT face=Arial><FONT size=2>A Ruby VM (there is one but I like to play) 
+  <LI><FONT face=Arial><FONT size=2>Some kind 
+          of IDE using scintilla as the editing component and the rest 
+          written in Ruby</FONT>       </LI></UL>       </LI></UL>        
+  <P><FONT color=red size=5 face=Arial><STRONG>Links</STRONG></FONT>       </P></FONT>
+<P><FONT face=Arial>What to know more? </FONT></P>
+<UL>
+  <LI>
+  <DIV><A href="http://www.ruby-lang.org/en/index.html"><FONT 
+  face=Arial>http://www.ruby-lang.org/en/index.html</FONT></A></DIV>
+  <LI>
+  <DIV><A href="http://www.rubycentral.com/"><FONT 
+  face=Arial>http://www.rubycentral.com/</FONT></A></DIV>
+  <LI>
+  <DIV><A href="http://www.rubycentral.com/book/"><FONT 
+  face=Arial>http://www.rubycentral.com/book<FONT 
+        size=2>/</FONT></FONT></A><FONT face=Arial size=2 
+       > 
+  &nbsp; (Programming Ruby book, read a page or two)</FONT><FONT face=Arial><BR> 
+          </FONT>&nbsp;</DIV>
+  <LI>
+  <DIV><FONT face=Arial>Email me <A 
+  href="mailto:masonralph@yahoo.com">masonralph@yahoo.com</A></FONT></DIV>
+  <LI>
+  <DIV><FONT face=Arial>My other pages <A 
+  href="http://www.geocities.com/masonralph">www.geocities.com/masonralph</A></FONT></DIV></LI></UL><FONT>
+      <P><FONT face=Arial color=red size=5><STRONG>Ruby Code</STRONG></FONT></P>
+      <UL>
+        <LI>
+        <DIV><FONT face=Arial color=black size=3><STRONG>Dictionary.com 
+        </STRONG>Lookup, uses ruby to lookup word from Dictionary.com 
+        (<a href="lookup.txt">download</a>)</FONT></DIV></LI></UL>
+      <P><FONT face=Arial color=red size=5><STRONG>Ruby.COM <FONT color=blue 
+size=3>(work in progress, stand 
+      clear)<BR>    </FONT></STRONG></FONT><STRONG><FONT color=#0000ff size=3><A href="RubyCOM001.zip">Download RubyCOM 
+      0.0.1</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <A href="rubycomdoc.html">RubyCOM 
+      Documentation</a></FONT></STRONG></P>
+      <P><FONT face=Arial>Here&nbsp;is the testbed for Ruby.COM,&nbsp;notice the really 
+nice&nbsp;Ruby&nbsp;features, including dynamic evaluation being used to add 
+methods to classes, these&nbsp;methods are then called from the com 
+interface.&nbsp; But it goes further than that, you can&nbsp;create whole new 
+classes and invoke those through com also, right from your program! If you 
+already know&nbsp;Ruby you wont be surprised at these things.&nbsp; If your 
+coming from VB &amp;&nbsp;C++ you will be.<BR></FONT></P>
+<P><FONT face=Arial>First a simple Ruby
+class</P></FONT>   <FONT face="Courier New">  
+<PRE><FONT color=red>class</FONT> Myclass 
+   <FONT color=#ff0000>def</FONT>test2(x,y)
+     [x,y]
+   <FONT color=red>end
+   
+   def</FONT> x=(y) 
+     @x = y 
+   <FONT color=red>end
+
+   def</FONT> x
+     @x	
+   <FONT color=red>end
+
+   def</FONT> test(x,y,z)
+     "#{x} #{y} #{z}"
+   <FONT color=red>end
+end</FONT>
+<P>             
+&nbsp;</P><P>And The VB code to use it and do all sorts of cool things.</P>
+</PRE> 
+<pre>
+<font color=blue>Dim</font> rbyObject <font color=blue>As Object
+Private Sub</font> Form_Load()
+
+<font color=green>'RubyCom Test Harness</font>
+<font color=blue>Dim</font> obj1 <font color=blue>As Object
+Dim</font> Obj2 <font color=blue>As Object
+Dim</font> WinClass <font color=blue>As Object
+Dim</font> MyClass <font color=blue>As Object
+
+Set</font> obj1 = CreateObject("Ruby.Myclass")
+
+obj1.x = 0
+<font color=blue>While</font> (obj1.x &lt; 1000)
+    obj1.x = obj1.x + 1
+<font color=blue>Wend</font>
+
+a (obj1.x = 1000)
+
+<font color=blue>Set</font> Obj2 = CreateObject("Ruby.Myclass")
+
+a (obj1.Type = Obj2.Type) <font color=green>' Call inspect on each type</font>
+a (obj1.Type <font color=blue>Is</font> Obj2.Type) <font color=green>' Compare actual objects</font>
+
+<font color=green>'Test references &amp; finding the same object</font>
+<font color=blue>Set</font> WinClass = obj1.eval("WIN32OLE")
+<font color=blue>Set</font> MyClass = obj1.eval("Myclass")
+
+a (WinClass.Type = MyClass.Type)
+a (WinClass.Type <font color=blue>Is</font> MyClass.Type)
+a (<font color=blue>Not</font> (WinClass <font color=blue>Is</font> MyClass))
+a (obj1.Type <font color=blue>Is</font> MyClass)
+a (<font color=blue>Not</font> (obj1.Type <font color=blue>Is</font> WinClass))
+
+<font color=green>'Test calling back to other com objects Using Properties</font>
+obj1.x = Form1
+a (obj1.instance_eval("@x.kind_of? WIN32OLE"))
+Form1.Caption = ""
+obj1.instance_eval ("@x.Caption='Test'")
+a (Form1.Caption = "Test")
+a (WinClass.IsKind_of(obj1.eval("Class")))
+a (obj1.instance_eval("@x.Caption") = "Test")
+
+<font color=green>'Test returned references</font>
+obj1.x = Obj2
+obj1.x.x = "Test"
+a (obj1.x.x = "Test")
+
+<font color=green>'Test Is and Me and nil values</font>
+obj1.instance_eval ("def makexnil! ; @x=nil ; end")
+a (<font color=blue>Not</font> obj1.x.IsNil)
+a (<font color=blue>Not</font> (obj1.x <font color=blue>Is Nothing</font>))
+obj1.MakexnilMe
+a (obj1.x <font color=blue>Is Nothing</font>)
+a (<font color=blue>Not</font> obj1.IsNil)
+
+<font color=green>'Check out [] and []=</font>
+<font color=blue>Set</font> obj1 = obj1.eval("{}")
+obj1("1") = <font color=blue>True</font>
+obj1("2") = <font color=blue>True</font>
+a (obj1("1") <font color=blue>And</font> obj1("2"))
+a (obj1("3") <font color=blue>Is Nothing</font>)
+
+<font color=green>'Test an array</font>
+k = obj1.eval("[1,2,3,3,4,5,5,5]")
+a (k(0) = 1 <font color=blue>And</font> k(2) = 3 <font color=blue>And</font> k(4) = 4)
+a (<font color=blue>UBound</font>(k) = 7)
+obj1.instance_eval ("def a_test(x); x.uniq ; end")
+k = obj1.a_test(k)
+a (<font color=blue>UBound</font>(k) = 4)
+a (k(0) = 1 <font color=blue>And</font> k(2) = 3 <font color=blue>And</font> k(4) = 5)
+
+<font color=green>'Test multiple args</font>
+<font color=blue>Set</font> obj1 = obj1.instance_eval("Myclass.new()")
+a (obj1.test(1, "test", 59) = "1 test 59")
+
+<font color=green>'Test Calling back from Ruby to a local object using method calls</font>
+<font color=blue>Set</font> rbyObject = CreateObject("Ruby.Myclass")
+rbyObject.instance_eval ("def add(x); @y=0 if @y.nil? ; @x.additem('Rby ' +x + (@y+=1).to_s ); end")
+rbyObject.instance_eval ("def clear(); @x.Clear ; end")
+rbyObject.x = List1 <font color=green>'List1 is a VB listbox object</font>
+rbyObject.Clear
+rbyObject.Add ("1")
+rbyObject.Add ("1")
+rbyObject.Add ("1")
+a (List1.ListCount = 3)
+rbyObject.Clear
+a (List1.ListCount = 0)
+
+
+<font color=green>'Test Method Missing ( and function name conversion )</font>
+rbyObject.instance_eval ("def method_missing(x); x.id2name ; end ")
+a (rbyObject.empty = "empty")
+a (rbyObject.IsEmpty = "empty?")
+a (rbyObject.EmptyMe = "empty!")
+a (rbyObject.NoReallyEmptyMe = "noReallyEmpty!")
+
+a (rbyObject.xor_ = "^")
+a (rbyObject.and_ = "&amp;")
+a (rbyObject.or_ = "|")
+a (rbyObject.plus_ = "+")
+a (rbyObject.minus_ = "-")
+a (rbyObject.times_ = "*")
+a (rbyObject.div_ = "/")
+a (rbyObject.mod_ = "%")
+a (rbyObject.greater_ = "&gt;")
+a (rbyObject.less_ = "&lt;")
+a (rbyObject.greatereql_ = "&gt;=")
+a (rbyObject.lesseql_ = "&lt;=")
+a (rbyObject.compare_ = "&lt;=&gt;")
+a (rbyObject.insert_ = "&lt;&lt;")
+a (rbyObject.extract_ = "&gt;&gt;")
+a (rbyObject.match_ = "~")
+
+rbyObject.instance_eval ("def ==(x); '==' ; end ")
+rbyObject.instance_eval ("def ===(x); '===' ; end ")
+rbyObject.instance_eval ("def =~(x); '=~' ; end ")
+
+a (rbyObject.eqleql_(1) = "==")
+a (rbyObject.eqleqleql_(1) = "===")
+a (rbyObject.eqlmatch_(1) = "=~")
+
+
+<font color=green>'Call renamed method on a real class</font>
+<font color=blue>Set</font> obj1 = obj1.eval("/regex/")
+a (obj1.eqlmatch_("regex") = 0)
+
+<font color=green>'Setup for the button push test</font>
+<font color=blue>Set</font> rbyObject = CreateObject("Ruby.Myclass")
+rbyObject.x = List1
+rbyObject.instance_eval ("def add(x); @y=0 if @y.nil? ; @x.additem('Rby ' +x + (@y+=1).to_s ); end")
+
+<font color=blue>End Sub<hr>
+Sub</font> a(x <font color=blue>As Boolean</font>)
+    <font color=blue>If Not</font> x <font color=blue>Then</font>
+        MsgBox "Assertion Failed"
+        Debug.Assert (<font color=blue>False</font>)
+    <font color=blue>End If
+End Sub<hr>
+
+Private Sub</font> Command1_Click()
+    rbyObject.Add Text1.Text
+<font color=blue>End Sub</font><hr>
+
+</pre></FONT></FONT></FONT></FONT></FONT>
+</td>
+</tr>
+</table>
+
+
+</BODY>
+</HTML>
+<!-- text below generated by server. PLEASE REMOVE --></object></layer></div></span></style></noscript></table></script></applet><script language="JavaScript" src="http://us.i1.yimg.com/us.yimg.com/i/mc/mc.js"></script><script language="JavaScript" src="http://us.js2.yimg.com/us.js.yimg.com/lib/smb/js/hosting/cp/js_source/geov2_001.js"></script><script language="javascript">geovisit();</script><noscript><img src="http://visit.geocities.yahoo.com/visit.gif?us1238101374" alt="setstats" border="0" width="1" height="1"></noscript>
+<IMG SRC="http://geo.yahoo.com/serv?s=76001067&t=1238101374&f=us-w66" ALT=1 WIDTH=1 HEIGHT=1>

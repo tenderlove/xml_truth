@@ -1,0 +1,1255 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+      <meta content="Percussion Rhythmyx" name="generator">
+      <title>Ruby for the Java world - JavaWorld</title>
+      
+      
+      <script language="JavaScript">
+			var topicid = 0; 
+		    subtopicid = 0; 
+		</script><script>
+			function HighlightText(divid){
+			var code = document.body.createTextRange();
+			code.moveToElementText(document.getElementById('codewrap' + divid));
+			code.execCommand("SelectAll");
+			code.execCommand("Copy");
+			} 
+		</script><meta name="TopicID" content="">
+      <meta name="SubTopicID" content="1004">
+      <meta name="channels" content="Java World">
+      <meta name="description" content="Dynamic languages are the up-and-coming competitors to Java.&#xA;Expanding their scope beyond glue code and Web GUIs into the&#xA;heavy-duty challenges once faced only with a compiler, languages&#xA;such as Python, PHP, Groovy, and Ruby have rapidly gained&#xA;popularity among programmers. Ruby in particular has attracted&#xA;attention, with a big boost from the Ruby on Rails Web framework.&#xA;Java programmers who appreciate the value of Ruby still need a way&#xA;to get it to play nicely with the huge installed base of Java&#xA;software. The JRuby interpreter provides the solution. Like the&#xA;Jython interpreter and the Python language, JRuby executes Ruby&#xA;code and allows Ruby objects to call Java code, and vice versa. In&#xA;this article, Joshua Fox introduces Java programmers to Ruby,&#xA;focusing on the similarities, differences, and connectivity between&#xA;the two languages.">
+      <meta name="keywords" content="Development Tools,Ruby, JRuby, Java Virtual Machine, dynamic languages, Jython, Domain Specific Languages, scripting languages, metaprogramming, Ruby on Rails">
+      <meta name="contenttype" content="News">
+      <meta name="publicationDate" content="2006-07-17">
+      <meta name="author" content="Joshua Fox">
+      <meta name="publisher" content="JavaWorld.com">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+
+	
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+		
+
+
+<!-- put the # sign in the comment below to go live -->
+
+
+
+
+<style>#reg{BACKGROUND: #ebe7d9;PADDING:5px;}</style>
+<script type="text/javascript" src="/includes/jqlib/jwLib_head.js"></script>
+<script language="javascript">
+  var outerref = new String("(none)");
+  var nwchannel = 'jw';
+  var refresh = 0;
+  
+  var jq_rxid = '80789';
+</script>
+<base target = "_top">
+
+<script type="text/javascript" src="/includes/head-scripts.js"></script>
+<script type="text/javascript" src="http://api.recaptcha.net/js/recaptcha_ajax.js"></script>
+<script type="text/javascript">
+NW = window.NW || {};
+
+NW.PageInfo = NW.PageInfo || {};
+NW.PageInfo = function() {
+    return{
+        cookie_domain: "javaworld.com",
+        rxprimarytopic: "development",
+		rxheadline: "Ruby for the Java world",
+        channels: "jw",
+        request_uri: "/javaworld/jw-07-2006/jw-0717-ruby.html",
+        doc_uri: "/javaworld/jw-07-2006/jw-0717-ruby.html",
+        rxid: "80789",
+        nodeid: "",
+		pgtype: "article",
+        
+        // use this function to return meta info and add to NW.PageInfo object
+        setMetaInfo: function() {
+            $("meta").each(function (i) {
+                var n = $(this).attr("name");
+                var c = $(this).attr("content")
+                //alert('before - ' + n + ": " + c);
+                if(n && c) {
+                    NW.PageInfo[n] = $(this).attr("content");
+                    //document.write('in - ' + n + ": " + c + '<br />');
+                }
+            });    
+        }
+    };
+}();
+NW.PageInfo.setMetaInfo(); 
+</script>
+
+
+<!-- HBX -->
+<script language="javascript1.1">
+var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+var hbx=_hbEvent("pv");hbx.vpc="HBX0103u";hbx.gn="a.javaworld.com";
+var doctitle = hbxStrip(document.title);
+var loc = new String(document.location.href);
+loc = hbxStrip(loc);
+
+hbx.acct="DM54120129AB;DM550210NGWB";
+hbx.pn="PUT+PAGE+NAME+HERE";
+hbx.mlc="CONTENT+CATEGORY";
+hbx.pndef="title";
+hbx.ctdef="full";
+hbx.lvm="300";
+hbx.lidt="txl";
+
+hbx.fv="";//FORM VAL MIN
+hbx.lt="auto"; //LINK TR
+hbx.dlf="n";//Dl FILTER
+hbx.dft="n";//Dl FILE NAMING
+hbx.elf="n";//EXIT LINK FILTER
+
+hbx.seg="-1";
+hbx.ci="";
+hbx.hc1="jw_development|";
+hbx.hc2=keywords+"|"+doctitle;
+hbx.hc3=author+"|"+doctitle;
+hbx.hc4=doctitle+"|"+author;
+hbx.pec="";//ERROR CODES
+</script><script language="javascript1.1" src="/includes/hbx.js"></script>
+<!--END HBX -->
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="//secure.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qoptions = {
+            tags:"nww"
+};
+_qacct="p-25K88fxDSEn9Y";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-25K88fxDSEn9Y" target="_blank"><img src="//secure.quantserve.com/pixel/p-25K88fxDSEn9Y.gif?tags=nww" border="0" style="display: none" height="1" width="1"></a></noscript>
+<!-- End Quantcast tag -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6191150-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!--
+channels: jw
+keywords (topics): Development Tools
+contenttype (tasks): News
+site: jw_development
+pagename: development
+keyval: development
+ibsearch: (none)
+-->
+
+	 
+
+      <link href="/includes/styles/adstyles.css" rel="stylesheet" type="text/css">
+      <link href="/includes/styles/jw-main.css" rel="stylesheet" type="text/css">
+      <!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/includes/styles/ie.css"/><![endif]-->
+      <link href="/jwsearch.xml" rel="search" title="JavaWorld" type="application/opensearchdescription+xml">
+   </head>
+   <body onload="init()">
+      
+      <!--stopindex-->
+      
+      <div id="wrapper">
+         <div id="bannerarea">
+            <div id="mainbanner">
+               
+
+
+
+<script> bannersrc = "http://ad.doubleclick.net/adi/idg.us.nwf.jw_development/;pos=top;sz=728x90;ptile=1;type=news;ord=050200?";</script>
+<!--stopindex-->
+<!-- begin ad tag -->
+<NOLAYER>
+<IFRAME id="banner" src="http://ad.doubleclick.net/adi/idg.us.nwf.jw_development/;pos=top;sz=728x90;ptile=1;type=news;ord=050200?" width="728" height="90" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no">
+<A href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;abr=!ie;pos=top;sz=728x90;ptile=1;type=news;ord=050200?">
+<IMG src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;abr=!ie;pos=top;sz=728x90;ptile=1;type=news;ord=050200?" border="0" width="728" height="90"></A>
+</IFRAME>
+</NOLAYER>
+<ILAYER id="banner" visibility="hidden" width="728" height="90"></ILAYER>
+<!-- end ad tag -->
+
+
+            </div>
+            <div class="separator">
+               <!-- xxxxxxxxxxxxxx -->
+            </div>
+            <div id="masthead">
+               <div id="logoarea">
+                  <h1><a href="http://www.javaworld.com">JavaWorld: Solutions for Java Developers</a></h1>
+               </div>
+                 <div id="searcharea"><form method="get" accept-charset="iso-8859-1" action="http://www.javaworld.com/ifind/java/query.html"><input type=hidden name="qm" value="0" />
+<input type=hidden name="st" value="1" />
+<input type=hidden name="nh" value="10" />
+<input type="hidden" name="col" value="java" />
+  <table border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top">
+    <td><input type="text" name="qt" class="formfield" value="" maxlength="1991"></td>
+    <td><input class="submit" name="" type="image" src="/includes/styles/i/but/lw-search-button.gif" alt="Search" value="Go" /></td>
+    <td><span><a href="http://www.javaworld.com/ifind/java/query.html?col=java&qs=&qc=&si=0&ql=a&nh=25&lk=1&rf=0">Advanced search</a></span></td>
+  </tr>
+</table>
+  </form>
+</div>
+
+            </div>
+            <div class="separator">
+               <!-- xxxxxxxxxxxxxx -->
+            </div>
+         </div>
+         <!--Start Menu--><script language="javascript" src="/includes/lookup_topic.js" xml:space="preserve"> </script><div id="toolbar"><div id="medallion"><!-- begin ad tag -->
+
+<table width="125"  border="0" cellspacing="0" cellpadding="0"><tr><td><SCRIPT LANGUAGE="JavaScript1.1" SRC="http://ad.doubleclick.net/adj/idg.us.nwf.jw_development/;pos=n1;sz=120x90;ptile=2;type=news;ord=050200?" ></SCRIPT></td></tr></table>
+<script>
+if ((!document.images && navigator.userAgent.indexOf("Mozilla/2.") >= 0)  || navigator.userAgent.indexOf("WebTV")>= 0) {
+document.write('<A HREF="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;pos=n1;sz=120x90;ptile=2;type=news;ord=050200?" TARGET="_blank">');
+document.write('<IMG SRC="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;pos=n1;sz=120x90;ptile=2;type=news;ord=050200?" WIDTH="120" HEIGHT="90" BORDER="0" ALT="Click Here"></A>');
+}
+</script>
+<NOSCRIPT>
+<A HREF="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;pos=n1;sz=120x90;ptile=2;type=news;ord=050200?" TARGET="_blank">
+<IMG SRC="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;pos=n1;sz=120x90;ptile=2;type=news;ord=050200?" WIDTH="120" HEIGHT="90" BORDER="0" ALT="alt text">Click Here</A>
+</NOSCRIPT>
+<!-- end ad tag --></div><ul><li class="research"><a href="http://www.javaworld.com/topics/" shape="rect">Research Centers</a></li></ul><div id="toolbar_rc"><ul><li id="navbar1001" class="nobracket"><a shape="rect" id="linknav1001" href="http://www.javaworld.com/channel_content/jw-core-index.html" class=""><span id="showplus1001" class="toolbar-red">
+			+ </span>Core Java</a><div id="toolbar_rcsubs1001"><ul><li id="subnav1127" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-client-side-index.html">Client-side Java</a></li><li id="subnav1108" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-patterns-index.html">Design Patterns</a></li><li id="subnav1131" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-language-index.html">Java Language</a></li><li id="subnav1098" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-apis-index.html">Java Platform APIs</a></li><li id="subnav1132" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-concepts-index.html">Java Programming Concepts</a></li><li id="subnav1136" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-gui-index.html">Swing/GUI Programming</a></li><li id="subnav1138" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-threads-index.html">Threads/Concurrency</a></li></ul></div></li><li id="navbar1002" class="nobracket"><a shape="rect" id="linknav1002" href="http://www.javaworld.com/channel_content/jw-enterprise-index.html" class=""><span id="showplus1002" class="toolbar-red">
+			+ </span>Enterprise Java</a><div id="toolbar_rcsubs1002"><ul><li id="subnav1124" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-ajax-index.html">Ajax/RIA/Web 2.0</a></li><li id="subnav1126" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-architecture-index.html">Architecture &amp; Scalability</a></li><li id="subnav1129" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-best-practices-index.html">Enterprise Best Practices</a></li><li id="subnav1010" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-xml-index.html">Java &amp; XML</a></li><li id="subnav1133" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-development-index.html">Java Web Development</a></li><li id="subnav1009" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-webserv-index.html">Web Services &amp; SOAs</a></li></ul></div></li><li id="navbar1003" class="nobracket"><a shape="rect" id="linknav1003" href="http://www.javaworld.com/channel_content/jw-micro-index.html" class=""><span id="showplus1003" class="toolbar-red">
+			+ </span>Mobile Java</a><div id="toolbar_rcsubs1003"><ul /></div></li><li id="navbar1004" class="nobracket"><a shape="rect" id="linknav1004" href="http://www.javaworld.com/channel_content/jw-applied-index.html" class=""><span id="showplus1004" class="toolbar-red">
+			+ </span>Tools &amp; Methods</a><div id="toolbar_rcsubs1004"><ul><li id="subnav1012" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-appserv-index.html">Application Servers</a></li><li id="subnav1128" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-data-management-index.html">Data Management/RDBMS</a></li><li id="subnav1146" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-enterprise-middleware-index.html">Enterprise Middleware</a></li><li id="subnav1130" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-ide-index.html">Java IDEs</a></li><li id="subnav1110" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-security-testing-index.html">Java Security</a></li><li id="subnav1109" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-ostools-index.html">Open Source Tools</a></li><li id="subnav1134" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-scripting-index.html">Scripting/Other Languages</a></li><li id="subnav1125" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-lifecycle-index.html">Software Development Lifecycle</a></li><li id="subnav1135" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-software-development-index.html">Software Development Methodologies</a></li><li id="subnav1137" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-testing-debugging-index.html">Testing &amp; Debugging</a></li><li id="subnav1021" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/channel_content/jw-webdev-index.html">Web Application Frameworks</a></li></ul></div></li><li id="navbar1123" class="nobracket"><a shape="rect" id="linknav1123" href="http://www.javaworld.com/channel_content/jw-archive-index.html" class=""><span id="showplus1123" class="toolbar-red">
+			+ </span>JavaWorld Archives</a><div id="toolbar_rcsubs1123"><ul><li id="subnav1059" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-design-index.html">Design Techniques</a></li><li id="subnav1056" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-howto-index.html">How-to Java</a></li><li id="subnav1061" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-101-index.html">Java 101</a></li><li id="subnav1076" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-java-design-patterns-index.html">Java Design Patterns</a></li><li id="subnav1065" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-qna-index.html">Java Q&amp;A</a></li><li id="subnav1057" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-tips-index.html">Java Tips</a></li><li id="subnav1071" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-traps-index.html">Java Traps</a></li><li id="subnav1139" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-serverside-index.html">Server-side Java</a></li><li id="subnav1073" class="" shape="rect"><a shape="rect" href="http://www.javaworld.com/columns/jw-hood-index.html">Under the Hood</a></li></ul></div></li></ul></div><div class="site_resources">
+ <!-- use li class=current1 to hightlight the items below-->
+    <ul>
+      <li class="toplevel2"><a href="http://www.javaworld.com/topics/index.html">Site Resources</a></li>
+      <li id="sr87" class=""><a href="http://www.javaworld.com/features/index.html">Featured Articles</a></li>
+      <li id="sr89" class=""><a href="http://www.javaworld.com/news-reviews/index.html">News &amp; Views</a></li>
+      <li id="sr998" class=""><a href="http://www.javaworld.com/community/">Community</a></li>
+      <li id="sr996" class=""><a href="http://www.javaworld.com/community/?q=javaqa">Java Q&amp;A</a></li>
+      <li id="sr995" class=""><a href="http://www.javaworld.com/community/?q=jwblogs">JW Blogs</a></li>
+	  <li id="sr993" class=""><a href="http://www.javaworld.com/podcasts/jtech/">Podcasts</a></li>
+	  <li id="sr997" class=""><a href="http://www.javaworld.com/topics/index.html">Site Map</a></li>
+    </ul>
+    
+	
+	<ul class="second">
+      <li><a href="http://javaworld.4jobs.com">Careers</a></li>
+	  <li id="sr991" class=""><a href="http://www.javaworld.com/newsletter/">Newsletters</a></li>
+      <li id="sr95" class=""><a href="http://www.javaworld.com/white-paper/index.html">Whitepapers</a></li>
+      <li id="sr992" class=""><a href="http://www.javaworld.com/rss/index.html">RSS Feeds</a></li>
+    </ul>
+   
+   
+	<ul class="about">
+		 <li class="toplevel2"><a href="http://www.javaworld.com/info/jw-about-index.html">About JavaWorld</a></li>
+         <li><a href="http://www.javaworld.com/info/jw-advertise.html">Advertise</a></li>
+         <li><a href="http://www.javaworld.com/info/jw-guidelines.html">Write for JW</a></li>
+	</ul>
+	</div>
+	<script language="javascript">if (typeof menu_lookup == "function") menu_lookup();</script>
+	<br>
+	<div style="border:solid 1px #BBBBBB; padding:10px;">
+		<script type="text/javascript"> 
+		<!--
+		google_ad_client = "pub-7643913824060699";
+		/* 120x90 nav bar, created 2/26/09 */
+		google_ad_slot = "5481062170";
+		google_ad_width = 120;
+		google_ad_height = 90;
+		//-->
+		</script>
+		<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </div>
+	</div>
+         <div class="article" id="contentarea">
+            <div id="rcheader">
+               <!--startindex-->
+               <div id="toptabs">
+                  <ul>
+                     <li><a href="/channel_content/jw-development-index.html">Development Tools</a></li>
+                  </ul>
+               </div>
+               <!--stopindex-->
+            </div>
+            <div id="idglogin">
+               <!-- xxxxxxxxxxxxxx -->
+            </div>
+            <div id="sectionhome">
+               <div id="a-e_col1">
+                  <div id="d-e_col2b">
+                     <div id="d-e-1">
+	<div id="tabs">
+		<ul>
+		<li class="ts"><a href="javascript:opentab('topstories');" class="ts" id="topstories_a">JW's Most Read</a></li>
+		<li class="saved"><a href="javascript:opentab('savedarticles');" class="saved" id="savedarticles_a">Editor's Choice</a></li>
+		</ul>
+	</div>
+	<div id="topstories">
+		 <ul class="noindent">
+   <li><a href="http://www.javaworld.com/javaworld/jw-03-2009/jw-03-osjp-cactus.html">Open source Java projects:&nbsp;Cactus</a></li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-03-2009/jw-03-good-unit-tests-1.html">Writing good unit tests, Part 1</a></li>
+   <li><a href="http://www.javaworld.com/community/node/2671">IBM:&nbsp;Better or worse for Java licensing?</a></li>
+   <li><a href="http://www.javaworld.com/community/node/2651">Programmers:&nbsp;Who needs CompSci?</a></li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-03-2009/jw-03-java-concurrency-with-thread-gates.html">Java concurrency with thread gates</a></li>
+</ul>
+<p><b>Popular archives:</b></p>
+<ul class="noindent">
+   <li><a href="http://www.javaworld.com/javaworld/jw-12-2008/jw-12-hudson-ci.html">Continuous integration with Hudson</a> (2008)
+   </li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-02-2008/jw-02-opensourcejava-jna.html">Open source Java projects:&nbsp;Java Native Access</a> (2008)
+   </li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-03-2006/jw-0313-leak.html">Plug memory leaks in Java enterprise applications</a> (2006)
+   </li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-03-2008/jw-03-java-ides0308.html">IDE showdown:&nbsp;Eclipse or NetBeans?</a> (2008)
+   </li>
+   <li><a href="http://www.javaworld.com/javaworld/jw-07-2006/jw-0710-multicore.html">Code ready: Make way for multicore!</a> (2006)
+   </li>
+</ul>
+	</div>
+	<div id="savedarticles">
+		 <p><b>JW Hot Topic: <a href="http://www.javaworld.com/community/node/2651">Do you need a college degree to get a programming job?</a></b><br>There's nothing wrong with a software developer getting a college degree in CompSci, especially when it accompanies an opportunity
+   to learn useful skills. My problem is with hiring managers who <a href="http://www.javaworld.com/community/node/2651">think the degree is an absolute necessity ...</a></p>
+<p><b>Also discuss:</b></p>
+<ul class="noindent">
+   <li><a href="http://www.javaworld.com/community/node/2671">IBM: Better or worse for Java licensing?</a></li>
+   <li><a href="http://www.javaworld.com/community/node/2613">Java annotations: Use 'em or hate 'em?</a></li>
+   <li><a href="http://www.javaworld.com/community/node/2652">Developers: The downside of being 'the best'</a></li>
+</ul>
+	</div>
+</div>
+
+<script type="text/javascript">
+divnames = new Array('topstories', 'savedarticles'); <!--,'topstories'-->
+opentab("savedarticles");
+
+function opentab(divname) {	;
+	if(document.getElementById(divname)) {
+		for (i=0;i < 2;i++) {	<!-- 2-->
+			var aname = divnames[i] + '_a';		
+			if (divnames[i] == divname)	{	
+				tab=divname;		    
+				document.getElementById(divname).style.display='block';
+				document.getElementById(aname).parentNode.id = "current";	
+			}
+			else {
+				document.getElementById(divnames[i]).style.display='none';
+				document.getElementById(aname).parentNode.id = "none";
+			}
+		}
+	}
+}
+</script>
+
+
+                     <div class="imu">
+                        <!--stopindex-->
+
+
+
+
+
+
+
+<script language="JavaScript">
+<!--
+var imuvar;
+myImage = new Image();
+myImagef = new Image();
+function resize(){
+	//return; //just comment this out to activate the resize function
+	imuvar = document.getElementById("imu");
+	myImage.src = "http://www.javaworld.com/ads/halfpage.jsp?get=true&ord=050200";
+	setTimeout("getSize()",300);
+	setTimeout("finalSize()",1200);
+}
+
+function finalSize(){
+	if (imuvar.height < 600) {
+		imuvar = document.getElementById("imu");
+		myImagef.src = "http://www.javaworld.com/ads/halfpage.jsp?get=true&ord=1050200";
+		getSizef();
+	}
+}
+
+function getSizef() {
+    if (myImagef.height == 0) setTimeout("getSizef()",200);	
+	if (myImagef.height == 600) imuvar.height=600;
+}
+
+function getSize() {
+    if (myImage.height == 0) setTimeout("getSize()",200);	
+	if (myImage.height == 600) imuvar.height=600;
+}
+ch_client = "javaworld";
+//-->
+</script>
+<script type="text/javascript" src="http://scripts.chitika.net/eminimalls/pixel.js"></script>
+  <!--set var="bigisrc" value="http://ad.doubleclick.net/adl/idg.us.nwf.${site}/${adpagename};pos=imu;sz=336x280;type=${adtype};ord=${DATE_LOCAL}?" -->
+  <NOLAYER>
+  <IFRAME id="imu" src="http://ad.doubleclick.net/adi/idg.us.nwf.jw_development/;pos=imu;sz=336x280;ptile=3;type=news;ord=050200?" onload="resize()" width="336" height="280" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no">
+  <A href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;abr=!ie;pos=imu;sz=336x280;ptile=3;type=news;ord=050200?">
+  <IMG src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;abr=!ie;pos=imu;sz=336x280;ptile=3;type=news;ord=050200?" border="0" width="336" height="280"></A>
+  </IFRAME>
+  </NOLAYER>
+  <ILAYER id="imu" visibility="hidden" width="336" height="280"></ILAYER>
+	<script> 
+		imusrc = "http://ad.doubleclick.net/adi/idg.us.nwf.jw_development/;pos=imu;sz=336x280;ptile=3;type=news;ord=";
+		chitikasrc = "http://ad.doubleclick.net/adi/idg.us.nwf.jw_development/nochitika;pos=imu;sz=336x280;ptile=3;type=news;ord=050200?";
+	</script>
+
+                     </div>
+                     
+<div id="rclib-de1">
+   <h5 class="rclibde">
+      <b>Featured Whitepapers</b>
+   </h5>
+   <table border="0" cellpadding="0" cellspacing="0" class="rclib-detable" width="100%">
+      <tr>
+         <td class="rclib-dealt">
+            <a href=""/>
+         </td>
+      </tr>
+   </table>
+</div>
+                             <!-- nl signup start-->
+		<form action="http://www.networkworld.com/nl/Signup.do" id="Form2" method="post" name="form" onSubmit="openNewWindow()" target="new_window">
+          <div id="newsletter">
+            <h5>Newsletter sign-up</h5><a href="http://www.subscribenw.com/nl/signup.jsp?keycode=JW07" class="all">View all newsletters</a>
+			<p class="nl">Sign up for our technology specific newsletters.</p>
+            <table width="300" border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td valign="top" class="bgleft"><input name="NL70" type="checkbox" id="NL70"/></td>
+                <td class="bgright"><a href="javascript:openWindow('http://www.subscribenw.com/nl/popup.jsp?id=70',500,300);">Enterprise Java</a></td>
+              </tr>
+		    </table>
+            <strong>Email Address:</strong>
+			<input id="keycode" name="keycode" type="hidden" value="NLmsu08"/>
+			<input id="call" name="call" type="hidden" value="instant"/>
+			<input name="pid" type="hidden" value="121"/>
+			<input name="email" size="14" type="text"/>
+            <input alt="Submit" name="Button" type="submit" value="Subscribe" id="Submit1"/>
+          </div>
+        </form>
+
+                     <!--include virtual="/includes/topic/development-nl-signup.html"-->
+                     <div id="sponsoredlinks">
+    <h2>
+        Sponsored Links
+    </h2>
+    <script type="text/javascript" src="http://jlinks.industrybrains.com/jsct?sid=93&ct=JAVAWORLD_HP_ROS&num=1&layt=10&fmt=simp&tr=premium"></script>
+</div>
+
+<div id="de5">
+<!-- begin ad tag -->
+<SCRIPT LANGUAGE="JavaScript1.1" SRC="http://ad.doubleclick.net/adj/idg.us.nwf.jw_development/;pos=de5;sz=336x175;tile=5;ord=050200?" ></SCRIPT>
+<script>
+if ((!document.images && navigator.userAgent.indexOf("Mozilla/2.") >= 0)  || navigator.userAgent.indexOf("WebTV")>= 0) {
+document.write('<A HREF="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;pos=de5;sz=336x175;tile=5;ord=050200?" TARGET="_blank">');
+document.write('<IMG SRC="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;pos=de5;sz=336x175;tile=5;ord=050200?" WIDTH="336" HEIGHT="175" BORDER="0" ALT="Click Here"></A>');
+}
+</script>
+<NOSCRIPT>
+<A HREF="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;pos=de5;sz=336x175;tile=5;ord=050200?" TARGET="_blank">
+<IMG SRC="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;pos=de5;sz=336x175;tile=5;ord=050200?" WIDTH="336" HEIGHT="175" BORDER="0" ALT="alt text">Click Here</A>
+</NOSCRIPT>
+<!-- end ad tag -->
+</div>
+
+
+	<script type="text/javascript"><!--
+google_ad_client = "pub-7643913824060699";
+/* 336x280 IMU column, created 2/26/09 */
+google_ad_slot = "5908099074";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<div style="margin-bottom:12px;">
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+                     <!-- SSI Error -->
+                  </div>
+                  <div class="breadcr"><a href="/index.html">JavaWorld.com</a>
+                     &gt; <a href="/channel_content/jw-development-index.html">Java Development Tools</a> &gt;
+</div>
+                  <div>
+                     
+                     <!--HEADLINE GOES HERE-->
+                     
+                     <!--startindex-->
+                     <a id="top" name="top"></a><h1>Ruby for the Java world</h1>
+                     <H3>Script your Java applications and efficiently reuse your Java libraries with this dynamic language</H3>
+                     <p class="byline">By&nbsp;Joshua Fox,&nbsp;JavaWorld.com,&nbsp;07/17/06</p>
+                     <div id="id_storytools_top" class="storytools">
+    <div class="storytools_tools">
+        <ul id="id_storytools_tools_top">
+            <li class="storytools_tools_print">Print</li>
+            <li class="storytools_tools_email">Email</li>
+            <li class="storytools_tools_feedback">Feedback</li>
+            <li class="storytools_tools_related"><a href="#resources">Resources</a></li>
+            <li id="id_storytools_tools_discuss_top" class="storytools_tools_discuss"><a href="#comments">Discuss</a></li>
+        </ul>    
+    </div>
+    <ul id="id_storytools_social_top">
+        <li class="storytools_tools_digg">Digg</li>
+        <li class="storytools_tools_reddit">Reddit</li>
+        <li class="storytools_tools_slashdot">SlashDot</li>
+        <li class="storytools_tools_stumble">Stumble</li>
+        <li class="storytools_tools_delicious">del.icio.us</li>
+        <li class="storytools_tools_technorati">Technorati</li>
+        <li class="storytools_tools_dzone">dzone</li>
+    </ul>      
+</div>
+                     
+                     <!-- CONTENT GOES HERE-->
+                     
+                     <p class="first">Ever since the invention of the computer, software development has been trending towards higher-level languages. From assembly
+                        language, to C, to C++, to Java, each step up has met with the same criticisms from the old guard: it's slow; it's buggy;
+                        developers don't want to lose control. But gradually, as hardware has sped up, and new research and development has improved
+                        compilers, interpreters, and virtual machines, developers have inevitably migrated to the higher level, enhancing their productivity
+                        by freeing themselves from lower-level concerns (see Clayton M. Christensen's Website in <a href="#resources">Resources</a> for more on this trend).
+                     </p>
+                     <p>Java now holds the lead in many areas of software development, but dynamic languages threaten to bypass it in this inexorable
+                        climb. Languages such as Python, Perl, Rexx, Groovy, TCL, and Ruby have been doing yeoman service in specialized domains such
+                        as file processing, test automation, software builds, glue code, and Web GUIs for years&#8212;hence, their historic name "scripting
+                        languages." But in the last few years, they have been making headway in the heavy-duty jobs once reserved mostly for C++,
+                        Java, and other compiled languages.
+                     </p>
+                     <p>In the last year, the Ruby on Rails (RoR) Web framework has given Ruby a big boost. RoR builds definitions for all tiers of
+                        a typical Web application&#8212;GUI, business logic, and persistence&#8212;from simple Ruby code, thereby minimizing redundancy, boilerplate
+                        code, source-code generation, and configuration. RoR's ease of use showcases the Ruby language; and Ruby, a full-fledged software
+                        language, has much more to offer than RoR.
+                     </p>
+                     <p>As a long-time Java developer, I am likely to stick with Java for some time to come. But I keep my eye on other languages
+                        that can play a role in my Java-based systems, and Ruby has recently emerged as a particularly good candidate. With the help
+                        of the JRuby interpreter, Ruby works well with Java, configuring, integrating, and reusing Java software (more on that below).
+                        And simply learning Ruby has improved my Java code. Ruby lets me easily accomplish techniques such as functional programming
+                        and metaprogramming, which in Java I can only do with difficulty. Learning these techniques in Ruby has helped me better appreciate
+                        when and how to use them in Java development.
+                     </p>
+                     <p>With this article, I hope to share with you some of my excitement about what Ruby can do for my Java-based systems. I compare
+                        the strengths and weaknesses of both Java and Ruby, and present the pros and cons of the JRuby interpreter. I also show where
+                        to best draw the dividing line between Java and Ruby to benefit from each. I illustrate these points with code samples and
+                        present a messaging example that shows how to integrate Java systems with Ruby, putting to good use the flexibility, expressiveness,
+                        and power of a dynamic metaprogrammable language.
+                     </p>
+                     <h3>Ruby vs. Java</h3>
+                     <p>This article explains Ruby from the Java developer's viewpoint, focusing on a comparison between the two languages. Like Java,
+                        Ruby is a full-featured object-oriented language. But there are many significant differences. Ruby is dynamically typed and
+                        runs in a source-code interpreter, and it conveniently supports metaprogramming as well as the procedural and functional paradigms.
+                        I won't go into details of Ruby syntax, since that subject has been covered extensively elsewhere. (For tutorials and documentation,
+                        see the Ruby homepage in <a href="#resources">Resources</a>.)
+                     </p>
+                     <h4>Dynamic typing</h4>
+                     <p>Java has static typing. You declare the type of each variable, and then, during compilation, you get an error message if you
+                        use a variable of the wrong type. Ruby, on the other hand, has dynamic typing: You don't declare types for variables or functions,
+                        and no type-check occurs until runtime, when you get an error if you call a method that doesn't exist. Even then, Ruby doesn't
+                        care about an object's class, just whether it has a method of the name used in the method call. For this reason, the dynamic
+                        approach has earned the name <em>duck typing</em>: "If it walks like a duck and quacks like a duck, it's a duck."
+                     </p>
+                     <p><strong>Listing 1. Duck typing</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap14"><pre> <code>class ADuck
+    def quack()
+        puts "quack A";
+    end
+end<br><br>class BDuck
+    def quack()
+        puts "quack B";
+    end
+end<br><br># quack_it doesn't care about the type of the argument duck, as long
+# as it has a method called quack. Classes A and B have no
+# inheritance relationship.
+def quack_it(duck)
+    duck.quack
+end<br><br>a = ADuck.new
+b = BDuck.new
+quack_it(a)
+quack_it(b)</code>
+</pre></div>
+                     </div><br><br><p>Java also lets you achieve dynamic typing, using reflection, but this clumsy and verbose workaround produces confusing exceptions
+                        like <code>NoSuchMethodError</code> and <code>InvocationTargetException</code>; in practice, these exceptions tend to pop up in reflective Java code far more often than the equivalents in Ruby.
+                     </p>
+                     <p>Even in nonreflective Java code, you often lose static type information. For example, <code>execute()</code> methods in the Command design pattern (see "<a href="#resources">Java Tip 68: Learn How to Implement the Command Pattern in Java</a>") must return <code>Object</code> rather than a specific type in pre-Java 5 code, resulting in <code>ClassCastException</code>s. Likewise, when signatures change between compile-time and runtime, runtime <code>Error</code>s ensue. In practice, whether in Java or Ruby, such errors rarely cause severe field bugs. A strong unit test suite&#8212;which
+                        you need anyway!&#8212;generally catches them in time.
+                     </p>
+                     <p>Ruby's dynamic typing means you don't repeat yourself: How often in Java have you had to suffer through verbose code along
+                        the lines of <code>XMLPersistence xmlPersistence = (XMLPersistence)persistenceManager.getPersistence();</code>? Ruby eliminates the need for the type declaration and casting (as well as parentheses and semicolon): a typical Ruby equivalent
+                        would be <code>xmlPersistence = persistence_manager.persistence</code>.
+                     </p>
+                     <p>Ruby's <em>dynamic</em> typing does not mean <em>weak</em> typing&#8212;Ruby always requires you to pass objects of the correct type. Java, in fact, enforces types more weakly than Ruby.
+                        For example, Java evaluates <code>"4" + 2</code> as <code>"42"</code>, coercing the integer to a string, while Ruby throws a <code>TypeError</code>, telling you it "can't convert Fixnum into String." Likewise, Java, sacrificing correctness for speed, can silently overflow
+                        an integer operation, producing weirdness such as <code>Integer.MAX_VALUE + 1</code>, which equals <code>Integer.MIN_VALUE</code>, while Ruby simply expands integers as needed.
+                     </p>
+                     <p>Despite Ruby's advantages, Java's static typing does give it one ability that leaves it as the preferred choice for large-scale
+                        projects: Java tools understand code at development-time. IDEs can trace dependencies between classes, find usages of methods
+                        and classes, auto-complete identifiers, and help you refactor code. Though parallel Ruby tools exist with limited functionality,
+                        they lack type information and so cannot perform all these tasks.
+                     </p>
+                     <h4>Interpreted language</h4>
+                     <p>Ruby runs in an interpreter, so you can test code without a distracting wait from the compiler; you can even run Ruby interactively,
+                        executing each line as you type it. Besides the fast feedback, interpreted languages have a rarely noted advantage in dealing
+                        with field bugs. With compiled languages, to analyze the code causing a field bug, the field engineer must determine the deployed
+                        application's exact build version and then look up the code in the source-code configuration management system. In real life,
+                        often this is simply impossible. With interpreted languages, on the other hand, the source code is immediately available for
+                        analysis and even, when necessary, for emergency on-the-spot fixes.
+                     </p>
+                     <p>Interpreted languages have an unfortunate reputation for slowness. Compare the history of Java, a "semi-compiled" language:
+                        In the early years, the JVM always interpreted the bytecode at runtime, which contributed to Java's reputation for slowness.
+                        Yet Java developers quickly learned that most applications spend most of their time waiting on the user or network I/O and
+                        the remaining bottlenecks are best optimized in higher-level algorithms, rather than in raw low-level tweaks. Over the years,
+                        Java rapidly gained speed; for example, just-in-time compilers with optimization based on dynamic analysis sometimes allow
+                        Java to outdo C++, which is limited to optimization based on static compile-time analysis.
+                     </p>
+                     <p>Already, for most applications, Ruby is no slower than other languages. In the near future, Ruby will get a further boost
+                        as Ruby's native interpreter moves to a bytecode-based system and the JVM JRuby interpreter gains the ability to compile Ruby
+                        to Java bytecode. Eventually, any performance lag will gradually become negligible for most functionality.
+                     </p>
+                     <h4>Functional programming</h4>
+                     <p>Ruby supports multiple programming paradigms with equal ease. In addition to its pure object-oriented style (even integers
+                        and the like are objects), it also supports a procedural style suited to one-off scripts: you can write code outside any class
+                        or function, as well as functions outside any class. (Ruby silently adds these functions to the <code>Object</code> class, maintaining the object-orientation behind the scenes.)
+                     </p>
+                     <p>Most interestingly, for Java programmers looking for new and useful perspectives, Ruby supports the functional paradigm. You
+                        can use most functional programming constructs in Java, with some support from libraries such as Jakarta Commons Collections,
+                        but the syntax is clumsier. (See "Functional Programming in the Java Language" by Abhijit Belapurkar and Jakarta Commons Collections
+                        in <a href="#resources">Resources</a>.) Ruby, though not a purely functional language, treats functions and anonymous blocks of code as full citizens of the language,
+                        which can be passed around and manipulated like any ordinary objects.
+                     </p>
+                     <p>In Java, you often iterate over a collection's <code>Iterator</code>, running the logic on each element. But the iteration is just an implementation detail: in general, you are just trying to
+                        apply the same logic to each element of a collection. In Ruby, you pass a code block to a method that does just that, iterating
+                        behind the scenes. For example, <code>[1, 2, 3, 4, 5].each{|n| print n*n, " "}</code> prints the string <em>1 4 9 16 25</em>; an iterator takes each element of the list and passes it into the code block as the variable <code>n</code>.
+                     </p>
+                     <p>Functional programming is useful in wrapping code blocks with instructions to be executed before and after the block. For
+                        example, in Java, you can use the Command design pattern to ensure the opening and closing of a file, database transaction,
+                        or other resource. This burdens the code with the useless overhead of an anonymous inner class and callback method; in addition,
+                        there is the distracting rule that variables passed into the anonymous <code>Command</code> class must be declared <code>final</code>. And to ensure that logic always executes at the end of a code block, the whole thing must be wrapped with <code>try{...}finally{...}</code>.
+                     </p>
+                     <p>In Ruby, you can wrap any function or code block, with no need for anonymous classes or method definitions. In Listing 2,
+                        the file opens, then closes after the <code>write()</code> method. No code is needed beyond the <code>transaction()</code> method and the code block.
+                     </p>
+                     <p><strong>Listing 2. Wrap a code block</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap68"><pre> <code>File.open("out.txt", "a") {|f|
+    f.write("Hello")
+}</code>
+</pre></div>
+                     </div><br><br><h4>Metaprogrammable language</h4>
+                     <p>You generally define your Java classes as source code, but you can also manipulate class definitions at runtime. This requires
+                        advanced techniques such as bytecode enhancement during class-loading. Hibernate, for example, inserts data-access logic directly
+                        into the business objects' bytecode, saving the application programmer from coding the extra data-access layer. But class
+                        manipulation, called <em>metaprogramming</em>, is practical only for infrastructure programmers: application programmers cannot usefully introduce these tricky and fragile
+                        techniques.
+                     </p>
+                     <p>Even at development time, Java limits the developers' ability to change classes. To add an <code>isBlank()</code> method that tells you if a <code>String</code> is all white space, you'd have to add a <code>StringUtils</code> class with the static method (as Apache Commons does); logically, the new method belongs in <code>String</code>.
+                     </p>
+                     <p>In Ruby, on the other hand, you can simply extend the built-in <code>String</code> class with a <code>blank?</code> method. In fact, because in Ruby everything is an object, you could even augment the <code>Fixnum</code> class, the equivalent of Java's primitive <code>int</code>, as shown in Listing 3.
+                     </p>
+                     <p><strong>Listing 3. Add method to built-in classes String and Fixnum</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap87"><pre> <code>class String
+    # Returns true if string is all white space.
+    # The question mark indicates a Boolean return value.
+    def blank?()
+        !(self = /\S/)
+    end
+end<br><br>class Fixnum
+# Returns 0 or 1 which in Ruby are treated as false and true respectively.
+    def odd?()
+    return self % 2
+    end
+end<br><br>puts " ".blank? # true
+# The next line evaluates if-then similarly to Java's ternary operator ?:
+puts (if 23.odd? then "23 odd" else "23 even" end)</code>
+</pre></div>
+                     </div><br><br><h3>JRuby: Ruby in a Java world</h3>
+                     <p>As a Java programmer, you won't want to use Ruby in production until you can get it to interact with existing Java applications
+                        and libraries, which hold within them a tremendous variety of essential functionality. JRuby, an open source Ruby interpreter
+                        for the JVM, simplifies Ruby-Java integration. You can call Java libraries from Ruby, script Java applications with an embedded
+                        interpreter, or even use Ruby libraries from Java. Exactly the same Ruby code runs in JRuby and the standard Ruby interpreter,
+                        except where Ruby code calls into native (C-coded) or Java libraries.
+                     </p>
+                     <p>The JVM is often contrasted with .Net's multilanguage Common Language Runtime as supporting only a single language. But in
+                        fact, the JVM executes not only Java, but also Python, JavaScript, Groovy, Scheme, and many other languages, which means that
+                        where necessary, Ruby code can interact with these languages as well. (See "<a href="#resources">Programming Languages for the Java Virtual Machine</a>" by Robert Tolksdorf.)
+                     </p>
+                     <p>As of mid-July 2006, JRuby remains in prerelease mode (version 0.9). But it's catching up rapidly: a team of volunteers has
+                        released five versions since January 2005. JRuby's maturity is continually evaluated with a test suite that calibrates it
+                        against the standard interpreter, and it now passes more than 90 percent of the tests plus provides basic support for Ruby
+                        on Rails.
+                     </p>
+                     <p>To try JRuby, be sure that Java SE 5 is installed and that JAVA_HOME is set. (Java Runtime Environment 1.4 was supported in
+                        JRuby 0.8.3 and below; it will be supported from the next patch release after 0.9.) Download the compressed file from the
+                        project's <a href="#resources">page</a> and uncompress it. Set the JRUBY_HOME environment variable to the JRuby base directory. You can experiment interactively
+                        with jirb in the bin directory. For most purposes, you'll use the <em>jruby</em> interpreter&#8212;create a file and pass its name as a parameter to the <em>jruby</em> batch/shell script in directory bin.
+                     </p>
+                     <p>In addition to running ordinary Ruby code, you can also use JRuby to construct Java objects, call Java methods, and inherit
+                        from Java classes. A Ruby class can even implement Java interfaces&#8212;necessary for statically calling Ruby methods from Java.
+                     </p>
+                     <p>To initialize the libraries used for accessing Java from Ruby, start with <code>require "java"</code>. Then specify the Java classes to use with the <code>include_class</code> method, for example, <code>include_class "javax.jms.Session"</code>. You can include an entire Java package into a Ruby module with <code>include_package</code>. Like Java's wildcard package-import statement, it's advisable to avoid the namespace pollution of <code>include_package</code>; in JRuby, there is the additional penalty of a performance hit as the interpreter searches all packages for the desired
+                        class. Stick to <code>include_class</code> where possible.
+                     </p>
+                     <p>The names of many Java standard classes overlap with the names of Ruby classes. To resolve collisions, pass a code block into
+                        the <code>include_class</code> function, returning a new name for the Java class, and JRuby will use this as an alias (see Listing 4).
+                     </p>
+                     <p><strong>Listing 4. Include a Java class with clashing name</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap116"><pre> <code>require "java"
+# The next line exposes Java's String as JString
+include_class("java.lang.String") { |pkg, name| "J" + name }
+s = JString.new("f")</code>
+</pre></div>
+                     </div><br><br><p>Alternatively, you can create a Ruby module that includes the Java class definitions, but in a separate namespace. For example:</p>
+                     <p><strong>Listing 5. Java module importing multiple Java classes</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap123"><pre> <code>require "java"
+module JavaLang
+    include_package "java.lang"
+end<br><br>s = JavaLang::String.new("a")</code>
+</pre></div>
+                     </div><br><br><h3>What's JRuby good for?</h3>
+                     <p>Dynamic languages like Ruby are most commonly used for specialized areas such as gluing other systems together; JRuby takes
+                        on this role in the Java world. For example, JRuby can pull data from one system, transform it and insert it into another.
+                        When the requirements change, modifying a JRuby script is as easy as changing a configuration file, thereby avoiding the complex
+                        compile-and-deploy cycle of Java integration code.
+                     </p>
+                     <p>In addition to calling Java from Ruby, you can call Ruby from Java, making your application scriptable. With JRuby's minimal
+                        syntactic overhead, you can create an easy-to-use domain-specific language for users to work with (see "<a href="#resources">Creating DSLs with Ruby</a>" by Jim Freeze). For example, a gaming engine's scripting system can present Ruby classes describing characters, vehicles,
+                        and other game entities.
+                     </p>
+                     <p>Moreover, with Ruby's dynamism, users can change definitions of scriptable classes. The Ruby objects allow direct method access
+                        to state and behavior. With Java, on the other hand, you typically pass around a <code>Map</code> with user-configurable keys, lacking the full functionality of objects.
+                     </p>
+                     <p>A Ruby script is like a souped-up configuration file. Configuration for Java applications typically comes in an XML or properties
+                        file, but these are limited only to parameters decided on at development time. With a Ruby script fed to your scripting system
+                        either from a text file or from an embedded editor, the user can freely customize behavior wherever you choose to place a
+                        scripting hook. In this way, Ruby combines configuration with behavior, providing the functionality of Java plug-in APIs,
+                        but without a Java IDE or a compiler, and sparing the additional steps of building and deploying jar files.
+                     </p>
+                     <p>For example, a user-provided script can hook into an application's management events to filter for certain suspicious conditions,
+                        then send a notification to a system administrator and log into a special security-issues database, or a start-up script can
+                        purge old files and reinitialize custom datastores. Likewise, many rich clients allow users to change the position of menus
+                        and toolbars&#8212;with a JRuby hook, a user's new menu items trigger any behavior the user wants.
+                     </p>
+                     <p>For convenience in scripting Java applications, the Bean Scripting Framework (BSF) provides a standard interface between the
+                        JVM and multiple dynamic languages, including Ruby, Python, BeanShell, Groovy, and JavaScript; Java Specification Request
+                        (JSR) 223, the successor of BSF, will be a standard part of Java 6. The Java code can send variables into the JRuby namespace;
+                        JRuby can manipulate these Java objects directly or return a value back to Java. With the BSF and JSR 223, the syntax for
+                        interoperation between Java and any scripting language is the same. Listing 6 shows a basic example of BSF use with Ruby,
+                        and the full code is in the online samples under the directory bsf_example. Note that BSF does not include JRuby support out
+                        of the package; but simple instructions for adding it are available in the JRuby documentation.
+                     </p>
+                     <p><strong>Listing 6. Embed a Ruby interpreter</strong></p>
+                     <div id="codewrap">
+                        <div id="codewrap140"><pre> <code>...
+// JRuby must be registered in BSF.
+// jruby.jar and bsf.jar must be on classpath.
+BSFManager.registerScriptingEngine("ruby",
+    "org.jruby.javasupport.bsf.JRubyEngine",  new String[]{"rb"});
+BSFManager manager = new BSFManager();
+// Make the variable myUrl available from Ruby.
+manager.declareBean("myUrl", new URL("http://www/jruby.org"), URL.class);
+// Note that the Method getDefaultPort is available from Ruby
+// as getDefaultPort and also as defaultPort.
+// The following line illustrates the combination of Ruby syntax
+// and a Java method call.
+String result = (String) manager.eval(
+    "ruby", "(java)", 1, 1, "if $myUrl.defaultPort&lt; 1024 then " +
+    "'System port' else 'User port' end");
+...</code>
+</pre></div>
+                     </div><br><br><p>It is also possible to instantiate a JRuby interpreter directly from Java, but as this ties your Java code to Ruby-specific
+                        Java wrapper classes, it's best to stick with BSF/JSR 223. (An upcoming release of JRuby will also allow direct embedding
+                        of the interpreter with cleaner encapsulation of Ruby objects, without the need for BSF or JSR 223.)
+                     </p>
+                     <h3>Limitations</h3>
+                     <p>It's important to remember that JRuby is still in prerelease mode and still has some limitations, which will be fixed before
+                        the 1.0 release.
+                     </p>
+                     <p>In particular, a Ruby class can't extend abstract Java classes. Unfortunately, to get around this limitation, you can't simply
+                        create a concrete Java subclass, implementing abstract methods with dummy methods, which the Ruby class then extends. This
+                        is because of a second limitation in Ruby/Java inheritance in current prerelease versions of JRuby: Java code cannot polymorphically
+                        call a Ruby-coded method that overrides a (concrete) Java method.
+                     </p>
+                     <p>The limitations make the use of Swing especially difficult. For example, it's impossible to extend <code>AbstractTableModel</code> to take advantage of the functionality that it adds to the <code>TableModel</code> interface. You can work around this by converting inheritance to delegation: Extend the abstract class with a concrete Java
+                        "shim" class that delegates to an object of interface type, where the interface includes all the abstract Java methods. A
+                        Ruby class implements the delegate interface. Though the wordiness of this approach obviates the usual advantages of JRuby,
+                        it does offer a workaround for this limitation and provides flexibility where it is needed: in the subclass functionality
+                        (see table_example in attached code listings).
+                     </p>
+                     <p>Ruby comes with standard libraries that provide a wide range of functionality. Those that do not use native code are included
+                        in the JRuby release. The JRuby team is gradually porting most libraries, although some that are a thin layer over native
+                        code, like the GUI library Tk, will probably not be ported. Java's standard libraries, which are included, provide all necessary
+                        functionality.
+                     </p>
+                     <p>JRuby now provides basic support for Ruby on Rails in the WEBrick Web server; the next major milestone is full support in
+                        any servlet container. RoR support will let programmers combine the ease of the Web framework with the vast array of existing
+                        Java libraries, while also validating JRuby as an alternative Ruby interpreter.
+                     </p>
+                     <p>Java SE 5 is required for JRuby 0.9 because of a bug, but JRE 1.4 will be supported in the next release.</p>
+                     <p>The JRuby team has so far prioritized correctness over performance; optimization is a top priority for the 0.9.x releases.</p>
+                     <h3>Example</h3>
+                     <p>The example jms_example.rb (located in the <a href="#resources">source code</a> that accompanies this article) illustrates the use of JRuby at greater length. It shows how to transform messages from one
+                        class structure to another, simulating software that integrates two differently defined distributed game engines. The code
+                        uses advanced functional and metaprogramming techniques to transform XML messages of any type as Ruby objects. Comments in
+                        the code walk you through the logic.
+                     </p>
+                     <p>Achieving this level of configurability in Java is nearly impossible; at best, users can plug in compiled code. But in Ruby,
+                        the dynamic code is as natural and easy to use as any statically defined code.
+                     </p>
+                     <h3>Ruby and the future of Java</h3>
+                     <p>Ruby has a lot to teach Java programmers. The Ruby on Rails framework shows how simple it can be to develop a Web application;
+                        with JRuby, RoR will soon be able to reuse existing Java functionality. JRuby is set to join Jython, JavaScript, and other
+                        dynamic languages in the scripting of Java applications. Developers who want to keep their skills up to date should learn
+                        dynamic languages, which are likely to take over more and more domains in application development. Even when not using dynamic
+                        languages, Java developers can benefit from the insights Ruby gives into concepts like functional programming and metaprogramming.
+                     </p>
+                     <p><em>My thanks to Charles O. Nutter and Thomas E. Enebo, the leaders of the JRuby project, for their valuable comments on this
+                           article and for creating JRuby. Responsibility for any flaws remains with me.</em></p>
+                     <h3>About the author</h3>Joshua
+                     Fox (http://www.joshuafox.com) is a
+                     software architect based in Israel. Now working at Mercury
+                     Interactive on the BTO product suite, his previous experience
+                     includes commercial ontological systems, as well as
+                     high-performance Internet collaboration servers.
+                     
+                     <!-- CONTENT ENDS HERE -->
+                     
+                     <!--stopindex-->
+                     
+                     <div id="id_storytools_bottom" class="storytools">
+    <div class="storytools_tools">
+        <ul id="id_storytools_tools_bottom">
+            <li class="storytools_tools_print">Print</li>
+            <li class="storytools_tools_email">Email</li>
+            <li class="storytools_tools_feedback">Feedback</li>
+            <li class="storytools_tools_related"><a href="#resources">Resources</a></li> 
+        </ul>    
+    </div>
+    <ul id="id_storytools_social_bottom">
+        <li class="storytools_tools_digg">Digg</li>
+        <li class="storytools_tools_reddit">Reddit</li>
+        <li class="storytools_tools_slashdot">SlashDot</li>
+        <li class="storytools_tools_stumble">Stumble</li>
+        <li class="storytools_tools_delicious">del.icio.us</li>
+        <li class="storytools_tools_technorati">Technorati</li>
+        <li class="storytools_tools_dzone">dzone</li>
+    </ul>      
+</div>
+                     <!-- start comment area --><div id="story_comments"><a name="comments"></a><div id="jq_titlebar" class="titlebar"><h5>Comment</h5><div id="titlebar_loggedin" style="display: none;">Welcome, <span id="login_name"></span> <span id="logout" style="cursor: pointer;">Logout</span></div><div id="titlebar_loggedout"><a id="titlebar_login_a" href="/community/?q=user/login" target="_blank">Log in</a> | <a href="/community/?q=user/register">Register</a></div></div>    
+    <div id="login" name="login" method="post" action="/community/rtn_login08.php">
+        <form id="form_login">
+            <fieldset><legend>Login</legend>
+                <table>
+                    <tr>
+                        <td><label for="jq_username">Username</label>
+                        </td>
+                        <td>                        
+                            <input name="uname" type="text" id="jq_username" class="inputtext" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="jq_password">Password</label>
+                        </td>
+                        <td>                        
+                            <input name="upass" type="password" id="jq_password" class="inputtext" />
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset class="buttons">
+                <input  type="submit" name="submit" id="form_login_submit" value="Log in" class="submit"  />            
+                <input type="button" name="cancel" id="form_login_cancel" value="Cancel" class="submit cancel" />            
+                <span id="login_form_info" style="display:block;font-size:10px; margin:8px;"><strong><a href="/community/?q=user/password" target="_blank">Forgot your account info?</a></strong></span>
+            </fieldset>
+        </form>
+    </div>
+    
+    <!-- div id="addcomments"-->
+<div id="addcomments">
+    <form id="frm_addcomment" name="comment_form"><fieldset><legend>Add comment</legend></a>
+        <div class="user_fields_visible">
+        <label for="name">Screen Name</label>            
+        <input name="sender_name" type="text" class="inputtext" id="jq_sender_name" value="Anonymous" />
+        <span>Anonymous comments subject to approval. <a href="/community/?q=user/register" target="_blank">Register</a> here for member benefits.</span>  
+        </div>
+        
+        <label for="mg_subject">Subject</label>            
+        <input id="mg_subject" name="subject" type="text" class="inputtext" />           
+        <label for="mg_comments">Comment <span>(required)</span></label>
+        <textarea id="mg_comments" name="sender_message" class="textbox"></textarea></fieldset>
+        <fieldset class="buttons">
+        <input name="hascomments" id="jq_comments" type="hidden" value="false" />
+        <input name="type" id="jq_type" type="hidden" value="article" /> 
+        <div id="comment_captcha"></div><input name="topic" id="jq_taxonomy" type="hidden" value="development" /> 
+        <input type="submit" name="submit" id="frm_addcomments_submit" value="Submit" class="submit" />
+        
+        <span id="comments_info_span" style="display:block;font-size:10px; margin:8px;"><strong>Have a JavaWorld account? <a id="comment_form_login" href="/community/?q=user/login">Log in</a> here.<a href="/community/?q=user/register"> Register now</a> for a free account.</strong></span>
+        
+        </fieldset>
+    </form>
+</div>
+ 
+ </div><div class="separator"></div>
+                     <div class="separator">
+                        <!-- xxxxxxxxxxxxxx -->
+                     </div>
+                     
+<!-- <p>
+<a name="discuss"></a><h3>Discuss</h3>
+<a href="/javaforums/newpost.php?Cat=0&amp;Board=960618&amp;page=0">Start a new discussion</a> or jump into one of the threads below:</p>
+-->
+<div class="ubb_comments"> <div class="title"><h5>Archived Discussions <span>(Read only)</span></h5></div>
+
+<table>
+<tr>
+<td class="tdheader" style="padding:3px;">
+<a href="/javaforums/postlist.php?Cat=0&amp;Board=960618&amp;page=0&amp;sb=1">
+Subject
+</a>
+ 
+</td>
+<!--
+<td nowrap="nowrap" class="tdheader" style="padding:3px;width:2%;">
+<a href="/javaforums/postlist.php?Cat=0&amp;Board=960618&amp;page=0&amp;sb=9">
+Replies</a>
+ 
+</td>
+<td nowrap="nowrap" width="20%" class="tdheader" style="padding:3px;">
+<a href="/javaforums/postlist.php?Cat=0&amp;Board=960618&amp;page=0&amp;sb=6">
+Last post
+</a>
+ <img src="/javaforums/images/descend.gif" width="7" height="8" border="0" alt="" />
+</td>
+-->
+</tr>
+<!-- BEGIN POST LOOP DO NOT DELETE --><tr>
+
+<td align="left" style="padding:3px;" class="lighttable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=187175&amp;an=960618&amp;page=0#Post187175">
+Forum migration complete</a> <em>By <a href="/javaforums/showprofile.php?Cat=0&amp;User=21192&amp;Board=960618&amp;what=ubbthreads&amp;page=0"><font color=" ">Athen</font></a><img src="/javaforums/images/adm.gif" alt="Administrator" border="0" />
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="lighttable" valign="top">
+0 
+</td>
+<td nowrap="nowrap" align="center" class="lighttable" valign="top">
+<span class="small">11/04/08 10:37 PM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=187175&amp;Main=187175#Post187175">by Athen</a>
+</span>
+</td>
+-->
+</tr><tr>
+
+<td align="left" style="padding:3px;" class="darktable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=185128&amp;an=960618&amp;page=0#Post185128">
+Forum migration update</a> <em>By <a href="/javaforums/showprofile.php?Cat=0&amp;User=21192&amp;Board=960618&amp;what=ubbthreads&amp;page=0"><font color=" ">Athen</font></a><img src="/javaforums/images/adm.gif" alt="Administrator" border="0" />
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="darktable" valign="top">
+0 
+</td>
+<td nowrap="nowrap" align="center" class="darktable" valign="top">
+<span class="small">09/23/08 01:08 PM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=185128&amp;Main=185128#Post185128">by Athen</a>
+</span>
+</td>
+-->
+</tr><tr>
+
+<td align="left" style="padding:3px;" class="lighttable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=34209&amp;an=0&amp;page=0#Post34209">
+0 is not a non-truth value!</a> <em>By Phrogz
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="lighttable" valign="top">
+4 
+</td>
+<td nowrap="nowrap" align="center" class="lighttable" valign="top">
+<span class="small">10/05/06 10:00 AM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=38597&amp;Main=34209#Post38597">by Anonymous</a>
+</span>
+</td>
+-->
+</tr><tr>
+
+<td align="left" style="padding:3px;" class="darktable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=34589&amp;an=0&amp;page=0#Post34589">
+Erratum</a> <em>By Anonymous
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="darktable" valign="top">
+1 
+</td>
+<td nowrap="nowrap" align="center" class="darktable" valign="top">
+<span class="small">10/04/06 07:43 AM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=37978&amp;Main=34589#Post37978">by Anonymous</a>
+</span>
+</td>
+-->
+</tr><tr>
+
+<td align="left" style="padding:3px;" class="lighttable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=34210&amp;an=0&amp;page=0#Post34210">
+Ternary operator in Ruby, also</a> <em>By Phrogz
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="lighttable" valign="top">
+1 
+</td>
+<td nowrap="nowrap" align="center" class="lighttable" valign="top">
+<span class="small">10/04/06 07:42 AM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=37977&amp;Main=34210#Post37977">by Anonymous</a>
+</span>
+</td>
+-->
+</tr><tr>
+
+<td align="left" style="padding:3px;" class="darktable" valign="top" width="48%">
+<img alt="." src="/javaforums/images/blank.gif" width="0" height = "11" hspace="0" />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=34149&amp;an=0&amp;page=0#Post34149">
+Ruby for the Java world</a> <em>By <a href="/javaforums/showprofile.php?Cat=0&amp;User=3&amp;Board=960618&amp;what=ubbthreads&amp;page=0">JavaWorld</a>
+</em>
+
+</td>
+<!--
+<td align="right" style="padding-right:6px;" nowrap="nowrap" class="darktable" valign="top">
+5 
+</td>
+<td nowrap="nowrap" align="center" class="darktable" valign="top">
+<span class="small">10/03/06 02:11 PM
+<br />
+<a href="/javaforums/showflat.php?Cat=0&amp;Number=37628&amp;Main=34149#Post37628">by Anonymous</a>
+</span>
+</td>
+-->
+</tr><!-- END OF LOOP -->
+
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+
+                     <div id="resources"><a name="resources"></a><strong>Resources</strong><br><externallinks no-escaping="yes">
+                           <div class="rxbodyfield">
+                              <ul>
+                                 <li>Download the source code that accompanies this article<br><a href="http://www.javaworld.com/javaworld/jw-07-2006/ruby/jw-0717-ruby.zip">http://www.javaworld.com/javaworld/jw-07-2006/ruby/jw-0717-ruby.zip</a></li>
+                                 <li>The JRuby project's homepage<br><a href="http://www.jruby.org/">http://www.jruby.org/</a></li>
+                                 <li>Thomas E. Enebo, JRuby project leader, gives running updates of the project's status at<br><a href="http://www.bloglines.com/blog/ThomasEEnebo">http://www.bloglines.com/blog/ThomasEEnebo</a></li>
+                                 <li>Charles O. Nutter, also a JRuby project leader, provides updates to JRuby's status here<br><a href="http://www.headius.blogspot.com">http://www.headius.blogspot.com</a></li>
+                                 <li>The Ruby homepage<br><a href="http://www.ruby-lang.org">http://www.ruby-lang.org</a></li>
+                                 <li>Business guru Clayton M. Christensen has identified a broad trend in technology innovationinnovations start with the lower
+                                    end of functionality, then gradually increase market share by pushing into the territory of existing, better-performing, but
+                                    more expensive, technologies. See Christensen's Website<br><a href="http://www.claytonchristensen.com">http://www.claytonchristensen.com</a></li>
+                                 <li><em>The Innovator's Dilemma,</em> Clayton M. Christensen (Harvard Business School Press, June 1997; ISBN087584585)<br><a href="http://www.amazon.com/exec/obidos/ASIN/0875845851/javaworld">http://www.amazon.com/exec/obidos/ASIN/0875845851/javaworld</a></li>
+                                 <li>"Java Tip 68Learn How to Implement the Command Pattern in Java," Bala Paranj (<em>JavaWorld</em>)<br><a href="http://www.javaworld.com/javaworld/javatips/jw-javatip68.html">http://www.javaworld.com/javaworld/javatips/jw-javatip68.html</a></li>
+                                 <li>Programming Languages for the Java Virtual Machine from Robert Tolksdorf<br><a href="http://www.robert-tolksdorf.de/vmlanguages.html ">http://www.robert-tolksdorf.de/vmlanguages.html</a></li>
+                                 <li>For an overview of JVM scripting languages, see "Java Scripting LanguagesWhich Is Right for You?" by David Kearns (<em>JavaWorld</em>, April 2002)<br><a href="http://www.javaworld.com/javaworld/jw-04-2002/jw-0405-scripts.html">http://www.javaworld.com/javaworld/jw-04-2002/jw-0405-scripts.html</a></li>
+                                 <li>"Choosing a Java Scripting LanguageRound Two," David Kearns (<em>JavaWorld</em>, March 2005)<br><a href="http://www.javaworld.com/javaworld/jw-03-2005/jw-0314-scripting.html">http://www.javaworld.com/javaworld/jw-03-2005/jw-0314-scripting.html</a></li>
+                                 <li>"Script JavaBeans with the Bean Scripting Framework," Mark Johnson (<em>JavaWorld</em>, March 2000)<br><a href="http://www.javaworld.com/javaworld/jw-03-2000/jw-03-beans.html">http://www.javaworld.com/javaworld/jw-03-2000/jw-03-beans.html</a></li>
+                                 <li>"An Exercise in Metaprogramming with Ruby" by Hal Fulton (DevSource, February 2006) shows how to construct classes and methods
+                                    on the fly from runtime metadata<br><a href="http://www.devsource.com/article2/0,1895,1928561,00.asp">http://www.devsource.com/article2/0,1895,1928561,00.asp</a></li>
+                                 <li>The Bean Scripting Framework<br><a href="http://jakarta.apache.org/bsf/">http://jakarta.apache.org/bsf/</a></li>
+                                 <li>"Build Your own Scripting Language for Java," Chaur Wu (<em>JavaWorld</em>, April 2005)<br><a href="http://www.javaworld.com/javaworld/jw-04-2006/jw-0424-scripting.html">http://www.javaworld.com/javaworld/jw-04-2006/jw-0424-scripting.html</a></li>
+                                 <li>How to build a domain-specific language in Ruby"Creating DSLs with Ruby," Jim Freeze (<em>Artima Developer</em>, March 2006)<br><a href="http://www.artima.com/rubycs/articles/ruby_as_dslP.html">http://www.artima.com/rubycs/articles/ruby_as_dslP.html</a></li>
+                                 <li>"Functional Programming in the Java Language," Abhijit Belapurkar (<em>developerWorks</em>, July 2004)<br><a href="http://www-128.ibm.com/developerworks/java/library/j-fp.html ">http://www-128.ibm.com/developerworks/java/library/j-fp.html</a></li>
+                                 <li>Jakarta Commons Collections, a library that supports some functional programming techniques in Java<br><a href="http://jakarta.apache.org/commons/collections">http://jakarta.apache.org/commons/collections</a></li>
+                                 <li>For more articles on tools for developing Java applications, browse the <strong>Development Tools</strong> section of <em>JavaWorld</em>'s Topical Index<br><a href="http://www.javaworld.com/channel_content/jw-tools-index.shtml ">http://www.javaworld.com/channel_content/jw-tools-index.shtml</a></li>
+                              </ul>
+                           </div>
+                        </externallinks><br></div>
+                     
+
+                  </div>
+               </div>
+               
+		<!--include virtual="/cis/ibm_j559b/cis_j559b_ibm_export.html" -->
+
+
+<br clear="all"/>
+ <!--include virtual="/includes/ads-bottom.html"-->
+
+               <div class="separator">
+                  <!-- xxxxxxxxxxxxxx -->
+               </div>
+               
+               <script type="text/javascript"><!--
+	google_ad_client = "pub-7643913824060699";
+	/* 468x15 above footer, created 2/26/09 */
+	google_ad_slot = "3627869773";
+	google_ad_width = 468;
+	google_ad_height = 15;
+	//-->
+</script>
+<div style="padding:6px; background-color:#ededed; border:1px solid #D6D3D3; width:634px; margin-top:12px;">
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+
+<div id="sponsoredlinks">
+    <h2>
+        Sponsored Links
+    </h2>
+    <script type="text/javascript" src="http://jlinks.industrybrains.com/jsct?sid=93&ct=JAVAWORLD_HP_ROS&num=5&layt=10&fmt=simp"></script>
+    <DIV id="toplinks">&nbsp;</DIV>
+<DIV id="middlelinks">
+   <TABLE cellPadding="0" cellSpacing="0" id="nwtextlinks">
+      <TBODY>
+         <tr/>
+      </TBODY>
+   </TABLE>
+</DIV>
+    <br clear="all">
+</div>
+               <div class="separator">
+                  <!-- xxxxxxxxxxxxxx -->
+               </div>
+               <div id="rcfooter"><strong>RESEARCH CENTERS: </strong>
+<a href="http://www.javaworld.com/channel_content/jw-core-index.html"><strong>Java Standard Edition</strong></a> | 
+<a href="http://www.javaworld.com/channel_content/jw-enterprise-index.html"><strong>Java Enterprise Edition</strong></a> | 
+<a href="http://www.javaworld.com/channel_content/jw-micro-index.html"><strong>Java Micro Edition </strong></a> | 
+<a href="http://www.javaworld.com/channel_content/jw-applied-index.html"><strong>Development Tools</strong></a>
+
+<div align="center"><a href="http://www.javaworld.com/info/jw-about-index.html">About Us</a> | <a href="http://www.javaworld.com/info/jw-advertise.html">Advertise</a> | <a href="http://www.javaworld.com/info/jw-masthead.html">Contact Us</a> | <a href="http://www.javaworld.com/info/jw-privacy.html">Terms of Service/Privacy</a> </div>
+<div align="center"><a href="http://www.javaworld.com/javaworld/common/jw-copyright.html">Copyright</a>, 2006-2008 Network World, Inc. All rights reserved.</div>
+</div>
+            </div>
+            <div id="footer">
+    <ul class="rc_footer">
+        <li class="rclinks">
+            <a href="/topics/index.html"><strong>RESEARCH CENTERS</strong></a>
+            <a href="/channel_content/jw-core-index.html">Core Java</a>
+            <a href="/channel_content/jw-enterprise-index.html">Enterprise Java</a>
+            <a href="/channel_content/jw-micro-index.html">Mobile Java</a>
+            <a href="/channel_content/jw-applied-index.html">Tools & Methods</a>
+            <a href="/channel_content/jw-archive-index.html">JavaWorld Archives</a>
+        </li>
+        <li><a href="http://www.idg.net"><strong>IDG Network</strong></a>
+            <a href="http://www.cio.com">CIO</a> <a href="http://www.computerworld.com">Computerworld</a>
+            <a href="http://www.csoonline.com/">CSO</a>
+            <a href="http://demo.com/">Demo</a> <a href="http://www.gamestar.com/">GamePro</a>
+        </li>
+        <li>
+            <a href="http://www.games.net/">Games.net</a>
+            <a href="http://www.idgconnect.com">IDGconnect.com</a>
+            <a href="http://www.idgworldexpo.com/">IDG World Expo</a>
+            <a href="http://www.infoworld.com">Infoworld</a>
+            <a href="http://www.linuxworld.com">Linuxworld.com</a>
+        </li>
+        <li>
+            <a href="http://www.macuser.com">MacUser</a> <a href="http://www.macworld.com">Macworld</a>
+            <a href="http://www.networkworld.com">NetworkWorld.com</a>
+            <a href="http://www.pcworld.com">PC World</a>
+            <a href="http://www.playlistmag.com">Playlistmag.com</a>
+        </li>
+    </ul>
+<div class="grey">
+<a href="http://www.javaworld.com/info/jw-about-index.html">About Us</a> | <a href="http://www.javaworld.com/info/jw-advertise.html">Advertise</a> | <a href="http://www.javaworld.com/info/jw-masthead.html">Contact Us</a> | <a href="http://www.javaworld.com/info/jw-privacy.html">Terms of Service/Privacy</a>
+<span class="copyright"><a href="http://www.javaworld.com/javaworld/common/jw-copyright.html">Copyright</a>, 2006-2008 Network World, Inc. All rights reserved.</span>
+</div>
+<!-- intellitext was here see tjk notes to restore -->
+<!-- begin ad tag  (tile=99) -->
+<script language="JavaScript" type="text/javascript">
+ord=Math.random()*10000000000000000;
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/idg.us.nwf.jw_development/;tile=99;dcopt=ist;sz=1x1;ord=' + ord + '?" type="text/javascript"><\/script>');
+</script><script language="JavaScript" type="text/javascript">if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0)|| navigator.userAgent.indexOf("WebTV") >= 0) {document.write('<a href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;tile=99;sz=1x1;ord=' + ord + '?" target="_blank"><img src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;tile=99;sz=1x1;ord=' + ord + '?" width="1" height="1" border="0" alt=""><\/a>');}</script><noscript><a href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;tile=99;sz=1x1;ord=' + ord + '?" target="_blank"><img src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;tile=99;sz=1x1;ord=' + ord + '?" width="1" height="1" border="0" alt=""></a></noscript>
+<!-- End ad tag -->
+<!-- begin ad tag  (tile=1) -->
+
+<script language="JavaScript" type="text/javascript">
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/idg.us.nwf.jw_development/;tile=98;sz=1x1;ord=' + ord + '?" type="text/javascript"><\/script>');
+</script><script language="JavaScript" type="text/javascript">if ((!document.images && navigator.userAgent.indexOf('Mozilla/2.') >= 0)|| navigator.userAgent.indexOf("WebTV") >= 0) {document.write('<a href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;tile=98;sz=1x1;ord=' + ord + '?" target="_blank"><img src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;tile=98;sz=1x1;ord=' + ord + '?" width="1" height="1" border="0" alt=""><\/a>');}</script><noscript><a href="http://ad.doubleclick.net/jump/idg.us.nwf.jw_development/;tile=98;sz=1x1;ord=' + ord + '?" target="_blank"><img src="http://ad.doubleclick.net/ad/idg.us.nwf.jw_development/;tile=98;sz=1x1;ord=' + ord + '?" width="1" height="1" border="0" alt=""></a></noscript>
+<!-- End ad tag -->
+
+<script type="text/javascript">
+var randomNumber= Math.floor ((Math.random()*12)); // scale back to 1 in 4  // scale back another 35%  1 in 6 // scale 1/2 1 in 12
+if (preshown == 0) {	
+    if (randomNumber < 1) {	
+		loadIPScript();
+	}
+}
+//This function loads the script on the client's homepage and it in turn generates the invitation page.
+function loadIPScript() {
+  //get the head tag and append the script to it
+  var head = document.getElementsByTagName("head")[0];
+  var script = document.createElement('script');
+  script.type = "text/javascript";
+  script.src = "http://group11.iperceptions.com/Invitations/Javascripts/ip_Layer_Invitation_548.js";
+  head.appendChild(script)
+}
+</script>
+</div>
+         </div>
+      </div>
+      <!--
+Test
+article
+test
+-->
+
+	<script type="text/javascript" src="/includes/jqlib/_article.js"></script>
+
+   </body>
+</html>

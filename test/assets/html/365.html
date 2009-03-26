@@ -1,0 +1,498 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/favicon.ico">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=euc-jp">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 0.8.7">
+  <title>eigenclass - rcov: code coverage for Ruby</title>
+  <link rel="stylesheet" type="text/css" href="theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="theme/eigenclass/eigenclass.css" media="all">
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  function toggleComment(noteID, formID) {
+      var note = document.getElementById(noteID);
+      var form = document.getElementById(formID);
+
+      note.style.display = 'none';
+      form.style.display = '';
+  }
+  // -->
+  </script>
+    <style type="text/css"><!--
+      img.math {
+        vertical-align: middle;
+      }
+
+      div.displaymath {
+        text-align: center;
+      }
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://eigenclass.org//hiki.rb?c=rss;tags=blog">
+</head>
+
+<body>
+<a name="top"> </a>
+<div class="main">
+  <a style="margin: 0px;" href="http://eigenclass.org"><img style="border: none;" alt="eigenclass logo" src="/logo.cgi" /> </a> 
+  <div class="adminmenu"><span class="adminmenu"><a href=".">MAIN</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=pagerank_page">PageRank</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=login;p=rcov">Login</a></span></div>
+  <h1 class="header">rcov: code coverage for Ruby</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <h3><a name="l0"><span class="sanchor"> </span></a>Overview</h3>
+<p>rcov is a code coverage tool for Ruby. It is commonly used for viewing
+overall test coverage of target code. It features:</p>
+<ul>
+<li>fast execution: 20-300 times faster than previous tools</li>
+<li>multiple analysis modes: standard, bogo-profile, "intentional testing", dependency analysis...</li>
+<li>detection of uncovered code introduced since the last run ("differential code coverage")</li>
+<li>fairly accurate coverage information through code linkage inference using simple heuristics</li>
+<li>cross-referenced XHTML and several kinds of text reports</li>
+<li>support for easy automation with Rake and Rant</li>
+<li>colorblind-friendliness</li>
+</ul>
+<p>rcov can be useful for testing, optimizing and understanding your Ruby programs.</p>
+<ul>
+<ul>
+<li><a href="#l0">Overview</a></li>
+<li><a href="#l1">Downloading and installing</a></li>
+<ul>
+<li><a href="#l2">Binary .gem package for win32 users</a></li>
+<li><a href="#l3">Installing</a></li>
+<ul>
+<li><a href="#l4">Using RubyGems</a></li>
+<li><a href="#l5">Installing from the tarball</a></li>
+</ul>
+</ul>
+<li><a href="#l6">How do I use it? What does it look like?</a></li>
+<ul>
+<ul>
+<li><a href="#l7">Summary</a></li>
+<li><a href="#l8">Detailed code coverage reports</a></li>
+<li><a href="#l9">Cross-referenced code coverage reports</a></li>
+<li><a href="#l10">Decorated text output</a></li>
+<li><a href="#l11">Text report</a></li>
+<li><a href="#l12">Execution count textual output</a></li>
+<li><a href="#l13">"Differential code coverage" (uncovered code detection)</a></li>
+</ul>
+</ul>
+<li><a href="#l14">FAQs</a></li>
+<li><a href="#l15">'"Code coverage" what??': an explanation of C0, C1 &amp; C2 coverage analysis</a></li>
+</ul>
+</ul>
+
+<h3><a name="l1"><span class="sanchor"> </span></a>Downloading and installing</h3>
+<p>The last version is 
+<a href="http://rubyforge.org/frs/download.php/28270/rcov-0.8.1.2.tar.gz" class="external">rcov-0.8.1.2</a>
+See the <a href="/hiki/rcov-0.8.1">release notes</a> for more details. You can also use that page to report problems.</p>
+<p>Previous releases are available at <a href="http://eigenclass.org/static/rcov" class="external">http://eigenclass.org/static/rcov</a>.
+Older release info (including problem reports and solutions):</p>
+<ul>
+<li><a href="/hiki/rcov-0.8.0">rcov 0.8.0 (Ruby code coverage): new output modes, fix for RSpec woes, superior emacs integration</a></li>
+<li><a href="/hiki/rcov+0.7.0">rcov 0.7.0: code coverage and callsite/defsite data aggregation across multiple runs</a></li>
+<li><a href="/hiki/rcov+0.6.0">rcov 0.6.0: &quot;differential code coverage&quot;, full (faster) cross-referenced reports, vim integration</a></li>
+<li><a href="/hiki/rcov+0.5.0">rcov 0.5.0: cross-referenced reports (code coverage and callsite info), RubyGems, Rant support, improved heuristics</a></li>
+<li><a href="/hiki/rcov+0.4.0">rcov 0.4.0: more accurate code coverage, scriptability, unrotten internals</a></li>
+<li><a href="/hiki/rcov+0.3.0">rcov 0.3.0: happier Rails (code coverage analysis)</a></li>
+<li><a href="/hiki/rcov+0.2.0">rcov 0.2.0: speedy, prettier, more convenient code coverage</a></li>
+</ul>
+<h4><a name="l2"> </a>Binary .gem package for win32 users</h4>
+<p>A RubyGems package for win32 is available. It was <a href="/hiki/cross+compiling+rcovrt">cross-compiled using mingw</a>, and should work with the ruby-mswin32 and ruby-mingw32 builds, as well as recent One Click distributions, which are based on the former.</p>
+<h4><a name="l3"> </a>Installing</h4>
+<h5><a name="l4"> </a>Using RubyGems</h5>
+<p>As usual, </p>
+<pre>
+gem install rcov
+</pre>
+<p>should do the trick. You'll be given two options: choose the mswin32 binary if you're using the One Click Installer, ruby-mswin32 or ruby-mingw32.</p>
+<h5><a name="l5"> </a>Installing from the tarball</h5>
+<p>The full install (which includes the rcovrt extension that makes rcov over 100 times faster) requires a working build environment and Ruby &gt;=1.8.3. 
+Just run </p>
+<pre>
+ ruby setup.rb
+</pre>
+<p>to get a full install. </p>
+<p>If you cannot compile extensions for some reason, or you have an older Ruby (&lt;1.8.3), try</p>
+<pre>
+ ruby setup.rb all --without-ext
+</pre>
+<p>or copy bin/rcov to the desired destination directory. Note that rcov
+will run much slower if used without the extension. </p>
+<p>If you're using ruby-mswin32 or a recent One Click Installer for win32 distro, you can get the pre-compiled <a href="http://eigenclass.org/static/rcov/binary-win32/rcovrt.so" class="external">rcovrt.so</a>. Copy it to the appropriate extension dir (something like c:\ruby\lib\ruby\site_ruby\1.8\i386-mswin32\).</p>
+<h3><a name="l6"><span class="sanchor"> </span></a>How do I use it? What does it look like?</h3>
+<p>You can take a look the sample reports: <a href="http://eigenclass.org/static/rcov-sample-report" class="external">normal code coverage report</a> <a href="http://eigenclass.org/static/rcov-sample-report-full-crossref" class="external">cross-referenced one</a>.</p>
+<p>rcov is similar to the testrb program shipped with Ruby: just use rcov to run your program (instead of ruby), and a number of XHTML
+files with the code coverage information will be generated, e.g.</p>
+<pre>
+rcov test/*.rb
+</pre>
+<p>will execute all the .rb files under test/ and generate the code coverage report
+under coverage/. Note that rcov deliberately ignores "uninteresting" files: the tests themselves, standard &amp; site_ruby libraries installed on your system, etc. You can get the list of regular expressions rcov matches against with</p>
+<pre>
+ rcov --help
+</pre>
+<p>rcov can also operate in "bogo-profiling mode"
+and output the relevant information in alternative formats (for the time
+being, plain text with execution count annotations and colored text). Use</p>
+<pre>
+rcov -h
+</pre>
+<p>for more information.</p>
+<h5><a name="l7"> </a>Summary</h5>
+<p>The code coverage summary will look like</p>
+<img alt="typo-summary.png" class="centered" width="600" height="360" src="/hiki.rb?c=plugin;plugin=attach_download;p=rcov;file_name=typo-summary.png">
+<h5><a name="l8"> </a>Detailed code coverage reports</h5>
+<p>Per-file coverage information will be shown as follows:</p>
+<img alt="typo-detailed.png" class="centered" width="600" height="355" src="/hiki.rb?c=plugin;plugin=attach_download;p=rcov;file_name=typo-detailed.png">
+<h5><a name="l9"> </a>Cross-referenced code coverage reports</h5>
+<p>rcov will indicate where methods are being called from as follows:</p>
+<img alt="cross-refs-teaser.png" class="centered" width="488" height="366" src="/hiki.rb?c=plugin;plugin=attach_download;p=rcov+0.5.0+teaser;file_name=cross-refs-teaser.png">
+<h5><a name="l10"> </a>Decorated text output</h5>
+<img alt="coverage-typo-ansi.png" class="centered" width="407" height="349" src="/hiki.rb?c=plugin;plugin=attach_download;p=rcov;file_name=coverage-typo-ansi.png">
+<h5><a name="l11"> </a>Text report</h5>
+<pre>
++-----------------------------------------------------+-------+-------+--------+
+|                  File                               | Lines |  LOC  |  COV   |
++-----------------------------------------------------+-------+-------+--------+
+|app/controllers/application.rb                       |    39 |    29 |  31.0% |
+|app/helpers/application_helper.rb                    |   147 |   119 |  23.5% |
+|app/models/aggregations/tada.rb                      |    75 |    45 |  31.1% |
+|app/models/aggregations/upcoming.rb                  |    78 |    48 |  29.2% |
+|app/models/article.rb                                |   109 |    78 |  67.9% |
+|app/models/category.rb                               |    30 |    23 |  60.9% |
+|app/models/sidebar.rb                                |    36 |    27 |  40.7% |
+|components/plugins/sidebars/archives_controller.rb   |    35 |    27 |  29.6% |
+|components/plugins/sidebars/category_controller.rb   |    20 |    16 |  50.0% |
+|components/plugins/sidebars/delicious_controller.rb  |    20 |    16 |  50.0% |
+|components/plugins/sidebars/flickr_controller.rb     |    20 |    16 |  50.0% |
+|components/plugins/sidebars/fortythree_controller.rb |    20 |    16 |  50.0% |
+|...s/plugins/sidebars/fortythreeplaces_controller.rb |    20 |    16 |  50.0% |
+|components/plugins/sidebars/static_controller.rb     |    27 |    24 |  29.2% |
+|components/plugins/sidebars/tada_controller.rb       |    20 |    16 |  50.0% |
+|components/plugins/sidebars/technorati_controller.rb |    20 |    16 |  50.0% |
+|components/plugins/sidebars/upcoming_controller.rb   |    20 |    16 |  50.0% |
+|components/plugins/sidebars/xml_controller.rb        |    16 |    13 |  53.8% |
+|components/sidebars/sidebar_controller.rb            |   110 |    80 |  32.5% |
+|lib/html_engine.rb                                   |    29 |    23 |  78.3% |
+|lib/login_system.rb                                  |    85 |    34 |  23.5% |
+|lib/migrator.rb                                      |    28 |    22 |  40.9% |
+|lib/renderfix.rb                                     |    32 |    25 |  16.0% |
+|lib/xmlrpc_fix.rb                                    |    13 |    12 |  25.0% |
++-----------------------------------------------------+-------+-------+--------+
+|Total                                                |  1754 |  1251 |  60.1% |
++-----------------------------------------------------+-------+-------+--------+
+60.1%   42 file(s)   1754 Lines   1251 LOC
+</pre>
+<p>(note that only files with coverage under 80% were shown in the above report, that's why you don't see 42 files there)</p>
+<h5><a name="l12"> </a>Execution count textual output</h5>
+<pre>
+$ rcov --no-html --text-counts b.rb 
+================================================================================
+./b.rb
+================================================================================
+                                                                      |      2
+a, b, c = (1..3).to_a                                                 |      2
+10.times do                                                           |      1
+  a += 1                                                              |     10
+  20.times do |i|                                                     |     10
+    b += i                                                            |    200
+    b.times do                                                        |    200
+      c += (j = (b-a).abs) &gt; 0 ? j : 0                                | 738800
+    end                                                               |      0
+  end                                                                 |      0
+end                                                                   |      0
+</pre>
+<h5><a name="l13"> </a>"Differential code coverage" (uncovered code detection)</h5>
+<p>rcov can detect when you've added code that is not covered by your unit
+tests:</p>
+<pre>
+   $ rcov --text-coverage-diff --no-color test/*.rb
+   Started
+   .......................................
+   Finished in 1.163085 seconds.
+   
+   39 tests, 415 assertions, 0 failures, 0 errors
+   
+================================================================================
+   !!!!! Uncovered code introduced in lib/rcov.rb
+       
+   ### lib/rcov.rb:207
+        
+        def precompute_coverage(comments_run_by_default = true)
+          changed = false
+          lastidx = lines.size - 1
+          if (!is_code?(lastidx) || /^__END__$/ =~ @lines[-1]) &amp;&amp; !@coverage[lastidx]
+   !!       # mark the last block of comments
+   !!       @coverage[lastidx] ||= :inferred
+   !!       (lastidx-1).downto(0) do |i|
+   !!         break if is_code?(i)
+   !!         @coverage[i] ||= :inferred
+   !!       end
+   !!     end
+          (0...lines.size).each do |i|
+            next if @coverage[i]
+            line = @lines[i]
+</pre>
+<h3><a name="l14"><span class="sanchor"> </span></a>FAQs</h3>
+<p>You can see the list of FAQs and add your own in <a href="/hiki/rcov+FAQ">this page</a>.</p>
+<h3><a name="l15"><span class="sanchor"> </span></a>'"Code coverage" what??': an explanation of C0, C1 &amp; C2 coverage analysis</h3>
+<p>Code coverage shouldn't be abused (in few words, C0 coverage guarantees
+nothing) but it's still useful for testing: it will at least tell you when
+your tests need more work, and most importantly where.</p>
+<p>C0 coverage analysis (as done by rcov) tells you which lines of code
+have been executed: you typically use it to find the areas of your
+program that have not been sufficiently tested, i.e. those that were not
+run by your test cases. C1 coverage refers to the different branches of
+conditional statements, for instance,</p>
+<pre>
+if somecondition; dofoo; else dobar end
+</pre>
+<p>gets 100% C0 coverage (you did "execute that line") , but only 50% C1
+coverage if only one branch was followed: iow. in order to get 100% C1
+coverage you'd have to change your tests so that <em>somecondition</em> is
+true in a run and false in another.</p>
+<p>C2 (path) coverage corresponds to the amount of execution paths through
+your code that actually happened:
+<div class='attach_hl'><div class='ruby'><pre><span class="keyword">if</span> <span class="ident">foo</span> <span class="punct">==</span> <span class="number">1</span>
+  <span class="ident">do1</span><span class="punct">()</span>
+<span class="keyword">else</span>
+  <span class="ident">do2</span><span class="punct">()</span>
+<span class="keyword">end</span>
+
+<span class="keyword">if</span> <span class="ident">bar</span>
+  <span class="ident">do3</span><span class="punct">()</span>
+<span class="keyword">else</span>
+  <span class="ident">do4</span><span class="punct">()</span>
+<span class="keyword">end</span>
+</pre></div></div><p></p>
+<p>The possible execution paths are:</p>
+<ul>
+<li>do1 do3</li>
+<li>do1 do4</li>
+<li>do2 do3</li>
+<li>do2 do4</li>
+</ul>
+<p>In order to get a C2 coverage of 100%, you'd have to ensure that all
+those combinations (cartesian product of {foo == 1, foo != 1} and 
+{bar, !bar}) happen.</p>
+<p>It's possible to get very close to 100% C0 and C1 coverage. While a C0-1
+coverage of 100% doesn't guarantee that your program is correct, if
+your coverage is much lower it certainly means that your tests aren't
+good enough. As for C2 coverage, it's usually not possible to make it
+very high: you can keep it as an indirect measure of quality, but the
+gain/cost ratio is lower than for C0-1 coverage, I guess.</p>
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2006/05/22 03:34:24<br>
+        Keyword(s):[<a href="/hiki.rb?c=search;key=ruby">ruby</a>] [<a href="/hiki.rb?c=search;key=rcov">rcov</a>] [<a href="/hiki.rb?c=search;key=code">code</a>] [<a href="/hiki.rb?c=search;key=coverage">coverage</a>]<br>
+        References:[<a href="/hiki/rcov-0.8.0">rcov 0.8.0 (Ruby code coverage): new output modes, fix for RSpec woes, superior emacs integration</a>] [<a href="/hiki/rcov+FAQ">rcov FAQ</a>] [<a href="/hiki/rcov+0.5.0">rcov 0.5.0: cross-referenced reports (code coverage and callsite info), RubyGems, Rant support, improved heuristics</a>] [<a href="/hiki/rcov-0.8.1">rcov 0.8.1: compatibility with Ruby 1.8.6-p11[01], intentional testing with RSpec, etc.</a>] [<a href="/hiki/Ruby">Ruby</a>] [<a href="/hiki/rcov+0.7.0">rcov 0.7.0: code coverage and callsite/defsite data aggregation across multiple runs</a>] [<a href="/hiki/ruby+backtrace+data">A better Kernel#caller</a>] [<a href="/hiki/pure+ruby+compiler">A small FS in DATA and a pure Ruby compiler (in the classical sense)</a>] [<a href="/hiki/regression+tests+in+rcov">Adding regression tests to rcov</a>] [<a href="/hiki/rcov+0.1.0+prerelease">Better code coverage for Ruby: rcov 0.1.0 prerelease</a>] [<a href="/hiki/call+graphs">Call graphs to analyze code dependencies, or just because.</a>] [<a href="/hiki/firebrigade-launched">Firebrigade: automated, sandboxed testing of RubyGems packages by other developers</a>] [<a href="/hiki/rcov+0.2.0">rcov 0.2.0: speedy, prettier, more convenient code coverage</a>] [<a href="/hiki/rcov+0.4.0">rcov 0.4.0: more accurate code coverage, scriptability, unrotten internals</a>] [<a href="/hiki/rcov+0.6.0">rcov 0.6.0: &quot;differential code coverage&quot;, full (faster) cross-referenced reports, vim integration</a>] [<a href="/hiki/cross+compiling+rcovrt">Cross-compiling Ruby extensions for win32: rcovrt</a>] [<a href="/hiki/vim+ruby+screencasts">VimInAnger competition, how about Project + simplefold + taglist + rcov + bufferlist + xmpfilter?</a>] [<a href="/hiki/call_stack+0.1.0">call_stack 0.1.0: making ruby-breakpoint/Rails' breakpointer work with Ruby 1.8.5</a>] [<a href="/hiki/code">Code hosted at eigenclass.org</a>] [<a href="/hiki/rcov+0.3.0">rcov 0.3.0: happier Rails (code coverage analysis)</a>] <br>
+        
+      </div>
+    </div>
+    <div><script type="text/javascript"><!--
+function hiki_related_add_related_box(num_links, related_docs)
+{
+    var xpath_query = "//div[@class='day']/div[@class='body']/div[@class='section']";
+    var nodes = document.evaluate(xpath_query, document, null, XPathResult.ANY_TYPE, null); 
+    var content_node = nodes.iterateNext();
+    var first_child = content_node.firstChild;
+    var new_node = document.createElement("div");
+    new_node.className = "toprelated";
+    new_node.innerHTML = "See also";
+    var ul = document.createElement("ul");
+    for(var i = 1; i <= num_links && i < arguments.length; i++) {
+	var li = document.createElement("li");
+        li.innerHTML = arguments[i];
+	ul.appendChild(li);
+    }
+    new_node.appendChild(ul);
+    var span = document.createElement("span");
+    var links = arguments;
+    span.onmouseover = function(event){ 
+	for(var j =  num_links + 1; j < links.length; j++) {
+	    var li = document.createElement("li");
+	    li.innerHTML =  links[j];
+	    ul.appendChild(li);
+	}
+	span.style.display = "none";
+    };
+    span.innerHTML = "<em>...</em>";
+    if(arguments.length - 1 > num_links) {
+	new_node.appendChild(span);
+    }
+    content_node.insertBefore(new_node, first_child);
+}
+
+hiki_related_add_related_box(3, "<a href=\"/hiki/rcov+0.5.0+teaser\">A small teaser (rcov 0.5.0)</a>", "<a href=\"/hiki/rcov+0.7.0\">rcov 0.7.0: code coverage and callsite/defsite data aggregation across multiple runs</a>", "<a href=\"/hiki/rcov+FAQ\">rcov FAQ</a>", "<a href=\"/hiki/Usable+Ruby+folding+for+Vim\">Usable Ruby folding for Vim</a>", "<a href=\"/hiki/call+graphs\">Call graphs to analyze code dependencies, or just because.</a>", "<a href=\"/hiki/ftsearch+repository+accessible\">Outperforming Ferret at searching, 3X faster indexing, code online</a>", "<a href=\"/hiki/happy2007+ruby+contest+coming+soon\">eigenclass.org 'Happy 2007!' Ruby contest, Sat 2007-01-06 20H UTC</a>", "<a href=\"/hiki/rcov-0.8.1\">rcov 0.8.1: compatibility with Ruby 1.8.6-p11[01], intentional testing with RSpec, etc.</a>");
+// --></script>
+</div>
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <p>Incremental search   <script language="JScript" type="text/jscript">
+  <!--
+   try {
+          xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  // -->
+  </script>
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  if(typeof XMLHttpRequest != 'undefined'){
+          xmlhttp = new XMLHttpRequest();
+  }
+  function invoke1(key) {
+          if (!document.getElementById) return;
+          if (!xmlhttp) return;
+          xmlhttp.open("GET", "/hiki.rb?c=search;key="+encodeURI(key), true);
+          document.getElementById("search_spinner1").style.display = '';
+          xmlhttp.onreadystatechange=function() {
+                  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                          document.getElementById("result1").innerHTML = xmlhttp.responseText;
+                          document.getElementById("search_spinner1").style.display = 'none';
+                  }
+  
+          }
+          xmlhttp.send(null)
+  }
+  // -->
+  </script>
+  <form method="GET" action="/hiki.rb">
+    <input type="hidden" value="search_orig" name="c">
+    <input  maxlength="50" name="key" onkeyup="invoke1(this.value)" 
+            onfocus="invoke1(this.value)">
+    <input type="submit" style="font-size: 75%;" value="Search">
+<img alt="..." id="search_spinner1" src="/loading.gif" 
+         style="display:none;" />
+  </form>
+  <div id="result1"> </div><p>
+</p>
+<hr />
+<p><img src="http://eigenclass.org/feed-icon-28x28.png" alt="feed-icon-28x28.png" /> <a href="http://eigenclass.org/hiki.rb?c=rss;tags=blog" class="external">RSS 1.0</a> - <a href="http://eigenclass.org/hiki.rb?c=rss;format=1;tags=blog" class="external">RSS 2.0</a></p>
+<ul>
+<li><a href="/hiki/popular+nodes">View popular nodes</a></li>
+<li><a href="/hiki/Ruby">Classified nodes (Ruby stuff)</a></li>
+</ul>
+<p><a href="/hiki/code">Source code</a></p>
+<h5><a name="s0"> </a>Recent</h5>
+<ul>
+<li title="2008-10-27 "><a href="/hiki/widefinder2-conclusions">Wide Finder 2: processing 42GB of httpd logs, 300X faster than naïve Ruby.</a> <span class="recent2">(149d)</span>
+<li title="2008-09-10 "><a href="/hiki/rcov+FAQ">rcov FAQ</a> <span class="recent2">(197d)</span>
+<li title="2008-09-01 "><a href="/hiki/shootout-elo-ratings">Elo ratings for the Benchmarks Game (aka Great Computer Language Shootout)</a> <span class="recent2">(206d)</span>
+<li title="2008-08-27 "><a href="/hiki/fp-ocaml-koans">Some functional programming and OCaml koans</a> <span class="recent2">(211d)</span>
+<li title="2008-08-04 "><a href="/hiki/rcodetools-0.8.0">rcodetools 0.8.0</a> <span class="recent2">(233d)</span>
+<li title="2008-07-17 "><a href="/hiki/sort-eager-vs-lazy-algorithm-analysis-gc-scaling">Reexamining qsort, eager vs. lazy algorithm analysis and Ruby's (and other's) GC</a> <span class="recent2">(252d)</span>
+<li title="2008-07-15 "><a href="/hiki/quicksort-erratum">Quicksort erratum</a> <span class="recent2">(254d)</span>
+</ul>
+
+<h5><a name="s1"> </a><a href="/hiki/popular+nodes">Popular</a></h5>
+<ul>
+<li><a href=".">MAIN (324876)</a>
+<li><a href="/hiki/Changes+in+Ruby+1.9">Changes in Ruby 1.9 (151167)</a>
+<li><a href="/hiki/rcov">rcov: code coverage for Ruby (106877)</a>
+<li><a href="/hiki/wmii+ruby">ruby-wmii: Ruby configuration/scripting for the wmii window manager (49910)</a>
+<li><a href="/hiki/gibak-backup-system-introduction">A better backup system based on Git (34309)</a>
+<li><a href="/hiki/threadring-with-protothreads">The lightest lightweight threads, Protothreads (27529)</a>
+<li><a href="/hiki/rcodetools">rcodetools: TDD/BDD++, automagic assertions, 100% accurate completion, doc/code browsing... (38611)</a>
+<li><a href="/hiki/simple+full+text+search+engine">A simple full-text search engine in 200 lines of Ruby (40216)</a>
+<li><a href="/hiki/rcov+FAQ">rcov FAQ (16449)</a>
+<li><a href="/hiki/fastri">FastRI: faster, smarter RI docs for Ruby, DRb-enabled (23702)</a>
+<li><a href="/hiki/ruby-wmii+FAQ">ruby-wmii FAQ (20106)</a>
+<li><a href="/hiki/ruby+live+process+introspection">Inspecting a live Ruby process, easier if you cheat. (35649)</a>
+<li><a href="/hiki/seam-carving-in-ocaml">Fast content-aware image resizing (24356)</a>
+</ul>
+
+<hr />
+
+</div>
+
+<div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 0.8.7 (2007-06-24).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 1.8.3 (2005-10-25).<br>
+Founded by Mauricio Fernandez.<br>
+                <script type="text/javascript"><!--
+                var highlightStyle = new Object();
+                highlightStyle.color = "#fff";
+                highlightStyle.backgroundColor = "#f00";
+                
+                var highlightElem = null;
+                var saveStyle = null;
+                
+                function highlightElement(name) {
+                        if (highlightElem) {
+                                for (var key in saveStyle) {
+                                        highlightElem.style[key] = saveStyle[key];
+                                }
+                                highlightElem = null;
+                        }
+                
+                        highlightElem = getHighlightElement(name);
+                        if (!highlightElem) return;
+                
+                        saveStyle = new Object();
+                        for (var key in highlightStyle) {
+                                saveStyle[key] = highlightElem.style[key];
+                                highlightElem.style[key] = highlightStyle[key];
+                        }
+                }
+                
+                function getHighlightElement(name) {
+                        for (var i=0; i<document.anchors.length; ++i) {
+                                var anchor = document.anchors[i];
+                                if (anchor.name == name) {
+                                        var elem;
+                                        if (anchor.parentElement) {
+                                                elem = anchor.parentElement;
+                                        } else if (anchor.parentNode) {
+                                                elem = anchor.parentNode;
+                                        }
+                                        return elem;
+                                }
+                        }
+                        return null;
+                }
+                
+                if (document.location.hash) {
+                        highlightElement(document.location.hash.substr(1));
+                }
+                
+                hereURL = document.location.href.split(/#/)[0];
+                for (var i=0; i<document.links.length; ++i) {
+                        if (hereURL == document.links[i].href.split(/#/)[0]) {
+                                document.links[i].onclick = handleLinkClick;
+                        }
+                }
+                
+                function handleLinkClick() {
+                        highlightElement(this.hash.substr(1));
+                }
+                // --></script>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1126249-1";
+urchinTracker();
+</script>
+</body>
+</html>

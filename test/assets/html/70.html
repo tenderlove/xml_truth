@@ -1,0 +1,800 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+
+	<title>Learn Ruby on Rails: the Ultimate Beginner’s Tutorial [Ruby &amp; Rails]</title>
+
+	
+
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="robots" content="all" />
+	<meta name="description" content="Make your mark in the brave new world of Ruby on Rails! In this action-packed adventure, Patrick provides rock-solid foundations in object oriented programming principles, and a detailed explanation of Ruby syntax. After this comprehensive tour, you'll plunge into the mysterious depths of the Rails framework. You'll emerge enlightened and ready to chart new web application territory." />
+	<meta name="keywords" content="ruby, class, code, object, rails, method, application, objects, database, command line, return value, ruby shell," />
+	<link rel="shortcut icon" href="http://sitepointstatic.com/favicon.ico" />
+	<link rel="stylesheet" type="text/css" media="all" href="http://1.sitepointstatic.com/bundle/structure.css,standard.css,format.css,tabs-v5.css,cart.css,print.css,index.css,promo.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="http://1.sitepointstatic.com/css2/promobar.css" />
+	
+		<link rel="alternate" type="application/rdf+xml" title="RSS - Articles" href="/recent.rdf" />
+	<link rel="alternate" type="text/xml" title="RSS - News" href="/blogs/category/news/feed/" />
+	<link rel="alternate" type="application/rdf+xml" title="RSS - Blogs" href="/blogs.rdf" />
+	<link rel="alternate" type="application/rdf+xml" title="RSS - Forums" href="/forums/featured.rdf" />
+	<link rel="alternate" type="application/rdf+xml" title="RSS - Books" href="/books.rdf" />
+	<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
+
+	
+	<script src="http://2.sitepointstatic.com/bundle/utilities.js,sortable.js" type="text/javascript"></script>
+	<script src="http://2.sitepointstatic.com/js/sitepoint-ref-links.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/article.css" />
+
+
+
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie.css" />
+<![endif]-->
+<!--[if IE7]>
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie6.css" />
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie5.css" />
+<![endif]-->
+
+
+<script type="text/javascript" src="http://sitepointstatic.com/js/layoutbanner.js"></script>
+
+</head>
+
+  <body>
+
+
+<div id="header">
+  <h1>
+	<a href="http://www.sitepoint.com"><span></span>SitePoint</a>
+	</h1>
+    </div>
+<!-- Search -->
+
+ <form method="get" action="/search/search.php"  id="search">
+<div>
+	<label for="mainsearchbox">Search Site</label>
+	<input type="hidden" name="ps" value="10" />
+	<input id="mainsearchbox" type="text" name="q" value="" class="tbox" />
+	<input type="submit" value="Search" name="submit" class="button" />
+	<ul id="searchlinks">
+	<li><a href="/search/">Advanced Search</a></li>
+	<li><a href="/sitemap">Sitemap</a></li>
+	</ul>
+</div>
+</form>
+
+
+
+<!-- /Search -->
+  <!-- navigation bar -->
+  <div id="navcontainer">
+
+	<ul id="navlist">
+		<li><a id="tabz"  href="/" title="The best place to begin your SitePoint session">Home</a></li>
+		<li><a id="taba" class="active" href="/recentarticles/" title="One of the Web&rsquo;s largest repositories of web know-how">Articles</a></li>
+		<li><a id="tabb"  href="/books/" title="SitePoint&rsquo;s renowned web development books">Books</a></li>
+		<li><a id="tabc"  href="/kits/" title="SitePoint&rsquo;s renowned web development kits">Kits</a></li>
+		<li><a id="tabd"  href="/videos/" title="SitePoint&rsquo;s renowned web development training videos">Videos</a></li>
+		<li><a id="tabe"  href="/blogs/" title="Daily comment across a range of web subjects by some of the top experts in their field">Blogs</a></li>
+		<li><a id="tabf"  href="/contest/" title="Let designers compete for your business in SitePoint&rsquo;s Design Contests">Contests</a></li>
+		<li><a id="tabg"  href="http://marketplace.sitepoint.com/" title="Buy and sell goods and services in one of the world&rsquo;s largest web communities">Marketplace</a></li>
+		 <li><a accesskey="6" id="tabh"  href="/forums/" title="Our friendly, vibrant and well-informed community">Forums</a></li>
+		 <li><a accesskey="9" id="tabi"  href="http://reference.sitepoint.com/" title="The Web&rsquo;s most complete and up-to-date reference">Reference </a></li>
+	</ul>
+
+<!-- reload -->
+	</div>
+
+<!-- /nav  -->
+
+<div id="content"  class="clearfix"><div id="maincontent">
+
+<!-- *********  Start maincontent ******** -->
+<div id="flow">
+<div id="tab">
+
+<div id="articlebanner"></div>
+
+<div class="wrap">
+	<h3>Article</h3>
+
+
+	<a name="content" class="nomargin"></a>
+
+
+	
+	<!-- Crumb trail -->
+
+<div class="crumb"><a href="/">Home</a> &raquo; <a href="/cat/server-side-coding">Server-side Coding</a> &raquo; <a href="/subcat/ruby">Ruby & Rails</a> &raquo;
+          Learn Ruby on Rails: the Ultimate Beginner’s Tutorial
+    </div>
+<!-- End Crumb trail -->
+
+<div id="topcontrols">
+  	
+  <div id="tools">
+    <span id="hiliteon"><a href="javascript:highlighton();" class="sublink" title="Highlight the searched text">Highlight On</a></span>
+    <span id="hiliteoff"><a href="javascript:highlightoff();" class="sublink" title="Switch the highlighted text off">Highlight Off</a></span>
+    <a class="printicon" href="/print/learn-ruby-on-rails" title="Print-Friendly version">Print</a>
+    <a class="emailicon" href="/email/learn-ruby-on-rails" onclick="acpopup(this.href,'console',450,280);return false;" title="Launch a window to send this article to a Friend">Email</a>
+  </div>
+</div>
+
+
+<div id="article_content">
+
+<div id="articlesidebar">
+		<div class="featureimage">
+	<img src="http://sitepointstatic.com/graphics/indiana-jones.jpg" width="220" height="190" alt="SitePoint Feature Article" />
+	</div>
+	<!-- related articles shown only if there are any! -->
+<div id="relatedarticles">
+	<div class="boxes">
+		<h4>Related Articles</h4>
+		<ol>
+					<li><a href="/article/rails-for-beginners/">Rails For Beginners: All You Need To Know!</a><br />
+			<span class="subtext">Rated : <em>10/10</em></span></li>
+			
+					<li><a href="/article/rapid-restful-rails-apps/">Rapid RESTful Rails Apps -- No, Really!</a><br />
+			<span class="subtext">Rated : <em>9.2/10</em></span></li>
+			
+					<li><a href="/article/debug-rails-app-ruby-debug/">Debug Your Rails App With ruby-debug</a><br />
+			<span class="subtext">Rated : <em>9/10</em></span></li>
+			
+					<li><a href="/article/ruby-on-rails/">Get On Track with Ruby on Rails</a><br />
+			<span class="subtext">Rated : <em>8.9/10</em></span></li>
+			
+				
+		</ol>
+	</div>
+</div>
+
+<div id="bio">
+	
+	<div class="boxes">
+	
+	<h3>About the Author</h3>
+	  	
+	  <h4>Patrick Lenz</h4>
+	
+	  <p>
+	
+	    	      <img src="http://sitepointstatic.com/graphics/author_patrick_lenz.jpg" width="56" height="67"  alt="Patrick Lenz" />
+	    	
+	    Patrick has been developing web applications for ten years. Founder and lead developer of the freshmeat.net software portal, he and his Rails consultancy and application development company, <a class="sublink" href="http://limited-overload.de/">limited overload</a> were responsible for a major relaunch of Germany's biggest infotainment community. Patrick lives in Wiesbaden, Germany. His weblog can be found at <a class="sublink" href="http://poocs.net">poocs.net</a>.
+	  </p>
+	
+	  	
+	   	<p>
+	      Patrick Lenz has written <strong>3</strong> articles for SitePoint with an average reader rating of <strong>8.7</strong>.
+	    </p>
+	
+	    <p>
+	      <a href="/articlelist/471">View all articles by Patrick Lenz...</a>
+	    </p>
+	
+	  	
+	</div>
+	
+		<div id="illustrator">
+	  <p>Illustration by:
+	   
+	     <a href="/articlelist/423">
+	  		 Matthew Magain
+	  	  
+		 </a>
+	  	  </p>
+	</div>
+		
+</div>
+</div>
+
+
+<h1 id="title">Learn Ruby on Rails: the Ultimate Beginner’s Tutorial</h1>
+			<div class='articledetail'>
+				<h4>By <a href='/articlelist/471' title='Find out more about this author'>Patrick Lenz</a></h4>
+				<p class='date'>January 31st 2007</p>
+				<p class='date'>Reader Rating: 8.7</p>
+
+					<p class='date'>Page: <span class='thispage'>1</span><a class='pagenavtop' href='/article/learn-ruby-on-rails/2'>2</a><a class='pagenavtop' href='/article/learn-ruby-on-rails/3'>3</a><a class='pagenavtop' href='/article/learn-ruby-on-rails/4'>4</a><span class='pagenavtop'>...</span><a class='pagenavtop' href='/article/learn-ruby-on-rails/10'>10</a><a href='/article/learn-ruby-on-rails/2' class='nextlink'>Next</a></p>
+			</div>
+<p><strong>While it certainly makes no attempt to constitute a complete guide to the Ruby language, this tutorial will introduce you to some of the basics of Ruby. We'll power through a crash-course in object oriented programming, covering the more common features of the language along the way, and leaving the more obscure aspects of Ruby for a <a class="sublink" href="http://www.ruby-doc.org/stdlib/">dedicated reference guide</a>.  I'll also point out some of the advantages that Ruby has over other languages when it comes to developing applications for the Web.</strong></p>
+
+<p>Some Rails developers suggest that it's possible to learn and use Rails without learning the Ruby basics first, but as far as I'm concerned, it's extremely beneficial to know even a little Ruby before diving into the guts of Rails. In fact, if you take the time to learn the Ruby basics first, you'll automatically become a better Rails programmer.</p>
+
+<p>That's what this tutorial is all about. In fact, this information is excerpted from my new book, <a class="sublink" href="http://www.sitepoint.com/books/rails1/"><em>Build Your Own Ruby On Rails Web Applications</em></a>, which is now available through sitepoint.com. The two chapters presented here get straight into the finer points of Ruby and Rails. If you need installation and other setup instructions, <a rel='external' class="sublink" href="http://www.sitepoint.com/popup/popup.php?zone=2&popupid=92">download the sample PDF, which contains chapters 1 to 4</a>.</p>
+
+<h5>Ruby is a Scripting Language</h5>
+
+
+
+<p>In general, programming languages fall into one of two categories: they're either compiled languages or scripting languages. Let's explore what each of those terms means, and understand the differences between them.</p>
+
+<p><strong><em>Compiled Languages</em></strong></p>
+<div id="adz" class="vertical"></div>
+<p>The language in which you write an application is not actually something that your computer understands. Your code needs to be translated into bits and bytes that can be executed by your computer. This process of translation is called compilation, and any language that requires compilation is referred to as a compiled language. Examples of compiled languages include C, C#, and <a href="/glossary.php?q=J#term_65" class="glossary" title="Java is a cross-platform, object-oriented programming language created by Sun.">Java</a>.</p>
+
+<p>For a compiled language, the actual compilation is the final step in the development process. You invoke a compiler -- the software program that translates your final hand-written, human-readable code into machine-readable code -- and the compiler creates an executable file. This final product is then able to execute independently of the original source code.</p>
+
+<p>Thus, if you make changes to your code, and you want those changes to be incorporated into the application, you must stop the running application, recompile it, then start the application again.</p>
+
+<p><strong><em>Scripting Languages</em></strong></p>
+
+<p>On the other hand, a scripting language such as Ruby, PHP, or Python, relies upon an application's source code all of the time. Scripting languages don't have a compiler or a compilation phase per se; instead, they use an interpreter -- a program that runs on the web server -- to translate hand-written code into machine-executable code on the fly. The link between the running application and your hand-crafted code is never severed, because that scripting code is translated every time it is invoked -- in other words, for every web page that your application renders.</p>
+
+<p>As you might have gathered from the name, the use of an interpreter rather than a compiler is the major difference between a scripting language and a compiled language.</p>
+
+<p><strong><em>The Great Performance Debate</em></strong></p>
+
+<p>If you've come from a compiled-language background, you might be concerned by all this talk of translating code on the fly -- how does it affect the application's performance?</p>
+
+<p>These concerns are valid -- translating code on the web server every time it's needed is certainly more expensive, performance-wise, than executing pre-compiled code, as it requires more effort on the part of your machine's processor. The good news is that there are ways to speed up scripted languages, including techniques such as code <a href="/glossary.php?q=C#term_21" class="glossary" title="Cache, pronounced &quot;cash&quot;, refes to a stored copy of (or pointers to) previously accessed data. ">caching</a> and persistent interpreters. However, both topics are beyond the scope of this book.</p>
+
+<p>There's also an upside to scripted languages in terms of performance -- namely, your performance while developing an application.</p>
+
+<p>Imagine that you've just compiled a shiny new Java application, and launched it for the first time ... and then you notice a typo on the welcome screen. To fix it, you have to stop your application, go back to the source code, fix the typo, wait for the code to recompile, and restart your application to confirm that it is fixed. And if you find another typo, you'll need to repeat that process again. Lather, rinse, repeat.</p>
+
+<p>In a scripting language, you can fix the typo and just reload the page in your browser -- no restart, no recompile, no nothing. It's as simple as that.</p>
+
+<h5>Ruby is an Object Oriented Language</h5>
+
+
+
+<p>Ruby, from its very beginnings, was built as a programming language that adheres to the principles of object oriented programming (<a href="/glossary.php?q=O#term_10" class="glossary" title="An programming methodology involving the building of abstracted code objects designed to interact with each other. ">OOP</a>). Before getting into Ruby specifics, I'd like to introduce you to some fundamental concepts of OOP. Now I know that theory can seem a bit dry to those who are itching to start coding, but we'll cover a lot of ground in this short section, so don't skip it. This discussion will hold you in good stead -- trust me.</p>
+
+<p>OOP is a programming paradigm that first surfaced in the 1960s, but didn't gain traction until the 1980s with C++. The core idea behind it is that programs should be composed of individual entities, or objects, each of which has the ability to communicate with other objects around it. Additionally, each object may have the facility to store data internally, as depicted in Figure 3.1.</p>
+
+<p><img src="http://sitepointstatic.com/graphics/introducing-ruby_object-interaction.png"  height="264" width="400" alt="1562_fig1" /><br />
+<em>Figure 3.1. Communication between objects</em></p>
+
+<p>Objects in an OOP application are often modeled on real-world objects, so even non-programmers can usually recognize the basic role that an object plays.</p>
+
+<p>And, just like the real world, OOP defines objects with similar characteristics as belonging to the same class. A class is a construct for defining properties for objects that are alike, and equipping them with functionality. For example, a class named Car might define the attributes color and mileage for its objects, and assign them functionality -- actions such as &quot;open the trunk,&quot; &quot;start the engine,&quot; and &quot;change gears.&quot; These different actions are known as methods, although you'll often see Rails enthusiasts refer to the methods of a controller as &quot;actions&quot; -- you can safely consider the two terms to be interchangeable.</p>
+
+<p>Understanding the relationship between a class and its objects is integral to understanding how OOP works. For instance, one object can invoke functionality on another object, and can do so without affecting other objects of the same class. So, if one car object was instructed to open its trunk (think of KITT, the talking car from the classic 80s television show &quot;Knight Rider,&quot; if it helps with the metaphor), then its trunk would open, but the trunk of other cars would remain closed. Similarly, if our high-tech talking car were instructed to change color to red, then it would do so, but other cars would not. (&quot;<a class="sublink" href="http://en.wikipedia.org/wiki/Knight_rider/">Knight Rider</a>&quot; was a popular series in the 1980s that featured modern-day cowboy Michael Knight (played by David Hasselhoff) and his opinionated, talking, black Pontiac <a href="/glossary.php?q=F#term_68" class="glossary" title="Firebird is an open source database server.">Firebird</a> named KITT. Having seen the show is not critical to understanding object oriented programming?just knowing that the car could talk will suffice!)</p>
+
+<p>When we create a new object in OOP, we base it on an existing class. The process of creating new objects from a class is called instantiation. Figure 3.2 illustrates the concept.</p>
+
+<p><img src="http://sitepointstatic.com/graphics/introducing-ruby_classes-and-objects.png"  height="186" width="400" alt="1562_fig2" /><br />
+<em>Figure 3.2. Classes and objects</em></p>
+
+<p>As I mentioned, objects can communicate with each other and invoke functionality (methods) on other objects. Invoking an object's methods can be thought of as asking the object a question, and getting an answer in return.</p>
+
+<p>Consider the example of our famous talking car again. Let's say we ask the talking car object to report its current mileage. This question is not ambiguous -- the answer that the object gives is called a return value, and is shown in Figure 3.3.</p>
+
+<p><img src="http://sitepointstatic.com/graphics/introducing-ruby_questions-and-answers.png"  height="79" width="400" alt="1562_fig3" /><br />
+<em>Figure 3.3. Asking a simple question</em></p>
+
+<p>In some cases, the question and answer analogy doesn't quite fit. In these situations, we might rephrase the analogy to consider the question to be an instruction, and the answer a status report indicating whether or not the instruction was executed successfully. This might look something like the diagram in Figure 3.4.</p>
+
+<p><img src="http://sitepointstatic.com/graphics/introducing-ruby_sending-instructions.png"  height="80" width="400" alt="1562_fig4" /><br />
+<em>Figure 3.4. Sending instructions</em></p>
+
+<p>Sometimes we need a bit more flexibility with our instructions. For example, if we wanted to tell our car to change gear, we need to tell it not only to change gear, but also which gear to change to. The process of asking these kinds of questions is referred to as passing an argument to the method.</p>
+
+<p>An argument is an input value that's provided to a method. An argument can be used in two ways:</p>
+
+<p><ul>
+	<li>to influence how a method operates</li>
+	<li>to influence which object a method operates on</li>
+</ul>
+</p>
+
+<p>An example is shown in Figure 3.5, where the method is &quot;change gear,&quot; and the number of the gear to which the car must change (two) is the argument.</p>
+
+<p><img src="http://sitepointstatic.com/graphics/introducing-ruby_passing-arguments.png"  height="81" width="400" alt="1562_fig5" /><br />
+<em>Figure 3.5. Passing arguments</em></p>
+
+<p>A more general view of all of these different types of communication between objects is this: invoking an object's methods is accomplished by sending messages to it. As one might expect, the object sending the message is called the sender, and the object receiving the message is called the receiver.</p>
+
+<p>Armed with this basic knowledge about object oriented programming, let's look at some Ruby specifics.</p>
+
+<h5>Reading and Writing Ruby Code</h5>
+
+
+
+<p>Learning the syntax of a new language has the potential to induce the occasional yawn. So, to make things more interesting, I'll present it to you in a practical way that lets you play along at home: we'll use the interactive Ruby shell.</p>
+
+<p><strong><em>The Interactive Ruby Shell (irb)</em></strong></p>
+
+<p>You can fire up the interactive Ruby shell by entering irb into a terminal window.</p>
+
+<p><em>Not the Standard DOS Box!</em><br />
+<em>Windows users, don't forget to use the Open Ruby Console option from the Instant Rails control panel, to make sure the environment you're using contains the right settings.</em></p>
+
+<p>irb allows you to issue Ruby commands interactively, one line at a time. This is great for playing with the language, and it's also great for debugging, as we'll see in Chapter 11, Debugging, Testing, and Benchmarking.</p>
+
+<p>A couple of points about the irb output you'll see in this chapter:</p>
+
+<p><ul>
+	<li>Lines beginning with the Ruby shell prompt (irb&gt;) are typed in by you (and me).</li>
+	<li>Lines beginning with =&gt; show the return value of the command that has been entered.</li>
+</ul>
+</p>
+
+<p>We'll start with a really brief example:</p>
+
+<p><code>irb&gt; 1 <br />
+=&gt; 1</code></p>
+
+<p>In this example, I've simply thrown the number 1 at the Ruby shell, and got back what appears to be the very same number.</p>
+
+<p>Looks can be deceiving, though -- it's actually not the very same number. What we were handed back is in fact a fully-featured Ruby object.</p>
+
+<p>Remember our discussion about object oriented programming in the previous section? Well, in Ruby, absolutely everything is treated as an object with which we can interact -- each object belongs to a certain class, therefore each object is able to store data and functionality in the form of methods.</p>
+
+<p>To find the class to which our number belongs, we call the number's <code>class</code> method:</p>
+
+<p><code>irb&gt; 1.class <br />
+=&gt; Fixnum</code></p>
+
+<p>We touched on senders and receivers earlier. In this example, we've sent the class message to the <code>1</code> object, so the <code>1</code> object is the receiver (there's no sender, as we're sending the message from the interactive command line rather than from another object). The value that's returned by the method we've invoked is <code>Fixnum</code>, which is the Ruby class that represents integer values.</p>
+
+<p>Since everything in Ruby (including a class) is an object, we can actually send the very same message to the <code>Fixnum</code> class. The result is different, as we'd expect:</p>
+
+<p><code>irb&gt; Fixnum.class <br />
+=&gt; Class</code></p>
+
+<p>This time, the return value is <code>Class</code>, which is somewhat reassuring -- we did invoke it on a class name, after all.</p>
+
+<p>Note that the method <code>class</code> is all lowercase, yet the return value <code>Class</code> begins with a capital letter. A method in Ruby is always written in lowercase, whereas the first letter of a class is always capitalized.</p>
+
+<script src="http://ads.aws.sitepoint.com/adjs.php?region=&amp;did=adz&amp;adtype=vertical" type="text/javascript"></script>
+
+</div>
+
+<div id="botpagenav" class="pagenav">
+  <span>Go to page:</span>
+            <span class="thispage">1</span>
+                <a href="/article/learn-ruby-on-rails/2">2</a>
+                <a href="/article/learn-ruby-on-rails/3">3</a>
+                <a href="/article/learn-ruby-on-rails/4">4</a>
+                ...
+                <a href="/article/learn-ruby-on-rails/10">10</a>
+        <a href="/article/learn-ruby-on-rails/2" class="next">Next</a></div>
+
+
+  
+<div id="submitters">
+   <h5>
+       If you liked this article, share the love:
+   </h5>
+   <ul>
+      <li class="delicious">
+          <a href="http://del.icio.us/post?url=http%3A%2F%2Fwww.sitepoint.com%2Farticle%2Flearn-ruby-on-rails">Save to Del.icio.us</a>
+      </li>
+  </ul>
+</div>
+
+  
+<div id="adt"></div>
+
+	<div class="clearfix"> </div>
+
+	<div id="dostuff">
+        <script type="text/javascript">
+    <!--
+    var txt = 'Bookmark This Article';
+    var url = 'http://www.sitepoint.com/article/learn-ruby-on-rails';
+    var who = 'Learn Ruby on Rails: the Ultimate Beginner’s Tutorial';
+    var ver = navigator.appName
+    var num = parseInt(navigator.appVersion)
+    if ((ver == "Microsoft Internet Explorer")&&(num >= 4)) {
+       document.write('<a  class="bookmarkicon" href="javascript:window.external.AddFavorite(url,who);" ');
+       document.write('onMouseOver=" window.status=')
+       document.write("txt; return true ")
+       document.write('"onMouseOut=" window.status=')
+       document.write("' '; return true ")
+       document.write('">'+ txt + '</a>')
+    }
+    -->
+    </script>
+
+    <a class="printicon"  href="/print/learn-ruby-on-rails">Print-Friendly&nbsp;Version</a>
+    <script type="text/javascript" src="/js/email.js"></script>
+    <a class="emailicon" href="/email/learn-ruby-on-rails" rel="popup|450|450" title="Launch a window to send this article to a Friend">Email&nbsp;to&nbsp;a&nbsp;Friend</a>
+    <a class="feedbackicon" href="/feedback/1562" rel="popup|620|620" title="Launch a window to send us feedback on this article">Give&nbsp;Author&nbsp;Feedback</a>
+    <a class="articlesuggesticon" href="/contact?reason=articlesuggest" title="Tell us which topic you would like to see us publish an article on">Suggest an Article</a>
+    <a class="linkicon" href="/linktothis/1562" rel="popup|450|450" title="Get a code snippet to link to this article">Link to this Article</a>
+  </div>
+
+</div>
+
+<div class="wrap industrybrains">
+	<h3>Sponsored Links</h3>
+
+  <script type="text/javascript" src="http://jlinks.industrybrains.com/jsct?sid=675&amp;ct=SITEPOINT_HOMEPAGE_ROS&amp;tr=ARTICLE_PAGES&amp;num=4&amp;layt=4&amp;fmt=simp"></script>
+
+</div>
+
+
+
+</div><!-- end #tab -->
+</div><!-- end #flow -->
+<!-- ***************  Start Column 1 ************   -->
+
+<div id="col1">
+<div id="most-popular-articles" class="nav">
+<h3>Popular Articles</h3>
+<h4>Most Popular This Month</h4>
+<ol>
+	<li class="navitem-atv"><a href="http://www.sitepoint.com/article/learn-ruby-on-rails">Learn Ruby on Rails: the Ultimate Beginner’s Tutorial</a></li>
+	<li class="navitem-atv"><a href="http://www.sitepoint.com/article/debug-rails-app-ruby-debug">Debug Your Rails App With ruby-debug</a></li>
+	<li class="navitem-atv"><a href="http://www.sitepoint.com/article/rails-for-beginners">Rails For Beginners: All You Need To Know!</a></li>
+	<li class="navitem-atv"><a href="http://www.sitepoint.com/article/ruby-on-rails">Get On Track with Ruby on Rails</a></li>
+	<li class="navitem-atv"><a href="http://www.sitepoint.com/article/rapid-restful-rails-apps">Rapid RESTful Rails Apps -- No, Really!</a></li>
+</ol>
+<p class="wrapright"><a class="next" href="http://www.sitepoint.com/subcat/ruby">More Articles</a></p>
+</div>
+
+
+<div class="nav">
+<!-- Left Nav -->
+<h3>Topics</h3>
+<div id="navitem">
+	<h4><a href="/cat/before-you-code" title="Steps to be taken in planning your web sites or online applications">Before You Code</a></h4>
+	<ul>
+									<li><a href="/subcat/domain-names" title="How to choose, buy, manage and sell your domain names"> Domain Names</a></li>
+												<li><a href="/subcat/hosting" title="Information regarding selecting a hosting option for your site, and tips about hosting requirements"> Hosting</a></li>
+												<li><a href="/subcat/site-planning" title="Strategies and tutorials for planning your web site or online business before you start"> Site Planning</a></li>
+												<li><a href="/subcat/legal" title="Articles covering legal issues in relation to online businesses"> Legal Issues</a></li>
+												<li><a href="/subcat/privacy" title="How to deal with issues such as privacy and trust with regard to your website or web business"> Privacy and Trust</a></li>
+						</ul>
+	<h4><a href="/cat/design-and-layout" title="Graphic design and web site layout">Design and Layout</a></h4>
+	<ul>
+									<li><a href="/subcat/usability" title="Strategies for making sure your websites and user interfaces are easy to use"> Usability and Information Architecture</a></li>
+												<li><a href="/subcat/accessibility" title="Ways that you can make your web design accessible to the largest possible number of viewers"> Accessibility</a></li>
+												<li><a href="/subcat/design-principles" title="Design Principals"> Design Principles</a></li>
+												<li><a href="/subcat/design-practice" title="Articles covering graphic and web design practice."> Design Practice</a></li>
+												<li><a href="/subcat/design-tips" title="Tutorials and solutions to common problems in web design and graphic design for the web"> Design Tips &amp; Tricks</a></li>
+												<li><a href="/subcat/software-tutorials" title="Tutorials on using major software packages"> Software Tutorials</a></li>
+												<li><a href="/subcat/flash" title="Tutorials for creating graphics, animations and web applications using Macromedia Flash"> Flash Tutorials</a></li>
+						</ul>
+	<h4><a href="/cat/client-side-coding" title="Coding for the client side (the browser) using XHTML, JavaScript, CSS">Client-side Coding</a></h4>
+	<ul>
+									<li><a href="/subcat/html" title="Articles and tutorials on how to mark up your pages using HTML and XHTML"> HTML &amp; XHTML Tutorials</a></li>
+												<li><a href="/subcat/css" title="Tutorials and tips on using Cascading Style Sheets (CSS) to style and lay out your web designs"> CSS Tutorials</a></li>
+												<li><a href="/subcat/javascript" title="Articles and tutorials on using JavaScript, Ajax and the DOM (Document Object Model)"> JavaScript &amp; Ajax Tutorials</a></li>
+												<li><a href="/subcat/xml" title="In-depth articles explaining the usages of XML-based data, processing it and transforming it using XSL XSLT."> XML, XSLT &amp; Web Services</a></li>
+						</ul>
+	<h4><a href="/cat/server-side-coding" title="Creating online applications using server side scripts or code">Server-side Coding</a></h4>
+	<ul>
+									<li><a href="/subcat/asp" title="Tutorials on using Microsoft&#039;s ASP and ASP.NET for creating your online web applications"> ASP &amp; .NET Tutorials</a></li>
+												<li><a href="/subcat/perl" title="Tutorials for developing web applications in Perl, and using CGI"> CGI &amp; Perl Tutorials</a></li>
+												<li><a href="/subcat/coldfusion" title="Tutorials and articles related to building online applications using Adobe ColdFusion"> ColdFusion Tutorials</a></li>
+												<li><a href="/subcat/java" title="Creating client-side and server-side applications using Java technology"> Java and J2EE</a></li>
+												<li><a href="/subcat/php-news" title="News on the latest developments in PHP and interviews with some leading figures in PHP application development"> PHP &amp; MySQL News &amp; Interviews</a></li>
+												<li><a href="/subcat/php-tutorials" title="Learn how to create web applications using PHP scripting language and MySQL database server"> PHP &amp; MySQL Tutorials</a></li>
+												<li><a href="/subcat/php-reviews" title="Reviews of new or popular PHP and MySQL scripts and applications"> PHP &amp; MySQL Reviews and Apps</a></li>
+												<li class="navitem-atv"><a href="/subcat/ruby"> Ruby &amp; Rails</a></li>
+												<li><a href="/subcat/server-side" title="Everything you need to know about server-side development in relation to other languages"> Server Side Essentials</a></li>
+												<li><a href="/subcat/other-technologies" title="Tutorials on configuring the two most popular web servers, Apache and IIS, for optimum performance"> Apache &amp; IIS Configuration</a></li>
+						</ul>
+	<h4><a href="/cat/site-strategy" title="Managing a successful website">Site Strategy</a></h4>
+	<ul>
+									<li><a href="/subcat/community-strategy" title="Tutorials and views on creating an online community using bulletin boards, forums, chat rooms, and so on"> Community</a></li>
+												<li><a href="/subcat/content-strategy" title="Writing and sourcing quality content for your site"> Content</a></li>
+												<li><a href="/subcat/ecommerce-strategy" title="How to plan, build and manage an ecommerce website and do business on the internet"> eCommerce</a></li>
+						</ul>
+	<h4><a href="/cat/site-marketing" title="Tips and tutorials on website marketing ">Site Marketing</a></h4>
+	<ul>
+									<li><a href="/subcat/traffic-analysis" title="Analyze your site statistics to gain a better understanding of the ways in which your visitors are using your web site"> Traffic Analysis</a></li>
+												<li><a href="/subcat/searchmarketing" title="Information about marketing your web site or online business via search engines "> Search Marketing</a></li>
+												<li><a href="/subcat/promotions" title="Deals with techniques to promote your site  outside search engines"> Other Promotions</a></li>
+						</ul>
+	<h4><a href="/cat/sell-your-services" title="Selling your web design or development services as a freelancer or in a team">Sell Your Services</a></h4>
+	<ul>
+									<li><a href="/subcat/services-start" title="Tips and resources for planning to sell services on the web"> Get Started</a></li>
+												<li><a href="/subcat/find-clients" title="Find clients for your online business"> Find Clients</a></li>
+												<li><a href="/subcat/work-smarter" title="Time management and scheduling strategies for web developers"> Work Smarter</a></li>
+						</ul>
+</div>
+</div>
+<div class="product clearfix">
+
+<h4 style="text-align: center;">
+	<a style="color: #528057;" href="/marketplace/">
+		SitePoint Marketplace
+	</a>
+</h4>
+
+<div class="wrapcenter">
+	<a href="/marketplace/">
+		<img src="http://sitepointstatic.com/images/ads/marketplace/graphic1.png" alt="Buy, Sell, Trade" />
+	</a>
+</div>
+
+<p>Buy and sell Websites, templates,
+domain names, hosting, graphics and more.</p>
+
+<p class="wrapright"><a href="/marketplace/" class="next">Tell me more...</a></p>
+
+</div>
+
+<!-- SitePoint Jobs: start -->
+<div class="nav">
+<h3>SitePoint Jobs</h3>
+<h4>&raquo; <a class="alert" href="http://www.sitepoint.com/about/jobs/"> We&#39;re Hiring!</a></h4>
+</div> <!-- SitePoint Jobs: end  -->
+
+
+
+
+<div class="nav">
+<h3>SitePoint Newsletters</h3>
+<form id="subs" action="/newsletter/manage" method="post">
+	
+	    
+	
+		<p>Get all the latest tips
+			on <strong><em> Advanced Server-side Coding </em></strong>
+		by signing up to all of SitePoint&rsquo;s informative newsletters.</p>
+		
+	
+	<div style="margin-left: 6px;">
+	
+		<ul style="border:0px none">
+		<li>
+			<input type="hidden" value="subscribe" name="action" />
+			<input type="hidden" value="2" name="refererid" />
+			<input type="checkbox" checked="checked" name="newsletterid[]" value="3" id="checktt" /> <label for="checktt">SitePoint TechTimes</label>
+		</li>
+	
+		<li>
+			<input type="checkbox" checked="checked" name="newsletterid[]" value="2" id="checktr" /> <label for="checktr">SitePoint Tribune</label>
+		</li>
+		<li>
+			<input type="checkbox" checked="checked" name="newsletterid[]" value="5" id="checkdv" /> <label for="checkdv">SitePoint Design View</label>
+		</li>
+		<li>
+			<input type="checkbox" checked="checked" name="newsletterid[]" value="4" id="checkcc" /> <label for="checkcc">Community Crier</label>
+		</li>
+		</ul>
+	
+	
+	
+		<p><input class="tbox" onfocus="this.value=''" value="Enter Work Email" name="email" />
+		<input type="submit" value="Subscribe!" name="submit" /></p>
+	
+	
+		<p>
+		<input type="radio" checked="checked" value="html" name="format" id="radiohtml" /> HTML &nbsp;
+		 <input type="radio" value="text" name="format" id="radioplain" /> Plain</p>
+	
+	</div>
+</form>
+
+
+<h6 class="wrapcenter tiny"><br />View Our <a href="http://www.sitepoint.com/privacy.php">Privacy
+Policy</a></h6>
+<h6 class="wrapright tiny">
+Sample Our <a href="http://www.sitepoint.com/newsletter/archives">Newsletter Archives</a></h6>
+</div>
+
+    
+
+
+
+
+</div>
+<!-- end #col1 --> 
+</div><!-- end #maincontent -->
+
+
+
+	<script type="text/javascript" src="http://2.sitepointstatic.com/bundle/docknavigation.js,onload.js"></script>
+
+		
+
+
+<!-- ***************  Start Column 3 ************   -->
+<div id="col3">
+  
+  <!-- text ads: start -->
+<div id="textadwrap" class="clearfix">
+<div class="textad" id="textad1"></div>
+<div class="textad" id="textad2"></div>
+<div class="textad" id="textad3"></div>
+<div class="textad" id="newad1"></div>
+</div>
+<!-- text ads  : end  -->  <!-- comment -->
+<div id="adcol3any"></div>
+<div class="line"></div>
+
+
+
+ 
+
+  
+<div id="followus">
+  <p><a href="http://sitepoint.com/launch/bb8520" rel="nofollow" title="Follow us on Twitter!"><img src="http://i2.sitepoint.com/images/layout/twitter-full.png" width="210" height="123" alt="Follow us on Twitter" /></a></p>
+  </div>
+
+<div id="newbooklist">
+  <p>Download sample chapters of any of our popular books. </p>
+  <ul>
+      <li><img src="http://www.sitepointstatic.com/images/books/html2/books-index.gif" alt="Build Your Own Web Site The Right Way Using HTML &amp;amp; CSS, 2nd Edition" width="83" height="108" />
+      <a href="http://www.sitepoint.com/books/html2/" title="Find out more about this book">Start Building Web Sites Like a Pro! </a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/693c9b/2/145/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/693c9b/3/145/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/145" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+      <li><img src="http://www.sitepointstatic.com/images/books/csswrong1/books-index.gif" alt="Everything You Know About CSS Is Wrong!" width="83" height="108" />
+      <a href="http://www.sitepoint.com/launch/012379/3/144/" title="Find out more about this book">Everything You Know About CSS Is Wrong!</a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/012379/2/144/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/012379/3/144/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/144" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+        <li><a href="http://www.sitepoint.com/launch/7771f8/3/83/" title="Find out more about this book"><img src="http://www.sitepointstatic.com/images/books/design1/books-index.gif" alt="The Principles of Beautiful Web Design" width="83" height="108" /></a>
+      <a href="http://www.sitepoint.com/books/design1/" title="Find out more about this book">Learn How to Create Beautiful Web Sites</a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/7771f8/2/83/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/7771f8/3/83/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/83" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+        <li><a href="http://www.sitepoint.com/launch/54ac38/3/1/" title="Find out more about this book"><img src="http://www.sitepointstatic.com/images/books/phpmysql1/books-index.gif" alt="Build Your Own Database Driven Website Using PHP &amp; MySQL" width="83" height="108" /></a>
+      <a href="http://www.sitepoint.com/books/phpmysql1/" title="Find out more about this book">Learn PHP the Easy Way!</a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/54ac38/2/1/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/54ac38/3/1/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/1" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+          <li><a href="http://www.sitepoint.com/launch/dfbecf/3/112/" title="Find out more about this book"><img src="http://www.sitepointstatic.com/images/books/cssant2/books-index.gif" alt="The CSS Anthology: 101 Essential Tips, Tricks &amp;amp; Hacks, 2&lt;sup&gt;nd&lt;/sup&gt; Edition" width="83" height="108" /></a>
+      <a href="http://www.sitepoint.com/books/cssant2/" title="Find out more about this book">101 CSS Tips, Tricks &amp; Hacks</a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/dfbecf/2/112/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/dfbecf/3/112/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/112" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+        <li><a href="http://www.sitepoint.com/launch/e34fe7/3/54/" title="Find out more about this book"><img src="http://www.sitepointstatic.com/images/books/html1/books-index.gif" alt="Build Your Own Web Site The Right Way Using HTML &amp;amp; CSS" width="83" height="108" /></a>
+      <a href="http://www.sitepoint.com/books/html1/" title="Find out more about this book">Build Your First Web Site</a>
+      <ul class="newbooklistoptions">
+        <li><a href="http://www.sitepoint.com/launch/e34fe7/2/54/" rel="popup|420|580" title="Get your FREE sample chapters now">Free Sample</a></li>
+        <li><a href="http://www.sitepoint.com/launch/e34fe7/3/54/" title="Find out more about this book">More Info</a></li>
+        <li><a href="https://sitepoint.com/bookstore/go/54" title="Add this book to your order here">Order Now</a></li>
+      </ul>
+    </li>
+   
+  </ul>
+</div>
+<div id="booktextlinks">
+<span>Learn more with SitePoint books</span>
+<ul>
+<li><a href="http://www.sitepoint.com/launch/f0c272">Boost Your Web Site&rsquo;s Income</a></li><!-- revenue1 -->
+<li><a href="http://www.sitepoint.com/launch/06dcf6">Learn Search Engine Marketing</a></li><!-- sem2 -->
+<li><a href="http://www.sitepoint.com/launch/fb8995">Win Bigger Freelance Clients</a></li><!-- freelance2 -->
+<li><a href="http://www.sitepoint.com/launch/f70d75">Learn Email Marketing</a></li><!-- email1 -->
+<li><a href="http://www.sitepoint.com/launch/cabd32">Learn Beautiful Website Design</a></li><!-- design1 -->
+<li><a href="http://www.sitepoint.com/launch/979c67">Learn CSS</a></li><!-- html1 -->
+<li><a href="http://www.sitepoint.com/launch/13fa7c">Learn JavaScript</a></li><!-- javascript1 -->
+<li><a href="http://www.sitepoint.com/launch/d7d610">Learn PHP</a></li><!-- phpmysql1 -->
+<li><a href="http://www.sitepoint.com/launch/a6af21">101 CSS Tips, Tricks &amp; Hacks</a></li><!-- cssant2 -->
+<li><a href="http://www.sitepoint.com/launch/b8a4eb">101 PHP Tips, Ticks &amp; Hacks</a></li><!-- phpant2 -->
+<li><a href="http://www.sitepoint.com/launch/7e0a2c">101 JavaScript Tips, Tricks &amp; Hacks</a></li><!-- jsant1 -->
+</ul>
+</div>
+
+
+
+
+<div id="designer99" class="ad99">
+			<h5><a href="http://99designs.com" title="Visit 99designs.com">Designers Earn $$$</a></h5>
+			<p><a href="http://99designs.com" title="Visit 99designs.com">Join the leading design contest marketplace</a></p>
+			<h4><a href="http://99designs.com" title="Visit 99designs.com">99designs</a></h4>
+
+		</div>
+
+<!-- -->  <div class="nav">
+<h3>Related Forum Discussions</h3>
+<p>
+	Related Forum: <strong><a href="/forums/forumdisplay.php?forumid=227">Ruby</a></strong>
+</p>
+<ol>
+
+	<li><a href="/forums/showthread.php?t=606838">really want to learn (laptop suggestion)</a>
+  </li>
+	<li><a href="/forums/showthread.php?t=606209">alternating rendered partial base on model type</a>
+  </li>
+	<li><a href="/forums/showthread.php?t=605358">CreateUsers Migration Error</a>
+  </li>
+	<li><a href="/forums/showthread.php?t=605177">Unit Testing in Rails</a>
+  </li>
+	<li><a href="/forums/showthread.php?t=604951">Making models for hashes?</a>
+  </li>
+
+</ol>
+</div>
+  <!-- Other Articles -->
+  <!-- show other articles only if there are any! -->
+<div class="nav">
+	<h3>Other Articles by Patrick Lenz</h3>
+	<p>
+	Patrick Lenz's other SitePoint Articles
+	</p>
+	<ul>
+					<li><a href="/article/rails-for-beginners/" > Rails For Beginners: All You Need To Know!</a>
+	  </li>
+							<li><a href="/article/debug-rails-app-ruby-debug/" > Debug Your Rails App With ruby-debug</a>
+	  </li>
+				</ul>
+	</div>
+
+  <!-- Related Articles -->
+  
+  
+
+</div>
+<!-- end #col3 -->
+
+<script type="text/javascript" src="http://2.sitepointstatic.com/bundle/beatbox.js"></script>
+
+
+	</div><!-- end content -->
+
+
+
+
+
+<div id="footer">
+
+<div id="tertiary">
+
+<ul>
+	<li><a href="/mediakit" rel="nofollow">Advertise</a> </li>
+	<li><a href="/about/" rel="nofollow">About Us</a> </li>
+	<li><a href="/contact">Contact Us</a> </li>
+	<li><a href="/sitemap" accesskey="3" rel="nofollow">Site Map</a> </li>
+	<li><a href="/about/writeforus" rel="nofollow">Write For Us</a> </li>
+	<li><a href="/syndication/" rel="nofollow">RSS</a> </li>
+	<li><a href="/newsletter/" rel="nofollow">Newsletters</a> </li>
+	<li><a href="/search/search.php" accesskey="4" rel="nofollow">Search</a> </li>
+	<li><a href="/privacy/" accesskey="8">Privacy</a> </li>
+	<li><a href="/glossary.php?q=A" rel="nofollow">Glossary</a> </li>
+	<li><a href="/about/terms.php/">Terms &amp; Conditions</a> </li>
+	<li><a href="/about/jobs/">Jobs</a> </li>
+</ul>
+
+</div>
+<p>The contents of this webpage are copyright &copy; 1998-2009
+SitePoint Pty. Ltd. All Rights Reserved.</p>
+
+<div>
+<a href="http://www.sitepoint.com.au"  title="Visit our development site">Web Design &amp; Development by SitePoint, Melbourne, Australia</a> - <a href="http://www.99designs.com" >Logo Design, Web page Design - 99designs.com </a>
+</div>
+
+</div><!-- end footer -->
+
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=&amp;did=articlebanner" type="text/javascript"></script>
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=21&amp;did=textad1" type="text/javascript"></script>
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=22&amp;did=textad2" type="text/javascript"></script>
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=23&amp;did=textad3" type="text/javascript"></script>
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=182&amp;did=newad1" type="text/javascript"></script>
+			<script src="http://ads.aws.sitepoint.com/adjs.php?region=330&amp;did=adcol3any" type="text/javascript"></script>
+				<script src="/popup/popupjs.php?zoneid=1&amp;category=82&amp;subcategory=112" type="text/javascript"></script>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-30131-1";
+urchinTracker();
+</script>
+
+
+<script src="http://2.sitepointstatic.com/js/promobar.js" type="text/javascript"></script>
+</body>
+</html>
+
+
+

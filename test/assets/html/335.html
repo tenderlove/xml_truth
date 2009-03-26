@@ -1,0 +1,689 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<title>
+Dependency Injection in Ruby
+ -
+{ |one, step, back| }</title>
+<link rel="alternate" type="text/xml" title="RSS"
+      href="http://onestepback.org/index.cgi/Tech/Ruby/DependencyInjectionInRuby.rdoc/index.rss" />
+<link rel="stylesheet" type="text/css" href="/styles/rublog/rublog.css" />
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://jimweirich.myopenid.com/" />
+
+
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="bottom">
+<td class="pagetitle"><a href="http://onestepback.org/index.cgi">{ |one, step, back| }</a></td>
+<td class="titlemenu" align="center">
+1 of 1 article 
+</td>
+<td class="titlemenu">
+&bull;
+  <a href="http://onestepback.org/index.cgi/index.rss">Syndicate: full</a>/<a href="http://onestepback.org/index.cgi/synopsis.rss">short</a>
+</td>
+</tr>
+</table>
+<hr />
+<table>
+<tr valign="top"><td>
+
+<table class="entry" border="0" cellspacing="0" width="100%">
+<tr class="entrytitlebar">
+ <td rowspan="2" class="entrytitle"><b>Dependency Injection in Ruby
+</b></td>
+ <td>&nbsp;</td>
+ <td class="entrytitledetail">07 Oct 04</td>
+</tr>
+<tr class="entrytitlebar">
+ <td></td>
+  <td class="entrytitledetail">[ <a href="/index.cgi/Tech/Ruby/DependencyInjectionInRuby.rdoc/style/print">print</a> 
+<a href="http://onestepback.org/index.cgi/Tech/Ruby/DependencyInjectionInRuby.rdoc">link</a> 
+<a href="http://onestepback.org/index.cgi/+Tech/Ruby/DependencyInjectionInRuby.rdoc">all</a>
+]</td>
+</tr>
+<tr class="entrybody"><td colspan="3" class="entrybody">
+<h2>Introduction</h2>
+At the 2004 Ruby Conference, Jamis Buck had the unenviable task to explain
+Dependency Injection to a bunch of Ruby developers. First of all,
+Dependency Injection (DI) and Inversion of Control (IoC) is hard to
+explain, the benefits are subtle and the dynamic nature of Ruby make those
+benefits even more marginal. Furthermore examples using DI/IoC are either
+too simple (and don&#8217;t convey the usefulness) or too complex (and
+difficult to explain in the space of an article or presentation).
+
+<p>
+I once attempted to explain DI/IoC to a room of Java programmers (see <a
+href="http://onestepback.org/articles/dependencyinjection/">onestepback.org/articles/dependencyinjection/</a>),
+so I can&#8217;t pass up trying to explain it to Ruby developers.
+</p>
+<p>
+Thanks goes to Jamis Buck (the author of the Copland DI/IoC framework) who
+took the time to review this article and provide feedback.
+</p>
+<h2>What is Dependency Injection?</h2>
+<p>
+Consider the problem of putting together a moderately complex OO program.
+Typical OO programs create a bunch of objects, wire them together in
+interesting ways and then let the objects run. It is the first two steps,
+creating and wiring, that are addressed by Dependency Injection.
+</p>
+<p>
+By the way, another term for dependency injection is <em>Inversion of
+Control</em>. Unfortunately, so many things in computer science are called
+inversion of control that the phrase does not evoke the right connotations
+with me, so I tend to avoid it. But Inversion of Control is the older term
+for this pattern so you will see it in many places.
+</p>
+<h2>A Moderately Complex Example</h2>
+<p>
+One of the problems with explaining Dependency Inversion is that DI only
+becomes really useful in larger projects. Using a simple example to explain
+DI leaves the listener thinking &quot;But I can do that easily by (<em>fill
+in the blank</em>)&quot;. So my example is going to be a bit more complex,
+but hopefully not so large that the reader is unable to understand it.
+</p>
+<p>
+Imagine you have a webapp that tracks the prices of stocks over time. The
+application is nicely partitioned into different modules that each handle a
+portion of the job. A <tt>StockQuotes</tt> module talks to a remote web
+service to pull down the current values of the stocks you are tracking. A
+<tt>Database</tt> module records the stock values over time. Because this
+data is highly competitive, you require a login to use the system and thus
+have an <tt>Authentication</tt> module to handle validation of user names
+and password. In addition to these &quot;main&quot; modules, there are a
+number of additional utility modules used by multiple modules:
+<tt>ErrorHandler</tt> to standardize the handling and reporting of error
+messages and <tt>Logger</tt> to provide a standard way of logging
+messsages.
+</p>
+<p>
+A fully wired system might look something like this:
+</p>
+<p>
+<img src="http://onestepback.org/images/di_classdiagram.jpg">
+</p>
+<h2>Building it Old Style!</h2>
+<p>
+In the bad, old days, we would just put the logic of building the web app
+directly into its <tt>initialize</tt> method. It might look something like
+this&#8230;
+</p>
+<pre>
+  class WebApp
+    def initialize
+      @quotes = StockQuotes.new
+      @authenticator = Authenticator.new
+      @database = Database.new
+      @logger = Logger.new
+      @error_handler = ErrorHandler.new
+    end
+    # ...
+  end
+</pre>
+<p>
+That handles building the WebApp well enough, but what about the
+subordinate modules. How does the <tt>StockQuotes</tt> module find out
+about the logger and error handler, or how does the <tt>Authenticator</tt>
+find the database and logger?
+</p>
+<p>
+We <em>could</em> rewrite <tt>WebApp#initialize</tt> to create everything
+in the right order and then pass the logger and error handler to
+<tt>StockQuotes</tt>. But that makes the web app rather dependent on
+details of the <tt>StockQuotes</tt> module. Currently the database module
+is created <em>after</em> the quote module, but suppose a change in
+StockQuotes causes it to need the database. That would require the WebApp
+to be aware of the change, rearrange the order of creation so that the
+database is created before the stock quotes module and finally make the
+database available to the quote service. Yuck!
+</p>
+<p>
+Even worse, the WebApp knows the <em>concrete</em> name of every module it
+uses. If I wanted to create an instance of the WebApp for testing, I might
+want to provide a mock quote service so that I can control the quotes used
+in testing. Or I might want a mock database for testing. All of these
+choices are difficult because WebApp knows the class name of all its
+subordinates.
+</p>
+<h2>Enter the Service Locator</h2>
+<p>
+We would like to remove the explicit reference to class names in WebApp,
+but still allow it to locate the services it needs. The <em>Service
+Locator</em> pattern was designed to address this problem.
+</p>
+<p>
+With Service Locator, we place references to services in one container and
+then pass that container to the modules that need to locate those services.
+</p>
+<pre>
+  def create_application
+    locator = {}
+    locator[:logger] = Logger.new
+    locator[:error_handler] = ErrorHandler.new(locator)
+    locator[:quotes] = StockQuotes.new(locator)
+    locator[:database] = Database.new(locator)
+    locator[:authenticator] = Authenticator.new(locator)
+    locator[:webapp] = WebApp.new(locator)
+  end
+</pre>
+<p>
+The initialize function for a service just uses the locator to find the
+services. Here is how <tt>StockQuotes</tt> might look&#8230;
+</p>
+<pre>
+  class StockQuotes
+    def initialize(locator)
+      @error_handler = locator[:error_handler]
+      @logger = locator[:logger]
+    end
+    # ...
+  end
+</pre>
+<p>
+Not bad. Now no service is aware of the exact class used for the other
+services. We can reconfigure the system easily by editted the
+<tt>create_application</tt> method.
+</p>
+<p>
+We use the Service Locator pattern (and variations) at work in our Java
+system.
+</p>
+<h2>External Configuration</h2>
+<p>
+Although we built the service locator in Ruby code, it would not be
+difficult to specify the locator as a configuration file. A simple Ruby
+method could read the file, instantiate the objects and populate a hash
+table. This might allow non-programmers to tweak a configuration to their
+liking.
+</p>
+<h2>More Goodness</h2>
+<p>
+Another neat thing about the locator is that we can use it to configure
+data as well as modules. Suppose we wanted to specify the file to be used
+as the log file. We might modify the <tt>create_application</tt> method to
+include the following:
+</p>
+<pre>
+  locator[:log_file_name] = &quot;webapp.log&quot;
+  locator[:logger] = Logger.new(locator)
+</pre>
+<p>
+And <tt>Logger</tt> would have to know that the log file was identified by
+:log_file_name in the locator. The <tt>Database</tt> module is another
+likely candidate for locator based information (e.g. DB user name and
+password, DB host name).
+</p>
+<h2>But &#8230;</h2>
+<p>
+As good as the Service Locator pattern is, there are still some negatives.
+Every class that uses the locator needs to be written expecting a locator
+as an argument to <tt>initialize</tt> method. This is not a natural idiom
+for Ruby programmer. In the absence of Service Locators, I would expect
+that the Logger class would be written like this &#8230;
+</p>
+<pre>
+  class Logger
+    def initialize(log_filename)
+      # ...
+    end
+    # ...
+  end
+</pre>
+<p>
+which would make it unusable in a system that depended upon service
+locators.
+</p>
+<p>
+Another downside is that all modules that use the locator must agree on the
+names of the services. For example, if MyLogger expects its file name to be
+under <tt>:log_filename</tt> and YourLogger expects to find its filename
+under <tt>:log_file</tt> then the two loggers are not plug replaceable.
+</p>
+<p>
+Also, Suppose both <tt>StackQuotes</tt> and <tt>Datebase</tt> found their
+loggers using <tt>:logger</tt>, but we want to give them separate logger
+instances for some reason. The explicit dependence on the name of the
+logger service makes this a bit difficult.
+</p>
+<p>
+And finally, the service locator did not solve the problem of creation
+order. The database is still created after the stock quotes module, causing
+problems if the stocks quotes module were modified to use the database.
+</p>
+<p>
+None of the problems are show stoppers and there are workarounds for each,
+but it does make us wonder if there is a more general solution.
+</p>
+<h2>Finally, Dependency Injection</h2>
+<p>
+Dependency Injection is much like using service locators in that we
+identify the services by name. The big difference is that dependency
+injectors also take the responsibility of creating the service objects and
+making sure the dependent services are provided as needed.
+</p>
+<p>
+This means that the services can be written in complete ignorance of
+dependency injection framework. All they need to do is make sure that they
+can be told about the services they need, either through parameters to a
+constructor, or through some kind of setter.
+</p>
+<p>
+It also means that dependency injectors are a bit more complicated than
+service locators, since they also handle the creation of the services as
+well.
+</p>
+<h2>Dependency Injection in Action</h2>
+<p>
+How does dependency injection work? Generally, you create a DI container
+that is configured to know how to create the various services. Then you
+just ask for a service by name, and the container will create the serice
+(if needed) and give it to you.
+</p>
+<p>
+For example, configuring a logger service is as easy as &#8230;
+</p>
+<pre>
+   container = DI::Container.new
+   container.register(:logger) { Logger.new )
+</pre>
+<p>
+This says that the logger service is named <tt>:logger</tt>. The first time
+a logger service is requested, the block supplied to register will be
+called and a logger object will be created. Subsequent requests for a
+logger will return the already created logger.
+</p>
+<p>
+To get a logger service, all you need to do is ask:
+</p>
+<pre>
+   logger = container.logger
+</pre>
+<table>
+<tr><td valign="top"><b>Note</b>:</td><td>In my examples, Service Locators were hash based, so using <tt>[]</tt> to
+access the services seems like a natural choice. For dependency injection
+containers, I chose to use a message-like syntax to access services (e.g.
+container.logger). Either notation can be used for either service locators
+or dependency injection containers. In fact, the example dependency
+injection framework supports both selecter messages and hash-like indexing.
+
+</td></tr>
+</table>
+<p>
+If a logger requires a parameter, then you can easily handle that in the
+registration block.
+</p>
+<pre>
+  container.register(:logger) { Logger.new(&quot;logfile.log&quot;) }
+</pre>
+<p>
+If you would rather have the logger get its log filename from the
+container, you can do this &#8230;
+</p>
+<pre>
+  container.register(:logger) { |c| Logger.new(c.log_filename) }
+</pre>
+<p>
+And then somewhere else you can specify the log name &#8230;
+</p>
+<pre>
+  container.register(:log_filename) { &quot;logfile.log&quot; }
+</pre>
+<h2>Configuring the WebApp with Dependency Injection</h2>
+<p>
+Now that we&#8217;ve seen some DI in action, let&#8217;s try it on our web
+app &#8230;
+</p>
+<pre>
+  def create_application
+    container = DI::Container.new
+    container.register(:logfilename) { &quot;logfile.log&quot; }
+    container.register(:db_user) { &quot;jim&quot; }
+    container.register(:db_password) { &quot;secret&quot; }
+    container.register(:dbi_string) { &quot;DBI:Pg:example_data&quot; }
+
+    container.register(:app) { |c|
+      app = WebApp.new(c.quotes, c.authenticator, c.database)
+      app.logger = c.logger
+      app.set_error_handler c.error_handler
+      app
+    }
+
+    container.register(:quotes) { |c|
+      StockQuotes.new(c.error_handler, c.logger)
+    }
+
+    container.register(:authenticator) { |c|
+      Authenticator.new(c.database, c.logger, c.error_handler)
+    }
+
+    container.register(:database) { |c|
+      DBI.connect(c.dbi_string, c.db_user, c.db_password)
+    }
+
+    container.register(:logger) { |c| Logger.new(c.logfilename) }
+    container.register(:error_handler) { |c|
+      errh = ErrorHandler.new
+      errh.logger = c.logger
+      errh
+    }
+  end
+</pre>
+<p>
+As you can see, it is a bit more complicated than the service locator. The
+main reason for the complexity is that we have moved the creation logic out
+of the services and into the DI container. What we have gained is the
+ability to inject dependencies into any object without having to make
+special code changes to support it.
+</p>
+<p>
+Just a few closing notes:
+</p>
+<ul>
+<li>Both constructor injection (StockQuotes) and setter injection
+(ErrorHandler) or a combination of both (WebApp) can be supported with this
+framework.
+
+</li>
+<li>We can even handle cases where the creation method is not named
+&quot;<tt>new</tt>&quot; (DBI).
+
+</li>
+<li>If a poorly written service didn&#8217;t provide a way to inject the
+services it depends upon, we <em>could</em> use
+<tt>instance_variable_set</tt> to force a dependent service into place.
+Obviously, this would be less than desireable.
+
+</li>
+<li>The order of the registration doesn&#8217;t matter, since no service is
+created until everything is registered. If the StockQuotes module suddenly
+starts needing a database connection, no problem. We just add a reference
+to a database service in the creation code for StockQuotes and we are done.
+The DI framework worries about making sure the database is <em>created</em>
+before anything that needs it.
+
+</li>
+<li>The container doesn&#8217;t have to be configured in one place. For
+example, we could move the first four register calls to a separate file
+that would allow the log file and database information to be modified
+independently of the rest.
+
+</li>
+<li>There still needs to be agreement about service names, but now only the
+container knows about them. The individual services don&#8217;t care.
+
+</li>
+<li>Since the DI container is responsible for all the service names and service
+creation, it is easy to intercept a service and wrap an AOP-like wrapper
+around a it.
+
+</li>
+<li>Just like the service locator, a DI container could be configured through a
+configuration file. The configuration would be more complex (because the DI
+container is more complex), but still quite doable. Another idea is to use
+Ruby as Domain Specific Language for DI container configuration.
+
+</li>
+</ul>
+<h2>Summary</h2>
+<p>
+Both the Service Locator and Dependency Injection patterns are quite
+useful, but each has different tradeoffs between flexibility and
+complexity. Understand the differences and you will have all you need to
+choose the proper idiom for and give circumstance.
+</p>
+<p>
+You can find the example framework and unit tests here:
+</p>
+<ul>
+<li><a
+href="http://onestepback.org/cgi-bin/osbwiki.pl?DependencyInjectionCode/DepInjRb">depinj.rb</a>
+
+</li>
+<li><a
+href="http://onestepback.org/cgi-bin/osbwiki.pl?DependencyInjectionCode/TestDepInjRb">testdepinj.rb</a>
+
+</li>
+</ul>
+<hr size="2"></hr><ul>
+<li><a
+href="http://onestepback.org/cgi-bin/osbwiki.pl?FeedBack/DependencyInjectionInRuby">Feedback</a>
+
+</li>
+</ul>
+
+<hr />
+<div id="disqus_thread"></div><script type="text/javascript" src="http://disqus.com/forums/onestepback/embed.js"></script><noscript><a href="http://onestepback.disqus.com/?url=http://onestepback.org/index.cgi/Tech/Ruby/DependencyInjectionInRuby.rdoc">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+</td></tr>
+</table>
+<p />
+
+
+</td>
+<td>&nbsp;</td>
+<td class="sidebar">
+<table width="100%" border="0" cellspacing="0" class="sidebarholder">
+<tr><td class="sidebartitle">Welcome to ... 
+</td></tr>
+<tr><td class="sidebarbody">Jim Weirich&#8217;s blog on Ruby, OO, Programming, whatever.
+
+<p>
+EMail: <a href="mailto:jim@weirichhouse.org">jim@weirichhouse.org</a>
+</p>
+</td></tr>
+
+<tr><td class="sidebartitle">Speaking At...</td></tr>
+<tr><td class="sidebarbody"><p>
+  <a href="http://mtnwestrubyconf.org/2009">
+    <b>Mar 13-14, 2009</b>
+    <span> -- Mountain West Ruby Conf</span>
+    <br/>
+    <img width="150" border="0" src="http://mtnwestrubyconf.org/2009/images/badges/speaker.png" alt="Mountain West Ruby Conf"/>
+  </a>
+</p>
+<p>
+  <a href="http://scotlandonrails.com/">
+    <b>Mar 26-28, 2009</b>
+    <span> -- Scotland On Rails</span>
+    <br/>
+    <img width="150" border="0" src="http://scotlandonrails.com/images/badges/blethering_l.png" alt="Scotland On Rails"/>
+  </a>
+</p>
+<p>
+  <a href="http://www.larubyconf.com/speakers">
+    <b>Apr 04, 2009</b>
+    <span> -- LA Ruby Conf</span>
+    <br/>
+    <img width="150" border="0" src="http://onestepback.org/images/rublog/larubyconf.jpg" alt="LA Ruby Conf"/>
+  </a>
+</p>
+<p>
+  <a href="http://en.oreilly.com/rails2009/">
+    <b>May 04-07, 2009</b>
+    <span> -- Rails Conf</span>
+    <br/>
+    <img width="150" border="0" src="http://assets.en.oreilly.com/1/event/24/rails2009_banner_speaking_125x125.jpg" alt="Rails Conf"/>
+  </a>
+</p>
+</td></tr>
+
+<tr><td class="sidebartitle"><a href="http://twitter.com/jimweirich">Recent Tweets</a></td></tr>
+<tr><td class="sidebarbody">
+      <div id="twitter_div">
+        <ul id="twitter_update_list"></ul>
+      </div>
+      <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+      <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/jimweirich.json?callback=twitterCallback2&count=5"></script>
+    </td></tr>
+
+<tr><td class="sidebartitle">Categories</td></tr>
+<tr><td class="sidebarbody"><a href="/index.cgi/">Top Level</a>:&nbsp;<span class="catcount">0</span><br />
+<div class="indent"><a href="/index.cgi/Tech">Tech</a>:&nbsp;<span class="catcount">0</span><br />
+<div class="indent"><a href="/index.cgi/Tech/Ruby">Ruby</a>:&nbsp;<span class="catcount">57</span><br />
+<div class="indent"><a href="/index.cgi/Tech/Ruby/Gems">Gems</a>:&nbsp;<span class="catcount">5</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Ruby/Spotlight">Spotlight</a>:&nbsp;<span class="catcount">2</span><br />
+</div></div><div class="indent"><a href="/index.cgi/Tech/Perl">Perl</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Physics">Physics</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Programming">Programming</a>:&nbsp;<span class="catcount">21</span><br />
+<div class="indent"><a href="/index.cgi/Tech/Programming/Kata">Kata</a>:&nbsp;<span class="catcount">6</span><br />
+</div></div><div class="indent"><a href="/index.cgi/Tech/Rake">Rake</a>:&nbsp;<span class="catcount">10</span><br />
+<div class="indent"><a href="/index.cgi/Tech/Rake/Tutorial">Tutorial</a>:&nbsp;<span class="catcount">3</span><br />
+</div></div><div class="indent"><a href="/index.cgi/Tech/Groovy">Groovy</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences">Conferences</a>:&nbsp;<span class="catcount">4</span><br />
+<div class="indent"><a href="/index.cgi/Tech/Conferences/RailsEdge">RailsEdge</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/OSCON2005">OSCON2005</a>:&nbsp;<span class="catcount">3</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RubyConf2003">RubyConf2003</a>:&nbsp;<span class="catcount">3</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RubyConf2004">RubyConf2004</a>:&nbsp;<span class="catcount">3</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RubyConf2005">RubyConf2005</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/ERubyCon2007">ERubyCon2007</a>:&nbsp;<span class="catcount">7</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/TestingInRails">TestingInRails</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RubyConf2007">RubyConf2007</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RailsConf2008">RailsConf2008</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RubyConf2008">RubyConf2008</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Conferences/RailsConf2009">RailsConf2009</a>:&nbsp;<span class="catcount">1</span><br />
+</div></div><div class="indent"><a href="/index.cgi/Tech/Rails">Rails</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Misc">Misc</a>:&nbsp;<span class="catcount">3</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Web">Web</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/XpCinci">XpCinci</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Ruse">Ruse</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Mac">Mac</a>:&nbsp;<span class="catcount">2</span><br />
+</div><div class="indent"><a href="/index.cgi/Tech/Adhearsion">Adhearsion</a>:&nbsp;<span class="catcount">1</span><br />
+</div></div><div class="indent"><a href="/index.cgi/Humor">Humor</a>:&nbsp;<span class="catcount">5</span><br />
+</div><div class="indent"><a href="/index.cgi/News">News</a>:&nbsp;<span class="catcount">4</span><br />
+</div><div class="indent"><a href="/index.cgi/Books">Books</a>:&nbsp;<span class="catcount">1</span><br />
+</div><div class="indent"><a href="/index.cgi/General">General</a>:&nbsp;<span class="catcount">23</span><br />
+<div class="indent"><a href="/index.cgi/General/Movies">Movies</a>:&nbsp;<span class="catcount">1</span><br />
+</div></div><div class="indent"><a href="/index.cgi/UmlCoop">UmlCoop</a>:&nbsp;<span class="catcount">3</span><br />
+</div></td></tr>
+
+<tr><td class="sidebartitle">Article Calendar</td></tr>
+<tr><td class="sidebarbody">
+    <table cellspacing="0" width="100%" cellpadding="2">
+    <tr>
+      <td colspan="7" align="center">
+<a href="http://onestepback.org/index.cgi/2008/11">&lArr;</a>
+March, 2009
+</td>
+    </tr>
+    <tr class="sidebarsubhead">
+      <td align="right">S</td>
+      <td align="right">M</td>
+      <td align="right">T</td>
+      <td align="right">W</td>
+      <td align="right">T</td>
+      <td align="right">F</td>
+      <td align="right">S</td>
+    </tr>
+<tr align="right"><td style="text-align: center;">1</td><td style="text-align: center;">2</td><td style="text-align: center;">3</td><td style="text-align: center;">4</td><td style="text-align: center;">5</td><td style="text-align: center;">6</td><td style="text-align: center;">7</td></tr>
+
+<tr align="right"><td style="text-align: center;">8</td><td style="text-align: center;">9</td><td style="text-align: center;">10</td><td style="text-align: center;">11</td><td style="text-align: center;">12</td><td style="text-align: center;">13</td><td style="text-align: center;">14</td></tr>
+
+<tr align="right"><td style="text-align: center;">15</td><td style="text-align: center;">16</td><td style="text-align: center;">17</td><td style="text-align: center;"><a href="http://onestepback.org/index.cgi/2009/3/18">18</a></td><td style="text-align: center;">19</td><td style="text-align: center;">20</td><td style="text-align: center;">21</td></tr>
+
+<tr align="right"><td style="text-align: center;">22</td><td style="text-align: center;">23</td><td style="text-align: center;">24</td><td style="text-align: center;">25</td><td style="text-align: center;" class="caltoday">26</td><td style="text-align: center;">27</td><td style="text-align: center;">28</td></tr>
+
+<tr align="right"><td style="text-align: center;">29</td><td style="text-align: center;">30</td><td style="text-align: center;">31</td></tr>
+
+    </table>
+    
+</td></tr>
+
+<tr><td class="sidebartitle">Search</td></tr>
+<tr><td class="sidebarbody">
+<div class="sidebartext">(word|+word|-word)...</div>
+<form method="post" action="">
+<div>
+<input name="terms" value="" />
+<input type="submit" value=" SEARCH " />
+<input type="hidden" name="handler" value="searching" />
+</div>
+</form>
+</td></tr>
+
+<tr><td class="sidebartitle"><a href="/articles">Articles/Presentations</a></td></tr>
+<tr><td class="sidebarbody"><ul class="bullets">
+<li><a href="/articles/10things/index.html">10 Things Every Java Programmer Should Know About Ruby</a></li>
+<li><a href="/articles/quickrails/takahashi.xul?data=quickrails.data">A Quick Introduction to Rails</a></li>
+<li><a href="/articles/advanced_ruby_class_design/AdvancedClassDesign.pdf">Advanced Ruby Class Design</a></li>
+<li><a href="/articles/buildingwithrake/index.html">Building with Rake</a></li>
+<li><a href="/articles/connascence/index.html">Connascence and Java</a></li>
+<li><a href="/articles/callcc/index.html">Continuations Demystified</a></li>
+<li><a href="/articles/dependencyinjection/index.html">Dependency Injection</a></li>
+<li><a href="/articles/depinj/index.html">Dependency Injection -- Vitally Important or Totally Irrelevant?</a></li>
+<li><a href="/articles/groovy/index.html">Groovin' with Groovy</a></li>
+<li><a href="/articles/invitationtoruby/cover.html">Invitation to Ruby</a></li>
+<li><a href="/articles/poly/index.html">Polyglot Polymorphism</a></li>
+<li><a href="/articles/same_fringe/index.html">Same Fringe, Iterating Parallel Lists in Ruby</a></li>
+<li><a href="/articles/lingo/index.html">Speaking the Lingo</a></li>
+<li><a href="/articles/TddMeetsDbc/OSCON2006.zip">Test Driven Design Meets Design by Contract</a></li>
+<li><a href="/articles/tdddemo/index.html">Test Driven Development Demo, In Ruby!</a></li>
+<li><a href="/articles/facets/index.html">The Many Facets of RubyGems</a></li>
+<li><a href="/articles/usingruby/index.html">Using Ruby -- In Introduction to Ruby for Java Programmers</a></li>
+</ul></td></tr>
+
+<tr><td class="sidebartitle"><a href="/software">Software</a></td></tr>
+<tr><td class="sidebarbody"><ul class="bullets">
+</ul></td></tr>
+
+<tr><td class="sidebartitle">Site Links</td></tr>
+<tr><td class="sidebarbody"><a href="http://jimweirich.umlcoop.net/cgi-bin/wowwiki.pl">Weirichs on the Web</a><br /><a href="http://jimweirich.umlcoop.net/cgi-bin/umlwiki.pl">UML Coop Wiki</a><br /><a href="http://onestepback.org/software">Software Packages</a><br /></td></tr>
+
+<tr><td class="sidebartitle">Ruby Stuff</td></tr>
+<tr><td class="sidebarbody"><a href="http://www.pragmaticprogrammer.com">Pragmatic Programmer</a><br /><a href="http://www.rubygarden.org/ruby">Ruby Wiki</a><br /><a href="http://raa.ruby-lang.org/">RAA</a><br /><a href="http://www.rubygarden.org">Ruby Garden</a><br /><a href="http://www.ruby-lang.org">Ruby Home</a><br /></td></tr>
+
+<tr><td class="sidebartitle">Cincinnati Users Groups</td></tr>
+<tr><td class="sidebarbody"><a href="http://agileroundtable.org">Agile Round Table - Cinci</a><br /><a href="http://www.cinjug.org">CinJUG</a><br /><a href="http://www.clug.org">CLUG</a><br /></td></tr>
+
+<tr><td class="sidebartitle">Blogs and News ...</td></tr>
+<tr><td class="sidebarbody"><a href="http://www.pragprog.com/pragdave/index.rss">[rss]</a>&nbsp;<a href="http://www.pragprog.com/pragdave/">PragDave</a><br /><a href="http://www.toolshed.com/blog/index.rss">[rss]</a>&nbsp;<a href="http://www.toolshed.com/blog">/\ndy</a><br /><a href="http://www.pragmaticautomation.com/index.rss">[rss]</a>&nbsp;<a href="http://www.pragmaticautomation.com">Pragmatic&nbsp;Automation</a><br /><a href="http://www.chadfowler.com/?rss">[rss]</a>&nbsp;<a href="http://www.chadfowler.com">Chad&nbsp;Fowler</a><br /><a href="http://dablog.rubypal.com/xml/rss/feed.xml">[rss]</a>&nbsp;<a href="http://dablog.rubypal.com/">David&nbsp;A.&nbsp;Black</a><br /><a href="http://www.testing.com/cgi-bin/blog/index.rss">[rss]</a>&nbsp;<a href="http://www.testing.com/cgi-bin/blog">Brian&nbsp;Marick</a><br /><a href="http://www.artima.com/weblogs/feeds/bloggers/unclebob.rss">[rss]</a>&nbsp;<a href="http://www.artima.com/weblogs/index.jsp?blogger=unclebob">Uncle&nbsp;Bob</a><br /><a href="http://www.artima.com/weblogs/feeds/bloggers/beckel.rss">[rss]</a>&nbsp;<a href="http://www.artima.com/weblogs/index.jsp?blogger=beckel">Bruce&nbsp;Eckel</a><br /><a href="http://www.artima.com/buzz/feeds/ruby.rss">[rss]</a>&nbsp;<a href="http://www.artima.com/buzz/community.jsp?forum=123">Aggregated&nbsp;Ruby&nbsp;Blogs</a><br /><a href="http://www.groklaw.net/backend/GrokLaw.rdf">[rss]</a>&nbsp;<a href="http://www.groklaw.net/">Grok&nbsp;Law</a><br /></td></tr>
+
+<tr><td class="sidebartitle">Powered By...</td></tr>
+<tr><td class="sidebarbody"><a href="http://onestepback.org/cgi-bin/umlwiki.pl"><img src="http://onestepback.org/images/pbuml.png" 
+            alt="POWERED BY UML" border="0"></a><br /><a href="http://www.linode.com/"><img src="http://www.linode.com/images/linode_logo_grn.png" alt="POWERED BY Linode" border="0"></a><br /><a href="http://www.ruby-lang.org"><img src="http://onestepback.org/images/powered_by.jpg" 
+            alt="POWERED BY RUBY" border="0"></a><br /></td></tr>
+
+</table>
+</td>
+</tr>
+</table>
+<hr />
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr valign="bottom">
+<td class="formatted" valign="top">Formatted: 26-Mar-09 17:06<br>
+   Feedback: <a href="mailto:jim@weirichhouse.org">jim@weirichhouse.org</a></td>
+<td class="copyright" valign="top">
+  <a href="http://creativecommons.org/licenses/by-nc/1.0">
+    <img border="0" alt="Creative Commons" src="/images/somerights.gif">
+  </a><br/>
+  <i>Copyright &copy; 2009 Jim Weirich</i><br/>
+  (see <a href="http://onestepback.org/index.cgi/General/SomeRightsReserved.html">details</a>)
+</td>
+</tr>
+</table>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3954563-1";
+urchinTracker();
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+		var links = document.getElementsByTagName('a');
+		var query = '?';
+		for(var i = 0; i < links.length; i++) {
+			if(links[i].href.indexOf('#disqus_thread') >= 0) {
+				query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+			}
+		}
+		document.write('<script type="text/javascript" src="http://disqus.com/forums/onestepback/get_num_replies.js' + query + '"></' + 'script>');
+	})();
+//]]>
+</script>
+</body>
+</html>

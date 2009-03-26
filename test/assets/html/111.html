@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="alternate" type="application/rss+xml" title="A List Apart main RSS feed" href="http://www.alistapart.com/feed/rss.xml" />
+<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+<title>A List Apart: Articles: Getting Started with Ruby on Rails</title>
+
+
+  <link rel="stylesheet" href="/css/article.css" type="text/css" media="all" />
+
+
+
+
+<style type="text/css">
+@import url(/css/257.css);
+</style>
+
+
+
+
+
+
+</head>
+
+<body class="articles" onload="">
+
+<ul id="navbar">
+  <li id="articles"><a href="/articles/" title="Articles">Articles</a></li>
+  <li id="topics"><a href="/topics/" title="Topics">Topics</a></li>
+  <li id="about"><a href="/about/" title="About">About</a></li>
+  <li id="contact"><a href="/contact/" title="Contact">Contact</a></li>
+  <li id="contribute"><a href="/contribute/" title="Contribute">Contribute</a></li>
+  <li id="feed"><a href="/feed/" title="Feed">Feed</a></li>
+</ul>
+
+<h1 id="masthead">
+<a href="/"><img src="/pix/alalogo.gif" alt="A LIST Apart: For People Who Make Websites" /></a>
+</h1>
+<div id="ish">
+<a href="/issues/257" title="Issue 257">No. <em>257</em></a>
+
+</div>
+
+<div id="main">
+
+<div id="content" class="column">
+
+  <div class="ishinfo">
+  April <b>22, 2008</b>
+</div>
+
+<h1 class="title"><a href="/articles/gettingstartedwithrubyonrails">Getting Started with Ruby on Rails</a></h1>
+<h3 class="byline">by  <a href="/authors/b/danbenjamin">Dan Benjamin</a></h3>
+
+<ul id="metastuff">
+  <li>Published in: <a href="/topics/code/scripting/" title="Scripting">Scripting</a>, <a href="/topics/code/serverside/" title="Server Side">Server Side</a> <b>|</b> </li>
+  <li class="discuss">
+
+  <p><a href="/comments/gettingstartedwithrubyonrails/">Discuss this article &raquo;</a></p></li>
+
+</ul>
+
+<div id="articletext">
+  <div class="illustration left full">
+<img src="/d/gettingstartedwithrubyonrails/geting-started-ror.jpg" alt="Getting Started with Ruby on Rails" />
+</div>
+
+<p>You&#8217;ve probably heard about Ruby on Rails by now. Your developer friends are raving about it—talking about how they wrote an application in less than half the time it would have taken using some other technology—how they really enjoyed themselves instead of stressing out, and then spent their extra time on the beach. Rails sure does sound like a pretty compelling technology. But what is it, and how does it fit into the big picture of web development?</p>
+
+<p>If you&#8217;re a designer, user interface architect, writer, or a software developer not yet acquainted with Rails, you might be wondering what this technology is all about. Can it really cut through the headaches so often associated with web application development? Can it turn you, the mild-mannered non-developer, into a web application programmer overnight? Is Rails really the be-all and end-all development platform? What the heck are Subversion and Git? Do I need to learn all of this just to do design for Rails?</p>
+
+    <p>In this article, I&#8217;ll help prepare you for your first foray into Rails by explaining what it is, how it works, and where it fits into the spectrum of web development and design. I&#8217;ll address the issues above and more, with answers geared toward non-Rails developers, designers, and other creative professionals.</p>
+
+    <p>This article <em>isn&#8217;t</em> a Rails programming tutorial. We won&#8217;t be writing code here, but I will introduce you to some of the important concepts critical to understanding how the Rails framework functions. I&#8217;ll also explain what you&#8217;ll need to know to work with Rails developers and integrate your <span class="caps"><span class="caps">XHTML</span></span> and <span class="caps"><span class="caps">CSS</span></span> into Rails projects.</p>
+
+    <p>I&#8217;ll focus on the topics and issues that I&#8217;ve learned are most important for creative people instead of boring you with gruesome technical details. Yes, you&#8217;ll have to learn what terms like &#8220;MVC&#8221; mean, for example, but only in the context of getting stuff done.</p>
+
+<h2>What is Rails, and why use it?</h2>
+
+<p>David Heinemeier Hansson, a partner at <a href="http://37signals.com">37signals</a>, created Ruby on Rails. As he built Basecamp, their flagship application, David extracted the application&#8217;s underpinnings and created code that he could use and re-use for software he wanted to build down the road.</p>
+
+<p>The framework he created proved to be extensible, expandable, and multi-purpose. He decided to share it as open source software. A small group of developers, now known as the <em>Rails Core Team</em>, formed and  improved and expanded the framework. After a good deal of effort, Ruby on Rails matured into a robust, solid software development platform. Today, Rails has a <a href="http://rubyonrails.com/community">strong community</a> and <a href="http://rubyonrails.com/docs">great documentation</a>, and is used by thousands of developers to power hundreds of websites, such as <a href="http://twitter.com">Twitter</a>, <a href="http://blinksale.com">Blinksale</a>, and the very site you&#8217;re reading now. There&#8217;s an even bigger list of sites over at <a href="http://www.workingwithrails.com/browse/sites">Working with Rails</a>.</p>
+
+    <p>Rails is designed to make building web applications simpler and easier. Rails provides developers with a large, easily expandable set of building blocks they can use (and re-use) to create web applications. Developers can use, integrate, and customize these components of code in any manner they choose to, to create the unique functionality they need for their application. Building software this way really helps reduce the time it takes for developers to create and later maintain their applications. It also helps to standardize the way applications get built, making it easier for many developers to collaborate and write more uniform code.</p>
+
+    <p>Web designers have time-tested <span class="caps"><span class="caps">CSS</span></span> tricks to use as a starting point, web standards to adhere to, and Photoshop workflows they can rely on. Like these tools, Rails provides standards, conventions, tools, and a foundation upon which developers can construct applications by writing customized code using pre-built Rails libraries.</p>
+
+<h2>Rails vs. <span class="caps"><span class="caps">PHP</span></span></h2>
+
+    <p>One of the questions people often ask about Rails is how it differs from <span class="caps"><span class="caps">PHP</span></span>. <a href="http://php.net"><span class="caps"><span class="caps">PHP</span></span></a> is a general-purpose scripting language that can be embedded right into <span class="caps"><span class="caps">HTML</span></span> pages, making it easy for developers to create dynamically generated web pages quickly and easily. Many web designers and most web developers have used <span class="caps"><span class="caps">PHP</span></span> in some capacity. Because of its proliferation (it&#8217;s usually installed by default on most webhosts), <span class="caps"><span class="caps">PHP</span></span> is often the go-to language for handling simple tasks like <a href="http://www.alistapart.com/articles/keepingcurrent/">keeping your website&#8217;s navigation current</a>, <a href="http://www.alistapart.com/articles/betterrotator">randomizing images on a website</a>, and even creating a <a href="http://www.alistapart.com/articles/phpcms/">simple content management system</a>. <span class="caps"><span class="caps">PHP</span></span> is also useful for creating full-blown open source and commercial web applications such as <a href="http://wordpress.org">WordPress</a>, and <a href="http://www.userscape.com/products/helpspot/">HelpSpot</a>, both <span class="caps"><span class="caps">PHP</span></span> applications.</p>
+
+    <p>Technically speaking, we shouldn&#8217;t compare <span class="caps">PHP</span>, a programming language, to Rails, a web application framework. Instead, we should compare <span class="caps">PHP</span> to the <a href="http://www.ruby-lang.org/">Ruby programming language</a> upon which Rails was built. Ruby was created in 1995 by <a href="http://en.wikipedia.org/wiki/Yukihiro_Matsumoto">Yukihiro &#8220;Matz&#8221; Matsumoto</a>, and has slowly built a following, exploding in popularity and getting more mainstream attention in 2006, in no small part because of the popularity of Rails. At the time of this writing, Ruby ranks as the 9th most popular programming language in the world.</p>
+
+    <p>To quote the Ruby website, &#8220;Ruby is a dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.&#8221; This elegance and focus on simplicity makes Ruby a very approachable language for people new to programming, and offers a refreshing change of pace for seasoned developers.</p>
+
+    <p>Let&#8217;s run through a quick example, just to get a &#8220;feel&#8221; for what we&#8217;re talking about. Let&#8217;s say we want to count from 1 to 10. In <span class="caps"><span class="caps">PHP</span></span>, the code might look like this:</p>
+
+<pre>
+for ($i = 1; $i &lt;= 10; $i++) {
+  echo $i;
+}
+</pre>
+
+    <p>If you&#8217;re familiar with C, Java, or other C-like control structures, this is straightforward for you. But if you&#8217;re new to this, that might seem pretty intimidating.  Here&#8217;s the same code in Ruby:</p>
+
+<pre>
+10.times do |i|
+  puts i
+end
+</pre>
+
+    <p>Ruby also has its own tricks and shortcuts that would make even a serious Perl hacker happy. The following line does the very same thing as the examples above:</p>
+
+<pre>
+puts *(1..10)
+</pre>
+
+    <p>This kind of flexibility and simplicity makes Ruby an approachable language for software developers and web designers of all levels.</p>
+
+    <p>While <span class="caps"><span class="caps">PHP</span></span> is a web-friendly programming language, Rails is a web application framework written in Ruby (and with access to all of Ruby&#8217;s functionality to boot). And because of the way Rails works, each application you build lives in the form of a project, with specific files and folders. Unlike many <span class="caps"><span class="caps">PHP</span></span> apps which often &#8220;just work&#8221; when uploaded to a webserver, Rails apps rely on their framework and a customized hosting infrastructure (often called a &#8220;stack&#8221;). As a result, Rails applications can be a bit more challenging to deploy. Fortunately, a number of web hosting companies specialize in deploying, hosting, and managing Rails applications.</p>
+
+    <p>So how would you know when to use Rails and when to use <span class="caps"><span class="caps">PHP</span></span>? There isn&#8217;t anything that one could do in Rails that they couldn&#8217;t do in <span class="caps"><span class="caps">PHP</span></span> (or vice versa), so in the end it boils down to a matter of choice. For me personally, I have a simple rule: if I&#8217;m adding simple functionality (such as rotating header images) to an otherwise straightforward website, I&#8217;ll often use <span class="caps"><span class="caps">PHP</span></span>. If I&#8217;m building a web application, especially one with a database, I&#8217;ll use Rails. Again, both could do either, but I find the Rails framework is wonderful for the kind of web application development I like to do.</p>
+
+    <p>It should be noted that there are frameworks with goals similar to those of Ruby on Rails that are written in <span class="caps"><span class="caps">PHP</span></span>, such as <a href="http://www.cakephp.org/">CakePHP</a> and <a href="http://codeigniter.com/">CodeIgniter</a>.</p>
+
+<h2>Mythbusting Rails</h2>
+
+    <p>Before we delve a bit deeper into what Rails actually is, what it does, and how you&#8217;ll probably use it, I want to dispel a few myths that non-developers often have about the framework. This list actually comes from real questions that real, live people have asked me about Rails over the last few years.</p>
+
+<h3>Myth #1: Rails is a content management system</h3>
+
+    <p>I&#8217;ve mentioned that Rails makes it super easy to build web applications quickly—that it has a ton of built-in functionality and pre-built components. But what Rails actually gives you—the framework we&#8217;re talking about—is <em>code</em>.  Rails isn&#8217;t a plug-and-play piece of software that you custom-tailor for specific applications, while just integrating some design along the way. You can think of Rails as being an elaborate menu of code that developers can select from, modify, and extend to create a completely customized application.</p>
+
+<h3>Myth #2: Rails lets you build applications a billion times faster</h3>
+
+    <p>In a way, the excellent &#8220;Rails makes it easy&#8221; marketing campaign has actually hurt some independent Rails development shops. Customers expect Rails applications to be rolled out in days regardless of their feature set. In reality, Rails applications aren&#8217;t written for you automatically. Rails saves developers time by letting them focus on specific application functionality instead of things like database interconnectivity. It handles the heavy lifting required to build user interaction. Developers can use this pre-built code, and spend more time making applications that are more reliable and easier to use. Rails projects can still get quite complicated. Rails developers must still write real (and often complex) code, interactions, and tests. Rails makes development more fun and  it eliminates much of the tedium involved in building web applications, but it doesn&#8217;t build them for you.</p>
+
+<h3>Myth #3: You don&#8217;t need to be a programmer to build Rails applications</h3>
+
+    <p>I hear that a lot, and of course it&#8217;s false. In reality, Rails developers do much more than assemble components. Sure, they use Rails conventions and build atop a comprehensive platform, but they still write brand new, unique code.</p>
+
+    <p>It <em>is</em> true, however, that you might not need to be as experienced a developer to create a Rails application as you might need to be to build, for example, a <span class="caps"><span class="caps">PHP</span></span>, Java, or Objective-C application. This is due both to the simplicity of the Rails framework as well as the elegance and readability of the Ruby programming language, upon which Rails sits. You still need to learn to write code.</p>
+
+<h2>Getting started</h2>
+
+    <p>Getting Rails up and running on your computer falls outside of the scope of this article. Fortunately, the latest version of Mac <span class="caps"><span class="caps">OS X 10</span></span>.5 (Leopard) comes with Rails pre-installed (or you <a href="http://hivelogic.com/articles/ruby-rails-mongrel-mysql-osx/" title="Building Ruby on Rails for Mac OS X 10.5 Leopard">can build your own</a>). I&#8217;ve written a <a href="http://hivelogic.com/articles/ruby-rails-mongrel-mysql-osx/" title="Building Ruby on Rails for Mac OS X 10.4 Tiger">tutorial for installing Rails on older versions of Mac <span class="caps"><span class="caps">OS X</span></span></a>. There&#8217;s a <a href="http://rubyforge.org/frs/?group_id=167" title="One-Click Installer for Windows">One-Click Installer for Windows</a>. You can also download the source code or find additional resources on the <a href="http://rubyonrails.com/down" title="Install and download Rails">Ruby on Rails website</a> to help you get things going.</p>
+
+    <p>Rather than expect you to go through the paces of getting Rails installed for the first time, for now, I&#8217;ve created a default Rails project that you can download and look at on any computer, regardless of whether you have Rails installed or not. Grab the <a href="/d/gettingstartedwithrubyonrails/demo.zip">file</a> and unzip it somewhere you can find it.</p>
+
+    <p><strong>Note:</strong> The folders and files you&#8217;ll find in the archive are identical to those that Rails would have created for you if you&#8217;d have run <code>rails demo</code> on the command line, followed by <code>script/generate scaffold article body:string</code>. Again, these are commands you may never have to run, but Rails developers use them to help create the code they use in their projects.</p>
+
+<h2><span class="caps"><span class="caps">MVC</span></span></h2>
+
+    <p>Speaking of creating code, there are a few software development concepts you should know about—even as a designer—before you dive into Rails. Understanding these concepts will help you understand the Rails layout, and make it easier for you to work within the framework itself.</p>
+
+    <p>Rails implements a software engineering technique called model-view-controller, commonly abbreviated as <span class="caps"><span class="caps">MVC</span></span>. This technique (or pattern) separates business 
+logic (things like database interaction) from the user interface, which we call the presentation logic. This separation actually makes the life of the designer much easier, because unlike other web frameworks, the amount of Rails code a designer actually has to see and shuffle around is significantly reduced.</p>
+
+    <p>In Rails, each of these different pieces of the application are kept in different folders. The business logic (the models and the controllers) are stored separately from the views. What&#8217;s important to understand here is that <span class="caps"><span class="caps">MVC</span></span> means the <span class="caps"><span class="caps">XHTML</span></span> and <span class="caps"><span class="caps">CSS</span></span> you create is kept as separate as possible from the deeper levels of code. Pure developers see less design, while designers wade through less code.</p>
+
+<h2>How to edit Rails files</h2>
+
+    <p>Rails stores its files as plain text, so you can choose any text editor to edit files in a Rails project. I prefer a Mac <span class="caps"><span class="caps">OS X</span></span> application called TextMate, which is ideally suited for working with Rails. BBEdit, another Mac <span class="caps"><span class="caps">OS X</span></span> application, also works well, as do most text editors on Windows. Linux, too, has its share of capable text editors. Some editors do a better job of displaying Rails code using syntax editing and color-coded highlighting, making the code pretty to look at. Other editors don&#8217;t recognize Ruby on Rails code at all. Below is an example of code being edited in TextMate:</p>
+
+<div class="illustration full left"><img src="/d/gettingstartedwithrubyonrails/syntax.png" alt="Ruby on Rails Syntax" />
+<p>Example of Ruby on Rails Syntax</p></div>
+
+<p>Pretty, eh?</p>
+
+<p>Textmate (and BBEdit) have the added advantage of being able to open and display entire project folders in their drawer, allowing you to quickly locate and edit a file.</p>
+
+<h2>Everything in the right place</h2>
+
+    <p>Rails projects are made up of lots and lots of folders and files—most of which Rails generates during the initial creation of the application. If you&#8217;re used to dealing with smaller projects, this may at first seem like a somewhat daunting amount of content.</p>
+
+    <p>Using folders in this fashion makes it easier to separate the models, controllers, and views. And just about all of the files that non-developers will need to be concerned with will live in the same place in every Rails project—far from the deeper code that belongs to the business logic layer. Let&#8217;s take a look at the files and folders Rails created.</p>
+
+<div class="illustration full left"><img src="/d/gettingstartedwithrubyonrails/demo1.png" alt="" /><p>Example of default Ruby on Rails folder structure.</p></div>
+
+    <p>These files and folders will be pretty much the same no matter which Rails application you&#8217;re working with. Even very large, feature-rich, complicated Rails applications will have this identical layout. And even better, your files and presentation logic will always go in the very same place.</p>
+
+    <p>It&#8217;s actually safe for you to ignore most of what you see here for now. The folders that <em>are</em> important for you to pay attention to are the <code>app/views</code>, <code>app/layouts</code>, <code>public/images</code>, and <code>public/stylesheets</code> folders, highlighted below.</p>
+
+<div class="illustration full left"><img src="/d/gettingstartedwithrubyonrails/demo3.png" alt="Folder image" /><p>Example of folder structure.</p></div>
+
+<h2>Embedding Rails code in <span class="caps"><span class="caps">HTML</span></span></h2>
+
+    <p>Typically, when you work with Rails developers, you&#8217;ll comp a design and they&#8217;ll insert the Rails code into it. But on occasion, it&#8217;ll work the other way around—the Rails developers will already have a basic set of files and you&#8217;ll need to &#8220;design around&#8221; their code.</p>
+
+    <p>If you&#8217;re familiar with the way that templates work in blogging software such as Movable Type or WordPress, you&#8217;re already somewhat familiar with the way that layouts and views work within Rails. Rails allows developers to separate an application&#8217;s functionality into groups of related view pages. If we&#8217;re developing different ways to create, edit, and display an article for a web magazine, Rails will want us to put those views into a folder named <code>articles</code> in the <code>app/views</code> folder.</p>
+
+    <p>The template files that contain the <span class="caps"><span class="caps">HTML</span></span> that users will actually see don&#8217;t end in <code>.html</code> like regular <span class="caps"><span class="caps">HTML</span></span> files. Instead, they have special file extensions: <code>.html.erb</code>. The addition of the <code>.erb</code> tells Rails that these files contain embedded Ruby code, and will use Ruby&#8217;s template technology. This technology allows Rails developers to embed Ruby on Rails code right into any template file very easily. Take a look at the <code>apps/views/articles/edit.html.erb</code> file:</p>
+
+<div class="illustration full left"><img src="/d/gettingstartedwithrubyonrails/demo4.png" alt="" /><p>Example of Ruby code embedded into an <span class="caps">HTML</span> template.</p></div>
+
+    <p>You may notice a few tags that you wouldn&#8217;t normally see in an <span class="caps"><span class="caps">HTML</span></span> file. These special tags tell Rails where to look for embedded code. When Rails sees them, it executes the code inside of those tags and outputs the result right into the user&#8217;s web browser as it renders the page.</p>
+
+    <p>The <strong><code>&lt;%=</code></strong> and <strong><code>&lt;%</code></strong> tags indicate the beginning of the Rails or Ruby code, while the <strong><code>%&gt;</code></strong> tag indicates the closure of both tags. As a non-programmer, it&#8217;s safe for you to put your <span class="caps"><span class="caps">HTML</span></span> around and inside of these tags, but be careful to keep what&#8217;s inside of the tags intact. You can, however, move this block of code wherever you might like within your <span class="caps"><span class="caps">HTML</span></span>, or edit the <span class="caps"><span class="caps">HTML</span></span> inside and around this block as needed. For example, you could change the snippet above to look like the example below without affecting any of the Rails code:</p>
+
+<div class="illustration full left"><img src="/d/gettingstartedwithrubyonrails/demo5.png" alt="" /><p>Ruby is versatile: it can be moved in and out of existing <span class="caps">HTML</span> with little effort.</p></div>
+
+    <p>While you may have completely changed how the page displays, the functionality remains intact.</p>
+
+    <p>In Rails, there is a primary template—a file usually found in <code>app/views/layouts/application.html.erb</code>. This file contains the &#8220;wrapper&#8221; of <span class="caps"><span class="caps">XHTML</span></span> that surrounds the content the application displays to users. If you open that file now, you&#8217;ll see exactly what I&#8217;m talking about.</p>
+
+    <p>In many blogging systems, designers are used to &#8220;cutting up&#8221; their designs—separating things like the header, footer, and sidebar into different files. While Rails supports this, the usual pattern is to put those elements right into the <code>application.html.erb</code> file and use Rails to stream the content into place.</p>
+
+    <p>If you wanted to customize the design of a Rails website, this is the place you&#8217;d start. And you&#8217;re free to customize as much as you like—just keep your eye on the special line that looks like this:</p>
+
+<p><code>&lt;%= yield %&gt;</code></p>
+
+    <p>That&#8217;s the special bit of Rails code that says &#8220;put the content for this page here.&#8221; The location of this single line determines where the main content for each page appears.</p>
+
+    <p>Rails developers have techniques to vary the content that appears in different areas of the main template, such as a page&#8217;s title, different stylesheets to include, or variable sidebar content.</p>
+
+    <p>If you recall the discussion on Model/View/Controller above, you&#8217;ll remember that our primary focus will be on working with views. Each general area of functionality within a Rails application will have its own folder within the views folder. For example, if we were working on the designs for a web magazine like the one you&#8217;re reading now, there would be special views dedicated to displaying articles, and those views would always live in the <code>app/views/articles</code> folder.</p>
+
+    <p>While it&#8217;s true that not every Rails application will have articles, Rails specifies that each area of the website—articles, comments, issues, invoices, etc.—will each get its own folder within the views folder. It&#8217;s part of the Rails pattern.</p>
+
+    <h2>The public folder</h2>
+
+    <p>Unlike the rest of the files in a Rails application, everything within the public folder is visible to the outside world. Within the public folder are two folders you&#8217;ll want to pay special attention to: <code>images</code> and <code>stylesheets</code>. While there&#8217;s no hard rule that says your images and stylesheets <em>must</em> live in these locations, putting them there is a boon to Rails developers, who can then easily call them from within their code as needed.</p>
+
+<h2>Source control</h2>
+
+    <p>Anybody who creates files that change over time will, at some point, probably need help to keep track of how the files change, and will naturally want to keep a backup of those changes. This is even more important when you&#8217;re sharing project and code files with other people who will also make changes to them.</p>
+
+    <p>Fortunately there&#8217;s special software, usually referred to as source control or revision management software, to help us manage this process. The system used most commonly with Rails projects is called <a href="http://subversion.tigris.org/">Subversion</a> (also known as <span class="caps">SVN</span>). Subversion is a free, open-source solution available for most platforms. It remembers every change ever made to the files and directories in your projects. This allows you to recover older versions of your data, or examine the history of how your data changed.</p>
+
+    <p>Source control systems replace the &#8220;change a file and <span class="caps"><span class="caps">FTP</span></span> it to the server&#8221; method of updating files—creating instead a consistent way to make your changes available to everybody on your team simultaneously, and keep everything up to date and integrated in one step.</p>
+
+    <p><a href="http://git.or.cz/">Git</a>, an alternative source control system, has gained in popularity recently, so much so that the Rails Core Team is actually using it to manage the code for Rails itself.</p>
+
+    <p>Although the process and commands you&#8217;ll use to manage the changes you make vary somewhat between different source control systems, the concept is similar regardless of the technology being used. And although it may seem somewhat cryptic once you actually start using it, the benefits of using a source control system to manage a Rails project easily outweigh the learning curve.</p>
+
+    <p>Instructions for managing projects using Subversion and Git fall outside the scope of this article and often vary based on the system used as well as by the team using it. But it&#8217;s important to know that you will probably be expected to use this kind of system, and that it will likely involve either typing commands at the command line or using a new source control management application to do the kinds of things you used to do without any additional complications.</p>
+
+<h2>Next steps</h2>
+
+    <p>If you&#8217;re interested in learning more about Ruby on Rails, there are lots of places to start. An excellent way to learn Rails is to watch some of the excellent <a href="http://www.rubyonrails.org/screencasts">Rails screencasts</a>.</p>
+
+    <p>There&#8217;s lots of great Rails documentation available as well, with some good starting points on the <a href="http://www.rubyonrails.org/docs">Ruby on Rails documentation page</a>.</p>
+
+    <p>You can learn everything you ever wanted to know about Subversion and source control management by reading the (free) online version of <a href="http://svnbook.red-bean.com/">Version Control with Subversion</a>.</p>
+
+    <p>There are also many, many wonderful blogs, podcasts, articles, tutorials, and screencasts with a focus on learning Rails available online. Just check out <a href="http://www.google.com/search?q=learning+ruby+on+rails">this list on Google</a> if you want a good place to start.</p>
+
+<h2>Conclusion</h2>
+
+    <p>I hope that this gentle introduction to Rails answers a few questions and perhaps dispels a few of the myths surrounding Rails. And while Rails is a great platform, it still needs more people like you—designers, interface architects, and writers—to help guide and direct its future. It&#8217;s a young enough platform that people with your experience can really help determine what it evolves into both now and in years to come. <img src="/pix/eoai.gif" alt="" id="eoai" /></p>
+
+<div id="credits">
+<ul>
+<li>Illustration by <a href="/about/kevincornell">Kevin Cornell</a></li>
+</ul>
+</div>
+</div>
+
+<div id="learnmore">
+  <h2>Learn More</h2>
+  <p>Related Topics: <a href="/topics/code/scripting/" title="Scripting">Scripting</a>, <a href="/topics/code/serverside/" title="Server Side">Server Side</a></p>
+</div>
+
+
+<div class="discuss">
+  <h2>Discuss</h2>
+  <p>Was it good for you, too?  <a href="/comments/gettingstartedwithrubyonrails/">Join the discussion &raquo;</a></p>
+</div>
+
+
+  <div id="authorbio">
+
+  <h2>About the Author</h2>
+
+  
+
+  
+
+  <p><img src="/pix/authors/zz222df3d3.jpg" alt="Dan Benjamin" />
+Dan Benjamin is a business strategist, programmer, writer, and UI designer. He publishes his articles on his blog, <a href="http://hivelogic.com/" title="Dan Benjamin's Hivelogic">Hivelogic</a>. He is the <span class="caps">CTO</span> of <a href="http://railsmachine.com/" title="Ruby on Rails Hosting">Rails Machine</a>, and the co-creator of <a href="http://corkd.com">Cork’d</a> (acquired by <span class="caps">WLTV</span>). Dan built the publishing system used here at A List Apart.</p>
+  <br style="clear: both;" />
+
+  
+
+</div>
+
+
+
+</div>
+
+<div id="sidebar" class="column">
+
+<div class="first">
+<form method="get" action="http://search.atomz.com/search/">
+  <h3>Search ALA</h3>
+  <input type="text" name="sp-q" id="search" />
+  <input type="image" src="/pix/go.gif" id="submit" value="Search" />
+  <p><input type="checkbox" name="incdisc" id="incdisc" value="All" onclick="this.form.elements['sp-k'].value = (this.checked) ? '' : 'All';" /> include discussions</p>
+  <input type="hidden" name="sp-a" value="sp1002d27b" />
+  <input type="hidden" name="sp-f" value="ISO-8859-1" />
+  <input type="hidden" name="sp-p" value="All" />
+  <input type="hidden" name="sp-k" value="All" />
+</form>
+</div>
+
+<div id="topiclist">
+  <h3>Topics</h3>
+  <ul>
+
+    <li><a href="/topics/code">Code</a></li>
+
+    <li><a href="/topics/content">Content</a></li>
+
+    <li><a href="/topics/culture">Culture</a></li>
+
+    <li><a href="/topics/design">Design</a></li>
+
+    <li><a href="/topics/process">Process</a></li>
+
+    <li><a href="/topics/userscience">User Science</a></li>
+
+  </ul>
+
+</div>
+
+
+<div id="snapshot">
+  <h3>Snapshot</h3>
+  <p>Web designers have time-tested <span class="caps"><span class="caps">CSS</span></span> tricks to use as a starting point, web standards to adhere to, and Photoshop workflows they can rely on. Like these tools, Rails provides standards, conventions, tools, and a foundation upon which developers can construct applications by writing customized code using pre-built Rails libraries.</p>
+</div>
+
+
+<div id="lucre">
+<script type="text/javascript">
+//<![CDATA[
+(function(id) {
+  document.write('<script type="text/javascript" src="' +
+    'http://www.northmay.com/deck/deck' + id + '_js.php?' +
+    (new Date().getTime()) + '"></' + 'script>');
+})("AL");
+//]]>
+</script>
+<p>
+<a href="http://decknetwork.net/">Ad via The Deck</a>
+</p>
+</div>
+
+<div id="jobboard">
+<h4>Job Board</h4>
+<script src="http://www.37signals.com/svn/job.fcgi" type="text/javascript"></script>
+</div>
+
+<div id="colophon">
+
+<p class="init">
+Hosted by
+<a href="http://textdrive.com/"><img src="/pix/textdrive.png" alt="Hosted by TextDrive" /></a>
+</p>
+
+<p>
+Published by
+<a href="http://happycog.com/"><img src="/pix/happycog.png" title="" alt="Published by Happy Cog" /></a>
+</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="footer">
+<p>
+<span class="issn">ISSN: <b>1534-0295</b></span>
+<span class="copyright"><a href="/copyright/" rel="license">Copyright &copy;</a> <span class="years">1998-2009</span> A List Apart Magazine and the authors.</span>
+</p>
+</div>
+
+<script src="/d/mint/?js" type="text/javascript"></script>
+
+</body>
+</html>

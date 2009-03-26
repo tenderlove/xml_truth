@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>has_many :bugs, :through => :rails: Ruby on Rack #1 - Hello Rack!</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/monkeyonrails" />
+
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+    <link rel="openid.server" href="http://www.myopenid.com/server" />
+   <link rel="openid.delegate" href="http://lifo.myopenid.com" />
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">has_many :bugs, :through => :rails</a></span></h1>
+    <h2>sleepless in london..</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      
+  
+<!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping=""
+  dc:title="Ruby on Rack #1 - Hello Rack!"
+  dc:identifier="/2008/11/17/ruby-on-rack-1"
+  dc:description="<p>Ruby community is coming up with new frameworks almost every week, but in midst of that, <a href="http://rack.rubyforge.org">Rack</a> isn&#8217;t getting enough attention. Attention that it deserves. And also, the next stable release of <a href..."
+  dc:creator="pratik"
+  dc:date="November 17, 2008 13:08" />
+</rdf:RDF>
+-->
+
+<div class="hentry" id="article-2794">
+  <h2 class="entry-title">
+    <a href="/2008/11/17/ruby-on-rack-1">Ruby on Rack #1 - Hello Rack!</a>
+    
+    <span class="comment_count">8</span>
+    
+  </h2>
+  <div class="vcard">
+  Posted by <span class="fn">pratik</span>
+</div>
+<abbr class="published" title="2008-11-17T13:08:00+00:00">on Monday, November 17</abbr>
+<br class="clear" />
+  <div class="entry-content">
+  <p>Ruby community is coming up with new frameworks almost every week, but in midst of that, <a href="http://rack.rubyforge.org">Rack</a> isn&#8217;t getting enough attention. Attention that it deserves. And also, the next stable release of <a href="http://rubyonrails.com">Rails</a> after 2.2 will have a better public facing interface for taking full advantage of Rack.</p>
+
+
+	<p><a href="http://rack.rubyforge.org">Rack</a> was initially inspired from pythons&#8217;s <a href="http://www.wsgi.org/wsgi">wsgi</a> and it quickly became the de-facto web application/server interface in the ruby community, thanks to it&#8217;s simplicity and preciseness. You might want to read <a href="http://chneukirchen.org/blog/archive/2007/02/introducing-rack.html">Introducing Rack</a> from the creator of rack &#8211; <a href="http://chneukirchen.org">Christian Neukirchen</a> before reading this post.</p>
+
+
+	<h1>What is Rack ?</h1>
+
+
+	<blockquote>
+		<p>Rack provides a minimal, modular and adaptable interface for developing web applications in Ruby.  By wrapping <span class="caps">HTTP</span> requests and responses in the simplest way possible, it unifies and distills the <span class="caps">API</span> for web servers, web frameworks, and software in between (the so-called middleware) into a single method call.</p>
+	</blockquote>
+
+
+	<p>- <a href="http://rack.rubyforge.org/doc">Rack <span class="caps">API</span> Docs</a></p>
+
+
+	<p>Practically speaking, you can divide &#8220;Rack&#8221; in two parts :</p>
+
+
+	<h4>Rack Specification</h4>
+
+
+	<p>Rack specification specifies how exactly a Rack application and the web server should communicate :</p>
+
+
+	<blockquote>
+		<p>A Rack application is an Ruby object (not a class) that responds to <ins>call</ins>. It takes exactly one argument, the <strong>environment</strong> and returns an Array of exactly three values: The <strong>status</strong>, the <strong>headers</strong>, and the <strong>body</strong>.</p>
+	</blockquote>
+
+
+	<p>- <a href="http://rack.rubyforge.org/doc/files/SPEC.html">Rack Specification</a></p>
+
+
+	<p>That&#8217;s the specification in a nutshell. You can check out the full details <a href="http://rack.rubyforge.org/doc/files/SPEC.html">here</a>.</p>
+
+
+	<p><strong>Strictly speaking, you don&#8217;t need the rack gem in order to write Rack ready applications.</strong> Just stick to the specification and that&#8217;s it.</p>
+
+
+	<h4>Rack Gem</h4>
+
+
+	<p>Rack gem is a collection of utilities and facilitating classes, to make life easier for anyone developing Rack applications. It includes basic implementations of request, response, cookies &#38; sessions. And a good number of usefult middlewares. In short, install the rack gem. You&#8217;re gonna need it :</p>
+
+
+<pre><code>$ sudo gem install rack</code></pre>
+
+	<h4>To summarize</h4>
+
+
+	<ul>
+	<li>Rack is a framework to roll your own ruby framework.</li>
+		<li>Rack provides an interface between different web servers and your framework/application. Making it very simple for your framework/application to be compatible with any webserver that supports Rack &#8211; Phusion Passenger, Litespeed, Mongrel, Thin, Ebb, Webrick to name a few.</li>
+		<li>Rack cuts your chase. You get request, response, cookies, params &#38; sessions for free.</li>
+		<li>Makes it possible to use multiple frameworks for the same application, provided there is no class collision. <a href="http://m.onkey.org/2008/11/10/rails-meets-sinatra">Rails and sinatra integration</a> is a good example of this.</li>
+		<li>Middlewares ! Think of middlewares as Rails&#8217;s before_filter/after_filter that are reusable across different rack supported frameworks/applications. For example, you can use the same Anti-spamming rack middleware for your Rails app, Sinatra app and your custom Rack application too!</li>
+	</ul>
+
+
+	<h1>Examples</h1>
+
+
+	<p>Let&#8217;s start with a smallest possible example of a rack application, using mongrel.</p>
+
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt><strong>5</strong><tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">require <span class="s"><span class="dl">'</span><span class="k">rubygems</span><span class="dl">'</span></span><tt>
+</tt>require <span class="s"><span class="dl">'</span><span class="k">rack</span><span class="dl">'</span></span><tt>
+</tt><tt>
+</tt><span class="r">class</span> <span class="cl">HelloWorld</span><tt>
+</tt>  <span class="r">def</span> <span class="fu">call</span>(env)<tt>
+</tt>    [<span class="i">200</span>, {<span class="s"><span class="dl">&quot;</span><span class="k">Content-Type</span><span class="dl">&quot;</span></span> =&gt; <span class="s"><span class="dl">&quot;</span><span class="k">text/html</span><span class="dl">&quot;</span></span>}, <span class="s"><span class="dl">&quot;</span><span class="k">Hello Rack!</span><span class="dl">&quot;</span></span>]<tt>
+</tt>  <span class="r">end</span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt><span class="co">Rack</span>::<span class="co">Handler</span>::<span class="co">Mongrel</span>.run <span class="co">HelloWorld</span>.new, <span class="sy">:Port</span> =&gt; <span class="i">9292</span></pre></td>
+</tr></table>
+
+
+	<p>The above code passes an object of <em>HelloWorld</em> to the mongrel rack handler, and starts the server on port 9292.</p>
+
+
+The <em>HelloWorld</em> object here respects the rack specifications. That is :
+	<ol>
+	<li>Responds to <em>call()</em>, which takes one argument &#8211; <em>environment</em></li>
+		<li><em>call()</em> returns an Array of [http_status_code, response_headers_hash, body]</li>
+	</ol>
+
+
+	<p>That&#8217;s all ! If you run this script and browse to <a href="http://localhost:9292">http://localhost:9292</a>, you&#8217;ll see the shiny &#8220;Hello Rack!&#8221; message.</p>
+
+
+	<p>But hey, even a ruby proc responds to <em>call()</em>. So why not use a proc instead ? Well, no reason not to :</p>
+
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">require <span class="s"><span class="dl">'</span><span class="k">rubygems</span><span class="dl">'</span></span><tt>
+</tt>require <span class="s"><span class="dl">'</span><span class="k">rack</span><span class="dl">'</span></span><tt>
+</tt><tt>
+</tt><span class="co">Rack</span>::<span class="co">Handler</span>::<span class="co">Mongrel</span>.run proc {|env| [<span class="i">200</span>, {<span class="s"><span class="dl">&quot;</span><span class="k">Content-Type</span><span class="dl">&quot;</span></span> =&gt; <span class="s"><span class="dl">&quot;</span><span class="k">text/html</span><span class="dl">&quot;</span></span>}, <span class="s"><span class="dl">&quot;</span><span class="k">Hello Rack!</span><span class="dl">&quot;</span></span>]}, <span class="sy">:Port</span> =&gt; <span class="i">9292</span></pre></td>
+</tr></table>
+
+
+	<p>Another common seen pattern is to use <em>method(:something)</em>, which returns an object of <a href="http://ruby-doc.org/core/classes/Method.html">Method class</a> :</p>
+
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt><strong>5</strong><tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">require <span class="s"><span class="dl">'</span><span class="k">rubygems</span><span class="dl">'</span></span><tt>
+</tt>require <span class="s"><span class="dl">'</span><span class="k">rack</span><span class="dl">'</span></span><tt>
+</tt><tt>
+</tt><span class="r">def</span> <span class="fu">application</span>(env)<tt>
+</tt>  [<span class="i">200</span>, {<span class="s"><span class="dl">&quot;</span><span class="k">Content-Type</span><span class="dl">&quot;</span></span> =&gt; <span class="s"><span class="dl">&quot;</span><span class="k">text/html</span><span class="dl">&quot;</span></span>}, <span class="s"><span class="dl">&quot;</span><span class="k">Hello Rack!</span><span class="dl">&quot;</span></span>]<tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt><span class="co">Rack</span>::<span class="co">Handler</span>::<span class="co">Mongrel</span>.run method(<span class="sy">:application</span>), <span class="sy">:Port</span> =&gt; <span class="i">9292</span></pre></td>
+</tr></table>
+
+
+	<p>Take that you &#8220;Hello World&#8221; performance retards. You&#8217;re not gonna be able to write a faster &#8216;Hello World&#8217; ruby application than this.</p>
+
+
+	<h1>Rack it up&#8217;</h1>
+
+
+	<p>As I said earlier, rack gem comes with a bunch of useful stuff to make life easier of a rack application developer. <em>rackup</em> is one of them.  In the previous examples, I had used the mongrel handler <em>Rack::Handler::Mongrel</em> directly, and even hard coded the port number. With <em>rackup</em>, these things become configurable ! But to use rackup, you&#8217;ll need to supply it with a <em>rackup</em> config file. For our above example, the config file will look somewhat like :</p>
+
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="c"># config.ru</span><tt>
+</tt>run <span class="co">Proc</span>.new {|env| [<span class="i">200</span>, {<span class="s"><span class="dl">&quot;</span><span class="k">Content-Type</span><span class="dl">&quot;</span></span> =&gt; <span class="s"><span class="dl">&quot;</span><span class="k">text/html</span><span class="dl">&quot;</span></span>}, <span class="s"><span class="dl">&quot;</span><span class="k">Hello Rack!</span><span class="dl">&quot;</span></span>]}</pre></td>
+</tr></table>
+
+
+	<p>Just a line. By convention, you should use <em>.ru</em> extension for a rackup config file. Supply it a <em>run RackObject</em> and you&#8217;re ready to go :</p>
+
+
+<pre><code>$ rackup config.ru</code></pre>
+
+	<p>By default, rackup will start a server on <a href="http://0.0.0.0:9292">port 9292</a>. But you can override that with a -p option to rackup. For more help, <span class="caps">RTFM</span>:</p>
+
+
+<pre><code>$ rackup --help</code></pre>
+  
+</div>
+  <ul class="meta">
+  
+  
+  <li>
+    Tags: <a href="/tags/rack" rel="tag">rack</a>&nbsp;<a href="/tags/ruby" rel="tag">ruby</a>&nbsp;
+  </li>
+  
+  <li>
+    Meta: 
+    
+    <a href="/2008/11/17/ruby-on-rack-1">8 comments</a>, 
+    
+    <a href="/2008/11/17/ruby-on-rack-1">permalink</a>
+    
+  </li>
+</ul>
+</div>
+
+<h5><a name="comments">Comments</a></h5>
+<p><a href="#comment-form">Leave a response</a></p>
+<div id="comments_div">
+  <ol id="comments" class="comments">
+    
+    <li class="comment" id="comment-2928">
+      <div class="author">
+        <cite><span class="author"><a href="http://nardonut.co.uk">Sam</a></span></cite> &#150; 
+        <abbr title="November 17, 2008 15:23"><span class="date">November 17, 2008 @ 03:23 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Nice article, this has cleared a few things up about rack for me!</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-2930">
+      <div class="author">
+        <cite><span class="author"><a href="http://blog.antarestrader.com">Antares</a></span></cite> &#150; 
+        <abbr title="November 17, 2008 18:08"><span class="date">November 17, 2008 @ 06:08 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I&#8217;ve been looking into comet solutions, and I would love a native Ruby/Rack solution.  Any speculation on what might happen when call and or body.each take a long time to return a value?</p>
+
+
+	<p>Would event basted client handle this properly?</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-2932">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.decodeuri.com">Luciano</a></span></cite> &#150; 
+        <abbr title="November 17, 2008 18:22"><span class="date">November 17, 2008 @ 06:22 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Nice introduction to Rack! I agree it is not getting the attention I think it deserves. I wrote a blog post on creating a simple piece of rack middleware where I try to show how simple it is to create your own (http://www.decodeuri.com/2008/10/15/creating-a-rack-middleware-for-minifying-your-javascript-files/). It&#8217;d be great to know your (and everybody else&#8217;s) thoughts about it :)</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-2937">
+      <div class="author">
+        <cite><span class="author"><a href="http://depixelate.com">Zack</a></span></cite> &#150; 
+        <abbr title="November 17, 2008 23:57"><span class="date">November 17, 2008 @ 11:57 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Very nice.  I&#8217;ve enjoyed your Rails + Sinatra articles along a similar vein.</p>
+
+
+	<p>I&#8217;m looking forward to future editions of Rails for improved Rack support.  Right now I&#8217;m leaning towards redirecting requests via nginx config between Rack frameworks like Sinatra as opposed to Rack cascade although the ease of sharing models, etc. as you highlighted in the previous post make the future of combining frameworks very appealing.</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-2959">
+      <div class="author">
+        <cite><span class="author"><span>??</span></span></cite> &#150; 
+        <abbr title="November 19, 2008 01:21"><span class="date">November 19, 2008 @ 01:21 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>very nice.</p>
+
+
+	<p>i translated it into  Chinese! 
+http://www.yeeyan.com/articles/view/blackanger/18184</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-3198">
+      <div class="author">
+        <cite><span class="author"><a href="http://blog.john.yerhot.org">John yerhot</a></span></cite> &#150; 
+        <abbr title="November 25, 2008 04:01"><span class="date">November 25, 2008 @ 04:01 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>&#8216;Take that you “Hello World” performance retards&#8217; lol</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-6521">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.eclips3media.com/workshop">Attila Györffy</a></span></cite> &#150; 
+        <abbr title="February 02, 2009 08:39"><span class="date">February 02, 2009 @ 08:39 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Your example fails with a &#8216;NameError: uninitialized constant Rack&#8217; exception, even in irb. You probably have to require &#8216;rack/handler&#8217; in your application instead of require &#8216;rack&#8217; only. That fixed it for me. However, I&#8217;d prefer to load all the Rack classes and goodness which come with the package&#8230;</p>
+      </div>
+    </li>
+    
+    <li class="comment" id="comment-7469">
+      <div class="author">
+        <cite><span class="author"><span>Turbo Tim</span></span></cite> &#150; 
+        <abbr title="March 24, 2009 02:53"><span class="date">March 24, 2009 @ 02:53 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>‘Take that you “Hello World” performance retards’ <span class="caps">LOL</span></p>
+<p>Basically you <span class="caps">PWNED</span> the community on line 8 ;)</p>
+      </div>
+    </li>
+    
+  </ol>
+</div>
+
+<form id="comment-form" method="post" action="/2008/11/17/ruby-on-rack-1/comments#comment-form">
+<fieldset>
+  <legend>Comment</legend>
+  <p>
+    <label class="text" for="comment_author">Name:</label><br/>
+    <input type="text" id="comment_author" name="comment[author]" value="" />
+  </p>
+  <p>
+    <label class="text" for="comment_author_email">Email Address:</label><br />
+    <input type="text" id="comment_author_email" name="comment[author_email]" value="" />
+  </p>
+  <p>
+    <label class="text" for="comment_author_url">Website:</label><br />
+    <input type="text" id="comment_author_url" name="comment[author_url]" value="" />
+  </p>
+  <p>
+    <label class="text" for="comment_body">Comment:</label><br />
+    <textarea id="comment_body" name="comment[body]"></textarea>
+  </p>
+  <div class="formactions">
+    <input type="submit" value="Post comment" class="submit" />
+  </div>
+</fieldset>
+</form>
+
+
+
+    </div>
+
+    <div id="sidebar">
+
+      <div class="sidebar-node">
+        <h3>Search</h3>
+        <div id="search" class="search">
+          <form action="/search" id="sform" method="get" name="sform">
+            <p><input type="text" id="q" name="q" value="" /></p>
+          </form>
+        </div>
+      </div>
+
+      <br />
+<div class="sidebar-node"><p><a href="http://feeds.feedburner.com/monkeyonrails"><img src="http://feeds.feedburner.com/~fc/monkeyonrails?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+
+
+      <br />
+      <div class="sidebar-node">
+        <h3>About</h3>
+        <ul>
+        <li><img alt="Pratik Naik" src="http://m.onkey.org/assets/2007/7/29/monkey.jpg"><br />
+        I'm Pratik Naik - A Ruby on Rails freelancer <b>available for hire</b><br /><br />
+        Currently a member of the <a href="http://rubyonrails.com/core">Ruby on Rails Core Team</a><br /><br />
+        <i>pratiknaik (at) gmail (dot) com</i><br /><br />
+        <a href="http://rubyonrails.com/core" border=0><img src="http://workingwithrails.com/images/rails-core-team-member.gif" alt="" style="vertical-align:middle;border:0"></a><br /><br />
+        <a href="http://workingwithrails.com/recommendation/new/person/5424-pratik-naik"><img alt="Recommend Me" src="http://workingwithrails.com/images/tools/compact-small.jpg" alt="" style="vertical-align:middle;border:0"  /></a>
+        </li>
+        </ul>
+
+<div class="sidebar-node">
+<p><a href="http://twitter.com/lifo"><img src="http://m.onkey.org/assets/2009/1/21/twitter8gif.gif" style="vertical-align:middle;border:0" /></a></p>
+</div>
+
+        <h3>Friends</h3>
+        <ul>
+               <li><a href="http://luckysneaks.com">rsl</a></li>
+               <li><a href="http://www.inter-sections.net/">Daniel</a></li>
+               <li><a href="http://blog.evanweaver.com">evn</a></li>
+               <li><a href="http://tore.darell.no">Tore Darell</a></li>
+               <li><a href="http://primetheory.org">Norbert</a></li>
+               <li><a href="http://anup.info">friedwater</a></li>
+               <li><a href="http://www.danwebb.net">Dan</a></li>
+               <li><a href="http://izumi.plan99.net/blog">Hongli</a></li>
+               <li><a href="http://frozenplague.net">Radar</a></li>
+               <li><a href="http://www.icoretech.org">Kain</a></li>
+               <li><a href="http://ninh.nl">Ninh</a></li>
+               <li><a href="http://www.koziarski.net">Koz</a></li>
+               <li><a href="http://ozmm.org">defunkt</a></li>
+               <li><a href="http://www.omgbloglol.com">mrneighborly</a></li>
+               <li><a href="http://greatseth.com">loincloth</a></li>
+               <li><a href="http://afreshcup.com">Mike</a></li>
+         </ul>
+
+<!-- <div style="width:176px;text-align:center"><embed src="http://twitter.com/flash/twitter_badge.swf"  flashvars="color1=0&type=user&id=6106092"  quality="high" width="176" height="176" name="twitter_badge" align="middle" allowScriptAccess="always" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /><br><a style="font-size: 10px; color: #000000; text-decoration: none" href="http://twitter.com/lifo">follow lifo at http://twitter.com</a></div> -->
+        <br />
+        <h3>Olympics ;-)</h3>
+        <ul><li>
+        <i>June hackfest - 2nd</i><br />
+        <a href="http://workingwithrails.com/hackfest/12-monthly-june-2-7"><img alt="Rails Hackfest Winner" src="http://workingwithrails.com/images/rails-hackfest-winner.gif?1185831944" alt="" style="vertical-align:middle;border:0"></a><br /><br />
+        <i>July hackfest - 1st</i><br />
+        <a href="http://workingwithrails.com/hackfest/13-monthly-july-2-7"><img alt="Rails Hackfest Winner" src="http://workingwithrails.com/images/rails-hackfest-winner.gif?1185831944" alt="" style="vertical-align:middle;border:0"></a><br /><br />
+        <i>September hackfest - 1st</i><br />
+        <a href="http://workingwithrails.com/hackfest/15-monthly-september-2-7"><img alt="Rails Hackfest Winner" src="http://workingwithrails.com/images/rails-hackfest-winner.gif?1185831944" alt="" style="vertical-align:middle;border:0"></a><br /><br />
+        <i>January hackfest - 1st</i><br />
+        <a href="http://workingwithrails.com/hackfest/21-monthly-january-2-8"><img alt="Rails Hackfest Winner" src="http://workingwithrails.com/images/rails-hackfest-winner.gif?1185831944" alt="" style="vertical-align:middle;border:0"></a><br /><br />
+        </li></ul>
+         <h3>Hangouts</h3>
+         <i>irc.freenode.net</i>
+        <ul><li>#rubyonrails</li><li>#rails-contrib</li></ul>
+      </div>
+
+      <!-- Delete the comment blocks if you'd like to display links for the monthly archive -->
+      
+
+
+      <!-- Delete the comment blocks if you'd like to list out your sections -->
+      
+      <div class="sidebar-node">
+        <h3>Sections</h3>
+        <ul>
+        
+          <li><a class="selected" href="/">Home</a> (15)</li>
+        
+        </ul>
+      </div>
+      
+
+      <!-- Delete the comment blocks if you'd like to list out your tags -->
+      
+      <div class="sidebar-node">
+        <h3>Tags</h3>
+        <ul>
+        
+          <li><a href="/tags/actionpack" rel="tag">actionpack</a> (2)</li>
+        
+          <li><a href="/tags/actionview" rel="tag">actionview</a> (1)</li>
+        
+          <li><a href="/tags/activerecord" rel="tag">activerecord</a> (14)</li>
+        
+          <li><a href="/tags/activesupport" rel="tag">activesupport</a> (1)</li>
+        
+          <li><a href="/tags/callbacks" rel="tag">callbacks</a> (1)</li>
+        
+          <li><a href="/tags/csrf" rel="tag">csrf</a> (1)</li>
+        
+          <li><a href="/tags/documentation" rel="tag">documentation</a> (2)</li>
+        
+          <li><a href="/tags/edge" rel="tag">edge</a> (3)</li>
+        
+          <li><a href="/tags/freeonrails" rel="tag">freeonrails</a> (1)</li>
+        
+          <li><a href="/tags/git" rel="tag">git</a> (1)</li>
+        
+          <li><a href="/tags/guides" rel="tag">guides</a> (1)</li>
+        
+          <li><a href="/tags/irc" rel="tag">irc</a> (2)</li>
+        
+          <li><a href="/tags/joke" rel="tag">joke</a> (2)</li>
+        
+          <li><a href="/tags/lifo-bore" rel="tag">lifo-bore</a> (1)</li>
+        
+          <li><a href="/tags/morons" rel="tag">morons</a> (1)</li>
+        
+          <li><a href="/tags/news" rel="tag">news</a> (1)</li>
+        
+          <li><a href="/tags/performance" rel="tag">performance</a> (4)</li>
+        
+          <li><a href="/tags/pissed off" rel="tag">pissed off</a> (1)</li>
+        
+          <li><a href="/tags/planet" rel="tag">planet</a> (1)</li>
+        
+          <li><a href="/tags/plugins" rel="tag">plugins</a> (2)</li>
+        
+          <li><a href="/tags/polymorphs" rel="tag">polymorphs</a> (1)</li>
+        
+          <li><a href="/tags/rack" rel="tag">rack</a> (4)</li>
+        
+          <li><a href="/tags/rails" rel="tag">rails</a> (19)</li>
+        
+          <li><a href="/tags/railsconf" rel="tag">railsconf</a> (1)</li>
+        
+          <li><a href="/tags/ruby" rel="tag">ruby</a> (8)</li>
+        
+          <li><a href="/tags/scaling" rel="tag">scaling</a> (1)</li>
+        
+          <li><a href="/tags/security" rel="tag">security</a> (3)</li>
+        
+          <li><a href="/tags/sinatra" rel="tag">sinatra</a> (2)</li>
+        
+          <li><a href="/tags/testing" rel="tag">testing</a> (2)</li>
+        
+          <li><a href="/tags/tips" rel="tag">tips</a> (6)</li>
+        
+          <li><a href="/tags/twitter" rel="tag">twitter</a> (1)</li>
+        
+          <li><a href="/tags/xss" rel="tag">xss</a> (1)</li>
+        
+        </ul>
+      </div>
+      
+       <div class="sidebar-node"><p><a href="http://feeds.feedburner.com/monkeyonrails" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/monkeyonrails" rel="alternate" type="application/rss+xml">Subscribe in a reader</a></p></div>
+      
+      <div class="sidebar-node">
+        <p><a href="http://www.last.fm/user/lifofifo" class="powered"><img src="http://imagegen.last.fm/yehya/oartists/4/lifofifo.gif" alt="" style="vertical-align:middle;border:0" /></a></p>
+      </div>
+     
+    </div>
+    <br style="clear:both;" />
+
+  </div>
+
+  <div id="footer">
+    <hr />
+    <p><a href="/">has_many :bugs, :through => :rails</a></p>
+    <ul>
+      <li>powered by <a href="http://mephistoblog.com">Mephisto</a> /
+          styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-929590-2";
+urchinTracker();
+</script>
+
+</body>
+</html>

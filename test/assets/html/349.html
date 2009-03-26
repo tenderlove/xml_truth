@@ -1,0 +1,1579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta name="robots" content="index, follow" />
+<meta name="description" content="By Greg Borenstein and Michael ‘MJFreshyFresh’ Jones Rails is an model-view-controller Web framework written in the Ruby programming language. One of its great appeals is being able to quickly crank out CRUD-based Web applications. A" />
+<meta name="keywords" content="Rails, Ruby, Rack, Haml, Rake, Rspec, This, What’s" />
+<title>10 Useful Tips For Ruby On Rails Developers | How-To | Smashing Magazine</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.smashingmagazine.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.smashingmagazine.com/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://www.smashingmagazine.com/wp-includes/js/jquery/jquery.js?ver=1.2.6'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+	wpAjax = {
+		noPerm: "You do not have permission to do that.",
+		broken: "An unidentified error has occurred."
+	}
+	try{convertEntities(wpAjax);}catch(e){};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.smashingmagazine.com/wp-includes/js/wp-ajax-response.js?ver=20081210'></script>
+<script type='text/javascript' src='http://www.smashingmagazine.com/wp-includes/js/thickbox/thickbox.js?ver=3.1-20090123'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+	wpajaxeditcomments = {
+		AEC_PluginUrl: "http://www.smashingmagazine.com/wp-content/plugins/wp-ajax-edit-comments",
+		AEC_CanScroll: "0",
+		AEC_Minutes: "minutes",
+		AEC_Minute: "minute",
+		AEC_And: "and",
+		AEC_Seconds: "seconds",
+		AEC_Second: "second",
+		AEC_Moderation: "Mark for Moderation?",
+		AEC_Approve: "Approve Comment?",
+		AEC_Spam: "Mark as Spam?",
+		AEC_Delete: "Delete this comment?",
+		AEC_Anon: "Anonymous",
+		AEC_Loading: "Loading...",
+		AEC_LoadSuccessful: "Comment Loaded Successfully",
+		AEC_Saving: "Saving...",
+		AEC_Saved: "Comment Successfully Saved",
+		AEC_Delink: "De-link Successful"
+	}
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.smashingmagazine.com/wp-content/plugins/wp-ajax-edit-comments/js/wp-ajax-edit-comments.js?ver=2.3'></script>
+<meta name="generator" content="WordPress 2.7.1" />
+
+<link rel="stylesheet" href="http://www.smashingmagazine.com/wp-content/plugins/wp-ajax-edit-comments/css/edit-comments.css" type="text/css" media="screen"  /><!-- Ajax Edit Comments -->
+<!--[if IE]>
+<style>
+  .clearfix {display: inline-block;}
+  /* Hides from IE-mac \*/
+  * html .clearfix {height: 1%;}
+  .clearfix {display: block;}
+  /* End hide from IE-mac */
+</style>
+<![endif]-->
+<link rel="stylesheet" href="http://www.smashingmagazine.com/wp-includes/js/thickbox/thickbox.css" type="text/css" media="all"  /><!--ajax edit comments --><script type='text/javascript'>
+tb_pathToImage = 'http://www.smashingmagazine.com/wp-includes/js/thickbox/loadingAnimation.gif';tb_closeImage = 'http://www.smashingmagazine.com/wp-includes/js/thickbox/tb-close.png';
+</script>
+      <link rel="shortcut icon" href="http://www.smashingmagazine.com/images/favicon.ico" />
+<link rel="stylesheet" href="/wp-content/themes/SM-theme/css-min/style.css?ver=2009-02-12" type="text/css" media="screen" />
+<!--[if IE 7]>
+<link rel="stylesheet" href="/wp-content/themes/SM-theme/css-min/ie7.css?ver=2009-02-12" type="text/css" media="screen" />
+<![endif]-->
+<link rel="stylesheet" href="/wp-content/themes/SM-theme/css-min/print.css?ver=2009-02-12" type="text/css" media="print" />
+<link rel="alternate" type="application/rss+xml" title="Smashing Magazine Full RSS Feed" href="http://rss1.smashingmagazine.com/feed/" />
+
+<meta http-equiv="content-language" content="en" />
+<link rel="top" href="#" title="top" />
+<link rel="copyright" href="about.php" title="about" />
+<meta name="msvalidate.01" content="E7FB8078204DC42F8266D103A1B8A8EA" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.smashingmagazine.com/xmlrpc.php?rsd" />
+<link rel="pingback" href="http://www.smashingmagazine.com/xmlrpc.php" /></head>
+<body onload="draw_smashing_jobs();"  id="know-how"><div id="pagewidth">
+		
+<div id="header"><ul>
+<li><a title="Home" href="http://www.smashingmagazine.com/" class="home">Home</a></li>
+<li><a title="Graphics" href="/category/graphics/" class="graphics">Graphics</a></li>
+<li><a title="Showcases" href="/category/showcase/" class="showcases">Showcases</a></li>
+<li><a title="Monday Inspiration" href="/category/monday-inspiration/" class="monday-inspiration">Inspiration</a></li>
+<li><a title="Fonts" href="/category/fonts/" class="fonts">Fonts</a></li>
+<li><a title="How-To" href="/category/know-how/" class="know-how">How-To</a></li>
+<li><a title="CSS" href="/category/css/" class="css">CSS</a></li>
+<li><a title="Tools" href="/category/toolbox/" class="toolbox">Tools</a></li>
+<li><a title="Freebies" href="/category/freebies/" class="freebies">Freebies</a></li>
+<li><a title="Tutorials" href="/category/tutorials/" class="tutorials">Tutorials</a></li>
+<li><a title="Jobs" href="http://jobs.smashingmagazine.com" class="jobs">Jobs</a></li>
+<li><a title="Forum" href="http://forum.smashingmagazine.com" class="forum">Forum</a></li>
+</ul></div><div id="main"><div id="leftcolumn">
+<h1 class="logo"><a title="Smashing Magazine Homepage" href="http://www.smashingmagazine.com/"><img src="http://www.smashingmagazine.com/wp-content/themes/SM-theme/img/logo.gif"	width="229" height="83" alt="Smashing Magazine ~ we smash you with the information that will make your life easier. really." /></a><br /><a title="Smashing Magazine Homepage" href="http://www.smashingmagazine.com/">Smashing Magazine <em>we smash you with the information that will make your life easier. really.</em></a></h1><div class="leftframe">
+<h1 class="title"><a href="http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/" rel="bookmark" title="10 Useful Tips For Ruby On Rails Developers">10 Useful Tips For Ruby On Rails Developers</a></h1>
+<div class="topic"><div class="top">
+<p class="published">By Crystal Beasley, February 25th, 2009 in <a href="http://www.smashingmagazine.com/category/know-how/" title="View all posts in How-To" rel="category tag">How-To</a> | <a rel="nofollow" href="http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/#comments" title="Comment on 10 Useful Tips For Ruby On Rails Developers"><strong>63 Comments</strong></a> | <a href="http://forum.smashingmagazine.com/">Forum</a>   </p> 
+</div><div class="gsense">
+<span class="an">Advertisement</span><br />
+<!-- Smashing Magazine - Medium Rectangle ad spot -->
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=14");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://adserver.3digit.de/www/delivery/ck.php?n=af15fa08&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://adserver.3digit.de/www/delivery/avw.php?zoneid=14&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=af15fa08' border='0' alt='' /></a></noscript>
+</div>
+<div id="greet_block"></div>
+
+<!-- google_ad_section_start -->
+<p><em>By Greg Borenstein and Michael ‘MJFreshyFresh’ Jones</em></p>
+<p>Rails is an model-view-controller Web framework written in the Ruby programming language. One of its great appeals is being able to quickly crank out <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a>-based Web applications. A big advantage of Rails over other frameworks is that it values <a href="http://en.wikipedia.org/wiki/Convention_over_Configuration">convention over configuration</a>. If you follow the correct conventions, you can avoid lengthy configuration of files, and things just work! Therefore, you spend less time writing boring config files and more time focusing on business logic.</p>
+<p><a href=""><img src="http://88.198.60.17/images/ruby-on-rails-tips/rails.jpg" width="300" height="356" alt="Ruby on Rails logo" /></a></p>
+<p>Now, <strong>we love Rails</strong>. But don&#8217;t get us wrong. Like any tool, it&#8217;s not the perfect solution to every problem. A lot of the biggest complaints people have about the framework come from using it in situations where something simpler, smaller and more lightweight would do just fine. We love <a href="http://sinatra.github.com/">Sinatra</a> for anything with minimal server-side involvement. <a href="http://merbivore.com/">Merb</a> is another excellent minimal framework. And nothing beats apps that run completely in the browser with JavaScript: they can be deployed nearly for free, can scale almost infinitely and never have to be restarted.</p>
+<p>In the overview below we present <strong>10 useful tips, ideas and resources for Ruby on Rails-developers</strong> (both newbies and professionals). Please feel free to share your tips, ideas and suggestions in the comments to this post!</p>
+<h3>1. Plug-Ins Save Time</h3>
+<p>Rails has a well defined plug-in structure that enables you to easily install and use plug-ins in your application.	David Heinemeier Hansson, the father of Rails, once stated that he uses five to six plug-ins in each Rails application.</p>
+<p>There&#8217;s an old nugget of developer wisdom that &#8220;the best code is no code at all.&#8221; Part of what makes us so <strong>productive when developing in Rails</strong> is that all the code that we <em>don&#8217;t</em> have to write because someone else in the community has already written a plug-in that provides the functionality we need.</p>
+<p>There are a few ways to install a plug-in in Rails, however the most common is using script:</p>
+<pre name="code" class="ruby"># Install from a git repo
+script/plugin install git://github.com/mislav/will_paginate.git
+
+# Install from a url
+script/plugin install http://topfunky.net/svn/plugins/calendar_helper</pre>
+<p>You can save yourself a ton of time and hassle by becoming good at searching the Web (and especially <a href="http://http//github.com">the almighty GitHub</a>). A couple of places to find plug-ins are <a href="http://dev.rubyonrails.org/svn/rails/plugins/">Core Rails</a>, <a href="http://railsify.com/">Railsify</a> and <a href="http://agilewebdevelopment.com/plugins/index">Rails Plug-in Directory</a>. Need to integrate with an existing API or consume some kind of standard format data? Need <a href="http://agilewebdevelopment.com/plugins/acts_as_taggable_on_steroids">tagging</a>, <a href="http://github.com/mislav/will_paginate/tree/master">pagination</a>, or another common Web application feature? Odds are that some great Rails or Ruby developer out there already has a project going that will get you at least most of the way there.</p>
+<h3>2. Testing is Fun and Easy with Rspec</h3>
+<p>For most people, the word &#8220;test&#8221; brings back scary memories of school exams. When working with Rails, however, <strong>automated testing</strong> can make your development experience much more enjoyable. While lots of people have strong, nearly religious, opinions about them, at their core, automated tests are just little helper programs you write that run bits of your main code to make sure they do the right thing. When done right, testing will improve your workflow and increase your confidence in the results.</p>
+<p>Rails ships with a test framework baked right in, but for the last couple of years all the cool kids have been using an alternative called <a href="http://rspec.info/">Rspec</a>. Rspec&#8217;s biggest advantage is its syntax for specifying tests:</p>
+<pre name="code" class="ruby">describe "My Cool library" do
+  before do
+    @cool = Cool.new
+  end
+
+  it "should be full of penguins." do
+    @cool.get_penguins!
+    @cool.penguin_count.should == 10
+  end
+
+  it "should melt if it gets too warm"
+end</pre>
+<p>What&#8217;s <strong>great about Rspec&#8217;s syntax is how much English it uses</strong>. The describe block that sets the context and each assertion within it takes strings that you use to explain what your code should do. Often, this is the most important stage: you sit down to write the assertion, getting as far as you can, and then you think, &#8220;Right, what should this code actually do then?&#8221;</p>
+<p>Because Rspec lets you leave off the block that implements the assertion (as in the second melt example), you can quickly brainstorm all of your functionality, and then go back and implement the tests later as you write the code. In the meantime, Rspec will consider those tests as &#8220;pending&#8221; and give you little reminders about them in your test runs.</p>
+<p>Besides helping you write code in the first place, another great thing about tests is that, once you have enough of them, they let you see how all of your code is related, making it easy to know if your recent change broke anything else in your application. <strong>Rspec makes it easy to get good test coverage</strong> through the use of custom generators that create the tests right along with the rest of your code:</p>
+<pre name="code" class="ruby">$ script/generate rpsec_scaffold MyModel</pre>
+<p>Once you&#8217;ve got tests to ensure that the basic functionality works successfully, you can make changes and add new code with confidence without worrying about introducing invisible bugs. As long as you run your tests regularly, you&#8217;ll know as soon as you break something. And as GI Joe taught us, knowing is half the battle!</p>
+<h3>3. Save Time, Use Rake</h3>
+<p>Projects often include more than just application-specific code. Sample data have to be created, Web services have to be queried, files have to be moved, code snippets rewritten, etc. Resist the urge to shell script or to cram in a migration or controller. Use <a href="http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial">Rake</a>. It rocks!</p>
+<p><a href="http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial"><img src="http://78.46.108.98/images/ruby-on-rails-tips/rake.gif" width="480" height="383" alt="Rake" /></a></p>
+<p><a href="http://rake.rubyforge.org/">Rake</a> is a build tool written in Ruby, very similar to <a href="http://www.gnu.org/software/make/">make</a>. Rails projects have several Rake tasks already defined; to see these, run the rake -T command.</p>
+<pre name="code" class="ruby">macbook$ rake -T
+
+rake data:bootstrap		# load in some basic data [caution: will nuke and replcace cate...
+rake db:create:all		# Create all the local databases defined in config/database.yml
+rake db:drop			# Drops the database for the current RAILS_ENV
+...
+rake ts:run				# Stop if running, then start a Sphinx searchd daemon using Thi...
+rake ts:start			# Start a Sphinx searchd daemon using Thinking Sphinx's settings
+rake ts:stop			# Stop Sphinx using Thinking Sphinx's settings</pre>
+<p>Adding your own Rake tasks is quite easy. In the example below, you see that the task is name-spaced and has a description and task name, allowing you to write in Ruby.</p>
+<pre name="code" class="ruby">namespace :data do
+  desc "load in some basic data [caution: will nuke and replcace categories, categorizations and inventory items]"
+  task :bootstrap =&gt; :environment do
+    # clean out existing:
+    [Category, Categorization, InventoryItem].each{|m| m.find(:all).each{|i| i.destroy}}
+    InventoryItem.create! :name =&gt; "Compass"
+    c = Category.create! :name =&gt; "Basic Apparel"
+
+    ["Men’s Heavyweight Cotton T",
+    "Men’s Heavyweight Polo",
+    "Women’s Organic Cotton Fitted T",
+    "Women’s Fitted Polo",
+    "Children’s T-Shirt",
+    "Jr’s Distressed Hoodie",
+    "Hemp Messenger Bag"].each do |name|
+      c.inventory_items.create! :name =&gt; name
+    end
+
+   ...
+
+end</pre>
+<h3>4. Track Application Exceptions</h3>
+<p>Exceptions happen, and when they do, you want to know about them! Your client shouldn&#8217;t be the one telling you that a problem has occurred; you should already be aware of the issue and working to resolve it. Exception notification has been available in Rails for a while. There are <a href="http://github.com/rails/exception_notification/tree/master">exception notification plug-ins</a> that make it easy to be notified. However, some services such as <a href="http://hoptoadapp.com/">Hop Toad</a> and <a href="http://getexceptional.com/">Get Exceptional</a> add a lot of value to your application.</p>
+<p><a href="http://getexceptional.com/"><img src="http://88.198.60.17/images/ruby-on-rails-tips/exc.jpg" alt="Screenshot" width="501" height="403" /></a></p>
+<p>Both of these services are easy to install and provide a great UI for tracking your exceptions. You can even sign up for a free account to try things out.</p>
+<p>By <strong>centralizing the application exceptions</strong>, you are able to see how frequently these exceptions occur, what environment they occur in (a particular browser? a particular location?), what parameters were present and the full stack trace. This centralization of data helps you see patterns and resolve the issue more quickly, which results in a better application and happier users.</p>
+<h3>5. Mix and match between frameworks and servers with Rails on Rack</h3>
+<p>As of <a href="http://weblog.rubyonrails.org/2009/2/1/rails-2-3-0-rc1-templates-engines-rack-metal-much-more">version 2.3</a>, Rails runs on top of <a href="http://rack.rubyforge.org/">Rack</a>. Rack makes it possible to mix and match between Ruby Web frameworks and servers. If you&#8217;re using a framework that supports it (like Rails, Sinatra, <a href="http://camping.rubyforge.org/files/README.html">Camping</a>, etc), you can choose from any of the servers that do also (<a href="http://mongrel.rubyforge.org/">Mongrel</a>, <a href="http://code.macournoyer.com/thin/">Thin</a>, <a href="http://www.modrails.com/">Phusion Passenger</a>, etc.), and vice versa.</p>
+<p><a href="http://rack.rubyforge.org/"><img src="http://78.46.108.98/images/ruby-on-rails-tips/rack-logo.png" alt="Screenshot" /></a></p>
+<p>In addition to introducing all kinds of new options for deployment, this change means that Rails now has access to the exciting world of Rack middleware. Because Rack lives at the intersection of your app and your server, it can provide all kinds of common functionality directly. A great example of this is <a href="http://tomayko.com/src/rack-cache/">Rack::Cache</a>.</p>
+<p>Rack::Cache provides a <strong>caching layer</strong> for your application that you control simply by sending the correct headers in your responses. In other words, all you have to do is install a bit of code in the Rack config file:</p>
+<pre name="code" class="ruby">require 'rack/cache'
+
+use Rack::Cache,
+  :metastore =&gt; 'file:/tmp/rack_meta_dir',
+  :entitystore =&gt; 'file:/tmp/rack_body_dir',
+  :verbose =&gt; true</pre>
+<p>And make sure your controller actions send the right headers (for example, by setting <code>request.headers["Cache-Control"]</code>) and Bam!, you&#8217;ve got caching.</p>
+<h3>6. Easy Data Dumping</h3>
+<p>You&#8217;ll often need to get data from production to dev or dev to your local or your local to another developer&#8217;s local. One plug-in we use over and over is <a href="http://github.com/adamwiggins/yaml_db/tree/master">Yaml_db</a>. This nifty little plug-in enables you to <strong>dump or load data by issuing a Rake command</strong>. The data is persisted in a yaml file located in db/data.yml. This is very portable and easy to read if you need to examine the data.</p>
+<pre name="code" class="ruby">rake db:data:dump
+
+example data found in db/data.yml
+
+---
+campaigns:
+  columns:
+  - id
+  - client_id
+  - name
+  - created_at
+  - updated_at
+  - token
+  records:
+  - - "1"
+    - "1"
+    - First push
+    - 2008-11-03 18:23:53
+    - 2008-11-03 18:23:53
+    - 3f2523f6a665
+  - - "2"
+    - "2"
+    - First push
+    - 2008-11-03 18:26:57
+    - 2008-11-03 18:26:57
+    - 9ee8bc427d94</pre>
+<h3>7. Keep Your Constants in One Place</h3>
+<p>All applications have constants, variables that are defined with data that don&#8217;t change, such as the name of the application, the tagline, values for crucial options, etc. We use the <strong>Rails initializer feature</strong> to define a <code>config/initializers/site_config.rb </code>for housing these constants. By using this convention, all developers on a project know exactly where to look for the constants and can quickly make changes.</p>
+<p>Many people have questions about when to put a constant in the <code>site_config.rb</code> instead of the class it is used in. For a constant that are only used in a single class, we suggest putting it in that class. However, if the constant is used in more than one location, put it in the site_config.rb. For more on constants, have a look at <a href="http://rubylearning.com/satishtalim/ruby_constants.html">Rubylearning</a>.</p>
+<pre name="code" class="ruby"># File config/initializers/site_config.rb
+
+REPORT_RECIPIENT = 'jenn@scg.com'
+REPORT_ADMIN = 'michael@scg.com'</pre>
+<h3>8. Console for Working on Code</h3>
+<p>Sometimes you may have code that you&#8217;re curious about. Will it work this way? What&#8217;s the output? What can I change? Rails ships with a wonderful tool called <a href="http://wiki.rubyonrails.org/rails/pages/Console">console</a>. By running script/console you will enter an <strong>interactive environment where you can access your Rails code</strong> just as though the application were running.</p>
+<p>This environment is incredibly helpful. It is often used in production environments at times to quickly peek at data without having to log in to the database. To do this in a production environment, use script/console RAILS_ENV=production:</p>
+<pre name="code" class="ruby">macbook$ ./script/console
+Loading development environment (Rails 2.1.1)
+&gt;&gt; a = Album.find(:first)
+=&gt; #
+&gt;&gt;</pre>
+<h3>9. Ugly Views Getting You Down? Try Haml.</h3>
+<p>Views are how your Rails application generates the HTML pages your visitors actually see and use. By default, Rails uses the <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/classes/ERB.html">ERb templating system</a> to let you embed bits of Ruby in your markup so that you can insert your data as needed. However, recent versions of Rails let you take your pick of templating languages, and nowadays the Ruby interwebs have been all abuzz about an alternative system called <a href="http://haml.hamptoncatlin.com/">Haml</a>.</p>
+<p><a href="http://haml.hamptoncatlin.com/"><img src="http://78.46.108.98/images/ruby-on-rails-tips/haml.gif" width="480" height="399" alt="HAML" /></a></p>
+<p>Haml is marketed as &#8220;markup Haiku.&#8221; Its <strong>CSS-inspired syntax lets you focus on the semantics of your data</strong> rather than worrying about closing all the angle brackets that come with using ERb and HTML.</p>
+<p>For comparison, here&#8217;s a bit of markup in standard ERb:</p>
+<pre name="code" class="ruby">&lt;%= print_date %&gt;
+&lt;%= current_user.address %&gt;
+
+&lt;%= current_user.email %&gt;
+&lt;%= h current_user.bio %&gt;
+</pre>
+<p>And here&#8217;s the equivalent in Haml:</p>
+<pre name="code" class="ruby">#profile
+  .left.column
+    #date= print_date
+    #address= current_user.address
+  .right_column
+    #email= current_user.email
+    #bio= h(current_user.bio)</pre>
+<p>Haml&#8217;s not for everyone, and many people will find this syntax quite alien. But if you value concision and are fluent in CSS, Haml may be just the ticket.</p>
+<h3>10. Know Where to Watch What&#8217;s Happening in Rails</h3>
+<p>Rails and Ruby both have <strong>large and active communities</strong> that constantly generate changes, improvements and new projects. Trying to keep up with all the activity can be daunting, but it&#8217;s essential if you want to benefit from the community&#8217;s best work and continue to increase your Rails and Ruby knowledge.</p>
+<p>Thankfully, a number of sources aggregate some of the most important activity:</p>
+<ul>
+<li>GitHub has a <a href="http://github.com/popular/watched">most-watched projects page</a>, which is a great place to start.</li>
+<li>Similarly, RubyInside&#8217;s monthly <a href="http://www.rubyinside.com/whats-hot-on-github-january-2009-1450.html">What&#8217;s Hot on Github</a> and</li>
+<li><a href="http://github.com/blog/310-github-rebase-11">the GitHub blog&#8217;s Rebase series</a> both feature selections of interesting work from the website.</li>
+</ul>
+<p>	There&#8217;s also a whole universe of Rails training:</p>
+<ul>
+<li><a href="http://www.railsenvy.com/">Rails Envy</a></li>
+<li><a href="http://peepcode.com/">PeepCode</a></li>
+</ul>
+<p> and news aggregators:</p>
+<ul>
+<li>follow <a href="http://twitter.com/ruby_news">ruby_news</a> on Twitter,</li>
+<li>subscribe to <a href="http://www.rubyinside.com/">Ruby Inside</a>,</li>
+<li>subscribe to <a href="http://rubyflow.com/">Ruby Flow</a>.</li>
+</ul>
+<p>Another avenue is the <a href="http://groups.google.com/group/rubyonrails-core">Rails Core mailing list</a> and the #rails-core IRC channel.</p>
+<h4>About the authors</h4>
+<p>This guest post was written by Greg Borenstein and Michael &#8216;MJFreshyFresh&#8217; Jones, lead Ruby developers for <a href="http://stepchangegroup.com/">StepChange Group</a>. StepChange designs, develops and manages social media widgets and Facebook applications in partnership with leading brands and agencies. Outside of work, Greg builds <a href="http://www.urbanhonking.com/ideasfordozens/2009/02/rad_talk_roundup.html">drum-playing robots</a> and other hardware hacks, and MJ leads a local group of <a href="http://www.unicyclebastards.com/">Unicycle-borne pirates</a>. They live and work in beautiful, moist Portland, Oregon.</p>
+<p><em>(al)</em></p>
+
+<!-- google_ad_section_end -->
+<!--
+<div style='border-style: solid; border-top: 1px solid #FFD129; border-right: 1px solid #ffd129; border-left: 1px solid #ffd129; border-bottom: 3px solid #ffd129; padding: 10px 15px; -moz-border-radius: 3px; background-color: #FFF4A6; margin-top: 15px;'>Dear friends, we try hard to meet your expectations with our posts. If you enjoyed this one, please share it via <strong>Digg</strong>, <strong>StumbleUpon</strong> or <strong>Twitter</strong>. Thank you!</div>
+-->
+<ul class="social" style="margin: 15px 0 0 0;">
+<li style="padding: 0 8px 0 0;">
+	<script type="text/javascript">
+	digg_bgcolor = '#ffffff';
+	digg_url = 'http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/';
+	</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>
+</li></ul>
+<p style="float: left;"><a href="http://delicious.com/post?url=http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/&amp;title=" title="Bookmark on Del.icio.us!" rel="nofollow"><img src="http://88.198.60.17/images/delic.jpg" width="62" height="70" alt="Delicious button" /></a> <a title="Stumble on Stumbleupon!" href="http://www.stumbleupon.com/submit?url=http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/&amp;title="><img style="border: 0pt none ;" src="http://88.198.60.17/images/stum.jpg" width="67" height="70" alt="Stumbleupon" /></a> <a title="Spread the word on Twitter!" href="http://twitter.com/home?status=@tweetmeme @smashingmag Reading '10 Useful Tips For Ruby On Rails Developers' http://tinyurl.com/dzq4o7 "><img style="border: 0pt none ;" src="http://www.smashingmagazine.com/images/twitty.png" alt="Spread the word on Twitter!" height="75" width="98" /></a></p>
+</div></div><div class="leftframe"><div class="topic">
+<ul class="tags">
+<li class="dropped">Published in <a href="http://www.smashingmagazine.com/category/know-how/" title="View all posts in How-To" rel="category tag">How-To</a>, February 25th, 2009</li>
+<li class="droppedtags">Tags: <a href="http://www.smashingmagazine.com/tag/rails/" rel="tag">rails</a>, <a href="http://www.smashingmagazine.com/tag/ruby/" rel="tag">ruby</a>, <a href="http://www.smashingmagazine.com/tag/tools/" rel="tag">tools</a></li>
+</ul></div>
+<span class="an">Advertisement</span><br />
+<!-- Smashing Magazine - Comment Sponsor ad spot -->
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=22");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://adserver.3digit.de/www/delivery/ck.php?n=afece3f8&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://adserver.3digit.de/www/delivery/avw.php?zoneid=22&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=afece3f8' border='0' alt='' /></a></noscript>
+</div>
+<div class="leftframe">
+	
+	
+		<ul class="tabset" id="post_tabs">
+			<li class="active"><a href="#" rel="comments">Comments</a></li>
+			<li><a href="#" rel="trackbacks">Trackbacks/Pings</a></li>
+		</ul>
+					<div class="comment-list" id="comments">
+				<ol>
+					
+											<li  id="comment-325375" >
+							<strong class="number">1.</strong>
+							<div class="top">
+								<p><a href='http://www.joomlabucket.com' rel='external nofollow' class='url'>Matic</a> (February 25th, 2009, 12:24 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/86383aa552cf72a0537f902436d2f98c?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Great useful tips. Thanks SM!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325379" >
+							<strong class="number">2.</strong>
+							<div class="top">
+								<p>J (February 25th, 2009, 12:27 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/6de5a50c65a86e25df463ccbc33da501?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Meh.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325383" >
+							<strong class="number">3.</strong>
+							<div class="top">
+								<p>CT (February 25th, 2009, 12:32 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/8108deface1ad1cba42fe745924c1e88?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Thanks for the information - will definitely use this</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325385" >
+							<strong class="number">4.</strong>
+							<div class="top">
+								<p><a href='http://www.eirestudio.net' rel='external nofollow' class='url'>Keith Donegan</a> (February 25th, 2009, 12:33 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/380f0a3e0c931920d833fd3a5d5f1a94?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>As always, great job guys!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325387" >
+							<strong class="number">5.</strong>
+							<div class="top">
+								<p><a href='http://realnorth.net' rel='external nofollow' class='url'>paulo</a> (February 25th, 2009, 12:33 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/8ab46855059dad7882c9410084d67d45?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Railscast is another great place for RoR training.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325420" >
+							<strong class="number">6.</strong>
+							<div class="top">
+								<p><a href='http://www.wadejackman.com' rel='external nofollow' class='url'>Wade Jackman</a> (February 25th, 2009, 1:09 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/b50997db6358d63878d175845487fe2f?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Very helpful, Im taking my first real dive into RoR, think this will help!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325442" >
+							<strong class="number">7.</strong>
+							<div class="top">
+								<p><a href='http://shiningthrough.co.uk' rel='external nofollow' class='url'>Jon</a> (February 25th, 2009, 1:19 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/7a666449acc7e18a7002bc88798a44d3?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>I have been using Ruby and Rails for quite some time, and got a fair few sites under my belt.<br />
+Having said that, I found this article very informative, the Rails community moves at such a pace, its sometimes hard to keep up. Thanks for bringing me up to date!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325451" >
+							<strong class="number">8.</strong>
+							<div class="top">
+								<p>Brian Terlson (February 25th, 2009, 1:24 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/d3b9541d4eeefb3828ecf29a10fb2da6?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Doing integration testing with Cucumber should also be mentioned. Cucumber allows you to write plain text stories that set up conditions and test expectations by interfacing with your application like a user would. The benefits are numerous: you test your full application stack (views, models, controllers, and interactions thereof), you can hand the feature descriptions directly to stakeholders and have them evaluate them, and it&#8217;s very easy to write and maintain.</p>
+<p>Along testing lines, replacing fixtures with generators like factory_girl or machinist is a good idea. Fixtures quickly become unwieldy, and being able to generate objects as you need them helps keep tests clean.</p>
+<p>For deployment and production use, the biggest time savers ever are Phusion Passenger and Capistrano.  Passenger makes running a Rails application very simple (just a few declarations in your Apache config file and you&#8217;re good to go), and Capistrano makes deploying changes to your production server (or staging/test server, for that matter)  a breeze.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325463" >
+							<strong class="number">9.</strong>
+							<div class="top">
+								<p><a href='http://www.indesicant.com' rel='external nofollow' class='url'>Derek Keith</a> (February 25th, 2009, 1:33 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/e26352a6a9fe84f10df6588ec48dff08?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>I was introduced to HAML/SASS a while back, and I have to say, it&#8217;s quite the amazing language! Totally makes thing easier with the required indentation, and automatic closing of tags. I wish I could use it outside of RoR because whenever I have to code something for Wordpress now, I think, &#8220;Darn I have to use HTML again.&#8221;</p>
+<p>Thanks for the tips Smashing Magazine!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325507" >
+							<strong class="number">10.</strong>
+							<div class="top">
+								<p><a href='http://www.rubyinside.com/' rel='external nofollow' class='url'>Peter Cooper</a> (February 25th, 2009, 2:24 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/6268c7528d855f1cef5696a00d159909?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Thanks for mentioning Ruby Inside (I&#8217;m the editor). I just wanted to highlight that Rails Inside at <a href="http://www.railsinside.com/" rel="nofollow">Link</a> [www.railsinside.com] is more Rails specific but in the same vein :)</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325515" >
+							<strong class="number">11.</strong>
+							<div class="top">
+								<p>Jerome (February 25th, 2009, 2:37 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/f03bd170c437ee429af298ef81c12d35?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>The best tip so far is the new rails 2.3 feature regarding application templates: <a href="http://railscasts.com/episodes/148-app-templates-in-rails-2-3" rel="nofollow">Link</a> [railscasts.com]<br />
+Love it.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325546" >
+							<strong class="number">12.</strong>
+							<div class="top">
+								<p><a href='http://jhaygamba.com' rel='external nofollow' class='url'>Jhay</a> (February 25th, 2009, 3:28 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/92eb723a364ee9fbc81ccf698b2950ca?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Nice!! Thanks for sharing</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325614" >
+							<strong class="number">13.</strong>
+							<div class="top">
+								<p><a href='http://litanyagainstfear.com' rel='external nofollow' class='url'>Nick Quaranto</a> (February 25th, 2009, 5:39 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/eb8975af8e49e19e3dd6b6b84a542e26?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Hey, thanks for the Rebase shoutout! :)</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325620" >
+							<strong class="number">14.</strong>
+							<div class="top">
+								<p>martin (February 25th, 2009, 5:49 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/7a29f360457d22fef02c0e0339207c5c?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>really nice one here! i´d love to read more about ruby and/or rails. cheers!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325624" >
+							<strong class="number">15.</strong>
+							<div class="top">
+								<p><a href='http://railsjobs.in' rel='external nofollow' class='url'>RailsJobs.In</a> (February 25th, 2009, 5:53 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/fb2f18264af7442ebaf44dfe9a037557?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Excellent list of tips. I would drop one of them though in place of a suggestion to use Machinist + Forgery. That combination has made my testing so much more enjoyable.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325650" >
+							<strong class="number">16.</strong>
+							<div class="top">
+								<p>Ken (February 25th, 2009, 7:23 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/97d540da0aee796ba07e9420099552b4?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Having written a couple websites with Rails, I strongly disagree with #1: plugins are ultimately a time sink.</p>
+<p>Ruby already has a way to bundle library functionality: gems.  You can install and upgrade them on their own and everything works great.  Rails plugins always seem to have compatibility issues, and slight differences in *anything* (even tiny things that you&#8217;d think should never make any difference) between a dev box or test box or prod box kill them because the plugins are tied to the source code and not the Ruby install and OS.</p>
+<p>At my last company, our policy was: gems all you want, but plugins only if absolutely necessary.  My only regret was that I should have used a higher threshold for &#8220;absolutely necessary&#8221;, because those we did end up needing caused way more than their share of pain.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325658" >
+							<strong class="number">17.</strong>
+							<div class="top">
+								<p><a href='http://www.resourceninja.com' rel='external nofollow' class='url'>Millen</a> (February 25th, 2009, 7:42 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ce640aad733f49b7489b2021f33847ca?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Awesome guys!<br />
+It&#8217;s good to see some stuff on rails!<br />
+keep up the good work SM!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325660" >
+							<strong class="number">18.</strong>
+							<div class="top">
+								<p><a href='http://www.justadi.com' rel='external nofollow' class='url'>Aditya.S</a> (February 25th, 2009, 7:45 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/f08648db131978f84f0795f6a90fa0d8?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>lol never tried ruby on rails..heard of it a lot but I don&#8217;t think its for amateurs like me :P</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325661" >
+							<strong class="number">19.</strong>
+							<div class="top">
+								<p><a href='http://www.treyconnell.com' rel='external nofollow' class='url'>Trey</a> (February 25th, 2009, 7:48 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/489ccaa78970d5436428b008ac609803?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Great tips!  I definitely need to look into Rspec as testing is painful for me.  I looked into Haml but just couldn&#8217;t get away from good old familiar html syntax.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325663" >
+							<strong class="number">20.</strong>
+							<div class="top">
+								<p><a href='http://www.brianswebdesign.com' rel='external nofollow' class='url'>Brian Gottier</a> (February 25th, 2009, 8:05 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/1f2de0584e591b0c5aa140f352abcd8b?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>I could never wrap my brain around Rails, and I still can&#8217;t. I guess ya can&#8217;t teach an old dog new tricks.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325667" >
+							<strong class="number">21.</strong>
+							<div class="top">
+								<p><a href='http://www.clickmike.com' rel='external nofollow' class='url'>Michael Suarez</a> (February 25th, 2009, 8:08 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/2f38905673fc2174c3d318a24e94bdec?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>useful tips alright!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325725" >
+							<strong class="number">22.</strong>
+							<div class="top">
+								<p><a href='http://www.snurf.co.za' rel='external nofollow' class='url'>Snurf</a> (February 25th, 2009, 10:45 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/3502fb1bea3f99627916b367107ffe34?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Nice one guys keep up the good work&#8230;</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325787" >
+							<strong class="number">23.</strong>
+							<div class="top">
+								<p><a href='http://www.freshclickmedia.com' rel='external nofollow' class='url'>Shane</a> (February 26th, 2009, 12:46 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ccf3b8c638f15d005e5d070aeb1a3923?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>I&#8217;ve done a fair bit of reading on Rails, but never taken it on board for an actual project.  Every now and again, I really get the urge to do something with it.  Of course it&#8217;s not perfect, but nothing is.</p>
+<p>Thanks for the list :)</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325819" >
+							<strong class="number">24.</strong>
+							<div class="top">
+								<p><a href='http://tidyapps.com' rel='external nofollow' class='url'>Jo</a> (February 26th, 2009, 1:31 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/8aed7215b394d7fb97357951c733fa18?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Smashing tips thanks.</p>
+<p>They make a change from the usual regurgitated list of tips for Rails beginners.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325833" >
+							<strong class="number">25.</strong>
+							<div class="top">
+								<p><a href='http://bendtheblock.wordpress.com' rel='external nofollow' class='url'>Alex</a> (February 26th, 2009, 1:43 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/50da3286435c762ae8da9342459b48dd?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Excellent feature, I love this site. I currently run three sites that use Rails, and these will be of great use. </p>
+<p>The widespread use of plug-ins in the Rails community is a great practice, and for me seems to emulate the outsourcing model of business i.e. site developers can focus on their core competence (their own site) and outsource common functions/features to plugins. As some plugins become popular, it allows the developers of these popular plugins to focus more time on improving them thus improving the quality of the plug in and the applications its used in. Everyone&#8217;s a winner!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325863" >
+							<strong class="number">26.</strong>
+							<div class="top">
+								<p><a href='http://www.estudio-cinco.com' rel='external nofollow' class='url'>eduardo</a> (February 26th, 2009, 2:27 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ba00ad54aacc7304752207ff0ce1404d?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>what do you guys think about django?</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325894" >
+							<strong class="number">27.</strong>
+							<div class="top">
+								<p><a href='http://www.sefihanov.com' rel='external nofollow' class='url'>Assa</a> (February 26th, 2009, 3:19 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/61d7f6f0a96b78d4d4b0f14616bc3102?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>really great and useful info&#8230;</p>
+<p>thanks&#8230;</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325900" >
+							<strong class="number">28.</strong>
+							<div class="top">
+								<p><a href='http://www.gs2p.com' rel='external nofollow' class='url'>James</a> (February 26th, 2009, 3:25 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ddf2556c1fb1f9bb81b39235333a22ef?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Do you have any information / tips on how RoR and (Adobe) Flex work together?</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325929" >
+							<strong class="number">29.</strong>
+							<div class="top">
+								<p><a href='http://www.midhirrecords.com' rel='external nofollow' class='url'>Jon</a> (February 26th, 2009, 4:38 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/515d99da5168da6627a63735bae09357?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Plugins can be a fantastic labour saver and a horrible time sink.<br />
+The thing is, there&#8217;s no quality control - anyone can release a<br />
+plugin. When you&#8217;re starting out they can save you so much<br />
+time, but when you&#8217;re at the point where you want your code<br />
+to be clean and efficient it&#8217;s important to make sure the plugins<br />
+you&#8217;re using are comparable to anything you could program<br />
+yourself.</p>
+<p>I&#8217;ve written a couple of plugins myself and I think the important<br />
+thing is to focus on one thing and code it as efficiently as possible,<br />
+making any additional bells and whistles optional. Otherwise<br />
+you quickly run into problems getting it to work in different<br />
+environments, with multiple configurable models etc.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-325966" >
+							<strong class="number">30.</strong>
+							<div class="top">
+								<p><a href='http://mypipeline.co.uk' rel='external nofollow' class='url'>The_Pied_Pipes</a> (February 26th, 2009, 5:35 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/bacd026a414973a8c80724179bc06896?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Rapt is a great tool for searching plugins. Get it by</p>
+<p>gem install rapt</p>
+<p><a href="http://rapt.rubyforge.org/" rel="nofollow">Link</a> [rapt.rubyforge.org]</p>
+<p>allows things such as </p>
+<p>rapt search calendar </p>
+<p>&#8230;returns list of discovered plugins with installation info</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326002" >
+							<strong class="number">31.</strong>
+							<div class="top">
+								<p><a href='http://www.theodin.co.uk' rel='external nofollow' class='url'>The Odin</a> (February 26th, 2009, 6:15 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ee60b7a7394c093b03487d3b0b291241?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>11) don&#8217;t use ruby</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326050" >
+							<strong class="number">32.</strong>
+							<div class="top">
+								<p><a href='http://www.refresherate.com' rel='external nofollow' class='url'>sheldon</a> (February 26th, 2009, 7:34 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/988634bfd15f89c6f74d6c21461f349a?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Should add <a href="http://www.railscasts.com" rel="nofollow">Link</a> [www.railscasts.com] to railsenvy and peepcode. <a href="http://www.rubyplus.org" rel="nofollow">Link</a> [www.rubyplus.org] is worth a mention too.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326215" >
+							<strong class="number">33.</strong>
+							<div class="top">
+								<p><a href='http://www.ericdgreene.com' rel='external nofollow' class='url'>Eric</a> (February 26th, 2009, 11:56 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/7b5d90dc90005c892a8277f58e0f7e01?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>I need to get going learning some RoR!  Thanks SM</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326339" >
+							<strong class="number">34.</strong>
+							<div class="top">
+								<p>Dan (February 26th, 2009, 3:15 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/31c1f8f43ec832dcb9b6af5512d978f8?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Great list, one question though, how the examples for haml are equivalent? in haml you&#8217;re creating a bunch of divs when in Erb<br />
+you&#8217;re not. That&#8217;d would make the point for using haml a better one.</p>
+<p>Anyone know if using haml make Rails views a little slower?</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326641" >
+							<strong class="number">35.</strong>
+							<div class="top">
+								<p><a href='http://www.planetalinux.com.mx' rel='external nofollow' class='url'>Ereon</a> (February 27th, 2009, 2:14 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/c1b2ad94733866fead0bd49ed2e99570?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Thanks for free tools. realy great. I translate to MX and publish to my web sites this article</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326654" >
+							<strong class="number">36.</strong>
+							<div class="top">
+								<p><a href='http://www.contrast.ie' rel='external nofollow' class='url'>Paul Campbell</a> (February 27th, 2009, 2:41 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/b525cf3b0a5eb69a1ff250a0a48fecfe?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Thanks a million for featuring Exceptional! Seen a lot of new sign ups on the back of this article, and a few new customers too. Thanks Smashing Magazine, you&#8217;re awesome!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326677" >
+							<strong class="number">37.</strong>
+							<div class="top">
+								<p><a href='http://railsjobs.in' rel='external nofollow' class='url'>RailsJobs.In</a> (February 27th, 2009, 3:17 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/fb2f18264af7442ebaf44dfe9a037557?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>#44 I don&#8217;t think there would be any real speed difference as you need to process either ERB or HAML anyway. The thing is that many find HAML really nice to work with, and can save time during development. I know this has been the case with my business.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326897" >
+							<strong class="number">38.</strong>
+							<div class="top">
+								<p><a href='http://www.mienspace.nl' rel='external nofollow' class='url'>mark</a> (February 27th, 2009, 10:40 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/b9890f80726a5cf04b07cbebb76eaad0?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>good tips, simple to read :)</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326935" >
+							<strong class="number">39.</strong>
+							<div class="top">
+								<p>Erez Ben Shoham (February 27th, 2009, 1:11 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/30bcacccb1c7fa2b577b905a2128027f?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Hi,</p>
+<p>Great Tips, but how could you exclude RailsCasts.com by Ryan Bates from your list?<br />
+also The Pragmatic Bookshelf <a href="http://www.pragprog.com" rel="nofollow">Link</a> [www.pragprog.com]</p>
+<p>Thanks,</p>
+<p>Erez</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-326977" >
+							<strong class="number">40.</strong>
+							<div class="top">
+								<p><a href='http://soleone.wordpress.com' rel='external nofollow' class='url'>Soleone</a> (February 27th, 2009, 5:10 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/64ac4afdcf405be710b07ec4a8679a74?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>edit: nevermind&#8230;</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-327143" >
+							<strong class="number">41.</strong>
+							<div class="top">
+								<p>Max (February 28th, 2009, 3:01 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/00fbab7238fcf823e9600ff44c93ed17?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Good page and very good info and tips !<br />
+Can you add more info about satellite dishes installation tips ?<br />
+Regards,<br />
+Max<br />
+<a href="http://useful-tips-and-ideas.blogspot.com/" rel="nofollow">Link</a> [useful-tips-and-ideas.blogspot.com]</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-328624" >
+							<strong class="number">42.</strong>
+							<div class="top">
+								<p>Arun (March 5th, 2009, 8:58 pm)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/82ba1145ea6906aecd2eec7eb4b2c2f8?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Nice article. !</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-328674" >
+							<strong class="number">43.</strong>
+							<div class="top">
+								<p>jojo siao (March 6th, 2009, 12:20 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/ff3cac27665f30fa245c990f53d0b9e3?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Hi SM,<br />
+Thanks for the article! nice job!</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-329424" >
+							<strong class="number">44.</strong>
+							<div class="top">
+								<p>mario (March 9th, 2009, 5:34 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/3c372f9ca7f6883e3c33b482c2fa8341?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>step 9 is off. the complete erb code is not shown/rendering (div tags). if i did not know about haml, i would be confused because the haml code actually looks more complicated</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-330389" >
+							<strong class="number">45.</strong>
+							<div class="top">
+								<p>zumwinkel story (March 12th, 2009, 5:52 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/e53369071369c61724de86926a9402d7?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>Raivo Pommer<br />
+<a href="mailto:raimo1@hot.ee">Link</a> []</p>
+<p>OECD-Papiergeld</p>
+<p>Der Satz ist kryptisch: Liechtenstein akzeptiere die OECD-Standards für Transparenz und Informationsaustausch in Steuerfragen und unterstütze die internationalen Maßnahmen gegen die Nichteinhaltung von Steuergesetzen. So teilte es die Regierung des Fürstentums mit. Hinter diesem Satz verbirgt sich jedoch eine echte Revoulution: Liechtenstein beugt sich dem internationalen Druck - und hebt sein striktes Bankgeheimnis teilweise auf. Damit will das kleine Land sein Image von der unkooperativen Steueroase abstreifen.</p>
+<p>Mit den USA hat das Fürstentum bereits ein Abkommen geschlossen, wonach Informationen in Steuerfragen ausgetauscht werden können. Es tritt 2010 in Kraft. Damit wird deutlich: Das Land wird sich im Kampf gegen die internationale Steuerflucht künftig nicht mehr auf das Bankgeheimnis berufen.</p>
+<p>Seit Juni 2000 steht Liechtenstein auf der OECD-Liste der Steueroasen. Auf dieser schwarzen Liste zu finden sind derzeit auch Andorra und Monaco. Schärfster Kritiker des Liechtensteiner Bankgeheimnisses ist Deutschland. Denn viele Deutsche haben versucht, über den Umweg Liechtenstein dem deutschen Fiskus Steuergeld vorzuenthalten. Prominentester Steuersünder war der ehemalige Postchef Klaus Zumwinkel. Dieser wurde im Januar vom Landgericht Bochum wegen Steuerhinterziehung zu zwei Jahren Gefängnis auf Bewährung und einer Geldstrafe verurteilt.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-332526" >
+							<strong class="number">46.</strong>
+							<div class="top">
+								<p>spritzstuhl (March 20th, 2009, 2:46 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/d7ea74d6ab6e7ee5ce9596b10d7e5e7f?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>The article is great! Thanks :-)<br />
+BTW: I think the comment from zumwinkel is just spam! Has nothing to do with the article.</p>
+							</div>
+															</li>
+																	
+											<li  id="comment-332972" >
+							<strong class="number">47.</strong>
+							<div class="top">
+								<p>Anonymous Coward (March 22nd, 2009, 3:51 am)
+								  <span class="grav"><img alt='' src='http://www.gravatar.com/avatar/17a97e09a1b23bc733ae22880a961b59?s=42&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D42&amp;r=PG' class='avatar avatar-42 photo' height='42' width='42' /></span>
+								</p>
+							</div>
+							<div class="body">
+																<p>For 7 use the settingslogic gem <a href="http://github.com/binarylogic/settingslogic/tree/master" rel="nofollow">Link</a> [github.com]</p>
+							</div>
+															</li>
+																					</ol>
+			</div>
+		
+		<div class="topic" id="trackbacks" style="display:none">
+						<ul>
+									<li id="comment-325533">
+						<a href='http://blog.stepchangegroup.com/?p=294' rel='external nofollow' class='url'>10 Tips for Ruby on Rails Developers (Smashing Magazine guest post)</a> (February 25th, 2009 at 3:13 pm )
+												</li>
+									<li id="comment-325549">
+						<a href='http://tintafantasma.net/2009/02/25/10-tips-importantes-para-desarrolladores-de-ror/' rel='external nofollow' class='url'>10 tips importantes para desarrolladores de RoR | Tinta Fantasma</a> (February 25th, 2009 at 3:32 pm )
+												</li>
+									<li id="comment-325688">
+						<a href='http://www.nobleatom.seodour.com/2009/02/25/10-useful-tips-for-ruby-on-rails-developers/' rel='external nofollow' class='url'>10 Useful Tips For Ruby On Rails Developers | Best of programming and gadgets</a> (February 25th, 2009 at 9:04 pm )
+												</li>
+									<li id="comment-325844">
+						<a href='http://kingofping.com/?p=1088' rel='external nofollow' class='url'>MyBlog - 10 Useful Tips For Ruby On Rails Developers</a> (February 26th, 2009 at 2:00 am )
+												</li>
+									<li id="comment-325848">
+						<a href='http://kingofping.com/?p=1101' rel='external nofollow' class='url'>MyBlog - 10 Useful Tips For Ruby On Rails Developers</a> (February 26th, 2009 at 2:03 am )
+												</li>
+									<li id="comment-325854">
+						<a href='http://www.thisinspires.me/2009/02/26/links-for-2009-02-26/' rel='external nofollow' class='url'>links for 2009-02-26 | This Inspires Me</a> (February 26th, 2009 at 2:13 am )
+												</li>
+									<li id="comment-325896">
+						<a href='http://davidlowry.co.uk/smashing-on-rails/' rel='external nofollow' class='url'>Smashing on Rails | David Lowry</a> (February 26th, 2009 at 3:21 am )
+												</li>
+									<li id="comment-325903">
+						<a href='http://dunki3.wordpress.com/2009/02/26/inspiring-design-links-for-creatives-for-2009-02-26/' rel='external nofollow' class='url'>Inspiring Design Links for Creatives for 2009-02-26 &laquo; Cristian Vasile: SEO, Tech and Webdesign</a> (February 26th, 2009 at 3:30 am )
+												</li>
+									<li id="comment-325989">
+						<a href='http://www.alvinashcraft.com/2009/02/26/dew-drop-february-26-2009/' rel='external nofollow' class='url'>Dew Drop - February 26, 2009 | Alvin Ashcraft's Morning Dew</a> (February 26th, 2009 at 6:01 am )
+												</li>
+									<li id="comment-326332">
+						<a href='http://deos.wordpress.com/2009/02/26/links-for-2009-02-26/' rel='external nofollow' class='url'>links for 2009-02-26 &laquo; My Weblog</a> (February 26th, 2009 at 3:04 pm )
+												</li>
+									<li id="comment-326526">
+						<a href='http://n00bunt00.com/g33k-links-02272009/' rel='external nofollow' class='url'>g33k links 02/27/2009 - An Ubuntu n00b</a> (February 26th, 2009 at 9:43 pm )
+												</li>
+									<li id="comment-326985">
+						<a href='http://www.jonbergan.com/2009/02/28/awesome-links-of-the-week-2009-02-28/' rel='external nofollow' class='url'>Awesome Links of the Week: 2009-02-28 &laquo; Jon Bergan - A blog about Design, Development &amp; Being Your Own Boss</a> (February 27th, 2009 at 6:07 pm )
+												</li>
+									<li id="comment-327469">
+						<a href='http://www.rubyinside.com.br/14-dicas-para-desenvolvedores-ruby-on-rails-508' rel='external nofollow' class='url'>14 dicas para desenvolvedores Ruby on Rails</a> (March 2nd, 2009 at 4:37 am )
+												</li>
+									<li id="comment-329741">
+						<a href='http://net.tutsplus.com/articles/web-roundups/best-of-the-web-february/' rel='external nofollow' class='url'>Best of the Web: February - NETTUTS</a> (March 10th, 2009 at 5:11 am )
+												</li>
+									<li id="comment-332412">
+						<a href='http://www.smashingmagazine.com/2009/03/19/getting-started-with-ruby-on-rails/' rel='external nofollow' class='url'>Getting Started With Ruby On Rails | How-To | Smashing Magazine</a> (March 19th, 2009 at 6:47 pm )
+												</li>
+									<li id="comment-333449">
+						<a href='http://www.thescriptszone.com/getting-started-with-ruby-on-rails/' rel='external nofollow' class='url'>Getting Started With Ruby On Rails | The Scripts Zone</a> (March 24th, 2009 at 3:00 am )
+												</li>
+							</ul>
+					</div>
+		<script type="text/javascript" src="http://www.smashingmagazine.com/wp-content/themes/SM-theme/js/post.js"></script>
+		<script type="text/javascript">
+			initPostTabs();
+			initCommentsReplyLinks();
+		</script>
+	
+			<div class="topic">
+			<h2>Leave a Reply</h2>
+			
+				<form name="commentform" action="/wp-commentspost.php" method="post" id="commentform" class="comment-form">
+					<input type="hidden" name="comment_post_ID" value="4410" />
+					<input type="hidden" name="comment_parent" value="0" />
+					<fieldset>
+						<dl>
+															<dt><label for="author">Name (required)</label></dt>
+								<dd><input type="text"  name="author" id="author" value="" size="22" tabindex="1" /></dd>
+								<dt><label for="email">Mail (will not be published) (required)</label></dt>
+								<dd><input type="text"  name="email" id="email" value="" size="22" tabindex="2" /></dd>
+                                <!--
+								<dt><label for="url">Website</label></dt>
+								<dd><input type="text" name="url" id="url" value="" size="22" tabindex="3" /></dd>
+                                -->
+							
+							<dd class="allowed-tags"><div><div><div><strong>Allowed Tags:</strong>
+								&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; 							</div></div></div></dd>
+							<dt><label for="comment"><strong>rel="nofollow" in use - no link dropping, no keywords or domains as names; do not spam, and do not advertise!</strong></label></dt>
+							<dd><textarea name="comment" id="comment" cols="60" rows="10" tabindex="4"></textarea></dd>
+							<dd class="submit"><input type="image" name="submit" src="http://www.smashingmagazine.com/wp-content/themes/SM-theme/img/btn-submit.gif" alt="Submit Comment" /></dd>
+						</dl>
+					</fieldset>
+				<script type="text/javascript">
+				  var blogTool               = "WordPress";
+				  var blogURL                = "http://www.smashingmagazine.com";
+				  var blogTitle              = "Smashing Magazine";
+				  var postURL                = "http://www.smashingmagazine.com/2009/02/25/ruby-on-rails-tips/";
+				  var postTitle              = "10 Useful Tips For Ruby On Rails Developers";
+				  				      var commentAuthorFieldName = "author";
+				  				  var commentAuthorLoggedIn  = false;
+				  var commentFormID          = "commentform";
+				  var commentTextFieldName   = "comment";
+				  var commentButtonName      = "submit";
+				  var cocomment_force        = false;
+				</script>
+								</form>
+					</div>
+	</div></div><div id="rightcolumn"><div id="gsmall">
+<span class="an">Advertisement</span><br />
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=38");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://adserver.3digit.de/www/delivery/ck.php?n=a3eea29a&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://adserver.3digit.de/www/delivery/avw.php?zoneid=38&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a3eea29a' border='0' alt='' /></a></noscript>
+</div>
+<div id="rss"><p><a href="http://rss1.smashingmagazine.com/feed/" title="Grab the Smashing Magazine RSS Feed!" rel="nofollow"><img src="http://88.198.60.17/images/smash-rss.gif" width="76" height="76" alt="RSS Feed" /></a></p>
+<div class='feedcountdiv'><p><a href='http://rss1.smashingmagazine.com/feed/'><span class='feedcount'><span class='subscribers'>93643</span><span class='after'>subscribers</span></span></a></p></div><!--  -->
+</div><div id="gsearch">
+<!-- SiteSearch Google -->
+<form method="get" action="http://www.smashingmagazine.com/search-results/" target="_top">
+<table border="0" bgcolor="#ffffff">
+<tr><td nowrap="nowrap" valign="top" align="left" height="32">
+
+</td>
+<td nowrap="nowrap">
+<input type="hidden" name="domains" value="www.smashingmagazine.com"></input>
+<label for="sbi" style="display: none">Enter your search terms</label>
+<input type="text" name="q" size="30" maxlength="255" value="" id="sbi"></input>
+<label for="sbb" style="display: none">Submit search form</label>
+<input type="submit" name="sa" value="Google Search" id="sbb"></input>
+</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td nowrap="nowrap">
+<table>
+<tr>
+<td>
+<input type="radio" name="sitesearch" value="" id="ss0"></input>
+<label for="ss0" title="Search the Web"><span class="goo">Web</span></label></td>
+<td>
+<input type="radio" name="sitesearch" value="www.smashingmagazine.com" checked="checked" id="ss1"></input>
+<label for="ss1" title="Search www.smashingmagazine.com"><span class="goo">smashingmagazine.com</span></label></td>
+</tr>
+</table>
+<input type="hidden" name="client" value="pub-6779860845561969"></input>
+<input type="hidden" name="forid" value="1"></input>
+<input type="hidden" name="channel" value="3942503296"></input>
+<input type="hidden" name="ie" value="UTF-8"></input>
+<input type="hidden" name="oe" value="UTF-8"></input>
+<input type="hidden" name="safe" value="active"></input>
+<input type="hidden" name="flav" value="0000"></input>
+<input type="hidden" name="sig" value="ZKMPj-qL6g57hzX6"></input>
+<input type="hidden" name="cof" value="LH:50;LW:138;L:http://www.smashingmagazine.com/wp-content/themes/SM-theme/img/logo.gif;S:http://www.smashingmagazine.com;FORID:11"></input>
+<input type="hidden" name="hl" value="en"></input>
+</td></tr></table>
+</form>
+<!-- SiteSearch Google -->
+</div>
+
+<ul class="opt">
+<li class="sponsors"><h3>Sponsors</h3></li>
+<li class="visible"><a href="mailto:&#97;&#100;&#118;&#101;&#114;&#116;&#105;&#115;&#105;&#110;&#103;&#64;&#115;&#109;&#97;&#115;&#104;&#105;&#110;&#103;&#109;&#97;&#103;&#97;&#122;&#105;&#110;&#101;&#46;&#99;&#111;&#109;" title="Advertise with us!">Advertise with us!</a></li>
+</ul>
+
+<!-- Smashing Magazine - Premium Sponsor ad slots 2 -->
+<ul class="banner-list">
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li><script type="text/javascript">
+
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li><script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li>
+<li>
+<script type="text/javascript">
+<!--//<![CDATA[
+               var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+               var m3_r = Math.floor(Math.random()*99999999999);
+               if (!document.MAX_used) document.MAX_used = ',';
+               document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+               document.write ("?zoneid=11&amp;withtext=1&amp;block=1&amp;blockcampaign=1");
+               document.write ('&amp;cb=' + m3_r);
+               if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+               document.write ("&amp;loc=" + escape(window.location));
+               if (document.referrer) document.write ("&amp;refere?r=" + escape(document.referrer));
+               if (document.context) document.write ("&context=" + escape(document.context));
+               if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+               document.write ("'><\/scr"+"ipt>");
+            //]]>-->
+</script>
+<noscript><a href=
+"http://adserver.3digit.de/www/delivery/ck.php?n=a8ba14fb&amp;cb=INSERT_RANDOM_NUMBER_HERE"
+ target="_blank"><img src=
+"Smashing%20Magazine-Dateien/avw_002.gif" alt="" border=
+"0" /></a></noscript></li></ul>
+
+<div class="latestJobs">
+<h3><a href="http://jobs.smashingmagazine.com" title="Smashing Jobs ~ jobs that will smash into your life."><img src="/wp-content/themes/SM-theme/img/jobs/job_box_h.jpg" alt="Smashing Jobs" width="386" height="21" /></a></h3><div id="smjobs">
+</div><div class="bottomLinks">
+<a href="http://jobs.smashingmagazine.com" class="browseJobs">Browse all jobs &raquo;</a>
+<a href="http://jobs.smashingmagazine.com/post-a-job" class="postJobs">Post your jobs now!</a></div></div>
+<div class="two"><div class="left">
+
+<div class="box"><h3>Smashing Links</h3>
+<ul><li><a href="/about/">About us</a></li>
+<li><a href="http://www.smashingmagazine.com/a-smashing-team-of-authors/">Authors</a></li>
+<li><a href="/before-sending-an-email-please-note/">Contact us</a></li>
+<li><a href="/how-to-become-a-smashing-magazine-author/">Become an Author</a></li>
+<li><a href="/tagcloud/">List of Tags</a></li>
+<li><a href="/publishing-policy/">Publishing Policy</a></li>
+</ul>
+</div>
+
+<div class="box"><h3>Stay in touch</h3>
+<ul>
+<li class="inline"><a href="http://forum.smashingmagazine.com/">Forum</a></li>
+<li class="inline"><a href="http://twitter.com/smashingmag">Follow us on Twitter</a> <a href="http://twitter.com/smashingmag"><img style="display: inline; position: relative; top: 3px;" src="http://78.46.108.98/images/twitter.png" alt="Follow us on Twitter" width="18" height="18" /></a></li>
+<li class="inline"><a href="http://rss1.smashingmagazine.com/feed/">Subscribe to RSS-Feed</a>
+<a href="http://rss1.smashingmagazine.com/feed/"><img src="http://88.198.60.17/images/rss.png" style="display: inline; position: relative; left: -1px;top: 4px;" width="14" height="14" alt="Subscribe to our RSS-feed" /></a></li>
+</ul>
+</div>
+
+<div class="box"><h3>Popular Posts</h3><ul>
+<li><a href="/2008/01/08/100-excellent-free-high-quality-wordpress-themes/">100 Wordpress Themes</a></li>
+<li><a href="/2007/02/09/83-beautiful-wordpress-themes-you-probably-havent-seen/">83 Wordpress Themes</a></li>
+<li><a href="/2007/06/20/ajax-javascript-solutions-for-professional-coding/">80 AJAX Solutions</a></li>
+<li><a href="/2008/09/11/75-really-useful-javascript-techniques/">75 JavaScript Techniques</a></li>
+<li><a href="/2008/01/10/adobe-photoshop-tutorials-best-of/">70 Best Photoshop Tutorials</a></li>
+<li><a href="/2008/02/05/illustrator-tutorials-best-of/">70 Best Illustrator Tutorials</a></li>
+<li><a href="/2007/01/19/53-css-techniques-you-couldnt-live-without/">53 CSS Techniques</a></li>
+<li><a href="/2008/10/23/50-beautiful-blog-designs/">50 Blog Designs</a></li>
+<li><a href="/2008/09/14/tribute-to-graffiti-50-beautiful-graffiti-artworks/">50 Graffiti Artworks</a></li>
+<li><a href="/2008/04/28/really-stunning-pictures-and-photos/">50 Brilliant Photos</a></li>
+<li><a href="/2008/10/12/50-beautiful-movie-posters/">50 Movie Posters</a></li>
+<li><a href="/2007/11/08/40-excellent-freefonts-for-professional-design/">40 Free Fonts</a></li>
+<li><a href="/2008/09/03/40-creative-design-layouts-getting-out-of-the-box/">40 Creative Layouts</a></li>
+<li><a href="/2008/03/06/35-really-incredible-free-icon-sets/">35 Beautiful Icon Sets</a></li>
+<li><a href="/2008/05/15/more-really-stunning-desktop-wallpapers/">Beautiful Desktop Wallpapers</a></li>
+<li><a href="/2008/09/21/25-beautiful-macro-photography-shots-photos/">Beautiful Macro Photos</a></li>
+<li><a href="/2008/10/19/25-beautiful-examples-of-underwater-photography/">Beautiful Underwater Photos</a></li>
+<li><a href="/2007/02/14/free-design-templates/">Free Design Templates</a></li>
+<li><a href="/2007/01/12/free-css-layouts-and-templates/">Free CSS Layouts</a></li>
+</ul></div>
+<div class="box"><h3>All Posts</h3><ul>
+<li><a href="/2007/04/20/35-designers-x-5-questions/">35 Designers &times; 5 Questions</a></li>
+<li><a href="/2007/09/05/50-designers-x-6-questions/">50 Designers &times; 6 Questions</a></li>
+<li><a href="/2007/08/17/404-error-pages-reloaded/">404 Error Pages</a></li>
+<li><a href="/2006/11/15/ajax-dhtml-and-javascript-libraries/">AJAX Libraries</a></li>
+<li><a href="/2007/06/20/ajax-javascript-solutions-for-professional-coding/">AJAX Solutions</a></li>
+<li><a href="/2008/10/16/50-excellent-ajax-tutorials/">AJAX Tutorials</a></li>
+<li><a href="/2008/05/19/handcraft-strikes-back-buttons-badges-pins-and-clips/">Badges and Pins</a></li>
+<li><a href="/2008/10/02/15-useful-batch-image-processors/">Batch Image Processing</a></li>
+<li><a href="/2008/06/09/beautiful-black-and-white-photography/">Black &amp; White Photography</a></li>
+<li><a href="/2008/06/12/block-quotes-and-pull-quotes-examples-and-good-practices/">Block Quotes</a></li>
+<li class="inline"><a href="/2007/08/28/45-excellent-blog-designs/">Blog Designs 1</a>, <a href="/2007/11/22/30-more-excellent-blog-designs/">2</a>, <a href="/2008/02/20/45-more-excellent-blog-designs/">3</a>, <a href="/2008/05/08/now-more-than-ever-50-more-excellent-blog-designs/">4</a>, <a href="/2008/10/23/50-beautiful-blog-designs/">5</a></li>
+<li><a href="/2008/03/05/blog-headers-for-free-download/">Blog Headers</a></li>
+<li><a href="/2008/04/14/excellent-book-covers-and-paperbacks/">Book Covers</a></li>
+<li><a href="/2008/06/16/beautiful-brochures-and-booklets/">Brochures and Booklets</a></li>
+<li><a href="/2007/11/21/web-browsers-you-have-never-heard-of/">Browsers Round-Up</a></li>
+<li><a href="/2007/10/02/browser-tests-services-and-compatibility-test-suites/">Browser Test Suites</a></li>
+<li><a href="/2006/11/24/buzz-monitoring-observing-und-tracking/">Buzz-Monitoring</a></li>
+<li><a href="/2008/06/23/creative-calendar-designs/">Calendar Designs</a></li>
+<li><a href="/2006/09/01/test-aosu/">Charts and Diagrams: Tools</a></li>
+<li><a href="/2006/10/30/cheat-sheet-round-up-ajax-css-latex-ruby/">Cheat Sheets</a></li>
+<li><a href="/2007/07/12/time-savers-code-beautifier-and-formatter/">Code Beautifier</a></li>
+<li><a href="/2007/07/07/copyright-explained-i-may-copy-it-right/">Copyright Explained</a></li>
+<li><a href="/2008/02/21/powerful-css-techniques-for-effective-coding/">CSS Coding Techniques</a></li>
+<li class="inline"><a href="/2006/12/19/50-beautiful-css-based-web-designs-in-2006/">CSS Designs 1</a>, <a href="/2007/03/26/keep-it-simple-stupid-showcase-of-simple-and-clean-designs/">2</a>, <a href="/2007/05/21/60-elegant-and-visually-appealling-designs/">3</a>, <a href="/2007/03/05/45-fresh-clean-and-impressive-designs/">4</a>, <a href="/2007/01/13/30-dark-designs-you-shouldve-seen/">5</a></li>
+<li><a href="/2008/08/18/7-principles-of-clean-and-optimized-css-code/">CSS Clean Code</a></li>
+<li><a href="/2008/06/19/css-editors-reviewed/">CSS Editors</a></li>
+<li><a href="/2007/09/07/170-expert-ideas-from-worlds-leading-developers/">CSS Expert Ideas</a></li>
+<li><a href="/2007/05/01/css-float-theory-things-you-should-know/">CSS Float Theory</a></li>
+<li><a href="/2007/09/21/css-frameworks-css-reset-design-from-scratch/">CSS Frameworks</a></li>
+<li><a href="/2007/02/14/free-design-templates/">CSS Free Templates</a></li>
+<li><a href="/2007/01/09/css-based-footers-modern-solutions/">CSS Footers</a></li>
+<li class="inline"><a href="/2006/11/11/css-based-forms-modern-solutions/">CSS Forms 1</a>, <a href="/2008/04/17/web-form-design-modern-solutions-and-creative-ideas/">2</a></li>
+<li><a href="/2007/09/21/css-frameworks-css-reset-design-from-scratch/">CSS Frameworks</a></li>
+<li><a href="/2006/12/21/creme-de-la-creme-of-css-list-of-css-galleries/">CSS Galleries</a></li>
+<li><a href="/2007/05/10/70-expert-ideas-for-better-css-coding/"> CSS Ideas</a></li>
+<li><a href="/2007/01/12/free-css-layouts-and-templates/">CSS Layouts</a></li>
+<li><a href="/2007/03/14/css-based-navigation-menus-modern-solutions/">CSS Menus</a></li>
+<li><a href="/2007/02/21/printing-the-web-solutions-and-techniques/">CSS Print-Layouts</a></li>
+<li><a href="/2007/07/27/css-specificity-things-you-should-know/">CSS Specificity</a></li>
+<li><a href="/2008/05/02/improving-code-readability-with-css-styleguides/">CSS Styleguides</a></li>
+<li><a href="/2006/12/29/css-based-tables-modern-solutions/">CSS Tables</a></li>
+<li><a href="/2006/10/25/css-techniques-tutorials-layouts/">CSS Tutorials</a></li>
+<li><a href="/2007/01/19/53-css-techniques-you-couldnt-live-without/"> CSS-Techniques</a></li>
+<li><a href="/2006/09/02/list-of-css-tools/">CSS Tools</a></li>
+<li><a href="/2007/05/30/tables-and-data-grids-with-ajax-dhtml-javascript/">Data Grids and Tables</a></li>
+<li class="inline"><a href="/2007/08/02/data-visualization-modern-approaches/">Data Visualization 1</a>, <a href="/2008/01/14/monday-inspiration-data-visualization-and-infographics/">2</a></li>
+<li><a href="/2008/02/22/gallery-of-date-stamps-and-calendars/">Date Stamps</a></li>
+<li class="inline"><a href="/2007/09/04/40-books-for-professional-design-development/">Design Books 1</a>, <a href="/2008/01/24/usability-and-interface-design-books/">2</a></li>
+<li><a href="/2007/03/19/40-designtech-magazines-to-read/">Design Magazines</a></li>
+<li><a href="/2007/08/10/10-designers-checkpoints-to-be-aware-of/">Designer's Checkpoints</a></li>
+<li><a href="/2008/05/29/applying-divine-proportion-to-web-design/" rel="bookmark" title="Applying Divine Proportion To Your Web Designs">Divine Proportion</a></li>
+<li><a href="/2007/06/28/domain-tools-and-articles-about-domain-names/">Domain Tools</a></li>
+<li><a href="/2007/04/04/adobe-dreamweaver-tutorials/">Dreamweaver Tutorials</a></li>
+<li><a href="/2008/09/24/drupal-developers-toolbox/">Drupal</a></li>
+<li><a href="/2007/10/16/best-practices-for-bulletproof-e-mail-delivery/">E-Mail Delivery</a></li>
+<li class="inline"><a href="/2007/01/31/inspire-yourself-50-remarkable-favicons/">Favicons 1</a>, <a href="/2007/03/29/inspire-yourself-more-creative-favicons/">2</a>, <a href="/2007/06/14/creative-favicons-when-small-is-beautiful/">3</a>, <a href="/2007/09/11/creative-favicons-tiny-artwork/">4</a>, <a href="/2008/01/01/favicons-episode-5-the-delicate-beauties/">5</a>, <a href="/2008/03/21/favicon-episode-6-black-abstract-and-hand-drawing/">6</a></li>
+<li><a href="/2007/02/27/firefox-themes-in-an-overview/">Firefox Themes</a></li>
+<li><a href="/2008/03/18/adobe-fireworks-tutorials-and-downloads-best-of/">Fireworks Tutorials</a></li>
+<li><a href="/2007/10/30/65-excellent-flash-designs/">Flash Designs</a></li>
+<li><a href="/2007/10/12/flash-based-galleries-for-your-images/">Flash Slideshows</a></li>
+<li><a href="/2008/01/17/adobe-flash-tutorials-best-of/">Flash Tutorials</a></li>
+<li class="inline"><a href="/2007/11/08/40-excellent-freefonts-for-professional-design/">Fonts 1</a>, <a href="/2007/02/24/five-more-freefonts-chucara-preface-colaborate/">2</a>, <a href="/2007/04/02/free-fonts-of-the-month-geo-sans-ot-versa-diavlo/">3</a>, <a href="/2007/06/08/free-brilliant-high-quality-fonts/">4</a>, <a href="/2008/02/14/free-fonts-of-the-month-advent-pro-telegrafico/">5</a>, <a href="/2008/06/13/free-fonts-of-the-month-anivers-gentium-fresco/">6</a></li>
+<li><a href="/2008/09/05/25-font-management-tools-reviewed/">Font Management</a></li>
+<li class="inline"><a href="/2008/07/04/web-form-design-patterns-sign-up-forms/" rel="bookmark" title="Web Form Design Patterns: Sign-Up Forms">Form Design Patterns</a></li>
+<li><a href="/2008/05/01/professional-web-design-forums/">Forums</a></li>
+<li><a href="/2008/10/17/50-phenomenal-fractal-art-pictures/">Fractals</a></li>
+<li class="inline"><a href="/2008/01/07/monday-inspiration-innovative-designs-and-devices/">Gadgets 1</a>, <a href="/2008/02/04/15-stunning-cutting-edge-gadgets-and-technologies/">2</a>, <a href="/2008/02/18/25-mind-blowing-product-gadgets/">3</a></li>
+<li><a href="/2007/03/22/google-adsense-facts-faqs-and-tools/">Google AdSense</a></li>
+<li><a href="/2007/06/05/google-pagerank-what-do-we-really-know-about-it/">Google PageRank</a></li>
+<li><a href="/2008/09/14/tribute-to-graffiti-50-beautiful-graffiti-artworks/">Graffiti</a></li>
+<li><a href="/2007/08/21/creativity-spark-from-masters-of-graphic-design/">Graphics Design</a></li>
+<li class="inline"><a href="/2007/04/14/designing-with-grid-based-approach/">Grid-Based Design 1</a>, <a href="/2008/03/26/grid-based-design-six-creative-column-techniques/">2</a></li>
+<li class="inline"><a href="/2008/01/29/grunge-style-in-modern-web-design/">Grunge Design 1</a>, <a href="/2008/03/11/the-secrets-of-grunge-design/">2</a></li>
+<li class="inline"><a href="/2008/01/03/hand-drawing-style-in-modern-web-design/">Hand-Drawing Style 1</a>, <a href="/2008/06/18/hand-drawing-style-in-modern-web-design-volume-2/">2</a></li>
+<li><a href="/2008/04/07/beautiful-handwriting-lettering-and-calligraphy/">Handwriting and Lettering</a></li>
+<li><a href="/2007/07/20/developers-alarm-200-hotkeys-to-boost-your-productivity/">Hotkeys</a></li>
+<li><a href="/2008/03/10/35-fantastic-hdr-pictures/">HDR Pictures</a></li>
+<li><a href="/2006/10/01/html-template-systems-in-php/">HTML Template Systems</a></li>
+<li class="inline"><a href="/2008/03/06/35-really-incredible-free-icon-sets/">Icon Sets 1</a>, <a href="/2008/05/21/40-professional-icon-sets-for-free-download/">2</a>, <a href="/2007/08/25/20-free-and-fresh-icon-sets/">3</a>, <a href="/2007/11/29/icons-for-your-desktop-and-icons-for-your-web-designs/">4</a>, <a href="/2008/03/06/35-really-incredible-free-icon-sets/">5</a></li>
+<li class="inline"><a href="/2007/05/24/freebies-round-up-icons-buttons-and-templates/">Icons, Templates 1</a>, <a href="/2006/09/03/symbols-buttons-and-icons-for-free/">2</a>, <a href="/2006/12/03/more-symbols-buttons-and-icons-for-free/">3</a></li>
+<li class="inline"><a href="/2008/02/05/illustrator-tutorials-best-of/">Illustrator Tutorials 1</a>, <a href="/2007/02/03/adobe-illustrator-tutorials/">2</a></li>
+<li><a href="/2008/09/11/75-really-useful-javascript-techniques/">JavaScript Techniques</a></li>
+<li><a href="/2008/09/16/jquery-examples-and-best-practices/">jQuery</a></li>
+<li><a href="/2008/03/17/laptop-sleeves-skins-and-stickers/">Laptop Sleeves</a></li>
+<li><a href="/2008/03/31/slick-laptop-designs-and-concepts/">Laptop Designs</a></li>
+<li><a href="/2007/05/28/golden-rules-of-linkbaiting-principles-strategies-and-effective-rules/">Link Building</a></li>
+<li><a href="/2008/07/01/should-links-open-in-new-windows/">Links in New Windows?</a></li>
+<li><a href="/2008/09/21/25-beautiful-macro-photography-shots-photos/">Macro Photography</a></li>
+<li><a href="/2008/01/15/isnt-it-sweet-mascots-in-modern-web-design/">Mascots</a></li>
+<li><a href="/2008/10/22/moleskine-art-beautiful-examples-and-talented-artists/">Moleskine Art</a></li>
+<li><a href="/2008/01/28/monday-inspiration-graphics-in-motion/">Motion Graphics</a></li>
+<li><a href="/2008/08/24/45-beautiful-motion-blur-photos/">Motion Blur Photos</a></li>
+<li><a href="/2008/10/12/50-beautiful-movie-posters/">Movie Posters</a></li>
+<li><a href="/2008/01/21/monday-inspiration-brilliant-music-videos/">Music Videos</a></li>
+<li><a href="/2008/02/26/navigation-menus-trends-and-examples/">Navigation Menus</a></li>
+<li><a href="/2008/02/11/award-winning-newspaper-designs/">Newspaper Designs</a></li>
+<li><a href="/2007/04/10/online-converters/">Online Converters</a></li>
+<li><a href="/2006/11/09/online-generators/">Online Generators</a></li>
+<li><a href="/2008/06/02/beautiful-and-expressive-packaging-design/" rel="bookmark" title="Beautiful and Expressive Packaging Design">Packaging Design</a></li>
+<li><a href="/2007/11/16/pagination-gallery-examples-and-good-practices/">Pagination</a></li>
+<li><a href="/2008/04/22/inspirational-pdf-magazines/">PDF Magazines</a></li>
+<li><a href="/2008/10/20/the-ultimate-collection-of-useful-photoshop-actions/">Photoshop Actions</a></li>
+<li class="inline"><a href="/2008/01/10/adobe-photoshop-tutorials-best-of/">Photoshop Tutorials 1</a>, <a href="/2007/01/12/hand-picked-photoshop-tutorials/">2</a></li>
+<li><a href="/2008/05/05/pixels-go-mad-the-celebration-of-pixel-art/">Pixel Art</a></li>
+<li><a href="/2008/05/14/useful-podcasts-for-designers-and-developers/" rel="bookmark" title="Useful Podcasts For Designers And Developers">Podcasts</a></li>
+<li><a href="/2008/04/16/getting-creative-with-transparency-in-web-design/">PNG Transparency</a></li>
+<li><a href="/2008/03/04/creating-a-successful-online-portfolio/">Portfolios</a></li>
+<li><a href="/2008/10/13/pricing-tables-showcase-examples-and-best-practices/">Pricing Tables</a></li>
+<li><a href="/2008/05/26/beautiful-and-original-product-designs/">Product Designs</a></li>
+<li><a href="/2008/09/07/35-brilliant-examples-of-rain-photography/">Rain Photography</a></li>
+<li><a href="/2007/11/02/rss-best-design-practices-and-icons/">RSS Best Design Practices</a></li>
+<li><a href="/2008/04/01/fresh-free-and-gorgeous-rssfeed-icons/">RSS Feed Icons</a></li>
+<li><a href="/2008/08/19/screencasting-how-to-start/">Screencasting</a></li>
+<li><a href="/2007/10/04/screensavers-best-of/">Screensavers</a></li>
+<li><a href="/2006/09/22/complete-list-of-best-seo-tools/">SEO Tools</a></li>
+<li><a href="/2008/02/07/shopping-carts-gallery-examples-and-good-practices/">Shopping Carts</a></li>
+<li><a href="/2008/03/03/25-brilliant-animated-short-movies/">Short Movies</a></li>
+<li><a href="/2007/05/18/30-best-solutions-for-image-galleries-slideshows-lightboxes/">Slideshows &amp; Lightboxes</a></li>
+<li><a href="/2008/10/05/celebration-of-smoke-photography-and-smoke-art/">Smoke Photography</a></li>
+<li><a href="/2008/05/07/35-useful-source-code-editors-reviewed/">Source Code Editors</a></li>
+<li><a href="/2007/10/11/splash-pages-do-we-really-need-them/">Splash Pages</a></li>
+<li><a href="/2007/07/17/exploring-design-outstanding-start-pages/">Start Pages</a></li>
+<li><a href="/2006/10/20/stock-icons-an-overview/">Stock Icons</a></li>
+<li><a href="/2008/06/11/space-wallpapers-and-nebula-wallpapers/">Space, Nebula wallpapers</a></li>
+<li><a href="/2007/04/18/14-tab-based-inferface-techniques/">Tab-Based Interfaces</a></li>
+<li><a href="/2007/11/07/tag-clouds-gallery-examples-and-good-practices/">Tag Clouds</a></li>
+<li><a href="/2008/05/27/smashing-texture-contest-results/">Textures</a></li>
+<li><a href="/2007/01/02/where-can-i-find-textures-and-background-images/">Textures &amp; Backgrounds</a></li>
+<li><a href="/2008/07/09/textures-and-patterns-design-showcase/">Texture Design</a></li>
+<li><a href="/2007/06/12/tooltips-scripts-ajax-javascript-css-dhtml/">Tooltips Scripts</a></li>
+<li><a href="/2007/01/26/tutorials-round-up-ajax-css-javascript-php-mysql-and-more/">Tutorials </a></li>
+<li class="inline"><a href="/2007/08/08/80-beautiful-fonts-typefaces-for-professional-design/">Typefaces 1</a>, <a href="/2008/03/20/60-brilliant-typefaces-for-corporate-design/">2</a></li>
+<li><a href="/2008/04/23/5-principles-and-ideas-of-setting-type-on-the-web/">Type Setting Principles</a></li>
+<li><a href="/2008/02/25/breathtaking-typographic-posters/">Typographic Posters</a></li>
+<li><a href="/2007/11/19/monday-inspiration-typography-in-motion/">Typography In Motion</a></li>
+<li class="inline"><a href="/2007/10/15/the-showcase-of-big-typography/">Typography Showcase 1</a> <a href="/2008/05/20/the-showcase-of-big-typography-second-edition/">2</a>, <a href="/2008/05/12/sexy-bold-and-experimental-typography/" rel="bookmark" title="Sexy, Bold And Experimental Typography">3</a></li>
+<li><a href="/2008/10/19/25-beautiful-examples-of-underwater-photography/">Underwater Photography</a></li>
+<li><a href="/2008/01/24/usability-and-interface-design-books/">Usability Books</a></li>
+<li><a href="/2007/10/09/30-usability-issues-to-be-aware-of/">Usability Glossary</a></li>
+<li><a href="/2007/09/27/10-usability-nightmares-you-should-be-aware-of/">Usability Nightmares</a></li>
+<li><a href="/2008/01/31/10-principles-of-effective-web-design/">Usability Principles</a></li>
+<li><a href="/2007/11/26/monday-inspiration-user-experience-of-the-future/">User Interfaces</a></li>
+<li><a href="/2008/09/18/the-top-7-open-source-version-control-systems/">Version Control Systems</a></li>
+<li><a href="/2008/04/21/celebration-of-vintage-and-retro-design/">Vintage &amp; Retro Posters</a></li>
+<li><a href="/2008/10/07/retro-and-vintage-in-modern-web-design/">Vintage &amp; Retro Designs</a></li>
+<li><a href="/2008/10/14/30-beautiful-vintageretro-photoshop-tutorials/">Vintage &amp; Retro Tutorials</a></li>
+<li class="inline"><a href="/2008/02/12/really-stunning-desktop-wallpapers/">Wallpapers 1</a>, <a href="/2006/12/07/selected-wallpapers-for-desktop-and-web-design/">2</a>, <a href="/2007/02/22/more-creative-and-beautiful-wallpapers/">3</a>, <a href="/2007/09/21/selected-wallpapers-for-your-desktop/">4</a></li>
+<li class="inline"><a href="/2007/03/10/web-20-tutorials-round-up/">Web 2.0 Tutorials</a></li>
+<li><a href="/2008/08/29/10-weblog-engines-reviewed/">Weblog Engines</a></li>
+<li><a href="/2007/01/12/white-space-and-simplicity-an-overview/">Whitespace &amp; Simplicity</a></li>
+<li><a href="/2007/06/29/wordpress-plugins-tutorials-your-pick/">Wordpress Plugins</a></li>
+<li class="inline"><a href="/2008/01/08/100-excellent-free-high-quality-wordpress-themes/">Wordpress Themes 1</a>, <a href="/2007/02/09/83-beautiful-wordpress-themes-you-probably-havent-seen/">2</a>, <a href="/2007/06/26/21-fresh-usable-and-elegant-wordpress-themes/">3</a>, <a href="/2008/08/25/30-free-high-quality-wordpress-themes/">4</a></li>
+<li><a href="/2008/09/15/wordpress-developers-toolbox/">Wordpress Toolbox</a></li>
+<li class="inline">  <a href="/2008/05/06/25-wysiwyg-editors-reviewed/" rel="bookmark" title="25 Useful WYSIWYG Editors Reviewed">WYSIWYG Editors</a></li>
+</ul></div>
+
+<p><a href="http://twitter.com/smashingmag" title="Follow us on Twitter!"><img src="http://88.198.60.17/images/twitter-2.jpg" width="190" height="103" alt="Follow us on Twitter!" /></a><br /><a href="http://rss1.smashingmagazine.com/feed/" title="Subscribe to our RSS-feed!"><img src="http://88.198.60.17/images/rss-feed2.jpg" width="176" height="79" alt="Subscribe to our RSS-feed!" /></a></p>
+
+</div><div class="right"><div class="box"><h3>Webtips</h3><ul>
+<li><a href="http://www.wix.com/free/website" rel="external nofollow">Free Stunning Website</a></li>
+<li><a href="http://www.dreamtemplate.com" rel="external nofollow">Amazing Website Templates</a></li>
+<li><a href="http://www.imhosted.com" rel="external nofollow">Best Web Hosting Provider</a></li>
+<li><a href="http://www.mygreencorner.com" title="Internet marketing center" rel="external nofollow">Professional web services</a></li>
+<li><a href="http://www.dynamicdrive.com/style/" rel="external nofollow">CSS layouts and menus</a></li>
+<li><a href="http://www.javascriptkit.com/" rel="external nofollow">Free JavaScript codes</a></li>
+</ul>
+</div>
+
+<span class="an">Advertisement</span><br />
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://adserver.3digit.de/www/delivery/ajs.php':'http://adserver.3digit.de/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=37");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://adserver.3digit.de/www/delivery/ck.php?n=a5ba36a2&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://adserver.3digit.de/www/delivery/avw.php?zoneid=37&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a5ba36a2' border='0' alt='' /></a></noscript><br />
+
+<div class="box"><h3>Fresh Bookmarks</h3><p class="delicious"><a href="http://www.spoonfeddesign.com/liven-up-action-shots-with-light-and-bubble-trails-in-photoshop" class="delicious-link">Action Shots With Light and Bubble Trails</a><br /><span class="delicious-desc">Photoshop photo manipulation.</span></p><p class="delicious"><a href="http://styleneat.com/" class="delicious-link">Styleneat - CSS Organizer</a><br /><span class="delicious-desc">This tool sorts and formats CSS properties.</span></p><p class="delicious"><a href="http://www.devlounge.net/design/sites-without-menus-do-you-really-need-a-main-nav" class="delicious-link">Sites Without Menus: Do You Really Need a Main Nav?</a><br /><span class="delicious-desc">Simple answer: no, you don&#039;t.</span></p><p class="delicious"><a href="http://www.fontshop.com/support/glossary.php" class="delicious-link">Typeface Anatomy and Glossary</a><br /><span class="delicious-desc">Common type terminology. Useful!</span></p><p class="delicious"><a href="http://cameronmoll.com/archives/2009/03/cufon_font_embedding/" class="delicious-link">Exploring Cufón, a sIFR alternative for font embedding</a><br /><span class="delicious-desc">Well-explained by Cameron Moll.</span></p><p class="delicious"><a href="http://www.designer-daily.com/8-css-tips-for-better-linking-1424" class="delicious-link">8 CSS tips for better linking</a><br /><span class="delicious-desc">Display filetype icons, external links, visited links.</span></p><p class="delicious"><a href="http://net.tutsplus.com/tutorials/html-css-techniques/how-to-add-variables-to-your-css-files/" class="delicious-link">How to Add Variables to Your CSS Files</a><br /><span class="delicious-desc">A step-by-step tutorial that makes use of .htaccess.</span></p><p class="delicious"><a href="http://www.photoshopstar.com/graphics/making-a-realistic-film-strip-with-a-reflection-on-the-floor/" class="delicious-link">Photoshop: Film Strip Tutorial</a><br /><span class="delicious-desc">... with a Reflection on the Floor.</span></p><p class="delicious"><a href="http://www.uxbooth.com/blog/good-call-to-action-buttons/" class="delicious-link">Good Call-To-Action Buttons</a><br /><span class="delicious-desc">Providing effective call-to-action buttons.</span></p><p class="delicious"><a href="http://www.noupe.com/adobe/40-high-quality-adobe-fireworks-tutorials-and-resources.html" class="delicious-link">40+ Adobe Fireworks Tutorials, Resources and PNG files</a><br /><span class="delicious-desc">A brilliant round-up for Fireworks users.</span></p></div>
+
+<div class="box"><h3>Blogroll</h3><ul>
+<li><a href="http://www.bittbox.com/">Bittbox</a></li>
+<li><a href="http://www.catswhocode.com">CatsWhoCode</a></li>
+<li><a href="http://wp-themes.designdisease.com/">Design Disease</a></li>
+<li><a href="http://designm.ag/">Designm.ag</a></li>
+<li><a href="http://www.dezinerfolio.com/">Deziner Folio</a></li>
+<li><a href="http://www.drweb.de/">Dr. Web Magazin (.de)</a></li>
+<li><a href="http://freshome.com/">Freshome Blog</a></li>
+<li><a href="http://www.fudgegraphics.com">FudgeGraphics</a></li>
+<li><a href="http://www.ilovetypography.com/">I Love Typography</a></li>
+<li><a href="http://www.makeuseof.com/">MakeUseOf.com</a></li>
+<li><a href="http://www.noupe.com/">Noupe.com</a></li>
+<li><a href="http://www.problogdesign.com/">Pro Blog Design</a></li>
+<li><a href="http://www.search-this.com">Search-This</a></li>
+<li><a href="http://www.sixrevisions.com">Six Revisions</a></li>
+<li><a href="http://www.smileycat.com/">SmileyCat</a></li>
+<li><a href="http://www.blog.spoongraphics.co.uk/">Spoon Graphics</a></li>
+<li><a href="http://typesites.com/">Typesites</a></li>
+<li><a href="http://www.usabilitypost.com/">Usability Post</a></li>
+<li><a href="http://www.walyou.com/">Walyou</a></li>
+<li><a href="http://www.webdesignerdepot.com">Webdesigner Depot</a></li>
+<li><a href="http://weburbanist.com">Weburbanist</a></li>
+<li><a href="http://www.wellmedicated.com">Wellmedicated</a></li>
+</ul></div>
+
+<div id="badges"><ul>
+<li><a href="http://www.9rules.com" title="Proud member of 9Rules Network"><img src="http://88.198.60.17/images/shadow_leaf.gif" width="80" height="112" alt="9Rules Logo" /></a></li><li><a href="http://www.quicksprout.com/"><img alt="Quicksprout Logo" src="/images/qp.png" width="125" height="50" /></a></li></ul></div></div></div>
+</div></div></div><div id="footer">
+<p>2006-2009 <a href="http://www.smashingmagazine.com/about/">Smashing Media GmbH i.Gr.</a> Theme by Smashing Magazine &amp; <a href="http://w3-markup.com/order"  title="PSD to HTML">W3 MARKUP</a>. </p>
+</div>
+
+<script src="http://www.smashingmagazine.com/wp-content/themes/SM-theme/js/smash-packed.js?ver=1" type="text/javascript"></script>
+<script src="http://jobs.smashingmagazine.com/jobs/latest_json" type="text/javascript"></script>
+<script type="text/javascript" src="http://103bees.com/bees/?bee=60&amp;fid=1711"></script>
+<!-- <script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shCore.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushXml.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushCss.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushPhp.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushSql.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushJScript.js"></script>
+<script type="text/javascript" src="http://88.198.60.17/images/highlighting/js/shBrushRuby.js"></script> -->
+<script type="text/javascript">dp.SyntaxHighlighter.ClipboardSwf = "http://78.46.108.98/images/highlighting/flash/clipboard.swf";dp.SyntaxHighlighter.HighlightAll("code");</script>
+
+<script type="text/javascript">var clicky_advanced_disable = 1;</script>
+<script src="http://static.getclicky.com/2727.js" type="text/javascript"></script>
+<noscript><p><img alt="Clicky" src="http://in.getclicky.com/2727-db2.gif" /></p></noscript>
+</body></html>
+<!-- Dynamic Page Served (once) in 0.698 seconds -->
+<!-- Cached page generated by WP-Super-Cache on 2009-03-26 12:48:09 -->
+<!-- super cache -->

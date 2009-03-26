@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title> Parsing XML with Ruby // RailsTips by John Nunemaker</title>
+  <link href="http://static.railstips.org/stylesheets/common.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+  <script type="text/javascript">jQuery.noConflict();</script>
+  <script type="text/javascript" src="http://static.blawgtips.com/javascripts/network.js"></script>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6/prototype.js" type="text/javascript"></script>
+  <script src="http://static.railstips.org/javascripts/code_highlighter.js" type="text/javascript"></script>
+  <script src="http://static.railstips.org/javascripts/application.js" type="text/javascript"></script>
+  <script src="http://mint.railstips.org/mint/?js" type="text/javascript"></script>
+
+  <link href="http://feeds.feedburner.com/railstips" rel="alternate" type="application/atom+xml" title="Railstips Articles" /> 
+  <link href="http://feeds.feedburner.com/railsquicktips" rel="alternate" type="application/atom+xml" title="Rails Quick Tips (links)" /> 
+</head>
+<body>
+
+<div id="wrapper">
+	<div id="header">
+		<h3><a href="/">Rails<span>Tips</span></a></h3>
+		<p>One man, feverishly posting everything he learns. <a href="#more" id="more_slide">more &raquo;</a></p>
+	</div>
+	
+	<div id="content">
+		<div id="primary">
+			
+  
+	<div class="post">
+		<div class="when">
+			<h3>August 11th, 2008</h3>
+			<p class="author">Posted by John</p>
+			
+			
+				<div class="sponsors">
+          <a href="http://sifterapp.com/" class="sponsor" title="Sifter"><img src="http://static.railstips.org/sponsors/sifter.png" alt="Sifter" /></a>
+
+<a href="http://railskits.com/" class="sponsor" title="RailsKits"><img src="http://static.railstips.org/sponsors/railskits_logo.gif" alt="RailsKits" /></a>
+
+<a href="http://peepcode.com" class="sponsor" title="Awesome Screencasts"><img src="http://static.railstips.org/sponsors/peepcode-120x60.png" alt="Peepcode" /></a>
+				</div>
+			
+		</div>
+		
+		<div class="title">
+			<h1><a href="/2008/8/12/parsing-xml-with-ruby" title="Parsing XML with Ruby">Parsing XML with Ruby</a></h1>
+		</div>		
+		
+		<div class="body">
+			
+			  
+			
+			
+			
+			  <p>Just for kicks and giggles, I decided to parse xml with each of the main  libraries in Ruby (<a href="http://www.ruby-doc.org/stdlib/libdoc/rexml/rdoc/index.html"><span class="caps">REXML</span></a>, <a href="http://code.whytheluckystiff.net/hpricot/">Hpricot</a>, <a href="http://libxml.rubyforge.org/">libxml-ruby</a>), so I could see the differences between them in both <span class="caps">API</span> (getting at elements and attributes) and speed. I did two different xml formats. The first, Delicious, uses an attribute based approach, and the second, Twitter, uses a more elemental one. If you look at the xml files linked below, the previous sentence might make more sense.</p>
+
+
+	<p><strong>Note:</strong> This is not for scientific and speed purposes but rather to get a feel for each of the libraries and how you traverse xml nodes and such  with them.</p>
+
+
+	<h2>The <span class="caps">XML</span></h2>
+
+
+	<p>Here are the files I used for reference. You&#8217;ll have to view source once you click on one of these links to actually see the xml.</p>
+
+
+	<ul>
+	<li><a href="http://railstips.org/assets/2008/8/9/posts.xml">posts.xml</a> &#8211; Uses xml element for object (post) and xml attributes for object attributes</li>
+		<li><a href="http://railstips.org/assets/2008/8/9/timeline.xml">timeline.xml</a> &#8211; Uses xml element for object (status) and child xml elements for attributes</li>
+	</ul>
+
+
+	<h2><span class="caps">REXML</span></h2>
+
+
+	<p><strong>Pros:</strong> In the standard library<br />
+<strong>Cons:</strong> Slow, I don&#8217;t like the name</p>
+
+
+<pre><code class="ruby">%w[benchmark pp rexml/document].each { |x| require x }
+
+##################################
+# Parsing Delicious API Response #
+##################################
+xml = File.read('posts.xml')
+puts Benchmark.measure {
+  doc, posts = REXML::Document.new(xml), []
+  doc.elements.each('posts/post') do |p|
+    posts &lt;&lt; p.attributes
+  end
+  # pp posts
+}
+
+################################
+# Parsing Twitter API Response #
+################################
+xml = File.read('timeline.xml')
+puts Benchmark.measure {
+  doc, statuses = REXML::Document.new(xml), []
+  doc.elements.each('statuses/status') do |s|
+    h = {:user =&gt; {}}
+    %w[created_at id text source truncated in_reply_to_status_id in_reply_to_user_id favorited].each do |a|
+      h[a.intern] = s.elements[a].text
+    end
+    %w[id name screen_name location description profile_image_url url protected followers_count].each do |a|
+      h[:user][a.intern] = s.elements['user'].elements[a].text
+    end
+    statuses &lt;&lt; h
+  end
+  # pp statuses
+}</code></pre>
+
+	<h2>Hpricot</h2>
+
+
+	<p><strong>Pros:</strong> Cool name, created by _why, faster than <span class="caps">REXML</span>, also does <span class="caps">HTML</span>, creative <span class="caps">API</span><br />
+<strong>Cons:</strong> Not as fast as libxml-ruby, more of an <span class="caps">HTML</span> parser linguistically (ie: uses innerHTML instead of text or content, etc.)</p>
+
+
+<pre><code class="ruby">%w[benchmark pp rubygems].each { |x| require x }
+gem 'hpricot', '&gt;= 0.6'
+require 'hpricot'
+
+##################################
+# Parsing Delicious API Response #
+##################################
+xml = File.read('posts.xml')
+puts Benchmark.measure {
+  doc, posts = Hpricot::XML(xml), []
+  (doc/:post).each do |p|
+    posts &lt;&lt; p.attributes
+  end
+  # pp posts
+}
+
+################################
+# Parsing Twitter API Response #
+################################
+xml = File.read('timeline.xml')
+puts Benchmark.measure {
+  doc, statuses = Hpricot::XML(xml), []
+  (doc/:status).each do |s|
+    h = {:user =&gt; {}}
+    %w[created_at id text source truncated in_reply_to_status_id in_reply_to_user_id favorited].each do |a|
+      h[a.intern] = s.at(a).innerHTML
+    end
+    %w[id name screen_name location description profile_image_url url protected followers_count].each do |a|
+      h[:user][a.intern] = s.at('user').at(a).innerHTML
+    end
+    statuses &lt;&lt; h
+  end
+  # pp statuses
+}</code></pre>
+
+	<h2>libxml-ruby</h2>
+
+
+	<p><strong>Pros:</strong> Blistering fast<br />
+<strong>Cons:</strong> Hpricot has cooler name, <span class="caps">REXML</span> and Hpricot both feel easier to  use out of the box</p>
+
+
+<pre><code class="ruby">%w[benchmark pp rubygems].each { |x| require x }
+gem 'libxml-ruby', '&gt;= 0.8.3'
+require 'xml'
+
+##################################
+# Parsing Delicious API Response #
+##################################
+xml = File.read('posts.xml')
+puts Benchmark.measure {
+  parser, parser.string = XML::Parser.new, xml
+  doc, posts = parser.parse, []
+  doc.find('//posts/post').each do |p|
+    posts &lt;&lt; p.attributes.inject({}) { |h, a| h[a.name] = a.value; h }
+  end
+  # pp posts
+}
+
+################################
+# Parsing Twitter API Response #
+################################
+xml = File.read('timeline.xml')
+puts Benchmark.measure {
+  parser, parser.string = XML::Parser.new, xml
+  doc, statuses = parser.parse, []
+  doc.find('//statuses/status').each do |s|
+    h = {:user =&gt; {}}
+    %w[created_at id text source truncated in_reply_to_status_id in_reply_to_user_id favorited].each do |a|
+      h[a.intern] = s.find(a).first.content
+    end
+    %w[id name screen_name location description profile_image_url url protected followers_count].each do |a|
+      h[:user][a.intern] = s.find('user').first.find(a).first.content
+    end
+    statuses &lt;&lt; h
+  end
+  # pp statuses
+}</code></pre>
+
+	<h2>Conclusion</h2>
+
+
+	<p>I&#8217;ll probably start using libxml-ruby but Hpricot is more fun (and I&#8217;ve used it a ton). Oh, if you are curious, this was the output from the scripts above on my machine.</p>
+
+
+<pre>=rexml
+delicious     0.020000   0.000000   0.020000 (  0.021139)
+twitter       0.940000   0.020000   0.960000 (  0.988666)
+
+=hpricot
+delicious     0.010000   0.000000   0.010000 (  0.005548)
+twitter       0.250000   0.010000   0.260000 (  0.258320)
+
+=libxml-ruby
+delicious     0.000000   0.000000   0.000000 (  0.007829)
+twitter       0.030000   0.010000   0.040000 (  0.034040)</pre>
+
+	<p>The twitter one is slower because of the loops and hashes most likely. I doubt it has much to do with the actual parsing, though it is a larger file and would be a bit slower.</p>
+			
+		</div>
+		
+		<div class="meta">
+		  <p>
+		    Tags: <a href="/tags/gems" rel="tag" title="gems">gems</a>, <a href="/tags/hpricot" rel="tag" title="hpricot">hpricot</a>, <a href="/tags/libxml-ruby" rel="tag" title="libxml-ruby">libxml-ruby</a>, <a href="/tags/rexml" rel="tag" title="rexml">rexml</a>, <a href="/tags/xml" rel="tag" title="xml">xml</a>
+		    
+		    
+		  </p>
+		</div>
+		
+		
+		
+			
+			
+				<div id="related_articles">
+					<h2>Related Articles</h2>
+					<ul class="dates">
+						
+							
+								<li>
+									<span class="date">
+										Mar 26, 2009
+									</span>  
+						      <span class="article">
+						      	<a href="/2009/3/26/in-1492-columbus-discovered-a-feed" title="In 1492, Columbus Discovered...A Feed">In 1492, Columbus Discovered...A Feed</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Mar 25, 2009
+									</span>  
+						      <span class="article">
+						      	<a href="/2009/3/25/building-api-wrapping-gems-could-not-get-much-easier" title="Building API Wrapping Gems Could Not Get Much Easier">Building API Wrapping Gems Could Not Get Much Easier</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Mar 23, 2009
+									</span>  
+						      <span class="article">
+						      	<a href="/2009/3/23/httparty-example-mymilemarker-com" title="HTTParty Example: MyMileMarker.com">HTTParty Example: MyMileMarker.com</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Dec 22, 2008
+									</span>  
+						      <span class="article">
+						      	<a href="/2008/12/22/the-top-eight-of-2008" title="The 2008 Smörgåsbord">The 2008 Smörgåsbord</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Dec 16, 2008
+									</span>  
+						      <span class="article">
+						      	<a href="/2008/12/17/using-context-and-stump-to-httparty-like-a-wufoo" title="Using Context and Stump to HTTParty like a Wufoo">Using Context and Stump to HTTParty like a Wufoo</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Dec 07, 2008
+									</span>  
+						      <span class="article">
+						      	<a href="/2008/12/7/httparty-divorces-activesupport" title="HTTParty Divorces ActiveSupport">HTTParty Divorces ActiveSupport</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Nov 24, 2008
+									</span>  
+						      <span class="article">
+						      	<a href="/2008/11/25/rubygems-yours-mine-and-ours" title="RubyGems: Yours, Mine and Ours">RubyGems: Yours, Mine and Ours</a>
+						      </span>
+								</li>
+							
+						
+							
+								<li>
+									<span class="date">
+										Nov 17, 2008
+									</span>  
+						      <span class="article">
+						      	<a href="/2008/11/17/happymapper-making-xml-fun-again" title="HappyMapper, Making XML Fun Again">HappyMapper, Making XML Fun Again</a>
+						      </span>
+								</li>
+							
+						
+					</ul>
+				</div>
+			
+		
+	</div>
+
+
+
+
+
+  <div class="commentsblock">
+    
+	<h3 id="comments">9 Responses to &#8220;Parsing XML with Ruby&#8221;</h3> 
+
+
+<ol class="commentlist" id="commentlist">
+  
+  	<li class="comment odd" id="comment-8044">
+  		<div class="comment_author">
+  			<img alt="jney" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=4b87f676cb6c4d648d71000681823693&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><a href="http://jney.blogspot.com">jney</a></cite>
+  			<p class="date">
+  				<a href="#comment-8044" title="Link to this Comment">
+  					Aug 12, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>hi, did you already check that post: http://thebogles.com/blog/an-hpricot-style-interface-to-libxml/, that is using libxml in hpricot way. it looks nice.</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment author even" id="comment-8046">
+  		<div class="comment_author">
+  			<img alt="John Nunemaker" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=e13c31390e0369fcd5972292ce0e7b92&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><a href="http://addictedtonew.com">John Nunemaker</a></cite>
+  			<p class="date">
+  				<a href="#comment-8046" title="Link to this Comment">
+  					Aug 12, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>@jney &#8211; Sweet! No I hadn&#8217;t viewed that. Thanks for the link.</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment odd" id="comment-8048">
+  		<div class="comment_author">
+  			<img alt="Kunal Parikh" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=40fd955840a00f0b34a85d891a7f4e30&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><span>Kunal Parikh</span></cite>
+  			<p class="date">
+  				<a href="#comment-8048" title="Link to this Comment">
+  					Aug 12, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>Have you looked @ SimpleXML?</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment even" id="comment-8049">
+  		<div class="comment_author">
+  			<img alt="Seth" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=a0b49382b6dcd9dd4602c3088717724e&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><span>Seth</span></cite>
+  			<p class="date">
+  				<a href="#comment-8049" title="Link to this Comment">
+  					Aug 12, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>Since many web services also provide <span class="caps"><span class="caps">JSON</span></span> feeds, have you done any benchmarking of libxml vs. json (and json-pure)?</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment author odd" id="comment-8051">
+  		<div class="comment_author">
+  			<img alt="John Nunemaker" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=e13c31390e0369fcd5972292ce0e7b92&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><a href="http://addictedtonew.com">John Nunemaker</a></cite>
+  			<p class="date">
+  				<a href="#comment-8051" title="Link to this Comment">
+  					Aug 13, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>@Kunal &#8211; xml-simple uses rexml under the hood and I&#8217;m technically using it with HTTParty as I&#8217;m using Active Support which uses xml-simple. So yep, I&#8217;ve looked at it but it&#8217;s going to have the same speed issues as <span class="caps"><span class="caps">REXML</span></span>.</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment even" id="comment-8052">
+  		<div class="comment_author">
+  			<img alt="Rajmohan" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=962072a31e99f20b0603d62b4488c8ca&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><span>Rajmohan</span></cite>
+  			<p class="date">
+  				<a href="#comment-8052" title="Link to this Comment">
+  					Aug 14, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>Since you work so much with <span class="caps"><span class="caps">XML</span></span> in ruby, was wondering if you have come across any ruby library that does <span class="caps"><span class="caps">SAX</span></span> with Pull Parsing? Just like StAX in Java?</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment odd" id="comment-8053">
+  		<div class="comment_author">
+  			<img alt="Brandon Mitchell" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=e35b8aac0c907bd2167bb3a7b9d3ca61&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><a href="http://systemisdown.net">Brandon Mitchell</a></cite>
+  			<p class="date">
+  				<a href="#comment-8053" title="Link to this Comment">
+  					Aug 14, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>HTTParty might benefit from the work I did replacing xml-simple in ActiveSupport in favor of libxml-ruby <a href="http://github.com/bitbckt/libxml_rails/tree/master">here</a>.</p>
+
+    <p>I found significant performance improvements for relatively little work, with these modifications.</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment even" id="comment-8056">
+  		<div class="comment_author">
+  			<img alt="Soleone" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=64ac4afdcf405be710b07ec4a8679a74&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><span>Soleone</span></cite>
+  			<p class="date">
+  				<a href="#comment-8056" title="Link to this Comment">
+  					Aug 15, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>I definitely think libxml-ruby with a nicer <span class="caps"><span class="caps">API</span></span> (kinda like hpricot, but more xml oriented) is the way to go! Would be cool if we could standardize something like this.</p>
+
+    <p>StAX would also be cool I guess, at least to have something to show the suits-people :)</p>
+  		</div>
+  	</li>
+  
+  	<li class="comment omega odd" id="comment-8106">
+  		<div class="comment_author">
+  			<img alt="jan" class="gravatar" height="30" src="http://www.gravatar.com/avatar.php?size=30&amp;gravatar_id=ea875673199ca2e6b6ba0eeda0e7e009&amp;default=http://static.railstips.org/images/blank_avatar.jpg" width="30" />
+  			<cite><a href="http://onruby.flempo.com">jan</a></cite>
+  			<p class="date">
+  				<a href="#comment-8106" title="Link to this Comment">
+  					Aug 22, 2008</a></p>
+  		</div>
+		
+  		<div class="comment_body">
+  			<p>There is innerText method in Hpricot you can use instead of innerHTML. Recently I even have found out that innnerText converts entities (e.g. &amp; to &#38;) whereas innerHTML does not.</p>
+  		</div>
+  	</li>
+  
+
+  
+</ol>
+
+
+<div id="comment_form_wrapper">
+	
+		<p>Sorry, comments are closed for this article to ease the burden of pruning spam. If you have any further comments, just <a href="mailto:nunemaker@gmail.com"> send me an email</a>.</p>
+	
+</div>
+  </div>
+
+
+
+		</div>
+		
+		<div id="secondary">
+			<div class="section">
+				<h3>About</h3>
+				<p>Authored by John Nunemaker (Noo-neh-maker), a web developer and programmer who has fallen deeply in love with Ruby. <a href="/about/">More about John.</a></p>
+			</div>
+
+			<div class="section">
+				<a href="http://orderedlist.com/">
+					<img src="http://static.railstips.org/images/bug.jpg" alt="Hire Me at Ordered List" />
+				</a>
+			</div>
+			
+			<div class="section">
+				<h3>Syndication</h3>
+				<p>
+					<img src="http://static.railstips.org/images/feed-icon-12x12-orange.gif" alt="Feed Icon" class="feed_icon" /><a href="http://feeds.feedburner.com/railstips">RailsTips Articles</a> - An assortment of howto's and thoughts on Ruby and Rails. <a href="http://feeds.feedburner.com/railstips" class="chicklet"><img src="http://feeds.feedburner.com/~fc/railstips?bg=aaaaaa&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+				</p>
+				<p>
+					<img src="http://static.railstips.org/images/feed-icon-12x12-orange.gif" alt="Feed Icon" class="feed_icon" /><a href="http://feeds.feedburner.com/railsquicktips">Rails Quick Tips</a> - Ruby and Rails related links that I find. Never more than 5 a day. <a href="http://feeds.feedburner.com/railsquicktips" class="chicklet"><img src="http://feeds.feedburner.com/~fc/railsquicktips?bg=aaaaaa&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+				</p>
+			</div>
+			
+			<div class="section">
+				<h3>Search</h3>
+				<form method="get" id="sform" action="/search">
+					<div>
+						<input type="text" id="q" value="" name="q" size="13" />
+						<input type="submit" value="Go" />
+					</div>
+				</form>
+			</div>
+			
+			<script src="http://errcount.com/ctr/21.js" type="text/javascript"></script>
+		</div>
+	</div>
+	
+	<div id="more">
+	  
+	  <div class="cell" id="more_site_links">
+	    <div class="section">
+	      <h3 class="column_heading">Site Links</h3>
+  	    <ul>
+  	     <li><a href="/">RailsTips Home</a></li>
+  	     <li><a href="/about/">The Sexy Author</a></li>
+  	     <li><a href="/smorgasbord/">Visit the Archives</a></li>
+  	     <li><a href="http://railstips.uservoice.com/">Suggest a Topic</a></li>
+  	     <li><a href="/advertise/">Advertise</a></li>
+  	     <li><img src="http://static.railstips.org/images/feed-icon-12x12-orange.gif" alt="Feed Icon" class="feed_icon" /><a href="http://feeds.feedburner.com/railstips/">Articles Feed</a></li>
+  	     <li><img src="http://static.railstips.org/images/feed-icon-12x12-orange.gif" alt="Feed Icon" class="feed_icon" /><a href="http://feeds.feedburner.com/railsquicktips/">Quick Tips Feed</a></li>
+  	    </ul>
+	    </div>
+	    
+	    <div class="section">
+	      <h3>Search</h3>
+        <form method="get" action="/search">
+  				<div>
+  					<input type="text" id="q2" value="" name="q" size="15" />
+  					<input type="submit" value="Go" />
+  				</div>
+  			</form>
+	    </div>
+	    
+	    <div class="section">
+				<a href="http://orderedlist.com/">
+					<img src="http://static.railstips.org/images/bug.jpg" alt="Hire Me at Ordered List" />
+				</a>
+			</div>
+			
+			<div class="section">
+			  <h3>Need More?</h3>
+			  <ul>
+			   <li><a href="http://addictedtonew.com/">Addicted To New</a></li>
+			   <li><a href="http://orderedlist.com/">Ordered List</a></li>
+			   <li><a href="http://jnunemaker.tumblr.com/">Tumblelog</a></li>
+			   <li><a href="http://twitter.com/jnunemaker">Twitter</a></li>
+			   <li><a href="http://github.com/jnunemaker">GitHub</a></li>
+			   <li><a href="http://flickr.com/photos/johnnunemaker/">Flickr</a></li>
+			  </ul>
+			</div>
+	  </div>
+	  
+	  <div class="row">
+      <div class="cell links">
+        <h3 class="column_heading">Recent <small><a href="/smorgasbord/" title="view all articles">view the smörgåsbord</a></small></h3>
+        <ul>
+          
+          
+            <li>
+             <a href="/2009/3/26/in-1492-columbus-discovered-a-feed" title="In 1492, Columbus Discovered...A Feed">In 1492, Columbus Discovered...A Feed</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/25/building-api-wrapping-gems-could-not-get-much-easier" title="Building API Wrapping Gems Could Not Get Much Easier">Building API Wrapping Gems Could Not Get Much Easier</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/24/custom-matchers-for-matchy" title="Custom Matchers for Matchy">Custom Matchers for Matchy</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/23/httparty-example-mymilemarker-com" title="HTTParty Example: MyMileMarker.com">HTTParty Example: MyMileMarker.com</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/12/3-simple-guidelines-for-contributing" title="3 Simple Guidelines for Contributing">3 Simple Guidelines for Contributing</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/4/following-redirects-with-net-http" title="Following Redirects with Net/HTTP">Following Redirects with Net/HTTP</a>
+            </li>
+          
+            <li>
+             <a href="/2009/3/1/first-time-in-print" title="First Time in Print">First Time in Print</a>
+            </li>
+          
+            <li>
+             <a href="/2009/2/21/shoulda-looked-at-it-sooner" title="Shoulda Looked At It Sooner">Shoulda Looked At It Sooner</a>
+            </li>
+          
+            <li>
+             <a href="/2009/2/2/bedazzle-your-bash-prompt-with-git-info" title="Bedazzle Your Bash Prompt with Git Info">Bedazzle Your Bash Prompt with Git Info</a>
+            </li>
+          
+            <li>
+             <a href="/2009/1/31/httparty-divorces-json" title="HTTParty Divorces JSON">HTTParty Divorces JSON</a>
+            </li>
+          
+            <li>
+             <a href="/2009/1/28/httparty-meet-mr-response" title="HTTParty Meet Mr. Response">HTTParty Meet Mr. Response</a>
+            </li>
+          
+            <li>
+             <a href="/2009/1/8/test-or-die-validates-uniqueness-of" title="Test Or Die: Validates Uniqueness Of">Test Or Die: Validates Uniqueness Of</a>
+            </li>
+          
+        </ul>
+      </div>
+
+      <div class="cell omega links">
+        <h3 class="column_heading">Popular <small>last 7 days</small></h3>
+        <ul>
+          
+          
+            <li>
+              <a href="http://railstips.org/2009/3/25/building-api-wrapping-gems-could-not-get-much-easier" title="Viewed 274 times"><strong>274:</strong> Building API Wrapping Gems Could Not Get Much Easier </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2006/11/18/class-and-instance-variables-in-ruby" title="Viewed 181 times"><strong>181:</strong> Class and Instance Variables In Ruby </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2009/3/24/custom-matchers-for-matchy" title="Viewed 169 times"><strong>169:</strong> Custom Matchers for Matchy </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/8/12/parsing-xml-with-ruby" title="Viewed 143 times"><strong>143:</strong> Parsing XML with Ruby </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/7/29/it-s-an-httparty-and-everyone-is-invited" title="Viewed 96 times"><strong>96:</strong> It's an HTTParty and Everyone Is Invited! </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/11/20/jquery-on-rails-why-bother" title="Viewed 82 times"><strong>82:</strong> jQuery on Rails: Why Bother? </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2009/3/23/httparty-example-mymilemarker-com" title="Viewed 66 times"><strong>66:</strong> HTTParty Example: MyMileMarker.com </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/10/14/how-to-generate-pdfs-in-rails-with-prawn" title="Viewed 61 times"><strong>61:</strong> How To Generate PDFs in Rails With Prawn </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/10/27/using-gmail-with-imap-to-receive-email-in-rails" title="Viewed 51 times"><strong>51:</strong> Using Gmail with IMAP to Receive Email in Rails </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2009/2/21/shoulda-looked-at-it-sooner" title="Viewed 50 times"><strong>50:</strong> Shoulda Looked At It Sooner </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/12/12/using-gmail-to-send-email-with-rails" title="Viewed 49 times"><strong>49:</strong> Using Gmail to Send Email With Rails </a>
+            </li>
+          
+            <li>
+              <a href="http://railstips.org/2008/11/17/happymapper-making-xml-fun-again" title="Viewed 42 times"><strong>42:</strong> HappyMapper, Making XML Fun Again </a>
+            </li>
+          
+        </ul>
+      </div>
+	  </div>
+	  
+	  <div class="row">
+	    <div class="cell links" id="more_best_of">
+	      <h3>Best Of <small>in my opinion</small></h3>
+	      <ul>
+	       <li><a href="http://railstips.org/2008/12/24/the-rails-beatitudes">The Rails Beatitudes</a></li>
+	       <li><a href="http://railstips.org/2008/12/1/unless-the-abused-ruby-conditional">Unless, The Abused Ruby Conditional</a></li>
+         <li><a href="http://railstips.org/2008/6/10/programmers-should-give-up-more-often">Programmers Should Give Up More Often</a></li>
+	       <li><a href="http://railstips.org/2006/11/18/class-and-instance-variables-in-ruby">Class and Instance Variables In Ruby</a></li>
+	       <li><a href="http://railstips.org/2008/8/12/parsing-xml-with-ruby">Parsing XML with Ruby</a></li>
+	       <li><a href="http://railstips.org/2008/10/27/using-gmail-with-imap-to-receive-email-in-rails">Using Gmail with IMAP to Receive Email in Rails</a></li>
+	       <li><a href="http://railstips.org/2008/12/12/using-gmail-to-send-email-with-rails">Using Gmail to Send Email With Rails</a></li>
+	       <li><a href="http://railstips.org/2008/7/29/it-s-an-httparty-and-everyone-is-invited">It's an HTTParty and Everyone Is Invited!</a></li>
+	       <li><a href="http://railstips.org/2008/12/14/deploying-rails-on-dreamhost-with-passenger">Deploying Rails on Dreamhost with Passenger</a></li>
+	       <li><a href="http://railstips.org/2008/12/15/deploying-sinatra-on-dreamhost-with-passenger">Deploying Sinatra on Dreamhost With Passenger</a></li>
+	       <li><a href="http://railstips.org/2008/11/24/gitn-your-shared-host-on">Git'n Your Shared Host On</a></li>
+         <li><a href="http://railstips.org/2008/11/20/jquery-on-rails-why-bother">jQuery on Rails: Why Bother?</a></li>
+	      </ul>
+	    </div>
+	    
+	    <div class="cell links omega">
+	      <h3>Quick Links <small><a href="http://feeds.feedburner.com/railsquicktips/">subscribe to feed</a></small></h3>
+	      <ul id="more_quick_links"></ul>
+	    </div>
+	  </div>
+	</div>
+	
+	<div id="footer">
+		&copy; 2008 John Nunemaker | 
+		<a href="http://orderedlist.com/">Ordered List, Inc.</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+  var pageTracker = _gat._getTracker("UA-85301-7");
+  pageTracker._initData();
+  pageTracker._trackPageview();
+</script>
+<script type="text/javascript" src="http://simp.orderedlist.com/track/2" id="statsinmypants_tracker"></script>
+
+<!-- <script type="text/javascript" src="http://pipes.yahoo.com/pipes/pipe.run?_id=ZoBpbs_c3RG_NLlQpgt1Yg&_render=json&_callback=handleRecentTips"></script> -->
+
+<script type="text/javascript" src="http://pipes.yahoo.com/pipes/pipe.run?_id=FiFM3ant3RG_MFS3dPQQIA&_render=json&_callback=handleRecentTips"></script>
+
+</body>
+</html>

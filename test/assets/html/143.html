@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  
+
+  <head>
+    <title>
+      Ruby MemCache Client
+    </title>
+        <link rel="search" href="/projects/RMemCache/search" />
+        <link rel="help" href="/projects/RMemCache/wiki/TracGuide" />
+        <link rel="alternate" href="/projects/RMemCache/wiki/WikiStart?format=txt" type="text/x-trac-wiki" title="Plain Text" />
+        <link rel="start" href="/projects/RMemCache/wiki" />
+        <link rel="stylesheet" href="/projects/RMemCache/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/projects/RMemCache/chrome/common/css/wiki.css" type="text/css" />
+        <link rel="shortcut icon" href="/projects/RMemCache/chrome/common/trac.ico" type="image/x-icon" />
+        <link rel="icon" href="/projects/RMemCache/chrome/common/trac.ico" type="image/x-icon" />
+      <link type="application/opensearchdescription+xml" rel="search" href="/projects/RMemCache/search/opensearch" title="Search Ruby MemCache Client" />
+    <script type="text/javascript" src="/projects/RMemCache/chrome/common/js/jquery.js"></script><script type="text/javascript" src="/projects/RMemCache/chrome/common/js/trac.js"></script><script type="text/javascript" src="/projects/RMemCache/chrome/common/js/search.js"></script>
+    <!--[if lt IE 7]>
+    <script type="text/javascript" src="/projects/RMemCache/chrome/common/js/ie_pre7_hacks.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $("#content").find("h1,h2,h3,h4,h5,h6").addAnchor("Link to this section");
+      });
+    </script>
+    <link rel="stylesheet" type="text/css" href="/projects/RMemCache/chrome/site/style.css" />
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2383087-5");
+pageTracker._trackPageview();
+</script>
+  </head>
+  <body>
+    <div id="siteheader">
+    </div>
+    <div id="banner">
+      <div id="header">
+        <a id="logo" href="http://deveiate.org/projects/RMemCache"><img src="http://deveiate.org/images/trac/Ruby-MemCache.png" alt="OOParser" height="145" width="610" /></a>
+      </div>
+      <form id="search" action="/projects/RMemCache/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input type="text" id="proj-search" name="q" size="18" value="" />
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <div id="metanav" class="nav">
+    <ul>
+      <li class="first"><a href="/projects/RMemCache/login">Login</a></li><li><a href="/projects/RMemCache/prefs">Preferences</a></li><li><a href="/projects/RMemCache/wiki/TracGuide">Help/Guide</a></li><li><a href="/projects/RMemCache/about">About Trac</a></li><li><a href="/projects/RMemCache/register">Register</a></li><li class="last"><a href="/projects/RMemCache/reset_password">Forgot your password?</a></li>
+    </ul>
+  </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first active"><a href="/projects/RMemCache/wiki">Wiki</a></li><li><a href="/projects/RMemCache/timeline">Timeline</a></li><li><a href="/projects/RMemCache/roadmap">Roadmap</a></li><li><a href="/projects/RMemCache/browser">Browse Source</a></li><li><a href="/projects/RMemCache/report">View Tickets</a></li><li class="last"><a href="/projects/RMemCache/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+          <ul>
+            <li class="first "><a href="/projects/RMemCache/wiki/WikiStart">Start Page</a></li><li><a href="/projects/RMemCache/wiki/TitleIndex">Index</a></li><li><a href="/projects/RMemCache/wiki/WikiStart?action=history">History</a></li><li class="last"><a href="/projects/RMemCache/wiki/WikiStart?action=diff&amp;version=7">Last Change</a></li>
+          </ul>
+        <hr />
+      </div>
+    <div id="content" class="wiki">
+      <div class="wikipage searchable">
+        
+          <h1 id="RubyMemCacheClient">Ruby MemCache Client</h1>
+<p>
+This is a Ruby client library for <a class="ext-link" href="http://www.danga.com/memcached/"><span class="icon">memcached</span></a>, a high-performance distributed memory cache.
+</p>
+<p>
+memcached is used to alleviate database load by caching oft-used values in network-accessible memory space, and is used behind several high-traffic dynamic web sites like <a class="ext-link" href="http://www.livejournal.com/"><span class="icon">LiveJournal</span></a>, <a class="ext-link" href="http://slashdot.org/"><span class="icon">Slashdot</span></a>, <a class="ext-link" href="http://wikipedia.org/"><span class="icon">WikiPedia</span></a>, and others.
+</p>
+<p>
+Support for the Ruby client library is built into <a class="ext-link" href="http://www.rubyonrails.org/"><span class="icon">Ruby on Rails</span></a>, allowing you to <a class="ext-link" href="http://wiki.rubyonrails.com/rails/show/MemCached"><span class="icon">use memcached</span></a> as a fragment cache and/or a session store.
+</p>
+<h2 id="Resources">Resources</h2>
+<ul><li><a class="ext-link" href="http://www.ruby-lang.org/en/raa-list.rhtml?name=memcache"><span class="icon">memcache</span></a> in the <a class="ext-link" href="http://raa.ruby-lang.org/"><span class="icon">Ruby Application Archive</span></a>.
+</li><li><a class="ext-link" href="http://www.deveiate.org/code/Ruby-MemCache"><span class="icon">API documentation</span></a> generated by RDoc.
+</li></ul><h2 id="Downloads">Downloads</h2>
+<p>
+<ul class="releases"><li class="release">RubyGem: <a href="/code/Ruby-MemCache-0.0.4.gem">Ruby-MemCache-0.0.4.gem</a> (35.50 k)</li><li class="release">Tar+Bzip2: <a href="/code/Ruby-MemCache-0.0.4.tar.bz2">Ruby-MemCache-0.0.4.tar.bz2</a> (29.50 k)</li><li class="release">Tar+Gzip: <a href="/code/Ruby-MemCache-0.0.4.tar.gz">Ruby-MemCache-0.0.4.tar.gz</a> (32.51 k)</li><li class="release">Zip: <a href="/code/Ruby-MemCache-0.0.4.zip">Ruby-MemCache-0.0.4.zip</a> (40.92 k)</li></ul>
+</p>
+<p>
+For a complete list of local wiki pages, see <a class="wiki" href="/projects/RMemCache/wiki/TitleIndex">TitleIndex</a>.
+</p>
+
+        
+        
+      </div>
+    </div>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="last first">
+          <a rel="nofollow" href="/projects/RMemCache/wiki/WikiStart?format=txt">Plain Text</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <div id="footer" lang="en" xml:lang="en"><hr />
+      <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/projects/RMemCache/chrome/common/trac_logo_mini.png" height="30" width="107" alt="Trac Powered" /></a>
+      <p class="left">
+        Powered by <a href="/projects/RMemCache/about"><strong>Trac 0.11.2</strong></a><br />
+        By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+      </p>
+      <p class="right">Maintainer: &lt;<a href="mailto:deveiant&#064;devEiate&#046;org">devEiant&#064;devEiate&#046;org</a>&gt;.</p>
+    </div>
+    <div id="sitefooter">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,913 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+   <head>
+
+
+
+<title>Linux.com :: Installing Ruby on Rails in Linux</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Generator" content="Xaraya" />
+<meta name="Keywords" content="Linux, Distributions, Linux forums, Linux support, Linux software, Linux Videos, Linux news, Linux downloads" />
+<meta name="Description" content="Ruby on Rails is garnering a lot of praise as an easy-to-use, database-driven Web framework for developing Web applications. Most of the documentation for Ruby on Rails centers on Macintosh, with the remainder seemingly only for Windows machines, but RoR is perfectly usable on Linux computers too. This article explains how to install and begin developing with RoR in Linux." />
+<meta name="rating" content="General" />
+
+
+
+<!-- Linking for Mozilla and related browser site tab -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://linux.com/feature/?theme=rss" />
+
+
+    <link rel="alternate" type="text/html" title="Print" href="http://linux.com/feature/154366?theme=print" />
+
+
+
+<link rel="pingback" href="http://linux.com/ws.php" />
+<link rel="Top" type="text/html" href="http://linux.com/" />
+<link rel="Parent" type="text/html" href="http://linux.com/" />
+<link rel="author" href="Linux.com" />
+
+
+
+
+
+
+<link rel="contents" type="text/html" href="http://linux.com/articles/map/" />
+
+<link rel="search" type="text/html" href="http://linux.com/?module=search" />
+<script type="text/javascript" src="/themes/linux/scripts/jquery-1.2.3.pack.js"></script>
+<script type="text/javascript" src="/themes/linux/scripts/special.js"></script>
+<script type="text/javascript" src="/themes/linux/scripts/jquery.truncate.js"></script>
+<script type="text/javascript" src="/themes/linux/scripts/jquery.pngFix.js"></script><!-- <base href="&xar-baseurl;" /> -->
+<!--  the following styles were supplied from component theme  -->
+<!--  link style  -->
+<link rel="stylesheet" type="text/css" href="http://linux.com/themes/linux/style/style.css" media="screen" />
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://linux.com/themes/linux/style/ie_win_sad7.css" media="screen" /><![endif]-->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://linux.com/themes/linux/style/ie_win.css" media="screen" /><![endif]-->
+<!--  the following styles were supplied from component module  -->
+<!--  link style  -->
+<link rel="stylesheet" type="text/css" href="http://linux.com/themes/linux/modules/comments/xarstyles/comments.css" media="screen" />
+<!--  the following styles were supplied from component common  -->
+<!--  link style  -->
+<link rel="stylesheet" type="text/css" href="http://linux.com/modules/base/xarstyles/xarcore-xhtml1-strict.css" media="screen" />
+
+<script type="text/javascript">
+//<![CDATA[
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var pageTracker = _gat._getTracker("UA-831873-8");
+pageTracker._setDomainName("linux.com");
+pageTracker._initData();
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var thisuser = '0';
+var thispage = 'page';
+var thiscat = 'none';
+var thistpc = '';
+var thisurl = '';
+   $(document).ready(function(){
+       $('#articles').removeClass("xar-menu-item").addClass("xar-menu-item-current");
+       $("ul ul li.xar-menu-item-current > ul li:nth-child(1) a ").addClass("thiscurrent");
+       $('#articles ul.xar-menu-subitem').removeClass("hide").css("display","block");
+       $("ul li.xar-menu-item#articles").hover(
+           function(){ $(this).children('ul').removeClass("hide"); },
+           function(){ $(this).children('ul').removeClass("hide"); }
+       );
+   });
+//]]>
+</script>
+   </head>
+   <body>
+<script type="text/javascript" src="http://linux.com/modules/base/xartemplates/includes/xmlhttprequest.js"></script><div id="top">
+
+<!-- DoubleClick Random Number -->
+<script type="text/javascript">
+   dfp_ord=Math.random()*10000000000000000;
+   dfp_tile = 1;
+</script>
+<!-- End DoubleClick Random Number --></div>
+     <div id="doc3" class="yui-t1">
+       <div id="hd">
+<div class="fix top"></div>                                                                                                                                                                                                                                                                                                                                                          
+<div id="frame1"></div>  
+   <h1>
+       <a href="http://linux.com/" title="Linux.com">
+            <span>Linux.com</span>
+       </a>
+   </h1>
+<div class="xar-block-body-topnav" id="search">
+
+<form action="/" method="get" id="searchin">
+ <fieldset>
+   <legend>Search</legend>
+   <label for="q8">Search</label>
+      <input type="hidden" name="sort" value="date"/>
+      <input type="hidden" name="header[title]" value="1"/>
+      <input type="hidden" name="header[text]" value="1"/>
+      <input type="hidden" name="module" id="module" value="search" />
+     <input type="text" value="" name="q" id="q8" size="15" />
+    <input style="margin-top: 5px" type="button" onclick="this.form.submit();" value="Search" />
+</fieldset>
+</form>
+</div>
+<div class="xar-block-body-topnav" id="login">
+<div id="user">
+    <div class="cover">
+    <a href="http://linux.com/authsystem/login">Log in</a>&nbsp;&nbsp;|&nbsp;  <a href="http://linux.com/registration/register">Create Account</a>&nbsp;&nbsp;|&nbsp; <a href="/submit">Submit Story</a>
+   </div>
+</div>
+
+</div>
+</div>
+       <div id="frame2">
+         <div id="frame3"></div>
+         <div class="fix"></div>
+         <div id="bd">
+	<div class="yui-b first">
+	<div class="block" id="mainmenu2">
+<ul class="xar-menu-section" id="mainmenu">
+	<li class="xar-menu-section">
+		<ul class="xar-menu-item">
+			<li class="xar-menu-item" id="articles">
+				<a href="/articles/feature/" title="Linux features, reviews, commentary, and news">
+					Articles 
+				</a>
+				<ul class="hide xar-menu-subitem">
+					<li class="xar-menu-subitem" id="casestudy">
+						<a href="/feature/c4206" title="Case Studies">
+							Case studies
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="feature">
+						<a href="/feature/" title="Features">
+							Features
+						</a>
+					</li>
+				        <li class="xar-menu-subitem" id="news">
+						<a href="/feature/c4201" title="Original News Features">
+							News
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="newsvac">
+						<a href="/feed/" title="Open Source around the Web">
+							NewsVac
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="reviews">
+						<a href="/feature/c4203" title="Reviews">
+							Reviews
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="xar-menu-item" id="documentation">
+				<a href="/base/ldp/howto/" title="Linux HOWTOs">
+					Documentation 
+				</a>
+				<ul class="hide xar-menu-subitem">
+					<li class="xar-menu-subitem" id="howto1">
+						<a href="/base/ldp/howto/HOWTO-INDEX/intro.html" title=" ">
+What Are Linux HOWTOs?
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto2">
+						<a href="/base/ldp/howto/HOWTO-INDEX/location.html" title=" ">
+Where Can I Get Linux HOWTOs?
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto3">
+						<a href="/base/ldp/howto/HOWTO-INDEX/translations.html" title=" ">
+HOWTO Translations
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto4">
+						<a href="/base/ldp/howto/HOWTO-INDEX/categories.html" title=" ">
+Categorized List of HOWTOs 
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto5">
+						<a href="/base/ldp/howto/HOWTO-INDEX/howtos.html" title=" ">
+Single list of HOWTOs
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto6">
+						<a href="/base/ldp/howto/HOWTO-INDEX/mini.html" title=" ">
+Single list of mini-HOWTOs
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto7">
+						<a href="/base/ldp/howto/HOWTO-INDEX/unmaintained.html" title=" ">
+Unmaintained HOWTOs
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto8">
+						<a href="/base/ldp/howto/HOWTO-INDEX/writing.html" title=" ">
+Writing and Submitting a HOWTO
+						</a>
+					</li>
+					<li class="xar-menu-subitem" id="howto9">
+						<a href="/base/ldp/howto/HOWTO-INDEX/copyright.html" title=" ">
+Copyright Information 
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="xar-menu-item" id="distributions">
+				<a href="/distributions/" title="Variety of different Linux OSes">
+					Distributions 
+				</a>
+			</li>
+			<li class="xar-menu-item" id="forums">
+				<a href="/forums/" title="Linux forums">
+					Forums 
+				</a>
+			</li>
+			<li class="xar-menu-item" id="sponsorsolutions">
+				<a href="http://ad.doubleclick.net/clk;172278086;13503038;d?http://www.linux.com/sponsor_solutions/" title="Solutions from our sponsors">
+					Sponsor Solutions 
+				</a>
+				<ul class="hide xar-menu-subitem">
+					<li class="xar-menu-subitem" id="hpos">
+						<a href="http://ad.doubleclick.net/clk;173676953;13503038;j?http://www.linux.com/sponsor_solutions/hpos" title=" Open source and Linux from HP">
+							 Open Source and Linux from HP
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li class="xar-menu-item" id="about">
+				<a href="/about/" title="About Linux.com">
+					About Us 
+				</a>
+			</li>
+		</ul>
+	</li>
+</ul></div>
+<div class="block" id="whatislinux">
+<h4>What is Linux?</h4>
+<p class="linux1"><a href="/whatislinux/119700"><img src="http://c.fsdn.com/lc/themes/linux/images/tango-icon-theme/22x22/status/dialog-information.png" alt=""  style="margin-top: 4px;" />Learn about Linux</a></p>
+<p><a href="/download_linux/"><img src="http://c.fsdn.com/lc/themes/linux/images/tango-icon-theme/22x22/actions/go-down.png" alt="" />Download Linux</a></p>
+<p><a href="http://www.linux.com/forums/"><img src="http://c.fsdn.com/lc/themes/linux/images/tango-icon-theme/22x22/apps/help-browser.png" alt="" style="margin-top: -4px;" />Get Linux help</a></p>
+</div>
+<div class="block" id="feeds">
+<h4>Feeds</h4>
+<ul style="margin: 1em">
+<li><a href="/feature?theme=rss">Features</a></li>
+<li><a href="/feed?theme=rss">NewsVac</a></li>
+<li><a href="/xarbb?theme=rss">Forums</a></li>
+<li><a href="/feature/c4201?theme=rss">News</a></li>
+<li><a href="http://linuxcom.blip.tv/rss">Video</a></li>
+<li><a href="/?module=comments&amp;func=rss&amp;theme=rss">Comments</a></li>
+</ul></div>
+<div class="block" id="ad_pos_special">
+<h4>Special Offers</h4>
+<form method="post" action="http://newsletters.osdn.com/signup.pl">
+<fieldset>
+  <input type="hidden" name="source" value="lc" />
+  <input type="hidden" name="tmpchk" value="1" />
+<p>
+			<b>Get special offers on:</b></p><p>
+    			<input type="checkbox"  name="listname" value="OSDN/linux.list" /> Linux <br />
+    			<input type="checkbox"  name="listname" value="OSDN/application_development.list" /> Application Dev<br />
+    			<input type="checkbox"  name="listname" value="OSDN/computer_programming.list" /> Programming<br />
+    			<input type="checkbox"  name="listname" value="OSDN/software.list" /> Software
+</p>
+	<p>
+		Email: 
+		<br />
+		<input type="text" name="email_address" size="10" value="" style="width: 80px" />
+		<br />
+		<input type="hidden" name="source" value="standalone" />
+		<input type="hidden" name="tmpchk" value="standalone" />
+		<input type="submit" name="Submit" value="Submit" />
+	</p>
+</fieldset>
+</form>
+</div>
+</div>
+<div id="yui-main">
+	<div class="yui-b">
+		<div class="3col">
+			<div class="l0">
+				<div class="l1">
+					<div class="l2">
+						<div class="l3">
+							<div class="l4">
+								<div class="l5">
+																		
+
+<script type="text/javascript">
+//<![CDATA[
+var thisnewtpc = 'tpc=Programming;';
+var thistpc = thisnewtpc.replace(/\s+/g,'').replace(/&amp;/g,';tpc=').toLowerCase();
+var thiscat = 'feature';
+var thispage = 'article';
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+        var thisnewcat= 'Programming';
+       var thisiscat=thisnewcat.toLowerCase().replace(/\s+/g,'');
+document.write('<script type="text/javascript">$(document).ready(function(){$("\#'+thisiscat+'").removeClass("xar-menu-subitem").addClass("xar-menu-subitem-current");});<\/script>');
+//]]>
+</script>
+<div id="center">
+ <div id="articlepage">
+<div class="rightblock" id="ad_pos_20a">
+<div id="fad20" class="pb_art"><div><!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+//<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p20_powerbar;pg='+thispage+';logged_in='+thisuser+';tile='+dfp_tile+';'+thistpc+'sz=1x1;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div></div>
+<div class="rightblock" id="ad_pos_6">
+<div id="fad6"><!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+//<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p6_imu;pg='+thispage+';logged_in='+thisuser+';tile='+dfp_tile+';'+thistpc+'sz=300x250,336x280;ptile=2;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div>
+<div class="article_wrap feature">
+   <div class="adframe">
+<div class="module-title"><h2>Feature: Programming</h2></div>
+        <div class="xar-left">
+          <div class="xar-standard-box-padding">
+                  <h3>Installing Ruby on Rails in Linux</h3>
+                 <div class="xar-article-details">
+                            By <a href="mailto:%6a%78%61%31%32%37%40%76%65%72%69%7a%6f%6e%2e%6e%65%74">Drew Ames</a>
+on
+December 04, 2008 (4:00:00 PM)</div>
+        <p style="text-align: right">
+<!-- ADDTHIS BUTTON BEGIN -->
+<script type="text/javascript">
+addthis_pub = 'linuxcom'; 
+addthis_logo = 'http://c.fsdn.com/lc/images/lc_logo.png';
+addthis_brand = 'Linux.com';
+addthis_options = 'email, slashdot, digg, delicious, more';
+</script>
+<a href="http://www.addthis.com/bookmark.php" onMouseOver="return addthis_open(this, '', '[URL]', '[TITLE]')" onMouseOut="addthis_close()" onClick="return addthis_sendto()" title="Share this " style="text-decoration: none"><img src="http://c.fsdn.com/lc/images/tango-icon-theme/16x16/status/mail-attachment.png" style="vertical-align: middle;" alt="" /> <b style="text-decoration: underline; font-size: 85%">Share</b></a>  &nbsp;&nbsp;
+<script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+<!-- ADDTHIS BUTTON END -->
+          <a href="http://linux.com/feature/154366?theme=print" title="Printer friendly page" style="text-decoration: none"><img src="/themes/linux/images/tango-icon-theme/16x16/devices/printer.png" alt="" style="vertical-align: middle;" /> <b style="text-decoration: underline; font-size: 85%">Print</b></a> &nbsp;&nbsp;
+                <a href="http://linux.com/articles/154366#commentthis" title="Comment on this article" style="text-decoration: none"><img src="/themes/linux/images/comments.png" alt="" style="vertical-align: middle;" /> <b style="text-decoration: underline; font-size: 85%">Comments</b></a> &nbsp;&nbsp;
+        </p>
+                  <div class="xar-clearleft">
+                      <p><a href="http://www.rubyonrails.org/">Ruby on Rails</a> is garnering a lot of praise as an easy-to-use, database-driven Web framework for developing Web applications. Most of the documentation for Ruby on Rails centers on Macintosh, with the remainder seemingly only for Windows machines, but RoR is perfectly usable on Linux computers too. This article explains how to install and begin developing with RoR in Linux.</p>                  </div>
+            <div id="featurecontent" class="xar-align-left">
+                      <p>RoR represents a convergence of two trends: the emergence and rise of <a href="http://www.ruby-lang.org/en/">Ruby</a> as a programming language, and the push for database-driven Web sites with Web 2.0 features. Ruby is an object-oriented, dynamic, interpreted programming language developed in Japan in the mid '90s. Rails (first released in 2005) is a framework written in Ruby that ties together a database and a Web server.</p>
+
+<p>Dynamic database-driven Web sites provide user interaction beyond <a href="http://en.wikipedia.org/wiki/Static_web_page">static</a> and <a href="http://en.wikipedia.org/wiki/Dynamic_web_page">dynamic</a> Web pages that use only client-side scripting. Database-driven Web sites use scripts or programs on the server to interact with data stored in a database to provide a rich interactive environment. Web forums, e-commerce sites,  blogs, wikis, and various social networking sites are all examples of database-driven Web sites.</p>
+
+<p>RoR is unique not because it results in a database-driven Web site, but in how it streamlines development of the site. RoR creates a framework consisting of a directory structure and several scripts with all of the code required to create a model (the database), the views (Web pages for interacting with the database), and the controllers, which connect the model and the views. RoR takes a lot of the burden of database management and server programming off Web developers.</p>
+
+<h4>How to install RoR</h4>
+
+<p>Best practices for RoR developers call for them to do all development on their local machines. This requires a Web server, database program, Ruby, and Rails. Installing RoR involves using <a href="http://docs.rubygems.org/">RubyGems</a>, which is a package manager for Ruby libraries. Rails, and a few other necessary items, are really just libraries, and Gems makes installing them mostly painless. Debian package maintainers <a href="http://pkg-ruby-extras.alioth.debian.org/rubygems.html">have expressed concern</a> about using a package manager other than the distribution's own. However, using Gems is much easier than installing from source and tracking versions or dependencies by hand, and the Gems repositories are more up-to-date than the Debian ones. </p>
+
+<p>I installed RoR on two computers running Slackware 12.1. The community documentation for Ubuntu has <a href="https://help.ubuntu.com/community/RubyOnRails">instructions</a> that are similar to the procedure I used for Slackware. If, as I did, you use Gems for the package manager, the procedure should be similar regardless of the distro you use.</p>
+
+<p>You must perform all installation steps either as the root user or with root privileges via sudo. You must install RubyGems from a virtual terminal.</p>
+
+<p>The first step is to install Ruby. The Ruby on Rails Web site recommends Ruby version 1.8.6. Most distributions, if they don't install Ruby by default, provide it in their repositories.</p>
+
+<p>The next step is to install a database. RoR can use SQLite, MySQL, or PostgreSQL; its default is SQLite. I used the Slackbuild script for SQLite 3.6.2 from <a href="http://www.slackbuilds.org">Slackbuilds.org</a> -- a process made easier by using <a href="http://www.linux.com/feature/148826">Sbopkg</a>.</p>
+
+<p>Next, install RubyGems. I used the SlackBuild script for RubyGems 1.3.1 found at SlackBuilds.org. Most distributions can install a database and RubyGems using native package management tools.</p>
+
+<p>Once RubyGems is installed you can install the rest of RoR. To install Rails 2.2, the latest release, with RubyGems, type: <code>gem install rails</code>.</p>
+
+<p>One problem with RubyGems is that it is not very verbose. You get messages after installation tasks are completed, or if there is an error, but not while things are going on. Successful installation gives this message:</p>
+
+<pre><div class="code">
+Successfully installed activesupport-2.2.2
+Successfully installed activerecord-2.2.2
+Successfully installed actionpack-2.2.2
+Successfully installed actionmailer-2.2.2
+Successfully installed activeresource-2.2.2
+Successfully installed rails-2.2.2
+6 gems installed
+</div></pre>
+
+<p>After the packages are installed, Gems immediate installs their documentation. For some reason, installing the <a href="http://rdoc.sourceforge.net/">RDoc</a> documentation took a very long time on my computers, and there are no messages to indicate what Gems is doing during that time. After more than three hours I cancelled the procedure, which left a working Rails installation, but one without documentation. I plan to attempt to reinstall the documentation later. Meanwhile, Rails still needs two more things: a Web server and a way to interface with the database.</p>
+
+<p>If you need to install a Web server, you have a couple of choices. RoR can use a number of different servers, but I went with the default of <a href="http://mongrel.rubyforge.org/">Mongrel</a>, a Web server written in Ruby that RubyGems can install with the command <code>gem install mongrel</code>. I then installed the SQLite adapter with <code>gem install sqlite3-ruby</code>.</p>
+
+<p>At this point, you've got a working RoR installation that all users on your computer can use. Switch from the root user to your own unprivileged account and open a virtual terminal. Test your RoR installation by typing <code>rails test</code>. This command will create a Rails framework in a directory called test in your home directory. This is where all the magic happens.</p>
+
+<p>Change to the ~/test directory and type <code>script/server</code> to start the Mongrel Web server, then point your Web browser at http://localhost.3000. If everything has gone well, you should see the Ruby on Rails &quot;Welcome aboard&quot; Web page. Switch back to your virtual terminal, press Ctrl-C to stop the Web server, and you're ready to start developing with RoR!</p>
+
+<h4>Next steps</h4>
+
+<p>Once you have a working RoR framework you're ready to start learning how to use it. The <a href="http://guides.rubyonrails.org/">Ruby on Rails guides</a> are a great resource. Follow them in order and you'll have a working site in very little time. I also recommend the book <i><a href="http://oreilly.com/catalog/9780596522001/">Rails Up and Running, 2nd Edition</a></i>. It was published on October 2008, so is very up-to-date. Like the RoR guides, the book takes you through the process of setting up an application, but it also has a lot of explanatory information on how Rails work. The book is aimed at Web developers who are new to Rails and possibly Ruby. I found that reading each chapter, then going through the exercises, then reading the chapter again, greatly enhanced my understanding.</p>
+
+<p>If you are not running your own Web server, and you are looking for a Web host, check out <a href="http://www.railshosting.org/">RailsHosting.org</a> to learn more about commercial Web hosting services that specialize in RoR.</p>
+
+<p>The RoR Web development framework is very friendly to Linux, and RoR works the same in Linux as in other OSs, so the extensive available documentation is applicable to Linux installations.  RubyGems is a comprehensive and easy-to-use package manager that seems to work well alongside a distro's own package manager. Once you have it installed, RoR really does simplify and streamline the development of dynamic, database-driven Web sites. </p></div>
+                    <div class="xar-align-left">
+                    <p><em>Drew Ames is a transportation planner in Harrisburg, Penn.</em></p>
+</div>
+<div class="xar-align-left" style="padding-top:20px;">
+        <p>
+<!-- ADDTHIS BUTTON BEGIN -->
+<script type="text/javascript">
+addthis_pub = 'linuxcom';
+addthis_logo = 'http://c.fsdn.com/lc/images/lc_logo.png';
+addthis_brand = 'Linux.com';
+addthis_options = 'email, slashdot, digg, delicious, more';
+</script>
+<a href="http://www.addthis.com/bookmark.php" onMouseOver="return addthis_open(this, '', '[URL]', '[TITLE]')" onMouseOut="addthis_close()" onClick="return addthis_sendto()" title="Share this " style="text-decoration: none"><img src="http://c.fsdn.com/lc/images/tango-icon-theme/16x16/status/mail-attachment.png" style="vertical-align: middle;" alt="" /> <b style="text-decoration: underline; font-size: 85%">Share</b>
+</a>  &nbsp;&nbsp;
+<script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+<!-- ADDTHIS BUTTON END -->
+                <a href="http://linux.com/feature/154366?theme=print" title="Printer friendly page" style="text-decoration: none"><img src="/themes/linux/images/tango-icon-theme/16x16/devices/printer.png" alt="" style="vertical-align: middle;" /> <b style="text-decoration: underline; font-size: 85%">Print</b></a> &nbsp;&nbsp;
+                        <a href="http://linux.com/articles/154366#commentthis" title="Comment on this article" style="text-decoration: none"><img src="/themes/linux/images/comments.png" alt="" style="vertical-align: middle;" /> <b style="text-decoration: underline; font-size: 85%">Comments</b></a> &nbsp;&nbsp;
+</p>
+                 </div>
+
+       <div class="xar-normal related_links">
+           <h4>Related Links</h4>
+
+
+
+<p><strong>
+Other articles in category Programming:</strong>
+               </p>
+<ul style="list-style-type: square; margin-left:20px;">
+                       <li>
+                           <a href="http://linux.com/feature/155203" title="Open source programming languages for kids">Open source programming languages for kids</a>
+                           &nbsp; Dec 19, 2008</li>
+                       <li>
+                           <a href="http://linux.com/feature/154909" title="Tracking build status with Pulse">Tracking build status with Pulse</a>
+                           &nbsp; Dec 16, 2008</li>
+                       <li>
+                           <a href="http://linux.com/feature/154791" title="GameLayers gets on track with Ruby on Rails">GameLayers gets on track with Ruby on Rails</a>
+                           &nbsp; Dec 11, 2008</li>
+                       <li>
+                           <a href="http://linux.com/feature/154784" title="Programming GNOME applications with Vala">Programming GNOME applications with Vala</a>
+                           &nbsp; Dec 10, 2008</li>
+                       <li>
+                           <a href="http://linux.com/feature/154366" title="Installing Ruby on Rails in Linux">Installing Ruby on Rails in Linux</a>
+                           &nbsp; Dec 04, 2008</li>
+</ul>
+
+<p><strong>Last 5 articles by this author:</strong></p>
+	<div class="xar-align-left;">
+       <ul style="list-style-type: square;margin-left:20px;">
+                       <li> <a href="http://linux.com/feature/154366">
+Installing Ruby on Rails in Linux</a>
+                            &nbsp; Dec 04, 2008</li>
+                       <li> <a href="http://linux.com/feature/148826">
+Sbopkg provides seamless package repository integration for Slackware</a>
+                            &nbsp; Oct 01, 2008</li>
+                       <li> <a href="http://linux.com/feature/146869">
+Community service for free software users</a>
+                            &nbsp; Sep 10, 2008</li>
+                       <li> <a href="http://linux.com/feature/144178">
+QGIS earns a spot on GIS software map</a>
+                            &nbsp; Aug 14, 2008</li>
+                       <li> <a href="http://linux.com/feature/136601">
+Upgrading to Slackware 12.1</a>
+                            &nbsp; Jun 03, 2008</li>
+</ul>
+   </div>
+<p><strong>Sponsored links:</strong></p>
+<ul style="list-style-type: square; margin-left:20px;">
+<script type="text/javascript">
+ thispg= "Programming";
+       var pg= thispg;
+       var pgs= pg.replace(/\s+/g,'+').replace(/&amp;/g,'+').toLowerCase();
+document.write('<li><a href="http://ostg.pricegrabber.com/search.php?form_keyword='+pgs+'">Best deals: '+pg+'</a></li>');
+</script>
+               </ul>
+
+
+       </div>
+       <a name="commentthis"></a>
+<div class="xar-normal xar-clear-both" id="comments">
+               <h4>Comments</h4>
+
+ on <strong><a href="http://linux.com/articles/154366">Installing Ruby on Rails in Linux</a></strong>
+               <div class="title_divide"></div>
+                    
+
+
+
+
+
+
+
+<div>
+   <p class="xar-cm-note xar-sub">
+ Note: Comments are owned by the poster. We are not responsible for their content. </p>
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1203907"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 85.92.172.28]
+ on                 December 04, 2008 05:06 PM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Look at passenger (formerly mod_rails) for running rails on Apache, once its installed create a virtual server and you are done.<br />
+<br />
+~$ gem install passenger<br />
+~$ passenger-install-apache2-module 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1203907" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1203926"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 24.131.41.49]
+ on                 December 04, 2008 10:10 PM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              There's much to like about RoRs. The list is long.<br />
+<br />
+Likewise, there are a few things that need to be improved.<br />
+- memory use<br />
+- gem memory requirements<br />
+<br />
+Gem is a huge.  In this day of virtual servers, minimizing memory requirements goes directly towards the cost of each server environment.  As a concrete example, I run Typo - a RoR blog <a href="http://typosphere.org/projects/show/typo." target="_blank">http://typosphere.org/projects/show/typo.</a>  Since it is a relatively tiny site, we use SQLite3 for the database. No mySQL on this VM.  Nothing else was installed except enough postfix and cron to manage the server. Nothing.  If I don't want to swap, I can squeeze everything into 256MB.  That's correct.  Now, if I run gem and try to update packages, it runs for a few hours, then fails.  I'm able to increase the memory to 768MB and rerun 'gem update'. Watching the memory used, it grabs over 600MB. That's just crazy, isn't it? 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1203926" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1203948"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 122.160.32.176]
+ on                 December 05, 2008 05:22 AM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Thanks for the article 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1203948" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1204022"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 83.253.0.116]
+ on                 December 06, 2008 10:17 AM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Another way is to install Netbeans 6.5 and its Ruby support.<br />
+<a href="http://www.netbeans.org/features/ruby/index.html" target="_blank">http://www.netbeans.org/features/ruby/index.html</a> 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1204022" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1204056"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 12.147.219.165]
+ on                 December 07, 2008 03:29 AM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Just a quick follow-up: after sending in this article, I let RDoc run for more than 15 hours, and it still hadn't finished with the Rails gems. I suspect that my Pentium III computers simply can't handle RDoc, although I have good, working installations of RoR.<br />
+<br />
+-Drew Ames 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1204056" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1204058"></a>
+
+
+
+<h4>
+        Re: Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 66.92.86.225]
+ on                 December 07, 2008 03:37 AM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Urr - so don't have it install rdoc or ri.<br />
+<br />
+gem install --no-rdoc --no-ri blah 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1204058" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1204120"></a>
+
+
+
+<h4>
+        Re(1): Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 70.91.34.61]
+ on                 December 08, 2008 03:06 PM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              That's effectively what I did, but thanks for pointing out the command. I simply cancelled the RDoc process.  
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1204120" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+    <div class="xar-accent-outline xar-cm-comment">
+    <div>
+         <a name="1204242"></a>
+
+
+
+<h4>
+        Installing Ruby on Rails in Linux<!-- #$loop:item['xar_title']# -->
+               </h4>
+<!-- show changelog -->
+<!-- end changelog -->
+           <span class="xar-sub">
+Posted by:                     Anonymous
+                   [ip: 218.219.203.156]
+ on                 December 11, 2008 07:50 AM</span>
+       </div>
+       <div class="xar-accent xar-cm-comment">
+
+                 
+            
+              Gem is made by someone who can't code well obviously. Those rdoc and whatnot takes like forever and does eat up like 500MB (It chokes up my Linux under VMWare, because I only give it 200MB ram, which is enough for everything else to run a personal development Linux server), which is insane. Hopefully someone who can actually code fix it. 
+
+                <p>
+                    <a href="http://linux.com/?module=comments&amp;func=display&amp;cid=1204242" title="Permalink" rel="bookmark">
+                       #
+                   </a>
+               </p>
+
+       </div>
+
+</div>
+
+<h4>This story has been archived. Comments can no longer be posted.</h4>
+</div>
+                        			</div>
+		</div>
+		<br style="clear: both" />
+		<div style="position: relative;">
+			<div class="col2">
+							<div class="block" id="ad_pos_10">
+<div id="fad10"><!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+//<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p10_bottom_2nd;pg='+thispage+';logged_in='+thisuser+';tile='+dfp_tile+';'+thistpc+'sz=300x250,336x280;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div>
+						</div>
+			<div class="col2">
+							<div class="block" id="ad_pos_7">
+<div id="fad7"><div><div>
+<!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+//<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p7_bottom_1st;pg='+thispage+';logged_in='+thisuser+';tile='+dfp_tile+';'+thistpc+'sz=728x350;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div></div></div>
+						</div>
+		</div>
+		<br style="clear: left" />&nbsp;
+</div>
+</div>
+</div>
+</div> 
+</div> 
+</div> 
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+    </div>
+</div>
+<div class="block" id="ad_pos_1">
+<div id="fad1"><div><div>
+<!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+ //<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p1_leader;pg='+thispage+';logged_in='+thisuser+';tile='+dfp_tile+';'+thistpc+'sz=728x90,468x60;ptile=3;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div></div></div>
+<div class="block" id="ad_pos_5">
+<div id="fad5"><div><div>
+<!-- DoubleClick Ad Tag -->
+<script type="text/javascript">
+//<![CDATA[
+    document.write('<script type="text/javascript" src="http://ad.doubleclick.net/adj/ostg.linux/'+thiscat+'_p5_bottom_leader;pg='+thispage+';logged_in=+thisuser+;tile='+dfp_tile+';'+thistpc+'sz=728x90,468x60;ord='+dfp_ord+'?"><\/script>');
+    dfp_tile++;
+//]]>
+</script>
+<!-- End DoubleClick Ad Tag -->
+</div></div></div></div>
+<div id="ft">
+<div class="block" id="footer">
+<p style="margin-bottom: .5em">
+<small>
+&copy; Copyright 1999-2008 - 
+<a href="http://web.sourceforge.com" title="Network which provides and promotes Open Source software downloads, development, discussion and news.">SourceForge</a>, Inc., All Rights Reserved
+<br />
+About 
+<a href="/about/" title="Learn more about Linux.com">Linux.com</a>
+&nbsp;-&nbsp; 
+<a href="http://web.sourceforge.com/privacy.php" title="Privacy" >Privacy Statement</a>
+&nbsp;-&nbsp; 
+<a href="http://web.sourceforge.com/terms.php" title="Terms" >Terms of Use</a>
+&nbsp;-&nbsp; 
+<a href="http://web.sourceforge.com/media_kit.php" title="Advertise on our network">Advertise</a>
+&nbsp;-&nbsp; 
+<a href="http://web.sourceforge.com/trademark.php" title="Legal Trademark information">Trademark</a>
+&nbsp;-&nbsp; 
+<a href="/forums" title="Ask Linux Questions">Ask Linux Questions</a>
+&nbsp;-&nbsp; 
+<a href="/writeforus/" title="Write for us">Write for Us</a>
+&nbsp;-&nbsp;
+<a href="/feature?theme=rss" title="Add our feed to your site">RSS Feed</a>
+<br />
+<a href="http://www.thinkgeek.com/?cpg=tb" title="Stuff for Smart Masses">ThinkGeek</a>
+&nbsp;-&nbsp; 
+<a href="http://slashdot.org" title="News for Nerds">Slashdot</a>
+&nbsp;-&nbsp; 
+<a href="http://sourceforge.net" title="The world&#39;s largest development and download repository of Open Source code and applications">SourceForge.net</a>
+&nbsp;-&nbsp; 
+<a href="http://freshmeat.net" title="Web&#39;s largest index of Unix and cross-platform software and themes">freshmeat</a>
+&nbsp;-&nbsp; 
+<a href="http://www.techsay.com/default.php?page=join.php&amp;p=ostg&amp;CID=LINUXCOM" title="Help us make our network better">Surveys</a>
+&nbsp;-&nbsp; 
+<a href="http://jobs.linux.com/" title="Jobs">Jobs</a>
+</small>
+</p>
+<!-- <script type="text/javascript" src="http://cetrk.com/pages/scripts/0006/7810.js"> </script> -->
+
+</div>
+    <div class="badges">
+        <a class="xc-badge-tableless" href="http://www.webreference.com/authoring/style/sheets/layout/" title="Tableless layout"> <img src="http://c.fsdn.com/lc/images/csstableless.gif" alt="Tableless layout" /> </a> <a class="xc-badge-xhtmlvalidate" href="http://validator.w3.org/check?uri=referer" title="Validate XHTML 1.0 Strict"> <img src="http://c.fsdn.com/lc/images/xhtml10.gif" alt="Validate XHTML 1.0 Strict" /> </a> <a class="xc-badge-cssvalidate" href="http://jigsaw.w3.org/css-validator/validator?uri=http://linux.com/index.php" title="Validate CSS"> <img src="http://c.fsdn.com/lc/images/css.gif" alt="Validate CSS" /> </a> <a class="xc-badge-tableless" href="http://www.xaraya.com/" title="Powered by Xaraya"> <img src="http://c.fsdn.com/lc/images/microbadge.gif" alt="Powered by Xaraya" /> </a>
+   </div>
+   <p id="footermsg">
+</p>
+</div>
+
+   <script type="text/javascript">
+   pageTracker._trackPageview();
+   </script>
+     
+   </body>
+ </html>
+

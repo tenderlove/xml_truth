@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+  <title>
+            Web Services Framework for Ruby by WSO2 : open source framework for providing and consuming Web services in Ruby | WSO2 Oxygen Tank  </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="http://wso2.org/atom/feed" />
+<meta name="DC.Title" content="Web Services Framework for Ruby by WSO2 : open source framework for providing and consuming Web services in Ruby" />
+<meta name="description" content="Web services framework for Ruby by WSO2 (WSO2 WSF/Ruby) is an open source framework for providing and consuming Web services in Ruby. Best-of-breed Ruby Web services: security and reliable messaging, binary attachments with MTOM and interoperability with .NET and J2EE." />
+<meta name="keywords" content="web,services,framework,ruby,wso2,open,source,providing,consuming,wsf,security,reliable,messaging,binary,attachments,mtom,interoperability,net,j2ee" />
+<meta name="robots" content="index,follow" />
+<link rel="shortcut icon" href="/misc/favicon.ico" type="image/x-icon" />
+  <style type="text/css" media="all">@import "/modules/aggregator/aggregator.css";</style>
+<style type="text/css" media="all">@import "/modules/fckeditor/fckeditor.css";</style>
+<style type="text/css" media="all">@import "/modules/jquery_calendar/jquery_calendar.css";</style>
+<style type="text/css" media="all">@import "/modules/node/node.css";</style>
+<style type="text/css" media="all">@import "/modules/poll/poll.css";</style>
+<style type="text/css" media="all">@import "/modules/system/defaults.css";</style>
+<style type="text/css" media="all">@import "/modules/system/system.css";</style>
+<style type="text/css" media="all">@import "/modules/tagadelic/tagadelic.css";</style>
+<style type="text/css" media="all">@import "/modules/user/user.css";</style>
+<style type="text/css" media="all">@import "/sites/all/modules/event/event.css";</style>
+<style type="text/css" media="all">@import "/modules/google_cse/google_cse.css";</style>
+<style type="text/css" media="all">@import "/themes/wso2-v4/style.css";</style>
+  <script type="text/javascript"> </script>
+    <script type="text/javascript" src="/misc/jquery.js"></script>
+<script type="text/javascript" src="/misc/drupal.js"></script>
+<script type="text/javascript" src="/modules/jquery_calendar/jquery_calendar.pack.js"></script>
+<script type="text/javascript" src="/modules/swftools/shared/swfobject/swfobject.js"></script>
+<script type="text/javascript">
+// Initialize jQuery Calendar
+$(document).ready(function(){ 
+popUpCal.setDefaults({clearText: 'Clear', closeText: 'Close', prevText: '‹ Prev', nextText: 'Next ›', currentText: 'Today', dateFormat: 'YMD-', speed: 'fast'}); 
+});
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.swfobject').each(function(i){
+      params = Drupal.parseJson($(this).attr('swftools'));
+	    var so = new SWFObject(params['src'], '', params['width'], params['height'], params['version'], params['bgcolor']);
+      for (p in params) {
+        so.addParam(p, params[p]);
+      }
+      so.addVariable('flashvars', '&'+ params['flashvars']);
+      so.write(this.id);
+    });
+  });
+  </script>
+  <link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
+<link href="/themes/wso2-v2/prettify.css" type="text/css" rel="stylesheet" />
+ <link href="/themes/wso2-v4/library-styles.css" type="text/css" rel="stylesheet" />
+
+  <script type="text/javascript" src="/themes/wso2-v2/prettify.js"></script>
+</head>
+
+<body onload="prettyPrint();download1();">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-103065-6");
+pageTracker._setDomainName(".wso2.org");
+pageTracker._trackPageview();
+</script>
+
+<script language="JavaScript" type="text/JavaScript">
+function download1()
+{
+if (document.getElementById('download1') && document.getElementById('download2') && document.getElementById('download3') && document.getElementById('download4') && document.getElementById('download5')) {
+  document.getElementById('download1').style.display ='';
+  document.getElementById('download2').style.display ='none';
+document.getElementById('download3').style.display ='none';
+document.getElementById('download4').style.display ='none';
+document.getElementById('download5').style.display ='none';
+}
+setTimeout("download2()",5000);
+}
+
+function download2()
+{
+if (document.getElementById('download1') && document.getElementById('download2') && document.getElementById('download3') && document.getElementById('download4') && document.getElementById('download5')) {
+  document.getElementById('download1').style.display ='none';
+  document.getElementById('download2').style.display ='';
+document.getElementById('download3').style.display ='none';
+document.getElementById('download4').style.display ='none';
+document.getElementById('download5').style.display ='none';
+}
+setTimeout("download3()",5000);
+}
+function download3()
+{
+if (document.getElementById('download1') && document.getElementById('download2') && document.getElementById('download3') && document.getElementById('download4') && document.getElementById('download5')) {
+  document.getElementById('download1').style.display ='none';
+  document.getElementById('download2').style.display ='none';
+document.getElementById('download3').style.display ='';
+document.getElementById('download4').style.display ='none';
+document.getElementById('download5').style.display ='none';
+}
+setTimeout("download4()",5000);
+}
+function download4()
+{
+if (document.getElementById('download1') && document.getElementById('download2') && document.getElementById('download3') && document.getElementById('download4') && document.getElementById('download5')) {
+  document.getElementById('download1').style.display ='none';
+  document.getElementById('download2').style.display ='none';
+document.getElementById('download3').style.display ='none';
+document.getElementById('download4').style.display ='';
+document.getElementById('download5').style.display ='none';
+}
+setTimeout("download5()",5000);
+}
+function download5()
+{
+if (document.getElementById('download1') && document.getElementById('download2') && document.getElementById('download3') && document.getElementById('download4') && document.getElementById('download5')) {
+  document.getElementById('download1').style.display ='none';
+  document.getElementById('download2').style.display ='none';
+document.getElementById('download3').style.display ='none';
+document.getElementById('download4').style.display ='none';
+document.getElementById('download5').style.display ='';
+}
+setTimeout("download1()",5000);
+}
+
+function show(id,close)
+{
+document.getElementById(id).className='login-display';
+document.getElementById(close).className='login-display';
+}
+function hide(id,close)
+{
+document.getElementById(id).className='block-user';
+document.getElementById(close).className='close-login';
+}
+		</script>
+<div id="header">
+			<div id="header-search"> <div class="block block-user" id="block-user-1">
+ 	 	<div class="block-title">Navigation</div>
+ 	    <div class="content">
+<ul class="menu">
+<li class="leaf"><a href="/tracker">Recent posts</a></li>
+<li class="collapsed"><a href="/aggregator">Aggregator</a></li>
+<li class="collapsed"><a href="/node/add">Create content</a></li>
+<li class="leaf"><a href="/syndication">RSS feeds</a></li>
+<li class="leaf"><a href="/contact" title="Contact site administrators">Contact</a></li>
+
+</ul>
+</div>
+        <div class="block-container"></div>
+     </div>
+ <div class="block block-block" id="block-block-67">
+ 	 	<div class="block-title"></div>
+ 	    <div class="content"><div id="close-login" class="close-login"><a href="#" onclick="hide('block-user-0','close-login');">Close</a></div></div>
+        <div class="block-container"></div>
+     </div>
+ <div class="block block-block" id="block-block-68">
+ 	 	<div class="block-title"></div>
+ 	    <div class="content"><div id="close-user" class="close-login"><a href="#" onclick="hide('block-user-1','close-user');">Close</a></div></div>
+        <div class="block-container"></div>
+     </div>
+ <div class="block block-google_cse" id="block-google_cse-0">
+ 	 	<div class="block-title">Search</div>
+ 	    <div class="content"><form action="/search/google"  accept-charset="UTF-8" method="get" id="google-cse-searchbox-form">
+<div><input type="hidden" name="cx" id="edit-cx" value="015624078814985321972:rvi7ijgyg5s"  />
+<input type="hidden" name="cof" id="edit-cof" value="FORID:11"  />
+<div class="form-item">
+ <input type="text" maxlength="128" name="query" id="edit-query"  size="15" value="" title="Enter the terms you wish to search for." class="form-text" />
+</div>
+<input type="submit" name="op" id="edit-sa" value="Search"  class="form-submit" />
+<input type="hidden" name="form_id" id="edit-google-cse-searchbox-form" value="google_cse_searchbox_form"  />
+
+</div></form>
+</div>
+        <div class="block-container"></div>
+     </div>
+ <div class="block block-user" id="block-user-0">
+ 	 	<div class="block-title">User login</div>
+ 	    <div class="content"><form action="/projects/wsf/ruby?destination=login_redirect"  accept-charset="UTF-8" method="post" id="user-login-form">
+<div><div class="form-item">
+ <label for="edit-name">Username: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="text" maxlength="60" name="name" id="edit-name"  size="15" value="" class="form-text required" />
+</div>
+<div class="form-item">
+ <label for="edit-pass">Password: <span class="form-required" title="This field is required.">*</span></label>
+ <input type="password" name="pass" id="edit-pass"  maxlength="60"  size="15"  class="form-text required" />
+</div>
+<input type="submit" name="op" id="edit-submit" value="Log in"  class="form-submit" />
+<div class="item-list"><ul class="list"><li><a href="/user/password" title="Request new password via e-mail.">Forgot password?</a></li><li><a href="/user/register" title="Create a new user account." class="special">Register Now</a></li></ul></div><input type="hidden" name="form_id" id="edit-user-login-block" value="user_login_block"  />
+
+</div></form>
+</div>
+        <div class="block-container"></div>
+     </div>
+ <div class="block block-block" id="block-block-64">
+ 	 	<div class="block-title"></div>
+ 	    <div class="content"><a href="#" onclick="show('block-user-0','close-login');">Login</a></div>
+        <div class="block-container"></div>
+     </div>
+</div>
+<div class="logo">
+				<a href="http://wso2.org"><img src="/themes/wso2-v4/images/ot-logo.gif" alt="Oxygen Tank"/></a>
+			</div>
+			
+
+		</div>
+				</div>
+		<div id="top-menu">
+<div class="nav-left">
+
+			<ul>
+
+			<li><a class="home" class="cl"  href="/">Home</a></li>
+		<li class="left-border"><a class="cl"  href="/projects">Projects</a></li>
+		<li class="left-border"><a  href="/downloads">Downloads</a></li>
+		<li class="left-border"><a  href="/library">Library</a></li>
+		<li class="left-border"><a  href="/forum">Forum</a></li>
+		<li class="left-border"><a  href="/tools">Tools</a></li>
+		<li class="left-border"><a  href="/interop">Interop</a></li>
+		<!--li class="left-border"><a  href="/blog">Blog</a></li>
+		<li class="left-border"><a  href="/aggregator">Aggregator</a></li>
+		<li class="left-border"><a  href="/training">Training</a></li-->
+			</ul>
+</div></div>
+
+
+		<div id="middle">
+			<div id="middle-noright">
+			        	<h1 class="title">
+			                 Web Services Framework for Ruby by WSO2 : open source framework for providing and consuming Web services in Ruby			     			     </h1>
+								
+			        			        			        <div class="node">
+            <div class="content"><style type="text/css">
+h1.title { display: none; }
+</style>
+<div id="ph">
+		<div id="left"><img src="/themes/wso2-v4/images/wsf_ruby_logo.gif" title="WSO2 Web Services Framework for Ruby (WSO2 WSF/Ruby)"/>
+		<p>WSO2 Web Services Framework for Ruby (WSO2 WSF/Ruby), is an open source, enterprise grade, Ruby extension for providing and consuming Web Services in Ruby.</p>
+
+<p>WSO2 WSF/Ruby is a complete solution for building and deploying Web Services, and is the only Ruby extension with the widest range of WS-* specification implementations. Key features include, Secure services and clients with WS-Security support, binary attachments with MTOM, works with Ruby on Rails and interoperability with .NET and J2EE.</p>
+<p>Prerequisite: You are required to install WSO2 WSF/C prior to installing source distribution of this Ruby module.</p><div class="user_links">      <div class="getstarted">
+      <h2>Get Started</h2>
+      <ul>	<li class="documentation">
+	<h3><a href="/project/wsf/ruby/1.1.0/docs/index.html">Documentation</a></h3>
+	  <br/>
+	</li>	<li class="training">
+	<h3><a href="http://wso2.com/training">Training</a></h3>
+	  <br/>
+	</li>	<li class="features">
+	<h3><a href="/projects/wsf/ruby/features">Features</a></h3>
+	  <br/>
+	</li>	<li class="library">
+	<h3><a href="/library/ruby">Library</a></h3>
+	  <br/>
+	</li>      </ul>
+      </div>      <div class="gethelp">
+      <h2>Get Help</h2>
+      <ul>	<li class="userforum">
+	<h3><a href="/forum/339">User Forum</a></h3>
+	  <br/>
+	</li>	<li class="support">
+	<h3><a href="http://wso2.com/services/support">Support</a></h3>
+	  <br/>
+	</li>	<li class="consulting">
+	<h3><a href="http://wso2.com/services/consultancy">Consulting</a></h3>
+	  <br/>
+	</li>	<li class="subscription">
+	<h3><a href="http://wso2.com/services/subscription">Subscription</a></h3>
+	  <br/>
+	</li>      </ul>
+      </div>      <div class="contribute">
+      <h2>Contribute</h2>
+      <ul>	<li class="issuetracker">
+	<h3><a href="/jira/browse/WSFRUBY">Issue Tracker</a></h3>
+	  <br/>
+	</li>	<li class="mailinglists">
+	<h3><a href="/mail">Mailing Lists</a></h3>
+	  <br/>
+	</li>	<li class="qa">
+	<h3><a href="/qa">QA</a></h3>
+	  <br/>
+	</li>	<li class="sourcecode">
+	<h3><a href="/svn">Source Code</a></h3>
+	  <br/>
+	</li>      </ul>
+      </div></div></div><div id="right"><div class="ph_download"><a class="ph_download_button" href="/downloads/wsf/ruby">V1.1.0</a></div><div class="ph_previous"><a href="/downloads/wsf/ruby/previous">Download Previous Releases</a></div></div>
+</div><div class="clear"></div><div class="service-links"><div class="service-label">Bookmark/Search this post with: </div><ul class="links"><li class="first service_links_delicious"><a href="http://del.icio.us/post?url=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;title=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Bookmark this post on del.icio.us." rel="nofollow" class="service_links_delicious"><img src="/modules/service_links/delicious.png" alt="Delicious" /></a></li>
+<li class="service_links_digg"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;title=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Digg this post on digg.com." rel="nofollow" class="service_links_digg"><img src="/modules/service_links/digg.png" alt="Digg" /></a></li>
+<li class="service_links_reddit"><a href="http://reddit.com/submit?url=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;title=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Submit this post on reddit.com." rel="nofollow" class="service_links_reddit"><img src="/modules/service_links/reddit.png" alt="Reddit" /></a></li>
+<li class="service_links_newsvine"><a href="http://www.newsvine.com/_tools/seed&amp;save?u=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;h=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Submit this post on newsvine.com." rel="nofollow" class="service_links_newsvine"><img src="/modules/service_links/newsvine.png" alt="Newsvine" /></a></li>
+<li class="service_links_facebook"><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;t=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Share on Facebook." rel="nofollow" class="service_links_facebook"><img src="/modules/service_links/facebook.png" alt="Facebook" /></a></li>
+<li class="service_links_google"><a href="http://www.google.com/bookmarks/mark?op=add&amp;bkmk=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;title=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Bookmark this post on Google." rel="nofollow" class="service_links_google"><img src="/modules/service_links/google.png" alt="Google" /></a></li>
+<li class="service_links_yahoo"><a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby&amp;t=Web+Services+Framework+for+Ruby+by+WSO2+%3A+open+source+framework+for+providing+and+consuming+Web+services+in+Ruby" title="Bookmark this post on Yahoo." rel="nofollow" class="service_links_yahoo"><img src="/modules/service_links/yahoo.png" alt="Yahoo" /></a></li>
+<li class="last service_links_technorati"><a href="http://technorati.com/cosmos/search.html?url=http%3A%2F%2Fwso2.org%2Fprojects%2Fwsf%2Fruby" title="Search Technorati for links to this post." rel="nofollow" class="service_links_technorati"><img src="/modules/service_links/technorati.png" alt="Technorati" /></a></li>
+</ul></div>    	<div class="links">&raquo; <ul class="links inline"><li class="first print"><a href="/node/4510/print" title="Display a printer friendly version of this page." class="print">Printer friendly version</a></li>
+<li class="last statistics_counter"><span class="statistics_counter">2666 reads</span></li>
+</ul></div>  	</div>
+</div>
+
+
+				</div>
+			
+
+			<div id="footer">
+					<ul>
+						<li><a href="http://wso2.org/licenses" class="about">Licenses</a></li>
+						<li><a href="http://wso2.org/privacy">Privacy Policy</a></li>
+						<li><a href="http://wso2.org/terms">Terms of Use</a></li>
+						<li><a href="http://wso2.org/guidelines">Community Guidelines</a></li>
+						<!--li><a href="http://wso2.org/about" class="about">About</a></li-->
+						<li><a href="http://wso2.org/feedback">Feedback</a></li>
+						<li><a href="http://wso2.com">wso2.com</a></li>
+					</ul>
+			</div>
+			<div id="copy-right">
+				&copy; 2009 WSO2 Inc.
+ &nbsp;&nbsp;&nbsp;&nbsp;
+					Powered by &nbsp;<a href="http://drupal.org"><img src="/themes/wso2-v4/images/powered-black-80x15.png" alt="Powered by Drupal"/></a>
+			</div>
+		</div>
+
+			
+							
+			
+
+
+<script type="text/javascript" src="http://cheetara.wso2.com/st/res/stats.js"></script>
+
+<script>
+    var type="ot";
+    stat_init();
+    var i = new Image();
+    i.src = "http://cheetara.wso2.com/st/stats.php?name=&email=&desc=Web Services Framework for Ruby by WSO2 : open source framework for providing and consuming Web services in Ruby&type=ot&url=" + window.location.href;
+</script><script type="text/javascript" src="/modules/google_cse/google_cse.js"></script>
+</body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Ruby Weekly News 22nd - 28th  July 2007</title>
+  <link href="/stylesheets/site.css?1149673033" media="screen" rel="Stylesheet" type="text/css" />
+
+  		<link rel="alternate" type="application/x.atom+xml" title="Atom 1.0 feed" href="/index.atom"/>
+		<link rel="alternate" type="application/rss+xml" title="RSS 2.0 feed" href="/index.xml"/>
+  
+</head>
+
+<body class="newslettersBody">
+
+<p style="color: green"></p>
+
+<!-- Newsletter: 185 -->
+
+<div id="page">
+	
+	<div id="banner">
+		<h1 class="title">
+			<a href="http://www.rubyweeklynews.org/">Ruby Weekly News</a>
+		</h1>
+	</div>
+	
+	<div id="sidebar">
+
+	<!-- Links -->
+	<div class="sidebarBox">
+		<h2 class="sidebarTitle">Subscribe</h2>
+			<div style="text-align:right;">
+				<a href="/index.atom">Atom 1.0</a> /
+				<a href="/index.xml">RSS 2.0</a> /
+				<a href="http://rubyforge.org/mailman/listinfo/rubyweeklynews-newsletter">Mailing List</a>
+			</div>
+		</h2>
+		
+		<h2 class="sidebarTitle">Links</h2>
+		
+		<table width="100%">
+			<tr>
+				<td><a href="http://www.ruby-lang.org/">Ruby Home Page</a></td>
+				<td><a href="http://redhanded.hobix.com/">RedHanded</a></td>
+			</tr>
+			<tr>
+				<td><a href="http://www.ruby-doc.org/">Ruby Documentation</a></td>
+				<td><a href="http://chneukirchen.org/anarchaia/">Anarchaia</a></td>
+			</tr>
+			<tr>
+				<td><a href="http://wiki.rubygarden.org/Ruby">RubyGarden Wiki</a></td>
+				<td><a href="http://planetruby.0x42.net/">Planet Ruby</a></td>
+			</tr>
+			
+			<tr>
+				<td><a href="http://www.pinupgeek.com/articles/category/rails-core-weekly-news">Rails Core Weekly News</a></td>
+				<td><a href="http://www.artima.com/buzz/community.jsp?forum=123">Ruby Buzz</a></td>
+			</tr>
+			
+			<tr>
+				<td><a href="http://rubyforge.org/">RubyForge</a></td>
+				<td><a href="http://project.ioni.st/">Projectionist</a></td>
+			</tr>
+			
+			<tr>
+				<td><a href="http://rubyinside.com/">Ruby Inside</a></td>
+				<td><a href="http://eigenclass.org/">eigenclass</a></td>
+			</tr>
+		</table>
+	</div> 
+	
+	<!-- Archive -->
+    <div class="sidebarBox">
+		<h2 class="sidebarTitle">Archive</h2>
+		
+											
+			<a href="/20070728">2007-07-28</a>
+			
+											~			
+			<a href="/20070721">2007-07-21</a>
+			
+											~			
+			<a href="/20070714">2007-07-14</a>
+			
+			
+				<br/>
+														
+			<a href="/20070325">2007-03-25</a>
+			
+											~			
+			<a href="/20070318">2007-03-18</a>
+			
+											~			
+			<a href="/20070311">2007-03-11</a>
+			
+			
+				<br/>
+														
+			<a href="/20070304">2007-03-04</a>
+			
+											~			
+			<a href="/20070225">2007-02-25</a>
+			
+											~			
+			<a href="/20060917">2006-09-17</a>
+			
+			
+				<br/>
+														
+			<a href="/20060910">2006-09-10</a>
+			
+											~			
+			<a href="/20060813">2006-08-13</a>
+			
+							
+		~ <a href="/archives.html">more ...</a>
+	</div>
+
+	<!-- Table of contents -->
+	<div class="sidebarBox">
+		<h2 class="sidebarTitle">Contents</h2>
+		
+					<ul>
+				<li>Articles and Announcements</li>
+				
+								<li>- <a href="#item18683">MiniExiftool 0.4.0 released</a></li>
+								<li>- <a href="#item18706">Ruby-VPI 17.0.0</a></li>
+								<li>- <a href="#item18860">Less than one week left for July Ruby Project Spotlight <b>...</b></a></li>
+								<li>- <a href="#item18712">Ruby thread-dump Gem</a></li>
+								<li>- <a href="#item18767">rfeedparser 0.9.93</a></li>
+								<li>- <a href="#item18778">RDE 1.1.1</a></li>
+								<li>- <a href="#item18619">Article : Why Ruby on Rails Succeeded</a></li>
+								<li>- <a href="#item18652">mechanize 0.6.10 Released</a></li>
+								<li>- <a href="#item18674">ActiveRecord::Extensions 0.7.0 Released!</a></li>
+								<li>- <a href="#item18696">Ramaze version 0.1.3</a></li>
+								<li>- <a href="#item18795">Ruby Certificate Program @ University of Washington <b>...</b></a></li>
+								<li>- <a href="#item18839">ANN: Sequel 0.1.9 Released</a></li>
+								<li>- <a href="#item18850">icanhasaudio 0.0.2 Released</a></li>
+								<li>- <a href="#item18757">(Alternative) Ruby Planet</a></li>
+								<li>- <a href="#item18741">Ruby Chinese Community Open-Sourcing Project Management System</a></li>
+								<li>- <a href="#item18785">To Diarmuid: Ruby on the Meraki Mini</a></li>
+								<li>- <a href="#item18692">ZenTest 3.6.1 Released</a></li>
+								<li>- <a href="#item18857">great new site for IT GURUS - www.itkong.com</a></li>
+								<li>- <a href="#item18753">svn+http on RubyForge</a></li>
+								<li>- <a href="#item18660">Proposals now being accepted for RubyConf 2007 presentations</a></li>
+								<li>- <a href="#item18693">EURUKO 2007</a></li>
+								<li>- <a href="#item18726">Ruby Canada launched - The Canadian resource for all things Ruby</a></li>
+								<li>- <a href="#item18770">rubyforge 0.4.3 Released</a></li>
+								<li>- <a href="#item18809">hoe 1.2.2 Released</a></li>
+								<br/>
+			</ul>
+					<ul>
+				<li>Quote of the Week</li>
+				
+								<li>- <a href="#item18866">Linkage</a></li>
+								<li>- <a href="#item18867">Linkage</a></li>
+								<li>- <a href="#item18868">Linkage</a></li>
+								<br/>
+			</ul>
+					<ul>
+				<li>Threads</li>
+				
+								<li>- <a href="#item18606">checking if machine is 64-bit</a></li>
+								<li>- <a href="#item18821">Question - Passing parameters by reference</a></li>
+								<li>- <a href="#item18624">object equivalence</a></li>
+								<li>- <a href="#item18646">n00b if condition quest</a></li>
+								<li>- <a href="#item18630">Static variables in Ruby.</a></li>
+								<li>- <a href="#item18769">Why Ruby?</a></li>
+								<li>- <a href="#item18797">how can i use a ruby class in object way</a></li>
+								<li>- <a href="#item18688">Why is it so hard to kill Ruby?</a></li>
+								<br/>
+			</ul>
+			</div>
+	
+	
+</div>
+
+	
+	<div id="content">
+		<h2><span class="sectionTitle">
+			<a href="/" class="newsletterTitle">22nd - 28th  July 2007</a>
+		</span></h2>
+			
+		<div class="items">
+			
+			<a href="/newsletters/wink/20070728" class="wink"></a>
+			<p>Ruby Weekly News is a summary of the week&#8217;s activity on the
+<a href="http://www.ruby-talk.org/ruby/ruby-talk/index.shtml">ruby-talk</a>
+mailing list /
+the 
+<a href="http://groups.google.com/group/comp.lang.ruby/">comp.lang.ruby</a>
+newsgroup / <a href="http://www.ruby-forum.com/forum/4">Ruby forum</a>,
+brought to you by <a href="http://superhappydevhouse.org/The-pitter-patter-of-small-feats">Krishna Sankar</a>.</p>
+
+
+	<p>This week we had ~1150 messages.</p>
+
+
+	<p>Tim had a good insight that helped me &#8211; he said &#8221;..pick a small number of interesting threads and give a detailed description of them, rather than having lots and lots of really small summaries&#8230;&#8221; Am going to see if that works out.</p>
+			
+			
+				
+					<form method="post" action="/newsletters/contribute/next" class="button-to"><div><input type="submit" value="Contribute to the next newsletter" /></div></form>
+				
+			
+		
+		</div>
+		
+						<h2><span class="sectionTitle">Articles and Announcements</span></h2>
+
+<div class="items">
+	<ul class="compactItem">
+	
+						<li class="compactItem">
+				<a name="item18683"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/990d5c2baf008f92" class="compactItem">MiniExiftool 0.4.0 released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18683" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>MiniExiftool is a wrapper library for the Exiftool command-line
+application (www.sno.phy.queensu.ca/~phil/exiftool/) written by Phil
+Harvay. One of the completest tool for reading and writing meta
+informations (EXIF, <span class="caps">IPTC</span>, XMP) on image files which supports many file
+formats including raw formats.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18706"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/ffecaf2587e17f15" class="compactItem">Ruby-VPI 17.0.0</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18706" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Ruby-VPI is a Ruby interface to <span class="caps">IEEE 1364</span>-2005 Verilog <span class="caps">VPI</span>
+and a platform for unit testing, rapid prototyping, and
+systems integration of Verilog modules through Ruby. It
+lets you create complex Verilog test benches easily and
+wholly in Ruby.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18860"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/39f4720acc969571" class="compactItem">Less than one week left for July Ruby Project Spotlight &lt;b&gt;...&lt;/b&gt;</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18860" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Just a reminder for those considering submitting a project for the
+O&#8217;Reilly Ruby Blog &#8220;Ruby Project Spotlight&#8221; series, you have until
+Sunday to email me your code samples.</p>
+
+
+	<p>There are details here:
+http://www.oreillynet.com/ruby/blog/2007/07/looking_for_july_ruby_pro&#8230;</p>
+
+
+	<p>I plan to keep the series going as long as I keep getting submissions,
+so if you can&#8217;t make it this month, expect to see another call for
+submissions next month.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18712"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/8e6f946cbb54d6f4" class="compactItem">Ruby thread-dump Gem</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18712" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>&#8220;So a huge feature missed from the <span class="caps">JVM</span> is the ability to send <span class="caps">SIGQUIT</span>
+(ctrl-break) and get a list of running threads. This feature is a
+killer feature for tracking down hung processes, as it will allow you
+to see where threads are hung up.</p>
+
+
+	<p>I&#8217;ve written a small C extension for Ruby that will send a list of
+threads and their current file/line number executing to <span class="caps">STDERR</span> upon
+receiving a <span class="caps">SIGQUIT</span>. Simply install the gem and require &#8216;thread-dump&#8217;,
+and a trap will be registered with <span class="caps">SIGQUIT</span> within that process. (So,
+if you&#8217;re fork&#8217;ing stuff, you need to do the require within the fork,
+for example.) &#8220;</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18767"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/d7ba8b4884ddd741" class="compactItem">rfeedparser 0.9.93</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18767" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			rFeedParser is a translation of Mark Pilgrim&#8217;s Universal Feed Parser
+<http://feedparser.org> from Python to Ruby.  It has nearly the exact same behavior.  It&#8217;s functionality documentation<sup><a href="#fn1">1</a></sup> applies to this work.
+
+  Currently, on a Ubuntu <span class="caps">GNU</span>/Linux box, it passes 98.8% of the over 3000
+unit tests originally created for Mark&#8217;s feedparser.  On a Mac box with ruby 1.8.6, this drops down to 97.7%.
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18778"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/766b13ee8b13cdb2" class="compactItem">RDE 1.1.1</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18778" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p><span class="caps">RDE</span> is a Ruby <span class="caps">IDE</span> and Ruby editor on Windows.
+You can edit, run and debug your scripts quickly and easily.
+<span class="caps">RDE</span> debugger is the <span class="caps">GUI</span> wrapper of debug.rb.
+<span class="caps">RDE</span> editor has functions that syntax coloring, autocomplete and etc.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18619"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/51d2201ab0509bd1" class="compactItem">Article : Why Ruby on Rails Succeeded</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18619" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>In this
+<span class="caps">CIO</span> article, Hal Fulton, author of The Ruby Way, explains what the
+programming community did right, and how others can learn from it.</p>
+
+
+	<p>http://www.cio.com/article/125851</p>
+
+
+	<p>Couple of interesting acronyms on the threads !</p>
+
+
+	<p><strong>DROP</strong>  Don&#8217;t Repeat Other People
+<strong>DRAIN</strong> Don&#8217;t Repeat Anything In No case
+<strong>DRIP</strong> Don&#8217;t repeat it, period..</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18652"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/48cecd3323d29128" class="compactItem">mechanize 0.6.10 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18652" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>The Mechanize library is used for automating interaction with websites.
+Mechanize automatically stores and sends cookies, follows redirects,
+can follow links, and submit forms.  Form fields can be populated and
+submitted.  Mechanize also keeps track of the sites that you have visited as
+a history.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18674"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/d1532df0a06ddb90" class="compactItem">ActiveRecord::Extensions 0.7.0 Released!</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18674" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>ctiveRecord::Extension (aka ar-extensions) is a plugin to extend and
+enhance the functionality of ActiveRecord.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18696"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/5ea77819b3ee33db" class="compactItem">Ramaze version 0.1.3</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18696" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Ramaze is intended to be a light, simple and modular open-source web framework based on Ruby.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18795"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/9ba69529edfb9c6c" class="compactItem">Ruby Certificate Program @ University of Washington &lt;b&gt;...&lt;/b&gt;</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18795" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18839"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/6404e14a21256f57" class="compactItem">ANN: Sequel 0.1.9 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18839" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>This release contains a
+much improved MySQL adapter, a new single-threaded database feature
+and a few bug fixes.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18850"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/18c504b9e226176a" class="compactItem">icanhasaudio 0.0.2 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18850" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Hai! icanhasaudio? is an interface to lame for decoding ur MP3s.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18757"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/a573e9a109cb70de" class="compactItem">(Alternative) Ruby Planet</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18757" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>An accumulator of feeds about Ruby http://www.phidz.com/Ruby</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18741"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/35b2abaa034118e5" class="compactItem">Ruby Chinese Community Open-Sourcing Project Management System</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18741" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Ruby Chinese Community  was dedicated to furthering Ruby language
+become popular in China. Recently, we have put a <span class="caps">SVN</span> server (http://
+svn.ruby-lang.org.cn) and a project management system with Redmine
+(http://dev.ruby-lang.org.cn) to support open-sourcing projects.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18785"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/18467349640979ac" class="compactItem">To Diarmuid: Ruby on the Meraki Mini</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18785" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>&#8221; I have posted my experience using Ruby on the Meraki Minis. They are $50 wifi routers that do mesh networking. the run a version of OpenWRT and include lighttpd and ruby. I have a couple of example programs and a
+tutorial on how to program Ruby to do web access, <span class="caps">CGI</span>, and do IO on a
+file based on the querystring. &#8220;</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18692"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/b40cfa2af57157c4" class="compactItem">ZenTest 3.6.1 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18692" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>ZenTest provides 4 different tools and 1 library: zentest, unit_diff,
+autotest, multiruby, and Test::Rails.</p>
+
+
+	<p>ZenTest scans your target and unit-test code and writes your missing
+code based on simple naming rules, enabling XP at a much quicker
+pace. ZenTest only works with Ruby and Test::Unit.</p>
+
+
+	<p>unit_diff is a command-line filter to diff expected results from
+actual results and allow you to quickly see exactly what is wrong.</p>
+
+
+	<p>autotest is a continous testing facility meant to be used during
+development. As soon as you save a file, autotest will run the
+corresponding dependent tests.</p>
+
+
+	<p>multiruby runs anything you want on multiple versions of ruby. Great
+for compatibility checking!</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18857"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/37e60fd9cbdaaeae" class="compactItem">great new site for IT GURUS - www.itkong.com</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18857" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Focused solely on the community of IT specialists, web developers,
+technological experts, companies and individuals alike.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18753"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/9af30c11b058450" class="compactItem">svn+http on RubyForge</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18753" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>RubyForge now supports svn+http for
+read-only access to the svn repositories.  For example:</p>
+
+
+	<p>$ svn checkout http://mongrel.rubyforge.org/svn/trunk/ mongrel
+<span class="caps">A   </span> mongrel/test
+<span class="caps">A   </span> mongrel/test/test_command.rb
+<span class="caps">A   </span> mongrel/test/test_redirect_handler.rb
+<span class="caps">A   </span> mongrel/test/test_response.rb
+<span class="caps">A   </span> mongrel/test/test_stats.rb
+[ ... etc &#8230; ]</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18660"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/bb06490eff6e1d22" class="compactItem">Proposals now being accepted for RubyConf 2007 presentations</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18660" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Presentation proposals for RubyConf 2007 are now being accepted.  The
+form is at: http://proposals.rubycentral.org.</p>
+
+
+	<p>The deadline for proposals is August 20, 5:00 <span class="caps">PM EDT</span>.</p>
+
+
+	<p>RubyConf 2007 will be held November 2-4 at the Omni Charlotte Hotel,
+Charlotte, NC, <span class="caps">USA</span>.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18693"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/9867b18b240adfa7" class="compactItem">EURUKO 2007</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18693" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>a couple of weeks back I already made an announcement about this  
+year&#8217;s European Ruby Conference (EURUKO).</p>
+
+
+	<p>Currently it&#8217;s planned for the weekend on the 3rd and 4th of  
+November, which very unfortunately clashes nearly perfectly with  
+RubyConf in in Charlotte, North Carolina (http://rubyconf.org/).
+Turns that it hard to find a date matching every constraint &#8230;</p>
+
+
+	<p>The general set up is like this:</p>
+
+
+	<ul>
+	<li>We&#8217;re keeping the conference fee as low as possible -
+   last year it was just 20 Euro.</li>
+		<li>The planning of the talks was quite dynamic, some folks who
+   came as &#8216;attendant-only&#8217; gave presentations later the same day,</li>
+		<li>It&#8217;s <strong>your</strong> conference, so if you like to just contribute.</li>
+	</ul>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18726"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/7faf14a7a51afc1b" class="compactItem">Ruby Canada launched - The Canadian resource for all things Ruby</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18726" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Ruby Canada (http://rubycanada) is a new source for Ruby and Rails
+developers working in and around Canada. Without hyping it up to what
+it will be, what it is right now is an awesome resource for those
+looking for work.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18770"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/4ca431c8c2120772" class="compactItem">rubyforge 0.4.3 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18770" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>A script which automates a limited set of rubyforge operations.</p>
+		
+					
+		</div>
+						<li class="compactItem">
+				<a name="item18809"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/b0bdbb9cfe15d890" class="compactItem">hoe 1.2.2 Released</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18809" class="wink"></a>
+			</li>
+				
+		<div class="compactItemBody">
+			<p>Hoe is a simple rake/rubygems helper for project Rakefiles. It
+generates all the usual tasks for projects including rdoc generation,
+testing, packaging, and deployment.</p>
+		
+					
+		</div>
+		
+	</ul>
+</div>
+
+						<h2><span class="sectionTitle">Quote of the Week</span></h2>
+
+<div class="items">
+	<ul class="compactItem">
+	
+						<a name="item18866"></a>
+			<a href="/items/wink/18866" class="wink"></a>
+				
+		<div class="compactItemBody">
+			<p>&#8220;A language that doesn&#8217;t affect the way you think about programming is
+not worth knowing.&#8221; 
+   &#8211; A. Perlis (as quoted by James Britt)</p>
+		
+					
+		</div>
+						<a name="item18867"></a>
+			<a href="/items/wink/18867" class="wink"></a>
+				
+		<div class="compactItemBody">
+			<p>&#8220;A witty saying proves nothing.&#8221;&#8212;Voltaire (as quoted by Chris Game)</p>
+		
+					
+		</div>
+						<a name="item18868"></a>
+			<a href="/items/wink/18868" class="wink"></a>
+				
+		<div class="compactItemBody">
+			<p>&#8220;The trouble with the world is that the stupid are cocksure and the 
+intelligent are full of doubt.&#8221; 
+  &#8211; Bertrand Russell (as quoted by James Britt)</p>
+
+
+	<p>&#8221;...the number of <span class="caps">UNIX</span> installations has grown to 10, with more expected&#8230;&#8221; 
+- Dennis Ritchie and Ken Thompson, June 1972 (as quoted by Darren Kirby)</p>
+		
+					
+		</div>
+		
+	</ul>
+</div>
+
+						<h2><span class="sectionTitle">Threads</span></h2>
+
+<div class="items">
+						<h3>
+				<a name="item18606"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/fe3bde8257d7e773" class="expansiveItem">checking if machine is 64-bit</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18606" class="wink"></a>
+			</h3>
+				
+		<p>The question was (from Suraj) a better way to check if a machine is 64-bi than :</p>
+
+
+	<pre><code>require 'rbconfig'
+is_machine_64_bit = ( Config::CONFIG["arch"] =~ /64/ )</code></pre>
+
+
+	<p>An interesting solution (from Daniel Berger) :</p>
+
+
+	<pre><code>if (2 <b> 33).kind_of?(Bignum)
+   \# 32 bit
+else
+   \# 64 bit
+end</code></pre>
+
+
+	<p>[Might need some tweaking once the 128 bit operating systems show up&#8230;]</p>
+
+
+	<p>Suraj observed that &#8220;it takes 34 bits to represent 2 <sup> 33,
+and 33 bits to represent 2 </sup> 32. Thus, we can get away with only checking whether 2 ^ 32 is a Fixnum:</p>
+
+
+	<pre><code>is_machine_64_bit = (2 </b> 32).is_a? Fixnum</code></pre>
+
+
+	<p>Suraj followed with another idea:
+(-1.size) is 4 on a 32-bit machine and 8 on a 64-bit machine</p>
+
+
+	<p>Nobu added couple more ideas :
+If you are trying to compile an extension library:</p>
+
+
+	<pre><code>is_machine_64_bit = check_sizeof("int")  64
+
+  is_machine_64_bit = try_static_assert("sizeof int  64")</code></pre>
+
+
+	<p>or, better in C source(s):</p>
+
+
+	<pre><code>\#if SIZEOF_VOIDP  8
+
+Otherwise, if you want to know the current running platform is
+64bit:
+
+  is_machine_64_bit = [0].pack("i!").size  8</code></pre>
+
+
+	<p>Note that all of the above check for the size of int.</p>
+		
+								<h3>
+				<a name="item18821"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/8e9b34bc0182df75" class="expansiveItem">Question - Passing parameters by reference</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18821" class="wink"></a>
+			</h3>
+				
+		<p>The question was &#8220;How can I pass a reference to a method as an argument, so after finishing the execution of the method the argument gets updated with a new value. ( known as &#8220;pass by reference&#8221; in other languages )&#8221;</p>
+
+
+	<p>A good discussion followed.</p>
+
+
+	<p>In short, this would work with strings as strings are arrays underneath. So if one passes a string and makes changes inside, the changes will be reflected.</p>
+
+
+	<p>But for first class objects like Numbers (Fixnum,BigNum,...) are objects which themselves cannot be changed.</p>
+
+
+	<p>In short &#8220;I believe it&#8217;s a good practice to stop thinking in terms of pointers and start thinking in terms of objects. You don&#8217;t pass a variable by reference, you pass an object.&#8217; (thus said Okushi)</p>
+
+
+	<p>Closely related thread  : http://groups.google.com/group/ruby-talk-google/browse_thread/thread/31ad84bf4f2bc10b</p>
+		
+								<h3>
+				<a name="item18624"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/a5e97d048096efda" class="expansiveItem">object equivalence</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18624" class="wink"></a>
+			</h3>
+				
+		<p>The question was &#8220;I have two objects, a and b, both of the same class.
+I believe they have the same contents, but a.eql?(b) returns false&#8221;</p>
+
+
+	<p>Answer :  ql? is just a method and therefore depends on the implementing
+object.  By default, eql? returns true only if the objects being
+compared are the <em>same</em> object.  And then, each class typically
+overrides eql? to do as the developer sees fit.</p>
+		
+								<h3>
+				<a name="item18646"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/727c98db671fd51e" class="expansiveItem">n00b if condition quest</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18646" class="wink"></a>
+			</h3>
+				
+		<p>Question  How does one do if (a  b or a  c or a  d or a  f)</p>
+
+
+	<p>Discussion followed and some answers:</p>
+
+
+	<p>if [b,c,d,f].include?(a)</p>
+
+
+	<p>case a
+  when b, c, d, f
+    ...
+end</p>
+		
+								<h3>
+				<a name="item18630"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/30c79cd4b9fb5c8" class="expansiveItem">Static variables in Ruby.</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18630" class="wink"></a>
+			</h3>
+				
+		<p>This is an interesting discussion because static variables are very popular in other languages.</p>
+
+
+	<p>Some comments :</p>
+
+
+	<p>here are three kinds of variables in Ruby viz: local, <code>@class_var and @instance_var. My tip, do not use </code>@class_var, use @inst_var on the correct level.</p>
+
+
+	<p>If you mean static variables that are visible in a single method only,
+then no, there is no way to do it.  You should probably rethink your
+design if it relies on such archaic features of other programming
+languages. :-)</p>
+
+
+	<p>&#8220;Static&#8221; is a misleading term, though.  It&#8217;s just a local variable
+that happens to get wrapped in a closure.  In general, I don&#8217;t think
+Ruby and the word &#8220;static&#8221; mix very well :-)  Constants are sort of
+statically scoped, but that&#8217;s about it.</p>
+		
+								<h3>
+				<a name="item18769"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/db23cb42fdd05bdf" class="expansiveItem">Why Ruby?</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18769" class="wink"></a>
+			</h3>
+				
+		<p>Couple of pointers (like the site http://ruby-doc.org/whyruby) and discussions on th merits of Ruby</p>
+		
+								<h3>
+				<a name="item18797"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/8df61ddc78c77eaa" class="expansiveItem">how can i use a ruby class in object way</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18797" class="wink"></a>
+			</h3>
+				
+		<p>A conceptual discussion. The question was &#8220;We all know  that we can use a class&#8217;object in main method in java,but how can I use a class&#8217;object after designing a class in ruby? Is there an only place like main method of java in which I can use my classes? is there a  rule that can guide me to use my ruby class correctly?&#8221;</p>
+
+
+	<p>Answer : &#8220;Ruby is in its essence an interpreter. When you type in your command prompt >ruby my_script.rb the interpreter (that by itself is just another application) reads your file line by line and executes every line. Think of every line in Ruby as a command to the interpreter and that the interpreter executes every single line. That means you can use your classes anywhere you like as long as they were defined before.</p>
+
+
+	<p>... it&#8217;s quite different from Java. If you want to feel
+more comfortable think of your Ruby code written entirely inside one
+big &#8216;main&#8217; Java function. Just remember &#8211; every line is executed! &#8220;</p>
+		
+								<h3>
+				<a name="item18688"></a> <a href="http://groups.google.com/group/ruby-talk-google/browse_thread/thread/f42919bbdd5b5947" class="expansiveItem">Why is it so hard to kill Ruby?</a>
+				<span class="itemSource"></span>
+				<a href="/items/wink/18688" class="wink"></a>
+			</h3>
+				
+		<p>An interesting thread which goes asymptotic to the question, but entertaining &#8230;</p>
+		
+			</div>
+
+		
+	
+	</div>
+	
+</div>
+
+
+
+</body>
+</html>

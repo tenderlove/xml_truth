@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+	<title>MagLev - Ruby that scales</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="css/default.css" type="text/css" media="all" charset="iso-8859-1" />
+<!--[if lte IE 7]>
+	<link rel="stylesheet" href="css/ie7.css" type="text/css" media="all" charset="iso-8859-1" />
+<![endif]-->
+	<script type="text/javascript" language="javascript" charset="iso-8859-1" src="js/mootools-release-1.11.js"></script>
+</head>
+<body>
+<div id="globalBox">
+	<h1><img src="img/logo.gif" alt="MagLev" width="223" height="226" /></h1>
+	<h2>Ruby that scales<sup>&#8482;</sup></h2>
+	
+	<p>MagLev /m&#259;g-l&#277;v/<br />
+		<em>n</em>. a fast, stable, Ruby implementation with integrated object persistence and distributed shared cache.</p>
+	<p>Follow <a href="http://twitter.com/maglev" title="Follow MagLev on Twitter">MagLev developers</a> on Twitter or check <a href="status/index.html" title="MagLev status update">MagLev status</a>.</p>
+		
+		<p> Leave your email address below and we&rsquo;ll keep you in the loop.</p>
+	<div class="formBox">
+		<div class="formLeft"></div>
+		<form class="formStatus" id="signupForm" action="list.php" method="post">
+			<label for="email">Email:</label> <input class="text" name="email" id="email" type="text" /> <input class="button" type="submit" value="Sign up" name="signup" />
+		</form>
+		<div class="formStatus" id="formSending" style="display: none">Sending&#8230;</div>
+		<div class="formStatus" id="formThanks" style="display: none">Thank you!</div>
+		<div class="formStatus" id="formError" style="display: none">Sorry, an error occurred.</div>
+		<div class="formRight"></div>
+	</div>
+	<p>
+				<br />
+
+				<a href="http://www.vimeo.com/1147409" title="MagLev presentation at RailsConf 2008">Watch the video</a> from RailsConf 2008.<br />
+				
+				<a href="http://pivotallabs.com/talks/" title="MagLev Tech Talk at Pivotal Labs">Watch our Tech Talk</a> at <a href="http://pivotallabs.com/">Pivotal Labs</a>.<br />
+				
+				<a href="http://podcast.rubyonrails.com/programs/1/episodes/monty-williams-on-maglev" title="The history of MagLev recorded at RubyConf 2008">Listen to a podcast</a> from RubyConf.<br />
+				</p>
+				
+				<p><i>* If you want to try GemStone's object persistence in Smalltalk, download <a href="http://seaside.gemstone.com/" title="GemStone/S with Seaside">Seaside</a> or learn about <a href="http://gemstonesoup.wordpress.com/" title="GemStone, Linux, Apache, Seaside, and Smalltalk">GLASS</a>.</i></p>
+				
+</div>
+<script type="text/javascript" language="javascript">
+MagLev = {
+	sendForm: function(event) {
+		event = new Event(event);
+		event.stop();
+		if ($('email').value.search(/.+@.+\..+/i) != -1) {
+			MagLev.sending();
+			MagLev.signupForm.send({ evalScripts: true });
+		}
+	},
+	
+	sending: function() {
+		$$('.formStatus').setStyle('display', 'none');
+		$('formSending').setStyle('display', '');
+	},
+	
+	sent: function() {
+		$$('.formStatus').setStyle('display', 'none');
+		$('formThanks').setStyle('display', '');
+	},
+	
+	error: function(msg) {
+		$$('.formStatus').setStyle('display', 'none');
+		if (msg) {
+			$('formError').setText(msg);
+		}
+		$('formError').setStyle('display', '');
+	},
+	
+	init: function() {
+		MagLev.signupForm = $('signupForm');
+		MagLev.signupForm.addEvent('submit', MagLev.sendForm);
+	}
+}
+
+window.addEvent('domready', MagLev.init);
+</script>
+</body>
+</html>

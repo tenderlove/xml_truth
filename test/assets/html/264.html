@@ -1,0 +1,2034 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>QuarkRuby: Ruby on Rails Security Guide</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <!-- Use this RSS link if you are using FeedBurner (recommended) -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Quarkruby" />
+
+  
+
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/scribbish.js" type="text/javascript"></script>
+
+  <link href="/stylesheets/application.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="header">
+    <div class="inner-wrap">
+      <div class="title">
+         <a href="/" style="background:transparent;"><img src='http://quarkruby.com/assets/2008/1/27/quarkruby_logo_3.png'></img></a>
+<!--        <a href="/"><span style='color:white;font-size:24px;'>QuarkRuby</span></a> <span style='font-size:26px;color:#ef6d4a;'>|</span> <span style='color:#ffe9ba'>.... how deep the rabbit-hole goes. </span>-->
+      </div>
+      <div class='tabbox'>
+          <a class='tab' href="http://www.quarkruby.com">Home</a>
+          <a class='tab' href="http://www.quarkruby.com/guides">Guides</a>
+          <a class='tab' href="http://www.quarkruby.com/tutorials">Tutorials</a>
+      </div>
+      <div id="search" class="search">
+        <form action="/search" id="sform" method="get" name="sform">
+          <div class="searchimg"></div>
+          <input type="text" id="q" name="q" value="" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div style='clear:both'></div>
+
+  <div id="container">
+    <div class="inner-wrap">
+      <div id="page">
+        <div id="content">
+          
+  
+<!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping=""
+  dc:title="Ruby on Rails Security Guide"
+  dc:identifier="/2007/9/20/ruby-on-rails-security-guide"
+  dc:description="<p>Ruby on Rails does a decent job in handling security concerns in the background. You will have to configure your application to avoid few security attacks while plugins would be required for many security concerns which are not at all or poorly..."
+  dc:creator="admin"
+  dc:date="September 20, 2007 05:02" />
+</rdf:RDF>
+-->
+
+<div class="hentry" id="article-28">
+  <h2 class="entry-title">
+    <a href="/2007/9/20/ruby-on-rails-security-guide" title="Ruby on Rails Security Guide">Ruby on Rails Security Guide</a>
+    
+  </h2><br>
+  <div class="entry-content">
+  <p>Ruby on Rails does a decent job in handling security concerns in the background. You will have to configure your application to avoid few security attacks while plugins would be required for many security concerns which are not at all or poorly managed by rails.</p>
+
+<p>In this article I have described the security issues related to a ruby on rails web application. I have followed <abbr title="Don't Repeat Yourself">DRY</abbr> by linking to articles with good explanation and solutions to security concerns wherever required. This guide can also be used as a quick security check for your current web application. </p>
+
+<h2>Table of Contents </h2>
+<ol>
+   <li><a href="#authen">Authentication</a>
+   <li><a href="#model">Model</a>
+      <ol type='a' style='margin: 0.4em;'>
+          <li><a href='#sqlinjection'>SQL Injection</a>
+          <li><a href='#validation'>Activerecord Validation</a>
+          <li><a href='#crdfp'>Creating records directly from parameters</a>
+      </ol>
+   <li><a href="#controller">Controller</a>
+      <ol type='a' style='margin: 0.4em;'>
+          <li><a href='#em'>Exposing methods</a>
+          <li><a href='#authorization'>Authorize parameters</a>
+          <li><a href='#fsl'>Filter sensitive logs</a>
+          <li><a href='#csrf'>Cross Site Reference(or Request) Forgery (CSRF)</a>
+          <li><a href='#sessions'>Minimize session attacks</a>
+          <li><a href='#dnsbl'>Stop spam on your website from DNS Blacklist</a>
+          <li><a href='#cap'>Caching authenticated pages</a>
+      </ol>
+   <li><a href="#view">View</a>
+      <ol type='a' style='margin: 0.4em'>
+          <li><a href='#xss'>Cross site scripting(XSS) attack</a>
+          <li><a href='#asfp'>Anti-spam form protection</a>
+          <li><a href='#mailto'>Hide mailto links</a>
+          <li><a href='#upse'>Use password strength evaluators</a>
+      </ol>
+   <li><a href='#misc'>Miscellaneous</a>
+     <ol type='a' style='margin: 0.4em'>
+          <li><a href='#transmission'>Transmission of Sensitive information</a>
+          <li><a href='#fileupload'>File upload</a>
+          <li><a href='#environment'>Secure your setup / environment</a>
+          <li><a href='#mysql'>Mysql configuration</a> 
+          <li><a href='#goodpassword'>Use good passwords</a>
+     </ol>
+   <li><a href='#directory'>Security plugins directory</a>
+</ol>
+
+<br/>
+
+<a name='authen'></a>
+<h2>Authentication</h2>
+<p>Authentication is the foremost requirement of most of the web applications to authenticate and give privileges to their users. Apart from normal authentication mechanism rails have plugins for OpenID, CAS and Access Control. Build your own authentication system only if your requirements are very unique or you do not trust other implementations.</p>
+
+Plugin - <b>Restful Authentication</b> (recommended) - easy to use and you can tweak it according to your requirements.
+<div class='linkbox'>
+<a href='http://railscasts.com/episodes/67' target='_blank'>http://railscasts.com/episodes/67</a>
+<a href='http://svn.techno-weenie.net/projects/plugins/restful_authentication/' target='_blank'>http://svn.techno-weenie.net/projects/plugins/restful_authentication/</a>
+</div>
+
+<b>Build your own authentication</b>. You should rarely need to do this ... Restful Authentication is quite flexible.
+<div class='linkbox'>
+<a href='http://www.aidanf.net/rails_user_authentication_tutorial' target='_blank'>http://www.aidanf.net/rails_user_authentication_tutorial</a>
+</div>
+
+<b>OpenID</b> - a universal authentication system to avoid use of multiple username and password on the Internet. OpenID is getting quite famous now-a-days.
+<div class='linkbox'>
+<a href='http://media.railscasts.com/videos/068_openid_authentication.mov' target='_blank'>http://media.railscasts.com/videos/068_openid_authentication.mov</a>
+<a href='http://agilewebdevelopment.com/plugins/openidauthentication' target='_blank'>http://agilewebdevelopment.com/plugins/openidauthentication</a>
+</div>
+
+<b>Access Control</b> : To easily proivde different priviliges to your users. There are a lot of cool plugins available for access control.
+<div class='linkbox'>
+<a href='https://opensvn.csie.org/traccgi/tobionrails' target='_blank'>https://opensvn.csie.org/traccgi/tobionrails</a><br/>
+<a href='http://code.google.com/p/rolerequirement/' target='_blank'>http://code.google.com/p/rolerequirement/</a><br/>
+<a href='http://agilewebdevelopment.com/plugins/activeacl_rails_authorization_system' target='_blank'>http://agilewebdevelopment.com/plugins/activeacl_rails_authorization_system</a>
+</div>
+
+<b>Centralized Authentication Server</b> - is used to implement single login/password for your users across multiple application. It can also be used for a single sign-on system. For example, Gmail and Google Reader have a single sign-on between them.
+<div class='linkbox'>
+<a href='http://agilewebdevelopment.com/plugins/cas_authentication_filter' target='_blank'>http://agilewebdevelopment.com/plugins/cas_authentication_filter</a>
+</div>
+
+Use <b>Google Authentication API</b> to let your users login using their google username and password.
+<div class='linkbox'>
+<a href='http://rubyforge.org/projects/asgoogleaccount/' target='_blank'>http://rubyforge.org/projects/asgoogleaccount/</a>
+</div>
+
+<b>More Plugins</b> :
+<div class='linkbox'>
+Rails inbuilt Authentication -  <a href='http://ryandaigle.com/articles/2006/12/4/whats-new-in-edge-rails-new-http-authentication-plugin-and-a-plea-to-contribute' target='_blank'>http://ryandaigle.com/articles/2006/12/4/whats-new-in...</a><br/>
+Acts_as_authenticated - <a href='http://technoweenie.stikipad.com/plugins/show/User+Authentication' target='_blank'>http://technoweenie.stikipad.com/plugins/show/User+Authentication</a><br/>
+Super Simple Authentication - <a href='http://ariejan.net/2007/08/24/super-simple-authentication-plugin-and-generator/' target='_blank'>http://ariejan.net/2007/08/24/super-simple-...</a>
+</div>
+
+
+
+<br/>
+<a name='model'></a>
+<h1>- Model -</h1>
+
+
+
+<a name='sqlinjection'></a>
+<h2>SQL Injection</h2>
+<p>The problem arises when metacharacters are injected into your queries to database. Rails has a very good support to avoid SQL injection if you follow conventions in issuing queries to your database.</p>
+
+<b>Description</b> :
+<div class='linkbox'>
+<a href='http://manuals.rubyonrails.com/read/chapter/43' target='_blank'>http://manuals.rubyonrails.com/read/chapter/43</a>
+</div>
+
+<b>Alternate Solution</b> - use hash for specifying conditions in <code class='inline'>#find</code></br>
+<div class='linkbox'>
+<a href='http://weblog.rubyonrails.org/2006/11/26/1-2-new-in-activerecord' target='_blank'>http://weblog.rubyonrails.org/2006/11/26/1-2-new-in-activerecord</a>
+</div>
+
+
+
+<a name='validation'></a>
+<h2>Activerecord Validation</h2>
+<p>To validate the contents of model object before records are created/modified in the database. Activerecord validations are very useful over database data-type constraints to ensure values entered into the database follow your rules. You might have javascript validations for forms but javascript can easily be switched off. Use javascript validations only for better user experience.</p>
+
+<b>Description</b> :
+<div class='linkbox'>
+<a href='http://rails.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html' target='_blank'>http://rails.rubyonrails.com/classes/ActiveRecord/Validations/ClassMethods.html</a>
+</div>
+
+<b>Conditional validation</b> using <code class='inline'>:on</code> and <code class='inline'>:if</code> options. Checkout this cool video
+<div class='linkbox'>
+<a href='http://media.railscasts.com/videos/041_conditional_validations.mov' target='_blank'>http://media.railscasts.com/videos/041_conditional_validations.mov</a>
+</div>
+
+Be careful using <b>validates_uniqueness_of</b>, it has problems when used with <code class='inline'>:scope</code> option. Open bug tickets :
+<div class='linkbox'>
+<a href='http://dev.rubyonrails.org/ticket/5608' target='_blank'>http://dev.rubyonrails.org/ticket/5608</a><br/>
+<a href='http://dev.rubyonrails.org/ticket/9235' target='_blank'>http://dev.rubyonrails.org/ticket/9235</a><br/>
+<a href='http://dev.rubyonrails.org/ticket/8811' target='_blank'>http://dev.rubyonrails.org/ticket/8811</a><br/>
+<a href='http://dev.rubyonrails.org/ticket/8774' target='_blank'>http://dev.rubyonrails.org/ticket/8774</a>
+</div>
+
+Use <b>:allow_blank</b> to pass validations if value is nil or empty string
+<div class='linkbox'>
+<a href='http://ryandaigle.com/articles/2007/9/5/what-s-new-in-edge-rails-validations-now-allow_blank' target='_blank'>http://ryandaigle.com/articles/2007/9/5/what-s-new-in-edge-rails-validations-now-allow_blank</a>
+</div>
+
+<b>Testing Validations</b> - do read the comments in this article
+<div class='linkbox'>
+<a href='http://blog.jayfields.com/2006/12/rails-unit-testing-activerecord.html' target='_blank'>http://blog.jayfields.com/2006/12/rails-unit-testing-activerecord.html
+</a>
+</div>
+
+<b>Useful Tips</b>
+<ul>
+<li>Its easy to manage 'nil' values using <code class='inline'>:allow_nil</code>, its quite handy. For ex: set <code class='inline'>:allow_nil => true</code> in validates_uniqueness_of to check uniqueness of non-nil values and ignore nil values
+<li> validates_presence_of is not required if you are using validates_format_of, unless regular expression accepts empty string.
+</ul>
+
+
+
+<a name='crdfp'></a>
+<h2>Creating records directly from parameters</h2>
+<p>While creating database records directly from form params, a malicious user can add extra fields into the params and manually submit the web page which will set values of fields which you do not want user to set.</p>
+
+<b>Description</b> :
+<div class='linkbox'>
+<a href='http://manuals.rubyonrails.com/read/chapter/47' target='_blank'>http://manuals.rubyonrails.com/read/chapter/47</a>
+</div>
+
+<b>Alternate Solution</b> - Trim the parameters to keep the required keys and remove the others.
+<div class='linkbox'>
+<a href='http://wiki.rubyonrails.org/rails/pages/HowToPreventFormInjection' target='_blank'>http://wiki.rubyonrails.org/rails/pages/HowToPreventFormInjection</a>
+</div>
+<br/>
+
+
+
+<a name='controller'></a>
+<h1>- Controller -</h1>
+
+
+
+<a name='em'></a>
+<h2>Exposing methods</h2>
+<p>Use private and protected in controller for methods which should not be actions. Actions are pubic methods and can be invoked from the browser.</p>
+
+<b>hide_action</b> : If non-action controller methods must be public, hide them using hide_action.
+<div class='linkbox'>
+<a href='http://www.mathewabonyi.com/articles/2006/08/11/hide_action-a-hidden-treasure' target='_blank'>http://www.mathewabonyi.com/articles/2006/08/11/hide_action-a-hidden-treasure</a>
+</div>
+
+Be careful of bypassing private and protected using <b>meta-programming</b>
+<div class='linkbox'>
+<a href='http://dev.zeraweb.com/design-blog-14' target='_blank'>http://dev.zeraweb.com/design-blog-14</a>
+</div>
+
+
+
+<a name='authorization'></a>
+<h2>Authorize parameters</h2>
+<p>Always authorize user request. By tweaking form parameters or url a user can send request to view/modify other users information if there is no proper authorization of parameters.</p>
+For example :
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt><strong>5</strong><tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><tt>
+</tt><span class="c">## To find information of an order which belongs to a particular user.</span><tt>
+</tt><tt>
+</tt><span class="c">#Incorrect :</span><tt>
+</tt><span class="iv">@order</span> = <span class="co">Order</span>.find(order_id)<tt>
+</tt><tt>
+</tt><span class="c">#Correct :</span><tt>
+</tt><span class="iv">@order</span> = <span class="iv">@user</span>.orders.find(order_id)<tt>
+</tt></pre></td>
+</tr></table>
+
+
+Do not ignore <b>hidden fields</b> - a user can easily modify their value, so suspect them similar to params[:id]
+<div class='linkbox'>
+<a href='http://searchsecurity.techtarget.com/tip/1,289483,sid14_gci1153816,00.html' target='_blank'>http://searchsecurity.techtarget.com/tip/1,289483,sid14_gci1153816,00.html</a>
+</div>
+
+
+
+<a name='fsl'></a>
+<h2>Filter sensitive logs</h2>
+<p>Prevent logs of sensitive unencrypted data using <code class='inline'>#filter_parameter_logging</code> in controller.  The default behavior is to log request parameters in production as well as development environment, and you would not like logging of password, credit card number, etc.</p>
+
+<b>Video Tutorial</b>
+<div class='linkbox'>
+<a href='http://railscasts.com/episodes/9' target='_blank'>http://railscasts.com/episodes/9</a>
+</div>
+
+
+
+<a name = 'csrf'></a>
+<h2>Cross Site Reference(or Request) Forgery (CSRF)</h2>
+<p>In a CSRF attack, the attacker makes victim click on a link of his choice which would contain a GET/POST request and causes web application to take malicious action. The link could be embedded in a iframe or an img tag. Its recommended to use secret token while communicating with user to avoid this attack. </p>
+<p>Its little complex to understand this attack. So, only those readers who are very enthusiastic to know about it, please read the <b>Description</b> below. Rest can directly move ahead to use the plugin.</p>
+
+<b>Description</b> :
+<div class='linkbox'>
+<a href='http://isc.sans.org/diary.html?storyid=1750' target='_blank'>http://isc.sans.org/diary.html?storyid=1750</a>
+<a href='http://en.wikipedia.org/wiki/Cross-site_request_forgery' target='_blank'>http://en.wikipedia.org/wiki/Cross-site_request_forgery</a>
+</div>
+
+Use <b>Get and Post</b> appropiately (note : Both get and post are vulnerable to CSRF)
+<div class='linkbox'>
+<a href='http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1' target='_blank'>http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html#sec9.1.1</a>
+</div>
+
+<b>Example</b> - Gmail CSRF security flaw
+<div class='linkbox'>
+<a href='http://ajaxian.com/archives/gmail-csrf-security-flaw' target='_blank'>http://ajaxian.com/archives/gmail-csrf-security-flaw</a>
+</div>
+
+Plugin - <b>CSRF Killer</b> (recommended) - it requires edge rails
+<div class='linkbox'>
+<a href='http://svn.techno-weenie.net/projects/plugins/csrf_killer/' target='_blank'>http://svn.techno-weenie.net/projects/plugins/csrf_killer/</a><br/>
+<a href='http://activereload.net/2007/3/6/your-requests-are-safe-with-us' target='_blank'>http://activereload.net/2007/3/6/your-requests-are-safe-with-us</a>
+</div>
+
+<div class='linkbox'>
+Secure action - <a href='http://code.google.com/p/secure-action-plugin/' target='_blank'>http://code.google.com/p/secure-action-plugin/</a><br/>
+Security extension - <a href='http://svn.aviditybytes.com/rails/plugins/security_extensions/' target='_blank'>http://svn.aviditybytes.com/rails/plugins/security_extensions/</a>
+</div>
+
+
+
+<a name='sessions'></a>
+<h2>Minimize session attacks</h2>
+<p>If an attacker has session-id of your user, he can create HTTP requests to access user account. An attacker can get session-id by direct access to user machine or is able to successfully run malicious scripts at user machine. In this section we will talk about how to avoid or minimize the risk if attacker has user session-id. Following steps are helpful:
+<ol>
+  <li>Store IP Address, but creates problem if user moves from one network to another.
+  <li>Create a new session everytime someone logs in.
+  <li>Expire session on user logout, user is idle for a time period or on closing of browser/tab. For maximum security expire sessions on all the three conditions. 
+</ol>
+</p>
+
+<b>Code for session expiry on timeout</b>
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt><strong>5</strong><tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><tt>
+</tt><span class="c">## Timeout after inactivity of one hour.</span><tt>
+</tt><span class="co">MAX_SESSION_PERIOD</span> = <span class="i">3600</span><tt>
+</tt><tt>
+</tt>before_filter <span class="sy">:session_expiry</span><tt>
+</tt><tt>
+</tt><span class="r">def</span> <span class="fu">session_expiry</span><tt>
+</tt>   reset_session <span class="r">if</span> session[<span class="sy">:expiry_time</span>] <span class="r">and</span> session[<span class="sy">:expiry_time</span>] &lt; <span class="co">Time</span>.now<tt>
+</tt><tt>
+</tt>   session[<span class="sy">:expiry_time</span>] = <span class="co">MAX_SESSION_PERIOD</span>.seconds.from_now<tt>
+</tt>   <span class="r">return</span> <span class="pc">true</span><tt>
+</tt><span class="r">end</span><tt>
+</tt></pre></td>
+</tr></table>
+
+
+Plugin - <b>Session Expiration</b> for session expiry on timeout
+<div class='linkbox'>
+<a href='http://www.naffis.com/2007/5/22/automatically-expiring-sessions-in-rails' target='_blank'>http://www.naffis.com/2007/5/22/automatically-expiring-sessions-in-rails</a>
+</div>
+
+Do not put expiry time in the cookie unless your cookie information is properly encrypted. If not, use server side session expiry.
+<div class='linkbox'>
+<a href='http://wiki.rubyonrails.org/rails/pages/HowtoChangeSessionOptions' target='_blank'>http://wiki.rubyonrails.org/rails/pages/HowtoChangeSessionOptions</a>
+</div>
+
+Persistent session / login in rails - global setting in enviornment.rb
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><tt>
+</tt><span class="co">ActionController</span>::<span class="co">Base</span>.session_options[<span class="sy">:session_expires</span>] = &lt;i&gt;say after two years&lt;<span class="rx"><span class="dl">/</span><span class="k">i&gt;<tt>
+</tt></span></span></pre></td>
+</tr></table>
+
+
+Persistent session / login in rails - to give your users a feature - <b>remember me</b>
+<div class='linkbox'>
+<a href='http://blog.codahale.com/2006/04/08/dynamic-session-expiration-times-with-rails/' target='_blank'>http://blog.codahale.com/2006/04/08/dynamic-session-expiration-times-with-rails/</a>
+<a href='http://www.onrails.org/articles/2006/02/18/auto-login' target='_blank'>http://www.onrails.org/articles/2006/02/18/auto-login</a>
+<a href='http://livsey.org/2006/6/30/persistent-logins-in-rails' target='_blank'>http://livsey.org/2006/6/30/persistent-logins-in-rails</a>
+</div>
+
+
+
+<a name='dnsbl'></a>
+<h2>Stop spam on your website from DNS Blacklist</h2>
+<p>Avoid access to your website from IP addresses which are present in DNS Blacklist(DNSBL).</p>
+
+Plugin - <b>DNSBL check</b>
+<div class='linkbox'>
+<a href='http://spacebabies.nl/dnsbl_check/' target='_blank'>http://spacebabies.nl/dnsbl_check/</a>
+</div>
+
+
+
+<a name='cap'></a>
+<h2>Caching authenticated pages</h2>
+<p>Page caching does bypass any security filters in your application. So avoid caching authenticated pages and use action or fragment caching instead.</p>
+<br/>
+
+
+<a name='view'></a>
+<h1>- View -</h1>
+
+<a name='xss'></a>
+<h2>Cross site scripting(XSS) attack</h2>
+<p>Cross Site Scripting is a technique found in web applications which allow code injection by malicious web users into the web pages viewed by other users. An attacker can steal login of your user by stealing his cookie. The most common method of attack is to place javascript code on a website that can receive the session cookie. To avoid  the attack, escape HTML meta characters which will avoid execution of malicious Javascript code. Ruby on Rails has inbuilt methods like escape_html() (h()), url_encode(), sanatize(), etc to escape HTML meta characters.</p>
+
+<b>Description</b>
+<div class='linkbox'>
+<a href='http://manuals.rubyonrails.com/read/chapter/44' target='_blank'>http://manuals.rubyonrails.com/read/chapter/44</a>
+</div>
+
+<b>Can we avoid tedious use of h() in views?</b>
+<div class='linkbox'>
+<a href='http://wiki.rubyonrails.org/rails/pages/HowToEscapeHTML' target='_blank'>http://wiki.rubyonrails.org/rails/pages/HowToEscapeHTML</a>
+</div>
+
+<b>Sanitize()</b> is used to escape script tags and other malicious content other than html tags. Avoid using it ... its unsecure. Use white_list instead.
+<div class='linkbox'>
+<a href='http://www.rorsecurity.info/2007/08/17/dont-use-strip_tags-strip_links-and-sanitize/' target='_blank'>http://www.rorsecurity.info/2007/08/17/dont-use-strip_tags-strip_links-and-sanitize/</a>
+</div>
+
+<b>White_list</b> plugin
+<div class='linkbox'>
+<a href='http://svn.techno-weenie.net/projects/plugins/white_list/README' target='_blank'>http://svn.techno-weenie.net/projects/plugins/white_list/README</a>
+</div>
+
+
+
+<a name='asfp'></a>
+<h2>Anti-spam form protection</h2>
+
+<p>Use <a href='http://en.wikipedia.org/wiki/Captcha'>Captcha</a> or Javascript based form protection techniques to ensure only human can submit forms successfully.</p> 
+
+<p>When using Captcha do ensure the following :
+<ol>
+   <li>Images are rendered on webpage using <code class='inline'>send_data</code> and are not stored at the server, because its not required to store images and are redundant.
+   <li>Avoid using algorithm used by standard Catpcha plugins as they can easily be hacked, instead tweak an existing algorithm or write your own.
+   <li>Use a Captcha which does not store secret code or images in filesystem, as you will have trouble using Captcha with multiple servers.
+</ol>
+</p>
+
+<b>Tutorial</b> - a nice article on concepts of captcha
+<div class='linkbox'>
+<a href='http://revolutiononrails.blogspot.com/2007/04/pedo-mellon-minno-or-captcha-on-rails.html' target='_blank'>http://revolutiononrails.blogspot.com/2007/04/pedo-mellon-minno-or-captcha-on-rails.html</a>
+</div>
+
+Plugin - <b>ReCaptcha</b> (recommended)
+<div class='linkbox'>
+<a href='http://recaptcha.net/' target='_blank'>http://recaptcha.net/</a><br/>
+<a href='http://ambethia.com/recaptcha/' target='_blank'>http://ambethia.com/recaptcha/</a>
+</div>
+
+Plugin - BrainBuster - a <b>logic captcha</b> based on simple puzzles, math and word problems. By default, it has limited set of problems and you would have to come up with large set of your own problems.
+<div class='linkbox'>
+<a href='http://robsanheim.com/brain-buster' target='_blank'>http://robsanheim.com/brain-buster</a>
+</div>
+
+Plugin - <b>Simple Captcha</b> (not recommended) as it breaks all the must have features of a good Captcha implementation.
+<div class='linkbox'>
+<a href='http://expressica.com/2007/03/23/simple_captcha_1_0/' target='_blank'>http://expressica.com/2007/03/23/simple_captcha_1_0/</a>
+</div>
+
+For less critical systems like blogs, a more <b>user-friendly option</b> can be use of CSS based technique or JavaScript based plugin unlike Captcha. Both JavaScript and CSS based techniques can only avoid spam from dumb or general bots. If an hacker specifically targets your site or bot is smart enough, you are dead,  so be careful.
+<div class='linkbox'>
+CSS based Negative Captcha - <a href='http://damienkatz.net/2007/01/negative_captch.html' target='_blank'>http://damienkatz.net/2007/01/negative_captch.html</a><br/>
+Inverse Captcha for Mephisto - <a href='http://www.artweb-design.de/projects/mephisto-plugin-inverse-captcha-for-comments-anti-spam' target='_blank'>http://www.artweb-design.de/projects/mephisto-plugin-inverse...</a><br/>
+JavaScript based Form Spam Protection - <a href='http://form-spam-protection.googlecode.com/svn/form_spam_protection/' target='_blank'>http://form-spam-protection.googlecode.com/svn/form...</a>
+</div>
+
+<b>Captcha with Multiple Servers</b>
+<div class='linkbox'>
+<a href='http://upstream-berlin.com/blog/2007/08/17/captchas-with-rails-and-multiple-servers/' target='_blank'>http://upstream-berlin.com/blog/2007/08/17/captchas-with-rails-and-multiple-servers/</a>
+</div>
+
+
+
+<a name='mailto'></a>
+<h2>Hide mailto links</h2>
+<p>Mailto links in a webpage can be attacked by e-mail harvesting bots. Use the plugin CipherMail to generate a 1024 bit random key and obfuscate the mailto link.</p>
+
+Plugin - <b>CipherMail</b>
+<div class='linkbox'>
+<a href='http://agilewebdevelopment.com/plugins/ciphermail' target='_blank'>http://agilewebdevelopment.com/plugins/ciphermail</a>
+</div>
+
+
+
+<a name='uspe'></a>
+<h2>Use password strength evaluators</h2>
+<p>A lot of people have used password strength evaluators simply because its used by google in their registration form. You can use it to help your users register with strong password. But I don't think its a must have security addon. Uptill now I have not found a good algorithm to assess strength of a password, but some of them are reasonable.</p>
+
+<p>Also, if there is an open source tool or algorithm for evaluating password strength, it can easily be broken. So, you might consider tweaking the algorithm or building one from scratch.</p>
+
+<b>Tools</b>
+<div class='linkbox'>
+<a href='http://www.certainkey.com/demos/password/' target='_blank'>http://www.certainkey.com/demos/password/</a>
+<a href='http://www.jeffro2pt0.com/ajax-powered-password-strength-meter/' target='_blank'>http://www.jeffro2pt0.com/ajax-powered-password-strength-meter/</a>
+<a href='http://www.geekwisdom.com/dyn/passwdmeter' target='_blank'>http://www.geekwisdom.com/dyn/passwdmeter</a>
+<a href='http://www.jvoorhis.com/articles/2006/04/06/automatic-password-suggestion-for-your-rails-app' target='_blank'>http://www.jvoorhis.com/articles/2006/04/06/automatic-password-suggestion-for-your-rails-app</a>
+</div>
+
+<br/>
+
+
+<a name='misc'></a>
+<h1>- Miscellaneous -</h1>
+
+
+
+<a name='transmission'></a>
+<h2>Transmission of Sensitive information</h2>
+<p>Use SSL to encrypt sensitive data between transfer from client to server. SSL hits server performace, so you might consider using SSL only for few pages which transfer sensitive data to and fro.</p>
+
+Plugin <b>ssl_requirement</b>
+<div class='linkbox'>
+<a href='http://svn.rubyonrails.org/rails/plugins/ssl_requirement/README' target='_blank'>http://svn.rubyonrails.org/rails/plugins/ssl_requirement/README</a>
+</div>
+
+<b>Mongrel, rails, apache and SSL</b>
+<div class='linkbox'>
+<a href='http://blog.innerewut.de/2006/06/21/mongrel-and-rails-behind-apache-2-2-and-ssl' target='_blank'>http://blog.innerewut.de/2006/06/21/mongrel-and-rails-behind-apache-2-2-and-ssl</a>
+</div>
+
+Controller in <b>SSL subdomain</b>
+<div class='linkbox'> 
+<a href='http://www.railsonwave.com/railsonwave/2007/7/10/howto-put-a-controller-under-a-ssl-subdomain' target='_blank'>http://www.railsonwave.com/railsonwave/2007/7/10/howto-put-a-controller-under-a-ssl-subdomain</a>
+</div>
+
+<b>Sample SSL code in rails</b>
+<div class='linkbox'>
+<a href='http://blog.caboo.se/articles/2007/4/21/sample-rails-app-branch-with-ssl' target='_blank'>http://blog.caboo.se/articles/2007/4/21/sample-rails-app-branch-with-ssl</a>
+</div>
+
+
+
+<a name='fileupload'></a>
+<h2>File upload</h2>
+<p>Be very careful when you allow your users to upload files and make them available for other users to download.</p>
+
+<b>Description</b>
+<div class='linkbox'>
+<a href='http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/' target='_blank'>http://www.rorsecurity.info/2007/03/27/working-with-files-in-rails/</a>
+</div>
+
+<b>Must read</b> - Section 26.7 of Agile web development with rails - 2nd edition
+<div class='linkbox'>
+<a href='http://www.pragmaticprogrammer.com/titles/rails2/' target='_blank'>http://www.pragmaticprogrammer.com/titles/rails2/</a>
+</div>
+
+<b>In place file upload</b>
+<div class='linkbox'>
+<a href="http://kpumuk.info/ruby-on-rails/in-place-file-upload-with-ruby-on-rails/" target='_blank'>http://kpumuk.info/ruby-on-rails/in-place-file-upload-with-ruby-on-rails/</a>
+</div>
+
+3 plugins for file upload reviewed at :
+<div class='linkbox'>
+<a href='http://www.flex888.com/2007/03/21/three-ruby-on-rails-file-upload-plugins-reviewed.html' target='_blank'>http://www.flex888.com/2007/03/21/three-ruby-on-rails-file-upload-plugins-reviewed.html</a>
+</div>
+
+
+
+<a name='environment'></a>
+<h2>Secure your setup / environment</h2>
+<div class='linkbox'>
+<a href='http://www.igvita.com/blog/2006/10/10/securing-your-rails-environment/' target='_blank'>http://www.igvita.com/blog/2006/10/10/securing-your-rails-environment/</a>
+</div>
+
+
+
+<a name='mysql'></a>
+<h2>Proper Mysql configuration</h2>
+<div class='linkbox'>
+<a href='http://www.rorsecurity.info/2007/02/25/securing-mysql/' target='_blank'>http://www.rorsecurity.info/2007/02/25/securing-mysql/</a>
+<a href='http://www.rorsecurity.info/2007/02/27/rails%e2%80%99-friends-securing-mysql-continued/' target='_blank'>http://www.rorsecurity.info/2007/02/27/rails%e2%80%99-friends-securing-mysql-continued/</a>
+</div>
+
+
+
+<a name='goodpassword'></a>
+<h2>Use good passwords</h2>
+<div class='linkbox'>
+<a href='http://en.wikipedia.org/wiki/Password_strength' target='_blank'>http://en.wikipedia.org/wiki/Password_strength</a>
+<a href='http://www.rorsecurity.info/2007/06/05/use-good-passwords/' target='_blank'>http://www.rorsecurity.info/2007/06/05/use-good-passwords/</a>
+</div>
+<br/>
+
+
+<a name='directory'></a>
+<h1>Security plugins directory</h1>
+<div class='linkbox'>
+<a href='http://agilewebdevelopment.com/plugins/category/1' target='_blank'>http://agilewebdevelopment.com/plugins/category/1</a><br/>
+<a href='http://www.railslodge.com/plugins' target='_blank'>http://www.railslodge.com/plugins</a><br/>
+<a href='http://railsify.com/categories/security-production' target='_blank'>http://railsify.com/categories/security-production</a>
+</div>
+<br/>
+<br/>
+
+
+<b>Note</b> : I will keep this security guide updated. Any additions/improvements are welcome.
+  
+    
+  
+</div>
+
+  <div class="meta">
+  <div class='metaspan' style='float:left;width:30%;'>
+    
+      <span class='folder'>Filed in  <a class="selected" href="/guides" title="guides">guides</a> <a href="/ruby-on-rails" title="ruby on rails">ruby on rails</a></span>
+    
+  </div><div class='metaspan' style="float:left;width:40%;padding-right:0px;">
+    
+      <span class='tag'>Tagged as <a href="/tags/security" rel="tag" title="security">security</a>&nbsp;</span>
+    
+  </div>
+  <div class='metaspan' style='position:absolute;padding:0px;right:0px'>
+    
+    <span class='date'> Posted on <span style='border-bottom:1px dotted'>20 September</span> </span>
+  </div>
+<div style='clear:both;'></div>
+</div>
+
+<div class='meta'>
+  <span class='metaspan'>
+     
+<!--    -->
+      
+      <span class='comments'><a href="
+        /2007/9/20/ruby-on-rails-security-guide#comments
+      ">85 comment</a></span>
+    
+  </span>
+
+  <span class='metaspan'>
+<!--    
+    
+    
+    
+    Bookmark &nbsp;<a href=' 
+      http://del.icio.us/post?url=http://www.quarkruby.com/2007/9/20/ruby-on-rails-security-guide&amp;title=Ruby on Rails Security Guide 
+    ' title="Bookmark in Del.icio.us"><img alt="delicious" src="/images/delicious.png" /></a> &nbsp;
+                   <a href=' 
+      http://digg.com/submit?phase=2&amp;url=http://www.quarkruby.com/2007/9/20/ruby-on-rails-security-guide&amp;title=Ruby on Rails Security Guide 
+    ' title="Add to digg"><img alt="digg" src="/images/digg.png" /></a> &nbsp;
+                   <a href=' 
+      http://reddit.com/submit?url=http://www.quarkruby.com/2007/9/20/ruby-on-rails-security-guide&title=Ruby on Rails Security Guide
+    ' title="Add to reddit"><img alt="reddit" src="/images/reddit.gif" /></a> &nbsp;
+                   <a href=' 
+      http://www.stumbleupon.com/submit?url=http://www.quarkruby.com/2007/9/20/ruby-on-rails-security-guide&amp;title=Ruby on Rails Security Guide 
+    ' title="Submit to Stumbleupon"><img alt="su" src="/images/su.gif" /></a> &nbsp;
+-->
+<!-- AddThis Bookmark Button BEGIN -->
+Bookmark &nbsp; <a href="http://www.addthis.com/bookmark.php" onclick="window.open('http://www.addthis.com/bookmark.php?wt=nw&pub=quarkruby&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'addthis', 'scrollbars=yes,menubar=no,width=620,height=520,resizable=yes,toolbar=no,location=no,status=no,screenX=200,screenY=100,left=200,top=100'); return false;" title="Bookmark using any bookmark manager!" target="_blank"><img src="http://s9.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a>
+<!-- AddThis Bookmark Button END -->
+
+  </span>
+  <span class='metaspan' style='position:absolute;padding:0px;right:0px'>
+    
+    
+    
+      
+      Updated on <span style='border-bottom:1px dotted'>23 February</span>
+    
+    
+    
+  </span>
+</div>
+
+</div>
+
+<h5><a name="comments">Comments</a></h5>
+<p><a href="#comment-form">Leave a response</a></p>
+<div id="comments_div">
+  <ol id="comments" class="comments">
+    
+    <li class="comment  by-guest" id="comment-84">
+      <div class="author">
+        <cite><span class="author"><span>shallwelin</span></span></cite> &#150; 
+        <abbr title="September 21, 2007 09:11"><span class="date">September 21, 2007 @ 09:11 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>great article which totally save my time while I am buliding campus on rails and heading for deployment soon&#8230;..
+thanks!</p>
+
+
+	<p>:-)</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-91">
+      <div class="author">
+        <cite><span class="author"><a href="http://redflavor.com">Eivind Uggedal</a></span></cite> &#150; 
+        <abbr title="September 21, 2007 11:09"><span class="date">September 21, 2007 @ 11:09 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>For the security minded I recently modified restful_authentication to use bcrypt instead of sha1 (among some other changes):</p>
+
+
+	<p>http://code.google.com/p/acts-as-authentable/</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-96">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.6lines.com">teroz</a></span></cite> &#150; 
+        <abbr title="September 21, 2007 14:01"><span class="date">September 21, 2007 @ 02:01 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Your a star my good chap</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-97">
+      <div class="author">
+        <cite><span class="author"><a href="http://fredericdevillamil.com">Frédéric de Villamil</a></span></cite> &#150; 
+        <abbr title="September 21, 2007 14:05"><span class="date">September 21, 2007 @ 02:05 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great, gonna translate it in .fr</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-112">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.camocarzi.com">Cameron Singe</a></span></cite> &#150; 
+        <abbr title="September 21, 2007 23:44"><span class="date">September 21, 2007 @ 11:44 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great write up, the more info on security the better.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-128">
+      <div class="author">
+        <cite><span class="author"><span>ngetha</span></span></cite> &#150; 
+        <abbr title="September 22, 2007 08:32"><span class="date">September 22, 2007 @ 08:32 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great article man, thanks a whole lot.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-130">
+      <div class="author">
+        <cite><span class="author"><a href="http://Jeffro2pt0">Jeffro2pt0</a></span></cite> &#150; 
+        <abbr title="September 22, 2007 09:18"><span class="date">September 22, 2007 @ 09:18 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Just wanted to swing by and thank you for linking to me. Never thought I&#8217;d be linked on a site like this :)</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-132">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.hashref.com">Xavier Noria</a></span></cite> &#150; 
+        <abbr title="September 22, 2007 09:28"><span class="date">September 22, 2007 @ 09:28 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p><span class="caps">SSL</span> Requeriment redirects, which means a login action can in fact travel without encryption. I think Secure Actions (http://agilewebdevelopment.com/plugins/secure_actions) provides a better solution. I explained a couple of tricks for this plugin here (http://www.advogato.org/person/fxn/diary/470.html).</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-151">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.artweb-design.de">Sven Fuchs</a></span></cite> &#150; 
+        <abbr title="September 22, 2007 20:32"><span class="date">September 22, 2007 @ 08:32 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Talking about captchas to prevent automated form submissions: here&#8217;s an <a href="http://www.artweb-design.de/projects/mephisto-plugin-inverse-captcha-for-comments-anti-spam">Inverse Captcha plugin for Mephisto comments</a>. Relies only on <span class="caps">CSS</span> (no JS, no user action) and therefor will only work for not-so-critical things like blog comments etc., but does a really good job for these.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-153">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.rorsecurity.info/">Heiko Webers</a></span></cite> &#150; 
+        <abbr title="September 22, 2007 22:04"><span class="date">September 22, 2007 @ 10:04 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for writing up a short version of my blog articles</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-159">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.spacebabies.nl">joost baaij</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 00:02"><span class="date">September 23, 2007 @ 12:02 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for mentioning my plugin, I appreciate it. I&#8217;ve delicious&#8217;d this page and I am sure I&#8217;ll come back often since I&#8217;ve seen great tips already. Thanks!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-166">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quarks</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 06:35"><span class="date">September 23, 2007 @ 06:35 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@sven fuchs</p>
+
+
+	<p>Thanks for the pointer &#8230; using <span class="caps">CSS</span> to avoid spam is an interesting technique. It should be good enough for less critical systems until dumb bots adapt to it.</p>
+
+
+	<p>I have updated the guide!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-175">
+      <div class="author">
+        <cite><span class="author"><a href="http://davidsidlinger.com">David Sidlinger</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 13:34"><span class="date">September 23, 2007 @ 01:34 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Aren&#8217;t attr_protected and attr_accessible designed to prevent form injection?</p>
+
+
+	<p>The tip linked in your &#8220;Creating records directly from parameters&#8221; section advises to remove the unwanted keys from the params hash in the controller.  Using the protected/accessible methods in the model definition seems to solve the problem much closer to where it is actually happening.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-179">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.livetribune.com">Raphaël Valyi</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 17:15"><span class="date">September 23, 2007 @ 05:15 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>http://rubyforge.org/projects/asgoogleaccount/
+is flagged &#8216;alpha status&#8217;, so does anyone know how stable and secure it is? Anyone using in production?</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-181">
+      <div class="author">
+        <cite><span class="author"><a href="http://richtextblog.blogspot.com">Rich</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 19:14"><span class="date">September 23, 2007 @ 07:14 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is a great checklist.  Thanks!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-182">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.artweb-design.de">Sven Fuchs</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 23:02"><span class="date">September 23, 2007 @ 11:02 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks, Quarks! Appreciate that :)</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-183">
+      <div class="author">
+        <cite><span class="author"><a href="http://jonwen.com">jon</a></span></cite> &#150; 
+        <abbr title="September 23, 2007 23:22"><span class="date">September 23, 2007 @ 11:22 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Hi,</p>
+
+
+	<p>I am using Simple Captcha, as explained a good choice here http://www.codeandcoffee.com/2007/06/20/implementing-a-captcha-with-ruby-on-rails-in-10-minutes-or-less/
+and at many more places too, in many of my projects and I found it really useful and simplest to implement. Are there specific reasons/flaws that we should not use it ?</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-185">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quarks</a></span></cite> &#150; 
+        <abbr title="September 24, 2007 03:52"><span class="date">September 24, 2007 @ 03:52 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@jon</p>
+
+
+	<p>In one of my projects I used Simple Captcha because everyone said its awesome. I do agree its very simple to use, but I faced following problems using Simple Captcha :</p>
+
+
+	<p>1. It stores images which is not required, send_file or send_data should have been used instead.  Also, unused captcha images are not deleted until a next user request for captcha is made. Moreover, it stores images in {RAILS_ROOT}/public/simple_captcha with directory permission 777.</p>
+
+
+	<p>2. It stores secret code in {RAILS_ROOT}/tmp/data. Why filesystem? I ran into trouble while moving my development to production having multiple servers. The only option I was left with was to modify code of Simple Captcha to store secret code in db or memcached, which was impossible as the plugin is not properly written.</p>
+
+
+	<p>3. The images it generates would be simple for any good attacker to break. If Captcha is required in less critical system, better to use user-friendly options like <span class="caps">CSS</span> or Javascript based form protection techniques. If your system is critical I would recommend using ReCaptcha.</p>
+
+
+	<p>4. At any time only image is valid per session. It breaks when user opens the form from multiple tabs. Its a small and rare thing but gives a bad user experience.</p>
+
+
+	<p>After a lot of trouble with Simple Captcha, I find it much better to spend a little more time in using ReCaptcha.</p>
+
+
+	<p>The rule is, when you want to secure your site, you use the most powerful option rather than using the most simplest to use.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-186">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quark</a></span></cite> &#150; 
+        <abbr title="September 24, 2007 11:45"><span class="date">September 24, 2007 @ 11:45 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@david sidlinger</p>
+
+
+	<p>&#8220;Removing the unwanted keys from the params hash in the controller&#8221; is marked as an <b>alternate solution</b> incase you are more comfortable with this approach. Its quite natural &#8230; this was the first solution I thought of.</p>
+
+
+	<p>Using attr_protected and attr_accessible is the best technique.</p>
+
+
+	<p>Surprisingly, ur comment was marked as spam by Akismet (comment spam protection tool).</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-203">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quark</a></span></cite> &#150; 
+        <abbr title="September 25, 2007 05:18"><span class="date">September 25, 2007 @ 05:18 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@xavier noria :</p>
+
+
+	<p>The sole benefit of using secure action is “If a link is generated to a secure action (using url_for, link_to, etc) that link will be an https:// link.”, which would avoid redirection to an extent.</p>
+
+
+	<p>As far as login action is considered, I think its a good practice to make both login_page and login_submit as secure actions. If your login_page is https, then user submitted login information would travel in encrypted format.</p>
+
+
+	<p>Also, your users would be more confident if the login page is https. I hardly find any good purpose on why ‘secure actions’ plugin was made.</p>
+
+
+	<p>@raphael :</p>
+
+
+	<p>acts_as_google_account is not stable and secure. A good opportunity to write a plugin for rails enthusiasts.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-205">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.rubydesk.com/">Adam</a></span></cite> &#150; 
+        <abbr title="September 25, 2007 06:12"><span class="date">September 25, 2007 @ 06:12 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great guide guys keep up the good work.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-217">
+      <div class="author">
+        <cite><span class="author"><span>Dave Smylie</span></span></cite> &#150; 
+        <abbr title="September 25, 2007 21:51"><span class="date">September 25, 2007 @ 09:51 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>An excellent article &#8211; I&#8217;m sure I&#8217;m going to get a lot of use out of this.
+Was a few things I&#8217;d not seen/thought of before, particularly the Authorize parameters issue.
+Thanks for putting this all together =)</p>
+
+
+	<p>Dave</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-288">
+      <div class="author">
+        <cite><span class="author"><a href="http://mortalityjar.blogspot.com/">Scott Stubbs</a></span></cite> &#150; 
+        <abbr title="September 27, 2007 17:58"><span class="date">September 27, 2007 @ 05:58 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is a fantastic article.  Thanks for putting it together.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-320">
+      <div class="author">
+        <cite><span class="author"><a href="http://code.google.com/p/rolerequirement/">Tim Harper</a></span></cite> &#150; 
+        <abbr title="September 28, 2007 08:00"><span class="date">September 28, 2007 @ 08:00 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great article!  This is an excellent primer to rails security.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-360">
+      <div class="author">
+        <cite><span class="author"><a href="http://jonwen.com">jon</a></span></cite> &#150; 
+        <abbr title="September 29, 2007 06:41"><span class="date">September 29, 2007 @ 06:41 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Hi,</p>
+
+
+	<p>Your explanation is not justified, even the google&#8217;s captcha doesn&#8217;t work on two tabs of the browser sharing the session. Moreover your statement that &#8220;the plugin is not properly written&#8221; just for the reason that you were not able to modify it is not making much sense&#8230; the only problem that people are facing is I think the dependency on RMagick as some people finds it hard to install and get working, rest everything seems quite fine.</p>
+
+
+	<p>Anybody else here can suggest any good reason for moving from SimpleCaptcha to anything else ? probably as this site is suggesting ReCaptcha.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-416">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.inovare.net">Felipe Giotto</a></span></cite> &#150; 
+        <abbr title="October 01, 2007 22:58"><span class="date">October 01, 2007 @ 10:58 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is the best rails security post I&#8217;ve ever seen! With your permission, I&#8217;ll store in my computer for reference!</p>
+
+
+	<p>Thanks!</p>
+
+
+	<p>Felipe Giotto</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-434">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com/">Quark</a></span></cite> &#150; 
+        <abbr title="October 02, 2007 16:10"><span class="date">October 02, 2007 @ 04:10 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@felipe:</p>
+
+
+	<p>sure not a problem, but I would recommend to visit this post once in a while as I keep updating this guide.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-548">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.hashref.com">Xavier Noria</a></span></cite> &#150; 
+        <abbr title="October 07, 2007 19:53"><span class="date">October 07, 2007 @ 07:53 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>@Quark:</p>
+
+
+	<p>That&#8217;s fine, and in that case you generate a secure link to your login page with a regular link_to. The point is that you <em>declare</em> secure actions at the controller level, and the regular idioms for link generation get the protocol right.</p>
+
+
+	<p>I think that approach is better than having a redirection. Why would we prefer to have an insecure link and declare a redirection when we can have the right link directly and with the same effort?</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-939">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.aspiralimited.com">david</a></span></cite> &#150; 
+        <abbr title="October 29, 2007 22:07"><span class="date">October 29, 2007 @ 10:07 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Agreed, this is top of the list in security posts for rails!</p>
+
+
+	<p>I&#8217;d shout you a beer if you had a link.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1098">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.ekwh.de">frank meyer</a></span></cite> &#150; 
+        <abbr title="November 13, 2007 18:47"><span class="date">November 13, 2007 @ 06:47 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p><span class="caps">SSL</span> Requeriment redirects, which means a login action can in fact travel without encryption. I think Secure Actions (http://agilewebdevelopment.com/plugins/secure_actions) provides a better solution. I explained a couple of tricks for this plugin here (http://www.advogato.org/person/fxn/diary/470.html).</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1117">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.anarsist.org/">forum</a></span></cite> &#150; 
+        <abbr title="November 21, 2007 19:22"><span class="date">November 21, 2007 @ 07:22 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for very interesting article. I really enjoyed reading all of your posts. It?s interesting to read ideas, and observations from someone else?s point of view? makes you think more. So please keep up the great work.</p>
+
+
+	<p>All the best</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1118">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.onlineflashgames.org">John Black</a></span></cite> &#150; 
+        <abbr title="November 21, 2007 19:23"><span class="date">November 21, 2007 @ 07:23 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This guide is pretty cool and will save a lot of my time.Thanks : )</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1212">
+      <div class="author">
+        <cite><span class="author"><span>Stefan</span></span></cite> &#150; 
+        <abbr title="November 29, 2007 06:45"><span class="date">November 29, 2007 @ 06:45 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Is there a way to counter <span class="caps">CSRF</span> by checking where the <span class="caps">POST</span> came from? Meaning: is there a way to check the host referrer of the <span class="caps">POST</span>/GET to make sure it came from the same domain, and if not, then don&#8217;t process the request? That seems like the best logical option, if available.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1222">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.nhse.org">James Burt</a></span></cite> &#150; 
+        <abbr title="December 05, 2007 06:41"><span class="date">December 05, 2007 @ 06:41 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is an excellent security guide – Thanks.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1225">
+      <div class="author">
+        <cite><span class="author"><span>glittle</span></span></cite> &#150; 
+        <abbr title="December 05, 2007 19:12"><span class="date">December 05, 2007 @ 07:12 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Those of you using attr_accessible and attr_protected to control mass assignment, one note.  Things like &#8220;find_or_initialize_by_blah&#8221; will be subject to that as well, even though &#8220;blah&#8221; does not intuitively imply &#8220;mass&#8221; assignment.</p>
+
+
+	<p>The tricky part is that if attribute &#8220;blah&#8221; is not in your attr_protected list and at some point you do find_or_initialize_by_blah and no matching object is found (i.e. you hit the &#8220;initialize&#8221; case), you will happily be handed your new initialized model object, but the &#8220;blah&#8221; field will silently be set to nil instead of what you expect.</p>
+
+
+	<p>We ended up writing our own mass-setter model methods instead.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1259">
+      <div class="author">
+        <cite><span class="author"><a href="http://benvarim.blogspot.com/">videolar</a></span></cite> &#150; 
+        <abbr title="December 08, 2007 22:54"><span class="date">December 08, 2007 @ 10:54 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Cool article , thank you so much.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1284">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.anarsist.org/felsefe/">felsefe</a></span></cite> &#150; 
+        <abbr title="December 12, 2007 18:57"><span class="date">December 12, 2007 @ 06:57 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>thanks for article.
+looks very interesting.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1302">
+      <div class="author">
+        <cite><span class="author"><span>serchan</span></span></cite> &#150; 
+        <abbr title="December 14, 2007 16:44"><span class="date">December 14, 2007 @ 04:44 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for the great article!</p>
+
+
+	<p>I am developing an <span class="caps">ROR</span> application where I would like session information to be removed when the browser window is closed (multiple users, same computer).  Are there any secure suggestions for doing this?</p>
+
+
+	<p>Thank you!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-1316">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quark</a></span></cite> &#150; 
+        <abbr title="December 15, 2007 05:09"><span class="date">December 15, 2007 @ 05:09 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>hi @serchan,</p>
+
+
+	<p>I have explained about deleting session information at : 
+http://quarkruby.com/2007/10/21/sessions-and-cookies-in-ruby-on-rails#sstale</p>
+
+
+	<p>Every browsers maintains its own cookies, which means different session for different browsers. So, even when firefox is closed user logged in from IE will not be affected.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1451">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.system-forex.com/">Forex</a></span></cite> &#150; 
+        <abbr title="December 27, 2007 23:12"><span class="date">December 27, 2007 @ 11:12 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is what i was looking for a long time. a security guide on ruby. 
+we all know the security problem with php and we have to take special care on security in ruby as well.  Thank for the hard work</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1510">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.music-zone.org">Musikvideos</a></span></cite> &#150; 
+        <abbr title="December 30, 2007 23:06"><span class="date">December 30, 2007 @ 11:06 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Will there be a possibility to collect the cookies from all the well known browsers and put them together in one folder to use them together. is the cookie sotrage the same in IE and in Firefox?</p>
+
+
+	<p>Thanks for the nice article as well from my side. helped me much in understanding!
+Thomas</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1533">
+      <div class="author">
+        <cite><span class="author"><a href="http://mark.scottishcilmbs.com/">Mark Somerville</a></span></cite> &#150; 
+        <abbr title="December 31, 2007 15:39"><span class="date">December 31, 2007 @ 03:39 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I&#8217;ve written a Ruby binding to cracklib, which you may find useful for password strength checking:</p>
+
+
+	<p>http://rubyforge.org/projects/rubylibcrack/</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1534">
+      <div class="author">
+        <cite><span class="author"><a href="http://mark.scottishclimbs.com/">Mark Somerville</a></span></cite> &#150; 
+        <abbr title="December 31, 2007 15:39"><span class="date">December 31, 2007 @ 03:39 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I&#8217;ve written a Ruby binding to cracklib, which you may find useful for password strength checking:</p>
+
+
+	<p>http://rubyforge.org/projects/rubylibcrack/</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1578">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.meteko.com">Meteko</a></span></cite> &#150; 
+        <abbr title="January 01, 2008 16:59"><span class="date">January 01, 2008 @ 04:59 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for this guide, i found it very handy and useful. I am going to writing an article on your your on my blog. Great work!</p>
+
+
+	<p>Regards,
+Meteko</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1695">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.sinematik.org">Film indir</a></span></cite> &#150; 
+        <abbr title="January 04, 2008 15:34"><span class="date">January 04, 2008 @ 03:34 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks.. Nice article</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1696">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.opoyun.com">bedava oyunlar</a></span></cite> &#150; 
+        <abbr title="January 04, 2008 15:35"><span class="date">January 04, 2008 @ 03:35 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for this good article..</p>
+
+
+	<p>Best Regards</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1755">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.xprove.com">Xprove Dan</a></span></cite> &#150; 
+        <abbr title="January 06, 2008 21:54"><span class="date">January 06, 2008 @ 09:54 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Excellent stuff, Nakul!</p>
+
+
+	<p>Keep it coming! :-)</p>
+
+
+	<p>-Dan</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-1912">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.literaturvz.net">Literatur</a></span></cite> &#150; 
+        <abbr title="January 10, 2008 16:18"><span class="date">January 10, 2008 @ 04:18 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>nice. keep the great work up. thx</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-2346">
+      <div class="author">
+        <cite><span class="author"><a href="http://dvdworldcatalog.com/">Alfred</a></span></cite> &#150; 
+        <abbr title="January 22, 2008 13:43"><span class="date">January 22, 2008 @ 01:43 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Hammm… Nice article… Interesting.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-2372">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.blogzoop.com">Mandy</a></span></cite> &#150; 
+        <abbr title="January 23, 2008 08:08"><span class="date">January 23, 2008 @ 08:08 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Great tutorial, they are very easy to understand. Thanks!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-2546">
+      <div class="author">
+        <cite><span class="author"><span>Simão Rio</span></span></cite> &#150; 
+        <abbr title="January 29, 2008 22:45"><span class="date">January 29, 2008 @ 10:45 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Brilliant tutorial! 
+I think <span class="caps">CSRF</span> protection is now included in rails (version 2.2).
+Does anyone know something about this?</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-2553">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quark</a></span></cite> &#150; 
+        <abbr title="January 30, 2008 04:59"><span class="date">January 30, 2008 @ 04:59 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Hi Simao,</p>
+
+
+	<p>Yes it is a part of rails 2.0 and above.</p>
+
+
+	<p>Soon I will come up with security updates from rails 1.2 to 2.0.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3297">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.bilimadamlari.net">BILIM ADAMLARI</a></span></cite> &#150; 
+        <abbr title="March 09, 2008 10:11"><span class="date">March 09, 2008 @ 10:11 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for the useful article. Best regards&#8230;</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3314">
+      <div class="author">
+        <cite><span class="author"><a href="http://kevinsender.com">kevin</a></span></cite> &#150; 
+        <abbr title="March 10, 2008 11:06"><span class="date">March 10, 2008 @ 11:06 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>you expect that the user will be redirected to the main action, preserving all the parameters. But if an attacker adds &#38;host=www.attacker.com to the <span class="caps">URL</span>, it will redirect the victim to that host.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3644">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.bayan.us">gokhan</a></span></cite> &#150; 
+        <abbr title="March 26, 2008 02:47"><span class="date">March 26, 2008 @ 02:47 AM</span></abbr>
+      </div>
+      <div class="content">
+        <ol>
+	<li>To find information of an order which belongs to a particular user.</li>
+	</ol>
+
+
+<h1>Incorrect :</h1>
+
+	<p>@order = Order.find(order_id)</p>
+
+
+
+<h1>Correct :</h1>
+
+	<p>@order = @user.orders.find(order_id)</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3655">
+      <div class="author">
+        <cite><span class="author"><a href="http://laptopadvisor.blogspot.com">laptop reviews</a></span></cite> &#150; 
+        <abbr title="March 26, 2008 13:49"><span class="date">March 26, 2008 @ 01:49 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>i can&#8217;t download super simple authentication plugin and generator</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-author" id="comment-3660">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.quarkruby.com">Quark</a></span></cite> &#150; 
+        <abbr title="March 27, 2008 11:05"><span class="date">March 27, 2008 @ 11:05 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>The svn repository seems to be down for now.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3667">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.opony.us">Opony</a></span></cite> &#150; 
+        <abbr title="March 28, 2008 14:28"><span class="date">March 28, 2008 @ 02:28 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I have the same problem. How I can download the plugin and generator? Please help. I must get this.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3674">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.ilkogretimdersleri.net">ilköğretim</a></span></cite> &#150; 
+        <abbr title="March 29, 2008 12:16"><span class="date">March 29, 2008 @ 12:16 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I can&#8217;t download the plugin. Can aynone help me? Thanks in advance. Regards&#8230;</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3684">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.simsicak.net">simsicak.net</a></span></cite> &#150; 
+        <abbr title="March 31, 2008 08:28"><span class="date">March 31, 2008 @ 08:28 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I’ve written a Ruby binding to cracklib, which you may find useful for password strength</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3733">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.inqbation.com">inQ</a></span></cite> &#150; 
+        <abbr title="April 09, 2008 21:24"><span class="date">April 09, 2008 @ 09:24 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Wondering if there are any opinions with regard to a choice between Ruby on Rails versus Cake <span class="caps">PHP</span> with regard to security.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3737">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.owl-go.de">bielefeld</a></span></cite> &#150; 
+        <abbr title="April 10, 2008 04:08"><span class="date">April 10, 2008 @ 04:08 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Excellent security guide – I did not know about this security risks in ruby.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3748">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.mtglimo.com">NJ-NY</a></span></cite> &#150; 
+        <abbr title="April 12, 2008 17:13"><span class="date">April 12, 2008 @ 05:13 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Good article.</p>
+
+
+	<p>Thanks Quark for useful comment.</p>
+
+
+	<p><a href="http://www.mtglimo.com">NJ </a><a href="http://www.njtrak.com">-</a><a href="http://www.nyinsurancequote.org"> NY</a></p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3763">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.theawristocrat.com/personalized-id-dog-tags.php">clark</a></span></cite> &#150; 
+        <abbr title="April 16, 2008 11:04"><span class="date">April 16, 2008 @ 11:04 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>There are alot of issues that affect the overall security of a web applications. This has been guide has been very helpful. Thanks Quark.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3800">
+      <div class="author">
+        <cite><span class="author"><a href="http://obfuscators.org/">Alex Freax</a></span></cite> &#150; 
+        <abbr title="April 23, 2008 10:22"><span class="date">April 23, 2008 @ 10:22 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>What about server-side code obfuscation (like zend) ? // im nob in ruby</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3838">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.lingeriediva.co.uk">lingerie</a></span></cite> &#150; 
+        <abbr title="May 01, 2008 14:50"><span class="date">May 01, 2008 @ 02:50 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Biggest problem with security is bad passwords, people using the same password, one gets comprmised then they all do.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3870">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.designbits.de">Webdesigner</a></span></cite> &#150; 
+        <abbr title="May 08, 2008 14:46"><span class="date">May 08, 2008 @ 02:46 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Excellent article, thanks. I made a couple of apps in Ruby on Rails and implemented a range of security features similar to the ones outlined above. Please check out our <a href="http://www.designbits.de">portfolio</a> to find out more. Cheers!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3898">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.temizlik.eu">TEmizlik</a></span></cite> &#150; 
+        <abbr title="May 16, 2008 00:59"><span class="date">May 16, 2008 @ 12:59 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Thanks for this guide, i found it very handy and useful.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3957">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.lingeriediva.co.uk">lingerie</a></span></cite> &#150; 
+        <abbr title="May 28, 2008 14:35"><span class="date">May 28, 2008 @ 02:35 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Its easy to manage &#8216;nil&#8217; values using :allow_nil, its quite handy. For ex: set :allow_nil =&gt; true in validates_uniqueness_of to check uniqueness of non-nil values and ignore nil values</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3979">
+      <div class="author">
+        <cite><span class="author"><a href="http://arttoseo.com">Artikelverzeichnis</a></span></cite> &#150; 
+        <abbr title="June 01, 2008 04:54"><span class="date">June 01, 2008 @ 04:54 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This guide is pretty cool and will save a lot of my time.Thanks : )
+Thanks for writing up a super article here!
+Greetings
+hamann</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3982">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.medicationzone.com">bill</a></span></cite> &#150; 
+        <abbr title="June 01, 2008 20:13"><span class="date">June 01, 2008 @ 08:13 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Brilliat information thank you</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3983">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.fnfzone.com">Love</a></span></cite> &#150; 
+        <abbr title="June 01, 2008 20:19"><span class="date">June 01, 2008 @ 08:19 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Yes i also like Ruby on Rails. it has a good potential. so security issue should be added.</p>
+
+
+	<p>Thanks for providing this info</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3986">
+      <div class="author">
+        <cite><span class="author"><a href="http://blog.techdivision.com/magento-%E2%80%93-revolution-im-ecommerce/">Magento</a></span></cite> &#150; 
+        <abbr title="June 02, 2008 13:57"><span class="date">June 02, 2008 @ 01:57 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Hi Guys, this article is a blast and saves us a lot of time for research. Thanks for the great work!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-3998">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.downloadfreepdf.com/abap/index.html">netnet</a></span></cite> &#150; 
+        <abbr title="June 03, 2008 23:49"><span class="date">June 03, 2008 @ 11:49 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Very useful (guide) <a href="http://www.downloadfreepdf.com">information</a> thank you</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4000">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.artiste-porno.com">salope</a></span></cite> &#150; 
+        <abbr title="June 04, 2008 13:32"><span class="date">June 04, 2008 @ 01:32 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is the best rails security post I’ve ever seen!</p>
+
+
+	<p>Thanks!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4003">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.sunandskihomes.co.uk">cyprus property</a></span></cite> &#150; 
+        <abbr title="June 04, 2008 16:25"><span class="date">June 04, 2008 @ 04:25 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Ruby security is an important issue, thanks for the great article</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4004">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.voyance-officielle.fr">voyance gratuite</a></span></cite> &#150; 
+        <abbr title="June 04, 2008 16:42"><span class="date">June 04, 2008 @ 04:42 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Security is very important in the work we do0, so thanks for that !</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4026">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.fankaar.com">alana</a></span></cite> &#150; 
+        <abbr title="June 08, 2008 11:32"><span class="date">June 08, 2008 @ 11:32 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Marvelous  thank you</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4161">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.etixet.com">etixet</a></span></cite> &#150; 
+        <abbr title="June 28, 2008 01:36"><span class="date">June 28, 2008 @ 01:36 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Ruby security is an important issue, thanks for the great article</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4486">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.acne-support-group.com/clearpores.php">clear pores</a></span></cite> &#150; 
+        <abbr title="July 21, 2008 03:50"><span class="date">July 21, 2008 @ 03:50 AM</span></abbr>
+      </div>
+      <div class="content">
+        <p>This is one of the best rails security articles I have seen to date. Good Job.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4967">
+      <div class="author">
+        <cite><span class="author"><span><a href="http://www.lapigems.com/tanzanite.asp">tanzanite</a></span></span></cite> &#150; 
+        <abbr title="August 20, 2008 13:58"><span class="date">August 20, 2008 @ 01:58 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>I enjoyed the article &#8211; found it to be enlightening on many counts as security has become such a huge issue wuth websites these days. Much of what you articulated is not widely known as the many in depth links to further reading you provide are very useful.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-4986">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.paraibainternational.com/products.php?category=4">Tanzanite</a></span></cite> &#150; 
+        <abbr title="August 21, 2008 20:23"><span class="date">August 21, 2008 @ 08:23 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Excellent guide. I have often wondered how well <span class="caps">ROR</span> stacks up in terms of security.</p>
+
+
+	<p>You might want to look at removing the spammy comments above.</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-5466">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.n2news.com/">FTA Keys</a></span></cite> &#150; 
+        <abbr title="September 16, 2008 22:23"><span class="date">September 16, 2008 @ 10:23 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>A little over my head as far as coding level &#8211; but the logistics are notable!</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-5583">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.herba-shop.fr">Herbalife</a></span></cite> &#150; 
+        <abbr title="September 22, 2008 19:07"><span class="date">September 22, 2008 @ 07:07 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>Very good but to complicated for me :(</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-6957">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.totalserversolutions.com">Carlos Maldonado</a></span></cite> &#150; 
+        <abbr title="February 08, 2009 21:33"><span class="date">February 08, 2009 @ 09:33 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>at</p>
+
+
+	<ol>
+	<li>Authentication</li>
+	</ol>
+
+
+	<p>I think you are missing an <span class="caps">LDAP</span> reference</p>
+
+
+	<p>here&#8217;s what I found that could be useful for that section</p>
+
+
+	<p>http://wiki.rubyonrails.org/rails/pages/ActiveLDAP</p>
+
+
+	<p>I hope it&#8217;s considered</p>
+
+
+	<p>regards</p>
+
+
+	<p>CM</p>
+      </div>
+    </li>
+    
+    <li class="comment  by-guest" id="comment-7158">
+      <div class="author">
+        <cite><span class="author"><a href="http://www.cn139.com">packaging</a></span></cite> &#150; 
+        <abbr title="February 15, 2009 13:20"><span class="date">February 15, 2009 @ 01:20 PM</span></abbr>
+      </div>
+      <div class="content">
+        <p>great post.it is too complicated for me .I only need one part of.
+but very thanks.</p>
+      </div>
+    </li>
+    
+  </ol>
+</div>
+
+
+
+
+          <script type="text/javascript">
+            //<![CDATA[
+              show_dates_as_local_time()
+            //]]>
+          </script>
+        </div>
+
+        <div id="sidebar">
+          <div class="nodesimple">
+            <h3> About </h3>
+            <p>QuarkRuby is a blog of <b>Nakul Aggarwal</b> & <b>Ritesh Arora</b> who are currently living a Ruby life.</p> <p>Feel free to buzz them at quarkruby@gmail.com or please leave a comment.</p>
+          </div>
+
+          <!-- FeedBurner Feed -->
+            <div class="nodesimple">
+<a href="http://feeds.feedburner.com/Quarkruby" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds.feedburner.com/Quarkruby" rel="alternate" type="application/rss+xml">Subscribe to RSS</a>
+           </div>
+          <br/><br/>
+          <h3 style='margin-bottom:0.8em; padding-left:10px;'>Our Products</h3>
+          
+          &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.quarkbase.com">
+             <img src='http://www.quarkbase.com/images/logo.png'>
+          </a>
+
+          <br/><br/>
+
+          <!-- Guides -->
+          
+            <div class="nodeline">
+              <h3 style='margin-bottom:0.8em;'>Guides</h3>
+               <span style='color:#BF3A14;'>Last Update</span>
+              <ul style='margin-top:0px;'>
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                     
+                       
+                       
+                        
+                       <li><a href="/2007/10/21/sessions-and-cookies-in-ruby-on-rails" title=" 23.02    Sessions and cookies in Ruby on ... "> 23.02    Sessions and cookies in Ruby on ... </a></li>
+                    
+                       
+                       
+                        
+                       <li><a href="/2007/9/20/ruby-on-rails-security-guide" title=" 23.02    Ruby on Rails Security Guide "> 23.02    Ruby on Rails Security Guide </a></li>
+                    
+                  
+                
+                  
+                
+                  
+                
+              </ul>
+            </div>
+          
+          
+          <!-- Tutorials -->
+          
+            <div class="nodeline">
+              <h3>Tutorials</h3>
+              <ul>
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                
+                  
+                     
+                       
+                       
+                        
+                       <li><a href="/2008/3/11/consume-non-rails-style-rest-apis" title=" 11.03    Consume non rails-style REST API's "> 11.03    Consume non rails-style REST API's </a></li>
+                    
+                       
+                       
+                        
+                       <li><a href="/2008/1/7/widget" title=" 07.01    Writing a web widget "> 07.01    Writing a web widget </a></li>
+                    
+                       
+                       
+                        
+                       <li><a href="/2007/9/14/advanced-acts_as_solr" title=" 14.09    Advanced acts_as_solr "> 14.09    Advanced acts_as_solr </a></li>
+                    
+                       
+                       
+                        
+                       <li><a href="/2007/8/12/acts_as_solr-for-search-and-faceting" title=" 12.08    acts_as_solr : search and faceting "> 12.08    acts_as_solr : search and faceting </a></li>
+                    
+                  
+                
+                  
+                
+              </ul>
+            </div>
+          
+
+          <!-- Recent Articles -->
+          
+          <div class='nodeline'>
+            <h3> Recently </h3>
+            <ul>
+            
+              
+              
+               
+              <li><a href="/2008/3/11/consume-non-rails-style-rest-apis" title=" 11.03   Consume non rails-style REST API's "> 11.03   Consume non rails-style REST API's </a></li>
+            
+              
+              
+               
+              <li><a href="/2008/2/12/active-youtube" title=" 12.02   Active Youtube "> 12.02   Active Youtube </a></li>
+            
+              
+              
+               
+              <li><a href="/2008/1/30/scrapi-enhancements" title=" 30.01   Scrapi enhancements "> 30.01   Scrapi enhancements </a></li>
+            
+              
+              
+               
+              <li><a href="/2008/1/15/activeresource-and-youtube" title=" 15.01   ActiveResource and YouTube "> 15.01   ActiveResource and YouTube </a></li>
+            
+              
+              
+               
+              <li><a href="/2008/1/7/widget" title=" 07.01   Writing a web widget "> 07.01   Writing a web widget </a></li>
+            
+              
+              
+               
+              <li><a href="/2007/12/19/quarkshop" title=" 19.12   Quarkshop : next-generation shop... "> 19.12   Quarkshop : next-generation shop... </a></li>
+            
+              
+              
+               
+              <li><a href="/2007/12/17/releasing-quarkrank" title=" 17.12   introducing QuarkRank "> 17.12   introducing QuarkRank </a></li>
+            
+            </ul>
+          </div>
+          
+
+          <!-- Categories -->
+          
+          <div class="nodeline">
+            <h3>Categories</h3>
+            <ul>
+            
+              
+            
+              
+                <li><a class="selected" href="/ruby-on-rails" title="ruby on rails">ruby on rails</a> (7)</li>
+              
+            
+              
+                <li><a href="/ruby" title="ruby">ruby</a> (5)</li>
+              
+            
+              
+                <li><a href="/our-tools" title="our tools">our tools</a> (5)</li>
+              
+            
+              
+                <li><a href="/guides" title="guides">guides</a> (2)</li>
+              
+            
+              
+                <li><a href="/tutorials" title="tutorials">tutorials</a> (4)</li>
+              
+            
+              
+                <li><a href="/quarkrank" title="quarkrank">quarkrank</a> (2)</li>
+              
+            
+            </ul>
+          </div>
+          
+
+          <!-- Tags -->
+          
+          <div class="nodesimple">
+            <h3>Tags</h3>
+            <ul>
+            
+              <li><a href="/tags/activeresource" rel="tag" title="activeresource">activeresource</a> (3)</li>
+            
+              <li><a href="/tags/api" rel="tag" title="api">api</a> (4)</li>
+            
+              <li><a href="/tags/css%20selector" rel="tag" title="css selector">css selector</a> (0)</li>
+            
+              <li><a href="/tags/domain%20forwarding" rel="tag" title="domain forwarding">domain forwarding</a> (0)</li>
+            
+              <li><a href="/tags/firebug" rel="tag" title="firebug">firebug</a> (1)</li>
+            
+              <li><a href="/tags/html%20scraping" rel="tag" title="html scraping">html scraping</a> (0)</li>
+            
+              <li><a href="/tags/javascript" rel="tag" title="javascript">javascript</a> (2)</li>
+            
+              <li><a href="/tags/mashup" rel="tag" title="mashup">mashup</a> (1)</li>
+            
+              <li><a href="/tags/nlp" rel="tag" title="nlp">nlp</a> (1)</li>
+            
+              <li><a href="/tags/plugin" rel="tag" title="plugin">plugin</a> (3)</li>
+            
+              <li><a href="/tags/scrapi" rel="tag" title="scrapi">scrapi</a> (5)</li>
+            
+              <li><a href="/tags/security" rel="tag" title="security">security</a> (1)</li>
+            
+              <li><a href="/tags/sessions" rel="tag" title="sessions">sessions</a> (1)</li>
+            
+              <li><a href="/tags/shopping" rel="tag" title="shopping">shopping</a> (2)</li>
+            
+              <li><a href="/tags/solr" rel="tag" title="solr">solr</a> (2)</li>
+            
+              <li><a href="/tags/widget" rel="tag" title="widget">widget</a> (2)</li>
+            
+            </ul>
+          </div>
+          
+
+<!--
+          <!-- Archives -->
+          
+-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer">
+
+    <div class="inner-wrap">
+    <hr />
+    <p>Copyright &copy;2007 <a href='/'>QuarkRuby</a>. All rights reserved.</a></p>
+    <ul>
+      <li>powered by <a href="http://mephistoblog.com" target="_blank">Mephisto</a>
+    </ul>
+    </div>
+  </div>
+  <script>
+     var c = Element.getHeight('content'); var s = Element.getHeight('sidebar');
+     if (s<c) $('sidebar').style.height = c+"px";
+  </script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+    _uacct = "UA-418548-3";
+    urchinTracker();
+  </script>
+</body>
+</html>

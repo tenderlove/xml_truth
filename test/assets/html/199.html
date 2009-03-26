@@ -1,0 +1,1266 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+
+    <title>Amazon Web Services Developer Community : Introduction to AWS for Ruby Developers</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="/connect/style/style.jsp;jsessionid=A15D09D87A20DF189C03D6B71A7D9FCA" title="Integrated Styles" />
+
+    <script language="JavaScript" type="text/javascript" src="/connect/scripts/global.js;jsessionid=A15D09D87A20DF189C03D6B71A7D9FCA"></script>
+
+
+
+    
+</head>
+<body>
+
+
+		<script src="/connect/js/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+        urchinTracker();
+</script>
+<link rel="icon" type="image/ico" href="/connect/images/favicon/favicon.ico"/>
+<link rel="shortcut icon" type="image/ico" href="/connect/images/favicon/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="css/aws-rc.css">
+<link rel="stylesheet" type="text/css" href="css/aws-dev-content.css">
+<!-- Global Nav: CSS Dependencies -->
+<link rel="stylesheet" type="text/css" href="css/yui-2.5.2-menu-core.css" />
+<link rel="stylesheet" type="text/css" href="css/awsGlobalNav.css" />
+  <!--[if lt IE 7]>
+    <link rel="stylesheet" href="http://aws.amazon.com/css/awsGlobalNavIE6.css" type="text/css" />
+  <![endif]-->
+
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="950px">
+  <tr>
+    <td>
+      <div style="float: left; margin-top: 17px;"> <a href="http://aws.amazon.com"><img src="images/amazon/logo_aws.gif" alt="Amazon Web Services" border="0"></a> </div>
+      <div style="float: right; width:750px;">
+        <div style="float:right;margin-top: 1em; margin-right:3px; font-size:94%;"> <a href="http://aws.amazon.com/contact-us">Contact Us</a> <span style="color: #CCCCCC; font-size:110%;">&nbsp|&nbsp </span> <a href="https://aws-portal.amazon.com/gp/aws/developer/registration/index.html"><img border="0" src="images/amazon/icon_createawsacct.gif" alt="Create an AWS Account"></a> <a href="https://aws-portal.amazon.com/gp/aws/developer/registration/index.html">Create an AWS Account</a> </div>
+        <div style="clear: both"></div>
+        <div style="float: right; margin-bottom: 0.5em; margin-top: 23px; text-align:right;" class="awsGlobalNav" id="awsGlobalNav">
+          <div id="awsDefaultGlobalNav" style="float: right; text-align:right;">
+            <div> <a href="/about-aws">About AWS</a> </div>
+            <div> <a href="/products/">Products</a> </div>
+            <div> <a href="/solutions/">Solutions</a> </div>
+            <div> <a href="/resources/">Resources</a> </div>
+            <div> <a href="http://developer.amazonwebservices.com/connect/support.jspa">Support</a> </div>
+            <div> <a href="http://aws-portal.amazon.com/gp/aws/developer/account/index.html?ie=UTF8&action=activity-summary">Your Account</a> </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="js/awsGlobalNav_yui252_1.js"></script>
+        <script type="text/javascript">
+            new awsGlobalNav("awsGlobalNav", "https://aws.amazon.com/js/awsGlobalNavData.js");
+            </script>
+            <script type="text/javascript" src="js/popover.js"></script>
+      </div>
+      </td>
+  </tr>
+<tr><td>
+
+
+
+<br />
+
+<div id="jive-entrypage">
+
+
+
+
+<div class="aws-breadcrumbs">
+
+
+
+
+
+
+<div class="jive-breadcrumbs">
+    
+    
+    <a href="http://aws.amazon.com">Home</a>
+    
+	<!--Removing Jive home page
+    <a href="index.jspa">Developer Community</a>
+	-->
+    
+    
+        
+        
+            &gt;
+            ...
+        
+        
+        
+            &gt;
+                    
+                        <a href="kbcategory.jspa?categoryID=111"
+                        
+                            title=" Have you built something that you'd like to share with the community? Submit your resource by clicking the appropriate category below, then following the steps on the page.
+
+                            "
+                        
+                        >Submit a Resource</a>
+                    
+                    
+                    
+                    </a>
+        
+        
+        
+        &gt;
+        <a href="kbcategory.jspa?categoryID=112"
+                >Recommend an Article or Tutorial</a>
+    
+    
+
+    
+    
+    
+    
+</div>
+</div>
+<br/>
+<br/>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr valign="top">
+    <td width="98%">
+        
+        
+        
+        
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+
+
+<tr>
+
+
+
+    <td>
+
+        
+
+    </td>
+
+    
+	<!-- 
+    <td align="right"valign="bottom" nowrap>
+
+        
+
+            <a href="kbcategory.jspa?categoryID=112"
+
+            
+
+               title="If you have developed with AWS and would like to share some of what you learned using any of our services, consider publishing an article in the Resource Center so that others can learn from your experiences. Let us know your idea by recommending it for our Resource Center. Please include a 2-3 sentence description of the article or an early draft. Final articles should be of reasonable length (around 1,000 - 2,500 words) and include related code, screenshots, or other related materials. Have fun with it!
+ We'd prefer articles written in simple HTML, but articles in plain text or another format are fine, too. We have an  HTML template for articles  you can use. If you haven't written for us before, please submit a 2-3 sentence bio along with your article. 
+ To recommend an article or tutorial: 
+ 
+   Make sure you're logged in to the site. 
+   Click the "Add a Document" link in the Tools box to the right. 
+   Enter as much information as possible in the form, then click Preview. (Tip: You can use HTML in the listing body.)  
+   If everything looks good, click Submit. Otherwise, click "Go Back/Edit" and make your corrections.  
+"
+
+            
+
+            >&laquo; Back to Category</a>
+
+        
+
+    </td>
+    -->
+
+</tr>
+
+</table>
+
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+<img src="http://awsmedia.s3.amazonaws.com/hdr_articles.jpg"/><br/>
+<h1 style="margin-bottom:0px;margin-top:0px;">Introduction to AWS for Ruby Developers</h1>
+<div style="border-bottom: 1px #ccc solid; width:100%;"></div>
+
+<table cellpadding="0" cellspacing="0" border="0" width="724">
+    <tr>
+        <td>
+            
+
+
+
+
+
+
+
+
+
+<table cellpadding="3" cellspacing="0" border="0">
+<tr>
+    
+    
+    
+    <td>
+        <a href="entry!default.jspa?categoryID=112&amp;externalID=846&amp;printable=true"
+         ><img src="images/print-16x16.gif" width="16" height="16" border="0" alt="Click for a printer friendly version of this document"></a>
+    </td>
+    <td>
+        <span class="jive-button-label">
+        <a href="entry!default.jspa?categoryID=112&amp;externalID=846&amp;printable=true"
+         title="Click for a printer friendly version of this document">Printer Friendly</a>
+        </span>
+    </td>
+
+    
+    
+    
+    <td>
+        <a href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img src="images/amazon/delicious.small.gif" border="0"></a>
+    </td>
+    <td>
+        <span class="jive-button-label">
+        <a href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"> Save to del.icio.us</a>
+        </span>
+    </td>	
+</tr>
+</table>
+        </td>
+
+        
+        <td nowrap align="right">Average Review: 
+            
+                        <span class="jive-new-content"
+                              title="5 stars"><img
+                                align="absmiddle"
+                                src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+            
+        
+            
+                        <span class="jive-new-content"
+                              title="5 stars"><img
+                                align="absmiddle"
+                                src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+            
+        
+            
+                        <span class="jive-new-content"
+                              title="5 stars"><img
+                                align="absmiddle"
+                                src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+            
+        
+            
+                        <span class="jive-new-content"
+                              title="5 stars"><img
+                                align="absmiddle"
+                                src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+            
+        
+            
+                        <span class="jive-new-content"
+                              title="5 stars"><img
+                                align="absmiddle"
+                                src="images/rating-16x16.gif" width="16" height="16" border="0"></span>
+            
+        </td>
+
+        
+    </tr>
+</table>
+<table cellpadding="3" cellspacing="3" border="0" width="100%">
+    <tr>
+	<td><img src="images/blank.gif" width="10" height="10"/></td>
+	<td width="99%">
+        
+        <p>Are you new to Amazon Web Services? This brief tutorial introduces you to Amazon Web Services from the eyes of a Ruby developer, walks through a simple example, and links to other helpful resources to get you started.</p>
+        
+		<p>
+        
+		<table id="aws-table" cellspacing="0" cellpadding="0">
+        
+                                <tr>
+								<th width="20%">AWS Products Used:</th>
+                                <td>Amazon SQS, Amazon EC2, Amazon S3, Amazon SimpleDB</td></tr>
+        
+                                <tr>
+								<th width="20%">Language(s):</th>
+                                <td>Ruby</td></tr>
+        
+                                <tr>
+								<th width="20%">Date Published:</th>
+                                <td>2007-07-16</td></tr>
+        
+		</table>
+		</p>
+    </td>
+	<td valign="top">
+		<a href="#discussion"><img src="images/amazon/discussion-button.gif" border="0" width="116" height="28"/></a>		
+		<a href="#reviews"><img src="images/amazon/reviews-button.gif" border="0" width="116" height="28"/></a>	
+	</td>
+  </tr>
+  <tr>
+  	<td><img src="images/blank.gif" width="10" height="10"/></td>
+	<td colspan="2">
+        
+        <p><i>By <a href="http://www.techcfl.com/ror/our-team" target="_blank">Robert Dempsey</a> of <a href="http://www.techcfl.com" target="_blank">Atlantic Dominion Solutions, LLC</a></i></p>
+
+<H2>Abstract</H2>
+<p>With <a href="http://aws.amazon.com" target="_blank">Amazon Web Services&trade; (AWS)</a>, developers are no longer limited by expensive-to-scale infrastructure, lack of funds to build a data center, or a smaller IT staff. To meet increasing client demands to store ever-growing data, mine vast amounts of information, and gather information from the Internet, developers turn to AWS. Ruby and Rails are the perfect combination to work with the services. Getting started with most of the AWS solutions requires little or no experience with Ruby, Rails, or AWS, making the services extremely simple to use and highly addictive. This article, which assumes a basic understanding of the Ruby programming language and the Ruby on Rails framework, shows you step-by-step how easy it is to use freely available tools to integrate AWS into your Rails application.</p>
+
+<h2>Introduction to Amazon Web Services</h2>
+<p><a href="http://aws.amazon.com" target="_blank">Amazon Web Services (AWS)</a> provides developers with direct access to a powerful suite of web services that enhance and power their applications. 
+<ul>
+	<li><a href="http://aws.amazon.com/ec2" target="_blank">Amazon Elastic Compute Cloud (Amazon EC2) Beta</a> enables "compute capacity in the cloud" by allowing the creation and management of virtual machine images to quickly increase or decrease capacity.</li>
+	<li><a href="http://aws.amazon.com/s3" target="_blank">Amazon Simple Storage Service (Amazon S3)</a> provides scalable, online, persistent storage.</li>
+	<li><a href="http://aws.amazon.com/sqs" target="_blank">Amazon Simple Queue Service (Amazon SQS)</a> centralizes all messaging, ensuring that message delivery between geographically disparate applications or computers is not a problem.</li>
+	<li><a href="http://aws.amazon.com/simpledb" target="_blank">Amazon SimpleDB&#8482; Limited Beta</a> is a web service for running queries on structured data in real time.</li>
+	<li>Many more <a href="http://aws.amazon.com" target="_blank"> AWS solutions</a> are available.</li>
+</ul>
+
+These services, which you can access by using Simple Object Access Protocol (SOAP) or representational state transfer (REST), can be used individually or in unison to equip developers with enterprise-class tools&mdash;without the management overhead. Rails developers are ready to go with Ruby gems (packaged Ruby applications or libraries) available for Amazon EC2, Amazon Associates Web Service, and Amazon S3 and with plugins, such as Paperclip, that have AWS capability baked right in.</p>
+
+<h2>REST or SOAP: Which Keeps Code Cleaner?</h2>
+<p>The two ways to work with web services by using Ruby and Rails are REST and SOAP. SOAP is "a protocol for exchanging XML-based messages over computer networks, normally using HTTP" (Wikipedia.com, SOAP). Action Web Service (the portion of Rails used to create and interact with SOAP and XML-RPC-based web services) will soon be removed from the core and implemented in a plugin. Action Web Service requires the creation of an application programming interface (API) definition and a controller, the use of dispatching modes, and more. A Ruby gem is available to help Rails developers use SOAP; however, because SOAP is being removed from the Rails core, REST is a better alternative.</p>
+
+<p>Built into the core of Rails and featured heavily in Ruby on Rails 2, REST is a simple-to-implement architecture that uses HTTP and XML for communication. Whereas SOAP is a protocol, REST is a software architecture: a way of designing web applications. REST allows client applications to retrieve content from a site simply by knowing the appropriate URL to call. The XML that is returned contains and describes the content in a single response. With Ruby on Rails, you can code a REST-enabled application from the beginning, resulting in one code base that provides functionality and an API. </p>
+
+<h2>RESTful Development with Ruby on Rails</h2>
+<p>In <i>Agile Web Development with Rails</i>, author Dave Thomas states that in REST, "we use a simple set of verbs to operate on a rich set of nouns...the verbs correspond to HTTP methods (GET, PUT, POST, and DELETE)...the nouns are the resources in our application. We name those resources using URLs" (p. 407). In other words, to interact with a RESTful Rails application, the client simply calls URLs and sends and receives XML. URLs are automatically generated by a few lines of code in your config/routes.rb file. For example, suppose you have an inventory application that keeps track of products that you have stored in various warehouses. For simplicity, your database contains one table (authentication aside): products. Your routes.rb file contains the following:</p>
+
+<pre class="aws-code">
+ActionController::Routing::Routes.draw do |map|
+	map.resources :products
+
+	# Allow downloading Web Service WSDL as a file with an extension
+	# instead of a file named 'wsdl'
+	map.connect ':controller/service.wsdl', :action =&gt; 'wsdl'
+	
+ 	# Install the default route as the lowest priority
+ 	map.connect ':controller/:action/:id.:format'
+ 	map.connect ':controller/:action/:id'
+end
+</pre>
+
+<p>With these two lines (and a dash of code in your controllers), other applications have the ability to request and send product information to and from your database. Too easy, you say? Not in Rails. To prove how simple this process is, I'll show you how to create a small application that stores product information and takes advantage of Amazon S3 to store product images.</p>
+
+<h2>REST for a Bit </h2>
+<p>Now the moment you have been waiting for (or have skipped to): the code.</p>
+
+<p class="aws-note">
+<b>Note:</b> Although I  use a Mac for development, the commands that follow are the same regardless of your operating system. The code was developed by using Ruby 1.8.7 and Ruby on Rails 2.1.0.</p> 
+
+<p>You are going to create a little application that keeps track of products and their images. The application will take advantage of the <a href="http://www.thoughtbot.com/projects/paperclip">Paperclip plugin</a> from thoughtbot. This plugin can use the Amazon S3 service to store the images (and other types of files, if you like). I am focusing on Amazon S3 because it is one of the simplest of the AWS solutions to use, more applications now allow user-generated content that needs to be stored, purchasing storage becomes cost-prohibitive very quickly, and getting started with Ruby on Rails takes but a few lines of code.</p>
+
+<p>Before delving into working with AWS, install the most recent version of Rails:</p>
+
+<pre class="aws-code">
+sudo gem install rails
+</pre>
+
+<p>Next, sign up for a free AWS account. After providing credit card information for the Amazon S3 service, you'll receive an Access Key ID. To connect to AWS with Rails, you will need to use a Ruby gem. Several Ruby gems interact with AWS, but you will use two written by RightScale. The two gems give you access to all AWS services. To install the gems, run the following command in your terminal: </p>
+
+<pre class="aws-code">
+sudo gem install right_aws right_http_connection
+</pre>
+
+<p>Next, create a new Rails application and tell it to use a MySQL database. Let's call the application aws_article:</p>
+
+<pre class="aws-code">Musashi:~/Documents/rails rdempsey$ rails aws_article --database mysql</pre>
+
+<p>That was easy! Next, you'll create your development and test databases, and configure your database.yml file to connect to them. Use the username and password appropriate for your database.</p>
+
+<pre class="aws-code">
+development:
+  adapter: mysql
+  encoding: utf8
+  database: aws_article_development
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+test:
+  adapter: mysql
+  encoding: utf8
+  database: aws_article_test
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+production:
+  adapter: mysql
+  encoding: utf8
+  database: aws_article_production
+  username: root
+  password: 
+  socket: /tmp/mysql.sock
+</pre>
+
+<p>Now it is time to download the Paperclip plugin. This plugin makes it easy to attach files or images to any model you create, and has <a href="http://www.thoughtbot.com/projects/paperclip">excellent documentation</a>. To install the plugin, run the following command in your Rails root directory :</p>
+
+<pre class="aws-code">svn export https://svn.thoughtbot.com/plugins/paperclip/trunk/ vendor/plugins/paperclip</pre>
+
+<p>To use Amazon S3, you need a config file. Create a file named <i>s3.yml</i> and save it in your config directory. In this file, add the Access Key ID and Secret Access Key that you received when you signed up for Amazon S3. Type your keys. (I am not giving you mine!)</p> 
+
+<p>Now that you are set up, you need to create your RESTful models and controllers. With Rails 2.1.0, when you run the "generate scaffold" command, the created controller will automatically be RESTful, and the required <code>map.resource</code> lines will be added to your routes.rb file. To create the scaffold model, controller, views, and a migration for your product, run the following:</p>
+
+<pre class="aws-code">
+script/generate scaffold Product name:string purchase_price:decimal sale_price:decimal photo_file_name:string photo_content_type:string photo_file_size:integer
+</pre>
+
+<p>By listing all the fields and data types that you are going to use, the scaffolded forms that are created will have all the fields we need. The migration will also have all your required fields. Open your migration file and add the limit, precision, and scale attributes where necessary so that your migration looks like the following:</p>
+
+<pre class="aws-code">
+	class CreateProducts &lt; ActiveRecord::Migration
+	  def self.up
+	    create_table :products do |t|
+	      t.string :name, :limit =&gt; 255
+	      t.decimal :purchase_price, :precision =&gt; 10, :scale =&gt; 2
+	      t.decimal :sale_price, :precision =&gt; 10, :scale =&gt; 2
+	      t.string :photo_file_name
+	      t.string :photo_content_type
+	      t.integer :photo_file_size
+				t.timestamps
+	    end
+	  end
+
+	  def self.down
+	    drop_table :products
+	  end
+	end
+</pre>
+
+<p>Before moving ahead, add <code>:html =&gt; { :multipart =&gt; true }</code> to our form tag and <code>Image: &lt;%=	f.file_field :photo %&gt;</code> so that you can upload files. Add this code to both the <i>new</i> and <I>edit </I>forms. The <I>new </I>form will looks like the following:</p>
+
+<pre class="aws-code">
+	<b>New product</b>
+	&lt;% form_for(@product, :html =&gt; { :multipart =&gt; true }) do |f| %&gt;
+	  &lt;%= f.error_messages %&gt;
+	    &lt;%= f.label :name %&gt;<br/>
+	    &lt;%= f.text_field :name %&gt;
+	    &lt;%= f.label :purchase_price %&gt;<br/>
+	    &lt;%= f.text_field :purchase_price %&gt;
+	    &lt;%= f.label :sale_price %&gt;<br/>
+	    &lt;%= f.text_field :sale_price %&gt;
+			Image: &lt;%=	f.file_field :photo %&gt;
+	    &lt;%= f.submit "Create" %&gt;
+	&lt;% end %&gt;
+	&lt;%= link_to 'Back', products_path %&gt;
+</pre>	
+
+<p>Next, open the config/routes.rb file and check to be sure that it includes the following:</p>
+
+<pre class="aws-code">
+map.resources :products
+</pre>
+
+<p><B>Note:</B> <code>map.resources</code>. Those lines produce the URLs that will be used for your RESTful interface. What are the URLs, you ask? Good question. Here's the list for products:</p>
+
+<table id="aws-table" cellspacing="0" cellpadding="3">
+  <tr>
+  	<th>Controller Action</th>
+  	<th>HTTP Method</th>
+    <th>URL</th>
+	<th>XML</th>
+  </tr>
+  <tr>
+  	<td>index</td>
+  	<td>GET</td>
+	<td>/products</td>
+	<td>/products.xml</td>
+  </tr>
+  <tr>
+  	<td>show</td>
+ 	<td>GET</td>
+	<td>/products/1</td>
+	<td>/products/1.xml</td>
+  </tr>
+  <tr>
+  	<td>new</td>
+  	<td>GET</td>
+	<td>/products/new</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+  	<td>edit</td>
+  	<td>GET</td>
+	<td>/products/1;edit</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+  	<td>create</td>
+  	<td>POST</td>
+	<td>/products</td>
+	<td>/products.xml</td>
+  </tr>
+  <tr>
+  	<td>update</td>
+  	<td>PUT</td>
+	<td>/products/1</td>
+	<td>/products/1.xml</td>
+  </tr>
+  <tr>
+  	<td>destroy</td>
+  	<td>DELETE</td>
+	<td>/products/1</td>
+	<td>/products/1.xml</td>
+  </tr>
+</table>
+
+<p>Open your controller and look for the following:</p>
+
+<pre class="aws-code">
+# GET /products
+# GET /products.xml
+def index
+  @products = Product.find(:all)
+
+  respond_to do |format|
+    format.html # index.rhtml
+    format.xml  { render :xml =&gt; @products.to_xml }
+  end
+end
+</pre>
+
+<p>Update your database by running a migration and ensuring that everything works correctly:</p>
+
+<pre class="aws-code">
+rake db:migrate
+</pre>
+
+<p>If you've seen any Rails code created before Rails 2.1, then you might recognize the <code>@products = Product.find(:all)</code> line in apps/controllers/product_controller.rb. Because Rails 2.1 has REST baked right in, you can now see the <code>respond_to</code> block in your controller.</p>
+
+<pre class="aws-code">
+# GET /products
+# GET /products.xml
+def index
+	@products = Product.find(:all)
+
+  respond_to do |format|
+    format.html # index.html.erb
+    format.xml  { render :xml =&gt; @products }
+  end
+end
+</pre>
+
+<p>Here, you can see that for the index method, the index file (located at /products) will return both HTML <i>and</i> XML. You have just accomplished two tasks with one command: You generated the scaffold code and created the RESTful API. Good stuff. After you fire up Mongrel and test your controller actions, you'll turn your attention to configuring the application to use Amazon S3.</p>
+
+<p>Time to go to the Product model and update it to work with the Paperclip plugin. Here's what your Product model should look like:</p>
+
+<pre class="aws-code">
+class Product &lt; ActiveRecord::Base
+  has_attached_file :photo,
+                    :styles =&gt; { :medium =&gt; "300x300&gt;",
+                                 :thumb =&gt; "100x100&gt;" },
+                    :storage =&gt; :s3,
+                    :s3_credentials =&gt; "#{RAILS_ROOT}/config/s3.yml",
+                    :path =&gt; ":attachment/:id/:style.:extension",
+                    :bucket =&gt; 'introtoruby_development'
+end
+</pre>
+
+<p class="aws-note"><b>Note:</b> Change your bucket name to the bucket in which you want to store your images.</p>
+
+<p>That's it: No additional configuration required. You are now ready to rock. Open up a terminal session, change to the root directory of your application, type <code>script/server</code>, and then go to http://localhost:3000/products.</p>
+
+<p>Create a new product and upload the image. If you look in your development database, you'll see the record for the uploaded file - photo_file_name. The Paperclip plugin also provides type and size information. To confirm that the image was uploaded to Amazon S3, add the following code as a tag in the <I>show </I>form:</p>
+
+<pre class="aws-code">
+&lt;%= image_tag @product.photo.url %&gt;</pre>
+
+<p>When you pull up the <I>show </I>page, the view retrieves the image from Amazon S3 and displays it on the page. Quick and simple.</p>
+
+<h2>Only an App</h2>
+<p>What do you do when all you have is an application? Deploy it, of course! Depending on your level of comfort, you have several great options for deploying the application onto Amazon EC2:</p>
+
+<table id="aws-table" cellspacing="0" cellpadding="3">
+  <tr>
+  	<th>Company</th>
+  	<th>Required skill level</th>
+		<th>Deployment options</th>
+  </tr>
+	<tr>
+  	<td><a href="http://www.mor.ph" target="_blank">Morph Labs</a></td>
+  	<td>Beginner</td>
+		<td>Use a Capistrano deploy file that they provide.</td>
+  </tr>
+	<tr>
+  	<td><a href="http://www.heroku.com" target="_blank">Heroku</a></td>
+  	<td>Beginner</td>
+		<td>Create an app via their interface or import an existing application.</td>
+  </tr>
+	<tr>
+  	<td><a href="http://www.rightscale.com" target="_blank">RightScale</a></td>
+  	<td>I know a bit</td>
+		<td>RightScale provides the most control over your deployment with a full suite of tools. When the environment is set up, you can install and update your application with the click of a button.</td>
+  </tr>
+	<tr>
+		<td><a href="http://poolpartyrb.com/" target="_blank">PoolParty</a></td>
+		<td>I know a bit</td>
+		<td>They are working on Capistrano deployment, so for now, it's manual.</td>
+	</tr>
+	<tr>
+  	<td><a href="http://developer.amazonwebservices.com/connect/thread.jspa?threadID=17717&tstart=0" target="_blank">Elasticfox Firefox Extension for Amazon EC2</a></td>
+  	<td>I know a bit</td>
+		<td>The extension helps to create and manage instances. Deployment is done by using Capistrano.</td>
+  </tr>
+  <tr>
+  	<td><a href="http://aws.amazon.com" target="_blank">Amazon Web Services</a></td>
+  	<td>Expert</td>
+		<td>Command-line tools.</td>
+  </tr>
+</table>
+
+<h2>Time for an Upgrade</h2>
+<p>You can deliver true power to your applications by using a combination of AWS solutions. Is doing so difficult? Not with Ruby and Rails. The RightScale Ruby gem makes it ultra simple. One easy way to extend the application that you built is to use Amazon SimpleDB (rather than MySQL) as the database. Martin Rehfeld has written an <a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1242&categoryID=152" target="_blank">excellent article</a> that shows you how to do just that.</p>
+
+<h2>Conclusion</h2>
+<p>Today's web-based applications are required to provide more storage, more compute power, and a greater level of reliability than ever before. With a pay-as-you-go model, AWS, combined with freely available Ruby gems and Rails plugins, provides enterprise-class capability to Ruby on Rails applications. Using the power of Ruby on Rails and RESTful web services, developers can get up and going in hours instead of days. Try it!</p>
+
+<h2>Learning More About AWS</h2>
+<p>This article highlights a few aspects of working with AWS. Visit the following web sites for resources on Ruby and Rails and to learn more.</p>
+
+<h3>AWS Resources</h3>
+<ul>
+  <li>Learn more about each web service on the <a href="http://aws.amazon.com" target="blank">AWS web site</a>. </li>
+  <li>The <a href="http://developer.amazonwebservices.com" target="blank">Developer Connection web site</a> for AWS developers includes forums on AWS, a solutions catalog with examples of what your peers have built, and more. </li>
+  <li>Part of the Developer Connection web site, the <a href="http://developer.amazonwebservices.com/resources" target="blank">Resource Center</a> has links to tutorials, code samples, technical documentation, and other resources for building your application on AWS.</li>
+</ul>
+
+<h3>Resources for Ruby and Rails Developers</h3>
+<ul>
+	<li><a href="https://peepcode.com/products/rails2-pdf" target="_blank">PeepCode Rails 2.1 PDF</a></li>
+	<li><a href="http://rubyforge.org/projects/rightaws/" target="_blank">RightScale Ruby gem Documentation on RubyForge</a></li>
+	<li><a href="http://www.topfunky.com/clients/peepcode/REST-cheatsheet.pdf" target="_blank">TopFunky REST Cheat Sheet</a></li>
+	<li><a href="https://peepcode.com/products/rest-for-rails-2" target="_blank">PeepCode REST for Rails 2.1 Screencast</a></li>
+  <li><a href="http://www.thoughtbot.com/projects/paperclip" target="_blank">Paperclip plugin from thoughtbot</a></li>
+	<li><a href="http://rorblog.techcfl.com" target="_blank">Ruby on Rails</a> development blog from Atlantic Dominion Solutions</li>
+</ul>
+
+<h3>Ruby and AWS Real-World Examples</h3>
+<p>The following web sites use Amazon Web Services and Ruby on Rails:</p>
+<ul>
+	<li><a href="http://about.socialmarkets.org" target="_blank">Socialmarkets</a></li>
+	<li><a href="http://www.tunecore.com" target="_blank">TuneCore</a></li>
+	<li><a href="http://info.rightscale.com/" target="_blank">RightScale</a></li>
+  <li><a href="http://www.slideshare.net/" target="_blank">SlideShare</a></li>
+  <li><a href="http://www.weogeo.com/" target="_blank">WeoGeo</a></li>
+</ul>
+
+<h3>References </h3>
+<ul>
+	<li><a href="http://aws.amazon.com" target="_blank">Amazon Web Services</a>&mdash;Home Page</li>
+	<li><a href="http://pragprog.com/titles/rails3/agile-web-development-with-rails-third-edition" target="blank"><i>Agile Web Development with Rails (Third Edition)</i></a>&mdash;Sam Ruby, Dave Thomas, David Heinemeier Hansson, et al.</li>
+	<li><a href="http://www.thoughtbot.com/projects/paperclip" target="_blank">Paperclip</a>&mdash;thoughtbot</li>
+	<li><a href="http://www.lengelzigich.com/posts/paperclip-and-amazon-s3" target="_blank">Paperclip and Amazon S3</a>&mdash;Clayton Lengel-Zigich</li>
+	<li><a href="http://rubyroundup.com/" target="_blank">The Ruby Roundup</a>&mdash;Bill Siggelkow and James Mitchell</li>
+	<li><a href="http://en.wikipedia.org/wiki/SOAP" target="_blank">SOAP Definition</a>&mdash;Wikipedia.com</li>
+</ul>
+
+<h2>About the Author</h2>
+<p><i>After 8 years as an MCSE and project manager, <a href="http://www.techcfl.com/ror/our-team" target="_blank">Robert Dempsey</a> jumped from IT management and PHP/Visual Basic.NET development to Ruby on Rails. He is the CEO and Founder of <a href="http://www.techcfl.com" target="_blank">Atlantic Dominion Solutions</a>, a web development firm specializing in <a href="http://www.techcfl.com/ruby-rails-development" target="_blank">Ruby on Rails</a>, and the founder of <a href="http://www.railsforall.org" target="_blank">Rails For All</a>, a not-for-profit organization dedicated to educating business and developers about Ruby on Rails. In addition, Robert presents on a regular basis at the <a href="http://www.orug.org" target="_blank">Orlando Ruby Users Group</a>, and talks to Java user groups on topics including <a href="http://jruby.codehaus.org/" target="_blank">JRuby</a> and <a href="http://rubyonrails.org/" target="_blank">Ruby on Rails</a>.</i></p>
+        
+    </td>
+  </tr>  
+</table>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+    <tr>
+	<td width="100%">
+		
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+<br/><br/>
+<table cellpadding="3" cellspacing="0" border="0" width="100%" class="head-border">
+    <tr>
+        <td>
+            <b>Related Documents</b>
+            
+        </td>
+    </tr>
+</table>
+
+<table cellpadding="3" cellspacing="0" border="0">
+    <tr>
+        <td>
+            <table cellpadding="2" cellspacing="0" border="0" width="100%">
+                
+                    <tr>
+                        <td class="bullet">
+                            <img src="images/amazon/text_rich.png "
+                                 alt="Type: Articles &amp; Tutorials"
+                                 width="16" height="16" border="0" vspace="3" hspace="3">
+                        </td>
+                        <td>
+                            <a href="entry.jspa?externalID=955&amp;categoryID=55">
+                                Economical Use of Amazon S3 with Ruby on Rails</a>
+                        </td>
+                    </tr>
+                
+                    <tr>
+                        <td class="bullet">
+                            <img src="images/amazon/aws-code-16x16.gif"
+                                 alt="Type: Sample Code"
+                                 width="16" height="16" border="0" vspace="3" hspace="3">
+                        </td>
+                        <td>
+                            <a href="entry.jspa?externalID=1634&amp;categoryID=140">
+                                Code Sample for Introduction to AWS for Ruby Developers</a>
+                        </td>
+                    </tr>
+                
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+        <br><a name="discussion"/>
+        
+
+
+
+
+
+
+
+
+
+
+    <a name="comments"></a>
+
+    <table cellpadding="2" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td width="99%">
+            <b>Discussion</b>
+		</td>
+        <td width="1%" nowrap>
+            
+            <table cellpadding="2" cellspacing="0" border="0">
+            <tr>
+                
+                    <td>
+				 		<a href="rss.jspa?feed=rss/rssmessages.jspa?threadID=23283"><img src="images/feed-icon-16x16.gif" border="0" height="16" width="16" align="right"></a>
+	        		</td>
+                				
+            </tr>
+            </table>
+        </td>
+    </tr>
+	<tr><td colspan="2"><div class="dashedLine"/></td></tr>
+    </table>
+
+    
+    
+
+        
+		<div style="padding-left:20px;">
+			<p>
+                
+                    
+                The 5 most recent discussion messages.
+				<a href="thread.jspa?threadID=23283">View full discussion</a>.
+			</p>
+         </div>
+
+        <div class="jive-message-list" style="padding-left:20px;">
+        <div class="jive-table">
+        
+        
+            <div class="jive-messagebox">
+            <table summary="Message" cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr id="jive-message-95573" valign="top" class="jive-even">
+            <td width="1%" class="jive-first">
+            <table cellpadding="0" cellspacing="0" border="0" width="150">
+                <tr>
+                <td>
+                    
+
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                        <tbody>
+                            <tr valign="top">
+                                <td width="1%" style="padding:0px;">
+                                    <nobr>
+                                        <a href="profile.jspa?userID=63469"
+                                           title="madra"
+                                                >madra</a>
+                                    </nobr>
+									
+                                </td>
+                                <td width="99%" style="padding:0px;">
+                                    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    
+
+                    
+                    
+                    <span class="jive-description">
+
+                    
+                    Posts:
+                    1
+                    <br />
+                    
+
+                    
+                    
+                        Registered:
+                        7/20/08
+                    
+
+                    </span>
+
+                
+                </td>
+                </tr>
+                </table>
+                </td>
+                <td width="99%" class="jive-last">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr valign="top">
+            <td width="1%">
+                
+            </td>
+            <td width="97%">
+
+                <span class="jive-subject">
+                <a name="95573"></a>
+                Introduction to AWS for Ruby Developers
+
+                </span>
+
+                <br />
+
+                
+                <span class="jive-description">
+                Posted:
+				
+                Jul 20, 2008 7:29 AM PDT				
+
+                
+                </span>
+            </td>
+            <td width="1%" class="jive-rating-buttons" nowrap>&nbsp;
+                
+            </td>
+            <td width="1%">
+
+            <div class="jive-buttons">
+            <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+
+            
+
+            
+            
+
+            <td>&nbsp;</td>
+            <td class="jive-icon">
+                <a href="discussCreate!reply.jspa?messageID=95573&amp;kbCategoryID=112&amp;documentID=846"
+                   title="Click to reply to this thread"
+                        ><img src="images/reply-16x16.gif" width="16" height="16" border="0"
+                              alt="Click to reply to this thread"></a>
+            </td>
+            <td class="jive-icon-label">
+                <a href="discussCreate!reply.jspa?messageID=95573&amp;kbCategoryID=112&amp;documentID=846"
+                   title="Click to reply to this thread"
+                        >Reply</a>
+            </td>
+
+            
+            </tr>
+            </table>
+            </div>
+
+            </td>
+            </tr>
+            
+            <tr>
+                <td colspan="4" style="border-top: 1px #ccc solid;">
+                    <br />
+                    <em>&quot;...Create a new product and upload the image...&quot;
+</em><br/><br/>er... how? 
+<br/>
+                    <br />
+                </td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            </table>
+            </div>
+			<br/>
+        
+        </div>
+        </div>
+    
+
+        
+        
+        <br><a name="reviews"/>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table cellpadding="2" cellspacing="0" border="0" width="100%">
+    <tr>
+        <td width="99%"><b>Reviews</b></td>
+        <td width="1%" nowrap>
+            
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                    
+                    <td>
+                        <a href="reviewCreate!default.jspa?categoryID=112&amp;externalID=846"
+                                ><img src="images/comment-add-16x16.gif" width="16" height="16" border="0" hspace="6"
+                                      alt="Create Review"/></a>
+                    </td>
+
+                    <td nowrap>
+                        <a href="reviewCreate!default.jspa?categoryID=112&amp;externalID=846"
+                           title="Create Review">Write a Review</a>
+                    </td>
+                    
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+<table cellpadding="3" cellspacing="0" border="0" width="100%">
+    <tr valign="top">
+        <td colspan="2">
+            <table width="100%" cellspacing="0" border="0" cellpadding="0">
+			   <tr><td colspan="2"><div class="dashedLine"/></td></tr>
+                
+									<tr>
+										<td valign="top" width="1%"><div style="padding-left:20px;">
+										<span
+												class="jive-new-content"
+												title=""><img
+												src="images/rating-16x16.gif"
+												width="16"
+												height="16"
+												border="0"></span>
+														
+										<span
+												class="jive-new-content"
+												title=""><img
+												src="images/rating-16x16.gif"
+												width="16"
+												height="16"
+												border="0"></span>
+														
+										<span
+												class="jive-new-content"
+												title=""><img
+												src="images/rating-16x16.gif"
+												width="16"
+												height="16"
+												border="0"></span>
+														
+										<span
+												class="jive-new-content"
+												title=""><img
+												src="images/rating-16x16.gif"
+												width="16"
+												height="16"
+												border="0"></span>
+														
+										<span
+												class="jive-new-content"
+												title=""><img
+												src="images/rating-16x16.gif"
+												width="16"
+												height="16"
+												border="0"></span>
+														<br/><img src="images/blank.gif" width="100" height="1" alt=""/></div></td>
+								<td style="padding-left:10px;padding-right:10px" valign="top" width="100%">
+									<b>Many Thanks</b>, Oct 1, 2008 10:53 AM
+									<br/><font size="1" face="verdana" color="#999999">Reviewer: <a
+										href="profile.jspa?userID=69315">timbreeden</a>
+								</font>
+			
+									<table><tr><td></td></tr></table>
+									An awesome learning experience for me!
+
+As someone fairly new to Ruby and completely new to S3, a couple of points that might make this example easier for others in my boat:
+
+1. The format of s3.yml that worked for me was:
+
+access_key_id: 'ACCESS_KEY'
+
+secret_access_key: 'WOULDNT_YOU_LIKE_TO_KNOW'
+
+2. The scoping of the added first added photo to S3 (and subsequent ones of course follow the numerical pattern) is easy to overlook, and is something to the tune of:
+
+<a href="http://my_bucket.s3.amazonaws.com/photos/1/original.JPG">http://my_bucket.s3.amazonaws.com/photos/1/original.JPG</a>
+
+Pretty darned RESTful!
+
+Thanks for this example!!
+			
+									<table><tr><td height="20"></td></tr></table>
+								</td>
+							</tr>
+
+                
+
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+        
+
+	</td>
+	</tr>
+</table>
+</td>
+<td><img src="images/blank.gif" width="10" height="1" border="0" alt=""></td>
+<td width="1%" class="jive-top-table">
+    
+    
+
+
+
+
+
+
+
+
+
+
+    
+<form action="isearch.jspa" name="searchForm" onsubmit="updateAction()">
+<input type="hidden" name="searchKB" value="true"/>
+<input type="hidden" name="searchForums" value="true"/>
+<table cellspacing="0" cellpadding="0" border="0" class="aws-search">
+<tr>
+	<td width="99%"><input type="text" name="searchQuery" class="aws-search-box" value="" onclick="if(this.value == this.defaultValue) this.value = '';"></td>
+    <td width="1%"><input align="absmiddle" type="image" src="images/amazon/search-go.png"></td>
+</tr>
+</table>
+</form>
+<div style="clear:both"/>
+<div style="padding: 4px;border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;border-right: 1px solid #cccccc;border-left: 1px solid #cccccc" class="jive-accountbox">
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" summary="Jive Accountbox">
+
+
+
+
+
+
+
+<thead>
+
+    <tr>
+
+        <th colspan="2">
+
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+                <tr>
+
+                    <th width="99%" style="border-width:0px;">
+
+                        
+
+                        Welcome, Guest
+
+                    </th>
+
+                    <th width="1%" style="border-width:0px;" nowrap="nowrap">
+
+                       <a href="help.jspa"><img src="images/help-16x16.gif" width="16" height="16" border="0" alt="Help"/></a>
+
+                    </th>
+
+                </tr>
+
+            </table>
+
+        </th>
+
+    </tr>
+
+</thead>
+
+<tbody>
+
+    <tr>
+
+        <td width="1%" class="jive-icon"><a href="login!withRedirect.jspa"><img src="images/key-16x16.gif" width="16" height="16" border="0" alt="Login"/></a></td>
+
+        <td width="99%" class="jive-icon-label">
+
+            
+            <a href="login!withRedirect.jspa">Login</a>
+
+        </td>
+
+    </tr>
+
+
+</tbody>
+</table>
+
+
+
+
+
+</div>
+
+<br/>
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+</div>
+
+<br /><br />
+
+
+		<hr moshade="noshade" size="1" width="100%" color="#cccccc">
+<style>
+.h_bar {
+	list-style-image: none;
+	list-style-position:outside;
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 10px;
+}
+
+.h_bar li{
+	border-left: 1px solid #CCCCCC;
+	padding-left: 18px;
+	padding-right: 18px;
+	display: inline;
+	list-style-type: none;
+}
+
+li.first{
+	border-left: 0px;
+}
+
+</style>
+<div class="aws-footer">
+<ul class="h_bar">
+<li class="first">
+	<a href="recognition.jsp">Community Recognition</a>
+</li>
+<li>    
+    <a href="guidelines.jsp">Guidelines</a>
+</li>
+<li>
+	<a href="help.jspa">Help</a>
+</li>
+<li>    
+    <a href="rss.jsp">Community RSS<img
+                hspace="2" border="0" align="absmiddle" src="images/feed-icon-16x16.gif" title="RSS Feeds"
+                alt="RSS Feeds"/></a>
+</li>
+</ul>
+<ul class="h_bar">
+<li class="first">
+	<a href="http://aws.typepad.com/">AWS Blog <img height="13" width="15" border="0" alt="This link will launch a new browser window or tab." src="images/amazon/icon_offsite.gif"/></a>
+</li>
+<li>
+	<a href="http://phx.corporate-ir.net/phoenix.zhtml?c=176060&p=irol-InfoReq">Press Inquiries</a>
+</li>
+<li>
+	<a href="http://aws.amazon.com/careers">Careers at AWS</a>
+</li>
+<li>
+    <a href="http://aws.amazon.com/contact-us">Contact Us</a>
+</li>
+<li>    
+    <a href="http://aws.amazon.com/privacy">Privacy Policy</a>
+</li>
+<li>    
+    <a href="http://aws.amazon.com/terms">Terms of Use</a>
+</li>
+</ul>    
+<br><span style="color:#666666;">©2008, Amazon Web Services <span class="caps">LLC</span> or its affiliates. All rights reserved.</span>
+<br>
+<br /><img src="images/amazon/logo_an_amazon_company.gif" vspace="8" width="160" height="21">
+</div>
+</div>
+</td></tr></table>
+
+
+
+</body>
+</html>

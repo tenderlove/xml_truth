@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<meta name="description" content="Programming, Web Development" />
+<meta name="keywords" content="rails programming in farmington hills
+ michigan, web development in farmington hills michigan" />
+<link rel="stylesheet" type="text/css" href="./stylesheets/netpromi.css" 
+media="screen,projection" />
+<link rel="stylesheet" type="text/css" href="./stylesheets/print.css" 
+media="print" />
+<title>NetPro Technologies - Ruby Programming, Rails Web Development -
+ Farmington Hills, Michigan - Web Development and Programming</title>
+</head>
+
+<body><div id="wrap">
+
+<div id="header">
+<h1>NetPro Technologies</h1>
+<p><strong>"Life's too short...do what you enjoy."</strong></p>
+</div>
+
+<img id="frontphoto" src="./images/netpro.jpg" width="760" height="175" alt="" />
+
+<div id="menu">
+<h2 class="hide">Menu:</h2>
+<ul>
+<li><a href="./index.html">Welcome!</a></li>
+<li><a href="./news.html">News</a></li>
+<li><a href="./past_work.html">Past Work</a></li>
+<li><a href="./kirbybase_ruby.html">KirbyBase - Ruby</a></li>
+<li><a href="./kirbybase_python.html">KirbyBase - Python</a></li>
+<li><a href="./fxlistview.html">FXListview</a></li>
+</ul>
+<p>248-808-3602</p>
+<p><a href="mailto:jcribbs@netpromi.com">jcribbs@netpromi.com</a></p>
+</div>
+
+<div id="extras">
+<h3>Links:</h3>
+<p>
+- <a href="http://ruby-lang.org">Ruby</a><br />
+- <a href="http://rubyonrails.org/">Rails</a><br />
+- <a href="http://rubyforge.org/">RubyForge</a><br />
+- <a href="http://rubymi.org/">RubyMI.org</a><br />
+- <a href="http://rubyforge.org/projects/ackbar">Ackbar</a><br />
+- <a href="http://houseonfire.wordpress.com">House on Fire</a><br />
+- <a href="http://http://bloglines.com/blog/AssaphMehr">Assaph's Blog</a><br />
+- <a href="http://http://slackware.com">Slackware</a><br />
+- <a href="http://http://ubuntu.com">Ubuntu</a><br />
+</p>
+</div>
+
+<div id="content">
+<img src="./images/kirby2.jpg" height="113" width="150" 
+alt="Kirby" class="right"/>
+
+<h2>KirbyBase For Ruby</h2>
+
+<p>KirbyBase is a simple database management system, written in pure-Ruby,
+ that stores its data in plain-text files.</p>
+
+<h3>Download</h3>
+<ul>
+<li><a href="./files/KirbyBase-2.6.gem">KirbyBase 2.6 gem</a></li>
+<li><a href="./files/KirbyBase_Ruby_2.6.zip">KirbyBase 2.6 zip</a></li>
+<li><a href="./files/KirbyBase_Ruby_2.6.tar.gz">KirbyBase 2.6 tar.gz</a>
+</li>
+</ul>
+
+<h3 class="left">Manual</h3>
+<a href="./files/kirbybase_ruby_manual_fr.html" class="right">
+<img src="./images/eiffel.jpg" height="100" width="47" 
+alt="KirbyBase Manual in French" /></a>
+
+<br /><br />
+
+<a href="./files/kirbybase_ruby_manual.html" class="left">
+<img src="./images/book.jpg" height="38" width="50" 
+alt="KirbyBase Manual" /></a>
+
+<br />
+
+<a href="./files/kirbybase_ruby_manual_fr.html" class="right">
+Manual in French<br />(thanks to Alain Feler)</a>
+
+<a href="./files/kirbybase_ruby_manual.html" class="left">KirbyBase 
+Manual</a>
+
+<div class="clearboth"></div>
+
+<h3>Features</h3>
+<ul>
+<li>It runs anywhere that Ruby runs and is easy to distribute, since the 
+entire DBMS is in one (approx. 100k) code file.</li>
+<li>All data is kept in plain-text, delimited files that can be edited by 
+hand. This gives you the ability to make changes by just opening the file up
+ in a text editor.</li>
+<li>It can be used as an embedded database or in a client/server, multi-user
+ mode. To switch from one mode to the other, you simply change one line in 
+your program.</li>
+<li>Tables are kept on disk during use and accessed from disk when 
+selecting, updating, inserting, and deleting records. Changes to a table are
+ written immediately to disk. KirbyBase is not an "in-memory" database. Once
+ you update the database in your program, you can be assured that the change
+ has been saved to disk.</li>
+<li>You can specify the type of data that each field will hold. The 
+available data types are: String, Integer, Float, Boolean, Time, Date, 
+DateTime, Memo, Blob, and YAML.</li>
+<li>The query syntax is very "rubyish". In fact, it <em>is</em> 
+Ruby. Instead of having to use another language like SQL, you express your 
+query using Ruby code blocks.</li>
+<li>All inserted records have an auto-incrementing primary key that is 
+guaranteed to uniquely identify the record throughout its lifetime.</li>
+<li>You can specify that the result set be sorted on multiple fields, each 
+one either ascending or descending.</li>
+<li>You can specify that certain fields be indexed. Using an index in a 
+select query can greatly improve performance on large tables (I've seen 10x 
+speed improvements). Index maintenance is completely handled by KirbyBase.
+</li>
+<li>You can specify that a field has a "lookup table". Whenever that field 
+is accessed, the corresponding record from the lookup table is automatically
+ available.</li>
+<li>You can specify one-to-many links between tables, somewhat analogous to 
+a "join" in SQL.</li>
+<li>You can create calculated fields that are computed at runtime.</li>
+</ul>
+
+<p>In meeting your DBMS needs, KirbyBase fits in somewhere between plain 
+text files and small SQL database management systems like SQLite and MySQL.
+</p>
+
+<img src="./images/kirby3.jpg" height="136" width="192" class="right" 
+alt="Kirby" />
+
+<h3>The dog, the myth, the legend</h3>
+<p>KirbyBase was named after my dog, Kirby, pictured here when he was just 
+a pup.</p>
+</div>
+
+<div id="footer">
+Copyright &copy; 2006 Jamey Cribbs.
+</div>
+
+</div>
+</body>
+</html>

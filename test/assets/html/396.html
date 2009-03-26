@@ -1,0 +1,789 @@
+
+
+
+
+
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link rel="copyright" title="Copyright" href="/open/contact/" />
+<link rel="author" title="Contact" href="mailto:red%40h-online.com?subject=The%20H%20Open%20Source" />
+
+<link rel="alternate" type="application/atom+xml" title="All The H open news and features" href="http://www.h-online.com/open/atom.xml" />
+
+
+<link href="/favicon_open.ico" rel="shortcut icon" />
+
+<link href="/styles/standard.css" rel="stylesheet" type="text/css" />
+<link href="/styles/open/standard.css" rel="stylesheet" type="text/css" />
+
+
+
+<link href="/styles/print.css" rel="stylesheet" type="text/css" media="print" />
+
+<script src="/support/external_links.js" type="text/javascript"></script>
+
+
+<title>&quot;Ruby on Rails&quot; comprehensively renovated - 
+News
+ -
+The H Open Source: News and Features</title>
+
+
+
+<meta name="keywords" content=""Ruby on Rails" comprehensively renovated" />
+
+
+
+
+<meta name="description" content="David Heinemeier Hansson, creator of Rails, has issued the new version 2.3 of his popular &quot;Ruby on Rails&quot; web framework, which incorporates a large number of innovations" />
+
+
+
+<meta name="copyright" content="Heise Media UK Ltd." />
+<meta http-equiv="Content-Language" content="en"/>
+
+
+
+
+</head>
+<body >
+
+<div id="container">
+
+<div id="header_wrapper">
+<div id="newsheader_left"></div>
+<div id="newsheader_right"></div>
+<div id="newsheader">
+	<div id="logo"><a href="/open/"><img src="/open/icons/open_logo_theH.gif" alt="The H Open Source" width="110" height="70" /></a></div>
+	<ul id="tab_navi">
+    <li><a href="/" title="The H: Security news and Open source developments">The H</a></li>
+    <li><a href="/open/" class="active" title="The H Open Source: News and Features">open source</a></li>
+    <li><a href="/security/" title="The H Security: News and features">security</a></li>
+</ul>
+
+
+	<p id="association">
+		<a href="http://www.heise.de/" rel="external">In association with heise online</a>
+	</p>
+	<div id="search">
+		<script type="text/javascript" src="/support/login.js"></script>
+<noscript>
+<div id="login">
+
+        
+            
+                
+                        <a href="/userdb/sso?rm=show_login&amp;dirid=1">Login</a> |
+                        <a href="/userdb/sso?rm=do_logout&amp;dirid=1">Logout</a>
+                    
+            
+        
+</div>
+    </noscript>
+
+
+
+
+		<form method="get" action="/search/" accept-charset="utf-8">
+<fieldset>
+<input type="hidden" name="rm" value="search" />
+<input name="q" value="" size="10" type="text" class="searchfield" />&nbsp;<input name="search_submit" value="Search" size="4" type="submit" class="submit" />
+</fieldset>
+</form>
+
+
+			
+	</div>	
+</div>
+</div>
+
+<div id="wrapper">
+	<div id="content_wrapper">
+<div id="content">
+<ul id="navi_news">
+    <li><a href="/open/news/" title="Last 7 days news and features">Last 7 days</a></li>
+    <li><a href="/open/news/archive/" title="News Archive">News Archive</a></li>
+    <li><a href="/open/forum/S-The-H-Open-Source/forum-108318/list/" title="Forums">Forums</a></li>
+    <li><a href="/newsletter/manage/open" title="Newsletter">Newsletter</a></li>
+    <li><a href="/open/newsfeeds/" title="Newsfeeds">RSS</a></li>
+</ul>
+
+
+
+	
+
+
+<div id="item">
+<div class="prev_next">
+	
+	<a href="/open/news/item/112863"><span class="laquo">&laquo;</span> previous</a><span class="pipe"> | </span>
+	
+	
+	<a href="/open/news/item/112865">next <span class="laquo">&raquo;</span></a>
+	
+</div>
+
+
+<div class="date">17 March 2009, 10:47</div>
+<div class="clear"></div>
+<!-- HEISETEXT -->
+
+<h1>"Ruby on Rails" comprehensively renovated</h1>
+
+<div class="item_wrapper">
+
+
+<p>
+</p>
+<!-- RSPEAK_STOP --><div class="right_float" style="width:107px">
+				<img
+				src     = "/images/112864/0/0"
+				alt     = "rails.png"
+				width   = "87"
+				height  = "112"
+				/>
+</div><!-- RSPEAK_START -->
+<p>
+ Following two <a href="http://www.h-online.com/news/Release-candidate-of-Rails-2-3-0-posted--/112536" title="Release candidate of Rails 2.3.0 posted">release candidates</a>, the official <a href="http://weblog.rubyonrails.org/2009/3/16/rails-2-3-templates-engines-rack-metal-much-more" rel="external">version 2.3</a> of the open source <a href="http://rubyonrails.org/" rel="external">Ruby on Rails</a> web framework has now been released. Although David Heinemeier Hansson, creator of Rails, had originally said in 2007 that there would now only be evolutionary changes in Rails, <a href="http://www.h-online.com/news/Ruby-on-Rails-2-2-turns-international--/112063" title="Ruby on Rails 2.2 turns international">version 2.2</a>, with its introduction of i18n API, multithreading and experimental support for Ruby 1.9, was a comprehensive release and now version 2.3 introduces further substantial changes.</p>
+
+<p>One of the major changes is hidden under the bonnet: the now elderly CGI library in the Rails core has been replaced with <a href="http://rack.rubyforge.org/" rel="external">Rack</a>, a minimal interface for connecting web servers and web frameworks. It uses ideas from the <a href="http://wsgi.org/wsgi/" rel="external">Web Server Gateway Interface</a> of the Python programming language. One benefit of using Rack is that many middleware pieces are already available for virtually any web or application server in the Ruby world (including the Apache <a href="http://www.modrails.com" rel="external">mod_passenger</a> module), so developers of these servers for Rails won't have to develop their own solutions.  Another is the interesting ecosystem of other web frameworks and middleware solutions now evolving around Rack that can take over tasks such as caching and file compression. Rack also enables different web applications and middleware to be used at the same time by means of simple configurations, for example allowing this or that web framework to be accessed, depending on its URL. Systematic rearrangement of the Rails internals to form Rack mechanisms now also lets these frameworks exchange session data.</p>
+
+<p>The developers have also revised other parts of Rails. ActiveRecord has finally been given nested model assignments, although the function was originally announced for Rails 2.2. With these, data for linked objects can be directly assigned with a simple syntax and corresponding objects can be created. A number of database transactions can now be similarly nested, a feature that many developers have had on their wish list for a long time.</p>
+
+<p>There are more changes to the named scopes that were introduced with Rails 2.1: they can now also be created dynamically. In addition, a default scope can be specified for a model to allow tasks to be run such as a prescribed sort or the virtual deletion of objects. The last change worth mentioning in ActiveRecord is that it permits iteration over objects in subdivided packets, which makes the batch processing of large tables more efficient.</p>
+
+<p>In the Controller and View domain, there are a few changes to the i18n API. For example, localized Views can now be created that contain the name of the locale in the file name, which is helpful with particularly text-heavy Views. One major change is a great simplification of the syntax for <code>render</code>, so that only the most essential parameters usually have to be passed for rendering either templates or partials. Support for HTTP digest authentication has been added.</p>
+
+<p>Routeing has become much more efficient in Rails 2.3, but the <code>formatted_</code> routes that were automatically generated for REST routes have gone, so the syntax for creating links to resources with other content types has changed slightly. For the first time, Rails 2.3 also officially supports Rails Engines, encapsulated Rails applications that can be embedded within other applications.</p>
+
+<p>In the ActiveSupport area, the introduction of <code>Object#try</code> is particularly worthy of mention. As the name suggests, you can use it to try calling a method on an object. If this method doesn't exist (for example because the object has the wrong type, because it's <code>nil</code>, <code>nil</code> will be returned instead of an exception being raised. This can, for example, make Views more error-tolerant.</p>
+
+<p>Likewise, support for application templates is new: a basic template can be defined for an application that will then automatically be used when the application is generated. That can mean installing plug-ins, declaring gem dependencies, calling up generators, or running shell commands. It also permits shortening the setup time for new applications. A whole range of templates for various purposes can already be found on GitHub, and there is a generator for more templates at <a href="http://www.railsboost.com/templates/new" rel="external">Railsboost</a> that can be configured with a few clicks.</p>
+
+<p>The influence of the Merb team on Rails development is already clearly noticeable in this version – the two projects announced their merger <a href="http://www.h-online.com/news/Rails-and-Merb-to-merge-for-Rails-3--/112312" title="Rails and Merb to merge for Rails 3">in late December</a>. It will be interesting to see how many Merb ideas will be incorporated into Rails 3, and whether the Rails team will manage to keep the modularisation that will probably accompany it, largely transparent for the typical Rails developer. </p>
+
+<p>(<em>Jan Krutisch</em>)</p>
+
+<p>
+(<a href="mailto:crve@h-online.com" class="noline" title="Chris von Eitzen">crve</a>)
+</p>
+</div>
+<!-- /HEISETEXT -->
+<div class="clear"></div>
+
+				
+			
+
+				
+			
+
+
+<div class="forum_link">
+          
+	   
+           <p>
+           
+             
+               <a href="/open/news/forum/forum-111916/write/"><b>Add your comment</b></a><br />
+             
+           
+         
+         
+         
+	 
+       
+         </p>
+
+</div>
+
+
+
+<div class="prev_next">
+	
+	<a href="/open/news/item/112863"><span class="laquo">&laquo;</span> previous</a><span class="pipe"> | </span>
+	
+	
+	<a href="/open/news/item/112865">next <span class="laquo">&raquo;</span></a>
+	
+</div>
+
+
+<div class="mail_print">
+<a href="/open/news/print/112864" rel="nofollow">Print version</a><span class="pipe"> | </span><a href="/open/news/mail/112864" rel="nofollow">Send by email</a>
+</div>
+
+<div class="clear_bottom"></div>
+<div class="adbottom"><!--OAS AD="Bottom" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/370965014/Bottom/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/370965014/Bottom/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+</div>
+<div id="social_bookmarks">
+    <ul>
+        <li>Share this article</li>
+        <li><a href="http://digg.com/submit?url=http%3A%2F%2Fwww.h-online.com%2Fopen%2FRuby-on-Rails-comprehensively-renovated--%2Fnews%2F112864&amp;title=%22Ruby%20on%20Rails%22%20comprehensively%20renovated&amp;topic=security&amp;bodytext=David%20Heinemeier%20Hansson%2C%20creator%20of%20Rails%2C%20has%20issued%20the%20new%20version%202.3%20of%20his%20popular%20%22Ruby%20on%20Rails%22%20web%20framework%2C%20which%20incorporates%20a%20large%20number%20of%20innovations"><img src="/icons/syndication/digg16x14.gif" alt="digg this" title="digg this" width="16" height="14" /></a></li>
+        <li><a href="http://slashdot.org/slashdot-it.pl?op=basic&amp;url=http%3A%2F%2Fwww.h-online.com%2Fopen%2FRuby-on-Rails-comprehensively-renovated--%2Fnews%2F112864&amp;title=%22Ruby%20on%20Rails%22%20comprehensively%20renovated&amp;tags=security&amp;notes=David%20Heinemeier%20Hansson%2C%20creator%20of%20Rails%2C%20has%20issued%20the%20new%20version%202.3%20of%20his%20popular%20%22Ruby%20on%20Rails%22%20web%20framework%2C%20which%20incorporates%20a%20large%20number%20of%20innovations"><img src="/icons/syndication/slashdot16x14.gif" alt="submit to slashdot" title="submit to slashdot" width="16" height="14" /></a></li>
+        <li><a href="http://del.icio.us/post?url=http%3A%2F%2Fwww.h-online.com%2Fopen%2FRuby-on-Rails-comprehensively-renovated--%2Fnews%2F112864&amp;title=%22Ruby%20on%20Rails%22%20comprehensively%20renovated&amp;tags=security&amp;notes=David%20Heinemeier%20Hansson%2C%20creator%20of%20Rails%2C%20has%20issued%20the%20new%20version%202.3%20of%20his%20popular%20%22Ruby%20on%20Rails%22%20web%20framework%2C%20which%20incorporates%20a%20large%20number%20of%20innovations"><img src="/icons/syndication/delicious16x14.gif" alt="post to delicious" title="post to delicious" width="16" height="14" /></a></li>
+        <li><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fwww.h-online.com%2Fopen%2FRuby-on-Rails-comprehensively-renovated--%2Fnews%2F112864&amp;title=%22Ruby%20on%20Rails%22%20comprehensively%20renovated"><img src="/icons/syndication/stumble16x14.gif" width="16" height="14" alt="StumbleUpon" title="StumbleUpon" /></a></li>
+        <li><a href="http://reddit.com/submit?url=http%3A%2F%2Fwww.h-online.com%2Fopen%2FRuby-on-Rails-comprehensively-renovated--%2Fnews%2F112864&amp;title=%22Ruby%20on%20Rails%22%20comprehensively%20renovated"><img src="/icons/syndication/reddit16x14.gif" alt="submit to reddit" title="submit to reddit" width="16" height="14" /></a></li>
+    </ul>
+</div>
+
+</div>
+
+
+
+</div>
+
+<div id="right_col">
+<div style="background: url(/open/icons/2pix.gif) bottom left repeat-x"><div  class="bcadv"><!--OAS AD="Middle2" CM="google05_39ros08uk"-->
+<span style="font-family: Arial, Helvetica, sans-serif; color: Black; font-size:7pt; font-weight: normal; text-align: left;">Advertisement</span><br />
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-4634662068732588";
+/* mpu_uk_image */
+google_ad_slot = "5480775060";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/295920368/Middle2/OasDefault/google05_39ros08uk/google04_14ros08uk_sky_uk_block_text.html/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" /></div></div>
+
+
+
+<div class="teaser">
+
+	
+		
+		<img src="/icons/open_teaserlogo.gif" alt="The H open" title="The H open" />
+		
+	
+		<ul>
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/Interview-Patrick-Curran-chair-of-the-JCP--/features/112862/from/teaser" title="Interview: Patrick Curran, chair of the JCP">Interview: Patrick Curran, chair of the JCP</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/Interview-Patrick-Curran-chair-of-the-JCP--/features/112862/from/teaser" title="Interview: Patrick Curran, chair of the JCP">The H went to Qcon and sat down with Patrick Curran, chair of the Java Community Process and had a chat about how the JCP is changing and looking for more transparency in all aspects of its work</a>
+			
+			</p>
+			
+			</li>
+      
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/Community-Live-Hack-The-Government-Day--/features/112808/from/teaser" title="Community Live - Hack The Government Day">Community Live - Hack The Government Day</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/Community-Live-Hack-The-Government-Day--/features/112808/from/teaser" title="Community Live - Hack The Government Day">Hack The Government Day aimed to show the Government how developers could rewire the state to provide better local, national and political information. The H sent Wendy Grossman along to see how it went</a>
+			
+			</p>
+			
+			</li>
+      <!--OAS AD="Left" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/Interview-Steve-McIntyre-of-Debian--/features/112783/from/teaser" title="Interview: Steve McIntyre of Debian">Interview: Steve McIntyre of Debian</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/Interview-Steve-McIntyre-of-Debian--/features/112783/from/teaser" title="Interview: Steve McIntyre of Debian">Our German language associate site, heise Open recently spoke to Steve McIntyre, the current Debian Project Leader about the present state of the Debian project and and about his hopes for its future</a>
+			
+			</p>
+			
+			</li>
+      
+			
+		</ul>
+
+</div>
+
+
+
+
+
+<hr class="split" />
+
+
+<div class="teaser">
+
+	
+	<img src="/icons/hot_on_theH.gif" alt="Hot on The H" width="116" height="24" />
+	
+		<ul>
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/Steady-growth-What-s-new-in-Linux-2-6-29--/features/112914/from/teaser" title="Steady growth - What&#39;s new in Linux 2.6.29">Steady growth - What's new in Linux 2.6.29</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/Steady-growth-What-s-new-in-Linux-2-6-29--/features/112914/from/teaser" title="Steady growth - What&#39;s new in Linux 2.6.29">The new Linux kernel includes many new file system features and a new framework for controlling graphics hardware, in the form of kernel-based mode setting. Support for WiMAX and the ability to operate as a wireless access point (AP) are also new</a>
+			
+			</p>
+			
+			</li>
+      
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/The-Red-Hat-Patent-Problem-and-AMQP--/features/112899/from/teaser" title="The Red Hat Patent Problem and AMQP">The Red Hat Patent Problem and AMQP</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/The-Red-Hat-Patent-Problem-and-AMQP--/features/112899/from/teaser" title="The Red Hat Patent Problem and AMQP">The automatic disclosure of a Red Hat patent application has kicked off chain of events which has dented some peoples trust of the company and its patent policies. The H looks at what is going on and how it impacts the wider open source community</a>
+			
+			</p>
+			
+			</li>
+      <!--OAS AD="Left" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/open/Health-Check-Open-Source-and-the-UK-Government--/features/112884/from.teaser" title="Health Check: Open Source and the UK Government">Health Check: Open Source and the UK Government</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/open/Health-Check-Open-Source-and-the-UK-Government--/features/112884/from.teaser" title="Health Check: Open Source and the UK Government">Despite the UK governments continued insistence that it is in favour of open source, in practice the opposite seems to be true. The H examines the evidence</a>
+			
+			</p>
+			
+			</li>
+      
+			
+		</ul>
+
+</div>
+
+
+
+
+<hr class="split" />
+
+
+<div class="teaser">
+
+	
+		
+		<img src="/icons/security_teaserlogo.gif" alt="The H security" title="The H security" />
+		
+	
+		<ul>
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/security/The-right-way-to-handle-encryption-with-Firefox-3--/features/112797/from/teaser" title="The right way to handle encryption with Firefox 3">The right way to handle encryption with Firefox 3</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/security/The-right-way-to-handle-encryption-with-Firefox-3--/features/112797/from/teaser" title="The right way to handle encryption with Firefox 3">Mozilla has changed the way Firefox 3 handles certificates, but not always for the better. A few modifications will sort things out - and give you more security</a>
+			
+			</p>
+			
+			</li>
+      
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/security/Worth-Reading-An-Analysis-of-Conficker-C--/features/112904/from/teaser" title="Worth Reading: An Analysis of Conficker-C">Worth Reading: An Analysis of Conficker-C</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/security/Worth-Reading-An-Analysis-of-Conficker-C--/features/112904/from/teaser" title="Worth Reading: An Analysis of Conficker-C">SRI International's Malware Threat Center has published a detailed examination of the new mechanisms within the Conficker-C worm</a>
+			
+			</p>
+			
+			</li>
+      <!--OAS AD="Left" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/security/Risky-MIME-sniffing-in-Internet-Explorer--/features/112589/from/teaser" title="Risky MIME sniffing in Internet Explorer">Risky MIME sniffing in Internet Explorer</a>
+				</h5>
+			
+			
+			<div class="teaser_imgbox">
+			<a href="http://www.h-online.com/security/Risky-MIME-sniffing-in-Internet-Explorer--/features/112589/from/teaser" title="Risky MIME sniffing in Internet Explorer"><img src="/teaser/teaserbox/image/715" alt="Risky MIME sniffing in Internet Explorer" /></a>
+			
+			</div>
+			
+			<p>
+			
+			<a href="http://www.h-online.com/security/Risky-MIME-sniffing-in-Internet-Explorer--/features/112589/from/teaser" title="Risky MIME sniffing in Internet Explorer">Uploading images is a standard requirement for any Web 2.0 application, but some features of Internet Explorer need to be carefully handled, otherwise a hole can open up and facilitate cross-site scripting attacks on site visitors</a>
+			
+			</p>
+			
+			</li>
+      
+			
+		</ul>
+
+</div>
+
+
+
+
+<hr class="split" />
+
+
+<div class="teaser">
+
+	
+		
+		<img src="/icons/hits_of_theH.gif" alt="Hits of The H" width="120" height="24" />
+		
+	
+		<ul>
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/security/Cracking-budget-encryption--/features/112548/from/teaser" title="Cracking budget encryption">Cracking budget encryption</a>
+				</h5>
+			
+			
+			<p>
+			
+			<a href="http://www.h-online.com/security/Cracking-budget-encryption--/features/112548/from/teaser" title="Cracking budget encryption">Our previous experience with hardware encryption has shown that budget is equivalent to useless. Raidon's Staray S series doesn't seem to be an exception. This article explains how we conducted our analysis</a>
+			
+			</p>
+			
+			</li>
+      
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/features/Build-a-Wi-Fi-radio-relay-using-household-materials--/110278/from/teaser" title="Build a Wi-Fi antenna using household materials">Build a Wi-Fi antenna using household materials</a>
+				</h5>
+			
+			
+			<div class="teaser_imgbox">
+			<a href="http://www.h-online.com/features/Build-a-Wi-Fi-radio-relay-using-household-materials--/110278/from/teaser" title="Build a Wi-Fi antenna using household materials"><img src="/teaser/teaserbox/image/717" alt="Build a Wi-Fi antenna using household materials" /></a>
+			
+			</div>
+			
+			<p>
+			
+			<a href="http://www.h-online.com/features/Build-a-Wi-Fi-radio-relay-using-household-materials--/110278/from/teaser" title="Build a Wi-Fi antenna using household materials">You can make your own directional Wi-Fi antenna using commonplace items like a toilet brush holder. Here's how</a>
+			
+			</p>
+			
+			</li>
+      <!--OAS AD="Left" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/263835486/Left/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/security/The-PayPal-approach-to-customer-security--/features/112564/from/teaser" title="The PayPal approach to customer security">The PayPal approach to customer security</a>
+				</h5>
+			
+			
+			<div class="teaser_imgbox">
+			<a href="http://www.h-online.com/security/The-PayPal-approach-to-customer-security--/features/112564/from/teaser" title="The PayPal approach to customer security"><img src="/teaser/teaserbox/image/718" alt="The PayPal approach to customer security" /></a>
+			
+			</div>
+			
+			<p>
+			
+			<a href="http://www.h-online.com/security/The-PayPal-approach-to-customer-security--/features/112564/from/teaser" title="The PayPal approach to customer security">Michael Barrett, Paypal's Chief Information Security Officer, talks about how Paypal view customer security and the new Security Key for UK Paypal users</a>
+			
+			</p>
+			
+			</li>
+      
+			
+			<li>
+			<h5>
+				<a href="http://www.h-online.com/features/Welcome-to-The-H--/112660/from/teaser" title="Welcome to The H">Welcome to The H</a>
+				</h5>
+			
+			
+			<div class="teaser_imgbox">
+			<a href="http://www.h-online.com/features/Welcome-to-The-H--/112660/from/teaser" title="Welcome to The H"><img src="/teaser/teaserbox/image/719" alt="Welcome to The H" /></a>
+			
+			</div>
+			
+			<p>
+			
+			<a href="http://www.h-online.com/features/Welcome-to-The-H--/112660/from/teaser" title="Welcome to The H">The H is the new name for heise online UK. The H is about security and open source. Read more of what The H is about</a>
+			
+			</p>
+			
+			</li>
+      
+			
+		</ul>
+
+</div>
+
+
+
+
+
+<div class="clear_bottom"></div>
+
+
+</div>
+
+<div id="frame_bottom"></div>
+</div>
+</div>
+<div id="sitemap_navi">
+<div class="sitemap_left">
+<h4><a href="http://www.h-online.com/" title="The H">The H</a></h4>
+        <ul>
+            <li><a href="http://www.h-online.com/news/" title="Last 7 days news and features">Last 7 days</a></li>
+            <li><a href="http://www.h-online.com/news/archive/" title="News Archive">News Archive</a></li>
+        	<li><a href="http://www.h-online.com/forum/S-The-H/forum-108309/list/" title="Forums">Forums</a></li>
+        </ul>
+</div>
+<div>
+<h4><a href="http://www.h-online.com/open/" title="The H open source">The H open source</a></h4>
+        <ul>
+       		<li><a href="http://www.h-online.com/open/news/" title="Last 7 days news and features">Last 7 days</a></li>
+            <li><a href="http://www.h-online.com/open/news/archive/" title="News Archive">News Archive</a></li>
+			<li><a href="http://www.h-online.com/open/forum/S-The-H-Open-Source/forum-108318/list/" title="Forums">Forums</a></li>
+        </ul>
+</div>
+<div>
+<h4><a href="http://www.h-online.com/security/" title="The H Security">The H Security</a></h4>
+        <ul>
+            <li><a href="http://www.h-online.com/security/news/" title="Last 7 days news and features">Last 7 days</a></li>
+            <li><a href="http://www.h-online.com/security/news/archive/" title="News Archive">News Archive</a></li>
+        	<li><a href="http://www.h-online.com/security/forum/" title="Forums">Forums</a></li>
+        </ul>
+	</div>
+
+	<div>
+		<h4><a href="http://www.h-online.com/security/services/" title="The H Internet Toolkit">The H Internet Toolkit</a></h4>
+        <ul>
+            <li><a href="http://www.h-online.com/security/services/antivirus/" title="Anti-Virus">Anti-Virus</a></li>
+            <li><a href="http://www.h-online.com/security/services/browsercheck/" title="Browsercheck">Browsercheck</a></li>
+            <li><a href="http://www.h-online.com/security/services/emailcheck/" title="Emailcheck">Emailcheck</a></li>
+	        <li><a href="http://www.h-online.com/nettools/tools/chksslkey" title="Test SSL certificates">Test SSL certificates</a></li>
+			<li><a href="http://www.h-online.com/nettools/tools/whois-query" title="Whois query">Whois query</a></li>
+        </ul>
+</div>
+<div>
+    <ul style="margin-top: 1.5em">
+		<li><a href="http://www.h-online.com/nettools/tools/ip/" title="My IP address">My IP address</a></li>
+		<li><a href="http://www.h-online.com/nettools/tools/traceroute" title="Traceroute">Traceroute</a></li>
+		<li><a href="http://www.h-online.com/nettools/tools/dns-query" title="DNS query">DNS query</a></li>
+		<li><a href="http://www.h-online.com/nettools/subnet-calculator.shtml" title="Subnet calculator">Subnet calculator</a></li>
+		<li><a href="http://www.h-online.com/nettools/tools/mac-addresses" title="MAC addresses">MAC addresses</a></li>
+    </ul>
+</div>
+<div>
+    <ul style="margin-top: 1.5em">      
+		<li><a href="http://www.h-online.com/nettools/rfc" title="Requests For Comments">RFCs</a></li>
+		<li><a href="http://www.h-online.com/nettools/tools/ping" title="Ping">Ping</a></li>
+		<li><a href="http://www.h-online.com/nettools/bandwidth-calculator.shtml" title="Bandwidth calculator">Bandwidth calculator</a></li>
+		<li><a href="http://www.h-online.com/nettools/tools/spam-list-query" title="Spam list query">Spam list query</a></li>
+		<li><a href="http://www.h-online.com/nettools/ip-addresses.shtml" title="IP addresses">IP addresses</a></li>
+    </ul>
+</div>
+
+
+</div>
+
+<div id="footer">
+<span class="left">Copyright &copy; 2009 <a href="/contact/">Heise Media UK Ltd.</a></span>
+<span class="right"><a href="/open/privacy/">Privacy Policy</a> <a href="/open/contact/">Contact us</a></span>
+</div>
+
+<div id="bannerzone">
+<div id="leaderboard">
+<!--OAS AD="Top" CM="google02_39ros08uk"-->
+<script type="text/javascript"><!--
+google_ad_client = "pub-4634662068732588";
+/* leaderboard_uk_heise */
+google_ad_slot = "8403620876";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/675617144/Top/OasDefault/google02_39ros08uk/google04_14ros08uk_sky_uk_block_text.html/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+
+</div>
+<div id="heiseadvert">
+<!--OAS AD="TopLeft" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/725981237/TopLeft/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/725981237/TopLeft/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+<!--OAS AD="Top1" CM="default"-->
+<a href="http://oas.heise.de/RealMedia/ads/click_lx.ads/www.heise-online.co.uk/open/655915513/Top1/OasDefault/default/empty.gif/32306231333130313439636265656230" rel="external"><img src="http://oas.heise.de/RealMedia/ads/Creatives/OasDefault/default/empty.gif"  width="2" height="2" alt="" border="0" /></a><img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/655915513/Top1/OasDefault/default/empty.gif/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+<!--OAS AD="TopRight" CM="etracker_uk_open"-->
+<!-- etracker PARAMETER 2.3 -->
+<script type="text/javascript">
+var et_easy     = 0;
+var et_ssl      = 0;
+var et_pagename = location.pathname == '/' ? "" : location.pathname;
+var et_areas    = "open";
+var et_ilevel   = 0;
+var et_se = 4;
+</script>
+<!-- etracker PARAMETER END -->
+
+<!-- etracker URL PARAMETER 2.3 -->
+<script type="text/javascript"><!--
+var et_up=''; function et_pQ(param){var ll,fl, pV, rS; var qS=
+document.location.search; pV=""; if(qS.length>1){ qS=qS.substr
+(1);fl=qS.indexOf(param);if(fl!=-1){fl+=param.length + 1;ll=qS
+.indexOf('&',fl);if(ll== - 1 )ll = qS.length;pV = qS.substring
+(fl,ll);rS=new RegExp(" ",'g');pV=pV.replace( rS,'+' ); fl=pV.
+indexOf('=',0);pV = pV.substring( fl+1 );}}return pV;}if((tc =
+et_pQ( "et_cid" ))&&(tl=et_pQ( "et_lid" )))et_up += "&amp;et"+
+"_cid=" + tc +  "&amp;et_lid="  + tl ; if( typeof( et_sub ) !=
+"undefined" && typeof( et_sub )!="unknown")et_up += "&amp;et"+
+"_sub="+et_sub;else if( et_tmp=et_pQ( "et_sub" ))et_up += "&"+
+"amp;et_sub="+et_tmp;if( typeof( et_target ) != "undefined" &&
+typeof( et_target )!="unknown") if (tt = et_pQ("et_target") ||
+et_target!="" ){ tv = et_pQ("et_tval"); to = et_pQ("et_tonr");
+ts=et_pQ("et_tsale");}
+//--></script>
+<!-- etracker URL PARAMETER 2.3 END -->
+<!-- etracker CODE 2.3 -->
+<script type="text/javascript"><!--
+var et_server = "http://www.etracker.de";
+var et_sslserver = "https://www.etracker.de";
+var et_referer = et_server + '/app?et=', cex = '';
+var et_la = '', et_js = 1, et_pl, et_co, et_iw,  et_sh, et_sw;
+var et_sc = 'na',   et_gp = '',   lt = '<',   et_ih ,  et_up ;
+if( typeof( tt ) == "undefined" || typeof( tt ) == "unknown" )
+{var tt='';} var tv, to,  ts,  et_tmp; function et_eC( param )
+{var et_a = '', et_t = '', et_p = '', et_b='', et_s='',et; var
+et_ref=escape(document.referrer);if(et_js>=1.3){if(typeof(top.
+document)=='object')eval('try{et_ref=escape(top.document.ref'+
+'errer);}catch(e){et_ref="";}');} if(et_ref!='') et_gp+='&am'+
+'p;ref='+et_ref; et_gp +='&amp;swidth='+et_sw+'&amp;sheight='+
+et_sh+'&amp;siwidth='+et_iw+'&amp;siheight='+et_ih+'&amp;sco'+
+'okie='+et_co+'&amp;scolor='+et_sc;if(et_easy)et_gp+='&amp;e'+
+'t_easy=1'; if( et_pl!='' ) et_gp+='&amp;p='+escape(et_pl);if(
+et_areas != '' )et_gp += '&amp;et_areas='+escape(et_areas);if(
+typeof(et_target)== "undefined"||typeof(et_target)=="unknown")
+{et_target = ""; et_tval = "0";  et_tonr = "0"; et_tsale = 0;}
+et_gp+="&amp;"+"et_target="+ escape( tt.length?tt:et_target )+
+"," + ( tv?tv:et_tval ) + "," + ( to?to:et_tonr )+ ","+(ts?ts:
+et_tsale )+","+( typeof( et_cust ) == "number"?et_cust:0 );if(
+typeof( et_lpage )=='undefined' ||typeof(et_lpage)=='unknown')
+et_lpage=''; else et_gp += '&amp;et_lpage='+et_lpage;if(typeof
+(et_se) == 'undefined' || typeof(et_se)=='unknown')et_se='';if
+(et_se!='')et_gp +='&amp;et_se='+et_se;if(typeof( et_trig ) ==
+'undefined'||typeof(et_trig)=='unknown')et_trig='';if( et_trig
+!='' )et_gp+='&amp;et_trig='+et_trig;if(et_pagename!='') et_gp
++='&amp;et_pagename='+escape(et_pagename);if(typeof(et_basket)
+=='string')et_gp += '&amp;et_basket=' + escape(et_basket); if(
+typeof(et_up)=='undefined'||typeof(et_up)=='unknown')et_up='';
+et=document.location.href.split('?'); et_gp += '&amp;et_url='+
+escape( et[0] ); et_gp += '&amp;slang=' +et_la; tc=new Date();
+document.write( lt + "a target='_blank' href='" +  et_referer+
+param+"'>" +lt  + "img border='0' alt='' src='" + ( et_ssl==1?
+et_sslserver:et_server) + "/cnt.php?v=2.3&amp;java=y&amp;tc="+
+tc.getTime()+ "&amp;et="+param +"&amp;et_ilevel=" + et_ilevel+
+et_gp  +  et_up  +  "'/>" +lt+"/a>"  ) ; }  //--></script>
+<script type='text/javascript'>document.write(lt+'script lan'+
+'guage="JavaScript1.3"> var et_js = 1.3;' + lt + '/script>' );
+</script><script type='text/javascript'> et_sw = screen.width;
+et_sh = screen.height; et_sc = ( screen.pixelDepth ) ? screen.
+pixelDepth:screen.colorDepth;if(et_js>=1.3){eval('try{et_iw='+
+'top.innerWidth;et_ih=top.innerHeight;}catch(e){et_iw=window'+
+'.innerWidth;et_ih=window.innerHeight;}');}et_co = (navigator.
+cookieEnabled==true?1:(navigator.cookieEnabled==false?2:0));if
+(navigator.language)et_la=navigator.language;else if(navigator
+.userLanguage  )  et_la  =  navigator.userLanguage;  </script>
+<script type='text/javascript'> et_eC( '86m8Nm' );</script>
+
+<!-- etracker CODE NOSCRIPT -->
+<noscript>
+<p><a href='http://www.etracker.de/app?et=86m8Nm'>
+<img style='border:0px;' alt='' src='http://www.etracker.de/cnt.php?
+et=86m8Nm&amp;v=2.3&amp;java=n&amp;et_easy=0
+&amp;et_pagename=
+&amp;et_areas=open&amp;et_ilevel=0&amp;et_target=,,,1
+&amp;et_lpage=&amp;et_trig=&amp;et_se=0&amp;et_cust=0
+&amp;et_basket=&amp;et_url='/></a></p>
+</noscript>
+<!-- etracker CODE END -->
+<img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/185008538/TopRight/OasDefault/etracker_uk_open/etracker_sec.html/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+<!--OAS AD="Middle" CM="zz_heise_uk"-->
+<img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/416435999/Middle/OasDefault/zz_heise_uk/zz_autos_img.html/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+
+</div>
+<div id="skyscraper">
+<!--OAS AD="Left1" CM="google04_14ros08uk"-->
+<script type="text/javascript"><!--
+google_ad_client = "pub-4634662068732588";
+/* sky_uk_block_text */
+google_ad_slot = "0349680265";
+google_ad_width = 120;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<img src="http://oas.heise.de/RealMedia/ads/adstream_lx.ads/www.heise-online.co.uk/open/1113273908/Left1/OasDefault/google04_14ros08uk/google04_14ros08uk_sky_uk_block_text.html/32306231333130313439636265656230?_RM_EMPTY_" width="1" height="1" alt="" />
+
+</div>
+</div>
+</div>
+
+<div style="display: inline;"><img id="ivw_pixel_intern" src="/ivw-bin/ivw/CP/open/news/112864" width="1" height="1" alt="" /></div>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+    var IVW='<div style="display: inline;"><img id="ivw_pixel" src="http://heise.ivwbox.de/cgi-bin/ivw/CP/heise_uk;/open/news/112864?r=';
+    document.write(IVW + '&amp;d=' + (Math.random()*100000) + '" width="1" height="1" alt="" /><' + '/div>');
+//--><!]]>
+</script>
+<script type="text/javascript" src="/support/lib/mclient/mclient-1.0.js"></script>
+<noscript>
+    <div style="display: inline;"><img src="http://heise.ivwbox.de/cgi-bin/ivw/CP/heise_uk;/open/news/112864?r=&amp;d=70327.3779080021" width="1" height="1" alt="" /></div>
+</noscript>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+    window.onunload=function() {};
+//--><!]]>
+</script>
+
+<!-- SZMFRABO VERSION="1.2" -->
+    <script type="text/javascript">
+    <!--//--><![CDATA[//><!--
+        var szmvars="heise//CP//heise_uk";
+    //--><!]]>
+    </script>
+    <script src="http://heise.ivwbox.de/2004/01/survey.js" type="text/javascript"></script>
+<!-- /SZMFRABO -->
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,1180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<HTML>
+<HEAD>
+<TITLE>Ruby QuickRef</TITLE>
+<LINK REV="MADE" HREF="http://www.zenspider.com/Contact.html">
+<LINK REL="STYLESHEET" HREF="/style.css" TYPE="text/css" title="/style.css">
+<META NAME="rating" CONTENT="general">
+<META NAME="GENERATOR" CONTENT="ZenWeb v. 2.18.0 http://www.zenspider.com/ZSS/Products/ZenWeb/">
+<STYLE TYPE="text/css">
+body { background-color: white }
+
+</STYLE><META NAME="author" CONTENT="Ryan Davis">
+<META NAME="copyright" CONTENT="1996-2005, Zen Spider Software">
+<META NAME="keywords" CONTENT="Programming, Languages, Ruby, Quick Reference">
+<META NAME="description" CONTENT="Ruby quick reference.">
+<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=utf-8"><meta name="ICBM" content="47.61924, -122.32644773">
+<meta name="DC.title" content="Ruby QuickRef"><link rel="up" href="/Languages/Ruby/index.html" title="Ruby">
+<link rel="contents" href="/SiteMap.html" title="SiteMap">
+<link rel="top" href="/index.html" title="Zen Spider Website">
+</HEAD>
+<BODY>
+<P class="navbar">
+<A HREF="/SiteMap.html">Sitemap</A> | <A HREF="/Search.html"><EM>Search</EM></A> || <A HREF="/index.html">Zen Spider Website</A>
+ / <A HREF="/Languages/index.html">The Language Freak</A>
+ / <A HREF="/Languages/Ruby/index.html">Ruby</A>
+ / Ruby QuickRef</P>
+<H1>Ruby QuickRef</H1>
+<HR CLASS="thick">
+
+<H2><A NAME="0">Contents:</A></H2>
+
+<UL>
+  <LI><A HREF="#0">Contents</A></LI>
+  <LI><A HREF="#1">Language</A>
+    <UL>
+      <LI><A HREF="#2">General Syntax Rules</A></LI>
+      <LI><A HREF="#3">Reserved words</A></LI>
+      <LI><A HREF="#4">Types</A>
+        <UL>
+          <LI><A HREF="#5">Numbers</A></LI>
+          <LI><A HREF="#6">Strings</A>
+            <UL>
+              <LI><A HREF="#7">Backslashes</A></LI>
+              <LI><A HREF="#8">Here Docs</A></LI>
+            </UL>
+          </LI>
+          <LI><A HREF="#9">Symbols</A></LI>
+          <LI><A HREF="#10">Ranges</A></LI>
+          <LI><A HREF="#11">Regexen</A></LI>
+          <LI><A HREF="#12">Arrays</A></LI>
+          <LI><A HREF="#13">Hashes</A></LI>
+          <LI><A HREF="#14">Files</A>
+            <UL>
+              <LI><A HREF="#15">Mode Strings</A></LI>
+            </UL>
+          </LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#16">Variables</A></LI>
+      <LI><A HREF="#17">Pseudo variables</A></LI>
+      <LI><A HREF="#18">Pre-defined variables</A></LI>
+      <LI><A HREF="#19">Pre-defined global constants</A></LI>
+      <LI><A HREF="#20">Expressions</A>
+        <UL>
+          <LI><A HREF="#21">Terms</A></LI>
+          <LI><A HREF="#22">Operators and Precedence</A></LI>
+          <LI><A HREF="#23">Control Expressions</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#24">Invoking a Method</A></LI>
+      <LI><A HREF="#25">Defining a Class</A></LI>
+      <LI><A HREF="#26">Defining a Module</A></LI>
+      <LI><A HREF="#27">Defining a Method</A>
+        <UL>
+          <LI><A HREF="#28">Access Restriction</A></LI>
+          <LI><A HREF="#29">Accessors</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#30">Aliasing</A></LI>
+      <LI><A HREF="#31">Blocks, Closures, and Procs</A>
+        <UL>
+          <LI><A HREF="#32">Blocks/Closures</A></LI>
+          <LI><A HREF="#33">Proc Objects</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#34">Exceptions, Catch, and Throw</A>
+        <UL>
+          <LI><A HREF="#35">Raising and Rescuing</A></LI>
+          <LI><A HREF="#36">Catch and Throw</A></LI>
+        </UL>
+      </LI>
+    </UL>
+  </LI>
+  <LI><A HREF="#37">Standard Library</A>
+    <UL>
+      <LI><A HREF="#38">Built-in Library</A>
+        <UL>
+          <LI><A HREF="#39">Class Hierarchy</A></LI>
+          <LI><A HREF="#40">Modules</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#41">Standard Library</A></LI>
+    </UL>
+  </LI>
+  <LI><A HREF="#42">Tools</A>
+    <UL>
+      <LI><A HREF="#43">ruby</A>
+        <UL>
+          <LI><A HREF="#44">Command Line Options</A></LI>
+          <LI><A HREF="#45">Environment Variables</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#46">irb</A></LI>
+      <LI><A HREF="#47">xmp</A></LI>
+      <LI><A HREF="#48">ruby-mode</A></LI>
+      <LI><A HREF="#49">Debugger</A></LI>
+      <LI><A HREF="#50">rdoc</A></LI>
+    </UL>
+  </LI>
+  <LI><A HREF="#51">Mindshare, Idiom and Patterns</A>
+    <UL>
+      <LI><A HREF="#52">Object Design</A>
+        <UL>
+          <LI><A HREF="#53">Visitor Pattern</A></LI>
+          <LI><A HREF="#54">Class SimpleDelegator, DelegateClass</A></LI>
+          <LI><A HREF="#55">Module Observer</A></LI>
+          <LI><A HREF="#56">Module Singleton</A></LI>
+        </UL>
+      </LI>
+      <LI><A HREF="#57">Other Third-party Libraries</A>
+        <UL>
+          <LI><A HREF="#58">Racc</A></LI>
+          <LI><A HREF="#59">Test::Unit</A></LI>
+        </UL>
+      </LI>
+    </UL>
+  </LI>
+</UL>
+<PRE><script type="text/javascript"><!--
+google_ad_client = "pub-2178088302342288";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="2870910990";
+google_color_border = "000000";
+google_color_bg = "F0F0F0";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></PRE>
+
+<H2><A NAME="1">Language</A></H2>
+
+<H3><A NAME="2">General Syntax Rules</A></H3>
+
+<UL>
+  <LI>Comments start with a pound/sharp (#) character and go to EOL.</LI>
+  <LI>Ruby programs are sequence of expressions. </LI>
+  <LI>Each expression is delimited by semicolons(;) or newlines unless obviously incomplete (e.g. trailing '+').</LI>
+  <LI>Backslashes at the end of line does not terminate expression.</LI>
+</UL>
+<H3><A NAME="3">Reserved words</A></H3>
+
+<PRE>alias   and     BEGIN   begin   break   case    class   def     defined?
+do      else    elsif   END     end     ensure  false   for     if 
+in      module  next    nil     not     or      redo    rescue  retry 
+return  self    super   then    true    undef   unless  until   when 
+while   yield </PRE>
+
+<H3><A NAME="4">Types</A></H3>
+
+<P>Basic types are numbers, strings, ranges, regexen, symbols, arrays,
+and hashes. Also included are files because they are used so often.</P>
+
+<H4><A NAME="5">Numbers</A></H4>
+
+<PRE>123 1_234 123.45 1.2e-3 0xffff (hex) 0b01011 (binary) 0377 (octal)
+?a       ASCII character
+?\C-a    Control-a
+?\M-a    Meta-a
+?\M-\C-a Meta-Control-a</PRE>
+
+<H4><A NAME="6">Strings</A></H4>
+
+<P>In all of the %() cases below, you may use any matching characters or
+any single character for delimiters. %[], %!!, %@@, etc.</P>
+
+<PRE>'no interpolation'
+"#{interpolation}, and backslashes\n"
+%q(no interpolation)
+%Q(interpolation and backslashes)
+%(interpolation and backslashes)
+`echo command interpretation with interpolation and backslashes`
+%x(echo command interpretation with interpolation and backslashes)</PRE>
+
+<H5><A NAME="7">Backslashes</A></H5>
+
+<PRE>\t (tab), \n (newline), \r (carriage return), \f (form feed), \b
+(backspace), \a (bell), \e (escape), \s (whitespace), \nnn (octal),
+\xnn (hexadecimal), \cx (control x), \C-x (control x), \M-x (meta x),
+\M-\C-x (meta control x)</PRE>
+
+<H5><A NAME="8">Here Docs</A></H5>
+
+<PRE>&lt;&lt;identifier   - interpolated, goes until identifier
+&lt;&lt;"identifier" - same thing
+&lt;&lt;'identifier' - no interpolation
+&lt;&lt;-identifier  - you can indent the identifier by using "-" in front</PRE>
+
+<H4><A NAME="9">Symbols</A></H4>
+
+<P>Internalized String. Guaranteed to be unique and quickly
+comparable. Ideal for hash keys. Symbols may not contain \0 or be
+empty.</P>
+
+<PRE>:symbol                         =&gt; :symbol
+:'#{"without"} interpolation'  =&gt; :"#{&quot;without&quot;} interpolation"
+:"#{"with"} interpolation"     =&gt; :"with interpolation"
+%s(#{"without"} interpolation) =&gt; :"#{&quot;without&quot;} interpolation"</PRE>
+
+<H4><A NAME="10">Ranges</A></H4>
+
+<PRE>1..10
+1...10
+'a'..'z'
+'a'...'z'
+(1..10)  === 5   =&gt; true
+(1..10)  === 10  =&gt; true
+(1...10) === 10  =&gt; false
+(1..10)  === 15  =&gt; false
+
+while gets # prints lines starting at 'start' and ending at 'end'
+  print if /start/../end/
+end</PRE>
+
+<PRE>class Comparable
+  # ...
+  def &lt;=&gt;(rhs)
+    # ...
+  end
+  def succ
+    # ...
+  end
+end
+range = RangeThingy.new(lower_bound)..RangeThingy.new(upper_bound)</PRE>
+
+<H4><A NAME="11">Regexen</A></H4>
+
+<P>Test out your regexen in irb or on: <A HREF="http://www.rubyxp.com/">www.rubyxp.com</A></P>
+
+<P>Usual recommended form:</P>
+
+<PRE>str =~ /regex/</PRE>
+
+<P>Lexical options:</P>
+
+<PRE>/normal regex/iomx[neus]
+%rXalternate formX (where X can be any character or pair () {} etc)</PRE>
+
+<P>options:</P>
+
+<PRE>/i         case insensitive
+/o         only interpolate #{} blocks once
+/m         multiline mode - '.' will match newline
+/x         extended mode - whitespace is ignored
+/[neus]    encoding: none, EUC, UTF-8, SJIS, respectively</PRE>
+
+<P>regex characters:</P>
+
+<PRE>.             any character except newline
+[ ]           any single character of set
+[^ ]          any single character NOT of set
+*             0 or more previous regular expression
+*?            0 or more previous regular expression (non-greedy)
++             1 or more previous regular expression
++?            1 or more previous regular expression (non-greedy)
+?             0 or 1 previous regular expression
+|             alternation
+( )           grouping regular expressions
+^             beginning of a line or string
+$             end of a line or string
+{m,n}         at least m but most n previous regular expression
+{m,n}?        at least m but most n previous regular expression (non-greedy)
+\1-9          nth previous captured group
+\&amp;            whole match
+\`            pre-match
+\'            post-match
+\+            highest group matched
+\A            beginning of a string
+\b            backspace(0x08)(inside[]only)
+\b            word boundary(outside[]only)
+\B            non-word boundary
+\d            digit, same as[0-9]
+\D            non-digit
+\S            non-whitespace character
+\s            whitespace character[ \t\n\r\f]
+\W            non-word character
+\w            word character[0-9A-Za-z_]
+\z            end of a string
+\Z            end of a string, or before newline at the end
+(?#)          comment
+(?:)          grouping without backreferences
+(?=)          zero-width positive look-ahead assertion
+(?!)          zero-width negative look-ahead assertion
+(?>)          nested anchored sub-regexp. stops backtracking.
+(?imx-imx)    turns on/off imx options for rest of regexp.
+(?imx-imx:re) turns on/off imx options, localized in group.</PRE>
+
+<P>special character classes:</P>
+
+<PRE>[:alnum:]   alpha-numeric characters
+[:alpha:]   alphabetic characters
+[:blank:]   whitespace - does not include tabs, carriage returns, etc
+[:cntrl:]   control characters
+[:digit:]   decimal digits
+[:graph:]   graph characters
+[:lower:]   lower case characters
+[:print:]   printable characters
+[:punct:]   punctuation characters
+[:space:]   whitespace, including tabs, carriage returns, etc
+[:upper:]   upper case characters
+[:xdigit:]  hexadecimal digits</PRE>
+
+<H4><A NAME="12">Arrays</A></H4>
+
+<PRE>[1, 2, 3]
+%w(foo bar baz)
+%W(foo bar baz #{var})</PRE>
+
+<P>Indexes may be negative, and they index backwards (eg -1 is last element).</P>
+
+<H4><A NAME="13">Hashes</A></H4>
+
+<PRE>{1=&gt;2, 2=&gt;4, 3=&gt;6}
+{ expr =&gt; expr...}</PRE>
+
+<H4><A NAME="14">Files</A></H4>
+
+<P>Common methods include:</P>
+
+<UL>
+  <LI>File.join(p1, p2, ... pN) => "p1/p2/.../pN" platform independent paths</LI>
+  <LI>File.new(path, modestring="r") => file</LI>
+  <LI>File.new(path, modenum [, permnum]) => file</LI>
+  <LI>File.open(fileName, aModeString="r") {|file| block} -> nil </LI>
+  <LI>File.open(fileName [, aModeNum [, aPermNum ]]) {|file| block} -> nil </LI>
+  <LI>IO.foreach(path, sepstring=$/) {|line| block}</LI>
+  <LI>IO.readlines(path) => array</LI>
+</UL>
+<H5><A NAME="15">Mode Strings</A></H5>
+
+<DL>
+  <DT>r</DT>
+  <DD>Read-only, starts at beginning of file (default mode).</DD>
+
+  <DT>r+</DT>
+  <DD>Read-write, starts at beginning of file.</DD>
+
+  <DT>w</DT>
+  <DD>Write-only, truncates existing file to zero length or creates a new file for writing.</DD>
+
+  <DT>w+</DT>
+  <DD>Read-write, truncates existing file to zero length or creates a new file for reading and writing.</DD>
+
+  <DT>a</DT>
+  <DD>Write-only, starts at end of file if file exists, otherwise creates a new file for writing.</DD>
+
+  <DT>a+</DT>
+  <DD>Read-write, starts at end of file if file exists, otherwise creates a new file for reading and writing.</DD>
+
+  <DT>b</DT>
+  <DD>(DOS/Windows only) Binary file mode (may appear with any of the key letters listed above).</DD>
+
+</DL>
+
+<H3><A NAME="16">Variables</A></H3>
+
+<PRE>$global_variable
+@@class_variable
+@instance_variable
+[OtherClass::]CONSTANT
+local_variable</PRE>
+
+<H3><A NAME="17">Pseudo variables</A></H3>
+
+<PRE>self     the receiver of the current method
+nil      the sole instance of the Class NilClass(represents false)
+true     the sole instance of the Class TrueClass(typical true value)
+false    the sole instance of the Class FalseClass(represents false)
+__FILE__ the current source file name.
+__LINE__ the current line number in the source file.</PRE>
+
+<H3><A NAME="18">Pre-defined variables</A></H3>
+
+<PRE>$!         The exception information message set by 'raise'.
+$@         Array of backtrace of the last exception thrown.
+$&amp;         The string matched by the last successful match.
+$`         The string to the left  of the last successful match.
+$'         The string to the right of the last successful match.
+$+         The highest group matched by the last successful match.
+$1         The Nth group of the last successful match. May be &gt; 1.
+$~         The information about the last match in the current scope.
+$=         The flag for case insensitive, nil by default.
+$/         The input record separator, newline by default.
+$\         The output record separator for the print and IO#write. Default is nil.
+$,         The output field separator for the print and Array#join.
+$;         The default separator for String#split.
+$.         The current input line number of the last file that was read.
+$&lt;         The virtual concatenation file of the files given on command line (or from $stdin if no files were given).
+$&gt;         The default output for print, printf. $stdout by default.
+$_         The last input line of string by gets or readline.
+$0         Contains the name of the script being executed. May be assignable.
+$*         Command line arguments given for the script sans args.
+$$         The process number of the Ruby running this script.
+$?         The status of the last executed child process.
+$:         Load path for scripts and binary modules by load or require.
+$"         The array contains the module names loaded by require.
+$DEBUG     The status of the -d switch.
+$FILENAME  Current input file from $&lt;. Same as $&lt;.filename.
+$LOAD_PATH The alias to the $:.
+$stderr    The current standard error output.
+$stdin     The current standard input.
+$stdout    The current standard output.
+$VERBOSE   The verbose flag, which is set by the -v switch.
+$-0        The alias to $/.
+$-a        True if option -a is set. Read-only variable.
+$-d        The alias to $DEBUG.
+$-F        The alias to $;.
+$-i        In in-place-edit mode, this variable holds the extension, otherwise nil.
+$-I        The alias to $:.
+$-l        True if option -l is set. Read-only variable.
+$-p        True if option -p is set. Read-only variable.
+$-v        The alias to $VERBOSE.
+$-w        True if option -w is set.</PRE>
+
+<H3><A NAME="19">Pre-defined global constants</A></H3>
+
+<PRE>TRUE              The typical true value.
+FALSE             The false itself.
+NIL               The nil itself.
+STDIN             The standard input. The default value for $stdin.
+STDOUT            The standard output. The default value for $stdout.
+STDERR            The standard error output. The default value for $stderr.
+ENV               The hash contains current environment variables.
+ARGF              The alias to the $&lt;.
+ARGV              The alias to the $*.
+DATA              The file object of the script, pointing just after __END__.
+RUBY_VERSION      The ruby version string (VERSION was deprecated).
+RUBY_RELEASE_DATE The release date string.
+RUBY_PLATFORM     The platform identifier.</PRE>
+
+<H3><A NAME="20">Expressions</A></H3>
+
+<H4><A NAME="21">Terms</A></H4>
+
+<P>Terms are expressions that may be a basic type (listed above), a shell
+command, variable reference, constant reference, or method invocation.</P>
+
+<H4><A NAME="22">Operators and Precedence</A></H4>
+
+<PRE>(Top to bottom)
+:: .
+[]
+**
+-(unary) +(unary) ! ~
+*  /  %
++  -
+&lt;&lt;  &gt;&gt;
+&amp;
+|  ^
+&gt;  &gt;=  &lt;  &lt;=
+&lt;=&gt; == === != =~ !~
+&amp;&amp;
+||
+.. ...
+=(+=, -=...)
+not
+and or</PRE>
+
+<P>All of the above are just methods except these:</P>
+
+<PRE>=, ::, ., .., ..., !, not, &amp;&amp;, and, ||, or, !=, !~</PRE>
+
+<P>In addition, assignment operators(+= etc.) are not user-definable.</P>
+
+<H4><A NAME="23">Control Expressions</A></H4>
+
+<PRE><div style="float:right">
+<script type="text/javascript"><!--
+google_ad_client = "pub-2178088302342288";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_type = "text";
+google_ad_channel ="2870910990";
+google_color_border = "000000";
+google_color_bg = "F0F0F0";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div></PRE>
+
+<PRE>if bool-expr [then]
+  body
+elsif bool-expr [then]
+  body
+else
+  body
+end</PRE>
+
+<PRE>unless bool-expr [then]
+  body
+else
+  body
+end</PRE>
+
+<PRE>expr if     bool-expr
+expr unless bool-expr</PRE>
+
+<PRE>case target-expr
+  when comparison [, comparison]... [then]
+    body
+  when comparison [, comparison]... [then]
+    body
+  ...
+[else
+  body]
+end</PRE>
+
+<P>(comparisons may be regexen)</P>
+
+<PRE>loop do
+  body
+end</PRE>
+
+<PRE>while bool-expr [do]
+ body
+end</PRE>
+
+<PRE>until bool-expr [do]
+ body
+end</PRE>
+
+<PRE>begin
+ body
+end while bool-expr</PRE>
+
+<PRE>begin
+ body
+end until bool-expr</PRE>
+
+<PRE>for name[, name]... in expr [do]
+  body
+end</PRE>
+
+<PRE>expr.each do | name[, name]... |
+  body
+end</PRE>
+
+<PRE>expr while bool-expr
+expr until bool-expr</PRE>
+
+<UL>
+  <LI>break terminates loop immediately.</LI>
+  <LI>redo  immediately repeats w/o rerunning the condition.</LI>
+  <LI>next  starts the next iteration through the loop.</LI>
+  <LI>retry restarts the loop, rerunning the condition.</LI>
+</UL>
+<H3><A NAME="24">Invoking a Method</A></H3>
+
+<P>Nearly everything available in a method invocation is optional,
+consequently the syntax is very difficult to follow. Here are some
+examples:</P>
+
+<UL>
+  <LI>method</LI>
+  <LI>obj.method</LI>
+  <LI>Class::method</LI>
+  <LI>method(key1 =&gt; val1, key2 =&gt; val2)
+    <UL>
+      <LI>is <b>one</b> argument for def method(hash_arg) !</LI>
+    </UL>
+  </LI>
+  <LI>method(arg1, *[arg2, arg3]) becomes: method(arg1, arg2, arg3)</LI>
+  <LI>as ugly as you want it to be:
+    <UL>
+      <LI>method(arg1, key1 =&gt; val1, key2 =&gt; val2, *splat_arg) #{ block }</LI>
+    </UL>
+  </LI>
+</UL>
+<PRE>invocation := [receiver ('::' | '.')] name [ parameters ] [ block ]
+parameters := ( [param]* [, hashlist] [*array] [&amp;aProc] )
+block      := { blockbody } | do blockbody end </PRE>
+
+<H3><A NAME="25">Defining a Class</A></H3>
+
+<P>Class names begin w/ capital character.</P>
+
+<PRE>class Identifier [&lt; superclass ]
+  expr..
+end</PRE>
+
+<PRE># singleton classes, add methods to a single instance
+class &lt;&lt; obj
+  expr..
+end</PRE>
+
+<H3><A NAME="26">Defining a Module</A></H3>
+
+<PRE>module Identifier
+  expr..
+end</PRE>
+
+<H3><A NAME="27">Defining a Method</A></H3>
+
+<PRE>def method_name(arg_list, *list_expr, &amp;block_expr)
+  expr..
+end</PRE>
+
+<PRE># singleton method
+def expr.identifier(arg_list, *list_expr, &amp;block_expr)
+  expr..
+end</PRE>
+
+<UL>
+  <LI>All items of the arg list, including parens, are optional.</LI>
+  <LI>Arguments may have default values (name=expr).</LI>
+  <LI>Method_name may be operators (see above).</LI>
+  <LI>The method definitions can not be nested.</LI>
+  <LI>Methods may override operators: .., |, ^, &amp;, &lt;=&gt;, ==, ===, =~, &gt;, &gt;=, &lt;, &lt;=, +, -, *, /, %, **, &lt;&lt;, &gt;&gt;, ~, +@, -@, [], []= (2 args)</LI>
+</UL>
+<H4><A NAME="28">Access Restriction</A></H4>
+
+<UL>
+  <LI>public - totally accessible.</LI>
+  <LI>protected - accessible only by instances of class and direct descendants. Even through hasA relationships. (see below)</LI>
+  <LI>private - accessible only by instances of class (must be called nekkid no "self." or anything else).</LI>
+</UL>
+<UL>
+  <LI>Restriction used w/o arguments set the default access control.</LI>
+  <LI>Used with arguments, sets the access of the named methods and constants.</LI>
+</UL>
+<PRE>class A
+  protected
+  def protected_method
+    # nothing
+  end
+end
+class B < A
+  public
+  def test_protected
+    myA = A.new
+    myA.protected_method
+  end
+end
+b = B.new.test_protected</PRE>
+
+<H4><A NAME="29">Accessors</A></H4>
+
+<P>Class Module provides the following utility methods:</P>
+
+<DL>
+  <DT>attr_reader &lt;attribute&gt;[, &lt;attribute&gt;]...</DT>
+  <DD>Creates a read-only accessor for each &lt;attribute&gt;.</DD>
+
+  <DT>attr_writer &lt;attribute&gt;[, &lt;attribute&gt;]...</DT>
+  <DD>Creates a write-only accessor for each &lt;attribute&gt;.</DD>
+
+  <DT>attr &lt;attribute&gt; [, &lt;writable&gt;]</DT>
+  <DD>Equivalent to "attr_reader &lt;attribute&gt;; attr_writer &lt;attribute&gt; if &lt;writable&gt;"</DD>
+
+  <DT>attr_accessor &lt;attribute&gt;[, &lt;attribute&gt;]...</DT>
+  <DD>Equivalent to "attr &lt;attribute&gt;, TRUE" for each argument.</DD>
+
+</DL>
+
+<H3><A NAME="30">Aliasing</A></H3>
+
+<PRE>alias        :new  :old
+alias_method :new, :old</PRE>
+
+<P>Creates a new reference to whatever old referred to. old can be any
+existing method, operator, global. It may not be a local, instance,
+constant, or class variable.</P>
+
+<H3><A NAME="31">Blocks, Closures, and Procs</A></H3>
+
+<H4><A NAME="32">Blocks/Closures</A></H4>
+
+<UL>
+  <LI>blocks must follow a method invocation:</LI>
+</UL>
+<PRE>invocation do ... end
+invocation { ... }</PRE>
+
+<UL>
+  <LI>Blocks remember their variable context, and are full closures.</LI>
+  <LI>Blocks are invoked via yield and may be passed arguments.</LI>
+  <LI>Brace form has higher precedence and will bind to the last parameter if invocation made w/o parens.</LI>
+  <LI>do/end form has lower precedence and will bind to the invocation even without parens.</LI>
+</UL>
+<H4><A NAME="33">Proc Objects</A></H4>
+
+<P>Created via:</P>
+
+<UL>
+  <LI>Kernel#proc</LI>
+  <LI>Proc#new</LI>
+  <LI>By invoking a method w/ a block argument.</LI>
+</UL>
+<P>See class Proc for more information.</P>
+
+<H3><A NAME="34">Exceptions, Catch, and Throw</A></H3>
+
+<UL>
+  <LI>Exception
+    <UL>
+      <LI>NoMemoryError</LI>
+      <LI>ScriptError
+        <UL>
+          <LI>LoadError</LI>
+          <LI>NotImplementedError</LI>
+          <LI>SyntaxError</LI>
+        </UL>
+      </LI>
+      <LI>SignalException
+        <UL>
+          <LI>Interrupt</LI>
+        </UL>
+      </LI>
+      <LI>StandardError (default for rescue)
+        <UL>
+          <LI>ArgumentError</LI>
+          <LI>IOError
+            <UL>
+              <LI>EOFError</LI>
+            </UL>
+          </LI>
+          <LI>IndexError</LI>
+          <LI>LocalJumpError</LI>
+          <LI>NameError
+            <UL>
+              <LI>NoMethodError</LI>
+            </UL>
+          </LI>
+          <LI>RangeError
+            <UL>
+              <LI>FloatDomainError</LI>
+            </UL>
+          </LI>
+          <LI>RegexpError</LI>
+          <LI>RuntimeError (default for raise)</LI>
+          <LI>SecurityError</LI>
+          <LI>SystemCallError
+            <UL>
+              <LI>Errno::*</LI>
+            </UL>
+          </LI>
+          <LI>SystemStackError</LI>
+          <LI>ThreadError</LI>
+          <LI>TypeError</LI>
+          <LI>ZeroDivisionError</LI>
+        </UL>
+      </LI>
+      <LI>SystemExit</LI>
+      <LI>fatal</LI>
+    </UL>
+  </LI>
+</UL>
+<H4><A NAME="35">Raising and Rescuing</A></H4>
+
+<PRE>raise ExceptionClass[, "message"]</PRE>
+
+<PRE>begin
+  expr..
+[rescue [error_type [=> var],..]
+  expr..]..
+[else
+  expr..]
+[ensure
+  expr..]
+end</PRE>
+
+<H4><A NAME="36">Catch and Throw</A></H4>
+
+<UL>
+  <LI>catch (:label) do ... end</LI>
+  <LI>throw :label jumps back to matching catch and terminates the block.</LI>
+  <LI>  + can be external to catch, but has to be reached via calling scope.</LI>
+  <LI>  + Hardly ever needed.</LI>
+</UL>
+<H2><A NAME="37">Standard Library</A></H2>
+
+<P>Ruby comes with an extensive library of classes and modules. Some are
+built-in, and some are part of the standard library. You can
+distinguish the two by the fact that the built-in classes are in fact,
+built-in. There are no dot-rb files for them.</P>
+
+<H3><A NAME="38">Built-in Library</A></H3>
+
+<H4><A NAME="39">Class Hierarchy</A></H4>
+
+<UL>
+  <LI>Object
+    <UL>
+      <LI>Hash</LI>
+      <LI>Symbol</LI>
+      <LI>IO
+        <UL>
+          <LI>File</LI>
+        </UL>
+      </LI>
+      <LI>Continuation</LI>
+      <LI>File::Stat</LI>
+      <LI>Data</LI>
+      <LI>NilClass</LI>
+      <LI>Exception (see tree above)</LI>
+      <LI>Array</LI>
+      <LI>Proc</LI>
+      <LI>String</LI>
+      <LI>Numeric
+        <UL>
+          <LI>Float</LI>
+          <LI>Integer
+            <UL>
+              <LI>Bignum</LI>
+              <LI>Fixnum</LI>
+            </UL>
+          </LI>
+        </UL>
+      </LI>
+      <LI>Regexp</LI>
+      <LI>Thread</LI>
+      <LI>Module
+        <UL>
+          <LI>Class</LI>
+        </UL>
+      </LI>
+      <LI>ThreadGroup</LI>
+      <LI>Method
+        <UL>
+          <LI>UnboundMethod</LI>
+        </UL>
+      </LI>
+      <LI>Struct
+        <UL>
+          <LI>Struct::Tms</LI>
+        </UL>
+      </LI>
+      <LI>TrueClass</LI>
+      <LI>Time</LI>
+      <LI>Dir</LI>
+      <LI>Binding</LI>
+      <LI>Range</LI>
+      <LI>MatchData</LI>
+      <LI>FalseClass</LI>
+    </UL>
+  </LI>
+</UL>
+<H4><A NAME="40">Modules</A></H4>
+
+<UL>
+  <LI>Comparable</LI>
+  <LI>Enumerable</LI>
+  <LI>Errno</LI>
+  <LI>FileTest</LI>
+  <LI>GC</LI>
+  <LI>Kernel</LI>
+  <LI>Marshal</LI>
+  <LI>Math</LI>
+  <LI>ObjectSpace</LI>
+  <LI>Precision</LI>
+  <LI>Process</LI>
+</UL>
+<H3><A NAME="41">Standard Library</A></H3>
+
+<P>The essentials:</P>
+
+<UL>
+  <LI>benchmark.rb  a simple benchmarking utility</LI>
+  <LI>cgi-lib.rb	decode CGI data - simpler than cgi.rb</LI>
+  <LI>cgi.rb        CGI interaction</LI>
+  <LI>date.rb	date object (compatible)</LI>
+  <LI>debug.rb	ruby debugger</LI>
+  <LI>delegate.rb	delegate messages to other object</LI>
+  <LI>English.rb	access global variables by english names</LI>
+  <LI>fileutils.rb  file utility methods for copying, moving, removing, etc.</LI>
+  <LI>find.rb	traverse directory tree</LI>
+  <LI>jcode.rb	UTF-8 and Japanese String helpers (replaces String methods)</LI>
+  <LI>net/*.rb      Networking classes of all kinds</LI>
+  <LI>observer.rb	observer design pattern library (provides Observable)</LI>
+  <LI>open-uri.rb   good wrapper for net/http, net/https and net/ftp</LI>
+  <LI>open3.rb	open subprocess connection stdin/stdout/stderr</LI>
+  <LI>ostruct.rb	python style object (freeform assignment to instance vars)</LI>
+  <LI>parsearg.rb	argument parser using getopts</LI>
+  <LI>pp            prettier debugging output, 'p' on steroids.</LI>
+  <LI>profile.rb	ruby profiler - find that slow code!</LI>
+  <LI>pstore.rb	persistent object strage using marshal</LI>
+  <LI>rexml/*.rb    XML toolkit</LI>
+  <LI>singleton.rb	singleton design pattern library</LI>
+  <LI>stringio      lets you use an IO attached to a string.</LI>
+  <LI>tempfile.rb	temporary file that automatically removed</LI>
+  <LI>test/unit     unit testing framework</LI>
+  <LI>time.rb       extension to Time class with a lot of converters</LI>
+  <LI>tracer.rb	execution tracer</LI>
+  <LI>webrick       Fairly spiffy web server</LI>
+  <LI>yaml          alternative readable serialization format</LI>
+</UL>
+<H2><A NAME="42">Tools</A></H2>
+
+<H3><A NAME="43">ruby</A></H3>
+
+<H4><A NAME="44">Command Line Options</A></H4>
+
+<PRE>-0[octal]       specify record separator (\0, if no argument).
+-a              autosplit mode with -n or -p (splits $_ into $F).
+-c              check syntax only.
+-Cdirectory     cd to directory, before executing your script.
+--copyright     print the copyright and exit.
+-d              set debugging flags (set $DEBUG to true).
+-e 'command'    one line of script. Several -e's allowed.
+-F regexp       split() pattern for autosplit (-a).
+-h		  prints summary of the options.
+-i[extension]   edit ARGV files in place (make backup if extension supplied).
+-Idirectory     specify $LOAD_PATH directory (may be used more than once).
+-Kkcode         specifies KANJI (Japanese) code-set.
+-l              enable line ending processing.
+-n              assume 'while gets(); ... end' loop around your script.
+-p              assume loop like -n but print line also like sed.
+-rlibrary       require the library, before executing your script.
+-s              enable some switch parsing for switches after script name.
+-S              look for the script using PATH environment variable.
+-T[level]       turn on tainting checks.
+-v              print version number, then turn on verbose mode.
+--version       print the version and exit.
+-w              turn warnings on for your script.
+-x[directory]   strip off text before #! line and perhaps cd to directory.
+-X directory    causes Ruby to switch to the directory.
+-y              turns on compiler debug mode.</PRE>
+
+<H4><A NAME="45">Environment Variables</A></H4>
+
+<PRE>DLN_LIBRARY_PATH Search path for dynamically loaded modules.
+RUBYLIB          Additional search paths.
+RUBYLIB_PREFIX   Add this prefix to each item in RUBYLIB. Windows only.
+RUBYOPT          Additional command line options.
+RUBYPATH         With -S, searches PATH, or this value for ruby programs.
+RUBYSHELL        Shell to use when spawning.</PRE>
+
+<H3><A NAME="46">irb</A></H3>
+
+<PRE>irb [options] [script [args]]</PRE>
+
+<P>The essential options are:</P>
+
+<PRE>-d              Sets $DEBUG to true. Same as "ruby -d ..."
+-f              Prevents the loading of ~/.irb.rc.
+-h              Get a full list of options.
+-m              Math mode. Overrides --inspect. Loads "mathn.rb".
+-r module       Loads a module. Same as "ruby -r module ..."
+-v              Prints the version and exits.
+--inf-ruby-mode Turns on emacs support and turns off readline.
+--inspect       Turns on inspect mode. Default.
+--noinspect     Turns off inspect mode.
+--noprompt      Turns off the prompt.
+--noreadline    Turns off readline support.
+--prompt        Sets to one of 'default', 'xmp', 'simple', or 'inf-ruby'.
+--readline      Turns on readline support. Default.
+--tracer        Turns on trace mode.</PRE>
+
+<P>Besides arbitrary ruby commands, the special commands are:</P>
+
+<PRE>exit                  exits the current session, or the program
+fork block            forks and runs the given block
+cb args               changes to a secified binding
+source file           loads a ruby file into the session
+irb [obj]             starts a new session, with obj as self, if specified
+conf[.key[= val]]     access the configuration of the session
+jobs                  lists the known sessions
+fg session            switches to the specifed session
+kill session          kills a specified session</PRE>
+
+<P>Session may be specified via session#, thread-id, obj, or self.</P>
+
+<H3><A NAME="47">xmp</A></H3>
+
+<PRE>require "irb/xmp"
+xmp "something to eval" # or:
+x = XMP.new
+x.puts "something to eval"</PRE>
+
+<H3><A NAME="48">ruby-mode</A></H3>
+
+<P>TODO: I don't have a freakin clue how to use the inferior ruby thing... I always fire up a shell in emacs... DOH!</P>
+
+<H3><A NAME="49">Debugger</A></H3>
+
+<P>To invoke the debugger:</P>
+
+<PRE>ruby -r debug ...</PRE>
+
+<P>To use the debugger:</P>
+
+<PRE>b[reak] [file:|class:]&lt;line|method
+b[reak] [class.]&lt;line|method
+                           set breakpoint to some position
+wat[ch] expression         set watchpoint to some expression
+cat[ch] exception          set catchpoint to an exception
+b[reak]                    list breakpoints
+cat[ch]                    show catchpoint
+del[ete][ nnn]             delete some or all breakpoints
+disp[lay] expression       add expression into display expression list
+undisp[lay][ nnn]          delete one particular or all display expressions
+c[ont]                     run until program ends or hit breakpoint
+s[tep][ nnn]               step (into methods) one line or till line nnn
+n[ext][ nnn]               go over one line or till line nnn
+w[here]                    display frames
+f[rame]                    alias for where
+l[ist][ (-|nn-mm)]         list program, - lists backwards
+                           nn-mm lists given lines
+up[ nn]                    move to higher frame
+down[ nn]                  move to lower frame
+fin[ish]                   return to outer frame
+tr[ace] (on|off)           set trace mode of current thread
+tr[ace] (on|off) all       set trace mode of all threads
+q[uit]                     exit from debugger
+v[ar] g[lobal]             show global variables
+v[ar] l[ocal]              show local variables
+v[ar] i[nstance] object    show instance variables of object
+v[ar] c[onst] object       show constants of object
+m[ethod] i[nstance] obj    show methods of object
+m[ethod] class|module      show instance methods of class or module
+th[read] l[ist]            list all threads
+th[read] c[ur[rent]]       show current thread
+th[read] [sw[itch]] nnn    switch thread context to nnn
+th[read] stop nnn          stop thread nnn
+th[read] resume nnn        resume thread nnn
+p expression               evaluate expression and print its value
+h[elp]                     print this help
+everything else            evaluate
+empty                      repeats the last command</PRE>
+
+<H3><A NAME="50">rdoc</A></H3>
+
+<PRE>=begin
+the everything between a line beginning with `=begin' and
+that with `=end' will be skipped by the interpreter.
+=end</PRE>
+
+<P>FIX: there is a lot more to rdoc.</P>
+
+<H2><A NAME="51">Mindshare, Idiom and Patterns</A></H2>
+
+<H3><A NAME="52">Object Design</A></H3>
+
+<H4><A NAME="53">Visitor Pattern</A></H4>
+
+<P>By defining the method #each and including Enumerable, you get to use
+all the methods in Enumerable:</P>
+
+<PRE>class Mailbox
+  include Enumerable
+  # ...
+  def each
+    @mail.each do
+       # ...
+       yield
+    end
+  end
+end</PRE>
+
+<H4><A NAME="54">Class SimpleDelegator, DelegateClass</A></H4>
+
+<PRE>foo = Object.new
+foo2 = SimpleDelegator.new(foo)
+foo.hash == foo2.hash # => false
+Foo = DelegateClass(Array)
+class ExtArray&lt;DelegateClass(Array)
+  ...
+end</PRE>
+
+<H4><A NAME="55">Module Observer</A></H4>
+
+<PRE>monitor.add_observer(self)
+...
+def update
+  ...
+  notify_observers(data, ...)
+end</PRE>
+
+<H4><A NAME="56">Module Singleton</A></H4>
+
+<PRE>class Klass
+  include Singleton
+  # ...
+end
+
+a, b = Klass.instance, Klass.instance
+a == b # => true
+a.new  # raises NoMethodError</PRE>
+
+<H3><A NAME="57">Other Third-party Libraries</A></H3>
+
+<H4><A NAME="58">Racc</A></H4>
+
+<UL>
+  <LI>See <A HREF="http://i.loveruby.net/en/man/racc/">i.loveruby.net /en /man /racc</A></LI>
+</UL>
+<H4><A NAME="59">Test::Unit</A></H4>
+
+<UL>
+  <LI>assert(boolean, message=nil)</LI>
+  <LI>assert_block(message="assert_block failed.") do ... end</LI>
+  <LI>assert_equal(expected, actual, message=nil)</LI>
+  <LI>assert_in_delta(expected_float, actual_float, delta, message="")</LI>
+  <LI>assert_instance_of(klass, object, message="")</LI>
+  <LI>assert_kind_of(klass, object, message="")</LI>
+  <LI>assert_match(pattern, string, message="")</LI>
+  <LI>assert_nil(object, message="")</LI>
+  <LI>assert_no_match(regexp, string, message="")</LI>
+  <LI>assert_not_equal(expected, actual, message="")</LI>
+  <LI>assert_not_nil(object, message="")</LI>
+  <LI>assert_not_same(expected, actual, message="")</LI>
+  <LI>assert_nothing_raised(*args)</LI>
+  <LI>assert_nothing_thrown(message="") do ... end</LI>
+  <LI>assert_operator(object1, operator, object2, message="")</LI>
+  <LI>assert_raises(expected_exception_klass, message="") do ... end</LI>
+  <LI>assert_respond_to(object, method, message="")</LI>
+  <LI>assert_same(expected, actual, message="")</LI>
+  <LI>assert_send(send_array, message="")</LI>
+  <LI>assert_throws(expected_symbol, message="") do ... end</LI>
+  <LI>flunk(message="Flunked")</LI>
+</UL>
+<PRE><script type="text/javascript"><!--
+google_ad_client = "pub-2178088302342288";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="2870910990";
+google_color_border = "000000";
+google_color_bg = "F0F0F0";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "008000";
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></PRE>
+
+<HR>
+
+<PRE>Original URL: www.zenspider.com/Languages/Ruby/QuickRef.html
+$Author: ryand $
+$Date: 2009/03/15 $
+$Revision: #55 $</PRE>
+
+<HR CLASS="thick">
+
+<P class="navbar">
+<A HREF="/SiteMap.html">Sitemap</A> | <A HREF="/Search.html"><EM>Search</EM></A> || <A HREF="/index.html">Zen Spider Website</A>
+ / <A HREF="/Languages/index.html">The Language Freak</A>
+ / <A HREF="/Languages/Ruby/index.html">Ruby</A>
+ / Ruby QuickRef</P>
+
+<DIV CLASS="footer"><A HREF="/Website/Philosophy.html">"More matter, with less art" - Gertrude, Hamlet.</A><BR>Copyright &copy; 1997-2004 <A HREF="/Contact.html">Ryan Davis</A> &amp; <A HREF="http://www.zenspider.com">Zen Spider Software</A>. All Rights Reserved. <BR> Generated: 2009-03-15 21:30:02</DIV><script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-543579-2";
+urchinTracker();
+</script>
+</BODY>
+</HTML>

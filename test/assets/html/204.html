@@ -1,0 +1,4897 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  
+  <meta name="Author" content="Steve Litt">
+
+  
+  <meta name="Description" content="A tutorial on Ruby basics">
+
+  
+  <meta name="KeyWords" content="Ruby,ruby,RUBY,programming,development,application development,programmer,developer,CGI,perl,Perl,Python,python,LINUX,linux,Linux,tutorial">
+
+  
+  <title>Ruby Basic Tutorial</title>
+</head>
+
+
+<body alink="#ff0000" bgcolor="#ffffff" link="#0000ee" text="#000000" vlink="#551a8b">
+
+<center>
+<h2><a name="top"></a><a href="../../troubleshooters.htm">Troubleshooters.Com</a>,
+<a href="../index.htm">Code Corner</a> and
+<a href="./index.htm">Ruby Revival</a> Present</h2>
+
+</center>
+
+<center><font color="#c80000"><font size="+4">Ruby Basic Tutorial</font></font>
+<br>
+
+<a href="../../cpyright.htm">Copyright (C) 2005 by Steve Litt</a>
+<hr width="100%"></center>
+
+<h5>
+Note: All materials in Ruby Revival are provided AS IS. By reading the
+materials in Ruby Revival you are agreeing to assume all risks involved
+in the use of the materials, and you are agreeing to absolve the
+authors,
+owners, and anyone else involved with Python Patrol of any
+responsibility
+for the outcome of any use of these materials, even in the case of
+errors
+and/or omissions in the materials. If you do not agree to this, you
+must
+not read these materials.</h5>
+
+To the 99.9% of you honest readers who take responsibility for your own
+actions, I'm truly sorry it is necessary to subject all readers to the
+above disclaimer.
+<center>
+<hr width="100%"></center>
+
+<br>
+
+<b><font size="+3">CONTENTS</font></b><br>
+
+<ul>
+
+  <li><b><a href="#_About">About this Tutorial</a></b></li>
+
+  <li><b><a href="#_Hello_World">Hello World</a></b></li>
+
+  <li><b><a href="#_Loops">Loops</a></b></li>
+
+  <li><b><a href="#_Branching">Branching</a></b></li>
+
+  <li><b><a href="#_Containers">Containers</a></b></li>
+
+  <li><b><a href="#_Arrays">Arrays</a></b></li>
+
+  <li><b><a href="#_Hashes">Hashes</a></b></li>
+
+  <li><b><a href="#_Strings">Strings</a></b></li>
+
+  <li><b><a href="#_Regular_Expressions">Regular Expressions</a></b></li>
+
+  <li><b><a href="#_Subroutines">Subroutines</a></b></li>
+
+  <li><b><a href="#_Exceptions">Exceptions</a></b></li>
+
+  <li><b><a href="#_Terminal_IO">Terminal IO</a></b></li>
+
+  <li><b><a href="#_File_IO">File IO</a></b></li>
+
+  <li><b><a href="#_How_OOP_is_Ruby">How OOP is Ruby?</a></b></li>
+
+  <li><b><a href="#_Object_Oriented_Programming_Concepts">Object
+Oriented Programming Concepts</a></b></li>
+
+  <li><b><a href="#_Simple_OOP_in_Ruby">Simple OOP in Ruby</a></b></li>
+
+</ul>
+
+<br>
+
+<h1>
+<a name="_About"></a>About this Tutorial</h1>
+
+This is a Ruby tutorial for one not knowing Ruby. Therefore, we use
+many constructs and styles that, while familiar to programmers and
+intuitive to beginners, are not optimal for Ruby. A companion document,
+<a href="rubyrightway.htm">Ruby the Right Way</a>, discusses how to use
+Ruby to full advantage and have your code compatible with the vast body
+of Ruby code out there.<br>
+
+<br>
+
+Ruby can be used as a fully object oriented language, in which case
+you'd create classes and objects to accomplish everything. However, it
+can be used quite nicely with only the objects and classes that ship
+with Ruby, in which case it can be used as a procedural language,
+except that functions are typically methods of the program's
+variables.<br>
+
+<br>
+
+If that doesn't make any sense to you, don't worry, it's just a way of
+saying that Ruby can be very easy to learn and use.<br>
+
+<br>
+
+Even if you want to become a Ruby expert, you need to learn the basic
+functionality before you can become a Ruby OOP ninja. This tutorial
+gives you those basics.<br>
+
+<br>
+
+<hr width="100%">
+<h1><a name="_Hello_World"></a>Hello World</h1>
+
+This is the simplest possible Ruby program, <span style="font-family: monospace;">hello.rb</span>. As you'd expect, it
+prints "Hello World" on the screen. Be sure to set it executable.<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Hello World\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Although this program works as expected, it goes against the philosophy
+of Ruby because it's not object oriented. But as a proof of concept
+that Ruby's working on your computer, it's just fine.<br>
+
+<br>
+
+Besides <span style="font-family: monospace;">print</span>, there's
+also a <span style="font-family: monospace;">puts</span> keyword. The
+difference is that <span style="font-family: monospace;">puts</span>
+automatically inserts a newline at the end of the string being printed,
+whereas <span style="font-family: monospace;">print</span> does not.
+In other words, <span style="font-family: monospace;">puts</span> is
+more convenient, but <span style="font-family: monospace;">print</span>
+is necessary if separate statements print to the same line. Througout
+this tutorial we'll use both <span style="font-family: monospace;">print</span>
+and <span style="font-family: monospace;">puts</span>.<br>
+
+<h1><a name="_Loops"></a>Loops</h1>
+
+Let's count to 10...<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">for ss in 1...10</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print ss, " Hello\n";</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The elipses (<span style="font-family: monospace;">...</span>) indicate
+the range through which to loop. The <span style="font-family: monospace;">for</span> is terminated by an <span style="font-family: monospace;">end</span>. You don't need braces for
+a loop. Whew!<br>
+
+<br>
+
+The following is the output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./loop.rb</span><br style="font-weight: bold;"><span style="font-weight: bold;">1 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">2 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">3 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">4 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">5 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">6 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">7 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">8 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">9 hello</span><br style="font-weight: bold;"><span style="font-weight: bold;">[slitt@mydesk slitt]$</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Notice that it stops on 9. The number following the elipses causes
+termination at the top of the loop. The <span style="font-family: monospace;">1...10</span> means 1 TO BUT NOT
+INCLUDING 10, it does NOT mean 1 through 10. Please remember this when
+using Ruby loops.<br>
+
+<br>
+
+<table style="background-color: rgb(255, 204, 204); width: 60%; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">NOTE<br>
+
+      <br>
+
+There are actually two versions of the elipses operator, the three
+period version as shown previously, and the two period version. The two
+period version is inclusive. In other words, 1...3 means 1 <span style="font-weight: bold;">up to but not including</span> 3, while
+1..3 means one <span style="font-weight: bold;">through</span> 3.<br>
+
+      <br>
+
+By using the appropriate version of the elipses operator you can save
+having to code convoluted end conditions.<br>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+Now let's iterate through an array.<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">for ss in 0...presidents.length</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print ss, ": ", presidents[ss], "\n";</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+We defined an array of presidents using a Perl like syntax (except we
+used brackets instead of parens), and we iterated from 0 (Ruby is 0
+based, like most languages), through the final subscript in the <span style="font-family: monospace;">presidents</span> array. Remember, the
+triple dot stops before executing the final number, which is why it
+doesn't count to 6. If you had wanted it to count to 6 (which in this
+case would have walked off the end of the array), you would have used
+the double dot. The output of the preceding code follows:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./loop.rb</span><br style="font-weight: bold;"><span style="font-weight: bold;">0: Ford</span><br style="font-weight: bold;"><span style="font-weight: bold;">1: Carter</span><br style="font-weight: bold;"><span style="font-weight: bold;">2: Reagan</span><br style="font-weight: bold;"><span style="font-weight: bold;">3: Bush1</span><br style="font-weight: bold;"><span style="font-weight: bold;">4: Clinton</span><br style="font-weight: bold;"><span style="font-weight: bold;">5: Bush2</span><br style="font-weight: bold;"><span style="font-weight: bold;">[slitt@mydesk slitt]$</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Now lets list the presidents backwards by calculating the array's subscript
+as the array's length minus the counter, minus one. Ugly, but it gets the
+job done:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">for ss in 0...presidents.length</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print ss, ": ", presidents[presidents.length - ss - 1], "\n";</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding program produces the following output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb</span><br style="font-weight: bold;"><span style="font-weight: bold;">0: Bush2</span><br style="font-weight: bold;"><span style="font-weight: bold;">1: Clinton</span><br style="font-weight: bold;"><span style="font-weight: bold;">2: Bush1</span><br style="font-weight: bold;"><span style="font-weight: bold;">3: Reagan</span><br style="font-weight: bold;"><span style="font-weight: bold;">4: Carter</span><br style="font-weight: bold;"><span style="font-weight: bold;">5: Ford</span><br style="font-weight: bold;"><span style="font-weight: bold;">[slitt@mydesk slitt]$</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Ruby has a much nicer way of iterating backwards through a list: Negative
+subscripts. The following iterates backward  through the array, using the fact that
+array[-1] is the last item, array[-2] is the second to last, etc:<br>
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;"><b><pre>
+#!/usr/bin/ruby
+presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]
+for ss in 0...presidents.length
+	print ss, ": ", presidents[-ss -1], "\n";
+end
+      </pre></b></td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If you're familiar with C, Pascal or Perl, you're probably
+dissappointed you couldn't just use <span style="font-family: monospace;">presidents.length...0</span>.
+Backwards iteration doesn't work in Ruby -- it must iterate up.<br>
+
+<br>
+
+<h2>Iterators and Blocks</h2>
+
+Another way to loop through an array is to use an iterator (in red in
+the following code) and a block (in blue in the following code:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;"></span><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.<span style="color: rgb(204, 0, 0);">each</span> <span style="color: rgb(51, 51, 255);">{|prez| puts prez}</span></span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding code, the block argument (<span style="font-family: monospace;">prez</span>) contains the current
+array element, and everything else until the closing brace contains
+code to operate on the block argument. The block argument is always
+enclosed in vertical lines (pipe symbols). The following is the output
+of the preceding code:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb</span><span style="font-weight: bold;"><br>Ford<br>Carter<br>Reagan<br>Bush1<br>Clinton<br>Bush2<br>[slitt@mydesk slitt]$</span><span style="font-weight: bold;"></span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The block needn't be on one line:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"><span style="color: rgb(51, 51, 255);"></span>presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.<span style="color: rgb(204, 0, 0);">each</span> <span style="color: rgb(51, 51, 255);">{</span></span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">	|prez|</span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">	puts prez</span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+As shown in the previous examples, you can define the block by
+enclosing it in curly braces. You can also define it by enclosing it in
+a <span style="font-family: monospace;">do</span> and an <span style="font-family: monospace;">end</span>, where the <span style="font-family: monospace;">do</span> replaces the opening brace,
+and the <span style="font-family: monospace;">end</span> replaces the
+closing brace:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"><span style="color: rgb(51, 51, 255);"></span>presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.<span style="color: rgb(204, 0, 0);">each</span> <span style="color: rgb(51, 51, 255);">do</span></span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">	|prez|</span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">	puts prez</span><br style="font-weight: bold; color: rgb(51, 51, 255);"><span style="font-weight: bold; color: rgb(51, 51, 255);">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Personally, I greatly prefer the <span style="font-family: monospace;">do</span>/<span style="font-family: monospace;">end</span> syntax for multiline
+blocks, because as a Perl/C/C++ guy I have a very different perception
+of braces than their limited use in Ruby, and also because of all the
+brace placement religious wars I've endured (I'm a Whitesmith type guy
+myself). However, on short single line blocks, using the braces saves
+valuable line space. From what I understand, the methods are
+interchangeable in features and performance, with one small exception...<br>
+
+<br>
+
+Speaking of performance, if you declare the block argument outside the
+block (in other words, make it a local variable), performance improves
+because Ruby needn't recreate a variable every iteration. HOWEVER, the
+loop messes with the value of the variable, so it's best to use a
+specific variable for that purpose, and do not use it for other
+purposes within the subroutine. Here's an example of using a local
+variable as a block argument:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;"></span><span style="font-weight: bold;"></span><span style="font-weight: bold;"><span style="color: rgb(51, 51, 255);"></span></span><span style="font-weight: bold; color: rgb(51, 51, 255);"></span><span style="font-weight: bold;">i = -99</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "Before: " + i.to_s</span><br style="font-weight: bold;"><span style="font-weight: bold;">(1..10).each{|i| puts i}</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "After : " + i.to_s</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./loop.rb          <br>Before: -99<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>After : 10<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If you use a local variable for a block argument, do so only in loops
+with huge numbers of iterations, and use only variables that are
+specifically intended to serve as block arguuments and nothing else.<br>
+
+<h3>A Difference Between {} and do/end</h3>
+
+As mentioned, there's one small difference between brace enclosed
+blocks and <span style="font-family: monospace;">do</span>/<span style="font-family: monospace;">end</span> enclosed blocks: Braces
+bind tighter. Watch this:<br>
+
+<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">my_array = ["alpha", "beta", "gamma"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts my_array.collect {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|word|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	word.capitalize</span><br style="font-weight: bold;"><span style="font-weight: bold;">}</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "======================"</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts my_array.collect do</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|word|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	word.capitalize</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./test.rb<br>Alpha<br>Beta<br>Gamma<br>======================<br>alpha<br>beta<br>gamma<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The braces bound tightly like this:<br>
+
+<br>
+
+<pre style="font-weight: bold;">puts (my_array.collect {|word| word.capitalize})</pre>
+
+Whereas <span style="font-family: monospace;">do</span>/<span style="font-family: monospace;">end</span> bind more loosely, like
+this:<br>
+
+<pre style="font-weight: bold;">puts (my_array.collect) do |word| word.capitalize} end</pre>
+
+Note that the latter represents a syntax error anyway, and I've found
+no way to coerce <span style="font-family: monospace;">do/end</span>
+into doing the right thing simply by using parentheses. However, by
+assigning the iterator's results to a new array, that array can be
+used. It's one more variable and one more line of code. If the code is
+short, use braces. If it's long, the added overhead is so small a
+percentage that it's no big deal:<br>
+
+<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">my_array = ["alpha", "beta", "gamma"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts my_array.collect {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|word|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	word.capitalize</span><br style="font-weight: bold;"><span style="font-weight: bold;">}</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "======================"</span><br style="font-weight: bold;"><span style="font-weight: bold;">new_array = my_array.collect do</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|word|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	word.capitalize</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts new_array</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./test.rb<br>Alpha<br>Beta<br>Gamma<br>======================<br>Alpha<br>Beta<br>Gamma<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Generally speaking, if you want to directly use the result of
+iterators, use braces. For longer blocks, <span style="font-family: monospace;">do</span>/<span style="font-family: monospace;">end</span> is more readable, and the
+overhead for the extra variable and line of code is trivial.<br>
+
+<h2><span style="font-family: monospace;">while</span> Loops</h2>
+
+All the loops previously discussed looped through either an array or a
+set of numbers. Sometimes you need a more generic loop. That's when you
+use a <span style="font-family: monospace;">while</span> loop:
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">ss = 4 </span><br style="font-weight: bold;"><span style="font-weight: bold;">while ss &gt; 0</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts ss</span><br style="font-weight: bold;"><span style="font-weight: bold;">	ss -= 1</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "======================"</span><br style="font-weight: bold;"><span style="font-weight: bold;">while ss &lt; 5</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts ss</span><br style="font-weight: bold;"><span style="font-weight: bold;">	ss += 1</span><br style="font-weight: bold;"><span style="font-weight: bold;">	break if ss &gt; 2</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "======================"</span><br style="font-weight: bold;"><span style="font-weight: bold;">ss = 5</span><br style="font-weight: bold;"><span style="font-weight: bold;">while ss &gt; 0</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts ss</span><br style="font-weight: bold;"><span style="font-weight: bold;">	ss -= 2</span><br style="font-weight: bold;"><span style="font-weight: bold;">	if ss == 1</span><br style="font-weight: bold;"><span style="font-weight: bold;">		ss += 5</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./loop.rb<br>4<br>3<br>2<br>1<br>======================<br>0<br>1<br>2<br>======================<br>5<br>3<br>6<br>4<br>2<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The first <span style="font-family: monospace;">while</span> loop
+iterated from 4 down to 1, quitting when <span style="font-family: monospace;">ss</span> became 0 and hit the while
+condition. The second loop was intended to iterate up to 4 and quit
+when 5 was encountered, but a break statement inside the loop caused it
+to terminate after printing 2 and then incrementing to 3. This
+demonstrates the <span style="font-family: monospace;">break</span>
+statement. <br>
+
+<br>
+
+The third loop was intended to loop from 5 down to 1, quitting after
+printing 1 and then decrementing. However, the statement in the body of
+the loop added 5 when it reached 1, pushing it back up to 6, so it had
+to count down again. On the second countdown, the numbers were even, so
+it didn't trigger the <span style="font-family: monospace;">if</span>
+statement. This shows that unlike Pascal, it's OK to tamper with the
+loop variable inside the loop.<br>
+
+<h2>
+</h2>
+
+<h1><a name="_Branching"></a>Branching</h1>
+
+Looping is one type of flow control in pure procedural languages. The
+other is branching. The following program implements an array called <span style="font-family: monospace;">democrats</span> and another called <span style="font-family: monospace;">republicans</span> . Depending on the
+command line argument, the program prints either the democratic
+presidents since 1974, the republican presidents since 1974, or an
+appropriate error message.<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">democrats = ["Carter", "Clinton"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">republicans = ["Ford", "Reagan", "Bush1", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">party = ARGV[0]</span><br style="font-weight: bold;"><span style="font-weight: bold;">if party == nil </span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "Argument must be \"democrats\" or \"republicans\"\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">elsif party == "democrats"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	democrats.each { |i| print i, " "}</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">elsif party == "republicans"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	republicans.each { |i| print i, " "}</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">else</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "All presidents since 1976 were either Democrats or Republicans\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Note the if, elsif, else and end keywords, and how they delineate the
+branching. Note also the <span style="font-family: monospace;">democrats.each</span>
+syntax, which is a very shorthand way of iterating through an array,
+assuming what you want to do to each element can be stated succinctly.<br>
+
+<br>
+
+One last note. The error handling in the preceding would be much better
+handled by exceptions, but they haven't been covered yet.<br>
+
+<br>
+
+Like Perl, the <span style="font-family: monospace;">if</span> keyword
+can follow the action instead of preceding it:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">democrats = ["Carter", "Clinton"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">republicans = ["Ford", "Reagan", "Bush1", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">party = ARGV[0]</span><br style="font-weight: bold;"><span style="font-weight: bold;">if party != nil</span><br style="font-weight: bold;"><span style="font-weight: bold;">	democrats.each { |i| print i, " "} if party == "democrats"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	republicans.each { |i| print i, " "} if party == "republicans"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "All presidents since 1976 were either Democrats or Republicans\n"\</span><br style="font-weight: bold;"><span style="font-weight: bold;">		if (party != "democrats" &amp;&amp; party != "republicans") </span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding is a <span style="font-style: italic;">very</span>
+contrived program to showcase using the <span style="font-family: monospace;">if</span> keyword after the action.
+Note the following:<br>
+
+<ol>
+
+  <li>The <span style="font-family: monospace;">if</span> keyword must
+be on the same line as the action</li>
+
+  <li>Only a single action can precede the <span style="font-family: monospace;">if</span> keyword. Multiple actions
+separated by semicolons will do quite unexpected things.<br>
+
+  </li>
+
+</ol>
+
+<h1><a name="_Containers"></a>Containers</h1>
+
+Containers are entities that contain other entities. Ruby has two
+native container types, arrays and hashes. Arrays are groups of objects
+ordered by subscript, while hashes are groups of key-&gt;value pairs.
+Besides these two native container types, you can create your own
+container types.<br>
+
+<h1><a name="_Arrays"></a>Arrays</h1>
+
+You've already seen how to initialize an array and how to use the <span style="font-family: monospace;">each</span> method to quickly iterate
+each element:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb          <br>Ford<br>Carter<br>Reagan<br>Bush1<br>Clinton<br>Bush2<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Now let's manipulate the array, starting by deleting the last three
+presidents:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The <span style="font-family: monospace;">pop</span> method deletes
+the final element. If you were to assign the <span style="font-family: monospace;">pop</span> method to a variable, it
+would store that last element and then delete it from the array. In the
+preceding code, you <span style="font-family: monospace;">pop</span>
+the last three presidents. Here is the result:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb          <br>Ford<br>Carter<br>Reagan<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Now let's prepend the previous three presidents, Kennedy, Johnson and
+Nixon:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.unshift("Nixon")</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.unshift("Johnson")</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.unshift("Kennedy")</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The result is as expected:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb          <br>Kennedy<br>Johnson<br>Nixon<br>Ford<br>Carter<br>Reagan<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+However, you might not like the idea of prepending in the reverse
+order. In that case, prepend all three at once:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.pop</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.unshift("Kennedy", "Johnson", "Nixon")</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Ruby arrays have methods <span style="font-family: monospace;">shift</span>,
+<span style="font-family: monospace;">unshift</span>, <span style="font-family: monospace;">push</span>, and <span style="font-family: monospace;">pop</span>:<br>
+
+<br>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">METHOD<br>
+
+      </td>
+
+      <td style="vertical-align: top;">ACTION<br>
+
+      </td>
+
+      <td style="vertical-align: top;">ARGUMENT<br>
+
+      </td>
+
+      <td style="vertical-align: top;">RETURNS<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">push<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Appends its argument to the end
+of the array.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Element(s) to be appended to end
+of the array.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">A string consisting of the
+concatination of all non-nil elements in the array AFTER the action was
+taken.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">pop<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns the last element in the
+array and deletes that element.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">None.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">The last element of the array.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">shift<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns the first element of the
+array, deletes that element, and shifts all other elements down one
+location to fill its empty spot.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">None.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">The first element in the array.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">unshift<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Shifts all elements of the array
+up one, and places its argument at the beginning of the array.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Element(s) to be prepended to
+start of array.<br>
+
+      </td>
+
+      <td style="vertical-align: top;">A string consisting of the
+concatination of all non-nil elements in the array AFTER the action was
+taken.</td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You can assign individual elements of an array:<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = []</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents[2] = "Adams"</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents[4] = "Madison"</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents[6] = "Adams"</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each {|i| print i, "\n"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "=======================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents[6] = "John Quincy Adams"</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each {|i| print i, "\n"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding code produces this output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>nil<br>nil<br>Adams<br>nil<br>Madison<br>nil<br>Adams<br>=======================<br>nil<br>nil<br>Adams<br>nil<br>Madison<br>nil<br>John Quincy Adams<br><br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The length of the array is the determined by the last initialized
+element, even if that element was initialized to nil. That can be very
+tricky, especially because if you read past the end of the array it
+returns nil. Be careful.<br>
+
+<br>
+
+You can insert an element by assignment, as shown in the preceding
+code. If you assign to an element that already exists, you simply
+change its value, as we changed "Adams" to "John Quincy Adams".<br>
+
+<br>
+
+Another thing you can do is get a slice of an array.<br>
+
+<span style="font-weight: bold;"><br>
+
+</span>
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">p123=presidents[1..3]</span><br style="font-weight: bold;"><span style="font-weight: bold;">p123.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Notice this time I used the two period version of the elipses operator,
+so you'd expect it to list Carter, Reagan and Bush1, and indeed it
+does. The preceding slice produces the following output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>Carter<br>Reagan<br>Bush1<br>[slitt@mydesk slitt]$ <br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Another way to slice an array is with a start and a count instead of a
+range. The following is another way to write basically the same code as
+the preceding code:<br>
+
+<span style="font-weight: bold;"><br>
+
+</span>
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby<br>presidents = ["Ford", "Carter", "Reagan", "Bush1", "Clinton", "Bush2"]<br><span style="color: rgb(204, 0, 0);">p123=presidents[1,3]</span><br>p123.each { |i| print i, "\n"}</span><span style="font-weight: bold;"></span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding used a starting subscript of 1 and a count of 3, instead
+of&nbsp; a range 1 through 3.<br>
+
+<br>
+
+You can also use slices in insertions, deletions and replacements, and
+you can
+insert/replace with elements or whole arrays. Our first example deletes
+unneeded elements from the middle of an array:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers = ["one", "two", "buckle", "my", "shoe", "three", "four"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "=====================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold; color: rgb(204, 0, 0);">numbers[2,3]=[]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding, we have extraneous elements "buckle", "my" and
+"shoe", which we want to delete. So we replace element 2, for a count
+of 4 (element 2 and the next 2, in other words), to an empty array,
+effectively deleting them. The result follows:<br>
+
+<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>one<br>two<br>buckle<br>my<br>shoe<br>three<br>four<br>=====================<br>one<br>two<br>three<br>four<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Next, let's replace three numeric representations with their spelled
+out equivalents, plus add in another element we had forgotten:<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers = ["one", "two", "3", "4", "5", "seven"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "=====================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers[2,3]=["three", "four", "five", "six"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You can see we deleted the three numerics, and then added the four
+spelled out versions in their place. Here's the output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>one<br>two<br>3<br>4<br>5<br>seven<br>=====================<br>one<br>two<br>three<br>four<br>five<br>six<br>seven<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+But what if you don't want to replace anything -- what if you just want
+to insert in the middle? No problem -- use 0 for the count...<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers = ["one", "two", "five"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "=====================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold; color: rgb(204, 0, 0);">numbers[2,0]=["three", "four"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The only trick here is that if you are not deleting the starting point
+element, the insertion will occur AFTER the starting element. Here is
+the output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>one<br>two<br>five<br>=====================<br>one<br>two<br>three<br>four<br>five<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You might ask yourself what to do if you need to append before the
+first element, given that slice type insertion inserts &nbsp; AFTER the
+starting point. The simplest answer is to use the <span style="font-family: monospace;">unshift</span> method.<br>
+
+<br>
+
+You can construct an array using a parenthesized range:<br>
+
+&nbsp;
+&nbsp;<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;"></span><span style="font-weight: bold;">myArray = (0..9)</span><br style="font-weight: bold;"><span style="font-weight: bold;">myArray.each{|i| puts i}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./array.rb<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Finally, remembering that Ruby is intended to be an object oriented
+language, let's look at some of the more common methods associated with
+arrays (which are really objects in Ruby):<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers = Array.new</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers[3] = "three"</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers[4] = nil</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Class=", numbers.class, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Length=", numbers.length, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">numbers.each { |i| print i, "\n"}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The <span style="font-family: monospace;">Array.new</span> method
+types <span style="font-family: monospace;">numbers</span> as an
+array. You could have done the same thing with <span style="font-family: monospace;">numbers=[]</span>. The next line
+assigns text <span style="font-family: monospace;">three</span> to the
+element with subscript <span style="font-family: monospace;">3</span>,
+thereby setting the element and also setting the array's length. The
+next line sets the element whose subscript is 4 to nil, which, when you
+view the output, will prove that the <span style="font-family: monospace;">length</span> method returns one plus
+the last initialized element, even if it's initialized to nil. This, in
+my opinion, could cause trouble.<br>
+
+<br>
+
+The <span style="font-family: monospace;">class</span> method returns
+the variable's class, which in a non-oop language could be thought of
+as its type.&nbsp; The following is the output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Class=Array<br>Length=5<br>nil<br>nil<br>nil<br>three<br>nil<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+We've gone through arrays in great detail, because you'll use them
+regularly. Now it's time to review Ruby's other built in container
+class...<br>
+
+<h1><a name="_Hashes"></a>Hashes</h1>
+
+There are two ways to think of a hash:<br>
+
+<ol>
+
+  <li>A set of key-&gt;value pairs</li>
+
+  <li>An array whose subscripts aren't necessarily ordered or numeric<br>
+
+  </li>
+
+</ol>
+
+Both of the preceding are correct, and do not conflict with each other.<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">litt = {"lname"=&gt;"Litt", "fname"=&gt;"Steve", "ssno"=&gt;"123456789"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Lastname              : ", litt["lname"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Firstname             : ", litt["lname"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Social Security Number: ", litt["ssno"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">litt["gender"] = "male"</span><br style="font-weight: bold;"><span style="font-weight: bold;">litt["ssno"] = "987654321"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Corrected Social Security Number: ", litt["ssno"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Gender                          : ", litt["gender"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Hash length is ", litt.length, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Hash class  is ", litt.class, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding, we initialized the hash with three elements whose
+keys were <span style="font-family: monospace;">lname</span>, <span style="font-family: monospace;">fname</span> and <span style="font-family: monospace;">ssno</span>. We later added a fourth
+element whose key was <span style="font-family: monospace;">gender</span>,
+as well as correcting the value of <span style="font-family: monospace;">ssno</span>. The <span style="font-family: monospace;">class</span> and <span style="font-family: monospace;">length</span> methods do just what
+we'd expect, given our experience from arrays. This hash could be
+thought of as a single row in a database table. Here is the result:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hash.rb<br>Lastname              : Litt<br>Firstname             : Litt<br>Social Security Number: 123456789<br><br>Corrected Social Security Number: 987654321<br>Gender                          : male<br><br>Hash length is 4<br>Hash class  is Hash<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+Better yet, hashes values can be other types of classes. For instance,
+consider a hash of hashes:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">people = {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	"torvalds"=&gt;{"lname"=&gt;"Torvalds", "fname"=&gt;"Linus", "job"=&gt;"maintainer"},</span><br style="font-weight: bold;"><span style="font-weight: bold;">	"matsumoto"=&gt;{"lname"=&gt;"Matsumoto", "fname"=&gt;"Yukihiro", "job"=&gt;"Ruby originator"},</span><br style="font-weight: bold;"><span style="font-weight: bold;">	"litt"=&gt;{"lname"=&gt;"Litt", "fname"=&gt;"Steve", "job"=&gt;"troubleshooter"}</span><br style="font-weight: bold;"><span style="font-weight: bold;">	}</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">keys = people.keys</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">for key in 0...keys.length</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "key  : ", keys[key], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "lname: ", people[keys[key]]["lname"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "fname: ", people[keys[key]]["fname"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "job  : ", people[keys[key]]["job"], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "\n\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Here's the output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hash.rb<br>key  : litt<br>lname: Litt<br>fname: Steve<br>job  : troubleshooter<br><br><br>key  : matsumoto<br>lname: Matsumoto<br>fname: Yukihiro<br>job  : Ruby originator<br><br><br>key  : torvalds<br>lname: Torvalds<br>fname: Linus<br>job  : maintainer<br><br><br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Basically, you just implemented the equivalent of a database table,
+whose rows correspond to Litt, Matsumoto and Torvalds, and whose
+columns are lname, fname and job. There are probably a dozen better
+ways to actually print this information, but at this point I'm still
+learning Ruby, so I did it with a distinctively Perl accent. Perhaps
+that's a good thing -- it proves that Ruby follows ordinary programming
+logic in addition to its many wonderful features.<br>
+<h2>Sorting Hashes</h2>
+You sort hashes by converting them to 2 dimensional arrays -- an array
+of key/value pairs, and then sorting them. The sort method does just
+that. Here's an example:<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="background-color: rgb(204, 255, 255); white-space: nowrap;">
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby -w<br><br>h = Hash.new<br>h['size'] = 'big'<br>h['color'] = 'red'<br>h['brand'] = 'ford'<br><br>av = h.sort{|a,b| a[1] &lt;=&gt; b[1]}<br>ak = h.sort{|a,b| a[0] &lt;=&gt; b[0]}<br>ak.each do<br>	|pair|<br>	print pair[0]<br>	print "=&gt;"<br>	print pair[1]<br>	puts<br>end<br>puts "=============="<br>av.each do<br>	|pair|<br>	print pair[0]<br>	print "=&gt;"<br>	print pair[1]<br>	puts<br>end</span></pre>
+      </td>
+      <td style="background-color: rgb(255, 255, 204); white-space: nowrap;">
+      <pre>[slitt@mydesk ~]$ .<span style="font-weight: bold;">/test.rb</span><br>brand=&gt;ford<br>color=&gt;red<br>size=&gt;big<br>==============<br>size=&gt;big<br>brand=&gt;ford<br>color=&gt;red<br>[slitt@mydesk ~]$</pre>
+      </td>
+      <td>Notice that often a simple <span style="font-family: monospace;">&lt;=&gt;</span>
+command does not suffice, and you actually need to write your own
+function to establish collation order. Simply write a function taking
+two arguments (a and b) that returns 1 when a is superior to b, -1 when
+a is inferior to b, and 0 when they are equivalent.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>Tests and Info Requests on Hashes</h2>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td>Method</td>
+      <td>What it does</td>
+      <td>Synonyms</td>
+    </tr>
+    <tr>
+      <td>has_key?(key)</td>
+      <td>Tests whether the key is present in the hash.</td>
+      <td>include?(key), key?(key) and member?(key)<br>
+      </td>
+    </tr>
+    <tr>
+      <td>has_value?(value)</td>
+      <td>Tests whether any element of the hash has the value, returning true or false.</td>
+      <td><span class="method-signature"><span class="method-name">value?(value)</span></span></td>
+    </tr>
+    <tr>
+      <td>index(value)</td>
+      <td>Returns the key for an element with the value. I don't know what happens if multiple elements have that value.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="method-signature"><span class="method-name">select {|key, value| block}   =&gt; array</span></span></td>
+      <td>Returns an array of key/value pairs for which block evaluates true:<br>
+      <pre>h.select {|k,v| v &lt; 200}</pre>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>empty?</td>
+      <td>Returns True if no key/value pairs</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>inspect</td>
+      <td>Return contents of the hash as a string</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>invert</td>
+      <td>Returns a new hash with keys and values switched.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>length</td>
+      <td>How many key/value pairs does it have?</td>
+      <td>size()</td>
+    </tr>
+    <tr>
+      <td><span class="method-signature"><span class="method-name">
+sort {| a, b | block }  =&gt; array </span></span></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h1><a name="_Strings"></a>Strings</h1>
+
+Strings are a class that ship with Ruby. The String class has a <span style="font-style: italic;">huge</span> number of methods, such that
+memorizing them all would be futile. If you really want a list of them
+all, go <a href="http://www.rubycentral.com/book/ref_c_string.html">http://www.rubycentral.com/book/ref_c_string.html</a>.,
+but don't say I didn't warn you.<br>
+
+<br>
+
+What I'd like to do here is give you the 10% of strings you'll need for
+90% of your work. By the way, Ruby has regular expressions, and that
+will be covered in the following section. This section covers only
+Ruby's String class methods.<br>
+
+<br>
+
+Let's start with string assignment and concatination:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname = "Steve Lit"</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname_copy = myname</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname      = ", myname, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname_copy = ", myname_copy, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "\n=========================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname &lt;&lt; "t"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname      = ", myname, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname_copy = ", myname_copy, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The double less than sign is a Ruby String overload for concatination.
+If all goes well, we'll change the original string but the copy won't
+change. Let's verify that:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>myname      = Steve Lit<br>myname_copy = Steve Lit<br><br>=========================<br>myname      = Steve Litt<br>myname_copy = Steve Litt<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Oh, oh, it changed them both. String assignment copies by reference,
+not by value. Do you think that might mess up your loop break logic?<br>
+
+<br>
+
+Use the <span style="font-family: monospace;">String.new()</span>
+method instead:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname = "Steve Lit"</span><br style="font-weight: bold;"><span style="font-weight: bold; color: rgb(204, 0, 0);">myname_copy = String.new(myname)</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname      = ", myname, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname_copy = ", myname_copy, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "\n=========================\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname &lt;&lt; "t"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname      = ", myname, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "myname_copy = ", myname_copy, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Here's the proof that it works the way you want it:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>myname      = Steve Lit<br>myname_copy = Steve Lit<br><br>=========================<br>myname      = Steve Litt<br>myname_copy = Steve Lit<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+One really nice thing about the Ruby String class is it works like an
+array of characters with respect to splicing:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname = "Steve was here"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myname[6, 3], "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">myname[6, 3] = "is"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myname, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>was<br>Steve is here<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+This gets more powerful when you introduce the <span style="font-family: monospace;">index</span> string method, which
+returns the subscript of the first occurrence of a substring:<br>
+
+<br>
+
+<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring = "Steve was here"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">substring = "was"</span><br style="font-weight: bold;"><span style="font-weight: bold;">start_ss = mystring.index(substring)</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring[start_ss, substring.length] = "is"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding, the start point for replacement was the return from
+the <span style="font-family: monospace;">index</span> method, and the
+count to replace is the return from the <span style="font-family: monospace;">length</span> method (on the search
+text). The result is a generic replacement:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>Steve was here<br>Steve is here<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Naturally, in real life you'd need to add code to handle cases where
+the search string wasn't found.<br>
+
+<br>
+
+You already saw in-place concatenation with the <span style="font-family: monospace;">&lt;&lt;</span> method, but in
+addition there's the more standard plus sign concatenation:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring = "Steve" + " " + "was" + " " + "here"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>Steve was here<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If the addition sign means to add strings together, it's natural that
+the multiplication sign means string together multiple copies:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring = "Cool " * 3</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>Cool Cool Cool <br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Do you like the <span style="font-family: monospace;">sprintf()</span>
+command in C? Use the <span style="font-family: monospace;">%</span>
+method in Ruby:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring = "There are %6d people in %s" % [1500, "the Grand Ballroom"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>There are   1500 people in the Grand Ballroom<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You can compare strings:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255); font-weight: bold;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre>#!/usr/bin/ruby<br>print "frank" &lt;=&gt; "frank", "\n"<br>print "frank" &lt;=&gt; "fred", "\n"<br>print "frank" &lt;=&gt; "FRANK", "\n"</pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>0<br>-1<br>1<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Here are some other handy string methods:<br>
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.capitalize<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Title case. Returns new string
+equal to mystring except that the first letter of every word is
+uppercase<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.capitalize!<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Title case in place.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.center(mynumber)<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a new string mynumber
+long with mystring centered within it. If mynumber is already less than
+the length of mystring, returns a copy of mystring.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.chomp<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a new string equal to
+mystring except any newlines at the end are deleted. If chomp has an
+argument, that argument serves as the record separator, replacing the
+default newline.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.chomp!<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Same as chomp, but in place.
+Equivalent of Perl chomp().<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.downcase<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns new string equal to
+mystring but entirely lower case.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.downcase!<br>
+
+      </td>
+
+      <td style="vertical-align: top;">In place modifies mystring,
+making everything lower case.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.reverse<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns new string with all
+characters reversed. IOWA becomes AWOI.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.reverse!<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Reverses mystring in place.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.rindex(substring)<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns the subscript of the <span style="font-style: italic;">last</span> occurrence of the substring.
+Like <span style="font-family: monospace;">index</span> except that it
+returns the last instead of first occurrence. This method actually has
+more options, so you might want to read the documentation.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.rjust(mynumber)<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a copy of mystring,
+except the new copy is mynumber long, and mystring is right justified
+in that string. If mynumber is smaller than the original length of
+mystring, it returns an exact copy of mystring.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.split(pattern, limit)<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a new array with parts
+of the string split wherever pattern was encountered as a substring. If
+limit is given, returns at most that many elements in the array.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.strip<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a new string that is a
+copy of mystring except all leading and trailing whitespace have been
+removed.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.to_f<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns the floating point
+number represented by mystring. Returns 0.0 if it's not a valid number,
+and never raises exceptions. Careful!<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.to_i</td>
+
+      <td style="vertical-align: top;">Returns an integer represented
+by mystring. Non-numerics at the end are ignored. Returns 0 on invalid
+numbers, and never raises exceptions. Careful!<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.upcase<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Returns a new string that's an
+uppercase version of mystring.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;">mystring.upcase!<br>
+
+      </td>
+
+      <td style="vertical-align: top;">Uppercases mystring in place.<br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+    </tr>
+
+    <tr>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+      <td style="vertical-align: top;"><br>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+There are many, many more methods, but the preceding should get you
+through most programming tasks. If you end up using Ruby a lot, it
+would help to learn all the methods.<br>
+
+<br>
+
+A word about <span style="font-family: monospace;">mystring.split(pattern)</span>.
+What about the reverse -- turning an array into a string? Try this:<br>
+
+<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring=""</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["reagan", "bush1", "clinton", "bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each {|i| mystring &lt;&lt; i+" "}</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring.strip</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>reagan bush1 clinton bush2 <br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Here's a version that turns it into a comma delimited file with quotes:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring=""</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents = ["reagan", "bush1", "clinton", "bush2"]</span><br style="font-weight: bold;"><span style="font-weight: bold;">presidents.each {|i| mystring &lt;&lt; "\"" + i + "\", "}</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring[mystring.rindex(", "), 2] = ""</span><br style="font-weight: bold;"><span style="font-weight: bold;">print mystring, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./string.rb<br>"reagan", "bush1", "clinton", "bush2"<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You now know most of the Ruby string techniques you need for the
+majority of your work. Well, except for regular expressions, of
+course...<br>
+
+<h1><a name="_Regular_Expressions"></a>Regular Expressions</h1>
+
+<br>
+
+<table style="background-color: rgb(255, 204, 204); width: 60%; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <div style="text-align: center;"><span style="font-weight: bold;">NOTE</span><br>
+
+      </div>
+
+      <br>
+
+This section assumes you understand the concept of regular expressions.
+If you do not, there are many fine regular expression tutorials on the
+web, including <a href="../littperl/perlreg.htm">this one</a> on my
+Litt's Perls of Wisdom subsite.<br>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Regular expressions make life so easy, often replacing 100 lines of
+code with 5. Perl is famous for its easy to use and intuitive regular
+expressions.<br>
+
+<br>
+
+Ruby is a little harder because most regular expression functionality
+is achieved by a regular expression object that must be instantiated.
+However, you CAN test for a match the same as in Perl:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "Steve was here"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "e.*e found", "\n" if string1 =~ /e.*e/</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Sh.*e found", "\n" if string1 =~ /Sh.*e/</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./regex.rb<br>e.*e found<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<br>
+
+Here's the code to actually retrieve the first match of <span style="font-family: monospace;">/w.ll/</span> in the string:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">if string1 =~ /(w.ll)/</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "Matched on ", $1, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">else</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts "NO MATCH"</span><br>end<br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./regex.rb<br>Matched on will<br>[slitt@mydesk slitt]$ <br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+This was almost just like Perl. You put parentheses in the regular
+expression to make a group, perform the regular expression search with
+the <span style="font-family: monospace;">=~</span> operator, and then
+the match for the group is contained in the <span style="font-family: monospace;">$1</span> variable. If there had been
+multiple groups in the regular expressions, matches would have also
+been available in <span style="font-family: monospace;">$2</span>, <span style="font-family: monospace;">$3</span>, and so on, up to the number
+of groups in the regular expression.<br>
+
+<br>
+
+<br>
+
+The more OOPish method of doing all this is to instantiate a new <span style="font-family: monospace;">Regexp</span> object and using its
+methods to gain the necessary information:<span style="text-decoration: underline;"></span><a href="http://www.rubycentral.com/book/ref_c_regexp.html#Regexp.new"><code></code></a><br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">regex = Regexp.new(/w.ll/)</span><br style="font-weight: bold;"><span style="font-weight: bold;">matchdata = regex.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">if matchdata</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts matchdata[0]</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts matchdata[1]</span><br style="font-weight: bold;"><span style="font-weight: bold;">else</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts "NO MATCH"</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>will<br>nil<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If you change <span style="font-family: monospace;">/w.ll/</span> to <span style="font-family: monospace;">/z.ll/</span>, which of course does
+not match because there's not a "z" in <span style="font-family: monospace;">string1</span>, the output looks like
+this:<br>
+
+<span style="text-decoration: underline;"></span><a href="http://www.rubycentral.com/book/ref_c_regexp.html#Regexp.new"><code></code></a><span style="text-decoration: underline;"></span><a href="http://www.rubycentral.com/book/ref_c_regexp.html#Regexp.new"><code></code></a><br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>NO MATCH<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<h2>
+</h2>
+
+The preceding example shows how to do complete regex in Ruby. Start by
+creating a regular expression object using <span style="font-family: monospace;">Regexp.new()</span>. Then use that
+object's <span style="font-family: monospace;">match</span> method to
+find a match and return it in a <span style="font-family: monospace;">MatchData</span>
+object. Test that the <span style="font-family: monospace;">MatchData</span>
+object exists, and if it does, get the first match (<span style="font-family: monospace;">matchdata[0]</span>). The reason we
+also printed <span style="font-family: monospace;">matchdata[1]</span>
+was to show that, in the absense of groups surrounded by parentheses,
+the <span style="font-family: monospace;">match</span> method returns
+only a single match. Later you'll see a special way to return all
+matches of a single regular expression.<br>
+
+<br>
+
+Another thing to notice is that, in Ruby, matching is not greedy by
+default. It finds the shortest string that satisfies the regular
+expression. If Ruby's matching was greedy like Perl's, the match would
+have included the entire string:<br>
+
+<br>
+
+"will drill for a well in walla wall"<br>
+
+<br>
+
+In other words, it would have returned everything from the first w to
+the last double l. Ungreedy matches go along with Ruby's principle of
+least surprise, but sometimes what you want is greedy matching.<br>
+
+<br>
+
+You can return several matches using multiple groups, like this:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">regex = Regexp.new(/(w.ll).*(in).*(w.ll)/)</span><br style="font-weight: bold;"><span style="font-weight: bold;">matchdata = regex.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">if matchdata</span><br style="font-weight: bold;"><span style="font-weight: bold;">	for ss in 0...matchdata.length</span><br style="font-weight: bold;"><span style="font-weight: bold;">		puts matchdata[ss]</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">else</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts "NO MATCH"</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>will drill for a well in walla wall<br>will<br>in<br>wall<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Note the different behavior when you use parentheses. Here you see that
+the 0 subscript element matches the entire regular expression, while
+elements 1, 2 and 3 are the individual matches for the first, second
+and third parenthesized groups.<br>
+
+<br>
+
+What if you wanted to find ALL the matches for <span style="font-family: monospace;">/w.ll/</span> in the string, without
+guessing beforehand how many parentheses to put in? Here's the way you
+do it:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">regex = Regexp.new(/w.ll/)</span><br style="font-weight: bold;"><span style="font-weight: bold;">matchdata = regex.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">while matchdata != nil</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts matchdata[0]</span><br style="font-weight: bold;"><span style="font-weight: bold;">	string1 = matchdata.post_match</span><br style="font-weight: bold;"><span style="font-weight: bold;">	matchdata = regex.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./regex.rb<br>will<br>well<br>wall<br>wall<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+What you've done here is repeated the match, over and over again, each
+time assigning the remainder of the string after the match to <span style="font-family: monospace;">string1</span> via the <span style="font-family: monospace;">post_match</span> method. The loop
+terminates when no match is found.<br>
+
+<h2>Regex Substitution</h2>
+
+My research tells me Ruby's regular expressions do not, in and of
+themselves, have a provision for substitution. From what I've found,
+you need to use Ruby itself, specifically the String.gsub() method, to
+actually perform the substitution. If that's true, to me that
+represents a significant hassle, although certainly not a showstopper.
+If I'm wrong about this, please <a href="../../email_steve_litt.htm">let
+me know</a>.<br>
+
+<br>
+
+The following makes all occurrences of <span style="font-family: monospace;">/w.ll/</span> uppercase in the string:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1.gsub!(/(w.ll)/){$1.upcase}</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts string1</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>I WILL drill for a WELL in WALLa WALLa washington.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding depends on the block form of the <span style="font-family: monospace;">String.gsub()</span> method. I could
+not get the non-block form to accept the matches of the regular
+expression.<br>
+
+<br>
+
+If you had wanted to replace only the first occurrence of <span style="font-family: monospace;">/w.ll/</span>, you would have had to
+do this (warning, ugly!):<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts string1</span><br style="font-weight: bold;"><span style="font-weight: bold;">regex = Regexp.new(/w.ll/)</span><br style="font-weight: bold;"><span style="font-weight: bold;">match = regex.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">offsets = match.offset(0)</span><br style="font-weight: bold;"><span style="font-weight: bold;">startOfMatch = offsets[0]</span><br style="font-weight: bold;"><span style="font-weight: bold;">endOfMatch = offsets[1]</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1[startOfMatch...endOfMatch] = match[0].upcase</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts string1</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./regex.rb<br>I WILL drill for a well in walla walla washington.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Being a Perl guy, I'm used to having the regular expression do the
+entire substitution in a single line of code, and find the preceding
+quite cumbersome. Obviously, some of the preceding code was inserted
+just for readability. For instance, I could have done this:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "I will drill for a well in walla walla washington."</span><br style="font-weight: bold;"><span style="font-weight: bold;">match = /w.ll/.match(string1)</span><br style="font-weight: bold;"><span style="font-weight: bold;">string1[match.offset(0)[0]...match.offset(0)[1]] = match[0].upcase</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts string1</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Or even this, which I'm sure would have fit right in with K&amp;R first
+edition:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">#!/usr/bin/ruby<br>string1 = "I will drill for a well in walla walla washington."<br>match = /w.ll/.match(string1)<br>string1[/w.ll/.match(string1).offset(0)[0].../w.ll/.match(string1).offset(0)[1]] = match[0].upcase<br>puts string1<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If you can read the preceding, you're a better programmer than I.<br>
+
+<br>
+
+In my opinion, Ruby beats the daylights out of Perl in most aspects,
+but not in regular expressions.<br>
+
+<h1><a name="_Subroutines"></a>Subroutines</h1>
+
+A subroutine starts with <span style="font-family: monospace;">def</span>
+and ends with a corresponding <span style="font-family: monospace;">end</span>.
+Subroutines pass back values with the <span style="font-family: monospace;">return</span> keyword. In a welcome
+change from Perl, variables declared inside a subroutine are
+local by default, as shown by this program:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">def passback</span><br style="font-weight: bold;"><span style="font-weight: bold;">	howIfeel="good"</span><br style="font-weight: bold;"><span style="font-weight: bold;">	return howIfeel</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">howIfeel="excellent"</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts howIfeel</span><br style="font-weight: bold;"><span style="font-weight: bold;">mystring = passback</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts howIfeel</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts mystring</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding, note that the <span style="font-family: monospace;">puts</span>
+command writes the string and then prints a newline, as opposed to the <span style="font-family: monospace;">print</span> command, which doesn't
+print a newline unless you add a newline to the string being printed.<br>
+
+<br>
+
+If the <span style="font-family: monospace;">howIfeel</span> variable
+inside subroutine <span style="font-family: monospace;">passback</span>
+were global, then after running the subroutine, the <span style="font-family: monospace;">howIfeel</span> variable in the main
+program would change from "excellent" to good. However, when you run
+the program you get this:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>excellent<br>excellent<br>good<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The first and second printing of the <span style="font-family: monospace;">howIfeel</span> variable in the main
+program both print as "excellent", while the value passed back from the
+subroutine, and stored in variable <span style="font-family: monospace;">mystring</span> prints as "good", as
+we'd expect. Ruby's variables are local by default -- a huge
+encapsulation benefit.<br>
+
+<br>
+
+You can pass variables into a subroutine as shown in the following code:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">def mult(multiplicand, multiplier)</span><br style="font-weight: bold;"><span style="font-weight: bold;">	multiplicand = multiplicand * multiplier</span><br style="font-weight: bold;"><span style="font-weight: bold;">	return multiplicand</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">num1 = 4</span><br style="font-weight: bold;"><span style="font-weight: bold;">num2 = 5</span><br style="font-weight: bold;"><span style="font-weight: bold;">result = mult(num1, num2)</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "num1 is ", num1, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "num2 is ", num2, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "result is ", result, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>num1 is 4<br>num2 is 5<br>result is 20<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The value of num1 was not changed by running <span style="font-family: monospace;">mult()</span>, showing that arguments
+are passed by value, not reference, at least for integers. But what
+about for objects like strings?<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">def concat(firststring, secondstring)</span><br style="font-weight: bold;"><span style="font-weight: bold;">	firststring = firststring + secondstring</span><br style="font-weight: bold;"><span style="font-weight: bold;">	return firststring</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">string1 = "Steve"</span><br style="font-weight: bold;"><span style="font-weight: bold;">string2 = "Litt"</span><br style="font-weight: bold;"><span style="font-weight: bold;">result = concat(string1, string2)</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "string1 is ", string1, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "string2 is ", string2, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "result is ", result, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>string1 is Steve<br>string2 is Litt<br>result is SteveLitt<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Once again, manipulations of an argument inside the subroutine do not
+change the value of the variable passed as an argument. The string was
+passed by value, not reference.<br>
+
+<h1><a name="_Exceptions"></a>Exceptions</h1>
+
+Growing up with C, I wrote code for every possible error condition. Or,
+when I was too lazy to write code for error conditions, my code was
+less robust.<br>
+
+<br>
+
+The modern method of error handling is with exceptions, and Ruby has
+that feature. Use them.<br>
+
+<br>
+
+There are two things you can do: <span style="font-style: italic;">handle</span>
+an exception, and <span style="font-style: italic;">raise</span> an
+exception. You <span style="font-style: italic;">raise</span> an
+exception by recognizing an error condition, and then associating it
+with an exception type. You usually don't need to <span style="font-style: italic;">raise</span> an exception because most
+system calls already raise exceptions on errors. However, if you've
+written a new bit of logic, and encounter a forbidden state, then you
+would <span style="font-style: italic;">raise</span> an exception.<br>
+
+<br>
+
+You <span style="font-style: italic;">handle</span> an exception that
+gets raised -- typically by system calls but possibly by your code.
+This handling is only for protected code starting with <span style="font-family: monospace;">begin</span> and ending with <span style="font-family: monospace;">end</span>. Here's a simple example:<br>
+
+<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">begin</span><br style="font-weight: bold;"><span style="font-weight: bold;">	input = File.new("/etc/resolv.conf", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">rescue </span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "Failed to open /etc/fstab for input. ", $!, "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">end	</span><br style="font-weight: bold;"><span style="font-weight: bold;">input.each {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|i|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts i;</span><br style="font-weight: bold;"><span style="font-weight: bold;">	}</span><br style="font-weight: bold;"><span style="font-weight: bold;">input.close()</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+&nbsp;<br>
+
+The preceding code produces the following output:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>search domain.cxm<br>nameserver 192.168.100.103<br><br># ppp temp entry<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+However, if the filename in <span style="font-family: monospace;">File.new(<span style="font-family: mon;">)<span style="font-family: monospace;"></span></span></span><span style="font-family: mon;"> is changed to the nonexistent <span style="font-family: monospace;">/etc/resolX.conf</span>, the output
+looks like this:</span><br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Failed to open /etc/fstab for input. No such file or directory - /etc/resolX.conf<br>./hello.rb:7: undefined method `each' for nil:NilClass (NoMethodError)<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Global variable <span style="font-family: monospace;">$!<span style="font-family: monospace;"></span></span>i had the value "No such
+file or directory - /etc/resolX.con", so that printed along with the
+error message in the rescue section. This exception was then passed to
+other exception handlers, that wrote additional messages and eventually
+terminated the program.<br>
+
+<br>
+
+Exceptions are implemented as classes (objects), all of whom are
+descendents of the <span style="font-family: monospace;">Exception</span>
+class. Some have methods over and above those of the <span style="font-family: monospace;">Exception</span> class, some do not.
+Here is a list of the exceptions I was able to find in documentation on
+the web:<br>
+
+<ul>
+
+  <li> ArgumentError </li>
+
+  <li> IndexError </li>
+
+  <li> Interrupt </li>
+
+  <li> LoadError </li>
+
+  <li> NameError </li>
+
+  <li> NoMemoryError </li>
+
+  <li> NoMethodError </li>
+
+  <li> NotImplementedError </li>
+
+  <li> RangeError </li>
+
+  <li> RuntimeError </li>
+
+  <li> ScriptError </li>
+
+  <li> SecurityError </li>
+
+  <li> SignalException </li>
+
+  <li> StandardError </li>
+
+  <li> SyntaxError </li>
+
+  <li> SystemCallError </li>
+
+  <li> SystemExit </li>
+
+  <li> TypeError </li>
+
+</ul>
+
+<br>
+
+The following is a more generic error handling syntax:<br>
+
+<pre>begin<br>	# attempt code here<br>rescue&nbsp;SyntaxError =&gt; mySyntaxError<br>	print "Unknown syntax error. ", mySyntaxError, "\n"<br>	# error handling specific to problem here<br>rescue StandardError =&gt; myStandardError<br>	print "Unknown general error. ", myStandardError, "\n"<br>	# error handling specific to problem here<br>else<br>	# code that runs ONLY if no error goes here<br>ensure<br>	# code that cleans up after a problem and its error handling goes here<br>end<br></pre>
+
+In the preceding, variables <span style="font-family: monospace;">mySyntaxError</span>
+and <span style="font-family: monospace;">myStandardError</span> are
+local variables to store the contents of global variable <span style="font-family: monospace;">$!</span>, the exception that was
+raised.<br>
+
+<h2>Retry</h2>
+
+There's a <span style="font-family: monospace;">retry</span> keyword
+enabling a retry on error. This is handy when performing an activity
+that might benefit from a retry (reading a CD, for instance):<br>
+
+<pre>begin<br>	# attempt code here<br>rescue<br>	puts $!<br>	if EscNotPressed()<br>		print "Reload the CD, or press ESC\n"<br>		retry<br>	else<br>		puts "User declined to retry further"<br>	end<br>end</pre>
+
+<h2>Raising an Exception</h2>
+
+Sometimes the neither the system nor the language detect an error, but
+you do. Perhaps the user input someone 18 years old for Medicare. Linux
+doesn't know that's wrong. Ruby doesn't know that's wrong. But you do.<br>
+
+<br>
+
+You can raise a generic exception (or the current exception if there is
+one) like this:<br>
+
+<pre>raise if age &lt; 65<br></pre>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">age = 18</span><br style="font-weight: bold;"><span style="font-weight: bold;">raise if age &lt; 66</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Age is ", age, ". This happens after the exception was raised\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>./hello.rb:3: unhandled exception<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+To raise a RuntimeError exception with your own message, do this:<br>
+
+<pre>raise "Must be 65 or older for Medicare"<br></pre>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">age = 18</span><br style="font-weight: bold;"><span style="font-weight: bold;">raise "Must be 65 or older for Medicare." if age &lt; 66</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Age is ", age, ". This happens after the exception was raised\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>./hello.rb:3: Must be 65 or older for Medicare. (RuntimeError)<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+To raise a RangeError exception (you wouldn't really do this), you'd do
+this:<br>
+
+<pre>raise RangeError, "Must be 65 or older for Medicare", caller<br></pre>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">age = 18</span><br style="font-weight: bold;"><span style="font-weight: bold;">raise RangeError, "Must be 65 or older for Medicare", caller if age &lt; 66</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Age is ", age, ". This happens after the exception was raised\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>./hello.rb:3: Must be 65 or older for Medicare (RangeError)<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Perhaps the best way to do it is to create a new exception class
+specific to the type of error:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class MedicareEligibilityException &lt; RuntimeError</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">age = 18</span><br style="font-weight: bold;"><span style="font-weight: bold;">raise MedicareEligibilityException , "Must be 65 or older for Medicare", caller if age &lt; 66</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Age is ", age, ". This happens after the exception was raised\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>./hello.rb:6: Must be 65 or older for Medicare (MedicareEligibilityException)<br>[slitt@mydesk slitt]$ <br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Now let's combine raising and handling, by creating a subroutine called
+<span style="font-family: monospace;">signHimUp()</span>, which raises
+the exception, and the calling main routine, which handles. In this
+particular, rather contrived program, information about the person
+whose information raised the exception is stored in the exception
+itself, by the <span style="font-family: monospace;">initialize()</span>
+method, which assigns its arguments to the class's instance variables,
+so that this call:<br>
+
+<pre>myException = MedicareEligibilityException.new(name, age)<br></pre>
+
+creates an instance of class <span style="font-family: monospace;">MedicareEligibilityException</span>
+whose instance variables contain the person's name and age for later
+reference. Once again, this is very contrived, but it illustrates some
+of the flexibility of exception handling:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span>#!/usr/bin/ruby<br>class MedicareEligibilityException &lt; RuntimeError<br>	def initialize(name, age)<br>		@name = name<br>		@age = age<br>	end<br>	def getName<br>		return @name<br>	end<br>	def getAge<br>		return @age<br>	end<br>end<br><br>def writeToDatabase(name, age)<br>	# This is a stub routine<br>	print "Diagnostic: ", name, ", age ", age, " is signed up.\n"<br>end<br><br>def signHimUp(name, age)<br><br>	if age &gt;= 65<br>		writeToDatabase(name, age)<br>	else<br>		myException = MedicareEligibilityException.new(name, age)<br>		raise myException , "Must be 65 or older for Medicare", caller<br>#		raise MedicareEligibilityException , "Must be 65 or older for Medicare", caller<br>	end<br>end<br><br># Main routine<br>begin<br>	signHimUp("Oliver Oldster", 78)<br>	signHimUp("Billy Boywonder", 18)<br>	signHimUp("Cindy Centurinarian", 100)<br>	signHimUp("Bob Baby", 2)<br><br>rescue MedicareEligibilityException =&gt; elg<br>	print elg.getName, " is ", elg.getAge, ", which is too young.\n"<br>	print "You must obtain an exception from your supervisor. ", elg, "\n"<br>	<br>end<br><br>print "This happens after signHimUp was called.\n"<br><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding code, the main routine calls subroutine <span style="font-family: monospace;">signHimUp</span> for each of four
+people, two of whom are underage. The begin/rescue/end structure in the
+main routine allows exceptions of type <span style="font-family: monospace;">MedicateEligibilityException</span> to
+be handled cleanly, although such exceptions are raised by the called
+subroutine, <span style="font-family: monospace;">signHimU()</span>. ,
+<span style="font-family: monospace;">signHimU()</span>. routine tests
+for age 65 and older, and if so, calls dummy <span style="font-family: monospace;">writeToDatabase()</span> and if not,
+creates a new instance of <span style="font-family: monospace;">MedicateEligibilityException</span>
+containing the person's name and age, and then raises that exception,
+with the hope that the calling routine's exception handling will be
+able to use that information in its error message.<br>
+
+<br>
+
+The <span style="font-family: monospace;">MedicateEligibilityException</span>
+definition itself is a typical class definition, with instance
+variables beginning with @, an <span style="font-family: monospace;">initialize()</span>
+constructor that assigns its arguments to the instance variables, and
+get routines for the instance variables. All of this will be covered
+later when we discuss classes and objects.<br>
+
+<br>
+
+Here is the result:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre>[slitt@mydesk slitt]$ ./hello.rb<br>Diagnostic: Oliver Oldster, age 78 is signed up.<br>Billy Boywonder is 18, which is too young.<br>You must obtain an exception from your supervisor. Must be 65 or older for Medicare<br>This happens after signHimUp was called.<br>[slitt@mydesk slitt]$</pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+As you can see, the first call to <span style="font-family: monospace;">signHimUp()</span>
+successfully ran the stub write to database routine, as indicated by
+the diagnostic line. The next call to <span style="font-family: monospace;">signHimUp()</span> encountered an
+exceptio <span style="font-family: monospace;">MedicateEligibilityException</span>
+exception, and the code in the <span style="font-family: monospace;">rescue</span>
+block got the patient's name and age from the exception, and wrote it.
+At that point the <span style="font-family: monospace;">begin</span>
+block was terminated, and execution fell through to the line below the <span style="font-family: monospace;">end</span> matching the exception
+handling's <span style="font-family: monospace;">begin</span>. If we
+had wanted to, we could have terminated the program from within the <span style="font-family: monospace;">rescue</span> block, in many ways,
+including ending that block with a <span style="font-family: monospace;">raise</span> command, or to bail
+immediately, an <span style="font-family: monospace;">exit</span>
+command.<br>
+
+<h2>Catch and Throw</h2>
+
+The <span style="font-family: monospace;">catch</span> and <span style="font-family: monospace;">throw</span> keywords enable you to
+jump up the error stack, thereby in effect performing a <span style="font-family: monospace;">goto</span>.
+If you can think of a good reason to do this, research these two
+keywords on your own. Personally, I'd prefer to stay away from them.<br>
+
+<br>
+
+We've just scratched the surface of exception handling, but you
+probably have enough now to at least write simple exceptions and read
+other people's exception code.<br>
+
+<br>
+
+<h1><a name="_Terminal_IO"></a>Terminal IO</h1>
+
+This section will cover just a few of the many ways you can do terminal
+IO. You've already learned about <span style="font-family: monospace;">print</span>
+and <span style="font-family: monospace;">puts</span>:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "This is the first half of Line 1. "</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "This is the second half.", "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">puts "This is line 2, no newline necessary."</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The preceding code produces the following result:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>This is the first half of Line 1. This is the second half.<br>This is line 2, no newline necessary.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Ruby has a <span style="font-family: monospace;">printf()</span>
+command similar to C:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">printf "There were %7d people at the %s.\n", 439, "Avalanche Auditorium"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>There were     439 people at the Avalanche Auditorium.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You get line oriented keyboard input with <span style="font-family: monospace;">gets</span>:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Name please=&gt;"</span><br style="font-weight: bold;"><span style="font-weight: bold;">name = gets</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Your name is ", name, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Name please=&gt;<span style="color: rgb(51, 51, 255);">Steve Litt</span><br>Your name is Steve Litt<br><br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You can get a single character with <span style="font-family: monospace;">gets()</span>. However, the user will
+need to press the Enter key before <span style="font-family: monospace;">gets()</span> will accept the
+character. To enable instantaneous recognition of the character, you
+must set <span style="font-family: monospace;">cbreak</span> before <span style="font-family: monospace;">gets()</span> and then reset it
+afterwards, like this:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">#!/usr/bin/ruby<br>print "Character please=&gt;"<br>system "stty cbreak &lt;/dev/tty &gt;/dev/tty 2&gt;&amp;1";<br>int = STDIN.getc<br>system "stty -cbreak &lt;/dev/tty &gt;/dev/tty 2&gt;&amp;1";<br>print "\nYou pressed &gt;", int, "&lt;, char &gt;", int.chr, "&lt;\n"<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Character please=&gt;<span style="color: rgb(51, 51, 255);">A</span><br>You pressed &gt;65&lt;, char &gt;A&lt;<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The <span style="font-family: monospace;">cbreak</span> commands seem
+to work on modern Linuces. They are VERY system dependent, and as far
+as I know don't work on Windows at all. On some Unices you might try
+these instead:<br>
+
+<pre>system "stty", '-icanon', 'eol', "\001";<br>int = STDIN.getc<br>system "stty", 'icanon', 'eol', '^@'; # ASCII null<br></pre>
+
+Terminal I/O is pretty simple in Ruby. So is file I/O...<br>
+
+<h1><a name="_File_IO"></a>File IO</h1>
+
+File I/O uses the File object. It's very straightforward, as you can
+see from the following program, which opens <span style="font-family: monospace;">resolv.conf</span> for input, and<span style="font-family: monospace;">junk.jnk</span> for output, and then
+copies each line from the input file to the output file:<br>
+
+<span style="font-weight: bold;"></span>
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile = File.new("/etc/resolv.conf", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">outfile = File.new("junk.jnk", "w")</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile.each {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|i|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	outfile.write i</span><br style="font-weight: bold;"><span style="font-weight: bold;">	}</span><br style="font-weight: bold;"><span style="font-weight: bold;">outfile.close()</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile.close()</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">outfile = File.new("junk.jnk", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">outfile.each {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|i|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	print "&gt;&gt;", i</span><br style="font-weight: bold;"><span style="font-weight: bold;">	}</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>&gt;&gt;search domain.cxm<br>&gt;&gt;nameserver 192.168.100.103<br>&gt;&gt;<br>&gt;&gt;# ppp temp entry<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Perl has a way to immediately read a whole file into an array, and so
+does Ruby:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile = File.new("/etc/resolv.conf", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">linearray = infile.readlines</span><br style="font-weight: bold;"><span style="font-weight: bold;">linearray.each{|i| print i}</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile.close</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>search domain.cxm<br>nameserver 192.168.100.103<br><br># ppp temp entry<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Ruby can no also read one character at a time:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile = File.new("/etc/resolv.conf", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile.each_byte {</span><br style="font-weight: bold;"><span style="font-weight: bold;">	|i|</span><br style="font-weight: bold;"><span style="font-weight: bold;">	if i.chr == "e"</span><br style="font-weight: bold;"><span style="font-weight: bold;">		print("!")</span><br style="font-weight: bold;"><span style="font-weight: bold;">	else</span><br style="font-weight: bold;"><span style="font-weight: bold;">		print(i.chr)</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	}</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile.close</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>s!arch domain.cxm<br>nam!s!rv!r 192.168.100.103<br><br># ppp t!mp !ntry<br>[slitt@mydesk slitt]<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+If for some reason you don't want to use the <span style="font-family: monospace;">each</span> construct, you can use <span style="font-family: monospace;">readchar</span> like this:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">infile = File.new("/etc/resolv.conf", "r")</span><br style="font-weight: bold;"><span style="font-weight: bold;">until infile.eof</span><br style="font-weight: bold;"><span style="font-weight: bold;">	i = infile.readchar</span><br style="font-weight: bold;"><span style="font-weight: bold;">	if i.chr == "e"</span><br style="font-weight: bold;"><span style="font-weight: bold;">		print("!")</span><br style="font-weight: bold;"><span style="font-weight: bold;">	else</span><br style="font-weight: bold;"><span style="font-weight: bold;">		print(i.chr)</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end<br></span><span style="font-weight: bold;"><span style="font-weight: bold;">infile.close</span><br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding code, the <span style="font-family: monospace;">eof</span>
+method looks ahead to see whether the next character read will be
+valid, and if so, loops through, reads and prints it. You might think
+of doing a priming read, then putting the next read at the bottom of
+the loop, testing for <span style="font-family: monospace;">i==nil</span>.
+Unfortunately, if you read into the end of file, it triggers an
+exception which prints an error message, and nobody wants that.
+Instead, use <span style="font-family: monospace;">eof</span> to look
+ahead and read just enough.<br>
+
+<br>
+
+It isn't demonstrated in this tutorial, but you can use <span style="font-family: monospace;">readline</span> to read a line at a
+time, again using <span style="font-family: monospace;">eof</span> to
+look ahead.<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>s!arch domain.cxm<br>nam!s!rv!r 192.168.100.103<br>nam!s!rv!r 209.63.57.200<br><br># ppp t!mp !ntry<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+<h1><a name="_How_OOP_is_Ruby"></a>How OOP is Ruby?</h1>
+
+You hear it all the time. "Ruby's a purely Object Oriented language!"<br>
+
+<br>
+
+On some levels that's a true statement, but it's misleading. It misled
+me into staying away from Ruby for three years.<br>
+
+<br>
+
+See, to me "purely OOP" means a language you can't write procedural
+code with. Java, for instance, where you need to create a class to
+write a "hello world" program, and you can't make a subroutine outside
+of a class. <br>
+
+<br>
+
+Ruby's not like that. A Ruby "hello world" program is two lines, you
+can write subroutines outside of any class that are accessible
+anywhere, and if you'd like you can write complete and complex programs
+without creating a single class or object.<br>
+
+<br>
+
+In Ruby's case, what they mean by "purely OOP" is that all variables
+are objects. Integers, floating point numbers, characters, strings,
+arrays, hashes, files -- they're all objects. You manipulate these
+objects with their methods, not with Ruby built in operators. For
+instance, in the following:<br>
+
+<pre>profit = revenue - expense<br></pre>
+
+In the preceding, <span style="font-family: monospace;">profit,
+revenue and expense</span> are all objects of class <span style="font-family: monospace;">Float</span>. The minus sign (<span style="font-family: monospace;">-</span>) is not a Ruby operator --
+it's a method of the <span style="font-family: monospace;">Float</span>
+class. In the C language, the minus sign would be an operator supplied
+by the language, but in Ruby it's just a method of the <span style="font-family: monospace;">Float</span> class. Incidentally, a
+plus sign method is implemented in class <span style="font-family: monospace;">Fixnum</span> integers, where once
+again it adds the value, and in the <span style="font-family: monospace;">String</span> class, where it
+concatinates strings.<br>
+
+<br>
+
+So Ruby's "purely OOP" in that when you use it you'll definitely be <span style="font-style: italic;">using</span> objects, but you do not need
+to <span style="font-style: italic;">create</span> objects to write a
+substantial Ruby programmer. So if you do not consider yourself an
+Object Oriented programmer, or even if you hate OOP, don't let that
+stop you from using Ruby.<br>
+
+<h1><a name="_Object_Oriented_Programming_Concepts"></a>Object Oriented
+Programming Concepts</h1>
+
+In my opinion, objects are all about data. In programs using objects to
+simulate real world things like cannonballs, such data might be
+position, velocity and mass. In business programs, an object might
+contain a person's first and last name, employee number, job
+classification and health insurance.<br>
+
+<br>
+
+An object is a wonderful place to store a program's configuration
+information. All such info is kept in one place such that only a single
+object is kept global or passed in and out of subroutines. <br>
+
+<br>
+
+All of these ideas precede object orientation. Since the dawn of time
+programmers have put all data for an entity in a data structure, and
+then manipulated the structure. Here's some code I wrote in 1986 to
+manipulate the page of a dot matrix printer. Keep in mind that back in
+those days, computers didn't have enough RAM for everyone to store
+their printed page in an 80x66 array. Much of my job back then was
+programming computers to print out medical insurance forms, each with
+about 40 boxes to fill out in very tight quarters. There were several
+different form layouts, and they changed frequently. So here's some
+1986 C code (note the original K&amp;R style -- no prototypes):<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">/* THE REPORT VARIABLE */</span><br><span style="font-weight: bold;">typedef struct</span><br style="font-weight: bold;"><span style="font-weight: bold;">   {</span><br style="font-weight: bold;"><span style="font-weight: bold;">   FILE *fil;          /* report file file variable */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int y;              /* y coord on page, changed only by atyxpr */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int x;              /* x coord on page, changed only by atyxpr */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int pglength;       /* lines per page, changed only by openrpt */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int stringlength;   /* maximum length of string to be printed */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int lineno;         /* line number, changed only by applcatn pgmr */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   int pageno;         /* page number, changed only by applictn pgmr */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   char status[10];    /* set to @REPORT or @CLOSED */</span><br style="font-weight: bold;"><span style="font-weight: bold;">   } REPORT;</span><br style="font-weight: bold;"><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">void atyxpr(rpt,y,x,st)</span><br style="font-weight: bold;"><span style="font-weight: bold;">  REPORT *rpt;     /* the report variable pointer */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  int y;           /* the present vertical print position */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  int x;           /* the present horizontal print position */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  char *st;        /* the string to be printed */</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">{</span><br style="font-weight: bold;"><span style="font-weight: bold;">  int i;</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  checkopen(rpt);</span><br style="font-weight: bold;"><span style="font-weight: bold;">  if ((x == 0) &amp;&amp; (y == 0))</span><br style="font-weight: bold;"><span style="font-weight: bold;">     {            /* continue printing at last position */</span><br style="font-weight: bold;"><span style="font-weight: bold;">     y = rpt-&gt;y;</span><br style="font-weight: bold;"><span style="font-weight: bold;">     x = rpt-&gt;x;</span><br style="font-weight: bold;"><span style="font-weight: bold;">     }</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  /* formfeed if the print line you're seeking is higher than the last time */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  if (y &lt; rpt-&gt;y)</span><br style="font-weight: bold;"><span style="font-weight: bold;">     formfeed(rpt);</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  /* insert a '^' if you've overwritten a column */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  if ((y == rpt-&gt;y) &amp;&amp; (x &lt; rpt-&gt;x))</span><br style="font-weight: bold;"><span style="font-weight: bold;">     {</span><br style="font-weight: bold;"><span style="font-weight: bold;">     strcpy(st, st +(1 + rpt-&gt;x - x));</span><br style="font-weight: bold;"><span style="font-weight: bold;">     writestring(rpt, "^");</span><br style="font-weight: bold;"><span style="font-weight: bold;">     x = rpt-&gt;x;</span><br style="font-weight: bold;"><span style="font-weight: bold;">     fprintf(stderr, "?-warning-atyxpr- column overwrite in line %d.\n", rpt-&gt;y);</span><br style="font-weight: bold;"><span style="font-weight: bold;">     }</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  /* bring the print position to the new coordinates */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  while (y &gt; rpt-&gt;y)</span><br style="font-weight: bold;"><span style="font-weight: bold;">        {</span><br style="font-weight: bold;"><span style="font-weight: bold;">        linefeed(rpt-&gt;fil);</span><br style="font-weight: bold;"><span style="font-weight: bold;">        rpt-&gt;y = rpt-&gt;y + 1;</span><br style="font-weight: bold;"><span style="font-weight: bold;">        rpt-&gt;x = 1;</span><br style="font-weight: bold;"><span style="font-weight: bold;">        }</span><br style="font-weight: bold;"><span style="font-weight: bold;">  while (x &gt; rpt-&gt;x)</span><br style="font-weight: bold;"><span style="font-weight: bold;">        {</span><br style="font-weight: bold;"><span style="font-weight: bold;">        spaceout(rpt-&gt;fil);</span><br style="font-weight: bold;"><span style="font-weight: bold;">        rpt-&gt;x = rpt-&gt;x + 1;</span><br style="font-weight: bold;"><span style="font-weight: bold;">        }</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  /* do the actual write of the string */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  writestring(rpt, st);</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">  /* bring the x position up to date after the write */</span><br style="font-weight: bold;"><span style="font-weight: bold;">  rpt-&gt;x = rpt-&gt;x + strlen(st);</span><br style="font-weight: bold;"><span style="font-weight: bold;">}</span><br></pre>
+
+      </td>
+
+      <td style="vertical-align: top; background-color: rgb(255, 255, 255);">The
+      <span style="font-weight: bold;">REPORT structure</span> kept
+track of the current position of the print head (y and x), the number
+of lines on a page (pglength), and the file to which to write the
+output (the file was usually a printer device). All this information
+remained persistent in the report structure.<br>
+
+      <br>
+
+The report structure was manipulated by a function called <big><span style="font-family: monospace; font-weight: bold;">atyxpr()</span></big>,.
+To print a string at a specific line and column, the programmer
+specified the string to print and the y and x coordinates (row and
+column) at which to start printing the string. Also specified was the
+report structure.<br>
+
+      <br>
+
+If the row and column were specified as both being 0, <span style="font-family: monospace;">atyxpr()</span> printed the string at
+the current print head position, as if the print was done by a simple <span style="font-family: monospace;">printf()</span>. <br>
+
+      <br>
+
+If the row was the same as the current printhead row but the column was
+farther out, <span style="font-family: monospace;">atyxpr()</span>
+printed spaces until the printer head was in the desired place, and
+then the string was printed. <br>
+
+      <br>
+
+If the desired row was below the current printhead position, <span style="font-family: monospace;">atyxpr()</span> printed linefeeds to
+get to the desired row, printed spaces to get to the desired column,
+and then printed the string.<br>
+
+      <br>
+
+If the desired row was above the current printhead position, that meant
+that it needed to be printed on the next page, so a formfeed was
+issued, then enough linefeeds to get to the desired row, then enough
+spaces to get to the desired column, and then the string was printed.<br>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+What does this have to do with Ruby? Believe it or not, there's a
+purpose to showing this obsolete C code from an era of monospace
+printers and computers too anemic to store 80x66 worth of characters.
+That purpose is to show that there's absolutely nothing new about
+congregating all data about a specific entity or device in a single
+place, nor is there anything new about encapsulation. You do not need
+object orientation to do these things. I did it in 1986 using K&amp;R
+C, and people were doing it long before me.<br>
+
+<br>
+
+What IS new about object oriented programming (OOP) is that you can
+store the subroutines that manipulate the data (<span style="font-family: monospace;">atyxpr()</span> in this example) right
+along with the data. But so what? What's the advantage?<br>
+
+<br>
+
+The advantage is something called <span style="font-style: italic;">namespace
+collision</span>. The name of the subroutine manipulating the data is
+in scope only within the context of that data. If that name is used
+elsewhere, it refers to a different subroutine. In old C, if you had
+geometric figures square, circle, point and parabola, look what you'd
+need:<br>
+
+<ul>
+
+  <li>circle_move(circleVar, fromy, fromx, toy, tox)</li>
+
+  <li>square_move(squareVar, fromy, fromx, toy, tox)</li>
+
+  <li>point_move(parabolaVar, fromy, fromx, toy, tox)</li>
+
+  <li>parabola_move(parabolaVar, fromy, fromx, toy, tox)</li>
+
+</ul>
+
+You need to remember four subroutine names (circle_move, square_move,
+point_move, and parabola_move), none of which is especially memorable.
+Now consider an object oriented language, where objects circle, square,
+point and parabola each implement their own move routine:<br>
+
+<ul>
+
+  <li>circle.move(fromy, fromx, toy, tox)</li>
+
+  <li>square.move(fromy, fromx, toy, tox)</li>
+
+  <li>point.move(fromy, fromx, toy, tox)</li>
+
+  <li>parabola.move(fromy, fromx, toy, tox)</li>
+
+</ul>
+
+In Object Oriented Programming (OOP), move means move -- it's intuitive.<br>
+
+<br>
+
+Others will state additional benefits. They'll tell of the ability to
+redefine operators depending on the types being manipulated. They'll
+speak of inheritance, where you can create a new object type that's an
+enhancement of one already made, and you can even create a family of
+similar object types that can be manipulated by same named, similar
+performing subroutines. These are all nice, but in my opinion the only
+essentials are encapsulation and reduction of namespace collision.<br>
+
+<br>
+
+Many tout OOP for purposes of reusability. I disagree. Everyone's
+talking about reusable code, but few are writing it, with OOP or anything
+else. Reusability is harder to find than the fountain of youth. If OOP
+were really that reusable, that wouldn't be true.<br>
+
+<h2>Classes and Objects</h2>
+
+Think of a class as a set of architectural drawings for a house. Think
+of objects as the houses built according to those drawings. The
+drawings can be used as a plan for many, many houses. Not only that,
+the houses needn't be the same. Some can have carpeting, some have wood
+floors, but they were all created from the drawings. Once the house is
+created, the owner can put in a 14 cubic foot refrigerator or a 26 foot
+one. The owner can put in the finest entertainment center, or a 14" TV
+with rabbit ears on a wooden crate. No matter, they were all made from
+the same drawings. The drawing is the class, the house is the object.<br>
+
+<br>
+
+A class is a plan to create objects. Ideally it lists all the data
+elements that will appear in any of its objects. It lists any
+subroutines the objects will need to manipulate the data. Those
+subroutines are called <span style="font-style: italic;">methods</span>
+in OOP speak. It might even give the data elements initial values so
+that if the programmer doesn't change them, he has intelligent
+defaults. But typically, the computer program changes at least some of
+those data elements while it's being run.<br>
+
+<h1><a name="_Simple_OOP_in_Ruby"></a>Simple OOP in Ruby</h1>
+
+In Ruby, a class begins with the <span style="font-family: monospace;">class</span>
+keyword, and ends with a matching <span style="font-family: monospace;">end</span>.
+The simplest class that can be made contains nothing more than the <span style="font-family: monospace;">class</span> statement and
+corresponding end:<br>
+
+<pre>class Myclass<br>end<br></pre>
+
+The preceding class would not error out, but it does nothing other than
+tell the name of its class:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Myclass</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">myclass = Myclass.new</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myclass.class, "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Myclass<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+To be useful, a class must encapsulate data, giving the programmer
+methods (subroutines associated with the class) to read and manipulate
+that data. As a simple example, imagine a class that produces objects
+that maintain a running total. This class maintains one piece of data,
+called <span style="font-family: monospace;">@total</span>, which is
+the total being maintained. Note that the at sign (@) designates this
+variable as an <span style="font-style: italic;">instance variable</span>
+-- a variable in scope only within objects of this class, and
+persistent within those objects.<br>
+
+<br>
+
+This class has a method called <span style="font-family: monospace;">hasTotal()</span>
+that returns true if the total is defined, false if it's <span style="font-family: monospace;">nil</span>. That way you can test to
+make sure you don't perform operations on a <span style="font-family: monospace;">nil</span> value. It also has <span style="font-family: monospace;">getTotal()</span> to read the total.
+It has <span style="font-family: monospace;">setTo()</span> to set the
+total to the argument of <span style="font-family: monospace;">setTo()</span>,
+it has methods <span style="font-family: monospace;">increaseBy()</span>
+and <span style="font-family: monospace;">multiplyBy()</span> add or
+multiply the total by an argument.<br>
+
+<br>
+
+Last but not least, it has <span style="font-family: monospace;">initialize()</span>.,
+which is called whenever <span style="font-family: monospace;">Total.new()</span>
+is executed. This happens because <span style="font-family: monospace;">initialize()</span>
+is a special reserved name -- you needn't do anything to indicate it's
+a constructor. The number of arguments in <span style="font-family: monospace;">initialize()</span> is the number of
+arguments <span style="font-family: monospace;">Total.new()</span>
+expects. The other thing that happens in <span style="font-family: monospace;">initialize()</span> is that all the
+instance variables are declared and initialized (in this case to the
+argument passed in through <span style="font-family: monospace;">new()</span>.<br>
+
+<br>
+
+Here is the code:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Total</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(initial_amount)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total=initial_amount</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def increaseBy(increase)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total += increase</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def multiplyBy(increase)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total *= increase</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def setTo(amount)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total = amount</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def getTotal() return @total; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def hasTotal() return @total!=nil; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">total = Total.new(0)</span><br style="font-weight: bold;"><span style="font-weight: bold;">for ss in 1..4</span><br style="font-weight: bold;"><span style="font-weight: bold;">	total.increaseBy(ss)	</span><br style="font-weight: bold;"><span style="font-weight: bold;">	puts total.getTotal if total.hasTotal</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "Final total: ", total.getTotal, "\n" if total.hasTotal</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>1<br>3<br>6<br>10<br>Final total: 10<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The main routine instantiates an object of type <span style="font-family: monospace;">Total</span>, instantiating the total
+to a value of <span style="font-family: monospace;">0</span>. Then a
+loop repeatedly adds the loop subscript to the total, printing each
+time after the add. Finally, outside the loop, the total is printed,
+which is 10, otherwise known as 1+2+3+4.<br>
+
+<br>
+
+Take some time to study the preceding example, and I think you'll find
+it fairly self-explanatory.<br>
+
+<br>
+
+Now for a little controversy. Remember I said you declare all instance
+variables inside <span style="font-family: monospace;">initialize()</span>?
+You don't have to. You could declare them in other methods:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Total</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(initial_amount)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total=initial_amount</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def setName(name) @name = name; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def hasName() return @name != nil; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def getName() return @name; end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def increaseBy(increase)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total += increase</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def multiplyBy(increase)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total *= increase</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def setTo(amount)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total = amount</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def getTotal() return @total; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def hasTotal() return @total!=nil; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">total = Total.new(15)</span><br style="font-weight: bold;"><span style="font-weight: bold;">print total.getTotal(), "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print total.getName(), "\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">total.setName("My Total")</span><br style="font-weight: bold;"><span style="font-weight: bold;">print total.getName(), "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>15<br>nil<br>My Total<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+From a viewpoint of pure modularity, readability and encapsulation,
+you'd probably want to have all instance variables listed in the <span style="font-family: monospace;">initialize()</span> method. However,
+Ruby gives you ways to access instance variables directly, either
+read-only or read-write. Here's a read only example:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Person</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(lname, fname)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@lname = lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@fname = fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		return @lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		return @fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">steve = Person.new("Litt", "Steve")</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "My name is ", steve.fname, " ", steve.lname, ".\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>My name is Steve Litt.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+You and I know <span style="font-family: monospace;">fname</span> and <span style="font-family: monospace;">lname</span> are accessed as methods,
+but because they're read as <span style="font-family: monospace;">steve.fname</span>,
+it <span style="font-style: italic;">seems</span> like you're directly
+reading the data. Now let's go for a read/write example:<br>
+
+<br>
+
+<br style="font-weight: bold;">
+
+<h2 style="font-weight: bold;">
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Person</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(lname, fname)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@lname = lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@fname = fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		return @lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		return @fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def lname=(myarg)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@lname = myarg</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def fname=(myarg)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@fname = myarg</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">steve = Person.new("Litt", "Stove")</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "My name is ", steve.fname, " ", steve.lname, ".\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">steve.fname = "Steve"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "My name is ", steve.fname, " ", steve.lname, ".\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+When I instantiated the object in the preceding code, I accidentally
+spelled my name "Stove". So I changed it as if it were a variable. This
+behavior was facilitated by the <span style="font-family: monospace;">def
+lname=(arg)</span> method. The output of the preceding code follows:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>My name is Stove Litt.<br>My name is Steve Litt.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+The methods facilitating the seeming ability to write directly to the
+data are called <span style="font-style: italic;">accessor methods</span>.
+Because accessor methods are so common, Ruby has a shorthand for them:<br>
+
+<h2></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Person</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(lname, fname)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@lname = lname</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@fname = fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	<span style="color: rgb(204, 0, 0);">attr_reader :lname, :fname</span></span><br style="font-weight: bold; color: rgb(204, 0, 0);"><span style="font-weight: bold; color: rgb(204, 0, 0);">	attr_writer :lname, :fname</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">steve = Person.new("Litt", "Stove")</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "My name is ", steve.fname, " ", steve.lname, ".\n"</span><br style="font-weight: bold;"><span style="font-weight: bold;">steve.fname = "Steve"</span><br style="font-weight: bold;"><span style="font-weight: bold;">print "My name is ", steve.fname, " ", steve.lname, ".\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>My name is Stove Litt.<br>My name is Steve Litt.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding code, the variables after <span style="font-family: monospace;">attr_reader</span> substituted for the
+readonly accessor members, while the <span style="font-family: monospace;">attr_writer</span> substituted for the
+writeonly accessor members. Notice that when you write the names of the
+instance variables, you substitute a colon for the instance variables'
+at signs. There is actually a syntax reason, consistent with Ruby, for
+this substitution, but I can't explain it, so I choose to just remember
+it.<br>
+
+<br>
+
+Remember, this seeming direct access must be explicitly enabled by the
+class's programmer, so this usually doesn't compromise encapsulation
+beyond what needs to be available. In my opinion this is a really handy
+option.<br>
+
+<h2>Inheritance</h2>
+
+Inheritance is where a more specific kind of class is made from a more
+general one. For instance, an employee is a kind of person.
+Specifically (and oversimplistically), it's a person with an employee
+number. See this inheritance example:<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby<br>class Person<br>	def initialize(lname, fname)<br>		@lname = lname<br>		@fname = fname<br>	end<br><br>	attr_reader :lname, :fname<br>	attr_writer :lname, :fname<br>end<br><br>class Employee &lt; Person               # Declare Person to be parent of Employee<br>	def initialize(lname, fname, empno)<br>		super(lname, fname)   # Initialize Parent's (Person) data<br>		                      #   by calling Parent's initialize()<br>		@empno = empno        # Initialize Employee specific data<br><br>	end<br>	attr_reader :empno            # Accessor for employee specific data<br>	attr_writer :empno            # Accessor for employee specific data<br>	                              # Parent's data already given accessors<br>				      # by parent class definition<br>end<br><br>steve = Employee.new("Litt", "Steve", "12345")<br>print steve.fname, " ", steve.lname, " is employee number ", steve.empno, ".\n"<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>Steve Litt is employee number 12345.<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+Ruby REALLY makes inheritance easy. On the <span style="font-family: monospace;">class</span> line you declare the
+child class's parent. In the child class's <span style="font-family: monospace;">initialize()</span> you call the
+parent's initializer by the <span style="font-family: monospace;">super(supers_args)</span>
+syntax. Because the parent's data is initialized and available to the
+child, you needn't redeclare accessor methods for the parent's data --
+only for the child's data. In other words, in the child class you need
+code only for data specific to the child. It's handy, intuitive, and
+smooth.<br>
+
+<h2>Redefining Operators</h2>
+
+It is nice to have <span style="font-family: monospace;">total.add()</span>
+and <span style="font-family: monospace;">total.increaseBy()</span>
+methods. But in many cases it's even more intuitive to use the <span style="font-family: monospace;">+</span> or <span style="font-family: monospace;">+=</span> operator. In C++ it's always
+somewhat difficult to remember how to redefine operators. Not so in
+Ruby:<br>
+
+<h2 style="font-weight: bold;"></h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;">#!/usr/bin/ruby</span><br style="font-weight: bold;"><span style="font-weight: bold;">class Total</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def getTotal() return @total; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def hasTotal() return @total!=nil; end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	def initialize(initial_amount)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total=initial_amount</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def increaseBy(b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		@total += b</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def add(b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		if b.class == Total</span><br style="font-weight: bold;"><span style="font-weight: bold;">			return Total.new(@total + b.getTotal())</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">		else</span><br style="font-weight: bold;"><span style="font-weight: bold;">			return Total.new(@total + b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def +(b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		self.add(b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">	def *(b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		if b.class == Total</span><br style="font-weight: bold;"><span style="font-weight: bold;">			return Total.new(@total * b.getTotal())</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">		else</span><br style="font-weight: bold;"><span style="font-weight: bold;">			return Total.new(@total * b)</span><br style="font-weight: bold;"><span style="font-weight: bold;">		end</span><br style="font-weight: bold;"><span style="font-weight: bold;">	end</span><br style="font-weight: bold;"><span style="font-weight: bold;">end</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">total5 = Total.new(5)</span><br style="font-weight: bold;"><span style="font-weight: bold;">total2 = Total.new(2)</span><br style="font-weight: bold;"><span style="font-weight: bold;">total3 = Total.new(3)</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">myTotal = total5 + total2 + total3</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myTotal.getTotal(), "\n"</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">myTotal *= 2</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myTotal.getTotal(), "\n"</span><br style="font-weight: bold;"><br style="font-weight: bold;"><span style="font-weight: bold;">myTotal += 10</span><br style="font-weight: bold;"><span style="font-weight: bold;">print myTotal.getTotal(), "\n"</span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+In the preceding, we define <span style="font-family: monospace;">add()</span>
+as returning the argument plus <span style="font-family: monospace;">@total</span>.
+Notice that <span style="font-family: monospace;">@total</span> is not
+changed in-place. We might want to add add a <span style="font-family: monospace;">Total</span> to the existing <span style="font-family: monospace;">Total</span>, or we might want to add
+an integer. Therefore, <span style="font-family: monospace;">Total::add()</span>
+checks the argument's type, and if it's a <span style="font-family: monospace;">Total</span> it adds the argument's
+value, otherwise it adds the argument.<br>
+
+<br>
+
+With <span style="font-family: monospace;">add()</span> safely
+defined, we now define <span style="font-family: monospace;">+</span>
+as basically a synonym for <span style="font-family: monospace;">add()</span>.
+The fascinating thing about Ruby is that if you define <span style="font-family: monospace;">+</span>, you get <span style="font-family: monospace;">+=</span> free of charge, without
+further coding, and <span style="font-family: monospace;">+=</span>
+does the right thing. As of yet I have not found a way to redefine <span style="font-family: monospace;">+=</span>, or any other punctuation
+string more than one character long. Luckily, <span style="font-family: monospace;">+=</span> "just does the right thing",
+consistent with the definition of <span style="font-family: monospace;">+</span>.<br>
+
+<br>
+
+It's not necessary to define a word function before redefining an
+operator, as the <span style="font-family: monospace;">*</span>
+operator (really a method) in the preceding code shows. Once again, it
+has an <span style="font-family: monospace;">if</span> statement so
+that integers or <span style="font-family: monospace;">Total</span>s
+can be added.<br>
+
+<br>
+
+In the main part of the routine, we test by creating three totals with
+values 5, 2 and 3 repectively. We then add them together to create <span style="font-family: monospace;">myTotal</span>, which should be 10 and
+indeed is. We then in-place multiply by 2 to get the expected 20, and
+then in-place add 10 to get the expected 30:<br>
+
+<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;">[slitt@mydesk slitt]$ ./hello.rb<br>10<br>20<br>30<br>[slitt@mydesk slitt]$<br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+<br>
+
+As mentioned, I haven't yet found the way to redefine an operator
+string longer than one character, so I cannot yet redefine things like
+++, +=, &lt;&lt;, &gt;&gt;, and the like. If you know of a way to do
+it, please <a href="../../email_steve_litt.htm">email me</a>.<br>
+
+<br>
+
+<br>
+
+<h2>
+</h2>
+
+<table style="text-align: left; background-color: rgb(204, 255, 255);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><br></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+x<br>
+
+<table style="text-align: left; background-color: rgb(255, 255, 204);" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <td style="vertical-align: top;">
+      
+      <pre><span style="font-weight: bold;"></span><span style="font-weight: bold;"><br></span></pre>
+
+      </td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+
+x<br>
+
+<br>
+
+<br>
+
+<br>
+
+<h2>
+<br>
+
+</h2>
+
+<h2><a href="../../troubleshooters.htm">Troubleshooters.Com</a> *&nbsp;
+<a href="../index.htm">Code
+Corner</a> * <a href="../../linux/index.htm">Linux Library</a></h2>
+
+</body>
+</html>

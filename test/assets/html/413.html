@@ -1,0 +1,579 @@
+<!-- $Id: idioms.shtml,v 1.1 2002/07/20 06:58:41 renaud Exp $ -->
+
+
+
+<html>
+<head>
+<link rel=stylesheet href="/renaud.css">
+<style>
+/* Code snippets */
+XMP
+{
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+XMP.java_code	{ background-color: #e3e5b7; }
+XMP.perl_code	{ background-color: #b7c2e5; }
+XMP.c_code	{ background-color: #b7e5c2; }
+XMP.cpp_code	{ background-color: #b7e5c2; }
+XMP.smtk_code	{ background-color: #d5b7e5; }
+XMP.ruby_code	{ background-color: #e5b7b7; }
+
+.caption
+{
+	font-style: italic;
+	margin-left: 30px;
+	font-size: 10pt;
+	text-decoration: underline;
+}
+</style>
+<title>A Comparative Look At Some Ruby Idioms</title>
+<body>
+
+<h1>A Comparative Look At Some Ruby Idioms</h1>
+
+<p>
+In this article we look at some well-known programming patterns and compare
+them to their equivalent written in the Ruby language. The goal of this
+article is not to determine whether Ruby is a better language than
+any other, merely to put into perspective its particuliarities, i.e.
+the <cite>Ruby Way</cite> of writing common tasks. This article does
+not claim to be an exhaustive presentation of Ruby's features.
+</p>
+
+<h2>Constructors</h2>
+<p>
+Constructors are required for 
+</p>
+
+<xmp class=java_code>
+class MyCounter
+{
+   MyCounter(int i) { _i = i; }
+   private int _i;       // instance variable
+}
+
+MyCounter m = new MyCounter(9);
+</xmp>
+<div class=caption>
+Constructors in Java
+</div>
+
+<xmp class=ruby_code>
+class MyCounter
+   def initialize(i)
+      @i = i
+   end
+end
+
+m = MyCounter.new(9)
+</xmp>
+<div class=caption>
+Constructors in Ruby
+</div>
+
+<p>
+</p>
+
+
+<h2>Accessors </h2>
+<p>
+Accessors are methods used to manipulate instance variables.
+They are a very important part of a good encapsulation strategy.
+</p>
+
+<xmp class=java_code>
+class MyCounter
+{
+   private int counter;
+
+   int getCounter() { return counter; }
+   void setCounter(int n) { counter = n; }
+}
+
+MyCounter m = new MyCounter();
+m.setCounter(9);
+int n = m.getCounter();
+</xmp>
+<div class=caption>
+Accessors in Java
+</div>
+
+<xmp class=ruby_code>
+class MyCounter
+   def counter
+      @counter
+   end
+   def counter=(n)
+      @counter = n
+   end
+end
+
+m = MyCounter.new
+m.counter = 9
+n = m.counter
+</xmp>
+<div class=caption>
+Accessors in Ruby
+</div>
+
+
+<xmp class=ruby_code>
+class MyCounter
+   attr_accessor :counter
+end
+
+m = MyCounter.new
+m.counter = 9
+n = m.counter
+</xmp>
+<div class=caption>
+Shortcut accessors in Ruby
+</div>
+
+<p>
+The snippets above show that in Ruby an object can be used without
+knowing whether a given member is really an instance variable or a
+method call -- this is known as
+the <cite>Uniform Access Principle</cite>
+and is one of the points put forward by the Eiffel language. Is it a
+profound feature decoupling a class interface from its
+implementation or merely syntactic sugar? You judge. At the very least
+it saves on typing more parentheses.
+</p>
+
+
+<h2>Function Pointers</h2>
+<p>
+"Function pointer" is really a C/C++ idiom. I use it to describe
+the action of passing a block of code to another part of the
+program for later execution.
+</p>
+
+<xmp class=cpp_code>
+class MyClass
+{
+public:
+   int myMethod(int);
+}
+
+int MyClass::myMethod(int i, int j) { return i + j; }
+
+// take a pointer fp to myMethod() 
+int (MyClass::*fp)(int, int) = &MyClass::myMethod;
+
+// instanciate a MyClass
+MyClass m = new MyClass();
+
+// call myMethod() through the function pointer
+int n = (m.*fp)(1, 2);                     // -> 3
+</xmp>
+<div class=caption>
+Pointer to member function in C++
+</div>
+
+<xmp class=perl_code>
+sub f { $_[0] + $_[1] }
+
+# take a reference to the function f
+$fr = \&f;
+
+# call the function through the reference
+$n = &$fr(1, 2);                  # -> 3
+</xmp>
+<div class=caption>
+Function pointers in Perl 
+</div>
+
+<xmp class=perl_code>
+@array = (1, 2, 3, 0);
+@mapped_array = map { $_ + 1 } @array;          # -> (2, 3, 4, 1)
+@sorted_array = sort { $b <=> $a } @array;      # -> (3, 2, 1, 0)
+@grepped_array = grep { $_ > 1 } @array;        # -> (2, 3)
+</xmp>
+<div class=caption>
+Perl blocks with map/sort/grep
+</div>
+
+<xmp class=ruby_code>
+p = proc { |i, j| i + j }
+p.call(1, 2)
+</xmp>
+<div class=caption>
+Function pointers in Ruby
+</div>
+
+<xmp class=ruby_code>
+class MyClass
+   def myMethod(i, j)
+      i + j
+   end
+end
+
+# instanciate a MyClass
+m = MyClass.new
+
+# get the symbol representing myMethod inside the MyClass m
+fp = m.method( :myMethod )
+
+# call the method through the pointer fp
+fp.call(1, 2)           # ->  3
+</xmp>
+<div class=caption>
+Method pointers in Ruby
+</div>
+
+<p>
+Method pointers are created in Ruby with
+<span class=method>Object#method</span>, that is,
+the method named <span class=method>method</span>
+of the <span class=class>Object</span> class -- confusing isn't it?
+</p>
+
+
+<H2>Iteration and Iterators</h2>
+<p>
+The act of going through some elements in a data
+structure.
+</p>
+
+<xmp class=java_code>
+char[] data = { 'a', 'b', 'c', 'd', 'e', 'f' };
+        
+for (int i = 0; i < data.length; i++)
+{
+   System.out.println( data[i] );
+}
+</xmp>
+<div class=caption>
+Iteration in Java, old school
+</div>
+
+<xmp class=java_code>
+Character[] data = { 'a', 'b', 'c', 'd', 'e', 'f' };
+List<Character> ldata = Arrays.asList(data);
+
+for (char c : ldata) // or "data", works on arrays and collections
+{
+   System.out.println( c );
+}
+</xmp>
+<div class=caption>
+New style of iteration in Java (JDK 1.5)
+</div>
+
+<xmp class=perl_code>
+@data = 'a'..'f';
+
+foreach $item (@data)
+{
+   print "$item\n";
+}
+</xmp>
+<div class=caption>
+Generic iteration in Perl
+</div>
+
+<xmp class=perl_code>
+map { print "$_\n" } @data;
+</xmp>
+<div class=caption>
+Iteration in Perl with map
+</div>
+
+<xmp class=ruby_code>
+data = 'a'..'f'
+data.each { |c| print c, "\n" }
+</xmp>
+<div class=caption>
+Iteration in Ruby
+</div>
+
+<p>
+Iterators are first-class citizens in the Ruby language, and
+made extensive use of. They permeate the language and are an
+integral part of programming in Ruby. Most traditionnal "for" loops
+can be replaced by calls to iterators.
+</p>
+
+
+<h2>Variable Argument List</h2>
+<p>
+Variadic functions/methods are called with an undefined number of
+arguments.
+</p>
+
+<xmp class=c_code>
+#include <stdarg.h>
+#include <stdio.h>
+
+void print_nums(int count, ...)
+{
+  va_list ap;
+  int i;
+
+  va_start(ap, count);          /* Initialize the argument list. */
+
+  for (i = 0; i < count; i++)
+  {
+    int num = va_arg(ap, int);  /* Get the next argument value. */
+    printf("%d\n", num);
+  }
+
+  va_end(ap);                   /* Clean up. */
+}
+
+main()
+{
+  print_nums(3, 102, 5, 689);
+}
+</xmp>
+<div class=caption>
+ANSI C
+(this example adapted from the GNU C manual)
+</div>
+
+<xmp class=ruby_code>
+def print_nums(*numbers)
+   
+
+end
+</xmp>
+<div class=caption>
+Ruby
+</div>
+
+
+<h2>Exceptions</h2>
+<p>
+Exceptions are used to deal with error conditions in an "out of band"
+manner, ie. outside of the main control flow. 
+</p>
+
+<xmp class=java_code>
+FileInputStream f = null;
+
+try
+{
+   f = new FileInputStream("z.txt");
+
+   // and read from the file
+   ...
+
+   // an error condition was found
+   throw new IOException("Oops; we goofed");
+}
+catch (FileNotFoundException fnfe) 
+{
+   System.out.println("The file was not found!");
+}
+catch (IOException ioe)
+{
+   throw ioe;                  // rethrow
+}
+finally
+{
+   if (f != null) f.close();
+}
+</xmp>
+<div class=caption>
+Exception handling in Java
+</div>
+
+<xmp class=perl_code>
+eval                            # try
+{
+   open(F, "z.txt") or die "$! when opening z.txt";
+
+   # read from F
+   ...
+
+   # found error
+   die "Oops; we goofed";
+};
+if ($@ =~ /when opening/)       # catch
+{
+   warn "An error occurred: $@";
+}
+elsif ($@)                      # catch all
+{
+   die;                         # rethrow
+}
+
+close F;
+</xmp>
+<div class=caption>
+Exception handling in Perl
+</div>
+
+
+<xmp class=ruby_code>
+begin
+   f = File.open("z.txt")
+
+   # do something with f
+   # ...
+
+   # detected an error condition
+   raise "Oops, we goofed"
+
+rescue Errno::ENOENT
+   print "The file was not found: ", $!, "\n"
+
+rescue                 # catch all
+   raise $!            # rethrow
+
+ensure
+   f.close if f
+end
+</xmp>
+<div class=caption>
+Exception handling in Ruby
+</div>
+
+<p>
+The handling of exceptions is quite similar in the 3 languages; Ruby
+offers a nice balance between totally typed exceptions (Java) and
+totally untyped exceptions (Perl): an exception can be only caught
+by type, but it can be raised untyped.
+<p>
+NOTE: the true Ruby way to process a file is probably to use an
+iterator, e.g.
+<xmp class=ruby_code>
+File.open("file.ext") {
+   |f|
+   f.readlines.each {
+      |l|
+      print l		# for example
+   }
+}
+</xmp>
+<div class=caption>
+Processing a file line-by-line in Ruby (this example from the Ruby FAQ)
+</div>
+</p>
+
+
+<h2>True and False</h2>
+<p>
+</p>
+
+
+<h2>Threads and Synchronization</h2>
+<p>
+</p>
+
+
+<h2>Namespace Control</h2>
+<p>
+Modules
+</p>
+
+
+<h2>Multiple Inheritance</h2>
+<p>
+Among languages used in this article, only C++ offers true
+multiple inheritance, and ways to solve the associated problems
+(i.e. the diamond-shaped inheritance graph).
+Java simulates quite effectively multiple inheritance with
+<cite>interfaces</cite>, abstract classes with no data members.
+Ruby takes a different approach and uses <cite>modules</cite> to
+implement mix-ins that simulate multiple inheritance.
+<p>
+Ruby's modules ...
+</p>
+
+
+<h2>Regular Expressions</h2>
+<p>
+Java offers regular expressions (regexps) through external
+packages only; a popular one is OROMatcher by Daniel Savarese. Ruby's
+regexps are an integral part of the language and modeled after
+Perl's.
+<p>
+<xmp class=perl_code>
+# Example 1
+
+$data = "Perl Programming";
+
+if ($data =~ /^P/ || $data =~ /ming$/)
+{
+   $data =~ s/[pm]/X/gi;     # substitute all occurrences, case-insensitively
+   print "$data\n";          # -> Xerl XrograXXing
+}
+
+# Example 2
+
+$data = "";
+
+while ($data =~ /()/ig)
+{
+   ;
+}
+</xmp>
+<div class=caption>
+Perl regular expressions
+</div>
+
+<xmp class=ruby_code>
+# Example 1
+
+data = "Programming in Ruby"
+
+if data =~ /^P/ || data =~ /ming$/
+   data.gsub!(/[pr]/i, 'X')       # call method gsub!() on String object
+   print "#{data}\n"              # -> XXogXamming in Xuby
+end
+
+# Example 2
+
+data = ""
+
+data.gsub() { | match |
+   .
+}
+</xmp>
+<div class=caption>
+Ruby regular expressions
+</div>
+</p>
+
+<!-- $Id: footer.shtml,v 1.18 2007/03/16 05:55:12 renaud Exp $ -->
+
+
+	<div class="legal_notice">
+	<p>
+	Copyright &copy; 2000-2007 by Renaud Waldura. 
+	Permission to make digital or hard copies of part or all of this work for personal
+	or classroom use is granted without fee, provided that copies are not made or distributed
+	for profit or commercial advantage, and that copies bear this notice and full citation
+	on the first page. 
+	Copyright for components of this work owned by others than Renaud Waldura
+	must be honored. Abstracting with credit is permitted. To copy otherwise, to
+	republish, to post on servers, or to redistribute to lists, requires prior
+	specific permission and/or fee. Request permission to publish from 
+	<a href="mailto:renaud+articles@waldura.com">renaud@waldura.com</a>.
+	<p>
+	Last modified: 2007/10/08 06:58:41 $
+	</p>
+	</div>
+
+
+</TD>
+
+</TR>
+</TABLE>
+
+<HR/>
+
+<ADDRESS>
+Copyright &copy; 2000-2007 Renaud Waldura
+&lt;<A HREF="mailto:renaud+web@waldura.com">renaud@waldura.com</A>&gt;
+</ADDRESS>
+
+</BODY>
+</HTML>
+

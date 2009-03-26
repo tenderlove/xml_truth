@@ -1,0 +1,2471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="The O&#039;Reilly Ruby group weblog covers all the latest in the world of the Ruby programming language with some of the languages leading programmers.  From personalities, articles, developments, books, conferences, and exciting applications, O&#039;Reilly Ruby is the site you&#039;ll want to watch to be ahead of the Ruby curve." />
+<meta name="title" content="" />
+<meta name="pagename" content="" />
+<meta name="site" content="O&#039;Reilly Ruby" />
+
+<title>O&#039;Reilly Ruby</title>
+
+<script type="text/javascript" src="http://www.oreillynet.com/engine.js"></script>
+<script type="text/javascript" src="http://www.oreillynet.com/common.js"></script>
+<script type="text/javascript" src="http://www.oreillynet.com/blogs/mt-site.js"></script>
+<script type="text/javascript" src="http://www.oreillynet.com/blogs/popup-media-player.js"></script>
+
+<link rel="alternate" type="application/atom+xml" title="Atom"    href="http://www.oreillynet.com/ruby/blog/atom.xml" />
+<link rel="alternate" type="application/rss+xml"  title="RSS 2.0" href="http://www.oreillynet.com/ruby/blog/index.xml" />
+
+<link rel="stylesheet" href="http://www.oreillynet.com/blogs/style.css" type="text/css" />
+<link rel="stylesheet" href="http://www.oreillynet.com/ruby/blog/style.css" type="text/css" />
+
+<!--Autocomplete-->
+ <script type="text/javascript" src="http://content.atomz.com/static/ac/1.0/autocomplete.js"></script>
+<link rel="stylesheet" type="text/css" href="http://content.atomz.com/pb000035c5/publish/autocompletestyles.css">
+<!--Autocomplete-->
+
+
+
+</head>
+<body>
+
+<div id="header" class="noindex">
+
+
+<h1><a href="http://www.oreillynet.com/ruby/"><img src="http://www.oreillynet.com/ruby/blog/images/logo.gif" alt="O&#039;Reilly Ruby" border="0" /></a></h1>
+
+
+
+
+<div style="clear:both;"></div>
+<div id="tabs">
+
+<div id="account-links">
+<a href="/cs/user/login?x-redirect=/cs/user/home">Sign In/My Account</a> | <a href="http://epoch.oreilly.com/shop/cart.orm">View Cart</a>
+</div>
+
+<ol>
+<li><a href="http://www.oreilly.com/"><img src="http://www.oreillynet.com/images/tabs/ora_gray.gif"          alt="oreilly.com" width="82"  height="16" /></a></li>
+<li><a href="http://safari.oreilly.com/"><img src="http://oreilly.com/images/oreilly/safaribooksonline_gray.gif" alt="Safari Bookshelf"  width="114" height="16" /></a></li>
+<li><a href="http://conferences.oreilly.com/"><img src="http://www.oreillynet.com/images/tabs/conf_gray.gif" alt="Conferences" width="88"  height="16" /></a></li>
+</ol>
+</div><!-- end #tabs -->
+
+<div style="clear:both;"></div>
+
+<!-- for search -->
+<style type="text/css">
+
+/* Search 2008 
+===================================== */
+	
+	#search-box {
+		padding-top: 11px;
+		padding-bottom: 0;
+		background-color: #f6f6f6;
+		border-bottom: 1px solid #ccc;
+		text-align: center;
+	}
+	
+	#search-form {
+		width: 400px;
+		margin: 0 auto;
+		text-align: left;
+	}
+	
+	#search-title {
+		display: block;
+		float: left;
+		padding: 5px 5px 4px 0;
+		font-size: 17px;
+		color: #888;
+	}
+	
+	#search-input {
+		display: block;
+		float: left;
+		width: 260px;
+		padding: 0 5px 0 0;
+		background: transparent url(http://www.oreilly.com/images/oreilly/search_bar_mid.gif) top left repeat-y;
+	}
+	
+	#search-input-top {
+		display: block;
+		width: 260px;
+		background: transparent url(http://www.oreilly.com/images/oreilly/search_bar_top.gif) top left no-repeat;
+	}
+	
+	#search-input-bot {
+		display: block;
+		width: 260px;
+		background: transparent url(http://www.oreilly.com/images/oreilly/search_bar_bot.gif) bottom left no-repeat;
+	}
+	
+	#search-field {
+		float: left;
+	}
+	
+	#search-field input {
+		width: 215px;
+		padding: 3px 0 4px 10px;
+		margin: 0;
+		border: 0;
+		background: transparent;
+		font-size: 16px;
+		color: #990000;
+		font-family:Verdana, Arial, Helvetica, sans-serif;
+	}
+	
+	#search-field input:focus {
+		outline: 0;
+	}
+	
+	#search-button {
+		float: right;
+	}
+	
+	#search-button input {
+		padding: 0;
+		margin: 4px 4px 2px 0;
+		height: 18px;
+		width: 28px;
+		
+		font-size: 0;
+		line-height: 0;
+	}
+	
+	#search-tips {
+		display: block;
+		float: left;
+		padding: 6px 0 0 0;
+		font-size: 10px;
+	}
+	
+	#search label {
+		text-transform:uppercase;
+	}
+		#search legend {
+		display: none;
+	}
+	#search label {
+		position: absolute;
+		left: -9999px;
+	}
+	fieldset {
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+	
+.clear {
+display: block;
+line-height: 0;
+}
+
+
+#search-box{
+
+padding-top: 11px;
+
+padding-bottom: 0pt;
+
+background-color: #f6f6f6;
+
+border-bottom-width: 1px;
+
+border-top-style: solid;
+
+border-top-width: 1px;
+
+border-top-color: #cccccc;
+
+border-bottom-style: solid;
+
+border-bottom-color: #cccccc;
+
+text-align: center;
+
+}
+
+</style>
+
+<center>
+<div id="search-box">
+<div>
+<br />
+
+
+<b>
+We've expanded our Ruby news coverage and improved our search!</b> Search for all things Ruby across O'Reilly!</b><br /><br />
+
+ 
+
+</div>
+            <form method="get" action="http://search.oreilly.com" id="search-form" name="searchfield">
+                <fieldset>
+                    <span id="search-title" style="color:#474747">Search</span>
+                    <span id="search-input">
+                        <span id="search-input-top">
+                            <span id="search-input-bot">
+                                <span id="search-field"><input style="//height: 25px;" id="q" name="q" type="text" maxlength="64" accesskey="s" value="" /></span>
+                                <span id="search-button"><input type="image" name="submit" src="http://www.oreilly.com/images/oreilly/search_bar_btn.gif" alt="Submit" /></span>
+                                <span class="clear"></span>
+                            </span>
+                            <div id="autocomplete"></div>
+                                <script type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/autocompletelist.js"></script>
+                        </span>
+                    </span>
+                    <span id="search-tips"><a href="http://www.oreillynet.com/search/tips.csp" target="_blank">Search Tips</a></span>
+                </fieldset>
+            </form>
+
+<br />
+        </div><!-- /#search-box -->
+</center>
+
+
+
+
+
+ <!-- Network Leaderboard Ad -->
+
+<div id="leaderboard">
+<img src="/images/ads/ad-tag-vertical.gif" width="11" height="90" border="0" alt="advertisement" style="float:right;" />
+<div style="width:728px;margin:0 auto;">
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: O'ReillyNet // Page: O'ReillyNet // Placement: ros_728x90 (425845) // created at: Oct 9, 2008 6:10:32 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425845/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425845/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425845/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="728" height="90"></a></noscript>
+<!-- End of JavaScript Tag -->
+</div>
+</div>
+<!-- end ad -->
+
+<!-- Network Text Link -->
+<div id="textbar">
+<div class="tinywhite">
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: O'ReillyNet // Page: O'ReillyNet // Placement: text (425846) // created at: Oct 9, 2008 6:10:33 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425846/0/16/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425846/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425846/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="1" height="1"></a></noscript>
+<!-- End of JavaScript Tag -->
+</div>
+</div>
+<!-- End ad -->
+
+</div><!-- end #header -->
+
+<div id="content">
+
+<div id="blog">
+
+<div id="featurebar" align="center">
+<!-- begin ad tag -->
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var ord = (ord != null ? ord : Math.random()*10000000000000000 );
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/ttm.ruby/home;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=' + ord + '?" type="text/javascript"><\/script>');
+//]]>
+</script><noscript><a href="http://ad.doubleclick.net/adj/ttm.ruby/home;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=123456789?" target="_blank"><img src="http://ad.doubleclick.net/adj/ttm.ruby/home;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=123456789?" width="100" height="50" border="0" alt="" /></a></noscript>
+<!-- End ad tag -->
+</div>
+<br />
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24254">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/3360'><img src='/images/people/weblogs/eric_berry.jpg' alt='Eric Berry' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/10/becoming_a_sexy_programmer_men.html">Becoming a Sexy Programmer: Menus</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Ericm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/10/becoming_a_sexy_programmer_men.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Wednesday October  1, 2008 <span class="ISI_IGNORE"> 8:47PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3360'>Eric Berry</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/articles/'>Articles</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>There are many ways that you can create menus for your website.  The way I used to do it was by using tables and having a menu item for every menu item.  This way I had come to find out is the hard way.  Let&#8217;s talk about the easy way.</p>
+<p>You can download the example code along with the images <a href="http://www.kodeb.us/assets/2008/10/2/menu.zip">here</a>.</p>
+<p><strong>Goal:</strong> Create a simple CSS menu.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/10/becoming_a_sexy_programmer_men.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/10/becoming_a_sexy_programmer_men.html'>Continue reading "Becoming a Sexy Programmer: Menus" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24249">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/3360'><img src='/images/people/weblogs/eric_berry.jpg' alt='Eric Berry' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/becoming_a_sexy_programmer_sli_1.html">Becoming a Sexy Programmer: Slideshows</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Ericm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/becoming_a_sexy_programmer_sli_1.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Sunday September 28, 2008 <span class="ISI_IGNORE">10:31PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3360'>Eric Berry</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/articles/'>Articles</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>As a Rails programmer, I have been using Prototype and Scriptaculous for over a year and a half, solely because it comes packages with Rails and has helpers.  About 3 months ago, I discovered <a href="http://www.jquery.com">JQuery</a>, which is another Javascript library that combines the powers of Prototype and Scriptaculous into one.  JQuery is very easy to install for your web app and has a TON of cool things you can do with it.</p>
+<p>In this article, I will show you how to create a simple slide show using JQuery and the <a href="http://malsup.com/jquery/cycle/lite/">jQuery Cycle Lite plugin</a>.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/becoming_a_sexy_programmer_sli_1.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/09/becoming_a_sexy_programmer_sli_1.html'>Continue reading "Becoming a Sexy Programmer: Slideshows" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24246">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/3360'><img src='/images/people/weblogs/eric_berry.jpg' alt='Eric Berry' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/sexy_layouts_for_the_notsosexy.html">Sexy layouts for the not-so-sexy programmer</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Ericm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/sexy_layouts_for_the_notsosexy.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Thursday September 25, 2008 <span class="ISI_IGNORE">12:16PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3360'>Eric Berry</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/articles/'>Articles</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I&#8217;ve worked with a ton of programmers in the past, and most of them don&#8217;t know a lot about web design.  My brother, for example, is an insanely good programmer.  However, every time I see his web applications, I have a hard time seeing past how ugly they are (sorry Mark). </p>
+<p>I believe this may be an issue with a lot of programmers out there, perhaps most of them.  In an effort to help all my colleagues out, I have decided to share a quick tutorial on how create a &#8217;sexy&#8217; layout for your applications without having to be a design guru.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/sexy_layouts_for_the_notsosexy.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/09/sexy_layouts_for_the_notsosexy.html'>Continue reading "Sexy layouts for the not-so-sexy programmer" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24213">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/3360'><img src='/images/people/weblogs/eric_berry.jpg' alt='Eric Berry' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/simplify_your_error_tracking_w.html">Simplify your error tracking with HopToad</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Ericm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/simplify_your_error_tracking_w.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Wednesday September 17, 2008 <span class="ISI_IGNORE"> 9:16AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3360'>Eric Berry</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/reviews/'>Reviews</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I recently ran in to a blog article which referenced an online application called HopToad (<a href="http://www.hoptoadapp.com">http://www.hoptoadapp.com</a>). </p>
+<p>HopToad is an online application that plugs directly into your Rails application and collects all errors that are thrown in your app in a neat and readable UI.  I have about 15 Rails applications out there right now, and HopToad is a life-saver for me.</p>
+<p>The best thing is, it&#8217;s free.  Go to <a href="http://www.hoptoadapp.com">http://www.hoptoadapp.com</a> to try it out.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/simplify_your_error_tracking_w.html#comments'>0 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24187">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/polygamous_assert_latest.html">Polygamous assert_latest</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Phlipm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/polygamous_assert_latest.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Sunday September  7, 2008 <span class="ISI_IGNORE"> 5:28PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3029'>Phlip</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+  <p>Sometimes a test case must detect when production code
+    creates new records, as a side-effect. <code>assert_latest{}</code>
+    detects all new records of a given type, and returns them like this:
+    </p>
+
+  <pre><span style="color: #000000;">    f1, f2 </span><span style="color: #ff00ff;">=</span><span style="color: #000000;"> assert_latest </span><span style="color: #800000;">Foo</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">do</span>
+<span style="color: #000000;">               </span><span style="color: #0000ff;">2</span><span style="color: #4000a7;">.times</span><span style="color: #ff00ff;">{</span><span style="color: #000000;"> </span><span style="color: #800000;">Foo</span><span style="color: #4000a7;">.create</span><span style="color: #000000;"> </span><span style="color: #ff00ff;">}</span>
+<span style="color: #000000;">             </span><span style="font-weight: bold;color: #000000;">end</span>
+
+<span style="color: #000000;">    assert </span><span style="background-color: #CCFFCC;">'items return ordered by id'</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">do</span>
+<span style="color: #000000;">      f1</span><span style="color: #4000a7;">.id</span><span style="color: #000000;"> </span><span style="color: #ff00ff;">&gt;</span><span style="color: #000000;"> </span><span style="color: #0000ff;">0</span><span style="color: #000000;"> </span><span style="font-weight: bold;color: #000000;">and</span><span style="color: #000000;"> f2</span><span style="color: #4000a7;">.id</span><span style="color: #000000;"> </span><span style="color: #ff00ff;">&gt;</span><span style="color: #000000;"> f1</span><span style="color: #4000a7;">.id</span>
+<span style="color: #000000;">    </span><span style="font-weight: bold;color: #000000;">end</span>
+</pre>
+
+  <p>This post shows how to use <code>assert_latest{}</code> in more
+  advanced configurations. It can detect records of more than one type, and
+  can detect records that belong to only one association. Our platform is
+  <a href='http://www.rubyonrails.org/'>Ruby on Rails</a>, yet - as usual -
+  the lessons apply to any unit tests.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/polygamous_assert_latest.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/09/polygamous_assert_latest.html'>Continue reading "Polygamous assert_latest" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24186">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/inspect_sql.html">Inspect My SQL</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Phlipm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/inspect_sql.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Saturday September  6, 2008 <span class="ISI_IGNORE"> 4:19PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3029'>Phlip</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+  <p>Object-Relational Models, like Rails&#8217;s ActiveRecord, help
+  generate very complex queries. Sometimes we need that complexity
+  - without slow execution times! We might not notice when our
+  queries have grown beyond our databases&#8217;s tuning and indices.</p>
+
+  <p>This post shows how to trap, interpret, and
+  <code>EXPLAIN</code> SQL <code>SELECT</code> statements under
+  MySQL. Our platform is <a href='http://www.rubyonrails.org/'>Ruby
+  on Rails</a>, yet the lessons apply to any ORM.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/inspect_sql.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/09/inspect_sql.html'>Continue reading "Inspect My SQL" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24185">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/09/growl_driven_development.html">Growl Driven Development</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Phlipm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/09/growl_driven_development.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Saturday September  6, 2008 <span class="ISI_IGNORE"> 9:46AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3029'>Phlip</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+    <p>This post is not about your boss growling at you. Another
+    title could have been &ldquo;whisper-driven development&rdquo;.
+    It&rsquo;s about your code whispering its status to you.</p>
+
+    <p>To learn this newfangled kind of development, whip out an
+    Apple computer, and start a project using Test-Driven
+    Development. We use Rails, but you can use any platform you
+    like. (You can use any computer you like, so long as you can
+    find and configure a Growl-style program for it. See
+    below.)</p>
+
+    <p>In Rails, use <a href=
+    "http://www.google.com/search?q=zentest+autotest" target=
+    "_blank">ZenTest&rsquo;s autotest</a> command, or write your
+    own batch file, that triggers a test run each time you save any
+    source files. I have one <a href=
+    "http://groups.google.com/group/rubyonrails-talk/msg/bce53754adece41f"
+    target="_blank">here</a>; it&rsquo;s a little more
+    &ldquo;generic&rdquo; than ZenTest&rsquo;s version.
+    &ldquo;Generic&rdquo; is a programming euphemism for
+    &ldquo;scrappy - a fixer-upper&rdquo;.</p>
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/09/growl_driven_development.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/09/growl_driven_development.html'>Continue reading "Growl Driven Development" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24095">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/08/ruby_mendicant_prawns_first_re.html">Ruby Mendicant : Prawn's First Release!</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/08/ruby_mendicant_prawns_first_re.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Sunday August  3, 2008 <span class="ISI_IGNORE"> 5:23AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I&#8217;m happy to announce I just cut the first alpha release of Prawn. It is chock full of features, and since the release notes are fairly detailed with good links, I&#8217;ve just pasted them for your review after the cut.<br />
+But first, I have a few words that I couldn&#8217;t quite convince myself deserved a separate post:</p>
+<p><i>On a somewhat sad note, this will be my last post to O&#8217;Reilly Ruby.  Things are changing a lot behind the scenes here, and there has been a lot of re-shuffling of resources.  I&#8217;ll still be blogging for O&#8217;Reilly but over on the <a href="http://news.oreilly.com">News Site</a>.  However, since that blog will be a bit more &#8216;big story&#8217; oriented, I&#8217;m going to also be starting up my own tech blog at majesticseacreature.com.  Keep an eye out for that, but it may take me a few days to find time to write some blog software I can live with, and the page will be a ghost town until then.</p>
+<p>So O&#8217;Reilly Ruby, So long, and thanks for all the fish.  I had fun here and I hope that folks will still find my stuff over on the news site interesting.</i></p>
+<p>Prawn 0.1.0 Release notes to follow&#8230;
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/08/ruby_mendicant_prawns_first_re.html#comments'>6 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/08/ruby_mendicant_prawns_first_re.html'>Continue reading "Ruby Mendicant : Prawn's First Release!" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-24014">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/07/ruby_mendicant_permian_prawn.html">Ruby Mendicant: Permian Prawn</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/07/ruby_mendicant_permian_prawn.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Wednesday July  9, 2008 <span class="ISI_IGNORE"> 4:03PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I&#8217;m happy to announce that the <a href="http://prawn.lighthouseapp.com">Prawn</a> PDF library has hit another milestone on the <a href="http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">Ruby Mendicant</a> project <a href="http://prawn.lighthouseapp.com/projects/9398/development-plans">roadmap</a>.  This time we&#8217;ll look at Prawn&#8217;s shiny new table drawing support, as well as some of the other features that have been added over the last several weeks.  We&#8217;ll also look at where things are headed in the future, including when to expect a first gem release.  All this and more lies just beyond the cut&#8230;
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/07/ruby_mendicant_permian_prawn.html#comments'>8 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/07/ruby_mendicant_permian_prawn.html'>Continue reading "Ruby Mendicant: Permian Prawn" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23909">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/06/ruby_mendicant_proterozoic_pra.html">Ruby Mendicant: Proterozoic Prawn</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/06/ruby_mendicant_proterozoic_pra.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Friday June  6, 2008 <span class="ISI_IGNORE"> 1:10PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+</span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>Continuing on a theme, this post brings you the latest news from <a href="http://prawn.lighthouseapp.com/projects/9398/home">Prawn</a>, the Ruby PDF library currently being developed under the auspices of the <a href="http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">Ruby Mendicant </a> project.  The news this time around focuses on m17n progress, TTF font embedding, and some new goodies from contributors.   Sexy screenshots and code samples lie just beyond the cut for those who wish to learn more.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/06/ruby_mendicant_proterozoic_pra.html#comments'>3 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/06/ruby_mendicant_proterozoic_pra.html'>Continue reading "Ruby Mendicant: Proterozoic Prawn" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23905">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/06/a_quick_ruby_hack_to_steal_som_1.html">A quick Ruby hack to steal some OS X goodness</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/06/a_quick_ruby_hack_to_steal_som_1.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Thursday June  5, 2008 <span class="ISI_IGNORE"> 2:14PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I really like the <tt>open</tt> command on OS X, but I was too lazy to look for its Linux equivalent.</p>
+<p>Actually, my solution probably took less time than sifting through a google search:</p>
+<p>system(case ARGV[0]<br />
+when /\.pdf/<br />
+  &#8220;epdfview&#8221;<br />
+when /\.html/<br />
+  &#8220;firefox&#8221;<br />
+when /\.(rb)|(pl)|(pm)/<br />
+  &#8220;vim&#8221;<br />
+end + &#8221; #{ARGV[0]}&#8221;)</p>
+<p>Anyone else have fun little hacks they want to share?</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/06/a_quick_ruby_hack_to_steal_som_1.html#comments'>17 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23822">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_archaean_prawn.html">Ruby Mendicant: Archaean Prawn</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_archaean_prawn.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Monday May 26, 2008 <span class="ISI_IGNORE"> 7:21PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+</span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>Several weeks ago I wrote about the first development checkpoint for <a href="http://prawn.lighthouseapp.com/projects/9398/home">Prawn</a>, the PDF library currently being developed for the <a href="http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">Ruby Mendicant</a> project.  I&#8217;ve finally reached the second checkpoint, which involves basic text rendering operations, and this post describes these new features, the problems I have run into, and the plans for the coming weeks.  If you&#8217;re following the project, please read on.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_archaean_prawn.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_archaean_prawn.html'>Continue reading "Ruby Mendicant: Archaean Prawn" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23709">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/05/is_qwerty_harming_language_des.html">Is QWERTY harming language design?</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Danielm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/05/is_qwerty_harming_language_des.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Sunday May 11, 2008 <span class="ISI_IGNORE"> 9:13PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2999'>Daniel Berger</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/opinion/'>Opinion</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>One of the rather unique features of the Fortress<sup>1</sup> programming language is that it has builtin support for Unicode operators. For example, instead of using &#8220;==&#8221; you would use U+2261. After reading the spec, and a recent thread on ruby-core, I&#8217;ve been wondering something . Are language designers too limited in their decisions about syntax because of the limitations of the QWERTY<sup>2</sup> keyboard?
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/05/is_qwerty_harming_language_des.html#comments'>27 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/05/is_qwerty_harming_language_des.html'>Continue reading "Is QWERTY harming language design?" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23636">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_hadean_prawn.html">Ruby Mendicant: Hadean Prawn</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_hadean_prawn.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Saturday May  3, 2008 <span class="ISI_IGNORE">10:34AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>Back in March, I announced the <a href="http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">Ruby Mendicant</a> project after several readers of this blog encouraged me to pursue the idea.  For those who didn&#8217;t see the follow up details elsewhere, here&#8217;s the readers digest version:</p>
+<p>Thanks to 70 donors, and donation matching from <a href="http://rubycentral.org/">Ruby Central, Inc.</a> and <a href="http://mtnwestruby.org/">MountainWest Ruby LLC</a>, I am now able to take 22 weeks off from my commercial work to focus on open source development in Ruby.  I had a number of project ideas, but the general consensus is that my time would be best spent building a fast, sleek, and simple PDF library for Ruby.  I&#8217;ve decided to call this library Prawn, for the time being. </p>
+<p>Since I have just reached my first checkpoint on the project, I figured I&#8217;d give folks an update on where things are.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_hadean_prawn.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/05/ruby_mendicant_hadean_prawn.html'>Continue reading "Ruby Mendicant: Hadean Prawn" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23592">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/04/a_ruby_wtf.html">A Ruby WTF</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/04/a_ruby_wtf.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Monday April 28, 2008 <span class="ISI_IGNORE"> 8:54AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>While working on <a href="http://prawn.lighthouseapp.com/projects/9398/home">Prawn</a>, I ran into this (not-so) fun little gotcha:</p>
+<pre>
+>> 1.to_sym
+=> nil
+>> 101241.to_sym
+=> nil
+</pre>
+<p>Anyone cool enough to tell me what this feature is all about?</p>
+<p><strong>Update:</strong> </p>
+<p>I guess it isn&#8217;t totally clear what I was asking here.  I&#8217;m not actually trying to convert integers to Symbols. In fact, my specs were failing because I expected some_number.respond_to?(:to_sym) to be false!</p>
+<p>As it turns out, Fixnum#to_sym does have a purpose, but it is quite different than something like String#to_sym.</p>
+<pre>
+>> :foo.to_i
+=> 14369
+>> 14369.to_sym
+=> :foo
+</pre>
+<p>I knew about the existence of <tt>#id2name</tt> and it didn&#8217;t surprise me much, given the way Symbol objects are implemented.   Still, for the folks who keep reminding me about what Symbol objects are, please save your comments because that&#8217;s not the point here.</p>
+<p>The point is that when I see &#8220;foo&#8221;, I can easily say.  Oh&#8230; &#8220;foo&#8221;.to_sym will give me :foo.<br />
+When I see [16393, 16401, 16409], I don&#8217;t think &#8220;Gee&#8230; that must be: [:cat, :monkey, :tomato], I just need to map it with to_sym&#8221;.  </p>
+<p>So what this boils down to is an API clarity thing.   Even if a Symbol is closely bound to an integer implementation-wise, I think it&#8217;s a bit of a flaw to assume that to be important conceptually.  Among our readers, has anyone used Fixnum#to_sym in real code?  I&#8217;d be very interested in seeing a common use case for this feature.   If there isn&#8217;t one, maybe a less ambiguous name, such as <tt>id2sym</tt> might be more appropriate.</p>
+<p>What&#8217;s more, even with the existing name, it&#8217;d be nice if some_number_that_has_no_symbol.to_sym would blow up with an error rather than return nil.   </p>
+<p>Sorry for the earlier confusion, hopefully this update clarifies that I was talking about a design peculiarity., and not some burning desire to get myself back a :1.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/04/a_ruby_wtf.html#comments'>14 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23585">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/1738'><img src='/images/people/weblogs/tim_obrien.jpg' alt='Tim O'Brien' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/04/help_lessig_tag_congress_1.html">Help Lessig Tag Congress</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Timm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/04/help_lessig_tag_congress_1.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Sunday April 27, 2008 <span class="ISI_IGNORE"> 7:39AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/1738'>Tim O'Brien</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/news/'>News</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>Sorry, it isn&#8217;t entirely Ruby related&#8230; it is Python Django to be specific, but it is a message aimed at you (&#8221;the wiki-worker types&#8221;) from Lawrence Lessig recruiting people to tag members of Congress at <a href="http://change-congress.org">Change-Congress.org</a>:</p>
+<blockquote><p>
+Today we&#8217;re launching the second stage of our project. We&#8217;re asking wiki-worker-types (and that includes you) to help us tag all candidates and Members of Congress, by tracking for each whether they support the planks of reform in the <a href="http://change-congress.org/">Change Congress</a> movement or not. We&#8217;ve built a set of tools that you can use to document &#8212; for each plank of reform &#8212; whether a candidate supports that plank or not. After that information is verified by a volunteer administrator, we&#8217;ll add it to a map of reform that we&#8217;re building. After we&#8217;re done, we&#8217;ll have a picture of the level of support for fundamental reform of Congress. And with that map, we&#8217;ll launch stage 3 of our project &#8212; raising money to support candidates who support reform
+</p></blockquote>
+<p><b>Django has the edge in the civic-Web20-computing space</b> as Holovaty&#8217;s Django was always more focused on the <a href="http://chicago.everyblock.com/">public square</a> from the beginning.   You would think Rails would be a no brainer for this, but in my brief encounter with the world of political web sites, many of the people I was talking to thought that PHP was king (ick).  (In related news, <a href="http://www.djangobook.com/en/1.0/chapter02/">this is the best online book interface I&#8217;ve seen yet</a>.)
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/04/help_lessig_tag_congress_1.html#comments'>1 Comment</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23583">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/1738'><img src='/images/people/weblogs/tim_obrien.jpg' alt='Tim O'Brien' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/04/surprising_contender_netbeans_1.html">Surprising Contender: NetBeans as a Ruby+MySQL IDE</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Timm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/04/surprising_contender_netbeans_1.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Saturday April 26, 2008 <span class="ISI_IGNORE"> 5:35PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/1738'>Tim O'Brien</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/news/'>News</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>I&#8217;m sure you don&#8217;t believe it, doesn&#8217;t seem like NetBeans is going to take the Ruby developer world by storm, but Sun seems to be pouring money into Ruby support.  I&#8217;m skeptical that the Ruby community is going to embrace Netbeans, but in this entry, I present some hints that NetBeans may be well on its way to becoming the Ruby IDE of choice.  The idea that an IDE traditionally associated with Java development is going to take the Ruby world by storm might seem insane at first glance, but read on&#8230;</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/04/surprising_contender_netbeans_1.html#comments'>14 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/04/surprising_contender_netbeans_1.html'>Continue reading "Surprising Contender: NetBeans as a Ruby+MySQL IDE" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23430">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/3360'><img src='/images/people/weblogs/eric_berry.jpg' alt='Eric Berry' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/04/mod_rails_for_apache_is_now_a.html">mod_rails for Apache is now a Reality</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Ericm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/04/mod_rails_for_apache_is_now_a.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Saturday April 12, 2008 <span class="ISI_IGNORE"> 5:30PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3360'>Eric Berry</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/reviews/'>Reviews</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>The long-awaited mod_rails for apache was released yesterday by <a href="http://www.phusion.nl">Phusion</a>, a Netherlands based IT company.  As many of you have already done, I hopped on board to see how it worked and was amazed on how easy it was to get up and going.</p>
+<p>Ryan Bates, a guy whose voice many of us Rails coders have grown to know and love, assisted the Phusion team in creating a short screencast on how to install Passenger onto your Mac.  </p>
+<p>It was basically 3 steps: </p>
+<p>1. Install the RubyGem<br />
+2. Run the passenger installer script<br />
+3. Modify your apache conf file to include the new virtual host</p>
+<p>Can it really get easier than that? I submit that it can not.</p>
+<p>In my opinion, Passenger is filling a void that has haunted the Ruby on Rails community for some time.  Matz is quoted as saying &#8220;It is often said that Rails is weak on deployment; PHP runs fairly fast just by uploading scripts. Rails is slow on development mode, and requires restarting on production mode (and bit complex to configure). modrails might be the answer for it.&#8221;.</p>
+<p>To get Passenger, go to <a href="http://www.modrails.com">http://www.modrails.com</a>
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/04/mod_rails_for_apache_is_now_a.html#comments'>8 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23339">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/04/gobi_a_ruby_implementation_for.html">Gobi: A Ruby Implementation for Go Enthusiasts</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/04/gobi_a_ruby_implementation_for.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Tuesday April  1, 2008 <span class="ISI_IGNORE"> 3:00PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p><em>Reposting from the official announcement on RubyTalk</em></p>
+<p> Gobi version 1.0.0 has been released!</p>
+<p>* http://gobi.stonecode.org<br />
+* http://metametta.blogspot.com<br />
+* gregory.t.brown@gmail.com</p>
+<p> I am happy to announce the first release of my new fork of Ruby called<br />
+ Gobi. The goal of Gobi is to implement features that I have noticed to<br />
+ be completely missing.</p>
+<p> For example, Ruby&#8217;s standard library does not even implement a<br />
+ datastructure that can easily represent a Go board.  Gobi has this<br />
+ built in as an NArray based, highly efficient structure:</p>
+<pre>
+ >> x = Goban.new
+ >> x.place_stone(:black, :at => "a4")
+ >> x.place_stone(:white, :at => "c16")
+ >> x.place_stone(:black, :at => "a4")
+ StoneCollisionError: There is already a stone at a4.
+   from (irb):3 in `place_stone`
+   from (irb):6
+</pre>
+<p> As you can see from the example above, Gobi is very friendly to those<br />
+ writing computer Go applications.  For those wishing to write AI bots<br />
+ to play the game, Gobi also goes through a lot of effort to make Ruby<br />
+ more efficient.</p>
+<p> A major improvement in performance was gained through the removal of<br />
+ automatic garbage collection.  This means that programmers need to be<br />
+ sure to clean up after themselves, but any Rubyist who also has an<br />
+ interest in Go will surely be sufficiently skilled to design programs<br />
+ that avoid memory leaks.</p>
+<p> The implementation of object destructors in Gobi is simple, due to the<br />
+ addition of a release_resources hook in Object.  A delete keyword has<br />
+ also been added, which will explicitly start up the garbage collection<br />
+ process.</p>
+<p> Here&#8217;s an example of manual garbage collection in Gobi:</p>
+<pre>
+ class Foo
+   def initialize
+     @board = Goban.new
+   end
+   def release_resources
+     delete @board
+   end
+ end
+</pre>
+<p> Please keep in mind that although the built in classes all have<br />
+ sensible release_resources implementations, that if you&#8217;re feeling<br />
+ adventurous, you can of course override them.  A current fun game in<br />
+ Gobi is to run a stopwatch and see how quickly memory runs out when<br />
+ you write some code like this:</p>
+<pre>
+ class String
+   def release_resources; end
+ end
+</pre>
+<pre>
+ string = 'a'
+ 1_000_000_000.times do
+   string = string.succ
+ end
+</pre>
+<p> Of course, though humorous, this should serve as a warning to you: Be<br />
+ sure to properly discard your objects!</p>
+<p> This announcement just scratches the tip of the iceberg of what Gobi offers.</p>
+<p> Other cool features include:</p>
+<p> - The removal of Ruby 1.9&#8217;s giant interpreter lock, as Go programs<br />
+ tend to benefit from the power of true concurrency.  (Unfortunately,<br />
+ these patches are very platform dependent)</p>
+<p> - A major reshifting of Ruby&#8217;s standard library.  Things like option<br />
+ parsing, zlib support, and fileutils aren&#8217;t really that useful for<br />
+ programming computer Go applications, so they have been removed.  Many<br />
+ new libraries have been added, including an SGF analysis tool and a<br />
+ GTP network implementation.</p>
+<p> - An interface to a special (Proverb Semantics Parsing) PSP tool,<br />
+ which allows you to train Go playing robots by simply reminding them<br />
+ of proverbs such as &#8220;Hane at the head of two stones&#8221;, and &#8220;The empty<br />
+ triangle is bad&#8221;, rather than resorting to low level, complicated AI<br />
+ programming.  This system can be used via irb while a game is under<br />
+ review in Gobi&#8217;s built in Tk based SGF editor. Gobi shows that by<br />
+ mindlessly memorizing proverbs, Go playing bots can decrease their<br />
+ rank by two stones in half the time that an average human can.</p>
+<p> - The removal of all lesser data structures such as the Array, the<br />
+ Hash, and the Set.  In Gobi, all of these structures could trivially<br />
+ be built as a subclass of the Goban, so there is no need to keep them<br />
+ around.</p>
+<p> Though I will be taking off 6 months from Gobi development to work on<br />
+ the Ruby Mendicant project, I hope that people enjoy this early<br />
+ experimental release and that soon Ruby will be free from the core<br />
+ team&#8217;s shackles to do what it truly deserves to: Reach 30 kyu on KGS<br />
+ with a Gobi based bot!</p>
+<p> Though only time will tell, I am considering reworking Gobi to fork<br />
+ Aaron Patterson&#8217;s excellent Brobinius implementation, as Gobi deserves<br />
+ some high quality Grosenbach screencasts.</p>
+<p> * http://gobi.stonecode.org<br />
+ * http://metametta.blogspot.com<br />
+ * gregory.t.brown@gmail.com
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/04/gobi_a_ruby_implementation_for.html#comments'>0 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23260">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/03/cruisecontrol_charts.html">CruiseControl Progress Charts</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Phlipm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/03/cruisecontrol_charts.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Tuesday March 18, 2008 <span class="ISI_IGNORE"> 8:14AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3029'>Phlip</a><span class="ISI_IGNORE">
+</span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p><a href=
+  'http://cruisecontrolrb.thoughtworks.com/'>CruiseControl.rb</a>,
+  by <a href='http://www.thoughtworks.com/'>ThoughtWorks</a>, 
+  is an elegant 
+  <a href='http://en.wikipedia.org/wiki/Continuous_integration'
+  >Continuous Integration</a> dashboard for 
+  <a href='http://www.ruby-lang.org/en/'>Ruby</a>
+  projects. This article shows how to call the <a
+  href='http://www.rubyonrails.org/' title='Ruby on Rails'>RoR</a> command 
+  &#8220;<code><a href='http://www.google.com/search?q=%22rake+stats%22'>rake stats</a></code>&#8221;
+  once per build, capture the results, and chart them to track
+  trends over time.</p>
+  <p>Our goal is this chart:</p>
+  <img alt="cc_gnuplot.png" src="http://www.oreillynet.com/ruby/blog/images/cc_gnuplot.png" width="616" height="493" />
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/03/cruisecontrol_charts.html#comments'>9 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/03/cruisecontrol_charts.html'>Continue reading "CruiseControl Progress Charts" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23239">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/03/laurent_is_a_champ_1.html">Laurent is a champ!</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/03/laurent_is_a_champ_1.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Friday March 14, 2008 <span class="ISI_IGNORE">11:31AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/opinion/'>Opinion</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>Though I&#8217;m typing this from a Mac right now, I&#8217;m hardly a fan boy.  I spend a little less than half of my time on OS X, the rest spent on cheap PC hardware and ArchLinux, and honestly, I&#8217;m happy with both (each for different reasons)</p>
+<p>Still, Apple definitely got some things right, and not the least of which was hiring <a href="http://chopine.be/lrz/">Laurent Sansonetti</a>.    He&#8217;s the guy who&#8217;s been working on cool projects such as <a href="http://rubycocoa.sf.net/">RubyCocoa</a> and <a href="http://rubyosa.rubyforge.org/">RubyOSA</a>, and now has just released <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/294485">MacRuby</a>.</p>
+<p>MacRuby sounds cool:</p>
+<blockquote><p>
+MacRuby is a version of Ruby that runs on top of Objective-C. More precisely, MacRuby is currently a port of the Ruby 1.9 implementation for the Objective-C runtime and garbage collector.
+</p></blockquote>
+<p>Though I&#8217;m not actively doing Mac specific Ruby development, that doesn&#8217;t mean I can&#8217;t extend thanks to a very cool hacker who has been dropping cool free software projects on our community like it was his job&#8230;. oh wait&#8230; it is. :)</p>
+<p>Thanks Laurent for your contributions!  You&#8217;re one of the reasons why the Ruby community rocks.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/03/laurent_is_a_champ_1.html#comments'>2 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23209">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">The Ruby Mendicant Project</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Tuesday March 11, 2008 <span class="ISI_IGNORE"> 9:37AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+</span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>When I wrote the post <a href="http://www.oreillynet.com/ruby/blog/2008/03/id_love_to_quit_my_job_sort_of.html">I&#8217;d love to quit my job! (sort of)</a>, I was mainly aiming to start a conversation.</p>
+<p>Still, enough people took me seriously, and now I can announce that the project is officially under way.  I&#8217;m in the fund raising stages to collect $8000 so that I can take off 6 months of work to focus on important Ruby open source projects.   That sounds even lower than my initial estimate, and the reason for that is because Ruby Central, Inc. decided to back the project!  Here&#8217;s their press release:</p>
+<blockquote><p>
+RUBY CENTRAL, INC. WILL MATCH FUNDS DONATED TO GREG BROWN, <br /> UP TO A TOTAL OF $5,000</p>
+<p>Ruby Central is always on the lookout for interesting ways to help and<br />
+support the Ruby community, and Greg Brown has provided us with one. </p>
+<p>Greg has announced a unique plan for himself. You can see the whole plan at<br />
+http://rubymendicant.wikidot.com/proposal; meanwhile, here&#8217;s Greg&#8217;s capsule<br />
+summary of the idea:</p>
+<p>  ** Through the donations of community members, I would like to put my<br />
+  commercial and personal software projects on the back burner for a<br />
+  prolonged period of time (3-6 months), and focus on working on open<br />
+  source projects that are of high importance to the majority of<br />
+  Rubyists. **</p>
+<p>Greg has already started to receive donations. And now, Ruby Central<br />
+is coming on board to help Greg with matching funds. </p>
+<p>Ruby Central will match gross donations to Greg, dollar for dollar, up<br />
+to $5000 (five thousand) dollars. That means that if you donate $50 to<br />
+Greg&#8217;s effort, we&#8217;ll donate $50. We&#8217;ll stick to the same timeline that Greg<br />
+has set for himself (see the above URL). </p>
+<p>It&#8217;s not quite like anything we&#8217;ve done before, but it sounds like a good idea<br />
+at the right time, and we&#8217;re happy to support Greg&#8217;s unusual and imaginative<br />
+endeavor. </p>
+<p>Please keep in mind that donations to Greg are not donations to Ruby<br />
+Central, and therefore do not fall under our tax-exempt status. </p>
+<p>Ruby Central, Inc. is a 501(c)(3) tax-exempt organization, chartered to<br />
+support Ruby-related events and initiatives that benefit the Ruby community.
+</p></blockquote>
+<p>Peter Cooper has also decided to support the project by both donating, and posting <a href="http://www.rubyinside.com/help-fund-a-ruby-developer-to-work-on-open-source-for-6-months-798.html">a summary</a> on Ruby Inside.   He does a good job of covering the whole of the story, including relating to those who feel uncomfortable supporting such an effort.  I totally understand people&#8217;s skepticism, and thats why I encourage people to come talk on the <a href="http://groups.google.com/group/rubymendicant">RubyMendicant google group</a> if they have any doubts about the project they want cleared up.  The explicit timeline for this project and the fact that I&#8217;ve promised to record public hours will hopefully put some folks minds at ease.</p>
+<p>Peter mentions that I talked about working on PDF::Writer or Ruport, but this doesn&#8217;t really fully explain what I was thinking of doing.   With respect to PDF::Writer, I was pondering a from scratch rewrite with a sexy API and less performance problems.   With Ruport, I was going to work on 1.9 compatibility for all of its dependencies across ruport-util and acts_as_reportable.   Though I haven&#8217;t checked in with the maintainers of these libraries yet, it&#8217;s truly a laundry list of general purpose gems I&#8217;d be working to update.  Here are just a few:</p>
+<ul>
+<li>RubyDBI</li>
+<li>Gruff</li>
+<li>Scruffy</li>
+<li>PDF::Writer</li>
+<li>transaction-simple</li>
+<li>roo</li>
+<li>rubyzip</li>
+</ul>
+<p>Outside of Ruport, there are lots of libraries that I&#8217;d like to see working on 1.9, and with enough time, I could work on porting them.</p>
+<p>The <a href="http://rubymendicant.wikidot.com/project-ideas">ideas list</a> will be open for suggestions until April 1st when the donations close, the goal is to focus on things that might be hard to reach from traditional open source work that is done in people&#8217;s spare time or as part of a commercial project.</p>
+<p>Anyway, this is going to be my last mooching attempt on the O&#8217;Reilly blog for this project.  If you&#8217;ve read through <a href="http://rubymendicant.wikidot.com/proposal">the proposal</a> I&#8217;ve put together and want to support the project, please consider <a href="http://pledgie.com/campaigns/571">a donation</a>.  If you&#8217;ve got questions, please <a href="http://groups.google.com/group/rubymendicant">ask them</a>.  And perhaps most importantly: If you like this idea, please spread the word.  Having Rubyists show that they back this effort is worth more than cash to me, because it gives me confidence that this might actually work.</p>
+<p>At the time of writing, with the matching from Ruby Central, Inc., I have enough money for at least <strike>two weeks</strike> one month of work.  That means this project is a &#8216;go&#8217; even if no one else donates.  Of course, a lot more can be done with 26 weeks than with two. </p>
+<p>The next post about this you&#8217;ll see here from me is going to be a progress report of what I&#8217;ve been working on.   Until then, thanks so much to those who have supported and will support this project.  I think it&#8217;ll be a great experiment, and that good things will come from it.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/03/the_ruby_mendicant_project.html#comments'>5 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23128">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/03/beast_acts_as_sphinx.html">Beast acts_as_sphinx</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Phlipm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/03/beast_acts_as_sphinx.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Monday March  3, 2008 <span class="ISI_IGNORE"> 8:06PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/3029'>Phlip</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/technical/'>Technical</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p>This project upgrades an online forum to add a search 
+  engine, using 
+  <a href="http://c2.com/cgi/wiki?TestDrivenDevelopment">Test 
+  Driven Development</a>. Our tools are 
+  <a href="http://www.rubyonrails.org/">RoR</a>&#8217;s 
+  <a href="http://beast.caboo.se/">Beast</a>, 
+  <a href="http://www.sphinxsearch.com/">Sphinx</a>, and (naturally) 
+  <a href="http://assert2.rubyforge.org/"><code>assert{ 2.0 }</code></a>.</p>
+
+  <p>We follow this 
+  <a href="http://en.wikipedia.org/wiki/Model-view-controller">MVC</a> 
+  guideline:
+
+  <blockquote>
+    Anything a user can do to the data through the Views,<br/>
+    a unit test can do, the same way, through the Models
+  </blockquote>
+
+  Our test cases simulate a user searching.</p>
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/03/beast_acts_as_sphinx.html#comments'>0 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/03/beast_acts_as_sphinx.html'>Continue reading "Beast acts_as_sphinx" &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23115">
+
+<div class="post-header">
+<a href='http://www.oreillynet.com/pub/au/2593'><img src='/images/people/weblogs/gregory_brown.jpg' alt='Gregory Brown' width='50' class='left' /></a>
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/03/id_love_to_quit_my_job_sort_of.html">I'd love to quit my job! (sort of)</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Gregorym --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/03/id_love_to_quit_my_job_sort_of.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Monday March  3, 2008 <span class="ISI_IGNORE"> 9:31AM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2593'>Gregory Brown</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/opinion/'>Opinion</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<p><em>UPDATE: Okay kids, now it&#8217;s 50% fantasy.  It&#8217;s up to you to cover the other 50% by <a href="http://pledgie.com/campaigns/571">donating</a> and spreading the word, after reading my <a href="http://rubymendicant.wikidot.com/proposal">proposal</a>.  Here&#8217;s hoping for the best!</em></p>
+<p><em>UPDATE: Though my original post was 95% a fantasy, I&#8217;ve received some funding offers that have brought it down to 75% fantasy.  I will be documenting any planning I&#8217;m doing towards via a wiki called <a href="http://rubymendicant.wikidot.com/">RubyMendicant</a>.  If you&#8217;d like to follow this on the bleeding edge, keep an eye out on that wiki.  Otherwise, if you hear an official announcement within the next few weeks, you&#8217;ll know I decided to take the plunge, and if you don&#8217;t, then it&#8217;s safe to assume this idea went the way of the dodo.  If you like this idea, please spread the word through the usual means of the intertubes by sharing this post and the wiki link with others.</em></p>
+<p>Here&#8217;s a crazy idea I just had, and I&#8217;m wondering what folks think about it.</p>
+<p>People do open source for a lot of reasons, ranging from pragmatic to idealistic.  Some write a patch every six months or so, others do what they can to dedicate their life to it.  Though I try to have a life outside of software, I&#8217;m definitely more on the obsessed end of the spectrum when it comes to contributing to open source software.</p>
+<p>I find myself in a rather unique situation:  Single, living alone in a small studio apartment, only taking a class or two here and there, and basically living off of small contracts.  It&#8217;s not that I&#8217;m not offered big gigs, or that I couldn&#8217;t go back to school full time if I really wanted to, I just find I enjoy living a simple lifestyle that lets me spend a lot of time on community oriented projects, especially Ruby stuff.</p>
+<p>Right now, I need to do some work each month to pay the rent, and slowly save up to make sure I don&#8217;t get evicted during a slow work month.  Between BTree and Madriska, I could say that I have two of the most open source friendly commercial relationships I&#8217;ve ever seen.  Though I&#8217;m working on real projects with them, things that have to actually fit some sort of business need, they give me a lot of leeway to improve open source software while working on them, Ruport is pushed along heavily by this.</p>
+<p>I could see myself doing that for a while.  Working with a few different clients I trust, who in turn hook me up with interesting projects for a variety of companies in various different domains.  A lot of it might be Rails work, but not all of it is.  Still, in a moment of idealistic fantasy, I thought of another idea:</p>
+<p>What if I could just do open source for a while, non-commercially?</p>
+<p>How much would it cost for me to do at least 80 hours a month of development on software projects such as PDF::Writer, Ruport, and some other projects I wish I had the time to get my hands on?</p>
+<p>I did the math, and the number came out low (subjective).  I could meet all my expenses and save some money for about $2000 a month.  Basically, if 200 people donated $60 right now, I could take 6 months off and do nearly 500 hours of work, and that&#8217;s only if I didn&#8217;t find myself obsessed with and doing extra hours on a project.  I could more-or-less maintain my lifestyle that I have now, but not take on contracting projects that are either too big or too small out of necessity.  Sure, this works out to be a lot lower than my contracting rate, but I could hack entirely on open source projects, maybe write some documentation and articles, and still be able to afford a class or two a semester.  Sounds beautiful to me, though I&#8217;m sure it&#8217;s just a fantasy.</p>
+<p>Indulging me for the moment,  how would I remain accountable to anyone who supported such a venture?   I&#8217;d make it transparent as possible.   I&#8217;d record public hours, with links to changesets, tickets, blog posts, whatever.   Though people would have to accept good faith (with at least a roughly outlined plan) as to &#8216;where I direct the time&#8217;, they&#8217;d get to see every bit of &#8216;where the hours went&#8217;.</p>
+<p>What prevents this from being a total scam?  You do.   Though I don&#8217;t have some A-List reputation, I still make my living based on my reputation as a developer and a contractor.  If I somehow totally screwed people who supported such an effort, all it would take would be enough negative feedback from the community to prevent me from getting away with dishonesty.</p>
+<p>What would indicate a great success?  If after 6 months, this all worked out, and I was interested in doing it for another 6 months, if people funded it, we&#8217;d know they actually liked what I did the first time around.</p>
+<p>Finally, this doesn&#8217;t have to be me.  It could be any old hacker you choose, someone you trust that&#8217;s working on things you&#8217;re interested in.  They&#8217;d tell you how much it&#8217;d cost to have them quit their day job for 6 months, and hopefully people could pool resources.  Though the open source community is kept alive by small day to day contributions, we all know the power of having someone dedicated to a project with copious free time.</p>
+<p>I&#8217;m talking in theory, because obviously there are some complications.  If I personally were to do this, I&#8217;d need to cycle out of some projects, and figure out to what extent it&#8217;d piss of the people I work with.  Still, I am sort of curious, is this an idea that belongs in the trashbin, or should I open up a pledgie account for donations? :)</p>
+<p>Maybe this is something that could be done on a trial basis,  such as &#8216;40 hrs over 1 month&#8217;.   This is something I could do without putting a close to all my work.  Given that, based on my needs (not my billable rate), that&#8217;d be um&#8230; 10 dollars from 100 people?</p>
+<p>On the one hand, this seems almost like a joke to me, a sort of &#8216;wouldn&#8217;t it be nice if&#8230;&#8217;.  Still, if some respected Rubyist wanted to steal this idea, undercut me on the price, and ask people to start donating, would I be among them?   You bet ya.</p>
+<p>Let me know what you think.  I&#8217;ve tried so hard over the last few years to find ethical and practical ways to work in open source development, and they pretty much work.   But because of that, I&#8217;ve mostly ignored the idealistic ones, and this is just a shot in the dark at one of those.</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/03/id_love_to_quit_my_job_sort_of.html#comments'>36 Comments</a> </p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+
+<div class="noindex">
+</div> <!-- end noindex -->
+
+
+
+
+<div class="post" id="entry-23045">
+
+<div class="post-header">
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This weblog is brought to you by the O'Reilly Ruby  --></span>  
+
+<!-- JJJ 
+ hmm -->
+
+<h2 class='post-title'><a class="permalink" href="http://www.oreillynet.com/ruby/blog/2008/02/structured_warnings_now.html">Structured. Warnings. Now.</a></h2>
+<span class="ISI_IGNORE">
+<ul class="listen">
+<!-- JLW Danielm --><!-- <li class="option"><a href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/">listen to all posts</a></li> -->
+<li class="button"><a target="_new" href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/ruby/blog/2008/02/structured_warnings_now.html">listen <img src="/images/icon_listen_small.gif" width="10" height="9" alt="Speech Icon" /></a></li>
+
+</ul>
+
+</span>
+
+
+<div class="post-byline">
+
+Wednesday February 20, 2008 <span class="ISI_IGNORE"> 6:54PM</span><br />
+by <a href='http://www.oreillynet.com/pub/au/2999'>Daniel Berger</a><span class="ISI_IGNORE">
+ in <a href='http://www.oreillynet.com/ruby/blog/opinion/'>Opinion</a></span>
+</div><!-- .byline -->
+</div><!-- .post-header -->
+<p>
+<span>
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'oreillynetwork';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+</span>
+<p>
+<!-- moving the location of the listen button higher ##### -->
+
+<div class="post-content">
+
+<h3>The Problem</h3>
+<p>I find Ruby&#8217;s current warning system, if you can call it that, lacking. Warnings are controlled by the -W flag on the command line, and are generated via the Kernel#warn method within code. There are a host of problems with this approach to warnings.
+</p>
+
+<div class="post-content-footer"></div><!-- .post-content-footer -->
+</div><!-- .post-content -->
+
+<!-- ISI_LISTEN_STOP -->
+
+
+<div class="post-footer">
+
+<p>
+
+<p><a href='http://www.oreillynet.com/ruby/blog/2008/02/structured_warnings_now.html#comments'>3 Comments</a> <a href='http://www.oreillynet.com/ruby/blog/2008/02/structured_warnings_now.html'>Continue reading "Structured. Warnings. Now." &raquo;</a></p>
+</div><!-- .post-footer -->
+
+</div><!-- .post -->
+
+</div><!-- end #blog -->
+
+<div class="noindex">
+<div id="sidebar">
+<br />
+
+<div class="sidebar-item">
+
+<a id="akAPI"></a>
+
+<br />
+
+<script type="text/javascript">
+    var akApiKey = 'RecEngine-49CCF850-02C7-B730-5489-DB7D929405CD';
+    var akTarget = 'http://www.oreillynet.com/ruby';//the URL of the page
+    var akDescription = '';
+    
+	
+    var akRegion = 'ruby'; 
+    var akIntent = 'VIEW';
+    var akTargetType = 'INVALID'; 
+	var akExclude = true;
+
+    var akScript = document.createElement('script');
+    akScript.setAttribute('src', 'http://api.aggregateknowledge.com/2007/01/15/js/' + Math.floor((new Date().valueOf()) / 3600000) + '.js');
+
+    document.getElementsByTagName('head')[0].appendChild(akScript);
+</script>
+
+
+</div>
+
+<div class="sidebar-item">
+<h3>Categories</h3>
+<div class="sidebar-item-content">
+<ul>
+<li><a href="http://www.oreillynet.com/ruby/blog/articles/" title="">Articles</a></li>
+<li><a href="http://www.oreillynet.com/ruby/blog/news/" title="">News</a></li>
+<li><a href="http://www.oreillynet.com/ruby/blog/opinion/" title="">Opinion</a></li>
+<li><a href="http://www.oreillynet.com/ruby/blog/reviews/" title="">Reviews</a></li>
+<li><a href="http://www.oreillynet.com/ruby/blog/technical/" title="">Technical</a></li>
+</ul>
+</div>
+</div>
+
+<div class='sidebar-item'><h3>Recent Articles</h3><div class='sidebar-item-content'><ul><li><a href='/pub/a/ruby/2008/04/08/ruport-business-reporting-for-ruby.html'>Ruport: Business Reporting for Ruby</a></li><li><a href='/pub/a/ruby/2008/01/14/shoes-meets-merb-interfacing-a-gtk2-front-end-and-a-rails-web-service.html'>Shoes Meets Merb:  Driving a GUI App through Web Services in Ruby</a></li><li><a href='/pub/a/ruby/2008/01/02/cookin-with-ruby-on-rails---integration-tests.html'>Cookin' with Ruby on Rails - Integration Tests</a></li><li><a href='/pub/a/ruby/2007/12/18/creating-games-in-ruby-part-2.html'>Creating Games in Ruby (Part 2)</a></li><li><a href='/pub/a/ruby/2007/12/04/creating-games-in-ruby.html'>Creating Games in Ruby (Part 1)</a></li></ul></div><div class='sidebar-item-footer'></div></div>
+<div class="noindex">
+<!-- <h2>Recent Articles</h2>
+<ul>
+<li><a href="http://radar.oreilly.com/archives/2005/12/ruby_book_sales_surpass_python.html">Ruby Book Sales Surpass Python</a></li>
+<li><a href="http://www.oreillynet.com/pub/a/network/2005/08/30/ruby-rails-david-heinemeier-hansson.html">Ruby on Rails: An Interview with David Heinemeier Hansson></a></li>
+<li><a href="http://www.onjava.com/pub/a/onjava/2005/11/16/ruby-the-rival.html">Ruby the Rival (to Java)</a></li>
+<li><a href="http://www.xml.com/pub/a/2005/11/09/rexml-processing-xml-in-ruby.html">REXML: Processing XML in Ruby</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2005/10/13/what_is_rails.html">What Is Ruby on Rails</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2004/06/24/pragmatic_programmers.html">The Pragmatic Programmers Interview</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2005/01/20/rails.html">Rolling with Ruby on Rails</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2005/03/03/rails.html">Rolling with Ruby on Rails, Part 2</a></li>
+<li><a href="http://www.onlamp.com/pub/a/onlamp/2005/06/09/rails_ajax.html">Ajax on Rails</a></li> 
+</ul> -->
+<div class="sidebar-item">
+<h3>Related Books</h3>
+<div class="sidebar-item-content">
+<ul>
+<li><a href="http://www.oreilly.com/catalog/0974514055/index.html">Programming Ruby, Second Edition</a></li>
+<li><a href="http://www.oreilly.com/catalog/ruby/index.html">Ruby in a Nutshell</a></li>
+<li><a href="http://www.oreilly.com/catalog/097669400X/index.html">Agile Web Development with Rails</a></li>
+<li><a href="http://www.oreilly.com/catalog/0976694077/index.html">Best of Ruby Quiz</a></li>
+<li><a href="http://www.oreilly.com/catalog/0976694093/index.html">Java to Ruby</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class='sidebar-item'><h3>Archives</h3><div class='sidebar-item-content'><div style='margin-bottom:6px;'><em>2008</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2008/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2008/10/'>10</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2007</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2007/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2007/12/'>12</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2006</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2006/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2006/12/'>12</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2005</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2005/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2005/12/'>12</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2004</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2004/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2004/12/'>12</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2003</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2003/01/'>1</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/02/'>2</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/03/'>3</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/04/'>4</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2003/12/'>12</a> 
+</div>
+<div style='margin-bottom:6px;'><em>2002</em><br />
+<a href='http://www.oreillynet.com/ruby/blog/2002/05/'>5</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/06/'>6</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/07/'>7</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/08/'>8</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/09/'>9</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/10/'>10</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/11/'>11</a> 
+<a href='http://www.oreillynet.com/ruby/blog/2002/12/'>12</a> 
+</div>
+</div><div class='sidebar-item-footer'></div></div>
+    <div class="sidebar-item">
+    <h3>Site Feeds</h3>
+    <div class="sidebar-item-content">
+    <ul>
+    <li><a href="http://www.oreillynet.com/ruby/blog/atom.xml">Atom 1.0</a></li>
+    <li><a href="http://www.oreillynet.com/ruby/blog/index.xml">RSS 2.0</a></li>
+    </ul>
+    </div>
+    <div class="sidebar-item-footer"></div>
+    </div>
+
+</div><!-- end #sidebar -->
+</div> <!-- end noindex -->
+
+<div id="skyscraper">
+
+
+<!-- Network Skyscraper Ad -->
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: O'ReillyNet // Page: O'ReillyNet // Placement: ros_160x600 (425844) // created at: Oct 9, 2008 6:10:29 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425844/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425844/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425844/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="160" height="600"></a></noscript>
+<!-- End of JavaScript Tag -->
+<!-- End ad -->
+
+
+</div><!-- end #skyscraper -->
+
+<div style="clear:both;padding-top:1px;"></div>
+</div><!-- end #page-content -->
+
+<div id="footer" class="noindex">
+<!-- Start Quantcast tag -->
+
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+
+ <!-- End Quantcast tag -->
+
+
+<style type="text/css">
+
+td, th { 
+border:0px;
+}
+
+</style>
+
+
+<table border="0">
+<tr><td valign="top" align="left" width="25%" style="padding-left: 20px; padding-right: 20px;">
+<a href="http://oreilly.com/"><img src="/images/oreilly/oreilly-logo-footer.gif" border="0" width="155" height="35" alt="O'Reilly Media" style="border-style:none;" /></a><br />
+&copy; 2008, O'Reilly Media, Inc.<br />(707) 827-7000 / (800) 998-9938<br />
+All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.
+</td>
+
+<td valign="top"  width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>About O'Reilly</strong><br />
+
+<a href="http://academic.oreilly.com/">Academic Solutions</a><br />
+<a href="http://oreilly.com/authors/">Authors</a><br />
+<a href="http://oreilly.com/contact.html">Contacts</a><br /> 
+
+<a href="http://oreilly.com/oreilly/cs/">Customer Service</a><br /> 
+<a href="http://jobs.oreilly.com/">Jobs</a><br />
+<a href="http://elists.oreilly.com/">Newsletters</a><br />
+<a href=" http://labs.oreilly.com">O'Reilly Labs</a><br />
+<a href="http://press.oreilly.com/">Press Room</a><br />
+<a href="http://oreilly.com/oreilly/privacy.csp">Privacy Policy</a><br />
+<a href="http://oreilly.com/feeds/">RSS Feeds</a><br />
+
+<a href="http://oreilly.com/terms/">Terms of Service</a><br />
+
+<a href="http://ug.oreilly.com/">User Groups</a><br />
+
+
+<a href="http://oreilly.com/oreilly/author/intro.csp">Writing for O'Reilly</a><br />
+
+
+</td>
+
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Other O'Reilly Sites</strong><br />
+<a href="http://radar.oreilly.com/">O'Reilly Radar</a><br />
+
+<a href="http://ignite.oreilly.com/">Ignite</a><br /> 
+<a href="http://toc.oreilly.com/">Tools of Change for Publishing</a><br /> 
+<a href="http://digitalmedia.oreilly.com/">Digital Media</a><br /> 
+<a href="http://digitalmedia.oreilly.com/iphone/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=iphone">Inside iPhone</a><br />
+<a href="http://fyi.oreilly.com">O'Reilly FYI</a><br /> 
+<a href="http://makezine.com/">makezine.com</a><br /> 
+<a href="http://craftzine.com">craftzine.com</a><br /> 
+<a href="http://hackszine.com">hackszine.com</a><br /> 
+<a href="http://perl.com/">perl.com</a><br /> 
+<a href="http://xml.com/">xml.com</a><br /> 
+</td>
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Partner Sites</strong><br />
+
+<a href="http://insideria.com/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=ria">InsideRIA</a><br />
+<a href="http://java.net/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=java">java.net</a><br />
+</td>
+</tr>
+</table>
+</div><!-- /#footer -->
+
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/
+quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif"
+style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+<!-- End Quantcast tag -->
+
+</body>
+</html>
+

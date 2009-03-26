@@ -1,0 +1,188 @@
+<html>
+<head>
+ <title>Ruby/Amazon</title>
+ <style type="text/css"><!--
+  .cmd         { background: #e0e0e0; font-family: monospace;
+		 border: 1px solid black; }
+
+  pre { margin-left: .125in; margin-right: .125in; padding: 2px; }
+  h1,h2,h3,h4,h5,h6 { border: 2px solid #8080d0; color: #000040;
+		      background: #d0d0ff; font-weight: bold;
+		      padding: 2px;}
+  h1 { text-align: center; }
+  h1 { font-size: 150%; }
+  h2 { font-size: 125%; }
+  h3 { font-size: 100%; }
+  h4 { font-size: 90%; }
+  h5 { font-size: 75%; }
+  h6 { font-size: 75%; font-weight: normal; }
+--></style>
+
+</head>
+
+<body bgcolor="white">
+
+  <div align="center"><h1>Ruby/Amazon</h1><br />
+<script type="text/javascript"><!--
+google_ad_client = "pub-9240261116814992";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_channel = "";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+
+<p>
+<ul>
+<li><a href="#overview">Overview and introduction</a>
+<li><a href="#prerequisites">Prerequisites</a>
+<li><a href="#dependencies">Dependencies</a>
+<li><a href="#rdoc">Library documentation</a>
+<li><a href="#files">Files</a>
+</ul>
+
+<br>
+<hr noshade>
+
+<p>
+<a name="overview">
+<h2>Overview and Introduction</h2>
+
+<p>
+Ruby/Amazon is a Ruby language library that allows programmatic access to the
+popular <a
+  href="http://www.amazon.com/exec/obidos/redirect-home/calibanorg-20">Amazon</a>
+Web site via the REST (XML over HTTP) based <a
+  href="http://www.amazon.com/gp/browse.html/104-8643834-7363153?node=3435361">Amazon
+  Web Services</a>. In addition to the original <a
+  href="http://www.amazon.com/exec/obidos/redirect-home/calibanorg-20">amazon.com</a>
+site, the <a
+  href="http://www.amazon.co.uk/exec/obidos/redirect-home/caliban-21">amazon.co.uk</a>,
+<a href="http://www.amazon.de/exec/obidos/redirect-home/calibanorg0a-21">amazon.de</a>,
+<a href="http://www.amazon.fr/exec/obidos/redirect-home/caliban08-21">amazon.fr</a>,
+<a href="http://www.amazon.ca/exec/obidos/redirect-home/caliban-20">amazon.ca</a>, and
+<a
+  href="http://www.amazon.co.jp/exec/obidos/redirect-home/calibanorg-20">amazon.co.jp</a> properties are also
+supported.
+
+<p>
+Ruby/Amazon aims to wrap the grunt work of interacting with the Amazon API
+behind a high-level layer of Ruby, thereby making it easier to use.
+
+<p>
+The library provides support for the vast majority of the AWS v3.1 API. For
+example, all forms of product search are implemented, along with the
+transaction details API and the remote shopping-cart API. Furthermore,
+advanced features such as threaded retrieval of multiple pages, object caching
+and determining a client's most appropriate AWS locale are all available.
+See the <a href="ruby-amazon">RDoc library documentation</a> for more
+information, in particular the page about the <a
+  href="ruby-amazon/classes/Amazon.html">top level Amazon module</a>.
+
+<p>
+<font color=red>
+Please be aware that this software was effectively rendered obsolete on
+2008-03-31 by Amazon's decision to shut down access to v3.x of the AWS API.
+
+<p>
+The new <a href="/ruby/ruby-aws/">Ruby/AWS</a> library works with v4 of the
+AWS API and is the successor to Ruby/Amazon. Please use that instead of this
+library.
+</font>
+
+<p>
+The source code is made available under the GNU <a
+  href="http://www.gnu.org/copyleft/gpl.html">General Public Licence</a>.
+
+<a name="prerequisites">
+<h2>Prerequisites</h2>
+
+<p>
+Before you can use this library, you need to obtain an Amazon Web Services
+<a href="http://www.amazon.com/gp/aws/registration/registration-form.html">developer token</a>.
+
+<p>
+You should also apply for an <a
+  href="https://associates.amazon.com/exec/panama/associates/apply/">Associates
+  account</a>. This isn't strictly necessary, but may be needed in the future
+to exploit new functionality.
+
+<a name="dependencies">
+<h2>Dependencies</h2>
+
+<p>
+Ruby/Amazon requires <a
+  href="http://www.germane-software.com/software/rexml/">REXML</a> in order
+to parse the XML responses from Amazon. This is included with Ruby 1.8.x or
+later, which also happens to be the minimum version of the interpreter
+required to use this library. If you use an RPM-based Linux distribution, I'm
+happy to provide you with <a href="/ruby">RPMs</a> of the latest version of
+Ruby 1.8.x for your system.
+
+<p>
+Additionally, Ruby/Amazon can make use of MaxMind's <a
+  href="http://www.maxmind.com/">GeoIP</a> library. This is required for
+geolocation of clients, which is used to determine which AWS locale should be
+used for a given client. In addition to the <a
+  href="http://www.maxmind.com/download/geoip/api/c/">C library</a>, you will
+also need the <a href="http://www.maxmind.com/app/ruby">Ruby bindings</a>.
+Alternatively, RPMs are available of the <a
+  href="/files/redhat/RPMS/i386/GeoIP-1.3.14-1.i386.rpm">C library</a> and <a
+  href="/files/redhat/RPMS/i386/ruby-net-geoip-0.06-3.i386.rpm">Ruby
+  bindings</a>.
+
+<a name="rdoc">
+<h2>Library documentation</h2>
+
+<p>
+Please see the <a href="ruby-amazon">RDoc documentation</a> for information on
+how this library works, including examples of its usage. Most importantly, be
+sure to read the documentation concerning the <a
+  href="ruby-amazon/classes/Amazon.html">top level Amazon module</a>. The <a
+  href="ruby-amazon/NEWS">release notes</a> for the latest version are also
+available.
+
+<a name="files">
+<h2>Files</h2>
+
+<table>
+<tr><th align=left>File<th align=left>Type</tr>
+<tr>
+    <td><a href="/files/ruby/ruby-amazon-0.9.2.tar.gz">ruby-amazon-0.9.2.tar.gz</a><td>tarred and gzipped source
+</tr>
+<tr>
+  <td><a href="/files/redhat/RPMS/i386/ruby-amazon-0.9.2-1.i386.rpm">ruby-amazon-0.9.2-1.i386.rpm</a><td>Binary RPM for Ruby 1.8.x
+</tr>
+<tr>
+  <td><a href="/files/redhat/SRPMS/ruby-amazon-0.9.2-1.src.rpm">ruby-amazon-0.9.2-1.src.rpm</a><td>Source RPM
+</tr> 
+</table>
+
+<hr>
+<center><a href="/index.html">Home</a> |
+    <a href="/gallery">Photos</a> |
+    <a href="/maintainer.html">About Ian</a> |
+    <a href="/cv_uk.html">CV</a> |
+    <a href="/mailman/listinfo/">Mailing lists</a> |
+    <a href="/PCW.html">PCW</a> |
+    <a href="/linux_signature.html">signature</a> |
+    <a href="/bash/">bash</a> |
+    <a href="/ruby/">Ruby</a> |
+    <a href="mailto:ian@caliban.org">Contact Ian</a> |
+
+<p>
+
+<font size=-1>Last modified: Sunday, 13 April 2008 at 09:38 CEST</font>
+</center>
+
+
+</body>
+</html>

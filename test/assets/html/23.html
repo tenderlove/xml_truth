@@ -1,0 +1,572 @@
+<html>
+
+    <head>
+        <title>Ruby - english</title>
+        <meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+        <link href="../../css/ica_main.css" type="text/css" rel="styleSheet">
+        <csscriptdict>
+            <script><!--
+CSInit = new Array;
+function CSScriptInit() {
+if(typeof(skipPage) != "undefined") { if(skipPage) return; }
+idxArray = new Array;
+for(var i=0;i<CSInit.length;i++)
+	idxArray[i] = i;
+CSAction2(CSInit, idxArray);}
+CSAg = window.navigator.userAgent; CSBVers = parseInt(CSAg.charAt(CSAg.indexOf("/")+1),10);
+CSIsW3CDOM = ((document.getElementById) && !(IsIE()&&CSBVers<6)) ? true : false;
+function IsIE() { return CSAg.indexOf("MSIE") > 0;}
+function CSIEStyl(s) { return document.all.tags("div")[s].style; }
+function CSNSStyl(s) { if (CSIsW3CDOM) return document.getElementById(s).style; else return CSFindElement(s,0);  }
+CSIImg=false;
+function CSInitImgID() {if (!CSIImg && document.images) { for (var i=0; i<document.images.length; i++) { if (!document.images[i].id) document.images[i].id=document.images[i].name; } CSIImg = true;}}
+function CSFindElement(n,ly) { if (CSBVers<4) return document[n];
+	if (CSIsW3CDOM) {CSInitImgID();return(document.getElementById(n));}
+	var curDoc = ly?ly.document:document; var elem = curDoc[n];
+	if (!elem) {for (var i=0;i<curDoc.layers.length;i++) {elem=CSFindElement(n,curDoc.layers[i]); if (elem) return elem; }}
+	return elem;
+}
+function CSGetImage(n) {if(document.images) {return ((!IsIE()&&CSBVers<5)?CSFindElement(n,0):document.images[n]);} else {return null;}}
+CSDInit=false;
+function CSIDOM() { if (CSDInit)return; CSDInit=true; if(document.getElementsByTagName) {var n = document.getElementsByTagName('DIV'); for (var i=0;i<n.length;i++) {CSICSS2Prop(n[i].id);}}}
+function CSICSS2Prop(id) { var n = document.getElementsByTagName('STYLE');for (var i=0;i<n.length;i++) { var cn = n[i].childNodes; for (var j=0;j<cn.length;j++) { CSSetCSS2Props(CSFetchStyle(cn[j].data, id),id); }}}
+function CSFetchStyle(sc, id) {
+	var s=sc; while(s.indexOf("#")!=-1) { s=s.substring(s.indexOf("#")+1,sc.length); if (s.substring(0,s.indexOf("{")).toUpperCase().indexOf(id.toUpperCase())!=-1) return(s.substring(s.indexOf("{")+1,s.indexOf("}")));}
+	return "";
+}
+function CSGetStyleAttrValue (si, id) {
+	var s=si.toUpperCase();
+	var myID=id.toUpperCase()+":";
+	var id1=s.indexOf(myID);
+	if (id1==-1) return "";
+	s=s.substring(id1+myID.length+1,si.length);
+	var id2=s.indexOf(";");
+	return ((id2==-1)?s:s.substring(0,id2));
+}
+function CSSetCSS2Props(si, id) {
+	var el=document.getElementById(id);
+	if (el==null) return;
+	var style=document.getElementById(id).style;
+	if (style) {
+		if (style.left=="") style.left=CSGetStyleAttrValue(si,"left");
+		if (style.top=="") style.top=CSGetStyleAttrValue(si,"top");
+		if (style.width=="") style.width=CSGetStyleAttrValue(si,"width");
+		if (style.height=="") style.height=CSGetStyleAttrValue(si,"height");
+		if (style.visibility=="") style.visibility=CSGetStyleAttrValue(si,"visibility");
+		if (style.zIndex=="") style.zIndex=CSGetStyleAttrValue(si,"z-index");
+	}
+}
+function CSClickReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return true; // dont follow link
+	else return false; // dont follow link
+}
+function CSButtonReturn () { return !CSClickReturn(); }
+CSIm=new Object();
+function CSIShow(n,i) {
+	if (document.images) {
+		if (CSIm[n]) {
+			var img=CSGetImage(n);
+			if (img&&typeof(CSIm[n][i].src)!="undefined") {img.src=CSIm[n][i].src;}
+			if(i!=0) self.status=CSIm[n][3]; else self.status=" ";
+			return true;
+		}
+	}
+	return false;
+}
+function CSILoad(action) {
+	im=action[1];
+	if (document.images) {
+		CSIm[im]=new Object();
+		for (var i=2;i<5;i++) {
+			if (action[i]!='') {CSIm[im][i-2]=new Image(); CSIm[im][i-2].src=action[i];}
+			else CSIm[im][i-2]=0;
+		}
+		CSIm[im][3] = action[5];
+	}
+}
+CSStopExecution=false;
+function CSAction(array) {return CSAction2(CSAct, array);}
+function CSAction2(fct, array) { 
+	var result;
+	for (var i=0;i<array.length;i++) {
+		if(CSStopExecution) return false; 
+		var aa = fct[array[i]];
+		if (aa == null) return false;
+		var ta = new Array;
+		for(var j=1;j<aa.length;j++) {
+			if((aa[j]!=null)&&(typeof(aa[j])=="object")&&(aa[j].length==2)){
+				if(aa[j][0]=="VAR"){ta[j]=CSStateArray[aa[j][1]];}
+				else{if(aa[j][0]=="ACT"){ta[j]=CSAction(new Array(new String(aa[j][1])));}
+				else ta[j]=aa[j];}
+			} else ta[j]=aa[j];
+		}			
+		result=aa[0](ta);
+	}
+	return result;
+}
+CSAct = new Object;
+
+// --></script>
+        </csscriptdict>
+        <csactiondict>
+            <script><!--
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button3',/*URL*/'../../images/01/button_back.gif',/*URL*/'../../images/01/button_back_over.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button4',/*URL*/'../../images/01/button_next.gif',/*URL*/'../../images/01/button_next_over.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button5',/*URL*/'../../images/01/button_back.gif',/*URL*/'../../images/01/button_back_over.gif',/*URL*/'','');
+CSInit[CSInit.length] = new Array(CSILoad,/*CMP*/'button6',/*URL*/'../../images/01/button_next.gif',/*URL*/'../../images/01/button_next_over.gif',/*URL*/'','');
+
+// --></script>
+        </csactiondict>
+		<style type="text/css" media="screen"><!--
+#Ebene1  {
+    position: absolute;
+    top: 126px;
+    left: 0px;
+    width: 100%;
+    height: 18px;
+    visibility: visible;
+    display: block }
+.ds1 /*agl rulekind: base;*/ { font-weight: bold; }
+--></style>
+		<csimport occur="88" user="../../../www_gemstone_org.data/Komponenten/nav-gemsite.html">
+            <link href="../../css/ica_main.css" type="text/css" rel="styleSheet">
+        </csimport>
+		<csimport user="../../../www_gemstone_org.data/Komponenten/nav.html" occur="62">
+			<link href=../../css/ica_main.css rel=styleSheet type=text/css>
+		</csimport>
+		<csimport user="../../../www_gemstone_org.data/Komponenten/variety/variety-eng.html" occur="48">
+			<link href=../../css/ica_main.css rel=styleSheet type=text/css>
+		</csimport>
+	</head>
+
+    <body onload="CSScriptInit();" bgcolor="#dcdcdc" leftmargin="0" marginheight="0" marginwidth="0" topmargin="0">
+        <div align="center">
+            <a href="../gem-by-gem-by-variety.html"><img src="../../images/01/gemsite_01_gembygem_stones.jpg" height="123" width="640" border="0"></a><br>
+            <img src="../../images/01/gemsite_navbar.gif" height="20" width="640" usemap="#gemsite_navbarb6d1966a" border="0"><br>
+            <div id="Ebene1">
+                <table width="640" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td><csobj csref="../../../www_gemstone_org.data/Komponenten/nav.html" h="17" occur="62" t="Component" w="641">
+								<div align=left>
+									<table class=smalltext width=640 border=0 cellspacing=0 cellpadding=0>
+										<tr>
+											<td width=160><img src=../../images/01/spacer.gif alt="height=11" height=14 width=193 border=0></td>
+											<td align=center width=75>
+												<p><font color=#464646><a class=navi-Link href=../../index.html target=_top><span class=smalltext>Gemsite</span></a></font></p>
+											</td>
+											<td align=center width=75><font color=#464646><a class=navi-Link href=../../image_library_frameset.html target=_top><span class=smalltext>Gem Library</span></a></font></td>
+											<td align=center width=74><font color=#464646><a class=navi-Link href=../../ica-membership/contact.html target=_top><span class=smalltext>Contact</span></a></font></td>
+											<td align=center width=75><font color=#464646><a class=navi-Link href=../../ica-membership/member.html target=_top><span class=smalltext>Members</span></a></font></td>
+											<td align=center width=75><font color=#464646><a class=navi-Link href=../../ica-membership/membershipform.html target=_top><span class=smalltext>Membership</span></a></font></td>
+											<td align=center width=74><font color=#464646><a class=navi-Link href=../../gem-news/gem-news_home.html target=_top><span class=smalltext>News</span></a></font></td>
+										</tr>
+									</table>
+									<img src=../../images/01/spacer.gif alt="height=11" height=3 width=519 border=0><br>
+								</div>
+							</csobj><csobj csref="../../../www_gemstone_org.data/Komponenten/nav-gemsite.html" h="14" occur="88" t="Component" w="641">
+                                <div align="left">
+                                    <table class="smalltext" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td class="smalltext"><img src="../../images/01/spacer.gif" alt="" height="7" width="18" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../index.html" target="_top"><span class="smalltext">Home</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../gem-by-gem.html" target="_top"><span class="smalltext">Gem by Gem</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../gem-features/feature_home.html" target="_top"><span class="smalltext">Gem Features</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../gem-o-rama/gem-o-rama_birth.html" target="_top"><span class="smalltext">Birthstones</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../gem-tips/index.html" target="_top"><span class="smalltext">Gem Tips</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../gem-o-rama/gem-o-rama_famous.html" target="_top"><span class="smalltext">Gem Stories</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="../../gemsite-downloads/" target="_top"><span class="smalltext">Downloads</span></a></font></td>
+                                            <td class="smalltext"><img src="../../images/01/whitespacer.gif" alt="" height="14" width="20" border="0"></td>
+                                            <td class="smalltext"><font color="#464646"><a class="navi-Link" href="javascript:history.back(1);" target="_top"><span class="smalltext">&lt;&lt; go back</span></a></font></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </csobj></td>
+                    </tr>
+                </table>
+            </div>
+            <img src="../../images/01/gemsite_navbar_01.jpg" height="17" width="640" border="0"><br>
+            <table width="640" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                <tr>
+                    <td colspan="2" valign="top" width="449"><img src="../stones/Ruby-055.jpg" alt="" height="300" width="449" border="0"></td>
+                    <td rowspan="3" valign="top" bgcolor="white" width="3">
+                        <div align="center">
+                            <img src="../../images/01/ica-start_04.jpg" alt="" height="86" width="3"></div>
+                    </td>
+                    <td rowspan="3" valign="top" width="186">
+                        <div align="center">
+                            <br>
+							<table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td><a href="javascript:parent.history.back(1)"><csobj h="27" ht="../../images/01/button_back_over.gif" t="Button" w="54"><a onclick="return CSButtonReturn()" onmouseover="return CSIShow(/*CMP*/'button3',1)" onmouseout="return CSIShow(/*CMP*/'button3',0)" href="javascript:parent.history.back(1)"><img src="../../images/01/button_back.gif" name="button3" height="27" width="54" border="0"></a></csobj></a></td>
+                                    <td><a href="alex.html"><csobj h="27" ht="../../images/01/button_next_over.gif" t="Button" w="53"><a onclick="return CSButtonReturn()" onmouseover="return CSIShow(/*CMP*/'button4',1)" onmouseout="return CSIShow(/*CMP*/'button4',0)" href="sapphire.html"><img src="../../images/01/button_next.gif" name="button4" height="27" width="53" border="0"></a></csobj></a></td>
+                                </tr>
+                            </table>
+							<div align=center>
+								<br>
+								This GEM by GEM<br>
+								Page is sponsored by:<br>
+								<br>
+								<a title="Sokolov Co. LTD. - Russia" href="../../bannerads/redirect/sponsor-sokolov-engl.html" target="ica_sponsors"><span class="ds1">Sokolov Co. LTD</span>.</a><br>
+								<br>
+							</div>
+							<csobj csref="../../../www_gemstone_org.data/Komponenten/variety/variety-eng.html" h="1145" occur="48" t="Component" w="190">
+								<div align=left>
+									<table border="0" cellpadding="0" cellspacing="2">
+										<tr>
+											<td align="center" valign="middle" width=186></td>
+										</tr>
+										<tr height=18>
+											<td width=186 height=18 bgcolor=#cfcfcf>
+												<div align=center>
+													<b><span class="alltext"><a class=navi-Link href=../gem-by-gem-by-variety.html>GEMSTONE VARIETIES</a></span></b></div>
+											</td>
+										</tr>
+										<tr height="16">
+											<td width=186 height="16" background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><img src="../../images/01/Stones_Emerald-small.gif" width="20" height="20" border="0" align="absmiddle"></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href="emerald.html">Emerald</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_Ruby-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=ruby.html>Ruby</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_BlueSapphire2-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=sapphire.html>Sapphire</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><img src="../../images/01/Stones_Amethyst-small.gif" width="20" height="20" border="0" align="absmiddle"></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href="amethyst.html">Amethyst</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><img src="../../images/01/Stones_Opal2-small.gif" width="20" height="20" border="0" align="absmiddle"></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href="opal.html">Opal</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><img src="../../images/01/Stones_ImperialTopaz-small.gif" width="20" height="20" border="0" align="absmiddle"></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href="topaz.html">Topaz</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_Peridot2-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=peridot.html>Peridot</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_Aquamarine1-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=aquamarine.html>Aquamarine</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Tanzanite-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=tanzanite.html>Tanzanite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_Citrine-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=citrine.html>Citrine</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_Ametrine-small.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=ametrine.html>Ametrine</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_RhodoliteGarnet-smal.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=garnet.html>Garnets</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_TsavoriteGarnet-smal.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=tsavorite.html>Tsavorite Garnet</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><img src=../../images/01/Stones_DemantoidGarnet-smal.gif width=20 height=20 border=0 align=absmiddle></span><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=demantoid.html>Demantoid Garnet</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_MandarinGarnet-small.gif width=20 height=20 align=absmiddle border=0><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=mandarin.html>Mandarin Garnet</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_MultiTourmalin-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=tourmaline.html>Tourmaline</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src="../../images/01/Stones_RedTourmaline2-small.gif" width="20" height="20" border="0" align="absmiddle"><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><a class=navi-Link href="rubellite_tourmaline.html">Rubellite Tourmaline</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_GreenTourmalin-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=green_tourmaline.html>Green Tourmaline</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src="../../images/01/Stones_ParaibaTourmaline2-s.gif" width="20" height="20" border="0" align="absmiddle"><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><a class=navi-Link href="paraiba.html">Paraiba Tourmaline</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Yell_Tourmalin-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=yellow_tourmalin.html>Yellow Tourmaline</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_BlueTourmalin-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=blue_tourmalin.html>Blue Tourmaline</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Multitourmalin-smal2.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=multi_tourmaline.html>Multicolored Tourmaline</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_LapisLazuli1-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=lapis.html>Lapis Lazuli</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_SapPadparadscha-smal.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=saphire_fancy.html>Fancy Sapphires</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_RoseQuartz-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=quartz.html>Quartz</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Zultanite-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=zultanite.html>Zultanite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Jade-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=jade.html>Jade</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Zircon-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=zircon.html>Zircon</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Iolite-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=iolite.html>Iolite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Spinel-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=spinel.html>Spinel</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_FireOpal-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=fire.html>Fire Opal</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Moonstone-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=moonstone.html>Moonstone</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Alex2-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=alex.html>Alexandrite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones-CrysoberylCatseye-sm.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=catseye.html>Chrysoberyl</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Kunzite-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=kunzite.html>Kunzite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Beryl2-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=beryl.html>Beryls</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Beryl-morganite-smal.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=morganite.html>Morganite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Diopside-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=diopside.html>Chrome Diopside</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Andalusite-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=andalusite.html>Andalusite</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Amber1-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=amber.html>Amber</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Turquoise2-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=turquoise.html>Turquoise</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Coral-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=coral.html>Coral</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Agate2-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=agate.html>Agate</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Onyx-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=onyx.html>Onyx</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Bloodstone-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=bloodstone.html>Bloodstone</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif>
+												<p><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src=../../images/01/Stones_Jasper2-small.gif width=20 height=20 border=0 align=absmiddle><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class=smalltext><a class=navi-Link href=jasper.html>Jasper</a></span></p>
+											</td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src="../../images/01/Stones_Pearl2-small.gif" width="20" height="20" border="0" align="absmiddle"><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><a class=navi-Link href="pearl.html">Pearl</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton2.gif><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><img src="../../images/01/Stones_Diamond1-small.gif" width="20" height="20" border="0" align="absmiddle"><img src=../../images/01/spacer.gif alt="" height=10 width=10 border=0><span class="smalltext"><a class=navi-Link href="diamond.html">Diamond</a></span></td>
+										</tr>
+										<tr height=16>
+											<td width=186 height=16 background=../../images/01/blauton4.gif>
+												<div align=center>
+													<br>
+													<br>
+													<img src=../../images/01/ica_logo_small.gif width=46 height=39 border=0><br>
+													<br>
+													<br>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</csobj><br>
+							<br>
+							This GEM by GEM<br>
+							Page is sponsored by:<br>
+							<br>
+							<a title="Sokolov Co. LTD. - Russia" href="../../bannerads/redirect/sponsor-sokolov-engl.html" target="ica_sponsors"><span class="ds1">Sokolov Co. LTD</span>.</a><br>
+							<br>
+						</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="10"><br>
+                    </td>
+                    <td valign="top" width="436"><span class="alltext"><br>
+                            <img src="../../images/01/Stones_Ruby2.jpg" align="right" x hspace="18"></span><span class="gemheadline"><b>Ruby</b></span><span class="alltext"><b><br>
+                                <br>
+                            </b>Which colour would you spontaneously associate with love and vivacity, passion and power? It's obvious, isn't it? Red. Red is the colour of love. It radiates warmth and a strong sense of vitality. And red is also the colour of the ruby, the king of the gemstones. In the fascinating world of gemstones, the ruby is the undisputed ruler.<br>
+                            <br>
+                            For thousands of years, the ruby has been considered one of the most valuable gemstones on Earth. It has everything a precious stone should have: magnificent colour, excellent hardness and outstanding brilliance. In addition to that, it is an extremely rare gemstone, especially in its finer qualities.<br>
+                            <br>
+                            For a long time India was regarded as the ruby's classical country of origin. In the major works of Indian literature, a rich store of knowledge about gemstones has been handed down over a period of more than two thousand years. The term 'corundum', which we use today, is derived from the Sanskrit word 'kuruvinda'. The Sanskrit word for ruby is 'ratnaraj', which means something like 'king of the gemstones'. And it was a royal welcome indeed which used to be prepared for it. Whenever a particularly beautiful ruby crystal was found, the ruler sent high dignitaries out to meet the precious gemstone and welcome it in appropriate style. Today, rubies still decorate the insignia of many royal households. But are they really all genuine rubies? Read on to find out more!<br>
+                            !<br>
+                            <img src="../../images/01/ruby_crystal.jpg" align="left" x hspace="18"></span><span class="gemsubheadline"><b>Only a little bit of chrome ...</b></span><span class="alltext"><b><br>
+                                <br>
+                            </b>Ruby is the red variety of the mineral corundum, one of the hardest minerals on Earth, of which the sapphire is also a variety. Pure corundum is colourless. Slight traces of elements such as chrome, iron, titanium or vanadium are responsible for the colour. These gemstones have excellent hardness. On the Mohs scale their score of 9 is second only to that of the diamond. Only red corundum is entitled to be called ruby, all other colours being classified as sapphires. The close relationship between the ruby and the sapphire has only been known since the beginning of the 19th century. Up to that time, red garnets or spinels were also thought to be rubies. (That, indeed, is why the 'Black Ruby' and the 'Timur Ruby', two of the British Crown Jewels, were so named, when they are not actually rubies at all, but spinels.)<br>
+                            <br>
+                            Ruby, this magnificent red variety from the multi-coloured corundum family, consists of aluminium oxide and chrome as well as very fine traces of other elements - depending on which deposit it was from. In really fine colours and good clarity, however, this gemstone occurs only very rarely in the world's mines. Somewhat paradoxically, it is actually the colouring element chrome which is responsible for this scarcity. True enough, millions of years ago, when the gemstones were being created deep inside the core of the Earth, chrome was the element which gave the ruby its wonderful colour. But at the same time it was also responsible for causing a multitude of fissures and cracks inside the crystals. Thus only very few ruby crystals were given the good conditions in which they could grow undisturbed to considerable sizes and crystallise to form perfect gemstones. For this reason, rubies of more than 3 carats in size are very rare. So it is no wonder that rubies with hardly any inclusions are so valuable that in good colours and larger sizes they achieve top prices at auctions, surpassing even those paid for diamonds in the same category.<br>
+                            <br>
+                            Some rubies display a wonderful silky shine, the so-called 'silk' of the ruby. This phenomenon is caused by very fine needles of rutile. And now and then one of the rare star rubies is found. Here too, the mineral rutile is involved: having formed a star-shaped deposit within the ruby, it causes a captivating light effect known by the experts as asterism. If rubies of this kind are cut as half-dome shaped cabochons, the result is a six-spoked star which seems to glide magically across the surface of the stone when the latter is moved. Star rubies are precious rarities. Their value depends on the beauty and attractiveness of the colour and, though only to a lesser extent, on their transparency. Fine star rubies, however, should always display rays which are fully formed all the way to the imaginary horizontal line which runs through the middle of the stone, and the star itself should be situated right in the centre.<br>
+                            <br>
+                        </span><b><span class="gemsubheadline">Ruby-red means passion</span></b><span class="alltext"><br>
+                            <br>
+                            <img src="../../images/01/rubynecklace1.gif" align="right" x>Red for ruby. Ruby-red. The most important thing about this precious stone is its colour. It was not for no reason that the name 'ruby' was derived from the Latin word 'rubens', meaning 'red'. The red of the ruby is incomparable: warm and fiery. Two magical elements are associated with the symbolism of this colour: fire and blood, implying warmth and life for mankind. So ruby-red is not just any old colour, no, it is absolutely undiluted, hot, passionate, powerful colour. Like no other gemstone, the ruby is the perfect way to express powerful feelings. Instead of symbolising a calm, controlled affection, a ring set with a precious ruby bears witness to that passionate, unbridled love that people can feel for each other.<br>
+                            <br>
+                        </span><b><span class="gemsubheadline">Birthplaces of fine rubies</span></b><span class="alltext"><b><br>
+                                <br>
+                            </b>Which is the most beautiful ruby-red? Good question. The red of a ruby may involve very different nuances depending on its origin. The range of those nuances is quite wide, and could perhaps be compared to hotel categories, from luxury accommodation down to a plain inn or hostel. For example, if the gemstone experts refer to a 'Burmese ruby', they are talking about the top luxury category. However, it does not necessarily follow that the stone is of Burmese origin. It is basically an indication of the fact that the colour of the ruby in question is that typically shown by stones from the famous deposits in Burma (now Myanmar): a rich, full red with a slightly bluish hue. The colour is sometimes referred to as 'pigeon-blood-red', but the term 'Burmese colour' is a more fitting description. A connoisseur will immediately associate this colour with the legendary 'Mogok Stone Tract' and the gemstone centre of Mogok in the North of Myanmar. Here, the country's famous ruby deposits lie in a mountain valley surrounded by high peaks. Painstakingly, gemstones of an irresistible luminosity are brought to light in the 'valley of the rubies'. Unfortunately, really fine qualities are quite rare even here. The colour of a Burmese ruby is regarded as exceptionally vivid. It is said to display its unique brilliance in any light, be it natural or artificial.<br>
+                            <br>
+                            <img src="../../images/01/Stones_Ruby.jpg" align="left" x hspace="10">The journey to the world's most important ruby deposits takes us further on to the small town of Mong Hsu in the North-East of Myanmar, where the most important ruby deposits of the nineties lie. Originally, it was believed that these rubies would hardly prove suitable for use in jewellery, since untreated Mong Hsu ruby crystals actually display two colours: a purple to black core and a bright red periphery. Only when it had been discovered that the dark core could be turned into deep red by means of heat treatment did rubies from Mong Hsu begin to find their way on to the jewellery market. Today, the Mong Hsu gemstone mines are still among the most important ruby suppliers. In the main, they offer heat-treated rubies in commercial qualities and sizes between 0.5 and 3 carats.<br>
+                            <br>
+                            Ruby deposits also exist in neighbouring Vietnam, near the Chinese border. Rubies of Vietnamese origin generally display a slightly purplish hue. Rubies from Thailand, another classical supplier, however, often have a darker red which tends towards brown. This 'Siamese colour' - an elegantly muted deep red - is considered second in beauty only to the Burmese colour, and is especially popular in the USA. Ceylon rubies, which have now become very rare, are mainly light red, like ripe raspberries.<br>
+                            <br>
+                            Other ruby deposits are located in Northern Pakistan in the Hunza Valley, Kashmir, Tadzhikistan, Laos, Nepal, and Afghanistan. But rubies are also produced in India, where deposits with relatively large crystals were discovered in the federal states of Mysore and Orissa. These crystals have many inclusions, but they are, nevertheless, eminently suited to being cut as beads or cabochons.<br>
+                            <br>
+                            Lately, people have begun to talk about East Africa as a source of rubies. Straight after their discovery in the 1960s, rubies from Kenya and Tanzania surprised the experts by their beautiful, strong colour, which may vary from light to dark red. But in the African mines too, fine and clear rubies of good colour, purity and size are very rare. Usually the qualities mined are of a merely average quality.<br>
+                            <br>
+                            <img src="../../images/01/Stones_StarRuby1-1.jpg" align="right" x hspace="18"></span><b><span class="gemsubheadline">Colour above (almost) everything</span></b><span class="alltext"><br>
+                            <br>As we have said, colour is a ruby's most important feature. Its transparency is only of secondary importance. So inclusions do not impair the quality of a ruby unless they decrease the transparency of the stone or are located right in the centre of its table. On the contrary: inclusions within a ruby could be said to be its 'fingerprint', a statement of its individuality and, at the same time, proof of its genuineness and natural origin. The cut is essential: only a perfect cut will underline the beauty of this valuable and precious stone in a way befitting the 'king of the gemstones'. However, a really perfect ruby is as rare as perfect love. If you do come across it, it will cost a small fortune. But when you have found 'your' ruby, don't hesitate: hang on to it!</span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="10"><br>
+                    </td>
+                    <td class="alltext" valign="top" width="436">
+                        <div align="center">
+                            <br>
+                            <br>
+                            <br>
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td><a href="javascript:parent.history.back(1)"><csobj h="27" ht="../../images/01/button_back_over.gif" t="Button" w="54"><a onclick="return CSButtonReturn()" onmouseover="return CSIShow(/*CMP*/'button5',1)" onmouseout="return CSIShow(/*CMP*/'button5',0)" href="javascript:parent.history.back(1)"><img src="../../images/01/button_back.gif" name="button5" height="27" width="54" border="0"></a></csobj></a></td>
+                                    <td><a href="alex.html"><csobj h="27" ht="../../images/01/button_next_over.gif" t="Button" w="53"><a onclick="return CSButtonReturn()" onmouseover="return CSIShow(/*CMP*/'button6',1)" onmouseout="return CSIShow(/*CMP*/'button6',0)" href="sapphire.html"><img src="../../images/01/button_next.gif" name="button6" height="27" width="53" border="0"></a></csobj></a></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <br>
+                            <csobj csref="../../../www_gemstone_org.data/Komponenten/copyright-gembureu-idar.html" h="24" occur="51" t="Component" w="439"><br>
+                                &copy; Created by ICA Gem Bureau Idar-Oberstein </csobj><br>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" valign="top" width="644" background="../../images/01/bott_01-1.jpg">
+                        <div align="center">
+                            <img src="../../images/01/gemsite_shadow2.gif" height="4" width="640" border="0"><br>
+                            <img src="../../images/01/gemsite_navbar_bottom.gif" height="10" width="640" border="0"><br>
+                            <span class="smalltext"><a href="../../impressum.html">&copy; ICA</a><br>
+                            </span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" width="10"></td>
+                    <td valign="top" width="436"></td>
+                    <td valign="top" width="3"></td>
+                    <td valign="top" width="186"></td>
+                </tr>
+            </table>
+            <csobj csref="../../../www_gemstone_org.data/Komponenten/counter.html" h="18" occur="32" t="Component" w="863"><br>
+				<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+				<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1814659-1");
+pageTracker._trackPageview();
+</script>
+			</csobj></div>
+    </body>
+
+</html>

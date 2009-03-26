@@ -1,0 +1,774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>PlanetRubyOnRails - has_many :blogs, :through => :feeds</title>
+  <link href="/stylesheets/planet.css?1163829292" media="screen" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <div id="contents" class="outer">
+
+<div class="header">
+    <div class="left-header"><br />
+      <img src="/images/theme/planet-logo.gif">
+    </div>
+    <div class="right-header">
+
+<ul id="pages" class="menu">
+        <li><a href="http://www.planetrubyonrails.com">Home</a></li>
+        <li><a href="http://www.planetrubyonrails.com/pages/channels">Channels</a></li>
+      </ul>
+    </div>
+</div>
+
+
+
+    <div id="container" class="inner">
+       <div class="main">
+          
+	
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://feedproxy.google.com/~r/igvita/~3/SATgvhVbDMg/">Ruby Algorithms: Sorting, Trie &amp; Heaps</a>
+		</h2>
+    		<span class="small-text">Posted about 1 hour back at <a href="http://www.igvita.com/blog">igvita.com</a></span>
+    		<p><p><img src='http://www.igvita.com/blog/posts/09/ruby-gsoc.png' align='left' style='margin: 0pt 1em 0pt 0pt;'/>A good choice of an algorithm or a data structure can make or break an application. By and large, Ruby provides enough native primitives such as <a href='http://www.ruby-doc.org/core/classes/Array.html'>Array</a>, <a href='http://www.ruby-doc.org/core/classes/Hash.html'>Hash</a>, and <a href='http://www.ruby-doc.org/core/classes/Set.html'>Set</a>, to get you by in most cases, but we've all ran into situations where the performance or the memory footprint of these structures left us wanting for more.</p>
+<p>Sensing a nice opportunity, <a href='http://kanwei.com/'>Kanwei Li</a> and <a href='http://www.halostatue.ca/'>Austin Ziegler</a> partnered up for the '08 Google Summer of Code (<a href='http://socghop.appspot.com/'>GSoC</a>) to translate some of the most well known algorithms and data structures into Ruby, resulting in implementations of nine different containers and ten different search and sorting algorithms! And while I would encourage you to <a href='http://github.com/kanwei/algorithms/tree/master'>explore the entire project</a>, a few aspects deserve special attention: first, there is the question of performance of sorting algorithms in Ruby, and second, Trie, Heap and Priority Queues are data structures worth keeping in mind.</p>
+<h4><strong>Sorting Performance in Ruby</strong></h4>
+<p>Turns out, the default sorting implementation in Ruby is very hard to beat. As part of the GSoC project, Kanwei Li implemented the naive (<a href='http://en.wikipedia.org/wiki/Bubble_sort'>bubble sort</a>) and all the way up to some of the best in the trade (<a href='http://en.wikipedia.org/wiki/Quicksort'>quicksort</a>), but the performance of all of them is well below the native implementation.</p>
+<p>A pass through the MRI source code reveals that the the Array.sort! is implemented via quicksort. And while the benchmarks do show a four times performance hit when compared to the raw C++ version sorting an array of integers, you have to remember that an equivalent implementation in Ruby is operating on array of integer objects! In other words, native Array.sort! is a highly optimized piece of code: use it, embrace it, and don't worry about it!</p>
+<h4><strong>Trie: Ordered Tree Data Structure</strong></h4>
+<p><img src='http://www.igvita.com/blog/posts/09/trie.png' align='left' style='margin: 0pt 1em 0pt 0pt;'/><a href='http://en.wikipedia.org/wiki/Trie'>Trie</a> is both an incredibly useful and an often overlooked data structure. More commonly known as a 'prefix tree', it can be an very compact way to store and pattern match on a collection of objects. A good example is working with a set of strings which are used as keys to a value, but the same pattern could also be used to match on <a href='http://github.com/kanwei/algorithms/blob/81987340f24edb7fd8ca60885b1f04d1907f8c03/lib/containers/trie.rb'>any sequence of objects</a>. For example, a Trie can be used to implement a route pattern matcher in Rails. Of course, an example is worth a thousand words:</p>
+<p><a> <b>&gt; trie.rb</b></a>
+</p><div id='9981_1' style='background: white;'>
+<pre class='ruby'>t = <span style='color: #6666ff; font-weight: bold;'>Containers::Trie</span>.<span style='color: #9900CC;'>new</span>
+ 
+<span style='color: #008000; font-style: italic;'>#       key     value</span>
+t.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Hello"</span>, <span style='color: #996600;'>"World"</span><span style='color: #006600; font-weight: bold;'>)</span>
+t.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Hilly"</span>, <span style='color: #996600;'>"Billy"</span><span style='color: #006600; font-weight: bold;'>)</span>
+t.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Hello Bob"</span>, <span style='color: #996600;'>"Heya"</span><span style='color: #006600; font-weight: bold;'>)</span>
+ 
+<span style='color: #008000; font-style: italic;'># regular lookup</span>
+t<span style='color: #006600; font-weight: bold;'>[</span><span style='color: #996600;'>"Hilly"</span><span style='color: #006600; font-weight: bold;'>]</span> <span style='color: #008000; font-style: italic;'># =&gt; "Billy"</span>
+ 
+<span style='color: #008000; font-style: italic;'># find longest matching prefix</span>
+t.<span style='color: #9900CC;'>longest_prefix</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Hello stranger"</span><span style='color: #006600; font-weight: bold;'>)</span> <span style='color: #008000; font-style: italic;'># =&gt; "Hello"</span>
+ 
+<span style='color: #008000; font-style: italic;'># find all keys that start with H*llo (* is a wildcard)</span>
+t.<span style='color: #9900CC;'>wildcard</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"H*ll*"</span><span style='color: #006600; font-weight: bold;'>)</span> <span style='color: #008000; font-style: italic;'># =&gt; ["Hello", "Hilly"]</span>
+ </pre>
+</div>
+<h4><strong>Heaps and Priority Queues</strong></h4>
+<p><img src='http://www.igvita.com/blog/posts/09/priority-queue.png' align='left' style='margin: 0pt 1em 0pt 0pt;'/><a href='http://en.wikipedia.org/wiki/Heap_%28data_structure%29'>Heaps</a> and <a href='http://en.wikipedia.org/wiki/Priority_queue'>Priority Queues</a> are often a drop in performance replacement for a hand sorted hash. Unlike a simple associative container, heaps and priority queues build up an internal sorted tree, which allows you to have constant time access to the highest (or lowest) priority object without having to sort or manually groom the container. Best of all, the underlying <a href='http://github.com/kanwei/algorithms/blob/81987340f24edb7fd8ca60885b1f04d1907f8c03/lib/containers/priority_queue.rb'>Ruby implementation</a> uses a <a href='http://en.wikipedia.org/wiki/Fibonacci_heap'>Fibonacci heap</a>, which means constant time lookup and inserts, and O(log n) removal:</p>
+<p><a> <b>&gt; priority-queue.rb</b></a>
+</p><div id='9981_2' style='background: white;'>
+<pre class='ruby'>pq = <span style='color: #6666ff; font-weight: bold;'>Containers::PriorityQueue</span>.<span style='color: #9900CC;'>new</span>
+ 
+pq.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Job A"</span>, <span style='color: #006666;'>15</span><span style='color: #006600; font-weight: bold;'>)</span>
+pq.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Job B"</span>, <span style='color: #006666;'>12</span><span style='color: #006600; font-weight: bold;'>)</span>
+pq.<span style='color: #9900CC;'>push</span><span style='color: #006600; font-weight: bold;'>(</span><span style='color: #996600;'>"Job C"</span>, <span style='color: #006666;'>33</span><span style='color: #006600; font-weight: bold;'>)</span>
+ 
+pq.<span style='color: #9900CC;'>pop</span> <span style='color: #008000; font-style: italic;'># =&gt; "Job C"</span>
+pq.<span style='color: #9900CC;'>pop</span> <span style='color: #008000; font-style: italic;'># =&gt; "Job A"</span>
+pq.<span style='color: #9900CC;'>size</span> <span style='color: #008000; font-style: italic;'># =&gt; 1</span></pre>
+</div>
+<p/><div class='download-link'>
+              <a href='http://www.igvita.com/download.php?file=http%3A//www.github.com/kanwei/algorithms/tree/master/.git'><img class='leftalign' src='http://www.igvita.com/wp-content/plugins/dBeautifier/icons/github.png' alt='Download'/></a>
+              <h4>
+                <a href='http://www.igvita.com/download.php?file=http%3A//www.github.com/kanwei/algorithms/tree/master/.git'>algorithms.git (Ruby Algorithms)</a>
+              </h4><p>Downloads: 2 File Size: 0.0 KB </p>
+            </div> <p/>
+<h4><strong>Exploring data structures &amp; GSoC '09</strong></h4>
+<p>The project also <a href='http://github.com/kanwei/algorithms/tree/81987340f24edb7fd8ca60885b1f04d1907f8c03/lib/containers'>contains implementations</a> of the <a href='http://en.wikipedia.org/wiki/Kd-tree'>KD-Tree</a>, <a href='http://en.wikipedia.org/wiki/Deque'>Deque</a>, <a href='http://en.wikipedia.org/wiki/Stack_%28data_structure%29'>Stack</a>, <a href='http://en.wikipedia.org/wiki/Suffix_array'>Suffix Array</a>, and a few others, all of which are definitely worth exploring for educational value. For those who are curious, take a look at <a href='http://www.igvita.com/2009/02/04/ruby-19-internals-ordered-hash/'>Red-Black Trees</a> and <a href='http://www.igvita.com/2008/12/27/scalable-datasets-bloom-filters-in-ruby/'>Bloomfilters</a> as well.</p>
+<p>Kudos to Kanwei Li and Austin Ziegler for their great work and it is also worth highlighting that the <a href='http://wiki.rubyonrails.org/gsoc/2009/ideas#students'>student applications for the '09 projects</a> are due the end of the end of next week! There is a <a href='http://wiki.rubyonrails.org/gsoc/2009/ideas'>great lineup of project ideas for Rails</a> and some great <a href='http://wiki.rubyonrails.org/gsoc/2009/ideas#mentors'>mentors</a> have recruited their time to help with the cause. If you're a student, or have a friend who is into Ruby and qualifies, do let them know! It is an amazing opportunity to learn from the best and make a great contribution at the same time.</p>
+<div class='feedflare'>
+<a href='http://feeds2.feedburner.com/~ff/igvita?a=SATgvhVbDMg%3AUK_MQHMhrkE%3AyIl2AUoC8zA'><img src='http://feeds2.feedburner.com/~ff/igvita?d=yIl2AUoC8zA' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/igvita?a=SATgvhVbDMg%3AUK_MQHMhrkE%3AD7DqB2pKExk'><img src='http://feeds2.feedburner.com/~ff/igvita?i=SATgvhVbDMg%3AUK_MQHMhrkE%3AD7DqB2pKExk' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/igvita?a=SATgvhVbDMg%3AUK_MQHMhrkE%3AF7zBnMyn0Lo'><img src='http://feeds2.feedburner.com/~ff/igvita?i=SATgvhVbDMg%3AUK_MQHMhrkE%3AF7zBnMyn0Lo' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/igvita?a=SATgvhVbDMg%3AUK_MQHMhrkE%3AV_sGLiPBpWU'><img src='http://feeds2.feedburner.com/~ff/igvita?i=SATgvhVbDMg%3AUK_MQHMhrkE%3AV_sGLiPBpWU' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/igvita?a=SATgvhVbDMg%3AUK_MQHMhrkE%3AgIN9vFwOqvQ'><img src='http://feeds2.feedburner.com/~ff/igvita?i=SATgvhVbDMg%3AUK_MQHMhrkE%3AgIN9vFwOqvQ' border='0'/></a>
+</div><img src='http://feeds2.feedburner.com/~r/igvita/~4/SATgvhVbDMg' height='1' width='1'/></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://www.infoq.com/news/2009/03/Facebook-Software-Stack">Presentation: Facebook: Science and the Social Graph</a>
+		</h2>
+    		<span class="small-text">Posted about 3 hours back at <a href="http://www.infoq.com/">InfoQ Personalized Feed for unregistered user - Register to upgrade!</a></span>
+    		<p>In this presentation filmed during QCon SF 2008, Aditya Agarwal discusses Facebook’s architecture, more exactly the software stack used, presenting the advantages and disadvantages of its major components: LAMP (PHP, MySQL), Memcache, Thrift, Scribe. <i>By Abel Avram</i></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://feedproxy.google.com/~r/ThePugAutomatic/~3/pQ7GHC5a10s/time-zones-and-multidimensional-grouping-with-active-record-and-mysql">Time zones and multidimensional grouping with Active Record and MySQL</a>
+		</h2>
+    		<span class="small-text">Posted about 5 hours back at <a href="http://henrik.nyh.se/">The Pug Automatic</a></span>
+    		<p><p> I've been writing a lot of statistics queries in Active Record/MySQL lately and noticed some possibly non-obvious things.</p>
+<h4>Time zones</h4>
+<p>Our database is configured to use UTC time. In Rails 2.1, we use <code>config.active_record.default_timezone = :utc</code>. In 2.3, I believe it's <code>config.time_zone = 'UTC'</code>, and set that way by default.</p>
+<p>A lot of my statistics queries involved time ranges, grouping per day or only using data from a certain period. I found that a query like</p>
+<div class='codesnip-container'>
+<div class='codesnip'>User.<span class='me1'>count</span><span class='br0'>(</span>:conditions =&gt; <span class='br0'>[</span>'created_at BETWEEN ? <span class='kw1'>AND</span> ?', some_day.<span class='me1'>beginning_of_day</span>, some_day.<span class='me1'>end_of_day</span><span class='br0'>]</span><span class='br0'>)</span></div>
+</div>
+<p>did not do any time zone conversions as you may expect. If <code>some_day.beginning_of_day</code> is a non-UTC local time (e.g. 00:00 on March 26th CET), that date and time is passed into the query as "2009-03-26 00:00:00" and compared to the UTC datetimes in the database.</p>
+<p>Instead, you should do</p>
+<div class='codesnip-container'>
+<div class='codesnip'>User.<span class='me1'>count</span><span class='br0'>(</span>:conditions =&gt; <span class='br0'>[</span>'created_at BETWEEN ? <span class='kw1'>AND</span> ?', some_day.<span class='me1'>beginning_of_day</span>.<span class='me1'>utc</span>, some_day.<span class='me1'>end_of_day</span>.<span class='me1'>utc</span><span class='br0'>]</span><span class='br0'>)</span></div>
+</div>
+<p>In this case, "2009-03-25 23:00:00" would be passed into the query.</p>
+<p>If you want to do that another way, or to group on local-time dates, you could instead do something like</p>
+<div class='codesnip-container'>
+<div class='codesnip'>User.<span class='me1'>count</span><span class='br0'>(</span>:group =&gt; 'DATE<span class='br0'>(</span>CONVERT_TZ<span class='br0'>(</span>created_at, <span class='st0'>"UTC"</span>, <span class='st0'>"CET"</span><span class='br0'>)</span><span class='br0'>)</span>'<span class='br0'>)</span></div>
+</div>
+<p>Without the conversion, it'd group on UTC dates instead of local CET dates. That would mean a customer that was created at 00:59 CET on March 26 would be grouped under March 25 instead.</p>
+<p>Note that you need to <a href='http://dev.mysql.com/doc/refman/5.1/en/time-zone-support.html'>set up the MySQL time zone tables</a> with something like</p>
+<div class='codesnip-container'>
+<div class='codesnip'>mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql</div>
+</div>
+<p>On OS X with MySQL 5 from MacPorts, the invocation was</p>
+<div class='codesnip-container'>
+<div class='codesnip'>mysql_tzinfo_to_sql5 /usr/share/zoneinfo | mysql -u root mysql</div>
+</div>
+<p>Warnings about time zones that couldn't be loaded are fine as long as they're not the ones you're using.</p>
+<p>You can convert time zones without those tables, but then you need to specify the UTC offset manually, and since it changes with daylight saving, I wouldn't recommend it.</p>
+<h4>Multidimensional grouping</h4>
+<p>Another thing I noticed was that Active Record calculation queries (using e.g. <code>.count</code>) don't seem to support grouping by multiple columns at once. It's easy to do with <code>.all</code> and <code>#map</code>, though:</p>
+<div class='codesnip-container'>
+<div class='codesnip'>Item.<span class='me1'>all</span><span class='br0'>(</span><br/>
+  :<span class='kw3'>select</span> =&gt; 'COUNT<span class='br0'>(</span>*<span class='br0'>)</span> AS count, age, gender',<br/>
+  :group =&gt; 'age, gender'<br/>
+<span class='br0'>)</span>.<span class='me1'>map</span> <span class='br0'>{</span>|i| <span class='br0'>[</span>i.<span class='me1'>age</span>, i.<span class='me1'>gender</span>, i.<span class='me1'>count</span>.<span class='me1'>to_i</span><span class='br0'>]</span> <span class='br0'>}</span></div>
+</div></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://feedproxy.google.com/~r/LucaGuidi/~3/wt3MEqB_O-w/vanilla">Vanilla!</a>
+		</h2>
+    		<span class="small-text">Posted about 7 hours back at <a href="http://lucaguidi.com/">Luca Guidi - Home</a></span>
+    		<p><p><img title='Vanilla! screenshot' src='http://farm4.static.flickr.com/3663/3385004567_3da74df0b7.jpg' alt='blog screenshot'/>  </p>
+
+<p>I'm really proud to announce that now this blog is running on a custom application called <strong>Vanilla!</strong>.<br/>
+I worked on it about for two weeks, in the evening. Yes, this is the <strong>power</strong> of <strong>Ruby on Rails</strong>! :)</p>
+<p><a href='http://feedads.googleadservices.com/~a/LQcfwEuiGSjxkDpYRmX5vKzdgkA/a'><img ismap='true' src='http://feedads.googleadservices.com/~a/LQcfwEuiGSjxkDpYRmX5vKzdgkA/i' border='0'/></a></p><div class='feedflare'>
+<a href='http://feeds2.feedburner.com/~ff/LucaGuidi?a=wt3MEqB_O-w%3AMrLA6CFAoFk%3AyIl2AUoC8zA'><img src='http://feeds2.feedburner.com/~ff/LucaGuidi?d=yIl2AUoC8zA' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/LucaGuidi?a=wt3MEqB_O-w%3AMrLA6CFAoFk%3AYwkR-u9nhCs'><img src='http://feeds2.feedburner.com/~ff/LucaGuidi?d=YwkR-u9nhCs' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/LucaGuidi?a=wt3MEqB_O-w%3AMrLA6CFAoFk%3AF7zBnMyn0Lo'><img src='http://feeds2.feedburner.com/~ff/LucaGuidi?i=wt3MEqB_O-w%3AMrLA6CFAoFk%3AF7zBnMyn0Lo' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/LucaGuidi?a=wt3MEqB_O-w%3AMrLA6CFAoFk%3AV_sGLiPBpWU'><img src='http://feeds2.feedburner.com/~ff/LucaGuidi?i=wt3MEqB_O-w%3AMrLA6CFAoFk%3AV_sGLiPBpWU' border='0'/></a>
+</div></p>
+  		</div>
+		
+  		
+  			<div class="star-post">
+  		
+    		<h2>
+    		
+			<img src="/images/theme/star.png"/>
+    		
+   		<a href="http://afreshcup.com/2009/03/26/double-shot-417/">Double Shot #417</a>
+		</h2>
+    		<span class="small-text">Posted about 8 hours back at <a href="http://afreshcup.com/">A Fresh Cup</a></span>
+    		<p><br/><p>Our youngest child appears to be over the whole “sleeping at night” thing.</p>
+
+<li><strong><a href='http://www.ecompages.com/'>EcomPages</a></strong> - Open source Rails shopping cart.</li>
+<li><strong><a href='http://innetra.blogspot.com/2009/03/ruby-on-rails-easy-navigation.html'>Ruby on Rails: Easy Navigation</a></strong> - Plugin to handle a lot of the grunt details of menu-based navigation in views.</li>
+
+  <a href='http://feeds.wordpress.com/1.0/gocomments/afreshcup.wordpress.com/821/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/comments/afreshcup.wordpress.com/821/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/godelicious/afreshcup.wordpress.com/821/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/delicious/afreshcup.wordpress.com/821/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/gostumble/afreshcup.wordpress.com/821/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/stumble/afreshcup.wordpress.com/821/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/godigg/afreshcup.wordpress.com/821/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/digg/afreshcup.wordpress.com/821/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/goreddit/afreshcup.wordpress.com/821/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/reddit/afreshcup.wordpress.com/821/' border='0' alt=''/></a> <img src='http://stats.wordpress.com/b.gif?host=afreshcup.com&blog=5073669&post=821&subd=afreshcup&ref=&feed=1' border='0' alt=''/></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://drnicwilliams.com/2009/03/26/testing-outbound-emails-with-cucumber/">Testing outbound emails with Cucumber</a>
+		</h2>
+    		<span class="small-text">Posted about 12 hours back at <a href="http://drnicwilliams.com/">Dr Nic</a></span>
+    		<p><p><a href='http://cukes.info/'><img title='Cucumber testimonial' class='alignright' src='http://img.skitch.com/20090326-nihhcfit3a54xgqb9tfcspd827.preview.jpg' height='216' alt='' width='340'/></a></p>
+<p>My testimonial for <a href='http://cukes.info/'>Cucumber</a> still stands even in 2009. In fact I promise to let you know when I don’t think Cucumber is the bees-knees of integration testing. I love the step-by-step English instructions of user usage scenarios backed by a simple Ruby DSL for describing real actions on your application for each step.</p>
+<p>For testing Rails apps, Cucumber defaults to using <a href='http://github.com/brynary/webrat/tree/master'>Webrat</a> on top of Rails’ own integration sessions. With Webrat you actually test that your views match to your controller actions. If I click the “Submit” button, then it checks that it invokes an available action correctly. Before Cucumber I could appreciate the merit of Webrat alone, but the two tools combined are instant superheroes of my Rails development crime fighting team. That is, like any superhero TV show at least once every 30 minutes you find yourself saying “Thank you Mr Cucumber and your trusty sidekick Webrat, you’re my heroes”. (BTW, <a href='http://twitter.com/agenteo/status/1386578002'>I’m not alone</a> in this analogy)</p>
+<h3 id='testing_emails'>Testing emails</h3>
+<p>But I wanted to test emails. More interestingly, emails containing links back into my application. Like an activation email on sign up.</p>
+<p>Specifically, I wanted a cucumber scenario like this:</p>
+<pre>Scenario: Signup for new account
+  Given I am on the signup form
+  When I fill in "Email" with "drnic@mocra.com"
+  And I press "Join"
+  Then I should see "An activation email has been sent"
+  And I should receive an activation email
+  When I click the activation email link
+  Then I should see "Your account is active"
+</pre>
+<p>Within this scenario there are 7 steps. Lines 2, 3, 4 and 7 match to steps from the generated <em>webrat_steps.rb</em> file when you install cucumber.</p>
+<p>Line 1 also matches to a webrat step definition. But it requires that you define what “the signup form” maps to in your routes. So you need to update <em>features/support/paths.rb</em> to specify what “the signup form” url is:</p>
+<pre>module NavigationHelpers
+  def path_to(page_name)
+    case page_name
+    when /the signup form/
+      signup_path
+    end
+  end
+end
+</pre>
+<p>So, that leaves us with lines 5 and 6.</p>
+<h3 id='email_spec_plugin'>email-spec plugin</h3>
+<p>I’m happy using the <a href='http://github.com/bmabey/email-spec/tree/master'>email-spec</a> gem/plugin from <a href='http://www.benmabey.com/'>Ben Mabey</a>, who is also the lead maintainer of the awesome <a href='http://github.com/bmabey/cucumber-tmbundle/tree/master'>Cucumber TextMate bundle</a> and did a wonderful presentation on <a href='http://mwrc2009.confreaks.com/14-mar-2009-15-00-bdd-with-cucumber-ben-mabey.html'>Outside-In Development with Cucumber</a> at the recent Mountain West RubyConf (lots of <a href='http://mwrc2009.confreaks.com/'>great videos available</a>)</p>
+<p>To install as a plugin:</p>
+<pre>script/plugin install git://github.com/bmabey/email-spec.git</pre>
+<p>Then add the following line to your *feature/support/env.rb* file:</p>
+<pre>require 'email_spec/cucumber'</pre>
+<p>Finally, the plugin comes with some bonus cucumber step definitions which wrap around lots of nice helpers:</p>
+<pre>script/generate email_spec</pre>
+<h3 id='using_email_spec_step_definitions'>Using email-spec step definitions</h3>
+<p>Let’s ignore my desired lines 5 and 6 above and use the step definitions that we get with email-spec. We can replace the two lines with the following:</p>
+<pre>And I should receive an email
+When I open the email
+Then I should see "Please activate your new account" in the subject
+When I click the first link in the email
+</pre>
+<p>The last line doesn’t currently exist in Ben’s version but it’s a simple. Add the following to your <em>features/step_definitions/email_steps.rb</em> file:</p>
+<pre>When /^I click the first link in the email$/ do
+  click_first_link_in_email
+end
+</pre>
+<p>I did all this for an existing application and every line of the scenario tested positive/green. Yay!</p>
+<h3 id='refactoring_four_steps_into_two'>Refactoring four steps into two</h3>
+<p>For the sake of demonstration, you now might want to refactor these four steps into two steps to keep your scenarios nice and readable. </p>
+<p>That is, how can we convert these 4 steps into our original lines 5 and 6?</p>
+<p>The quickest way is to copy and paste the lines and slap some quotes around the text:</p>
+<pre>Then /^I should receive an activation email$/ do |email|
+  Then 'I should receive an email'
+  When 'I open the email'
+  Then 'I should see "Please activate your new account" in the subject'
+end
+
+When /^I click the activation email link$/ do
+  When 'I click the first link in the email'
+end
+</pre>
+<p>That’s right, you can use <code>Given</code>/<code>When</code>/<code>Then</code> as invocation methods as well as step definition methods. If you don’t pass these methods a do…end block then they will match/find/invoke a step rather than define a new one. Very cool.</p>
+<p>Alternately, you could implement the two steps using the underlying email helper methods provided by the email-spec plugin:</p>
+<pre>Then /^I should receive an activation email$/ do |email|
+  unread_emails_for(current_email_address).size.should == 1
+  open_email(current_email_address)
+  current_email.should have_subject(/Please activate your new account/))
+end
+
+When /^I click the activation email link$/ do
+  click_first_link_in_email
+end
+</pre>
+<p>Your choice.</p>
+<h3 id='configuring_current_email_address'>Configuring current_email_address</h3>
+<p>All the email-spec helper methods assume that the “I” in the scenario has an email address. It uses a method <code>current_email_address</code> for this.</p>
+<p>You must change the <code>current_email_address</code> method in the <em>email_steps.rb</em> file to pull out email addresses from wherever they might be located within any given scenario.</p>
+<p>For example, here is one definition of the method from one of my projects:</p>
+<pre>def current_email_address
+  @email || (@current_user &amp;&amp; @current_user.email) || "drnic@mocra.com"
+end
+</pre>
+<h3 id='summary'>Summary</h3>
+<p>With Cucumber and email-spec it is very easy to send and test emails. So my thanks go to Ben Mabey for this plugin.</p>
+
+
+<p>Related posts:</p><ol><li><a href='http://drnicwilliams.com/2008/10/31/newgem-100-all-thanks-to-cucumber/' title='Permanent Link: newgem 1.0.0 all thanks to Cucumber' rel='bookmark'>newgem 1.0.0 all thanks to Cucumber</a> <small>The New Gem Generator (newgem) was exciting, moderately revolutionary, and...</small></li><li><a href='http://drnicwilliams.com/2008/02/19/one-stop-javascript-unit-testing-for-rails2/' title='Permanent Link: One-stop JavaScript Unit Testing for Rails 2.0' rel='bookmark'>One-stop JavaScript Unit Testing for Rails 2.0</a> <small>Previously, I mentioned a multi-step/multi-project solution to doing JavaScript Unit...</small></li><li><a href='http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/' title='Permanent Link: 8 steps for fixing other people’s code' rel='bookmark'>8 steps for fixing other people’s code</a> <small>Before or after you’re sharing your own code as open-source,...</small></li></ol><p/><div class='feedflare'>
+<a href='http://feeds2.feedburner.com/~ff/DrNic?a=5Uq4qIrSAlc%3AObVCL0n205w%3AD7DqB2pKExk'><img src='http://feeds2.feedburner.com/~ff/DrNic?i=5Uq4qIrSAlc%3AObVCL0n205w%3AD7DqB2pKExk' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/DrNic?a=5Uq4qIrSAlc%3AObVCL0n205w%3AV_sGLiPBpWU'><img src='http://feeds2.feedburner.com/~ff/DrNic?i=5Uq4qIrSAlc%3AObVCL0n205w%3AV_sGLiPBpWU' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/DrNic?a=5Uq4qIrSAlc%3AObVCL0n205w%3AF7zBnMyn0Lo'><img src='http://feeds2.feedburner.com/~ff/DrNic?i=5Uq4qIrSAlc%3AObVCL0n205w%3AF7zBnMyn0Lo' border='0'/></a>
+</div></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://feedproxy.google.com/~r/Segment7/~3/hG5KkJcgeAQ/rdoc-2-4-2">RDoc 2.4.2</a>
+		</h2>
+    		<span class="small-text">Posted about 18 hours back at <a href="http://blog.segment7.net/">Segment7</a></span>
+    		<p><p>
+rdoc version 2.4.2 has been released!
+</p>
+<ul>
+<li><a href='http://rubyforge.org/projects/rdoc/'>RDoc Project Page</a>
+</li>
+<li><a href='http://rdoc.rubyforge.org/'>RDoc Documentation</a>
+</li>
+<li><a href='http://rubyforge.org/tracker/?atid=2472&group_id=627&func=browse'>RDoc
+Bug Tracker</a>
+</li>
+</ul>
+
+<p>
+RDoc is an application that produces documentation for one or more Ruby
+source files. RDoc includes the <tt>rdoc</tt> and <tt>ri</tt> tools for
+generating and displaying online documentation.
+</p>
+<p>
+At this point in time, RDoc 2.x is a work in progress and may incur further
+API changes beyond what has been made to RDoc 1.0.1. Command-line tools are
+largely unaffected, but internal APIs may shift rapidly.
+</p>
+<p>
+See RDoc for a description of RDoc’s markup and basic use.
+</p>
+<h3>
+Changes:
+</h3>
+
+<ul>
+<li>2 Minor Enhancements
+<ul>
+<li>Added --pipe for turning RDoc on stdin into HTML
+</li><li>Added rdoc/task.rb containing a replacement for rake/rdoctask.rb. Use RDoc::Task now instead of Rake::RDocTask.
+</li></ul>
+</li><li>10 Bug Fixes
+<ul>
+<li>Writing the ri cache file to the proper directory. Bug #24459 by Lars Christensen.
+</li><li>Possible fix for Dir::[] and Pathname interaction on 1.9. Bug #24650 by tiburon.
+</li><li>Fixed scanning constants for if/end, etc. pairs. Bug #24609 by Ryan Davis.
+</li><li>Fixed private methods in the C parser. Bug #24599 by Aaron Patterson.
+</li><li>Fixed display of markup on RDoc main page. Bug #24168 by rhubarb.
+</li><li>Fixed display of \ character in documentation proceeding words. Bug #22112
+by James Gray. See RDoc for details.
+</li><li>Fixed parsing and display of arg params for some corner cases. Bug #21113
+by Csiszár Attila.
+
+</li><li>Fixed links in Files box. Patch #24403 by Eric Wong.
+
+</li><li>Toplevel methods now appear in Object. Bug #22677 by Ryan Davis.
+</li><li>Added back --promiscuous which didn’t do anything you cared about. Why did you enable it? Nobody looked at that page! Oh, it warns, too.
+
+</li></ul>
+</li></ul><img src='http://feeds2.feedburner.com/~r/Segment7/~4/hG5KkJcgeAQ' height='1' width='1'/></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://flow.handle.it/past/2009/3/26/case_insensitive_sqlite/">Case insensitive SQLIte</a>
+		</h2>
+    		<span class="small-text">Posted about 18 hours back at <a href="http://flow.handle.it/">flow</a></span>
+    		<p><p>One of the things that quickly tripped me up in using SQLite in Rails was that there was no way to make a column case insensitive.</p>
+
+<p>Most human textual comparisons are case insensitive, we think that “dog” and “doG” and “DOG” all denote the same thing.  If we have a uniqueness constraint on a column, then we want it to protect us from having three separate entries for those three strings.  Also, when we’re searching for “dOg” we want it to match any one of the three strings.</p>
+
+<p>Every database has its own way of doing these sorts of things - SQLite uses one of the more sensible methods: it allows you to specify that any column you like should be case insensitive (and then any index on that column will automatically be case insensitive too).</p>
+
+<p>So, you can write:</p>
+
+<pre><code>CREATE TABLE foo ( bar varchar(255) COLLATE NOCASE );
+</code></pre>
+
+<p>And you’ll get a case insensitive column ‘bar’.  This is so often what you want, more often than not, so I wrote <a href='http://github.com/JasonKing/sqlite_nocase'>a quick gem</a> that does this by default for all your migrations.</p>
+
+<p><strong>This is a kludgy kludge!</strong></p>
+
+<p>What would be nice would be to add a new option to the migration methods so that any given column could be marked with something like: <code>:case =&gt; false</code>  Unfortunately, the Rails code for all that is not very DRY and stuffed with metaprogramming - so it’s not easy to retrofit a gem to make that happen.  So my gem just makes it happen for <strong>every</strong> string or text field.</p>
+
+<p>Mostly this will be what you want, but every so often case sensitivity is something that is desirable - so beware :)</p></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://www.infoq.com/news/2009/03/friendfeed-schemaless-mySQL">FriendFeed Implements Schema-less Storage Atop MySQL</a>
+		</h2>
+    		<span class="small-text">Posted about 19 hours back at <a href="http://www.infoq.com/">InfoQ Personalized Feed for unregistered user - Register to upgrade!</a></span>
+    		<p>Brett Taylor, founder of FriendFeed, describes how they overcame some limitations of MySQL to handle problems of scaling and database evolution by implementing a "schema-less" storage system on top of MySQL. <i>By Dave West</i></p>
+  		</div>
+		
+  		
+  			<div class="star-post">
+  		
+    		<h2>
+    		
+			<img src="/images/theme/star.png"/>
+    		
+   		<a href="http://feedproxy.google.com/~r/rails-envy/~3/PlC4vk2VDNE/rails-envy-podcast-episode-072-03-25-2009">Rails Envy Podcast - Episode #072: 03/25/2009</a>
+		</h2>
+    		<span class="small-text">Posted about 20 hours back at <a href="http://www.railsenvy.com/">Rails Envy - Home</a></span>
+    		<p><p>
+  <strong>Episode 72.</strong>This week we're back with improved audio quality on both sides of the microphone, and all of the great Ruby and Rails news from this week.
+</p>
+
+<a href='http://rails-envy-podcast.s3.amazonaws.com/podcast%2072.mp3'><img src='http://www.railsenvy.com/assets/2007/10/2/icon-speaker.gif'/></a>
+
+<p>
+  <strong><a href='http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=265693109'>Subscribe via iTunes</a></strong> - iTunes only link.<br/>
+  <strong><a href='http://rails-envy-podcast.s3.amazonaws.com/podcast%2072.mp3'>Download the podcast</a> ~12:30 mins MP3</strong>. <br/>
+  <a href='http://feeds.feedburner.com/railsenvy-podcast'>Subscribe to feed via RSS</a> by copying the link to your RSS Reader
+</p>
+
+<br class='clear'/>
+
+<p>
+  <a href='http://railslab.newrelic.com/?utm_source=railsenvy&utm_medium=banner&utm_campaign=railslab'><img src='http://www.railsenvy.com/assets/2009/2/12/NewRelic-225x119.gif' alt='Sponsored by New Relic'/></a>
+  The Rails Envy podcast is also brought to you this week by NewRelic. NewRelic provides RPM which is a plugin for rails that allows you to monitor and quickly diagnose problems with your Rails application in real time. They also recently produced <a href='http://railslab.newrelic.com/?utm_source=railsenvy&utm_medium=banner&utm_campaign=railslab'>Rails Lab</a>, which gives you expert advice on tuning and optimizing your Rails app. 
+</p>
+
+<p>
+  <a href='http://www.hashrocket.com/'><img src='http://www.railsenvy.com/assets/2009/3/4/hashrocket.png' alt='Sponsored by Hashrocket'/></a>
+  The Rails Envy podcast is brought to you this week by <a href='http://www.hashrocket.com/'>Hashrocket</a>.  Hashrocket is an expert consultancy group that uses best-of-breed technologies like Ruby on Rails to deliver the highest quality software in the least amount of time.
+</p>
+
+
+<ul>
+<li>
+      <a href='http://blog.phusion.nl/2009/03/13/phusion-passenger-212-final-released/' title='Phusion Passenger 2.1.2 Final'>Phusion Passenger 2.1.2 Final</a>
+  </li>
+<li>
+      <a href='http://docs.codehaus.org/display/JRUBY/2009/03/16/JRuby+1.2.0+Released' title='JRuby 1.2.0 Released'>JRuby 1.2.0 Released</a>
+  </li>
+<li>
+      <a href='http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/331411' title='HPricot 0.7'>HPricot 0.7</a>
+  </li>
+<li>
+      <a href='http://code.contegix.com/wiki/display/NRN/' title='New Relic Notify'>New Relic Notify</a>
+  </li>
+<li>
+      <a href='http://github.com/paulmars/seven_minute_abs/tree/master' title='7 Minute Abs'>7 Minute Abs</a>
+  </li>
+<li>
+      <a href='http://blog.railsmachine.com/articles/2009/03/18/moonshine-what-burns-blue-makes-your-blues-go-away/' title='Moonshine - deployment and configuration done right'>Moonshine - deployment and configuration done right</a>
+  </li>
+<li>
+      <a href='http://railscasts.com/' title='Railscasts'>Railscasts</a>
+  </li>
+<li>
+      <a href='http://asciicasts.com/' title='ASCIICasts'>ASCIIcasts</a>
+  </li>
+<li>
+      <a href='http://wiki.rubyonrails.org/gsoc/2009/ideas' title='Google Summer of Code'>Google Summer of Code</a>
+  </li>
+<li>
+      <a href='http://mwrc2009.confreaks.com/index.html' title='MountainWest RubyConf Videos Up!'>MountainWest RubyConf Videos Up!</a>
+  </li>
+<li>
+      <a href='http://zedshaw.com/rants/rails_is_a_ghetto.html?redux' title='Rails is Officially not in the Ghetto'>Rails is Officially not in the Ghetto</a>
+  </li>
+<li>
+      <a href='http://watirpodcast.com/' title='Watir Podcast'>Watir Podcast</a>
+  </li>
+<li>
+      <a href='http://www.youvegotrails.com/' title='You&apos;ve got Rails! - Template Creator'>You've got Rails! - Template Creator</a>
+  </li>
+<li>
+      <a href='http://github.com/drnic/ruby-on-rails-tmbundle/commits/master/' title='Hancock-Client : Sinatra Middleware'>Hancock-Client : Sinatra Middleware</a>
+  </li>
+<li>
+      <a href='http://github.com/adzap/validates_timeliness/tree/master' title='validates_timeliness plugin'>validates_timeliness plugin</a>
+  </li>
+<li>
+      <a href='http://blog.semanticart.com/using_default_scope_to_recreate_acts_as_paranoid' title='Using default_scope to recreate acts_as_paranoid'>Using default_scope to recreate acts_as_paranoid</a>
+  </li>
+<li>
+      <a href='http://intridea.com/2009/3/23/twitter-auth-for-near-instant-twitter-apps' title='TwitterAuth: For Near-Instant Twitter Apps'>TwitterAuth: For Near-Instant Twitter Apps</a>
+  </li>
+<li>
+      <a href='http://www.pathf.com/blogs/2009/03/using-cucumber-for-acceptance-testing/' title='Using cucumber for acceptance testing'>Using cucumber for acceptance testing</a>
+  </li>
+</ul>
+             <img src='http://feeds2.feedburner.com/~r/rails-envy/~4/PlC4vk2VDNE' height='1' width='1'/></p>
+  		</div>
+		
+  		
+  			<div class="star-post">
+  		
+    		<h2>
+    		
+			<img src="/images/theme/star.png"/>
+    		
+   		<a href="http://www.railsenvy.com/2009/3/25/rails-envy-podcast-episode-072-03-25-2009">Rails Envy Podcast - Episode #072: 03/25/2009</a>
+		</h2>
+    		<span class="small-text">Posted about 20 hours back at <a href="http://www.railsenvy.com/">Rails Envy - Home</a></span>
+    		<p><p>
+  <strong>Episode 72.</strong>This week we're back with improved audio quality on both sides of the microphone, and all of the great Ruby and Rails news from this week.
+</p>
+
+<a href='http://rails-envy-podcast.s3.amazonaws.com/podcast%2072.mp3'><img src='http://www.railsenvy.com/assets/2007/10/2/icon-speaker.gif'/></a>
+
+<p>
+  <strong><a href='http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=265693109'>Subscribe via iTunes</a></strong> - iTunes only link.<br/>
+  <strong><a href='http://rails-envy-podcast.s3.amazonaws.com/podcast%2072.mp3'>Download the podcast</a> ~12:30 mins MP3</strong>. <br/>
+  <a href='http://feeds.feedburner.com/railsenvy-podcast'>Subscribe to feed via RSS</a> by copying the link to your RSS Reader
+</p>
+
+<br class='clear'/>
+
+<p>
+  <a href='http://railslab.newrelic.com/?utm_source=railsenvy&utm_medium=banner&utm_campaign=railslab'><img src='http://www.railsenvy.com/assets/2009/2/12/NewRelic-225x119.gif' alt='Sponsored by New Relic'/></a>
+  The Rails Envy podcast is also brought to you this week by NewRelic. NewRelic provides RPM which is a plugin for rails that allows you to monitor and quickly diagnose problems with your Rails application in real time. They also recently produced <a href='http://railslab.newrelic.com/?utm_source=railsenvy&utm_medium=banner&utm_campaign=railslab'>Rails Lab</a>, which gives you expert advice on tuning and optimizing your Rails app. 
+</p>
+
+<p>
+  <a href='http://www.hashrocket.com/'><img src='http://www.railsenvy.com/assets/2009/3/4/hashrocket.png' alt='Sponsored by Hashrocket'/></a>
+  The Rails Envy podcast is brought to you this week by <a href='http://www.hashrocket.com/'>Hashrocket</a>.  Hashrocket is an expert consultancy group that uses best-of-breed technologies like Ruby on Rails to deliver the highest quality software in the least amount of time.
+</p>
+
+
+<ul>
+<li>
+      <a href='http://blog.phusion.nl/2009/03/13/phusion-passenger-212-final-released/' title='Phusion Passenger 2.1.2 Final'>Phusion Passenger 2.1.2 Final</a>
+  </li>
+<li>
+      <a href='http://docs.codehaus.org/display/JRUBY/2009/03/16/JRuby+1.2.0+Released' title='JRuby 1.2.0 Released'>JRuby 1.2.0 Released</a>
+  </li>
+<li>
+      <a href='http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/331411' title='HPricot 0.7'>HPricot 0.7</a>
+  </li>
+<li>
+      <a href='http://code.contegix.com/wiki/display/NRN/' title='New Relic Notify'>New Relic Notify</a>
+  </li>
+<li>
+      <a href='http://github.com/paulmars/seven_minute_abs/tree/master' title='7 Minute Abs'>7 Minute Abs</a>
+  </li>
+<li>
+      <a href='http://blog.railsmachine.com/articles/2009/03/18/moonshine-what-burns-blue-makes-your-blues-go-away/' title='Moonshine - deployment and configuration done right'>Moonshine - deployment and configuration done right</a>
+  </li>
+<li>
+      <a href='http://railscasts.com/' title='Railscasts'>Railscasts</a>
+  </li>
+<li>
+      <a href='http://asciicasts.com/' title='ASCIICasts'>ASCIIcasts</a>
+  </li>
+<li>
+      <a href='http://wiki.rubyonrails.org/gsoc/2009/ideas' title='Google Summer of Code'>Google Summer of Code</a>
+  </li>
+<li>
+      <a href='http://mwrc2009.confreaks.com/index.html' title='MountainWest RubyConf Videos Up!'>MountainWest RubyConf Videos Up!</a>
+  </li>
+<li>
+      <a href='http://zedshaw.com/rants/rails_is_a_ghetto.html?redux' title='Rails is Officially not in the Ghetto'>Rails is Officially not in the Ghetto</a>
+  </li>
+<li>
+      <a href='http://watirpodcast.com/' title='Watir Podcast'>Watir Podcast</a>
+  </li>
+<li>
+      <a href='http://www.youvegotrails.com/' title='You&apos;ve got Rails! - Template Creator'>You've got Rails! - Template Creator</a>
+  </li>
+<li>
+      <a href='http://github.com/drnic/ruby-on-rails-tmbundle/commits/master/' title='Hancock-Client : Sinatra Middleware'>Hancock-Client : Sinatra Middleware</a>
+  </li>
+<li>
+      <a href='http://github.com/adzap/validates_timeliness/tree/master' title='validates_timeliness plugin'>validates_timeliness plugin</a>
+  </li>
+<li>
+      <a href='http://blog.semanticart.com/using_default_scope_to_recreate_acts_as_paranoid' title='Using default_scope to recreate acts_as_paranoid'>Using default_scope to recreate acts_as_paranoid</a>
+  </li>
+<li>
+      <a href='http://intridea.com/2009/3/23/twitter-auth-for-near-instant-twitter-apps' title='TwitterAuth: For Near-Instant Twitter Apps'>TwitterAuth: For Near-Instant Twitter Apps</a>
+  </li>
+<li>
+      <a href='http://www.pathf.com/blogs/2009/03/using-cucumber-for-acceptance-testing/' title='Using cucumber for acceptance testing'>Using cucumber for acceptance testing</a>
+  </li>
+</ul></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://feedproxy.google.com/~r/railstips/~3/ajimswwDgJ0/building-api-wrapping-gems-could-not-get-much-easier">Building API Wrapping Gems Could Not Get Much Easier</a>
+		</h2>
+    		<span class="small-text">Posted 1 day back at <a href="http://railstips.org/">RailsTips.org - Home</a></span>
+    		<p><p>In which I show how easy it is now to create ruby gems that wrap APIs, using Google Weather as an example.</p>
+<p>Google has a weather api that is dead simple to use. Just discovered that tonight so I whipped together a wrapper using HTTParty. I decided to try out <a href='http://github.com/technicalpickles/jeweler/tree/master'>Jeweler</a>, a project by <a href='http://technicalpickles.com/'>Josh Nichols</a>, that makes creating gems a snap and it delivered. I used shoulda and fakeweb for the tests. Holy crap has making a gem that wraps a web service become really easy.</p>
+
+
+  <h2>The New Way</h2>
+
+
+  <ol>
+  <li>jeweler google-weather —shoulda —create-repo</li>
+    <li>%w(matchy fakeweb).each { |x| require x } (in your test_helper)</li>
+    <li>require ‘httparty’</li>
+    <li>Add some code and tests</li>
+    <li>rake version:minor:bump</li>
+    <li>rake gemspec</li>
+    <li>git push origin master</li>
+    <li>blog</li>
+  </ol>
+
+
+  <p>I did all of these in <strong>about an hour or two</strong> tonight.</p>
+
+
+  <h2>The Old Way</h2>
+
+
+  <ol>
+  <li>Create a bunch of files and directories and make a bunch of decisions</li>
+    <li>mock and stub all net/http stuff</li>
+    <li>net/http and rexml (or hpricot once that came along)</li>
+    <li>Add some code and maybe some tests</li>
+    <li>Add a version</li>
+    <li>Figure out how to build a gemspec</li>
+    <li>svn commit your files</li>
+    <li>Request project to be created on rubyforge</li>
+    <li>Wait a few days</li>
+    <li>Project approved, release files, blog</li>
+  </ol>
+
+
+  <p>And it would <strong>take a few days</strong> from first code scratched to gem released. My how times are a changing.</p>
+
+
+  <h2>Stuff You Can Learn From This Gem</h2>
+
+
+  <p>At any rate, the <a href='http://github.com/jnunemaker/google-weather/tree/master'>GoogleWeather gem</a> I just created is a really simple example of how to use:</p>
+
+
+  <ul>
+  <li><a href='http://github.com/technicalpickles/jeweler/tree/master'>jeweler</a> to create and manage a gem</li>
+    <li><a href='http://github.com/jnunemaker/httparty/tree/master'>httparty</a> to pwn an <span class='caps'>API</span></li>
+    <li><a href='http://github.com/thoughtbot/shoulda/tree/master'>shoulda</a> to test the gem</li>
+    <li><a href='http://fakeweb.rubyforge.org/'>fakeweb</a> to make sure your tests aren’t making real web requests</li>
+    <li><a href='http://github.com/jeremymcanally/matchy/tree/master'>matchy</a> for some syntactical sugar</li>
+  </ul>
+
+
+  <p>If you want to learn any of those things, <a href='http://github.com/jnunemaker/google-weather/tree/master'>poke around in the code</a> a bit and you should be good to go. Also, if you want a really easy way to get weather information, this gem <a href='http://github.com/jnunemaker/google-weather/blob/1affe3d4da62b9cf22b996a6418ead63faeda4da/examples/forecast.rb'>makes that possible</a>.</p>
+
+
+  <p>Sorry I didn’t give it some fancy name like <a href='http://railstips.org/2008/7/29/it-s-an-httparty-and-everyone-is-invited'>HTTParty</a> or <a href='http://railstips.org/2008/11/17/happymapper-making-xml-fun-again'>HappyMapper</a>. Maybe I need to make another gem that spits out fancy names. After all, naming the project is the only thing left that is hard. ;)</p>
+          <div class='feedflare'>
+<a href='http://feeds2.feedburner.com/~ff/railstips?a=ajimswwDgJ0%3ARaH3HhT_8W0%3AyIl2AUoC8zA'><img src='http://feeds2.feedburner.com/~ff/railstips?d=yIl2AUoC8zA' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/railstips?a=ajimswwDgJ0%3ARaH3HhT_8W0%3AdnMXMwOfBR0'><img src='http://feeds2.feedburner.com/~ff/railstips?d=dnMXMwOfBR0' border='0'/></a> <a href='http://feeds2.feedburner.com/~ff/railstips?a=ajimswwDgJ0%3ARaH3HhT_8W0%3A7Q72WNTAKBA'><img src='http://feeds2.feedburner.com/~ff/railstips?d=7Q72WNTAKBA' border='0'/></a>
+</div><img src='http://feeds2.feedburner.com/~r/railstips/~4/ajimswwDgJ0' height='1' width='1'/></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://railstips.org/2009/3/25/building-api-wrapping-gems-could-not-get-much-easier">Building API Wrapping Gems Could Not Get Much Easier</a>
+		</h2>
+    		<span class="small-text">Posted 1 day back at <a href="http://railstips.org/">RailsTips.org - Home</a></span>
+    		<p><p>In which I show how easy it is now to create ruby gems that wrap APIs, using Google Weather as an example.</p>
+<p>Google has a weather api that is dead simple to use. Just discovered that tonight so I whipped together a wrapper using HTTParty. I decided to try out <a href='http://github.com/technicalpickles/jeweler/tree/master'>Jeweler</a>, a project by <a href='http://technicalpickles.com/'>Josh Nichols</a>, that makes creating gems a snap and it delivered. I used shoulda and fakeweb for the tests. Holy crap has making a gem that wraps a web service become really easy.</p>
+
+
+  <h2>The New Way</h2>
+
+
+  <ol>
+  <li>jeweler google-weather —shoulda —create-repo</li>
+    <li>%w(matchy fakeweb).each { |x| require x } (in your test_helper)</li>
+    <li>require ‘httparty’</li>
+    <li>Add some code and tests</li>
+    <li>rake version:minor:bump</li>
+    <li>rake gemspec</li>
+    <li>git push origin master</li>
+    <li>blog</li>
+  </ol>
+
+
+  <p>I did all of these in <strong>about an hour or two</strong> tonight.</p>
+
+
+  <h2>The Old Way</h2>
+
+
+  <ol>
+  <li>Create a bunch of files and directories and make a bunch of decisions</li>
+    <li>mock and stub all net/http stuff</li>
+    <li>net/http and rexml (or hpricot once that came along)</li>
+    <li>Add some code and maybe some tests</li>
+    <li>Add a version</li>
+    <li>Figure out how to build a gemspec</li>
+    <li>svn commit your files</li>
+    <li>Request project to be created on rubyforge</li>
+    <li>Wait a few days</li>
+    <li>Project approved, release files, blog</li>
+  </ol>
+
+
+  <p>And it would <strong>take a few days</strong> from first code scratched to gem released. My how times are a changing.</p>
+
+
+  <h2>Stuff You Can Learn From This Gem</h2>
+
+
+  <p>At any rate, the <a href='http://github.com/jnunemaker/google-weather/tree/master'>GoogleWeather gem</a> I just created is a really simple example of how to use:</p>
+
+
+  <ul>
+  <li><a href='http://github.com/technicalpickles/jeweler/tree/master'>jeweler</a> to create and manage a gem</li>
+    <li><a href='http://github.com/jnunemaker/httparty/tree/master'>httparty</a> to pwn an <span class='caps'>API</span></li>
+    <li><a href='http://github.com/thoughtbot/shoulda/tree/master'>shoulda</a> to test the gem</li>
+    <li><a href='http://fakeweb.rubyforge.org/'>fakeweb</a> to make sure your tests aren’t making real web requests</li>
+    <li><a href='http://github.com/jeremymcanally/matchy/tree/master'>matchy</a> for some syntactical sugar</li>
+  </ul>
+
+
+  <p>If you want to learn any of those things, <a href='http://github.com/jnunemaker/google-weather/tree/master'>poke around in the code</a> a bit and you should be good to go. Also, if you want a really easy way to get weather information, this gem <a href='http://github.com/jnunemaker/google-weather/blob/1affe3d4da62b9cf22b996a6418ead63faeda4da/examples/forecast.rb'>makes that possible</a>.</p>
+
+
+  <p>Sorry I didn’t give it some fancy name like <a href='http://railstips.org/2008/7/29/it-s-an-httparty-and-everyone-is-invited'>HTTParty</a> or <a href='http://railstips.org/2008/11/17/happymapper-making-xml-fun-again'>HappyMapper</a>. Maybe I need to make another gem that spits out fancy names. After all, naming the project is the only thing left that is hard. ;)</p></p>
+  		</div>
+		
+  		
+  			<div class="post">
+  		
+    		<h2>
+    		
+   		<a href="http://www.infoq.com/news/2009/03/JOSH">JOSH: A Proposed Solution for the Enterprise</a>
+		</h2>
+    		<span class="small-text">Posted 1 day back at <a href="http://www.infoq.com/">InfoQ Personalized Feed for unregistered user - Register to upgrade!</a></span>
+    		<p>Grey Lens Man, a blogger who does not decline his identity, posted an interesting piece about legacy problems plaguing the enterprise and proposes a new software stack as viable solution: JOSH, JSON OSGi Scala HTTP. <i>By Abel Avram</i></p>
+  		</div>
+		
+  		
+  			<div class="star-post">
+  		
+    		<h2>
+    		
+			<img src="/images/theme/star.png"/>
+    		
+   		<a href="http://afreshcup.com/2009/03/25/double-shot-416/">Double Shot #416</a>
+		</h2>
+    		<span class="small-text">Posted 1 day back at <a href="http://afreshcup.com/">A Fresh Cup</a></span>
+    		<p><br/><p>Sent most of yesterday deep in the Rails core code. Hopefully some patches will come out with me when I emerge.</p>
+
+<li><strong><a href='http://github.com/cheald/scrap/tree/master'>Scrap</a></strong> - Rails Metal endpoint that tracks garbage and memory-related metrics.</li>
+<li><strong><a href='http://m.onkey.org/2009/3/24/default-scopes-and-inheritance-to-the-rescue'>Default Scopes and Inheritance to the rescue</a></strong> - And you thought there was no need for pure Ruby inheritance on AR classes.</li>
+<li><strong><a href='http://railsapi.com/'>Rails Searchable API Doc</a></strong> - Another version of the Rails RDoc, this one with some interesting search tools.</li>
+
+  <a href='http://feeds.wordpress.com/1.0/gocomments/afreshcup.wordpress.com/819/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/comments/afreshcup.wordpress.com/819/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/godelicious/afreshcup.wordpress.com/819/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/delicious/afreshcup.wordpress.com/819/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/gostumble/afreshcup.wordpress.com/819/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/stumble/afreshcup.wordpress.com/819/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/godigg/afreshcup.wordpress.com/819/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/digg/afreshcup.wordpress.com/819/' border='0' alt=''/></a> <a href='http://feeds.wordpress.com/1.0/goreddit/afreshcup.wordpress.com/819/' rel='nofollow'><img src='http://feeds.wordpress.com/1.0/reddit/afreshcup.wordpress.com/819/' border='0' alt=''/></a> <img src='http://stats.wordpress.com/b.gif?host=afreshcup.com&blog=5073669&post=819&subd=afreshcup&ref=&feed=1' border='0' alt=''/></p>
+  		</div>
+		  
+		<br />
+		<p align="right">1 <a href="/2">2</a> <a href="/3">3</a>  ... <a href="/546">546</a></p>
+	
+
+
+       </div>
+
+    </div>
+    <div class="footer">
+      <br />
+      &copy; The contents of this website are copyrighted by respective blog owners.
+      <br /><br />
+      Designed and developed by <a href="http://m.onkey.org">Pratik</a> and <a href="http://anup.info">Anup</a>
+    </div>
+  </div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-929590-1";
+urchinTracker();
+</script>
+</body>
+</html>

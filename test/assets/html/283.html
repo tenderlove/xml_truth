@@ -1,0 +1,2278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<title>Alltop - Top Ruby News</title>
+ 	<meta name="description" content="Ruby news and headlines from across the web." />
+ 	<meta name="keywords" content="ruby, web development, ruby rails, programming, " />
+ 	<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+	<meta name="author" content="electricpulp.com" />
+	<link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="/css/iphone.css" type="text/css" media="only screen and (max-device-width: 480px)"  />
+<!--[if IE 6]>
+	<link rel="stylesheet" href="/css/ie_style.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+	<link rel="stylesheet" href="/themes/red/theme.css" type="text/css" media="screen" charset="utf-8" />
+		<style type="text/css">
+		.add-feed {
+			display:none;
+		}
+	</style>
+	
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.11/mootools-yui-compressed.js" charset="utf-8"></script>
+<script type="text/javascript" src="/scripts/alltop-clean.js" charset="utf-8"></script>
+
+<!-- Code to tie multiple Adsense subdomains to Analytics -->
+<script type="text/javascript">
+window.google_analytics_uacct = "UA-1701157-4";
+google_analytics_domain_name = ".alltop.com";
+</script>
+
+<script type='text/javascript'><!--// <![CDATA[
+var OA_source = 'tech';
+var OA_zones = {
+'leaderboard' : 70,
+'top_script' : 72,
+'slot_3_300_250' : 66,
+'slot_9_300_250' : 69,
+'slot_3' : 24
+}
+// ]]> --></script>
+<script type='text/javascript' src='http://at-adserver.alltop.com/openx/www/delivery/spcjs.php?id=1'></script>
+
+	<script type="text/javascript" src="/scripts/swfobject-for-video.js"></script>
+	<script type="text/javascript" src="/scripts/videobox.js"></script>
+	<link rel="stylesheet" href="/css/videobox.css" type="text/css" media="screen" />
+
+</head>
+<body>
+<script type='text/javascript'><!--// <![CDATA[
+OA_show('top_script');
+// ]]> --></script>
+
+<div id="opener">
+	<a href="http://alltop.com/" id="logo">Alltop</a>
+	
+	<h1>
+		All the top <strong>Ruby</strong> news.	</h1>
+	<h3>
+		See also <a href="http://programming.alltop.com">Programming</a> and <a href="http://web-design.alltop.com">Web Design</a>. 
+	</h3>
+	<div id="leaderboard">
+		<script type='text/javascript'><!--// <![CDATA[
+		OA_show('leaderboard');
+		// ]]> --></script>
+	</div>	
+	
+	<div id="buttons">
+				<a href="http://ateliertransfert.ca/alltop/Alltop_v3_demo2.flv" rel="vidbox 640 380" class="function-bttns" title="Video by &lt;a href=&quot;http://ateliertransfert.ca/&quot; target=&quot;_top&quot;&gt;Atelier Transfert&lt;/a&gt;">Watch the video</a>
+		
+		<div class="bttn-group">
+			<span>Share this</span> 
+			<script>function fbs_click() {u=location.href;t=document.title;window.open('http://www.facebook.com/sharer.php?u='+encodeURIComponent(u)+'&t='+encodeURIComponent(t),'sharer','toolbar=0,status=0,width=626,height=436');return false;}</script><a href="http://www.facebook.com/share.php?u=ruby.alltop.com" onclick="return fbs_click()" target="_facebook" class="share-facebook" title="Share on Facebook">on Facebook</a>
+	
+			<a href="http://twitter.com/home?status=Pretty%20good%20stuff%20about%20Ruby%20at%20http://ruby.alltop.com" target="_twitter" class="share-twitter" title="Share on Twitter">on Twitter</a>
+		</div>
+		
+					
+							
+		<div class="bttn-group">
+			<span>Go to</span>
+			<a href="http://my.alltop.com/" class="bttn-login">MyAlltop</a>
+			<a href="#" onclick="document.getElementById('log-in').style.display='block';document.getElementById('sign-up').style.display='none';document.getElementById('password-recovery').style.display='none'; return false;" class="bttn-login">Log in</a>
+		</div>
+					
+			
+	</div>
+</div>
+	
+<div id="feature-bar">
+	&nbsp;
+</div>
+
+<div id="headlines" class="hfeed clearfix">
+
+<script type="text/javascript" charset="utf-8">
+	
+	function signup_form_submit() {
+		var f = $('the-signup-form');
+		f.ajax.value=1;
+		new Ajax(f.action, {
+			method: 'post',
+			data: $('the-signup-form'),
+			onRequest: function(){
+			},
+			onComplete: function(response){
+				if (response==0) {
+					$('sign-up-form-html').effect('opacity', {
+						duration: 500,
+						fps: 75,
+						onComplete: function(){
+							$('sign-up-form-html').style.display = 'none';
+							$('sign-up-form-message').style.display = 'block';
+							$('sign-up-form-message').effect('opacity', {
+								duration: 500,
+								fps: 75
+							}).start(1);
+						}
+					}).start(0);
+				}
+				else {
+					alert(response);
+				}
+			},
+			onFailure: function(){
+			}
+		}).request();
+	}
+
+	function show_form(form_el_id) {
+		$('log-in').style.display='none';
+		$('sign-up').style.display='none';
+		$('password-recovery').style.display='none';
+		$(form_el_id).style.display='block';
+	}
+</script>
+<div id="account-forms">	
+	<div id="log-in" style="display:none;">
+				<div id="login-form">
+			<form action="/" method="post" accept-charset="utf-8">
+				<input type="hidden" name="act" value="login" />
+				<p>Log in to your site, or create an <a href="#" onclick="show_form('sign-up');return false;">account</a>. </p>
+								<div class="form-row">
+					<label>Username or Email</label>
+					<input type="text" name="username" value="" class="styled"/>
+				</div>
+				<div class="form-row">
+					<span><a href="#" onclick="show_form('password-recovery'); return false;">password lookup</a></span>
+					<label>Password</label>
+					<input type="password" name="password" value="" class="styled"/>
+				</div>
+				<div class="form-bttn">
+					<input type="image" src="/images/bttn-login.gif"/>
+					<a href="#" onclick="$('log-in').style.display='none'; return false;" class="close-window">cancel</a>
+				</div>
+			</form>
+		</div>
+		<div class="instructions">
+			<p>Once you've logged in, look for the + icon throughout your favorite Alltop topics. Click it to add that site to your personal MyAlltop page.</p>	
+		</div>
+	</div>
+		
+	<div id="sign-up" style="display:none;">		
+				<div id="sign-up-form">
+			<div id="sign-up-form-html">
+				<form action="/" method="post" accept-charset="utf-8" id="the-signup-form" onsubmit="signup_form_submit();return false;">
+					<input type="hidden" name="act" value="new" />
+					<input type="hidden" name="ajax" value="0" />
+					<p>Create a new account. Or <a href="#" onclick="show_form('log-in');return false;">log in</a>.</p>
+										<div class="form-row">
+						<span>this will also be used as your url.</span>
+						<label>Username</label>
+						<input type="text" name="username" value="" class="styled" />
+					</div>
+					<div class="form-row">
+						<label>Password</label>
+						<input type="password" name="password" value="" class="styled" />
+					</div>
+					<div class="form-row">
+						<label>Password, again</label>
+						<input type="password" name="password2" value="" class="styled" />
+					</div>
+					<div class="form-row">
+						<span>this is for verification purposes.</span>
+						<label>Email</label>
+						<input type="text" name="email" value="" class="styled" />
+					</div>
+					<div class="form-checkbox-row">
+						<input type="checkbox" name="confirm-tos" value="1" id="confirm-tos" />
+						<small>I have read and agree to the <a href="http://alltop.com/terms-of-use/" target="_new">terms of use</a>.</small>
+					</div>	
+					<div class="form-bttn">
+						<input type="image" src="/images/bttn-signup.gif" />
+						<a href="#" onclick="$('sign-up').style.display='none'; return false;" class="close-window">cancel</a>
+					</div>
+				</form>
+			</div>
+			<div id="sign-up-form-message" style="display:none;">
+				
+				<h3>Your MyAlltop account awaits.</h3>
+	
+				<p>Check your inbox for your activation email. Once you've confirmed your email address, you'll be able to start adding feeds and sharing your custom url.</p>
+				
+				<a href="#" onclick="$('sign-up').style.display='none'; return false;" class="bttn-close">Close</a>
+				
+			</div>
+		</div>
+			</div>
+		
+	<div id="password-recovery" style="display:none">
+				<div id="password-recovery-form">
+			<form action="/" method="post" accept-charset="utf-8">
+				<input type="hidden" name="act" value="password" />
+				<p>Need help with your password?</p>
+								<div class="form-row">
+					<label>Username</label>
+					<input type="text" name="username" value="" class="styled"/>
+				</div>
+				<div class="form-row">
+					<label>Email</label>
+					<input type="text" name="email" value="" class="styled"/>
+				</div>
+				<div class="form-bttn">
+					<input type="image" src="/images/bttn-send.gif"/>
+					<a href="#" onclick="$('password-recovery').style.display='none'; return false;" class="close-window">cancel</a>
+				</div>
+			</form>
+		</div>
+		<div class="instructions">
+			<p>Once you've completed the information above, we'll send you your password.</p>	
+		</div>
+	</div>
+
+	
+</div>
+<ul id="feed10578" class="feed-block f840a2cf27fb3e74640d32e40e630a52">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.rubyflow.com/" target="_blank" class="snap_shots">RubyFlow</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/Rubyflow/~3/qIqsBA6R5SY/1958" rel="bookmark" target="_blank">Ruby Algorithms: Sorting, Trie, Priority Queue, and Heaps</a></h3>
+
+<div class="full-post">
+<div class="published">26 Mar 2009 | 9:07 am</div>
+<div class="entry-content">
+<div class="entry-bound">A hands-on look at sorting performance, and Trie, Priority Queue and Heap data structures implementations and use cases in Ruby - drop in replacements for performance and better memory usage!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/Rubyflow/~3/cBoOKRatOWg/1956" rel="bookmark" target="_blank">RailsAPI.com - Rails API docs with smart search</a></h3>
+
+<div class="full-post">
+<div class="published">26 Mar 2009 | 4:26 am</div>
+<div class="entry-content">
+<div class="entry-bound">Downloadable Rails API package with smart search as you type, clean interface, github links, class browsing and a gem to build your own docs. Formely http://voloko.ru/sdoc/rails/ sudo gem install voloko-sdoc --source http://gems.github.com sdoc --github_url http://github.com/yourname/yourproject -S projectdir</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/Rubyflow/~3/2khXqfxCouk/1955" rel="bookmark" target="_blank">Testing outbound emails with Cucumber</a></h3>
+
+<div class="full-post">
+<div class="published">25 Mar 2009 | 10:02 pm</div>
+<div class="entry-content">
+<div class="entry-bound">In this tutorial, Dr Nic introduces Ben Mabey&#39;s plugin email-spec that allows you to do integration testing of the emails you send from your Rails app.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/Rubyflow/~3/QQhjXDaeLjA/1953" rel="bookmark" target="_blank">Lockdown 0.9.3</a></h3>
+
+<div class="full-post">
+<div class="published">25 Mar 2009 | 7:30 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Lockdown is now an authorization only system and can be configured to work with authentication systems like Authlogic. Look at the upgrade notes for more details on the changes. Lockdown is for RubyOnRails version 2.x</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/Rubyflow/~3/M1YWhRsMA0M/1951" rel="bookmark" target="_blank">Rails Envy Podcast #72</a></h3>
+
+<div class="full-post">
+<div class="published">25 Mar 2009 | 2:07 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Episode #72 of the Rails Envy Podcast was just released, chalked full of useful news from the Ruby and Rails world. It&#39;s just audio, so it&#39;s great listening for the ride home, while you exercise, or while you mow the lawn.</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10579" class="feed-block f93ba921d168666b92680b8e2792f54d">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.adsdevshop.com" target="_blank" class="snap_shots">The ADS Blog</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/AtlanticDominionSolutions/~3/BF3o2C38x6s/" rel="bookmark" target="_blank">On The Web, Simple Reigns</a></h3>
+
+<div class="full-post">
+<div class="author">Robert Dempsey</div>
+<div class="published">25 Mar 2009 | 6:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">If your customers need to read a manual to figure out how to use your web apps, you&#8217;ve failed. There are many ways other than using a manual to help your users get to know your application. We use three: Great design Inline help Video With scrum&#8217;d, we went through many design iterations to make the app as easy as possible to use. We use drag-and-drop like it&#8217;s going out of style. We also work off of a base design to maintain a consistent look and feel across our entire AppSuite. If you can use one of our apps, you can use them all. Our inline help system looks like this:&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/AtlanticDominionSolutions/~3/pQJYRrK1fgY/" rel="bookmark" target="_blank">Having the Data is Not Enough</a></h3>
+
+<div class="full-post">
+<div class="author">Robert Dempsey</div>
+<div class="published">24 Mar 2009 | 6:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Having actionable information at your fingertips is only half the battle. The battle can only be won by honest action on the information. That can mean coming to grips with what the data tells you. A scary proposition for many. A scarier one though for those who fail to act. If you aren&#8217;t moving ahead you&#8217;re falling behind. There is no standing still. Keep moving forward.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/AtlanticDominionSolutions/~3/akQ0AjVNMZA/" rel="bookmark" target="_blank">Expens’d Updates and the Current Roadmap</a></h3>
+
+<div class="full-post">
+<div class="author">Robert Dempsey</div>
+<div class="published">23 Mar 2009 | 9:41 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Here&#8217;s the latest goodness we&#8217;ve added to expens&#8217;d: Updates Export expenses to CSV (link) Hard copy expense output: printer friendly version and PDF export (link) Why won&#8217;t expense reports print in a readable copy? (link) Add Pakistani Rupees - PKR in currencies (link) DKK (Danish Krone) is missing (link) Expens&#8217;d Roadmap Here at ADS we are very user-centric when it comes to our applications, and we are taking our use of scrum to a whole new level. You, our users, are our product owners. That means that you tell us what to develop, and when. You do this by adding&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/AtlanticDominionSolutions/~3/rJvVxaqUuog/" rel="bookmark" target="_blank">Start Your Business With the Right Tools</a></h3>
+
+<div class="full-post">
+<div class="author">Robert Dempsey</div>
+<div class="published">23 Mar 2009 | 6:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">When I first started ADS back in 2001, I did so with no formal business training, and no business plan. I was a man on a mission. After being told to &#8220;slow down&#8221; by my current employer and spend more time at each client, I decided (at the ripe age of 22) that I could do better. I believed that I could offer a superior service to my clients, and in so doing, make a living for myself. My girlfriend at the time (now my wife) fully supported me, as her family have always had their own businesses. And so I went. ADS has come a long way since then, and I&#8217;ve learned a lot. One of&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/AtlanticDominionSolutions/~3/mWyn-4bppv0/" rel="bookmark" target="_blank">Scrum’d Updates for March 20th</a></h3>
+
+<div class="full-post">
+<div class="author">Robert Dempsey</div>
+<div class="published">20 Mar 2009 | 8:37 pm</div>
+<div class="entry-content">
+<div class="entry-bound">We&#8217;re wrapping up our first business week of scrum&#8217;d with more updates. Thank you all for your feedback on the ADS AppSuite support site. Here&#8217;s what&#8217;s in tonight&#8217;s update. Updates Add flash messages to the sprint backlog to tell the user that the task has changed state Add collapse/expand links to the closed sprints section Don&#8217;t show the sprint drop-down if there are no sprints (link) Handle inactive accounts Don&#8217;t show a user if already in available roles for a project (link) Don&#8217;t allow changing of task state once a story is closed (link)&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul>
+<div id="ad-1" class="ad-unit feed-block"><script type='text/javascript'><!--// <![CDATA[
+OA_show('slot_3_300_250');
+// ]]> --></script>
+</div>
+<div class="row-clear">&nbsp;</div><ul id="feed10580" class="feed-block 8f949ddc94667f3e04cd4cd95145291a">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.rubyinside.com" target="_blank" class="snap_shots">Ruby Inside</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RubyInside/~3/ANdPdEKQyT4/twitter-oauth-ruby-rails-sinatra-1665.html" rel="bookmark" target="_blank">Building OAuth Compliant Twitter Related Apps in Ruby (with Rails or Sinatra)</a></h3>
+
+<div class="full-post">
+<div class="author">Peter Cooper</div>
+<div class="published">24 Mar 2009 | 10:51 am</div>
+<div class="entry-content">
+<div class="entry-bound">Twitter - the lifestreaming-meets-microblogging social site - has exploded in the last year and lots of applications have been developed that can take advantage of Twitter accounts. The downside is that many have required users to put their own Twitter username and password credentials into the third party apps.. a security minefield! Luckily, Twitter has recently implemented OAuth, an open protocol that allows third parties to gain authorized access to APIs without giving up all of your credentials (you basically "approve" them to gain access on an ad-hoc basis). And.. there are already two&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RubyInside/~3/Il1Q-pkAgwY/building-a-search-engine-in-200ish-lines-of-ruby-1655.html" rel="bookmark" target="_blank">Building a Search Engine in 200ish Lines of Ruby</a></h3>
+
+<div class="full-post">
+<div class="author">Peter Cooper</div>
+<div class="published">20 Mar 2009 | 4:34 am</div>
+<div class="entry-content">
+<div class="entry-bound">Sau Sheong Chang works at Yahoo!'s Singapore office. Yahoo! isn't implemented in Ruby, of course, but Sau's made an attempt at implementing a basic search engine in Ruby and has written a pretty interesting, indepth article about the whole process. Sau's search engine is formed of a crawler, indexer, and query system, and uses Hpricot, DataMapper, and Sinatra to get things done. Lots of code, lots of explanations - go read it. If you want to grab Sau's code for yourself, check out the saushengine repository on Github. You can also attempt to try a live version of the engine for yourself at&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RubyInside/~3/_cKaC9pkpJM/textmate-screencasts-for-rubyists-1658.html" rel="bookmark" target="_blank">TextMate Screencasts for Rubyists</a></h3>
+
+<div class="full-post">
+<div class="author">Peter Cooper</div>
+<div class="published">19 Mar 2009 | 5:19 am</div>
+<div class="entry-content">
+<div class="entry-bound">Are you a OS X dwelling, TextMate wielding, Rubyist? I am, but I'm next to useless with all of the advanced features (and by advanced I mean anything beyond Cmd+R). Lucky, then, that Derek Neighbors has started a super-duper series of TextMate Tip screencasts! So far there are three videos, but I suspect he has more on the way, so if you like the look of them, subscribe to his feed: TextMate Tip #1 (Hashes) - Derek demonstrates how TextMate can make your life easier when dealing with Ruby hashes, primarily shortcuts to produce a hashrocket (=>), key value pair shortcut, a new hash, etc.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RubyInside/~3/_eMvu229D5s/ruby-techniques-revealed-autoload-1652.html" rel="bookmark" target="_blank">Ruby Techniques Revealed: Autoload</a></h3>
+
+<div class="full-post">
+<div class="author">Peter Cooper</div>
+<div class="published">19 Mar 2009 | 4:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">There's plenty of stuff in Ruby that I've either not noticed before, noticed but forgotten about, or otherwise failed to realize the utility of. Add to that all the awesome Ruby tricks and techniques I'm seeing in people's code over on Github lately and.. we need a new series here: Ruby Techniques Revealed! Disclaimer: I'm not promising you won't already know about anything I "reveal." A lot of you are far better than me at knowing all of Ruby's dark corners. I'm just going to shine a spotlight in the direction of things I don't see used very often that I think are cool. Autoload - Load stuff&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RubyInside/~3/-tk2LvAOwPw/6-ruby-and-rails-jobs-for-march-2009-1650.html" rel="bookmark" target="_blank">6 Ruby and Rails Jobs for March 2009</a></h3>
+
+<div class="full-post">
+<div class="author">Peter Cooper</div>
+<div class="published">19 Mar 2009 | 3:21 am</div>
+<div class="entry-content">
+<div class="entry-bound">If you're a Ruby developer, the current recession needn't be too hard.. depending on where you live, of course. There are some good jobs going out there and if you're on the hunt for one, we've recently had several Rails-focused positions come by our Ruby jobs board in both the US and UK: Senior Web Applications Developer (San Francisco, CA): Gobalto is a startup developing a social media portal for the pharmaceutical development industry. They're looking for someone with significant Rails experience (with Python/Java) and several years professional development experience. In return, the&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10581" class="feed-block cfeddcf66d9154a4344980d85ade2b31">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://railscasts.com" target="_blank" class="snap_shots">Railscasts</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://railscasts.com/episodes/154-polymorphic-association" rel="bookmark" target="_blank">Episode 154: Polymorphic Association</a></h3>
+
+<div class="full-post">
+<div class="author">Ryan Bates</div>
+<div class="published">23 Mar 2009 | 12:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Polymorphic associations can be perplexing. In this episode I show you how to set it up in Active Record and then move to the controller and view layer.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://railscasts.com/episodes/153-pdfs-with-prawn" rel="bookmark" target="_blank">Episode 153: PDFs with Prawn</a></h3>
+
+<div class="full-post">
+<div class="author">Ryan Bates</div>
+<div class="published">16 Mar 2009 | 12:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Prawn is an excellent Ruby library for generating PDF documents. Learn how to use it along with the Prawnto plugin in this episode.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://railscasts.com/episodes/152-rails-2-3-extras" rel="bookmark" target="_blank">Episode 152: Rails 2.3 Extras</a></h3>
+
+<div class="full-post">
+<div class="author">Ryan Bates</div>
+<div class="published">9 Mar 2009 | 12:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">This episode finishes up this series on Rails 2.3. Here you will learn about several smaller additions in 2.3.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://railscasts.com/episodes/151-rack-middleware" rel="bookmark" target="_blank">Episode 151: Rack Middleware</a></h3>
+
+<div class="full-post">
+<div class="author">Ryan Bates</div>
+<div class="published">2 Mar 2009 | 12:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Rack middleware is a way to filter a request and response coming into your application. In this episode I show how to modify the response body using middleware.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://railscasts.com/episodes/150-rails-metal" rel="bookmark" target="_blank">Episode 150: Rails Metal</a></h3>
+
+<div class="full-post">
+<div class="author">Ryan Bates</div>
+<div class="published">23 Feb 2009 | 12:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Rails Metal is a way to bypass the standard Rails request process for a performance boost. In this episode you will learn how to shave off a few milliseconds using Metal.</div>
+</div>
+</div>
+
+</li>
+</ul>
+<div id="ad-2" class="ad-unit feed-block"></div>
+<div class="row-clear">&nbsp;</div><ul id="feed10582" class="feed-block dc54c5b2eb6612174d90661c2200a1ec">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://hivelogic.com/" target="_blank" class="snap_shots">Hivelogic</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://bainbridgestudios.com/?ref=hivelogic" rel="bookmark" target="_blank">Bainbridge Studios</a></h3>
+
+<div class="full-post">
+<div class="author">dan@hivelogic.com</div>
+<div class="published">24 Mar 2009 | 10:59 am</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.scrumd.com/?ref=hivelogic" rel="bookmark" target="_blank">Scrum’d</a></h3>
+
+<div class="full-post">
+<div class="author">dan@hivelogic.com</div>
+<div class="published">22 Mar 2009 | 8:48 am</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://hivelogic.com/articles/view/review-starbucks-via/" rel="bookmark" target="_blank">Starbucks VIA Review: Just Stir and Enjoy?</a></h3>
+
+<div class="full-post">
+<div class="author">dan@hivelogic.com</div>
+<div class="published">18 Mar 2009 | 9:04 am</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://hivelogic.com/articles/view/sponsor-the-hivelogic-rss-feed/" rel="bookmark" target="_blank">Sponsor the Hivelogic RSS Feed</a></h3>
+
+<div class="full-post">
+<div class="author">dan@hivelogic.com</div>
+<div class="published">9 Mar 2009 | 9:12 am</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://hivelogic.com/articles/view/newertech-voyager-q-follow-up/" rel="bookmark" target="_blank">NewerTech Voyager Q Follow-Up</a></h3>
+
+<div class="full-post">
+<div class="author">dan@hivelogic.com</div>
+<div class="published">7 Mar 2009 | 4:06 pm</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10583" class="feed-block b6b338e68382640fc542fd8d85ad1857">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://weblog.jamisbuck.org/" target="_blank" class="snap_shots">the { buckblogs :here } - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://weblog.jamisbuck.org/2009/3/24/buckets-preview" rel="bookmark" target="_blank">Buckets: Preview</a></h3>
+
+<div class="full-post">
+<div class="author">Jamis</div>
+<div class="published">24 Mar 2009 | 7:07 am</div>
+<div class="entry-content">
+<div class="entry-bound">So, yeah. With Capistrano and friends off my plate, I’ve actually found time to work on a project that has been in the works for years (and that’s no exaggeration, I first mentioned it in a blog post in October 2004). I’ve named it and renamed it (“Penny Pincher”, “Chump Change”, “Make Me Rich”, and “BudgetWise”) but its current incarnation is “Buckets”. Buckets is a simple web-based personal finance application that I’ve been working on, written specifically for my wife and me. Its focus is on simple budgeting, and reducing debt, and It is intentionally&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://weblog.jamisbuck.org/2009/2/25/net-ssh-capistrano-and-saying-goodbye" rel="bookmark" target="_blank">Net::SSH, Capistrano, and Saying Goodbye</a></h3>
+
+<div class="full-post">
+<div class="author">Jamis</div>
+<div class="published">24 Feb 2009 | 8:38 pm</div>
+<div class="entry-content">
+<div class="entry-bound">It is with mixed emotions that I announce two things this evening. First, I’m announcing the final release of both Net::SSH (2.0.11) and Capistrano (2.5.5). Both are minor changes: Net::SSH 2.0.11 adds support for a :key_data option, so you can supply raw PEM-formatted key data. Capistrano 2.5.5 enhances the role() method so you can now declare empty roles. Either way, not much to get excited about, but the changes were pending and deserved releasing. Secondly: I’m ceasing development on SQLite/Ruby, SQLite3/Ruby, Net::SSH (and related libs, Net::SFTP, Net::SCP, etc.) and Capistrano. I&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://weblog.jamisbuck.org/2009/2/2/net-ssh-and-friends-update" rel="bookmark" target="_blank">Net::SSH and friends, update</a></h3>
+
+<div class="full-post">
+<div class="author">Jamis</div>
+<div class="published">1 Feb 2009 | 7:58 pm</div>
+<div class="entry-content">
+<div class="entry-bound">This is a multi-project release announcement, so brace yourselves. In short, Net::SSH 2.0.9, Net::SFTP 2.0.2, Net::SSH::Gateway 1.0.1, and Net::SSH::Multi 1.0.1 have been released. Get ‘em while they’re hot! It’s all just bug fixes, for the most part, but if you want more nitty gritty, read on. Net::SSH 2.0.9 The following issues have been addressed in Net::SSH 2.0.9: If you specify a non-nil user argument to Net::SSH#start, it will override whatever setting exists for User in your .ssh/config file. (Prior to this, the .ssh/config’s User setting would always be used, regardless of&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://weblog.jamisbuck.org/2009/1/28/the-future-of-fuzzyfinder-textmate" rel="bookmark" target="_blank">The future of FuzzyFinder-TextMate</a></h3>
+
+<div class="full-post">
+<div class="author">Jamis</div>
+<div class="published">28 Jan 2009 | 9:47 am</div>
+<div class="entry-content">
+<div class="entry-bound">Back in October I released a Vim extension for mimicking TextMate’s cmd-T file lookup feature. I use it heavily now, and it works great for me. Sadly, the author of the FuzzyFinder Vim script, upon which my extension depends, keeps changing internal implementation details that I had to hook into to make my extension work. The result? Every few weeks my extension breaks with the latest FuzzyFinder. Needless to say, this is work I don’t need. The fuzzyfinder-textmate stuff works fine for me. It works fine for people on older versions of FuzzyFinder. And I really don’t care to support this&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://weblog.jamisbuck.org/2008/12/7/sqlite3-ruby-windows-builds" rel="bookmark" target="_blank">SQlite3-Ruby Windows Builds</a></h3>
+
+<div class="full-post">
+<div class="author">Jamis</div>
+<div class="published">6 Dec 2008 | 9:16 pm</div>
+<div class="entry-content">
+<div class="entry-bound">So, I’ve got a new sqlite3-ruby release pending (just a minor bug fix, is all), but I’ve learned my lesson about releasing a new version without a windows version pre-built. The problem is, I’m not a Windows guy. My build environment for Windows is cobbled together and painful to use, when it works at all. I’ve decided that I won’t put myself through that pain anymore. If you are a developer on Windows, and you have a sqlite3 build environment, and would be willing to compile the sqlite3-ruby extension for me, please do the following: Add a comment to this post, indicating your&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10588" class="feed-block 21d6fe368d1f93c50e24df5fc3a0f72c">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://drnicwilliams.com" target="_blank" class="snap_shots">Dr Nic</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://drnicwilliams.com/2009/03/26/testing-outbound-emails-with-cucumber/" rel="bookmark" target="_blank">Testing outbound emails with Cucumber</a></h3>
+
+<div class="full-post">
+<div class="author">Dr Nic</div>
+<div class="published">25 Mar 2009 | 9:59 pm</div>
+<div class="entry-content">
+<div class="entry-bound">My testimonial for Cucumber still stands even in 2009. In fact I promise to let you know when I don&#8217;t think Cucumber is the bees-knees of integration testing. I love the step-by-step English instructions of user usage scenarios backed by a simple Ruby DSL for describing real actions on your application for each step. For testing Rails apps, Cucumber defaults to using Webrat on top of Rails&#8217; own integration sessions. With Webrat you actually test that your views match to your controller actions. If I click the &#8220;Submit&#8221; button, then it checks that it invokes an available&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://drnicwilliams.com/2009/02/22/railscampau-5-book-now/" rel="bookmark" target="_blank">RailsCamp.au #5 - book now</a></h3>
+
+<div class="full-post">
+<div class="author">Dr Nic</div>
+<div class="published">21 Feb 2009 | 7:24 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Imagine yourself and a posse of like-minded Ruby hackers on a country retreat with zero internet for a weekend of fun. You&#8217;ll laugh, hack, learn, cry (well, you probably won’t cry… but you know… it felt poetic) and most likely play a crap-load of guitar hero. [manifesto] In chronological order, the first RailsCamps in Australia were in the states: New South Wales, Victoria, New South Wales, and South Australia. This time, between May 15th and 18th, it&#8217;s in Queensland. God&#8217;s Country. The Sunshine State. Home of Steve Irwin (deceased), Sir Joh Bjelke-Petersen (deceased),&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://drnicwilliams.com/2009/02/16/need-rails-developers-hire-australians/" rel="bookmark" target="_blank">Need Rails Developers? Hire Australians</a></h3>
+
+<div class="full-post">
+<div class="author">Dr Nic</div>
+<div class="published">15 Feb 2009 | 5:24 pm</div>
+<div class="entry-content">
+<div class="entry-bound">There&#8217;s been some malarky very recently about &#8220;how do I find a lot of mature, awesome Rails developers?&#8221; (rails-business + #rmm) I think this is the wrong question. And the wrong question will lead to the wrong answer. What is the right question? The right question can lead to a right answer. The right question you should ask yourself every day: &#8220;Where do I find a lot of mature, awesome Rails developers?&#8221; The right answer is: Australia. Australia has a bucket load of awe-inspiring Rails developers. And you should hire them all before anyone else figures this out.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://drnicwilliams.com/2009/02/03/choctop-packaging-and-deployment-of-cocoa-applications/" rel="bookmark" target="_blank">ChocTop - packaging and deployment of Cocoa applications</a></h3>
+
+<div class="full-post">
+<div class="author">Dr Nic</div>
+<div class="published">2 Feb 2009 | 12:24 pm</div>
+<div class="entry-content">
+<div class="entry-bound">I&#8217;m getting close to releasing a new Cocoa application, CommitChat, a sexy interface to having conversations for each commit in each watched project in GitHub. It was time to start thinking about packaging and distribution. The result is a new project for all Cocoa developers, called ChocTop, and a 30-minute tutorial screencast on how to use it. ChocTop is to Cocoa apps what Hoe is to RubyGems; except prettier. Packaging Cocoa apps You can package and release Cocoa apps in a number of ways. Each app is actually a folder, so they need some packaging. Zip files are easy and the bonus is&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://drnicwilliams.com/2008/12/21/migrating-project-websites-to-github-pages-with-sake-tasks-new-websites-with-jekyll_generator/" rel="bookmark" target="_blank">Migrating project websites to github pages with sake tasks, new websites with jekyll_generator</a></h3>
+
+<div class="full-post">
+<div class="author">Dr Nic</div>
+<div class="published">21 Dec 2008 | 5:25 am</div>
+<div class="entry-content">
+<div class="entry-bound">Its almost Christmas time and that means presents. It also means that sometime between today and December 25th you need to go out and buy other people some presents because you haven&#8217;t done it yet. But there&#8217;s someone else special in your life that deserves an Xmas gift this year. That special someone is your open source projects. You might think, &#8220;But, Dr Nic, what do I get for the open source project that already has everything? What gift would my open source projects possible appreciate?&#8221; Its true - this year has been a boon for open source. You probably migrated&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10590" class="feed-block beec0c76052f1a288345938e06d7ef13">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://techno-weenie.net/" target="_blank" class="snap_shots">techno weenie - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://techno-weenie.net/2009/3/15/poetic-tweets" rel="bookmark" target="_blank">poetic tweets</a></h3>
+
+<div class="full-post">
+<div class="author">rick</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">Saul Williams’ trek through the midwest between shows sparked some musings on Twitter. Driving from Denver to Kansas City. My mind travels at a faster pace than my body. I mark my way with words. If the newest technology enhances transparancy then this is an ideal time to share your process. Share how your mind works. How do you think? Do u associate w/negative thoughts and ideas? Are u cynical? What do u profess? What would u proclaim? Are you more concerned with like-minded agreement? Are you a naysayer? Perhaps, like me, you raise questions… But who am I fooling? is this viral voice my&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://techno-weenie.net/2009/3/15/wtf-does-that-cron-do" rel="bookmark" target="_blank">WTF does that cron do?</a></h3>
+
+<div class="full-post">
+<div class="author">rick</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">I’ll be the first to admit that I’m not a great system administrator. I was a windows guy for so long, so my only exposure to linux was haggling with shared hosting accounts to run my stupid php apps. While my linux/administration skills have grown by leaps and bounds in the last few years, I still get caught up on something as simple as cron jobs. The syntax is very terse, and probably easy to parse for computers. For the rest of us… Well, what the hell does this mean? */6 * * * * rake ts:index:delta According to my new project, CronWTF, that “runs rake ts:index:delta at minutes :00,&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://techno-weenie.net/2009/3/12/how-to-get-hired-by-entp" rel="bookmark" target="_blank">How to get hired by ENTP</a></h3>
+
+<div class="full-post">
+<div class="author">rick</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">At ActiveReload, our question was “How good are you at Gears of War?” Will qualified with flying colors (he was 100th in the world). Last year as ENTP was starting, it was “How good are you at Rock Band?” Towski impressed us with his killer Chris Cornell impersonation. Now, we’re looking for that person with elite Korg Kaossilator experience. Is that someone out there?</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://techno-weenie.net/2009/2/9/the-lie" rel="bookmark" target="_blank">The Lie</a></h3>
+
+<div class="full-post">
+<div class="author">rick</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">“No, the problem isn’t you. Fixtures suck, and you were lied to.” – Francis Hwang That is correct. This is exactly what the Rails Core team is going for: Poor John Locke, protector of the island, pushing a damn button. I do agree with Francis on about everything else though: Fixtures do suck, and testing is really fucking hard. By the time you realize you’re getting into Fixture Hell, moving your monstrosity of an application off fixtures is a daunting task. My solution (and currently the ENTP way): Machinist. The problem I’ve had with fixtures, is that having one large set means&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://techno-weenie.net/2009/1/27/autoloading-activeresource-schemas" rel="bookmark" target="_blank">Autoloading ActiveResource schemas</a></h3>
+
+<div class="full-post">
+<div class="author">rick</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">I just committed my first new Rails feature in months: Autoloading ActiveResource schemas. Note: this is in my personal fork that’s up to date with the rails repo, and will probably be merged in for Rails 2.3. I’ve received some requests for this from people having problems using Lighthouse::Ticket records with form_for helpers in their Rails apps. The idea is that resources can automatically load the starting XML just once, like the way ActiveRecord loads the schema from the database. This is already part of the current Rails scaffolding: class PostsController &lt; ApplicationController&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10591" class="feed-block 108c47b2329ba514a9210f57a7db2261">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://railstips.org/" target="_blank" class="snap_shots">RailsTips - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/railstips/~3/ajimswwDgJ0/building-api-wrapping-gems-could-not-get-much-easier" rel="bookmark" target="_blank">Building API Wrapping Gems Could Not Get Much Easier</a></h3>
+
+<div class="full-post">
+<div class="author">john</div>
+<div class="published">25 Mar 2009 | 4:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">In which I show how easy it is now to create ruby gems that wrap APIs, using Google Weather as an example. Google has a weather api that is dead simple to use. Just discovered that tonight so I whipped together a wrapper using HTTParty. I decided to try out Jeweler, a project by Josh Nichols, that makes creating gems a snap and it delivered. I used shoulda and fakeweb for the tests. Holy crap has making a gem that wraps a web service become really easy. The New Way jeweler google-weather —shoulda —create-repo %w(matchy fakeweb).each { |x| require x } (in your test_helper) require&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/railstips/~3/Rkf-lmi0BXc/custom-matchers-for-matchy" rel="bookmark" target="_blank">Custom Matchers for Matchy</a></h3>
+
+<div class="full-post">
+<div class="author">john</div>
+<div class="published">24 Mar 2009 | 12:50 pm</div>
+<div class="entry-content">
+<div class="entry-bound">In which I show all the dirty secrets of custom matchers using matchy. I’ve been using Shoulda for around a month now and, thus far, the only thing I have missed is RSpec’s matchers (ie: foo.should == 2). Enter stage right Jeremy McAnally’s project matchy. Matchy provides “RSpec-esque matchers for Test::Unit”. Matchy met the immediate need of liking the should and should_not RSpec syntax, but, originally, it was not built with support for custom matchers. A little over a month ago, Matthias Hennemeyer abstracted the ability to build matchers and created a method called def_matcher&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/railstips/~3/pNHW3yphdDI/httparty-example-mymilemarker-com" rel="bookmark" target="_blank">HTTParty Example: MyMileMarker.com</a></h3>
+
+<div class="full-post">
+<div class="author">john</div>
+<div class="published">23 Mar 2009 | 8:38 am</div>
+<div class="entry-content">
+<div class="entry-bound">In which I show an example of how to use HTTParty to consume the MyMileMarker undocumented API. One of the apps I help keep tabs on is MyMileMarker.com, which I believe I’ve mentioned here before. MyMileMarker was built with respond_to xml in most parts, so it has an undocumented, but functioning API. I took a few minutes last night to use HTTParty to build a simple wrapper for the API. It is nothing fancy, but I figured I would post it here as it shows how to use HTTParty to consume a pretty stock Rails API. require 'rubygems' gem 'httparty', '&gt;= 0.3.1' require 'httparty' module&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/railstips/~3/dH0YUzKSDYs/3-simple-guidelines-for-contributing" rel="bookmark" target="_blank">3 Simple Guidelines for Contributing</a></h3>
+
+<div class="full-post">
+<div class="author">john</div>
+<div class="published">12 Mar 2009 | 11:34 am</div>
+<div class="entry-content">
+<div class="entry-bound">In which I describe simple guidelines for contributing to other people’s open source projects. So what drives someone to contribute to an open source project? 95% of the contributions I have received on my various projects are from people who are trying to make one specific thing work for something they are doing. I think it is awesome that people take the time to contribute, but, to be honest, a lot of the contributions are no help. They are often very specific and rarely are tested (other than manually by the contributer). Even worse yet, some change existing functionality but add no&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/railstips/~3/BcXkyZgMdO0/following-redirects-with-net-http" rel="bookmark" target="_blank">Following Redirects with Net/HTTP</a></h3>
+
+<div class="full-post">
+<div class="author">john</div>
+<div class="published">4 Mar 2009 | 2:35 pm</div>
+<div class="entry-content">
+<div class="entry-bound">In which I revive clogging by presenting a simple class that follows a limited number of redirects on its journey to an endpoint. The web is full of redirects. It isn’t that hard to figure out how to follow them using Ruby, but it always helps to have examples when you are learning. Not too long ago I was hacking on some feed auto discovery code and made a little class that, given a url, will find the endpoint and return the response from that endpoint. I figured in the old spirit of clogging, I would post it here until I have time to package the full feed auto discovery library and release&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10618" class="feed-block 871b81e309dea8c47c550ed966b4aa0a">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.fiveruns.com/" target="_blank" class="snap_shots">FiveRuns Blog - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.fiveruns.com/2009/3/20/friday-picks" rel="bookmark" target="_blank">Friday Picks</a></h3>
+
+<div class="full-post">
+<div class="author">Rachel</div>
+<div class="published">20 Mar 2009 | 4:10 pm</div>
+<div class="entry-content">
+<div class="entry-bound">The music last night was great. I didn’t get to see a lot of the bands I wanted to – the line to get into Stubb’s was far longer than I had the patience for. Tonight’s Picks: My plan is The Love Language, The Postelles, Amazing Baby, Airborne Toxic Event & New York Dolls. I would love to catch the end of Primal Scream, but not sure I can make it LZR from 5th & Trinity, but we will see. I have to miss SXSW on Saturday, so there may or may not be picks. Hope everyone is having a great time!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.fiveruns.com/2009/3/19/sxsw-music" rel="bookmark" target="_blank">SXSW Music</a></h3>
+
+<div class="full-post">
+<div class="author">Rachel</div>
+<div class="published">19 Mar 2009 | 2:49 pm</div>
+<div class="entry-content">
+<div class="entry-bound">One of the things I love about living in Austin is the SXSW Music Festival. I have my wristband on and I am ready to go. Here is my wish list for tonight. The most likely scenario is Clá, The Soft Pack, Andrew Bird, +/- and then home. Got to get up early and take my seat in Campfire. Hope you enjoy!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.fiveruns.com/2009/3/11/dash-javascript-let-me-show-you-it" rel="bookmark" target="_blank">dash-javascript, let me show you it</a></h3>
+
+<div class="full-post">
+<div class="author">adam</div>
+<div class="published">11 Mar 2009 | 12:36 pm</div>
+<div class="entry-content">
+<div class="entry-bound">dash-javascript is our latest little invention. It’s a bit different from dash-ruby, dash-python, et al.; those are about sending data to Dash. dash-javascript is about pulling data from Dash. We’ve built dash-javascript because we know that Dash isn’t where everyone wants to see their data. Many apps have an admin backend, or even a custom dashboard pulling some ad-hoc metrics. There’s no reason those folks should have to log into Dash to get their numbers. We also know that ya’ll love showing off your feats of optimization with pretty graphs. Who are we to stand in your way? So,&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.fiveruns.com/2009/3/9/fiveruns-sxsw-happy-hour-2" rel="bookmark" target="_blank">FiveRuns SXSW Happy Hour</a></h3>
+
+<div class="full-post">
+<div class="author">mindy</div>
+<div class="published">9 Mar 2009 | 2:25 pm</div>
+<div class="entry-content">
+<div class="entry-bound">If you’re going to be in Austin for SXSW, join FiveRuns, OtherInbox and Austin on Rails for our annual Beer on Rails Happy Hour. We’ll have drinks, appetizers, and tons of games so you and all Ruby on Rails enthusiasts can meet, greet and have a great time. RSVP to sxsw@fiveruns.com. FiveRuns will also be giving away limited edition t-shirts to the first 100 people, so get there early!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.fiveruns.com/2009/3/3/two-new-ui-features" rel="bookmark" target="_blank">Two new UI features</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce</div>
+<div class="published">2 Mar 2009 | 7:04 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Today we released an update to the Dash UI with two major features. The Administrator Role In previous incarnations of the UI, there were only two user levels; Application owners and members. In this update, we add a new user level, administrators. We’re not crazy about complex roles and rights systems, so we’ve kept things simple. Administrators have all the rights of an Owner except the ability to delete the application or remove the owner from the application. They have access to the rest of the application’s configuration, including the setup details and sharing functions. These are&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10594" class="feed-block be31eb8b2b8cef2c0a91637294e88aef">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.obiefernandez.com/content/" target="_blank" class="snap_shots">Obie Fernandez</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/obie/~3/-J9gp8QDjds/ada-lovelace-role-model-desi-mcadam.html" rel="bookmark" target="_blank">Ada Lovelace Role Model: Desi McAdam</a></h3>
+
+<div class="full-post">
+<div class="author">Obie Fernandez</div>
+<div class="published">24 Mar 2009 | 8:39 pm</div>
+<div class="entry-content">
+<div class="entry-bound">On Ada Lovelace Day, it's my pleasure to sing high praises for my best friend and partner of over 8 years, one of the most wonderful, hardworking and ethical people that I've ever met in my life: Desi McAdam. Not only is Desi a role-model and example to women software developers through her tireless work as a Principal Consultant at Hashrocket, she's also the founder of DevChix, an organization devoted to advocating women's place in our unarguably male-dominated industry.Not trying to be immodest, but you know that saying: "Behind every great man is a great woman"... well in this case it's&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/obie/~3/-x8wNQ6njgM/the-way-i-getting-things-done-by-lark.html" rel="bookmark" target="_blank">The Way I Getting Things Done by Lark</a></h3>
+
+<div class="full-post">
+<div class="author">Obie Fernandez</div>
+<div class="published">6 Mar 2009 | 8:07 pm</div>
+<div class="entry-content">
+<div class="entry-bound">The Way I Getting Things Done by Jon Larkowski from Hashrocket on Vimeo.A focused six minute and forty second talk on the topic of GTD and staying "in the flow" by one of the first Rocketeers, Jon "Lark" Larkowski.This is just one in an album of videos shot at the latest REFRESH Jacksonville event.Incidentally, I've been doing Inbox Zero for at least a couple of weeks and it has really decreased my stress levels. Everything emailed to me gets either deleted or archived as soon as I look at it. (As a great side effect, the load of forcing myself to deal with every incoming message caused me to&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/obie/~3/n_R3UQgBiQI/obie" rel="bookmark" target="_blank">Links for 2009-03-01 [del.icio.us]</a></h3>
+
+<div class="full-post">
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">Ereblog &raquo; Blog Archive &raquo; Telling stories in Nashville Fawesome story about guest-pairing with the OGC guys. I think the guest-pairing meme is catching on.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/obie/~3/iK2uYAr8JvA/corey-haines-and-rmm-at-hashrocket.html" rel="bookmark" target="_blank">Corey Haines and RMM at Hashrocket</a></h3>
+
+<div class="full-post">
+<div class="author">Obie Fernandez</div>
+<div class="published">26 Feb 2009 | 5:51 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Corey Haines at Hashrocket / RMM from Hashrocket on Vimeo.Join us in welcoming Corey Haines (aka The Software Journeyman) to Hashrocket for some pair programing with Stephen Caudill. Corey Haines travels around the country pair programming with whoever will feed him a scrumptious vegetarian meal and give him a spot to put his air mattress.In the video, Corey arrives at Hashrocket (accompanied by Cory Foy) and introduces himself to the team. Then Obie, Corey and crew proceed to discuss software craftmanship and the project that Corey and Stephen will be working on for the duration of the week:&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/obie/~3/bOljOiG952E/explain-variable-scope-with-ponies.html" rel="bookmark" target="_blank">Explain Variable Scope with Ponies</a></h3>
+
+<div class="full-post">
+<div class="author">Obie Fernandez</div>
+<div class="published">25 Feb 2009 | 2:33 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Lately I've been using the following analogy as a valuable tool in my sales process. Used properly, it's totally killer and you're gonna love me for it. I promise. It involves ponies, kind of... First of all, let me set the context by explaining the problem I'm helping you solve. (Mind you, I know that not everyone does Agile the way that I do at Hashrocket, so it definitely won't apply to everyone.) But if you do try to sell Agile, even if it's only to your managers, bear with me and tell me if this situation sounds familiar: You talk to a new client Client has a list of features desired,&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10595" class="feed-block f7624a82018f7cb54f63899eb5edaf16">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.jayfields.com/" target="_blank" class="snap_shots">Jay Fields' Thoughts</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/jayfields/mjKQ/~3/yLTE51wcZSk/retrospective-trust-level.html" rel="bookmark" target="_blank">Retrospective Trust Level</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">18 Mar 2009 | 11:00 am</div>
+<div class="entry-content">
+<div class="entry-bound">Retrospectives can be complicated meetings. Done correctly, they can provide immense value. Done poorly, they can be a show that provides negative value. A well run retrospective requires more than just going through the motions. Several things contribute to a successful retrospective; however, in my experience the key ingredient is trust.I expect Fred George (all the way on the right, 2nd from the top) would probably agree with me. Fred is the only person I've ever met that would start each retrospective by asking everyone to write down, on a scale of 1 to 5, where their trust level is at.A&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/jayfields/mjKQ/~3/fCnp97p1uEE/continual-retrospective.html" rel="bookmark" target="_blank">Continual Retrospective</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">17 Mar 2009 | 9:38 am</div>
+<div class="entry-content">
+<div class="entry-bound">I'm a huge fan of retrospectives. When consulting I found retrospectives to be absolutely required. An enormous amount of value was derived from expressing concerns and discussing the expected and actual impacts. However, I've also worked on a few highly functioning teams that never seemed to get the same value from retrospectives. Highly functioning teams tend to address issues as soon as they are discovered, which is far better, but removes some of the value that is usually derived from retrospectives.I don't like ad-hoc retrospectives, I prefer a routinely scheduled meeting. I favor the&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/jayfields/mjKQ/~3/v1ig5SYT2Ko/thoughts-on-developer-testing.html" rel="bookmark" target="_blank">Thoughts on Developer Testing</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">4 Feb 2009 | 7:37 pm</div>
+<div class="entry-content">
+<div class="entry-bound">This morning I read Joel: From Podcast 38 and it reminded me how immature developers are when it comes to testing. In the entry Joel says:a lot of people write to me, after reading The Joel Test, to say, "You should have a 13th thing on here: Unit Testing, 100% unit tests of all your code."At that point my interest is already piqued. Unit Testing 100% of your code is a terrible goal and I'm wondering where Joel is going to go with the entry. Overall I like the the entry (which is really a transcribed discussion), but two things in the entry left me feeling uneasy.Joel doesn't come out and say&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/jayfields/mjKQ/~3/Hl7nUYfwWl8/questions-to-ask-interviewer.html" rel="bookmark" target="_blank">Questions To Ask an Interviewer</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">21 Jan 2009 | 12:23 am</div>
+<div class="entry-content">
+<div class="entry-bound">If you've ever read tips on interviewing then you know it's a good idea to have questions ready to ask someone who's just interviewed you. If you're not good at remembering questions under-pressure you should write down a few and take the note with you.Most of my important questions are answered in the interview: What does your software process look like, what tools do you use, etc. However, I have a few questions that don't usually come up during the normal course of an interview.At what level are technology decisions made? Do the teams decide what tools and languages are used, or is it the&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/jayfields/mjKQ/~3/inlDRx1qD4U/fowler-effect.html" rel="bookmark" target="_blank">The Fowler Effect</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">13 Jan 2009 | 11:29 pm</div>
+<div class="entry-content">
+<div class="entry-bound">ThoughtWorks does its best to attract smart developers. It's no easy task. How do you convince the smartest developers in the world to join a company that requires 100% travel (in the US anyway) and become consultants. It's a tough sell. I've always believed that people join because of the other people they'll be working with. And, of the ThoughtWorks employees that people want to work with, Martin Fowler is generally at the top.I, like so many other people, found ThoughtWorks because of Martin Fowler. I followed a link from his website, read about the company, and decided I wanted to give it&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10596" class="feed-block a68147a0ed4702ad5faca4310afff48e">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.caboo.se/" target="_blank" class="snap_shots">caboose - blog.caboo.se Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.caboo.se/articles/2009/3/13/cabooseconf-09" rel="bookmark" target="_blank">CabooseConf '09</a></h3>
+
+<div class="full-post">
+<div class="author">Courtenay</div>
+<div class="published">12 Mar 2009 | 5:00 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Hey everyone! CabooseConf 09 is on again. For those of you who don’t know, we have been running a free anti-conference at the same time as the O’Reilly Railsconf behemoth. Last year, Chad and Gina approached me after the conference and asked if we would run it again this year, but under the banner of Railsconf itself. Keep your friends close, I guess ;) I’m a big fan of going to conferences and attending the “hallway track”. So, this year it’s officially sanctioned.. Come to Vegas, network, hack, code, and don’t pay a cent. We have conference rooms staked out at the Railsconf&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.caboo.se/articles/2009/3/9/the-ultimate-ruby-training" rel="bookmark" target="_blank">The ultimate ruby training</a></h3>
+
+<div class="full-post">
+<div class="author">Courtenay</div>
+<div class="published">9 Mar 2009 | 4:13 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Over at @entp we teamed up with David Black, old school rubyist, trainer and mentor to collaborate on a training session. If you’ve been sniffing around Ruby or Rails and want to get a solid foundation, this is the session for you. If you work with people you’d like to truly understand idiomatic ruby, or just want to convert them to the one true way, this is where you should point your boss: http://entp.com/training/ The sessions will also be taught by Jeremy McAnally, who needs no introduction around here, and Rick Olson will be on hand to help take things to the next level. They’ll be&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.caboo.se/articles/2009/1/17/open-sourcing-our-twime-tracker" rel="bookmark" target="_blank">Open sourcing our twime tracker</a></h3>
+
+<div class="full-post">
+<div class="author">Courtenay</div>
+<div class="published">16 Jan 2009 | 4:07 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Oh my god, I just came up with a new phrase. Twime tracker. Shoot me now, please. Anyway, about a year ago we started writing a “twitter meets time tracking” application, XTT, over at ENTP to track our time. It was more than that, really.. more like 37signals’ In/Out (which they hadn’t released yet), but also like a closed-group twitter-style status update, the difference being we track the times for each status. It’s invaluable to see who’s working on what, but also, what people spend their time on. We used XTT pretty much since day 1, and it works swimmingly for a team of 4-14&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.caboo.se/articles/2008/12/31/allowing-custom-css-in-your-app" rel="bookmark" target="_blank">Allowing custom CSS in your app</a></h3>
+
+<div class="full-post">
+<div class="author">Courtenay</div>
+<div class="published">31 Dec 2008 | 1:33 pm</div>
+<div class="entry-content">
+<div class="entry-bound">There are a number of good reasons why you don't want your users providing their own CSS (for example, when theming their site). These are: taste (see: myspace) and security. The former is pretty much your users' problem. The pages don't have to look terrible -- and in fact Myspace charges a LOT of money to do those custom movie or band pages (it's part of the service when you buy their primo ad space). The latter, well, as it turns out there are a bunch of security vulnerabilities exposed in CSS. While these are mainly in IE, related to expressions (you can run javascript from your CSS).</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://www.caboo.se/articles/2008/12/15/why-aren-t-you-testing" rel="bookmark" target="_blank">Why aren't you testing?</a></h3>
+
+<div class="full-post">
+<div class="author">Courtenay</div>
+<div class="published">15 Dec 2008 | 3:02 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Those of you passionate about test frameworks or writing your own testing libraries can skip this article. The rest of you, who don’t test: you’ve heard about it, you’ve seen us ranting about it, but, if you have a web application written in Rails and you don’t write tests for it, how do you know it works? (I’m guessing: refreshing it in your browser). How do you know it works for other people, too? If the company for which you work doesn’t have a testing culture, why don’t you step up and insist? Take a weekend and learn about it. Do the peepcodes, then evangelize at your&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10597" class="feed-block 3483d9319b12ab9218804fb31192f8b9">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://codefluency.com/" target="_blank" class="snap_shots">Bruce Williams</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://codefluency.com/2009/03/13/living-without-send.html" rel="bookmark" target="_blank">Living without send(), or trying to</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce Williams</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">Object#send (or __send__) is a scrappy little tool we Rubyists pull out to ever-so-casually ignore method private and protected visibility, and to call methods dynamically. Maybe we&#8217;ve gotten into the habit of using it a little too often. Let&#8217;s play with alternatives. An evaluation Here&#8217;s an example from practically every monkeypatching Rails plugin init.rb you&#8217;ve ever seen: SomeRailsConstantsend:include MagicSauce Okay, so include is a private method, and we&#8217;re breaking through indiscriminately by using send. If you wanted to do away with send because it seems&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://codefluency.com/2009/02/07/a-githubby-config-gem-hack.html" rel="bookmark" target="_blank">A GitHubby config.gem hack</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce Williams</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">I love using gems from my Rails apps, and have been an outspoken proponent for gem plugins from the beginning (you won&#8217;t find any vendor/plugins in my newer apps at all). I also love GitHub, but lines like this, over and over in my environment files, just annoy me: configgem &#39;username-foo&#39; :lib =&gt; &#39;foo&#39; :source =&gt; &#39;http://gems.github.com&#39; configgem &#39;username-bar&#39; :lib =&gt; &#39;bar&#39; :source =&gt; &#39;http://gems.github.com&#39; So, here&#8217;s a quick little hack. It could be smarter, but it works. module GitHubbyGems def gemname options if&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://codefluency.com/2009/01/09/a-sleep-hack.html" rel="bookmark" target="_blank">A sleep hack</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce Williams</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">A quick aside. I&#8217;m experimenting with the Everyman polyphasic sleep schedule for the next 3+ weeks. Update: The experiment ended early, but was still very successful. Feel free to contact me if you&#8217;re interested in this sort of thing.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://codefluency.com/2009/01/07/more-on-super-and-extend.html" rel="bookmark" target="_blank">More on super-and-extend</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce Williams</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">A few days ago I posted an article on method wrapping, and I thought I&#8217;d touch a bit more on the super-and-extend technique; I&#8217;ve had a few questions on it that warrant some clarification. Multiple Wrappers Yes, the technique works with multiple wrappers on a single class; when the class is extended with additional modules, they stack and super works as expected (wrappers are applied on the &#8220;outside,&#8221; so invocations occur in LIFO order). You can see a full example of this as a Gist. Here is a sample irb session showing that the multiple wrappers are applied correctly:&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://codefluency.com/2009/01/03/wrapping-a-method-in-ruby.html" rel="bookmark" target="_blank">Wrapping a Method in Ruby</a></h3>
+
+<div class="full-post">
+<div class="author">Bruce Williams</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">Let&#8217;s say you have a Ruby class with a method you&#8217;d like to wrapâ€”for debugging or performance timingâ€”and, since you don&#8217;t control where the class is instantiated (think overriding a method in Rails&#8217; ActionPack), just creating a subclass and using super isn&#8217;t going to work. Let&#8217;s take a look at two mixin patterns; one a ubiquitous naming hack and one a bit of esoteric Ruby inheritance trickery. First, let&#8217;s set the scene. Let&#8217;s say we have a method, Widget#render_on: class Widget # Wrap this one def render_on(document, options = {})&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10598" class="feed-block 0d9084736f6408603dd129ae970c534f">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://peepcode.com/products" target="_blank" class="snap_shots">PeepCode Products</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://peepcode.com/products/email" rel="bookmark" target="_blank">Control Your Email Inbox</a></h3>
+
+<div class="full-post">
+<div class="published">17 Mar 2009 | 7:57 pm</div>
+<div class="entry-content">
+<div class="entry-bound">By Lars Pinds of CoachTVBlog. Email is both an indispensable and an inescapable part of our lives. Yet most of us either feel dread when checking email, or we use email as a distraction from more important tasks. In this 45 minute presentation, accomplished entrepreneur and life coach Lars Pind presents a system that he has developed and taught to many people over several years. It combines ideas from GTD and Inbox Zero and adds other concrete strategies for facing up to your email and attacking it with a consistent plan. If you don&#8217;t have an email strategy, if you feel bogged down by&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://peepcode.com/products/objective-c-for-rubyists" rel="bookmark" target="_blank">Objective-C for Rubyists</a></h3>
+
+<div class="full-post">
+<div class="published">11 Feb 2009 | 12:28 am</div>
+<div class="entry-content">
+<div class="entry-bound">Technical editing by Scott Stevenson of CocoaDevCentral and Theocacao. If you know Ruby and you want to write applications for Mac OS X or the iPhone, you&#8217;re in a great place to start! This concise and content-packed 80-minute screencast will teach you what you need to know to start programming in Objective-C. Objective-C and Ruby both share many features, thanks to their shared inspirations from Smalltalk. You can use your knowledge of Ruby (or even Python) to understand many of the core concepts of Objective-C. This screencast also covers crucial concepts that are not part of Ruby,&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://peepcode.com/products/haml-and-sass" rel="bookmark" target="_blank">Haml and Sass</a></h3>
+
+<div class="full-post">
+<div class="published">12 Jan 2009 | 5:41 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Haml blesses those who use it with freedom from the verbosity of HTML and from the banality of un-programmable CSS. You can get straight to work thinking about your code instead of trudging through the boilerplate of angle brackets and closing tags. With Sass your CSS becomes smart. Much, much smarter. Since its initial release in 2007, the Haml templating library has been adopted by increasing numbers of high profile consultancies (Unspace, Hashrocket) and Ruby frameworks (Rails, Merb, Sinatra). It&#8217;s even been ported to PHP and Python! This hour long screencast will get you up and&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://peepcode.com/products/meet-emacs" rel="bookmark" target="_blank">Meet Emacs</a></h3>
+
+<div class="full-post">
+<div class="published">22 Dec 2008 | 6:38 pm</div>
+<div class="entry-content">
+<div class="entry-bound">The classic Gnu Emacs text editor is an incredibly powerful piece of software that has been used by thousands of programmers over the last few decades. Many alpha geeks have recently been giving Emacs a second look as well. Emacs Lisp expert Phil Hagelberg prepared the script and accompanying code for this screencast. You&#8217;ll learn how to get comfortable with his Emacs Starter Kit which includes a suite of sensible defaults and handy shortcuts. In addition to learning about the basic philosophies and approach of Emacs, you&#8217;ll learn how to: Get and install emacs for your platform.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://peepcode.com/products/productivity-for-programmers" rel="bookmark" target="_blank">Productivity for Programmers</a></h3>
+
+<div class="full-post">
+<div class="published">25 Nov 2008 | 1:46 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Productivity. You know you want it, but how do you get there? We&#8217;ve collaborated with accomplished entrepreneur, developer, and life coach Lars Pind to bring you a practical plan customized for programmers. Programming is hard work that requires creativity, problem solving, and even physical stamina. Over the course of 40 minutes, Lars will teach you how to Set achievable, measurable goals Prepare for the work of thinking Achieve focus Find shortcuts Maximize your natural rhythm and energy We&#8217;ve personally benefited from the ideas presented here and we&#8217;re confident that you&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10600" class="feed-block 22e7223f576d45aabd61f4ea342bc086">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://m.onkey.org/" target="_blank" class="snap_shots">has_many :bugs, :through =&gt; :rails - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/monkeyonrails/~3/w-YQF0s6gyY/default-scopes-and-inheritance-to-the-rescue" rel="bookmark" target="_blank">Default Scopes and Inheritance to the rescue</a></h3>
+
+<div class="full-post">
+<div class="author">pratik</div>
+<div class="published">24 Mar 2009 | 3:28 am</div>
+<div class="entry-content">
+<div class="entry-bound">On my one of the current projects, there are two primary models each with a flag called approved. 99% of the front end part deals with only approved items. Unapproved items are usually only in the admin panel side of the story. So I started with using a named_scope called approved: 123456 class Item &lt; ActiveRecord::Base has_many :tags default_scope :order =&gt; items.name ASC named_scope :approved, :conditions =&gt; { :published =&gt; true }end And now I’d have to use Item.approved.&lt;whatever> everywhere in my application. But that became a bit too cumbersome sooner than later. Playing&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/monkeyonrails/~3/SPW-aviw1aU/my-rails-guides" rel="bookmark" target="_blank">My Rails guides</a></h3>
+
+<div class="full-post">
+<div class="author">pratik</div>
+<div class="published">18 Mar 2009 | 5:42 am</div>
+<div class="entry-content">
+<div class="entry-bound">Instead of blogging some of the articles, I decided to write those as Rails guides. So go ahead and check them out ! Rails on Rack – Overview of Rails’ Rack integration and middleware/metal interfaces Performance Testing Rails Applications – Using Rails’ built in performance test suite for profiling and benchmarking your Rails application I also wrote a lot of the Active Record Query Interface guide. Of course my guides aren’t really eligible for the guides hackfest prizes. But hey, you could still win them by writing a new guide !</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/monkeyonrails/~3/LbPCQlg32qo/assert_-and-assert_not_" rel="bookmark" target="_blank">assert_* and assert_not_*</a></h3>
+
+<div class="full-post">
+<div class="author">pratik</div>
+<div class="published">17 Mar 2009 | 8:49 am</div>
+<div class="entry-content">
+<div class="entry-bound">Not sure I like this or not, but I’m gonna give it a shot in the “real world” nevertheless. 12345678910111213141516171819202122 module AssertionExtensions def method_missing(method_id, *arguments, &amp;block) return super unless method_id.to_s =~ ^assert_(not_)?(.*)$ method = &quot;$2&quot; object = arguments.first if $1 arguments.each do |object| assert ! object.send(method), &quot;method is not false for object&quot; end else arguments.each do |object| assert object.send(method), &quot;method is not true for object&quot; end end endend class ActiveSupport::TestCase include&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/monkeyonrails/~3/c4GQb4wg8EI/some-t-u" rel="bookmark" target="_blank">Make Test::Unit display errors earlier</a></h3>
+
+<div class="full-post">
+<div class="author">pratik</div>
+<div class="published">14 Mar 2009 | 5:51 am</div>
+<div class="entry-content">
+<div class="entry-bound">Just a monkey patch to make Test::Unit display errors as soon as they happen. 1234567891011121314151617 require test/unitrequire test/unit/ui/console/testrunnerclass Test::Unit::UI::Console::TestRunner def add_fault(fault) hax_output(fault) @faults &lt;&lt; fault output_single(fault.single_character_display, 1) @already_outputted = true end def hax_output(fault) @io.puts(&quot;\n&quot;) output_single(fault.short_display, 1) # fault.long_display for the full trace @io.puts(&quot;\n&quot;) endend Useful when your tests take too long to run.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/monkeyonrails/~3/TKSHESfZlmw/the-evil-calls-back" rel="bookmark" target="_blank">The Evil calls back</a></h3>
+
+<div class="full-post">
+<div class="author">pratik</div>
+<div class="published">15 Jan 2009 | 9:54 am</div>
+<div class="entry-content">
+<div class="entry-bound">Happy new year! Just an update on the two middlewares I contributed to rack-contrib. In case you don’t already know what is rack-contrib, it’s a project started by Ryan Tomayko as a playground for experimental Rack middlewares from the ruby community. There are 15 middlewares there already, so do check it out! Rack::Evil The name says it all. It’s pure evil, as it enables the rack application to return the response from any place during while it’s serving the request by doing throw :response, [status, header, body]. Example: 12345678910 app = lambda do |env| template =&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10601" class="feed-block 38b4a2ab965a4319799db96b0fb86a57">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://weblog.rubyonrails.org/" target="_blank" class="snap_shots">Riding Rails - home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RidingRails/~3/uB7GqE_-jWk/this-week-in-edge-rails" rel="bookmark" target="_blank">This Week in Edge Rails</a></h3>
+
+<div class="full-post">
+<div class="author">Mike Gunderloy</div>
+<div class="published">20 Mar 2009 | 7:52 am</div>
+<div class="entry-content">
+<div class="entry-bound">March 14, 2009 – March 20, 2009 The big news in Rails this week, of course, was the release of Rails 2.3. But that certainly doesn’t mean the Rails edge story is over! To the contrary, we’re embarking on one of the more ambitious and exciting Rails projects of all: the creation of Rails 3.0. Read on to see where things stand. Final 2.3 Changes A few things went in to Rails 2.3 in the days leading up to release. These include: DDL transactions for SQLite databases commit Compatibility between render :file and Pathname commit ActionController class naming conventions for Metal commit&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RidingRails/~3/e_HXkdlOfJM/get-paid-to-work-on-rails" rel="bookmark" target="_blank">Get Paid to Work on Rails</a></h3>
+
+<div class="full-post">
+<div class="author">Mike Gunderloy</div>
+<div class="published">19 Mar 2009 | 4:35 am</div>
+<div class="entry-content">
+<div class="entry-bound">Last year, as you may recall, Rails got thread safety and a new core committer thanks to our participation in the Google Summer of Code program under the auspices of Ruby Central. This year, we’re pleased to announce, Ruby on Rails has been accepted into Google Summer of Code as a sponsoring organization in its own right. What does this mean to you? Potentially, if you’re the right person, you can get paid to work on the Rails core code this summer! The “right person” in this case is one who is at least 18 years old (sorry, Google’s rule, not ours!), a full- or part-time college&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RidingRails/~3/_IiihsT0HtI/rails-2-3-templates-engines-rack-metal-much-more" rel="bookmark" target="_blank">Rails 2.3: Templates, Engines, Rack, Metal, much more!</a></h3>
+
+<div class="full-post">
+<div class="author">David</div>
+<div class="published">16 Mar 2009 | 7:39 am</div>
+<div class="entry-content">
+<div class="entry-bound">Rails 2.3 is finally done and out the door. This is one of the most substantial upgrades to Rails in a very long time. A brief rundown of the top hitters: Templates: Allows your new skeleton Rails application to be built your way with your default stack of gems, configs, and more. Engines: Share reusable application pieces complete with routes that Just Work, models, view paths, and the works. Rack: Rails now runs on Rack which gives you access to all the middleware goodness. Metal: Write super fast pieces of optimized logic that routes around Action Controller. Nested forms: Deal with&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RidingRails/~3/dYKwyVqXfOY/this-week-in-edge-rails" rel="bookmark" target="_blank">This Week in Edge Rails</a></h3>
+
+<div class="full-post">
+<div class="author">Mike Gunderloy</div>
+<div class="published">13 Mar 2009 | 5:22 am</div>
+<div class="entry-content">
+<div class="entry-bound">March 6, 2009 – March 13, 2009 Things have been pretty busy on the development side since the release of Rails 2.3 RC2. The core team has been making a serious effort to review all of the open bugs and patches with an eye towards getting us a solid release. At this point, the bar for new features is set fairly high, but even so, there have been an incredible 94 commits in the week since RC2 – mostly fixes to ensure expected behavior and stability. Here are some of the highlights. Swappable Parsers for XMLmini The support for XML parsing in ActiveSupport has been made more flexible by&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RidingRails/~3/Wy7Ie6o7Td0/rails-guides-gets-a-team-and-a-mailing-list" rel="bookmark" target="_blank">Update on Rails Guides and Documentation</a></h3>
+
+<div class="full-post">
+<div class="author">Pratik Naik</div>
+<div class="published">11 Mar 2009 | 11:57 am</div>
+<div class="entry-content">
+<div class="entry-bound">We have been working on the Rails guides for some months now. With substantial contributions from a variety of authors, things are looking even better in the next version of the guides. That makes this the right time to take the overall documentation efforts to the next level. Announcing the Documentation Team We’re very happy to announce a formal documentation team – consisting of Xavier Noria, Mike Gunderloy and myself. However, eventually Mike and I will be just acting as advisors to the documentation team. So we’re definitely looking to empower some new faces here. If you’ve been&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10603" class="feed-block d4826702deac01934a521ac0f52bdc80">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.railsenvy.com/" target="_blank" class="snap_shots">Rails Envy</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/rails-envy/~3/PlC4vk2VDNE/rails-envy-podcast-episode-072-03-25-2009" rel="bookmark" target="_blank">Rails Envy Podcast - Episode #072: 03/25/2009</a></h3>
+
+<div class="full-post">
+<div class="author">Jason</div>
+<div class="published">25 Mar 2009 | 1:58 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Episode 72.This week we're back with improved audio quality on both sides of the microphone, and all of the great Ruby and Rails news from this week. Subscribe via iTunes - iTunes only link. Download the podcast ~12:30 mins MP3. Subscribe to feed via RSS by copying the link to your RSS Reader The Rails Envy podcast is also brought to you this week by NewRelic. NewRelic provides RPM which is a plugin for rails that allows you to monitor and quickly diagnose problems with your Rails application in real time. They also recently produced Rails Lab, which gives you expert advice on tuning and&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/rails-envy/~3/ORgq5HGLdxA/rails-envy-podcast-episode-071-03-18-2009" rel="bookmark" target="_blank">Rails Envy Podcast - Episode #071: 03/18/2009</a></h3>
+
+<div class="full-post">
+<div class="author">Jason</div>
+<div class="published">18 Mar 2009 | 6:25 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Episode 71. TMI Edition. Subscribe via iTunes - iTunes only link. Download the podcast ~20 mins MP3. Subscribe to feed via RSS by copying the link to your RSS Reader The Rails Envy podcast is brought to you this week by Hashrocket. Hashrocket is an expert consultancy group that uses best-of-breed technologies like Ruby on Rails to deliver the highest quality software in the least amount of time. The Rails Envy podcast is also brought to you this week by NewRelic. NewRelic provides RPM which is a plugin for rails that allows you to monitor and quickly diagnose problems with your Rails&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/rails-envy/~3/cvoZ_3WHO0c/rails-envy-podcast-episode-070-03-13-2009" rel="bookmark" target="_blank">Rails Envy Podcast - Episode #070: 03/13/2009</a></h3>
+
+<div class="full-post">
+<div class="author">Jason</div>
+<div class="published">13 Mar 2009 | 8:18 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Episode 70. I was going to try and copy Gregg from last week but my dog can't talk yet to do the introduction. Darn obedience classes. Obie Fernandez from Hashrocket co-hosts this week and we have a blast. I hope you all enjoy the show and am sorry for the delay. But it's a good one, I promise! Subscribe via iTunes - iTunes only link. Download the podcast ~35 mins MP3. Subscribe to feed via RSS by copying the link to your RSS Reader The Rails Envy podcast is brought to you this week by Hashrocket. Hashrocket is an expert consultancy group that uses best-of-breed technologies like Ruby on&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/rails-envy/~3/Ya50eqWTArI/3-month-conference-schedule" rel="bookmark" target="_blank">3 Month Conference Schedule</a></h3>
+
+<div class="full-post">
+<div class="author">gregg</div>
+<div class="published">8 Mar 2009 | 12:35 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Over the next few months Jason and I are going to be speaking at a few events, and if you are attending or live in the area we’d love to meet you. SXSW &gt; March 13-17 Location: Austin, TX First up is SXSW where I’ll be there (sans Jason) giving a talk on How not to FAIL at Web Services where I’ll be taking a look at a few ugly Web Services from big name companies like Flickr and Amazon, and show you how they failed. I’ll be speaking the RESTful gospel, so if you fully get REST (as many Rails developers do), feel free to come to watch the incredible amount of FAIL I’ll be doling&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/rails-envy/~3/3WfYDmBKgXc/interviews-deployment-and-advanced-rpm" rel="bookmark" target="_blank">Interviews, Deployment, and Advanced RPM</a></h3>
+
+<div class="full-post">
+<div class="author">gregg</div>
+<div class="published">5 Mar 2009 | 8:16 am</div>
+<div class="entry-content">
+<div class="entry-bound">The next two videos of the Scaling Rails screencasts are now out. In these episodes you’ll see two interviews, learn about Rails deployment, and browse through the advanced features of New Relic RPM. Jesse Newland & Deployment Jim Gochee & Advanced RPM These are the last two videos I produced for the series, and I know I missed a few topics. So if you’d like to see more, please take a moment and fill out this feedback form. Thanks for watching!</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10605" class="feed-block f6b39d17508bdad561dc664a0fea275f">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.slash7.com/" target="_blank" class="snap_shots">Slash7 with Amy Hoy - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/slash7/rss/~3/dsr_EcpaIxI/google-is-evil-worse-than-paypal-don-t-use-google-checkout-for-your-business" rel="bookmark" target="_blank">Google is Evil, Worse than PayPal: Don't use Google Checkout for your business</a></h3>
+
+<div class="full-post">
+<div class="author">amy</div>
+<div class="published">26 Mar 2009 | 10:50 am</div>
+<div class="entry-content">
+<div class="entry-bound">Wanting to offer an alternative to PayPal, we set up a Google Checkout account for people to buy our ebook. The last email we received about our Google Checkout account was "Helpful tips regarding your first Google Checkout orders" on February 9th. But a few days ago, I logged in, and this is what greeted me: And if you click that link, "I had pending payouts for charged orders. Will I receive these payouts?", you'll see that the answer is "Nope, you're screwed." So, to sum up our experience with Google Checkout: they did not try to contact us to resolve any issue there's no way to find out&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/slash7/rss/~3/a1jkTRIKvYI/jelly-talk-excerpt-1-my-crusade-twistori-emotional-design" rel="bookmark" target="_blank">Jelly! Talk Excerpt 1: My Crusade, Twistori, & Elemental Design</a></h3>
+
+<div class="full-post">
+<div class="author">amy</div>
+<div class="published">24 Mar 2009 | 12:51 pm</div>
+<div class="entry-content">
+<div class="entry-bound">This is the first in a series of 2 or 3 posts for the transcript of my Jelly! talk from SXSW. Jelly! talks are put on by Yahoo! and Jelly!, the casual coworking movement. This one was held in the lovely Austin coworking space of Conjunctured. Here's a link to the video. My name is Amy, I would say that I have a mission. My mission is to up the game of all those web designers and PHP people, and Ruby programmers, and so on, who think that it's enough—and here I'm going to be antagonistic—who think it's enough to just do a search on something and just display it, or to take the list of&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/slash7/rss/~3/JTH01GGXD-s/jelly-talk-excerpt-1" rel="bookmark" target="_blank">Jelly! Talk Video from SXSW</a></h3>
+
+<div class="full-post">
+<div class="author">amy</div>
+<div class="published">24 Mar 2009 | 12:41 pm</div>
+<div class="entry-content">
+<div class="entry-bound">While at SXSW, Thomas &amp; I were invited to share a Jelly! talk with Naveen of FourSquare. Jelly! talks are put on by Yahoo! and Jelly!, the casual coworking movement. This one was held in the lovely Austin coworking space of Conjunctured. Here's a link to the video. The first half is Naveen talking about FourSquare, his new geo-game iPhone app, which is actually very interesting. I encourage you to listen to it (and watch me watch him) and try out the app if you're in a major metro area. The second half is me, talking about my mission to get in the face of people and challenge them to do&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/slash7/rss/~3/kQQ8ZzVpB0E/things-that-don-t-go-as-planned" rel="bookmark" target="_blank">Things that don't go as planned</a></h3>
+
+<div class="full-post">
+<div class="author">amy</div>
+<div class="published">14 Mar 2009 | 6:11 am</div>
+<div class="entry-content">
+<div class="entry-bound">Things that haven't gone as planned lately: Managing a beta book in PDF/InDesign format. D'oh on that one. It's taking a lot longer to update the book than I expected, because of the layout issues. And by "issue" I mean "my boneheaded decision to do the book in InDesign, even from the first beta." I'm sorry. I goofed. So, informal poll: would you guys rather get frequent small updates (e.g. a PDF of only the newest chapter), or a couple big updates (with the whole book)? Let me know. Answering ALL questions submitted for my QoTD But I WILL get to them. It will just take longer than I&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/slash7/rss/~3/8QRT1kGMX3w/why-we-need-interaction-designers-not-photoshop-jockeys" rel="bookmark" target="_blank">Why we need interaction designers, not Photoshop jockeys</a></h3>
+
+<div class="full-post">
+<div class="author">amy</div>
+<div class="published">13 Feb 2009 | 5:51 am</div>
+<div class="entry-content">
+<div class="entry-bound">This article came up on my linkdar recently: Future Practice Interview: Bill Scott . (I don't know why its title is so un-explanatory.) The interviewer (Lou Rosenfeld) talks to Bill Scott, who heads up "interface engineering" at Netflix. The $64,491 question Lou asks the driving question of the interview (from my viewpoint, anyway): "What do engineers wish designers understood?" And the answer is a longish bulleted list (go ahead—go read the interview), but heading up at number 1, Bill answers: The site is dynamic. Photoshop is static—the site is not. The site is dynamic in content,&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10606" class="feed-block d1b83c0f85c136363a338a72870e2179">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.softiesonrails.com/" target="_blank" class="snap_shots">Softies on Rails - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/SoftiesOnRails/~3/OXJ6lSXyatY/an-essential-rails-success-story-and-win-a-free-book" rel="bookmark" target="_blank">An Essential Rails success story (and win a free book)</a></h3>
+
+<div class="full-post">
+<div class="author">brian</div>
+<div class="published">3 Mar 2009 | 7:38 am</div>
+<div class="entry-content">
+<div class="entry-bound">Dan Woolley writes: I took your course in Chicago a couple of years ago &ndash; I think it was your first one. I finally left my comfy corporate job and went full time on Rails in July 2008. I recently released my first Rails app &ndash; Dwellicious (http://dwellicious.com). That is our free site for consumers that helps you organize, share, and discuss the search for homes for sale on the internet. Congrats, Dan. Dwellicious is beautifully designed, well executed, and yes, has a real business model. Are you a .NET developer who's turned to Rails? What's your success story? Link it up in the&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/SoftiesOnRails/~3/I4Wv--k0e5w/another-ruby-tip" rel="bookmark" target="_blank">Simplifying Your Ruby Code</a></h3>
+
+<div class="full-post">
+<div class="author">jeff</div>
+<div class="published">12 Feb 2009 | 10:12 am</div>
+<div class="entry-content">
+<div class="entry-bound">I used to write Ruby code like this a lot when I my brain was still half .NET. def is_ready? if self.status &gt; 3 return true else return false end end I see this all the time on the Rails mailing list. Would you be surprised to know that you can write the same method this way: def ready? self.status &gt; 3 end (I’d do away the the magic number “3” in favor of a constant, but I digress…) Notice two things: Methods that return a true/false indicator should end with a question mark. For more on this topic, see my other post on the topic of naming conventions in Ruby. Ruby uses the&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/SoftiesOnRails/~3/-kGe2TFpKJM/do-you-test-your-views" rel="bookmark" target="_blank">Do You Test Your Views?</a></h3>
+
+<div class="full-post">
+<div class="author">jeff</div>
+<div class="published">22 Jan 2009 | 5:45 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Those of you following me on twitter already know that I’m learning Cucumber. Traditionally I don’t test my views or controllers all that much. I know, I know, it’s heresy. But I’ve just never gotten much value from writing Rails functional tests nor integration tests. Yet those of you who have been reading my articles or new book know that I’ve been immersed in TDD for a long time and can’t imagine writing any application without a decent test suite to go with it. So what do I test? I test the models like no one’s business. I use test/unit or shoulda to drive the design of all&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/SoftiesOnRails/~3/G9aLzSCkPJQ/interviewed-on-infoq" rel="bookmark" target="_blank">Interviewed on InfoQ</a></h3>
+
+<div class="full-post">
+<div class="author">brian</div>
+<div class="published">13 Jan 2009 | 7:09 am</div>
+<div class="entry-content">
+<div class="entry-bound">We were recently interviewed by Rob Bazinet over at InfoQ about our book and how we got started with our careers working with Rails. I was learning Rails and using it for side-projects while working at my 9-to-5 .NET job for almost 2 years. I was shocked at how much of an immediate impact it had on how I thought about my .NET code. It definitely made me a better developer, and that in itself is reason enough to learn Ruby. Plus, as techies, we're easily distracted by new, shiny things. Also included is a complete sample chapter from our book (Chapter 2: Switching to Ruby), exclusive to InfoQ.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/SoftiesOnRails/~3/nhWpRytuQ0c/what-did-you-learn-in-2008" rel="bookmark" target="_blank">What Did You Learn In 2008?</a></h3>
+
+<div class="full-post">
+<div class="author">jeff</div>
+<div class="published">31 Dec 2008 | 9:26 pm</div>
+<div class="entry-content">
+<div class="entry-bound">I learned a lot of new things in 2008. Here are a few highlights I can think of: The REST concepts became crystal clear in early 2008. Later I wrote the REST 101 series which became one of our more popular series we’ve done on this blog, and then taught a workshop on it down in Austin, TX. (The next one is in Chicago, so sign up now to be notified when registration opens.) I hated, then learned, then loved Git. Learned how to write a book. I hated, then learned, then loved setting up my own VPS on Slicehost. Learned how to setup nginx with a Thin cluster to host Rails applications. Learned&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10607" class="feed-block bf5655350eef32841503894deea75022">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.zenspider.com/" target="_blank" class="snap_shots">Polishing Ruby</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.zenspider.com/2009/03/multi-environment-vlad-the-eas.html" rel="bookmark" target="_blank">Multi-Environment Vlad the Easy Way</a></h3>
+
+<div class="full-post">
+<div class="author">zenspider</div>
+<div class="published">24 Mar 2009 | 2:58 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Here is the clean and easy way to do multiple environments in vlad. Here is my deploy.rb: set :application, "proj" set :repository, "https://subversion/proj/trunk" task :beta do set :domain, "localhost" set :deploy_to, "/tmp/proj_beta" end task :dev do set :domain, "localhost" set :deploy_to, "/tmp/proj_dev" end task :prod do set :domain, "localhost" set :deploy_to, "/tmp/proj_prod" end By not specifying domain or deploy_to globally you force the use of an environment whenever you invoke a vlad task: % rake vlad:debug | egrep "(domain|deploy_to):" rake aborted! Please specify the deploy path&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.zenspider.com/2009/03/wanted-27-cute-little-puppies.html" rel="bookmark" target="_blank">WANTED: 27 cute little puppies need new homes</a></h3>
+
+<div class="full-post">
+<div class="author">zenspider</div>
+<div class="published">23 Mar 2009 | 3:57 pm</div>
+<div class="entry-content">
+<div class="entry-bound">autotest_screen made me happy. Someone much more interested in it took it over and gave it a good loving home. I want to do that with more of my stuff. I've got a lot of plugins for autotest and vlad that need to find good homes. In return for taking on a plugin I will: make you admin on the rubyforge project (so you can make official releases). gemify it for you. provide a home for it in my perforce repo (if you want). help you get set up to take it over. blog its release to announce its new home. Autotest Plugins: lib/autotest/camping.rb lib/autotest/cctray.rb lib/autotest/emacs.rb&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.zenspider.com/2009/03/autotest-screen-has-a-new-home.html" rel="bookmark" target="_blank">autotest_screen has a new home</a></h3>
+
+<div class="full-post">
+<div class="author">zenspider</div>
+<div class="published">20 Mar 2009 | 11:33 am</div>
+<div class="entry-content">
+<div class="entry-bound">I'm proud to announce that MIKAMI Youshiyuki has released autotest_screen 4.0.0 as a gem! He's extended it a lot since he took it over. If you use screen and autotest or autospec, you owe it to yourself to check this project out. sudo gem install autotest_screen</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.zenspider.com/2009/03/flay-version-121-has-been-rele.html" rel="bookmark" target="_blank">flay version 1.2.1 has been released!</a></h3>
+
+<div class="full-post">
+<div class="author">zenspider</div>
+<div class="published">16 Mar 2009 | 7:16 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Flay analyzes code for structural similarities. Differences in literal values, variable, class, method names, whitespace, programming style, braces vs do/end, etc are all ignored. Making this totally rad. Changes: 1.2.1 / 2009-03-16 3 minor enhancements: Added gauntlet_flay.rb Cached value of plugins loaded. Refactored and separated analysis phase from process phase 1 bug fix: Added bin dir to default dirs list in FlayTask http://ruby.sadi.st/ http://rubyforge.org/projects/seattlerb</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.zenspider.com/2009/03/flog-version-210-has-been-rele.html" rel="bookmark" target="_blank">flog version 2.1.0 has been released!</a></h3>
+
+<div class="full-post">
+<div class="author">zenspider</div>
+<div class="published">16 Mar 2009 | 6:59 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Flog reports the most tortured code in an easy to read pain report. The higher the score, the more pain the code is in. Changes: 2.1.0 / 2009-03-16 5 minor enhancements: Added --group to aggregate and sort by class scores. Added flog_task.rb Made -q default, removed -n. Made report output more readable and processable. Moved option processing from bin/flog to lib/flog.rb for better testing. 1 bug fix: removed extra attr_readers for total and average. doh http://ruby.sadi.st/ http://rubyforge.org/projects/seattlerb</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10609" class="feed-block 0f512a427c4440408b5653eade4ef021">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://feeds.feedburner.com/feeds/articles" target="_blank" class="snap_shots">BuildingWebApps Articles</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/buildingwebappsarticles/~3/hnzPodFAfQU/7082-enhancing-conditional-routing-in-rails" rel="bookmark" target="_blank">Enhancing Conditional Routing in Rails</a></h3>
+
+<div class="full-post">
+<div class="author">Christopher Haupt</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">Rails&#8217; routing infrastructure supports the concept of conditional routes: preconditions that must be satisfied before a particular route will trigger. Rails 2.1 supports one built-in condition, HTTP method checking, which is of some use but rather limited. What I needed was to be able to limit certain routes to only trigger when a particular host-name was used to access the application. I thought I&#8217;d have to write messy additional logic until a little comment tucked away in ActionController::Routing::RouteSet and ActionController::Routing::Routing caught my eye. Here I briefly&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/buildingwebappsarticles/~3/0elKjtV8mf8/6513-startup-camp-and-foo-camp" rel="bookmark" target="_blank">Startup Camp and Foo Camp</a></h3>
+
+<div class="full-post">
+<div class="author">Michael Slater</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">I feel lucky to have been able to attend last week&#8217;s Startup Camp and Foo Camp. These are unusual, invitation-only events, with extraordinary collections of people. Getting an invitation requires some mix of accomplishment, connections, and luck. They are exclusive events not for the sake of exclusivity, but because they only work at a limited size. O&#8217;Reilly Media, which hosts the events and foots the bill (there&#8217;s no registration fee), gets to pick the attendees from its diverse range of colleagues and contacts. Startup Camp This was the first-ever Startup Camp, created by&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/buildingwebappsarticles/~3/G3wnIIWTXxI/6455-setting-up-rails-on-tiger-mac" rel="bookmark" target="_blank">Setting up Rails on Tiger (Mac OS X 10.4)</a></h3>
+
+<div class="full-post">
+<div class="author">Christopher Haupt</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">This guide walks you through setup instructions for preparing a Mac OS X 10.4 (aka Tiger) development machine to be used for general Ruby on Rails coding. This baseline setup is what we use for our LearningRails online course. You will end up with a development machine with the following baseline components: Ruby and all basic Ruby utilities Ruby Gems package manager Subversion client Git client Native development tools (Xcode, C compiler) MacPorts native code package manager MySQL database client utilities and server Gems for Ruby on Rails, Capistrano, Mongrel, Mongrel Cluster, and MySQL&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/buildingwebappsarticles/~3/-vLrmc3qdmQ/6433-setting-up-rails-on-leopard-mac" rel="bookmark" target="_blank">Setting up Rails on Leopard (Mac OS X 10.5)</a></h3>
+
+<div class="full-post">
+<div class="author">Christopher Haupt</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">This guide walks you through setup instructions for preparing a Mac OS X 10.5 (aka Leopard) development machine to be used for general Ruby on Rails coding. This baseline setup is what we use for our LearningRails online course. You will end up with a development machine with the following baseline components: Ruby and all basic Ruby utilities Ruby Gems package manager Subversion client Git client Native development tools (Xcode, C compiler) MacPorts native code package manager MySQL database client utilities and server Gems for Ruby on Rails, Capistrano, Mongrel, Mongrel Cluster, and MySQL&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/buildingwebappsarticles/~3/VLq93QQSm4k/6509-podcasts-and-screencasts-on-ruby-on" rel="bookmark" target="_blank">Podcasts and Screencasts on Ruby on Rails</a></h3>
+
+<div class="full-post">
+<div class="author">Michael Slater</div>
+<div class="published"></div>
+<div class="entry-content">
+<div class="entry-bound">There&#8217;s a variety of screencasts and podcasts available for Ruby on Rails developers. Here&#8217;s a quick rundown of the major ones, and how they differ. Podcasts Audio podcasts are great for listening on the go, and for things such as news and interviews. Tutorial: Learning Rails Our own Learning Rails series consists of 8 podcasts that cover the fundamental concepts behind Ruby on Rails. People: Ruby on Rails Podcast The longest-running podcast in the Rails world is the &#8220;official&#8221; Ruby on Rails podcast, first created by Scott Barron but produced for most of its life by&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10610" class="feed-block adc69c6fec35ac3e99ba8295873f9d31">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://tumble.jarinudom.com/" target="_blank" class="snap_shots">jarin udom's tumblelog</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://tumble.jarinudom.com/post/87723912" rel="bookmark" target="_blank">cwninja's inaction_mailer at master - GitHub</a></h3>
+
+<div class="full-post">
+<div class="published">18 Mar 2009 | 4:52 pm</div>
+<div class="entry-content">
+<div class="entry-bound">cwninja's inaction_mailer at master - GitHub</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://tumble.jarinudom.com/post/87723915" rel="bookmark" target="_blank">Twibot: A microframework for Twitter bots in Ruby / Ruby - cjohansen.no</a></h3>
+
+<div class="full-post">
+<div class="published">18 Mar 2009 | 4:52 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Twibot: A microframework for Twitter bots in Ruby / Ruby - cjohansen.no</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://tumble.jarinudom.com/post/87663864" rel="bookmark" target="_blank">SD Ruby - We are San Diego's Ruby community.</a></h3>
+
+<div class="full-post">
+<div class="published">18 Mar 2009 | 1:50 pm</div>
+<div class="entry-content">
+<div class="entry-bound">SD Ruby - We are San Diego's Ruby community.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://tumble.jarinudom.com/post/87662123" rel="bookmark" target="_blank">SD Ruby - We are San Diego's Ruby community.</a></h3>
+
+<div class="full-post">
+<div class="published">18 Mar 2009 | 1:44 pm</div>
+<div class="entry-content">
+<div class="entry-bound">SD Ruby - We are San Diego's Ruby community.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://tumble.jarinudom.com/post/83564543" rel="bookmark" target="_blank">karmi's marley at master - GitHub</a></h3>
+
+<div class="full-post">
+<div class="published">4 Mar 2009 | 1:11 pm</div>
+<div class="entry-content">
+<div class="entry-bound">karmi's marley at master - GitHub</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10614" class="feed-block 5662deac48b8f0f7d5ac45c87715976b">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://railspikes.com/" target="_blank" class="snap_shots">Rail Spikes - Home</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RailSpikes/~3/iqIPyDrZwFc/slow-tests-are-a-bug" rel="bookmark" target="_blank">Slow tests are a bug</a></h3>
+
+<div class="full-post">
+<div class="author">Jon</div>
+<div class="published">10 Mar 2009 | 9:34 am</div>
+<div class="entry-content">
+<div class="entry-bound">I’ve been doing TDD for about three years now. Once I figured out how to do it right, it became a natural part of how I program, and I can’t really imagine doing development without it. This isn’t to say that TDD is the only approach to writing quality software or that unit testing it the only kind of testing that matters. But it sure is useful. The Ruby world talks a lot about TDD, moreso than many other developer communities. We have not one, not two, but at least half a dozen testing libraries that are actively being used and developed. For most Ruby developers, the question isn’t&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RailSpikes/~3/0cK-LtbTIqw/duplicate-key-violates-unique-constraint" rel="bookmark" target="_blank">Dealing with 'duplicate key violates unique constraint' on the primary key</a></h3>
+
+<div class="full-post">
+<div class="author">Luke Francl</div>
+<div class="published">5 Mar 2009 | 4:26 pm</div>
+<div class="entry-content">
+<div class="entry-bound">I recently had to work through a problem where inserts were failing due to duplicate primary keys. Here’s the error (edited for clarity): PGError: ERROR: duplicate key violates unique constraint "contracts_pkey": INSERT INTO "contracts" ('column_1', 'column_2', 'column_3') VALUES('abc', '123', 'xyz') RETURNING "id" What is going on here? I’m not even providing the primary key id—that comes from the sequence. Hey wait a second… What was happening is that we had a data import that didn’t use the sequence. So the integers returned by the sequence have already been used, causing a&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RailSpikes/~3/_Rj579d6F28/today-s-hard-won-lesson" rel="bookmark" target="_blank">Today's hard-won lesson</a></h3>
+
+<div class="full-post">
+<div class="author">Luke Francl</div>
+<div class="published">5 Mar 2009 | 10:49 am</div>
+<div class="entry-content">
+<div class="entry-bound">An float subtracted from an integer results in a float. When typecast by ActiveRecord, this is converted to an integer. validates_numericality_of with :only_integer =&gt; true results in a rather obscure error message if a non-integer is present (“is not a number”). validates_numericality_of uses the attribute value before type cast for its validation. That means if you calculate a value before validation, what is printed out by using the attribute method is different than what validates_numericality_of is using for validation. You need to ensure that the value of&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RailSpikes/~3/Lz6lTGLUWDQ/fetcher-moved-to-github" rel="bookmark" target="_blank">Fetcher moved to GitHub</a></h3>
+
+<div class="full-post">
+<div class="author">Luke Francl</div>
+<div class="published">15 Feb 2009 | 7:27 pm</div>
+<div class="entry-content">
+<div class="entry-bound">A quick FYI for those who have been using the Fetcher plugin that we wrote (and use on FanChatter Events)... I have moved the Fetcher plugin repository to GitHub. You can get it at git://github.com/look/fetcher.git Happy forking! (And a shameless plug for Mike Mondragon and my book: if you need more details about how to make your app speak email, look no further than Receiving Email with Ruby!)</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/RailSpikes/~3/x_F6g87smws/rescuing-autotest-from-a-conflicting-plugin" rel="bookmark" target="_blank">Rescuing autotest from a conflicting plugin</a></h3>
+
+<div class="full-post">
+<div class="author">Jon</div>
+<div class="published">14 Feb 2009 | 11:28 am</div>
+<div class="entry-content">
+<div class="entry-bound">For the longest time, I wasn’t able to run autotest on one of my projects. That was OK; I was intrigued by autotest, but had never really committed to it. The problem: whenever I would try to run autotest, I’d get the following error: loading autotest/rails_rspec Autotest style autotest/rails_rspec doesn't seem to exist. Aborting. I’m running Shoulda, not RSpec, so I had no idea why this was happening. I tried installing (and uninstalling) RSpec in various configurations, to no avail. Nothing worked. Then I started a new project. Autotest worked just fine on it. After a few days, I got&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10616" class="feed-block d8edb7ad4d7ede9cdab7a806f07b4016">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://blog.codefront.net" target="_blank" class="snap_shots">redemption in a blog</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.codefront.net/2009/03/24/im-still-alive-and-on-friendfeed-and-twitter/" rel="bookmark" target="_blank">I’m still alive, and on FriendFeed and Twitter</a></h3>
+
+<div class="full-post">
+<div class="author">Chu Yeow</div>
+<div class="published">24 Mar 2009 | 7:48 am</div>
+<div class="entry-content">
+<div class="entry-bound">Wow, it seems like I haven&#8217;t posted anything this year. Don&#8217;t worry, you aren&#8217;t rid of me yet. I&#8217;m still alive and posting updates to FriendFeed and (less often) to Twitter. If you belong to what I imagine must be now the microscopic population of loyal readers of my blog, please do hook up with me on FriendFeed or Twitter. I&#8217;ll follow you back if you&#8217;re a reader!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.codefront.net/2008/11/16/dragging-tab-to-a-new-window-coming-to-firefox/" rel="bookmark" target="_blank">Dragging tab to a new window coming to Firefox</a></h3>
+
+<div class="full-post">
+<div class="author">Chu Yeow</div>
+<div class="published">16 Nov 2008 | 6:15 am</div>
+<div class="entry-content">
+<div class="entry-bound">Completely by accident, I discovered that you can now drag a tab out from its current window to a new window in a recent Firefox nightly. A short video 24-second better explains what I&#8217;m talking about: This tab tearing capability is a pretty neat feature - I know you can already do this in Safari, Opera and Galeon. It&#8217;s really well done in Safari, which I think is what Firefox is emulating. Nice to see Firefox follow suit! If you can&#8217;t wait for Firefox 3.1, try it out in a recent Firefox nighty build (remember to use a new profile unless you are willing to risk corrupting&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.codefront.net/2008/09/10/optimize-firefoxs-memory-usage-by-tweaking-session-preferences/" rel="bookmark" target="_blank">Optimize Firefox’s memory usage by tweaking session preferences</a></h3>
+
+<div class="full-post">
+<div class="author">Chu Yeow</div>
+<div class="published">10 Sep 2008 | 5:57 am</div>
+<div class="entry-content">
+<div class="entry-bound">I&#8217;m a heavy tabbed browsing user - I have around 30 tabs open in my day-to-day Firefox profile all the time. Since the day Firefox 3 was released, I&#8217;ve noticed Firefox progressively getting slower with this particular Firefox profile (I use a different profile for web development). When it got to the point where changing tabs took a noticeable pause of 1-2 seconds, I tweaked some of Firefox&#8217;s session store and history preferences and now things are blazing fast again. Here&#8217;s what you can do: Go to about:config in Firefox. Type in &#8220;session&#8221; in the&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.codefront.net/2008/08/07/sass-with-rails-avoiding-disappearing-stylesheets-in-production/" rel="bookmark" target="_blank">Sass with Rails - avoiding disappearing stylesheets in production</a></h3>
+
+<div class="full-post">
+<div class="author">Chu Yeow</div>
+<div class="published">7 Aug 2008 | 6:57 am</div>
+<div class="entry-content">
+<div class="entry-bound">A few days ago I noticed that some of the pages on the Hotels app on wego.com were completely unstyled. They turned out looking rather Jakob Nielsen-istic: But we were attached to our ugly shade of green to leave those pages in their naked glory. Preliminary CSI work told me that some cached stylesheets generated by Rails were empty files. Why is this is happening? stylesheet_link_tag and the :cache option Was I overriding the stylesheets generated by Rails in different pages? Because we have a lot of cobranded sites and country sites on wego.com, I use the :cache option when using&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://blog.codefront.net/2008/06/28/reveal-currently-open-files-in-mac-os-x/" rel="bookmark" target="_blank">Reveal currently open files in Mac OS X</a></h3>
+
+<div class="full-post">
+<div class="author">Chu Yeow</div>
+<div class="published">27 Jun 2008 | 11:10 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Something I noticed completely by accident today when I clicked on the titlebar of QuickTime Player today with the Cmd key held down. The &#8220;titlebar&#8221; is this thing here - I&#8217;m not sure that&#8217;s the right name for it: Anyway, if you hold down the Cmd key (aka the Apple key), a menu pops up that shows the folder hierarchy of where the currently opened QuickTime movie is in your filesystem: This works in all Mac apps that display the filename of the currently open/focused file in the titlebar. It&#8217;s useful for me since my NADD means I try to close as many unused windows&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed10617" class="feed-block 6b8ed1d5ffd648b83ec2cd52d515a2cb">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.blogger.com/profile/06754261780924273552" target="_blank" class="snap_shots">Dead Programmer Society</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://deadprogrammersociety.blogspot.com/2009/03/lets-celebrate-female-side-of-tech.html" rel="bookmark" target="_blank">Let's Celebrate The Female Side Of Tech</a></h3>
+
+<div class="full-post">
+<div class="author">Ron Evans</div>
+<div class="published">24 Mar 2009 | 9:59 am</div>
+<div class="entry-content">
+<div class="entry-bound">It is Ada Lovelace Day today, and to support the women in technology, bloggers all over the world are celebrating the female side of tech. What do I mean? You may not know it from the throngs of hairy guys at tech events, but not only are there women in tech, they have done a lot to make YOUR life easier. Let's review a couple current ladies of technology that have been rocking my world.First of all, no mention of modern geek tech can even begin without another Ladyada, aka Limor Fried. As the proprietor of Adafruit, she has done a lot to make physical computing with Arduino and other cool&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://deadprogrammersociety.blogspot.com/2009/03/project-flying-robot-i-believe-i-can.html" rel="bookmark" target="_blank">Project Flying Robot: I Believe I Can Fly</a></h3>
+
+<div class="full-post">
+<div class="author">Ron Evans</div>
+<div class="published">21 Mar 2009 | 1:47 pm</div>
+<div class="entry-content">
+<div class="entry-bound">At long last, after many obstacles to be surmounted, yesterday we achieved liftoff. The blimp prototype "Rogue 1" of our flying_robot project to create a platform for Ruby Arduino Development powered Unmanned Aerial Vehicles has achieved an important milestone.After our third complete rewiring of the main circuit board, two burned out Pololu micro serial motor controllers, some time reviewing the schematics of the Blimpduino project, and too many revisions to the basic software to list here, we had finally gotten everything ready for what would hopefully be a successful flight test.There were&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://deadprogrammersociety.blogspot.com/2009/03/come-fly-with-us-at-los-angeles.html" rel="bookmark" target="_blank">Come Fly With Us At Los Angeles RubyConf 2009</a></h3>
+
+<div class="full-post">
+<div class="author">Ron Evans</div>
+<div class="published">17 Mar 2009 | 3:52 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Yes, the rumors are true, our talk for LARubyConf was accepted. If you want to see the first ever public live demonstration of flying_robot, the real thing, actually flying around and such, come check it out live and direct at the first Los Angeles Ruby Conference on April 4. I do yet not know exactly what our demo will include, but from what we have been doing so far in the lab, you won't want to miss this one. Unless what you get to witness is massive fail. Either way, it will be spectacular.Not to mention, there are some really excellent presentations happening. Actually useful stuff you&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://deadprogrammersociety.blogspot.com/2009/03/project-flying-robot-better-to-burn-out.html" rel="bookmark" target="_blank">Project Flying Robot: Better To Burn Out Than Fade Away?</a></h3>
+
+<div class="full-post">
+<div class="author">Ron Evans</div>
+<div class="published">15 Mar 2009 | 5:57 pm</div>
+<div class="entry-content">
+<div class="entry-bound">We had made incredible strides forward in our construction of "Rogue 1" our autonomous blimp that we are building as the first implementation of flying_robot, our Arduino-framework for Unmanned Aerial Vehicles based on top of Ruby Arduino Development (RAD). We are also heavily influenced by the cool Blimpduino project. We were finally ready for a live test... or so we thought. We inflated our envelope, and my brother attached the gondola that he has been carefully constructing.We had already done some testing of the software/hardware, so we were heady with our previous successes. "Let 'er&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://deadprogrammersociety.blogspot.com/2009/03/project-flying-robot-by-your-command.html" rel="bookmark" target="_blank">Project Flying Robot: By Your Command</a></h3>
+
+<div class="full-post">
+<div class="author">Ron Evans</div>
+<div class="published">10 Mar 2009 | 1:52 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Our flying_robot project for Unmanned Aerial Vehicles has been underway for a few weeks now. Much soldering, and playing around with cool Arduino tricks has been taking place. You can read more here, here, here, and here if you need to catch up.One aspect that I have mentioned several times, but not gotten into much detail about, is our protocol for communicating with the UAV from the ground station. It is amazing to me, but there is still no dominant digital protocol for controlling UAV's. Many people are this using analog radio controllers, with some kind of sideband channel for autopilot&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed10619" class="feed-block f8b72473df184d78b5f705c060ee3c6d">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.intridea.com/blog/company" target="_blank" class="snap_shots">Intridea - Company Blog</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feeds.intridea.com/~r/intridea/~3/2A-EeykZ084/presently-and-xmpp" rel="bookmark" target="_blank">Present.ly and XMPP</a></h3>
+
+<div class="full-post">
+<div class="author">Pradeep Elankumaran</div>
+<div class="published">25 Mar 2009 | 4:24 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Along with the launch of Presently.com, we quietly revamped the backend architecture of Present.ly to better use the eXtensible Messaging and Presence Protocol (XMPP) as the standard message delivery system. You may have noticed near-instant updates on the new web interface&#8212;this is primarily due to the super-fast messaging features of eJabberd, the XMPP server that Present.ly runs on. We believe that XMPP will play a bigger role powering dynamic, real-time web applications in the coming years and have previously blogged as such. While most people in the industry know of XMPP only in its&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feeds.intridea.com/~r/intridea/~3/IWdcRVg6Z-M/using-git-submodules-for-shared-rails-components" rel="bookmark" target="_blank">Using Git Submodules for Shared Rails Components</a></h3>
+
+<div class="full-post">
+<div class="author">Michael Bleigh</div>
+<div class="published">25 Mar 2009 | 9:20 am</div>
+<div class="entry-content">
+<div class="entry-bound">In some cases you may have the need to run multiple Rails applications with shared functionality. While Rails 3 promises to bring &#8220;mounting apps in apps&#8221; and the ability to make the whole process simple, for now we&#8217;re stuck in the real world. However, it is possible to share components. This post will walk you through how to set up shared components that live in multiple Rails applications at once and even run specs properly. A few notes before we begin: This post focuses on models but the same could be applied to controllers, views, and more. I use RSpec so the testing&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feeds.intridea.com/~r/intridea/~3/boRG4FmeKFI/presentlycom-twitter-meets-linkedin" rel="bookmark" target="_blank">Presently.com: Twitter Meets LinkedIn</a></h3>
+
+<div class="full-post">
+<div class="author">Joel Postman</div>
+<div class="published">24 Mar 2009 | 10:31 pm</div>
+<div class="entry-content">
+<div class="entry-bound">On March 14 at SXSW, we launched Presently.com, designed to be the first professional microblogging environment. The idea behind Presently.com is that we wanted to bring the best of microblogging and career/professional social networking into one environment. Think of it as Twitter meets LinkedIn. Twitter pioneered microblogging and its features, like 140-character status updates, followers/following lists, and direct messages have proven extremely popular with users, and the service is growing dramatically. LinkedIn provides a more professional focus, but lacks social features, and therefore&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feeds.intridea.com/~r/intridea/~3/CdOqM4gVd3I/twitter-auth-for-near-instant-twitter-apps" rel="bookmark" target="_blank">TwitterAuth: For Near-Instant Twitter Apps</a></h3>
+
+<div class="full-post">
+<div class="author">Michael Bleigh</div>
+<div class="published">23 Mar 2009 | 6:35 am</div>
+<div class="entry-content">
+<div class="entry-bound">The public beta of Twitter OAuth support has been released and I&#8217;m excited to introduce a new library that I&#8217;ve been working on called TwitterAuth. TwitterAuth is a Rails plugin that provides a full external authentication stack for Rails applications utilizing Twitter. Think of it as &#8220;Twitter Connect&#8221; for Rails, letting you create an application that may be logged into using only Twitter credentials. TwitterAuth supports both OAuth and HTTP Basic (though OAuth is certainly the recommended strategy) giving you maximum flexibility for building the application. Without&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feeds.intridea.com/~r/intridea/~3/5ieWu_wLguk/twitter-could-make-money-by-charging-per-follower" rel="bookmark" target="_blank">Twitter Could Make Money By Charging Per Follower</a></h3>
+
+<div class="full-post">
+<div class="author">Joel Postman</div>
+<div class="published">20 Mar 2009 | 12:49 pm</div>
+<div class="entry-content">
+<div class="entry-bound">It’s probably not a new idea, but amidst its rising popularity, and increasing speculation that Twitter might charge “commercial” users, I wonder if charging business users on a per-follower basis might be one way the service could make money. In the world of print, advertisers are charged on the basis of “impressions,” usually expressed in CPM (cost per thousand). It costs more to advertise in Wired than it does in Model Railroader. (No offense to model railroaders.) “But wait,” you say. “Isn’t everything online free?” (Of course not, but thank you for asking.) Online&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed14514" class="feed-block e52126feaea3053861d3f03556cae002">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://elctech.com/" target="_blank" class="snap_shots">ELC Code Feed</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/ElcCodeFeed/~3/OpfO8MsUL7g/map-resources-as" rel="bookmark" target="_blank">Map resources as</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">24 Mar 2009 | 7:34 pm</div>
+<div class="entry-content">
+<div class="entry-bound">If you have a two-word resource name ie. "topic areas" by default you'll have URL's like: http://forum.example.com/topic_areas/general-discussion, which is not very pretty since dashes are mixed with underscores. Fortunately, there's a handy option :as that lets you name URL of resources any way you like, regardless of their name used in code to specify paths. This is extremely useful for non-English sites but also for this case: map.resources topic_areas, as =&gt; topic-areas</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/ElcCodeFeed/~3/TBgCMe25ML4/polyparent---dry-nested-routes" rel="bookmark" target="_blank">PolyParent - DRY nested routes</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">23 Mar 2009 | 3:53 am</div>
+<div class="entry-content">
+<div class="entry-bound">PolyParent PolyParent is a plugin designed to help DRY up your controllers and views for polymorphic objects. In other words you want both these URLs to map to the same controller action: customers123phone_numbersnew customers123locations321phone_numbersnew You start out with a PhoneNumber model that you associate to both your Customer and Location models (through a polymorphic association) with Location nested below Customer like so: map.resources customers do |customers| customers.resources locations end To make both URLs map to the same controller action you modify the above to become:&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/ElcCodeFeed/~3/1V6ujWW5bto/mysql-server-has-gone-away" rel="bookmark" target="_blank">MySQL server has gone away</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">19 Mar 2009 | 8:12 pm</div>
+<div class="entry-content">
+<div class="entry-bound">MySQL, wherefore art thou? We're working on a Rails application with "a lot" of moving parts, and after upgrading to Rails 2.2.2, we started getting a lot of these errors: &quot;Mysql::Error: MySQL server has gone away&quot; Rails 2.3 was already out, so we decided to jump on 2.3 and cross our fingers that the MySQL error would go away. The bonus being that we get nested forms, and tons of other goodies associated with the 2.3 changeset. So, I start running some of the complex processes, and the problem persists! &quot;Mysql::Error: MySQL server has gone away&quot; So, deciding I should RTFM,&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/ElcCodeFeed/~3/s7_c4EVOBqM/rails-2-3-2-param-issue-beware-the-tag" rel="bookmark" target="_blank">Rails 2.3.2 Param Issue... Beware the Tag!</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">19 Mar 2009 | 7:35 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Beware the 2.3.2 Tag! Had an issue with my params being incorrect, and found this ticket. Moral of the story... don't use the Git Tag v2.3.2 right now, it's broken. The gem is being built from the correct source however. What's the solution? Use the gem, or, use the latest Tag: cd vendorrails git co v2.3.2.1</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://feedproxy.google.com/~r/ElcCodeFeed/~3/KKhD2Rb_tKo/cloning-activerecord-associations" rel="bookmark" target="_blank">Cloning ActiveRecord Associations</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">18 Mar 2009 | 9:18 pm</div>
+<div class="entry-content">
+<div class="entry-bound">I have an instance of an Table, that has 4 associated Legs.I want to create an exact replica of this Table, and its Legs. Let's see what we can do: &gt;&gt; table Table.create({wood =&gt; Rimu, size =&gt; Large}) &gt;&gt; 4.times { table.legs.create({wood =&gt; Rimu, length =&gt; Medium}) } Great, now let's create the replica: &gt;&gt; replica_table Table.new &gt;&gt; replica_table.attributes table.attributes &gt;&gt; replica_table =&gt; &lt;Table id: nil, wood: &quot;Rimu&quot;, size: nil, created_at: nil&gt; Hmm... this isn't going to work very well. Why? The Awesome Archaeopteryx (which&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div><ul id="feed24714" class="feed-block 58f5f2ac2c7135afa9a055ade972afd6">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://joshhuckabee.com" target="_blank" class="snap_shots">Josh Huckabee</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://joshhuckabee.com/march-phoenix-drupal-meetup" rel="bookmark" target="_blank">March Phoenix Drupal Meetup</a></h3>
+
+<div class="full-post">
+<div class="author">jhuckabee</div>
+<div class="published">3 Mar 2009 | 9:29 am</div>
+<div class="entry-content">
+<div class="entry-bound">The March Phoenix Drupal meetup will be held next Tuesday, March 10th at 7pm. The meetup is moving on to the ASU campus thanks to the help of Chris Yates. Event details can be found on the DrupalPHX group page. Chris will be giving a presentation about the Mars Image Explorer project and how they are utilizing Drupal within that project. There's also been mention of DrupalCon attendees sharing a bit about what went on at the conference. Hope you all can make it.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://joshhuckabee.com/phoenix-metro-drupal-meetup-next-tuesday" rel="bookmark" target="_blank">Phoenix Metro Drupal Meetup Next Tuesday</a></h3>
+
+<div class="full-post">
+<div class="author">jhuckabee</div>
+<div class="published">3 Feb 2009 | 11:24 am</div>
+<div class="entry-content">
+<div class="entry-bound">There will be a Phoenix Drupal meetup next Tuesday evening at Macayo's in Tempe. See official event details and sign up HERE. This meeting is a chance for local Drupal developers to get together and discuss what's going on in their Drupal world and Drupal in general. While we are working on a more presentation friendly meeting spot for future meetups, this will give us a chance to at least meet and gauge community interest level. Hope to see you there!</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://joshhuckabee.com/getting-started-exhibit-using-drupal-and-views-part-3" rel="bookmark" target="_blank">Getting Started with Exhibit using Drupal and Views (part 3)</a></h3>
+
+<div class="full-post">
+<div class="author">jhuckabee</div>
+<div class="published">31 Dec 2008 | 12:07 pm</div>
+<div class="entry-content">
+<div class="entry-bound">In this last episode of getting started with Exhibit and Drupal, we'll embellish the Exhibit we created in part 2 by adding some additional views, exploring the use of lenses and expressions, and adding another facet. Our final Exhibit can be seen here. Adding Views to your Exhibit So the first thing we'll do is add several additional views to our Exhibit. The tabular view is nice and provides some great functionality, but Exhibit provides some additional views that are great at visually enhancing the way your data is displayed. We'll start by adding a calendar view. To do this you'll need&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://joshhuckabee.com/getting-started-exhibit-using-drupal-and-views-part-2" rel="bookmark" target="_blank">Getting Started with Exhibit using Drupal and Views (part 2)</a></h3>
+
+<div class="full-post">
+<div class="author">jhuckabee</div>
+<div class="published">15 Dec 2008 | 8:52 am</div>
+<div class="entry-content">
+<div class="entry-bound">Ok, now that we know a bit about Exhibit and how Drupal can help us create Exhibits, let's start by getting our Drupal data in Exhibit JSON format. Setup The setup I'm using for this tutorial includes a Drupal 6 installation with the following modules enabled: Exhibit, Views 2, CCK, Date, Location, and GMap. I'm only using CCK, Date, Location and GMap to create a custom Event node type with date and location fields. I've also added taxonomies to the Event node type for event type and tags. You can create your own node type and add whatever fields you would like. I'm using this setup to&hellip;</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://joshhuckabee.com/getting-started-exhibit-using-drupal-and-views-part-1" rel="bookmark" target="_blank">Getting Started with Exhibit using Drupal and Views (part 1)</a></h3>
+
+<div class="full-post">
+<div class="author">jhuckabee</div>
+<div class="published">13 Dec 2008 | 1:17 pm</div>
+<div class="entry-content">
+<div class="entry-bound">In this multi-part tutorial I will show you how to create interactive Exhibit displays of you Drupal data using the Views, CCK, and Exhibit modules. I'll start with a brief overview of Exhibit and how it works, then move on to explain how to get your Drupal data in a format that Exhibit can use, and finally, I'll show you how to setup the Exhibit. If you're already familiar with how Exhibit works, you'll probably want to wait for part two of this series. What is Exhibit? Exhibit allows you to create interactive data-rich web pages with faceted browsing capabilities. The original intent of&hellip;</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed32782" class="feed-block ba02aae7046ac3b7cf967cc15c90a1c2">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://www.rubyology.com/" target="_blank" class="snap_shots">Rubyology</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://rubyology.s3.amazonaws.com/rubyology-77-high.mp3" rel="bookmark" target="_blank">Rubyology 77: Ruby In The Enterprise, Part 2</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">8 Mar 2009 | 3:22 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Interview with University of Phoenix Senior Software Engineer Aaron K. Hawkins. Enhanced AAC Version</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://rubyology.s3.amazonaws.com/rubyology-76-high.mp3" rel="bookmark" target="_blank">Rubyology 76: Roundtable 3</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">7 Mar 2009 | 2:36 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Sinatra webapps and Ruby micro-frameworks. Ruby conference recommendations. Safari 4 Beta, HTML 5 and CSS 3. Participants: Marc Chung, Ben Smith, remi Taylor, Saul Mora, and Preston Lee. (OpenRain Ruby Ninjas) Enhanced AAC Version Google Group</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://rubyology.s3.amazonaws.com/rubyology-75-high.mp3" rel="bookmark" target="_blank">Rubyology 75: Ruby In The Enterprise, Part 1</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">27 Feb 2009 | 4:21 pm</div>
+<div class="entry-content">
+<div class="entry-bound">The first in a new series of "enterprise" Ruby developer interviews. Host: Preston Lee, OpenRain Software Guest: Scott Barber, iMemories Guest: Tomasz Stechly, "Large International Bank" Production: 2009.02.25.13.30 Release: 2009.02.27.18.00 Runtime: 21:50.</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://rubyology.s3.amazonaws.com/rubyology-74-high.mp3" rel="bookmark" target="_blank">Rubyology 74: Ruby Roundtable 2</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">24 Feb 2009 | 8:05 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Roundtable discussion on Ruby web application scalability and source control trends in the Ruby community. Participants: Preston Lee, remi Taylor, Saul Mora. Episodes are now in high-quality stereo and alternatively available in enhanced AAC with as-they-happen links. http://rubyology.s3.amazonaws.com/rubyology-74-high.m4a Episodes download speeds should now be greatly improved. Show notes: http://groups.google.com/group/rubyology/browse_frm/thread/68be10d1b4478281</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://rubyology.com/mp3s/rubyology73.mp3" rel="bookmark" target="_blank">Rubyology 73: Ruby Roundtable</a></h3>
+
+<div class="full-post">
+<div class="author"></div>
+<div class="published">8 Feb 2009 | 9:25 am</div>
+<div class="entry-content">
+<div class="entry-bound">The cool Ruby hackers from OpenRain (http://OpenRain.com) forwarded us a recording from their recent Ruby developer roundtable. If you are interested Javascript and Rails, you'll love this episode! UPDATE: You can now contribute to the Rubyology podcast by participating in supplementary discussion, sharing relevant links, giving show feedback and suggesting Ruby-related topics for future episodes by joining the new Rubyology Google Group.</div>
+</div>
+</div>
+
+</li>
+</ul><ul id="feed33442" class="feed-block 3d723a28a1e34cd3013c07bf476ce7d2">		<li class="site">
+<div class="add-feed"><img src="/images/added-my.gif" alt="added to my.Alltop" class="added-feed-my" style="display:none" /><a href="#" class="add-feed-my" title="add this feed to my.Alltop"><img src="/images/add-my.gif" alt="add this feed to my.Alltop" /></a></div>
+<a href="http://kairichardkoenig.de" target="_blank" class="snap_shots">Kai Richard K�nig</a>
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://kairichardkoenig.de/2009/03/25/tweets-on-2009-03-25/" rel="bookmark" target="_blank">Tweets on 2009-03-25</a></h3>
+
+<div class="full-post">
+<div class="author">admin</div>
+<div class="published">25 Mar 2009 | 2:59 pm</div>
+<div class="entry-content">
+<div class="entry-bound">The wait is over. Measure your online popularity right now on http://www.epenis.nl! #</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://kairichardkoenig.de/2009/03/17/what-a-glorious-day-555555/" rel="bookmark" target="_blank">What a glorious day … 55555</a></h3>
+
+<div class="full-post">
+<div class="author">admin</div>
+<div class="published">17 Mar 2009 | 7:16 am</div>
+<div class="entry-content">
+<div class="entry-bound"></div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://kairichardkoenig.de/2009/03/06/watermarking-images-with-paperclip-in-rails/" rel="bookmark" target="_blank">Watermarking images with paperclip in Rails</a></h3>
+
+<div class="full-post">
+<div class="author">admin</div>
+<div class="published">5 Mar 2009 | 3:39 pm</div>
+<div class="entry-content">
+<div class="entry-bound">So here we are again ! This time i&#8217;ll show you how to add a watermark to a uploaded file. The file will be uploaded with Paperclip and attached to a ActiveRecord class. Also the watermark will be a 24 Bit PNG image with an alpha channel, something like this. The sample-app will be running with RubyOnRails 2.2.2. You [...]</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://kairichardkoenig.de/2009/02/24/ruby-mixings-as-shown-on-cars/" rel="bookmark" target="_blank">Ruby mixins as shown on cars</a></h3>
+
+<div class="full-post">
+<div class="author">admin</div>
+<div class="published">24 Feb 2009 | 11:22 am</div>
+<div class="entry-content">
+<div class="entry-bound">Hey, so the next few paragraphs are about the pratical aspects of using ruby mixings. I wont go into the concepts behind this technique as it has been done be serval other excellent programmers. You may take a look at Jay Fields tutorial on Ruby extend and include another good article about Ruby Mixings by Juxie [...]</div>
+</div>
+</div>
+
+</li>
+<li class="hentry">
+<h3 class="entry-title"><a href="http://kairichardkoenig.de/2009/02/13/quickie-blogo/" rel="bookmark" target="_blank">Quickie: Blogo</a></h3>
+
+<div class="full-post">
+<div class="author">admin</div>
+<div class="published">13 Feb 2009 | 12:04 pm</div>
+<div class="entry-content">
+<div class="entry-bound">Today i stumbled upon a desktop blogging software called Blogo that is both elegant and easy to use. I am using it right now. But with all good things there comes the price. Blogo costs 25 bucks but that seems to be worth it. So check it out ! cheers Kai Richard König</div>
+</div>
+</div>
+
+</li>
+</ul><div class="row-clear">&nbsp;</div>
+</div>
+
+
+
+<div id="footer" class="clearfix">
+	<p class="copyright">&copy; 2009 Nononina, Inc. All Rights Reserved.</p>
+	
+	<p class="navigation">
+		<a href="http://alltop.com/about/">About</a> &middot; 
+		<a href="http://alltop.com/advertising/">Advertising</a> &middot; 
+		<a href="http://alltop.com/submission/">Submissions</a> &middot; 
+		<a href="http://alltop.com/contact-us/">Contact Us</a> &middot; 
+		<a href="http://blog.alltop.com/">Blog</a> &middot; 
+		<a href="http://alltop.com/goodies/">Goodies</a> &middot; 
+		<a href="http://alltop.com/legal/" rel="nofollow">Legal</a>
+	</p>
+	
+	<p class="site-credits">Inspired by <a href="http://popurls.com">popurls</a> &middot; 
+	Site by <a href="http://electricpulp.com" rel="cool">Electric Pulp</a>
+	</p>
+</div>
+<!-- FM Tracking Pixel -->
+<script type='text/javascript' src='http://static.fmpub.net/site/alltop'></script>
+<!-- FM Tracking Pixel -->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1701157-4");
+pageTracker._setDomainName(".alltop.com");
+pageTracker._trackPageview();
+pageTracker._trackEvent('Alltop-Category', 'tech');
+} catch(err) {}</script>
+
+<script type="text/javascript" charset="utf-8">
+	window.addEvent('load', function(){
+		$$('a').each(function(el){
+			el.addEvent('click', function(e){
+				if (!el.href.match(/alltop\.com/i) && el.href.match(/^https?:\/\/(www\.)?/i)) {
+					var offlink = el.href.replace(/^https?:\/\/(www\.)?/i, '');
+					pageTracker._trackPageview('/outgoing/'+offlink);
+				}
+			});
+		});
+	});
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={
+qacct:"p-2bN4gyxORyvnw"
+};
+</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-2bN4gyxORyvnw.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script type="text/javascript" src="http://alltop.com/pageload.php?topic_id=46"></script>
+
+</body>
+</html>

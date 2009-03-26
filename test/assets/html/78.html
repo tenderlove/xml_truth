@@ -1,0 +1,277 @@
+ 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<title>Introduction to the Truveo Ruby API - Truveo Developer Center</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<link href="Assets/CSS/aolovs.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<table class="basicTable" border=0 cellpadding=0>
+<tr>
+
+<table border=0 cellpadding=0 cellspacing="0" width="970" style="border:1px solid #000000" align="center"> 	
+<tr>
+  <td style="color:#FFFFFF;padding-right:20px;background:#305e82;padding-top:10px" class="login" align="right" colspan="2">
+					You are not logged in.&nbsp;
+			<span class="loginlink">
+				<a href="http://developer.truveo.com//apicall.php?method=truveo.users.login&callback_url=http%3A%2F%2Fdeveloper.truveo.com%2Finitsession.php%3Fcallback_url%3D%2FRubyAPIOverview.php"><b>Log In</b></a>
+			</span>
+			</td>
+</tr>
+<tr>
+<td id="logoBg" style="padding-bottom:28px" align="left">
+<a href="http://www.truveo.com"><img src="http://developer.truveo.com/Assets/images/t_bl_dev.gif" alt="Truveo" title="Truveo" border=0/></a>
+</td>
+<td id="titleBg" style="padding-bottom:28px;color:#ffffff" align="left">
+<div id="title">Developer Center</div>
+</td>
+</tr>
+</table>
+
+</td></tr>
+<tr><td>
+<table border=0 cellpadding=0 cellspacing="0" width="970" align="center">
+<tr>
+<td id="leftColumn">
+
+<table class="basicTable" border=0 cellpadding=0>
+
+<tr>
+<td class="menuPanel" > 
+<div class="menuHeader">Truveo Developer Center</div>
+<div class="menuLink"><a href="http://developer.truveo.com/index.php">Home</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/OpenAPIOverview.php">Video Search API Overview</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/DirectorAccountsOverview.php">Director Account Overview</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/ApplicationGallery.php">Application Gallery</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/CoverageStudy/index.php">Video Coverage Study</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/TopCoder2008.php">Top Coder 2008</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/RecentArticles.php">Recent Articles</a></div>
+<div style="padding-top:8px;"></div>
+<div style="border-top:1px dashed #2e4778"></div>
+</td>
+</tr>
+<tr><td class="menuPanel">
+<div class="menuHeader" style="padding:6px 10px 0px 10px">Truveo&nbsp;Video&nbsp;Search&nbsp;APIs</div>
+<div class="menuLink"><a href="http://developer.truveo.com/APIMyAccount.php">My API Account</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/OpenAPIOverview.php">Video Search API Overview</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/SearchQueryOverview.php">Building Search Queries</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/RESTAPIOverview.php">XML API Introduction</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/RESTAPIAuthSpec.php">XML API Authentication</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/RESTAPIDocumentation.php">XML<em></em> API Reference</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/AJAXAPIOverview.php">AJAX API Introduction</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/AJAXAPIDocumentation.php">AJAX API Reference</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/FlashAPIOverview.php">Flash API Introduction</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/FlashAPIDocumentation.php">Flash API Reference</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/RubyAPIOverview.php">Ruby API Introduction</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/apps/rubyAPI/doc/index.html">Ruby API Reference</a></div>
+<div class="menuLink" style="padding-bottom:8px"><a href="http://developer.truveo.com/APITerms.php">Terms of Use</a></div>
+<div style="border-top:1px dashed #2e4778"></div>
+</td></tr>
+<tr><td class="menuPanel">
+<div class="menuHeader" style="padding:6px 10px 0px 10px">Truveo Director Accounts</div>
+<div class="menuLink"><a href="http://developer.truveo.com/DirectorMyAccount.php">My Director Account</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/DirectorAccountsOverview.php">Director Account Overview</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/DirectorDocumentation.php">Creating a Media RSS Feed</a></div>
+<div class="menuLink"><a href="http://developer.truveo.com/DirectorFAQ.php"><nobr>Frequently Asked Questions</nobr></a></div>
+<div class="menuLink" style="padding-bottom:8px"><a href="http://developer.truveo.com/DirectorAccountTerms.php">Terms of Use</a></div>
+<div style="border-top:1px dashed #2e4778"></div>
+</td></tr>
+
+</table>
+
+</td>
+<td id="rightColumn">
+<table class="basicTable" border=0 cellpadding=0>
+<tr>
+<td id="pageBody">
+<!-- The text contained in the page body goes here. -->
+
+
+<div class="h1" id="introduction_to_the_truveo_ruby_api">Introduction to the Truveo Ruby API</div>
+
+<div class="spacer"></div>
+<div class="bodyText">The Ruby API allows developers to access the Truveo search engine using programs written in Ruby. (This is a pure Ruby implementation,
+not tied to Ruby on Rails.) Using this API, developers can build a variety of custom applications that feature video search results and
+functionality. The Truveo Ruby API is designed to work with version 1.8 of Ruby.</div>
+
+<div class="h2" id="accessing_the_api">Accessing the API</div>
+
+<div class="bodyText">To gain access to the Truveo Ruby API, you must first set up an API account. To create a new API account or view your existing API
+account, please consult the <a href="APIMyAccount.php">My API Account</a> page. When you first
+create a new API account, you will be assigned a unique key, or Application ID. This Application ID is a string that uniquely identifies
+your organization&#8217;s application and authorizes it to access the Truveo video search index.</div>
+
+<div class="h2" id="getting_started_using_the_ruby_api">Getting Started Using the Ruby API</div>
+
+<div class="bodyText">To start using the API in your Ruby application, you will first need to include the <span class="inlineCode">truveo.rb</span> file into your application. To do this,
+first download the latest version of the <a href="http://developer.truveo.com/apps/rubyAPI/lib/truveo.rb"><span class="inlineCode">truveo.rb</span></a> file and place the file in the same
+directory as your Ruby program (or in a directory that is in your current include path). You then add the <strong><span class="inlineCode">require 'truveo'</span></strong> line to
+the beginning of your Ruby program.  This will give you access to two Ruby classes, <strong><span class="inlineCode">Truveo</span></strong> and <strong><span class="inlineCode">TruveoResponse</span></strong>.  The <span class="inlineCode">Truveo</span> class provides an interface to the video search methods while the <span class="inlineCode">TruveoResponse</span> class is a container that is returned from calls to the Truveo search methods.</div>
+
+<div class="bodyText">Here&#8217;s a simple example program. This program will create a Truveo object using your application id. It then calls the <span class="inlineCode">get_videos()</span> method to find videos that match the query <em>funny</em>. The <span class="inlineCode">get_videos()</span> call returns a <span class="inlineCode">TruveoResponse</span> object. One member of the <span class="inlineCode">TruveoResponse</span> object is the <span class="inlineCode">video_set</span> array.</div>
+
+<div class="code">require 'truveo'<br>
+
+t = Truveo.new("app_id")     # &lt;--- add your appid here<br>
+res = t.get_videos("funny")
+<br><br>
+res.video_set.each{|v| puts v['title'] }
+</div>
+
+<div class="bodyText">The output from this program will vary because our search index is constantly changing, but the output will look something like this:</div>
+
+<div class="code">Cat Attacks Toy Cat<br>
+Baby Eats A Lemon<br>
+Hot Intern Will Get You Fired<br>
+Caged Monkey vs. Dog<br>
+100 Ton Bomb<br>
+Finger Licking Kitty<br>
+Daily Show: Steve Carell<br>
+Biggins Ball Strikes Back<br>
+Station Wagon Car Jump<br>
+The Impotence of Proofreading<br>
+</div>
+
+<div class="bodyText">The first parameter to the <span class="inlineCode">get_videos()</span> call is the query string. The syntax of the query string is documented in
+the <a href="SearchQueryOverview.php">Building Search Queries</a> section, but
+essentially you include query terms, filters, and sorters as part of the query string. There are other parameters to <span class="inlineCode">get_videos()</span>
+which control the number and type of results to return. The full documentation for <span class="inlineCode">get_videos()</span> and the entire
+Truveo API can be found in the <a href="http://developer.truveo.com/apps/rubyAPI/doc/index.html">RDoc Documentation</a>.</div>
+
+<div class="bodyText">The <span class="inlineCode">TruveoResponse</span> object is returned from the <span class="inlineCode">get_videos()</span> call (and a few other calls). It is a container normally chock full of information returned from your query. As shown above, the <span class="inlineCode">video_set</span> array contains an array of videos in the order returned by Truveo. Each element of the <span class="inlineCode">video_set</span> is a <span class="inlineCode">Hash</span> of all the metadata we have for that video. As shown above, <span class="inlineCode">v['title']</span> is the title of the video. You can access all the metadata fields just like you access any Ruby hash. For example, you can print all the metadata fields and their corresponding values like this:</div>
+
+<div class="code">v.each_pair{|k,v| puts "Field: #{k} \t Value: #{v}"}</div>
+
+<div class="bodyText">By default the <span class="inlineCode">get_videos()</span> call returns up to ten results in the <span class="inlineCode">video_set</span> array, as a member of the TruveoResponse object. If you want to retrieve the next set of results, you can pass in a start parameter, indicating which result you would like to start with, allowing you to page through the results 10 items at a time up. The <span class="inlineCode">get_videos()</span> will return up to the first 1,000 results that match a query.</div>
+
+<div class="bodyText">The TruveoResponse object also supports an <span class="inlineCode">each</span> method, allowing you to iterate through the results the Ruby way. For instance, the following line of code will print out all the titles for all the videos that match the query, up to 1,000 results if the total number of results is over 1,000.</div>
+
+<div class="code">res.each{|v| puts v['title']}</div>
+
+<div class="bodyText">The <span class="includeCode">TruveoResponse</span> object also has a number of other attributes, described in the <a href="http://developer.truveo.com/apps/rubyAPI/doc/index.html">full documentation</a>.</div>
+
+
+
+
+
+<!-- The text contained in the page body ends here. -->
+</td>
+</tr>
+</table>
+</td>	
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<table class="footerBox" align="center">
+<tr>
+<td>
+<table cellpadding="1" cellspacing="0" width="810" border="0" align="center" style="margin-top:12px; margin-left:80px;">
+
+<tr>
+  <td class="footerHdr" width="132">
+     <strong>Help</strong></td>
+  <td class="footerHdr" width="113">
+    <strong>Company Info</strong></td>
+   <td class="footerHdr" width="155">
+     <strong>Developer Resources</strong></td>
+   <td class="footerHdr" width="200">
+     <strong>Video Publisher Resources</strong></td>
+   <!--<td class="footerHdr" width="190" colspan="2">
+     <strong>Try Our International Versions</strong></td>-->
+</tr>
+<tr>
+  <td>
+    <a href="http://developer.truveo.com/SearchQueryOverview.php">Building Queries</a></td>
+  <td>
+    <a href="http://www.truveo.com/about.php">About Truveo</a></td>
+  <td>
+    <a href="http://developer.truveo.com/">Developer Center</a></td>
+  <td>
+    <a href="http://developer.truveo.com/DirectorAccountsOverview.php">Truveo Director Accounts</a></td>
+  <!--<td width="50"><a href="">English</a></td>
+  <td width="97"><a href="">Francais</a></td>-->
+</tr>
+<tr>
+  <td><a href="http://developer.truveo.com/BasicSearches.php">Basic Searching</a></td>
+  <td><a href="http://www.truveo.com/press.php">Press</a></td>
+  <td><a href="http://developer.truveo.com/OpenAPIOverview.php">Truveo API Overview</a></td>
+  <td><a href="http://developer.truveo.com/DirectorDocumentation.php">Submitting A Feed Using Media RSS</a></td>
+  <!--<td colspan="2"><a href="">&nbsp;</a></td>-->
+</tr>
+<tr>
+  <td><a href="http://developer.truveo.com/UsingModifiers.php">Using Modifiers</a></td>
+  <td><a href="http://www.truveo.com/team.php">Team</a></td>
+  <td><a href="http://developer.truveo.com/RESTAPIOverview.php">XML API</a></td>
+  <td><a href="http://developer.truveo.com/DirectorFAQ.php">Director Account FAQ</a></td>
+  <!--<td colspan="2"><a href="">&nbsp;</a></td>-->
+</tr>
+ <tr>
+   <td><a href="http://developer.truveo.com/UsingFilters.php">Using Filters</a></td>
+   <td><a href="http://www.truveo.com/jobs.php">Jobs</a></td>
+   <td><a href="http://developer.truveo.com/AJAXAPIOverview.php">AJAX API</a></td>
+   <td>&nbsp;</td>
+   <!--<td colspan="2">&nbsp;</td>-->
+</tr>
+<tr>
+  <td><a href="http://developer.truveo.com/UsingSorters.php">Using Sorters</a></td>
+  <td><a href="http://www.truveo.com/contact.php">Contact Us</a></td>
+  <td><a href="http://developer.truveo.com/FlashAPIOverview.php">Flash API</a></td>
+  <td>&nbsp;</td>
+  <!--<td colspan="2">&nbsp;</td>-->
+</tr>
+<tr>
+  <td><a href="http://developer.truveo.com/AdvancedSearches.php">Advanced Searching</a></td>
+  <td><a href="http://about.aol.com/aolnetwork/aolcom_terms/">Terms of Use</a></td>
+  <td><a href="http://developer.truveo.com/RubyAPIOverview.php">Ruby API</a></td>
+  <td>&nbsp;</td>
+  <!--<td colspan="2">&nbsp;</td>-->
+</tr>
+<tr>
+   <td>&nbsp;</td>
+   <td><a href="http://about.aol.com/aolnetwork/aol_pp">Privacy Policy</a></td>
+   <td><a href="http://developer.truveo.com/ApplicationGallery.php">Application Gallery</a></td>
+   <td>&nbsp;</td>
+   <!--<td colspan="2">&nbsp;</td>-->
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td><a href="http://www.truveo.com/adultFAQ.php">Adult FAQ</a></td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <!--<td colspan="2">&nbsp;</td>-->
+</tr>
+</table>
+<table width="830" align="center">
+<tr>
+  <td colspan="6">
+  <br>
+  <div align="center" style="width:880px;color:#000000;font-size:10px">
+   Truveo video search lets you search and find videos from across the Web.  Use Truveo to find all types of online video including hit television shows, full-length movies, breaking news clips, sports highlights, music videos, or the latest viral videos.  If you are looking for a specific video, Truveo video search can help you find exactly the video you want.  Truveo can also help you browse through video across the web and discover new videos that you might like.
+   <br><br>
+    &copy;2004-2007 Truveo, Inc. All Rights Reserved.
+<br><br>
+</div>
+</tr>
+</table></td>
+</tr>
+</table>
+
+<script type="text/javascript">
+  var s_account="aoltruveodeveloper,aolsvc";
+</script>
+<script type="text/javascript" src="http://o.aolcdn.com/omniunih.js"></script>
+<script type="text/javascript">
+  <!--
+  s_265.pfxID="trd";
+  s_265.pageName=s_265.pfxID + " : devcenter";
+  s_265.channel="us.trudeveloper";
+  /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! *************/
+  var s_code=s_265.t();if(s_code)document.write(s_code)//-->
+</script>
+                                                                                                                                                                                                          </tr>
+</table>
+</body>
+</html>
+

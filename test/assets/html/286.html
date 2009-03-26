@@ -1,0 +1,1536 @@
+<html xmlns:html="http://www.w3.org/TR/REC-html40">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+      <title>Lab test: Climb aboard Ruby on Rails | InfoWorld | Review | 2008-07-07 | By Martin Heller</title>
+      <meta name="date" content="2008-07-07T07:56:40-08:00">
+      <meta name="keywords" content="ruby-on-rails app-dev ides">
+      <meta name="description" content="The InfoWorld Test Center sifts through nine Rails IDEs and editors to help you choose the tools to suit your development needs"><script language="javascript">var cType = "Article";
+		var section = "Test Center";
+		var type = "Review";
+		var subType = "";
+		var pkeys = new Array("Application development","Applications");
+		var skeys = new Array("Collaboration","E-mail","IM","Integrated development environment - IDE","Internet applications");
+		var primaryAud = new Array("applications development manager");
+		var secondaryAud = new Array("applications development staff");
+		
+		
+		
+		</script>
+                      
+                <script src="http://www.infoworld.com/script/ads/dc.js" type="text/javascript"></script>
+
+                <!-- shom me hide me JS -->
+                <script language="javascript" type="text/javascript" src="http://www.infoworld.com/script/article/showHide.js"></script>
+
+                <!-- article font switcher -->
+                <script language="javascript" type="text/javascript" src="http://www.infoworld.com/script/article/article.js"></script>
+
+		<!-- ominture -->
+		<script language="JavaScript" src="http://www.infoworld.com/script/omniture/s_code.js"></script>
+		<script language="JavaScript" src="http://www.infoworld.com/script/omniture/omniture_header.js"></script>
+		<script language="Javascript" src="http://www.infoworld.com/script/omniture/article_tag.js"></script>
+
+		<script src="http://www.infoworld.com/script/article/related_art_sp.js" language="JavaScript" type="text/javascript"></script>
+
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.infoworld.com/rss/news.xml">
+                <link rel="stylesheet" href="http://www.infoworld.com/script/iwstyle.css" type="text/css">
+		<link rel="stylesheet" href="http://www.infoworld.com/script/article/article.css" type="text/css"/>
+                <link rel="alternate stylesheet" title="default" href="http://www.infoworld.com/script/article/default.css" type="text/css">
+                <link rel="alternate stylesheet" title="large" href="http://www.infoworld.com/script/article/large.css" type="text/css">
+
+		<!-- scriptaculous/dwr/prototype includes -->
+
+		<link rel="stylesheet" href="http://www.infoworld.com/script/article/lightbox.css" type="text/css"/>
+
+		<script src="/script/aculous/prototype.js" type="text/javascript"></script>
+		<script src="/script/aculous/effects.js" type="text/javascript"></script>
+		<script src="/script/aculous/blinds.js" type="text/javascript"></script>
+		<script src="/script/aculous/cookie.js" type="text/javascript"></script>
+		<script src="/script/aculous/deserializer.js" type="text/javascript"></script>
+
+		<!-- DWR invoke-->
+		<script type='text/javascript' src='/ajax/dwr/interface/UserLogin.js'></script>
+		<script type='text/javascript' src='/ajax/dwr/interface/ArticleComments.js'></script>
+		<script type='text/javascript' src='/ajax/dwr/engine.js'></script>
+		<script type='text/javascript' src='/ajax/dwr/util.js'></script>
+
+		<script type='text/javascript' src='/script/article/comments.js'></script>
+		<script type='text/javascript' src='/script/article/account.js'></script>
+
+		<!-- lightbox after article comments-->
+		<script src="/script/aculous/lightbox.js" type="text/javascript"></script>
+</head>
+   <body bgcolor="#FFFFFF" text="#000000" link="#003382" vlink="#003382" alink="#003382" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+      <div class="container">
+         			<!-- header -->
+			<div id="masthead">
+				
+
+
+<script language="JavaScript" type="text/javascript">
+var ord=Math.random()*10000000000000000;
+</script>
+
+<!-- IFW 1x1 TRACKING -->
+<img src="http://ad.doubleclick.net/ad/idg.us.info.pixel/ifw;sz=1x1;ord=210414260309?" border="0" height="1" width="1"/>
+
+
+
+<!-- PEEL AD (tile=14) -->
+<script language="JavaScript" type="text/javascript">
+        document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/idg.us.info.peelback/;pos=peelback;tile=14;dcopt=ist;sz=1x1;ord=' + ord + '?" type="text/javascript"><\/script>');
+</script>
+<noscript>
+        <a href="http://ad.doubleclick.net/jump/idg.us.info.peelback/;pos=peelback;tile=14;sz=1x1;ord=210414260309?" target="_blank">
+                <img src="http://ad.doubleclick.net/ad/idg.us.info.peelback/;pos=peelback;tile=14;sz=1x1;ord=210414260309?" width="1" height="1" border="0" alt="">
+        </a>
+</noscript>
+
+<!-- PRESTITIAL AD (tile=15) -->
+<script language="JavaScript" type="text/javascript">
+        document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/idg.us.info.prestitial/;pos=interstitial;tile=15;dcopt=ist;sz=1x1;ord=' + ord + '?" type="text/javascript"><\/script>');
+</script>
+<noscript>
+        <a href="http://ad.doubleclick.net/jump/idg.us.info.prestitial/;pos=interstitial;tile=15;sz=1x1;ord=210414260309?" target="_blank">
+                <img src="http://ad.doubleclick.net/ad/idg.us.info.prestitial/;pos=interstitial;tile=15;sz=1x1;ord=210414260309?" width="1" height="1" border="0" alt="">
+        </a>
+</noscript>
+
+
+
+
+				                                
+					
+
+<script type="text/javascript">
+s.pageName = s.pageName.replace(new RegExp("[^\x20-\x7E]",'g')," ");
+
+if(typeof(pkeys) != 'undefined') {
+	if(pkeys.length > 0) {
+	        if(s.events.length == 0)
+			s.events="event12";
+		s.products="pkey;"+pkeys.join(",pkey;");
+	}
+}
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><!--/DO NOT REMOVE/-->
+
+<script language="JavaScript">
+        function omnitureTrackClick(moduleName,title, obj) {
+        s.prop27 = "LG article slot one - " + moduleName;
+	s.prop30 = s.pageName;
+        if(moduleName =='article_leadgen_top') {
+                s.prop28=title;
+        }else{
+                s.prop29=title;
+        }
+        s.linkTrackVars="prop1,prop27,prop28,prop29,prop30";
+        s.linkTrackEvents='None';
+        s.tl(obj,'o',title);
+    }
+</script>
+
+				
+								<table width="1000" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="728">
+							<!--banner-->
+							<!-- begin ad tag  (728x90) -->
+<SCRIPT LANGUAGE="JavaScript">
+adCallJS("728","90","leader");
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="http://ad.doubleclick.net/jump/idg.us.info.general/noscript;pos=leader;tile=1;sz=728x90;ord=123456789?" TARGET="_blank">
+  <IMG SRC="http://ad.doubleclick.net/ad/idg.us.info.general/noscript;pos=leader;tile=1;sz=728x90;ord=123456789?" WIDTH="728" HEIGHT="90" BORDER="0" ALT=""></A>
+</NOSCRIPT>
+<!-- End ad tag -->
+
+						</td>
+						<td width="20"></td>
+						<td width="240">
+							<!--free_newsletter-->
+							<div style=" margin: 0; width: 100%; background-color: #e0e0e0; padding:0 0 2px 0">
+<div style="text-align: left; padding: 5px 0px 5px 5px; background-color: #ccc; color:#333333; font-size:11px;  text-transform:uppercase"><b>Free Newsletters</b></div>
+<div style="text-align: left; padding: 4px 0px 0px 5px; background-color: #e0e0e0;font-size:11px">
+<form id="freeNL" action="http://www.infoworld.com/newsletter/signup/recaptcha-php-1.10/subscribe.php" method="get" style="padding:0px; margin:0px">
+<div style="padding-bottom:2px;">
+<input type="checkbox" id="list[]" name="list[]" value="infoworld_daily"/>InfoWorld Daily</div>
+<input type="text" id="email[]" name="email[]" value="Enter Email Address" size="25" maxlength="60" onfocus="if (this.value == 'Enter Email Address') this.value=''" class="blackVrdMed" >
+<input type="submit" name="submit" value="Submit" class="blackVrdMed">
+<br>
+<div style="padding-top:4px;">
+<input type="checkbox" class="check" name="freeNLTP" id="freeNLTP" CHECKED /> &nbsp;&nbsp; <label><a href="http://www.infoworld.com/about/terms.html" target="_blank">Terms of Service</a> and <a href="http://www.infoworld.com/about/abt_prv.html" target="_blank">Privacy Policy</a></label>
+</div>
+</form>
+</div>		
+</div>
+
+						</td>
+					</tr>
+				</table>
+
+				                                
+				<table width="1000" border="0" cellspacing="0" cellpadding="0" align="center" >
+					<tr>
+						<td width="200">
+							<a href="http://www.infoworld.com" target="_top">
+								<img src="http://images.infoworld.com/img/iwLogo2_2006.gif" alt="InfoWorld" width="180" height="51" border="0"/>
+							</a>
+						</td>
+						<td valign=middle width="475">
+						<!--
+                                                        <div style="margin:10px 0px 0px 0px;" id="notLoggedIn">
+                                                                <b>
+                                                                <a href="#" onClick="Effect.Combo('content', {duration: .5});return false;">Log-in</a> | <a href="javascript:sendToRegisterFromTop();" id="topRegister">Register</a></b><br>
+                                                                <div  id="content" style="display: none;font-size:11px;" class=reveal>
+                                                                        <form name="loginForm" id="loginForm" onSubmit="logUserIn(this);return false;"><b>Username:</b>
+                                                                        <input type="text" name="username" id="username" class="hdr" size="8" maxlength="250" value="" /> &nbsp;
+                                                                        <b>Password:</b> <input type="password" name="password" id="password" class="hdr" size="6" maxlength="250">
+                                                                        <input class="submit" name="Login" type="submit" value="Login"> &nbsp; <a href="javascript:forgotPassword();">forgot password?</a>
+                                                                        </form>
+                                                                </div>
+                                                        </div>
+                                                        <div style="display: none;padding: 20px 0px 0px;" id="loggedIn">
+                                                                <b><span class="gray">Logged in as </span> <span id="ifwuser"></span> | <a href="javascript:logout();">Log-out</a></b>
+                                                                <br/>
+                                                        </div>
+                                                        
+                                                        -->
+						</td>
+						<td valign="middle">
+						</td>
+						<td align="right" valign="bottom">
+<!-- Google CSE Search Box Begins  -->
+<form action="http://www.infoworld.com/search/google_cse.php" id="searchbox_014839440456418836424:ojv3sxwppf0">
+<input type="hidden" name="cx" value="014839440456418836424:ojv3sxwppf0" />
+<input type="hidden" name="cof" value="FORID:11" />
+<input type="text" name="q" size="25" />
+<input type="submit" name="sa" value="Search" />
+</form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_014839440456418836424%3Aojv3sxwppf0"></script>
+<!-- Google CSE Search Box Ends -->
+						</td>
+					</tr>
+				</table>
+                                <script language="javascript">determineLoginStatus();</script>
+
+								<!-- begin menu -->
+				<div id="menu" align="center">
+					<script type="text/javascript" src="http://www.infoworld.com/script/menu/milonic_src.js"></script>	
+					<script	type="text/javascript">
+						if(ns4)
+							_d.write("<scr"+"ipt type=text/javascript src=http://www.infoworld.com/script/menu/mmenuns4.js><\/scr"+"ipt>");		
+						else 
+							_d.write("<scr"+"ipt type=text/javascript src=http://www.infoworld.com/script/menu/mmenudom.js><\/scr"+"ipt>");</script>
+					<div class=navContainer><b><script type="text/javascript" src="http://www.infoworld.com/script/menu/menu_frame.js"></script></b><script type="text/javascript" src="http://www.infoworld.com/SSI/menu/ifw_sub.js"></script><script language="JavaScript" src="http://www.infoworld.com/SSI/menu/ifw_main.js" type="text/javascript"></script></div>
+					<div class="navShd"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="10" border="0"></div>
+				</div><!-- end div menu -->
+		
+			</div><!-- end div masthead -->
+
+         <div id="leftCol">
+            <link rel="stylesheet" type="text/css" href="http://www.infoworld.com/script/newsletter/oneClick.css" />
+<script type='text/javascript' src='http://www.infoworld.com/script/newsletter/oneClick.js'></script>
+<div id="oneClickTop">
+	<script language="javascript" type="text/javascript">
+		getReferInfo('(none)','a','/article/08/07/07/28TC-ruby-ides_1.html');
+		writeNLTop();		
+        </script>
+</div><br clear="all">
+
+
+
+            <!--startindex-->
+            <h4>
+               <webheadline>Lab test: Climb aboard Ruby on Rails</webheadline>
+            </h4><span class="mdTitleGen">
+               <webteaser>The InfoWorld Test Center sifts through nine Rails IDEs and editors to help you choose the tools to suit your development
+                  needs
+               </webteaser></span><br><br><div class="byline">
+               <!--Byline Slot Template-->
+               By&nbsp;<a class="blueVrdMed" href="mailto:martin_heller@infoworld.com">Martin&nbsp;Heller</a><br>July 07, 2008
+            </div>
+            				
+				<!-- article tools -->
+				<div class="tools">
+					<nobr><a href="#commentForm"><img src="http://images.infoworld.com/img/comment2.gif" alt="comment" border="0" align="absmiddle" hspace="3"> Talkback</a>&nbsp;&nbsp;<a href="http://www.infoworld.com/archives/emailPrint.jsp?R=emailThis&A=/article/08/07/07/28TC-ruby-ides_1.html" ><img src="http://images.infoworld.com/img/email.gif" alt="E-mail" border="0" align="absmiddle" hspace="3"> E-mail</a>&nbsp;&nbsp;<a href="http://www.infoworld.com/archives/emailPrint.jsp?R=printThis&A=/article/08/07/07/28TC-ruby-ides_1.html" title="Printer Friendly"><img src="http://images.infoworld.com/img/print.gif" alt="print this" border="0" align="absmiddle" hspace="3"> Printer Friendly</a>&nbsp;&nbsp;<a href="http://www.infoworld.com/archives/emailPrint.jsp?R=rePrint&A=/article/08/07/07/28TC-ruby-ides_1.html"  title="Reprints"><img src="http://images.infoworld.com/img/reprints2.gif" alt="reprints" border="0" align="absmiddle" hspace="3"> Reprints</a>&nbsp; <img alt="Text Size: " src="http://www.infoworld.com/img/textSize.gif" align="absmiddle"><a href="#" onclick="setActiveStyleSheet('default'); return false;"><img alt="Default Text " src="http://www.infoworld.com/img/icon_text_nrm.gif" title="default" align="absmiddle" border="0"></a><a href="#" onclick="setActiveStyleSheet('large'); return false;"><img alt="Large Text" src="http://www.infoworld.com/img/icon_text_lg.gif" title="large" align="absmiddle" border="0"></a></nobr>
+				</div><!--end div tools--><br>
+				
+<!-- Article Tool Sponsor -->
+
+<div class="tools" style="margin-bottom:10px;">
+</div>
+
+
+            <div class="story"><span class="artText">
+                  <p class="ArticleBody" page="1">The <a href="http://www.rubyonrails.org/" class="regularArticleU">Ruby on Rails site</a> bills its eponymous project as "Web development that doesn't hurt." I'm not really sure what that means, but it certainly
+                     sounds good.
+                  </p>
+                  <div class="embedContainer">
+                     			                        <div id="leftColumn"></div>
+                     				<script type="text/javascript" language="JavaScript">getLHCRelSpArt("/article/08/07/07/28TC-ruby-ides_1.html","leftColumn");</script>
+
+
+                  </div>
+                  <!--end div embedContainer-->
+                  <p class="ArticleBody" page="1">Further down on the page, it says, "Rails is a full-stack framework for developing database-backed Web applications according
+                     to the Model-View-Control pattern. From the Ajax in the view, to the request and response in the controller, to the domain
+                     model wrapping the database, Rails gives you a pure-Ruby development environment. To go live, all you need to add is a database
+                     and a Web server." That's almost true.
+                  </p>
+                  <p class="ArticleBody" page="1">On the <a href="http://www.rubyonrails.org/down" class="regularArticleU">Rails download page</a>, after some basic installation instructions for installing Ruby, RubyGems (the standard Ruby package manager), and Rails,
+                     as well as some terse hints about how to get started, there's some advice about Rails editors: "The entire Rails core team
+                     is using TextMate on Mac OS X. It's a fantastic editor that ships with Ruby on Rails highlighting and macros. If you're not
+                     running Apple, check out RadRails. It's a cross-platform Rails editor built on top of the Eclipse IDE."
+                  </p>
+                  <p class="ArticleBody" page="1">The Rails team never tries to disguise its enthusiasm for Mac OS X, but it has given short shrift to developers who prefer
+                     other platforms -- so let's amplify the Rails Editors and IDEs story a bit.
+                  </p>
+                  <p class="ArticleBody" page="1"><b>Something for everyone<br>
+                        </b>I have personally used three OS platforms for Rails: Linux, OS X, and Windows; a fourth supported OS is Solaris. There are
+                     four Ruby VMs that can run Rails: plain old Ruby<b>,</b> JRuby, Rubinius, and IronRuby. I have done all my Rails development on Ruby rather than any of the alternate VMs. Your intended
+                     development OS will likely constrain your choice of editor. If you are hell-bent on using JRuby, Rubinius, or IronRuby, that
+                     could also limit your choice of editor.
+                  </p>
+                  <p class="ArticleBody" page="1">Test-driven development is very common in the Rails world. When you're developing a Rails application, you typically start
+                     by doing some code generation, using a number of handy shell scripts. Once you have a skeleton application, you typically
+                     build it up incrementally by adding and coding models and actions, adding and coding tests, running and debugging the tests,
+                     refactoring, adding Embedded Ruby pages to generate HTML views, testing the HTML display in a browser, and viewing the server
+                     log. If you need AJAX, many actions and effects can be generated entirely from Ruby, but more complicated or uncommon effects
+                     usually require some coding and debugging in JavaScript.
+                  </p>
+                  <p class="ArticleBody" page="1">In the course of all this, you'll find yourself constantly moving among the test, model, controller, helper, and view code,
+                     and popping among editor, browser, and shell windows. An IDE and/or some editing shortcuts can cut down on the amount of time
+                     you spend popping around.
+                  </p>
+                  <p class="ArticleBody" page="1">When it comes to code editors, one size does not fit all. It never has. Even in the early days of the ARPAnet, not everyone
+                     who programmed on the PDP-10 used TECO; later on, Unix developers argued fruitlessly about the relative merits of emacs and
+                     vi. Emacs and vi (or xemacs and vim, if you prefer) are still options, by the way: Both have plug-ins for Ruby and can be
+                     used effectively for Rails development, along with a browser and a command shell. Other editors that can be used for Rails
+                     in combination with a browser and a command shell include SciTE, SlickEdit, and jEdit.
+                  </p>
+                  <p class="ArticleBody" page="1"><b>Bundles of joy</b><br>
+                     So why do the Rails core developers swear by TextMate on the Mac? Simple: Early on, they built "bundle" (essentially macro)
+                     extensions for TextMate as tooling for Ruby and Rails programming.
+                  </p>
+                  <p class="ArticleBody" page="1">Bundles give you incredible power, at the expense of needing to memorize keyboard shortcuts for efficiency. The bundle approach
+                     to automation makes eminent sense for a developer who lives in one code editor all day. On Windows, the bundle approach can
+                     be found in the TextMate-inspired E Text Editor and InText; both include a Ruby and a Rails bundle.
+                  </p>
+                  <p class="ArticleBody" page="1">Why does the Rails team suggest RadRails for everyone else? Basically, it's an integrated GUI development environment for
+                     Rails, and it runs wherever Eclipse and Java run. Also, Aptana RadRails Community Edition is free.
+                  </p>
+                  <p class="ArticleBody" page="1">Several other products follow the RadRails integration approach to Rails development: 3rdRail, Komodo, NetBeans, IntelliJ
+                     IDEA, and Ruby in Steel. They all play variations on the theme, but if you know one, you'll that find that the others look
+                     familiar.
+                  </p>
+                  <p class="ArticleBody" page="1">You don't have to restrict yourself to one tool, either. You can mix and match tools for a complete set of functionality.
+                     For example, on the Mac, you might want to mix TextMate, which gives you power editing via its Rails bundle, with either NetBeans
+                     or RadRails, both of which are free IDEs that have debuggers.
+                  </p>
+                  <p class="ArticleBody" page="1">In this review suite, I've covered the Rails IDEs and the editors with Rails bundles. See the individual product write-ups,
+                     <a href="http://weblog.infoworld.com/tcdaily/archives/2008/07/ruby_on_rails_i_1.html" target="_blank" class="regularArticleU">pros/cons and features tables</a>, and Bottom Line boxes (at the bottom of each page) for more on each product.
+                  </p>
+                  <p class="ArticleBody" page="1"><b>[Jump to the review of the Ruby on Rails IDE of your choice from the list below:<br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_2.html" class="regularArticleU">SapphireSteel Ruby in Steel Developer Edition 1.2 and Text Edition 1.1.5</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_3.html" class="regularArticleU">Aptana RadRails 1.0</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_4.html" class="regularArticleU">ActiveState Komodo IDE 4.3 and Edit 4.3</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_4.html" class="regularArticleU">CodeGear 3rdRail 1.1</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_5.html" class="regularArticleU">NetBeans IDE 6.1</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_6.html" class="regularArticleU">MacroMates TextMate 1.5.7</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_6.html" class="regularArticleU">JetBrains IntelliJ IDEA 7.0.3 with Ruby plug-in 1.0</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_7.html" class="regularArticleU">E Text Editor 1.0.20 Beta</a><br>
+                        <a href="http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_7.html" class="regularArticleU">Intype 0.3.1 Alpha</a>]</b></p></span><i>Martin Heller is a contributing editor of the InfoWorld Test Center and writes the <a href="http://weblog.infoworld.com/stratdev/">Strategic
+                  Developer blog</a>.</i><div class="cont">
+                  					Continued<br>1&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_2.html">2</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_3.html">3</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_4.html">4</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_5.html">5</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_6.html">6</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_7.html">7</a>&nbsp;|&nbsp;<a type="link" href="28TC-ruby-ides_2.html">NEXT PAGE</a>&nbsp;&raquo;&nbsp;
+               </div>
+               <!--end div cont--><br><table cellspacing="5">
+                  <tr>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>SapphireSteel Ruby in Steel Developer Edition 1.2 and Text Edition 1.1.5</b><br>SapphireSteel Software, <a href="http://www.sapphiresteel.com">sapphiresteel.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Very Good&nbsp;&nbsp;8.3</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">7</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>$199 for Developer Edition, $49 for Text Edition (with reduced features and performance)<br><br><b>Platforms:</b><br>Windows XP/Vista<br><br><b>Bottom Line:</b><br>If you use Visual Studio for coding in other languages and/or developing other kinds of Web sites and want to develop Ruby
+                                    programs and Rails sites in the same IDE, then Ruby in Steel is exactly what you need. The best features -- the IntelliSense
+                                    support for Ruby and Rails, the Visual Rails Workbench, and the fast Ruby and JRuby debuggers -- are reserved for the more
+                                    expensive Developer Edition.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>Aptana RadRails 1.0</b><br>Aptana, <a href="http://www.aptana.com">aptana.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Very Good&nbsp;&nbsp;8.6</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">10</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>RadRails plug-in is free; $199 ($99 intro) for Aptana Studio Professional Edition. Community Edition is free, but lacks Profiler
+                                    and JSON editor<br><br><b>Platforms:</b><br>Windows 32- or 64-bit platforms, Mac OS X 10.4 or higher, or Linux 32-bit with GTK.<br><br><b>Bottom Line:</b><br>Aptana RadRails is a cross-platform Rails editor built on top of the Eclipse IDE. The free Community Edition is good enough
+                                    for most Rails developers' needs. The fact that RadRails is part of Aptana means that RadRails users have access to excellent
+                                    JavaScript editing and debugging, which helps when working with AJAX.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>ActiveState Komodo IDE 4.3 and Edit 4.3</b><br>ActiveState Software, <a href="http://www.activestate.com">activestate.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Good&nbsp;&nbsp;7.9</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">7</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>$295 for IDE, Edit is free<br><br><b>Platforms:</b><br>Windows 2000/XP/Vista; Mac OS X 10.3 and higher; Debian/Ubuntu 5.04 and higher; Red Hat/Fedora 4 and higher; Suse 9.0 and
+                                    higher<br><br><b>Bottom Line:</b><br>If you are already using the multiplatform, multilingual Komodo IDE for development in other languages, it makes sense to
+                                    use it for Ruby on Rails as well. It probably wouldn't be my top pick for full-time Rails developers, however. Komodo Edit
+                                    is a reasonably good free Ruby on Rails editor, but lacks the debuggers, interactive shells, HTTP inspector, DOM viewer, and
+                                    SCC integration of Komodo IDE.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>CodeGear 3rdRail 1.1</b><br>CodeGear, <a href="http://www.codegear.com">codegear.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Very Good&nbsp;&nbsp;8.4</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">7</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>$399<br><br><b>Platforms:</b><br>Windows XP/Vista; Mac OS X 10.4/10.5; Ubuntu Linux 7.1<br><br><b>Bottom Line:</b><br>3rdRail, which won a Jolt Productivity award last spring, offers higher developer productivity than most other Rails IDEs,
+                                    at a higher price. Developers who work on Rails applications full-time should be able to justify the initial cost in terms
+                                    of long-term productivity gains.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+               <table cellspacing="5">
+                  <tr>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>NetBeans IDE 6.1</b><br>Sun, <a href="http://www.netbeans.org">netbeans.org</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Excellent&nbsp;&nbsp;9.0</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">10</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>Free<br><br><b>Platforms:</b><br>Windows, Linux, Mac OS X, and Solaris.<br><br><b>Bottom Line:</b><br>If you already use NetBeans for Java and/or C/C++ development, then it should probably be your top choice as a Rails IDE as
+                                    well. Delivering strong editing and navigation along with good debugging and profiling, it's a very capable and highly integrated
+                                    Rails IDE. And it's free.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>MacroMates TextMate 1.5.7</b><br>MacroMates, <a href="http://macromates.com">http://macromates.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Very Good&nbsp;&nbsp;8.0</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">7</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>Around $63<br><br><b>Platforms:</b><br>Mac OS 10.4.2 PPC/Intel<br><br><b>Bottom Line:</b><br>TextMate is the favorite editor of the core Rails development team, but it's only available for Mac OS X. Its full set of
+                                    Ruby and Rails bundles help substantially with navigation, generation, and snippet insertion. Using them effectively, however,
+                                    requires memorizing shortcuts.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>JetBrains IntelliJ IDEA 7.0.3 with Ruby plug-in 1.0</b><br>JetBrains, <a href="http://www.jetbrains.com">jetbrains.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Very Good&nbsp;&nbsp;8.1</b></span></td>
+                           </tr>
+                           <tr>
+                              <td valign="top"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="100%" height="1" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top">
+                                 <table border="0" cellpadding="2" cellspacing="0">
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm"><b>criteria</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>score</b></span></td>
+                                       <td valign="top" align="center"><span class="blackVrdSm"><b>weight</b></span></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Features</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">40%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Ease-of-use</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Integration</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">20%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Performance</span></td>
+                                       <td align="center">9</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top"><span class="blackVrdSm">Value</span></td>
+                                       <td align="center">8</td>
+                                       <td align="center">10%</td>
+                                    </tr>
+                                    <tr>
+                                       <td valign="top" colspan="3"><img src="http://images.infoworld.com/img/dot_CCCCCC.gif" alt="" height="1" border="0"></td>
+                                    </tr>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>$249 for IntelliJ IDEA; Ruby plug-in is free<br><br><b>Platforms:</b><br>Windows Vista/2003/XP/2000/NT 4.0 SP6a; Mac OS X 10.4; Red Hat Linux Fedora/9.x/8.x/7.3<br><br><b>Bottom Line:</b><br>If you already use IntelliJ IDEA for Java development, you might like it as a Rails IDE as well: It brings to the table good
+                                    Ruby and Rails edits, integration, and refactoring. You'll have to look elsewhere for a debugger, however.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>E Text Editor 1.0.20</b><br>E Text Editor, <a href="http://www.e-texteditor.com">e-texteditor.com</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Beta&nbsp;&nbsp;</b></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>$34.95<br><br><b>Platforms:</b><br>Windows<br><br><b>Bottom Line:</b><br>This capable TextMate clone for Windows is fast and efficient, incorporating the TextMate bundle and shortcut mechanism and
+                                    bundle editor. Its full set of Ruby and Rails bundles help substantially with navigation, generation, and snippet insertion.
+                                    Using them effectively, however, requires memorizing shortcuts.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+               <table cellspacing="5">
+                  <tr>
+                     <td valign="top">
+                        <table border="0" width="145" cellspacing="0" cellpadding="0" bgcolor="#E6EBF8">
+                           <tr>
+                              <td><img src="http://images.infoworld.com/img/dot_CC3300.gif" alt="" width="100%" height="3" border="0"></td>
+                           </tr>
+                           <tr>
+                              <td style="border-bottom:1px dotted #cc3300; height:26px">&nbsp;<b>The  Bottom Line </b></td>
+                           </tr>
+                           <tr>
+                              <td><br><b>Intype 0.3.1</b><br>InType, <a href="http://intype.info">http://intype.info</a><br><br></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="5" height="15" border="0" align="absmiddle"><span class="whiteVrd"><b>Alpha&nbsp;&nbsp;</b></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" bgcolor="#ededd8"><span class="blackVrdSm"><br><b>Cost:</b><br>Alpha test version is free, release version will cost between $25 and $45 (&#8364;20 and &#8364;35)<br><br><b>Platforms:</b><br>Windows<br><br><b>Bottom Line:</b><br>A TextMate-inspired editor for Windows, InType is fast and efficient, and it implements several TextMate bundles. However,
+                                    it's not fully featured and doesn't seem to be under active development at this time.<br><br></span></td>
+                           </tr>
+                           <tr>
+                              <td bgcolor="#cc3300"><img src="http://images.infoworld.com/img/dot_t.gif" alt="" width="1" height="1" border="0" align="absmiddle"></td>
+                           </tr>
+                           <tr>
+                              <td valign="top" align="right" bgcolor="#ffffff"><a href="/testcenter/tst_rev_mtd.html" class="blueVrdSm">About our Reviews and Scoring Methodology</a><br><br></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+               </table>
+               <!--stopindex-->
+            </div>
+            						 <div id="oneClickBot">
+        <script language="javascript" type="text/javascript">
+		writeNLBot();
+        </script>
+</div><br clear="all">
+
+
+										<div class="traffic">Add to: <img src="http://www.infoworld.com/img/icon/sd.gif" class=pl><a href="http://slashdot.org/submit.pl">Slashdot</a>  <img src="http://www.infoworld.com/img/icon/dg.gif" class=pl><a href="http://digg.com/submit?phase=2&url=http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_1.html&ei=UTF-8">Digg</a>  <img src="http://www.infoworld.com/img/icon/del.gif"  class=pl><a href="http://del.icio.us/post?url=http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_1.html&ei=UTF-8">del.icio.us</a>  <img src="http://www.infoworld.com/img/icon/re.gif" class=pl><a href="http://reddit.com/submit?url=http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_1.html">reddit</a>  <img src="http://www.infoworld.com/img/icon/nv.gif" class=pl><a href="http://www.newsvine.com/_tools/seed&save?u=http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_1.html">newsvine</a>  <img src="http://www.infoworld.com/img/icon/my.gif" class=pl><a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?t=http://www.infoworld.com/article/08/07/07/28TC-ruby-ides_1.html">Y! MyWeb</a></div>
+
+
+				
+									<a name="commentForm"></a>	
+			<span id="errors"></span>
+			<div class="comments" id="userComments">
+				<span class="mdTitleGen">Talkback:</span>
+				<br clear="left"/>
+				<span id="emptycomments"></span>
+			</div>
+			<script language="Javascript">
+			if(url.indexOf("/baldwin/comments/") != -1 || url.indexOf("/article/") != -1 || url.indexOf("/articles/") != -1)
+			     init();
+			</script>
+			<p><p>
+
+			<!-- insert omniture Id in comments Onclick-->
+			<a id="commentLink" onClick="javascript:exposeCommentsForm();"><img src="http://images.infoworld.com/img/comment2.gif" alt="comment" border="0" align="absmiddle" hspace="3">Post a Comment</a><br>
+			
+			<div id="Comments" class="clear clearfix"  style="margin-bottom:1em">
+				<div id="commentsDiv" style="display:none; clear:left;">
+					<!--<form method="POST" name="postComment" onSubmit="submitComment();return false;" id="postComment"> -->
+					<form method="POST" name="postComment" id="postComment">
+						<textarea name="commentsField"  class="textArea" rows="6" id="commentsField"></textarea>
+						<span style="display:none" id="postButton"><a href="javascript:submitComment();"><img src="http://www.infoworld.com/img/form_sub.gif" border="0"></a></span>
+						<span style="display:none" id="requireLogin"><a href="/account/form.html" class="lbOn" id='bottomRegister'><img src="http://www.infoworld.com/img/form_sub.gif" border="0"></a></span>
+						<!--<span style="display:none" id="requireLogin"><input class="submit" name="Login" type="submit" value="Login"> &nbsp; <a href="forgot_pw.html">forgot password?</a></span> -->
+					</form>
+					
+				</div>
+			</div>
+			<script language="javascript">
+			//new lightbox(document.getElementById('bottomRegister'));
+			</script>
+
+				
+										<!-- Top Stories-->
+				<div class="dynamicbucket woborder"  style="float:left;" id="top_story_imu">
+					<div class="buckettop">&nbsp;</div>
+					<h3 style="font-size: 130%;"><a href="http://www.infoworld.com/news/"   name="">MOST COMMENTS</a> </h3>
+					<div class="spacer">&nbsp;</div>
+					<div id="t_m_content_area" class="t_m_content_area">
+					<a href="/articles/op/xml/00/05/26/000526opwireless.html#commentForm"><b></b></a><br><img src="http://images.infoworld.com/img/dot_t.gif" width="1" height="7" border="0" vspace="0"><br><font color="#9c0005">>></font>&nbsp;<a href="http://www.infoworld.com/account/register.html">Talkback: Have your say</a>
+					</div>
+					<!--<div class="bucketcontent">
+						<ul>
+							<li><b><a type="link" href="http://www.infoworld.com/news/index.html"">&#x00bb; Breaking Technology News</a></b></li>
+						</ul>
+					</div>--><!--end div bucketcontent-->
+					<div class="bucketbottom">&nbsp;</div>
+				</div><!--end div top_story_imu-->
+				
+				<div>
+					<!-- begin 336x280,336x600 ad tag -->
+<script language="JavaScript" type="text/javascript">
+        adCall("336","280","imubottom");
+</script>
+<noscript>
+<a href="http://ad.doubleclick.net/jump/idg.us.info.general/index;pos=imubottom;tile=14;sz=336x280,336x600;ord=123456789?" target="_blank">
+<img src="http://ad.doubleclick.net/ad/idg.us.info.general/index;pos=imubottom;tile=14;sz=336x280,336x600;ord=123456789?" width="336" border="0" alt="">
+</a>
+</noscript>
+<!-- End ad tag -->
+
+	
+				</div><!--end div imu--><br clear="left"><br>
+
+				
+						<br>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center"><tr><td>
+<table border="0" cellspacing="0" cellpadding="5" align="center"  style="border: 1px solid #999999;">
+<tr><td valign=top width=47%>
+<img border="0" src="http://images.infoworld.com/ad/webcast_hdr.gif"><br><img src="http://images.infoworld.com/img/dot_t.gif" width="1" height="4"><br><a target="_blank" class="blueVrdMed" href="http://www.accelacomm.com/jaw/sponsoredresources/13/50247324/&ord=2874820" name="&lid=Five_Things_You_Need_to_Know_About_SOA_Governance&lpos=Center_Webcasts"><b>FIVE THINGS YOU NEED TO KNOW ABOUT SOA GOVERNANCE</b></a><br>SOA's benefits are difficult to achieve without a governance strategy. The challenge is determining what policies to develop, how to implement them, as well as how to enforce them. This Webcast looks at recent InfoWorld and IDC research on the topics, as well as prescriptive guidance on how HP solutions can help with SOA's promise of business agility.</span><br><br><span class="arrow">&raquo;&nbsp;</span><a target="_blank" href="http://www.accelacomm.com/jaw/sponsoredresources/13/50247324/&ord=2874820" name="&lid=Click_here_to_view_this_Webcast&lpos=Center_Webcasts"  class="blueVrdmed"><B> Click here to view this Webcast</B></a></span>
+</td>
+
+<td background="http://www.infoworld.com/img/vertdotline.gif">&nbsp;</td>
+<td valign=top>
+
+
+</td></tr></table>
+</td></tr></table>
+
+
+<br><table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f5f5f5">
+<tr bgcolor="#999999">
+<td width="1"><img height="1" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+<td height="10" colspan="3" align="center" bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="10"><font face="Arial,Geneva,Verdana" size="1" color="ffffff">- Special Advertising Partners -<font>
+</td>
+<td><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+</tr>
+<tr>
+<td bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1">
+</td>
+<td width="10"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="10"></td>
+<td valign="top"><span class="blackVrdSm"><b>WHITE PAPERS</b></SPAN><br></td>
+<td width="10">&nbsp;</td>
+<td width="1" bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+<td bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1">
+</td>
+<td width="10"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="10"></td>
+<td valign="top">
+
+<ul style="padding-left: 20px; font-size: 11px;">
+
+
+<li><a target="_new" href="http://www.accelacomm.com/jaw/ifwlp/13/50343115/" rel="nofollow">
+Server-Gated Cryptography</a> - Learn about how digital certificates with SGC technology are able to step-up encryption levels for certain browsers to 128...
+</li>
+
+<li><a target="_new" href="http://www.accelacomm.com/jaw/ifwlp/13/50343185/" rel="nofollow">
+Certify your Software Integrity with thawte Code Signing Certificates</a> - This guide will show you how Code Signing Certificates are used to secure code that can be downloaded from the Internet....
+</li>
+
+<li><a target="_new" href="http://www.accelacomm.com/jaw/ifwlp/13/50343218/" rel="nofollow">
+The Starter PKI Program</a> - This guide will introduce you to our Starter PKI Program, explaining how it works as well as the benefits it offers. We'll...
+</li>
+
+<li><a target="_new" href="http://www.accelacomm.com/jaw/ifwlp/13/50343142/" rel="nofollow">
+Securing your Online Data Transfer with SSL</a> - A guide to understanding SSL certificates, how they operate and their application. By making use of an SSL certificate on...
+</li>
+
+<li><a target="_new" href="https://www.accelacomm.com/jlp/ifwlp/13/50344212/" rel="nofollow">
+NetApp and VMware Virtual Infrastructure 3 Storage Best Practices</a> - When you implement VM Ware on NetApp fabric-attached storage systems you&#226;&#128;&#8482;ll have advanced data protection...
+</li>
+
+<li><a target="_new" href="https://www.accelacomm.com/jlp/ifwlp/13/50344653/" rel="nofollow">
+Case Study: Exchange 2007 on VMware and NetApp</a> - There are a lot of tangible benefits to running Exchange in a virtualized environment rather than a physical one, but while...
+</li>
+
+
+
+</ul>
+
+<h2 class="blackVrdMed">
+<font color="#9c0005">&#187;</font> <a href="http://www.infoworld.com/whitepapers/prm_whp.html">Technology White Papers Library</a><br><br>
+</h2>
+
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td valign="top"><h2 class="artText">Technology White Papers by Topic</h2></td>
+<td style="width: 30px;"></td>
+<td><h2 class="artText">Technology White Papers E-mail Alert</h2></td>
+</tr>
+</tbody></table>
+
+<table style="width: 440px; margin-left: -20px;">
+<tbody><tr>
+<td style="width: 70px;" valign="top">
+
+<ul style="font-size: 11px; width: 70px;">
+<ul><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=1">Application development</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=2">Applications</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=3">Business</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=21">Data Protection</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=4">Data management</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=5">Hardware</a></li></ul>
+</ul>
+
+</td>
+
+<td align="left" valign="top">
+
+<ul style="font-size: 11px; width: 100px;">
+<ul><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=25">Mobile</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=6">Networking</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=9">Security</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=11">Storage</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=12">Telecom</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=31">Virtualization</a></li><li><span style="color: #ce181f;">&#x00bb;</span>&nbsp;&nbsp;<a href="/archives/t.jsp?N=w&V=14">Wireless</a></li></ul>
+</ul>
+
+</td>
+
+<td valign="top" width="280">
+
+<span class="blackVrdMed">Find out when the latest white paper is available:</span>
+
+<form action="http://subscribe.infoworld.com/cgi-win/ifwd.cgi?m=newsletter" method="get" valign="top">
+<input name="m" value="newsletter" type="hidden">
+<input name="n25" value="1" checked="checked" type="hidden">
+<input name="e" value="E-mail Address" size="18" maxlength="60" class="blackVrdSm" type="text">&nbsp;
+<input value="GO" class="butGen" type="submit">
+</form>
+
+</td>
+</tr>
+
+</tbody></table>
+
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="1" bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+</tr>
+
+<tr>
+<td bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1">
+</td>
+<td width="10"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="10"></td>
+<td valign="top"><span class="blackVrdSm"><b>INFOWORLD MARKETPLACE</b></SPAN><br></td>
+<td width="10">&nbsp;</td>
+<td width="1" bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+</tr>
+
+<tr bgcolor="#FFFFFF">
+<td bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1">
+</td>
+<td width="10"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="10"></td>
+<td valign="top">
+
+<ul style="padding-left: 20px; font-size: 11px;">
+
+<li><a target="_new" href="http://links.industrybrains.com/click?sid=34&rqctid=204&pos=1&lid=489131&cid=135233&pr=2&tstamp=20080408184336&url=http://clk.atdmt.com/L1G/go/ndstrwbx0010000020l1g/direct/01/" rel="nofollow">Deliver REMOTE SUPPORT Easily. Try WebEx FREE!</a> - DOWNLOAD WEBEX SUPPORT CENTER FREE! Deliver efficient, effective support. CRUSH SUPPORT LOG JAMS!
+<li><a target="_new" href="http://links.industrybrains.com/click?sid=34&rqctid=204&pos=2&lid=486604&cid=135480&pr=2&tstamp=20080408184336&url=http://clk.atdmt.com/TIC/go/ndstrxoc0010000009tic/direct/01/" rel="nofollow">Migrating to an IP-VPN? XO Can Make It Happen</a> - Learn the five critical success factors with a free whitepaper from XO Enterprise Solutions.
+<li><a target="_new" href="http://links.industrybrains.com/click?sid=34&rqctid=204&pos=3&lid=482920&cid=135222&pr=2&tstamp=20080408184336&url=http://clk.atdmt.com/L1G/go/ndstrwbx0010000018l1g/direct/01/" rel="nofollow">Sign up to TRY WEBEX SUPPORT CENTER FOR FREE!</a> - Get your FULL FEATURED trial here. Share documents and applications, address support challenges.
+<li><a target="_new" href="http://links.industrybrains.com/click?sid=34&rqctid=204&pos=4&lid=478713&cid=134738&pr=2&tstamp=20080408184336&url=http://clk.atdmt.com/CNT/go/ndstrwir0090000136cnt/direct/01/" rel="nofollow">IP Networks Boost Secure Health Communications</a> - AT&T provides secure communication to keep health care moving forward.
+<li><a target="_new" href="http://links.industrybrains.com/click?sid=34&rqctid=204&pos=5&lid=477836&cid=134623&pr=2&tstamp=20080408184336&url=http://www.belarc.com/try/ib.infoworld.enterprise.cgi" rel="nofollow">Why a CMDB?</a> - IT best practices (ITIL) have shown the benefits of a CMDB. Click for whitepapers.
+
+
+</ul><font color="#9c0005">&#187;</font> <a target="_new" href="http://www.industrybrains.com">BUY A LINK NOW</a><br>
+
+</td>
+<td width="10">&nbsp;</td>
+<td width="1" bgcolor="#999999"><img height="10" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td>
+</tr>
+
+<tr><td width="1" bgcolor="#999999" colspan="5"><img height="1" src="http://images.infoworld.com/img/dot_t.gif" width="1"></td></tr>
+</table>
+
+		
+
+         </div>
+         			<div id="rightcol">
+				<style media="all" type="text/css">@import "http://www.infoworld.com/script/article/rhcTopStories.css";</style>
+				
+				
+				
+				
+				<div class="sign">
+				<div class="sign-top">&nbsp;</div>
+				<div class="sign-cnt"><p class="black">TOP STORIES</p>
+				<ul>
+					<li><a href="http://weblog.infoworld.com/enterprisemac/archives/2009/03/nehalem_mac_pro.html">Nehalem Mac Pro: The Mac reborn</a></li>
+<li><a href="http://weblog.infoworld.com/tech-bottom-line/archives/2009/03/enterprise_dead.html">Enterprise IT: Open source deadbeats</a></li>
+<li><a href="http://weblog.infoworld.com/fatalexception/archives/2009/03/ibm_the_new_dev.html">IBM: The new development powerhouse?</a></li>
+<li><a href="http://weblog.infoworld.com/sustainableit/archives/2009/03/cloudrack_c2_ra.html">Rackable Systems takes energy efficiency to the cabinet level</a></li>
+<li><a href="http://www.infoworld.com/article/09/03/26/IBM_confirms_North_America_layoffs_1.html">IBM confirms North America layoffs</a></li>
+
+
+
+				</ul>
+				</div>
+				<div class="sign-btm">&nbsp;</div>
+				</div>
+					
+					
+	                            <div class="dynamicbucket">
+	                            	<!-- begin 336x280,336x600 ad tag -->
+<script language="JavaScript" type="text/javascript">
+        adCallJS("336","280","imu");
+</script>
+<noscript>
+<a href="http://ad.doubleclick.net/jump/idg.us.info.general/index;pos=imu;tile=6;sz=336x280,336x600;ord=123456789?" target="_blank">
+<img src="http://ad.doubleclick.net/ad/idg.us.info.general/index;pos=imu;tile=6;sz=336x280,336x600;ord=123456789?" width="336" border="0" alt="">
+</a>
+</noscript>
+<!-- End ad tag -->
+
+	                            </div><!--end div dynamicbucket-->
+					<!--include virtual="/SSI/article/rhc_idg_network.html"-->	
+					                                <!--<div class="dynamicbucket wborder">
+                                        <div class="buckettop">&nbsp;</div>
+                                        <h3 style="font-size: 130%;">Poll</h3>
+                                        <div class="spacer">&nbsp;</div>
+                                        <div class="bucketcontent">
+                                             <ul>
+                                                                <form>
+                                                                        <li>Are you going to upgrade to Vista immediately after launch?</li>
+                                                                        <li><input name="poll" type="radio" checked>Yes, I can't wait to load the DVD(s)!</li>
+                                                                        <li><input name="poll" type="radio">Maybe, but I may wait until SP1, SP2 and SP3 are ready.</li>
+                                                                        <li><input name="poll" type="radio">No way! Are you completely crazy?</li>
+                                                                </form>
+                                                        </ul>
+                                                        <input class="submit" name="Vote" type="image" value="Vote" src="http://www.infoworld.com/img/form_vote.gif">
+                                     </div>--><!--end div bucketcontentr-->
+<!--                                     <div class="bucketbottom">&nbsp;</div>
+                               </div>--><!--end div dynamicbucket wborder-->
+
+					
+<div class="dynamicbucket wborder">
+<div class="buckettop">&nbsp;</div>
+<h3 style="font-size: 130%;"><a href="http://www.infoworld.com/archives/videoTemplate.jsp?source=nav_VID">Video</a></h3>
+<div class="spacer">&nbsp;</div>
+<div class="bucketcontent">
+<ul>
+<li>
+<table><tr>
+<td><a href="http://www.infoworld.com/archives/videoTemplate.jsp?Id=2245&type=IDG News&tag=Security"><img src="http://www.infoworld.com/richmedia/upload/UI/image/2008/2/WTU_Screen.jpg" width="80" height="60" border="0"></a></td>
+<td class="shadetabs" valign=absmiddle width=100%>
+<b><a href="http://www.infoworld.com/archives/videoTemplate.jsp?Id=2245&type=IDG News&tag=Security"><span class="pad"><b>World Tech Update, April 11, 2008</b></span></a></b><br>
+This week's roundup of IT news stories includes HP's 2133 competing with the...
+</td></tr></table>
+</li>
+</ul>
+</div>
+<div class="bucketbottom">&nbsp;</div>
+</div>
+
+
+								<div class="dynamicbucket wborder">
+				<div class="buckettop">&nbsp;</div>
+				<h3 style="font-size: 130%;"><a href="http://www.infoworld.com/weblog/podcasts/new_podcasts_index.html">Podcasts</a></h3>
+				<div class="spacer">&nbsp;</div>
+				<div class="bucketcontent">
+					<a href="http://weblog.infoworld.com/daily/archives/podcast/"><img src="http://images.infoworld.com/img/0podcasts/120x100-podcast-daily.jpg" border="0"/></a>
+					<div class="promo_title">IFW Daily 03/26/2009 </div>
+<p class="podcast_desc">Amazon releases cloud tool for Java developers, IBM plans more layoffs...</p>
+
+	<p class="links"><a href="http://weblog.infoworld.com/daily/archives/IFW_Daily.mp3" class="blueVrdMed">MP3</a> | <a href="http://weblog.infoworld.com/dai
+ly/podcast.xml" class="blueVrdMed">RSS</a> | <a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=110844504&s=143441" class="blueVrdMed">iTunes</a> | <a hre
+f="http://www.voiceindigo.com/ht/mobilize.do?aid=167&rssid=16578&eid=latest" class="blueVrdMed">Mobilize</a></p>
+				</div>
+				<div class="spacer">&nbsp;</div>
+				<div class="bucketbottom">&nbsp;</div>
+			</div>
+
+	                            <!--include virtual="/SSI/article/rhc_search_jobs.html"-->
+	                            			<div class="dynamicbucket wborder">
+				<div class="buckettop">&nbsp;</div>
+				<h3 style="font-size: 130%;"><a href="http://weblog.infoworld.com/">InfoWorld Blogs</a></h3>
+				<div class="spacer">&nbsp;</div>
+				<div class="bucketcontent">
+					<ul>
+						<li><span class="gray">10/30/08 7:49 a.m.</span><br />
+<a href="http://weblog.infoworld.com/dbunderground/archives/2008/10/report_builder.html"><b>Report Builder 2.0</b></a><br /><a href="http://weblog.infoworld.com/dbunderground/" class="callout">Database Underground | Sean McCown</a>
+</li>
+					</ul>
+				</div>
+				<div class="bucketbottom">&nbsp;</div>
+			</div>
+
+	                            			<div class="dynamicbucket wborder">
+				<div class="buckettop">&nbsp;</div>
+				<h3 style="font-size: 130%;"><a href="http://www.infoworld.com/opinions/index.html">Columnists</a></h3>
+				<div class="spacer">&nbsp;</div>
+				<div class="bucketcontent">
+					<ul>
+						<li>
+<!--timestamp:20070327000000-->
+<a href="http://www.infoworld.com/columnists/ephraim_reality.html">
+<img src="http://www.infoworld.com/img/img_hdshot_58x50_schwartz.gif" border="0" align="left" hspace="2" vspace="4" alt="EPHRAIM SCHWARTZ's Column - Reality Check"></a>
+<a href="http://www.infoworld.com/columnists/ephraim_reality.html" class="blueVrdMed">EPHRAIM SCHWARTZ, Reality Check</a><br>
+<a href="http://www.infoworld.com/article/07/03/27/14OPreality_1.html"><b>Unified under law</b></a><br>
+In the litigious world we live in, deploying a unified communications platform in your enterprise could cause more headaches...<br>
+
+</li>
+					</ul>
+				</div>
+				<div class="bucketbottom">&nbsp;</div>
+			</div>
+
+
+	                            			<div class="dynamicbucket wborder">
+				<div class="buckettop">&nbsp;</div>
+				<h3 style="font-size: 130%;"><a href="http://www.infoworld.com/product_guide/" name="&lid=complete_product_guide&lpos=article_right_pg">Find Products and Companies</a></h3>
+				<div class="spacer">&nbsp;</div>
+
+				<div class="bucketcontent">
+					<form name="search_product_company_text" action="http://www.infoworld.com/products/search/Search.jsp" method="GET" style="display: inline">
+						<ul>
+							<li><input type="hidden" name="start_index" value="1"><input type="hidden" name="number_of_display" value="20"><input type="text" name="query" value="" size="22" maxlength="30" onFocus="this.select()"><input type="image" name="Submit" value="SEARCH" src="http://www.infoworld.com/img/form_search.gif" style=vertical-align:bottom></li>
+						</ul>
+				</div>
+				<div class="bucketbottom">&nbsp;</div>
+			</div>
+
+
+	                 <div class="dynamicbucket">
+					<!-- begin ad tag  (160x600) -->
+<SCRIPT LANGUAGE="JavaScript">
+	adCall("160","600","skyscraper");
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="http://ad.doubleclick.net/jump/idg.us.info.general/noscript;pos=skyscraper;tile=12;sz=160x600;ord=123456789?" TARGET="_blank">
+  <IMG SRC="http://ad.doubleclick.net/ad/idg.us.info.general/noscript;pos=skyscraper;tile=12;sz=160x600;ord=123456789?" WIDTH="160" HEIGHT="600" BORDER="0" ALT=""></A>
+</NOSCRIPT>
+<!-- End ad tag -->	
+	    		                </div>  
+	                            <!--include virtual="/SSI/article/rhc_white_paper.html"-->
+	                            			<div class="dynamicbucket epromo">
+				<div class="buckettop">&nbsp;</div>
+				<h3 style="font-size: 130%;">Resource Center </h3>	
+				<div class="bucketcontent">
+<style type="text/css" title="text/css" media="screen">
+<!--
+.resource_item { margin-bottom: 15px; }
+.resource_item .headline { font-size: 100%; }
+.resource_item .description { font-size: 90%; }
+.resource_item .link { font-size: 85%; }
+-->
+</style>
+<script type="text/javascript" src="http://jlinks.industrybrains.com/jsct?sid=758&ct=INFOWORLD_ROS&tr=MARKETPLACE&num=5&layt=1&fmt=simp"></script>
+						<br>Ads by <a href="http://www.techwords.com" class=style1><strong>tech</strong><em>words</em></a> beta&nbsp; [<a href="http://www.techwords.com">See your link here</a>]
+				</div>
+				<div class="bucketbottom">&nbsp;</div>
+			</div>
+
+
+			</div><!--end div rightcol--><br>
+
+      </div>
+      		<br clear="all">
+		
+<div>
+<!-- PRESTITIAL AD (tile=18) -->
+<script language="JavaScript" type="text/javascript">
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/idg.us.info.prestitial/;pos=survey;tile=18;dcopt=ist;sz=1x1;ord=' + ord + '?" type="text/javascript"><\/script>');
+</script>
+<noscript>
+<a href="http://ad.doubleclick.net/jump/idg.us.info.prestitial/;pos=survey;tile=18;sz=1x1;ord=210414260309?" target="_blank">
+<img src="http://ad.doubleclick.net/ad/idg.us.info.prestitial/;pos=survey;tile=18;sz=1x1;ord=210414260309?" width="1" height="1" border="0" alt="">
+</a>
+</noscript>
+</div>
+
+
+
+
+		<center>
+			<!-- begin ad tag  (728x90) -->
+<SCRIPT LANGUAGE="JavaScript">
+	adCall("728","90","leaderbottom");
+</SCRIPT>
+<NOSCRIPT>
+  <A HREF="http://ad.doubleclick.net/jump/idg.us.info.general/noscript;pos=leaderbottom;tile=7;sz=728x90;ord=123456789?" TARGET="_blank">
+  <IMG SRC="http://ad.doubleclick.net/ad/idg.us.info.general/noscript;pos=leaderbottom;tile=7;sz=728x90;ord=123456789?" WIDTH="728" HEIGHT="90" BORDER="0" ALT=""></A>
+</NOSCRIPT>
+<!-- End ad tag -->
+<br clear="all"><br>
+			<table style="border: 1px solid rgb(204, 204, 204);" align="center" bgcolor="#ffffff" border="0" cellpadding="8" cellspacing="0" width="1000">
+<tbody><tr><td valign="top" width="48%"><h2 class="artText">Sponsored Technology Links</h2></td><td>&nbsp;</td><td valign="top" width="50%"></td></tr>
+<tr>
+
+<td valign="top">
+<ul style="padding-left: 20px; font-size: 11px;">
+<li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;213347321;7406810;v?http://clk.atdmt.com/MRT/go/143024442/direct/01/" rel="nofollow">Microsoft Virtualization live chat on 3/31, sign up now: - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212796217;7163019;h?http://ad.doubleclick.net/clk;212849282;34183745;m" rel="nofollow">Can your business use an unfair BI "Edge"? - Watch this video: "The End-To-End Business Intelligence Edge for SMBS"  Brought to you by SAP.</a></li><li><!--impression:--><a target="_new" href="http://www.accelacomm.com/jaw/textlink/13/50343185/" rel="nofollow">Certify your Software Integrity with thawte - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212957643;30578826;r?http://ad.doubleclick.net/clk;211739263;33196607;i" rel="nofollow">Predict the future with HP Insight Power Manager - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212993456;8798690;f?http://www.infoworld.com/ad/webcasts/akamai/index.html" rel="nofollow">Transform the Internet into a Business-Ready Application Delivery Platform - Watch the video from Akamai - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212815760;8437445;k?http://clk.atdmt.com/DWO/go/141526989/direct/01/" rel="nofollow">CA Security Management for more effective security. - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212566951;11833889;r?http://www.sophos.com/dlpfordummies?utm_source=InfoWorld&utm_medium=enewsletter&utm_content=DL%2BDummies&utm_campaign=InfoWorld%2B-%2BDL%2BDummies" rel="nofollow">FREE Data Leakage for Dummies Book from Sophos. Request a book today! - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212632942;7406810;a?http://www.redhat.com/dell/?sc_cid=70160000000HjTEAA0" rel="nofollow">Simplify your IT. Migrate to JBoss on Dell. - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212530864;7406810;a?http://www.mkssoftware.com/eval/default.asp?distrib=InfoWorld" rel="nofollow">Harmonize your mixed Computing Environments with MKS Toolkit - </a></li>
+</ul>
+</td>
+
+<td>&nbsp;</td>
+
+<td valign="top" width="49%">
+<ul style="padding-left: 20px; font-size: 11px;">
+<li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk%3b212292448%3b7406810%3bd?http://clk.atdmt.com/MRT/go/136522619/direct/01/" rel="nofollow">From Data Center to Desktop, Microsoft Virtualization delivers - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;212042872;7406810;x?http://ad.doubleclick.net/click;h=v2|3AAB|0|0|%2a|l;212050129;0-0;0;33453867;31-1|1;30304738|30322615|1;;%3fhttp://www.sun.com/storage/disk_systems/unified_storage/index.jsp?cid=927035" rel="nofollow">The Sun Unified Storage Systems. Get a 60-day free trial then buy at 20% off. Try It Now. - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;211234718;7859937;u?http://ad.doubleclick.net/clk;212240455;33635926;b?http://www.cdw.com/default.aspx?Seg=13&cm_mmc=MedLar%20Brand-_-InfoWorld-_-Textlink-_-Textlink" rel="nofollow">VISIT CDW.com TODAY FOR ALL YOUR TECHNOLOGY NEEDS. - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;211354482;7406810;z?http://ad.doubleclick.net/clk;211360177;32900686;b" rel="nofollow"><img src="http://ad.doubleclick.net/ad/N5072.infoworld.com/B3398876.2;sz=1x1;ord=%n?" width="1" height="1" />Real-time, reporting:  Try Free 60 day trial now - </a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;210922035;7406810;t?http://www.tripwire.com/whitepaper/?wpid=9812&djinn=OM20090106-1" rel="nofollow">File Integrity Monitoring: Prove compliance and secure your IT environments - </a></li><li><!--impression:--><a target="_new" href="http://w.on24.com/r.htm?e=125913&s=1&k=EA0F552149DD2CDD5AF6EE91EDCDB7E0&partnerref=ifwsite" rel="nofollow">Oracle - Top 3 Ways to Cut Costs in 2009 with Oracle Content Management</a></li><li><!--impression:--><a target="_new" href="http://www.accelacomm.com/jlp/textlink/13/50091480/&ord=9861080" rel="nofollow">Oracle - Performance Monitor: ERP at the Speed of Light</a></li><li><!--impression:--><a target="_new" href="http://ad.doubleclick.net/clk;206044675;17422667;i?http://clk.atdmt.com/MRT/go/nfwrlitp0600010561mrt/direct/01/" rel="nofollow">Microsoft - Learn about the software-based VoIP solution from Microsoft.</a></li><li><!--impression:--><a target="_new" href="http://www.accelacomm.com/jlp/textlink/13/50088406/&ord=6027342" rel="nofollow">Oracle - Nucleus Report: Who's ready for SMB?</a></li>
+</ul>
+
+</td>
+</tr>
+</tbody></table>
+
+
+<!-- Footer Begin -->
+
+<table width="1000" height="24" border="0" cellpadding="0" cellspacing="0" bgcolor="#999999" align="center">
+<tr>
+<td width="6"><img src="http://images.infoworld.com/img/ftr_men_lft_gen2.gif" border="0" height="24" width="6"/></td>
+<td width="490"><nobr><span class="whiteVrdMed">&nbsp;<a href="http://www.infoworld.com/" class="whiteVrdSm">HOME</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle" alt=""/>&nbsp;<a href="http://www.infoworld.com/news/" class="whiteVrdSm">NEWS</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://weblog.infoworld.com/" class="whiteVrdSm">BLOGS</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/weblog/podcasts/new_podcasts_index.html" class="whiteVrdSm">PODCASTS</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/video/" class="whiteVrdSm">VIDEOS</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/techindex/" class="whiteVrdSm">TECHNOLOGIES</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/testcenter/" class="whiteVrdSm">TEST CENTER</a>&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/evt_hom.html" class="whiteVrdSm">EVENTS</a><!--&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;<a href="http://www.infoworld.com/careers/" class="whiteVrdSm">CAREERS</a>-->&nbsp;<img src="http://images.infoworld.com/img/ftr_men_gen_div2.gif" border="0" align="absmiddle"/>&nbsp;</span></nobr></td>
+
+<td align="center" width="498"><nobr><span class="whiteVrdMed"> <a href="http://www.infoworld.com/about/" class="whiteVrdMed">About</a> | <a href="http://www.infoworld.com/advertise/" class="whiteVrdMed">Advertise</a> | <a href="http://www.infoworld.com/awards/" class="whiteVrdMed">Awards</a> |  <a href="http://www.infoworld.com/rss/" class="whiteVrdMed">RSS</a>  |  <a href="http://www.infoworld.com/about/abt_con.html" class="whiteVrdMed">Contact Us</a>&nbsp;</span></nobr></td>
+
+<td width="6"><img src="http://images.infoworld.com/img/ftr_men_rgt_gen2.gif" border="0" height="24"/></td></tr>
+<tr><td style="text-align: center" bgcolor="#FFFFFF" colspan="4"><br>
+<span class="blackVrdSm">&copy; 1994 - 2009, <a href="http://www.infoworld.com/about/abt_cpy.html" >Reprints, Permissions, Licensing</a>, <a  href="http://www.infoworld.com/about/idg_network.html">IDG Network</a>, <a  href="http://www.infoworld.com/about/abt_prv.html">Privacy Policy</a>, <a  href="http://www.infoworld.com/about/terms.html">Terms of Service</a>.<br>All Rights reserved.  InfoWorld is a leading publisher of technology information and product reviews on topics including viruses,<br> phishing, worms, firewalls, security, servers, storage, networking, wireless, databases, and web services.
+
+<br/><br/>
+</span>
+
+<a href="http://www.cio.com/" target="_new" class="blueVrdSm">CIO</a> :: <a href="http://www.computerworld.com/" target="_new" class="blueVrdSm">ComputerWorld</a> :: <a href="http://www.csoonline.com/" target="_new" class="blueVrdSm">CSO</a> :: <a href="http://www.demo.com" target="_new" class="blueVrdSm">DEMO</a> :: <a href="http://www.gamepro.com/" target="_new" class="blueVrdSm">GamePro</a> :: <a href="http://www.gamestar.com/" target="_new" class="blueVrdSm">Games.net</a> :: <a href="http://www.idc.com">IDC </a>:: <a href="http://www.idg.com">IDG</a>::
+<a href="http://www.idgconnect.com" target="_new" class="blueVrdSm">IDG Connect</a> :: <a href="http://www.idgknowledgehub.com">IDG Knowledge Hub</a> :: <a href="http://www.idgtechnetwork.com">IDG TechNetwork</a> ::
+<br/>
+<a href="http://www.idgventures.com">IDG Ventures</a> :: <a href="http://idg.net">IDG.net</a> :: <a href="http://www.infoworld.com/">InfoWorld</a> ::
+<a href="http://www.itworld.com/" target="_new" class="blueVrdSm">ITworld</a> :: <a href="http://www.javaworld.com/" target="_new" class="blueVrdSm">JavaWorld</a> :: <a href="http://www.linuxworld.com/" target="_new" class="blueVrdSm">LinuxWorld</a> :: <a href="http://www.macworld.com/" target="_new" class="blueVrdSm">Macworld</a> :: <a href="http://www.networkworld.com/" target="_new" class="blueVrdSm">Network World</a> :: <a href="http://www.pcworld.com/" target="_new" class="blueVrdSm">PC World</a> :: <a href="http://www.thestandard.com" target="_new" class="blueVrdSm">Industry Standard</a>
+
+</td></tr>
+</table>
+
+
+
+
+
+<!-- Footer End -->
+
+<LAYER SRC="http://ad.doubleclick.net/adl/idg.us.info.popup/ros;sz=1x1;tile=4;ord=2009?" width=1 height=1 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=1;clip.width=1; visibility='show';"></LAYER>
+
+<!--ww5.infoworld.com-->
+<!-- Start Quantcast tag -->
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-25K88fxDSEn9Y";quantserve();</script>
+<noscript>
+<a href="http://www.quantcast.com/p-25K88fxDSEn9Y" target="_blank"><img src="http://pixel.quantserve.com/pixel/p-25K88fxDSEn9Y.gif" style="display: none" border="0" height="1" width="1" alt="Quantcast"/></a></noscript>
+<!-- End Quantcast tag -->
+
+
+
+			<SCRIPT LANGUAGE="JavaScript">
+	endBodyAdCode();
+</SCRIPT>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-503159-6";
+urchinTracker();
+</script>
+
+		</center>
+
+   </body>
+</html>

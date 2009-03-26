@@ -1,0 +1,859 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/><title>Ruby off the Rails</title><meta http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))' />
+<link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" />
+<link rel="SHORTCUT ICON" href="http://www.ibm.com/favicon.ico" />
+<meta name="Owner" content="dW Information/Raleigh/IBM" />
+<meta name="DC.Language" scheme="rfc1766" content="en" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name="Security" content="Public" />
+<meta name="IBM.SpecialPurpose" content="SP001" />
+<meta name="IBM.PageAttributes" content="sid=1003"/>
+<meta name="Source" content="Based on v15 Template Generator, Template 15"/><meta name="Abstract" content="Ruby on Rails is just one facet of what makes Ruby great, just like EJB is only part of the Java enterprise platform. Andrew Glover digs beneath the hype for a look at what Java developers can do with Ruby, all by itself." /><meta name="Description" content="Ruby on Rails is just one facet of what makes Ruby great, just like EJB is only part of the Java enterprise platform. Andrew Glover digs beneath the hype for a look at what Java developers can do with Ruby, all by itself." /><meta name="Keywords" content="Andrew Glover, Ruby, Rails, Java, versus, duck typing, mix-ins, alt.lang.jre, languages, scripting, programming, production, Groovy, instantiation, collections, conditionals, mix-ins, polymorphism, iteration, duck typing, ducks, dynamic, dynamically, types, typed, tttjca" /><meta name="DC.Date" scheme="iso8601" content="2005-12-20" /><meta name="DC.Type" scheme="IBM_ContentClassTaxonomy" content="CT316" /><meta name="DC.Subject" scheme="IBM_SubjectTaxonomy" content="TT300" /><meta name="DC.Rights" content="Copyright (c) 2005 by IBM Corporation" /> <meta name="Robots" content="index,follow" /><meta name="IBM.Effective" scheme="W3CDTF" content="2005-12-20" /><meta name="Last update" content="12102008ketring@us.ibm.com" /><!-- STYLESHEETS/SCRIPTS -->
+<!-- for tables -->
+<link rel="stylesheet" type="text/css" media="screen,print" href="//www.ibm.com/common/v15/table.css" /> 
+<!-- end for tables -->
+<script language="JavaScript" src="/developerworks/js/dwcss14.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="//www.ibm.com/common/v15/main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="//www.ibm.com/common/v15/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="//www.ibm.com/common/v15/print.css" />
+<script language="JavaScript" src="//www.ibm.com/common/v15/detection.js" type="text/javascript"></script>
+<script language="JavaScript" src="//www.ibm.com/common/js/ibmcommon.js" type="text/javascript">//</script>
+<script language="JavaScript" src="//www.ibm.com/common/js/dynamicnav.js" type="text/javascript">//</script>
+<script language="JavaScript" src="/developerworks/js/dropdown.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/grabtitle.js" type="text/javascript"></script>
+<script language="JavaScript" src="/developerworks/email/emailfriend2.js" type="text/javascript"></script><script language="JavaScript" src="/developerworks/js/urltactic.js" type="text/javascript"></script><script language="JavaScript" type="text/javascript">
+ <!--
+ setDefaultQuery('javaart');
+ //-->
+</script>
+<!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script language="javascript" src="/developerworks/js/ajax1.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/search_counter.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/request_referer_capture.js" type="text/javascript"></script><script language="javascript" src="/developerworks/js/summaries_switcher.js" type="text/javascript"></script><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><script language="JavaScript" type="text/javascript">var emailAbstract = "Ruby on Rails is just one facet of what makes Ruby great, just like EJB is only part of the Java enterprise platform. Andrew Glover digs beneath the hype for a look at what Java developers can do with Ruby, all by itself."; </script></head><body><!--MASTHEAD_BEGIN--><div id="ibm-top" class="ibm-liquid">
+<div class="ibm-access"><a href="#main">Skip to main content</a></div>
+
+<div id="ibm-masthead">
+<div id="ibm-logo"><a href="http://www.ibm.com/"><img width="110" src="//www.ibm.com/i/v16/t/ibm-logo.gif" height="50" alt="IBM&reg;"/></a></div>
+
+<ul id="ibm-geo">
+<li class="ibm-first" id="ibm-country">Country/region</li>
+<li id="ibm-change-country">[ <a href="http://www.ibm.com/developerworks/country/">select</a> ]</li>
+</ul>
+
+<form id="ibm-search-form" action="//www.ibm.com/developerworks/search/searchResults.jsp" method="get" name="form1"><input type="hidden" name="searchType" value="1"/><input type="hidden" name="searchSite" value="dW"/><p>
+<span id="ibm-search-scope">
+<label for="sn"><img src="//www.ibm.com/i/c.gif" width="1" height="1" alt="Search in:"/></label>
+<select class="input-local" name="searchScope" id="sn" size="1">
+<option value="dW" selected="selected">All of dW</option>
+<option value="dW">-----------------</option>
+<option value="aixunix">&nbsp;&nbsp;AIX and UNIX</option>
+<option value="db2">&nbsp;&nbsp;Information Mgmt</option>
+<option value="lotus">&nbsp;&nbsp;Lotus</option>
+<option value="rdd">&nbsp;&nbsp;Rational</option>
+<option value="tivoli">&nbsp;&nbsp;Tivoli</option>  
+<option value="WSDD">&nbsp;&nbsp;WebSphere</option>
+<option value="dW">-----------------</option> 
+<option value="archZ">&nbsp;&nbsp;Architecture</option>
+<option value="acZ">&nbsp;&nbsp;Autonomic computing</option>
+<option value="javaZ">&nbsp;&nbsp;Java technology</option> 
+<option value="linuxZ">&nbsp;&nbsp;Linux</option> 
+<option value="paZ">&nbsp;&nbsp;Multicore acceleration</option>
+<option value="opensrcZ">&nbsp;&nbsp;Open source</option>
+<option value="webservZ">&nbsp;&nbsp;SOA &amp; Web services</option>
+<option value="webarchZ">&nbsp;&nbsp;Web development</option>  
+<option value="xmlZ">&nbsp;&nbsp;XML</option>
+<option value="dW">-----------------</option>
+<option value="forums">&nbsp;&nbsp;dW forums</option> 
+<option value="dW">-----------------</option>
+<option value="aW">alphaWorks</option>
+<option value="dW">-----------------</option>
+<option value="all">All of IBM</option>
+</select>
+</span>
+
+<label for="q"><img alt="Search for:" height="1" width="1" src="//www.ibm.com/i/c.gif" /></label><input type="text" name="query" maxlength="100" id="q"/><input type="submit" id="ibm-search" class="ibm-btn-search" name="Search" value="Search" /></p></form>
+
+<div id="ibm-site-name">
+<!-- IBM site name container -->
+</div>
+
+<div id="ibm-universal-nav">
+<ul>
+<li class="ibm-first" id="ibm-unav-home"><a href="http://www.ibm.com/">Home</a></li>
+<li id="ibm-unav-solutions"><a href="http://www.ibm.com/businesssolutions/">Business solutions</a></li>
+<li id="ibm-unav-services"><a href="http://www.ibm.com/technologyservices/">IT services</a></li>
+<li id="ibm-unav-products"><a href="http://www.ibm.com/products/">Products</a></li>
+<li id="ibm-unav-support"><a href="http://www.ibm.com/support/">Support &amp; downloads</a></li>
+<li id="ibm-unav-myibm"><a href="http://www.ibm.com/account/">My IBM</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript" src="//www.ibm.com/common/v15/pmh.js">
+</script>
+
+<!--MASTHEAD_END--><!-- CMA ID: 100266 --> <!-- Site ID: 1 --><table id="v14-body-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><!--LEFTNAV_BEGIN--><td id="navigation" width="150"><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="left-nav-spacer"><a href="http://www.ibm.com/developerworks" class="left-nav-overview"> </a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-overview"><a href="http://www.ibm.com/developerworks" class="left-nav-overview">developerWorks</a></td></tr></table><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td colspan="2" class="left-nav-highlight"><a href="#" class="left-nav">In this article:</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10081" class="left-nav-child">Feels so different</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10160" class="left-nav-child">Fast moving objects</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N1022E" class="left-nav-child">Collections done right</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10285" class="left-nav-child">RubyBeans?</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N102D6" class="left-nav-child">Watch Ruby iterate</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10371" class="left-nav-child">Conditionally yours</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N103B3" class="left-nav-child">Ducks love Ruby!</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N10486" class="left-nav-child">Mix-in it up</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#N104C6" class="left-nav-child">In conclusion</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#resources" class="left-nav-child">Resources</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#author" class="left-nav-child">About the author</a></td></tr><tr class="left-nav-child-highlight"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/cl-bullet.gif"/></td><td><a href="#rate" class="left-nav-child">Rate this page</a></td></tr><tr class="left-nav-last"><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/v14/t/left-nav-corner.gif"/></td></tr></table><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="related" colspan="2"><b class="related">Related links</b></td></tr><tr class="rlinks"><td><img alt="" height="8" width="2" src="//www.ibm.com/i/v14/t/rl-bullet.gif"/></td><td><a class="rlinks" href="http://www.ibm.com/developerworks/views/java/library.jsp">Java technology technical library</a></td></tr><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- No content currently --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><tr><td width="14"><img class="display-img" alt="" height="1" width="14" src="//www.ibm.com/i/c.gif"/></td><td width="136"><img class="display-img" alt="" height="19" width="136" src="//www.ibm.com/i/c.gif"/></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- Next Steps Area:  Start -->
+<!-- Call Next Steps Servlet -->
+<script language="JavaScript" type="text/javascript">
+<!--
+/*
+ * ajaxInclude makes a call to the url and render the results in the div tag specified in divId
+ */
+function ajaxInclude(url, divId) { 
+ var req = newXMLHttpRequest(); 
+ if (req) { 
+   req.onreadystatechange = getReadyStateHandler(req, 
+	function (result) {  
+           var contents = document.getElementById(divId);  
+           if (result != null && result.length > 0 && contents != null) {
+	     contents.innerHTML = result;  
+           }
+        }); 
+   req.open("GET", url, true);
+   req.send("");
+ }
+}
+//-->
+</script>
+
+<!-- Display Next Steps Result -->
+<div id="nextsteps"></div>
+
+<!-- Initiate Next Steps Call -->
+<script language="JavaScript" type="text/javascript">
+<!-- 
+ ajaxInclude("/developerworks/niagara/jsp/getNiagaraContent.jsp?url="+window.location.href,"nextsteps");
+//-->
+</script>
+<!-- Next Steps Area:  End --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--></td><!--LEFTNAV_END--><td width="100%"><table id="content-table" border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="100%"><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><a name="main"><img border="0" alt="skip to main content" height="1" width="592" src="//www.ibm.com/i/c.gif"/></a></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td height="18" width="10"><img alt="" height="18" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif"/><br /><a href="http://www.ibm.com/developerworks/" class="bctl">developerWorks</a><span class="bct">  &gt;  </span><a class="bctl" href="http://www.ibm.com/developerworks/java/">Java technology</a><span class="bct">  &gt;</span><img alt="" height="1" width="1" src="//www.ibm.com/i/c.gif"/><br /><h1>Ruby off the Rails</h1><p id="subtitle"><em>Get to know Ruby before you hop on (or off) the Rails bandwagon</em></p><img alt="" height="6" width="1" src="//www.ibm.com/i/c.gif" class="display-img"/></td><td class="no-print" width="192"><a href="http://www.ibm.com/developerworks/"><img alt="developerWorks" border="0" height="18" width="192" src="/developerworks/i/dw.gif"/></a></td></tr></table></td></tr></table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr valign="top"><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><table class="no-print" border="0" width="160" cellspacing="0" cellpadding="0" align="right"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-1-small">Document options</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><script language="JavaScript" type="text/javascript">
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img alt="Set printer orientation to landscape mode" height="16" src="//www.ibm.com/i/v14/icons/printer.gif" width="16" vspace="3" /></td><td width="122"><p><b><a class="smallplainlink" href="javascript:print()">Print this page</a></b></p></td></tr>');
+//-->
+</script>
+<noscript></noscript><script language="JavaScript" type="text/javascript">
+<!-- 5.6 10/24 llk: added cdata around the subdirectory path of email gif-->
+<!--
+document.write('<tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td width="16"><img src="//www.ibm.com/i/v14/icons/em.gif" height="16" width="16" vspace="3" alt="Email this page" /></td><td width="122"><p><a class="smallplainlink" href="javascript:void newWindow()"><b>E-mail this page</b></a></p></td></tr>');
+//-->
+</script><noscript><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td width="16"><img alt="" width="16" height="16" src="//www.ibm.com/i/c.gif"/></td><td class="small" width="122"><p><span class="ast">Document options requiring JavaScript are not displayed</span></p></td></tr></noscript></table></td></tr></table><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!--Updated 12/04/08 by gem-->
+<br /><table border="0" cellpadding="0" cellspacing="0" width="150"><tr><td class="v14-header-2-small">Hey there! developerWorks is using Twitter</td></tr></table><table border="0" cellpadding="0" cellspacing="0" class="v14-gray-table-border"><tr><td width="150" class="no-padding"><table border="0" cellpadding="0" cellspacing="0" width="143"><tr valign="top"><td width="8"><img src="//www.ibm.com/i/c.gif" width="8" height="1" alt=""/></td><td><img src="//www.ibm.com/i/v14/icons/fw_bold.gif" height="16" width="16" border="0" vspace="3" alt=""/></td><td width="125"><p><a href="http://www.twitter.com/developerworks/?S_TACT=105AGX01&amp;S_CMP=nsf" class="smallplainlink">Follow  us</a></p></td></tr></table></td></tr></table><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><table width="150" cellspacing="0" cellpadding="0" border="0"><tr><td class="v14-header-2-small">Rate this page</td></tr></table><table class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td class="no-padding" width="150"><table width="143" cellspacing="0" cellpadding="0" border="0"><tr valign="top"><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td><img alt="" vspace="3" border="0" width="16" height="16" src="//www.ibm.com/i/v14/icons/d_bold.gif"/></td><td width="125"><p><a href="#rate" class="smallplainlink"><b>Help us improve this content</b></a></p></td></tr></table></td></tr></table><br /></td></tr></table><p>Level: Introductory</p><p><a href="#author">Andrew Glover</a> (<a href="mailto:aglover@stelligent.com?subject=Ruby off the Rails">aglover@stelligent.com</a>), President, Stelligent Incorporated<br /></p><p> 20 Dec  2005</p><blockquote>Ruby on Rails is just one facet of what makes Ruby great, just like EJB is only part of the Java&#8482; enterprise platform. Andrew Glover digs beneath the hype for a look at what Java developers can do with Ruby, all by itself.</blockquote><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><script type="text/javascript" language="javascript">
+	     // <![CDATA[
+			capture_referrer();
+		 // ]]>
+</script>
+
+<!--  START : HTML FOR SEARCH REFERRER -->
+  <div id="search_referrer_results" style="display:none">
+
+
+<!--  START : HTML FOR ARTICLE SEARCH -->
+  <div id="article_results" style="display:block"></div>
+<!--  END : HTML FOR ARTICLE SEARCH -->
+
+<!--  START : HTML FOR CODE SEARCH -->
+   <div id="code_results" style="display:block"></div>
+<!--  END : HTML FOR CODE SEARCH -->
+
+
+   <br />
+   <br />
+   </div>
+<!--  END : HTML FOR SEARCH REFERRER --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><p>Before I can even begin this article, I need to clarify something.
+First, this is not an article about Ruby on Rails. If you want to read
+about Rails, articles and blogs are published weekly (maybe hourly)
+extolling the manifold features of this exciting framework; see <a href="#resources">Resources</a> for a list to start from. Second, this
+article does not foretell the collapse of the Java platform in the face
+of <i>better</i> languages, tools, and frameworks <i>like</i> Ruby on
+Rails. So this article is about neither of the subjects most commonly
+associated with Ruby of late.</p>
+
+<p>Don't get me wrong -- I think Rails is fabulous! It's amazingly
+powerful and has clearly changed the face <i>and pace</i> of Web
+development. My only point is that there's more to Ruby than Rails,
+especially from a Java developer's perspective.</p>
+
+<p>The specialty of Rails is Web site development; however, I don't find
+myself building Web sites all that often. Most of the Web sites I work
+on have <i>already</i> been built using Struts, Tapestry, or some other
+technology. Primarily, when I utilize Ruby, I use it as part of a
+development practice that hinges on the Java platform. So in this
+article, I'll write about how to develop in Ruby if you're primarily a
+Java developer. </p>
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N10072"><b>In praise of the polyglot</b></a><br />
+<p>If you've ever envied the ability of multilingual friends to bridge
+language gaps wherever they travel or gained new appreciation for your
+native language by learning a new one, then you can probably see the
+advantage of being a <i>programming language polyglot</i>. Developer
+polyglots travel the IT world more freely than do monolinguists (sure
+that they can apply their skills in any environment), and they also tend to
+better appreciate the programming language called <i>home</i>, because
+among other things they know the roots from which that home is 
+sprung. Isn't it time you became a polyglot?</p>
+</td></tr></table></td></tr></table>
+
+
+<p><a name="N10081"><span class="atitle">Feels so different</span></a></p>
+<p>Ruby's syntax is different from that of the Java language. First, Ruby has no brackets or semicolons, and it makes types completely optional. Some might say
+that Ruby's syntax is terse, and it's that way <i>with a purpose</i>: this language lets you create concise working code in short order. </p>
+
+<p>You can see this for yourself by comparing the same classes, defined
+first in the Java language and then in Ruby. I'll start with two
+classes -- <code>Word</code> and <code>Definition</code> (like in a dictionary) -- in the Java
+language. In the simple class diagram of Figure 1, you can see that the
+two classes share a few relationships (just bear with me if all this
+complexity seems contrived: it serves a purpose!):</p>
+
+<ul>
+
+<li>A <code>Word</code> can have a collection of synonyms
+(which are instances of <code>Word</code>s). </li>
+
+<li>A <code>Word</code> also has a collection of <code>Definition</code>s. </li>
+
+<li>A <code>Definition</code> has an aggregation
+association to a <code>Word</code>. </li>
+</ul>
+
+
+<br /><a name="N100BE"><b>Figure 1. A simple dictionary with words and definitions</b></a><br />
+<img alt="" border="0" height="197" src="dictionary_v.gif" width="496"/>
+<br />
+
+<p><a name="N100CD"><span class="smalltitle">Class definition in the Java language</span></a></p>
+<p>In Listing 1, I define the <code>Word</code> class in the Java language.
+Note the relationship validation I had to do with respect to my
+collection of <code>Definition</code>s and synonyms. This
+is necessary because in the example (as coded), <code>Definition</code>s can be created <i>without</i> a <code>Word</code> relationship initially and <code>Word</code>s can be defined <i>without</i> <code>Definition</code>s initially, too. </p>
+
+<br /><a name="code1"><b>Listing 1. A Word class in the Java language</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+package com.vanward.dictionary;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+
+public class Word {	
+
+  private String spelling; 
+  private String partOfSpeech;
+  private Collection definitions;
+  private Collection synonyms;
+
+  public Word(String spelling, String partOfSpeech) {
+    this.spelling = spelling;
+    this.partOfSpeech = partOfSpeech;
+    this.definitions = new ArrayList();
+    this.synonyms = new ArrayList();
+  } 
+
+  public Word(String spelling, String partOfSpeech, 
+    Collection definitions) {
+      this(spelling, partOfSpeech);
+      if(definitions != null){
+        for(Iterator iter = definitions.iterator(); iter.hasNext();){
+          this.validateRelationship((Definition)iter.next());
+        }
+        this.definitions = definitions;
+      }		
+  }
+
+  public Word(String spelling, String partOfSpeech, 
+    Collection definitions, Collection synonyms) {
+      this(spelling, partOfSpeech, definitions);
+      if(synonyms != null){
+        this.synonyms = synonyms;
+      }
+  }
+
+  private void validateRelationship(Definition def){
+    if(def.getWord() == null || def.getWord() != this){
+      def.setWord(this);
+    }
+  }
+
+  public Collection getDefinitions() {
+    return definitions;
+  }	
+
+  public void addDefinition(Definition definition) {
+    this.validateRelationship(definition);		
+    this.definitions.add(definition);
+  }
+
+  public String getPartOfSpeech() {
+    return partOfSpeech;
+  }
+
+  public void setPartOfSpeech(String partOfSpeech) {
+    this.partOfSpeech = partOfSpeech;
+  }
+
+  public String getSpelling() {
+    return spelling;
+  }
+
+  public void setSpelling(String spelling) {
+    this.spelling = spelling;
+  }
+
+  public Collection getSynonyms() {
+    return synonyms;
+  }
+
+  public void addSynonym(Word synonym) {
+    this.synonyms.add(synonym);
+  }	
+}
+</pre></td></tr></table><br />
+
+<p>The <code>Word</code>
+class in Listing 1 is fairly simple -- it's a JavaBean with a constructor chain
+allowing users to create <code>Word</code>s with various
+properties set. Also note that both its <code>synonyms</code> and <code>definitions</code>
+properties are <i>intended</i> to be read-only (that is, there is no setter
+for them). You can only <i>add</i> an instance of a <code>Definition</code> or another <code>Word</code> for a synonym. </p>
+
+<p>In Listing 2, you see the related <code>Definition</code> class, which is similar to the <code>Word</code> class in that its <code>exampleSentences</code> property doesn't have a
+corresponding <code>set()</code> method: </p>
+
+<br /><a name="code2"><b>Listing 2. A Definition class in the Java language</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+package com.vanward.dictionary;
+
+import java.util.Collection;
+
+public class Definition {
+
+  private Word word;
+  private String definition;
+  private Collection exampleSentences;
+
+  public Definition(String definition){
+    this.definition = definition;
+	this.exampleSentences = new ArrayList();
+  }
+  
+  public Definition(String definition, Word word) {			
+    this(definition);
+    this.word = word;
+  }
+
+  public Definition(String definition, Word word, 
+    Collection exampleSentences) {
+      this(definition, word);
+      if(exampleSentences != null){
+        this.exampleSentences = exampleSentences;
+      }
+  }
+
+  public String getDefinition() {
+    return definition;
+  }
+
+  public void setDefinition(String definition) {
+    this.definition = definition;
+  }
+
+  public Collection getExampleSentences() {
+    return exampleSentences;
+  }
+
+  public void addExampleSentence(String exampleSentence) {
+    this.exampleSentences.add(exampleSentence);
+  }
+
+  public Word getWord() {
+    return word;
+  }
+  
+  public void setWord(Word word) {
+    this.word = word;
+  }
+}
+</pre></td></tr></table><br />
+
+<p><a name="N1013C"><span class="smalltitle">Class definition ala Ruby</span></a></p>
+<p>In Listing 3, you can see the same two classes defined in Ruby. Listing 3 <i>does</i> look quite different, doesn't it?</p>
+
+<br /><a name="code3"><b>Listing 3. The same classes in Ruby</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+module Dictionary
+
+  class Word
+
+    attr_reader :spelling, :part_of_speech, :definitions, :synonyms
+    attr_writer :spelling, :part_of_speech
+
+    def initialize(spelling, part_of_speech, definitions = [], synonyms = [])
+      @spelling = spelling
+      @part_of_speech = part_of_speech      
+      definitions.each{ |idef| idef.word = self}       
+      @definitions = definitions      
+      @synonyms = synonyms
+    end 
+
+    def add_definition(definition)
+      definition.word = self if definition.word != self
+      @definitions &lt;&lt; definition    
+    end
+
+    def add_synonym(synonym)
+      @synonyms &lt;&lt; synonym
+    end
+
+  end
+
+
+  class Definition
+
+    attr_reader :definition, :word, :example_sentences
+    attr_writer :definition, :word
+
+    def initialize(definition, word = nil, example_sentences = [])       
+      @definition = definition
+      @word = word
+      @example_sentences = example_sentences
+    end
+
+  end
+
+end
+</pre></td></tr></table><br />
+
+<p>If there's one thing you'll notice from Listing 3, it's that Ruby's
+syntax is quite terse. But don't let its brevity fool you -- there's a lot going on in that code! First, both classes are defined in a
+<i>module</i>, which is essentially a <code>package</code>
+in the Java language. Moreover, I was able to define the classes in one
+file -- not two -- as required in the Java language. You'll also note
+that Ruby's constructors are named <code>initialize</code>, whereas in the Java language,
+constructors are named using the class name.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10160"><span class="atitle">Fast moving objects</span></a></p>
+<p>Creating new object instances is different in Ruby. Rather
+than the <code>new ObjectInstance()</code> syntax used in
+Java code, Ruby actually supports calling a <code>new</code> method on an object, which internally calls the
+<code>initialize</code> method. In Listing 4, you can see how
+I create an  instance of a <code>Word</code> and some
+corresponding <code>Definition</code>s in Ruby:</p>
+
+<br /><a name="code4"><b>Listing 4. Creating a new object 
+instance in Ruby</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require "dictionary"
+
+happy_wrd = Dictionary::Word.new("ebullient", "adjective")
+		
+defin_one = Dictionary::Definition.new("Overflowing with enthusiasm")
+defin_two = Dictionary::Definition.new("Boiling up or over")
+
+happy_wrd.add_definition(defin_one)
+happy_wrd.add_definition(defin_two)
+</pre></td></tr></table><br />
+
+<p>In Listing 4, I "imported" the <code>dictionary</code> module with Ruby's <code>require</code> method (which can be found in the <code>Kernel</code> class). I then proceeded to create a new
+instance of a <code>Word</code> (<i>ebullient</i>) via the
+<code>Object.new</code> syntax. Even though I imported
+the <code>dictionary</code> module, I still need to qualify
+object instances, hence the <code>Dictionary::Word</code>
+qualification. I could have also dropped the <code>Dictionary::</code> prefix code if I had written <code>include Dictionary</code> after the <code>require</code> clause. </p>
+
+
+<p><a name="N101B5"><span class="smalltitle">Default parameter
+values</span></a></p>
+<p>Did you notice how I <i>didn't</i> specify a collection of <code>Definition</code>s or synonyms when I created the <code>happy_wrd</code> instance shown in Listing 4? I only
+passed in values for <code>spelling</code> and <code>part_of_speech</code>. I got away with that omission
+because Ruby supports default values for parameters. In <code>Word</code>'s <code>initialize</code> method
+defined in Listing 3, I've specified <code>definitions =
+[]</code> and <code>synonyms = []</code> as parameters,
+which basically says to Ruby <i>if they are not included by the caller,
+then default them to empty collections</i>.</p>
+
+<p>Note also in <a href="#code3">Listing 3</a> how <code>Definition</code>'s <code>initialize</code>
+method supports default parameters by setting <code>example_sentences</code> to an empty collection (<code>word</code>'s default value of <code>nil</code> is Ruby's version of <code>null</code> in the Java language). Back in <a href="#code1">Listing 1</a>, I had to create <i>three constructors</i> to get
+that same flexibility from the Java language! </p>
+
+<p>Now watch as I create a different <code>Word</code>
+instance with my flexible <code>initialize()</code> method,
+in Listing 5:</p>
+
+<br /><a name="code5"><b>Listing 5. Flexibility is the name of the game!</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require "dictionary"
+
+defin = Dictionary::Definition.new("Skill in or performance of tricks")
+defin_two = Dictionary::Definition.new("sleight of hand")
+        
+defs = [defin, defin_two]
+        
+tricky_wrd = Dictionary::Word.new("prestidigitation", "noun", defs)
+</pre></td></tr></table><br />
+
+<p>After I define two <code>Definition</code>s, I add them
+to a collection (which looks just like an array in the Java language). I then pass that collection to <code>Word</code>'s <code>initialize()</code> method.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N1022E"><span class="atitle">Collections done right</span></a></p>
+<p>Ruby's collections handling is amazingly simple too -- see the <code>add_definition</code> and <code>add_synonym</code> methods in the <code>Word</code> class? The <code>&lt;&lt;</code>
+syntax is overloaded to mean <code>add</code>. If you look
+back to the <code>Definition</code> class in <a href="#code2">Listing 2</a>, you'll see that the corresponding code in
+the Java language is a much bigger mouthful: <code>this.exampleSentences.add(exampleSentence)</code>.</p>
+
+<table align="right" border="0" cellspacing="0" cellpadding="0" width="40%"><tr><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td><td><table border="1" cellspacing="0" cellpadding="5" width="100%"><tr><td bgcolor="#eeeeee">
+<a name="N1025B"><b>Slick squares</b></a><br />
+Speaking of collections, isn't Ruby's <code>[]</code>
+syntax slick? If you're a Groovy user, it should look familiar to you as well.
+</td></tr></table></td></tr></table>
+
+<p>Ruby's collection handling is extremely concise. In Listing 6, you can
+see how easy it is to combine collections (using the <code>+</code> operator) and access members (via <code>[</code><i>position</i><code>]</code>) --
+and do so <i>without</i> the fear of things blowing up on you!</p>
+
+<br /><a name="code6"><b>Listing 6. Shorthand collections</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require "dictionary"
+
+idef_1 = Dictionary::Definition.new("Sad and lonely because deserted")
+idef_2 = Dictionary::Definition.new("Bereft; forsaken")
+
+defs = [idef_1, idef_2]
+
+idef_3 = Dictionary::Definition.new("Wretched in appearance or condition")
+idef_4 = Dictionary::Definition.new("Almost hopeless; desperate")
+
+defs_2 =  [idef_3, idef_4]
+
+n_def = defs + defs_2  #n_def is now [idef_1, idef_2, idef_3, idef_4]
+
+n_def[1]    # produces idef_2
+n_def[9]    # produces nil
+n_def[1..2] # produces [idef_2, idef_3]
+</pre></td></tr></table><br />
+
+<p>The code in Listing 6 only scratches the surface of Ruby's collection handling!</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10285"><span class="atitle">RubyBeans?</span></a></p>
+<p>You may have noticed in both classes of <a href="#code3">Listing 3</a> that Ruby supports a shortcut notation for defining properties: <code>attr_reader</code> and <code>attr_writer</code>. Because I used this notation, I can <i>set</i> and <i>get</i> corresponding properties in my <code>Word</code> class, as shown in Listing 7:</p>
+
+<br /><a name="code7"><b>Listing 7.  attr_reader and attr_writer in action</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require "dictionary"
+
+wrd = Dictionary::Word.new("turpitude", "Noun")
+
+wrd.part_of_speech  # "Noun"
+wrd.spelling        # "turpitude"
+
+wrd.spelling = "bibulous"
+
+wrd.spelling        # "bibulous"
+
+syns = [Dictionary::Word.new("absorptive", "Adjective"), 
+  Dictionary::Word.new("imbibing", "Noun") ]
+
+# Danger! 
+wrd.synonyms = syns = syns #Exception: undefined method `synonyms='...
+</pre></td></tr></table><br />
+
+<p>Both <code>attr_reader</code> and <code>attr_writer</code> are not keywords but are actual
+methods in Ruby (found in the <code>Module</code>
+class) that take symbols as arguments. A <i>symbol</i> is
+any variable that is preceded by a colon (<code>:</code>),
+and what's even neater is that symbols themselves are objects!</p>
+
+<p>Note that because I made <code>synonyms</code>
+read-only in <a href="#code3">Listing 3</a>, Ruby denied my attempt in
+the last line of code in Listing 7. Also, I could have written the
+property declaration code using the <code>attr_accessor</code> method to indicate that a property
+was both readable <i>and</i> writeable.</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N102D6"><span class="atitle">Watch Ruby iterate</span></a></p>
+<p>Flexible iteration is one of the joys of coding in Ruby. Look at Listing 8, where I've singled out <code>Word</code>'s <code>initialize()</code> method:
+</p>
+
+<br /><a name="code8"><b>Listing 8. Closures are handy</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+def initialize(spelling, part_of_speech, definitions = [], synonyms = [])
+  @spelling = spelling
+  @part_of_speech = part_of_speech      
+  definitions.each{ |idef| idef.word = self}       
+  @definitions = definitions      
+  @synonyms = synonyms
+end 
+</pre></td></tr></table><br />
+
+<p>Something different is going on in the fourth line of Listing 8, for sure. For starters, I used brackets when I called the <code>each</code> method on the <code>definitions</code> instance. The <code>each</code> method is essentially like an <code>Iterator</code> in the Java language, but it's a bit more concise. In Listing 8, the <code>each</code> method handles the details of iteration and allows the caller to focus on the desired effect. In this case, I passed in a block stating the following: <i>for each value in the collection</i> -- that is, <code>idef</code>, which is an instance of <code>Definition</code> -- <i>set its </i><code>word</code><i> property to</i> <code> self</code> (which is the same as <code>this</code> in the Java language).</p>
+
+<p>Listing 9 shows essentially the same line of code in the Java language (taken from <code>Word</code>'s constructor shown in <a href="#code1">Listing 1</a>):</p>
+
+<br /><a name="code9"><b>Listing 9. Ruby's each method is like Java's Iterator</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+for(Iterator iter = definitions.iterator(); iter.hasNext();){
+  this.validateRelationship((Definition)iter.next());
+}
+</pre></td></tr></table><br />
+
+
+<p><a name="N10338"><span class="smalltitle">Yes, yes, yes ...!</span></a></p>
+<p>Let me acknowledge right now that Java 5's generics and new <code>for</code> loop syntax is <i>much, much nicer</i> than what's shown in Listing 9. Ruby <i>does</i> support Java's familiar looping constructs such as <code>for</code> and <code>while</code>; however, in practice, they are rarely utilized since most everything in Ruby supports the notion of iteration. For example, in Listing 10, look how easy it is to iterate over the contents of a file:</p>
+
+<br /><a name="code10"><b>Listing 10. Iteration made simple</b></a><br />
+<table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+count = 0
+File.open("./src/dictionary.rb").each { |loc| puts "#{count += 1}:" + loc }
+</pre></td></tr></table><br />
+
+<p>Any class in Ruby that supports the <code>each</code> method (like <code>File</code>) lets you iterate this way. By the way, Ruby's <code>puts</code> method (seen in Listing 10) is the same as  the Java language's <code>System.out.println</code>.</p>
+
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10371"><span class="atitle">Conditionally yours</span></a></p>
+<p>While I'm on the subject of looping, let's take a closer look at a conditional statement found in the <code>Word</code> class
+of <a href="#code3">Listing 3</a>. In Listing 11, I've singled out the <code>add_definition()</code> method:</p>
+
+<br /><a name="code11"><b>Listing 11. Nifty conditionals</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+def add_definition(definition)
+  definition.word = self if definition.word != self
+  @definitions &lt;&lt; definition    
+end
+</pre></td></tr></table><br />
+
+<p>Look closely at the second line of code. See how the <code>if</code> statement follows the expression? You certainly <i>could</i> write it normal-style, as shown in Listing 12, but isn't Listing 11 nicer? </p>
+
+<br /><a name="code12"><b>Listing 12. More than one way to skin a conditional</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+def add_definition(definition)
+  if definition.word != self
+    definition.word = self 
+  end
+  @definitions &lt;&lt; definition    
+end
+</pre></td></tr></table><br />
+
+<p>In the Java language, if the body of a conditional is a single line, you can drop the brackets. In Ruby, if the body of a conditional is a single line, you can write expressions like the one shown in <a href="#code11">Listing 11</a>. Also note that the same conditional could also be written as <code>definition.word = self unless definition.word == self</code>, which uses Ruby's <code>unless</code> feature. Nice, eh?
+</p>
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N103B3"><span class="atitle">Ducks love Ruby!</span></a></p>
+<p> Because Ruby is a dynamically typed language, it doesn't require interfaces. Mind you, the power of interfaces is completely present in Ruby, but in a much more flexible manner. Affectionately known as "duck typing" (i.e., if it waddles like a duck and quacks like one, then it must be a duck!), polymorphism in Ruby is just a matter of matching method names. Let's compare polymorphism in Ruby and the Java language.</p>
+
+<p><a name="N103BC"><span class="smalltitle">Java-morphism</span></a></p>
+<p>One way to capture the power of polymorphism in the Java language is to
+declare an interface type and have other types implement that interface.
+You can then refer to implementing objects as that interface type and
+call whatever methods exist on that interface. As an example, in Listing 13, I've defined a simple interface called <code>Filter</code>: </p>
+
+<br /><a name="code13"><b>Listing 13. A simple Java interface</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+package com.vanward.filter;
+
+public interface Filter {  
+  boolean applyFilter(String value);
+}
+</pre></td></tr></table><br />
+
+<p>In Listing 14, I've defined an implementing class, called <code>RegexPackageFilter</code>, that applies a regular expression for filtering purposes: </p>
+
+<br /><a name="code14"><b>Listing 14. RegexPackageFilter implements Filter</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+package com.vanward.filter.impl;
+
+import org.apache.oro.text.regex.MalformedPatternException;
+import org.apache.oro.text.regex.Pattern;
+import org.apache.oro.text.regex.PatternCompiler;
+import org.apache.oro.text.regex.PatternMatcher;
+import org.apache.oro.text.regex.Perl5Compiler;
+import org.apache.oro.text.regex.Perl5Matcher;
+
+import com.vanward.filter.Filter;
+
+public class RegexPackageFilter implements Filter {
+  private String filterExpression;
+  private PatternCompiler compiler;
+  private PatternMatcher matcher;
+
+  public RegexPackageFilter() {   
+    this.compiler = new Perl5Compiler();
+    this.matcher = new Perl5Matcher();
+  }
+
+  public RegexPackageFilter(final String filterExpression){
+    this();
+    this.filterExpression = filterExpression;
+  }
+
+  public boolean applyFilter(final String value) {
+    try{		
+      Pattern pattrn = this.getPattern();
+      return this.matcher.contains(value, pattrn);
+     }catch(MalformedPatternException e){
+       throw new RuntimeException("Regular Expression was uncompilable " +
+	      e.getMessage());
+     }
+  }  
+  
+  private Pattern getPattern() throws MalformedPatternException{
+    return compiler.compile(this.filterExpression);		
+  }
+}
+</pre></td></tr></table><br />
+
+<p>Now, imagine that there are multiple implementations of the <code>Filter</code> interface (such as the <code>RegexPackageFilter</code>, a <code>ClassInclusionFilter</code> type, and perhaps a <code>SimplePackageFilter</code> type). To maximize flexibility in an application, other objects can now refer to the interface type (<code>Filter</code>) and not the implementers, as shown in Listing 15: </p>
+
+<br /><a name="code15"><b>Listing 15. Polymorphism is so beautiful ...</b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+private boolean applyFilters(final String value, final Filter[] filters){
+  boolean passed = false;
+  for(int x = 0; (x &lt; filters.length &amp;&amp; !passed); x++){
+    passed = filters[x].applyFilter(value);
+  }
+  return passed;
+}
+</pre></td></tr></table><br />
+
+<p><a name="N10405"><span class="smalltitle">Ruby-morphism</span></a></p>
+<p>In Ruby, interfaces don't matter! So long as method names match, you have polymorphism. Watch.</p>
+
+<p>In Listing 16, I've recreated the Java <code>Filter</code> types in Ruby. Note how each class isn't related (other than that they share the same method <code>apply_filter</code>). <i>Yes, these two classes beg to be refactored into extending a base <code>Filter</code> class; however, I want to show polymorphism in action </i>without<i> the classes sharing a type.</i></p>
+
+<br /><a name="code16"><b>Listing 16. Filter me, Ruby! </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+class RegexFilter
+
+  attr_reader :fltr_exprs
+
+  def initialize(fltr_exprs)
+    @fltr_exprs = fltr_exprs      
+  end 
+
+  def apply_filter(value)
+    value =~ @fltr_exprs
+  end
+end
+
+
+class SimpleFilter
+
+  attr_reader :fltr_exprs
+
+  def initialize(fltr_exprs)
+    @fltr_exprs = fltr_exprs      
+  end 
+
+  def apply_filter(value)
+    value.include?(@fltr_exprs)
+  end
+end
+</pre></td></tr></table><br />
+
+<p>Note how in Listing 16, I can create a regular expression matcher in <code>RegexFilter</code>'s <code>apply_filter()</code> method via the <code>=~</code> syntax. (If you're a Groovy user,
+you should be smiling right about now, because Listing 16 shows how heavily Groovy has been influenced by Ruby!)</p>
+
+<p><a name="N1043B"><span class="smalltitle">Duck typing in action</span></a></p>
+<p>In Listing 17, I've used Ruby's <code>Test::Unit</code> (which is like Java's JUnit) to demonstrate duck typing in action. Making an automated test in Ruby, by the way, is as easy as extending <code>Test::Unit</code> and adding methods that start with <code>test</code>. Similar to JUnit, right?</p>
+
+<br /><a name="code17"><b>Listing 17. Filtering Ducks! </b></a><br /><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="code-outline"><pre class="displaycode">
+
+require "test/unit"
+require "filters"
+
+class FiltersTest &lt; Test::Unit::TestCase
+  
+  def test_filters
+    fltrs = [SimpleFilter.new("oo"), RegexFilter.new(/Go+gle/)]     
+    
+    fltrs.each{ | fltr | 
+      assert(fltr.apply_filter("I love to Goooogle"))
+    }
+
+  end 
+
+end
+</pre></td></tr></table><br />
+
+<p>Notice how in the <code>test_filters()</code> method,
+I've created a collection containing my two classes <code>SimpleFilter</code> and <code>RegexFilter</code>. These classes do not share a common
+base class, yet when I iterate over the collection, I can easily call the
+<code>apply_filter()</code> method. </p>
+
+<p>Also note how easily Ruby supports regular expressions. To create
+one, you simply use the <code>/</code><i>regex</i><code>/</code> syntax. Hence, my regular expression in Listing
+17's <code>RegexFilter</code> is a capital <i>G</i>
+followed by one or more <i>o</i>'s followed by <i>gle</i>. </p>
+
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N10486"><span class="atitle">Mix-in it up</span></a></p>
+<p> While Ruby doesn't have interfaces, it does have <i>mix-ins</i>. You can
+think of mix-ins as multiple inheritance <i>without</i> the multiple-inheritance headaches. Mix-ins are modules (which cannot be
+instantiated) that contain methods that a class can chose to include.
+Those module methods then become instance methods of the including
+class. </p>
+
+<p>In JUnit, for example, the <code>Assertion</code> class
+is a concrete class with a boatload of <code>static</code> assert methods, which the all-too-familiar
+<code>TestCase</code> class extends. Hence, any
+implementing class of <code>TestCase</code> can refer to
+an assert method within its own defined methods. </p>
+
+<p>Ruby's unit testing framework is a bit different. Rather than defining an <code>Assertion</code> class, it defines an <code>Assertions</code> <i> module</i>. This module defines a cornucopia of assertion methods, but rather than being extended, Ruby's <code>TestCase</code> class includes the <code>assertion</code> as a mix-in. Therefore, all those assert methods are now instance methods on <code>TestCase</code>, as you can 
+see back in <a href="#code17">Listing 17</a>. </p>
+
+
+<br /><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td><img width="100%" src="//www.ibm.com/i/v14/rules/blue_rule.gif" height="1" alt=""/></td></tr></table><table class="no-print" cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /><p><a name="N104C6"><span class="atitle">In conclusion</span></a></p>
+<p>As you've seen, Ruby's syntax is quite different from that of the Java language, but it's amazingly easy to pick up. Moreover, some things are just plain easier to do in Ruby than they are in the Java language. </p>
+
+<p>The nice thing about learning new languages, as programming language
+polyglots will tell you, is that nothing says they can't play together.
+Being able to code in multiple languages will make you more versatile in
+the face of both humdrum programming tasks and more complicated ones. It
+will also greatly increase your appreciation for the programming
+language you call home.</p>
+
+<p>As I said at the beginning of this article, I'm mainly a Java
+developer, but I've found plenty of ways to include Ruby (and Groovy,
+and Jython ...) in my bag of tricks too. And I've been able to do it
+without using Rails! If you've written off Ruby on Rails because you
+<i>don't actually need to</i> build a shopping cart application in just four hours, take a closer look at Ruby on its own. I think you'll like what you see.</p>
+
+<br /><br /><p><a name="resources"><span class="atitle">Resources</span></a></p><b>Learn</b><br /><ul><li>"<a href="http://www.ibm.com/developerworks/edu/os-dw-os-ruby1-i.html">Test-first Ruby programming</a>" (Pat Eyler, developerWorks, May 2005): A tutorial introduction to unit testing with Ruby's Test::Unit library.<br /><br /></li><li>"<a href="http://www.ibm.com/developerworks/opensource/library/os-rubyeclipse/">Using the Ruby Development Tools plug-in for Eclipse</a>" (Neal Ford, developerWorks, October 2005): One way to bridge the difference between the Java platform and Ruby.<br /><br /></li><li>"<a href="http://www.ibm.com/developerworks/linux/library/l-rubyrails/">Fast-track your Web apps with Ruby on Rails</a>" (David Mertz, developerWorks, June 2005): An inside-out look at the little platform that could.<br /><br /></li><li>"<a href="http://www.ibm.com/developerworks/java/library/j-alj09084/">alt.lang.jre: Take a shine to JRuby</a>" (Michael Squillace and Barry Feigenbaum, developerWorks, September 2004): For the OO strength of Smalltalk, the expressiveness of Perl, and the flexibility of the Java class libraries, try JRuby!<br /><br /></li><li><i><a href="http://www.rubycentral.com/book/">Programming Ruby: The Pragmatic Programmer's Guide</a></i> (David Thomas and Andrew Hunt; Addison-Wesley, 2001): An online version of the now famous pick-axe book.<br /><br /></li><li><a href="http://onestepback.org/articles/10things/">Ten things every Java programmer should know about Ruby</a> (Jim Weirich, O'Reilly Open Source Convention, 2005): What matters about Ruby, from a Java developer's perspective.<br /><br /></li><li><a href="http://www.ibm.com/developerworks/views/java/libraryview.jsp?search_by=practically+groovy:">The Practically Groovy series</a> (Andrew Glover, developerWorks): Learn all about Groovy -- a Ruby-inspired language for the Java platform.<br /><br /></li><li><a href="http://www.ibm.com/developerworks/java/">The Java technology zone</a>: Hundreds of articles about every aspect of Java programming.<br /><br /></li></ul><br /><b>Get products and technologies</b><br /><ul><li><a href="http://www.ruby-lang.org/en/">The Ruby home page</a>: Download Ruby.<br /><br /></li></ul><br /><b>Discuss</b><br /><ul><li><a href="http://www.ibm.com/developerworks/blogs/">developerWorks
+blogs</a>: Get involved in the developerWorks community!</li></ul><br /><br /><p><a name="author"><span class="atitle">About the author</span></a></p><table border="0" cellspacing="0" cellpadding="0" width="100%"><tr><td colspan="3"><img alt="" width="100%" height="5" src="//www.ibm.com/i/c.gif"/></td></tr><tr align="left" valign="top"><td><p><img alt="" border="0" name="Photo of Andrew Glover" src="http://www-106.ibm.com/developerworks/i/p-aglover.jpg" align="left"/></p></td><td><img alt="" width="4" height="5" src="//www.ibm.com/i/c.gif"/></td><td width="100%"><p>Andrew Glover is the President of <a href="http://www.stelligent.com/">Stelligent Incorporated</a>, a <a href="http://www.jnetdirect.com">JNetDirect</a> company. Stelligent Incorporated helps companies address software quality <i>early</i> with effective developer testing strategies and frameworks, software metric analysis and correlations, and continuous integration techniques that enable development teams and management to monitor code quality continuously. He is the co-author of <a href="http://www.amazon.com/gp/product/047144846X/104-1464220-8871162?n=283155">Java Testing Patterns</a> (Wiley, September 2004).</p></td></tr></table><br /><br /><br /><p class="no-print"><span class="atitle"><a name="rate">Rate this page</a></span></p><span class="no-print"><form action="http://www-128.ibm.com/developerworks/utils/RatingsHandler" method="post"><input value="1" name="SITE_ID" type="hidden"/><input value="Ruby off the Rails" name="ArticleTitle" type="hidden"/><input value="Java technology" name="Zone" type="hidden"/><input value="http://www.ibm.com/developerworks/thankyou/feedback-thankyou.html" name="RedirectURL" type="hidden"/><input value="100266" name="ArticleID" type="hidden"/><input value="12202005" name="publish-date" type="hidden"/><input type="hidden" name="author1-email" value="aglover@stelligent.com" /><input type="hidden" name="author1-email-cc" value="" /><script language="javascript" type="text/javascript">document.write('<input type="hidden" name="url" value="'+location.href+'" />');</script><img width="100%" src="//www.ibm.com/i/v14/rules/gray_rule.gif" height="1" alt=""/><br /><table width="100%" class="v14-gray-table-border" cellspacing="0" cellpadding="0" border="0"><tr><td width="100%"><table width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><p>Please take a moment to complete this form to help us better serve you.</p></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Goal">Did the information help you to achieve your goal?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><input value="Yes" id="goal-yes" name="goal" type="radio"/><label for="goal-yes">Yes</label></td><td><input value="No" id="goal-no" name="goal" type="radio"/><label for="goal-no">No</label></td><td><input value="Don't know" id="goal-undecided" name="goal" type="radio"/><label for="goal-undecided">Don't know</label></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Comments">Please provide us with comments to help improve this page:</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td><textarea class="iform" cols="35" rows="5" wrap="virtual" id="Comments" name="Comments"> </textarea></td></tr></table></td><td width="100%"> </td></tr><tr><td colspan="3"><img alt="" height="12" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr valign="top"><td width="140"><img width="140" src="//www.ibm.com/i/c.gif" height="1" alt=""/><br /><p><label for="Rating">How useful is the information?</label></p></td><td width="303"><img width="303" src="//www.ibm.com/i/c.gif" height="6" alt=""/><br /><table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td align="left" width="58"><input value="1" id="Rating1" name="Rating" type="radio"/><label for="Rating1">1</label></td><td align="left" width="58"><input value="2" id="Rating2" name="Rating" type="radio"/><label for="Rating2">2</label></td><td align="left" width="58"><input value="3" id="Rating3" name="Rating" type="radio"/><label for="Rating3">3</label></td><td align="left" width="58"><input value="4" id="Rating4" name="Rating" type="radio"/><label for="Rating4">4</label></td><td align="left" width="61"><input value="5" id="Rating5" name="Rating" type="radio"/><label for="Rating5">5</label></td></tr><tr><td align="left" width="60"><span class="greytext">Not</span><br /><span class="greytext">useful</span></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="60"><img src="//www.ibm.com/i/c.gif" height="1" width="1" alt=""/></td><td align="left" width="63"><span class="greytext">Extremely<br />useful</span></td></tr></table></td><td width="100%"> </td></tr></table></td></tr></table><table class="v14-gray-table-border" width="100%" border="0" cellpadding="0" cellspacing="0"><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr><tr><td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td><td colspan="3"><input alt="Submit" height="21" width="120" border="0" src="//www.ibm.com/i/v14/buttons/submit.gif" type="image"/></td></tr><tr><td colspan="3"><img alt="" height="8" width="8" src="//www.ibm.com/i/c.gif"/></td></tr></table></form><br /></span><br /><p><table width="100%" cellpadding="5" cellspacing="0" border="0">
+<tr><td><span class="atitle">Share this.... </span><p>
+<table cellpadding="0" cellspacing="0" width="100%" border="0">
+<tr align="left" valign="top">
+<td width="21">
+	<a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+<img src="http://www.ibm.com/i/v14/icons/10x10-digg-thumb.gif" width="10" height="10" alt="digg" border="0"/></a></td>
+	<td width="120">
+             <a href="javascript:location.href='http://digg.com/submit?phase=2&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)"><span style="nowrap">Digg this story</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21"><img src="/developerworks/i/icon_delicious.gif" height="16" width="16" alt="del.icio.us" border="0"/> </td>
+<td width="100"><a class="fbox" href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><span style="nowrap">del.icio.us</span></a></td>
+
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td width="21">
+	<!-- start Slashdot it link -->
+	<a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">
+									<img src="/developerworks/i/slashdot-favicon.gif" alt="Slashdot" border="0" height="16" width="16"/></a></td>
+	<td width="120"><a href="javascript:location.href='http://slashdot.org/bookmark.pl?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title)">Slashdot it!</a></td>
+<!--<td width="8"><img alt="" height="1" width="8" src="//www.ibm.com/i/c.gif"/></td>-->
+<td><img alt="" height="5" width="8" src="//www.ibm.com/i/c.gif"/></td>
+</tr>
+
+</table></p>
+</td></tr></table>
+</p><!--START RESERVED FOR FUTURE USE INCLUDE FILES--><!-- NO RESERVED CONTENT --><!--END RESERVED FOR FUTURE USE INCLUDE FILES--><br /><span class="no-print"><table cellspacing="0" cellpadding="0" align="right"><tr align="right"><td><table border="0" cellpadding="0" cellspacing="0"><tr><td valign="middle"><img width="16" src="//www.ibm.com/i/v14/icons/u_bold.gif" height="16" border="0" alt=""/><br /></td><td valign="top" align="right"><a href="#main" class="fbox"><b>Back to top</b></a></td></tr></table></td></tr></table><br /><br /></span></td><td width="10"><img alt="" height="1" width="10" src="//www.ibm.com/i/c.gif"/></td></tr></table></td></tr></table><!--FOOTER_BEGIN--><div id="ibm-page-tools">
+<!-- IBM page tools -->
+</div>
+<div id="ibm-footer">
+<ul>
+<li class="ibm-first"><a href="http://www.ibm.com/ibm/">About IBM</a></li>
+<li><a href="http://www.ibm.com/privacy/">Privacy</a></li>
+<li><a href="http://www.ibm.com/contact/">Contact</a></li>
+<li><a href="http://www.ibm.com/legal/">Terms of use</a></li>
+</ul>
+</div>
+
+</div>
+
+<script type="text/javascript" language="JavaScript1.2" src="//www.ibm.com/common/stats/stats.js"></script>
+<noscript><img src="//stats.www.ibm.com/rc/images/uc.GIF?R=noscript" width="1" height="1" alt="" border="0" /></noscript>
+
+<script type="text/javascript" language="JavaScript" src="/developerworks/js/ratingsposttoget.js"></script><!--FOOTER_END--><!--XSLT stylesheet used to transform this file:  dw-document-html-5.10.xsl--></body></html>

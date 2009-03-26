@@ -1,0 +1,2011 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<link rel="shortcut icon" href="/favicon.ico">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript; charset=euc-jp">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta name="generator" content="Hiki 0.8.7">
+  <title>eigenclass - Changes in Ruby 1.9</title>
+  <link rel="stylesheet" type="text/css" href="theme/hiki_base.css" media="all">
+  <link rel="stylesheet" type="text/css" href="theme/eigenclass/eigenclass.css" media="all">
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  function toggleComment(noteID, formID) {
+      var note = document.getElementById(noteID);
+      var form = document.getElementById(formID);
+
+      note.style.display = 'none';
+      form.style.display = '';
+  }
+  // -->
+  </script>
+    <style type="text/css"><!--
+      img.math {
+        vertical-align: middle;
+      }
+
+      div.displaymath {
+        text-align: center;
+      }
+    --></style>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://eigenclass.org//hiki.rb?c=rss;tags=blog">
+</head>
+
+<body>
+<a name="top"> </a>
+<div class="main">
+  <a style="margin: 0px;" href="http://eigenclass.org"><img style="border: none;" alt="eigenclass logo" src="/logo.cgi" /> </a> 
+  <div class="adminmenu"><span class="adminmenu"><a href=".">MAIN</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=index">Index</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=search">Search</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=recent">Changes</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=pagerank_page">PageRank</a></span>&nbsp;
+<span class="adminmenu"><a href="/hiki.rb?c=login;p=Changes+in+Ruby+1.9">Login</a></span></div>
+  <h1 class="header">Changes in Ruby 1.9</h1>
+  
+  <div><div class="day">
+  
+  <div class="body">
+    <div class="section">
+      <h3><a name="l0"><span class="sanchor"> </span></a>Latest news</h3>
+<p>This changelog will soon be replaced by <a href="/hiki/mechanically-verified-ruby19-changelog">The mechanically verified Ruby 1.9 changelog</a>.</p>
+<h6><a name="l1"> </a>Last major update on 2007-10-12</h6>
+<p>I have scanned over 40000 lines of Changelogs to extract the changes
+between the stable branch and HEAD. These include important syntax additions,
+lots of modifications in the behavior of Procs and lambdas, new Enumerator and
+Enumerable goodies, convenient methods to interact with the OS, new IO
+stuff...</p>
+<h3><a name="l2"><span class="sanchor"> </span></a>This is <strong>not</strong> Ruby 2.0!</h3>
+<p>Keep in mind that Ruby HEAD is being used to try 
+<a href="http://www.rubyist.net/~matz/slides/rc2005/mgp00006.html" class="external">wild and weird ideas</a>. It should
+by no means be understood as a final say on what Ruby 2.0 will be like.
+<em>A few</em> decisions are firm and were labelled as <strong>Ruby2</strong> in the
+Changelogs by matz. The below list also includes many crazy ideas 
+(marked as <strong>EXPERIMENTAL</strong> in the Changelogs and here) which will probably
+be dropped in short.</p>
+<h3><a name="l3"><span class="sanchor"> </span></a>Preliminary notes</h3>
+<ul>
+<li>this is, by necessity, work in progress, as Ruby 1.9 keeps evolving; I'll try to keep it up-to-date.</li>
+<li>the snippets which include the resulting value in a comment were evaluated using my <a href="/hiki/xmp+redux%3A+expanding+test+assertions+for+profit">XMP filter</a>, under <em>ruby 1.9.0</em> unless otherwise stated. The 1.8 interpreter used were either <em>ruby 1.8.4</em> or 1.8.5.</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l4"> </a></span><span class="title">Table of contents</span></h2>
+  <div class="body">
+    <div class="section">
+      <hr />
+<ul>
+<ul>
+<li><a href="#l0">Latest news</a></li>
+<ul>
+<ul>
+<ul>
+<li><a href="#l1">Last major update on 2007-10-12</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="#l2">This is not Ruby 2.0!</a></li>
+<li><a href="#l3">Preliminary notes</a></li>
+</ul>
+<li><a href="#l4">Table of contents</a></li>
+<li><a href="#l5">New syntax and semantics</a></li>
+<ul>
+<li><a href="#l6">New literal hash syntax [Ruby2]</a></li>
+<li><a href="#l7">Block local variables [EXPERIMENTAL]</a></li>
+<li><a href="#l8">Block arguments are always local</a></li>
+<li><a href="#l9">New syntax for lambdas [VERY EXPERIMENTAL]</a></li>
+<li><a href="#l10">.() and calling Procs without #call/#[] [EXPERIMENTAL]</a></li>
+<li><a href="#l11">Block arguments</a></li>
+<li><a href="#l12">News semantics for block arguments</a></li>
+<li><a href="#l13">Method used for splat arguments: #to_splat</a></li>
+<li><a href="#l14">Multiple splats allowed</a></li>
+<li><a href="#l15">Mandatory arguments after optional arguments allowed</a></li>
+<li><a href="#l16">?c semantics</a></li>
+<li><a href="#l17">Arguments to #[]</a></li>
+<li><a href="#l18">printf-style formatted strings (%)</a></li>
+<li><a href="#l19">Newlines allowed before ternary colon</a></li>
+<li><a href="#l20">defined? and local variables</a></li>
+</ul>
+<li><a href="#l21">Kernel and Object</a></li>
+<ul>
+<li><a href="#l22">BasicObject</a></li>
+<li><a href="#l23">#instance_exec</a></li>
+<li><a href="#l24">send doesn't always call private methods anymore (#__send, #__send!)</a></li>
+<li><a href="#l25">Kernel#require</a></li>
+<li><a href="#l26">Object#=~</a></li>
+<li><a href="#l27">Object#tap</a></li>
+<li><a href="#l28">Kernel#instance_variable_defined?</a></li>
+<li><a href="#l29">Kernel#define_singleton_method</a></li>
+<li><a href="#l30">Kernel#singleton_methods, Kernel#methods</a></li>
+</ul>
+<li><a href="#l31">Class and Module</a></li>
+<ul>
+<li><a href="#l32">Module#instance_methods, #private_instance_methods, #public_instance_methods</a></li>
+<li><a href="#l33">Module#const_defined?, #const_get and #method_defined?</a></li>
+<li><a href="#l34">Module#class_variable_defined?</a></li>
+<li><a href="#l35">#class_variable_{set,get}</a></li>
+<li><a href="#l36">Module#attr is an alias of attr_reader</a></li>
+<li><a href="#l37">Class of singleton classes</a></li>
+<li><a href="#l38">Class variables</a></li>
+<ul>
+<li><a href="#l39">Class variables are not inherited</a></li>
+</ul>
+<li><a href="#l40">#module_exec</a></li>
+<li><a href="#l41">Extra subclassing check when binding UnboundMethods</a></li>
+</ul>
+<li><a href="#l42">Binding#eval</a></li>
+<li><a href="#l43">Blocks and Procs</a></li>
+<ul>
+<li><a href="#l44">Proc#yield</a></li>
+<li><a href="#l45">Arity of blocks without arguments</a></li>
+<li><a href="#l46">Passing blocks to #[]</a></li>
+<li><a href="#l47">proc is now a synonym of Proc.new</a></li>
+<li><a href="#l48">Proc#lambda?</a></li>
+</ul>
+<li><a href="#l49">Exceptions</a></li>
+<ul>
+<li><a href="#l50">NameError</a></li>
+<li><a href="#l51">Equality of exceptions</a></li>
+<li><a href="#l52">SystemStackError</a></li>
+<li><a href="#l53">Removed Exception#to_str [Ruby2]</a></li>
+</ul>
+<li><a href="#l54">Enumerable and Enumerator</a></li>
+<ul>
+<li><a href="#l55">Enumerable#cycle</a></li>
+<li><a href="#l56">Enumerable#each_with_index</a></li>
+<li><a href="#l57">Enumerable#first(n)</a></li>
+<li><a href="#l58">Enumerable#group_by</a></li>
+<li><a href="#l59">Enumerable#find_index</a></li>
+<li><a href="#l60">Enumerable#take</a></li>
+<li><a href="#l61">Enumerable#drop</a></li>
+<li><a href="#l62">Enumerator#each</a></li>
+<li><a href="#l63">Enumerable methods called without a block</a></li>
+<li><a href="#l64">Enumerable#inject (#reduce) without a block</a></li>
+<li><a href="#l65">Enumerable#count</a></li>
+<li><a href="#l66">Enumerable#reduce</a></li>
+<li><a href="#l67">Enumerator#with_index [EXPERIMENTAL]</a></li>
+<li><a href="#l68">Enumerable##min_by, #max_by</a></li>
+<li><a href="#l69">Enumerable#zip</a></li>
+</ul>
+<li><a href="#l70">Regexp#match, String#match</a></li>
+<ul>
+<li><a href="#l71">Regexp#match, String#match</a></li>
+<li><a href="#l72">Enumerable#minmax and minmax_by</a></li>
+<li><a href="#l73">Enumerator#rewind</a></li>
+</ul>
+<li><a href="#l74">Fiber: coroutines/micro-threads</a></li>
+<li><a href="#l75">Array</a></li>
+<ul>
+<li><a href="#l76">Array#nitems</a></li>
+<li><a href="#l77">Array#[m,n] = nil places nil in the array.</a></li>
+<li><a href="#l78">Block argument to Array#index, Array#rindex [Ruby2]</a></li>
+<li><a href="#l79">Array#combination</a></li>
+<li><a href="#l80">Array#permutation</a></li>
+<li><a href="#l81">Array#product</a></li>
+<li><a href="#l82">Array#pop, Array#shift</a></li>
+<li><a href="#l83">Array#to_s is equivalent to Array#inspect</a></li>
+<li><a href="#l84">Array.try_convert</a></li>
+</ul>
+<li><a href="#l85">Hash</a></li>
+<ul>
+<li><a href="#l86">Hash preserves order!</a></li>
+<li><a href="#l87">Hash#to_s is equivalent to Hash#inspect</a></li>
+<li><a href="#l88">Hash#_compare_by_identity and Hash#compare_by_identity?</a></li>
+<li><a href="#l89">Semantics for Hash#each and Hash#each_pair</a></li>
+<li><a href="#l90">Hash#select</a></li>
+<li><a href="#l91">Hash.try_convert</a></li>
+</ul>
+<li><a href="#l92">Integer</a></li>
+<ul>
+<li><a href="#l93">Integer(nil) raises TypeError</a></li>
+<li><a href="#l94">Integer#odd?, #even?</a></li>
+<li><a href="#l95">Integer#pred</a></li>
+</ul>
+<li><a href="#l96">Method</a></li>
+<ul>
+<li><a href="#l97">Method#receiver</a></li>
+<li><a href="#l98">Method#name</a></li>
+<li><a href="#l99">Method#owner</a></li>
+</ul>
+<li><a href="#l100">Numeric</a></li>
+<ul>
+<li><a href="#l101">Numeric#upto, #downto, #times, #step</a></li>
+<li><a href="#l102">Numeric#scalar?, Complex#scalar?</a></li>
+<li><a href="#l103">Numeric#div</a></li>
+<li><a href="#l104">Numeric#fdiv</a></li>
+</ul>
+<li><a href="#l105">Range</a></li>
+<ul>
+<li><a href="#l106">Range#cover?</a></li>
+<li><a href="#l107">Range#include?</a></li>
+<li><a href="#l108">Range#min, Range#max</a></li>
+</ul>
+<li><a href="#l109">Regexp</a></li>
+<ul>
+<li><a href="#l110">Regexp#=== matches symbols</a></li>
+<li><a href="#l111">Regexp.try_convert</a></li>
+</ul>
+<li><a href="#l112">String</a></li>
+<ul>
+<li><a href="#l113">No longer an Enumerable</a></li>
+<li><a href="#l114">Encoding-awareness</a></li>
+<li><a href="#l115">String#clear</a></li>
+<li><a href="#l116">"One-char-wide" semantics for String#[] and String#[]= [Ruby2]</a></li>
+<li><a href="#l117">String#each_char</a></li>
+<li><a href="#l118">String#ord</a></li>
+<li><a href="#l119">String#partition, #rpartition</a></li>
+<li><a href="#l120">String#lines</a></li>
+<li><a href="#l121">String#bytes</a></li>
+<li><a href="#l122">String#encoding</a></li>
+<li><a href="#l123">String#force_encoding</a></li>
+<li><a href="#l124">String#start_with?, #end_with?</a></li>
+<li><a href="#l125">String#unpack with a block</a></li>
+<li><a href="#l126">String#hash</a></li>
+<li><a href="#l127">String#upto</a></li>
+<li><a href="#l128">String.try_convert</a></li>
+<li><a href="#l129">Zero-length symbols allowed</a></li>
+</ul>
+<li><a href="#l130">Struct</a></li>
+<ul>
+<li><a href="#l131">Struct#inspect</a></li>
+</ul>
+<li><a href="#l132">Symbol</a></li>
+<ul>
+<li><a href="#l133">Symbol#=== matches strings</a></li>
+<li><a href="#l134">Symbol#intern</a></li>
+<li><a href="#l135">Symbol#encoding</a></li>
+<li><a href="#l136">Symbol methods similar to those in String</a></li>
+</ul>
+<li><a href="#l137">Math</a></li>
+<ul>
+<li><a href="#l138">Math#log and Math#log2</a></li>
+</ul>
+<li><a href="#l139">File and Dir operations</a></li>
+<ul>
+<li><a href="#l140">#to_path in File.path, File.chmod, File.lchmod, File.chown, File.lchown, File.utime, File.unlink... [Ruby2]</a></li>
+<li><a href="#l141">Dir.[], Dir.glob</a></li>
+<li><a href="#l142">Dir.exist?</a></li>
+<li><a href="#l143">New methods</a></li>
+</ul>
+<li><a href="#l144">IO operations</a></li>
+<ul>
+<li><a href="#l145">Non-blocking IO</a></li>
+<li><a href="#l146">IO#getc</a></li>
+<li><a href="#l147">IO#getbyte, IO#readbyte, StringIO#getbyte, StringIO#readbyte</a></li>
+<li><a href="#l148">Kernel#open [Ruby2]</a></li>
+<li><a href="#l149">IO#initialize now accepts an IO argument</a></li>
+<li><a href="#l150">StringIO#readpartial</a></li>
+<li><a href="#l151">IO#lines</a></li>
+<li><a href="#l152">IO#bytes</a></li>
+<li><a href="#l153">IO.try_convert</a></li>
+<li><a href="#l154">Limit input in IO#gets, IO#readline, IO#readlines, IO#each_line, IO#lines, IO.foreach, IO.readlines, StringIO#gets, StringIO#readline, StringIO#each, StringIO#readlines</a></li>
+<li><a href="#l155">IO#ungetc, StringIO#ungetc</a></li>
+</ul>
+<li><a href="#l156">Time</a></li>
+<ul>
+<li><a href="#l157">New format in Time#to_s</a></li>
+<li><a href="#l158">Timezone information preserved on Marshal.dump/load</a></li>
+</ul>
+<li><a href="#l159">Process</a></li>
+<ul>
+<li><a href="#l160">Process.setrlimit</a></li>
+<li><a href="#l161">Process.daemon</a></li>
+<li><a href="#l162">Process.exec</a></li>
+</ul>
+<li><a href="#l163">Symbols: restriction on literal symbols</a></li>
+<li><a href="#l164">$SAFE and bound methods</a></li>
+<li><a href="#l165">Misc. new methods</a></li>
+<ul>
+<li><a href="#l166">GC.stress, GC.stress=</a></li>
+<li><a href="#l167">Method#hash, Proc#hash</a></li>
+<li><a href="#l168">__method__ and __callee__</a></li>
+<li><a href="#l169">Symbol#to_proc</a></li>
+</ul>
+<li><a href="#l170">Deprecation</a></li>
+<ul>
+<li><a href="#l171">VERSION and friends</a></li>
+<li><a href="#l172">StringScanner</a></li>
+<li><a href="#l173">Kernel.to_a</a></li>
+<li><a href="#l174">Kernel#getc</a></li>
+<li><a href="#l175">Object#type</a></li>
+<li><a href="#l176">File.exists?</a></li>
+<li><a href="#l177">Hash#index</a></li>
+<li><a href="#l178">ENV.index</a></li>
+<li><a href="#l179">Symbol#to_int</a></li>
+<li><a href="#l180">Removed Array and Hash #indices, #indexes</a></li>
+</ul>
+</ul>
+
+<hr />
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l5"> </a></span><span class="title">New syntax and semantics</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l6"><span class="sanchor"> </span></a>New literal hash syntax <strong>[Ruby2]</strong></h3>
+<pre>
+{a: "foo"}		# =&gt; {:a=&gt;"foo"}
+
+</pre>
+<h3><a name="l7"><span class="sanchor"> </span></a>Block local variables <strong>[EXPERIMENTAL]</strong></h3>
+<p>Used as follows:</p>
+<pre>
+# {normal args; local variables}
+d = 2
+a = lambda{|;d| d = 1}
+a.call()
+d		# =&gt; 2
+</pre>
+<p>When a variable is shadowed, ruby1.9 issues a warning:</p>
+<pre>
+-:2: warning: shadowing outer local variable - d
+</pre>
+<h3><a name="l8"><span class="sanchor"> </span></a>Block arguments are always local</h3>
+<pre>
+
+a = 1
+10.times{|a| } # !&gt; shadowing outer local variable - a
+a                                                 # =&gt; 1
+</pre>
+<h3><a name="l9"><span class="sanchor"> </span></a>New syntax for lambdas <strong>[VERY EXPERIMENTAL]</strong></h3>
+<pre>
+ a = -&gt;(b,c){ b + c }
+ a.call(1,2) # =&gt; 3
+</pre>
+<p>Note that this <strong>does not</strong> replace the traditional block syntax. Matz has
+already said the latter is here to stay, <strong>forever</strong>.
+The new syntax allows to specify default values for block arguments, since </p>
+<pre>
+ {|a,b=1| ... } 
+</pre>
+<p>is said to be impossible with Ruby's current LALR(1) parser, built with bison.</p>
+<p>You can use the new syntax without parenthesis for the arguments:</p>
+<pre>
+ -&gt; { }.call # =&gt; nil
+ -&gt; a, b  { a + b }.call(1,2) # =&gt; 3
+ c = 1; -&gt; a, b; c  { c = a + b }.call(1,2); c # =&gt; 1
+</pre>
+<p>It can get very tricky though:</p>
+<pre>
+ c = 2; -&gt; ;c { c = 1 }.call; c # =&gt; 2
+</pre>
+<p>or even</p>
+<pre>
+ c = 2; -&gt; *d ; c { d }.call(1,2,3) # =&gt; [1, 2, 3]
+ c = 2; -&gt; ; c { c = 1 }.call; c # =&gt; 2
+</pre>
+<h3><a name="l10"><span class="sanchor"> </span></a>.() and calling Procs without <em>#call</em>/<em>#[]</em> <strong>[EXPERIMENTAL]</strong></h3>
+<p>You can now do:</p>
+<pre>
+a = lambda{|*b| b}
+a.(1,2)		# =&gt; [1, 2]
+</pre>
+<p>Note that you need the period:</p>
+<pre>
+a = lambda{|*b| b}
+a(1,2)	        # =&gt; 
+               #           (eval):2: syntax error...
+               #                         (a)(1,2)... 
+</pre>
+<ol>
+<li>~&gt; -:2: undefined method `a' for main:Object (NoMethodError)</li>
+</ol>
+<p>You can use any expression inside the parentheses:</p>
+<pre>
+(lambda{|a,b| a + b}).(1,2)		# =&gt; 3
+</pre>
+<p>.() will try to use #call no matter the receiver:</p>
+<pre>
+ "foo".(1,2)   # ~&gt;  undefined method `call' for "foo":String (NoMethodError)
+</pre>
+<h3><a name="l11"><span class="sanchor"> </span></a>Block arguments</h3>
+<p>Blocks can take <em>&amp;block</em> arguments:</p>
+<pre>
+define_method(:foo){|&amp;b| b.call(bar)}
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23533" class="external">ruby-dev:23533</a></p>
+<h3><a name="l12"><span class="sanchor"> </span></a>News semantics for block arguments</h3>
+<p>|v| now works like the former |v,|:</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.8.5", "2006-08-25"]
+def m; yield 1, 2; end
+m{|v| v}                                          # =&gt; [1, 2] # !&gt; multiple values for a block parameter (2 for 1)
+</pre>
+<p>vs.</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+def m; yield 1, 2; end
+m{|v| v}                                          # =&gt; 1
+</pre>
+<h3><a name="l13"><span class="sanchor"> </span></a>Method used for splat arguments: #to_splat</h3>
+<ol>
+<li>to_splat is used instead of #to_a.</li>
+</ol>
+<p>nil.to_splat returns [].</p>
+<h3><a name="l14"><span class="sanchor"> </span></a>Multiple splats allowed</h3>
+<p>As suggested by Audrey Tang, 1.9 allows multiple splat operators when calling
+a method:</p>
+<pre>
+   def foo(*a)
+     a
+   end
+    
+   foo(1, *[2,3], 4, *[5,6])                        # =&gt; [1, 2, 3, 4, 5, 6]
+</pre>
+<p>Also in expressions like</p>
+<pre>
+ [RUBY_VERSION, RUBY_RELEASE_DATE]                # =&gt; ["1.9.0", "2007-08-03"]
+ a = [1,2,3]
+ b = [4,5,6]
+ [*a, *b]                                         # =&gt; [1, 2, 3, 4, 5, 6]
+</pre>
+<h3><a name="l15"><span class="sanchor"> </span></a>Mandatory arguments after optional arguments allowed</h3>
+<p>(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/29014" class="external">ruby-dev:29014</a>)</p>
+<pre>
+   def m(a, b=nil, *c, d)
+     [a,b,c,d]
+   end
+   m(1,2)                                         # =&gt; [1, nil, [], 2]
+</pre>
+<h3><a name="l16"><span class="sanchor"> </span></a>?c semantics</h3>
+<p>?a now returns a single character string instead of an integer:</p>
+<pre>
+ ?a   # =&gt; "a"
+</pre>
+<h3><a name="l17"><span class="sanchor"> </span></a>Arguments to #[] </h3>
+<p>You can use splats, "assocs" (hashes without braces) and block arguments 
+with #[]:</p>
+<pre>
+   RUBY_VERSION                                       # =&gt; "1.9.0"
+   RUBY_RELEASE_DATE                                  # =&gt; "2006-06-11"
+   class Foo; def [](*a, &amp;block); block.call(a) end end
+    
+   a = (0..3).to_a
+   Foo.new[*a, :op =&gt; :+]{|x| x }                     # =&gt; [0, 1, 2, 3, {:op=&gt;:+}]
+</pre>
+<h3><a name="l18"><span class="sanchor"> </span></a>printf-style formatted strings (%)</h3>
+<ul>
+<li>%c can print a one character String (as returned e.g. by ?c).</li>
+<li>%u behaves like %d for negative values (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/11575" class="external">ruby-core:11575</a>)</li>
+</ul>
+<h3><a name="l19"><span class="sanchor"> </span></a>Newlines allowed before ternary colon </h3>
+<pre>
+ p 1 == 2 ?
+   0
+   :
+   1
+ # &gt;&gt; 1
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/29189" class="external">ruby-dev:29189</a></p>
+<h3><a name="l20"><span class="sanchor"> </span></a>defined? and local variables</h3>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.8.5"
+RUBY_RELEASE_DATE                                 # =&gt; "2006-08-25"
+a = 0
+defined? a                                        # =&gt; "local-variable"
+1.times do |i|
+  defined? i                                      # =&gt; "local-variable(in-block)"
+end
+</pre>
+<p>vs.</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.9.0"
+RUBY_RELEASE_DATE                                 # =&gt; "2007-08-03"
+a = 0
+defined? a                                        # =&gt; "local-variable"
+1.times do |i|
+  defined? i                                      # =&gt; "local-variable"
+end
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l21"> </a></span><span class="title">Kernel and Object </span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l22"><span class="sanchor"> </span></a>BasicObject</h3>
+<p>BasicObject is a top level <em>BlankSlate</em> class:</p>
+<pre>
+ BasicObject.instance_methods
+ # =&gt; ["__send__", "__id__", "==", "send", "send!", "respond_to?", "equal?", "object_id"]
+ Object.ancestors       # =&gt; [Object, Kernel, BasicObject]
+</pre>
+<h3><a name="l23"><span class="sanchor"> </span></a><em>#instance_exec</em></h3>
+<p>Allows to evaluate a block with a given <em>self</em>, while passing arguments:</p>
+<pre>
+def magic(obj); def obj.foo(&amp;block); instance_exec(self, a, b, &amp;block) end end
+o = Struct.new(:a,:b).new(1,2)
+magic(o)
+o.foo{|myself,x,y| x + y }		# =&gt; 3
+</pre>
+<h3><a name="l24"><span class="sanchor"> </span></a><em>send</em> doesn't always call private methods anymore (#__send, #__send!)</h3>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/153672" class="external">ruby-talk:153672</a>
+It is still possible to call them with the newly introduced <em>#__send!</em> method.</p>
+<pre>
+class Foo; private; def foo; end; end
+Foo.new.send!(:foo)		# =&gt; nil
+Foo.new.send(:foo)		# ~&gt; in `BasicObject#send': private method `foo' called for #&lt;Foo:0xa7d3267c&gt; (NoMethodError)
+</pre>
+<p>Note that send(meth) (with no explicit receiver) can still call private methods:</p>
+<pre>
+class Klass
+  def hello(*args)
+    "Hello " + args.join(' ')
+  end
+end
+k = Klass.new
+k.send :hello, "gentle", "readers"   #=&gt; "Hello gentle readers"
+
+send(:puts, "foo")    # prints "foo"
+1.send(:puts, "foo")  # NoMethodError exception
+</pre>
+<ol>
+<li>&gt;&gt; foo</li>
+<li>~&gt; -:10:in `BasicObject#send': private method `puts' called for 1:Fixnum (NoMethodError)</li>
+<li>~&gt; 	from -:10</li>
+</ol>
+<pre>
+
+</pre>
+<h3><a name="l25"><span class="sanchor"> </span></a>Kernel#require</h3>
+<p>The value stored in <em>$"</em> when requiring a file contains the full path, i.e.
+it works like</p>
+<pre>
+$" &lt;&lt; File.expand_path(loaded_file)
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/26079" class="external">ruby-dev:26079</a></p>
+<h3><a name="l26"><span class="sanchor"> </span></a>Object#=~</h3>
+<p>Now returns <em>nil</em> instead of <em>false</em>.</p>
+<pre>
+ 1 =~ 1		# =&gt; nil
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/05391" class="external">ruby-core:05391</a>.</p>
+<h3><a name="l27"><span class="sanchor"> </span></a>Object#tap</h3>
+<p>Passes the object to the block and returns it (meant to be used for call
+chaining).</p>
+<pre>
+"F".tap{|x| x.upcase!}[0]                       # =&gt; "F"
+# Note that "F".upcase![0] would fail since upcase! would return nil in this
+# case.
+</pre>
+<h3><a name="l28"><span class="sanchor"> </span></a>Kernel#instance_variable_defined?</h3>
+<pre>
+
+a = "foo"
+a.instance_variable_defined? :@a                  # =&gt; false
+a.instance_variable_set(:@a, 1)
+a.instance_variable_defined? :@a                  # =&gt; true
+</pre>
+<h3><a name="l29"><span class="sanchor"> </span></a>Kernel#define_singleton_method</h3>
+<pre>
+a = ""
+a.define_singleton_method(:foo){|x| x + 1}
+a.__send!(:foo, 2)                                           # =&gt; 3
+</pre>
+<p>The new singleton method will be private:</p>
+<pre>
+a = ""
+a.define_singleton_method(:foo){|x| x + 1}
+a.foo(2)                                          # ~&gt; private method `foo' called for "":String (NoMethodError)
+</pre>
+<h3><a name="l30"><span class="sanchor"> </span></a>Kernel#singleton_methods, Kernel#methods</h3>
+<p>They now return an array of symbols (instead of strings):</p>
+<pre>
+a = ""
+class &lt;&lt; a; def foo; end end
+a.singleton_methods                               # =&gt; [:foo]
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l31"> </a></span><span class="title">Class and Module</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l32"><span class="sanchor"> </span></a>Module#instance_methods, #private_instance_methods, #public_instance_methods</h3>
+<p>They now return an array of symbols (instead of strings):</p>
+<pre>
+class X; def foo; end end
+X.instance_methods(false)                         # =&gt; [:foo]
+</pre>
+<p>vs. (1.8.5)</p>
+<pre>
+class X; def foo; end end
+X.instance_methods(false)                         # =&gt; ["foo"]
+</pre>
+<h3><a name="l33"><span class="sanchor"> </span></a>Module#const_defined?, #const_get and #method_defined?</h3>
+<p>These methods now accept a flag specifying whether ancestors will be included in the
+chain, which defaults to true (see <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/175899" class="external">ruby-talk:175899</a>):</p>
+<pre>
+module A; X = 1; def foo; end end
+module B 
+  include A
+  const_defined? "X"                              # =&gt; true
+  method_defined? :foo                            # =&gt; true
+  method_defined? :foo, false                     # =&gt; false
+  const_get "X"                                   # =&gt; 1
+end
+</pre>
+<p>vs. (1.8)</p>
+<pre>
+
+module A; X = 1; def foo; end end
+module B 
+  include A
+  const_defined? "X"                              # =&gt; false
+  method_defined? :foo                            # =&gt; true
+  const_get "X"                                   # =&gt; 1
+end
+</pre>
+<h3><a name="l34"><span class="sanchor"> </span></a>Module#class_variable_defined?</h3>
+<pre>
+class X; end
+X.class_variable_defined? :@@a                    # =&gt; false
+class X; @@a = 1 end
+X.class_variable_defined? :@@a                     # =&gt; true
+</pre>
+<h3><a name="l35"><span class="sanchor"> </span></a><em>#class_variable_{set,get}</em></h3>
+<p>They are public in 1.9, private in 1.8:</p>
+<pre>
+class B; self end.class_variable_set(:@@a, "foo")		# =&gt; "foo"
+</pre>
+<h3><a name="l36"><span class="sanchor"> </span></a>Module#attr is an alias of attr_reader </h3>
+<p>Use </p>
+<pre>
+attr :foo=
+</pre>
+<p>to create a read/write accessor.  (RCR#331)</p>
+<h3><a name="l37"><span class="sanchor"> </span></a>Class of singleton classes</h3>
+<blockquote>
+<p>singleton class inherits Class rather than its object's class</p>
+</blockquote>
+<pre>
+class X;end; x=X.new; class &lt;&lt; x; self &lt; X; end		# =&gt; true
+</pre>
+<p>vs. (1.8)</p>
+<pre>
+class X;end; x=X.new; class &lt;&lt; x; self &lt; X; end		# =&gt; nil
+</pre>
+<p>[ruby-dev:23690]</p>
+<h3><a name="l38"><span class="sanchor"> </span></a>Class variables</h3>
+<h4><a name="l39"> </a>Class variables are not inherited</h4>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23808" class="external">ruby-dev:23808</a></p>
+<pre>
+ class A; @@a = 1; end; class B &lt; A; @@a end		# =&gt; ERROR: (eval):1: uninitialized class variable @@a in B
+</pre>
+<p>vs. </p>
+<pre>
+ class A; @@a = 1; end; class B &lt; A; @@a end		# =&gt; 1
+</pre>
+<h3><a name="l40"><span class="sanchor"> </span></a><em>#module_exec</em></h3>
+<p>Similar to <em>Object#instance_exec</em>.</p>
+<h3><a name="l41"><span class="sanchor"> </span></a>Extra subclassing check when binding UnboundMethods</h3>
+<pre>
+class Foo; def foo; end end
+module Bar 
+  define_method(:foo, Foo.instance_method(:foo))
+end	# =&gt; ERROR: (eval):3:in `define_method': bind argument must be a subclass of Foo
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23410" class="external">ruby-dev:23410</a></p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l42"> </a></span><span class="title">Binding#eval</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><a href="http://rcrchive.net/rcr/show/251" class="external">RCR 251, accepted</a>.</p>
+<pre>
+
+a = 1
+binding.eval("a")		# =&gt; 1
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l43"> </a></span><span class="title">Blocks and Procs</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l44"><span class="sanchor"> </span></a>Proc#yield </h3>
+<p>Proc#yield was added (also NilClass#yield which raises a LocalJumpError so you
+can use it on &amp;block).</p>
+<p>Quoting from the RDoc:</p>
+<pre>
+ Invokes the block, setting the block's parameters to the values in
+ params in the same manner the yield statement does.
+    
+    a_proc = Proc.new {|a, *b| b.collect {|i| i*a }}
+    a_proc.yield(9, 1, 2, 3)   #=&gt; [9, 18, 27]
+    a_proc.yield([9, 1, 2, 3]) #=&gt; [9, 18, 27]
+    a_proc = Proc.new {|a,b| a}
+    a_proc.yield(1,2,3)	  # =&gt; [1]
+</pre>
+<h3><a name="l45"><span class="sanchor"> </span></a>Arity of blocks without arguments</h3>
+<p>1.8</p>
+<pre>
+ lambda{}.arity  # =&gt; -1
+</pre>
+<p>1.9</p>
+<pre>
+ lambda{}.arity  # =&gt; 0
+</pre>
+<blockquote>
+<p>arity is now defined as number of parameters that would not be ignored</p>
+</blockquote>
+<p>Therefore, </p>
+<pre>
+ lambda{}.call(1)		# =&gt; ERROR: (eval):1: wrong number of arguments (1 for 0)
+</pre>
+<p>raises an exception (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/120253" class="external">ruby-talk:120253</a>).</p>
+<p>See also <a href="http://rcrchive.net/rcr/show/227." class="external">http://rcrchive.net/rcr/show/227.</a></p>
+<h3><a name="l46"><span class="sanchor"> </span></a>Passing blocks to #[]</h3>
+<p>You can now do things like the following contrived example:</p>
+<pre>
+ s = "ab34cd45"
+ def s.[](x, &amp;b); split(//).grep(x).each(&amp;b)  end 
+ digits, sum = "", 0
+ s[/\d/]{|x| digits &lt;&lt; x; sum += x.to_i }
+ [digits, sum]		# =&gt; ["3445", 16]
+</pre>
+<h3><a name="l47"><span class="sanchor"> </span></a><em>proc</em> is now a synonym of <em>Proc.new</em></h3>
+<p><em>proc</em> is an alias of <em>Proc.new</em>, so it receives its arguments with
+multiple-assignment (block) semantics, instead of lambda ones as in 1.8, where
+<em>proc</em> and <em>lambda</em> where synonyms.</p>
+<pre>
+proc{|a,b|}.arity		# =&gt; 2
+proc{|a,b|}.call(1)		# =&gt; nil
+Proc.new{|a,b|}.arity		# =&gt; 2
+Proc.new{|a,b|}.call(1)        # = nil
+</pre>
+<p>vs. (1.8)</p>
+<pre>
+proc{|a,b|}.arity		# =&gt; 2
+proc{|a,b|}.call(1)		# =&gt; ERROR: (eval):1: wrong number of arguments (1 for 2)
+Proc.new{|a,b|}.arity		# =&gt; 2
+Proc.new{|a,b|}.call(1)		# =&gt; nil
+</pre>
+<h3><a name="l48"><span class="sanchor"> </span></a>Proc#lambda?</h3>
+<p>Returns whether the Proc has got "lambda semantics" or "block semantics".</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l49"> </a></span><span class="title">Exceptions</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l50"><span class="sanchor"> </span></a>NameError</h3>
+<p>It is now a direct descendent of Exception instead of StandardError, so it is
+not caught by the default rescue:</p>
+<pre>
+"".asdas rescue 1                                 # =&gt; 
+</pre>
+<ol>
+<li>~&gt; -:1: undefined method `asdas' for "":String (NoMethodError)</li>
+</ol>
+<p>vs. 1.8:</p>
+<pre>
+
+"".asdas rescue 1                                 # =&gt; 1
+</pre>
+<h3><a name="l51"><span class="sanchor"> </span></a>Equality of exceptions</h3>
+<p>They are now considered equal if they have the same class, message and backtrace 
+(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/110354" class="external">ruby-talk:110354</a>).</p>
+<pre>
+  def method
+    raise 'foobar'
+  end
+
+  errors = []
+  2.times do
+    Thread.new do
+      begin
+        method
+      rescue =&gt; e
+        errors &lt;&lt; e
+      end
+    end.join
+  end
+
+  errors[-2] == errors[-1]		# =&gt; true
+</pre>
+<h3><a name="l52"><span class="sanchor"> </span></a>SystemStackError</h3>
+<blockquote>
+<p>move SystemStackError from under StandardError to Exception</p>
+</blockquote>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/89782" class="external">ruby-talk:89782</a></p>
+<pre>
+SystemStackError &lt; StandardError		# =&gt; true
+</pre>
+<h3><a name="l53"><span class="sanchor"> </span></a>Removed Exception#to_str <strong>[Ruby2]</strong></h3>
+<pre>
+begin
+   raise "foo"
+rescue
+   $!.to_str
+end		# =&gt; ERROR: undefined method `to_str' for #&lt;RuntimeError: foo&gt;
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l54"> </a></span><span class="title">Enumerable and Enumerator</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>Enumerator is now integrated in the core and need not be required.</p>
+<h3><a name="l55"><span class="sanchor"> </span></a>Enumerable#cycle</h3>
+<p>Calls the given block for each element of the enumerable in a never-ending
+cycle:</p>
+<pre>
+a = ["a", "b", "c"]
+a.cycle {|x| puts x }  # print, a, b, c, a, b, c,.. forever.
+</pre>
+<p>Enumerable#cycle can be described in Ruby as follows (modulo the enumerator magic):</p>
+<pre>
+ def cycle
+   a = []
+   each{|x| a &lt;&lt; x; yield x}
+   loop{ a.each{|x| yield x} }
+ end
+</pre>
+<p>The elements contained in the enumerable are saved in an internal array, so the #each method is only called once.</p>
+<h3><a name="l56"><span class="sanchor"> </span></a>Enumerable#each_with_index</h3>
+<p>Now forwards arguments to #each:</p>
+<pre>
+ [RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+ class X
+   include Enumerable
+   def each(*args); yield args.inspect end
+ end
+</pre>
+<pre>
+ z = nil
+ X.new.each_with_index(42){|x| z = x}
+ z                                                   # =&gt; ["[42]", 1]
+</pre>
+<h3><a name="l57"><span class="sanchor"> </span></a>Enumerable#first(n)</h3>
+<p>Gets the first n elements from an enumerable object:</p>
+<pre>
+a = {1 =&gt; "foo", 2 =&gt; "bar", 3 =&gt; "babar"}
+a.first(2)                                        # =&gt; [[1, "foo"], [2, "bar"]]
+# NOTE: order not preserved in general, just happened to be so
+</pre>
+<h3><a name="l58"><span class="sanchor"> </span></a>Enumerable#group_by</h3>
+<p>Groups the values in the enumerable according to the value returned by the
+block:</p>
+<pre>
+(1..10).group_by{|x| x % 3}   # =&gt; {0=&gt;[3, 6, 9], 1=&gt;[1, 4, 7, 10], 2=&gt;[2, 5, 8]}
+</pre>
+<h3><a name="l59"><span class="sanchor"> </span></a>Enumerable#find_index</h3>
+<p>Similar to #find but returns the index of the first matching element
+(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/178495" class="external">ruby-talk:178495</a>)</p>
+<pre>
+(1..10).find_index{|x| x % 5 == 0}                # =&gt; 4
+(1..10).find_index{|x| x % 25 == 0}               # =&gt; nil
+</pre>
+<h3><a name="l60"><span class="sanchor"> </span></a>Enumerable#take</h3>
+<p>Returns either the first n elements from the enumeration or all elements
+until the given block returns false (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/30407" class="external">ruby-dev:30407</a>):</p>
+<pre>
+a = [1, 2, 3, 4, 5]
+ 
+a.take(3)             # =&gt; [1, 2, 3]
+a.take {|i| i &lt; 3 }   # =&gt; [1, 2]
+</pre>
+<h3><a name="l61"><span class="sanchor"> </span></a>Enumerable#drop</h3>
+<p>Without a block, returns an array with all but the first n elements from the
+enumeration. Otherwise drops elements while the block returns true (and
+returns all the elements after it returns a false value) (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/30407" class="external">ruby-dev:30407</a>):</p>
+<pre>
+a = [1, 2, 3, 4, 5]
+ 
+a.drop(3)             # =&gt; [4, 5]
+a.drop {|i| i &lt; 3 }   # =&gt; [3, 4, 5]
+</pre>
+<h3><a name="l62"><span class="sanchor"> </span></a>Enumerator#each</h3>
+<p>Returns self if no block is given:</p>
+<pre>
+a = 4.times
+a = a.each
+a.inject{|s,x| s+x}                               # =&gt; 6
+</pre>
+<h3><a name="l63"><span class="sanchor"> </span></a>Enumerable methods called without a block</h3>
+<p>If no block is given to the methods in Enumerable (and those in Array, Dir,
+Hash, IO, Range, String or Struct that serve the same purposes), an Enumerator
+will be generated:</p>
+<pre>
+ [1,2,3].map		# =&gt; #&lt;Enumerable::Enumerator:0xb7d666bc&gt;
+ [1,2,3].map.each{|x| p x}		# =&gt; [nil, nil, nil] /// output: '1\n2\n3\n'
+</pre>
+<h3><a name="l64"><span class="sanchor"> </span></a>Enumerable#inject (#reduce) without a block</h3>
+<p>If no block is given, the first argument to #inject is the name of a two-argument
+method that will be called; the optional second argument is the initial value:</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+(1..10).reduce(:+)                                # =&gt; 55
+</pre>
+<h3><a name="l65"><span class="sanchor"> </span></a><em>Enumerable#count</em></h3>
+<p>It could be defined in Ruby as</p>
+<pre>
+def count(*a)
+  inject(0) do |c, e| 
+    if a.size == 1          # suspect, but this is how it works
+      (a[0] == e) ? c + 1 : c
+    else
+      yield(e) ? c + 1 : c
+    end
+  end
+end
+</pre>
+<p>Therefore</p>
+<pre>
+["bar", 1, "foo", 2].count(1)                          # =&gt; 1
+["bar", 1, "foo", 2].count{|x| x.to_i != 0}            # =&gt; 2
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/26895" class="external">ruby-dev:26895</a></p>
+<h3><a name="l66"><span class="sanchor"> </span></a>Enumerable#reduce</h3>
+<p>An alias for #inject.</p>
+<h3><a name="l67"><span class="sanchor"> </span></a><em>Enumerator#with_index</em> <strong>[EXPERIMENTAL]</strong></h3>
+<p>You can turn an Enumerator into another that provides the index when iterating:</p>
+<pre>
+[1,2,3,4,5,6].map.with_index {|x,i|[2,5].include?(i) ? x : x*2}		# =&gt; [2, 4, 3, 8, 10, 6]
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/147728" class="external">ruby-talk:147728</a></p>
+<h3><a name="l68"><span class="sanchor"> </span></a>Enumerable##min_by, #max_by</h3>
+<pre>
+
+ %w[1 3 5 7 6 4 2].min_by{|x| 10 - x.to_i}		# =&gt; "7"
+ %w[1 3 5 7 6 4 2].max_by{|x| 10 - x.to_i}		# =&gt; "1"
+</pre>
+<h3><a name="l69"><span class="sanchor"> </span></a>Enumerable#zip</h3>
+<p>Doesn't convert the arguments to arrays; enumerators are used instead.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l70"> </a></span><span class="title"><em>Regexp#match</em>, <em>String#match</em></span></h2>
+  <div class="body">
+    <div class="section">
+      <p>Second argument to #match to specify the starting position of the matching attempt</p>
+<pre>
+ "foo bar".match(/\S+/,3)[0]		# =&gt; "bar"
+ /\S+/.match("foo bar",3)[0]		# =&gt; "bar"
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/03203" class="external">ruby-core:03203</a>, <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/03205" class="external">ruby-core:03205</a></p>
+<h3><a name="l71"><span class="sanchor"> </span></a>Regexp#match, String#match</h3>
+<p>If a block is given, it will only be evaluated and given the matchdata if
+there is a match.</p>
+<h3><a name="l72"><span class="sanchor"> </span></a>Enumerable#minmax and minmax_by</h3>
+<p>Returns both the minimun and the maximum at once as a two-element array.</p>
+<h3><a name="l73"><span class="sanchor"> </span></a>Enumerator#rewind</h3>
+<p>Rewinds the enumeration sequence.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l74"> </a></span><span class="title">Fiber: coroutines/micro-threads</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>Fiber#yield can be used to force a change of context amongst micro-threads.
+The API is being refined.  (To be expanded).</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l75"> </a></span><span class="title">Array</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l76"><span class="sanchor"> </span></a><strong>Array#nitems</strong></h3>
+<p>It is equivalent to selecting the elements that satisfy a condition and
+obtaining the size of the resulting array:</p>
+<pre>
+%w[1 2 3 4 5 6].nitems{|x| x.to_i &gt; 3}		# =&gt; 3
+</pre>
+<p>In 1.8, the block was just ignored:</p>
+<pre>
+%w[1 2 3 4 5 6].nitems{|x| x.to_i &gt; 3}		# =&gt; 6    in 1.8
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/134083" class="external">ruby-talk:134083</a></p>
+<h3><a name="l77"><span class="sanchor"> </span></a><em>Array#[m,n] = nil</em> places <em>nil</em> in the array.</h3>
+<p>It used to delete the selected elements in 1.8.</p>
+<pre>
+ a = %w[a b c d]; a[1,2] = nil; a		# =&gt; ["a", nil, "d"]
+</pre>
+<h3><a name="l78"><span class="sanchor"> </span></a>Block argument to Array#index, Array#rindex <strong>[Ruby2]</strong></h3>
+<p>They can now take a block to make them work like <em>#select</em>.
+<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/113069" class="external">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/113069</a></p>
+<pre>
+['a','b','c'].index{|e| e == 'b'}		# =&gt; 1
+['a','b','c'].index{|e| e == 'c'}		# =&gt; 2
+['a','a','a'].rindex{|e| e == 'a'}		# =&gt; 2
+['a','a','a'].index{|e| e == 'b'}		# =&gt; nil
+</pre>
+<h3><a name="l79"><span class="sanchor"> </span></a>Array#combination</h3>
+<pre>
+ary.combination(n){|c| ...} 
+</pre>
+<p>yields all the combinations of length n of the elements in the array to the
+given block. If no block is passed, it returns an enumerator instead.
+The order of the combinations is unspecified.</p>
+<pre>
+ a = [1, 2, 3, 4]
+ a.combination(1).to_a  #=&gt; [[1],[2],[3],[4]]
+ a.combination(2).to_a  #=&gt; [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+ a.combination(3).to_a  #=&gt; [[1,2,3],[1,2,4],[1,3,4],[2,3,4]]
+ a.combination(4).to_a  #=&gt; [[1,2,3,4]]
+ a.combination(0).to_a  #=&gt; [[]]: one combination of length 0
+ a.combination(5).to_a  #=&gt; []  : no combinations of length 5
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/42671" class="external">ruby-list:42671</a></p>
+<h3><a name="l80"><span class="sanchor"> </span></a>Array#permutation</h3>
+<pre>
+ary.permutation(n){|c| ...}
+</pre>
+<p>Operates like #combination, but with permutations of length n.</p>
+<pre>
+ a = [1, 2, 3]
+ a.permutation(1).to_a  #=&gt; [[1],[2],[3]]
+ a.permutation(2).to_a  #=&gt; [[1,2],[1,3],[2,1],[2,3],[3,1],[3,2]]
+ a.permutation(3).to_a  #=&gt; [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ a.permutation(0).to_a  #=&gt; [[]]: one permutation of length 0
+ a.permutation(4).to_a  #=&gt; []  : no permutations of length 4
+</pre>
+<h3><a name="l81"><span class="sanchor"> </span></a>Array#product</h3>
+<p>Returns the cartesian product of the receiver and the arrays given as
+arguments:</p>
+<pre>
+ [1,2,3].product([4,5])     # =&gt; [[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]]
+ [1,2].product([1,2])       # =&gt; [[1,1],[1,2],[2,1],[2,2]]
+ [1,2].product([3,4],[5,6]) # =&gt; [[1,3,5],[1,3,6],[1,4,5],[1,4,6],
+                            #     [2,3,5],[2,3,6],[2,4,5],[2,4,6]]
+ [1,2].product()            # =&gt; [[1],[2]]
+ [1,2].product([])          # =&gt; []
+</pre>
+<h3><a name="l82"><span class="sanchor"> </span></a>Array#pop, Array#shift</h3>
+<p>They can take an argument to specify how many objects to return:</p>
+<pre>
+%w[a b c d].pop(2)		# =&gt; ["c", "d"]
+</pre>
+<h3><a name="l83"><span class="sanchor"> </span></a>Array#to_s is equivalent to Array#inspect</h3>
+<pre>
+[1,2,3,4].to_s                                    # =&gt; "[1, 2, 3, 4]"
+</pre>
+<p>instead of</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.8.5"
+[1,2,3,4].to_s                                    # =&gt; "1234"
+</pre>
+<h3><a name="l84"><span class="sanchor"> </span></a>Array.try_convert</h3>
+<p>Returns either the converted value, as returned by to_ary, or nil if
+the object cannot be converted for any reason.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l85"> </a></span><span class="title">Hash</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l86"><span class="sanchor"> </span></a>Hash preserves order!</h3>
+<pre>
+RUBY_VERSION                    # =&gt; "1.9.0"
+h={:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}  # =&gt; {:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}
+h[:e]=5
+h                                           # =&gt; {:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4, :e=&gt;5}
+h.keys                                      # =&gt; [:a, :b, :c, :d, :e]
+h.values                                    # =&gt; [1, 2, 3, 4, 5]
+h.to_a                                      # =&gt; [[:a, 1], [:b, 2], [:c, 3], [:d, 4], [:e, 5]]
+</pre>
+<p>vs.</p>
+<pre>
+RUBY_VERSION                    # =&gt; "1.8.6"
+h={:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}  # =&gt; {:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}
+h[:e]=5
+h                                           # =&gt; {:e=&gt;5, :a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}
+h.keys                                      # =&gt; [:e, :a, :b, :c, :d]
+h.values                                    # =&gt; [5, 1, 2, 3, 4]
+h.to_a                                      # =&gt; [[:e, 5], [:a, 1], [:b, 2], [:c, 3], [:d, 4]]
+</pre>
+<h3><a name="l87"><span class="sanchor"> </span></a>Hash#to_s is equivalent to Hash#inspect</h3>
+<pre>
+{1,2,3,4}.to_s                                    # =&gt; "{1=&gt;2, 3=&gt;4}"
+</pre>
+<p>instead of</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.8.5"
+{1,2,3,4}.to_s                                    # =&gt; "1234"
+</pre>
+<h3><a name="l88"><span class="sanchor"> </span></a>Hash#_compare_by_identity and Hash#compare_by_identity? </h3>
+<p>Hash#compare_by_identity lets the hash compare its keys by their identity (using equal?
+instead of eql?).</p>
+<pre>
+"a".eql? "a"   # =&gt; true
+"a".equal? "a"   # =&gt; false
+h1 = { "a" =&gt; 100, "b" =&gt; 200, :c =&gt; "c" }
+h1["a"]        # =&gt; 100
+h1.compare_by_identity
+h1.compare_by_identity?  # =&gt; true
+h1["a"]        # =&gt; nil  # different objects.
+h1[:c]         # =&gt; "c"  # same symbols are all same.
+</pre>
+<h3><a name="l89"><span class="sanchor"> </span></a>Semantics for Hash#each and Hash#each_pair</h3>
+<ol>
+<li>each_pair passes two arguments to the block, #each passes a two-element array</li>
+</ol>
+<p>to the block, so</p>
+<pre>
+ [RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+ {1 =&gt; 2}.each{|x| p x}
+ {1 =&gt; 2}.each_pair{|x| p x}
+ # &gt;&gt; [1, 2]
+ # &gt;&gt; 1
+</pre>
+<p>Keep in mind that |x| is equivalent to |x,|.</p>
+<h3><a name="l90"><span class="sanchor"> </span></a>Hash#select</h3>
+<p>Returns a hash instead of an association array (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/11504" class="external">ruby-core:11504</a>):</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.8.5", "2006-08-25"]
+{'foo'=&gt;'bar','baz'=&gt;'qux'}.select{|k,v| k=='baz' }    # =&gt; [["baz", "qux"]]
+</pre>
+<p>vs.</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+{'foo'=&gt;'bar','baz'=&gt;'qux'}.select{|k,v| k=='baz' }    # =&gt; {"baz"=&gt;"qux"}
+</pre>
+<h3><a name="l91"><span class="sanchor"> </span></a>Hash.try_convert</h3>
+<p>Returns either the converted value, as returned by to_hash, or nil if
+the object cannot be converted for any reason.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l92"> </a></span><span class="title">Integer</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l93"><span class="sanchor"> </span></a>Integer(nil) raises TypeError</h3>
+<p>See <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/:210205" class="external">ruby-talk::210205</a>.</p>
+<h3><a name="l94"><span class="sanchor"> </span></a>Integer#odd?, #even?</h3>
+<pre>
+1.odd?                                            # =&gt; true
+2.odd?                                            # =&gt; false
+</pre>
+<h3><a name="l95"><span class="sanchor"> </span></a>Integer#pred</h3>
+<p>The opposite of Integer#succ.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l96"> </a></span><span class="title">Method</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l97"><span class="sanchor"> </span></a>Method#receiver</h3>
+<p>Returns the receiver of a Method object.</p>
+<pre>
+class A; def foo; end end
+a = A.new
+a.method(:foo).receiver                           # =&gt; #&lt;A:0xa7c9f6d8&gt;
+</pre>
+<h3><a name="l98"><span class="sanchor"> </span></a>Method#name</h3>
+<p>Returns the method name.</p>
+<h3><a name="l99"><span class="sanchor"> </span></a>Method#owner</h3>
+<p>Returns the class or module where the method was defined.</p>
+<pre>
+class A; def foo; end end
+a = A.new
+a.method(:foo).owner                              # =&gt; A
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l100"> </a></span><span class="title">Numeric</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l101"><span class="sanchor"> </span></a>Numeric#upto, #downto, #times, #step</h3>
+<p>These methods return an enumerator if no block is given:</p>
+<pre>
+a = 10.times
+a.inject{|s,x| s+x }                                # =&gt; 45
+a = []
+b = 10.downto(5)
+b.each{|x| a &lt;&lt; x}
+a                                                 # =&gt; [10, 9, 8, 7, 6, 5]
+
+</pre>
+<h3><a name="l102"><span class="sanchor"> </span></a>Numeric#scalar?, Complex#scalar?</h3>
+<p>Returns true for non-complex values.</p>
+<pre>
+3.scalar?                                          # =&gt; true
+3.3.scalar?                                        # =&gt; true
+require 'complex'
+Complex.new(0,1).scalar?                           # =&gt; false
+</pre>
+<p>(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/27936" class="external">ruby-dev:27936</a>)</p>
+<h3><a name="l103"><span class="sanchor"> </span></a>Numeric#div</h3>
+<p>Now uses #floor instead of the previous special cased integer conversion.
+This leads to less surprising behavior at times:</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.9.0"
+-10.0.div(3)                                      # =&gt; -4
+-10.div(3)                                        # =&gt; -4
+</pre>
+<p>vs.</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.8.4"
+-10.0.div(3)                                      # =&gt; -3
+-10.div(3)                                        # =&gt; -4
+</pre>
+<p>(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/27674" class="external">ruby-dev:27674</a>)</p>
+<h3><a name="l104"><span class="sanchor"> </span></a>Numeric#fdiv</h3>
+<p>An alias for quo (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/30771" class="external">ruby-dev:30771</a>).</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l105"> </a></span><span class="title">Range</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l106"><span class="sanchor"> </span></a>Range#cover?</h3>
+<pre>
+range.cover?(value)
+</pre>
+<p>compares value to the begin and end values of the range, returning true if
+it is comprised between them, honoring #exclude_end?.</p>
+<pre>
+("a".."z").cover?("c")                            # =&gt; true
+("a".."z").cover?("5")                            # =&gt; false
+</pre>
+<p>(<a href="http://www.rubyist.net/~matz/20051210.html#c08" class="external">http://www.rubyist.net/~matz/20051210.html#c08</a>  <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/167182" class="external">ruby-talk:167182</a>)</p>
+<h3><a name="l107"><span class="sanchor"> </span></a>Range#include?</h3>
+<p>When the begin and end values are Numeric types, range.include?(value) will
+compare value to them, thus behaving like range.cover?(value).
+"Discrete" membership is used for other values:</p>
+<pre>
+class A &lt; Struct.new(:v)
+  def &lt;=&gt;(o); v &lt;=&gt; o.v end
+  def succ; puts v; A.new(v+1) end
+end
+
+(A.new(0)...A.new(2)).include? A.new(2)            # =&gt; false
+puts "----"
+(A.new(0)...A.new(2)).include? A.new(1)            # =&gt; true
+# &gt;&gt; 0
+# &gt;&gt; 1
+# &gt;&gt; ----
+# &gt;&gt; 0
+</pre>
+<h3><a name="l108"><span class="sanchor"> </span></a>Range#min, Range#max</h3>
+<p>The operation is now defined in terms of #&lt;=&gt;, instead of iterating through
+the members. However, if the range excludes the end value, the iterative test
+will be used unless the latter is an Integer.</p>
+<pre>
+class A &lt; Struct.new(:v)
+  def &lt;=&gt;(o); v &lt;=&gt; o.v end
+  def succ; puts v; A.new(v+1) end
+end
+
+(A.new(0)...A.new(2)).min                         # =&gt; #&lt;struct A v=0&gt;
+puts "----"
+(A.new(0)..A.new(2)).max                         # =&gt; #&lt;struct A v=2&gt;
+puts "----"
+(A.new(0)...A.new(2)).max                         # =&gt; #&lt;struct A v=1&gt;
+# &gt;&gt; ----
+# &gt;&gt; ----
+# &gt;&gt; 0
+# &gt;&gt; 1
+</pre>
+<p>(<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/167420" class="external">ruby-talk:167420</a>)</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l109"> </a></span><span class="title">Regexp</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l110"><span class="sanchor"> </span></a>Regexp#=== matches symbols</h3>
+<p>This allows you to do things like</p>
+<pre>
+ sym = :foo
+ # ...
+ x = case sym
+ when /bar/; 1
+ when /foo/; 2
+ end
+ x                                                # =&gt; 2
+</pre>
+<h3><a name="l111"><span class="sanchor"> </span></a>Regexp.try_convert</h3>
+<p>Returns either the converted value, as returned by to_regexp, or nil if
+the object cannot be converted for any reason.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l112"> </a></span><span class="title">String</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l113"><span class="sanchor"> </span></a>No longer an Enumerable</h3>
+<p>String is not Enumerable anymore. Use #each_line instead of #each, and #lines
+(see below) to iterate over the lines.</p>
+<h3><a name="l114"><span class="sanchor"> </span></a>Encoding-awareness</h3>
+<p>String methods operate on chars and are thus encoding-aware. These are some of
+the affected methods:</p>
+<ul>
+<li>==</li>
+<li>[] []=</li>
+<li>each_line, each_char</li>
+<li>hash</li>
+<li>inspect</li>
+<li>length</li>
+<li>ljust, rjust, center</li>
+<li>reverse</li>
+<li>split</li>
+<li>strip!, strip, lstrip, rstrip</li>
+<li>succ</li>
+<li>upcase, downcase, capitalize, swapcase</li>
+</ul>
+<p>The length field in the format specifier for printf-like methods also operates
+on a character basis.</p>
+<h3><a name="l115"><span class="sanchor"> </span></a><em>String#clear</em></h3>
+<pre>
+a = "foo"
+a.clear
+a		# =&gt; ""
+</pre>
+<h3><a name="l116"><span class="sanchor"> </span></a>"One-char-wide" semantics for String#[] and String#[]= [Ruby2]</h3>
+<p>Indexing a String with an integer doesn't return a byte value, but a
+one-character String. String#[]= changed accordingly:</p>
+<pre>
+"a"[0]               # =&gt; 'a'
+foo = "foo"
+foo[0] = ?a
+foo                  # =&gt; 'aoo'
+</pre>
+<h3><a name="l117"><span class="sanchor"> </span></a>String#each_char</h3>
+<p>Passes each character (not byte!) to the given block.</p>
+<h3><a name="l118"><span class="sanchor"> </span></a>String#ord</h3>
+<p>The new String#ord allows you to get your friendly Fixnum out of the String
+returned by String#[], so</p>
+<pre>
+'a'[0].ord    # =&gt; 97
+</pre>
+<p>is equivalent the 'a'[0] in 1.8.</p>
+<h3><a name="l119"><span class="sanchor"> </span></a>String#partition, #rpartition</h3>
+<p>str.partition(sep) returns an array with</p>
+<ul>
+<li>the text before the first occurrence of sep in str</li>
+<li>the separator</li>
+<li>the text after the separator</li>
+</ul>
+<p>If sep cannot be found in str, it will return [str, "", ""]. sep can be a String or a Regexp.</p>
+<ol>
+<li>rpartition is similar to #partition but the text is cut at the last occurrence</li>
+</ol>
+<p>of the separator in the string:</p>
+<pre>
+"hello".partition("l")                            # =&gt; ["he", "l", "lo"]
+"hello".rpartition("l")                           # =&gt; ["hel", "l", "o"]
+  
+"abcdedcbabcdcba".partition(/cd/)                 # =&gt; ["ab", "cd", "edcbabcdcba"]
+"abcdedcbabcdcba".rpartition(/cd/)                # =&gt; ["abcdedcbab", "cd", "cba"]
+</pre>
+<h3><a name="l120"><span class="sanchor"> </span></a>String#lines</h3>
+<p>Returns an enumerator that will yield each line in the string:</p>
+<pre>
+"foo\nbar".lines.sort                             # =&gt; ["bar", "foo\n"]
+</pre>
+<p>String#lines accepts an extra argument to indicate the line separator.</p>
+<p>If given a block, #lines behaves like #each_line (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/9218" class="external">ruby-core:9218</a>).</p>
+<h3><a name="l121"><span class="sanchor"> </span></a>String#bytes</h3>
+<p>Returns an enumerator that will yield each byte in the string:</p>
+<pre>
+"hello".bytes.to_a                                # =&gt; [104, 101, 108, 108, 111]
+</pre>
+<h3><a name="l122"><span class="sanchor"> </span></a>String#encoding</h3>
+<p>Returns the encoding of the string.</p>
+<h3><a name="l123"><span class="sanchor"> </span></a>String#force_encoding</h3>
+<p>Changes the encoding of the string to the given one and returns self.</p>
+<h3><a name="l124"><span class="sanchor"> </span></a>String#start_with?, #end_with?</h3>
+<p>string.start_with?(str) returns true if str is a prefix (suffix) of string.</p>
+<h3><a name="l125"><span class="sanchor"> </span></a>String#unpack with a block</h3>
+<p>If given a block, String#unpack will call it with the unpacked values instead
+of creating an array.</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.9.0"
+RUBY_RELEASE_DATE                                 # =&gt; "2007-02-07"
+s = (0..4).to_a.pack("V*")
+a = []
+s.unpack("V*"){|x| a &lt;&lt; x}
+a                                                 # =&gt; [0, 1, 2, 3, 4]
+</pre>
+<h3><a name="l126"><span class="sanchor"> </span></a>String#hash</h3>
+<p>Now uses Bob Jenkins' hash.</p>
+<pre>
+
+</pre>
+<h3><a name="l127"><span class="sanchor"> </span></a>String#upto</h3>
+<p>Takes an optional second array specifying whether the to exclude
+the final value (by default, it is included).</p>
+<h3><a name="l128"><span class="sanchor"> </span></a>String.try_convert</h3>
+<p>Returns either the converted value, as returned by to_string, or nil if
+the object cannot be converted for any reason.</p>
+<h3><a name="l129"><span class="sanchor"> </span></a>Zero-length symbols allowed</h3>
+<pre>
+"".intern                                         # =&gt; :""
+</pre>
+<p>However,</p>
+<pre>
+:""                                               # ~&gt;  empty symbol literal
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l130"> </a></span><span class="title">Struct</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l131"><span class="sanchor"> </span></a>Struct#inspect</h3>
+<p>Does not show the class name for anonymous structs:</p>
+<pre>
+Struct.new(:a).new("")                            # =&gt; #&lt;struct a=""&gt;
+</pre>
+<p>vs. (1.8.5)</p>
+<pre>
+Struct.new(:a).new("")                            # =&gt; #&lt;struct #&lt;Class:0xa7d6ccf0&gt; a=""&gt;
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l132"> </a></span><span class="title">Symbol</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l133"><span class="sanchor"> </span></a>Symbol#=== matches strings</h3>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.8.5", "2006-08-25"]
+:a === "a"                                        # =&gt; false
+</pre>
+<p>vs.</p>
+<pre>
+[RUBY_VERSION, RUBY_RELEASE_DATE]                 # =&gt; ["1.9.0", "2007-08-03"]
+:a === "a"                                        # =&gt; true
+
+</pre>
+<h3><a name="l134"><span class="sanchor"> </span></a>Symbol#intern</h3>
+<p>Returns self.</p>
+<h3><a name="l135"><span class="sanchor"> </span></a>Symbol#encoding</h3>
+<p>Returns the encoding of the symbol.</p>
+<h3><a name="l136"><span class="sanchor"> </span></a>Symbol methods similar to those in String</h3>
+<p>Now Symbols respond to many methods that resemble those in String:</p>
+<ul>
+<li>[]</li>
+<li>&lt;=&gt;, casecmp, =~, ===</li>
+<li>empty?</li>
+<li>encoding</li>
+<li>length, size</li>
+<li>match</li>
+<li>slice</li>
+<li>succ, next</li>
+<li>upcase, downcase, capitalize, swapcase</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l137"> </a></span><span class="title">Math</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l138"><span class="sanchor"> </span></a>Math#log and Math#log2</h3>
+<p>Math#log accepts an optional base argument (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/191308" class="external">ruby-talk:191308</a>).
+The new method Math#log2 (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/191237" class="external">ruby-talk:191237</a>) computes the base 2 logarithm.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l139"> </a></span><span class="title">File and Dir operations</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l140"><span class="sanchor"> </span></a>#to_path in File.path, File.chmod, File.lchmod, File.chown, File.lchown, File.utime, File.unlink... <strong>[Ruby2]</strong></h3>
+<p>The <em>#to_path</em> method will be called for for non-String arguments.</p>
+<pre>
+ File.path(Struct.new(:path){ def to_path; path end }.new("foo"))	# =&gt; "foo"
+</pre>
+<h3><a name="l141"><span class="sanchor"> </span></a>Dir.[], Dir.glob</h3>
+<ul>
+<li><em>[</em> is no longer considered a normal char (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23291" class="external">ruby-dev:23291</a>):</li>
+</ul>
+<pre>
+File.open("/tmp/[", "w"){|f| f.puts "hi"}
+Dir["/tmp/["]		# =&gt; []
+</pre>
+<ul>
+<li>handling of escaped '{', '}' and ',' (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23376" class="external">ruby-dev:23376</a>):</li>
+</ul>
+<pre>
+File.open("/tmp/,", "w"){|f| f.puts "hi"}
+Dir.glob('/tmp/{\,}')		# =&gt; ["/tmp/,"]  instead of ["/tmp/", "/tmp/"]
+</pre>
+<h3><a name="l142"><span class="sanchor"> </span></a>Dir.exist?</h3>
+<p>Equivalent to File.directory?.</p>
+<h3><a name="l143"><span class="sanchor"> </span></a>New methods</h3>
+<ul>
+<li>Dir#inspect</li>
+<li>File::world_readable?</li>
+<li>File::world_writable?</li>
+<li>Pathname#world_readable?</li>
+<li>Pathname#world_writable?</li>
+<li>File::Stat#world_readable?</li>
+<li>File::Stat#world_writable?</li>
+<li>FileUtils.copy_entry</li>
+</ul>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l144"> </a></span><span class="title">IO operations</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l145"><span class="sanchor"> </span></a>Non-blocking IO</h3>
+<p>Lots of new methods for non-blocking IO: IO#read_nonblock, IO#write_nonblock,
+Socket#connect_nonblock, Socket#accept_nonblock, Socket#revcfrom_nonblock
+<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/7917" class="external">ruby-core:7917</a>, IPSocket#recvfrm_nonblock, UNIXSocket#recvfrom_nonblock,
+TCPServer#accept_nonblock, UNIXServer#accept_nonblock.</p>
+<h3><a name="l146"><span class="sanchor"> </span></a>IO#getc</h3>
+<p>Now returns a single-char String instead of an Integer.</p>
+<h3><a name="l147"><span class="sanchor"> </span></a>IO#getbyte, IO#readbyte, StringIO#getbyte, StringIO#readbyte</h3>
+<p>getbyte returns either a Fixnum or nil on EOF.
+readbyte returns a Fixnum or raises EOFError.</p>
+<h3><a name="l148"><span class="sanchor"> </span></a>Kernel#open <strong>[Ruby2]</strong></h3>
+<p>Uses #to_open if the first argument responds to it:</p>
+<pre>
+ require 'stringio'
+ sio = StringIO.new("fooooo")
+ s = Struct.new(:io){ def to_open; io end }.new(sio)
+ open(s){|io| io.gets }		# =&gt; "fooooo"
+</pre>
+<h3><a name="l149"><span class="sanchor"> </span></a>IO#initialize now accepts an IO argument</h3>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/22195" class="external">ruby-dev:22195</a></p>
+<pre>
+ IO.new(STDOUT).fileno		# =&gt; 1
+</pre>
+<h3><a name="l150"><span class="sanchor"> </span></a><em>StringIO#readpartial</em></h3>
+<p>It is an alias for <em>StringIO#sysread</em>.</p>
+<pre>
+require 'stringio'
+StringIO.new("foo").readpartial(2)		# =&gt; "fo"
+</pre>
+<h3><a name="l151"><span class="sanchor"> </span></a>IO#lines</h3>
+<p>Returns an enumerator that will return each line in the IO (similar to
+String#lines).</p>
+<h3><a name="l152"><span class="sanchor"> </span></a>IO#bytes</h3>
+<p>Returns an enumerator that will return each byte in the IO (similar to
+String#bytes).</p>
+<h3><a name="l153"><span class="sanchor"> </span></a>IO.try_convert</h3>
+<p>Returns either the converted value, as returned by to_io, or nil if
+the object cannot be converted for any reason.</p>
+<h3><a name="l154"><span class="sanchor"> </span></a>Limit input in IO#gets, IO#readline, IO#readlines, IO#each_line, IO#lines, IO.foreach, IO.readlines, StringIO#gets, StringIO#readline, StringIO#each, StringIO#readlines</h3>
+<p>These methods accept an optional integer argument to specify the maximum
+amount of data to be read. The limit is specified either as the (optional)
+second argument, or by passing a single integer argument (i.e. the first
+argument is interpreted as the limit if it's an integer, as a line separator
+otherwise).</p>
+<h3><a name="l155"><span class="sanchor"> </span></a>IO#ungetc, StringIO#ungetc</h3>
+<p>Allows to push back an arbitrarily large character.</p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l156"> </a></span><span class="title">Time</span></h2>
+  <div class="body">
+    <div class="section">
+      <p>Seven predicate methods where added for the weekdays (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-list/41340" class="external">ruby-list:41340</a>):</p>
+<pre>
+Time.now		# =&gt; Thu Nov 03 18:58:25 CET 2005
+Time.now.sunday?		# =&gt; false
+</pre>
+<h3><a name="l157"><span class="sanchor"> </span></a>New format in Time#to_s</h3>
+<pre>
+Time.new.to_s                                     # =&gt; "2006-10-12 10:39:24 +0200"
+</pre>
+<p>vs.</p>
+<pre>
+RUBY_VERSION                                      # =&gt; "1.8.5"
+Time.new.to_s                                     # =&gt; "Thu Oct 12 10:39:27 +0200 2006"
+</pre>
+<h3><a name="l158"><span class="sanchor"> </span></a>Timezone information preserved on <em>Marshal.dump/load</em></h3>
+<pre>
+class Object
+  def deep_copy
+    Marshal.load(Marshal.dump(self))
+  end
+end
+fmt = "%m-%d-%Y %H:%M"
+original = Time.gm(2004, 04, 25, 22, 56)		# =&gt; Sun Apr 25 22:56:00 UTC 2004
+copy = original.deep_copy		# =&gt; Sun Apr 25 22:56:00 UTC 2004
+</pre>
+<p>instead of </p>
+<pre>
+class Object
+  def deep_copy
+    Marshal.load(Marshal.dump(self))
+  end
+end
+fmt = "%m-%d-%Y %H:%M"
+original = Time.gm(2004, 04, 25, 22, 56)		# =&gt; Sun Apr 25 22:56:00 UTC 2004
+copy = original.deep_copy		# =&gt; Mon Apr 26 00:56:00 CEST 2004
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/100213" class="external">ruby-talk:100213</a></p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l159"> </a></span><span class="title">Process</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l160"><span class="sanchor"> </span></a><em>Process.setrlimit</em></h3>
+<p>Used as </p>
+<pre>
+ Process.setrlimit(resource, cur_limit, max_limit)
+</pre>
+<p>The resources are OS-dependent, but SuSv3 defines a number of them, allowing to
+set stack size, file descriptor, core size, data segment size, CPU time
+limits...  See <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/24834" class="external">ruby-dev:24834</a>.</p>
+<p>The third argument is optional.</p>
+<h3><a name="l161"><span class="sanchor"> </span></a>Process.daemon</h3>
+<pre>
+ Process.daemon()                        =&gt; fixnum
+ Process.daemon(nochdir=nil,noclose=nil) =&gt; fixnum
+</pre>
+<blockquote>
+<p>Detach the process from controlling terminal and run in
+the background as system daemon.  Unless the argument
+nochdir is true (i.e. non false), it changes the current
+working directory to the root ("/"). Unless the argument
+noclose is true, daemon() will redirect standard input,
+standard output and standard error to /dev/null.</p>
+</blockquote>
+<h3><a name="l162"><span class="sanchor"> </span></a>Process.exec</h3>
+<p>It is to Process.fork what execv(3) is to fork(2). <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/28107" class="external">ruby-dev:28107</a></p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l163"> </a></span><span class="title">Symbols: restriction on literal symbols</span></h2>
+  <div class="body">
+    <div class="section">
+      <p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/02518" class="external">ruby-core:02518</a></p>
+<blockquote>
+<p>should not allow symbol for invalid global variable (e.g. `:$-)`).</p>
+</blockquote>
+<pre>
+:$-)	# =&gt;  # !&gt; useless use of a literal in void context
+# ~&gt; -:1: syntax error, unexpected ')', expecting $end
+# ~&gt;  :$-)	# =&gt; 
+# ~&gt;      ^
+</pre>
+<p>however</p>
+<pre>
+"$-)".to_sym # =&gt; :"$-)"
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l164"> </a></span><span class="title">$SAFE and bound methods</span></h2>
+  <div class="body">
+    <div class="section">
+      <blockquote>
+<p>eval.c (proc_set_safe_level, proc_invoke, rb_mod_define_method): not set $SAFE for methods defined from Proc.  </p>
+</blockquote>
+<p>See <a href="http://www.rubyist.net/~nobu/t/20040611.html" class="external">http://www.rubyist.net/~nobu/t/20040611.html</a> and <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23697" class="external">ruby-dev:23697</a>.
+<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/23697" class="external">ruby-dev:23697</a></p>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l165"> </a></span><span class="title">Misc. new methods</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l166"><span class="sanchor"> </span></a>GC.stress, GC.stress=</h3>
+<p>GC is done on every memory allocation when  </p>
+<pre>
+GC.stress = true
+</pre>
+<p>This is useful to debug Ruby extensions (such as Syck).</p>
+<h3><a name="l167"><span class="sanchor"> </span></a>Method#hash, Proc#hash</h3>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/93968" class="external">ruby-talk:93968</a></p>
+<pre>
+ lambda{}.hash;		# =&gt; 3
+ lambda{}.hash;		# =&gt; 3
+ method(:object_id).hash		# =&gt; 4504
+ method(:object_id).hash		# =&gt; 4504
+</pre>
+<h3><a name="l168"><span class="sanchor"> </span></a>__method__ and __callee__</h3>
+<p>Return the original (unaliased) and aliased names of the executing method
+(or nil at the toplevel):</p>
+<pre>
+   def foo; [__method__, __callee__] end
+   class &lt;&lt; self; self end.module_eval { alias_method :bar, :foo }
+   foo                                            # =&gt; [:foo, :foo]
+   bar                                            # =&gt; [:foo, :bar]
+</pre>
+<p>(see <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/10671" class="external">ruby-core:10671</a>)</p>
+<h3><a name="l169"><span class="sanchor"> </span></a>Symbol#to_proc</h3>
+<p>Allows you to do</p>
+<pre>
+%w[dsf fgdg fg].map(&amp;:capitalize)  # =&gt;  ["Dsf", "Fgdg", "Fg"]
+</pre>
+    </div>
+  </div>
+</div>
+<div class="day">
+  <h2><span class="date"><a name="l170"> </a></span><span class="title">Deprecation</span></h2>
+  <div class="body">
+    <div class="section">
+      <h3><a name="l171"><span class="sanchor"> </span></a>VERSION and friends</h3>
+<p>Use RUBY_VERSION, RUBY_RELEASE_DATE... instead.</p>
+<h3><a name="l172"><span class="sanchor"> </span></a>StringScanner</h3>
+<p>The StringScanner methods #peep, #empty, #clear and #getbyte have been renamed to #peek, #eos?, #terminate and #get_byte.</p>
+<h3><a name="l173"><span class="sanchor"> </span></a>Kernel.to_a</h3>
+<p>Removed. </p>
+<pre>
+1.to_a		# =&gt; ERROR: undefined method `to_a' for 1:Fixnum
+</pre>
+<p>However:</p>
+<pre>
+nil.to_a		# =&gt; []
+</pre>
+<h3><a name="l174"><span class="sanchor"> </span></a>Kernel#getc</h3>
+<p>Replaced by STDIN.getc.</p>
+<h3><a name="l175"><span class="sanchor"> </span></a>Object#type</h3>
+<p>Removed altogether (<a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/04335" class="external">ruby-core:04335</a>).</p>
+<pre>
+"".type		# =&gt; ERROR: undefined method `type' for "":String
+</pre>
+<h3><a name="l176"><span class="sanchor"> </span></a>File.exists?</h3>
+<p>Use File.exist? instead.</p>
+<h3><a name="l177"><span class="sanchor"> </span></a>Hash#index</h3>
+<p>You should now use <em>Hash#key</em>:</p>
+<pre>
+ {a: 1, b: 2}.key(2)		# =&gt; :b
+</pre>
+<h3><a name="l178"><span class="sanchor"> </span></a><em>ENV.index</em></h3>
+<p><em>ENV</em> replicates <em>Hash</em>'s behaviour, so</p>
+<pre>
+ENV["foo"] = "1"
+ENV.index("1")		# =&gt; "foo"
+</pre>
+<p>will issue a warning </p>
+<pre>
+-:2: warning: ENV.index is deprecated; use ENV.key
+</pre>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-dev/25974" class="external">ruby-dev:25974</a></p>
+<h3><a name="l179"><span class="sanchor"> </span></a>Symbol#to_int</h3>
+<p>It's gone at last.</p>
+<p>Compare</p>
+<pre>
+RUBY_VERSION                                       # =&gt; "1.9.0"
+:foo.to_int                                        # =&gt; 
+# ~&gt; -:2: undefined method `to_int' for :foo:Symbol (NoMethodError)
+</pre>
+<p>to</p>
+<pre>
+RUBY_VERSION                                       # =&gt; "1.8.4"
+:foo.to_int                                        # =&gt; 10273 # !&gt; treating Symbol as an integer
+</pre>
+<h3><a name="l180"><span class="sanchor"> </span></a>Removed Array and Hash <em>#indices</em>, <em>#indexes</em></h3>
+<pre>
+%w[a b c].indices		# =&gt; ERROR: undefined method `indices' for ["a", "b", "c"]:Array
+{1, 2, 3, 4}.indices		# =&gt; ERROR: undefined method `indices' for {1=&gt;2, 3=&gt;4}:Hash
+</pre>
+<hr />
+    </div>
+  </div>
+</div>
+</div>
+  <div class="day">
+    <div class="comment">
+      <div class="caption">
+        Last modified:2007/12/10 11:54:27<br>
+        Keyword(s):[<a href="/hiki.rb?c=search;key=ruby">ruby</a>] [<a href="/hiki.rb?c=search;key=1.9">1.9</a>] [<a href="/hiki.rb?c=search;key=ruby2">ruby2</a>] [<a href="/hiki.rb?c=search;key=changelog">changelog</a>] [<a href="/hiki.rb?c=search;key=diffable">diffable</a>]<br>
+        References:[<a href="/hiki/differential+RSS+feeds">Differential RSS feeds</a>] [<a href="/hiki/ruby+1.8.5+release+schedule">Ruby 1.8.5 in time for the Lantern Festival</a>] [<a href="/hiki/Ruby">Ruby</a>] [<a href="/hiki/mechanically-verified-ruby19-changelog">The mechanically verified Ruby 1.9 changelog</a>] [<a href="/hiki/non-synthetic-benchmarks-for-yarv">Rails on 1.9: first benchmarks, YARV exposed to non-synthetic tests</a>] [<a href="/hiki/Changes+in+Ruby+1.9+update+2">Changes in Ruby 1.9, second update (2006-01)</a>] [<a href="/hiki/withdrawn-experimental-ruby-features">Experimental features withdrawn from Ruby 1.9</a>] [<a href="/hiki/Changes+in+Ruby+1.9+update+3">Last month, in Ruby 1.9... (2006-03)</a>] [<a href="/hiki/Changes+in+Ruby+1.9+update+4">Dissecting matz's monster patch: lots of activity in 1.9 (2006-06)</a>] [<a href="/hiki/Changes+in+Ruby+1.9+update+5">Ruby HEAD's been evolving in the last 4 months (2006-10)</a>] [<a href="/hiki/porting-rails-to-ruby-1.9">Towards compatibility with Ruby 1.9: Rails, Rake, RubyGems...</a>] [<a href="/hiki/Enhanced+xmp+code+evaluation+and+annotation">Enhanced xmp code evaluation and annotation</a>] [<a href="/hiki/Changes-in-Ruby-1.9-update-6">What's new in Ruby 1.9, Feb. 07 update</a>] [<a href="/hiki/Changes-in-Ruby-1.9-update-7">Changes in Ruby 1.9, Oct. 07 update</a>] [<a href="/hiki/First+update+to+the+Ruby+change+summary">First update to the Ruby change summary</a>] [<a href="/hiki/ruby+1.8.5+released">Ruby 1.8.5 released. What's new?</a>] <br>
+        
+      </div>
+    </div>
+    <div><script type="text/javascript"><!--
+function hiki_related_add_related_box(num_links, related_docs)
+{
+    var xpath_query = "//div[@class='day']/div[@class='body']/div[@class='section']";
+    var nodes = document.evaluate(xpath_query, document, null, XPathResult.ANY_TYPE, null); 
+    var content_node = nodes.iterateNext();
+    var first_child = content_node.firstChild;
+    var new_node = document.createElement("div");
+    new_node.className = "toprelated";
+    new_node.innerHTML = "See also";
+    var ul = document.createElement("ul");
+    for(var i = 1; i <= num_links && i < arguments.length; i++) {
+	var li = document.createElement("li");
+        li.innerHTML = arguments[i];
+	ul.appendChild(li);
+    }
+    new_node.appendChild(ul);
+    var span = document.createElement("span");
+    var links = arguments;
+    span.onmouseover = function(event){ 
+	for(var j =  num_links + 1; j < links.length; j++) {
+	    var li = document.createElement("li");
+	    li.innerHTML =  links[j];
+	    ul.appendChild(li);
+	}
+	span.style.display = "none";
+    };
+    span.innerHTML = "<em>...</em>";
+    if(arguments.length - 1 > num_links) {
+	new_node.appendChild(span);
+    }
+    content_node.insertBefore(new_node, first_child);
+}
+
+hiki_related_add_related_box(3, "<a href=\"/hiki/Changes+in+Ruby+1.9+update+2\">Changes in Ruby 1.9, second update (2006-01)</a>", "<a href=\"/hiki/withdrawn-experimental-ruby-features\">Experimental features withdrawn from Ruby 1.9</a>", "<a href=\"/hiki/Changes+in+Ruby+1.9+update+3\">Last month, in Ruby 1.9... (2006-03)</a>", "<a href=\"/hiki/Changes+in+Ruby+1.9+update+4\">Dissecting matz's monster patch: lots of activity in 1.9 (2006-06)</a>", "<a href=\"/hiki/Changes+in+Ruby+1.9+update+5\">Ruby HEAD's been evolving in the last 4 months (2006-10)</a>", "<a href=\"/hiki/Changes-in-Ruby-1.9-update-6\">What's new in Ruby 1.9, Feb. 07 update</a>", "<a href=\"/hiki/Changes-in-Ruby-1.9-update-7\">Changes in Ruby 1.9, Oct. 07 update</a>", "<a href=\"/hiki/First+update+to+the+Ruby+change+summary\"></a>");
+// --></script>
+</div>
+  </div>
+</div>
+
+<hr style="display: none">
+<div class="sidebar">
+  <p>Incremental search   <script language="JScript" type="text/jscript">
+  <!--
+   try {
+          xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+  } catch (e) {
+          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  // -->
+  </script>
+  <script language="JavaScript" type="text/javascript">
+  <!--
+  if(typeof XMLHttpRequest != 'undefined'){
+          xmlhttp = new XMLHttpRequest();
+  }
+  function invoke1(key) {
+          if (!document.getElementById) return;
+          if (!xmlhttp) return;
+          xmlhttp.open("GET", "/hiki.rb?c=search;key="+encodeURI(key), true);
+          document.getElementById("search_spinner1").style.display = '';
+          xmlhttp.onreadystatechange=function() {
+                  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                          document.getElementById("result1").innerHTML = xmlhttp.responseText;
+                          document.getElementById("search_spinner1").style.display = 'none';
+                  }
+  
+          }
+          xmlhttp.send(null)
+  }
+  // -->
+  </script>
+  <form method="GET" action="/hiki.rb">
+    <input type="hidden" value="search_orig" name="c">
+    <input  maxlength="50" name="key" onkeyup="invoke1(this.value)" 
+            onfocus="invoke1(this.value)">
+    <input type="submit" style="font-size: 75%;" value="Search">
+<img alt="..." id="search_spinner1" src="/loading.gif" 
+         style="display:none;" />
+  </form>
+  <div id="result1"> </div><p>
+</p>
+<hr />
+<p><img src="http://eigenclass.org/feed-icon-28x28.png" alt="feed-icon-28x28.png" /> <a href="http://eigenclass.org/hiki.rb?c=rss;tags=blog" class="external">RSS 1.0</a> - <a href="http://eigenclass.org/hiki.rb?c=rss;format=1;tags=blog" class="external">RSS 2.0</a></p>
+<ul>
+<li><a href="/hiki/popular+nodes">View popular nodes</a></li>
+<li><a href="/hiki/Ruby">Classified nodes (Ruby stuff)</a></li>
+</ul>
+<p><a href="/hiki/code">Source code</a></p>
+<h5><a name="s0"> </a>Recent</h5>
+<ul>
+<li title="2008-10-27 "><a href="/hiki/widefinder2-conclusions">Wide Finder 2: processing 42GB of httpd logs, 300X faster than naïve Ruby.</a> <span class="recent2">(149d)</span>
+<li title="2008-09-10 "><a href="/hiki/rcov+FAQ">rcov FAQ</a> <span class="recent2">(197d)</span>
+<li title="2008-09-01 "><a href="/hiki/shootout-elo-ratings">Elo ratings for the Benchmarks Game (aka Great Computer Language Shootout)</a> <span class="recent2">(206d)</span>
+<li title="2008-08-27 "><a href="/hiki/fp-ocaml-koans">Some functional programming and OCaml koans</a> <span class="recent2">(211d)</span>
+<li title="2008-08-04 "><a href="/hiki/rcodetools-0.8.0">rcodetools 0.8.0</a> <span class="recent2">(233d)</span>
+<li title="2008-07-17 "><a href="/hiki/sort-eager-vs-lazy-algorithm-analysis-gc-scaling">Reexamining qsort, eager vs. lazy algorithm analysis and Ruby's (and other's) GC</a> <span class="recent2">(252d)</span>
+<li title="2008-07-15 "><a href="/hiki/quicksort-erratum">Quicksort erratum</a> <span class="recent2">(254d)</span>
+</ul>
+
+<h5><a name="s1"> </a><a href="/hiki/popular+nodes">Popular</a></h5>
+<ul>
+<li><a href=".">MAIN (324876)</a>
+<li><a href="/hiki/Changes+in+Ruby+1.9">Changes in Ruby 1.9 (151167)</a>
+<li><a href="/hiki/rcov">rcov: code coverage for Ruby (106877)</a>
+<li><a href="/hiki/wmii+ruby">ruby-wmii: Ruby configuration/scripting for the wmii window manager (49910)</a>
+<li><a href="/hiki/gibak-backup-system-introduction">A better backup system based on Git (34309)</a>
+<li><a href="/hiki/threadring-with-protothreads">The lightest lightweight threads, Protothreads (27529)</a>
+<li><a href="/hiki/rcodetools">rcodetools: TDD/BDD++, automagic assertions, 100% accurate completion, doc/code browsing... (38611)</a>
+<li><a href="/hiki/simple+full+text+search+engine">A simple full-text search engine in 200 lines of Ruby (40216)</a>
+<li><a href="/hiki/rcov+FAQ">rcov FAQ (16449)</a>
+<li><a href="/hiki/fastri">FastRI: faster, smarter RI docs for Ruby, DRb-enabled (23702)</a>
+<li><a href="/hiki/ruby-wmii+FAQ">ruby-wmii FAQ (20106)</a>
+<li><a href="/hiki/ruby+live+process+introspection">Inspecting a live Ruby process, easier if you cheat. (35649)</a>
+<li><a href="/hiki/seam-carving-in-ocaml">Fast content-aware image resizing (24356)</a>
+</ul>
+
+<hr />
+
+</div>
+
+<div class="footer">Generated by <a href="http://hikiwiki.org/">Hiki</a> 0.8.7 (2007-06-24).<br>
+Powered by <a href="http://www.ruby-lang.org/">Ruby</a> 1.8.3 (2005-10-25).<br>
+Founded by Mauricio Fernandez.<br>
+                <script type="text/javascript"><!--
+                var highlightStyle = new Object();
+                highlightStyle.color = "#fff";
+                highlightStyle.backgroundColor = "#f00";
+                
+                var highlightElem = null;
+                var saveStyle = null;
+                
+                function highlightElement(name) {
+                        if (highlightElem) {
+                                for (var key in saveStyle) {
+                                        highlightElem.style[key] = saveStyle[key];
+                                }
+                                highlightElem = null;
+                        }
+                
+                        highlightElem = getHighlightElement(name);
+                        if (!highlightElem) return;
+                
+                        saveStyle = new Object();
+                        for (var key in highlightStyle) {
+                                saveStyle[key] = highlightElem.style[key];
+                                highlightElem.style[key] = highlightStyle[key];
+                        }
+                }
+                
+                function getHighlightElement(name) {
+                        for (var i=0; i<document.anchors.length; ++i) {
+                                var anchor = document.anchors[i];
+                                if (anchor.name == name) {
+                                        var elem;
+                                        if (anchor.parentElement) {
+                                                elem = anchor.parentElement;
+                                        } else if (anchor.parentNode) {
+                                                elem = anchor.parentNode;
+                                        }
+                                        return elem;
+                                }
+                        }
+                        return null;
+                }
+                
+                if (document.location.hash) {
+                        highlightElement(document.location.hash.substr(1));
+                }
+                
+                hereURL = document.location.href.split(/#/)[0];
+                for (var i=0; i<document.links.length; ++i) {
+                        if (hereURL == document.links[i].href.split(/#/)[0]) {
+                                document.links[i].onclick = handleLinkClick;
+                        }
+                }
+                
+                function handleLinkClick() {
+                        highlightElement(this.hash.substr(1));
+                }
+                // --></script>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1126249-1";
+urchinTracker();
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Pablotron: Imlib2-Ruby</title>
+  <meta name='author' content='Paul Duncan' />
+  <meta name='description'
+        content="Paul Duncan's personal page"/>
+
+      <link rel="pavatar" href="http://pablotron.org/images/pavatar.png" />
+      <link rel='openid.server' href='http://www.myopenid.com/server/' />
+      <link rel='openid.delegate' href='http://pabs.myopenid.com/' />
+      <meta http-equiv='X-XRDS-Location' content='http://pabs.myopenid.com/xrds' /><link rel='alternate' type='application/rss+xml' title='RSS'
+      href='/rss/'>
+<link rel='meta' type='application/rdf+xml' title='FOAF'
+      href='/foaf.rdf'>
+  <link rel="stylesheet" type='text/css'
+        href="/themes/gnosis/inc/style.css" />
+  <link rel="shortcut icon"
+        href="/favicon.ico"
+        type="image/x-icon"/>
+</head>
+
+
+  <body>
+    <table id='layout-table' width='100%' cellpadding='0' cellspacing='0'>
+      <tr>
+        <!-- titlebar -->
+        <td colspan='2' id='titlebar'>
+          <a href='/'><img src='/themes/gnosis/images/title.png'
+            width='416' height='53'
+            alt='pablotron' title='pablotron' border='0'
+            hspace='5' vspace='5' /></a>
+        </td>
+      </tr>
+      <tr>
+        <!-- title divider -->
+        <td colspan='2' id='title-divider' >
+          <img src='/themes/gnosis/images/title-divider.png'
+            alt='--' title='--'
+            width='4' height='16' hspace='0' vspace='0' />
+        </td>
+      </tr>
+      <tr>
+        <!-- navbar -->
+        <td colspan='2' id='navbar'>
+          <div id='navbar-links'>
+            <a class='navbar-link' href='/'>News</a> :: 
+            <a class='navbar-link' href='/about/'>About</a> :: 
+            <a class='navbar-link' href='/download/'>Download</a> :: 
+            <a class='navbar-link' href='/screenshots/'>Screenshots</a> :: 
+            <a class='navbar-link' href='/gallery/'>Gallery</a> :: 
+            <a class='navbar-link' href='/links/'>Links</a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <!-- navbar divider -->
+        <td colspan='2' id='navbar-divider'>
+          <img src='/themes/gnosis/images/divider.png'
+            alt='--' title='--'
+            width='8' height='16' hspace='0' vspace='0' />
+        </td>
+      </tr>
+      <tr>
+        <!-- sidebar -->
+        <td id='sidebar' valign='top' width='100'>
+
+<!-- BGN SIDEBAR -->
+<img src='/images/align.gif' width='100' height='1'
+  hspace='0' vspace='0' />
+<b class='sb-group-title'>Software</b><br />
+<a class='sb-link' href='/software/bash_tweaks/'>Bash&nbsp;Tweaks</a><br />
+<a class='sb-link' href='/software/bling/'>Bling</a><br />
+<a class='sb-link' href='/software/dbd-google-ruby/'>DBD-Google</a><br />
+<a class='sb-link' href='/software/easing-js/'>EasingJS</a><br />
+<a class='sb-link' href='/software/easy_cookie/'>EasyCookie</a><br />
+<a class='sb-link' href='/software/fam-ruby/'>FAM-Ruby</a><br />
+<a class='sb-link' href='/software/freshmeat-ruby/'>Freshmeat-Ruby</a><br />
+<a class='sb-link' href='/software/ft2-ruby/'>FT2-Ruby</a><br />
+<a class='sb-link' href='/software/honeypot-php/'>Honeypot-PHP</a><br />
+<a class='sb-link-hilited' href='/software/imlib2-ruby/'>Imlib2-Ruby</a><br />
+<a class='sb-link' href='/software/joggle/'>Joggle</a><br />
+<a class='sb-link' href='/software/joystick-ruby/'>Joystick-Ruby</a><br />
+<a class='sb-link' href='/software/localfark/'>LocalFark</a><br />
+<a class='sb-link' href='/software/mb-ruby/'>MB-Ruby</a><br />
+<a class='sb-link' href='/software/persist-js/'>PersistJS</a><br />
+<a class='sb-link' href='http://www.raggle.org/'>Raggle</a><br />
+<a class='sb-link' href='/software/rubilicious/'>Rubilicious</a><br />
+<a class='sb-link' href='/software/syndic8-ruby/'>Syndic8-Ruby</a><br />
+<a class='sb-link' href='/software/technorati-ruby/'>Technorati-Ruby</a><br />
+<a class='sb-link' href='/software/wirble/'>Wirble</a><br />
+<a class='sb-link' href='/software/xmms-ruby/'>XMMS-Ruby</a><br />
+<a class='sb-link' href='/software/zipstream-php/'>ZipStream-PHP</a><br />
+</div>
+<br />
+
+<b class='sb-group-title'>My Sites</b><br />
+<a class='sb-link' href='http://www.paulduncan.org/'>Paul&nbsp;Duncan</a><br />
+<a class='sb-link' href='http://web.archive.org/web/*/http://efn.org/~p_duncan/'>Pre-'99&nbsp;Site</a><br />
+<a class='sb-link' href='http://gah.pablotron.org/'>#Gah&nbsp;People</a><br />
+</div>
+<br />
+
+<b class='sb-group-title'>Resources</b><br />
+<a class='sb-link' href='http://redmine.pablotron.org/'>Bug&nbsp;Tracker</a><br />
+<a class='sb-link' href='/cvs/'>CVS&nbsp;(old)</a><br />
+<a class='sb-link' href='http://hg.pablotron.org/'>Mercurial</a><br />
+<a class='sb-link' href='/download/pabskey.asc'>Public&nbsp;Key</a><br />
+<a class='sb-link' href='/resume/'>Resume</a><br />
+<a class='sb-link' href='/reviews/'>Reviews</a><br />
+</div>
+<br />
+
+<b class='sb-group-title'>Site-Related</b><br />
+<a class='sb-link' href='/backend/'>Backend</a><br />
+<a class='sb-link' href='mailto:pabs@pablotron.org'>Contact</a><br />
+<a class='sb-link' href='/rss/'>Syndicate&nbsp;(RSS)</a><br />
+<a class='sb-link' href='/themes/'>Themes</a><br />
+</div>
+<br />
+
+<b class='sb-group-title'>Account</b><br />
+<a class='sb-link' href='/account/'>Create&nbsp;Account</a><br />
+<a class='sb-link' href='/account/login.php'>Log&nbsp;In</a><br />
+</div>
+<br />
+
+<!-- END SIDEBAR -->
+
+        </td>
+
+        <!-- content border -->
+        <td id='content' valign='top' width='100%'>
+          <table id='content-table' cellspacing='0' cellpadding='0'>
+            <tr>
+              <td><img src='/themes/gnosis/images/item-0,0.png'
+                width='20' height='19'
+                hspace='0' vspace='0' border='0' /></td>
+              <td width='100%' id='content-top'>&nbsp;</td>
+              <td><img src='/themes/gnosis/images/item-2,0.png'
+                width='24' height='19'
+                hspace='0' vspace='0' border='0' /></td>
+            </tr>
+            <tr>
+              <td id='content-left'><img
+                src='/themes/gnosis/images/item-0,1.png' width='20'
+                height='4' hspace='0' vspace='0' border='0' /></td>
+              <td bgcolor='#ffffff'>
+               <!-- BGN CONTENT -->
+
+<!-- item key      = "14"
+          title    = "Imlib2-Ruby"
+          subtitle ="Tue Mar 26 13:35:17 2002 :: <a href='/?cid=14'>Link</a>
+ -->
+<table border="0" width="100%"
+       cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#000000" width="100%">
+      <table border="0" width="100%"
+             cellpadding="2" cellspacing="1">
+        <tr>
+          <td class="item-title-td" width="100%">
+            <a name="14" class="item-title">Imlib2-Ruby</a>
+            <div class="item-subtitle">Tue Mar 26 13:35:17 2002 :: <a href='/?cid=14'>Link</a>
+</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="item-content">
+<p>
+<a href="http://www.enlightenment.org/Libraries/Imlib2.html">Imlib2</a>
+bindings for <a href="http://www.ruby-lang.org/">Ruby</a>, written with
+the help of <a href='/software/imlib2-ruby/AUTHORS'>these people</a>.
+The online API reference is available <a
+href="/software/imlib2-ruby/doc/">here</a>, and you can view a sample
+script <a
+href="/software/imlib2-ruby/examples/checkerboard.rb">here</a>.
+</p>
+
+<p>
+<b>Example Scripts:</b><br />
+<a href="/software/imlib2-ruby/examples/checkerboard.rb">
+checkerboard.rb</a>
+[ <a href="/software/imlib2-ruby/examples/checkerboard.png">output</a> ]<br />
+
+<a href="/software/imlib2-ruby/examples/test_font.rb">
+test_font.rb</a>
+[ <a href="/software/imlib2-ruby/examples/images/bill_gates.jpg">input</a> ] 
+[ <a href="/software/imlib2-ruby/examples/test_font_1.png">output</a> ]<br />
+</p>
+
+<p>
+<b>Latest:</b><br />
+<a href="/files/imlib2-ruby-0.5.2.tar.gz">
+Download Imlib2-Ruby 0.5.2</a>
+(<a href='/files/imlib2-ruby-0.5.2.tar.gz.asc'>Signature</a>)<br />
+<a href="/files/gems/imlib2-ruby-0.5.2.gem">
+Download Imlib2-Ruby 0.5.2 (gem)</a>
+(<a href='/files/gems/imlib2-ruby-0.5.2.gem.asc'>Signature</a>)<br />
+<a href="/software/imlib2-ruby/doc/">
+View the Online API Reference</a><br />
+<a href="/software/imlib2-ruby/ChangeLog-0.5.2">
+Read the ChangeLog</a>
+</p>
+
+<p>
+<b>Older:</b><br />
+<a href="/files/imlib2-ruby-0.5.1.tar.gz">
+Download Imlib2-Ruby 0.5.1 (tarball)</a>
+(<a href='/files/imlib2-ruby-0.5.1.tar.gz.asc'>Signature</a>)<br />
+<a href="/files/gems/imlib2-ruby-0.5.1.gem">
+Download Imlib2-Ruby 0.5.1 (gem)</a>
+(<a href='/files/gems/imlib2-ruby-0.5.1.gem.asc'>Signature</a>)<br />
+<a href="/files/imlib2-ruby-0.5.0.tar.gz">
+Download Imlib2-Ruby 0.5.0</a>
+(<a href='/files/imlib2-ruby-0.5.0.tar.gz.asc'>Signature</a>)<br />
+<a href="/files/imlib2-ruby-0.4.3.tar.gz">
+Download Imlib2-Ruby 0.4.3</a>
+(<a href='/files/imlib2-ruby-0.4.3.tar.gz.asc'>Signature</a>)<br />
+<a href="/files/imlib2-ruby-0.4.2.tar.gz">
+Download Imlib2-Ruby 0.4.2</a><br />
+<a href="/files/imlib2-ruby-0.4.1.tar.gz">
+Download Imlib2-Ruby 0.4.1</a><br />
+<a href="/files/imlib2-ruby-0.4.0.tar.gz">
+Download Imlib2-Ruby 0.4.0</a><br />
+<a href="/files/imlib2-ruby-0.3.0.tar.gz">
+Download Imlib2-Ruby 0.3.0</a><br />
+<a href="/files/imlib2-ruby-0.2.0.tar.gz">
+Download Imlib2-Ruby 0.2.0</a><br />
+<a href="/files/imlib2-ruby-0.1.0.tar.gz">
+Download Imlib2-Ruby 0.1.0</a><br />
+</p>
+<div class="item-footer"><br />
+<a href='/?cid=14'>2 comments
+</a>
+(<a href="/account/comment.php?cid=14">Post</a>)
+</div>
+      </div>
+    </td>
+  </tr>
+</table>
+<br />
+
+
+              </td>
+              <td id='content-right'><img
+                src='/themes/gnosis/images/item-2,1.png' width='24'
+                height='4' hspace='0' vspace='0' border='0' /></td>
+            </tr>
+            <tr>
+              <td><img src='/themes/gnosis/images/item-0,2.png' 
+                width='20' height='25'
+                hspace='0' vspace='0' border='0' /></td>
+              <td width='100%' id='content-bottom'>&nbsp;</td>
+              <td><img src='/themes/gnosis/images/item-2,2.png' 
+                width='24' height='25'
+                hspace='0' vspace='0' border='0' /></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <div class='copyright'>
+            &copy; 2000-2004 Paul Duncan &lt;<a
+            href='mailto:paul@pablotron.org'>paul@pablotron.org</a>&gt;
+            Page generated by <a href='/software/ptv/'>PTV 0.1.0</a>.
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

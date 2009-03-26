@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
+<html><head><title>ongoing &#xb7; On Ruby</title>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+<link rel='stylesheet' type='text/css' media='screen' title='sans' href='/ongoing/sans.css' />
+<link rel='alternate stylesheet' type='text/css' media='screen' title='serif' href='/ongoing/serif.css' />
+<script type='text/javascript' src='/ongoing/ongoing.js'></script>
+<link rel='alternate' type='application/atom+xml' title='Atom (full content)' href='/ongoing/ongoing.atom' />
+<!-- Generated from XML source code using Perl, Expat, Emacs, Mysql, Ruby, Java, and ImageMagick.  Industrial-strength technology, baby. -->
+</head><body>
+<div id='banner'><h1>On Ruby</h1><div id='search'><form action="http://www.google.com/search"><div>Search <input size="15" name="as_q" /><input type="hidden" name="hl" value="en" /><input type="hidden" name="ie" value="UTF-8" /><input type="hidden" name="btnG" value="Google+Search" /><input type="hidden" name="as_qdr" value="all" /><input type="hidden" name="as_occt" value="any" /><input type="hidden" name="as_dt" value="i" /><input type="hidden" name="as_sitesearch" value="tbray.org" /></div></form></div></div>
+<div id='centercontent'>
+<p>I have previously
+<a href='/ongoing/When/200x/2005/08/27/Ruby'>admired</a> the Ruby language,
+albeit from a distance, and 
+<a href='/ongoing/When/200x/2006/04/13/RoR'>been impressed</a> by the vigor of
+the Rails community.
+In the last week I have written a few hundred lines of Ruby code that actually
+do something useful and I&#x2019;ll probably release (come see it at
+<a href='http://conferences.oreillynet.com/os2006/'>OSCON</a>); so now I&#x2019;m
+somewhat better educated.</p>
+
+<p>What happened was, I
+<a href='/ongoing/When/200x/2006/07/17/OSCON'>got a paper accepted</a> at
+OSCON, and since that &#x201c;S&#x201d; stands for &#x201c;Source&#x201d; I thought it would be
+lame to get up on stage without some, and decided
+that an inflexible deadline would be the right way to overcome my laziness and
+adult-ADD and actually learn something.
+So if you come to my talk, you&#x2019;re going to see some (I hope) entertaining Ruby
+hackery, with an unusual twist, in a good cause.</p>
+
+<p id='p-2' class='p1'><span class='h2'>What&#x2019;s Good</span> &#xb7; 
+I&#x2019;ll jump to the conclusion first.  For people like me, who are proficient
+in Perl and Java, Ruby is remarkably, perhaps irresistibly, attractive.
+Over the last week I&#x2019;ve got an unreasonable amount of work done in a
+ridiculously short period of time, with lots of interruptions, in a language
+I previously didn&#x2019;t know.  It&#x2019;s intuitive enough that I&#x2019;ve often found myself
+guessing at a syntax or a method or a usage and getting it right first time.</p>
+
+<p>Maybe the single biggest advantage is readability.  Once you&#x2019;ve got over
+the hump of the block/yield idiom, I find that a chunk of Ruby code shouts its
+meaning out louder and clearer than any other language.
+Anything that increases maintainability is a pearl beyond price.</p>
+
+<img align='right'  alt='Superfluous \&#x27;end\&#x27; statements in Ruby' title='Superfluous \&#x27;end\&#x27; statements in Ruby' src='ends.png' />
+
+<p>In theory, Python ought to do better, lacking all those silly
+<code>end</code> statements cluttering up the screen.  But in practice, when
+I look at Python code I find my eyes distracted by a barrage of underscores
+and double-quote marks.   Typography is an important component of human
+communication, and Ruby&#x2019;s, on balance, is cleaner.</p>
+
+<p>As for Java; I&#x2019;ve always found it readable, and while there is too
+much boilerplate, at least the superfluous delimiters
+are just a character apiece.   But because Ruby does so much more with each
+statement, you can get more pieces of the puzzle in the little bit of the
+screen that you can look at and think about comfortably.
+This is just one of the many reasons why fewer-lines-of-code is a Really
+Important Virtue.</p>
+
+<p>Anyhow, I&#x2019;ve been programming in C and Java for a quarter-century and I find
+Ruby easier to read, only a week in.  (Well, except for some of _why&#x2019;s code.)</p>
+
+<p>Also, it doesn&#x2019;t take a lot of study before you&#x2019;re saving lines of code;
+I&#x2019;ve 
+<a href='/ongoing/When/200x/2006/07/15/Rubies-and-Pearls'>already written</a>
+about Ruby&#x2019;s low barrier to entry.</p>
+
+<p>Here&#x2019;s another virtue that I&#x2019;ve observed but can&#x2019;t explain.  Something
+about Ruby results in me writing little teeny
+methods; and when I write a loop that threatens to spill out of a screen I
+just know that the language probably provides a better way to do it.
+(It&#x2019;s not just a virtue of dynamic languages; the Perl code that
+deals with an image reference in <span class="o">ongoing</span> spills across
+more screenfuls than I want to admit.)</p>
+
+<p>Of course, a language&#x2019;s culture is often more important than all that
+technical crap.  I&#x2019;ve found the
+<a href='http://www.ruby-lang.org/en/20020104.html'>ruby-talk</a> mailing list
+to be a fount of wisdom and friendly to ignorant newbies too.</p>
+
+<p><a href='http://en.wikipedia.org/wiki/Interactive_Ruby_Shell'>IRB</a> is
+seriously wonderful.  I have to wonder heretically why IRB and Ruby are
+different programs, but that seems to be Just The Way It Is.
+If you&#x2019;re new to IRB, learn to use the <code>-r</code> option to load up a
+class or two and then poke away at methods.</p>
+
+<p id='p-3' class='p1'><span class='h2'>What&#x2019;s Mixed</span> &#xb7; 
+Some things about Ruby are troubling me, they could be a lot better but
+they could be a lot worse too.   I guess the leading candidate is
+documentation.</p>
+
+<p>I&#x2019;ve previously written that I think the
+<a href='http://pragmaticprogrammer.com/titles/ruby/index.html'>Pickaxe
+book</a> is way better than 
+average.  It&#x2019;s approximately as good as the
+Camel book as a reference, and quite a bit better as a tutorial; I can&#x2019;t
+compare it to <cite>Learning Perl</cite> because I already knew perl before I
+discovered that book.  A few days and a few hundred lines of
+production-plausible code in, my Pickaxe is looking shopworn.
+And, by the way, I repeat my assertion that several of the examples used to
+illustrate language features also illustrate <em>horrible</em> programming
+practice.</p>
+
+<img align='right'  alt='Silly Ruby \&#x27;ri\&#x27;' title='Silly Ruby \&#x27;ri\&#x27;' src='nothing-known.png' />
+
+<p>Online, Ruby has <code>ri</code>, which is nowhere near as good as either
+<code>perldoc</code> or the practice of right-clicking on anything in a
+NetBeans window and saying &#x201c;Show Javadocs&#x201d; (I assume Eclipse has the
+equivalent).</p>
+
+<p>On the other hand, there&#x2019;s the
+<a href='http://www.ruby-doc.org/'>Ruby-Doc.org</a> Web site, which 
+is incomplete but useful.  Here&#x2019;s why: for every method
+in every class, there&#x2019;s a View source button, and
+as I&#x2019;ve already remarked, Ruby source is unusually readable, and at the end of
+the day the source is the Ultimate Truth about what the software really does.
+So, on balance, it&#x2019;s pretty good.  Here&#x2019;s an example of an important method
+that&#x2019;s completely undocumented but the source tells you what you need to
+know.</p>
+
+<div class='misc'><a href='-big/ruby-doc.png'><img  alt='Documentation of a method in Net::HTTP' title='Documentation of a method in Net::HTTP' class='norm' src='ruby-doc.png' /></a></div>
+<p id='p-4' class='p1'><span class='h2'>What&#x2019;s Lame</span> &#xb7; 
+Damn, I miss my IDE.  I am proficient in two IDEs, Emacs and NetBeans, and
+neither of them does auto-complete on my Ruby code.  It is deeply wrong when
+characters that could in principle be supplied by a computer must be typed by
+a human, and deeply wrong when there&#x2019;s an obvious syntax error in your code
+and your editor doesn&#x2019;t let you know.
+I gather that both
+<a href='http://sourceforge.net/projects/rubyeclipse'>Eclipse</a> and
+<a href='http://www.loudthinking.com/arc/000270.html'>TextMate</a> can be made
+to be smart about Ruby.  I&#x2019;d really like to avoid having to learn a new
+editor.  Sigh.  Anyone in Prague listening?</p>
+
+<p>Ruby has a kind of stand-offish attitude towards two of my favorite pieces
+of infrastructure, XML and Unicode.  
+<a href='http://www.germane-software.com/software/rexml/'>REXML</a> provides a
+nice API, but, as
+<a href='http://intertwingly.net/blog/2005/09/14/Last-Line-of-Defense/'>Sam
+Ruby discovered</a>, has big-enough holes that you can&#x2019;t point it at Arbitrary
+Internet XML and hope for good results.</p>
+
+<p>I&#x2019;m still learning about the Ruby/Unicode issues, but for the moment,
+suffice it to say that the
+<a href='http://www.geocities.jp/kosako3/oniguruma/'>most advanced Ruby regex
+technology</a> doesn&#x2019;t do Unicode properties.  Blecch.</p>
+
+<p>Finally, a minor, almost a footnote, issue.  I miss polymorphism.  In
+particular, I miss polymorphic constructors.  Sometimes you make pancakes by
+taking them out of the freezer and thawing them.  Sometimes you use
+<a href='http://www.thedailychannel.com/recipes/pancakes1.htm'>baking power,
+flour, and eggs</a>.  Sometimes you use a mix (and there are some
+<em>excellent</em> 
+pancake mixes available at your local organic-food retailer).
+Software&#x2019;s like that, too.
+I find Ruby&#x2019;s argument lists (required args, optional args, an
+array, &#x26;block) kind of ad-hoc and kludgey.  But if you embrace the virtues
+of duck typing (and I do), I guess you pay a price in polymorphism and that&#x2019;s
+How Life Is.</p>
+
+<p id='p-5' class='p1'><span class='h2'>Conclusions</span> &#xb7; 
+See above.  But, now that I&#x2019;m getting comfy with Ruby, I&#x2019;m wondering why
+I need to use any frameworks at all for my
+<a href='/ongoing/When/200x/2006/05/20/Comments-on-Comments'>comment
+system</a>.  Templates, ORM, MVC; 
+<a href='/ongoing/When/200x/2002/09/18/Bah'>bah</a>, who needs &#x2019;em?</p>
+
+<hr />
+<div id='commentHere'></div>
+<div id='footer'><p><b>Updated: 2006/07/24</b><br />
+<a href='/ongoing/' onclick="setActiveStyleSheet('serif'); return false;" onkeypress="setActiveStyleSheet('serif'); return false;" accesskey='p'>Serif</a> / <a href='/ongoing/' onclick="setActiveStyleSheet('sans'); return false;" onkeypress="setActiveStyleSheet('sans'); return false;" accesskey='p'>Sans-Serif</a><br />
+</p>
+</div>
+</div>
+
+<div id='rightcontent'><div class='oo'><a id='to-home' href='/ongoing/'><span id='home'>ongoing</span></a></div>
+<div>
+<div class='principles'>
+<a href='/ongoing/WhatItIs'>What this is</a> &#xb7;
+<a href='/ongoing/ongoing.atom'><img title="Subscribe to ongoing" alt="Subscribe to ongoing" src="/ongoing/Feed.png"/></a><br/>
+<a href='/ongoing/Truth'>Truth</a> &#xb7;
+<a href='/ongoing/Biz'>Biz</a> &#xb7;
+<a href='/ongoing/Tech'>Tech</a></div>
+<a href='/ongoing/misc/Software'>software</a> &#xb7;
+<a href="http://www.textuality.com/goodmeta.html">G &amp; M</a> &#xb7;
+<a href='http://www.textuality.com/BillBray/'>Dad</a> 
+<a href='/ongoing/misc/Tim'>author</a> &#xb7;
+<a href='/ongoing/misc/Colophon'>colophon</a> &#xb7;
+<a href='/ongoing/misc/Copyright'>rights</a>
+</div>
+<hr />
+Around <a href='/ongoing/When/200x/2006/07/'>July</a> <a href='/ongoing/When/200x/2006/07/24/'>24</a>, <a href='/ongoing/When/200x/2006/'>2006</a>: <a href='/ongoing/When/200x/2006/07/25/Content'>Contribution and Experience</a>
+&#xb7; <a href='/ongoing/When/200x/2006/07/25/Woof'>woof! is My Hero</a>
+&#xb7; <a href='/ongoing/When/200x/2006/07/28/Open-Data'>OSCON - Open Data</a>
+&#xb7; <a href='/ongoing/When/200x/2006/07/23/Joke'>The First Joke</a>
+&#xb7; <a href='/ongoing/When/200x/2006/07/22/Lebanon-Roundup'>Lebanon Roundup</a>
+<br />
+<div id='cats'>
+<p><a href='/ongoing/What/'>What?</a>
+<br/> &#xb7; <a  href='/ongoing/What/Technology'>Technology</a> (61 fragments)
+<br/> &#xb7; &#xb7; <a class='leaf'  href='/ongoing/What/Technology/Dynamic Languages'>Dynamic Languages</a> (38 more)
+<br/> &#xb7; &#xb7; <a class='leaf'  href='/ongoing/What/Technology/Ruby'>Ruby</a> (49 more)
+</p>
+</div>
+
+<div id="fonts">
+<hr />
+<a href="/ongoing/" 
+ onclick="setActiveStyleSheet('serif'); return false;" 
+ onkeypress = "setActiveStyleSheet('serif'); return false;"
+ accesskey="p" id="serif">Serif</a>  &#xb7; 
+<a href="/ongoing/"
+ onclick="setActiveStyleSheet('sans'); return false;" 
+ onkeypress = "setActiveStyleSheet('sans'); return false;"
+ accesskey="p" id="sans">Sans-Serif</a>
+<hr />
+</div>
+<div class="employ">I work at Sun Microsystems.
+The opinions expressed here are my own, 
+and neither Sun nor any other party necessarily
+agrees with them.
+</div>
+
+
+
+</div>
+</body>
+</html>

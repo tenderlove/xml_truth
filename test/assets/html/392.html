@@ -1,0 +1,1051 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>pmade inc. - Understanding Ruby Singleton Classes</title>		
+    <link href="/articles/feed.rss" rel="alternate" title="RSS" type="application/rss+xml"/>
+    <link href="/articles/feed.atom" rel="alternate" title="ATOM" type="application/atom+xml"/>
+    <link href="/stylesheets/application.css?1221237449" media="screen" rel="stylesheet" type="text/css" />
+    <script src="/javascripts/prototype.js?1221237449" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1221237449" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1221237449" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1221237449" type="text/javascript"></script>
+<script src="/javascripts/application.js?1221237449" type="text/javascript"></script>
+  </head>
+
+  <body class="pages">
+    <div id="header">
+      <a href="/" class="logo"></a>
+      <ul>
+  <li><a href="/articles/">Blog</a></li>
+  <li><a href="/services/">Services</a></li>
+  <li><a href="/projects/">Projects</a></li>
+  <li><a href="/contact">Contact</a></li>
+</ul>
+
+      
+      <p class="slogan">Software that will make you love again.</p>
+    </div>
+    
+    <div id="page">
+      <div id="content">
+        <div id="stickies"></div>
+
+        <div id="main-content">
+          
+
+
+<div id="article">
+  <p class="published">
+    <span class="month">Sep</span>
+    <span class="day">15</span>
+  </p>
+  
+  <!-- Published with Emacs Muse and BareCMS -->
+<div class="heading">
+  <h1 class="title">Understanding Ruby Singleton Classes</h1>
+  <div class="attribution"><span class="author">by Peter Jones</span> / <span class="date">September 15, 2008</span><br class="clear"/></div>
+</div>
+<p>If you learned object oriented programming from one of the more static
+languages such as C++ or Java, the dynamic nature of Ruby may seem
+magical and elusive.  After running into the syntax dedicated to
+meta-programming, you may have been left scratching your head, or at
+least wondering what's happening behind the scenes.  Singleton
+classes, not to be confused with the singleton design pattern, can
+easily be placed into this head scratching category.</p>
+
+<p>The name itself is confusing, leading people to create alternative
+names such as: object-specific classes, anonymous classes, and virtual
+classes.  Anonymous classes is one of the better names, but since the
+source code to the Ruby interpreter uses the term singleton, that's
+what I'm going to stick with.</p>
+
+<p>Truth be told, singleton classes aren't really that difficult to
+understand.  In this excerpt from my <a href="http://pmade.com/training/accelerated-ruby">Accelerated Ruby</a> workshop, I
+remove the mystical fog surrounding the singleton class, and even
+demonstrate how they can be useful in your day-to-day Ruby adventures.</p>
+
+<h2>Method Dispatching</h2>
+
+<p class="first">Before we dive into the mysterious singleton underground, let's step
+back for a quick refresher on dynamic dispatch in Ruby.  With each
+method call, the Ruby interpreter needs to examine the inheritance
+hierarchy of the receiver in order to find the method that will be
+executed.</p>
+
+<pre class="src">
+foobar = <span style="color: #8888ff; font-weight: bold;">Array</span>.new
+foobar.class <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; Array
+</span>foobar.size  <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; 0
+</span></pre>
+
+<p>In the last statement above, the <code>size</code> method was called on the <code>foobar</code>
+object.  You can also say that the <code>foobar</code> object was the receiver of
+the <code>size</code> message.  It's the class of the receiver where the
+interpreter will start its search for the <code>size</code> method, which in this
+case is the <code>Array</code> class.</p>
+
+<p>If the <code>Array</code> class doesn't contain the <code>size</code> method, the search will
+continue up the hierarchy until it's found.  If the method isn't found
+at the top of the hierarchy, the search is aborted, and the receiver
+is sent the <code>method_missing</code> message.  Luckily for us, the <code>Array</code> class
+does indeed have a <code>size</code> method, and in the example above, it returned
+zero.</p>
+
+<p>Figure 1 illustrates how an object is connected to its class, and how
+a class is connected to its parent class, also known as its <em>super</em>.</p>
+
+<table class="image" width="100%">
+  <tr><td align="center"><img src="../../static/images/articles/2008/ruby-singleton/normal-array.jpg" alt="Figure 1. Dynamic Dispatch Without Singletons" /></td></tr>
+  <tr><td align="center" class="image-caption">Figure 1. Dynamic Dispatch Without Singletons</td></tr>
+</table>
+
+
+<h2>Enter the Singleton Class</h2>
+
+<p class="first">Instead of working our way through some wordy and complicated
+description of what a singleton class is, let's just dive right in and
+see what it does.</p>
+
+<pre class="src">
+foobar = <span style="color: #8888ff; font-weight: bold;">Array</span>.new
+
+<span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">foobar.size</span>
+  <span style="color: #A5F26E;">"Hello World!"</span>
+<span style="color: #CC7832; font-weight: bold;">end</span>
+
+foobar.size  <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; "Hello World!"
+</span>foobar.class <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; Array
+</span>
+bizbat = <span style="color: #8888ff; font-weight: bold;">Array</span>.new
+bizbat.size  <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; 0
+</span></pre>
+
+<p>As in the previous example, a new instance of the <code>Array</code> class is
+created and safely tucked away into a variable named <code>foobar</code>.  Then,
+without warning, we have a funny looking method definition.</p>
+
+<p>Ruby, being the flexible language that it is, allows you to explicitly
+specify a receiver when defining methods.  That is, we can tell Ruby
+what object will acquire the new method.  This syntax shouldn't look
+too unfamiliar, since it's similar to the syntax used when creating
+class methods.  However, in the case above, we're adding a method to
+the <code>foobar</code> object.</p>
+
+<p>That's right, that method definition above creates a method that only
+exists for a single object, not for a class of objects.  As you can
+see from the example code above, other objects of the <code>Array</code> class do
+not have this new <code>size</code> method, they're still using the one defined in
+the <code>Array</code> class.</p>
+
+<p>That cheeky little <code>foobar</code> object has now been transformed to something
+slightly different than what it was before.  How is this possible?
+What is it that makes this <code>foobar</code> object so special that it gets to
+have methods that no other object has?  If you said &quot;singleton class&quot;,
+you'd be correct.  When you add a method to a specific object, Ruby
+inserts a new, anonymous class into the inheritance hierarchy as a
+container to hold these types of methods.</p>
+
+<table class="image" width="100%">
+  <tr><td align="center"><img src="../../static/images/articles/2008/ruby-singleton/singleton-array.jpg" alt="Figure 2. Dynamic Dispatch With Singletons" /></td></tr>
+  <tr><td align="center" class="image-caption">Figure 2. Dynamic Dispatch With Singletons</td></tr>
+</table>
+
+<p>This new singleton class in the <code>foobar</code> inheritance hierarchy has some
+special properties.  As mentioned before, the singleton class is
+anonymous, it has no name and is not accessible through a constant
+like other classes.  You are able, however, to access the singleton
+class using some trickery, but you can't instantiate a new object from
+it.</p>
+
+<p>Object instantiation is prevented by the interpreter for any class
+that has a special singleton flag set on it.  This internal flag is
+also used is when you call the <code>class</code> method on an object.  You would
+expect that the singleton class is returned from that method call, but
+in fact the interpreter skips over it and returns <code>Array</code> instead.</p>
+
+<p>Another very interesting side effect of the singleton class is that
+you can use the <code>super</code> method from within your singleton method.
+Looking back to the code above, we could have called the <code>super</code> method
+from inside the singleton method.  In that case, we would be calling
+the <code>size</code> method from the <code>Array</code> class.</p>
+
+<p>Speaking of side effects, if you're curious whether or not an object
+has a singleton class, there is an introspective method called
+<code>singleton_methods</code> that you can use to get a list of names for all of
+the singleton methods on an object.</p>
+
+<p>Finally, a word of caution.  Once you've created a singleton class for
+an object, you can no longer use <code>Marshal.dump</code> on that object.  The
+marshal library doesn't support objects with singleton classes:</p>
+
+<pre class="example">
+&gt;&gt; Marshal.dump(foobar)
+TypeError: singleton can't be dumped
+	from (irb):6:in `dump'
+	from (irb):6
+</pre>
+
+<p>Since some of the distributed programming libraries use the marshal
+calls to move objects around machines, you might run into the error
+message above.  And now you know what it means.</p>
+
+
+<h2>More Ways to Skin a Singleton</h2>
+
+<p class="first">It shouldn't be surprising that Ruby has several ways to create a
+singleton class for an object.  Below you'll find no less than three
+additional techniques.</p>
+
+<h3>Methods From Modules</h3>
+
+<p class="first">When you use the <code>extend</code> method on an object, to add methods to it from
+a module, those methods are placed into a singleton class.</p>
+
+<pre class="src">
+<span style="color: #CC7832; font-weight: bold;">module</span> <span style="color: #8888ff; font-weight: bold;">Foo</span>
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">foo</span>
+    <span style="color: #A5F26E;">"Hello World!"</span>
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+<span style="color: #CC7832; font-weight: bold;">end</span>
+
+foobar = []
+foobar.extend(<span style="color: #8888ff; font-weight: bold;">Foo</span>)
+foobar.singleton_methods <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; ["foo"]
+</span></pre>
+
+
+<h3>Opening the Singleton Class Directly</h3>
+
+<p class="first">Here comes the funny syntax that everyone has been waiting for.  The
+code below tends to confuse people when they see it for the first
+time, but it's pretty useful and fairly straightforward.</p>
+
+<pre class="src">
+foobar = []
+
+<span style="color: #CC7832; font-weight: bold;">class</span> &lt;&lt; foobar
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">foo</span>
+    <span style="color: #A5F26E;">"Hello World!"</span>
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+<span style="color: #CC7832; font-weight: bold;">end</span>
+
+foobar.singleton_methods <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; ["foo"]
+</span></pre>
+
+<p>Anytime you see a strange looking class definition where the <code>class</code>
+keyword is followed by two less than symbols, you can be sure that a
+singleton class is being opened for the object to the right of those
+symbols.</p>
+
+<p>In this example, the singleton class for the <code>foobar</code> object is being
+opened.  As you probably already know, Ruby allows you to reopen a
+class at any point, adding methods and doing anything you could have
+done in the original class definition.  As with the rest of the
+examples in this section, a <code>foo</code> method is being added to the <code>foobar</code>
+singleton class.</p>
+
+
+<h3>Evaluating Code in the Context of an Object</h3>
+
+<p class="first">If you've made it this far, it shouldn't be shocking to see a
+singleton class created when you define a method inside an
+<code>instance_eval</code> call.</p>
+
+<pre class="src">
+foobar = []
+
+foobar.instance_eval <span style="color: #A5F26E;">&lt;&lt;EOT</span>
+<span style="color: #A5F26E;">  def foo
+    "Hello World!"
+  end
+EOT</span>
+  
+foobar.singleton_methods <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; ["foo"]
+</span></pre>
+
+
+
+<h2>Practical Uses of Singleton Classes</h2>
+
+<p class="first">Before you chalk this all up to useless black magic, let's tie
+everything off with some practical examples.  Believe it or not, you
+probably create singleton classes all the time.</p>
+
+<h3>Class Methods</h3>
+
+<p class="first">While some object oriented languages have class structures that
+support both instance methods and class methods (sometimes called
+static methods), Ruby only supports instance methods.  If Ruby only
+supports instances methods, where do all those class methods you've
+been creating end up?  Why, the singleton class of course.</p>
+
+<p>This is possible because Ruby classes are actually objects
+instantiated from the <code>Class</code> class.  Their names are constants that
+point to this object instantiated from the <code>Class</code> class.  While this
+object holds the instance methods for objects instantiated from it,
+its so-called class methods are kept on a singleton class.</p>
+
+<pre class="src">
+<span style="color: #CC7832; font-weight: bold;">class</span> <span style="color: #8888ff; font-weight: bold;">Foo</span>
+  
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">self.one</span> () 1 <span style="color: #CC7832; font-weight: bold;">end</span>
+  
+  <span style="color: #CC7832; font-weight: bold;">class</span> &lt;&lt; <span style="color: #D0D0F3;">self</span>
+    <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">two</span> () 2 <span style="color: #CC7832; font-weight: bold;">end</span>
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">three</span> () 3 <span style="color: #CC7832; font-weight: bold;">end</span>
+  
+  <span style="color: #D0D0F3;">self</span>.singleton_methods <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; ["two", "one"]
+</span>  <span style="color: #D0D0F3;">self</span>.class             <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; Class
+</span>  <span style="color: #D0D0F3;">self</span>                   <span style="color: #888888;"># </span><span style="color: #B150E7; font-style: italic;">=&gt; Foo
+</span><span style="color: #CC7832; font-weight: bold;">end</span>
+</pre>
+
+<p>Two of the three methods defined in the code above are class methods,
+and therefore go into a singleton class.  Left as an exercise for the
+reader is the inheritance hierarchy for the object that the <code>Foo</code>
+constant references.</p>
+
+
+<h3>Test Mocking</h3>
+
+<p class="first">Mocking is a popular testing technique that allows you to stub out
+method calls for an object or class, forcing them to return a specific
+value, or ensuring that they are called a specific number of times.
+While there are several good mocking libraries available for Ruby,
+wouldn't it be nice to know how they work?</p>
+
+<p>In the example below, there is a <code>Foo</code> class with two instance methods.
+The <code>available?</code> method is dependent on the results of the <code>status</code>
+method.  What do you do if you need to verify that the <code>available?</code>
+method works correctly, given the varying results which the <code>status</code>
+method could return?  Mocking, and singleton classes to the rescue.</p>
+
+<pre class="src">
+require <span style="color: #A5F26E;">'test/unit'</span>
+
+<span style="color: #CC7832; font-weight: bold;">class</span> <span style="color: #8888ff; font-weight: bold;">Foo</span>
+  
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">available?</span>
+    status == 1
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+  
+  private
+  
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">status</span>
+    rand(1)
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+<span style="color: #CC7832; font-weight: bold;">end</span>
+
+<span style="color: #CC7832; font-weight: bold;">class</span> <span style="color: #8888ff; font-weight: bold;">FooTest</span> &lt; <span style="color: #8888ff; font-weight: bold;">Test::Unit::TestCase</span>
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">setup</span>
+    <span style="color: #D0D0F3;">@foo</span> = <span style="color: #8888ff; font-weight: bold;">Foo</span>.new
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">test_available_with_status_1</span>
+    <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">@foo.status</span> () 1 <span style="color: #CC7832; font-weight: bold;">end</span>
+    assert(<span style="color: #D0D0F3;">@foo</span>.available?)
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+  
+  <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">test_available_with_status_0</span>
+    <span style="color: #CC7832; font-weight: bold;">def</span> <span style="color: #E8BF6A; font-weight: bold;">@foo.status</span> () 0 <span style="color: #CC7832; font-weight: bold;">end</span>
+    assert(!<span style="color: #D0D0F3;">@foo</span>.available?)
+  <span style="color: #CC7832; font-weight: bold;">end</span>
+<span style="color: #CC7832; font-weight: bold;">end</span>
+</pre>
+
+
+
+<h2>Conclusion</h2>
+
+<p class="first">Understanding the advanced aspects of the Ruby programming language
+need not be difficult.  Hopefully singleton classes make a lot more
+sense to you now, and even seem somewhat useful.  You may have missed
+it, but hiding in the text above is also a rather shallow examination
+of the object system that Ruby employs.</p>
+
+<p>I recommend that you continue your journey in that direction.  Hint:
+see if your local library has a book on Smalltalk.</p>
+
+
+
+  <br class="clear"/>
+</div>
+
+<div class="article-bar offset">
+  
+  <p class="page-tags">
+    <strong>Tags:</strong>
+    
+      <a href="/pages/tagged/ruby">ruby</a>
+    
+      <a href="/pages/tagged/oop">oop</a>
+    
+  </p>
+
+
+  
+  <p class="comments offset">
+    
+    
+    <strong>12 Comments:</strong>
+  </p>
+  
+  <br class="clear"/>
+</div>
+
+<div id="comments">
+  <div class="comment comment-even" id="comment_86">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/633d2d438a82128b4b60712bb1f374f4.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      alper.akgun
+    
+  </span>
+
+  <span class="date">
+    said on Oct 02, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=86', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Is it possible to instantiate another object from a modified singleton class of an object; which includes the new singleton methods.
+Check first example:</p>
+
+
+<pre>
+foobar = Array.new
+def foobar.size
+  "Hello World!" 
+end
+f2 = foobar.class.new
+f2.size  # this gives 0, but shoulnt it give "Hello World!"?
+</pre>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      <div class="reply reply-even">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/fef0dc633ddfacea6c0c934b6b569da9.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Peter Jones
+    
+  </span>
+
+  <span class="date">
+    said on Oct 02, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=86', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>For your second point, I thought that Ruby2Ruby might be a good solution.  However, it chokes on singleton methods from what I can tell.</p>
+
+
+	<p>Depending on your text editor, there are usually ways of moving code back and forth between the editor and an irb session.</p>
+
+
+	<p>I prefer to write some experimental code in my editor, and then with a key press send it over to an irb session running inside the editor to play around with it.</p>
+</div>
+
+<br class="clear"/>
+
+</div>
+
+    
+      <div class="reply reply-odd">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/fef0dc633ddfacea6c0c934b6b569da9.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Peter Jones
+    
+  </span>
+
+  <span class="date">
+    said on Oct 02, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=86', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Alper, no, you can&#8217;t instantiate a singleton class.</p>
+
+
+	<p>Remember that the call to the <code>class</code> method will skip over singleton classes, and in your example return <code>Array</code>.  Thus, you are just creating another regular <code>Array</code> object.</p>
+
+
+	<p>The syntax to access the singleton directly is:</p>
+
+
+<pre>
+foobar = Array.new
+
+def foobar.size
+  "Hello World!" 
+end
+
+f2 = class &lt;&lt; foobar; self end.new
+</pre>
+
+	<p>Which produces:</p>
+
+
+<pre>
+`new': can't create instance of virtual class (TypeError)
+</pre>
+</div>
+
+<br class="clear"/>
+
+</div>
+
+    
+      <div class="reply reply-even">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/633d2d438a82128b4b60712bb1f374f4.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      alper.akgun
+    
+  </span>
+
+  <span class="date">
+    said on Oct 02, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=86', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Peter,</p>
+
+
+	<p>1) There may be value in making copies of objects, including their singleton class modifications (a bit Darwinian). Cloning could be an option.</p>
+
+
+	<p>f2 = foobar.clone</p>
+
+
+	<p>2)
+Additionally, would&#8217;nt it be great if we could output the source code for a singleton class into a text file; especially during an irb session.</p>
+
+
+	<p>foobar.class.to_source_code</p>
+
+
+	<p>would output the source code. I am just dreaming of a new &#8220;ruby&#8221;; for copy/paste type interactive web development :)</p>
+</div>
+
+<br class="clear"/>
+
+</div>
+
+    
+      </div>
+</div>
+<div class="comment comment-odd" id="comment_87">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/982c3f128bb78678033c0bf8c0e226bc.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Saimon Moore
+    
+  </span>
+
+  <span class="date">
+    said on Oct 02, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=87', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Very nicely explained Peter.</p>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      </div>
+</div>
+<div class="comment comment-even" id="comment_92">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/294c7a47292adc5ba812177e87fa8903.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Anonymous
+    
+  </span>
+
+  <span class="date">
+    said on Nov 20, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=92', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>First, thanks for the explanation.  Very clear.  I have a question however.  While reading up on using JRuby to access Java, I found this example.  When it says &#8220;list &lt;&lt; frame&#8221;, what is happening?  I have only found singleton classes explained as &#8220;class&#8221; followed by &#8221;&lt;&lt;&#8221;, so I was trying to figure out  what the below example was doing.</p>
+
+
+	<p>include Java 
+import java.util.ArrayList 
+import javax.swing.JFrame 
+list = ArrayList.new 
+frame = javax.swing.JFrame.new(&#8220;Passion!&#8221;) 
+list &lt;&lt; frame 
+list.each {|f| f.set_size(200,200) }</p>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      <div class="reply reply-even">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Peter Jones
+    
+  </span>
+
+  <span class="date">
+    said on Nov 21, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=92', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>In this case, it&#8217;s not nearly as tricky.</p>
+
+
+	<p>Remember, <code>&lt;&lt;</code> is a binary operator, and container classes use it as an insertion operator similar to the way C++ does.</p>
+
+
+<pre>
+a = []
+a &lt;&lt; 1
+</pre>
+
+	<p>Just inserts 1 into the array.  I&#8217;m guessing that the <code>list</code> variable is a container that implements the <code>&lt;&lt;</code> operator method, so no singleton magic here.</p>
+</div>
+
+<br class="clear"/>
+
+</div>
+
+    
+      </div>
+</div>
+<div class="comment comment-odd" id="comment_95">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/f1e3ab214a976a39cfd713bc93deb10f.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      TJ
+    
+  </span>
+
+  <span class="date">
+    said on Nov 22, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=95', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Great read! I keep seeing these classes used ina manor similar to below, 
+but I dont really understand what the usage is..</p>
+
+
+<pre>
+(class &lt;&lt; Sequel::Model; self; end).module_eval do
+  %w[validate validates validates_acceptance_of validates_confirmation_of
+     validates_each validates_format_of validates_length_of 
+     validates_numericality_of validates_presence_of validations
+     has_validations?].
+  each {|m| undef_method m.to_sym}
+end
+</pre>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      <div class="reply reply-even">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/fef0dc633ddfacea6c0c934b6b569da9.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Peter Jones
+    
+  </span>
+
+  <span class="date">
+    said on Dec 09, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=95', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>That block of code removes methods from the singleton class.</p>
+
+
+	<p>It uses a common idiom for executing code in the context of the singleton class:</p>
+
+
+<pre>
+class &lt;&lt; self; self; end.instance_eval { @foo = 1}
+</pre>
+
+	<p>Which just means (from left to right), open the singleton class for self, return a reference to the singleton class (because <code>self</code> is the last statement and is therefore the implicit return value from the class definition).  The instance eval is called on the singleton reference.</p>
+
+
+	<p>A few Ruby libraries add a <code>meta_eval</code> method to <code>Object</code> so that accessing the singleton class is less confusing.</p>
+</div>
+
+<br class="clear"/>
+
+</div>
+
+    
+      </div>
+</div>
+<div class="comment comment-even" id="comment_97">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Anonymous
+    
+  </span>
+
+  <span class="date">
+    said on Dec 07, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=97', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Thanks so much for the explanation. I am a newbie to Ruby and out of about 25 hours of reading books and blogs in the past two days, this was the single most understandable article I have read.</p>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      </div>
+</div>
+<div class="comment comment-odd" id="comment_98">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/5f67f4ecc725c421226d179fd98815d4.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      <a href="http://charlesju.com">Charles Ju</a>
+    
+  </span>
+
+  <span class="date">
+    said on Dec 07, 2008:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=98', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Thanks for writing this post, it was a lot of help for me when I was trying to figure out what the heck this funny syntax meant.</p>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      </div>
+</div>
+<div class="comment comment-even" id="comment_102">
+  <div class="avatar"
+  
+    
+    <img class="avatar" src="http://www.gravatar.com/avatar/9e339df8ac2b3b833c81ad0e3c0f46c5.jpg?r=g&s=48"/>
+  
+</div>
+    
+<div class="attributes">
+  <span class="author">
+    
+      Marco Colli
+    
+  </span>
+
+  <span class="date">
+    said on Yesterday, 07:32 PM:
+  </span>
+  
+  <span class="reply-link">
+    <a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton&amp;reply_id=102', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Reply</a>
+  </span>
+</div>
+
+<div class="body">
+  <p>Excellent tutorial! I had never fully understood singletons before..</p>
+</div>
+
+<br class="clear"/>
+
+  
+  <div class="replies">
+    
+      </div>
+</div>
+
+  <div id="comment-post-link"><a href="#" onclick="new Ajax.Request('/pages/85/comments/new?back=http%3A%2F%2Fpmade.com%2Farticles%2F2008%2Fruby-singleton', {asynchronous:true, evalScripts:true, method:'get'}); return false;">Post a comment.</a></div>
+  <div id="comment-form-area"></div>
+</div>
+
+
+        </div>
+        
+        <div id="sidebar-content">
+          
+          
+          
+          
+    <div class="sidebar offset">
+      <h2 class="related-articles">Related Articles</h2>
+      
+      <ul>
+        
+          <li><a href="/articles/2006/teach-vim-about-other-ruby-file-types">Teach Vim About Other Ruby File Types</a></li>
+        
+          <li><a href="/articles/2007/tagging-version-10-released">Tagging Version 1.0 Released</a></li>
+        
+          <li><a href="/articles/2006/ruby_web_server">Super Simple Web Server</a></li>
+        
+          <li><a href="/articles/2006/rubyconf-2006-highlights">RubyConf 2006 Highlights</a></li>
+        
+          <li><a href="/articles/2006/scrapes-version-0-2-0-released">Scrapes Version 0.2.0 Released</a></li>
+        
+          <li><a href="/articles/2006/subversion-automation-screencast-and-sc-1-0">Subversion Automation Screencast, and SC 1.0</a></li>
+        
+          <li><a href="/articles/2006/subversion_ruby_bindings">Building Subversion with Ruby Bindings</a></li>
+        
+          <li><a href="/articles/2007/announcing-stickies">Announcing Stickies</a></li>
+        
+      </ul>
+    </div>
+  
+  <div class="sidebar offset">
+    <h2 class="recent-articles">Recent Articles</h2>
+    
+    <ul>
+      
+        <li><a href="/articles/2008/ruby-singleton">Understanding Ruby Singleton Classes</a></li>
+      
+        <li><a href="/articles/2008/sva-to-git">Converting SVA Subversion Projects to Git</a></li>
+      
+        <li><a href="/articles/2008/project-planning">Behind the Code: Project Planning</a></li>
+      
+        <li><a href="/articles/2008/devalot-lives">The Secret Life of Devalot</a></li>
+      
+        <li><a href="/articles/2008/devfi-podcast-2">DevFi Podcast #2</a></li>
+      
+        <li><a href="/articles/2008/rails-gotcha-9-sessions">Rails Gotcha #9: Disabled Sessions</a></li>
+      
+        <li><a href="/articles/2008/announcing-devfi-podcast">Announcing the DevFi Podcast</a></li>
+      
+      <li><a href="/articles/">View Article Listing</a></li>
+    </ul>
+  </div>
+
+  <div class="sidebar offset">
+    <h2 class="news-feeds">News Feeds</h2>
+
+    <table class="news-feeds">
+      <tr>
+        <td><a href="/articles">Articles</a></td>
+        <td><a href="/articles/feed.rss">RSS</a> | <a href="/articles/feed.atom">Atom</a></td>
+      </tr>
+
+      <tr>
+        <td><a href="/logbook">Logbook</a></td>
+        <td><a href="/logbook/feed.rss">RSS</a> | <a href="/logbook/feed.atom">Atom</a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="sidebar offset">
+    <h2 class="popular-tags">Popular Tags</h2>
+    
+    <ul>
+      
+        <li><a href="/pages/tagged/ruby">Ruby</a></li>
+      
+        <li><a href="/pages/tagged/rails">Rails</a></li>
+      
+        <li><a href="/pages/tagged/svn">Svn</a></li>
+      
+        <li><a href="/pages/tagged/announcement">Announcement</a></li>
+      
+        <li><a href="/pages/tagged/sysadmin">Sysadmin</a></li>
+      
+        <li><a href="/pages/tagged/emacs">Emacs</a></li>
+      
+        <li><a href="/pages/tagged/git">Git</a></li>
+      
+        <li><a href="/pages/tagged/macosx">Macosx</a></li>
+      
+        <li><a href="/pages/tagged/gotcha">Gotcha</a></li>
+      
+      <li><a href="/pages/tagged">View Tag Listing</a></li>
+    </ul>
+  </div>
+
+        </div>
+        
+        <br class="clear"/>
+      </div>
+      
+      <div id="footer-bar">&nbsp;</div>
+
+<div id="footer">
+  <div id="footer-general">
+    <ul>
+  <li><a href="/articles/">Blog</a></li>
+  <li><a href="/services/">Services</a></li>
+  <li><a href="/projects/">Projects</a></li>
+  <li><a href="/contact">Contact</a></li>
+</ul>
+
+    <p>Copyright &copy; 2009 pmade inc. All rights reserved.</p>
+  </div>
+  
+  <div id="footer-about">
+    <h2>About pmade inc.</h2>
+    
+    <p>
+      pmade inc, is a software centric company located near Denver, Colorado in the United States.
+    </p>
+    
+    <p>
+      We're pragmatic, agile, and always focused on creating great products.
+    </p>
+  </div>
+  
+  <br class="clear"/>
+</div>
+
+
+    </div>
+  </body>
+</html>

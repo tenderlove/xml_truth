@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<meta name="keywords" content="Using Ruby on Rails with Facebook Platform,RFacebook" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Facebook Developers Wiki (English)" />
+		<title>Using Ruby on Rails with Facebook Platform - Facebook Developers Wiki</title>
+		<link type="text/css" href="/skins/monobook/menubar.css?64" rel="stylesheet"></style>
+		<style type="text/css" media="screen,projection">/*<![CDATA[*/ @import "/skins/monobook/main.css?64"; /*]]>*/</style>
+		<link rel="stylesheet" type="text/css" media="print" href="/skins/common/commonPrint.css?64" />
+		<link rel="stylesheet" type="text/css" media="handheld" href="/skins/monobook/handheld.css?64" />
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/skins/monobook/IE50Fixes.css?64";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/skins/monobook/IE55Fixes.css?64";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/skins/monobook/IE60Fixes.css?64";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/skins/monobook/IE70Fixes.css?64";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?64"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		<script type= "text/javascript">/*<![CDATA[*/
+var skin = "monobook";
+var stylepath = "/skins";
+var wgArticlePath = "/index.php/$1";
+var wgScriptPath = "";
+var wgServer = "http://wiki.developers.facebook.com";
+var wgCanonicalNamespace = "";
+var wgCanonicalSpecialPageName = false;
+var wgNamespaceNumber = 0;
+var wgPageName = "Using_Ruby_on_Rails_with_Facebook_Platform";
+var wgTitle = "Using Ruby on Rails with Facebook Platform";
+var wgAction = "view";
+var wgArticleId = 49;
+var wgIsArticle = true;
+var wgUserName = null;
+var wgUserGroups = null;
+var wgUserLanguage = "en";
+var wgContentLanguage = "en";
+var wgBreakFrames = false;
+var wgCurRevisionId = 20368;
+/*]]>*/</script>
+                
+		<script type="text/javascript" src="/skins/common/wikibits.js?64"><!-- wikibits js --></script>
+		<script type="text/javascript" src="/index.php?title=-&amp;action=raw&amp;gen=js"><!-- site js --></script>
+		<style type="text/css">/*<![CDATA[*/
+@import "/index.php?title=MediaWiki:Common.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/index.php?title=MediaWiki:Monobook.css&usemsgcache=yes&action=raw&ctype=text/css&smaxage=18000";
+@import "/index.php?title=-&action=raw&gen=css&maxage=18000";
+/*]]>*/</style>
+		<!-- Head Scripts -->
+
+		<script src="/skins/monobook/extensions.js" type="text/javascript"></script>
+		<script src="/skins/monobook/topbar.js" type="text/javascript"></script>
+	</head>
+<body onload="(new DevSiteMenuBar('fb_menubar_core')).init(); "
+ class="mediawiki ns-0 ltr page-Using_Ruby_on_Rails_with_Facebook_Platform">
+<div id="header_bar"><div id="header_logo"><a href="http://developers.facebook.com"><h1>Facebook Developers</h1></a></div><div id="devsite_menubar" class="clearfix"><div class="center_box"><div id="fb_menubar_core"><div class="fb_menu"><div class="fb_menu_title"><a href="http://wiki.developers.facebook.com/index.php">Documentation</a></div></div><li class="fb_menu" id="fb_menu_community"><div class="fb_menu_title"><a href="#">Community</a></div><div class="fb_menu_dropdown hidden_elem" id="fb_menu_community_dropdown"><div class="fb_menu_item"><a href="http://forum.developers.facebook.com">Forums</a></div><div class="fb_menu_item"><a href="http://wiki.developers.facebook.com/index.php/Garage_Calendar">Events</a></div><div class="fb_menu_item"><a href="http://developers.facebook.com/opensource.php">Open Source</a></div></div></li><li class="fb_menu" id="fb_menu_resources"><div class="fb_menu_title"><a href="#">Resources</a></div><div class="fb_menu_dropdown hidden_elem" id="fb_menu_resources_dropdown"><div class="fb_menu_item"><a href="http://developers.facebook.com/get_started.php">Get Started</a></div><div class="fb_menu_item"><a href="http://developers.facebook.com/fbconnect.php">Facebook Connect</a></div><div class="fb_menu_item"><a href="http://developers.facebook.com/fbFund.php">fbFund</a></div><div class="fb_menu_item"><a href="http://developers.facebook.com/partnerships.php">Partnerships</a></div><div class="fb_menu_item"><a href="http://bugs.developers.facebook.com">Bug Tracker</a></div></div></li><div class="fb_menu"><div class="fb_menu_title"><a href="http://developers.facebook.com/tools.php">Tools</a></div></div><div class="fb_menu"><div class="fb_menu_title"><a href="http://developers.facebook.com/news.php">News</a></div></div></div></div></div></div><div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Using Ruby on Rails with Facebook Platform</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Facebook Developers Wiki</h3>
+			<div id="contentSub">(Redirected from <a href="/index.php?title=Ruby_on_Rails&amp;redirect=no" title="Ruby on Rails">Ruby on Rails</a>)</div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1"><a href="#Facebook_API_plugins_for_Rails"><span class="tocnumber">1</span> <span class="toctext">Facebook API plugins for Rails</span></a></li>
+<li class="toclevel-1"><a href="#Facebooker_Rails_Plugin"><span class="tocnumber">2</span> <span class="toctext">Facebooker Rails Plugin</span></a></li>
+<li class="toclevel-1"><a href="#RFacebook_Rails_Plugin"><span class="tocnumber">3</span> <span class="toctext">RFacebook Rails Plugin</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Latest_Documentation_for_RFacebook"><span class="tocnumber">3.1</span> <span class="toctext">Latest Documentation for RFacebook</span></a></li>
+<li class="toclevel-2"><a href="#Install_the_Ruby_Gem"><span class="tocnumber">3.2</span> <span class="toctext">Install the Ruby Gem</span></a></li>
+<li class="toclevel-2"><a href="#Install_the_Rails_Plugin"><span class="tocnumber">3.3</span> <span class="toctext">Install the Rails Plugin</span></a></li>
+<li class="toclevel-2"><a href="#Using_the_RFacebook_on_Rails_Plugin"><span class="tocnumber">3.4</span> <span class="toctext">Using the RFacebook on Rails Plugin</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Configuring_facebook.yml"><span class="tocnumber">3.4.1</span> <span class="toctext">Configuring facebook.yml</span></a>
+<ul>
+<li class="toclevel-4"><a href="#External_web_apps"><span class="tocnumber">3.4.1.1</span> <span class="toctext">External web apps</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3"><a href="#Using_fbsession"><span class="tocnumber">3.4.2</span> <span class="toctext">Using fbsession</span></a>
+<ul>
+<li class="toclevel-4"><a href="#What_the_heck_is_a_Facepricot.3F"><span class="tocnumber">3.4.2.1</span> <span class="toctext">What the heck is a Facepricot?</span></a></li>
+<li class="toclevel-4"><a href="#For_the_more_curious..."><span class="tocnumber">3.4.2.2</span> <span class="toctext">For the more curious...</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3"><a href="#Using_the_before_filters"><span class="tocnumber">3.4.3</span> <span class="toctext">Using the before_filters</span></a></li>
+<li class="toclevel-3"><a href="#Checking_how_the_user_is_viewing_your_application"><span class="tocnumber">3.4.4</span> <span class="toctext">Checking how the user is viewing your application</span></a></li>
+<li class="toclevel-3"><a href="#Other_useful_things"><span class="tocnumber">3.4.5</span> <span class="toctext">Other useful things</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Sample_Applications"><span class="tocnumber">3.5</span> <span class="toctext">Sample Applications</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Canvas_Sample"><span class="tocnumber">3.5.1</span> <span class="toctext">Canvas Sample</span></a>
+<ul>
+<li class="toclevel-4"><a href="#Set_up_your_developer_account"><span class="tocnumber">3.5.1.1</span> <span class="toctext">Set up your developer account</span></a></li>
+<li class="toclevel-4"><a href="#Install_the_RFacebook_Gem_and_Plugin"><span class="tocnumber">3.5.1.2</span> <span class="toctext">Install the RFacebook Gem and Plugin</span></a></li>
+<li class="toclevel-4"><a href="#Modify_any_other_controller_in_your_Rails_app"><span class="tocnumber">3.5.1.3</span> <span class="toctext">Modify any other controller in your Rails app</span></a></li>
+<li class="toclevel-4"><a href="#Make_the_razzledazzle_View"><span class="tocnumber">3.5.1.4</span> <span class="toctext">Make the razzledazzle View</span></a></li>
+<li class="toclevel-4"><a href="#Visit_your_page_inside_Facebook"><span class="tocnumber">3.5.1.5</span> <span class="toctext">Visit your page inside Facebook</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#How_do_I_get_Ruby_help.3F"><span class="tocnumber">4</span> <span class="toctext">How do I get Ruby help?</span></a></li>
+<li class="toclevel-1"><a href="#Tutorials_.2F_Getting_Started_Guides_.2F_Articles"><span class="tocnumber">5</span> <span class="toctext">Tutorials / Getting Started Guides / Articles</span></a></li>
+</ul>
+</td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
+<a name="Facebook_API_plugins_for_Rails"></a><h1><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=1" title="Edit section: Facebook API plugins for Rails">edit</a>]</span> <span class="mw-headline"> Facebook API plugins for Rails </span></h1>
+<p>There are currently two public, open source options for integrating Rails projects with the Facebook platform:  <a href="http://facebooker.rubyforge.org" class="external text" title="http://facebooker.rubyforge.org" rel="nofollow">Facebooker</a> (led by Chad Fowler), and <a href="http://rfacebook.rubyforge.org/" class="external text" title="http://rfacebook.rubyforge.org/" rel="nofollow">RFacebook</a> (originally led by Matt Pizzimenti).
+</p><p>While the rest of this page contains information about RFacebook, please be aware that RFacebook is no longer being maintained.  There is a <a href="http://github.com/tehcurtis/rplatform/tree/master" class="external text" title="http://github.com/tehcurtis/rplatform/tree/master" rel="nofollow">newer branch available</a> that is not maintained by the original author.
+</p>
+<a name="Facebooker_Rails_Plugin"></a><h1><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=2" title="Edit section: Facebooker Rails Plugin">edit</a>]</span> <span class="mw-headline"> Facebooker Rails Plugin </span></h1>
+<p>There is a Facebooker tutorial application at <a href="http://apps.facebook.com/facebooker_tutorial" class="external text" title="http://apps.facebook.com/facebooker_tutorial" rel="nofollow">Facebooker Tutorial</a>.  Please use the installation instructions from here, as the project has been moved to Github from RubyForge. 
+</p><p>More info about Facebooker:
+<a href="http://rfacebook.wordpress.com/" class="external text" title="http://rfacebook.wordpress.com/" rel="nofollow">rfacebook.wordpress.com</a> (Originally a blog only about rfacebook, but now with info about both RFacebook and Facebooker.  Yes, it's confusing.)
+</p><p>The original RubyForge Facebooker page is at <a href="http://facebooker.rubyforge.org" class="external text" title="http://facebooker.rubyforge.org" rel="nofollow">facebooker.rubyforge.org</a>.
+</p>
+<a name="RFacebook_Rails_Plugin"></a><h1><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=3" title="Edit section: RFacebook Rails Plugin">edit</a>]</span> <span class="mw-headline"> RFacebook Rails Plugin </span></h1>
+<a name="Latest_Documentation_for_RFacebook"></a><h2><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=4" title="Edit section: Latest Documentation for RFacebook">edit</a>]</span> <span class="mw-headline"> Latest Documentation for RFacebook </span></h2>
+<p>The latest documentation for the Gem and plugin can be found at <a href="http://rfacebook.rubyforge.org" class="external text" title="http://rfacebook.rubyforge.org" rel="nofollow">rfacebook.rubyforge.org</a>.
+</p>
+<a name="Install_the_Ruby_Gem"></a><h2><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=5" title="Edit section: Install the Ruby Gem">edit</a>]</span> <span class="mw-headline"> Install the Ruby Gem </span></h2>
+<p>On the commandline, install the latest version (&gt;= 0.9.8) of the gem:
+</p>
+<pre> gem install rfacebook
+</pre>
+<p><i>More information on the download is available here: <a href="/index.php/RFacebook" title="RFacebook">download details</a></i>
+</p>
+<a name="Install_the_Rails_Plugin"></a><h2><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=6" title="Edit section: Install the Rails Plugin">edit</a>]</span> <span class="mw-headline"> Install the Rails Plugin </span></h2>
+<p>If you are using Rails, then you also want to install the plugin:
+</p>
+<pre> script/plugin install <a href="http://rfacebook.rubyforge.org/svn/trunk/rfacebook/plugins/rfacebook" class="external free" title="http://rfacebook.rubyforge.org/svn/trunk/rfacebook/plugins/rfacebook" rel="nofollow">http://rfacebook.rubyforge.org/svn/trunk/rfacebook/plugins/rfacebook</a>
+</pre>
+<p>svn://rubyforge.org/var/svn/rfacebook/plugins/rfacebook has been deprecated
+</p><p>svn://rubyforge.org/var/svn/rfacebook/plugins/rfacebook_on_rails has been deprecated
+</p>
+<a name="Using_the_RFacebook_on_Rails_Plugin"></a><h2><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=7" title="Edit section: Using the RFacebook on Rails Plugin">edit</a>]</span> <span class="mw-headline"> Using the RFacebook on Rails Plugin </span></h2>
+<p>This section gives an overview of the features of the RFacebook on Rails.
+</p>
+<a name="Configuring_facebook.yml"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=8" title="Edit section: Configuring facebook.yml">edit</a>]</span> <span class="mw-headline"> Configuring facebook.yml </span></h3>
+<p>The first thing to do is set up the <i>facebook.yml</i> configuration.
+</p>
+<pre>
+$: rake facebook:setup
+</pre>
+<p>This puts a sample facebook.yml for you to edit with your own API key and secret.
+</p>
+<a name="External_web_apps"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=9" title="Edit section: External web apps">edit</a>]</span> <span class="mw-headline"> External web apps </span></h4>
+<p>The Rails plugin should be all set for Canvas and IFrame applications, but if you are doing an <b>external web app</b>, you will want to add a method to your controller at this point:
+</p>
+<pre>
+  def finish_facebook_login
+    # redirect to whatever your want your after-login landing page to be
+  end
+</pre>
+<p>If you are doing an external app and you don't do a redirect here, the auth_token will remain in the URL.  It won't kill you, but its ugly, and if the user hits "Refresh" on that page, RFacebook::FacebookWebSession will throw an exception that the token has already been used.
+</p><p><br />
+</p>
+<a name="Using_fbsession"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=10" title="Edit section: Using fbsession">edit</a>]</span> <span class="mw-headline"> Using fbsession </span></h3>
+<p>Similar to the way that Rails gives you <i>cookie</i> and <i>session</i> objects, the RFacebook extensions give you a <b>fbsession</b> object.  This object is a fully instantiated RFacebook::FacebookWebSession object in all of your Controllers and Views.  You can check to see if the fbsession is valid by checking the <i>ready?</i> property.  <i>See the next section for information on ensuring that the session is valid using before_filters</i>.
+</p>
+<pre>
+if fbsession.ready?
+  # do stuff
+end
+</pre>
+<p>For those of you not already familiar with RFacebook::FacebookWebSession, you can basically think of it as a thin layer on top of the Facebook API.  It does all of the signature generation and HTTP requests.  All you have to do is call <b>any</b> method defined in the <a href="http://developers.facebook.com/documentation.php" class="external text" title="http://developers.facebook.com/documentation.php" rel="nofollow">documentation</a>.  All RFacebook API calls return a special HPricot XML document that can be accessed via dot syntax.
+</p><p>For example, to get the first and last names of some users for which you have some user ids, you would call <a href="http://developers.facebook.com/documentation.php?v=1.0&amp;method=users.getInfo" class="external text" title="http://developers.facebook.com/documentation.php?v=1.0&amp;method=users.getInfo" rel="nofollow">facebook.users.getInfo</a>:
+</p>
+<pre>
+useridA = 1234
+useridB = 9876
+response = fbsession.users_getInfo(:uids =&gt; [useridA, useridB],&nbsp;:fields =&gt; [&quot;first_name&quot;, &quot;last_name&quot;])
+</pre>
+<p>As you can see, the way to call a method involves:
+</p>
+<ol><li> Drop the "facebook." prefix
+</li><li> Replace "." with "_"
+</li><li> Use Ruby hash notation to specify the arguments for the method.  RFacebook will automatically set up: <i>api_key, session_key, call_id, sig, v, format</i>, and <i>callback</i> - so you don't have to specify those particular arguments.
+</li><li> Grab the XML response as a "Facepricot" document (it acts like an Hpricot document, but it has extensions that allow you to traverse the response more easily)
+</li></ol>
+<a name="What_the_heck_is_a_Facepricot.3F"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=11" title="Edit section: What the heck is a Facepricot?">edit</a>]</span> <span class="mw-headline"> What the heck is a Facepricot? </span></h4>
+<p><b>PLEASE NOTE: Facepricot will likely be deprecated in version 1.0 of the API</b>
+</p><p>Every RFacebook API call returns a Facepricot document.  This is a wrapper for an Hpricot XML document.  Note that <b>ALL</b> of the standard <a href="http://code.whytheluckystiff.net/hpricot/wiki/HpricotXML" class="external text" title="http://code.whytheluckystiff.net/hpricot/wiki/HpricotXML" rel="nofollow">Hpricot methods</a> apply (you can even grab the original Hpricot document via <b>xml.hpricot</b> and use the Hpricot stuff directly).  <i>However</i>, a Facepricot document gives you some neat methods that simplify your code:
+</p>
+<pre>
+sess.friends_get.search(&quot;//uid&quot;).map{|xmlnode| xmlnode.inner_html} // get an array of all friend UIDs
+sess.friends_get.at(&quot;//uid&quot;).inner_html // get the first UID of friends
+</pre>
+<p>can now be accomplished with the simpler Facepricot syntax:
+</p>
+<pre>
+sess.friends_get.uid_list // get an array of all friend UIDs
+sess.friends_get.uid // get the first UID of friends
+</pre>
+<p>So, Facepricot is a new response format that is <b>completely backwards compatible with the old Hpricot responses</b>.  All of your old code will work, but now you'll have a great new way to access the response data without knowing XPath.
+</p>
+<a name="For_the_more_curious..."></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=12" title="Edit section: For the more curious...">edit</a>]</span> <span class="mw-headline"> For the more curious... </span></h4>
+<p>The way that RFacebook does these API calls is through the Ruby feature for handling undefined methods, called <a href="http://www.rubycentral.com/book/ref_c_object.html#Object.method_missing" class="external text" title="http://www.rubycentral.com/book/ref_c_object.html#Object.method_missing" rel="nofollow">method_missing</a>.  The advantage of this approach is that <b>no matter what additions Facebook makes to the API, RFacebook will support them <i>without</i> modification</b>.  The disadvantage is that the syntax is slightly more verbose than if you had made a custom Ruby method for each API method.  I am considering adding a set of "convenience" methods that allow for some basic calls to be simpler.
+</p>
+<a name="Using_the_before_filters"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=13" title="Edit section: Using the before_filters">edit</a>]</span> <span class="mw-headline"> Using the before_filters </span></h3>
+<p>The fbsession will only be valid if the user has <i>installed</i> your application, or if they have been <i>logged in</i> to your application.  You can ensure that a user is logged in by using one of the two <i>before_filters</i>:
+</p>
+<pre>
+before_filter&nbsp;:require_facebook_login
+</pre>
+<pre>
+before_filter&nbsp;:require_facebook_install # does not do anything for external web apps
+</pre>
+<a name="Checking_how_the_user_is_viewing_your_application"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=14" title="Edit section: Checking how the user is viewing your application">edit</a>]</span> <span class="mw-headline"> Checking how the user is viewing your application </span></h3>
+<p>You can also check to see how the user is using your application:
+</p>
+<pre>
+if in_facebook_canvas?
+  # the user is viewing your page in the canvas
+end
+</pre>
+<pre>
+if in_facebook_frame?
+  # the user is viewing your page either in the canvas, or the iframe
+end
+</pre>
+<a name="Other_useful_things"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=15" title="Edit section: Other useful things">edit</a>]</span> <span class="mw-headline"> Other useful things </span></h3>
+<ul><li> you can develop locally by using the <a href="http://rfacebook.rubyforge.org/tunnel.html" class="external text" title="http://rfacebook.rubyforge.org/tunnel.html" rel="nofollow">Facebook Tunnel</a> (thanks to Evan Weaver's <a href="http://blog.evanweaver.com/articles/2007/07/13/developing-a-facebook-app-locally" class="external text" title="http://blog.evanweaver.com/articles/2007/07/13/developing-a-facebook-app-locally" rel="nofollow">blog post</a>)
+</li><li> debugging is easy using the <a href="http://rfacebook.rubyforge.org/debugpanel.html" class="external text" title="http://rfacebook.rubyforge.org/debugpanel.html" rel="nofollow">Debug Panel</a>
+</li><li> URLs are automatically made relative to apps.facebook.com when you are inside the canvas
+</li></ul>
+<a name="Sample_Applications"></a><h2><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=16" title="Edit section: Sample Applications">edit</a>]</span> <span class="mw-headline"> Sample Applications </span></h2>
+<p>This section will have some recipes for making applications that interact with Facebook.  There are 4 main ways to use the API (as far as I can tell):
+</p>
+<ol><li> Internal Canvas Web App
+</li><li> Internal IFRAME Web App
+</li><li> External Web App
+</li><li> External Desktop App
+</li></ol>
+<p>I was most interested in the Canvas approach myself, so that's the only sample so far...
+</p>
+<a name="Canvas_Sample"></a><h3><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=17" title="Edit section: Canvas Sample">edit</a>]</span> <span class="mw-headline"> Canvas Sample </span></h3>
+<p>This shows how to create a basic canvas application (using the FBML method).  We'll call our application "foobar" just for fun.
+</p>
+<a name="Set_up_your_developer_account"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=18" title="Edit section: Set up your developer account">edit</a>]</span> <span class="mw-headline"> Set up your developer account </span></h4>
+<p><i>Callback URL:</i> <b>http:// foobar.com/fbook/</b> <i>NOTE: the trailing slash is necessary!</i>
+</p><p><i>Canvas Page URL:</i> http:// apps.facebook.com/<b>foobar</b>
+</p><p>Be sure the select the "Use FBML" radio button.
+</p>
+<a name="Install_the_RFacebook_Gem_and_Plugin"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=19" title="Edit section: Install the RFacebook Gem and Plugin">edit</a>]</span> <span class="mw-headline"> Install the RFacebook Gem and Plugin </span></h4>
+<p><b>Instructions for this are above</b>
+</p><p><br />
+</p>
+<a name="Modify_any_other_controller_in_your_Rails_app"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=20" title="Edit section: Modify any other controller in your Rails app">edit</a>]</span> <span class="mw-headline"> Modify any other controller in your Rails app </span></h4>
+<p>To ensure that the user visiting your site is fully authenticated, there are <b>two</b> before_filters that you can use:
+</p>
+<ul><li> require_facebook_login
+</li><li> require_facebook_install
+</li></ul>
+<p>The following example has a controller called "Sample" that requires users to be logged in.
+</p>
+<pre>
+
+class SampleController &lt; ApplicationController
+  
+  before_filter&nbsp;:require_facebook_login
+  
+  def razzledazzle
+    # fbsession is now a completely valid RFacebook::FacebookWebSession for the user
+    response = fbsession.users_getInfo(:uids =&gt; [fbsession.session_user_id],&nbsp;:fields =&gt; [&quot;first_name&quot;, &quot;last_name&quot;])
+    @firstName = response.first_name
+    @lastName = response.last_name
+  end
+  
+end
+
+</pre>
+<p>Notice the new <b>fbsession</b> object.  This is an RFacebook::FacebookWebSession that is all set and ready for you to use!  Read <a href="#Using_fbsession" title="">#Using_fbsession</a> above if you want more details on fbsession.
+</p>
+<a name="Make_the_razzledazzle_View"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=21" title="Edit section: Make the razzledazzle View">edit</a>]</span> <span class="mw-headline"> Make the razzledazzle View </span></h4>
+<p>In your Rails views for SampleController, add a "razzledazzle" rhtml file.  Just have it display @firstName and @lastName for now.
+</p><p>&lt;%= @firstName %&gt; &lt;%= @lastName %&gt;
+</p>
+<a name="Visit_your_page_inside_Facebook"></a><h4><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=22" title="Edit section: Visit your page inside Facebook">edit</a>]</span> <span class="mw-headline"> Visit your page inside Facebook </span></h4>
+<p>Go to <i>http:// apps.facebook.com/foobar/<b>sample/razzledazzle</b> </i>.  This will call <i>http:// foobar.com/fbook/<b>sample/razzledazzle</b> </i>.  Since you set up "require_facebook_login", Facebook will ask you to Grant Access to the application.  Once you've done so, you should see your first and last name output in the Facebook Canvas!
+</p>
+<a name="How_do_I_get_Ruby_help.3F"></a><h1><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=23" title="Edit section: How do I get Ruby help?">edit</a>]</span> <span class="mw-headline"> How do I get Ruby help? </span></h1>
+<p>The best people to talk about Ruby with Facebook are Levy Klots or Luke Shepard. Send us a facebook message if you have problems.
+I'm sure there's more ruby developers out there - please list yourselves on the wiki!
+</p><p><b>People to Talk to:</b>
+</p>
+<ul><li> Luke Shepard (works at Facebook)
+</li><li> Levy Klots (works at Facebook)
+</li><li> Matt Pizzimenti (author of RFacebook library and Rails plugin)
+</li><li> Chris Chan (works on Causes at Project Agape)
+</li><li> Blake Commagere (works on Causes at Project Agape)
+</li><li> Jimmy Kittiyachavalit (works on Causes at Project Agape)
+</li><li> Kristjan Petursson (works on Causes at Project Agape)
+</li><li> Keith Rarick (works on Causes at Project Agape)
+</li><li> Shashank Date (works at BetterLabs)
+</li><li> Carsten Nielsen
+</li><li> Tony Targonski (works at GigPark)
+</li><li> Michael Leung (works at Boldcode.com)
+</li><li> David Fugere (works at CodeGenome.com)
+</li><li> Gerald Bauer (editor of rfacbook questions &amp; answers site)
+</li></ul>
+<p><b>Sites to Check</b>
+</p>
+<ul><li> <a href="http://rfacebook.rubyforge.org/" class="external text" title="http://rfacebook.rubyforge.org/" rel="nofollow">RFacebook home page</a>
+</li><li> <a href="http://rubyforge.org/projects/rfacebook/" class="external text" title="http://rubyforge.org/projects/rfacebook/" rel="nofollow">RFacebook project page</a>
+</li><li> <a href="http://www.livelearncode.com/archives/14" class="external text" title="http://www.livelearncode.com/archives/14" rel="nofollow">livelearncode.com</a>
+</li><li> <a href="http://rfacebook.wordpress.com" class="external text" title="http://rfacebook.wordpress.com" rel="nofollow">rfacebook questions &amp; answers site</a> includes rfacebook Q&amp;A and Sightings series and more
+</li><li> <a href="http://groups.google.com/group/rfacebook" class="external text" title="http://groups.google.com/group/rfacebook" rel="nofollow">rfacebook questions &amp; answers mailing list/forum</a> - Official rfacebook Forum/Mailing List
+</li></ul>
+<a name="Tutorials_.2F_Getting_Started_Guides_.2F_Articles"></a><h1><span class="editsection">[<a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit&amp;section=24" title="Edit section: Tutorials / Getting Started Guides / Articles">edit</a>]</span> <span class="mw-headline"> Tutorials / Getting Started Guides / Articles </span></h1>
+<ul><li> <a href="http://rfacebook.wordpress.com/2007/12/28/quickstart/" class="external text" title="http://rfacebook.wordpress.com/2007/12/28/quickstart/" rel="nofollow">20-Minute Quick Start Guide for RFacebook</a> - 10 Easy Steps to Create a Facebook App Using Rails
+</li><li> <a href="http://rfacebook.wordpress.com/2008/01/10/tutorial/" class="external text" title="http://rfacebook.wordpress.com/2008/01/10/tutorial/" rel="nofollow">How To: Tutorial on developing a Facebook application using Ruby on Rails (Part I)</a> - Shows you how to develop a Facebook application using Ruby on Rails running in the Facebook canvas using Facebook Markup Language (FBML). 
+</li><li> <a href="http://www.atnan.com/2007/6/18/updating-facebook-profiles-and-feeds-with-rfacebook" class="external text" title="http://www.atnan.com/2007/6/18/updating-facebook-profiles-and-feeds-with-rfacebook" rel="nofollow">Article: Using RFacebook to update Facebook profiles and feeds (via push)</a> (out of date with latest RFacebook library)
+</li><li> Sample <a href="http://www.henriquez.net/2007/09/so-you-start-new-ruby-on-rails.html" class="external text" title="http://www.henriquez.net/2007/09/so-you-start-new-ruby-on-rails.html" rel="nofollow">routes.rb file</a> for typical facebook application using named routes. Useful if you want to use RESTful resources but are having trouble with the "everything is a POST" nature of facebook.
+</li></ul>
+
+<!-- Tidy found serious XHTML errors -->
+
+<!-- Saved in parser cache with key wikidb:pcache:idhash:49-0!1!0!!en!2 and timestamp 20090326100404 -->
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.developers.facebook.com/index.php/Using_Ruby_on_Rails_with_Facebook_Platform">http://wiki.developers.facebook.com/index.php/Using_Ruby_on_Rails_with_Facebook_Platform</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+					 <li id="ca-nstab-main" class="selected"><a href="/index.php/Using_Ruby_on_Rails_with_Facebook_Platform" title="View the content page [c]" accesskey="c">Article</a></li>
+					 <li id="ca-talk"><a href="/index.php/Talk:Using_Ruby_on_Rails_with_Facebook_Platform" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+					 <li id="ca-edit"><a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit</a></li>
+					 <li id="ca-history"><a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;action=history" title="Past versions of this page. [h]" accesskey="h">History</a></li>
+				</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-anonuserpage"><a href="/index.php/User:10.18.255.249" title="The user page for the ip you're editing as [.]" accesskey="." class="new">10.18.255.249</a></li>
+				<li id="pt-anontalk"><a href="/index.php/User_talk:10.18.255.249" title="Discussion about edits from this ip address [n]" accesskey="n">Talk for this IP</a></li>
+				<li id="pt-anonlogin"><a href="/index.php?title=Special:Userlogin&amp;returnto=Using_Ruby_on_Rails_with_Facebook_Platform" title="You are encouraged to log in, it is not mandatory however. [o]" accesskey="o">Log in / create account</a></li>
+				<li id="pt-back_to_fb"><a href="http://www.facebook.com" class="back_to_fb_link">back to facebook.com</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://static.ak.facebook.com/images/wiki_logo.png);" href="/index.php/Main_Page" title="Visit the Main Page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-topics'>
+		<h5>topics</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/index.php/Main_Page" title="Visit the Main Page [z]" accesskey="z">Main Page</a></li>
+				<li id="n-Core-Components"><a href="/index.php/Platform_Core_Components">Core Components</a></li>
+				<li id="n-Platform-Policy"><a href="/index.php/Platform_Policy">Platform Policy</a></li>
+				<li id="n-Facebook-Connect"><a href="/index.php/Facebook_Connect">Facebook Connect</a></li>
+				<li id="n-Platform-Internationalization"><a href="/index.php/Translating_Platform_Applications">Platform Internationalization</a></li>
+				<li id="n-Mobile"><a href="/index.php/Mobile">Mobile</a></li>
+				<li id="n-Client-Libraries"><a href="/index.php/Client_Libraries">Client Libraries</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-get_involved'>
+		<h5>get involved</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-Contribute"><a href="/index.php/Contribute">Contribute</a></li>
+				<li id="n-Developer-site"><a href="http://developers.facebook.com/">Developer site</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-reference'>
+		<h5>reference</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-API"><a href="/index.php/API">API</a></li>
+				<li id="n-FBML"><a href="/index.php/FBML">FBML</a></li>
+				<li id="n-XFBML"><a href="/index.php/XFBML">XFBML</a></li>
+				<li id="n-FQL"><a href="/index.php/FQL">FQL</a></li>
+				<li id="n-FBJS"><a href="/index.php/FBJS">FBJS</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-wiki'>
+		<h5>wiki</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-randompage"><a href="/index.php/Special:Random" title="Load a random page [x]" accesskey="x">Random page</a></li>
+				<li id="n-recentchanges"><a href="/index.php/Special:Recentchanges" title="The list of recent changes in the wiki. [r]" accesskey="r">Recent changes</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/index.php/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text" title="Search Facebook Developers Wiki [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/index.php/Special:Whatlinkshere/Using_Ruby_on_Rails_with_Facebook_Platform" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/index.php/Special:Recentchangeslinked/Using_Ruby_on_Rails_with_Facebook_Platform" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="/index.php/Special:Upload" title="Upload images or media files [u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="/index.php/Special:Specialpages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;printable=yes">Printable version</a></li>				<li id="t-permalink"><a href="/index.php?title=Using_Ruby_on_Rails_with_Facebook_Platform&amp;oldid=20368">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+			<ul id="f-list">
+				<li id="lastmod"> This page was last modified 22:03, 2 January 2009.</li>
+				<li id="viewcount">This page has been accessed 95,378 times.</li>
+				<li id="privacy"><a href="/index.php/Project:Privacy_policy" title="Project:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="/index.php/Project:About" title="Project:About">About Facebook Developers Wiki</a></li>
+				<li id="disclaimer"><a href="/index.php/Project:General_disclaimer" title="Project:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+	        <!-- Google analytics -->
+		<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		_uacct = "UA-2499035-2";
+		urchinTracker();
+		</script>
+
+		
+	
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+</div>
+<!-- Served by wiki.developers.facebook.com in 0.197 secs. --></body></html>

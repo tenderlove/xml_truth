@@ -1,0 +1,648 @@
+
+
+
+
+<?xml version "1.0" encoding "UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>XML.com: Creating XML with Ruby and Builder</title>
+	<meta name="keywords" content="XML.com,O'Reilly Network,oreillynet,oreillynet.com,O'Reilly,OREILLY,Programming,Programming,Michael Fitzgerald,Ruby,Builder,generate XML" />
+	<meta name="description" content="Mike Fitzgerald gets the new year started right with a look at generating XML in Ruby using Builder." />
+	<meta name="date" content="Jan. 04, 2006" />
+	<meta name="pagename" content="Creating XML with Ruby and Builder" />
+	<meta name="site" content="XML.com" />
+	<meta name="author" content="Michael Fitzgerald" />
+	<meta name="safariu_url" content="http://www.xml.com/pub/a/2006/01/04/creating-xml-with-ruby-and-builder.html" />
+
+
+
+<!-- feed autodiscovery links -->
+<link rel="alternate" type="application/atom+xml" title="XML.com Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/20" />
+<link rel="alternate" type="application/rdf+xml" title="XML.com Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/20?format=rss1" />
+<link rel="alternate" type="application/rss+xml" title="XML.com Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/20?format=rss2" />
+
+
+<!-- stylesheet -->
+<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/pc-px-msie.css" />
+<link rel="STYLESHEET" type="text/css" href="http://www.xml.com/styles/global.css" />
+<script language="JavaScript" type="text/javascript" src="http://www.xml.com/common.js"></script>
+<script language="JavaScript" type="text/javascript" src="http://www.xml.com/common.js"></script>
+
+<!-- urchin tag -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-31074-1";
+urchinTracker();
+</script>
+
+<!-- 
+<script src="http://www.xml.com/__utm.js" type="text/javascript"></script>
+
+-->
+
+<script type="text/javascript" src="http://www.xml.com/tabber.js"></script>
+
+<!-- additional css -->
+<link rel="stylesheet" type="text/css" href="http://www.oreillynet.com/styles/articles.css" />
+
+</head>
+<body id="xml">
+<div id="page">
+<div id="header" class="noindex">
+
+
+<h1><div style="padding:5px;">
+<a href="/index.csp"><img src="/images/logo_tagline.jpg" width="135" height="74" border="0" hspace="0" vspace="0"  alt="XML.com: XML From the Inside Out" /></a>
+</div></h1>
+
+</div>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="right" valign="bottom">
+<a href="/cs/user/login?x-redirect=/cs/user/home" class="tiny">Sign In/My Account</a>&nbsp;|&nbsp;<a href="http://epoch.oreilly.com/shop/cart.orm" class="tiny">View Cart</a>&nbsp;&nbsp;</td>
+</tr></table>
+
+
+
+
+
+<div id="newHead">
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/all.css" type="text/css" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/about-121707.css" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/store2.css" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreilly.com/styles/catalog.css" />
+
+<div id="nav" class="noindex">
+<ul>
+<li><a href="http://www.oreilly.com/">O'Reilly Home</a></li>
+<li><a href="http://news.oreilly.com/">Community</a></li>
+<li><a href="http://www.oreilly.com/store/">Books & Videos</a></li>
+<li><a href="http://safari.oreilly.com/?cid=orm-nav-global">Safari Books Online</a></li>
+<li><a href="http://conferences.oreillynet.com/">Conferences</a></li>
+<li><a href="http://training.oreilly.com/">Training</a></li>
+<li><a href="http://www.oreillyschool.com/">School of Technology</a></li>
+<li><a href="http://www.oreilly.com/about/">About</a></li>
+
+</ul>
+<div class="clear"></div>
+</div><!-- /#nav -->
+
+
+<!--
+<csinclude record="lc/173" field="html">
+-->
+
+</div>
+
+
+
+
+<!--
+<h1><csinclude record="lc/3" field="html" /></h1>
+<br />
+-->
+
+
+<!-- tabs 
+<csinclude record="lc/15" field="html" />
+-->
+
+
+<div id="leaderboard">
+<img src="http://www.oreillynet.com/images/ads/ad-tag-vertical.gif" width="11" height="90" border="0" alt="advertisement" style="float:right;"/>
+
+<div style="width:728px;margin:0 auto;">
+<!-- ###Leaderbord here###-->
+  <!-- XML Leaderboard Ad -->
+
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - XML.com // Page: XML // Placement: ros_728x90 (425861) // created at: Oct 9, 2008 5:49:51 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425861/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425861/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425861/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="728" height="90"></a></noscript>
+
+<!-- End of JavaScript Tag -->
+
+<!-- End ad -->
+<!-- ###END Leaderbord###-->
+</div>
+</div> <!-- end leaderboard -->
+
+<div id="colored-bar-ad" class="tinywhite" align="center" style="background-color:#cc0033;"><!-- XML Text link Ad -->
+
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - XML.com // Page: XML // Placement: text (425860) // created at: Oct 9, 2008 5:49:53 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425860/0/16/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425860/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425860/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="1" height="1"></a></noscript>
+<!-- End of JavaScript Tag -->
+
+<!-- End ad --></div>
+
+
+<!-- </div>  end header -->
+<!--
+<div id="page-content">
+-->
+
+<div id="page-content" style="height: 2100px;">
+<div id="article">
+
+
+<p>
+<!-- begin content-->
+
+
+<div align="center">
+<!-- begin ad tag -->
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var ord = (ord != null ? ord : Math.random()*10000000000000000 );
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/ttm.xml/art;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=' + ord + '?" type="text/javascript"><\/script>');
+//]]>
+</script><noscript><a href="http://ad.doubleclick.net/adj/ttm.xml/art;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=123456789?" target="_blank"><img src="http://ad.doubleclick.net/adj/ttm.xml/art;tn=3;tw=300;th=55;to=h;tcs=0;tcp=0;ta=center;tva=bottom;tc=ffffff;tnm=3;te=1;sz=100x50;ord=123456789?" width="100" height="50" border="0" alt="" /></a></noscript>
+<!-- End ad tag -->
+</div>
+<br />
+
+<!-- begin  print-discuss-del.icio.us options -->
+<div style="margin: 0px 10px 0px 6px; float: right; width: 170px;">
+<a target="_new" class="listen2" style="font-size:90%;" title="Listen to this page." href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.xml.com/lpt/a/1637">Listen</a>
+
+<a class="print" style="font-size:90%;" title="Go to a print-friendly version of this page." href="/lpt/a/1637">Print</a>
+
+<a class="discuss" style="font-size:90%;" title="Join the talkback discussion about this article" href="/pub/a/2006/01/04/creating-xml-with-ruby-and-builder.html?page=last#thread">Discuss</a>
+
+
+<a class="subscribe" style="font-size:90%;" title="Subscribe" href="http://www.oreillynet.com/pub/feed/20">Subscribe to XML</a>
+
+
+
+</div>
+<!-- end  print-discuss-del.icio.us options -->
+
+
+
+<!-- ISI_LISTEN_START -->
+<span class=ISI_MESSAGE><!--  This article is brought to you by XML.com, your source for all XML news.  --></span>  
+<!-- content here -->
+
+<h2>Creating XML with Ruby and Builder</h2>
+<span class="secondary">by <a href="/pub/au/143">Michael Fitzgerald</a></span><br />
+<span class="secondary">January 04, 2006</span><br clear="all" />
+
+
+
+
+
+
+
+	<!-- mega preparse mp: -->
+
+
+
+
+<p><!-- XML MPU Ad -->
+
+<!-- End ad -->
+<!-- me -->
+Since the advent of <a href="http://www.rubyonrails.com">Ruby on Rails</a> last year, interest in the <a href="http://www.ruby-lang.org">Ruby</a> programming language seems to have grown steadily. Rails has helped the masses see what Ruby is: an elegant, easy-to-learn, and fun-to-use language, suitable even for industrial-strength applications. Ruby has been around for as long as Java, and is finally getting the attention it deserves.</p>
+
+<p>Ruby certainly has my attention! I am finding myself reaching for Ruby instead of Java these days because it allows me to put together code more quickly&#8212;read <em>same job, fewer keystrokes</em>. I doubt that I'd actually give up Java for Ruby entirely, but my Java compiler has been collecting a little dust in recent months. Keep reading and you'll see why.</p>
+
+<p><a href="http://rubyforge.org/projects/builder/">Builder</a> is a case in point. It's a lightweight XML builder that originally came from the the Rails project. It is now a separate Ruby library that you can download from <a href="http://rubyforge.org/">RubyForge</a>.</p>
+<!-- sidebar begins -->
+<!-- don't move sidebars-->
+<!-- sidebar ends -->
+
+
+<p>This article will walk you through how to install and then create XML documents with Builder, independent of Rails. It won't, of course, cover all the features of Builder, but it will cover enough to get some wind under your wings. <a href="http://builder.rubyforge.org/">Online documentation</a> is available for Builder, if you want all the details.</p>
+
+<h3>First You Need to Install Ruby and Builder</h3>
+
+<p>This section is for those who don't have Ruby and Builder installed already. Let's start with Ruby. First, click over to the Ruby <a href="http://www.ruby-lang.org/en/20020102.html">download page</a>. There you can download the current, stable release, a nightly snapshot, and various Windows releases. If you are on Windows, the easiest way to install Ruby is to use the <a href="http://rubyforge.org/frs/download.php/4174/ruby182-15.exe">One-click Ruby Installer</a> (uses version 1.8.2). For other platforms, just use <a href="ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.3.tar.gz">version 1.8.3</a>, a tar'ed and gzip'ed file. (By the way, version 1.8.2 is <a href="http://www.rubyonrails.com/down">recommended</a> for Rails, and <a href="ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz">version 1.8.4</a> is in preview release.) Test your installation by typing <code>ruby -v</code> at the command line. If Ruby talks back, you're okay; if the OS talks back, you are probably not okay.</p>
+
+<p>By far, the easiest way to install Builder is with <a href="http://rubyforge.org/projects/rubygems/">RubyGems</a>, a nifty package management program for Ruby. I can't go into much detail here, but I can offer a few pointers. (See the <a href="http://docs.rubygems.org/">documentation</a> for more details.) <a href="http://rubyforge.org/frs/?group_id=126">Download</a> RubyGems and then run <code>ruby setup.rb</code>. With RubyGems installed, type the following in a shell:</p>
+
+<pre><code>gem install builder</code></pre>
+
+<p>If all goes well, you should see the following response:</p>
+
+<pre><code>Attempting local installation of 'builder'
+Local gem file not found: builder*.gem
+Attempting remote installation of 'builder'
+Updating Gem source index for: http://gems.rubyforge.org
+Successfully installed builder-1.2.4
+Installing RDoc documentation for builder-1.2.4...</code></pre>
+
+<p>With Ruby and Builder in place, you are ready to go to work.</p>
+
+<h3>Let's Have a Look</h3>
+
+<p>To get off the ground, I'll show you a few things about Builder in Interactive Ruby or <code>irb</code>. In a shell, invoke <code>irb</code>, turning off standard prompts for readability:</p>
+
+<pre><code>irb --simple-prompt</code></pre>
+
+<p>Now type the following statements (in bold) in <code>irb</code> to create a little XML.</p>
+
+<pre><code>&gt;&gt; <strong>require 'builder'</strong>
+=&gt; ... 
+&gt;&gt; <strong>x = Builder::XmlMarkup.new(:target =&gt; $stdout, :indent =&gt; 1)</strong>
+&lt;inspect/&gt;
+=&gt; #&lt;IO:0x279e7e8&gt;</code></pre>
+
+<p>The line starting with <code>require</code> loads (or tries to load) the library named <code>builder</code>. (Normally, if a library is found, this statement should return <code>true</code>.) The next line creates the object <code>x</code> by invoking the <code>new</code> method in <code>XmlMarkup</code>. The <code>:target =&gt; stdout</code> argument indicates that the output will be written on standard output, and <code>:indent =&gt; 1</code> means that the XML output will be indented by one space.</p>
+
+<p>By the way, when a name such as <code>:target</code> is preceded by a colon, it means that it is a symbol, or better, an object of the Ruby Symbol class. It stands for the name of the object, whereas, without the colon, it represents the value of the object.</p>
+
+<p>You can use the instance (receiver) <code>x</code> to invoke other methods, such as <code>instruct!</code>:</p>
+
+<pre><code>&gt;&gt; <strong>x.instruct!</strong>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+=&gt; #&lt;IO:0x279e7e8&gt;</code></pre>
+
+<p>This generates an XML declaration with a few default pseudo-attributes. The exclamation following the method name indicates generally that the method will modify the receiver in place, or return <code>nil</code> if no changes were made. The next line generates an XML comment:</p>
+
+<pre><code>&gt;&gt; <strong>x.comment! "greetings"</strong>
+&lt;!-- greetings --&gt;
+=&gt; #&lt;IO:0x279e7e8&gt;</code></pre>
+
+<p>Notice that the method inserts a space before and after the comment text.</p>
+
+<p>Here is how to create an element. The name following the receiver is also the name of the element and is case-sensitive:</p>
+
+<pre><code>&gt;&gt; <strong>x.Hello "World!"</strong>
+&lt;Hello&gt;World!&lt;/Hello&gt;
+=&gt; #&lt;IO:0x279e7e8&gt;</code></pre>
+
+<p>Here is a way to write an attribute on the <code>Hello</code> element:</p>
+
+<pre><code>&gt;&gt; <strong>x.Hello("World!", "type" =&gt; "global")</strong>
+&lt;Hello type="global"&gt;World!&lt;/Hello&gt; #&lt;IO:0x279e7e8&gt;</code></pre>
+
+<p>The first argument is the content of the element, and the second renders the attribute <code>type</code> with a value of <code>global</code>.</p>
+
+<p>The last of the <code>irb</code> examples shows you how to place element content within elements. The <code>date</code> element contains three child elements, <code>year</code>, <code>month</code>, and <code>day</code>. The children are created within braces (<code>{}</code>).</p>
+
+<pre><code>&gt;&gt; <strong>x.date {</strong>
+?&gt; <strong>x.year "2006"</strong>
+&gt;&gt; <strong>x.month "01"</strong>
+&gt;&gt; <strong>x.day "01"</strong>
+&gt;&gt; <strong>}</strong>
+&lt;date&gt;
+ &lt;year&gt;2006&gt;year&gt;
+ &lt;month&gt;01&gt;month&gt;
+ &lt;day&gt;01&gt;day&gt;
+&lt;date&gt;
+=&gt; #&gt;IO:0x279e7e8&gt;
+&gt;&gt;</code></pre>
+
+<p>These <code>irb</code> examples cover some of the rudimentary features of writing XML with Builder. The remaining examples will demonstrate Builder with a bit more complexity.</p>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td><p class="secondary">
+
+
+Pages: <b>1</b>, <a href="/pub/a/2006/01/04/creating-xml-with-ruby-and-builder.html?page=2">2</a>
+</p></td><td><p class="secondary" align="right">
+<a href="/pub/a/2006/01/04/creating-xml-with-ruby-and-builder.html?page=2">
+Next Page<img src="/images/blue-arrow.gif" border="0" alt="arrow" width="10" height="12" hspace="2" vspace="0" align="baseline">
+</a></p></td></tr></table>
+
+
+
+
+
+
+<!-- end content -->
+<!-- ISI_LISTEN_STOP -->
+
+
+<!-- talk back -->
+<a name="thread">
+
+
+<br /><br />
+
+
+<!-- end content -->
+
+<!-- horizontal ad -->
+
+
+</div><!-- #article -->
+
+
+<div class="noindex">
+<div id="related" style="font:12px verdana,arial,helvetica,sans-serif;">
+
+
+<div class="sidebar-item">
+<h3>Tagged Articles</h3>
+<div class="sidebar-item-content" style="padding:0 0 10px 0;">
+<p style="padding:10px 10px 6px 10px;margin:0;"><a class="delicious" title="Post to del.icio.us." href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&partner=orn&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title),'delicious','toolbar=no,width=700,height=400'); return false;">Be the first to post this article to del.icio.us</a></p>
+</div></div><!-- #### AK code ### -->
+
+<a id="akAPI"></a>
+<script type="text/javascript">
+   
+    var akApiKey = 'RecEngine-49CCF850-02C7-B730-5489-DB7D929405CD';
+    var akTarget = 'http://www.xml.com/pub/a/2006/01/04/creating-xml-with-ruby-and-builder.html';  //the URL of the page 
+    var akDescription = 'Creating XML with Ruby and Builder';  
+  
+    var akThumbnailUrl = 'http://oreilly.com/images/oreilly/xml.png';
+    var akTargetType = 'article'; //assuming this
+    var akRegion = 'xml';
+    var akIntent = 'VIEW';
+    var akKeywords = 'publishDate:20060104';
+
+    var akScript = document.createElement('script');
+    akScript.setAttribute('src','http://api.aggregateknowledge.com/2007/01/15/js/' + (new Date()).valueOf() % 3600000 + '.js');
+    document.getElementsByTagName('head')[0].appendChild(akScript);
+</script>
+
+<!-- end AK code -->
+
+
+
+<!-- sponsored developer resources -->
+<div class="sidebar-item">
+<h3>Sponsored Resources</h3>
+<div class="sidebar-item-content">
+
+<ul style="margin: 0 0 0 1.2em;padding: 0;">
+<li><a href="http://digitalmedia.oreilly.com/lightroom/">Inside Lightroom</a></li>
+</ul>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div style="text-align:center;background-color:#eee;padding-top:10px;padding-bottom:10px;">
+<img src="/images/ads/advertisement.gif" alt="Advertisement" style="padding-bottom:5px;" />
+
+
+<div align="center">
+
+<!-- Stylus Ad and Sponsored Zones -->
+
+<!-- Progress Software -->
+
+<!--
+<csperl>
+## code to insert ad tag 
+my $pathinfo = $cfg->{PATH_INFO} || $cgi->path_info();
+my ($junk,$table,$ref_id) = split /\//, $pathinfo, 3;
+## ads, here only on article pages and not on the wixml pages
+if ($ref_id) {
+  if ($ref_id !~ /^\d+$/) {
+    $ref_id = "/$ref_id";
+  }
+}
+
+my $f = new CS::Form( cfg => $cfg, table => "$table", id => "$ref_id" );
+        unless ($f->{r}->{ARGS}->{'adcode'} eq 'wixml') {
+  	          my %ARGS = ( 'co'     => 'dc',
+                               'pos'    => 'l',
+		               'height'	=> "240",
+		               'width'	=> "120",
+                               'page'   => "home",
+);
+           $id_subject = $f->{r}->{ARGS}->{'id_subject'} ;
+              #if ($id_subject =~ /10/) {
+              #       $ARGS{'page'} = 'databases';
+              #}
+              #if ($id_subject =~ /3/) {
+              #       $ARGS{'page'} = 'mobile';
+              #}
+if ($pathinfo =~ /^\/a\/\//) {
+    $ARGS{'page'} = 'art';
+}
+#if ($pathinfo =~ /^\/databases\//) {
+#    $ARGS{'page'} = 'databases';
+#}
+#if ($pathinfo =~ /^\/mobile\//) {
+#    $ARGS{'page'} = 'mobile';
+#}
+if ($pathinfo =~ /^\/resourceguide\//) {
+    $ARGS{'co'} = 'none';
+}
+if ($pathinfo =~ /^\/buyersguide\//) {
+    $ARGS{'co'} = 'none';
+}
+if ($pathinfo =~ /\/pt\// ) {
+   $ARGS{'co'} = 'none';
+}
+if ($pathinfo =~ /\/r\// ) {
+   $ARGS{'co'} = 'none';
+}
+if ($pathinfo =~ /\/p\// ) {
+   $ARGS{'co'} = 'none';
+}
+if ($pathinfo =~ /\/rg\// ) {
+   $ARGS{'co'} = 'none';
+}
+
+
+my $ad = new CS::Ad( cfg => $self->{cfg}, params => \%ARGS );
+
+	             print $ad->AdTag;
+         }
+
+</csperl>
+!-->
+
+
+
+<!-- ### textbox start ###-->
+<div class="adtag " style=""><!-- dy -->
+<!-- begin ad tag -->
+<script language="JavaScript" type="text/javascript">
+//<![CDATA[
+var ord = (ord != null ? ord : Math.random()*10000000000000000 );
+document.write('<script language="JavaScript" src="http://ad.doubleclick.net/adj/ttm.oreillynet/textbox;sz=$widthx$height;tile=1;ord=' + ord + '?" type="text/javascript"><\/script>');
+//]]>
+</script><noscript><a href="http://ad.doubleclick.net/jump/ttm.oreillynet/textbox;sz=$widthx$height;tile=1;ord=4206871031?" target="_blank"><img src="http://ad.doubleclick.net/ad/ttm.oreillynet/textbox;sz=$widthx$height;ord=123456789?" width="$width" height="$height" border="0" alt="" /></a></noscript>
+<!-- End ad tag -->
+</div>
+
+
+
+<!-- ### end textbox###-->
+
+
+<br />
+
+
+
+<!-- sponsors -->
+<!-- ### skyscraper start ###-->
+    <!-- XML Skyscraper Ad -->
+
+
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - XML.com // Page: XML // Placement: ros_160x600 (425862) // created at: Oct 9, 2008 5:49:49 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425862/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425862/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425862/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="160" height="600"></a></noscript>
+
+<!-- End of JavaScript Tag -->
+
+<!-- end ad -->
+<!-- ### end skyscraper ###-->
+</div>
+</div>
+
+</div><!-- #related -->
+</div><!-- end noindex -->
+
+
+</div><!-- #page-content -->
+
+<!-- footer -->
+
+<div style="clear:right;"></div>
+
+
+
+
+<br clear="all">
+
+<div id="footer" class="noindex">
+
+
+
+<!-- Start Quantcast tag -->
+
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+
+ <!-- End Quantcast tag -->
+
+<table border="0">
+<tr><td valign="top" align="left" width="25%" style="padding-left: 20px; padding-right: 20px;">
+<a href="http://oreilly.com/"><img src="http://oreilly.com/images/oreilly/oreilly-logo-footer.gif" border="0" width="155" height="35" alt="O'Reilly Media" style="border-style:none;" /></a><br />
+&copy; 2008, O'Reilly Media, Inc.<br />(707) 827-7000 / (800) 998-9938<br />
+All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.
+</td>
+
+<td valign="top"  width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>About O'Reilly</strong><br />
+
+<a href="http://academic.oreilly.com/">Academic Solutions</a><br />
+<a href="http://oreilly.com/authors/">Authors</a><br />
+<a href="http://oreilly.com/contact.html">Contacts</a><br /> 
+
+<a href="http://oreilly.com/oreilly/cs/">Customer Service</a><br /> 
+<a href="http://jobs.oreilly.com/">Jobs</a><br />
+<a href="http://elists.oreilly.com/">Newsletters</a><br />
+<a href=" http://labs.oreilly.com">O'Reilly Labs</a><br />
+<a href="http://press.oreilly.com/">Press Room</a><br />
+<a href="http://oreilly.com/oreilly/privacy.csp">Privacy Policy</a><br />
+<a href="http://oreilly.com/feeds/">RSS Feeds</a><br />
+
+<a href="http://oreilly.com/terms/">Terms of Service</a><br />
+
+<a href="http://ug.oreilly.com/">User Groups</a><br />
+
+
+<a href="http://oreilly.com/oreilly/author/intro.csp">Writing for O'Reilly</a><br />
+
+
+</td>
+
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Other O'Reilly Sites</strong><br />
+<a href="http://radar.oreilly.com/">O'Reilly Radar</a><br />
+
+<a href="http://ignite.oreilly.com/">Ignite</a><br /> 
+<a href="http://toc.oreilly.com/">Tools of Change for Publishing</a><br /> 
+<a href="http://digitalmedia.oreilly.com/">Digital Media</a><br /> 
+<a href="http://digitalmedia.oreilly.com/iphone/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=iphone">Inside iPhone</a><br />
+<a href="http://fyi.oreilly.com">O'Reilly FYI</a><br /> 
+<a href="http://makezine.com/">makezine.com</a><br /> 
+<a href="http://craftzine.com">craftzine.com</a><br /> 
+<a href="http://hackszine.com">hackszine.com</a><br /> 
+<a href="http://perl.com/">perl.com</a><br /> 
+<a href="http://xml.com/">xml.com</a><br /> 
+</td>
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Partner Sites</strong><br />
+
+<a href="http://insideria.com/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=ria">InsideRIA</a><br />
+<a href="http://java.net/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=java">java.net</a><br />
+</td>
+</tr>
+</table>
+</div><!-- /#footer -->
+<!-- Begin Hitbox -->
+ <!--WEBSIDESTORY CODE HBX1.0 (Universal)-->
+    <!--COPYRIGHT 1997-2004 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com / privacy-->
+    <script language="javascript" type="text/javascript">
+    var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+    var hbx=_hbEvent("pv");hbx.vpc="HBX0100u";hbx.gn="ehg-oreilly.hitbox.com";
+
+    //"BCB: xml.com,/a/2006/01/04/creating-xml-with-ruby-and-builder.html, DM520402AEDE";
+
+    hbx.acct="DM520402AEDE;DM520404M4ZR"; //ACCOUNT NUMBER(S)
+    hbx.pn="Creating+XML+with+Ruby+and+Builder"; //PAGE NAME(S)
+    hbx.mlc="/a/2006/01/04/;/XML.com/a/2006/01/04/"; //MULTI-LEVEL CONTENT CATEGORY
+    hbx.pndef="title"; //DEFAULT PAGE NAME
+    hbx.ctdef="full"; //DEFAULT CONTENT CATEGORY
+
+    hbx.lt="auto"; //LINK TRACKING 
+    hbx.dlf="n"; //DOWNLOAD FILTER
+    hbx.dft="n"; //DOWNLOAD FILE NAMING
+    hbx.elf="n"; //EXIT LINK FILTER
+
+    //SEGMENTS AND FUNNELS
+    hbx.seg=""; //VISITOR SEGMENTATION
+    hbx.fnl=""; //FUNNELS
+
+    //CAMPAIGNS
+    hbx.cmp=""; //CAMPAIGN ID
+    hbx.cmpn="CMP"; //CAMPAIGN ID IN QUERY
+    hbx.hra=""; //RESPONSE ATTRIBUTE
+    hbx.hqsr=""; //RESPONSE ATTRIBUTE IN REFERRAL QUERY
+    hbx.hqsp="ATT"; //RESPONSE ATTRIBUTE IN QUERY
+    hbx.hlt=""; //LEAD TRACKING
+    hbx.hla=""; //LEAD ATTRIBUTE
+    hbx.gp=""; //CAMPAIGN GOAL
+    hbx.gpn=""; //CAMPAIGN GOAL IN QUERY
+    hbx.hcn=""; //CONVERSION ATTRIBUTE
+    hbx.hcv=""; //CONVERSION VALUE
+    hbx.cp="null"; //LEGACY CAMPAIGN
+    hbx.cpd=""; //CAMPAIGN DOMAIN
+
+    //CUSTOM VARIABLES
+    hbx.ci="";//CUSTOMER ID
+    hbx.hc1="";//CUSTOM 1
+    hbx.hc2="";//CUSTOM 2
+    hbx.hc3="";//CUSTOM 3
+    hbx.hc4="";//CUSTOM 4 
+    hbx.pec="";//ERROR CODES
+    </script><script language="javascript1.1" defer="defer"  src="http://www.oreillynet.com/hbx.js" type="text/javascript"></script><!--//-->  
+    <!-- END WEBSIDESTORY CODE  -->
+ 
+<!--End Hitbox -->
+
+
+
+</div></body> <!-- /#page -->
+
+
+</html>
+

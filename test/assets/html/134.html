@@ -1,0 +1,1545 @@
+	
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <link rel="openid.server" href="http://www.myopenid.com/server" /> <link rel="openid.delegate" href="http://danbenjamin.myopenid.com/" />
+
+	<title>Hivelogic - Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X</title>                                        
+
+  <meta name="description" content="This is a page titled Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X, written on 02 February 2007 by Dan Benjamin, and tagged with article, Development, Tutorials." />
+  <meta name="keywords" content="article, Development, Tutorials, dan, benjamin, hivelogic, danbenjamin" />
+  <meta name="author" content="Dan Benjamin" />
+  <meta name="copyright" content="Copyright (c) 2000-2009 Dan Benjamin" />
+
+  <link rel="alternate" type="application/rss+xml" title="Hivelogic RSS Feed" href="/feed" />
+
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <link href="/css/styles.css" media="screen" rel="stylesheet" type="text/css" media="screen, projection" />
+
+	<script  type="text/javascript">
+			preloaded_image = new Image();
+			preloaded_image.src = "/img/arrow.png";
+	</script>
+
+	<script src="http://mint.hivelogic.com/?js" type="text/javascript"></script>
+
+</head>
+
+<body>
+	
+<div id="header" class="box">
+
+<div id="masthead">
+	<h1><a href="http://hivelogic.com/" title="Hivelogic"><img id="hive" src="/img/hive.png" height="59" width="70" alt="Hivelogic" /><img src="/img/hivelogic.gif" width="300" height="79" alt="Hivelogic" /></a></h1>
+</div>
+
+<div id="navigation">
+	<ul>
+		<li><a href="http://hivelogic.com/">Home</a></li>
+		<li><a class="active" href="/articles">Archive</a></li>
+		<li><a href="/categories">Categories</a></li>
+		<li><a href="/enkoder">Enkoder</a></li>
+		<li><a href="/about">About</a></li>
+		<li><a href="/hire">Hire</a></li>
+	</ul>
+
+	<div id="search">
+		<form method="post" action="http://hivelogic.com/"  >
+<div class='hiddenFields'>
+<input type="hidden" name="ACT" value="19" />
+<input type="hidden" name="XID" value="3b22a6b06a4558c34e672c8f991749881292aedf" />
+<input type="hidden" name="RP" value="search&amp;#47;results" />
+<input type="hidden" name="NRP" value="" />
+<input type="hidden" name="RES" value="" />
+<input type="hidden" name="status" value="" />
+<input type="hidden" name="weblog" value="articles" />
+<input type="hidden" name="search_in" value="" />
+<input type="hidden" name="where" value="all" />
+<input type="hidden" name="site_id" value="1" />
+</div>
+
+
+			<input type="text" name="keywords" value="" /> <input type="submit" value="Search" />
+		</form>
+	</div>
+
+</div>
+
+<br style="clear: both;" />
+
+</div>
+
+
+
+<div id="main" class="box">
+
+	<div id="bigtime">
+		<div class="article" id="ruby-rails-mongrel-mysql-osx">
+			<h2>Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X</h2>
+			<div class="excerpt">
+			<p>What follows are instructions for building and installing the following applications on Mac OS X 10.4 (Tiger) along with their supportive software. I’ve been told that these steps work just fine on Mac OS X 10.3 (Panther) as well.</p>
+
+			<p class="byline">02 February 2007 &bull Filed in <a href="http://hivelogic.com/articles/page/category/development/">Development</a>, <a href="http://hivelogic.com/articles/page/category/tutorials/">Tutorials</a> &bull; <a href="#comments">89 comments</a></p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="content">
+		<p><strong>Update for Leopard Users:</strong> <a href="http://hivelogic.com/articles/ruby-rails-leopard/" title="Installing Ruby, Ruby on Rails, RubyGems, and Mongrel">The Ruby on Rails for Leopard installation instructions can be found here</a>.</p>
+ <p>This article is a major update to the older (but tried-and-true) post, <a href="/narrative/articles/ruby_rails_lighttpd_mysql_tiger">Building Ruby, Rails, LightTPD, and MySQL on Tiger</a>. Both Ruby, Rails, and their underlying infrastructure have come a long way in recent months, and this article will get you to a leaner, meaner Rails install in less time using fewer steps.</p>
+ <p>This article is updated on a regular basis as new versions of the software are released.</p>
+ <p>What follows are instructions for building and installing the following applications on Mac <span class="caps">OS X 10</span>.4 (Tiger) along with their supportive software. I&#8217;ve been told that these steps work just fine on Mac <span class="caps">OS X 10</span>.3 (Panther) as well, but I haven&#8217;t verified this myself, and your mileage may vary.</p>
+<ul>
+ <li><a href="http://www.ruby-lang.org/">Ruby</a></li>
+  <li><a href="http://rubyonrails.com/">Ruby on Rails</a></li>
+  <li><a href="http://mongrel.rubyforge.org/">Mongrel</a></li>
+  <li><a href="http://subversion.tigris.org/">Subversion</a></li>
+  <li><a href="http://mysql.org/">MySQL</a></li>
+</ul>
+ <p>Compiling and installing these tools this way is well worth the effort, as the end result delivers an easy-to-upgrade, system-independent, stand-alone development platform that is impervious to potential problems that can be caused by system updates, operating system upgrades, etc.</p>
+ <p>By rolling our own from source this way, we also have full control over our environment. We know what&#8217;s installed and where, what version we&#8217;ve used, where it came from, and there&#8217;s no dependence on an external ports system and the breakage or issues that come from relying on others to manage our software.</p>
+ <p>These issues and additional background information about <em>why</em> one might roll their own tools in this fashion are detailed in the article, <a href="/narrative/articles/using_usr_local">Using /usr/local/</a>, which could be considered a prerequisite for this task.</p>
+ <h3>About (Not) Removing Old Versions</h3>
+ <p>One of the great things about building these particular apps from source like this is that we don&#8217;t need to worry about removing older versions. When we build the new ones, they will replace the older versions as needed, and your system will be up to date with just the latest, greatest software.</p>
+ <h3>The Concept</h3>
+ <p>Basically, what we&#8217;re going to do here is download a bunch of open-source tools (some of which rely upon each other to work), configure them, compile them, and install them, one by one, until we have everything we need for a Mac <span class="caps">OS X</span> machine to run Ruby on Rails.</p>
+ <h3>What&#8217;s Needed</h3>
+ <p>A few things are needed to get this going:</p>
+<ol>
+ <li>Mac <span class="caps">OS X 10</span>.4 (and maybe 10.3)</li>
+  <li>Xcode 2.4 or newer (this compiles the apps for us)</li>
+  <li>Willingness to type commands into the Terminal application exactly as they appear here (cut-n-paste works too)</li>
+  <li>A tasty beverage to enjoy while things compile</li>
+</ol>
+ <p><strong>Note:</strong> Xcode is not installed by default on new Macs, but can be found on the Mac <span class="caps">OS X</span> install <span class="caps"><span class="caps">DVD</span></span>/CD, or downloaded from <a href="http://developer.apple.com">Apple&#8217;s Developer Connection</a> free of charge.</p>
+ <p><strong>Another Note:</strong> These instructions assume that you&#8217;re using <a href="http://www.gnu.org/software/bash/">bash</a>, the default <span class="caps"><span class="caps">UNIX</span></span> shell for Mac <span class="caps">OS X 10</span>.4. If you don&#8217;t know what this means and haven&#8217;t done anything very special to change this, you&#8217;re fine. If you&#8217;ve taken specific steps to change the default shell to something other than bash (like <a href="http://www.tcsh.org/Welcome">tcsh</a> for example), you&#8217;ll need to be figure out the right files and syntax to use when setting paths and environment variables, or switch back to bash. Sorry about that.</p>
+ <h3>A Quick Warning</h3>
+ <p>While it&#8217;s unlikely anything we do here might do any kind of damage to the system, it&#8217;s good advice to have a current backup of everything, just in case. I don&#8217;t take any responsibility for anything that results from following these instructions (good or bad). You&#8217;re following these instructions at your own risk.</p>
+ <h3>A Note about <code>sudo</code></h3>
+ <p>We&#8217;ll be using the command <code>sudo</code> quite a bit, and lots of people wonder what it does. Put simply, the <code>sudo</code> command allows a user (in this case, <em>you</em>) to execute a command as the superuser, allowing you to become the omnipotent master of your computer one command at a time.</p>
+ <p>With great power comes great responsibility, so Mac <span class="caps">OS X</span> may prompt you for your password prior to executing your command. It may do this only once, or several times throughout this process. Just re-enter your password as needed.</p>
+ <h3>A Terminal Situation</h3>
+ <p>Open the Terminal application. It can be found in the <code>/Applications/Utilities</code> folder.</p>
+ <p>Each of the lines below appearing in monospaced type should be entered into Terminal, and be followed by the Return key. But everybody knew that already.</p>
+ <h3>Paths</h3>
+ <p><strong><em>Do not skip this step! Most everything else will fail if you do.</em></strong></p>
+ <p>Mac <span class="caps">OS X</span>, like other <span class="caps"><span class="caps">UNIX</span></span> systems, uses something called a <em>path</em> to determine where it should look for applications on the command line (that is, when you&#8217;re using the Terminal app). The path is actually an environment variable, set by a special file that&#8217;s automatically executed when you open a new Terminal window.</p>
+ <p>We need to make sure that our path is set to look for files in <code>/usr/local</code> (the place where we&#8217;ll be installing the tools) before looking anywhere else. This is important.</p>
+ <p>To see if the path has been set properly, we can check the contents of the <code>.bash_login</code> file (the special file hidden in our home folder) for a <code>PATH</code> line using a text editor.  <a href="http://macromates.com/">TextMate</a>, <a href="http://www.barebones.com/products/textwrangler/index.shtml">TextWrangler</a>, <a href="http://www.barebones.com/products/bbedit/index.shtml">BBEdit</a>, and <a href="http://en.wikipedia.org/wiki/Vi">vi</a> are all perfectly good options. To open the file with TextMate, for example, we can type:</p>
+
+
+<pre>
+mate ~/.bash_login
+</pre>
+ <p>This will open the file if it already exists, or open a blank file if it doesn&#8217;t.  Add the following line <strong>at the very end of the file</strong>:</p>
+
+
+<pre>
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH" 
+</pre>
+ <p>Now save and close the file.</p>
+ <p>It doesn&#8217;t matter how many other lines there are in the file, or what they say or do. Just make sure that this line comes <em>last</em> and you should be fine.</p>
+ <p>To make sure the changes are picked up correctly, we now need to execute the file with the following command:</p>
+
+
+<pre>
+. ~/.bash_login
+</pre>
+ <p>It&#8217;s likely there will be no response from the shell here, just the prompt, but that&#8217;s OK, the changes have been picked up and we&#8217;re ready to move on.</p>
+ <p>You can also close your Terminal and open a new one instead if you&#8217;d like.</p>
+ <p><strong>Geek Note:</strong> You may have noticed that I&#8217;ve added MySQL to the path in the line above. That&#8217;s because most users will be installing MySQL later in this tutorial. If you&#8217;re the type to want to use something like SQLite or PostGreSQL as your database instead of MySQL, you can feel free to omit the <code>/usr/local/mysql/bin:</code> bit from the line above, and replace it with the path to the database of your choice. If this note doesn&#8217;t make sense to you, even if you <em>don&#8217;t</em> plan to install MySQL later, just keep on going &#8230; the extra bit in the path statement won&#8217;t affect you at all.</p>
+ <h3>Setting Up</h3>
+ <p>I like to create a folder to contain all of the downloaded files and their respective build folders. I tend to keep this folder around indefinitely. Source code doesn&#8217;t take up much space, and it&#8217;s useful to refer back to later to remind yourself of previous installation details or techniques, installed versions, for a fast install at a later time, or in case you want to <em>uninstall</em> something.</p>
+ <p>For these examples, we&#8217;ll create a folder called <code>src</code> in the <code>/usr/local</code> section of the filesystem, and change directories into that folder. It will be our workspace for everything we do here:</p>
+
+
+<pre>
+sudo mkdir -p /usr/local/src
+sudo chgrp admin /usr/local/src
+sudo chmod -R 775 /usr/local/src
+cd /usr/local/src
+</pre>
+ <p>You&#8217;ll download and compile everything in this new folder.</p>
+ <h3>Ruby</h3>
+ <p>Now we&#8217;re ready to start the real work.  Just type (or cut-n-paste) each one of the following lines into Terminal, one by one. When one line finishes (some will take a while and dump a lot of information to the screen), enter the next one.</p>
+ <p>As mentioned above, the first time you run the <code>sudo</code> command (and possible again later), you may be prompted for a password. Just enter your regular password here, and the process will continue.</p>
+ <p>We&#8217;ll start off with Ruby, but before we can compile Ruby itself, we&#8217;ll build a supportive application called <code>readline</code>. The commands below handle downloading, unzipping, configuring, compiling, and finally installing the code. This &#8220;pattern&#8221; will become more familiar as you move through the install step by step.</p>
+
+
+<pre>
+curl -O ftp://ftp.gnu.org/gnu/readline/readline-5.1.tar.gz
+tar xzvf readline-5.1.tar.gz
+cd readline-5.1
+./configure --prefix=/usr/local
+make
+sudo make install
+cd ..
+</pre>
+ <p>If you get an error like the one below after typing the <code>configure</code> command:</p>
+
+
+<pre>
+checking whether make sets $(MAKE)... no
+checking for gcc... no
+checking for cc... no
+checking for cc... no
+checking for cl... no
+configure: error: no acceptable C compiler found in $PATH
+</pre>
+ <p>This means that you <strong>did not follow the instructions</strong> and don&#8217;t have Xcode installed.</p>
+ <p>If you saw lots of text fly by but didn&#8217;t get that error, it means that everything went well, and we can move on to building and installing Ruby itself.</p>
+
+
+<pre>
+curl -O ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6.tar.gz
+tar xzvf ruby-1.8.6.tar.gz
+cd ruby-1.8.6
+./configure --prefix=/usr/local --enable-pthread --with-readline-dir=/usr/local --enable-shared
+make
+sudo make install
+sudo make install-doc
+cd ..
+</pre>
+ <p>If you saw lots of text fly by but didn&#8217;t get that error, it means that we should now have a brand new Ruby installed.</p>
+ <p>We can verify this (as well as a correct path setting) by typing the following command:</p>
+
+
+<pre>
+ruby -v
+</pre>
+ <p>You should see something like this:</p>
+
+
+<pre>
+ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.9.1]
+</pre>
+ <p>Don&#8217;t worry about the text in the parenthesis or brackets, those just provide detail about your system architecture which isn&#8217;t important here. What <em>is</em> important is that you see <code>ruby 1.8.6</code>. This means you&#8217;ve got the new version of Ruby installed and in your path, and you&#8217;re good to go.</p>
+ <p>If you see something like this:</p>
+
+
+<pre>
+ruby 1.8.2 (2004-12-25)
+</pre>
+ <p>Then either your install failed, or you didn&#8217;t correctly set your path in the beginning (maybe you didn&#8217;t reload your <code>.bash_login</code> script or restart Terminal). Go back and check your work.</p>
+ <h3>RubyGems</h3>
+ <p>RubyGems is a handy command-line tool for managing the installation of Ruby packages, like Rails and Mongrel.</p>
+
+
+<pre>
+curl -O http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-0.9.2.tgz
+tar xzvf rubygems-0.9.2.tgz
+cd rubygems-0.9.2
+sudo /usr/local/bin/ruby setup.rb
+cd ..
+</pre>
+ <h3>Ruby on Rails</h3>
+ <p>With RubyGems installed, Rails is a simple, one-line install:</p>
+
+
+<pre>
+sudo gem install rails --include-dependencies
+</pre>
+ <p>If you see an error message like this:</p>
+
+
+<pre>
+/usr/local/bin/gem:3:in `require': No such file to load -- rubygems (LoadError)
+from /usr/local/bin/gem:3
+</pre>
+ <p>It means you didn&#8217;t set your path as instructed in the very first step. Go back to the beginning and run that step again, then retry this step.</p>
+ <h3>Mongrel</h3>
+ <p>Mongrel is a fast, stand-alone <span class="caps"><span class="caps">HTTP</span></span> library and server for Ruby. It allows you to run your Rails applications without having to compile or use other applications (like FastCGI, <span class="caps"><span class="caps">SCGI</span></span>, LightTPD, or Apache).</p>
+ <p>Even better, Mongrel is also a gem. Type this command:</p>
+
+
+<pre>
+sudo gem install mongrel --include-dependencies
+</pre>
+ <p>You&#8217;ll be prompted to select the appropriate gem for your platform, and you&#8217;ll be shown a list something like this one:</p>
+
+
+<pre>
+Select which gem to install for your platform
+ 1. mongrel 1.0.1 (ruby)
+ 2. mongrel 1.0.1 (mswin32)
+ 3. mongrel 1.0 (mswin32)
+ 4. mongrel 1.0 (ruby)
+ 5. Skip this gem
+ 6. Cancel installation
+</pre>
+ <p>Although version numbers may be different, you should always select the one closest to the top of the list that ends with &#8220;(ruby)&#8221; &#8230; this is usually the first option. Just type the number and press enter.</p>
+ <h3>Subversion (Optional)</h3>
+ <p>Subversion is an open-source version control system. It remembers every change ever made to the files and directories in your projects. This allows you to recover older versions of your data, or examine the history of how your data changed. You can read more about Subversion (svn) in the online <a href="http://svnbook.red-bean.com">Subversion book</a>.</p>
+ <p>While it&#8217;s not mandatory to have svn running in order to use Rails, it&#8217;s highly recommended. It&#8217;s used by the Rails team for distribution management, by most web hosts for deployment (via Capistrano), and by most Rails developers to manage their code.</p>
+
+
+<pre>
+curl -O http://subversion.tigris.org/downloads/subversion-1.4.3.tar.gz
+curl -O http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.gz
+tar xzvf subversion-1.4.3.tar.gz
+tar xzvf subversion-deps-1.4.3.tar.gz
+cd subversion-1.4.3
+./configure --prefix=/usr/local --with-openssl --with-ssl --with-zlib
+make
+sudo make install
+cd ..
+</pre>
+ <h3>Capistrano</h3>
+ <p>Capistrano is a utility which may be used to automate the deployment of your Rails applications. Many Rails applications and webhosts require it, and while this is technically an optional step, it&#8217;s simple, fast, and highly recommended. You can get the latest version of this gem like this:</p>
+
+
+<pre>
+sudo gem install capistrano --include-dependencies
+</pre>
+ <p>I also recommend installing <a href="http://raa.ruby-lang.org/project/ruby-termios/">termios</a>, a gem that&#8217;s a wrapper for the <span class="caps"><span class="caps">UNIX</span></span> <code>termios</code> command, which will prevent passwords you enter in Capistrano from being displayed in your Terminal for all to see.</p>
+
+
+<pre>
+sudo gem install termios --include-dependencies
+</pre>
+ <p>Technically, you could stop right here. But most Rails applications need a database  &#8230;</p>
+ <h3>MySQL</h3>
+ <p>While it&#8217;s possible to compile and install MySQL ourselves, using the Mac <span class="caps">OS X</span> MySQL package is actually advantageous.  Not only is the package-installer much faster and easier, but it includes a handy startup item and a preference panel, and the binary is tuned by the MySQL team for Mac <span class="caps">OS X</span>.</p>
+ <p>Even better, the package installs MySQL right into the <code>/usr/local/</code> folder, just like it should!</p>
+ <p>The install still requires a few steps:</p>
+<ol>
+ <li>Download the <a href="http://mysql.he.net/Downloads/MySQL-5.0/mysql-5.0.37-osx10.4-powerpc.dmg">MySQL 5.0 package for <span class="caps">OS X <span class="caps">PPC</span></span></a> or the <a href="http://mysql.he.net/Downloads/MySQL-5.0/mysql-5.0.41-osx10.4-i686.dmg">MySQL 5.0 package for <span class="caps">OS X</span> Intel</a></li>
+  <li>Double-click the drive image to mount it</li>
+  <li>Locate the MySQL installer (a file named something like <code>mysql-5.0.37-osx10.4-i686.pkg</code>) and run it, authenticating as needed</li>
+  <li>Double-click <code>MySQLStartupItem.pkg</code>, authenticate, and let it install</li>
+  <li>Double-click <code>MySQL.prefPane</code> and install it, deciding whether to make it available to just the current user, or for all system users</li>
+</ol>
+ <p>Once the install is complete, start the MySQL server using the newly-installed control panel.</p>
+ <p><strong>Note:</strong> MySQL installs with a default user of <code>root</code> using no password. If you care about the privacy of your data or computer, please read this page about <a href="http://dev.mysql.com/doc/refman/4.1/en/user-names.html">MySQL usernames and passwords</a> and set a good one.</p>
+ <h3>MySQL Native Bindings Gem (Optional)</h3>
+ <p>This step is an optional one, but the <a href="http://weblog.rubyonrails.com/2005/10/30/get-10-15-more-performance-with-mysql-rails">performance gains</a> seem to make it worth the extra step.</p>
+ <p>We start with a command to install the gem:</p>
+
+
+<pre>
+sudo gem install mysql -- --with-mysql-dir=/usr/local/mysql
+</pre>
+ <p>Just like the Mongrel install, you might see a prompt asking you which gem to install:</p>
+
+
+<pre>
+Select which gem to install for your platform
+1. mysql 2.7.3 (mswin32)
+2. mysql 2.7.1 (mswin32)
+3. mysql 2.7 (ruby)
+4. mysql 2.6 (ruby)
+5. Skip this gem
+6. Cancel installation
+</pre>
+ <p>Again, just like the Mongrel install, we&#8217;ll want to pick the option closest to the top that ends in &#8220;(ruby)&#8221;. In the example above, we&#8217;d want to select option 3.</p>
+ <p>You&#8217;ll see some text scroll by and when it&#8217;s done, you&#8217;ll have built native MySQL bindings, which should help make database operations a bit faster.</p>
+ <h3>Fix MySQL</h3>
+ <p>There&#8217;s an issue with the current version of MySQL and the latest Ruby. Fortunately, this is easily fixed with the following command in Terminal:</p>
+
+
+<pre>
+sudo install_name_tool -change /usr/local/mysql/lib/mysql/libmysqlclient.15.dylib /usr/local/mysql/lib/libmysqlclient.15.dylib /usr/local/lib/ruby/gems/1.8/gems/mysql-2.7/lib/mysql.bundle
+</pre>
+ <p>You may be prompted to re-enter your password when you run it.</p>
+ <h3>We&#8217;re Done</h3>
+ <p>Congratulations, you now have a custom-built, properly located installation of Ruby, Ruby on Rails, MySQL, Mongrel, and Capistrano!</p>
+ <p>If you&#8217;re new to Rails and just want to create a sample app to see this all working, try this:</p>
+
+
+<pre>
+rails testapp
+cd testapp
+script/server
+</pre>
+ <p>This will create a basic Rails app in a folder called <code>testapp</code> in your current folder (probably <code>/usr/local/src</code> if you&#8217;re doing this where the last step left off).</p>
+ <p>If all goes well, you&#8217;ll get some output that looks like this:</p>
+
+
+<pre>
+=&amp;gt; Booting Mongrel (use 'script/server webrick' to force WEBrick)
+=&amp;gt; Rails application starting on http://0.0.0.0:3000
+=&amp;gt; Call with -d to detach
+=&amp;gt; Ctrl-C to shutdown server
+** Starting Mongrel listening at 0.0.0.0:3000
+** Starting Rails with development environment...
+** Rails loaded.
+** Loading any Rails specific GemPlugins
+** Signals ready.  TERM =&amp;gt; stop.  USR2 =&amp;gt; restart.  INT =&amp;gt; stop (no restart).
+** Rails signals registered.  HUP =&amp;gt; reload (without restart).  It might not work well.
+** Mongrel available at 0.0.0.0:3000
+** Use CTRL-C to stop.
+</pre>
+ <p>You can now check out your new app by clicking or pasting this link in your browser of choice: <a href="http://localhost:3000">http://localhost:3000</a></p>
+ <h3>What Else?</h3>
+ <p>To do any real work with your new app, you&#8217;ll want to create a database for it. The Rails convention is that the database will take the same name as the name you specified when the app was created (in this case, &#8220;testapp&#8221;).</p>
+ <p>You&#8217;ll need to first start up MySQL, and then create a database. While you can start MySQL using the control panel you installed earlier, it can also be started using the command line:</p>
+
+
+<pre>
+sudo /Library/StartupItems/MySQLCOM/MySQLCOM start
+</pre>
+ <p>You won&#8217;t have to run this command again, because the startup item you installed for MySQL will make sure it&#8217;s running the next time you boot your Mac. With MySQL running, you can create a new database for the test application:</p>
+
+
+<pre>
+mysqladmin -uroot create testapp_development
+</pre>
+ <p>If you created a password for MySQL, you&#8217;ll need to add the <code>-p</code> option to the command above and you&#8217;ll be prompted for your password.</p>
+ <p>The rest is up to you. Good luck, and have fun with Rails!</p> 
+
+		<hr />
+
+
+
+		<div id="comments">
+			<h3>Reader Discussion</h3>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Ken A.</span> &bull; 29 December 2007</p>
+				<p>I&#8217;m not even a Mac user ... what a great tutorial! Congrats :-)
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Erics</span> &bull; 31 December 2007</p>
+				<p>Hi, any word when the updated version for Leopard will be ready?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.sanduskyregister.com">Keith Veleba</a></span> &bull; 31 December 2007</p>
+				<p>Working through this tutorial - I&#8217;ve built and installed everything here, except Subversion is saying it requires Berkeley DB.&nbsp; Did I miss a step?&nbsp; This is on a fresh Tiger install with everything up to date.</p>
+
+<p>Thanks in advance,<br />
+Keith Veleba
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.sanduskyregister.com">Keith Veleba</a></span> &bull; 01 January 2008</p>
+				<p>Please disregard, solved my problem by reading another of your articles.&nbsp; Thanks for the great resource, and Happy New Year!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://spearia.com">Mel</a></span> &bull; 02 January 2008</p>
+				<p>What about using Ruby 1.9 instead of 1.8?
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://tvgrow.com">Dave</a></span> &bull; 02 January 2008</p>
+				<p>I did everything right and kept getting&#8230;</p>
+
+<p>ERROR 2002 (HY000): Can&#8217;t connect to local MySQL server through socket &#8216;/tmp/mysql.sock&#8217; (2)</p>
+
+<p>when i tried installing the MYSQL into my computer. You should look into this because i literally installed this stuff 4 times and it kept giving me the same error message.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.ianschaefer.com">Ian Schaefer</a></span> &bull; 02 January 2008</p>
+				<p>Very nice tutorial. I&#8217;ve never _enjoy_ unix installs, but this one was close. </p>
+
+<p>One small problem: I successfully installed but got an error from &#8216;testapp&#8217;. Turns out the version of Rails you link to requires version 0.9.4 of RubyGems; but your link to it (RubyGems) is pointing to version 0.9.2.</p>
+
+<p>I tried to update using &#8216;gem update&#8212;system&#8217; but got a permissions error, so I instead re-ran &#8216;curl&#8217; substituting &#8216;0.9.4&#8217; for &#8216;0.9.2&#8217;. That did the trick.</p>
+
+<p>Thanks for your great work.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://compsci.ca/blog">Tony</a></span> &bull; 03 January 2008</p>
+				<p>@Dave:<br />
+/tmp/mysql.sock is the default location where mysql is looking for its socket file, but it&#8217;s often somewhere else, depending on how you&#8217;ve installed it. Following this guide, it&#8217;s probably somewhere in /usr/local/</p>
+
+<p>You should create a symbolic link from /tmp/mysql.sock to where-ever the file actually is.</p>
+
+<p>sudo ln -s /actual_location/mysqld.sock /tmp/mysql.sock
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Florian</span> &bull; 04 January 2008</p>
+				<p>Hej! I have problems with the bash_login. The line &#8220;mate -/.bash_login&#8221; does not work for me, instead I write &#8220;mate .bash_login&#8221;. I then type &#8220;. .bash_login&#8221; and when opening the file, the code is still there; I close the terminal window and open a new one, and the code is still in the file but when I have installed ruby, the file is empty and &#8220;ruby -v&#8221; says &#8220;ruby 1.8.2 (2004-12-25)&#8221;. What Am I doing wrong? Please, if anyone could help me.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Florian</span> &bull; 04 January 2008</p>
+				<p>my fault&#8230; I saw a hyphen instead of a tilde.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">r c johnston</span> &bull; 04 January 2008</p>
+				<p>After trying to install Gems it tells me that &#8220;No library stubs found&#8221;.<br />
+Then I run:&#8220;sudo gem install rails&#8212;include-dependencies&#8221; and get &#8220;sudo: gem: command not found&#8221;.</p>
+
+<p>Suggestions, hints?</p>
+
+<p>tia
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.craigvidler.co.uk/weblog/2008/01/05/links-for-2008-01-05/">Craig Vidler | Weblog &raquo; links for 2008-01-05</a></span> &bull; 05 January 2008</p>
+				<p>[...] Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X at Hivelogic Installing Ruby on Rails etc on OS X 10.4 Tiger (tags: osx mysql ruby rails svn) [...]
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.GraphicEngineer.com">GraphicEngineer</a></span> &bull; 05 January 2008</p>
+				<p>Excellent tutorial - thanks! Still relevant as of January &#8216;08!<br />
+Note: users may need to update their RubyGems version from 0.9.2 to the latest (1.0.1 at the time of this comment.)&nbsp; The RubyGems update is needed to get the script/server running and is easy with the command: sudo gem update&#8212;system
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">RJ</span> &bull; 06 January 2008</p>
+				<p>I was able to get everything installed okay.&nbsp; The only problem is that the default database is now SQLite3.&nbsp; So, if you want to create apps with the above instructions using MySQL, you&#8217;ll have to start it using &#8220;rails -d mysql myApp&#8221;.&nbsp; Else, install SQLite3 and use it.&nbsp; These instructions are easy to use and very much appreciated.&nbsp; Thanks!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">r.connor</span> &bull; 06 January 2008</p>
+				<p>i&#8217;m having the same problem at tia
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">dakan</span> &bull; 07 January 2008</p>
+				<p>All went well for me except with Rails.&nbsp; I got this error?&nbsp; Any hints?</p>
+
+<p>$ sudo gem install rails&#8212;include-dependencies<br />
+Bulk updating Gem source index for: <a href="http://gems.rubyforge.org">http://gems.rubyforge.org</a><br />
+ERROR:&nbsp; While executing gem ... (Gem::GemNotFoundException)<br />
+&nbsp;   Could not find rails (&gt; 0) in any repository</p>
+
+<p><br />
+What should I do?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">dan</span> &bull; 08 January 2008</p>
+				<p>@dakan - I had the same issue. For me things went better when I changed my .bash_login so that the PATH stuff was the last thing.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">notBanksy</span> &bull; 09 January 2008</p>
+				<p>Have noticed a small error on this tutorial.&nbsp; According to apple <a href="http://developer.apple.com/tools/xcode/update.html">http://developer.apple.com/tools/xcode/update.html</a> Xcode 2.4 will not run on panther&#8230;<br />
+Anyone got any tutorials for rails on panther?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Naresh</span> &bull; 12 January 2008</p>
+				<p>@dakan - I had the same problem. I&#8217;d initially put the PATH suggested in my .bash_profile file and it worked all the way until the rails installation.<br />
+I got rid of my .bash_profile file and shifted the PATH and other stuff that I had in it into .bash_login as suggested.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Zak</span> &bull; 13 January 2008</p>
+				<p>OK, I am a loser. Please help. I set path correctly</p>
+
+<p>zak:~ zak$ echo $PATH<br />
+/usr/local/mysql/bin:/bin:/sbin:/usr/bin:/usr/sbin<br />
+zak:~ zak$ </p>
+
+<p>and the ruby install went well: <br />
+.
+.<br />
+zak:/usr/local/src/ruby-1.8.6 zak$ sudo make install<br />
+Password:<br />
+./miniruby  ./instruby.rb&#8212;dest-dir=&#8221;&#8221;&#8212;extout=&#8221;.ext&#8221;&#8212;make=&#8220;make&#8221;&#8212;mflags=&#8221;&#8221;&#8212;make-flags=&#8221;&#8221;&#8212;installed-list .installed.list&#8212;mantype=&#8220;doc&#8221;<br />
+installing binary commands<br />
+installing command scripts<br />
+installing library scripts<br />
+installing headers<br />
+installing manpages<br />
+installing extension objects<br />
+installing extension scripts<br />
+zak:/usr/local/src/ruby-1.8.6 zak$ ruby -v<br />&#8212;&#8212;&gt; AND Yet&#8230;<br />
+ruby 1.8.2 (2004-12-25) [universal-darwin8.0]
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Zak</span> &bull; 13 January 2008</p>
+				<p>Found bug. I had a .bash_profile which was messing with my $PATH
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">r.connor</span> &bull; 16 January 2008</p>
+				<p>I&#8217;m with Dave. Stuck on mysql.sock missing from system. Did a sudo find / -name &#8216;mysql.sock&#8217; and got nothing. : (
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">David Sletten</span> &bull; 17 January 2008</p>
+				<p>As of 17 Jan. 2008 the MySQL package link above (<a href="http://mysql.he.net/Downloads/MySQL-5.0/mysql-5.0.37-osx10.4-powerpc.dmg">http://mysql.he.net/Downloads/MySQL-5.0/mysql-5.0.37-osx10.4-powerpc.dmg</a>) appears to be dead.</p>
+
+<p>This looks like a good substitute:<br />
+<a href="http://dev.mysql.com/downloads/mysql/5.0.html#macosx-dmg">http://dev.mysql.com/downloads/mysql/5.0.html#macosx-dmg</a></p>
+
+<p>Latest version is 5.0.45.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">johnmci</span> &bull; 18 January 2008</p>
+				<p>jm-mbp:ruby-1.8.6 john$ ./configure&#8212;prefix=/usr/local&#8212;enable-pthread&#8212;with-readline-dir=/usr/local&#8212;enable-shared<br />
+...<br />
+ruby: [BUG] Segmentation fault<br />
+ruby 1.8.6 (2007-03-13) [i686-darwin9.1.0]</p>
+
+<p>make: *** [.rbconfig.time] Abort trap</p>
+
+<p>Everything went well until I got to the configure command to make ruby.</p>
+
+<p>I&#8217;m running Leopard 15.1. Is there a later release than 1.86?</p>
+
+<p>If so, how do I recover from this?</p>
+
+<p>Thank you.</p>
+
+<p>Obvious newbie
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">KL Tah</span> &bull; 18 January 2008</p>
+				<p>thanks for the write-up&#8212;this was definitely helpful to getting rails up and running for me. </p>
+
+<p>the process went pretty smooth for the most part but some comments are in order:</p>
+
+<p>1. I&#8217;m with Ian on the gem version. running &#8220;sudo gem update&#8212;system&#8221; will get the latest version installed.</p>
+
+<p>2. I got the following error starting up rails the first time round:</p>
+
+<p>[Admins-Computer 7] ktah &gt; rails testapp<br />
+/usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:251:in `report_activate_error&#8217;: Could not find RubyGem rails (&gt;= 0) (Gem::LoadError)<br />
+&nbsp;  &nbsp;  &nbsp; from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:188:in `activate&#8217;<br />
+&nbsp;  &nbsp;  &nbsp; from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:66:in `active_gem_with_options&#8217;<br />
+&nbsp;  &nbsp;  &nbsp; from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:50:in `gem&#8217;<br />
+&nbsp;  &nbsp;  &nbsp; from /usr/local/bin/rails:18</p>
+
+<p>but it went away after re-running the gem for rails install.</p>
+
+<p>3. installing mysql from binary is actually a great idea. no hitches there. I actually tried installing from source initially, but gave up after not being able to solve problems related to setting the root password.</p>
+
+<p>4. as of a yesterday, ruby 1.9 is bugged. according to the forums, its in the process of being fixed (if its not already at time of this writing).
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">dc</span> &bull; 18 January 2008</p>
+				<p>I’m with Dave &amp; r.conner/.</p>
+
+<p>Stuck on mysql.sock missing from system. Did a sudo find / -name ‘mysql.sock’ and got nothing. : (</p>
+
+<p>Installation works a treat, updated gems to 0.9.4 &amp; basic rails works but no db?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Dc</span> &bull; 18 January 2008</p>
+				<p>In addition to my above this is the failure:</p>
+
+<p>Can&#8217;t connect to local MySQL server through socket &#8216;/var/run/mysqld/mysqld.sock&#8217; (2)</p>
+
+<p>any help would be much appreciated.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://n/a">Martin</a></span> &bull; 19 January 2008</p>
+				<p>dakan<br />
+Jan 7th, 2008 at 5:17 pm</p>
+
+<p>All went well for me except with Rails. I got this error? Any hints?</p>
+
+<p>$ sudo gem install rails –include-dependencies<br />
+Bulk updating Gem source index for: <a href="http://gems.rubyforge.org">http://gems.rubyforge.org</a><br />
+ERROR: While executing gem … (Gem::GemNotFoundException)<br />
+Could not find rails (&gt; 0) in any repository</p>
+
+<p>What should I do?</p>
+
+<p>dakan, and everyone else having this problem, I had this problem, and it seems to be a bug, for some strange reason it always fails on the first attempt, just run the command again, and it should work, btw I&#8217;ve had this same problem several times on different machines and different net connections.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Jon</span> &bull; 19 January 2008</p>
+				<p>I completed everything the went to do rails testapp and I got the &#8220;command not found&#8221;.&nbsp; Not sure why&#8230;help.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Jon</span> &bull; 19 January 2008</p>
+				<p>got it&#8230;now what?!&nbsp; I don&#8217;t get it!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://herkamer.tumblr.com/">nathan miller</a></span> &bull; 19 January 2008</p>
+				<p>Amazing walk-through. Thanks!
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Tyson</span> &bull; 21 January 2008</p>
+				<p>Thanks, you rock!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">shecky</span> &bull; 22 January 2008</p>
+				<p>I am an absolute newbie at all things Ruby, Rails, Terminal, etc. That said, no problems or errors until I got to the &#8216;We&#8217;re Done&#8217; bit:</p>
+
+<p>rails testapp</p>
+
+<p>... to which Terminal says,&#8221;-bash: rails: command not found&#8221;</p>
+
+<p>Also, at <a href="http://localhost:3000/">http://localhost:3000/</a> I get:</p>
+
+<p>&#8220;Status: 500 Internal Server Error Content-Type: text/html<br />
+Application error (Rails)&#8221;</p>
+
+<p>Any guidance is much appreciated.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.webdotdev.com">Dan</a></span> &bull; 25 January 2008</p>
+				<p>Very good tutorial, I am very happy that every thing which I did went very well&#8230;Good work&#8230;.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://michael.biven.org/2008/01/25/installing-ruby-on-rails-on-mac-os-105-">Put Together Quickly &raquo; Installing Ruby on Ra</a></span> &bull; 25 January 2008</p>
+				<p>[...] don&#8217;t think there are too many people who hasn&#8217;t come across either of Dan Benjamin&#8217;s guides when looking to install Ruby on Rails on a Mac. They are [...]
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Simon Blackman</span> &bull; 27 January 2008</p>
+				<p>Thank you so much, I&#8217;ve been going round and round for day trying to get ruby to work, followed your instructions and boom! it works fine!</p>
+
+<p>thanks again!!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://sun.newsiczek.pl/2008/01/28/new-to-ruby/">New to Ruby | sun</a></span> &bull; 28 January 2008</p>
+				<p>[...] NetBeans 6. My previous attempt with RoR was about 9 month ago and remember having to do a lot of curls and makes to get everything configured. Getting started with NetBeans has been very easy, since there is a [...]
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Billy P.</span> &bull; 31 January 2008</p>
+				<p>I was unable to get this tutorial to work for me until I used:<br />
+rails -d mysql testapp<br />
+otherwise, the system looked for sqlite3.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">kwo</span> &bull; 01 February 2008</p>
+				<p>Great information.</p>
+
+<p>Two notes&#8230;<br />
+1. Installing the Rails gem with the&#8212;include-dependencies option didn&#8217;t work for me (iTerm 0.9.5 on OS X 10.4).&nbsp; I tried updating RubyGems and deleting the source_cache, but couldn&#8217;t get past the &#8220;Could not find rails (&gt; 0) in any repository&#8221; error.&nbsp; Finally tried it without&#8212;include-dependencies and it worked (although I had to manually approve each dependency).</p>
+
+<p>2. Setting the PATH in .bash_login didn&#8217;t work for me.&nbsp; I don&#8217;t know if iTerm is doing something different than Terminal, but I wound up needing to set the PATH in .bash_profile.</p>
+
+<p>Much thanks for the excellent info.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Chris C.</span> &bull; 02 February 2008</p>
+				<p>This was great! I&#8217;m a complete novice and had no problems until the very end in the &#8220;We&#8217;re Done&#8221; section.</p>
+
+<p>I ran the testapp. But when I did script/server, it said I had Ruby Gems 0.9.2 and I had to update to 0.9.4.&nbsp; I ran the upgrade, but got access errors.&nbsp; See below. </p>
+
+<p>Does anyone know how to update or provide help? Again, I&#8217;m a complete novice.&nbsp; Thanks.</p>
+
+<p>g5:/usr/local/src/testapp chrischen$ script/server<br />
+Rails requires RubyGems &gt;= 0.9.4 (you have 0.9.2). Please `gem update&#8212;system` and try again.<br />
+g5:/usr/local/src/testapp chrischen$ cd ..<br />
+g5:/usr/local/src chrischen$ gem update&#8212;system<br />
+Updating RubyGems&#8230;<br />
+Bulk updating Gem source index for: <a href="http://gems.rubyforge.org">http://gems.rubyforge.org</a><br />
+Attempting remote update of rubygems-update<br />
+ERROR:&nbsp; While executing gem ... (Gem::GemNotFoundException)<br />
+&nbsp;   Could not find rubygems-update (&gt; 0) in any repository<br />
+g5:/usr/local/src chrischen$ gem update&#8212;system<br />
+Updating RubyGems&#8230;<br />
+Bulk updating Gem source index for: <a href="http://gems.rubyforge.org">http://gems.rubyforge.org</a><br />
+Attempting remote update of rubygems-update<br />
+ERROR:&nbsp; While executing gem ... (Errno::EACCES)<br />
+&nbsp;   Permission denied - /usr/local/lib/ruby/gems/1.8/cache/rubygems-update-1.0.1.gem
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Chris C.</span> &bull; 02 February 2008</p>
+				<p>In my prior comments above, I had to upgrade to Ruby Gems 0.9.4. When I tried, I got an access error (see comments above).</p>
+
+<p>Can I solve by rerunning the script in your article, but change ruby gems to the 0.9.4 version? Will this just rewrite over what we installed and cause no problems?&nbsp; Or is there a better/safer way to do this?</p>
+
+<p>From the article: can I just change the 2 to a 4?<br />
+RubyGems</p>
+
+<p>RubyGems is a handy command-line tool for managing the installation of Ruby packages, like Rails and Mongrel.</p>
+
+<p>curl -O <a href="http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-0.9.2.tgz">http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-0.9.2.tgz</a><br />
+tar xzvf rubygems-0.9.2.tgz<br />
+cd rubygems-0.9.2<br />
+sudo /usr/local/bin/ruby setup.rb<br />
+cd ..
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">rubic</span> &bull; 03 February 2008</p>
+				<p>This is one of the more thorough installation tutorials I have come across after a weekend of searching out answers to a few questions.&nbsp; </p>
+
+<p>Have you addressed the issue of the of the &#8216;tk (Load Error)&#8217;?&nbsp; I see this question posted all over the net with few &#8216;follow-able&#8217; answers to the question.&nbsp; Could you direct me to an understandable solution?</p>
+
+<p>Rubic
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.devchix.com">Desi</a></span> &bull; 04 February 2008</p>
+				<p>Hi Dan,<br />
+I just wiped my mac and installed Leopard on my box and I am just curious how the updated instructions are coming along? I would be willing to test the instructions for you if don&#8217;t mind helping me out if I run into issues.</p>
+
+<p>Cheers<br />
+Desi
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://imran.com/media/blog/">Imran Anwar</a></span> &bull; 07 February 2008</p>
+				<p>Thanks for making the effort. I saw this post after I had already installed RubyStacks from Bitnami. I suspect others will be doing that too. But instead of losing that audience, it would be great if you post some items on how to leverage your posting even with their install.</p>
+
+<p>regards</p>
+
+<p>Imran
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Chris</span> &bull; 07 February 2008</p>
+				<p>Great tutorial.&nbsp; I had one problem and wanted to provide the solution I discovered.</p>
+
+<p>Here are the versions I used:</p>
+
+<p>Mac OS X Tiger 10.4.11 (PowerPC G5)<br />
+Xcode 2.5<br />
+Ruby 1.8.6-p111<br />
+RubyGems 1.0.1<br />
+Rails 2.0.2<br />
+MySQL 5.0.51a PPC 64-bit (Installer Binary)</p>
+
+<p>Everything worked as advertised until attempting to install the MySQL Native Bindings Gem:</p>
+
+<p>sudo gem install mysql&#8212;&#8212;with-mysql-dir=/usr/local/mysql</p>
+
+<p>Building native extensions.&nbsp; This could take a while&#8230;<br />
+ERROR:&nbsp; Error installing mysql:<br />
+&nbsp;  &nbsp;  &nbsp; ERROR: Failed to build gem native extension.</p>
+
+<p>/usr/local/bin/ruby extconf.rb install mysql&#8212;&#8212;with-mysql-dir=/usr/local/mysql<br />
+checking for mysql_query() in -lmysqlclient&#8230; no<br />
+checking for main() in -lm&#8230; yes<br />
+checking for mysql_query() in -lmysqlclient&#8230; no<br />
+checking for main() in -lz&#8230; yes<br />
+checking for mysql_query() in -lmysqlclient&#8230; no<br />
+checking for main() in -lsocket&#8230; no<br />
+checking for mysql_query() in -lmysqlclient&#8230; no<br />
+checking for main() in -lnsl&#8230; no<br />
+checking for mysql_query() in -lmysqlclient&#8230; no<br />
+*** extconf.rb failed ***<br />
+Could not create Makefile due to some reason, probably lack of<br />
+necessary libraries and/or headers.&nbsp; Check the mkmf.log file for more<br />
+details.&nbsp; You may need configuration options.</p>
+
+<p>[...]</p>
+
+<p>The solution I obtained from:<br />
+<a href="http://blog.wearesakuzaku.com/installing-the-mysql-ruby-gem-on-os-x/">http://blog.wearesakuzaku.com/installing-the-mysql-ruby-gem-on-os-x/</a></p>
+
+<p>&#8220;What it’s complaining about is the fact that it can’t find your MySQL client libraries. You have to pass in the location of your MySQL installation using the following switch:</p>
+
+<p>sudo gem install mysql&#8212;&#8212;with-mysql-config=/usr/local/mysql/bin/mysql_config</p>
+
+<p>&#8220;Many posts regarding the problems with this gem use the switch&#8212;with-mysql-dir. Don’t be confused —&#8212;with-mysql-config does basically the same thing, but apparently the mysql_config binary provides out all the command-line switches, including&#8212;with-mysql-dir, necessary for the installation&#8230;&#8221;</p>
+
+<p>After this, it works flawlessly:</p>
+
+<p>sudo gem install mysql&#8212;&#8212;with-mysql-config=/usr/local/mysql/bin/mysql_config </p>
+
+<p>Building native extensions.&nbsp; This could take a while&#8230;<br />
+Successfully installed mysql-2.7<br />
+1 gem installed</p>
+
+<p>&#8212;</p>
+
+<p>Thanks again!
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Joseph</span> &bull; 12 February 2008</p>
+				<p>I&#8217;d be looking forward to the Leopard tutorial.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Mike</span> &bull; 12 February 2008</p>
+				<p>While installing the rails gen, if you are getting:</p>
+
+<p>ERROR:&nbsp; While executing gem ... (Gem::GemNotFoundException)<br />
+&nbsp;   Could not find rails (&gt; 0) in any repository</p>
+
+<p>try doing a:</p>
+
+<p>sudo gem update</p>
+
+<p>That did the trick for me.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://blog.nostalgic-garden.org/?p=495">Nostalgic Garden &raquo; Blog Archive &raquo; mysq</a></span> &bull; 14 February 2008</p>
+				<p>[...] error message on OSX Leopard 10.5.2, the chances are your PATH is not correctly saved. I followed Dan&#8217;s tutorial on installing MySQL on Leopard the other day and every time I had to do . /.bash_login to run the [...]
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Prasad</span> &bull; 16 February 2008</p>
+				<p>Hi,&nbsp; I am using MAc OS X tiger 10.4.9<br />
+I am getting the following issues.<br />
+I am always getting Ruby 1.2 instead of 1.8 on typing ruby -v at the bash shell prompt<br />
+I have used the vi editor to add the path for the .bash_login file.&nbsp; But how do i put it on the last line it was a new file - blank so there can be only one line and thats the first. I proceeded anyway<br />
+Also it says gem not found.<br />
+Kindly suggest. I am very excited about Ruby<br />
+and willing to lend  a hand to the open source community
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.gregbenedict.com/2008/02/21/mysql-ruby-gem-install-issues-solved">mysql Ruby Gem install Issues &#8212; solved! | Bu</a></span> &bull; 21 February 2008</p>
+				<p>[...] I ran into an issue today installing the ruby mysql gem on a fresh Leopard system with 10.5.1 installed and the MySQL 5 package for Intel installed. This is based on Dan Benjamin&#8217;s great work. [...]
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.zoe-studio.fr">Yome</a></span> &bull; 29 February 2008</p>
+				<p>There is a new &#8220;release&#8221; of ruby :</p>
+
+<p>ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6-p110.tar.gz</p>
+
+<p>(look at the -p110)</p>
+
+<p>Regards,</p>
+
+<p>Yome
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.zoe-studio.fr">Yome</a></span> &bull; 29 February 2008</p>
+				<p>!!! There is an major update for the RubyGems release :</p>
+
+<p><a href="http://rubyforge.org/frs/download.php/29548/rubygems-1.0.1.tgz">http://rubyforge.org/frs/download.php/29548/rubygems-1.0.1.tgz</a></p>
+
+<p>Regards</p>
+
+<p>Yome
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.zoe-studio.fr">Yome</a></span> &bull; 29 February 2008</p>
+				<p>Last link comes from my browser, so the good curl command is :</p>
+
+<p>curl -O <a href="http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-1.0.1.tgz">http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-1.0.1.tgz</a><br />
+tar xzvf rubygems-1.0.1.tgz<br />
+cd rubygems-1.0.1
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Jack</span> &bull; 29 February 2008</p>
+				<p>rails testapp<br />
+cd testapp<br />
+script/server<br />
+ERROR<br />
+Rails requires RubyGems &gt;= 0.9.4 (you have 0.9.2). Please `gem update&#8212;system` and try again.</p>
+
+<p>I found that the version of rubygems has be updated. Just replace 0.9.2 with 0.9.4.<br />
+<a href="http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-0.9.4.tgz">http://files.rubyforge.mmmultiworks.com/rubygems/rubygems-0.9.4.tgz</a></p>
+
+<p>Brilliant instructions. Very clear and easy to follow.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Tom Fahey</span> &bull; 02 March 2008</p>
+				<p>I would like to get a ruby on rails program for my mac.&nbsp; How do I do this?
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Keith</span> &bull; 03 March 2008</p>
+				<p>Excellent guide.&nbsp; Totally stress free.</p>
+
+<p>Thanks.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Ben</span> &bull; 07 March 2008</p>
+				<p>Everything went smoothly until I came to the all-important step on installing Ruby on Rails. The following error came up. Please lend me your helping debugging hands&#8230;</p>
+
+<p>My ibook G4 is using OS X 10.4 Tiger</p>
+
+<p>ibook-g4:~/rubygems-1.0.1 ben$ cd ..<br />
+ibook-g4:~ ben$ sudo gem install rails&#8212;include-dependencies<br />
+sudo: gem: command not found<br />
+ibook-g4:~ ben$
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">bondibox</span> &bull; 07 March 2008</p>
+				<p>Tom, you can download sample code for a few rails books.&nbsp; <a href="http://www.pragprog.com/titles/rails2/source_code" rel="nofollow">Agile Web Development with Rails</a> is one, and <a href="http://www.apress.com/book/downloadfile/3572" rel="nofollow">Practical Rails Social Networking Sites</a> is another.</p>
+
+<p>Ben, I&#8217;m guessing you have both .bash_profile and .bash_login files, and they&#8217;re conflicting.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://nothere.rit.edu">Kevin</a></span> &bull; 08 March 2008</p>
+				<p>Ben, it sounds like either:<br />
+A) Ruby was not successfully installed or<br />
+B) You didn&#8217;t set up your path right.</p>
+
+<p>Look for errors in the output from the ruby installation step to determine if A is the case.&nbsp; To see if B is the case, in your terminal, type &#8220;echo $PATH&#8221; without the quotes.&nbsp; You should see a list of paths separated by colons.&nbsp; If either /usr/local/bin or /usr/local are in there, then it&#8217;s not B.</p>
+
+<p>Man this article has a lot of botspam.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://myfavoritepal.com">Roger Pack</a></span> &bull; 12 March 2008</p>
+				<p>If you&#8217;ve installed mysql via MacPorts, then the mysql gem command will be<br />
+ruby extconf.rb&#8212;with-mysql-config=/opt/local/bin/mysql_config5<br />
+I believe.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Yagnesh</span> &bull; 13 March 2008</p>
+				<p>How i start the ruby  in windows platform?<br />
+and which editor will used for that?<br />
+also send me link of code to create ruby application for facebook.<br />
+Thanks<br />
+Yagnesh
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">JetPac</span> &bull; 21 March 2008</p>
+				<p>Great tutorial!</p>
+
+<p>On Leopard the compilation fails like this:<br />
+gcc -g -O2  -fno-common -pipe -fno-common  -DRUBY_EXPORT  -L.&nbsp;   main.o dmydln.o libruby-static.a -lpthread -ldl -lobjc &nbsp; -o miniruby<br />
+ruby: [BUG] Segmentation fault<br />
+ruby 1.8.6 (2008-03-03) [i686-darwin9.2.2]</p>
+
+<p><br />
+You can fix it via applying the patch here - <a href="http://chopine.be/lrz/ruby-osx-patches/ignore-gsetcontext.diff">http://chopine.be/lrz/ruby-osx-patches/ignore-gsetcontext.diff</a></p>
+
+<p>cd ruby-1.8.6<br />
+curl -O <a href="http://chopine.be/lrz/ruby-osx-patches/ignore-gsetcontext.diff">http://chopine.be/lrz/ruby-osx-patches/ignore-gsetcontext.diff</a><br />
+patch -p0 &lt; ignore-gsetcontext.diff</p>
+
+<p>This worked for me!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.teKNOWlogy.blogspot.com">sarang</a></span> &bull; 22 March 2008</p>
+				<p>Faced a lot of problems during installation.<br />
+I am a new user on Mac.. recently moved from windows to Mac.<br />
+Some of the tips which helped me resolve the issues I was facing&#8230;.</p>
+
+<p>1. make sure XCode is installed on ur Mac. It comes in the Cd/DVD that comes with Mac and is not installed by default.</p>
+
+<p>2. If you want to do partial installation of XCode then make sure you install following components -<br />
+- Developer Tools<br />
+- gcc<br />
+- SDK.mpkg (or install all the *SDK.pkg files in XCode)</p>
+
+<p>3. Use Ruby1.8.6 which is a stable version. Previously I was using ruby1.9.0 and faced many issues.</p>
+
+<p>Hope this will be helpful to someone&#8230;.</p>
+
+<p>Cheers,<br />
+Sarang.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://debtreliefserve.com/ar/counseling-credit-debt-relief.php">Student Loan Debt Relief</a></span> &bull; 22 March 2008</p>
+				<p><strong>Student Loan Debt Relief</strong></p>
+
+<p>Many books you discover &#123;will not have all you are searching for.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://justinreid.com">Justin</a></span> &bull; 27 March 2008</p>
+				<p>This is a HUGE help. I&#8217;ve used it to set up Rails on several computers. Thanks!
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">David</span> &bull; 30 March 2008</p>
+				<p>Rails newbie here. Every time I try and open the .bash_login file from the terminal I get file not found. Just using Mac&#8217;s TextEdit. I&#8217;ve tried showing hidden files but makes no difference. Failing at outset, oh dear! Any help?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Michael Lewis</span> &bull; 30 March 2008</p>
+				<p>Excellent instructions, however, I made the (bad) decision to use all of the latest releases (including the 64 bit mySQL server for the Mac OS/X).&nbsp; Everything worked great, except when I tried to use &#8220;requires &#8216;mysql&#8217;&#8221; I got a load error on &#8220;mysql.bundle&#8221;.&nbsp; When installing the mysql gem I received the following errors (which I ignored&#8212;bad decision).</p>
+
+<p>ld64 warning: in /usr/local/lib/libruby.dylib, file is not of required architecture<br />
+ld64 warning: in /usr/lib/libz.dylib, file is not of required architecture<br />
+ld64 warning: in /usr/lib/libobjc.dylib, file is not of required architecture</p>
+
+<p>The solution to the issue was to uninstall mySQL 64 bit and install the 32 bit version.&nbsp; Although I have a 64 bit operating system, the mysql gem and 64 bit mySQL do not play well together.&nbsp; I hope this helps the next person out there.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">manuel</span> &bull; 30 March 2008</p>
+				<p>Hi,...<br />
+I&#8217;m just starting&#8230;<br />
+What if I get:<br />
+.bash_login: No such file or directory</p>
+
+<p>when I try to run: ~./bash_login</p>
+
+<p>And I can see the file using: ls -a<br />
+:-?</p>
+
+<p>And thanks for the tutorial&#8230;
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">MixedContent</span> &bull; 04 April 2008</p>
+				<p>Anyone have pros/cons on using MySQL vs. SQLite3?&nbsp; Is there, e.g., a good reason behind the Rails team&#8217;s decision to change the default DB?&nbsp; Or is it just Coke vs. Pepsi?
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">JohnG</span> &bull; 06 April 2008</p>
+				<p>Everyone who has problems with &#8216;gem: command not found&#8217;, or apparently the wrong version of ruby running (ruby -v produces 1.8.2), or the dreaded error<br />
+&nbsp; /usr/local/bin/gem:3:in `require&#8217;: No such file to load&#8212;rubygems (LoadError) <br />
+the problem is likely with your path. Things to check:<br />
+ * did you do the modification to .bash_login at the top?<br />
+ * did you confirm it &#8216;took&#8217;, and you executed the &#8216;. ~/.bash_login&#8217; command after?<br />
+The above two can be checked with &#8216;set&#8217;, and looking at the path variable to make sure it has what&#8217;s needed.<br />
+ * is the version of Ruby you just installed the one you&#8217;re running? (&#8216;which ruby&#8217; will tell you where the ruby comes from; it should be /usr/local/bin) <br />
+ * is there maybe another path with ruby in it *before* /usr/local/bin appears in your path?<br />
+ * maybe you&#8217;re running from another terminal window that hasn&#8217;t run the newly configured .bash_login script, so the path is wrong?</p>
+
+<p>(Just thought I&#8217;d list all the problems I had today&#8230;)</p>
+
+<p>Everyone who has problems .bash_login not found, this is likely the normal starting configuration on a 10.4 Mac.&nbsp; If .bash_login doesn&#8217;t exist, you may have a .login file, which bash executes instead. Otherwise, creating a new .bash_login with the given command is OK.</p>
+
+<p>Any chance this beautiful post can get updated with all the useful updated information in the comments?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.human-7.com">Scott Goddard</a></span> &bull; 20 April 2008</p>
+				<p>Dan, thanks for this tutorial.</p>
+
+<p>However, I am getting an error with trying to install rails. </p>
+
+<p>I put in:</p>
+
+<p>&nbsp; sudo gem install rails&#8212;include-dependencies</p>
+
+<p>and received</p>
+
+<p>&nbsp; ERROR:&nbsp; While executing gem ... (NoMethodError)<br />
+&nbsp;   undefined method `refresh&#8217; for #&lt;Hash:0x1111c18&gt;</p>
+
+<p>What does this mean?</p>
+
+<p>Thanks, Scott
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.human-7.com">Scott Goddard</a></span> &bull; 20 April 2008</p>
+				<p>In response to the error posted above,</p>
+
+<p>I solved the problem by locating the source_cache file in gems with the following command:</p>
+
+<p>gem env</p>
+
+<p>The source_cache file was located in the path under &#8220;GEM PATH:&#8221;, I then proceeded to delete everything in the file &#40;I suppose you could just delete it too&#41; and saved it.</p>
+
+<p>Next I updated gems:</p>
+
+<p>sudo gem update&#8212;system</p>
+
+<p>And finally to install rails:</p>
+
+<p>sudo gem intall rails -y</p>
+
+<p>Hope this helps anyone with the same issue. Several people are encountering this error, this webpage gave me the best help: <a href="http://weblog.rubyonrails.org/2007/2/6/in-case-you-re-having-trouble-installing-gems">http://weblog.rubyonrails.org/2007/2/6/in-case-you-re-having-trouble-installing-gems</a>
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Piers Goodhew</span> &bull; 24 April 2008</p>
+				<p>Trying this with 10.2 (I know, I know, this is not for any serious purpose), the make of readline failed with:</p>
+
+<p>gcc: -compatibility_version only allowed with -dynamiclib</p>
+
+<p>but, thanks to : <a href="https://stat.ethz.ch/pipermail/r-sig-mac/2005-August/002205.html">https://stat.ethz.ch/pipermail/r-sig-mac/2005-August/002205.html</a></p>
+
+<p>I ran make as follows and it all worked  (at least, readline did, now compiling ruby)...</p>
+
+<p>make CPPFLAGS=-DNEED_EXTERN_PC SHOBJ_LDFLAGS=-dynamiclib
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://rosano.ca/">Rosano</a></span> &bull; 28 April 2008</p>
+				<p>For those of you trying to change the default database to MySQL, I don&#8217;t think it is possible. The default was changed to SQLite in 2.0.2:<br />
+ 
+<a href="http://weblog.rubyonrails.org/2007/12/17/rails-2-0-2-some-new-defaults-and-a-few-fixes">http://weblog.rubyonrails.org/2007/12/17/rails-2-0-2-some-new-defaults-and-a-few-fixes</a>
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://www.freshblurbs.com">Irakli Nadareishvili</a></span> &bull; 29 April 2008</p>
+				<p>Thanks for a wonderful walk-through. I had one problem, though. Below is the problem def, with a solution.</p>
+
+<p><br />
+Immediately after the installation of the gems, local source repo is empty, so if you just run</p>
+
+<p>sudo gem install rails&#8212;include-dependencies</p>
+
+<p>It will give you an error, complaining that no package with the name &#8220;rails&#8221; was found.</p>
+
+<p>You need to run:<br />
+sudo gem list&#8212;remote </p>
+
+<p>which will fetch gem modules list from a remote server and only then try to install rails.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Adam Ehven</span> &bull; 30 April 2008</p>
+				<p>Hi.&nbsp; Just wanted to say thanks for the tutorial, works great.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://blog.nbruns.us">RainMann</a></span> &bull; 01 May 2008</p>
+				<p>I stumbled a little on the .bash_login step. Here are some things to keep in mind:</p>
+
+<p>David: I had to create my own .bash_login file - it goes in your user directory or /Users/YourUserName/ . </p>
+
+<p>When I tried the &#8220;~/.bash_login&#8221; command, it said: &#8220;Permission denied&#8221;. That&#8217;s cause it&#8217;s the wrong command :)</p>
+
+<p>Manuel: make sure you type &#8220;. ~/.bash_login&#8221; (as in &#8220;dot space tilda slash dot bash_login&#8221;)
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://blog.nbruns.us">RainMann</a></span> &bull; 01 May 2008</p>
+				<p>@daken: I got the same error: <br />
+&#8220;ERROR:&nbsp; While executing gem ... (Gem::GemNotFoundException)<br />
+&nbsp;   Could not find rails (&gt; 0) in any repository&#8221;</p>
+
+<p>I just tried it again and it worked, possibly just a server/bandwidth issue
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://blog.nbruns.us">RainMann</a></span> &bull; 02 May 2008</p>
+				<p>Great tutorial! </p>
+
+<p>Thanks to Chris (with whom I happened to share an identical software/architecture profile) for the solution to the mysql gem installation blip I also encountered. </p>
+
+<p>I&#8217;m excited! Thanks again!
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://www.liujie.org.cn">liujie</a></span> &bull; 05 May 2008</p>
+				<p>Thanks for the tutorial ,It&#8217;s very useful.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">phil</span> &bull; 06 May 2008</p>
+				<p>Excellent tutorial!!&nbsp; Thank you!!</p>
+
+<p>I followed this exactly and everything seemed to work correctly.&nbsp; However, when I launched testapp, the WEBrick server was used rather than Mongrel.&nbsp; Did I miss a path or configuration step?
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Jason</span> &bull; 09 May 2008</p>
+				<p>Thank you for the tutorial!&nbsp; My computer does not like this&#8230; I can&#8217;t seem to get past the very first part.</p>
+
+<p>I&#8217;m running 10.4.11.&nbsp; I&#8217;ve created the .bash_login file and tested it&#8230; but here&#8217;s what I get</p>
+
+<p>***********<br />
+Last login: Fri May  9 17:26:16 on ttyp1<br />
+Welcome to Darwin!</p>
+
+<p>-bash: &#123;rtf1macansicpg10000cocoartf824cocoasubrtf470: command not found</p>
+
+<p>-bash: /Users/jay-ota/.bash_login: line 2: syntax error near unexpected token `&#125;&#8217;</p>
+
+<p>-bash: /Users/jay-ota/.bash_login: line 2: `&#123;fonttblf0fswissfcharset77 Helvetica;&#125;&#8217;<br />
+***********</p>
+
+<p>Gah!&nbsp; What is this?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Jason</span> &bull; 09 May 2008</p>
+				<p>Ahah!&nbsp; Nevermind.&nbsp; I used textedit to create the file and somehow all those hidden commands that specify font, color and such must have gotten saved with it.&nbsp; I used vi in terminal and cleared the problem up.
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author"><a href="http://Nothing">Nat</a></span> &bull; 12 May 2008</p>
+				<p>Bingo man! What a tutorial. Took me 75 minutes but everything is fine ... I am riding on the Rails baby!
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Aidan C.</span> &bull; 15 May 2008</p>
+				<p>Hi, I hope someone is still reading this far down the comments and can help.</p>
+
+<p>I must admit first off that I have done very very little with the terminal or linux type commands.</p>
+
+<p>I&#8217;m getting the &#8220;ruby 1.8.2&#8221; problem, which has been mentioned in previous comments. </p>
+
+<p>That first step of ammending the .bash_login file was very problematic for me. I downloaded text mate to try to try to keep rigidly to the tutorial and copy and paste whenever possible, but the listed command didn&#8217;t work for me. I made the file, copying in the appropriate lines, in text wrangler and saved (got the warning message that it would be a hidden system file) and was even able to view the file in the terminal with vi and the appropriate lines appear to be there. <br />
+The ~/.bash_login command was responded to with a &#8220;Permission denied&#8221;&nbsp; which is frustrating. I do have the correct password for all the sudo commands.</p>
+
+<p>The tutorial suggests I &#8220;go back and check my work&#8221; but I think I&#8217;m too severely a n00b for that to mean anything to me.</p>
+
+<p>John G in the comments suggested using the &#8216;set&#8217; command, but I don&#8217;t follow what he meant for us to do.</p>
+
+<p>Can any kind, patient people help me out here?
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Aidan C.</span> &bull; 16 May 2008</p>
+				<p>Following up on my earlier comment:</p>
+
+<p>I saw some of the other comments mentioned editing the .bash_profile file. I don&#8217;t have that file, just the .bash_login file I created (which doesn&#8217;t seem to be doing what I hoped it would) and a .bash_history file.</p>
+
+<p>any suggestions?
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author"><a href="http://snowmaninthesun.com">snowmaninthesun</a></span> &bull; 16 May 2008</p>
+				<p>If you run into a problem installing ruby and are getting an error saying , try manually creating a blank /Library/Ruby folder, along with blank /usr/bin/ruby and /usr/bin/gem  folders. (if you want to open the bin directory simply type open /usr/bin). I had to do this to get my install to work correctly. I also  changed on line on configuration to </p>
+
+<p>./configure&#8212;prefix=/usr/local&#8212;disable-pthread&#8212;with-readline-dir=/usr/local&#8212;enable-shared</p>
+
+<p>hope this helps
+</p>
+			</div>
+			
+			<div class="comment even">
+				<p class="byline"><span class="comment-author">Rich</span> &bull; 17 May 2008</p>
+				<p>Fantastic article - so useful for those of us using older computers. Thank you.
+</p>
+			</div>
+			
+			<div class="comment odd">
+				<p class="byline"><span class="comment-author">Ethan</span> &bull; 18 May 2008</p>
+				<p>.Bash_login PATH SOLUTION</p>
+
+<p>Copy and paste the path command above directly into your command line in root, you don&#8217;t need to modify the .bash_login file.</p>
+
+<p>This took me a while, but it works
+</p>
+			</div>
+			
+		</div>
+		
+		<div id="comment-form">
+			<h3>Add a Comment</h3>
+		
+				<div id="disclaimer">
+					<p>I welcome your comments on this article. Please complete the form below to add to the conversation.</p>
+					<p><strong>Note:</strong> I reserve the right to edit or remove any comment that is deemed inappropriate, off-topic, or offensive.</p>
+		    </div>
+		
+				Commenting is not available in this section entry.
+			
+	</div>
+
+</div>
+
+<script type="text/javascript">
+function clearField(myField) {
+	myField.value = "";
+}
+</script>
+
+<div id="sidebar">
+
+	<div id="about">
+		<p><strong>Hivelogic</strong> is a website about discovering quality, living more efficiently, and leading a simpler, more mindful life. Established in 2000 by <a href="/about">Dan Benjamin</a>, there are over 477 articles, reviews, and links. <a href="/about">Read&nbsp;more&nbsp;&raquo;</a></p>
+	</div>
+
+	<hr />
+
+	<div id="dispatch">
+		<p><a href="/newsletter"><img src="/img/newspaper.png" /> Get the Hivelogic Newsletter</a></p>
+	</div>
+
+	<div id="feed">
+		<p><a href="/feed"><img src="/img/feed-icon.png" /> Subscribe to the RSS Feed</a></p>
+	</div>
+
+	<div id="rev">
+		<script src="/js/fusion.js" type="text/javascript"></script>
+		<div id="powered-by">
+			<a href="http://fusionads.net" title="Ads Powered by Fusion">Ads by Fusion</a>
+			<br style="clear: both;" />
+		</div>
+	</div>
+
+	<div id="sponsorship">
+		<p><a href="/sponsorship"><img src="/img/transmit.png" /> Sponsor Hivelogic</a></p>
+	</div>
+
+	<div id="follow">
+			<a href="http://twitter.com/danbenjamin"><img src="/img/service-icons/twitter.png" height="16" width="16" /></a><a href="http://flickr.com/photos/danbenjamin"><img src="/img/service-icons/flickr.png" height="16" width="16" /></a><a href="http://www.linkedin.com/in/danbenjamin"><img src="/img/service-icons/linkedin.png" height="16" width="16" /></a><a href="http://www.facebook.com/people/Dan-Benjamin/722470737"><img src="/img/service-icons/facebook.png" height="16" width="16" /></a><a href="http://friendfeed.com/danbenjamin"><img src="/img/service-icons/friendfeed.png" height="16" width="16" /></a><a href="http://delicious.com/danbenjamin"><img src="/img/service-icons/delicious.png" height="16" width="16" /></a><a href="http://digg.com/users/danbenjamin"><img src="/img/service-icons/digg.png" height="16" width="16" /></a><a href="http://www.viddler.com/explore/danbenjamin"><img src="/img/service-icons/viddler.png" height="16" width="16" /></a><a href="http://vimeo.com/danbenjamin"><img src="/img/service-icons/vimeo.png" height="16" width="16" /></a><a href="http://www.dopplr.com/traveller/db"><img src="/img/service-icons/dopplr.png" height="16" width="16" /></a><a href="http://www.tripit.com/people/danbenjamin"><img src="/img/service-icons/tripit.png" height="16" width="16" /></a>
+	</div>
+
+<div id="reviews">
+
+	<a href="/articles/view/review-starbucks-via" title="Starbucks VIA Review: Just Stir and Enjoy?"><img src="/img/sidebar/review-starbucks-via.png" height="100" width="300" alt="Starbucks VIA Review: Just Stir and Enjoy?" /></a>
+
+	<a href="/articles/view/newertech-voyager-q-review" title="Review: The NewerTech Voyager Q Drive Dock"><img src="/img/sidebar/review-voyager-q.png" height="100" width="300" alt="Review: The NewerTech Voyager Q Drive Dock" /></a>
+
+</div>
+
+<hr />
+
+<div id="categories">
+
+	<h2>Categories <span style="font-size: 12px; font-weight: normal;"></span></h2>
+	<ul>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/podcasting/">Podcasting</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/creativity/">Creativity</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/design/">Design</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/development/">Development</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/gear/">Gear</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/efficiency/">Efficiency</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/life/">Life</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/opinion/">Opinion</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/web/">Web</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/photography/">Photography</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/software/">Software</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/speaking/">Speaking</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/reviews/">Reviews</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/tips/">Tips and Tricks</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/technology/">Technology</a></li>
+	
+	<li><a href="http://hivelogic.com/articles/page/category/tutorials/">Tutorials</a></li>
+	
+	<li><a href="/categories">More &raquo;</a></li>
+	</ul>
+
+</div>
+
+
+<hr />
+
+<div id="recent">
+
+	<h2>Recent Articles</h2>
+	<ul>
+	
+		<li><a href="/articles/view/review-starbucks-via">Starbucks VIA Review: Just Stir and Enjo &hellip;</a></li>
+	
+		<li><a href="/articles/view/sponsor-the-hivelogic-rss-feed">Sponsor the Hivelogic RSS Feed &hellip;</a></li>
+	
+		<li><a href="/articles/view/newertech-voyager-q-follow-up">NewerTech Voyager Q Follow-Up &hellip;</a></li>
+	
+		<li><a href="/articles/view/newertech-voyager-q-review">Review: The NewerTech Voyager Q Drive Do &hellip;</a></li>
+	
+		<li><a href="/articles/view/the-safari-cookie-issue-fixed">The Safari Cookie Issue: Fixed &hellip;</a></li>
+	
+	<li><a href="/articles">More &raquo;</a></li>
+	</ul>
+
+</div>
+
+</div>
+
+
+<div id="footer">
+	<p>&copy; Copyright 2000-2009 Hivelogic Corporation. All Rights Reserved.</p>
+</div>
+
+</body>
+
+</html>
+

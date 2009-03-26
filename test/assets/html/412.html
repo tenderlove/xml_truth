@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Ruby on Rails Podcast |  Odeo: Search, Discover and Share Digital Media from Millions of Audio and Video Clips</title>	
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Odeo" href="http://odeo.com/opensearch.xml">
+    
+    <link href="/stylesheets/global.css?1228417856" media="screen" rel="stylesheet" type="text/css" />
+
+    <!--[if lt IE 7]><link href="/stylesheets/ie6.css?1228417856" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="/stylesheets/ie7.css?1228417856" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+
+    <link href="/stylesheets/jquery.qtc.css?1228417856" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 6]>
+      <link href="/stylesheets/jquery.qtc.ie6.css?1228417856" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+
+    <script src="/javascripts/all.js?1228417891" type="text/javascript"></script>
+    
+    
+
+  </head>
+  <body>
+
+    
+    <div id="ad_top">
+      <div class="center_wrap">
+        
+  <!--/* Openads Javascript Tag v2.4.3 (Rich Media - Openads) */-->
+<script type='text/javascript'><!--//<![CDATA[
+   document.MAX_ct0 ='{clickurl}';
+
+   var m3_u = (location.protocol=='https:'?'https://openads.odeo.com/www/delivery/ajs.php':'http://openads.odeo.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=483");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://openads.odeo.com/www/delivery/ck.php?n=a691e8b5&amp;cb={random}' target='_blank'><img src='http://openads.odeo.com/www/delivery/avw.php?zoneid=483&amp;n=a691e8b5&amp;ct0={clickurl}' border='0' alt='' /></a></noscript>
+
+      </div><!-- /center_wrap -->
+    </div><!-- /ad_top -->
+    
+
+    <div id="mast">
+      <div class="center_wrap clearfix">
+        <h1>
+          <a href="http://odeo.com/"><img alt="Odeo" src="/images/logo.gif?1228417856" /></a>
+        </h1>
+        <div id="nav_util">
+  <ul id="nav_util_list">
+  
+  <li class="no_drop">
+    <a href="http://odeo.com/quicklist" id="quicklist_link">Quicklist</a>      </li>
+  <!-- <li><a href="http://odeo.com/blog">Beta Blog</a></li> -->
+  
+    <li class="no_drop"><a href="/users/new">Create Account</a></li>
+    <li class="last">
+      <a href="#" onclick="new Ajax.Request('/login.js', {asynchronous:true, evalScripts:true}); return false;">Log In</a>
+    </li>
+  
+</ul>
+</div><!-- /nav_util -->
+<div id="nav_bar">
+  <div id="nav_cat">
+    <a href="/categories" id="link_cat">Categories</a>
+    <!-- <a href="/categories" class="nav_arrw">See More</a> -->
+    <div id="category_drop_down" class="drop_down">
+      <ul><li><a href="/categories/12-Arts">Arts</a></li>
+<li><a href="/categories/17-Business">Business</a></li>
+<li><a href="/categories/22-Comedy">Comedy</a></li>
+<li><a href="/categories/27-Education">Education</a></li>
+<li><a href="/categories/32-Entertainment">Entertainment</a></li></ul>
+<ul><li><a href="/categories/37-Hobbies">Hobbies</a></li>
+<li><a href="/categories/42-Lifestyle">Lifestyle</a></li>
+<li><a href="/categories/46-People">People</a></li>
+<li><a href="/categories/51-Politics">Politics</a></li>
+<li><a href="/categories/56-Science">Science</a></li></ul>
+<ul><li><a href="/categories/60-Spirituality">Spirituality</a></li>
+<li><a href="/categories/64-Sports">Sports</a></li>
+<li><a href="/categories/69-Technology">Technology</a></li></ul>
+
+      <div class="clear"></div>
+    </div><!-- /drop_down -->
+  </div><!-- /nav_cat -->
+  <form action="/search" method="get">
+    <input id="query" name="query" type="text" value="Find video &amp; audio from thousands of sites" />
+    <button type="submit">Search</button>
+  </form>
+</div><!-- /nav_bar -->
+
+      </div><!-- /center_col -->
+    </div><!-- /mast -->
+
+    <div id="main_wrap">
+      <div class="center_wrap clearfix">
+        
+
+
+
+
+
+
+
+<div id="channel_brand"><!-- insert brand here --></div>
+
+<div id="channel" class="clearfix">
+  <img alt="" class="channel_img" height="200" src="/images/placeholder-podcast.jpg?1228417856" width="200" />
+  <div class="channel_info">
+    <h3 class="no_bottom">Ruby on Rails Podcast</h3>
+    <h4>
+      <a href="/channels/5297-Ruby-on-Rails-Podcast/episodes">72 Episodes</a> - 
+      
+      0 Reviews -
+      <span class="subscriber_count_link">
+      <a href="/channels/5297-Ruby-on-Rails-Podcast/subscribers">886 Subscribers</a>
+      
+      </span>
+    </h4>
+    <p class="no_bottom">
+      <br />
+      
+    </p>       
+
+    <p>News and interviews about the <a href="http://ruby-lang.org">Ruby</a> language and the <a href="http://rubyonrails.org">Rails</a> website framework.</p>
+    
+    
+
+  </div><!-- /channel_info -->
+  
+  <div id="channel_meta">
+    
+      <form action="#" id="subscription-form" method="post" onsubmit="return false">
+      <button id="sub-button">Subscribe</button>
+      <div class="info" id="not-logged-in" style="display:none;">You must be <a href="/session/new">logged in</a> to subscribe.</div>
+      </form>
+    
+    <p class="meta">
+      Updated about 1 year ago<br />
+      
+      
+      <a href="http://podcast.rubyonrails.org">Website</a><br />
+      
+      <span class="rss_black"></span><br />
+      All rights reserved by creator  
+      &nbsp; <!-- itunes feed -->
+    </p>    
+    <p id="claim_feed">
+      
+      <a href="/channels/5297-Ruby-on-Rails-Podcast/report_problem">Report a Problem</a>
+    </p>
+  </div><!-- /channel_meta -->
+                    
+  <div class="clear"></div>
+</div><!-- /channel -->
+
+<div id="channel_left" class="left">
+  
+
+  <div class="module_wrap">
+    <a href="/channels/5297-Ruby-on-Rails-Podcast/episodes" class="gray right view_all_ep">View All 72 Episodes in the Archive &raquo;</a>
+    <h3>Recent Episodes</h3>
+    <div class="module_body clearfix">
+      <!-- max 8 -->
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_18674043')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="18674043" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/18674043-Rob-McKinnon-TheyWorkForYou-co-nz-Ruby-on-Rails-Podcast"><img alt="Rob McKinnon: TheyWorkForYou.co.nz - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_18674043" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/18674043-Rob-McKinnon-TheyWorkForYou-co-nz-Ruby-on-Rails-Podcast" title="Rob McKinnon: TheyWorkForYou.co.nz - Ruby on Rails Podcast">Rob McKinnon: TheyWorkForYou.co....</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_18674013')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="18674013" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/18674013-RailsConf-Europe-2007-Ruby-on-Rails-Podcast"><img alt="RailsConf Europe 2007 - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_18674013" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/18674013-RailsConf-Europe-2007-Ruby-on-Rails-Podcast" title="RailsConf Europe 2007 - Ruby on Rails Podcast">RailsConf Europe 2007 - Ruby on ...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_18674003')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="18674003" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/18674003-Michael-Koziarski-Ruby-on-Rails-Podcast"><img alt="Michael Koziarski - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_18674003" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/18674003-Michael-Koziarski-Ruby-on-Rails-Podcast" title="Michael Koziarski - Ruby on Rails Podcast">Michael Koziarski - Ruby on Rail...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_16606473')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="16606473" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/16606473-Christian-Neukirchen-Ruby-on-Rails-Podcast"><img alt="Christian Neukirchen - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_16606473" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/16606473-Christian-Neukirchen-Ruby-on-Rails-Podcast" title="Christian Neukirchen - Ruby on Rails Podcast">Christian Neukirchen - Ruby on R...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        <div class="clear"></div>
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_16606313')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="16606313" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/16606313-eRubyCon-Bruce-Tate-Ruby-on-Rails-Podcast"><img alt="eRubyCon - Bruce Tate - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_16606313" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/16606313-eRubyCon-Bruce-Tate-Ruby-on-Rails-Podcast" title="eRubyCon - Bruce Tate - Ruby on Rails Podcast">eRubyCon - Bruce Tate - Ruby on ...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_14977923')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="14977923" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/14977923-Ruby-en-Rails-Amsterdam-Ruby-on-Rails-Podcast"><img alt="Ruby en Rails Amsterdam - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_14977923" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/14977923-Ruby-en-Rails-Amsterdam-Ruby-on-Rails-Podcast" title="Ruby en Rails Amsterdam - Ruby on Rails Podcast">Ruby en Rails Amsterdam - Ruby o...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_13406343')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="13406343" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/13406343-Roundtable-Women-in-Development-II-Ruby-on-Rails-Podcast"><img alt="Roundtable: Women in Development II - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_13406343" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/13406343-Roundtable-Women-in-Development-II-Ruby-on-Rails-Podcast" title="Roundtable: Women in Development II - Ruby on Rails Podcast">Roundtable: Women in Development...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        
+      
+        <div class="search_box_grid"><div class="aud_cont">
+  <form action="/playlist_entries" class="playlist-add-form" method="post" onsubmit="new Ajax.Request('/playlist_entries', {asynchronous:true, evalScripts:true, onComplete:function(request){toggleAddButton('playlist_add_12851013')}, parameters:Form.serialize(this)}); return false;">
+  <input id="entry_episode_id" name="entry_episode_id" type="hidden" value="12851013" />
+  
+    <span class="channel_thumb">
+      <a href="/episodes/12851013-Roundtable-Women-in-Development-Ruby-on-Rails-Podcast"><img alt="Roundtable: Women in Development - Ruby on Rails Podcast" src="/images/placeholder-podcast.jpg?1228417856" /></a>
+    </span>
+  
+
+  <button class="add playlist_add " id="playlist_add_12851013" type="submit">Add this to your Quicklist</button>
+  </form>
+</div>
+
+          <p class="blue"><a href="/episodes/12851013-Roundtable-Women-in-Development-Ruby-on-Rails-Podcast" title="Roundtable: Women in Development - Ruby on Rails Podcast">Roundtable: Women in Development...</a></p>
+          <p>about 1 year old</p>
+        </div><!-- /search_box_grid -->
+        <div class="clear"></div>
+      
+    </div><!-- /search_body -->
+  </div><!-- /search_wrap -->
+  
+  <div class="module_wrap" id="review-div2">
+    <h3>Recent Reviews</h3>
+    
+
+    <!-- TODO: handle not-logged-in -->
+    <form action="/channels/5297-Ruby-on-Rails-Podcast/reviews" class="review_form clearfix" id="new_review" method="post">
+      <h4 id="review-header" style="display:none;">Leave a Review</h4>
+      
+      <p id='review_link'>You must be <a href="/session/new">logged in</a> to review channels.</p>
+      
+      </form>
+    </div>
+  </div><!-- /module_wrap -->
+
+  <div class="right side_300">
+    <p class="no_top"><!--/* Openads Javascript Tag v2.4.3 (Rich Media - Openads) */-->
+<script type='text/javascript'><!--//<![CDATA[
+   document.MAX_ct0 ='{clickurl}';
+
+   var m3_u = (location.protocol=='https:'?'https://openads.odeo.com/www/delivery/ajs.php':'http://openads.odeo.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=503");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
+       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
+   }
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a href='http://openads.odeo.com/www/delivery/ck.php?n=a595522d&amp;cb={random}' target='_blank'><img src='http://openads.odeo.com/www/delivery/avw.php?zoneid=503&amp;n=a595522d&amp;ct0={clickurl}' border='0' alt='' /></a></noscript></p>
+
+    
+    <h4 class="block_hd no_bottom">Subscribers</h4>
+    <div id="followers" class="clearfix">
+      <!-- max 15 -->
+      
+      <a href="/users/bluejet"><img alt="bluejet" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/greenideas"><img alt="greenideas" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/slobor"><img alt="slobor" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/ChrisMcGrath"><img alt="ChrisMcGrath" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/AlexWayne"><img alt="AlexWayne" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/JohanEckerstrm"><img alt="JohanEckerstrm" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/JonWood"><img alt="JonWood" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/GrahamMcIntire"><img alt="GrahamMcIntire" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/DavidBaxter"><img alt="DavidBaxter" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/Bytheway"><img alt="Bytheway" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/Chaosengine"><img alt="Chaosengine" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/TobiasBergius"><img alt="TobiasBergius" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/RandyFischer"><img alt="RandyFischer" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/Kneath"><img alt="Kneath" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <a href="/users/RaulViigipuu"><img alt="RaulViigipuu" class="profile_thumb" src="/images/placeholder-user.jpg?1228417856" /></a>
+      
+      <div class="clear"></div>
+      
+        <a href="/channels/5297-Ruby-on-Rails-Podcast/subscribers">View All 886 Subscribers</a>
+      
+    </div><!-- /guide_followers -->
+    
+  </div>
+
+  <div class="clear"></div>
+
+  
+  
+  
+</div><!-- /channel_left -->
+
+
+<script type="text/javascript">
+  record_matchmine_event(5297, 5, "production", "");
+</script>
+        <div class="clear"></div>
+      </div><!-- /center_wrap -->
+    </div><!-- /main_wrap -->
+
+    
+
+    <div id="footer">
+  <div class="center_wrap clearfix">
+    <div id="foot1">
+      
+        <h5>Browse Categories</h5>
+        <ul><li><a href="/categories/12-Arts">Arts</a></li>
+<li><a href="/categories/17-Business">Business</a></li>
+<li><a href="/categories/22-Comedy">Comedy</a></li>
+<li><a href="/categories/27-Education">Education</a></li>
+<li><a href="/categories/32-Entertainment">Entertainment</a></li></ul>
+<ul><li><a href="/categories/37-Hobbies">Hobbies</a></li>
+<li><a href="/categories/42-Lifestyle">Lifestyle</a></li>
+<li><a href="/categories/46-People">People</a></li>
+<li><a href="/categories/51-Politics">Politics</a></li>
+<li><a href="/categories/56-Science">Science</a></li></ul>
+<ul><li><a href="/categories/60-Spirituality">Spirituality</a></li>
+<li><a href="/categories/64-Sports">Sports</a></li>
+<li><a href="/categories/69-Technology">Technology</a></li></ul>
+
+      
+    </div>
+
+    <div id="foot2">
+      <h5>Our Company</h5>
+      <ul>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/blog">Our Blog</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/advertising">Advertising</a></li>
+      </ul>
+    </div>
+
+    <div id="foot3">
+      <h5>Actions</h5>
+      <ul>
+        <li><a href="/login">Log in</a></li>
+        <li><a href="/users/new">Create Account</a></li>
+        <li><a href="/feedback/new">Contact Us</a></li>
+        <li id="add_feed"><a href="/user_feeds/new">Submit a Feed</a></li>
+      </ul>
+    </div>
+
+    <div id="foot4">
+      <h5>Legal Stuff</h5>
+      <ul>
+        <li><a href="/terms">Terms of Use</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/copyright">Copyright Statement</a></li>
+      </ul>
+      <p>Copyright &copy; 2007-2008 Odeo.com, A Sonic Mountain Company</p>
+    </div>
+  </div><!-- /center_wrap -->
+</div><!-- /footer -->
+
+
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-3327014-4");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  </script>
+
+  <!-- Start Quantcast tag -->
+
+  <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+  <script type="text/javascript">
+    _qacct="p-35zuLaxAQCNhQ";quantserve();</script>
+  <noscript>
+    <img src="http://pixel.quantserve.com/pixel/p-35zuLaxAQCNhQ.gif" style="display: none" height="1" width="1" alt="Quantcast"/>
+  </noscript>
+  <!-- End Quantcast tag -->
+
+
+
+  </body>
+</html>

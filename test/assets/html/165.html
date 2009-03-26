@@ -1,0 +1,933 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Ruby</title>
+  <meta name="description" content="Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, extensible, and portable." />
+  <meta name="keywords" content="Ruby, license, code,code quality, duck-typed, closures, object-oriented, vm, multi-platform, tools, interpreter, ruby, programming, language, development, scripting, dynamic, programming_language, compiler, metaprogramming, open-objects, ducktype" />
+
+  <link href="http://www.ohloh.net/stylesheets/main.css?1237830576" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://www.ohloh.net/stylesheets/thickbox.css?1237829738" media="screen" rel="stylesheet" type="text/css" />
+  <!--[if IE]>
+	<link href="http://www.ohloh.net/stylesheets/ie_hacks.css?1237829738" media="screen" rel="stylesheet" type="text/css" />
+  <script defer type="text/javascript" src="/javascripts/pngfix.js"></script>
+  <![endif]-->
+
+  <script src="http://www.ohloh.net/javascripts/jquery-1.2.6-with-plugins.min.js?1237829738" type="text/javascript"></script>
+  <script src="http://www.ohloh.net/javascripts/main.js?1237829738" type="text/javascript"></script>
+
+
+
+
+  
+
+  
+  </head>
+<body>
+  <div id="page">
+    <div class='row' id='mast'>
+  <div class='logos'>
+    <ul class='services'>
+      <li>Root</li>
+      <li class='new_classifieds'>
+        <a href='http://classifieds.ohloh.net'>Classifieds</a>
+        <div class='glyph'></div>
+      </li>
+      <li>
+        <a href='http://labs.ohloh.net'>Labs</a>
+      </li>
+    </ul>
+    <a class='ohloh' href='http://www.ohloh.net/'>    </a>
+    <a class='root' href='http://www.ohloh.net/'>    </a>
+  </div>
+</div>
+    <div class='row'>
+  <ul class='select_ main_menu clear'>
+    <li class='search'>
+      <form action='/search' class='search'>
+        <input class='text' name='q' type='text' />
+      </form>
+    </li>
+    <li class='session'>
+      <a href="http://www.ohloh.net/accounts/new"><span>Register</span></a>
+    </li>
+    <li class='session'>
+      <a href="http://www.ohloh.net/sessions/new"><span>Login</span></a>
+    </li>
+    <li class='home'><a href="/"><span>Home</span></a></li>
+    <li class='people'><a href="/people"><span>People</span></a></li>
+    <li class='projects'><a href="/p"><span>Projects</span></a></li>
+    <li class='forums'><a href="/forums"><span>Forums</span></a></li>
+    <li class='tools'><a href="/tools"><span>Tools</span></a></li>
+  </ul>
+  <ul class='nomargin session' style='display:none'>
+    <li><a href="/sessions/new">Login</a></li>
+    <li><a href="/accounts/new">Register</a></li>
+  </ul>
+</div>
+
+    
+    
+    
+    
+
+    <div class="row">
+      <div class="col span_13 prepend_3 last">
+      </div>
+    </div>
+<div class='row'>
+  <div class='col span_3 layout_anchor'>
+    <div class='inset_middle'>
+      <a href='/p/ruby'>
+        <img alt="Ruby_med" class="logo" src="http://bits.ohloh.net/attachments/280/ruby_med.png" />
+      </a>
+    </div>
+  </div>
+  <div class='col span_13 last layout_h1 float_right'>
+    <div class='inset_middle'>
+      <h1><a href="/p/ruby">Ruby</a></h1>
+    </div>
+  </div>
+</div>
+<div class='row'>
+  <div class='col span_3'>
+        <div class='sidebar mezzo sidebar_project'>
+      <div class='actions'>
+        <h6>
+          General
+        </h6>
+        <ul>
+          <li class=' selected first'>
+            <a class='' href='/p/ruby'>
+              Summary
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/messages'>
+              Journal Entries
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/reviews'>
+              Reviews
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/links'>
+              Links
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/rss_articles'>
+              News
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/managers'>
+              Managers
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/widgets'>
+              Widgets
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class='actions'>
+        <h6>
+          Development
+        </h6>
+        <ul>
+          <li class=' first'>
+            <a class='' href='/p/ruby/analyses/latest'>
+              Code Analysis
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/contributors'>
+              Contributors
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/commits'>
+              Commits
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/enlistments'>
+              Enlistments
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class='actions'>
+        <h6>
+          Edit
+        </h6>
+        <ul>
+          <li class=' first'>
+            <a class='' href='/p/ruby/permissions'>
+              Permissions
+            </a>
+          </li>
+          <li class=' '>
+            <a class='' href='/p/ruby/edits'>
+              History
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class='one' />
+  </div>
+  <div class='col span_13 last mezzo'>
+    
+    <div class='col span_7 mezzo'>
+      <div class='clear inset'>
+        <p>Ruby is the interpreted scripting language for quick and easy object-oriented programming. It has many features to process text files and to do system management tasks (as in Perl). It is simple, straight-forward, extensible, and portable.</p>
+      </div>
+      <div class='clear inset mezzo'>
+        <a class='needs_login follow' href='#'>
+          Follow
+        </a>
+        <a class='float_right follow_count' href='/p/ruby/followers'>
+          16 followers
+        </a>
+        <h4 class='nomargin'>Journal Entries</h4>
+        <div class='clear'>
+          <div class='float_right'>
+            <a class='timeline_link' href='/p/ruby/messages/timeline'>Timeline View</a>
+          </div>
+        </div>
+        <div class='message clear'>
+          <a href="/accounts/andy" class="avatar "><img alt="Avatar" class="avatar" height="20" src="http://www.gravatar.com/avatar.php?gravatar_id=703af3ffb33c7420b6fcd497df1d741a&amp;rating=PG&amp;size=20&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="20" /></a>
+          <div class='content'>
+            <p class='body'>
+              Somewhat surprised by the lack of native <a href='http://www.ohloh.net/projects/ruby'>ruby</a> xml validation options. Good alternative seems to be xmllint, a utility that comes with <a href='http://www.ohloh.net/projects/libxml2'>libxml2</a>
+              <span class='attribution'>
+                <a href="/accounts/andy">andy</a>
+                <span class='date'>
+                  &mdash;
+                  8 months
+                  ago
+                </span>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class='message clear'>
+          <a href="/accounts/jason" class="avatar "><img alt="Avatar" class="avatar" height="20" src="http://www.gravatar.com/avatar.php?gravatar_id=9dbaca493199c57710e53b56310f659d&amp;rating=PG&amp;size=20&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="20" /></a>
+          <div class='content'>
+            <p class='body'>
+              is <a href='http://www.ohloh.net/projects/ruby'>ruby</a> 1.9 really faster than <a href='http://www.ohloh.net/projects/python'>python</a>?
+              <span class='attribution'>
+                <a href="/accounts/jason">jason</a>
+                <span class='date'>
+                  &mdash;
+                  8 months
+                  ago
+                </span>
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class='message clear'>
+          <a href="/accounts/robin" class="avatar "><img alt="Avatar" class="avatar" height="20" src="http://www.gravatar.com/avatar.php?gravatar_id=63f26c4a00677ea1e8b14d2a56efb104&amp;rating=PG&amp;size=20&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="20" /></a>
+          <div class='content'>
+            <p class='body'>
+              OMG <a href='http://www.ohloh.net/projects/ruby'>ruby</a> is great but man it is surrounded by so much cruft. <a href='http://www.ohloh.net/projects/rubygems'>rubygems</a> and <a href='http://www.ohloh.net/projects/rake'>rake</a> are so frustrating.
+              <span class='attribution'>
+                <a href="/accounts/robin">robin</a>
+                <span class='date'>
+                  &mdash;
+                  10 months
+                  ago
+                </span>
+              </span>
+            </p>
+          </div>
+        </div>
+        <a href="/p/ruby/messages">See All Journal Entries</a>
+      </div>
+      <hr class='one' />
+      <div class='clear c1_light piano'>
+        <div class='inset'>
+          <h4>Ohloh Analysis Summary</h4>
+                        <ul class="factoids">
+                                <li class="neutral"><a href="/wiki/mostly_written">Mostly written in Ruby</a></li>
+                              <li class="good"><a href="http://www.ohloh.net/p/ruby/factoids/1338359">Mature, well-established codebase</a></li>
+                    <li class="good"><a href="http://www.ohloh.net/p/ruby/factoids/1338358">Very large, active development team</a></li>
+                    <li class="good"><a href="http://www.ohloh.net/p/ruby/factoids/1338360">Increasing year-over-year development activity</a></li>
+                    <li class="warning"><a href="http://www.ohloh.net/p/ruby/factoids/1338361">Few source code comments</a></li>
+                    <li class="warning"><a href="http://www.ohloh.net/p/ruby/factoids/1338362">Artistic License may conflict with GPL</a></li>
+                  </ul>
+          <p class='updated'>Updated 26 Mar 2009 07:39 UTC</p>
+        </div>
+      </div>
+      <hr class='one' />
+      <div class='piano'>
+        <div class='inset_top'>
+          <h4>Ratings & Reviews</h4>
+        </div>
+        <div class='clear' id='community_and_your_rating'>
+          <div class='col span_3'>
+            <div class='inset_middle'>
+              <h6 class='soft'>Community Rating</h6>
+              <div class='nomargin clear'>
+                <span class='score_text'>4.6/5.0</span>
+                <span class='jrating' id='average_rating_stars' read_only='t' score='4.57862' star_style='big'>        </span>
+              </div>
+              <p class='soft small' id='average_rating_details_2'>
+                Based on
+                159
+                user ratings.
+              </p>
+            </div>
+          </div>
+          <div class='col span_3 last'>
+            <div class='inset_middle'>
+              <h6 class='soft'>Your Rating</h6>
+              <div class='nomargin clear'>
+                <div class='needs_login jrating' id='ruby' score='0' star_style='big'>        </div>
+              </div>
+              <p class='soft small'>
+                Click to rate this project.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class='review hreview helpful_container clear inset' id='review_10'>
+          <abbr class='dtreviewed date' title='Wed Jan 17 01:44:26 UTC 2007'>
+            over 2 years
+            ago
+          </abbr>
+          <img alt="Avatar" class="avatar" height="48" src="http://www.gravatar.com/avatar.php?gravatar_id=b19cc9ca0d94204f4cb5ab3a0d46d444&amp;rating=PG&amp;size=48&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon80.gif" width="48" />
+          <h6 class='title'>
+            Great fun, with some quirks
+          </h6>
+          <p class='subline'>
+            			<span id="rating_10">
+            			<span style="font-size:1px;float:left;display:inline;height:13px;width:46px;background:url(/images/stars/stars_ro_mini.png) left bottom">&nbsp;</span>
+            
+            			<span style="font-size:1px;float:left;display:inline;height:13px;width:11px;background:url(/images/stars/stars_0_mini.png) right bottom">&nbsp;</span>
+            			</span>
+            <span class='reviewer vcard'>
+              <span class='by'>by</span>
+              <a class='url fn' href='http://www.ohloh.net/accounts/GrumpyOldMan'>GrumpyOldMan</a>
+            </span>
+          </p>
+          <p class='description'>
+            			After coding for decades, I've been using Ruby for about a year and am thrilled with it. It's my first-choice language for any new project.<br/><br/>The language is very compact and elegant, and you can express a lot of code with very little typing. Unlike some other languages, though, this compact code isn't hard to understand. Ruby code "reads" nicely, and you can write code that looks very much like simple English instructions.<br/><br/>That
+            			<span class="expander">
+            				<span>... <a href="#">[More]</a></span>
+            				<span style="display:none"> said, the Ruby language has some gotchas.<br/><br/>Performance is a real concern, and you'll spend an enormous fraction of your CPU time in the garbage collector.<br/><br/>Ruby's flexibility can get you into a lot of trouble. If you get too enamoured with Ruby's reflection and runtime malleability, you'll really confuse yourself. Evil library authors might redefine an API method without your knowledge and screw up your code. The behaviour of objects that implement "method_missing()" can be hard to predict. Etc...<br/><br/>The core language itself has a somewhat cluttered API. Time and date classes are a confused mess, and some library method names are unexpected and hard to recall. Unicode support is non-existent.<br/><br/>Quirks aside, though, Ruby's where it's at these days for web site code and scripting. <a href="#">[Less]</a></span>
+            			</span>
+          </p>
+          <p class='helpful soft'>
+            <span class='helpful_above'>
+              <span>
+                7 of 7 users found the following review helpful.
+              </span>
+            </span>
+            <span class='helpful_below soft'>
+              Was this review helpful to you?
+              <a class='needs_login'>Yes</a>
+              |
+              <a class='needs_login'>No</a>
+            </span>
+          </p>
+        </div>
+        <div class='review hreview helpful_container clear inset' id='review_244'>
+          <abbr class='dtreviewed date' title='Wed Jun 13 19:16:57 UTC 2007'>
+            about 1 year
+            ago
+          </abbr>
+          <img alt="Avatar" class="avatar" height="48" src="http://www.gravatar.com/avatar.php?gravatar_id=ac32d6b75a51635ff06dd53a440afe54&amp;rating=PG&amp;size=48&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon80.gif" width="48" />
+          <h6 class='title'>
+            Ruby - the artful language
+          </h6>
+          <p class='subline'>
+            			<span id="rating_244">
+            			<span style="font-size:1px;float:left;display:inline;height:13px;width:46px;background:url(/images/stars/stars_ro_mini.png) left bottom">&nbsp;</span>
+            
+            			<span style="font-size:1px;float:left;display:inline;height:13px;width:11px;background:url(/images/stars/stars_0_mini.png) right bottom">&nbsp;</span>
+            			</span>
+            <span class='reviewer vcard'>
+              <span class='by'>by</span>
+              <a class='url fn' href='http://www.ohloh.net/accounts/gunark'>Matt Zukowski</a>
+            </span>
+          </p>
+          <p class='description'>
+            			Coming from Python, I was at first mildly annoyed by how "loose" Ruby felt. The liberties one is allowed to take with the syntax can seem alarming, especially to someone used to Python's nazi-like enforcement of strict conventions. <br/><br/>Eventually thought it all falls into place, revealing a beautiful language where concepts and processes easily lend themselves to natural representation. It just *feels* right! What's more, once mastered, the
+            			<span class="expander">
+            				<span>... <a href="#">[More]</a></span>
+            				<span style="display:none"> language's messiness encourages the kind of creative problem solving that other languages can only dream of. In Ruby, doing something in a clever way actually feels intrinsically rewarding -- you *want* to make your code concise and clean, and it feels good to do it (unlike in other languages that try to force you to do write good code, but only end up getting in the way).<br/><br/>My only gripe would have to do with the occasional awkwardness one encounters when trying to implement dynamically-generated extensions to objects'/modules' behaviour (for example, dynamically generating some methods when a particular module is included). <a href="#">[Less]</a></span>
+            			</span>
+          </p>
+          <p class='helpful soft'>
+            <span class='helpful_above'>
+              <span>
+                4 of 4 users found the following review helpful.
+              </span>
+            </span>
+            <span class='helpful_below soft'>
+              Was this review helpful to you?
+              <a class='needs_login'>Yes</a>
+              |
+              <a class='needs_login'>No</a>
+            </span>
+          </p>
+        </div>
+        <div class='inset'>
+          <a href="http://www.ohloh.net/p/ruby/reviews/new" class="needs_login">What do you think? Share your opinion!</a>
+        </div>
+      </div>
+      <div class='piano'>
+        <div class='inset'>
+          <h4><a href="http://www.ohloh.net/p/ruby/links">Links</a></h4>
+          <p class='nomargin'>
+            0 links
+            submitted so far.
+            <a href="http://www.ohloh.net/p/ruby/links/new">Submit your own links.</a>
+          </p>
+        </div>
+        
+        <div class='inset'>
+        </div>
+      </div>
+      <div class='piano'>
+        <div class='inset'>
+          <h4><a href="http://www.ohloh.net/p/ruby/rss_articles">News</a></h4>
+          <p><a href="http://www.ohloh.net/p/ruby/rss_subscriptions">Edit RSS feeds.</a></p>
+          <ul>
+            <div class='rss_article inset'>
+              <h6>
+                <a href="http://broadcast.oreilly.com/2009/01/practice.html">Practice</a>
+              </h6>
+              <p class='byline nomargin soft'>
+                <span>
+                  Posted
+                  3 days
+                  ago
+                  by
+                  Simon St. Laurent
+                </span>
+              </p>
+            </div>
+            <div class='rss_article inset'>
+              <h6>
+                <a href="http://fyi.oreilly.com/2009/01/rubyist-pat-eyler-interviews-r.html">Rubyist Pat Eyler Interviews Ruby Best Practises Author Gregory Brown</a>
+              </h6>
+              <p class='byline nomargin soft'>
+                <span>
+                  Posted
+                  3 days
+                  ago
+                  by
+                  Sara Peyton
+                </span>
+              </p>
+            </div>
+            <div class='rss_article inset'>
+              <h6>
+                <a href="http://radar.oreilly.com/2009/01/github-making-code-more-social.html">Github: Making Code More Social</a>
+              </h6>
+              <p class='byline nomargin soft'>
+                <span>
+                  Posted
+                  3 days
+                  ago
+                  by
+                  Brady Forrest
+                </span>
+              </p>
+            </div>
+            <div class='rss_article inset'>
+              <h6>
+                <a href="http://fyi.oreilly.com/2009/02/what-is-enterprise-dan-chak-ex.html">What Is Enterprise? Dan Chak Explains</a>
+              </h6>
+              <p class='byline nomargin soft'>
+                <span>
+                  Posted
+                  3 days
+                  ago
+                  by
+                  Sara Peyton
+                </span>
+              </p>
+            </div>
+            <div class='rss_article inset'>
+              <h6>
+                <a href="http://feedproxy.google.com/~r/oreilly/ruby/~3/FJOovXCl48I/what-is-enterprise-dan-chak-ex.html">What Is Enterprise? Dan Chak Explains</a>
+              </h6>
+              <p class='byline nomargin soft'>
+                <span>
+                  Posted
+                  about 1 month
+                  ago
+                  by
+                  Sara Peyton
+                </span>
+              </p>
+            </div>
+          </ul>
+          <p><a href="http://www.ohloh.net/p/ruby/rss_articles">Read all Ruby articles&#0133;</a></p>
+        </div>
+      </div>
+    </div>
+    <div class='col span_6 mezzo last'>
+      <div class='inset'>
+        <a href="/p/ruby/external_download" class="external" onclick="var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'post'); f.appendChild(m);f.submit();return false;">Download Page</a>
+        <dd class='small soft'>39 downloads</dd>
+      </div>
+      <div class='c1_light'>
+        <div class='inset'>
+          <dl class='nomargin'>
+            <dt class='first'><a href="http://www.ruby-lang.org/">Homepage</a></dt>
+            <dd class='small soft'><a href="http://www.ruby-lang.org/">http://www.ruby-lang.org/</a></dd>
+            <dt class='first'>Licensed under</dt>
+            <dd><a href="http://www.ohloh.net/licenses/3">GNU General Public License 2.0</a> and <a href="http://www.ohloh.net/licenses/60">Ruby License</a></dd>
+            <dt class='first'>Tagged as</dt>
+            <dd>
+              <a class='noborder' href='/p/ruby/tags/select'>
+                <img alt='Project Tags' height='16' src='/images/tag_yellow.png' style='vertical-align:middle' width='16' />
+              </a>
+              <a href="/tags/ruby/duck-typed" class="tag">duck-typed</a> <a href="/tags/ruby/closures" class="tag">closures</a> <a href="/tags/ruby/object-oriented" class="tag">object-oriented</a> <a href="/tags/ruby/vm" class="tag">vm</a> <a href="/tags/ruby/multi-platform" class="tag">multi-platform</a> <a href="/tags/ruby/tools" class="tag">tools</a> <a href="/tags/ruby/interpreter" class="tag">interpreter</a> <a href="/tags/ruby/ruby" class="tag">ruby</a> <a href="/tags/ruby/programming" class="tag">programming</a> <a href="/tags/ruby/language" class="tag">language</a> <a href="/tags/ruby/development" class="tag">development</a> <a href="/tags/ruby/scripting" class="tag">scripting</a> <a href="/tags/ruby/dynamic" class="tag">dynamic</a> <a href="/tags/ruby/programming_language" class="tag">programming_language</a> <a href="/tags/ruby/compiler" class="tag">compiler</a> <a href="/tags/ruby/metaprogramming" class="tag">metaprogramming</a> <a href="/tags/ruby/open-objects" class="tag">open-objects</a> <a href="/tags/ruby/ducktype" class="tag">ducktype</a>
+              |
+              <a href="/p/ruby/tags/select">edit tags</a>
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <hr class='one' />
+      <div class='piano inset'>
+        <h4 class='iusethis'>Who uses Ruby?</h4>
+        <div class='iusethis'>
+          <a class='iusethis needs_login' href='#' id='stackit_ruby' onMouseOut="this.style.background = 'url(http://www.ohloh.net/images/iuseit_small.png) 0px 0px no-repeat'" onMouseOver="this.style.background = 'url(http://www.ohloh.net/images/iuseit_small.png) 0 -69px no-repeat'" style='display:block;float:left;background: url(http://www.ohloh.net/images/iuseit_small.png) 0px 0px no-repeat; text-decoration: none; width: 70px; height: 69px;' title='Ruby has been stacked by 579 users. Click here to add it to your stack.'>
+            <div style='width: 70px; line-height: 1.2em; height: 69px'>
+              <p style='font-weight: bold; font-size:18pt; text-align:center; padding:4px 0px 0px 0px; color:#fff; font-family:helvetica; letter-spacing:-0.05em; line-height: 1.2em; '>579</p>
+            </div>
+          </a>
+        </div>
+        <div class='users lightup_avatar clear'>
+          <a href="/accounts/prabindeka" class="avatar " title="prabindeka"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=6efdc910f4f866cbdbc9eb954f5b0980&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/plexiglass" class="avatar " title="plexiglass"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=08d98f6d6fa8d1217f1b89cd4fd5002c&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/seancribbs" class="avatar " title="seancribbs"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=8802b1fa1b53e2197beea9454244f847&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/sthorpe" class="avatar " title="sthorpe"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=28df70e0163c43e9f3b7ede657a17853&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/sarcos" class="avatar " title="sarcos"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=536d674fa584b717251e6eddc9fc6622&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/enaeseth" class="avatar " title="enaeseth"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=003c48b257949e2e7a8093af15d4e61c&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/marnen" class="avatar " title="Marnen Laibow-Koser"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=dd2d775dea75b381edb1bbf0600a0907&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/antage" class="avatar " title="Anton Ageev"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=5aabebb65e39f16a1bd9987bc96b09a5&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/ppetermann" class="avatar " title="ppetermann"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=8ace763bf32db3264d8066b983d3e293&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/nacht" class="avatar " title="nacht"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=d4c9884f61707b0df348a9ca67b2d7b8&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/tabe" class="avatar " title="Takeshi Abe"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=7babec75763dd5efab65f2b8a3bd0117&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/nick-orton" class="avatar " title="nick-orton"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=d271f15de1388c8a314fb3931ceb4a6f&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+        </div>
+        <div class='float_right'>
+          <a href='http://www.ohloh.net/p/ruby/stacks'>See all...</a>
+        </div>
+      </div>
+      <hr class='one' />
+      <div class='piano inset'>
+        <h4 class='iusethis'>Who contributes to Ruby?</h4>
+        <div class='users lightup_avatar clear'>
+          <a href="/accounts/drbrain" class="avatar " title="drbrain"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=58479f76374a3ba3c69b9804163f39f4&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/kou" class="avatar " title="kou"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=ee6ffca720cc428d70247dcd7377dd48&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/zenspider" class="avatar " title="zenspider"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=5a837592409354297424994e8d62f722&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/duerst" class="avatar " title="duerst"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=f52e87b92cafb1e8c6d155076b56ecff&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/technorama" class="avatar " title="technorama"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=79807af2b743fe7cae623c501246d800&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/technomancy" class="avatar " title="technomancy"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=22788ec68b2aee512f8f4c5d8ae819ae&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/accounts/kajdevos" class="avatar " title="Kaj de Vos"><img alt="Avatar" class="avatar" height="24" src="http://www.gravatar.com/avatar.php?gravatar_id=ed0bb12b42c64de547c661a36ff4ccb1&amp;rating=PG&amp;size=24&amp;default=http%3a%2f%2fwww.ohloh.net%2fimages%2fanon%2fanon32.gif" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439068" class="avatar " title="nobu"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586438153" class="avatar " title="matz"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586437983" class="avatar " title="akr"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439077" class="avatar " title="eban"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439069" class="avatar " title="usa"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586452877" class="avatar " title="ko1"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439094" class="avatar " title="knu"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439070" class="avatar " title="aamine"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+          <a href="/p/ruby/contributors/139586439080" class="avatar " title="naruse"><img alt="Anon32" class="avatar" height="24" src="http://www.ohloh.net/images/anon/anon32.gif?1237829738" width="24" /></a>
+        </div>
+        <div class='float_right'>
+          <a href='/p/ruby/contributors'>See all 63 contributors...</a>
+        </div>
+        <a href='/accounts/me/positions/new?project_name=Ruby'>I'm a contributor</a>
+      </div>
+      <hr class='one' />
+      <div class='piano inset'>
+        <h4 class='iusethis'>Who manages Ruby?</h4>
+        <div class='users lightup_avatar clear'>
+        </div>
+        <a href='/p/ruby/manages/new'>I'm a manager</a>
+      </div>
+      <div class='piano inset'>
+        <h4 class='nomargin'>Where in the world?</h4>
+      </div>
+      
+      <div class='multipanel clear' id='map_container'>
+        <ul class='nav clear'>
+          <li class='selected' id='li_users'>
+            <a href="#" id="a_users" onclick="">Users</a>
+          </li>
+          <li id='li_contributors'>
+            <a href="#" id="a_contributors" onclick="return ProjectMap.getContributors();">Contributors</a>
+          </li>
+          <li>
+            <a href="/p/ruby/map">View Larger Map</a>
+          </li>
+        </ul>
+        <div class='content'>
+          <div id='map'></div>
+          <p class='nomargin' id='map_status'></p>
+        </div>
+      </div>
+      <hr class='one' />
+      <div id="osc_banner_target"></div>
+      <script type="text/javascript">
+      var css=true;
+      var affiliate='13';
+      var host='https://classifieds.ohloh.net/search';
+      var e=document.createElement("script");
+      e.setAttribute("type", "text/javascript");
+      var src = 'http://classifieds.ohloh.net/widget_banner.js?';
+      src += '&host=' + host + '&a=' + affiliate;
+      if (css) { src+='&css=t' }
+      e.setAttribute("src", src);
+      document.getElementsByTagName('head')[0].appendChild(e);
+      </script>
+      <hr class='one' />
+      <div class='piano c3_light'>
+        <div class='inset'>
+          <h4>Related Projects by Tags</h4>
+          <p class='nomargin'>
+            <a href="http://www.ohloh.net/p/boo">Boo Programming Language</a>, <a href="http://www.ohloh.net/p/macruby">MacRuby</a>, <a href="http://www.ohloh.net/p/python">Python programming language</a>, <a href="http://www.ohloh.net/p/rubinius">Rubinius</a>, <a href="http://www.ohloh.net/p/rubyex">RubyEx</a>
+          </p>
+        </div>
+      </div>
+      <hr class='one' />
+      <div class='piano c2_light'>
+        <div class='inset'>
+          <h4>People who use Ruby also use:</h4>
+          <p class='nomargin'>
+            <a href="http://www.ohloh.net/p/rubygems"><img alt="RubyGems" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1801/rubygems.png" title="RubyGems" width="20" /></a> <a href="http://www.ohloh.net/p/rake"><img alt="Rake" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1189/console.png" title="Rake" width="20" /></a> <a href="http://www.ohloh.net/p/rails"><img alt="Ruby on Rails" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/2290/rails.png" title="Ruby on Rails" width="20" /></a> <a href="http://www.ohloh.net/p/mongrel"><img alt="Mongrel" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/2597/Picture_3.png" title="Mongrel" width="20" /></a> <a href="http://www.ohloh.net/p/rspec"><img alt="RSpec" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1180/ruby_library.png" title="RSpec" width="20" /></a> <a href="http://www.ohloh.net/p/capistrano"><img alt="Capistrano" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/4501/capistrano.png" title="Capistrano" width="20" /></a> <a href="http://www.ohloh.net/p/rmagick"><img alt="RMagick" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/4629/rmagick2.png" title="RMagick" width="20" /></a> <a href="http://www.ohloh.net/p/sqlite-ruby"><img alt="SQLite-Ruby" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1180/ruby_library.png" title="SQLite-Ruby" width="20" /></a> <a href="http://www.ohloh.net/p/hpricot"><img alt="Hpricot" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/4641/hpricot.png" title="Hpricot" width="20" /></a> <a href="http://www.ohloh.net/p/bluecloth"><img alt="BlueCloth" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1180/ruby_library.png" title="BlueCloth" width="20" /></a> <a href="http://www.ohloh.net/p/pluginfactory"><img alt="PluginFactory" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/1180/ruby_library.png" title="PluginFactory" width="20" /></a> <a href="http://www.ohloh.net/p/thin"><img alt="Thin" class="related_by_logo" height="20" src="http://bits.ohloh.net/attachments/4632/thin.png" title="Thin" width="20" /></a>
+          </p>
+        </div>
+      </div>
+      <div class='col span_6 last'>
+        <hr class='one' />
+      </div>
+      <script type='text/javascript'>
+        //<![CDATA[
+          var project_analysis = {"markup_man_years": 1.18735582165282, "logic_man_years": 176.101108777924};
+          
+        //]]>
+      </script>
+      <div class='col span_6 last' id='cocomo'>
+        <table cellpadding='0' cellspacing='0' width='100%'>
+          <tr>
+            <th>
+              <h4 class='nomargin'>Project Cost</h4>
+            </th>
+            <th class='last'></th>
+          </tr>
+          <tr class='prolog'>
+            <td colspan='2'>
+              This calculator estimates how much it would cost to hire a team to write this project from scratch.
+              <a href="/wiki/project_codebase_cost">More &raquo</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Include</td>
+            <td class='value'>
+              <select id='cocomo_loc_dropdown'>
+                <option class='selected' value='648447'>Markup And Code</option>
+                <option value='5454'>Markup Only</option>
+                <option value='637539'>Code Only</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Codebase</td>
+            <td class='value'>
+              <span id='cocomo_loc'>642,993</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Effort (est.)</td>
+            <td class='value'>
+              <span id='cocomo_years'>177</span>
+              Person Years
+            </td>
+          </tr>
+          <tr>
+            <td>Avg. Salary</td>
+            <td class='value'>
+              $
+              <input class='right' id='cocomo_salary' size='7' type='text' value='55000' />
+              year
+            </td>
+          </tr>
+          <tr class='last'>
+            <td class='value' colspan='2'>
+              $
+              <span id='cocomo_value'>9,750,865</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class='col span_6 last'>
+        <hr class='one' />
+        <a class='promo' href='/p/ruby/widgets'>
+          <div class='inset'>
+            <h4>Widgets</h4>
+            <p>Learn how to embed this and other widgets on your site.</p>
+            <div class='badge_preview' style='text-align:center'>
+              <img src='/p/32/widgets/project_thin_badge.gif' />
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="clear" style="padding:1px;"></div>
+    <div id='footer'>
+  <div class='row'>
+    <div class='col span_3 mezzo'>
+      <div class='inset'>
+        <h4>Ohloh</h4>
+        <ul>
+          <li>
+            <a href='http://www.ohloh.net/about/us'>About</a>
+          </li>
+          <li>
+            <a href='http://www.ohloh.net/help/faq'>FAQ</a>
+          </li>
+          <li>
+            <a href='http://www.ohloh.net/blog'>Blog</a>
+          </li>
+          <li>
+            <a href='http://www.ohloh.net/about/news'>News</a>
+          </li>
+          <li><a href="http://www.ohloh.net/forums">Forums</a></li>
+          <li>
+            <a href='http://www.ohloh.net/api/getting_started'>API</a>
+          </li>
+          <li>
+            <a href='http://www.ohloh.net/about/terms'>Terms</a>
+          </li>
+          <li>
+            <a href='http://www.ohloh.net/about/privacy'>Privacy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='col span_3 mezzo'>
+      <div class='inset'>
+        <h4>New Projects</h4>
+        <ul>
+          <li><a href="http://www.ohloh.net/p/silverstunts">SilverStunts</a></li>
+          <li><a href="http://www.ohloh.net/p/upgradr">Upgradr</a></li>
+          <li><a href="http://www.ohloh.net/p/hashpage">HashPage</a></li>
+          <li><a href="http://www.ohloh.net/p/fire-logger">FireLogger</a></li>
+          <li><a href="http://www.ohloh.net/p/SlashCode">SlashCode</a></li>
+          <li><a href="http://www.ohloh.net/p/fireskribo">Fireskribo</a></li>
+          <li><a href="http://www.ohloh.net/p/smc_freeimage">smc.freeimage</a></li>
+          <li><a href="http://www.ohloh.net/p/tiled2cocos">tiled2cocos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class='col span_5 mezzo'>
+      <div class='inset'>
+        <h4><a href="/posts">Recent Posts</a></h4>
+        <ul>
+          <li>
+            <a class='listing_block' href='/forums/10/topics/3273#posts-9837'>
+              update failed 9 months ago, needs to be restarted
+              <span class='author'>
+                by
+                Clive Crous
+              </span>
+              <br />
+              <div class='comment'>
+                Don't worry Andy. Looking at the aliases page now, there is nothing to see. The update fixed the ...
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class='listing_block' href='/forums/10/topics/3273#posts-9836'>
+              update failed 9 months ago, needs to be restarted
+              <span class='author'>
+                by
+                Andy Verprauskus
+              </span>
+              <br />
+              <div class='comment'>
+                Sorry Clive, I don't understand the question.  The report is done now, perhaps it answers your qu...
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class='listing_block' href='/forums/10/topics/3245#posts-9835'>
+              Anonymous commiter
+              <span class='author'>
+                by
+                Hagen Möbius
+              </span>
+              <br />
+              <div class='comment'>
+                Hi there.
+                
+                Either as a reminder or as a bug report: The anonymous commit has not been removed fro...
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class='col span_5 mezzo last'>
+      <div class='inset'>
+        <h4><a href="/reviews?sort_by=recently_added">Recent Reviews</a></h4>
+        <ul>
+          <li>
+            <a class='listing_block' href='http://www.ohloh.net/p/tut-framework/reviews'>
+              TUT Unit Tests Framework for C++
+              <span class='author'>
+                by
+                mloskot
+              </span>
+              <br />
+              			<span id="footer_star_1104">
+              			<span style="font-size:1px;float:left;display:inline;height:13px;width:57px;background:url(/images/stars/stars_ro_mini.png) left bottom">&nbsp;</span>
+              			</span>
+              <br />
+              <span class='comment'>
+                C++ TUT is a lightweight and highly customizable unit test framework written in modern C++ langua...
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class='listing_block' href='http://www.ohloh.net/p/jbpm-kickstart/reviews'>
+              jbpm-kickstart
+              <span class='author'>
+                by
+                mimiki
+              </span>
+              <br />
+              			<span id="footer_star_1103">
+              			<span style="font-size:1px;float:left;display:inline;height:13px;width:12px;background:url(/images/stars/stars_ro_mini.png) left bottom">&nbsp;</span>
+              
+              			<span style="font-size:1px;float:left;display:inline;height:13px;width:45px;background:url(/images/stars/stars_0_mini.png) right bottom">&nbsp;</span>
+              			</span>
+              <br />
+              <span class='comment'>
+                nothign by now
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class='listing_block' href='http://www.ohloh.net/p/L2Emu/reviews'>
+              L2Emu Project
+              <span class='author'>
+                by
+                SerslaEX
+              </span>
+              <br />
+              			<span id="footer_star_1102">
+              			<span style="font-size:1px;float:left;display:inline;height:13px;width:57px;background:url(/images/stars/stars_ro_mini.png) left bottom">&nbsp;</span>
+              			</span>
+              <br />
+              <span class='comment'>
+                Yes, L2Emu Project is the Best One Rev of Line][age Java Emulator.
+                
+                Tnks for all Team!
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p style='clear:left'>&nbsp;</p>
+</div>
+
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-449914-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+  </script>
+
+  <script type="text/javascript">
+//<![CDATA[
+var ProjectMap = {
+	getStacks: function() {
+		$('#a_users').onclick=null;
+		$('#a_contributors').onclick=null;
+
+		$('#li_users').addClass('selected');
+		$('#li_contributors').removeClass('selected');
+
+		Map.map.clearOverlays();
+		$('#map_status').innerHTML='Loading users...';
+		Map.defaultIconImage='/images/map_gray.png';
+		Map.url='/p/ruby/stacks/near';
+		Map.onComplete=function(jsonData){
+			if(jsonData && jsonData.accounts && jsonData.accounts.length > 0){
+				$('#map_status').html('Showing ' + jsonData.accounts.length +
+					' of <a href="http://www.ohloh.net/p/ruby/stacks">579 users</a>.');
+			}else{
+				$('#map_status').html('No users located.');
+			}
+			$('#a_contributors').onclick=ProjectMap.getContributors;
+		};
+		Map.getMarkers();
+		return false;
+	},
+	getContributors: function() {
+		$('#a_users').onclick=null;
+		$('#a_contributors').onclick=null;
+
+		$('#li_users').removeClass('selected');
+		$('#li_contributors').addClass('selected');
+
+		Map.map.clearOverlays();
+		$('#map_status').innerHTML='Loading contributors...';
+		Map.defaultIconImage='/images/map_yellow.png';
+		Map.url='/p/ruby/contributors/near';
+		Map.onComplete=function(jsonData){
+			if(jsonData && jsonData.accounts && jsonData.accounts.length > 0){
+				$('#map_status').html('Showing ' + jsonData.accounts.length +
+										' of <a href="http://www.ohloh.net/p/ruby/contributors">61 contributors</a>.');
+								}else{
+				$('#map_status').html('No contributors located.');
+			}
+			$('#a_users').bind('click', ProjectMap.getStacks);
+		};
+		Map.getMarkers();
+		return false;
+	}
+}
+//]]>
+</script>
+<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAchKtP8sqcRD35MfSaUWftRS9_JF4cRcfPwG-aXRJHg4WOCZxNBRBki7ZWqp4LTQhBtwTAbJN8LgzUQ' type='text/javascript'></script><script type="text/javascript">
+//<![CDATA[
+		  $(document).ready(function(){ Map.load(0, null); Map.moveTo(10,20,0);});
+			$(window).bind('unload', function(){ GUnload(); });
+
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+Map.postMap = ProjectMap.getStacks;
+//]]>
+</script>
+
+
+  </div>
+</body>
+</html>

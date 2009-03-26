@@ -1,0 +1,1982 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head profile="http://gmpg.org/xfn/11">
+    <title>Ajaxian &raquo; Ruby</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="generator" content="WordPress 2.6" />
+    <link href="/wp-content/themes/ajaxian/style.css?v=2" rel="stylesheet" type="text/css" media="all" />
+    <link rel="Shortcut Icon" href="http://ajaxian.com/wp-content/themes/ajaxian/images/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://ajaxian.com/index.xml" />
+    <link rel="alternate" type="text/xml" title="RSS .92" href="http://ajaxian.com/index.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://ajaxian.com/index.xml" />
+    <link rel="pingback" href="http://ajaxian.com/xmlrpc.php" />
+
+    <script type="text/javascript" src="/wp-content/themes/ajaxian/scripts/handleSearchfield.js?v=1"></script>
+    <script type="text/javascript" src="/wp-content/themes/ajaxian/scripts/email-builder.js?v=1"></script>
+    <script type="text/javascript" src="/wp-content/themes/ajaxian/scripts/prototype/prototype-1.4.0.js"></script>
+    <script type="text/javascript" src="/wp-content/themes/ajaxian/scripts/scriptaculous/effects-1.5.2.js"></script>
+	<script type="text/javascript" src="/wp-content/themes/ajaxian/scripts/tt_optin_widget.js"></script>
+
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ajaxian.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ajaxian.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.6" />
+
+<link rel="stylesheet" href="http://ajaxian.com/wp-content/plugins/ig_syntax_hilite/syntax_hilite_css.css" type="text/css" media="all" />
+	<script language="javascript" src="http://ajaxian.com/wp-content/plugins/ig_syntax_hilite/syntax_hilite_js.js"></script>
+<script type="text/javascript" src="http://ajaxian.com/wp-content/plugins/votio/votio.php"></script>
+	  </head>
+  <body>
+    <div id="wrapper">
+	<!-- BEGIN: techtarget network log-in bar -->
+	<div id="ttLoginBar">
+							<a href="http://register.techtarget.com/registration/ajaxian/LoginRegister.page?fromURL=http://ajaxian.com%2Fby%2Ftopic%2Fruby">Activate your free membership today</a>&nbsp;&#124;&nbsp;<a href="http://register.techtarget.com/registration/ajaxian/LoginRegister.page?fromURL=http://ajaxian.com%2Fby%2Ftopic%2Fruby">Log-in</a>
+       	</div>
+	<!-- END: techtarget network log-in bar -->
+
+      <div id="header">
+        <h1><a href="http://ajaxian.com" title="Homepage of Ajaxian">Ajaxian</a></h1>
+        <h2>DHTML for the 21st century</h2>
+	<!-- mfunc ajaxian_random_topbar_adspot() -->
+        <span id="ad-topright">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=468x60;dcopt=;ptile=1;ord=33680892?;kw=homePage" name="top_ad" id="fra468x60" width="468" height="60" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=468x60;dcopt=;ptile=1;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=468x60;dcopt=;ptile=1;ord=33680892?;kw=homePage" width="468" height="60" border="0"></a></iframe></span>
+	<!-- /mfunc -->
+        <ul id="navigation">
+  <li><a href="/" title="Latest news">News</a></li>
+  <li><a href="/podcasts/" title="See our Audible Ajax podcast">Podcasts</a></li>
+  <li><a href="/showcase/" title="See examples of Ajax in practice">Showcases</a></li>
+  <li><a href="/resources/" title="Keep up to date with all things Ajax">Resources</a></li>
+  <li><a href="/services/training/" title="Ajax Training">Training</a></li>
+  <li><a href="/conference/" title="The Ajax Experience Conference">Conference</a></li>
+  <li><a href="http://jobs.ajaxian.com/" title="Find Jobs">Jobs</a></li>
+  <li><a href="http://planet.ajaxian.com/" target="_blank" title="External: Planet Ajaxian">Planet</a></li>
+  <li><a href="http://ajaxpatterns.org/" target="_blank" title="External: AjaxPatterns.org">Patterns</a></li>
+  <li><a href="mailto:ajaxians@ajaxian.com" title="Contribute news and stories of interest to the Ajax community">Contribute News</a></li>
+  <li><a href="/index.xml" title="Subscribe to our RSS feed"><img src="/wp-content/themes/ajaxian/images/icon_feed.gif" border="0" class="feedicon"/></a></li>
+</ul>
+        <form id="searchform" method="get" action="/index.php">
+  <p><input type="text" name="s" id="s" size="20" />
+  <button type="submit" name="searchbutton" id="searchbutton" value="Go">go</button></p>
+</form>
+      </div>
+      <div id="pagebody">
+      <div id="navigationbar">
+
+  <!--mfunc ajaxian_random_leftbar_adspot() -->
+  <div align="center">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=125x125;dcopt=;ptile=2;ord=33680892?;kw=homePage" name="left_side_ad" id="fra125x125" width="125" height="125" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=125x125;dcopt=;ptile=2;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=125x125;dcopt=;ptile=2;ord=33680892?;kw=homePage" width="125" height="125" border="0"></a></iframe> </div>
+  <!--/mfunc-->
+
+  <!--
+  <div id="ajaxexperience" align="center">
+  <a href="http://theajaxexperience.com/" title="Come join us at The Ajax Experience!"><img src="/wp-content/images/taeboston.jpg" alt="Ajax Experience" border="0" width="125" height="125"/></a>
+  </div>
+  -->
+  
+  <div id="jobs">
+  <h3>Jobs @ Ajaxian</h3>
+  <ul>
+  <li><a href="http://jobs.ajaxian.com">Find a Job, Post a job.</a></li>
+  </ul>
+</div>
+
+<div id="categories">
+  <h3>Topics</h3>
+  <ul>
+  	<li class="cat-item cat-item-15"><a href="http://ajaxian.com/by/topic/net" title="View all posts filed under .NET">.NET</a> (68)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://ajaxian.com/by/topic/accessibility" title="View all posts filed under Accessibility">Accessibility</a> (52)
+</li>
+	<li class="cat-item cat-item-98"><a href="http://ajaxian.com/by/topic/adobe" title="View all posts filed under Adobe">Adobe</a> (83)
+</li>
+	<li class="cat-item cat-item-86"><a href="http://ajaxian.com/by/topic/advertising" title="View all posts filed under Advertising">Advertising</a> (3)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://ajaxian.com/by/topic/ajax" title="View all posts filed under Ajax">Ajax</a> (372)
+</li>
+	<li class="cat-item cat-item-94"><a href="http://ajaxian.com/by/topic/ajaxiancom-announcements" title="View all posts filed under Ajaxian.com Announcements">Ajaxian.com Announcements</a> (7)
+</li>
+	<li class="cat-item cat-item-117"><a href="http://ajaxian.com/by/topic/android" title="View all posts filed under Android">Android</a> (2)
+</li>
+	<li class="cat-item cat-item-93"><a href="http://ajaxian.com/by/topic/announcements" title="View all posts filed under Announcements">Announcements</a> (89)
+</li>
+	<li class="cat-item cat-item-264"><a href="http://ajaxian.com/by/topic/appcelerator" title="View all posts filed under Appcelerator">Appcelerator</a> (1)
+</li>
+	<li class="cat-item cat-item-140"><a href="http://ajaxian.com/by/topic/apple" title="View all posts filed under Apple">Apple</a> (10)
+</li>
+	<li class="cat-item cat-item-118"><a href="http://ajaxian.com/by/topic/aptana" title="View all posts filed under Aptana">Aptana</a> (30)
+</li>
+	<li class="cat-item cat-item-27"><a href="http://ajaxian.com/by/topic/articles" title="View all posts filed under Articles">Articles</a> (212)
+</li>
+	<li class="cat-item cat-item-82"><a href="http://ajaxian.com/by/topic/atlas" title="View all posts filed under Atlas">Atlas</a> (7)
+</li>
+	<li class="cat-item cat-item-305"><a href="http://ajaxian.com/by/topic/bespin" title="View all posts filed under Bespin">Bespin</a> (4)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://ajaxian.com/by/topic/book-reviews" title="View all posts filed under Book Reviews">Book Reviews</a> (21)
+</li>
+	<li class="cat-item cat-item-332"><a href="http://ajaxian.com/by/topic/bookmarklets" title="View all posts filed under Bookmarklets">Bookmarklets</a> (2)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://ajaxian.com/by/topic/books" title="View all posts filed under Books">Books</a> (32)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://ajaxian.com/by/topic/browsers" title="View all posts filed under Browsers">Browsers</a> (193)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://ajaxian.com/by/topic/builds" title="View all posts filed under Builds">Builds</a> (4)
+</li>
+	<li class="cat-item cat-item-56"><a href="http://ajaxian.com/by/topic/business" title="View all posts filed under Business">Business</a> (16)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://ajaxian.com/by/topic/calendar" title="View all posts filed under Calendar">Calendar</a> (12)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://ajaxian.com/by/topic/canvas" title="View all posts filed under Canvas">Canvas</a> (104)
+</li>
+	<li class="cat-item cat-item-317"><a href="http://ajaxian.com/by/topic/cappuccino-topic" title="View all posts filed under Cappuccino">Cappuccino</a> (1)
+</li>
+	<li class="cat-item cat-item-22"><a href="http://ajaxian.com/by/topic/chat" title="View all posts filed under Chat">Chat</a> (22)
+</li>
+	<li class="cat-item cat-item-246"><a href="http://ajaxian.com/by/topic/chrome-topic" title="View all posts filed under Chrome">Chrome</a> (7)
+</li>
+	<li class="cat-item cat-item-119"><a href="http://ajaxian.com/by/topic/cloud" title="View all posts filed under Cloud">Cloud</a> (4)
+</li>
+	<li class="cat-item cat-item-53"><a href="http://ajaxian.com/by/topic/cold-fusion" title="View all posts filed under ColdFusion">ColdFusion</a> (10)
+</li>
+	<li class="cat-item cat-item-72"><a href="http://ajaxian.com/by/topic/comet" title="Ajax push">Comet</a> (58)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://ajaxian.com/by/topic/component" title="View all posts filed under Component">Component</a> (117)
+</li>
+	<li class="cat-item cat-item-80"><a href="http://ajaxian.com/by/topic/conferences" title="View all posts filed under Conferences">Conferences</a> (33)
+</li>
+	<li class="cat-item cat-item-312"><a href="http://ajaxian.com/by/topic/contests" title="View all posts filed under Contests">Contests</a> (1)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://ajaxian.com/by/topic/css" title="View all posts filed under CSS">CSS</a> (156)
+</li>
+	<li class="cat-item cat-item-66"><a href="http://ajaxian.com/by/topic/database" title="View all posts filed under Database">Database</a> (11)
+</li>
+	<li class="cat-item cat-item-116"><a href="http://ajaxian.com/by/topic/debugging" title="Firebug, YSlow, and more.">Debugging</a> (33)
+</li>
+	<li class="cat-item cat-item-83"><a href="http://ajaxian.com/by/topic/design" title="View all posts filed under Design">Design</a> (20)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://ajaxian.com/by/topic/dojo" title="View all posts filed under Dojo">Dojo</a> (220)
+</li>
+	<li class="cat-item cat-item-97"><a href="http://ajaxian.com/by/topic/dwr" title="View all posts filed under DWR">DWR</a> (17)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://ajaxian.com/by/topic/editorial" title="View all posts filed under Editorial">Editorial</a> (275)
+</li>
+	<li class="cat-item cat-item-43"><a href="http://ajaxian.com/by/topic/email" title="View all posts filed under Email">Email</a> (5)
+</li>
+	<li class="cat-item cat-item-24"><a href="http://ajaxian.com/by/topic/examples" title="View all posts filed under Examples">Examples</a> (175)
+</li>
+	<li class="cat-item cat-item-99"><a href="http://ajaxian.com/by/topic/ext" title="Jack Slocum&#039;s Extension Library">Ext</a> (72)
+</li>
+	<li class="cat-item cat-item-33"><a href="http://ajaxian.com/by/topic/firefox" title="View all posts filed under Firefox">Firefox</a> (88)
+</li>
+	<li class="cat-item cat-item-30"><a href="http://ajaxian.com/by/topic/flash" title="View all posts filed under Flash">Flash</a> (77)
+</li>
+	<li class="cat-item cat-item-76"><a href="http://ajaxian.com/by/topic/framework" title="View all posts filed under Framework">Framework</a> (66)
+</li>
+	<li class="cat-item cat-item-31"><a href="http://ajaxian.com/by/topic/fun" title="View all posts filed under Fun">Fun</a> (77)
+</li>
+	<li class="cat-item cat-item-32"><a href="http://ajaxian.com/by/topic/games" title="View all posts filed under Games">Games</a> (62)
+</li>
+	<li class="cat-item cat-item-108"><a href="http://ajaxian.com/by/topic/gears" title="View all posts filed under Gears">Gears</a> (68)
+</li>
+	<li class="cat-item cat-item-37"><a href="http://ajaxian.com/by/topic/google" title="View all posts filed under Google">Google</a> (145)
+</li>
+	<li class="cat-item cat-item-90"><a href="http://ajaxian.com/by/topic/gwt" title="View all posts filed under GWT">GWT</a> (81)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://ajaxian.com/by/topic/html" title="View all posts filed under HTML">HTML</a> (74)
+</li>
+	<li class="cat-item cat-item-25"><a href="http://ajaxian.com/by/topic/ie" title="View all posts filed under IE">IE</a> (133)
+</li>
+	<li class="cat-item cat-item-38"><a href="http://ajaxian.com/by/topic/interview" title="View all posts filed under Interview">Interview</a> (28)
+</li>
+	<li class="cat-item cat-item-110"><a href="http://ajaxian.com/by/topic/iphone" title="View all posts filed under iPhone">iPhone</a> (60)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://ajaxian.com/by/topic/java" title="View all posts filed under Java">Java</a> (154)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://ajaxian.com/by/topic/javascript" title="View all posts filed under JavaScript">JavaScript</a> (1159)
+</li>
+	<li class="cat-item cat-item-112"><a href="http://ajaxian.com/by/topic/jmaki" title="View all posts filed under jMaki">jMaki</a> (7)
+</li>
+	<li class="cat-item cat-item-92"><a href="http://ajaxian.com/by/topic/jquery" title="View all posts filed under jQuery">jQuery</a> (143)
+</li>
+	<li class="cat-item cat-item-84"><a href="http://ajaxian.com/by/topic/json" title="JSON/JSONRequest">JSON</a> (53)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://ajaxian.com/by/topic/library" title="View all posts filed under Library">Library</a> (507)
+</li>
+	<li class="cat-item cat-item-44"><a href="http://ajaxian.com/by/topic/liveedit" title="View all posts filed under LiveEdit">LiveEdit</a> (5)
+</li>
+	<li class="cat-item cat-item-29"><a href="http://ajaxian.com/by/topic/livesearch" title="View all posts filed under LiveSearch">LiveSearch</a> (17)
+</li>
+	<li class="cat-item cat-item-78"><a href="http://ajaxian.com/by/topic/mac" title="Macs and Ajax - like Peant Butter and Jelly">Mac</a> (1)
+</li>
+	<li class="cat-item cat-item-34"><a href="http://ajaxian.com/by/topic/mapping" title="View all posts filed under Mapping">Mapping</a> (41)
+</li>
+	<li class="cat-item cat-item-96"><a href="http://ajaxian.com/by/topic/microformat" title="View all posts filed under Microformat">Microformat</a> (5)
+</li>
+	<li class="cat-item cat-item-91"><a href="http://ajaxian.com/by/topic/microsoft" title="Microsoft">Microsoft</a> (39)
+</li>
+	<li class="cat-item cat-item-52"><a href="http://ajaxian.com/by/topic/mobile" title="View all posts filed under Mobile">Mobile</a> (64)
+</li>
+	<li class="cat-item cat-item-109"><a href="http://ajaxian.com/by/topic/mootools" title="View all posts filed under MooTools">MooTools</a> (44)
+</li>
+	<li class="cat-item cat-item-233"><a href="http://ajaxian.com/by/topic/mozilla-topic" title="View all posts filed under Mozilla">Mozilla</a> (9)
+</li>
+	<li class="cat-item cat-item-60"><a href="http://ajaxian.com/by/topic/office" title="View all posts filed under Office">Office</a> (9)
+</li>
+	<li class="cat-item cat-item-100"><a href="http://ajaxian.com/by/topic/offline" title="View all posts filed under Offline">Offline</a> (30)
+</li>
+	<li class="cat-item cat-item-105"><a href="http://ajaxian.com/by/topic/openajax" title="View all posts filed under OpenAjax">OpenAjax</a> (6)
+</li>
+	<li class="cat-item cat-item-185"><a href="http://ajaxian.com/by/topic/openwebpodcast" title="View all posts filed under OpenWebPodcast">OpenWebPodcast</a> (5)
+</li>
+	<li class="cat-item cat-item-89"><a href="http://ajaxian.com/by/topic/opera" title="Opera Browser">Opera</a> (19)
+</li>
+	<li class="cat-item cat-item-113"><a href="http://ajaxian.com/by/topic/performance" title="Cover performance, scalability, benchmarks, etc.">Performance</a> (119)
+</li>
+	<li class="cat-item cat-item-35"><a href="http://ajaxian.com/by/topic/perl" title="View all posts filed under Perl">Perl</a> (8)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://ajaxian.com/by/topic/php" title="View all posts filed under PHP">PHP</a> (84)
+</li>
+	<li class="cat-item cat-item-85"><a href="http://ajaxian.com/by/topic/plugins" title="Javascript bindings with browser plugins.">Plugins</a> (8)
+</li>
+	<li class="cat-item cat-item-40"><a href="http://ajaxian.com/by/topic/podcasts" title="View all posts filed under Podcasts">Podcasts</a> (39)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://ajaxian.com/by/topic/portal" title="View all posts filed under Portal">Portal</a> (13)
+</li>
+	<li class="cat-item cat-item-48"><a href="http://ajaxian.com/by/topic/pragmatic-ajax" title="View all posts filed under Pragmatic Ajax">Pragmatic Ajax</a> (2)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://ajaxian.com/by/topic/presentation" title="View all posts filed under Presentation">Presentation</a> (61)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://ajaxian.com/by/topic/programming" title="View all posts filed under Programming">Programming</a> (134)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://ajaxian.com/by/topic/prototype" title="View all posts filed under Prototype">Prototype</a> (218)
+</li>
+	<li class="cat-item cat-item-67"><a href="http://ajaxian.com/by/topic/python" title="View all posts filed under Python">Python</a> (12)
+</li>
+	<li class="cat-item cat-item-115"><a href="http://ajaxian.com/by/topic/qooxdoo" title="View all posts filed under Qooxdoo">Qooxdoo</a> (5)
+</li>
+	<li class="cat-item cat-item-88"><a href="http://ajaxian.com/by/topic/rails" title="View all posts filed under Rails">Rails</a> (40)
+</li>
+	<li class="cat-item cat-item-75"><a href="http://ajaxian.com/by/topic/recording" title="Audio/Video recording external to Ajaxian">Recording</a> (8)
+</li>
+	<li class="cat-item cat-item-58"><a href="http://ajaxian.com/by/topic/remoting" title="View all posts filed under Remoting">Remoting</a> (19)
+</li>
+	<li class="cat-item cat-item-36"><a href="http://ajaxian.com/by/topic/richtextwidget" title="View all posts filed under RichTextWidget">RichTextWidget</a> (20)
+</li>
+	<li class="cat-item cat-item-107"><a href="http://ajaxian.com/by/topic/roundup" title="Our monthly roundup of news">Roundup</a> (13)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://ajaxian.com/by/topic/ruby" title="View all posts filed under Ruby">Ruby</a> (64)
+</li>
+	<li class="cat-item cat-item-265"><a href="http://ajaxian.com/by/topic/runtime" title="View all posts filed under Runtime">Runtime</a> (2)
+</li>
+	<li class="cat-item cat-item-77"><a href="http://ajaxian.com/by/topic/safari" title="supporting Safari, or yelling at people for not support Safari">Safari</a> (47)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://ajaxian.com/by/topic/screencast" title="View all posts filed under Screencast">Screencast</a> (39)
+</li>
+	<li class="cat-item cat-item-79"><a href="http://ajaxian.com/by/topic/scriptaculous" title="Scriptaculous">Scriptaculous</a> (38)
+</li>
+	<li class="cat-item cat-item-54"><a href="http://ajaxian.com/by/topic/security" title="View all posts filed under Security">Security</a> (86)
+</li>
+	<li class="cat-item cat-item-26"><a href="http://ajaxian.com/by/topic/server" title="View all posts filed under Server">Server</a> (17)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://ajaxian.com/by/topic/showcase" title="View all posts filed under Showcase">Showcase</a> (687)
+</li>
+	<li class="cat-item cat-item-111"><a href="http://ajaxian.com/by/topic/social-networks" title="Facebook, LinkedIn, Ning, ...">Social Networks</a> (15)
+</li>
+	<li class="cat-item cat-item-101"><a href="http://ajaxian.com/by/topic/sound" title="View all posts filed under Sound">Sound</a> (10)
+</li>
+	<li class="cat-item cat-item-103"><a href="http://ajaxian.com/by/topic/standards" title="View all posts filed under Standards">Standards</a> (57)
+</li>
+	<li class="cat-item cat-item-74"><a href="http://ajaxian.com/by/topic/storage" title="View all posts filed under Storage">Storage</a> (4)
+</li>
+	<li class="cat-item cat-item-50"><a href="http://ajaxian.com/by/topic/survey" title="View all posts filed under Survey">Survey</a> (13)
+</li>
+	<li class="cat-item cat-item-106"><a href="http://ajaxian.com/by/topic/svg" title="View all posts filed under SVG">SVG</a> (24)
+</li>
+	<li class="cat-item cat-item-57"><a href="http://ajaxian.com/by/topic/testing" title="View all posts filed under Testing">Testing</a> (51)
+</li>
+	<li class="cat-item cat-item-59"><a href="http://ajaxian.com/by/topic/conference" title="View all posts filed under The Ajax Experience">The Ajax Experience</a> (79)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://ajaxian.com/by/topic/tibco" title="View all posts filed under TIBCO">TIBCO</a> (24)
+</li>
+	<li class="cat-item cat-item-65"><a href="http://ajaxian.com/by/topic/tip" title="quick tips can all go here">Tip</a> (81)
+</li>
+	<li class="cat-item cat-item-318"><a href="http://ajaxian.com/by/topic/titanium" title="View all posts filed under Titanium">Titanium</a> (1)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://ajaxian.com/by/topic/toolkit" title="View all posts filed under Toolkit">Toolkit</a> (170)
+</li>
+	<li class="cat-item cat-item-81"><a href="http://ajaxian.com/by/topic/tutorial" title="View all posts filed under Tutorial">Tutorial</a> (22)
+</li>
+	<li class="cat-item cat-item-41"><a href="http://ajaxian.com/by/topic/ui" title="View all posts filed under UI">UI</a> (118)
+</li>
+	<li class="cat-item cat-item-87"><a href="http://ajaxian.com/by/topic/unobtrusive-js" title="keep your stuff seperated from your other stuff">Unobtrusive JS</a> (22)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://ajaxian.com/by/topic/usability" title="View all posts filed under Usability">Usability</a> (81)
+</li>
+	<li class="cat-item cat-item-19"><a href="http://ajaxian.com/by/topic/utility" title="View all posts filed under Utility">Utility</a> (189)
+</li>
+	<li class="cat-item cat-item-297"><a href="http://ajaxian.com/by/topic/video-topic" title="View all posts filed under Video">Video</a> (4)
+</li>
+	<li class="cat-item cat-item-102"><a href="http://ajaxian.com/by/topic/w3c" title="View all posts filed under W3C">W3C</a> (9)
+</li>
+	<li class="cat-item cat-item-51"><a href="http://ajaxian.com/by/topic/web20" title="View all posts filed under Web20">Web20</a> (25)
+</li>
+	<li class="cat-item cat-item-104"><a href="http://ajaxian.com/by/topic/widgets" title="View all posts filed under Widgets">Widgets</a> (11)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://ajaxian.com/by/topic/workshop" title="View all posts filed under Workshop">Workshop</a> (7)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://ajaxian.com/by/topic/xmlhttprequest" title="View all posts filed under XmlHttpRequest">XmlHttpRequest</a> (42)
+</li>
+	<li class="cat-item cat-item-71"><a href="http://ajaxian.com/by/topic/yahoo" title="View all posts filed under Yahoo!">Yahoo!</a> (132)
+</li>
+  </ul>
+</div>
+
+<div id="archives">
+  <h3>Archive</h3>
+  <ul>
+    	<li><a href='http://ajaxian.com/archives/2009/03' title='March 2009'>March 2009</a>&nbsp;(82)</li>
+	<li><a href='http://ajaxian.com/archives/2009/02' title='February 2009'>February 2009</a>&nbsp;(87)</li>
+	<li><a href='http://ajaxian.com/archives/2009/01' title='January 2009'>January 2009</a>&nbsp;(91)</li>
+	<li><a href='http://ajaxian.com/archives/2008/12' title='December 2008'>December 2008</a>&nbsp;(92)</li>
+	<li><a href='http://ajaxian.com/archives/2008/11' title='November 2008'>November 2008</a>&nbsp;(89)</li>
+	<li><a href='http://ajaxian.com/archives/2008/10' title='October 2008'>October 2008</a>&nbsp;(104)</li>
+	<li><a href='http://ajaxian.com/archives/2008/09' title='September 2008'>September 2008</a>&nbsp;(107)</li>
+	<li><a href='http://ajaxian.com/archives/2008/08' title='August 2008'>August 2008</a>&nbsp;(97)</li>
+	<li><a href='http://ajaxian.com/archives/2008/07' title='July 2008'>July 2008</a>&nbsp;(100)</li>
+	<li><a href='http://ajaxian.com/archives/2008/06' title='June 2008'>June 2008</a>&nbsp;(103)</li>
+	<li><a href='http://ajaxian.com/archives/2008/05' title='May 2008'>May 2008</a>&nbsp;(93)</li>
+	<li><a href='http://ajaxian.com/archives/2008/04' title='April 2008'>April 2008</a>&nbsp;(110)</li>
+	<li><a href='http://ajaxian.com/archives/2008/03' title='March 2008'>March 2008</a>&nbsp;(108)</li>
+	<li><a href='http://ajaxian.com/archives/2008/02' title='February 2008'>February 2008</a>&nbsp;(113)</li>
+	<li><a href='http://ajaxian.com/archives/2008/01' title='January 2008'>January 2008</a>&nbsp;(112)</li>
+	<li><a href='http://ajaxian.com/archives/2007/12' title='December 2007'>December 2007</a>&nbsp;(92)</li>
+	<li><a href='http://ajaxian.com/archives/2007/11' title='November 2007'>November 2007</a>&nbsp;(106)</li>
+	<li><a href='http://ajaxian.com/archives/2007/10' title='October 2007'>October 2007</a>&nbsp;(123)</li>
+	<li><a href='http://ajaxian.com/archives/2007/09' title='September 2007'>September 2007</a>&nbsp;(99)</li>
+	<li><a href='http://ajaxian.com/archives/2007/08' title='August 2007'>August 2007</a>&nbsp;(109)</li>
+	<li><a href='http://ajaxian.com/archives/2007/07' title='July 2007'>July 2007</a>&nbsp;(89)</li>
+	<li><a href='http://ajaxian.com/archives/2007/06' title='June 2007'>June 2007</a>&nbsp;(86)</li>
+	<li><a href='http://ajaxian.com/archives/2007/05' title='May 2007'>May 2007</a>&nbsp;(89)</li>
+	<li><a href='http://ajaxian.com/archives/2007/04' title='April 2007'>April 2007</a>&nbsp;(87)</li>
+	<li><a href='http://ajaxian.com/archives/2007/03' title='March 2007'>March 2007</a>&nbsp;(106)</li>
+	<li><a href='http://ajaxian.com/archives/2007/02' title='February 2007'>February 2007</a>&nbsp;(87)</li>
+	<li><a href='http://ajaxian.com/archives/2007/01' title='January 2007'>January 2007</a>&nbsp;(105)</li>
+	<li><a href='http://ajaxian.com/archives/2006/12' title='December 2006'>December 2006</a>&nbsp;(92)</li>
+	<li><a href='http://ajaxian.com/archives/2006/11' title='November 2006'>November 2006</a>&nbsp;(120)</li>
+	<li><a href='http://ajaxian.com/archives/2006/10' title='October 2006'>October 2006</a>&nbsp;(120)</li>
+	<li><a href='http://ajaxian.com/archives/2006/09' title='September 2006'>September 2006</a>&nbsp;(92)</li>
+	<li><a href='http://ajaxian.com/archives/2006/08' title='August 2006'>August 2006</a>&nbsp;(106)</li>
+	<li><a href='http://ajaxian.com/archives/2006/07' title='July 2006'>July 2006</a>&nbsp;(100)</li>
+	<li><a href='http://ajaxian.com/archives/2006/06' title='June 2006'>June 2006</a>&nbsp;(83)</li>
+	<li><a href='http://ajaxian.com/archives/2006/05' title='May 2006'>May 2006</a>&nbsp;(99)</li>
+	<li><a href='http://ajaxian.com/archives/2006/04' title='April 2006'>April 2006</a>&nbsp;(78)</li>
+	<li><a href='http://ajaxian.com/archives/2006/03' title='March 2006'>March 2006</a>&nbsp;(111)</li>
+	<li><a href='http://ajaxian.com/archives/2006/02' title='February 2006'>February 2006</a>&nbsp;(117)</li>
+	<li><a href='http://ajaxian.com/archives/2006/01' title='January 2006'>January 2006</a>&nbsp;(118)</li>
+	<li><a href='http://ajaxian.com/archives/2005/12' title='December 2005'>December 2005</a>&nbsp;(106)</li>
+	<li><a href='http://ajaxian.com/archives/2005/11' title='November 2005'>November 2005</a>&nbsp;(111)</li>
+	<li><a href='http://ajaxian.com/archives/2005/10' title='October 2005'>October 2005</a>&nbsp;(67)</li>
+	<li><a href='http://ajaxian.com/archives/2005/09' title='September 2005'>September 2005</a>&nbsp;(87)</li>
+	<li><a href='http://ajaxian.com/archives/2005/08' title='August 2005'>August 2005</a>&nbsp;(85)</li>
+	<li><a href='http://ajaxian.com/archives/2005/07' title='July 2005'>July 2005</a>&nbsp;(51)</li>
+	<li><a href='http://ajaxian.com/archives/2005/06' title='June 2005'>June 2005</a>&nbsp;(70)</li>
+	<li><a href='http://ajaxian.com/archives/2005/05' title='May 2005'>May 2005</a>&nbsp;(63)</li>
+	<li><a href='http://ajaxian.com/archives/2005/04' title='April 2005'>April 2005</a>&nbsp;(11)</li>
+	<li><a href='http://ajaxian.com/archives/2005/03' title='March 2005'>March 2005</a>&nbsp;(23)</li>
+	<li><a href='http://ajaxian.com/archives/2009/03' title=' 0'> 0</a>&nbsp;(1)</li>
+  </ul>
+</div>
+
+</div>
+
+
+ <div id="taeheader">
+  	<div id="premium" style="width: 630px">
+  		<img src="http://media.techtarget.com/digitalguide/images/Misc/platinum_site_sponsor.gif" width="77" height="33" align="left">
+  		<div align="center">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=550x33;dcopt=;ptile=3;ord=33680892?;kw=homePage" name="premium_ad" id="fra550x33" width="550" height="33" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=550x33;dcopt=;ptile=3;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=550x33;dcopt=;ptile=3;ord=33680892?;kw=homePage" width="550" height="33" border="0"></a></iframe> </div>  	</div>
+  </div>
+    
+
+  <div id="maincontent">
+
+    
+  
+        
+      <div class="entry">
+
+        <p class="date">Friday, February 20th, 2009</p>
+        <h2 id="post-6046"><a href="http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management" rel="bookmark" title="Permanent Link to Sprockets: Build time JavaScript dependancy management">Sprockets: Build time JavaScript dependancy management</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/javascript" title="View all posts in JavaScript" rel="category tag">JavaScript</a><a href="http://technorati.com/tag/JavaScript" rel="tag" title="View the technorati tag: JavaScript"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: JavaScript"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/utility" title="View all posts in Utility" rel="category tag">Utility</a><a href="http://technorati.com/tag/Utility" rel="tag" title="View the technorati tag: Utility"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Utility"/></a></p>
+        <p><img src="http://ajaxian.com/wp-content/uploads/getsprockets.png" alt="" title="getsprockets" width="500" height="222" class="alignnone size-full wp-image-6047" /></p>
+<p><a href="http://getsprockets.org/">Sprockets</a> is a build time Ruby tool that reads in your JavaScript files, preprocesses and concatenates:</p>
+<blockquote><p>
+It takes any number of source files and preprocesses them line-by-line in order to build a single concatenation. Specially formatted lines act as directives to the Sprockets preprocessor, telling it to require the contents of another file or library first or to provide a set of asset files (such as images or stylesheets) to the document root. Sprockets attempts to fulfill required dependencies by searching a set of directories called the load path.
+</p></blockquote>
+<p>It is created by Sam Stephenson, and he tells us why you may be interested to use it:</p>
+<ul>
+<li>Extract reusable code and share it across multiple web sites or applications. </li>
+<li>Speed up your site by automatically concatenating JavaScript into one file.</li>
+<li>Organize your JavaScript source code into multiple commented files and directories.</li>
+<li>Use bleeding-edge framework and library code in your application.</li>
+<li>Sprockets is documentation-friendly</li>
+</ul>
+<p>The preprocessor uses a require/provide pattern (Dojo has dojo.require(), dojo.provide() and can do build time and runtime work):</p>
+<blockquote><p>
+<b>require</b></p>
+<p>Use the require directive to tell Sprockets that another JavaScript source file should be inserted into the concatenation before continuing to preprocess the current source file. If the specified source file has already been required, Sprockets ignores the directive.</p>
+<p>The format of a require directive determines how Sprockets looks for the dependent source file. If you place the name of the source file in angle brackets:</p>
+<pre>
+//= require &lt;prototype&gt;
+</pre>
+<p>Sprockets will search your load path, in order, for a file named prototype.js, and begin preprocessing the first match it finds. (An error will be raised if a matching file can't be found.) If you place the name of the source file in quotes:</p>
+<pre>
+//= require "date_helper"
+</pre>
+<p>Sprockets will not search the load path, but will instead look for a file named date_helper.js in the same directory as the current source file. In general, it is a good idea to use quotes to refer to related files, and angle brackets to refer to packages, libraries, or third-party code that may live in a different location.</p>
+<p>You can refer to files in subdirectories with the require directive. For example:</p>
+<pre>
+//= require &lt;behavior/hover_observer&gt;
+</pre>
+<p>Sprockets will search the load path for a file named hover_observer.js in a directory named behavior.</p>
+<p><b>provide</b></p>
+<p>Sometimes it is necessary to include associated stylesheets, images, or even HTML files with a JavaScript plugin. Sprockets lets you specify that a JavaScript source file depends on a set of assets, and offers a routine for copying all dependent assets into the document root.</p>
+<p>The provide directive tells Sprockets that the current source file depends on the set of assets in the named directory. For example, say you have a plugin with the following directory structure:</p>
+<pre>
+plugins/color_picker/assets/images/color_picker/arrow.png
+plugins/color_picker/assets/images/color_picker/circle.png
+plugins/color_picker/assets/images/color_picker/hue.png
+plugins/color_picker/assets/images/color_picker/saturation_and_brightness.png
+plugins/color_picker/assets/stylesheets/color_picker.css
+plugins/color_picker/src/color.js
+plugins/color_picker/src/color_picker.js
+</pre>
+<p>Assume plugins/color_picker/src/ is in your Sprockets load path. plugins/color_picker/src/color_picker.js might look like this:</p>
+<pre>
+//= require "color"
+//= provide "../assets"
+</pre>
+<p>When &lt;color_picker&gt; is required in your application, its provide directive will tell Sprockets that all files in the plugins/color_picker/assets/ directory should be copied into the web server's document root.</p>
+<p><b>Build time constant replacement</b></p>
+<p>You may need to parameterize and insert constants into your source code. Sprockets lets you define such constants in a special file called constants.yml that lives in your load path. This file is formatted as a YAML hash.</p>
+<p>Continuing the color_picker example, assume plugins/color_picker/src/constants.yml contains the following:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-1');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-1">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">COLOR_PICKER_VERSION: <span style="color:#800000;">1</span>.<span style="color:#800000;">0</span>.<span style="color:#800000;">0</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">COLOR_PICKER_AUTHOR: Sam Stephenson &lt;sam @example.<span style="color: #006600;">org</span>&gt;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>The constants are specified in a single place, and you can now insert them into your source code without repetition:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-2');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-2">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;">/* Color Picker plugin, version &lt;%= COLOR_PICKER_VERSION %&gt;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;"> * (c) 2009 &lt;%= COLOR_PICKER_AUTHOR %&gt;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;"> * Distributed under the terms of an MIT-style license */</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #003366; font-weight: bold;">var</span> ColorPicker = <span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; VERSION: <span style="color: #3366CC;">'&lt;%= COLOR_PICKER_VERSION %&gt;'</span>,</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; ...</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>The resulting concatenated output will have the constant values substituted in place:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-3');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-3">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;">/* Color Picker plugin, version 1.0.0</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;"> * (c) 2009 Sam Stephenson &lt;/sam&gt;&lt;sam @example.org&gt;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900; font-style: italic;"> * Distributed under the terms of an MIT-style license */</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #003366; font-weight: bold;">var</span> ColorPicker = <span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; VERSION: <span style="color: #3366CC;">'1.0.0'</span>,</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; ...</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Constants share a global namespace, so you can refer to constants defined anywhere in your load path. If a constant is not found, Sprockets raises an error and halts further preprocessing.<br />
+</sam></p></blockquote>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 12:01 am<br/>
+          <a href="http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management#comments" title="Comment on Sprockets: Build time JavaScript dependancy management">3 Comments</a><!--mfunc votio_ballot_box('6046')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_6046_1" class="vote" onmouseover="votio_hover('star_6046',1,3.3)"; onmouseout="votio_unhover('star_6046',1)"; onclick="votio_vote(6046, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_6046_2" class="vote" onmouseover="votio_hover('star_6046',2,3.3)"; onmouseout="votio_unhover('star_6046',2)"; onclick="votio_vote(6046, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_6046_3" class="vote" onmouseover="votio_hover('star_6046',3,3.3)"; onmouseout="votio_unhover('star_6046',3)"; onclick="votio_vote(6046, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_6046_4" class="vote" onmouseover="votio_hover('star_6046',4,3.3)"; onmouseout="votio_unhover('star_6046',4)"; onclick="votio_vote(6046, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_6046_5" class="vote" onmouseover="votio_hover('star_6046',5,3.3)"; onmouseout="votio_unhover('star_6046',5)"; onclick="votio_vote(6046, 5);"/></div><div class="votes" id="votediv_6046">3.3 rating from 28 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management"
+    dc:identifier="http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management"
+    dc:title="Sprockets: Build time JavaScript dependancy management"
+    trackback:ping="http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="6046";
+//--></script>
+<!-- mmp mmid:6046 mmdate:20090220000117 mmurl:http://ajaxian.com/archives/sprockets-build-time-javascript-dependancy-management mmtitle:Sprockets: Build time JavaScript dependancy management -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Monday, November 10th, 2008</p>
+        <h2 id="post-5006"><a href="http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser" rel="bookmark" title="Permanent Link to Redshift: What Ruby and a nice API can do in the browser">Redshift: What Ruby and a nice API can do in the browser</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <blockquote><p>
+Red writes like Ruby and runs like JavaScript
+</p></blockquote>
+<p>That is the tagline for Red, and they mean it:</p>
+<blockquote><p>
+The all-new Red is a Ruby-to-JavaScript transliterator backed by a custom ruby.js library designed to let your code run in the browser exactly* the way Ruby would run on your machine. The JavaScript output is optimized to contain only the fraction of the ruby.js source library needed to run your code.</p>
+<p>What does this mean for today’s Ruby developer? Simple. You don’t need to learn JavaScript.
+</p></blockquote>
+<p>Trek Glowacki shows us what this is all about. When I wrote about <a href="http://almaer.com/blog/running-ruby-in-the-browser-via-script-typetextruby">running JRuby in the browser</a> I talked about the desire for a nice API to the browser side of things. Having Ruby is fine and all, but what about the APIs? What about the standard library?</p>
+<p>In the demo screencast below you get to see some of the APIs in question, such as:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-4');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-4">
+<div>
+<ol>
+Document.ready? do<br />
+&nbsp; Document['.photo_wrapper'].each do |el|<br />
+&nbsp; &nbsp; PhotoBucket.new(el)<br />
+&nbsp; end<br />
+end
+</ol>
+</div>
+</div>
+</div>
+<p><object width="480" height="300"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=2189212&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA&amp;fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=2189212&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="480" height="300"></embed></object></p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 8:08 am<br/>
+          <a href="http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser#comments" title="Comment on Redshift: What Ruby and a nice API can do in the browser">16 Comments</a><!--mfunc votio_ballot_box('5006')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_5006_1" class="vote" onmouseover="votio_hover('star_5006',1,4.6)"; onmouseout="votio_unhover('star_5006',1)"; onclick="votio_vote(5006, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_5006_2" class="vote" onmouseover="votio_hover('star_5006',2,4.6)"; onmouseout="votio_unhover('star_5006',2)"; onclick="votio_vote(5006, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_5006_3" class="vote" onmouseover="votio_hover('star_5006',3,4.6)"; onmouseout="votio_unhover('star_5006',3)"; onclick="votio_vote(5006, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_5006_4" class="vote" onmouseover="votio_hover('star_5006',4,4.6)"; onmouseout="votio_unhover('star_5006',4)"; onclick="votio_vote(5006, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_5006_5" class="vote" onmouseover="votio_hover('star_5006',5,4.6)"; onmouseout="votio_unhover('star_5006',5)"; onclick="votio_vote(5006, 5);"/></div><div class="votes" id="votediv_5006">4.6 rating from 19 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser"
+    dc:identifier="http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser"
+    dc:title="Redshift: What Ruby and a nice API can do in the browser"
+    trackback:ping="http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="5006";
+//--></script>
+<!-- mmp mmid:5006 mmdate:20081110080858 mmurl:http://ajaxian.com/archives/redshift-what-ruby-and-a-nice-api-can-do-in-the-browser mmtitle:Redshift: What Ruby and a nice API can do in the browser -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Wednesday, August 13th, 2008</p>
+        <h2 id="post-4086"><a href="http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js" rel="bookmark" title="Permanent Link to Prefer Ruby syntax? See Red, and your Ruby will convert to JS">Prefer Ruby syntax? See Red, and your Ruby will convert to JS</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/javascript" title="View all posts in JavaScript" rel="category tag">JavaScript</a><a href="http://technorati.com/tag/JavaScript" rel="tag" title="View the technorati tag: JavaScript"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: JavaScript"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>I am a fan of Ruby, and when I saw <a href="http://wonderfullyflawed.com/2008/08/07/javascript-makes-me-see-red/">Red</a> the framework that allows you to write Ruby and get JavaScript out the other end I was excited. It allows you to write this:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-5');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-5">
+<div>
+<ol>
+class MyClass<br />
+&nbsp; &nbsp;@@my_var = 500<br />
+&nbsp; &nbsp;<br />
+&nbsp; &nbsp;def initialize(arg)<br />
+&nbsp; &nbsp; &nbsp;@arg = arg<br />
+&nbsp; &nbsp;end</p>
+<p>&nbsp; &nbsp;def my_method<br />
+&nbsp; &nbsp; &nbsp;alert(@arg)<br />
+&nbsp; &nbsp;end<br />
+end
+</ol>
+</div>
+</div>
+</div>
+<p>And you end up with:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-6');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-6">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#800000;">1</span>| <span style="color: #003366; font-weight: bold;">var</span> MyClass = <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span>arg<span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span> <span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #006600;">arg</span> = arg;this.<span style="color: #006600;">myMethod</span> = <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span> <span style="color: #000066;">alert</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #000066; font-weight: bold;">this</span>.<span style="color: #006600;">arg</span><span style="color:#006600; font-weight:bold;">&#41;</span>; <span style="color:#006600; font-weight:bold;">&#125;</span> <span style="color:#006600; font-weight:bold;">&#125;</span>; MyClass.<span style="color: #006600;">myVar</span> = <span style="color:#800000;">500</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>You can also have fun with blocks:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-7');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-7">
+<div>
+<ol>
+[1,2,3].sort do |x,y|<br />
+&nbsp; return y - x<br />
+end
+</ol>
+</div>
+</div>
+</div>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-8');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-8">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#91;</span><span style="color:#800000;">1</span>, <span style="color:#800000;">2</span>, <span style="color:#800000;">3</span><span style="color:#006600; font-weight:bold;">&#93;</span>.<span style="color: #006600;">sort</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span>x,y<span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span> <span style="color: #000066; font-weight: bold;">return</span> y - x; <span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>You also get convention conversion, which can lead to some weird things such as:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-9');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-9">
+<div>
+<ol>
+Yahoo[:util]::Dom
+</ol>
+</div>
+</div>
+</div>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-10');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-10">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">Yahoo.<span style="color: #006600;">util</span>.<span style="color: #006600;">Dom</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>On one hand I am excited about being able to think that I am hacking on Ruby, even though I am not. On the other hand, I worry about the abstraction leaking (ending with weird bugs) and how ruby is great because of all of the MOP, the libraries, and other things that you can't really do with this system. This makes it a bit of a tease.</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 6:28 am<br/>
+          <a href="http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js#comments" title="Comment on Prefer Ruby syntax? See Red, and your Ruby will convert to JS">10 Comments</a><!--mfunc votio_ballot_box('4086')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_4086_1" class="vote" onmouseover="votio_hover('star_4086',1,2.9)"; onmouseout="votio_unhover('star_4086',1)"; onclick="votio_vote(4086, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_4086_2" class="vote" onmouseover="votio_hover('star_4086',2,2.9)"; onmouseout="votio_unhover('star_4086',2)"; onclick="votio_vote(4086, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_4086_3" class="vote" onmouseover="votio_hover('star_4086',3,2.9)"; onmouseout="votio_unhover('star_4086',3)"; onclick="votio_vote(4086, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_4086_4" class="vote" onmouseover="votio_hover('star_4086',4,2.9)"; onmouseout="votio_unhover('star_4086',4)"; onclick="votio_vote(4086, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_4086_5" class="vote" onmouseover="votio_hover('star_4086',5,2.9)"; onmouseout="votio_unhover('star_4086',5)"; onclick="votio_vote(4086, 5);"/></div><div class="votes" id="votediv_4086">2.9 rating from 34 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js"
+    dc:identifier="http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js"
+    dc:title="Prefer Ruby syntax? See Red, and your Ruby will convert to JS"
+    trackback:ping="http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="4086";
+//--></script>
+<!-- mmp mmid:4086 mmdate:20080813062826 mmurl:http://ajaxian.com/archives/prefer-ruby-syntax-see-red-and-your-ruby-will-convert-to-js mmtitle:Prefer Ruby syntax? See Red, and your Ruby will convert to JS -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Monday, July 14th, 2008</p>
+        <h2 id="post-3858"><a href="http://ajaxian.com/archives/interview-with-the-gears-on-rails-team" rel="bookmark" title="Permanent Link to Interview with the Gears on Rails team">Interview with the Gears on Rails team</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/gears" title="View all posts in Gears" rel="category tag">Gears</a><a href="http://technorati.com/tag/Gears" rel="tag" title="View the technorati tag: Gears"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Gears"/></a>,  <a href="http://ajaxian.com/by/topic/javascript" title="View all posts in JavaScript" rel="category tag">JavaScript</a><a href="http://technorati.com/tag/JavaScript" rel="tag" title="View the technorati tag: JavaScript"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: JavaScript"/></a>,  <a href="http://ajaxian.com/by/topic/podcasts" title="View all posts in Podcasts" rel="category tag">Podcasts</a><a href="http://technorati.com/tag/Podcasts" rel="tag" title="View the technorati tag: Podcasts"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Podcasts"/></a>,  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>With my Google hat on, <a href="http://google-code-updates.blogspot.com/2008/07/take-your-rails-application-offline.html">I got to interview</a> Michael Marcus and Rui Ma, two recent graduates from a masters program at NYU. They joined me to discuss <a href="http://code.google.com/p/gearsonrails/">Gears on Rails</a>, their open source framework that makes it easier than ever to take a Rails code-base offline.</p>
+<p>They take the approach of giving you a high level Ruby-ish way of developing your Rails app and having it work offline against local storage.</p>
+<p>This means that you end up building actions like this:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-11');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-11">
+<div>
+<ol>
+def create_local<br />
+&nbsp;'<br />
+&nbsp; &nbsp;post = Post.build(params(&quot;post&quot;));<br />
+&nbsp; &nbsp;Post.create_local(post);<br />
+&nbsp; &nbsp;window.location.reload( false );<br />
+&nbsp;'<br />
+end
+</ol>
+</div>
+</div>
+</div>
+<p>They build the local framework on the <a href="http://jesterjs.org/">Jester</a> framework that is a "JavaScript client for REST APIs that uses Rails conventions, and is inspired by Rails' own ActiveResource".</p>
+<p>This means that you can write client side code like this:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-12');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-12">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">Resource.<span style="color: #006600;">model</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">"Twitter"</span>, <span style="color:#006600; font-weight:bold;">&#123;</span>format: <span style="color: #3366CC;">"json"</span>, prefix: <span style="color: #3366CC;">"http://www.twitter.com"</span>, urls: <span style="color:#006600; font-weight:bold;">&#123;</span>list: <span style="color: #3366CC;">"/statuses/user_timeline/:username.json"</span><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">Twitter.<span style="color: #006600;">find</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">"all"</span>, <span style="color:#006600; font-weight:bold;">&#123;</span>username: <span style="color: #3366CC;">"bob"</span><span style="color:#006600; font-weight:bold;">&#125;</span>, <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span>results<span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; twitters = results</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Listen to the <a href="http://google-developer-podcast.googlecode.com/files/gearsonrails-googledeveloperpodcast.mp3">audio interview directly</a> (or subscribe via <a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=257272708&amp;s=143441">iTunes</a>).</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 4:29 pm<br/>
+          <a href="http://ajaxian.com/archives/interview-with-the-gears-on-rails-team#comments" title="Comment on Interview with the Gears on Rails team">1 Comment</a><!--mfunc votio_ballot_box('3858')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3858_1" class="vote" onmouseover="votio_hover('star_3858',1,2.7)"; onmouseout="votio_unhover('star_3858',1)"; onclick="votio_vote(3858, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3858_2" class="vote" onmouseover="votio_hover('star_3858',2,2.7)"; onmouseout="votio_unhover('star_3858',2)"; onclick="votio_vote(3858, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3858_3" class="vote" onmouseover="votio_hover('star_3858',3,2.7)"; onmouseout="votio_unhover('star_3858',3)"; onclick="votio_vote(3858, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3858_4" class="vote" onmouseover="votio_hover('star_3858',4,2.7)"; onmouseout="votio_unhover('star_3858',4)"; onclick="votio_vote(3858, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3858_5" class="vote" onmouseover="votio_hover('star_3858',5,2.7)"; onmouseout="votio_unhover('star_3858',5)"; onclick="votio_vote(3858, 5);"/></div><div class="votes" id="votediv_3858">2.7 rating from 10 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/interview-with-the-gears-on-rails-team"
+    dc:identifier="http://ajaxian.com/archives/interview-with-the-gears-on-rails-team"
+    dc:title="Interview with the Gears on Rails team"
+    trackback:ping="http://ajaxian.com/archives/interview-with-the-gears-on-rails-team/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3858";
+//--></script>
+<!-- mmp mmid:3858 mmdate:20080714162911 mmurl:http://ajaxian.com/archives/interview-with-the-gears-on-rails-team mmtitle:Interview with the Gears on Rails team -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Monday, June 9th, 2008</p>
+        <h2 id="post-3729"><a href="http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax" rel="bookmark" title="Permanent Link to Johnson: Wrapping JavaScript in a loving Ruby embrace, and ARAX">Johnson: Wrapping JavaScript in a loving Ruby embrace, and ARAX</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/javascript" title="View all posts in JavaScript" rel="category tag">JavaScript</a><a href="http://technorati.com/tag/JavaScript" rel="tag" title="View the technorati tag: JavaScript"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: JavaScript"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>John Resig <a href="http://ejohn.org/blog/__file__-in-javascript/">pointed us</a> to <a href="http://github.com/jbarnette/johnson/tree/master/">Johnson</a>, a project that "wraps JavaScript in a loving Ruby embrace."</p>
+<p>It seems to give you a JavaScript interpreter that you can pass a context into to. The simple examples are:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-13');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-13">
+<div>
+<ol>
+require &quot;johnson&quot;<br />
+&nbsp;<br />
+Johnson.evaluate(&quot;4 + 4&quot;) # =&gt; 8<br />
+Johnson.evaluate(&quot;4 + foo&quot;, :foo =&gt; 4) # =&gt; 8
+</ol>
+</div>
+</div>
+</div>
+<p>John saw the following code that gives you __FILE__ as a global that stores the file name a la Perl:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('javascript-14');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">JAVASCRIPT:</span>
+<div id="javascript-14">
+<div class="javascript">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; <span style="color: #000066; font-weight: bold;">this</span>.__defineGetter__<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">"__FILE__"</span>, <span style="color: #003366; font-weight: bold;">function</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#006600; font-weight:bold;">&#123;</span></div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">return</span> <span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #003366; font-weight: bold;">new</span> Error<span style="color:#006600; font-weight:bold;">&#41;</span>.<span style="color: #006600;">stack</span>.<span style="color: #006600;">split</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">"<span style="color: #000099; font-weight: bold;">\n</span>"</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#91;</span><span style="color:#800000;">2</span><span style="color:#006600; font-weight:bold;">&#93;</span>.<span style="color: #006600;">split</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">"@"</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#91;</span><span style="color:#800000;">1</span><span style="color:#006600; font-weight:bold;">&#93;</span>.<span style="color: #006600;">split</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">":"</span><span style="color:#006600; font-weight:bold;">&#41;</span>.<span style="color: #006600;">slice</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#800000;">0</span>,-<span style="color:#800000;">1</span><span style="color:#006600; font-weight:bold;">&#41;</span>.<span style="color: #006600;">join</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color: #3366CC;">":"</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; <span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span>;</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>I am curious to see the itch that they guys are scratching here.</p>
+<p>Of course, Silverlight is giving us <a href="http://www.eweek.com/c/a/Application-Development/Move-Over-AJAX-ARAX-is-Here/?kc=EWKNLEDP060608A">ARAX</a> according to John Lam. Darryl Taft reported on the news, and I quickly told him that JRuby has given us Ruby in the browser for quite some time. The latest Java plugin supports JNLP, and JRuby build a JNLP distribution for you if you want it. Silverlight is another vector for Ruby in the browser.</p>
+<p>Ben said the following about the Silverlight version:</p>
+<blockquote><p>
+If this is about using Silverlight to host client-side browser scripting in Ruby, it's definitely an appealing notion, but the problem will always be about Silverlight being a Microsoft technology.</p>
+<p>As long as Windows/Office dominates Microsoft's balance sheet, these cross-platform Microsoft plays always feel a bit like the story of the boy who upon encountering a rattlesnake picks it up after it promises not to hurt him, upon which the snake promptly bites. After the boy protests, the snake says: 'You knew what I was when you picked me up.' No matter what capabilities Silverlight may have, I think most of us in the community simply wouldn't dream of embracing architectures dependent on Microsoft's goodwill to support other OS vendors.
+</p></blockquote>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 6:05 am<br/>
+          <a href="http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax#comments" title="Comment on Johnson: Wrapping JavaScript in a loving Ruby embrace, and ARAX">5 Comments</a><!--mfunc votio_ballot_box('3729')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3729_1" class="vote" onmouseover="votio_hover('star_3729',1,3.6)"; onmouseout="votio_unhover('star_3729',1)"; onclick="votio_vote(3729, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3729_2" class="vote" onmouseover="votio_hover('star_3729',2,3.6)"; onmouseout="votio_unhover('star_3729',2)"; onclick="votio_vote(3729, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3729_3" class="vote" onmouseover="votio_hover('star_3729',3,3.6)"; onmouseout="votio_unhover('star_3729',3)"; onclick="votio_vote(3729, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3729_4" class="vote" onmouseover="votio_hover('star_3729',4,3.6)"; onmouseout="votio_unhover('star_3729',4)"; onclick="votio_vote(3729, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3729_5" class="vote" onmouseover="votio_hover('star_3729',5,3.6)"; onmouseout="votio_unhover('star_3729',5)"; onclick="votio_vote(3729, 5);"/></div><div class="votes" id="votediv_3729">3.6 rating from 19 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax"
+    dc:identifier="http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax"
+    dc:title="Johnson: Wrapping JavaScript in a loving Ruby embrace, and ARAX"
+    trackback:ping="http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3729";
+//--></script>
+<!-- mmp mmid:3729 mmdate:20080609060509 mmurl:http://ajaxian.com/archives/johnson-wrapping-javascript-in-a-loving-ruby-embrace-and-arax mmtitle:Johnson: Wrapping JavaScript in a loving Ruby embrace, and ARAX -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Wednesday, May 21st, 2008</p>
+        <h2 id="post-3671"><a href="http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names" rel="bookmark" title="Permanent Link to classy_inputs: Rails plugin to add autoclass names">classy_inputs: Rails plugin to add autoclass names</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/css" title="View all posts in CSS" rel="category tag">CSS</a><a href="http://technorati.com/tag/CSS" rel="tag" title="View the technorati tag: CSS"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: CSS"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>We all want to use <code>input[type=text]</code> but browser support doesn't seem to quite be there (IE 6?).</p>
+<p>This lead James Coglan down the path of creating a teeny Rails plugin, <a href="http://blog.jcoglan.com/2008/05/18/another-super-tiny-rails-plugin-classy_inputs/">classy_inputs</a>:</p>
+<blockquote><p>
+Good lord do I ever hate input tags. (YUI hates them too, but Iâ€™ll leave that story for another time). All the different types should really have been different tag names, and they are a total pain to use with CSS. As such, I used to end up doing tedious stuff like adding a :class option to every form element when writing Rails templates. A while back, I tried to patch Rails to get it to do this automatically, but its test suite totally baffled me at the time by applying the classes in some places but not others.</p>
+<p>So, a quick plugin to stave off RSI:</p>
+</blockquote>
+<blockquote><p>
+script/plugin install<br />
+    http://svn.jcoglan.com/classyinputs/trunk/classy_inputs
+</p></blockquote>
+<p>With that installed, any input tag created using a Rails view method will gain a class name matching its type attribute. Maybe Iâ€™ll have another stab at patching Rails, but Iâ€™m not promising anything.</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 9:50 am<br/>
+          <a href="http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names#comments" title="Comment on classy_inputs: Rails plugin to add autoclass names">6 Comments</a><!--mfunc votio_ballot_box('3671')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3671_1" class="vote" onmouseover="votio_hover('star_3671',1,2.4)"; onmouseout="votio_unhover('star_3671',1)"; onclick="votio_vote(3671, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3671_2" class="vote" onmouseover="votio_hover('star_3671',2,2.4)"; onmouseout="votio_unhover('star_3671',2)"; onclick="votio_vote(3671, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3671_3" class="vote" onmouseover="votio_hover('star_3671',3,2.4)"; onmouseout="votio_unhover('star_3671',3)"; onclick="votio_vote(3671, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3671_4" class="vote" onmouseover="votio_hover('star_3671',4,2.4)"; onmouseout="votio_unhover('star_3671',4)"; onclick="votio_vote(3671, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3671_5" class="vote" onmouseover="votio_hover('star_3671',5,2.4)"; onmouseout="votio_unhover('star_3671',5)"; onclick="votio_vote(3671, 5);"/></div><div class="votes" id="votediv_3671">2.4 rating from 9 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names"
+    dc:identifier="http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names"
+    dc:title="classy_inputs: Rails plugin to add autoclass names"
+    trackback:ping="http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3671";
+//--></script>
+<!-- mmp mmid:3671 mmdate:20080521095025 mmurl:http://ajaxian.com/archives/classy_inputs-rails-plugin-to-add-autoclass-names mmtitle:classy_inputs: Rails plugin to add autoclass names -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Thursday, March 27th, 2008</p>
+        <h2 id="post-3483"><a href="http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter" rel="bookmark" title="Permanent Link to HotRuby: Run Ruby on a JavaScript interpreter?">HotRuby: Run Ruby on a JavaScript interpreter?</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/javascript" title="View all posts in JavaScript" rel="category tag">JavaScript</a><a href="http://technorati.com/tag/JavaScript" rel="tag" title="View the technorati tag: JavaScript"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: JavaScript"/></a>,  <a href="http://ajaxian.com/by/topic/library" title="View all posts in Library" rel="category tag">Library</a><a href="http://technorati.com/tag/Library" rel="tag" title="View the technorati tag: Library"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Library"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/showcase" title="View all posts in Showcase" rel="category tag">Showcase</a><a href="http://technorati.com/tag/Showcase" rel="tag" title="View the technorati tag: Showcase"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Showcase"/></a></p>
+        <p>This is from the "wow, really?" department. <a href="http://hotruby.accelart.jp/">HotRuby</a> is an implementation of <a href="http://hotruby.accelart.jp/js/HotRuby.js">Ruby in JavaScript</a>!</p>
+<p>The way it works is that a <a href="http://hotruby.accelart.jp/js/HotRuby.js">HotRuby</a> "VM" takes the resulting output from <a href="http://hotruby.accelart.jp/compileRuby_cgi">YARV</a> and can grok it via JSON:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-15');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-15">
+<div>
+<ol>
+VM::InstructionSequence.compile(cgi['src'], &quot;src&quot;, 1, OutputCompileOption).to_a.to_json
+</ol>
+</div>
+</div>
+</div>
+<p>Thus, you can embed Ruby by doing something like this:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('html-16');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">HTML:</span>
+<div id="html-16">
+<div class="html">
+<ol>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;"><a href="http://december.com/html/4/element/script.html"><span style="color: #000000; font-weight: bold;">&lt;script</span></a> <span style="color: #000066;">type</span>=<span style="color: #ff0000;">"text/ruby"</span><span style="color: #000000; font-weight: bold;">&gt;</span></a></span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">class Pi</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; def initialize</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; @a = 355.0</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; end</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; def calc</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b = 113.0</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return @a / b</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; end</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; PI = 'PI is about'</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">end</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; </div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">puts Pi::PI</div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">puts Pi.new.calc</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;"><span style="color: #000000; font-weight: bold;">&lt;/script&gt;</span></span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+<li style="font-weight: bold;color:#26536A;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;"><span style="color: #009900;"><a href="http://december.com/html/4/element/body.html"><span style="color: #000000; font-weight: bold;">&lt;body</span></a> <span style="color: #000066;">onload</span>=<span style="color: #ff0000;">"prettyPrint(); new HotRuby().runFromScriptTag('/compileRuby.cgi')"</span><span style="color: #000000; font-weight: bold;">&gt;</span></a></span></div>
+</li>
+<li style="font-family: 'Courier New', Courier, monospace; color: black; font-weight: normal; font-style: normal;color:#3A6A8B;">
+<div style="color:#000000; font-family: 'Courier New', Courier, monospace; font-weight: normal;">&nbsp;</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<p>Since you can run on any JavaScript interpreter or VM, they also support Flash.</p>
+<p>For example, check out this Box2D example written in Ruby, running in Flash:</p>
+<p><a href="http://hotruby.accelart.jp/test-web/Box2DFlashAS3.html"><img src="http://ajaxian.com/wp-content/images/hotrubyexample.png" alt="HotRuby Example" border="0" width="645" height="366"/></a></body></p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 8:01 am<br/>
+          <a href="http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter#comments" title="Comment on HotRuby: Run Ruby on a JavaScript interpreter?">3 Comments</a><!--mfunc votio_ballot_box('3483')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3483_1" class="vote" onmouseover="votio_hover('star_3483',1,3.5)"; onmouseout="votio_unhover('star_3483',1)"; onclick="votio_vote(3483, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3483_2" class="vote" onmouseover="votio_hover('star_3483',2,3.5)"; onmouseout="votio_unhover('star_3483',2)"; onclick="votio_vote(3483, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3483_3" class="vote" onmouseover="votio_hover('star_3483',3,3.5)"; onmouseout="votio_unhover('star_3483',3)"; onclick="votio_vote(3483, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3483_4" class="vote" onmouseover="votio_hover('star_3483',4,3.5)"; onmouseout="votio_unhover('star_3483',4)"; onclick="votio_vote(3483, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3483_5" class="vote" onmouseover="votio_hover('star_3483',5,3.5)"; onmouseout="votio_unhover('star_3483',5)"; onclick="votio_vote(3483, 5);"/></div><div class="votes" id="votediv_3483">3.5 rating from 28 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter"
+    dc:identifier="http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter"
+    dc:title="HotRuby: Run Ruby on a JavaScript interpreter?"
+    trackback:ping="http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3483";
+//--></script>
+<!-- mmp mmid:3483 mmdate:20080327080148 mmurl:http://ajaxian.com/archives/hotruby-run-ruby-on-a-javascript-interpreter mmtitle:HotRuby: Run Ruby on a JavaScript interpreter? -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Wednesday, March 5th, 2008</p>
+        <h2 id="post-3407"><a href="http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser" rel="bookmark" title="Permanent Link to Dynamic Silverlight Launched: Ruby and more in the browser">Dynamic Silverlight Launched: Ruby and more in the browser</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/microsoft" title="View all posts in Microsoft" rel="category tag">Microsoft</a><a href="http://technorati.com/tag/Microsoft" rel="tag" title="View the technorati tag: Microsoft"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Microsoft"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>John Lam has posted about a new release, <a href="http://www.iunknown.com/2008/03/dynamic-silverl.html">DSL: Dynamic Silverlight</a>. I can't believe that Microsoft is going to take the DSL TLA ;)</p>
+<blockquote><p>
+Our team is happy to announce Dynamic Silverlight (DSL), which integrates our DLR dynamic languages with Silverlight. It requires Silverlight 2, which includes the cross-platform CLR and a set of libraries for rich graphics, media and web programming. It is packaged as a Silverlight extension, which means that it is downloaded in addition to Silverlight on an as-needed basis.</p>
+<p>DSL has a runtime and an SDK component. The runtime consists of two assemblies: Microsoft.Scripting.dll, and Microsoft.Scripting.Silverlight.dll. You'll also need the language assemblies, which are IronRuby.dll and IronRuby.Libraries.dll for Ruby and IronPython.dll and IronPython.Modules.dll for Python. The runtime component is a small additional download. Today, the IronRuby Silverlight runtime is just a 712KB download, which takes less than 5 seconds to download over modern broadband.
+</p></blockquote>
+<p>Now you can get Ruby in your browser:</p>
+<p><a href="http://www.iunknown.com/2008/03/dynamic-silverl.html"><img src="http://farm3.static.flickr.com/2239/2312059014_5f89386b9b.jpg" border="0" /></a></p>
+<p>John also talked about Chiron, a mini Web server that lets you develop against a local file system with ease. We will find out more, and get access to the bits, on Friday when John gives his MIX talk.</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 10:43 am<br/>
+          <a href="http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser#comments" title="Comment on Dynamic Silverlight Launched: Ruby and more in the browser">2 Comments</a><!--mfunc votio_ballot_box('3407')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3407_1" class="vote" onmouseover="votio_hover('star_3407',1,3.5)"; onmouseout="votio_unhover('star_3407',1)"; onclick="votio_vote(3407, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3407_2" class="vote" onmouseover="votio_hover('star_3407',2,3.5)"; onmouseout="votio_unhover('star_3407',2)"; onclick="votio_vote(3407, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3407_3" class="vote" onmouseover="votio_hover('star_3407',3,3.5)"; onmouseout="votio_unhover('star_3407',3)"; onclick="votio_vote(3407, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3407_4" class="vote" onmouseover="votio_hover('star_3407',4,3.5)"; onmouseout="votio_unhover('star_3407',4)"; onclick="votio_vote(3407, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3407_5" class="vote" onmouseover="votio_hover('star_3407',5,3.5)"; onmouseout="votio_unhover('star_3407',5)"; onclick="votio_vote(3407, 5);"/></div><div class="votes" id="votediv_3407">3.5 rating from 21 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser"
+    dc:identifier="http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser"
+    dc:title="Dynamic Silverlight Launched: Ruby and more in the browser"
+    trackback:ping="http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3407";
+//--></script>
+<!-- mmp mmid:3407 mmdate:20080305104358 mmurl:http://ajaxian.com/archives/dynamic-silverlight-launched-ruby-and-more-in-the-browser mmtitle:Dynamic Silverlight Launched: Ruby and more in the browser -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Thursday, February 14th, 2008</p>
+        <h2 id="post-3333"><a href="http://ajaxian.com/archives/nextpoint-taking-ajax-to-court" rel="bookmark" title="Permanent Link to Nextpoint: Taking Ajax to Court">Nextpoint: Taking Ajax to Court</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/prototype" title="View all posts in Prototype" rel="category tag">Prototype</a><a href="http://technorati.com/tag/Prototype" rel="tag" title="View the technorati tag: Prototype"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Prototype"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/scriptaculous" title="View all posts in Scriptaculous" rel="category tag">Scriptaculous</a><a href="http://technorati.com/tag/Scriptaculous" rel="tag" title="View the technorati tag: Scriptaculous"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Scriptaculous"/></a>,  <a href="http://ajaxian.com/by/topic/showcase" title="View all posts in Showcase" rel="category tag">Showcase</a><a href="http://technorati.com/tag/Showcase" rel="tag" title="View the technorati tag: Showcase"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Showcase"/></a></p>
+        <p>I used to work in the healthcare sector, and was always amazed to see the amount of paperwork that was required. Literally paper work that is. The industry was full of drawers overflowing with paper. </p>
+<p>I imagine that the legal profession has its fair share of this too, but one company Nextpoint, is trying to change that. </p>
+<p>I had the opportunity to sit down with some members of the Nextpoint Lab, including Jim Halberg the Ajaxian, to get a tour and discuss their latest products. Below are a few questions about the Ajax implementation, and we finish up with a video showcasing the work. </p>
+<p><b>What are the Nextpoint tools?</b> </p>
+<p>Nextpoint's flagship software product  (<a href="http://trialmanager.com">marketing site</a>, <a href="http://trialmanager.com/TrialManager_bro.pdf">brochure</a>), brings web 2.0 to the world of litigation software.  We provide a powerful and easy to use way to manage the mountain of electronic information associated with any case. </p>
+<p><b>What are some of the cool Ajax features?</b> </p>
+<p>The site has many small ajaxy features.  Things like status bars for uploads or bulk operations, submitting small bits of data that shouldn't require traditional round-trips, or updating a small piece of the page with some results.  The stuff we think Ajaxian readers would be more interested in mainly revolves around our work with images. </p>
+<p>A real pain source for many years in trial litigation has been stamping documents.  When you decide you want to use a document in court it must be stamped (i.e. "Defense Exhibit 1") and then communicated to the opposing team of lawyers.  With most products today this means, locating the document in the management software; exporting it; printing it;  physically stamping it;  scanning it back in locally; uploading it back into the management software; and finally transmitting that electronic copy... it's not hard to see how this could get annoying after the 100th time you've had to do it this week.  Nextpoint provides the ability to electronically add a customized stamp - these can be resized or repositioned as desired and because we're doing things electronically it's much easier to do things like "stamp these thousand documents as 'Defense Exhibits'".  Believe it or not - the server normally can get this task done a bit quicker than a guy with a rubber stamp in his hand.  When the machine is done stamping - they're already electronic copies - you're ready to go. </p>
+<p>Our flashiest use of Ajax is in our presentation tool, "Theater".  Many of our clients are using this tool to prepare document treatments before a trial, so that they're ready to call up at a moments notice in a pre-formatted state.  It also may be used live in a courtroom to direct listeners attention to important points in a way that visually impresses.  We'll show this off in the demo video we're going to provide. </p>
+<p><b>What tools are used to create theater?</b></p>
+<p>Theater is mostly a custom javascript application, using prototype and scriptaculous to simplify the Ajax communication and animation.  The images are served from a Merb-based server, which uses the GD libraries to do scaling, rotating, cropping, and setting transparency on the fly.  The transparency is especially important, so that HTML elements can be used as highlights behind the main image content, keeping the user interface very responsive. </p>
+<p><b>What were the biggest challenges getting all of this Ajax stuff to work?</b> </p>
+<p>Even when using Ajax to keep the traffic between client and server light, the latency and server processing time can become quite apparent.  Theater employs a few neat tricks to keep the application feeling responsive.  The annotations on documents (mentioned above) are done with HTML elements, preventing the wait of a roundtrip to the server to get a new image.  When loading new documents, a pre-generated medium-resolution image is loaded first, and then replaced with an exact-fit image once it's ready, which usually takes less than a second.  Similarly, when creating callouts of an image section, the main document image is resized and cropped in a DIV in the browser as a low-resolution preview until the high-resolution version is available.  The same thing happens when callouts get resized to make room on-screen for more callouts.  Users feel more like they're working with an application when they can continue to work with the preview versions instead of waiting after each click. </p>
+<p>Allowing users to resize and reposition a "stamp" on top of an image presented some challenges but most of the trouble in that interface emerged from making sure that the final position the user set with css/js was properly translated into coordinates that could be used for the actual image manipulation on the backend.  Allowing a variety of stamp formats, variable amounts of text, and translating between entirely different measurement systems for fonts on the server vs. the browsers complicated things, as well as the oft-demanded rounded corners to make the stamps look "more natural". </p>
+<p>Originally Theater was based around a tiled-image concept, like Google Maps.  The images were pre-cropped into tiles at a few different "zoom" levels, and then further zoom levels were simulated by resizing in the browser.  Unfortunately, storing 200+ images for each page of each document quickly became unmanageable.  In addition, many browsers use a pretty low-quality algorithm for resizing images, leaving the in-between levels looking "chunky" or "distorted."  Using the GD library, and a streamlined application server that doesn't load the entire Rails application, we were able to overcome this issue by generating images on the fly.  That reduced the number of requests made to the server and creates pristine images of just the right size.</p>
+<p><b>Demo</b></p>
+<p>Below is a demo of the product. For a high quality version <a href="http://vimeo.com/download/video:33095069">go here</a>.</p>
+<p><object type="application/x-shockwave-flash" width="600" height="400" data="http://www.vimeo.com/moogaloop.swf?clip_id=685523&amp;server=www.vimeo.com&amp;fullscreen=1&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA"><param name="quality" value="best" /><param name="allowfullscreen" value="true" /><param name="scale" value="showAll" /><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=685523&amp;server=www.vimeo.com&amp;fullscreen=1&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA" /></object></p>
+<p><b>UPDATE:</b> A new video showing the data stamping technique has been added. There is a <a href="http://www.vimeo.com/691016">normal</a> version, and a <a href="http://www.vimeo.com/download/video:33619692">high res</a> one (must be a vimeo member for high res).</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 9:01 am<br/>
+          <a href="http://ajaxian.com/archives/nextpoint-taking-ajax-to-court#comments" title="Comment on Nextpoint: Taking Ajax to Court">6 Comments</a><!--mfunc votio_ballot_box('3333')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3333_1" class="vote" onmouseover="votio_hover('star_3333',1,4)"; onmouseout="votio_unhover('star_3333',1)"; onclick="votio_vote(3333, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3333_2" class="vote" onmouseover="votio_hover('star_3333',2,4)"; onmouseout="votio_unhover('star_3333',2)"; onclick="votio_vote(3333, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3333_3" class="vote" onmouseover="votio_hover('star_3333',3,4)"; onmouseout="votio_unhover('star_3333',3)"; onclick="votio_vote(3333, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3333_4" class="vote" onmouseover="votio_hover('star_3333',4,4)"; onmouseout="votio_unhover('star_3333',4)"; onclick="votio_vote(3333, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3333_5" class="vote" onmouseover="votio_hover('star_3333',5,4)"; onmouseout="votio_unhover('star_3333',5)"; onclick="votio_vote(3333, 5);"/></div><div class="votes" id="votediv_3333">4 rating from 41 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/nextpoint-taking-ajax-to-court"
+    dc:identifier="http://ajaxian.com/archives/nextpoint-taking-ajax-to-court"
+    dc:title="Nextpoint: Taking Ajax to Court"
+    trackback:ping="http://ajaxian.com/archives/nextpoint-taking-ajax-to-court/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3333";
+//--></script>
+<!-- mmp mmid:3333 mmdate:20080214090118 mmurl:http://ajaxian.com/archives/nextpoint-taking-ajax-to-court mmtitle:Nextpoint: Taking Ajax to Court -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Sunday, February 10th, 2008</p>
+        <h2 id="post-3313"><a href="http://ajaxian.com/archives/heroku-web-based-rails-hosting" rel="bookmark" title="Permanent Link to Heroku: Web based Rails Hosting">Heroku: Web based Rails Hosting</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/prototype" title="View all posts in Prototype" rel="category tag">Prototype</a><a href="http://technorati.com/tag/Prototype" rel="tag" title="View the technorati tag: Prototype"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Prototype"/></a>,  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/showcase" title="View all posts in Showcase" rel="category tag">Showcase</a><a href="http://technorati.com/tag/Showcase" rel="tag" title="View the technorati tag: Showcase"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Showcase"/></a></p>
+        <p><a href="http://heroku.com/">Heroku</a> is a new YCombinator startup that joins the growing number of "use your browser to build your apps" type of applications.</p>
+<p>You can create new Rails applications, and they are magically hosted up in the cloud. You can import your own Rails application, or you can use the inline editor and tools to built the application directly in the browser.</p>
+<p>Heroku itself is a Rails application. I wonder if they now self hosting :)</p>
+<p>Being able to quickly build an application and have it running live is great (using Amazon EC2), and this is just the beginning. They already tie into the usual tools like Rake, but there is room to go further and have nice DB utilities, cloning of functionality, and much more.</p>
+<p>The editor itself could use a bunch of work too. I can never see where the cursor is, let alone have all of the Textmate / Aptana / IntelliJ goodness.</p>
+<p><a href="http://heroku.com/"><img src="http://ajaxian.com/wp-content/images/heroku.png" alt="Heroku" border="0" width="508" height="302"/></a></p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 9:28 am<br/>
+          <a href="http://ajaxian.com/archives/heroku-web-based-rails-hosting#comments" title="Comment on Heroku: Web based Rails Hosting">7 Comments</a><!--mfunc votio_ballot_box('3313')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3313_1" class="vote" onmouseover="votio_hover('star_3313',1,3.2)"; onmouseout="votio_unhover('star_3313',1)"; onclick="votio_vote(3313, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3313_2" class="vote" onmouseover="votio_hover('star_3313',2,3.2)"; onmouseout="votio_unhover('star_3313',2)"; onclick="votio_vote(3313, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3313_3" class="vote" onmouseover="votio_hover('star_3313',3,3.2)"; onmouseout="votio_unhover('star_3313',3)"; onclick="votio_vote(3313, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3313_4" class="vote" onmouseover="votio_hover('star_3313',4,3.2)"; onmouseout="votio_unhover('star_3313',4)"; onclick="votio_vote(3313, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3313_5" class="vote" onmouseover="votio_hover('star_3313',5,3.2)"; onmouseout="votio_unhover('star_3313',5)"; onclick="votio_vote(3313, 5);"/></div><div class="votes" id="votediv_3313">3.2 rating from 28 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/heroku-web-based-rails-hosting"
+    dc:identifier="http://ajaxian.com/archives/heroku-web-based-rails-hosting"
+    dc:title="Heroku: Web based Rails Hosting"
+    trackback:ping="http://ajaxian.com/archives/heroku-web-based-rails-hosting/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3313";
+//--></script>
+<!-- mmp mmid:3313 mmdate:20080210092803 mmurl:http://ajaxian.com/archives/heroku-web-based-rails-hosting mmtitle:Heroku: Web based Rails Hosting -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Wednesday, January 23rd, 2008</p>
+        <h2 id="post-3238"><a href="http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails" rel="bookmark" title="Permanent Link to Ext Scaffold Generator Plugin for Rails">Ext Scaffold Generator Plugin for Rails</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/examples" title="View all posts in Examples" rel="category tag">Examples</a><a href="http://technorati.com/tag/Examples" rel="tag" title="View the technorati tag: Examples"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Examples"/></a>,  <a href="http://ajaxian.com/by/topic/ext" title="View all posts in Ext" rel="category tag">Ext</a><a href="http://technorati.com/tag/Ext" rel="tag" title="View the technorati tag: Ext"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ext"/></a>,  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p><img src="http://inside.glnetworks.de/wp-content/uploads/2008/01//Ext%20Scaffold%20Generator%20Plugin%20GUI%20Screenshot1.png" style="float: right; padding: 5px; border: 0" /></p>
+<p>Martin Rehfeld has released a Rails plugin that <a href="http://inside.glnetworks.de/2008/01/18/announcing-ext-scaffold-generator-plugin-for-rails/">generates Ext JS scaffolds</a></p>
+<blockquote><p>
+The Ext Scaffold Generator Plugin provides a custom MIME type alias :ext_json to be able to handle requests from the Ext frontend separately. The generated controllers show how to do this.</p>
+<p>To make data delivery to the Ext frontend easy, the plugin extends the Array and ActiveRecord::Base classes to provide a to_ext_json method. Hereâ€™s a simplified example of a potential index method in a PostsController:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-17');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-17">
+<div>
+<ol>
+# GET /posts<br />
+# GET /posts.ext_json<br />
+def index<br />
+&nbsp; respond_to do |format|<br />
+&nbsp; &nbsp; format.html&nbsp; &nbsp; &nbsp;# index.html.erb (will fire ext_json request)<br />
+&nbsp; &nbsp; format.ext_json { render :json =&gt; Post.find(:all).to_ext_json }<br />
+&nbsp; end<br />
+end
+</ol>
+</div>
+</div>
+</div>
+</blockquote>
+<p>He also has some other good articles on integrating Ext JS and Rails in general.</p>
+<ul>
+<li><a href="http://inside.glnetworks.de/2008/01/08/ext-js-and-rails-how-do-they-get-along/">Background Presentation: Ext JS and Rails, how do they get along?</a></li>
+<li><a href="http://inside.glnetworks.de/2007/12/17/ext-js-already-the-3rd-most-used-web-framwork/">Ext JS already the 3rd most used Web Framework</a></li>
+</ul>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 6:54 am<br/>
+          <a href="http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails#comments" title="Comment on Ext Scaffold Generator Plugin for Rails">3 Comments</a><!--mfunc votio_ballot_box('3238')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3238_1" class="vote" onmouseover="votio_hover('star_3238',1,3.9)"; onmouseout="votio_unhover('star_3238',1)"; onclick="votio_vote(3238, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3238_2" class="vote" onmouseover="votio_hover('star_3238',2,3.9)"; onmouseout="votio_unhover('star_3238',2)"; onclick="votio_vote(3238, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3238_3" class="vote" onmouseover="votio_hover('star_3238',3,3.9)"; onmouseout="votio_unhover('star_3238',3)"; onclick="votio_vote(3238, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3238_4" class="vote" onmouseover="votio_hover('star_3238',4,3.9)"; onmouseout="votio_unhover('star_3238',4)"; onclick="votio_vote(3238, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3238_5" class="vote" onmouseover="votio_hover('star_3238',5,3.9)"; onmouseout="votio_unhover('star_3238',5)"; onclick="votio_vote(3238, 5);"/></div><div class="votes" id="votediv_3238">3.9 rating from 28 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails"
+    dc:identifier="http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails"
+    dc:title="Ext Scaffold Generator Plugin for Rails"
+    trackback:ping="http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3238";
+//--></script>
+<!-- mmp mmid:3238 mmdate:20080123065458 mmurl:http://ajaxian.com/archives/ext-scaffold-generator-plugin-for-rails mmtitle:Ext Scaffold Generator Plugin for Rails -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Thursday, January 10th, 2008</p>
+        <h2 id="post-3196"><a href="http://ajaxian.com/archives/xss-flash-and-rails" rel="bookmark" title="Permanent Link to XSS: Flash and Rails">XSS: Flash and Rails</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/flash" title="View all posts in Flash" rel="category tag">Flash</a><a href="http://technorati.com/tag/Flash" rel="tag" title="View the technorati tag: Flash"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Flash"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/security" title="View all posts in Security" rel="category tag">Security</a><a href="http://technorati.com/tag/Security" rel="tag" title="View the technorati tag: Security"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Security"/></a></p>
+        <p>A couple of good articles on XSS and security came out at the same time. One talks about XSS in Flash, and the other on Rails:</p>
+<p><a href="https://docs.google.com/View?docid=ajfxntc4dmsq_14dt57ssdw&#038;pli=1">XSS Vulnerabilities in Common Shockwave Flash Files </a></p>
+<p>Rich Cannings has written an article explaining the issue of XSS wrt Flash:</p>
+<blockquote><p>
+Critical vulnerabilities exist in a large number of widely used web authoring tools that automatically generate Shockwave Flash (SWF) files, such as Adobe (r) Dreamweaver (r), Adobe Acrobat (r) Connect (tm) (formerly Macromedia Breeze), InfoSoft FusionCharts, and Techsmith Camtasia. The flaws render websites that host these generated SWF files vulnerable to Cross-Site Scripting (XSS).</p>
+<p>This problem is not limited to authoring tools. Autodemo, a popular service provider, used a vulnerable controller SWF in many of their projects.</p>
+<p>Simple Google hacking queries reveal that hundreds of thousands of SWFs are vulnerable on the Internet, and a considerable percentage of major Internet sites are affected. We are only reporting XSS vulnerabilities that have been fixed by the vendors.
+</p></blockquote>
+<p>He talks through tools that cause the issue, and then solutions on how to keep yourself safe.</p>
+<p><a href="http://www.relevancellc.com/2008/1/9/is-your-rails-app-xss-safe">Is your Rails site XSS safe?</a></p>
+<p>Stu Halloway of Relevance has written about <a href="http://safe-erb.rubyforge.org/svn/plugins/safe_erb/">SafeErb</a> and how he got it working on a Rails 2.0 application. He kept notes as he went through the experience, allowing us to learn from his acts.</p>
+<blockquote><p>
+<b>What is SafeErb?</b></p>
+<p>Safe ERB lets you make sure that the string written by "&lt;%= %&gt;" in your rhtml template is escaped correctly. If you try to show the attributes in the ActiveRecord instance read from the database or the parameters received from the request without escaping them using "h" method, an exception will be raised. This will significantly reduce the possibility of putting cross-site scripting vulnerability into your web application.</p>
+<p>The check is done using "tainted?" method in Object class which is a standard feature provided by Ruby - the string is "tainted" when it is read from IO. When ERB::Util#h method is called, this plugin "untaints" the string, and when "&lt;%= %&gt;" is called in your rhtml template, it raises an exception if the string you are trying to show is tainted.
+</p></blockquote>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 12:14 pm<br/>
+          <a href="http://ajaxian.com/archives/xss-flash-and-rails#respond" title="Comment on XSS: Flash and Rails">Comment here</a><!--mfunc votio_ballot_box('3196')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3196_1" class="vote" onmouseover="votio_hover('star_3196',1,3.2)"; onmouseout="votio_unhover('star_3196',1)"; onclick="votio_vote(3196, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3196_2" class="vote" onmouseover="votio_hover('star_3196',2,3.2)"; onmouseout="votio_unhover('star_3196',2)"; onclick="votio_vote(3196, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3196_3" class="vote" onmouseover="votio_hover('star_3196',3,3.2)"; onmouseout="votio_unhover('star_3196',3)"; onclick="votio_vote(3196, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3196_4" class="vote" onmouseover="votio_hover('star_3196',4,3.2)"; onmouseout="votio_unhover('star_3196',4)"; onclick="votio_vote(3196, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3196_5" class="vote" onmouseover="votio_hover('star_3196',5,3.2)"; onmouseout="votio_unhover('star_3196',5)"; onclick="votio_vote(3196, 5);"/></div><div class="votes" id="votediv_3196">3.2 rating from 10 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/xss-flash-and-rails"
+    dc:identifier="http://ajaxian.com/archives/xss-flash-and-rails"
+    dc:title="XSS: Flash and Rails"
+    trackback:ping="http://ajaxian.com/archives/xss-flash-and-rails/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3196";
+//--></script>
+<!-- mmp mmid:3196 mmdate:20080110121421 mmurl:http://ajaxian.com/archives/xss-flash-and-rails mmtitle:XSS: Flash and Rails -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Friday, January 4th, 2008</p>
+        <h2 id="post-3175"><a href="http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more" rel="bookmark" title="Permanent Link to Zed Shaw interview on Rails community, enterprise, Ajax, patents, and a whole lot more">Zed Shaw interview on Rails community, enterprise, Ajax, patents, and a whole lot more</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/podcasts" title="View all posts in Podcasts" rel="category tag">Podcasts</a><a href="http://technorati.com/tag/Podcasts" rel="tag" title="View the technorati tag: Podcasts"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Podcasts"/></a>,  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p><a href="http://robsanheim.com">Rob Sanheim</a> sat down with Zed Shaw at RailsConf and had an hour long conversation with him that covered his thoughts on the Rails community, the role of the Enterprise, the state of Ajax, JRuby and Rubinius, documentation, tests, tooling, the role of patents in software, and a whole lot of opinion.</p>
+<p><img src="http://ajaxian.com/wp-content/images/zedshawshot.jpg" alt="Zed Shaw" border="0" width="200" height="184" style="float: right; padding: 4px;"/></p>
+<p>It is very interesting to listen to this after the <a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">explosion</a> that happened when Zed lambasted the Rails community. When you listen to this interview, you see some of the seeds of the rant, but it is a lot more toned down, and there is some good stuff in there. It is easy to blog a crazy rant.... but when you are talking to someone you get a different side of the coin. This gives you that side, from a time when he wasn't as upset as he may have been when he sat at the computer to type up his post.</p>
+<p><a href="http://media.ajaxian.com/podcasts/audibleajax-show-23-interview-ZedShaw.mp3">Listen to the recording</a>, or <a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=79427931">subscribe to the podcast</a>. We will go back to more "standard" Ajax topics in the future.</p>
+<p><b>Zed's Core Quotes</b></p>
+<ul>
+<li>On Semantic Web: <b>Einsteins brain on a crack whores body isn't going to happen</b></li>
+<li><b>I'm waiting for someone to blind-side the entire Web stack</b></li>
+<li><b>Some people hate me, but love Mongrel</b></li>
+<li><b>Where is the XP for managers</b></li>
+</ul>
+<p>And here are some of the thoughts that Zed expressed throughout the interview:</p>
+<p><b>Thoughts on the Rails community, and enterprise (as big business)</b></p>
+<ul>
+<li>Mixed feelings</li>
+<li>Mongrel was an art project</li>
+<li>Simpler software is better</li>
+<li>Enterprise software is known to be complex, and survives to make money for consulting companies</li>
+<li>Afraid of consulting companies getting behind it, as their interest is in selling 30 people vs. 3 people teams</li>
+</ul>
+<p><b>What could an enterprise company sell?</b></p>
+<ul>
+<li>Do enterprise stuff well such as Authentication</li>
+<li>Stacks: Make it simple (no ClassLoader6)</li>
+</ul>
+<p><b>JRuby</b></p>
+<ul>
+<li>It is a huge deal</li>
+<li>The only fear is that Sun will mess it up with the JCP.</li>
+<li>The JRuby guys are rock stars</li>
+</ul>
+<p><b>Rubinius</b></p>
+<ul>
+<li>An open source project not controlled by anyone</li>
+<li>A bunch of guys who really love Ruby</li>
+<li>Massive "spec", working with the JRuby guys</li>
+</ul>
+<p><b>State of Ajax</b></p>
+<ul>
+<li>HTTP sucks</li>
+<li>Needs to be a reset</li>
+<li>Semantic Web: "Einsteins brain on a crack whores body isn't going to happen"</li>
+<li>I'm waiting for someone to blind-side the entire Web stack</li>
+<li>Ajax the technology doesn't impress me, but the new UIs that we are seeing is fantastic</li>
+<li>Usability != better looking</li>
+<li>"click here" actually does a really good job at having people click here!</li>
+</ul>
+<p><b>What is going to come out with all of the work happening on top of Mongrel?</b></p>
+<ul>
+<li><a href="http://www.swiftapply.com/">Swiftapply</a></li>
+<li>Evented mongrel</li>
+<li>DrProxy</li>
+<li>OpenBSD clustering</li>
+<li>X hits per day is meaningless. What is the peak?</li>
+</ul>
+<p><b>Honest Open Source</b></p>
+<ul>
+<li>Not all open source projects are equal</li>
+<li>Make everything open and public immediately (e.g. SVN)</li>
+<li>Corporate open source projects often lose their flavour</li>
+<li>Outside commiters are key</li>
+<li>Some people hate me, but love Mongrel</li>
+<li>Documentation is poor for Rails and Ruby, Ruby doesn't have a culture for it</li>
+<li>Rails core does a much better job that the Ruby community in general, and this is a reason why it took off</li>
+<li>QRI command line. Way better than RI</li>
+<li>If Rails core isn't using it, don't use it. Add: used_by</li>
+</ul>
+<p><b>What tools do you use?</b></p>
+<ul>
+<li>Vim</li>
+<li>Use a generic tool, and pimp it</li>
+<li>"I code with a thesaurus"</li>
+<li>Vim is designed to be used on phone lines, and it is very safe</li>
+<li>Good tools never cover your code</li>
+</ul>
+<p><b>Testing</b></p>
+<ul>
+<li>A bit of design up front</li>
+<li>Design the API</li>
+<li>Tests to measure how it is working</li>
+<li>Quality comes from the design ahead of time</li>
+</ul>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 7:55 pm<br/>
+          <a href="http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more#comments" title="Comment on Zed Shaw interview on Rails community, enterprise, Ajax, patents, and a whole lot more">5 Comments</a><!--mfunc votio_ballot_box('3175')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3175_1" class="vote" onmouseover="votio_hover('star_3175',1,3)"; onmouseout="votio_unhover('star_3175',1)"; onclick="votio_vote(3175, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3175_2" class="vote" onmouseover="votio_hover('star_3175',2,3)"; onmouseout="votio_unhover('star_3175',2)"; onclick="votio_vote(3175, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3175_3" class="vote" onmouseover="votio_hover('star_3175',3,3)"; onmouseout="votio_unhover('star_3175',3)"; onclick="votio_vote(3175, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3175_4" class="vote" onmouseover="votio_hover('star_3175',4,3)"; onmouseout="votio_unhover('star_3175',4)"; onclick="votio_vote(3175, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3175_5" class="vote" onmouseover="votio_hover('star_3175',5,3)"; onmouseout="votio_unhover('star_3175',5)"; onclick="votio_vote(3175, 5);"/></div><div class="votes" id="votediv_3175">3 rating from 59 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more"
+    dc:identifier="http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more"
+    dc:title="Zed Shaw interview on Rails community, enterprise, Ajax, patents, and a whole lot more"
+    trackback:ping="http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3175";
+//--></script>
+<!-- mmp mmid:3175 mmdate:20080104195522 mmurl:http://ajaxian.com/archives/zed-shaw-interview-on-rails-community-enterprise-ajax-patents-and-a-whole-lot-more mmtitle:Zed Shaw interview on Rails community, enterprise, Ajax, patents, and a whole lot more -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Friday, November 30th, 2007</p>
+        <h2 id="post-3065"><a href="http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site" rel="bookmark" title="Permanent Link to Placeshout: New Rails based Geo-cool site">Placeshout: New Rails based Geo-cool site</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/mapping" title="View all posts in Mapping" rel="category tag">Mapping</a><a href="http://technorati.com/tag/Mapping" rel="tag" title="View the technorati tag: Mapping"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Mapping"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a>,  <a href="http://ajaxian.com/by/topic/showcase" title="View all posts in Showcase" rel="category tag">Showcase</a><a href="http://technorati.com/tag/Showcase" rel="tag" title="View the technorati tag: Showcase"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Showcase"/></a></p>
+        <p><a href="http://placeshout.com/users/2">Andre Lewis</a> has a new site out there, <a href="http://placeshout.com/">Placeshout</a> which offers a way to quickly call out your favourites place in various locations.</p>
+<p>You could argue that we have other places for this... Yelp for example, or My Maps themselves. So, why Placeshout?</p>
+<blockquote><p>
+<b>Sometimes, you just want a quick suggestion</b></p>
+<p>When Andre and I are looking for a hole-in-the-wall Mexican restaurant or a park with a softball field, we usually just want a quick suggestion, not a lengthy review. We want to know if a place is worth visiting in 30 seconds.</p>
+<p>Placeshout isn't about volume - it's about trying to express the positives and negatives of a destination in as few of words as possible. If people agree, that "shoutout" moves up...if they don't, the shoutout moves down and begins to disappear.</p>
+<p>We hope Placeshout makes it easier for you to find local destinations.
+</p></blockquote>
+<p>There are some interesting features in this, very Web 2.0-looking, site. One that stands out is the enhanced mapping experience on top of Google Maps. As you move around, directional arrows tell you how far various other cities are away. It is kinda fun to watch:</p>
+<p><object type="application/x-shockwave-flash" width="400" height="225" data="http://www.vimeo.com/moogaloop.swf?clip_id=409622&amp;server=www.vimeo.com&amp;fullscreen=1&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA"><param name="quality" value="best" /><param name="allowfullscreen" value="true" /><param name="scale" value="showAll" /><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=409622&amp;server=www.vimeo.com&amp;fullscreen=1&amp;show_title=1&amp;show_byline=0&amp;show_portrait=0&amp;color=01AAEA" /></object></p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 10:05 am<br/>
+          <a href="http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site#comments" title="Comment on Placeshout: New Rails based Geo-cool site">3 Comments</a><!--mfunc votio_ballot_box('3065')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3065_1" class="vote" onmouseover="votio_hover('star_3065',1,2.9)"; onmouseout="votio_unhover('star_3065',1)"; onclick="votio_vote(3065, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_3065_2" class="vote" onmouseover="votio_hover('star_3065',2,2.9)"; onmouseout="votio_unhover('star_3065',2)"; onclick="votio_vote(3065, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3065_3" class="vote" onmouseover="votio_hover('star_3065',3,2.9)"; onmouseout="votio_unhover('star_3065',3)"; onclick="votio_vote(3065, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3065_4" class="vote" onmouseover="votio_hover('star_3065',4,2.9)"; onmouseout="votio_unhover('star_3065',4)"; onclick="votio_vote(3065, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_3065_5" class="vote" onmouseover="votio_hover('star_3065',5,2.9)"; onmouseout="votio_unhover('star_3065',5)"; onclick="votio_vote(3065, 5);"/></div><div class="votes" id="votediv_3065">2.9 rating from 17 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site"
+    dc:identifier="http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site"
+    dc:title="Placeshout: New Rails based Geo-cool site"
+    trackback:ping="http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3065";
+//--></script>
+<!-- mmp mmid:3065 mmdate:20071130100528 mmurl:http://ajaxian.com/archives/placeshout-new-rails-based-geo-cool-site mmtitle:Placeshout: New Rails based Geo-cool site -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Saturday, May 19th, 2007</p>
+        <h2 id="post-2414"><a href="http://ajaxian.com/archives/railsconf-2007-day-1" rel="bookmark" title="Permanent Link to RailsConf 2007 - Day 1">RailsConf 2007 - Day 1</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/conferences" title="View all posts in Conferences" rel="category tag">Conferences</a><a href="http://technorati.com/tag/Conferences" rel="tag" title="View the technorati tag: Conferences"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Conferences"/></a>,  <a href="http://ajaxian.com/by/topic/rails" title="View all posts in Rails" rel="category tag">Rails</a><a href="http://technorati.com/tag/Rails" rel="tag" title="View the technorati tag: Rails"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Rails"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>RailsConf is underway in Portland, Oregon, and day one (Friday) is in the bag.  The keynote by DHH covered what to expect from Rails 2.0.  Front and center was an emphasis on RESTful development, which should come as no surprise to anyone who has followed Rails lately.  The big takeaway for ajax developers is that Rails will let you return javascript seamlessly for any request, right along side the same code you use for a standard HTTP requests, or XML requests, or whatever.  This ultimately means more cohesive, cleaner code in your controllers, and that adding ajax is as easy as adding a format.js to serve XHR requests:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-18');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-18">
+<div>
+<ol>class PeopleController &lt;ApplicationController<br />
+&nbsp; ...<br />
+&nbsp; def create<br />
+&nbsp; &nbsp; @person = Person.create(...)<br />
+&nbsp; &nbsp; respond_to do |format|<br />
+&nbsp; &nbsp; &nbsp; format.html { redirect_to person_url(@person) }<br />
+&nbsp; &nbsp; &nbsp; format.xml&nbsp; { render :status =&gt; :created, :location =&gt; person_url(@person), ... }<br />
+&nbsp; &nbsp; &nbsp; format.js&nbsp; &nbsp;{<br />
+&nbsp; &nbsp; &nbsp; &nbsp; render :update do |js|<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ... # RJS code here to update the page with js with your created person<br />
+&nbsp; &nbsp; &nbsp; &nbsp; end<br />
+&nbsp; &nbsp; &nbsp; }<br />
+&nbsp; &nbsp; end<br />
+&nbsp; end<br />
+end</ol>
+</div>
+</div>
+</div>
+<p>Rails 2.0 also has some great optimizations coming for HTTP performance.  If you've ever looked at the size of prototype+scriptaculous (or dojo, or yui, or...), plus your own custom scripts, PLUS the overhead of the HTTP connections for each seperate javascript file, you know that <a href="http://www.die.net/musings/page_load_time/">page load time</a> can get horrendous really quick.  The upcoming version will allow easy batching of your js and css, and automatic gzipp'ing when in production, using the standard javascript/stylesheet include tags:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-19');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-19">
+<div>
+<ol>&lt;%= javascript_include_tag :all, :cache =&gt; true %&gt;<br />
+&lt;%= stylesheet_link_tag :all, :cache =&gt; true %&gt;</ol>
+</div>
+</div>
+</div>
+<p>One other quick win Rails 2.0 will give you is multiple hosts for assets.  Browsers will only have two concurrent connections open for any single host, but an easy way around that is to use multiple subdomains that resolve to the same domain.  So if you set:</p>
+<div class="igBar"><a href="javascript:showCodeTxt('ruby-20');">PLAIN TEXT</a></div>
+<div class="syntax_hilite"><span style="color:#000000; font-weight:bold;">RUBY:</span>
+<div id="ruby-20">
+<div>
+<ol>config.action_controller.asset_host = 'static%d.example.com'</ol>
+</div>
+</div>
+</div>
+<p>Your rails app will randomly choose static01, static02, etc...to get more parallel connections for static assets.  This assumes you use the built in img, js, and css helpers, of course.</p>
+<p>For more full coverage of the keynote in core-Rails areas, see <a href="http://blog.nicksieger.com/articles/2007/05/18/railsconf-2007-opening-keynote-david-heinemeier-hansson">Nick's notes</a>.</p>
+<p>The other ajax-centered session for the day was on full web stack testing with <a href="http://openqa.org/selenium-rc/">Selenium Remote Control</a>, by Alex Chaffee and Brian Takita (<a href="http://www.web2expo.com/presentations/rails2007/takita_chaffee.pdf">PDF here</a>).  The ajax testing story is still a mixed bag, with a lot of different tools and approaches and not one clear best path.  Selenium RC lets you test at the function level of your JS, all the way to a functional level of forms and events, all in the language your app is written in (hence the "remote control" part).  For more details see the Selenium link above or the detailed pdf for all the code.</p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Rob Sanheim</cite> at 5:03 pm<br/>
+          <a href="http://ajaxian.com/archives/railsconf-2007-day-1#comments" title="Comment on RailsConf 2007 - Day 1">10 Comments</a><!--mfunc votio_ballot_box('2414')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2414_1" class="vote" onmouseover="votio_hover('star_2414',1,4.2)"; onmouseout="votio_unhover('star_2414',1)"; onclick="votio_vote(2414, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2414_2" class="vote" onmouseover="votio_hover('star_2414',2,4.2)"; onmouseout="votio_unhover('star_2414',2)"; onclick="votio_vote(2414, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2414_3" class="vote" onmouseover="votio_hover('star_2414',3,4.2)"; onmouseout="votio_unhover('star_2414',3)"; onclick="votio_vote(2414, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2414_4" class="vote" onmouseover="votio_hover('star_2414',4,4.2)"; onmouseout="votio_unhover('star_2414',4)"; onclick="votio_vote(2414, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_2414_5" class="vote" onmouseover="votio_hover('star_2414',5,4.2)"; onmouseout="votio_unhover('star_2414',5)"; onclick="votio_vote(2414, 5);"/></div><div class="votes" id="votediv_2414">4.2 rating from 20 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/railsconf-2007-day-1"
+    dc:identifier="http://ajaxian.com/archives/railsconf-2007-day-1"
+    dc:title="RailsConf 2007 - Day 1"
+    trackback:ping="http://ajaxian.com/archives/railsconf-2007-day-1/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="2414";
+//--></script>
+<!-- mmp mmid:2414 mmdate:20070519170327 mmurl:http://ajaxian.com/archives/railsconf-2007-day-1 mmtitle:RailsConf 2007 - Day 1 -->
+        
+            
+        
+      <div class="entry">
+
+        <p class="date">Monday, May 14th, 2007</p>
+        <h2 id="post-2394"><a href="http://ajaxian.com/archives/js-commander-javascript-console-via-proxy" rel="bookmark" title="Permanent Link to JS Commander: JavaScript console via proxy">JS Commander: JavaScript console via proxy</a></h2>
+        <p class="meta">Category:  <a href="http://ajaxian.com/by/topic/library" title="View all posts in Library" rel="category tag">Library</a><a href="http://technorati.com/tag/Library" rel="tag" title="View the technorati tag: Library"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Library"/></a>,  <a href="http://ajaxian.com/by/topic/ruby" title="View all posts in Ruby" rel="category tag">Ruby</a><a href="http://technorati.com/tag/Ruby" rel="tag" title="View the technorati tag: Ruby"><img src="http://technorati.com/pix/icn-talkbubble.gif" class="technorati-image" width="11" height="10" border="0" alt="View the technorati tag: Ruby"/></a></p>
+        <p>Shinya Kasatani has created <a href="http://jscmd.rubyforge.org/">JS Commander</a>, an HTTP proxy server with a JavaScript console.</p>
+<p>You run the Ruby based proxy, configure a browser to use it, and then you get access to a command prompt to play with.</p>
+<p>There are also features such as supporting URL forwarding, allowing one browser to direct another.</p>
+<p>Obviously, for most tasks you will want to use Firebug and co., but for working in environments such as Opera on the Wii, this is an approach.</p>
+<p><a href="http://jscmd.rubyforge.org/"><img src="http://ajaxian.com/wp-content/images/jscmd.jpg" alt="JS Commander" border="0" width="540" height="260"/></a></p>
+        
+        <div class="feedback"></div>
+        <p class="commentbar">
+          Posted by <cite>Dion Almaer</cite> at 6:44 am<br/>
+          <a href="http://ajaxian.com/archives/js-commander-javascript-console-via-proxy#comments" title="Comment on JS Commander: JavaScript console via proxy">2 Comments</a><!--mfunc votio_ballot_box('2394')-->
+          <div class="votio"><div class="stars">
+<img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2394_1" class="vote" onmouseover="votio_hover('star_2394',1,3.6)"; onmouseout="votio_unhover('star_2394',1)"; onclick="votio_vote(2394, 1);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2394_2" class="vote" onmouseover="votio_hover('star_2394',2,3.6)"; onmouseout="votio_unhover('star_2394',2)"; onclick="votio_vote(2394, 2);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star1.gif" class="star" alt="+" id="star_2394_3" class="vote" onmouseover="votio_hover('star_2394',3,3.6)"; onmouseout="votio_unhover('star_2394',3)"; onclick="votio_vote(2394, 3);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_2394_4" class="vote" onmouseover="votio_hover('star_2394',4,3.6)"; onmouseout="votio_unhover('star_2394',4)"; onclick="votio_vote(2394, 4);"/><img src="http://ajaxian.com/wp-content/plugins/votio/star0.gif" class="star" alt="-" id="star_2394_5" class="vote" onmouseover="votio_hover('star_2394',5,3.6)"; onmouseout="votio_unhover('star_2394',5)"; onclick="votio_vote(2394, 5);"/></div><div class="votes" id="votediv_2394">3.6 rating from 18 votes</div></div><!--/mfunc-->
+          <span class="editlink"></span>
+        </p>    
+        <!--
+        <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://ajaxian.com/archives/js-commander-javascript-console-via-proxy"
+    dc:identifier="http://ajaxian.com/archives/js-commander-javascript-console-via-proxy"
+    dc:title="JS Commander: JavaScript console via proxy"
+    trackback:ping="http://ajaxian.com/archives/js-commander-javascript-console-via-proxy/trackback" />
+</rdf:RDF>        -->
+      </div>
+
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="2394";
+//--></script>
+<!-- mmp mmid:2394 mmdate:20070514064409 mmurl:http://ajaxian.com/archives/js-commander-javascript-console-via-proxy mmtitle:JS Commander: JavaScript console via proxy -->
+        
+            
+    
+    <a href="http://ajaxian.com/by/topic/ruby/page/2">Next Page &raquo;</a>  </div>
+    <div id="sidebar">
+  <div class="section first">
+    <h3>Activity Stream</h3>
+	<p><em><a href="http://twitter.com/dalmaer" title="Follow me on Twitter">Keep up to date on Ajax content via Twitter</a> or <a href="http://friendfeed.com/dion">FriendFeed</a></em></p>
+      <ul class="activitystream"></ul>
+      
+  </div>
+
+  <div align="center">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=255x134;dcopt=;ptile=4;ord=33680892?;kw=homePage" name="right_sponsor_ad" id="fra255x134" width="255" height="134" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=255x134;dcopt=;ptile=4;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=255x134;dcopt=;ptile=4;ord=33680892?;kw=homePage" width="255" height="134" border="0"></a></iframe> </div>
+  <div align="center">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=255x228;dcopt=;ptile=5;ord=33680892?;kw=homePage" name="ajaxian_experience_ad" id="fra255x228" width="255" height="228" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=255x228;dcopt=;ptile=5;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=255x228;dcopt=;ptile=5;ord=33680892?;kw=homePage" width="255" height="228" border="0"></a></iframe> </div>
+
+  <div class="section">
+    <h3>Audible Ajax</h3>
+
+    <h4><a href="http://ajaxian.com/archives/audible-ajax-episode-25-state-of-ajax">Episode 25</a></h4>    <a href="http://www.pragmaticprogrammer.com/titles/ajax/?ajaxian" title="Read Pragmatic Ajax"><img src="/images/pragmatic-ajax-book-cover-sm.jpg" border="0" style="float: right; padding: 9px;"/></a>
+
+    <p>In Episode 25, we chat about IE 8, standards, Acid3, server side JavaScript, and more. </p>
+
+    <h4><a href="http://media.ajaxian.com/">Podcast RSS</a></h4>
+
+    <p><a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/com.apple.jingle.app.store.DirectAction/viewPodcast?id=79427931"><img src="/images/itunes.gif" alt="View in iTunes"/></a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="http://odeo.com/channel/24662/view"><img src="/images/odeo.gif" alt="Ajaxian Odeo Channel" /></a>
+    <br />
+    <a href="http://www.podnova.com/add.srf?url=http://media.ajaxian.com"><img src="/images/podnova.gif" alt="Podnova"/></a>
+   &nbsp;
+    <a href="podcast://media.ajaxian.com"><img src="http://ajaxian.com/images/iPodderX.gif" alt="iPodderX"/></a>
+    <br/>
+    <a href="http://ajaxian.com/podcasts/">more podcasts</a></p>
+  </div>
+
+<div class="section"><h3>GET E-MAIL UPDATES</h3>
+<form name="optin" target=_ action="http://whatis.techtarget.com/tieredRegProcess/1,,sid9,00.html" method="post" style="margin-bottom:0;" onSubmit="return false;">
+<input type="hidden" name="profileUpdate" value="1">
+<input type="hidden" name="email_deliv_pref_cd" value="H">
+<input type="hidden" name="wtype" value="nonreg">
+<input type="hidden" name="siteid" value="177">
+<p>Receive e-mails on the topics that interest you most. You'll get the latest news, technical resources, announcements and more. Select your topics and submit your e-mail below.</p>
+<p><input type="checkbox" name="newsletters" value="1266748" checked>&nbsp;&nbsp;Browser Plug-ins<br>
+<input type="checkbox" name="newsletters" value="1266750" checked>&nbsp;&nbsp;Client-side Frameworks<br>
+<input type="checkbox" name="newsletters" value="1266751" checked>&nbsp;&nbsp;Interaction Design/<BR />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Graphic Design/User Experience<br>
+<input type="checkbox" name="newsletters" value="1266752" checked>&nbsp;&nbsp;JavaScript<br>
+<input type="checkbox" name="newsletters" value="1266753" checked>&nbsp;&nbsp;Programming Techniques<br>
+<input type="checkbox" name="newsletters" value="1266754" checked>&nbsp;&nbsp;Security<br>
+<input type="checkbox" name="newsletters" value="1266755" checked>&nbsp;&nbsp;Server-side Frameworks
+</p>
+<p>
+<div class="feeds">
+<input type="text" name="email" maxlength="255" size="30" value="Your E-mail Address" onFocus="clearEmail();" />
+<br><img src="http://media.techtarget.com/digitalguide/images/Misc/spacer.gif" width="1" height="1"><br>
+<input id="subscribe" type="submit" value="Get e-mail updates!" onClick="valOptin(document.optin);">
+</div>
+</p>
+<p>Not a member? We'll activate your FREE membership with your subscription.</p>
+</form>
+</div>
+
+ <div class="section">
+    <h3>Ajaxian Jobs</h3>
+   	<div class="moreJobs" align="center">
+	 <a href="http://jobs.ajaxian.com/">More Jobs</a> | <a href="http://jobs.ajaxian.com/post">Post a Job</a>
+	</div>
+		<script type="text/javascript">
+			<!--
+			var jobthread_jobroll_background_color = "transparent";
+			var jobthread_jobroll_font = "10px Verdana,Arial,Helvetica,sans-serif";
+			var jobthread_jobroll_text_color = "white";
+			var jobthread_jobroll_link_color = "white";
+			var jobthread_jobroll_border = "none";
+			var jobthread_jobroll_width = "auto";
+			//-->
+		</script>
+		<script type="text/javascript" src="http://jobs.ajaxian.com/feeds/jobroll/?num_jobs=5&num_featured_jobs=1&subtype=ajaxian&display_method=default">		</script>
+  </div>
+
+
+  <div class="section">
+    <h3>Contact us</h3>
+    <p><a href="/about-us/">Who are the ajaxians? Find out.</a></p>
+
+    <p>Please contact us at <script language="JavaScript" type="text/javascript">mailtoAjaxians();</script>.
+    We would love to hear about any news that we could put up here.</p>
+
+    <p>We have individual blogs too:</p>
+    <ul>
+       <li><a href="http://www.almaer.com/blog/" rel="me">Dion Almaer</a> (<a href="http://twitter.com/dalmaer" style="font-size: x-small; background: none; padding: 0;">Twitter</a>, <a href="http://friendfeed.com/dion" style="font-size: x-small; background: none; padding: 0;">FriendFeed</a>)</li>
+       <li><a href="http://weblogs.java.net/blog/javaben/" rel="co-worker">Ben Galbraith</a></li>
+       <li><a href="http://reybango.com/" rel="friend">Rey Bango</a></li>
+       <li><a href="http://softwareas.com/" rel="friend">Michael Mahemoff</a></li>
+       <li><a href="http://blog.phpdeveloper.org/" rel="friend">Chris Cornutt</a></li>
+       <li><a href="http://www.robsanheim.com/" rel="friend">Rob Sanheim</a></li>
+       <li><a href="http://blogs.pathf.com/agileajax/" rel="friend">Dietrich Kappe</a></li>
+       <li><a href="http://wait-till-i.com/" rel="friend">Chris Heilmann</a></li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>Feeds</h3>
+
+	<div class="feeds">
+	<form method="post" action="http://www.feedblitz.com/f/f.fbz?AddNewUserDirect">
+	<input name="FEEDID" type="hidden" value="25327">
+	Enter your Email<br>
+	<input name="EMAIL" maxlength="255" type="text" size="15" value=""/>
+	<input id="subscribe" type="submit" value="Subscribe me!">
+	<br>Powered by <a href="http://www.feedblitz.com">FeedBlitz</a>
+	</form>
+
+    <p>
+<a href="http://planet.ajaxian.com/" title="Planet Ajaxian Feed"><img src="/images/planet-ajaxian-small.gif" border="0" width="173" height="80" /></a><br />
+<a href="http://web20workgroup.com/" title="Ajaxian is a proud member of the Web 2.0 Workshop"><img src="http://www.readwriteweb.com/images/web20logo.gif" width="120" height="53" border="0" alt="Web 2.0 Workgroup" /></a><br />
+<a href="http://www.ajaxian.com/index.xml" title="Subscribe to Feed"><img src="/images/feed.gif" border="0" width="49" height="14" alt="Subscribe to Feed"/></a>
+<a href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/com.apple.jingle.app.store.DirectAction/viewPodcast?id=79427931" title="View in iTunes"><img src="http://ax.phobos.apple.com.edgesuite.net/images/badgeitunes61x15dark.gif" border="0" width="61" height="15" /></a> <a href="http://odeo.com/channel/24662/view"><img src="http://odeo.com/img/badge-channel-black.gif" border="0" width="80" height="15" alt="Ajaxian Odeo Channel" /></a> <a href="http://www.podnova.com/index_your_podcasts.srf?action=add&url=http://media.ajaxian.com"><img src="http://www.podnova.com/images/chicklet_podnova.gif" width="91" height="17" border="0"/></a> <a href="podcast://media.ajaxian.com"><img src="http://ajaxian.com/images/iPodderX.gif" width="80" height="15" border="0"/></a>
+<br/>
+    </p>
+	</div>
+  </div>
+
+	<div id="rightSideDartAd">
+		<br>
+		<!--mfunc ajaxian_random_rightbar_adspot() -->
+		<div align="center">
+<iframe  src="http://ad.doubleclick.net/adi/aajax/home;pos=0;sz=120x600;dcopt=;ptile=6;ord=33680892?;kw=homePage" name="right_side_ad" id="fra120x600" width="120" height="600" border="0" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"><a href="http://ad.doubleclick.net/jump/aajax/home;pos=0;sz=120x600;dcopt=;ptile=6;ord=33680892?;kw=homePage"><img src="http://ad.doubleclick.net/ad/aajax/home;pos=0;sz=120x600;dcopt=;ptile=6;ord=33680892?;kw=homePage" width="120" height="600" border="0"></a></iframe> </div>		<!--/mfunc-->
+	</div>
+
+	<!-- BEGIN: new google ad code -->
+	<div id="googleAd">
+
+		<script language="JavaScript" type="text/javascript">
+		<!--
+
+		/**
+		 * Usage:
+		 *
+		 *  stringToBreak - string to break up (required arg)
+		 *  url - true or false (if true, string will be broken at maxLength value without regard to word spacing)
+		 *  maxLength - maximum number of characters per line (optional, defaults to 25)
+		 *  threshold - number of characters under/over the maxLength a line could possibly be (optional, defaults to 5)
+		 *  separator - value to use to break up lines (optional, defaults to '<br />')
+		 **/
+		function breakString(stringToBreak, url, maxLength, threshhold, separator) {
+
+			// boolean for if we are parsing a URL or text - urls can be parsed at maxLength regardless of whitespace
+			var url = (arguments[1] === undefined) ? false : url;
+
+			// default to break at 15 chars if maxLength is invalid
+			var maxLength = ((arguments[2] === undefined) || isNaN(maxLength) || (maxLength < 1)) ? 25 : maxLength;
+
+			// default to 5 characters of "padding" above or below the maxLength per line
+			var threshhold = ((arguments[3] === undefined) || isNaN(threshhold) || (threshhold > maxLength) || (typeof(threshhold) == undefined)) ? 5 : threshhold;
+
+			// default to using a BR for the separator
+			var separator = (arguments[4] === undefined) ? '<br />' : separator;
+
+			// save the contents of the new broken string
+			var brokenString = new String();
+
+			// just do this calculation once
+			var minLength = (maxLength - threshhold);
+
+			// if the string is a URL, then break it at maxLength
+			if (url) {
+				if (stringToBreak.length > maxLength) {
+					var loopNum = Math.ceil(stringToBreak.length / maxLength);
+					var currentEndPoint = 0;
+					for (var k = 0; k < loopNum; ++k) {
+						var beginPoint = currentEndPoint;
+						currentEndPoint = (currentEndPoint + maxLength);
+						brokenString += (stringToBreak.substring(beginPoint,currentEndPoint) + separator);
+					}
+					brokenString += stringToBreak.substring(currentEndPoint,stringToBreak.length);
+				} else {
+					brokenString = stringToBreak;
+				}
+			}
+			// if the string is text, break up words on whitespace
+			else {
+				// break up the string into an array, based on space
+				var pieces = stringToBreak.split(' ');
+
+				for (var k=0; k<pieces.length; ++k) {
+
+					var curPiece = new String();
+
+					while ( curPiece.length <= minLength ) {
+						if ( k >= (pieces.length-1)) {
+							break;
+						} else {
+							if ( (pieces[k+1].length + curPiece.length) >= minLength ) {
+								break;
+							} else {
+								curPiece += (pieces[k++] + ' ');
+							}
+						}
+					}
+					curPiece += (pieces[k] + ' ' + separator);
+					brokenString += curPiece;
+				}
+			}
+			return brokenString;
+		}
+
+		function ss(w){window.status=w;return true;}
+		function cs(){window.status='';}
+		function ga(o,e){
+			if (document.getElementById){
+				a=o.id.substring(1);
+				p="";
+				g=e.target;
+					if(g){
+						t=g.id;f=g.parentNode;
+							if(f)p=f.id;
+						}
+					else{t=e.srcElement.id;}
+						if(t==a||p==a)return;location.href=document.getElementById(a).href
+			}
+		}
+
+		function google_ad_request_done(google_ads) {
+			var i;
+			var header;
+			var accip = "off";
+			var maxLength = 20;  // max num of chars to break URL strings at
+			var loopNum;
+			var k;
+
+			if(google_ads.length > 0) {
+				document.write('<!-- begin Google AdSense writes -->');
+				document.write('<b class="googleAdTop"><b class="ga1"></b><b class="ga2"></b><b class="ga3"></b><b class="ga4"></b></b><div class="googleAdContent"><h5>ADS BY GOOGLE</h5>');
+
+				for(i = 0; i < google_ads.length; ++i) {
+					document.write('<!-- begin ad -->');
+					document.write('<p><strong>' + google_ads[i].line1 + '</strong><br>');
+					document.write( google_ads[i].line2 + ' ' + google_ads[i].line3 + '<br>');
+					document.write('<a href="' + google_ads[i].url + '">');
+					document.write( breakString(google_ads[i].visible_url, true) );
+					document.write('</a></p>');
+				}
+
+				document.write('</div><b class="googleAdBottom"><b class="ga4"></b><b class="ga3"></b><b class="ga2"></b><b class="ga1"></b></b>');
+				document.write('<!-- end Google AdSense writes -->');
+
+			}
+		}
+
+		google_ad_client = 'ca-techtarget_js';
+		google_ad_channel = 'ajaxian';
+		google_ad_output = 'js';
+		google_max_num_ads = 5;
+
+		// -->
+		</script>
+		<script language="JavaScript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+		<!-- end Google Ad Splash template -->
+
+<!-- END: new google ad code -->
+</div>
+  </div>
+  <div id="footer">
+    <p>
+      Powered by <a href="http://wordpress.org">WordPress</a>.<br />
+      <a href="/index.xml" class="feed">Entries</a> feed.
+      Valid <a href="http://validator.w3.org/check/referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>.<br />
+	  All rights reserved, Copyright 2009. <a href="http://ajaxian.com/about-us/" target="new">About Us</a>.
+	  <a href="http://www.techtarget.com/html/privacy_policy.html" target="new">Privacy Policy</a> </span>
+    </p>
+  </div>
+</div>
+
+
+<!--WEBSIDESTORY CODE HBX2.0 (Universal)-->
+<!--COPYRIGHT 1997-2005 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com/privacy-->
+<script language="javascript">
+var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+var hbx=_hbEvent("pv");hbx.vpc="HBX0200u";hbx.gn="ehg-techtarget.hitbox.com";
+
+//BEGIN EDITABLE SECTION
+//CONFIGURATION VARIABLES
+hbx.acct="DM530703I5ER84EN3;DM5212204PCA83EN3";//ACCOUNT NUMBER(S)
+hbx.pn = (window.location.pathname == '/') ? '/index.php' : window.location.pathname;//PAGE NAME(S)
+
+var pnSearch = window.location.search;
+if (pnSearch) {
+	pnSearch = pnSearch.substring(1,pnSearch.length);
+	pnSearch = pnSearch.replace(eval("/\\&/g"),"-");
+	hbx.pn += "/" + pnSearch;
+}
+//hbx.pn = hbx.pn.replace(eval("/\\//g"),"-");
+var mlc_hname = window.location.hostname.toLowerCase();
+if (mlc_hname.indexOf('www.') != -1) mlc_hname = mlc_hname.substring(mlc_hname.indexOf('www.')+4,mlc_hname.length);
+hbx.mlc="/" + mlc_hname + ";/ajaxian/" + mlc_hname;//MULTI-LEVEL CONTENT CATEGORY
+hbx.pndef="title";//DEFAULT PAGE NAME
+hbx.ctdef="full";//DEFAULT CONTENT CATEGORY
+
+//OPTIONAL PAGE VARIABLES
+//ACTION SETTINGS
+hbx.fv="";//FORM VALIDATION MINIMUM ELEMENTS OR SUBMIT FUNCTION NAME
+hbx.lt="none";//LINK TRACKING
+hbx.dlf="n";//DOWNLOAD FILTER
+hbx.dft="n";//DOWNLOAD FILE NAMING
+hbx.elf="n";//EXIT LINK FILTER
+
+//SEGMENTS AND FUNNELS
+hbx.seg="";//VISITOR SEGMENTATION
+hbx.fnl="";//FUNNELS
+
+//CAMPAIGNS
+hbx.cmp="";//CAMPAIGN ID
+hbx.cmpn="";//CAMPAIGN ID IN QUERY
+hbx.dcmp="";//DYNAMIC CAMPAIGN ID
+hbx.dcmpn="";//DYNAMIC CAMPAIGN ID IN QUERY
+hbx.dcmpe="";//DYNAMIC CAMPAIGN EXPIRATION
+hbx.dcmpre="";//DYNAMIC CAMPAIGN RESPONSE EXPIRATION
+hbx.hra="";//RESPONSE ATTRIBUTE
+hbx.hqsr="";//RESPONSE ATTRIBUTE IN REFERRAL QUERY
+hbx.hqsp="";//RESPONSE ATTRIBUTE IN QUERY
+hbx.hlt="";//LEAD TRACKING
+hbx.hla="";//LEAD ATTRIBUTE
+hbx.gp="";//CAMPAIGN GOAL
+hbx.gpn="";//CAMPAIGN GOAL IN QUERY
+hbx.hcn="";//CONVERSION ATTRIBUTE
+hbx.hcv="";//CONVERSION VALUE
+hbx.cp="null";//LEGACY CAMPAIGN
+hbx.cpd="";//CAMPAIGN DOMAIN
+
+//CUSTOM VARIABLES
+hbx.ci="";//CUSTOMER ID
+hbx.hc1="";//CUSTOM 1
+hbx.hc2="";//CUSTOM 2
+hbx.hc3="";//CUSTOM 3
+hbx.hc4="";//CUSTOM 4
+hbx.hrf="";//CUSTOM REFERRER
+hbx.pec="";//ERROR CODES
+
+//INSERT CUSTOM EVENTS
+
+//END EDITABLE SECTION
+
+//REQUIRED SECTION. CHANGE "YOURSERVER" TO VALID LOCATION ON YOUR WEB SERVER (HTTPS IF FROM SECURE SERVER)
+</script><script language="javascript1.1" src="http://ajaxian.com/wp-content/themes/ajaxian/scripts/hbx.js"></script>
+<!--END WEBSIDESTORY CODE-->
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <META name="keywords" content="custom software, IT, technology, software development, agile, professional services">
+    <title>
+         Ruby and dynamic languages; development and innovation - ThoughtWorks
+    </title>
+    
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <meta name="subnav" content="how_we_do_it">
+
+  <meta name="description" content="ThoughtWorks employs some of the
+world's leading Ruby developers and contributors to the Rails project.">
+
+    
+<link rel="stylesheet" href="/styles/global.css" type="text/css">
+<link rel="stylesheet" href="/styles/basecontent.css" type="text/css">
+    <script src="/scripts/global.js" type="text/javascript" language="Javascript"></script>
+</head>
+
+		<body>
+
+
+<div id="setwidth">
+<div id="innerwidth">
+<!-- start header include -->
+<div id="header">
+    
+
+
+
+<div id="headerlogo"><a href="/index.html"><img src="/images/logo.gif" alt="Thoughtworks logo" width="265" height="101"
+                                                border="0"/></a></div>
+
+<!-- Start Search -->
+<div id="headerSearch">
+    <form name="MainSearch" action="/search/search.html" method="get">
+        <input type="hidden" name="indent" value="on"/>
+        <input type="hidden" name="version" value="2.2"/>
+        <input type="hidden" name="start" value="0"/>
+        <input type="hidden" name="rows" value="10"/>
+        <div id="searchText"><label for="Search"><img src="/images/search_search_text.gif" alt="Search" width="40"
+                                                      height="20"/></label></div>
+        <div id="searchBox"><input class="boxSize" type="text" name="q" value=""/></div>
+        <div id="goButton"><input id="Search" name="Submit" type="image" value="Go" src="/images/search_go.gif"/></div>
+        <input name="region" type="hidden" value="us"/>
+    </form>
+    <div id="contactText"><label for="Contact"><a href="/homepage/contact-us.html"><img src="/images/search_contact_text.gif" border="0" alt="Contact" width="54"
+                                                    height="20"/></a></label></div>
+    <div id="contactButton"><a href="/homepage/contact-us.html"><img id="Contact" name="Contact" type="image" border="0" alt="Contact" src="/images/contact_icon.gif"/></a></div>
+    <div id="locationText"><label for="Location"><a href="/region/select.html"><img src="/images/search_location_text.gif" border="0" alt="Change location"
+                                                      width="98" height="20"/></a></label></div>
+    <div id="locationButton"><a href="/region/select.html"><img id="Location" border="0" name="Location" type="image"
+                                                                value="Location" alt="us Flag"
+                                                                src="/images/location_us.gif"/></a></div>
+
+</div>
+<!-- End Search -->
+
+    ﻿
+
+
+
+
+
+
+
+
+
+
+    
+    <div id="headerMainNav">
+        <a
+                href="/who-we-are/" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image5','','/images/who_we_are_on.gif',0)"><img
+                src="/images/who_we_are_off.gif" alt="Who we are" name="Image5" width="103" height="34" border="0"
+                id="Image5"/></a><img src="/images/main_nav_spacer.gif" width="14" height="34" alt=""/>
+        <a
+                href="/what-we-do/"
+                onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image7','','/images/what_we_do_on.gif',0)"><img
+                src="/images/what_we_do_off.gif" alt="What we do" name="Image7" width="95" height="34" border="0"
+                id="Image7"/></a><img src="/images/main_nav_spacer.gif" width="14" height="34" alt=""/>
+        <a
+                href="/how-we-do-it/"
+                onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image9','','/images/how_we_do_it_on.gif',0)"><img
+                src="/images/how_we_do_it_on.gif" alt="How we do it" name="Image9" width="104" height="34"
+                border="0"
+                id="Image9"/></a><img src="/images/main_nav_spacer.gif" width="14" height="34" alt=""/>
+        <a
+                href="/what-we-say/" onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image11','','/images/what_we_say_on.gif',0)"><img
+                src="/images/what_we_say_off.gif" alt="What we say" name="Image11" width="102" height="34"
+                border="0"
+                id="Image11"/></a><img src="/images/main_nav_spacer.gif" width="14" height="34" alt=""/>
+        <a
+                href="/our-clients/"
+                onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image13','','/images/our_clients_on.gif',0)"><img
+                src="/images/our_clients_off.gif" alt="Our clients" name="Image13" width="90" height="34"
+                border="0"
+                id="Image13"/></a><img src="/images/main_nav_spacer.gif" width="14" height="34" alt=""/>
+        <a
+                href="/work-for-us/"
+                onmouseout="MM_swapImgRestore()"
+                onmouseover="MM_swapImage('Image15','','/images/work_for_us_on.gif',0)"><img
+                src="/images/work_for_us_off.gif" alt="Work for us" name="Image15" width="93" height="34" border="0"
+                id="Image15"/></a></div>
+    
+
+
+    
+    <div id="SubNavTopStrip"><img src="images/spacer.gif" alt="" width="1" height="1"/></div>
+    
+</div>
+<!-- end header include -->
+<div id="ReverseLogo"><img src="/images/reverse_logo.gif" alt=""/></div>
+
+
+
+
+
+
+
+
+
+
+<div id="SubNavContent">
+    <ul>
+        <li>&#8226; <a href=/how-we-do-it/agile-project-management.html title="Click to view" Agile projects>Agile projects</a></li>
+<li>&#8226; <a href=/how-we-do-it/enterprise-agile.html title="Click to view" Enterprise Agile>Enterprise Agile</a></li>
+<li>&#8226; <a href=/how-we-do-it/distributed-agile_new.html title="Click to view" Distributed Agile>Distributed Agile</a></li>
+<li>&#8226; <a href=/how-we-do-it/requirements.html title="Click to view" Requirements>Requirements</a></li>
+<li>&#8226; <a href=/how-we-do-it/user-centered-design.html title="Click to view" User Centered Design>User Centered Design</a></li>
+<li>&#8226; <a href=/how-we-do-it/testing.html title="Click to view" Testing>Testing</a></li>
+<li>&#8226; <a href=/how-we-do-it/delivery-assurance.html title="Click to view" Delivery Assurance>Delivery Assurance</a></li>
+<li>&#8226; <a href=/how-we-do-it/quickstart.html title="Click to view" QuickStart>QuickStart</a></li>
+
+    </ul>
+</div>
+<div id="SubNavBaseStrip"></div>
+
+
+<div class="clr"></div>
+
+<div id="outer">
+<div id="inner">
+<!-- left column -->
+<div id="leftcol">
+    <div id="subleft">
+    </div>
+</div>
+<!-- End left column -->
+
+<!-- main column -->
+<div id="MainCol">
+    <div id="MainContent">
+
+        <div class="BlockLargeOuter">
+            <div class="BlockLargeIndent">
+                
+                
+                
+                
+
+<h1 class="ArialFont">Ruby and Dynamic Languages</h1>
+
+<div class="LargeGreyLine"><img src="/images/hr_grey_large.gif" alt="" height="1" width="659"></div>
+
+<div class="LargeGreyLinePrint"><img src="/images/hr_grey_large.gif" alt="" height="1" width="905">
+</div>
+
+<br>
+
+<p class="MainCopy">The explosion of interest in Ruby on
+Rails has catapulted Ruby to prominence among dynamic programming
+languages. Ruby's elegance along with Rail's emphasis on Agile
+practices is providing many adopters with several-times higher
+productivity than traditional Java and .NET web-development platforms,
+creating enterprise-worthy systems in many domains.</p>
+
+<p class="MainCopy">ThoughtWorks employs some of the
+world's leading Ruby developers and contributors to the Rails project.
+Although Ruby on Rails is relatively new on the scene, it is based on
+technologies and approaches that ThoughtWorks has used effectively with
+clients for many years. Our deep experience with custom 
+<a href = "../what-we-do/application-development.html" class="bodylink Blue">software development</a> 
+gives us an accurate picture of when and where Ruby is a
+good fit and when it is not. </p>
+
+<p class="MainCopy">Our ongoing project work with Ruby and
+Rails proves that Ruby excels in the following applications:</p>
+
+<ul class="MainUl">
+
+  <li class="MainLi">Web 2.0 applications that make
+use of REST and/or AJAX designs </li>
+
+  <li class="MainLi">Small to medium web-based
+applications with aggressive time-to-market goals </li>
+
+  <li class="MainLi">Low-cost internal prototypes and
+pilot applications </li>
+
+  <li class="MainLi">Highly-targeted internal
+applications and utility programs </li>
+
+  <li class="MainLi">So-called "soft layer" APIs on
+hardened transactional systems </li>
+
+  <li class="MainLi">Build systems for complex
+enterprise systems.</li>
+
+</ul>
+
+<p class="MainCopy">Ruby's productivity can also result in
+early hi-fi prototypes that quickly allows for the exploration of new
+ideas. To learn more about our Ruby capabilities, visit ThoughtWorks <a class="bodylink Blue" href="http://opensource.thoughtworks.com">Open
+Source</a> site or send us an e-mail.</p>
+
+
+                
+                
+                <div class="clr"></div>
+
+                <div id="ContentFootOuter">
+                    <div class="LargeGreyLine"><img src="/images/hr_grey_large.gif" alt="" width="659" height="1"/>
+                    </div>
+                    <div id="ContentFoot">
+                        <div id="printIcon"><a href="javascript:window.print(printme);"><img
+                                src="/images/print_icon.gif"
+                                alt="Click to print this page"
+                                width="24" height="19"
+                                border="0"/></a></div>
+                                
+                        
+                        <div id="printText">
+<a class="bodylink Blue" href="javascript:window.print(printme);"title="Click to print this page">Print this page</a>
+</div>
+                        
+                        <!--<div id="emailIcon"><a href="#"><img src="/images/email_icon.gif"
+                                                             alt="Click to email to a colleague" width="28" height="19"
+                                                             border="0"/></a></div>
+                        <div id="emailText"><a class="bodylink Blue" href="#" title="Click to email to a colleague">Email
+                            to a colleague</a></div>-->
+                    </div>
+                    <div class="LargeGreyLine"><img src="/images/hr_grey_large.gif" alt="" width="659" height="1"/>
+                    </div>
+                </div>
+                <!-- Start Hidden Print Footer -->
+                <div class="LargeGreyLinePrint"><img src="/images/hr_grey_large.gif" alt="" width="905" height="1"/>
+                </div>
+                <div class="ContentFootPrint">
+                    <p><strong>ThoughtWorks</strong> is a global IT consultancy. We deliver bespoke applications,
+                        no-nonsense consulting and help organisations become agile.</p>
+                </div>
+                <div class="LargeGreyLinePrint"><img src="/images/hr_grey_large.gif" alt="" width="905" height="1"/>
+                </div>
+                <div class="ContentFootPrint">
+                    <center><p>ThoughtWorks Inc, 200 E. Randolph, 25th floor, Chicago, IL 60601-6501<br/>
+T +1 312 373 1000 F +1 312 373 1001 E info-us@thoughtworks.com</p></center>
+
+                </div>
+                <!-- End Hidden Print Footer -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End main column -->
+
+<!-- right column -->
+<div id="RightCol">
+    <div id="RightContent">
+        
+        
+
+
+
+<!-- Start Block -->
+<div class="BlockGreySmallOuter">
+    <div class="BlockGreySmallIndent">
+        <h1 class="ArialFont">Related links</h1>
+        <img class="SmallGreyLine" alt="" src="/images/hr_grey_small.gif" width="200" height="1"/><br/>
+        <ul class="SmallBlockUl">
+            <li class="SmallBlockLi Blue"><a href = "/how-we-do-it/java.html" class="bodylink Blue">Java</a></li><li class="SmallBlockLi Blue"><a href = "/how-we-do-it/dotnet.html" class="bodylink Blue">.NET</a></li><li class="SmallBlockLi Blue"><a href = "/how-we-do-it/ruby.html" class="bodylink Blue">Ruby</a></li><li class="SmallBlockLi Blue"><a href = "/how-we-do-it/open-source.html" class="bodylink Blue">Open Source</a></li><li class="SmallBlockLi Blue"><a href = "/how-we-do-it/partners.html" class="bodylink Blue">Our Partners</a></li><li class="SmallBlockLi Blue"><a href = "/our-clients/case-studies/case-studies.html" class="bodylink Blue">Case Studies</a></li><li class="SmallBlockLi Blue"><a href = "/what-we-say/what-we-say.html" class="bodylink Blue">Thought Leadership</a></li><li class="SmallBlockLi Blue"><a href = "/homepage/newsroom.html" class="bodylink Blue">News</a></li><li class="SmallBlockLi Blue"><a class="bodylink Blue" href="/what-we-say/blogs/all.html">Blogs</a></li>
+        </ul>
+    </div>
+</div>
+<img src="/images/spacer.gif" alt="" width="200" height="20"/><br/>
+<!-- End Block -->
+
+
+        
+<script type="text/javascript">
+    function clearDefaultContentsOfField(element, defaultText){
+        if (element.value == defaultText){element.value = '';}
+    }
+    function setDefaultContentsOfBlankField(element, defaultText){
+        if (element.value == ''){element.value = defaultText;}
+    }
+</script>
+<!-- Start Block -->
+        <div class="BlockGreenSmallOuter">
+            <div class="BlockGreenSmallIndent">
+                <div class="BlockSmallH2Indent">
+                    <h2 class="ArialFont SmallBlockIndented">Perspectives</h2>
+                </div>
+                <img class="SmallGreenLine" alt="" src="/images/hr_green_small.gif" width="200" height="1"/><br/>
+                <img class="BlockSmallImagePad" alt="" src="/images/block_green_people.gif" width="200"
+                     height="63"/><br/>
+                <h4 class="NoPadding">Thought Provoking</h4>
+
+                <p>We would like to share our latest thinking with you.</p>
+
+                <div class="clr"></div>
+                <form action="http://thoughtworks.cmail1.com/.aspx/s/122185/" method="post">
+                    <div id="emailBox">
+                        <input class="emailboxSize" type="text" name="name" id="name" value=" enter your name" onfocus="clearDefaultContentsOfField(this,' enter your name');" onblur="setDefaultContentsOfBlankField(this, ' enter your name');"/>
+                        <div style="font-size:0.2em;"><br/></div>
+                        <input class="emailboxSize" type="text" name="cm-122185-122185" id="l122185-122185"
+                               value=" enter your email address" onfocus="clearDefaultContentsOfField(this, ' enter your email address');" onblur="setDefaultContentsOfBlankField(this, ' enter your email address');"/>
+                    </div>
+                    <p><span class="Green">[</span> <input class="bodylink Green" name="Submit"
+                                                           type="submit" value="Sign up"
+                                                           style="border: 0; background-color: transparent; cursor: pointer; font-size: 1em; padding: 0;"/>
+                        <span class="Green">]</span></p>
+                </form>
+            </div>
+        </div>
+        <!-- End Block -->
+        <img src="/images/spacer.gif" alt="" width="200" height="20"/><br/>
+        <!-- Start Block -->
+        <div class="BlockGreySmallOuter">
+            
+            <div class="BlockGreySmallIndent">
+                <h2 class="ArialFont">Join us</h2>
+				
+                <img class="SmallGreyLineNoPad" alt="" src="/images/hr_grey_small.gif" width="200" height="1"/><br/>
+                <div class="BlockSmallFlash">
+					<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+                            codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+                            width="200" height="100" id="join_us" align="middle">
+                        <param name="allowScriptAccess" value="sameDomain"/>
+                        <param name="movie" value="/swf/join_us.swf"/>
+                        <param name="quality" value="high"/>
+                        <param name="bgcolor" value="#ffffff"/>
+                        <embed src="/swf/join_us.swf" quality="high" bgcolor="#ffffff" width="200" height="100"
+                               name="join_us" align="middle" allowScriptAccess="sameDomain"
+                               type="application/x-shockwave-flash"
+                               pluginspage="http://www.macromedia.com/go/getflashplayer"/>
+                    </object>
+                </div>
+                <img style="margin-top:1px;" class="SmallGreyLineNoPad" alt="" src="/images/hr_grey_small.gif" width="200" height="1"/><br/>
+                <!-- Start Tag Cloud -->
+                <div id="cloud">
+                    <a href="/who-we-are/our-culture.html" class="tag4 Blue">Culture</a>
+                    <a href="/who-we-are/our-people.html" class="tag3 Blue" >Talent</a>
+                    <a href="/work-for-us/recruitment-us.html" class="tag1 Blue">USA</a>
+                    <a href="/what-we-do/service-oriented-architecture.html" class="tag2bolder Blue">SOA</a><br/>
+                    <a href="/work-for-us/recruitment-uk.html" class="tag3 Blue" >UK</a>
+                    <a href="/how-we-do-it/enterprise-agile.html" class="tag2 Blue" >Enterprise</a>
+                    <a href="http://www.thoughtworker.com" target="_blank" class="tag5 Blue" >India</a>
+                    <a href="/how-we-do-it/how-we-do-it.html" class="tag3 Blue" >XP</a>
+                    <a href="/work-for-us/travel.html" class="tag1 Blue">Global </a>
+                    <a href="/how-we-do-it/java.html" class="tag2 Blue">J2EE</a>
+                    <a href="/work-for-us/recruitment-in.html" class="tag1 Blue">India</a>
+                    <a href="/how-we-do-it/agile-project-management.html" class="tag3bold Blue" >Agile</a><br>
+                    <a href="/how-we-do-it/ruby.html" class="tag2 Blue">Ruby</a>
+                    <a href="/who-we-are/diversity.html" class="tag4 Blue" >Diversity</a>
+                    <a href="/work-for-us/recruitment-au.html" class="tag3 Blue" >Australia</a>
+                    <a href="/work-for-us/recruitment-ca.html" class="tag1 Blue" >Canada</a>
+                    <a href="/how-we-do-it/dotnet.html" class="tag2 Blue">.NET</a>
+                    <a href="/work-for-us/graduates.html" class="tag5 Blue">Graduates</a>
+
+                </div>
+                <!-- End Tag Cloud -->
+            </div>
+
+
+
+        </div>
+        <!-- End Block -->
+    </div>
+</div>
+<!-- End right column -->
+</div>
+
+<div class="clr"></div>
+<!-- close inner and outer -->
+</div>
+</div>
+
+<div class="clr"></div>
+	
+
+
+<!-- Start Footer Include -->
+ <br /><br />
+ 	<div id="footer" >
+	<div id="FooterRow">
+		<div id="FooterColOne">
+		<ul>
+			<li><a class="footernav" href="/index.html" title="Click to visit ThoughtWorks homepage">Home</a></li>
+			<li><a class="footernav" href="/homepage/contact-us.html" title="Click here to Contact Us">Contact Us</a></li>
+			<!--<li><a class="footernav" href="/thoughtleadership/results" title="Click to use Advanced Search">Advanced Search</a></li>-->
+			<li><a class="footernav" href="/who-we-are/diversity.html" title="Click to find out more about Diversity">Diversity</a></li>
+			<li><a class="footernav" href="/homepage/why-subscribe.html" title="Click for Why subscribe?">Why subscribe?</a></li>
+		</ul>
+		</div>
+		<div id="FooterColTwo">
+		<ul class="FooterUl">
+			<li><a class="footernav" href="/homepage/newsroom.html" title="Click to view our Newsroom">Newsroom</a></li>
+			<!--<li><a class="footernav" href="/homepage/glossary.html" title="Click to view our Glossary">Glossary</a></li>-->
+			<li><a class="footernav" href="/homepage/sitemap.html" title="Click to view the Sitemap">Sitemap</a></li>
+			<li><a class="footernav" href="/homepage/privacy-policy.html" title="Click to view our Privacy Policy">Privacy Policy</a></li>
+		</ul>
+		</div>
+		<div id="FooterColThree">
+		<h4 class="FooterH4">ThoughtWorks Family</h4>
+		<ul class="FooterUl">
+			<li><a class="footernav" href="http://martinfowler.com/" title="Click to find out more about Martin Fowler, our Chief Scientist" target="_blank">Martin Fowler, our Chief Scientist</a></li>
+			<li><a class="footernav" href="http://studios.thoughtworks.com" title="Click to open ThoughtWorks Studios" target="_blank">ThoughtWorks Studios</a></li>
+			<li><a class="footernav" href="http://opensource.thoughtworks.com" title="Click to open ThoughtWorks Opensource" target="_blank">ThoughtWorks Opensource</a></li>
+			<li><a class="footernav" href="http://blogs.thoughtworks.com" title="Click to open ThoughtBlog Network" target="_blank">ThoughtBlog Network</a></li>
+			<li><a class="footernav" href="http://testing.thoughtworks.com" title="Click to open ThoughtWorks Testing Network" target="_blank">ThoughtWorks Testing</a></li>
+				<li><a class="footernav" href="http://www.thoughtworker.com" title="Click to open ThoughtWorker.com" target="_blank">Agile Careers at ThoughtWorks India</a></li>
+			
+		</ul>
+		</div>
+        
+        
+        <div id="FooterColFour">
+            <h4 class="FooterH4">ThoughtWorks US</h4>
+            <span class="FooterText">
+            ThoughtWorks Inc.<br />
+            200 E Randolph St<br />
+            25th Floor<br />
+            Chicago, IL 60601-6501<br />
+            <a class="footernav" href="http://maps.google.com/maps?f=q&hl=en&q=200+E.+Randolph,+Chicago,+IL+60601-6501&sll=37.0625,-95.677068&sspn=42.581364,96.328125&layer=&ie=UTF8&z=16&ll=41.884499,-87.622254&spn=0.009809,0.023518&om=1&iwloc=addr">[view map]</a><br />
+            <br />
+            T +1 312 373 1000<br />
+            F +1 312 373 1001<br />
+            E <a class="footernav" href="mailto:info-us@thoughtworks.com">info-us@thoughtworks.com</a><br />
+            </span>
+		</div>
+    </div>
+	</div>
+<!-- End Footer Include -->
+
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+
+
+    _uacct = "UA-774114-3";
+
+    urchinTracker();
+</script>
+
+    <!-- VTrendz Website include script -->
+
+    <script src=http://gw-services.vtrenz.net/WebCookies/iMAWebCookie.js?3A5449EC-CB82-4ADF-8040-6A54053688DE type="text/javascript"></script>
+    <script src="http://gw-services.vtrenz.net/WebCookies/iMAWebSyncIDAppender.js" type="text/javascript"></script>
+
+    <!-- VTrendz Website include script -->
+</body>
+</html>

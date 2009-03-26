@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>po-ru.com: Convert Ruby to JavaScript</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/style/screen.css" />
+    <!-- Here's the inevitable IE6 hack CSS file. Oh! Look! IE7 is no better! -->
+    <!--[if gte IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen" href="/style/screen-ie6.css" />
+    <![endif]-->
+    <!-- IE5 Mac is not quite so broken, but still falls short.  Here's its hack file: -->
+    <style type="text/css" media="screen"> 
+      /*\*//*/
+        @import "/style/screen-ie5mac.css";
+      /**/
+    </style>
+    <link rel="stylesheet" type="text/css" media="print" href="/style/print.css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" title="RSS" href="/rss" type="application/rss+xml" />
+    <meta name="author" content="Paul Battley" />
+    <meta name="generator" content="Textpattern" />
+    <meta name="DC.Title" content="po-ru.com: Convert Ruby to JavaScript" />
+    <meta name="DC.Creator" content="Paul Battley" />
+    <link rel="openid.server" href="http://www.myopenid.com/server"/>
+    <link rel="openid.delegate" href="http://pbattley.myopenid.com/"/>
+    <script src="/jquery-1.2.6.min.js" type="text/javascript"></script>
+    <script src="/human.js" type="text/javascript"></script>
+    <script src="/clock.js" type="text/javascript"></script>
+</head>
+<body class="">
+<!--[if IE 6]>
+<div id="infobar">
+<h1>Hello caveperson!</h1>
+<p>You’re using Internet Explorer 6, the internet equivalent of throwing rocks at <a href="http://en.wikipedia.org/wiki/Mastodon">mastodons</a>. It’s time you upgraded to something more secure, more up-to-date, more compliant with modern web standards, and less infuriating for web developers. Try <a href="http://getfirefox.com/">Firefox</a>, <a href="http://opera.com/">Opera</a>, <a href="http://apple.com/safari">Safari</a>, <a href="http://google.com/chrome">Google Chrome</a>, or <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">Internet Explorer 8</a>.</p></div>
+<div id="viewplot">
+<![endif]-->
+
+<div id='page'>
+  <div id='header'>
+    <h1 id='sitename'>po-ru.com</h1>
+    <div id="nav">
+<ul>
+<li><a href="/" accesskey="1">home</a></li>
+<li><a href="/diary/" accesskey="2" class="active">diary</a></li>
+<li><a href="/photos/" accesskey="3">photos</a></li>
+<li><a href="/articles/" accesskey="4">articles</a></li>
+<li><a href="/projects/" accesskey="5">projects</a></li>
+<li><a href="/about/" accesskey="6">about</a></li>
+</ul>
+</div>
+
+  </div>
+
+
+<div id='content' class='column'>
+  <div class='story'>
+  <h1><a href="/diary/convert-ruby-to-javascript/" title="Permanent link to this article">Convert Ruby to JavaScript</a></h1>
+
+  <div class="bodytext"><p>I knocked together this simple proof-of-concept Ruby-to-JavaScript converter in a few hours today. It seems somehow wrong, like grafting a pretty girl&#8217;s head onto a donkey, but I&#8217;ve done it anyway! It converts Ruby code like this:</p>
+
+<pre>class Demo
+
+  def initialize
+    @clicks = 0
+    3.times{ self.puts('Hello! I am a Ruby script!') }
+  end
+
+  def puts(str)
+    document.getElementById('debug')['innerHTML'] = 
+      document.getElementById('debug')['innerHTML'] + str + "&#92;n"
+  end
+
+  def clicked
+    @clicks += 1
+    self.puts("Click number " + @clicks.to_s)
+  end
+
+end</pre>
+
+	<p>into JavaScript code like this:</p>
+
+  <pre>function Demo(){
+  self=this;
+  self.instanceVariables={};
+  self.instanceVariables['@clicks']=Number(0);
+  Number(3).times(function(){
+    self.puts("Hello! I am a Ruby script!")
+  })
+}
+Demo.prototype = {
+  puts: function(str){
+    self=this;
+    document.getElementById("debug")["innerHTML"]=
+      document.getElementById("debug")["innerHTML"]+str+"&#92;n"
+  },
+  clicked: function(){
+    self=this;
+    self.instanceVariables['@clicks']=
+      self.instanceVariables['@clicks']+Number(1);
+    self.puts("Click number "+
+      self.instanceVariables['@clicks'].toString())
+  }
+}</pre>
+
+	<p>It uses Ryan Davis et al&#8217;s <a href="http://rubyforge.org/projects/parsetree/">ParseTree</a> and Florian Gro&#223;&#8217;s <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/117184">ruby.js</a> for most of the hard work. It&#8217;s still very limited, and there are many warts, not least of which is the requirement for an explicit receiver on every method. Nonetheless, I think it&#8217;s going to be useful.</p>
+
+	<p>Interested? <a href="/files/ruby2js.tar.gz">Download it</a> and try it for yourself.</p>
+
+<h2>Update</h2>
+
+<p>There’s now a <a href="http://rb2js.rubyforge.org/">project page on RubyForge</a>.</p></div>
+
+  <p class='postinfo'>
+  <span class="date">2006-07-05 15:23
+  <abbr>UTC</abbr></span>.
+  
+  
+    <a href="/diary/convert-ruby-to-javascript/#comments">Comments</a>:
+    19.
+  
+</p>
+  
+  
+    <h2 id="comments">Comments</h2>
+     
+    <p><a href="#leave_comment">Skip to the comment form</a></p>
+     
+    <ol class="comments"><li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=e2fd9ab152cac59a0ca5b61a20519015&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000064">
+      <a href="http://flgr.0x42.net/" title="flgr.0x42.net/">Florian Groß</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-05 23:02
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows XP:
+  </p>
+  Woah, how very cool!
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=91409c1df044aa22f248372f25a4ebd4&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000065">
+      <a href="http://www.ralree.info" title="www.ralree.info">Erik Gregg</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-05 23:16
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Linux:
+  </p>
+  Holy Crap!  Insane!  This is exactly what I need right now!
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=dd6e32b4ded31c480ad43c2156925fb2&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000067">
+      _ugly
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-05 23:33
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.1 on Linux:
+  </p>
+  dude.  keep working on this.  don&#8217;t stop.  please.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=29d6c042a84f0422f9b98a59c70d3196&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000069">
+      <a href="http://www.interkonect.com" title="www.interkonect.com">Kris</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 09:24
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows XP:
+  </p>
+  “It seems somehow wrong, like grafting a pretty girl’s head onto a donkey”<br />
+<br />
+lol<br />
+<br />
+Great work, hope you finish it off.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=085c5eee3314a35db6c3ae74ff622ebd&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000070">
+      <a href="http://www.petercooper.co.uk/" title="www.petercooper.co.uk/">Peter Cooper</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 09:37
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.3 on Mac OS X:
+  </p>
+  Verrry nice. Are you going to be at Pizza on Rails tonight by any chance? :)
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=90fe37d3a663ed1ae478848be28f670e&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000071">
+      <a href="http://www.folkestonegerald.com" title="www.folkestonegerald.com">Folkestone Gerald</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 10:09
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.1 on Windows XP:
+  </p>
+  Interesting idea, cheers&#8230;
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=90fe37d3a663ed1ae478848be28f670e&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000072">
+      <a href="http://www.folkestonegerald.com" title="www.folkestonegerald.com">Folkestone Gerald</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 10:13
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.1 on Windows XP:
+  </p>
+  Found you via del.icio.us btw
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=226e7777250ee0f27af08976178f2dff&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000073">
+      Ben
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 11:12
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows XP:
+  </p>
+  Argh that&#8217;s terrible!
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=8b3a5fa50d63275c5c6e304f1a081bfb&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000074">
+      <a href="http://toolmantim.com" title="toolmantim.com">Tim Lucas</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 14:29
+    <abbr>UTC</abbr></span>
+    using
+    Safari 417.9.3 on Mac OS X:
+  </p>
+  I see nothing wrong with grafting a pretty girl&#8217;s head onto a donkey&#8230;
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=e3ca69382186f5bce8b43ff5f0cb2287&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000075">
+      masukomi
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 14:31
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.1 on Linux:
+  </p>
+  I have to agree with _ugly. This could be reeeally useful. <br />
+<br />
+Please keep working on it. Maybe throw it on sourceforge or something so that others who are interested migh more easily help.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=2abf5beb51d5d66211d525a72c5cb39d&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000076">
+      Paul Battley
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 14:42
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Mac OS X:
+  </p>
+  Don&#8217;t worry&#8212;I intend to keep working on it! I&#8217;ve got some good ideas for message handling and so on (it&#8217;ll make the resulting JavaScript more complicated, but the behaviour will be closer to Ruby).<br />
+<br />
+I&#8217;ve submitted a RubyForge project request, and I&#8217;ll get everything set up on there once it&#8217;s authorised, maybe some time this weekend.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=eb4ffc850ae4f13e7e5602b53fe49772&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000077">
+      <a href="http://tech.ablergay.com" title="tech.ablergay.com">mike</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 17:12
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows XP:
+  </p>
+  I&#8217;ve always wished I could use Ruby for client side scripting!  Please, please, please continue working on this!
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=f0dd11c4e03f9280e13eb4ce6e3d1f03&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000078">
+      <a href="http://www.doggybio.com" title="www.doggybio.com">jman</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 18:39
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows XP:
+  </p>
+  That&#8217;s really great!  I look forward to seeing it on RubyForge&#8230;
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=b0af9e9c1c0acf1dc93d4dc9d6bcafb1&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000080">
+      nec
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-06 21:08
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.5.0.4 on Windows Server 2003:
+  </p>
+  can somebody tell me how is this going to be useful? You are still thinking in terms of javascript while still writing ruby code. I must be missnig something.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=c423a989fe8821354a2d7878ff4e68dd&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000081">
+      <a href="http://blog.dotjerky.com" title="blog.dotjerky.com">Austin Taylor</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-07 01:30
+    <abbr>UTC</abbr></span>
+    using
+    Safari 417.9.3 on Mac OS X:
+  </p>
+  So now all my javascript skills are deprecated. Great.<br />
+<br />
+But seriously, this could be huge. Your loops will be faster than using Prototype, you prevent bad practices, you make the code more concise&#8230; The downside is that it will be hard to think in javascript while writing ruby syntax. If we can think in ruby and get good output, we&#8217;re golden.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=09f8945c5e8995fb3926a1d1820ec1c6&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c000082">
+      <a href="http://www.vanirsystems.com/" title="www.vanirsystems.com/">Daniel Lewis</a>
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2006-07-11 14:43
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 1.0 on Windows XP:
+  </p>
+  Any chance of making a Javascript to Ruby Converter?<br />
+<br />
+(Or does anyone know of one?)<br />
+<br />
+Daniel.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=a74096209c78118ff69d50a51129d697&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c009981">
+      Jason
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2008-09-20 02:43
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 3.0.1 on Windows XP:
+  </p>
+  what is the status on the Ruby2JS project?
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=2abf5beb51d5d66211d525a72c5cb39d&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c009983">
+      Paul Battley
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2008-09-20 13:00
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 3.0.1 on Linux:
+  </p>
+  Jason, it&#8217;s moribund, and surpassed by <a href="http://www.ntecs.de/projects/rubyjs/" rel="nofollow" >rubyjs</a>.
+
+</li>
+<li>  <img class="gravatar" 
+    src="http://www.gravatar.com/avatar.php?gravatar_id=003f892d9476ff2cf09cc0791959e05f&size=40" alt="" 
+  />
+  <h3>
+    <a href="/diary/convert-ruby-to-javascript/#c010476">
+      Danilo
+    </a>
+  </h3>
+  <p class="commentinfo">
+    Wrote at
+    <span class="date">
+    2009-03-03 17:55
+    <abbr>UTC</abbr></span>
+    using
+    Firefox 3.0.6 on Windows XP:
+  </p>
+  Thanks for this help. I will try it. What I need is to convert an API (Facebook chat) to javascript. Thanks again
+
+</li></ol>
+  
+
+      
+    <h2 id="leave_comment">Leave a comment</h2>
+    
+    <form method="post" action="./#leave_comment" id="txpCommentInputForm">
+<p>Please read the <a href="/special/comments/">comment guidelines</a> before posting.  Comments are <a href="http://www.gravatar.com/">Gravatar</a>-enabled.  Your email address will not be published.</p>
+
+<p class="humancheck">To prove that you’re human, type <strong>human</strong> in the <strong>Bot check</strong> field.</p>
+
+<p>Trying to post some program output or a long code sample? Please use a <a href="http://pastie.org/">paste service</a> and link to it instead.</p>
+
+<div class="l">
+  <label for="comment_form_name">Name</label>
+  <input type="text" name="name" value="" size="50" class="comment_name_input" tabindex="2" id="comment_form_name" />
+
+</div>
+<div class="l">
+  <label for="comment_form_email">Email</label>
+  <input type="text" name="email" value="" size="50" class="comment_email_input" tabindex="3" id="comment_form_email" />
+
+</div>
+<div class="l humancheck">
+  <label for="comment_form_ruabot">Bot check</label>
+  <input type="text" name="ruabot" value="" size="50" class="comment_ruabot_input" tabindex="4" id="comment_form_ruabot" />
+
+</div>
+<div class="l">
+  <label for="comment_form_web">Website</label>
+  <input type="text" name="web" value="" size="50" class="comment_web_input" tabindex="5" id="comment_form_web" />
+
+</div>
+<div class="r">
+  <label for="comment_form_remember"><input type="checkbox" name="remember" value="1" checked="checked" id="comment_form_remember" tabindex="6" />Remember my details</label>
+</div>
+<div class="l">
+  <label for="comment_form_message">Message</label>
+  <textarea class="txpCommentInputMessage" id="comment_form_message" name="message" cols="50" rows="10" tabindex="7"></textarea>
+</div>
+<div class="s">
+  <input type="submit" name="preview" value="Preview" size="comment_preview" class="button" tabindex="8" id="comment_form_preview" />
+
+  
+</div>
+<p><input type="hidden" name="parentid" value="508" /></p><p><input type="hidden" name="backpage" value="/diary/convert-ruby-to-javascript/" /></p></form>
+      
+
+
+</div>
+
+  <ul id="pager">
+  
+    <li class="older">
+      <a href="/diary/coincidence-is-a-fine-thing/">Previous: Coincidence is a fine thing</a>
+    </li>
+    <li class="newer">
+      <a href="/diary/thoughts-on-ruby-to-javascript-conversion/">Next: Thoughts on Ruby to JavaScript conversion</a>
+    </li>
+  
+  
+</ul>
+</div>
+
+<div id='sidebar'>
+  <div class='item'>
+  <h1>About</h1>
+  <img src="/images/face80.jpg" width="80" height="80" alt="Headshot" style="float: left; margin: 0 1em 1em 0;" />
+
+	<p>My name is Paul Battley. I live in London, where I work for <a href="http://www.reevoo.com/">Reevoo</a> as a software developer. </p>
+
+	<p><strong>po-ru.com</strong> is my personal website, in which I write about the internet, programming, music, languages, Japan, travel, and politics, among other interests. There&#8217;s <a href="/about/">more about me</a> on a dedicated page.</p>
+
+  <img src="/images/feed16.png" width="16" height="16" alt="" style="float: left; margin: 0 0.5em 1em 0;" /> 
+
+	<p>An <a href="/rss">RSS feed</a> of posts is available.</p>
+
+
+ 
+
+</div>
+
+  <div class='item'>
+  <h1>Search</h1>
+  <form action="/search/" method="get">
+    <p><input type="text" name="q" value="" size="15" /></p>
+  </form>
+</div>
+  
+  
+    <div class='item'>
+  <h1>Recent diary entries</h1>
+  <ul class="pdb_recent_articles"><li><a href="/diary/updated-redcloth_template-plugin-for-rails-22-and-23/">Updated redcloth_template plugin for Rails 2.2 and 2.3</a></li>
+<li><a href="/diary/a-better-way-to-install-a-native-flash-player-on-64-bit-ubuntu/">A better way to install a native Flash player on 64-bit Ubuntu</a></li>
+<li><a href="/diary/linking-to-the-newest-version-of-a-file-on-github/">Linking to the newest version of a file on GitHub</a></li>
+<li><a href="/diary/now-featuring-on-the-pirate-bay/">Now featuring on The Pirate Bay</a></li>
+<li><a href="/diary/greasemonkey-vs-the-ons-at-rewired-state/">Greasemonkey vs the ONS at Rewired State</a></li></ul>
+</div>
+
+  
+</div>
+
+<div id='footer'>
+  	<p>Unless otherwise stated, all content is copyright &#0169; <a href="/special/contact/">Paul Battley</a> 1999-2008.</p>
+
+  <p><a href="http://validator.w3.org/check?uri=referer"><img src="/style/valid-xhtml10.png" alt="Valid XHTML 1.0!" height="31" width="88" title="Validate this page" /></a> <a href="http://jigsaw.w3.org/css-validator/"><img width="88" height="31" src="/style/vcss.png" alt="Valid CSS!" title="Validate my CSS" /></a><a href="http://feedvalidator.org/check.cgi?url=http://po-ru.com/rss"><img src="/style/valid-rss.png" alt="Valid RSS" title="Validate my RSS feed" width="88" height="31" /></a> <img src="/style/windows-free.png" width="88" height="31" alt="Windows-free" title="Don't get stuck in an abusive relationship!" /></p>
+
+
+
+ 
+</div>
+
+</div>
+<!--[if IE]>
+</div>
+<![endif]-->
+
+<script src="/ga.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+_uacct = "UA-577248-1";
+urchinTracker();
+</script>
+
+</body></html>

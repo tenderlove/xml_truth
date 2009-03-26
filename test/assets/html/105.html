@@ -1,0 +1,983 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>3rdRail and TurboRuby - Ruby and Rails Community</title>
+	
+	
+	
+	<!--
+	<link href="/styles/pe_menu.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/pe_events.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/main.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/jquery-ui.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/tags.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/products.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/article.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/yapp.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_dlstyles.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_forms.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/buttons.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/codecentral.css" rel="stylesheet" type="text/css" />
+	-->
+	<link href="http://static.embarcadero.com/styles/edn.css" rel="stylesheet" type="text/css" />
+	<link media="print" href="http://static.embarcadero.com/styles/print.css" rel="stylesheet" />
+	<!--
+	<script src="/javascript/jquery.js" type="text/javascript"></script>
+	<script src="/javascript/jquery-ui.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/planetembt_nav_jq.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/library.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/hide_show.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/chatroominfo.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/services.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/searchhint.js" type="text/javascript"></script>
+    -->
+    <script language="JavaScript" src="http://static.embarcadero.com/javascript/edn.js" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+function onload_function(){
+	initNav();
+}
+jQuery(window).load(onload_function);
+
+function onresize_function(){
+	reposNav();
+}
+window.onresize = onresize_function;   
+    </script>
+	<script type="text/javascript">
+searchServiceURL = "http://edn.embarcadero.com/SearchHintsJS.aspx";
+approxHitsText = "Approx hits";
+
+
+	</script>
+
+	<link rel="shortcut icon" href="http://edn.embarcadero.com/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="icon" href="http://edn.embarcadero.com/favicon.ico" type="image/vnd.microsoft.icon" />
+
+	<link title="Embarcadero Search" rel="search" type="application/opensearchdescription+xml" href="http://static.embarcadero.com/javascript/search.xml" />
+	
+	
+	<link rel="alternate" type="application/atom+xml" href="http://edn.embarcadero.com/3rdrail/atom">
+<link rel="alternate" type="application/atom+xml" href="http://edn.embarcadero.com/3rdrail/eatom">
+<link rel="alternate" type="application/rss+xml" href="http://edn.embarcadero.com/3rdrail/rss">
+<link rel="alternate" type="application/rss+xml" href="http://edn.embarcadero.com/3rdrail/erss">
+
+	<!-- Start script: SEO tracking -->
+<!-- SEO tracking meta tags for home page: Google, Yahoo, MSN -->
+<meta name="verify-v1" content="X2WuXR6yCcvIcN7HWTwcBK02RqlzxqIiXrY3Wqfxg38=" />
+<meta name="y_key" content="4ab57ccf7d9b979e" />
+<meta name="msvalidate.01" content="3A9503AD357C48609952C5F2512B1126" />
+
+	<style type="text/css">
+/*#left-col div, #right-col div { width: 42px; }*/
+#center-col { width: 100%; }
+#center-col #logo-area { width: 100%; }
+#CopyrightSection { padding: 15px 42px 0; }
+#CopyrightSection div { width: auto; }
+</style>
+</head>
+
+<body id="body">
+
+<div class="main_wrapper">
+  <div class="main_wrapper_inner_left">
+    <div class="main_wrapper2">
+      <div class="main_wrapper2_inner_right">
+	    <div class="shadow_bg_wrapper">
+		
+        <div class="header_wrapper"  id="header_wrapper">        	
+			<div id="mininav_bar" class="mininav_wrapper">
+			<div style="float: right; height: 18px; line-height: 18px;">
+                <form class="search" name="search" method="get" action="http://edn.embarcadero.com/search">
+                    <input id="searchbox-q" type="text" name="q" class="s" size="18" maxlength="255" value="" autocomplete="off" />
+					<script language="JavaScript" type="text/javascript">
+					    registerSearchBox("searchbox-q");
+					</script>
+                    <input name="" type="image" src="/images/edn/search_btn.gif" align="absmiddle" />
+                    <input type="hidden" name="allsites" value="y" />
+		            <input type="hidden" name="allwords" value="y" />
+                </form>                
+            </div>
+            
+            
+		    <div style="float: right; height: 18px; line-height: 18px;">
+		        
+		        
+		        <a href="https://members.embarcadero.com/login.aspx?returnurl=http://edn.embarcadero.com/3rdrail">
+			        Log On
+			    </a>		        
+            </div>
+            
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">&nbsp;|&nbsp;</div>
+            <div class="langselect" style="float: right;">
+                <div class="primary-menu" style="background: none; padding: 0;">
+                    <ul id="langlist" class="langbg">
+		                <li id="langselected"><a id="langselecteda" href="#">English</a>
+		                    <ul><li><a href="http://edn.embarcadero.com/language?clear=yes&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">My default language</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ar&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Arabic</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=br&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Brazilian Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=bg&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Bulgarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hr&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Croatian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cs&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Czech</a></li>
+<li class="selected"><a href="http://edn.embarcadero.com/language?code=en&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">English</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fi&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Finnish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fr&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">French</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=de&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">German</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=he&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Hebrew</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=el&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Hellenic (Greek)</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hu&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Hungarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=it&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Italian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=jp&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Japanese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=kr&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Korean</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=no&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Norwegian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pl&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Polish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pt&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ru&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Russian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cn&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Simplified Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=es&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Spanish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=sv&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Swedish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tw&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Traditional Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tr&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">Turkish</a></li>
+</ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">|</div>
+			<div style="float: right;">
+                <div class="primary-menu" style="background: none; padding: 0;">
+                    <ul class="langbg countrylist">
+		                <li class="countryselected">
+		                    <!-- <img src="http://static.embarcadero.com/images/w3/icons-globe.gif" width="22" height="21" alt="" /> --><a class="countryselecteda" href="#">Location</a>
+                            <ul>
+		                    <li><a href="http://edn.embarcadero.com/country?clear=yes&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">All Other</a></li>
+<li class="section">Regions</li><li><a href="http://edn.embarcadero.com/country?code=ASEAN&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Brunei Darussalam, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Singapore, Thailand, Viet Nam">ASEAN</a></li><li><a href="http://edn.embarcadero.com/country?code=ANZ&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Australia, New Zealand">Australia/New Zealand</a></li><li><a href="http://edn.embarcadero.com/country?code=BENELUX&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Belgium, Luxembourg, Netherlands">Benelux</a></li><li><a href="http://edn.embarcadero.com/country?code=DACH&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Austria, Germany, Switzerland">D-A-CH</a></li><li><a href="http://edn.embarcadero.com/country?code=CHINAHK&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="China, Hong Kong">Greater China</a></li><li><a href="http://edn.embarcadero.com/country?code=LATAM&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Argentina, Bolivia, Chile, Colombia, Costa Rica, Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Uruguay, Venezuela">Latin America</a></li><li><a href="http://edn.embarcadero.com/country?code=NORDIC&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Denmark, Finland, Iceland, Norway, Sweden">Nordic</a></li><li><a href="http://edn.embarcadero.com/country?code=TW&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Taiwan</a></li><li><a href="http://edn.embarcadero.com/country?code=UKIR&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Ireland, United Kingdom">UK and Ireland</a></li><li><a href="http://edn.embarcadero.com/country?code=USCARIB&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="Anguilla, Antigua and Barbuda, Aruba, Bahamas, Barbados, Belize, Bermuda, Cayman Islands, Dominica, Falkland Islands (Malvinas), Grenada, Guadeloupe, Guyana, Haiti, Jamaica, Martinique, Montserrat, Netherlands Antilles, Puerto Rico, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, St. Barthelemy, Suriname, Trinidad and Tobago, Turks and Caicos Islands, United States, Virgin Islands (British), Virgin Islands (U.S.)">US and Caribbean</a></li><li class="section">Countries</li><li><a href="http://edn.embarcadero.com/country?code=BR&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Brazil</a></li><li><a href="http://edn.embarcadero.com/country?code=CA&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Canada</a></li><li><a href="http://edn.embarcadero.com/country?code=FR&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">France</a></li><li><a href="http://edn.embarcadero.com/country?code=IN&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">India</a></li><li><a href="http://edn.embarcadero.com/country?code=IT&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Italy</a></li><li><a href="http://edn.embarcadero.com/country?code=JP&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Japan</a></li><li><a href="http://edn.embarcadero.com/country?code=KR&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Korea (South)</a></li><li><a href="http://edn.embarcadero.com/country?code=RU&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Russian Federation</a></li><li><a href="http://edn.embarcadero.com/country?code=ES&returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail" title="">Spain</a></li>
+                            </ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+		    
+		    <div style="float: left; height: 18px; line-height: 18px;">
+		        <a href="http://www.embarcadero.com" class="site-home">Embarcadero Home</a>
+		    </div>
+		    &nbsp;
+		  </div>
+		    
+        	<a href="/" class="mainlogo"><img src="/images/edn/header_logo.gif" alt="Embarcadero Developer Network" /></a>
+        </div>
+        	
+ 
+		<div class="main_nav_wrapper" id="main_nav">
+			<a href="#" id="Communities">Communities</a>
+			<a href="#" id="Articles">Articles</a>
+            <a href="http://blogs.embarcadero.com" id="Blogs">Blogs</a>
+            <a href="#" id="Resources">Resources</a>
+            <a href="#" id="Downloads">Downloads</a>
+            <a href="http://edn.embarcadero.com/help" id="Help">Help</a>
+		</div>
+
+		<div class="content_wrapper_inside">
+		  <form name="ctl39" method="post" action="/3rdrail" id="ctl39">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE3OTQ4MzE4MjEPZBYCAl0PZBYIAhsPZBYQZg9kFgJmDw8WAh4HVmlzaWJsZWhkZAICD2QWAmYPFgIeBFRleHQFVjxzY3JpcHQgbGFuZ3VhZ2U9IkphdmFTY3JpcHQiIHR5cGU9InRleHQvamF2YXNjcmlwdCI+c2hvd1Jvb21JbmZvKCIzcmRyYWlsIik7PC9zY3JpcHQ+ZAIHD2QWAmYPFgIfAQXCHTxkaXYgY2xhc3M9InRhZ2Nsb3VkIj4NCjxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbiwzcmRSYWlsLzNyZHJhaWwiIGNsYXNzPSJ0YWcteHgtbGFyZ2UiIHRpdGxlPSJVc2VkIGluIDIyIGFydGljbGVzIj4zcmRSYWlsPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLEFwcGxpY2F0aW9uJTIwRmFjdG9yaWVzLzNyZHJhaWwiIGNsYXNzPSJ0YWctc21hbGwiIHRpdGxlPSJVc2VkIGluIDIgYXJ0aWNsZXMiPkFwcGxpY2F0aW9uJm5ic3A7RmFjdG9yaWVzPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLEMlMmIlMmIvM3JkcmFpbCIgY2xhc3M9InRhZy1zbWFsbCIgdGl0bGU9IlVzZWQgaW4gb25lIGFydGljbGUiPkMrKzwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixDaGFuZ2UlMjBNYW5hZ2VyLzNyZHJhaWwiIGNsYXNzPSJ0YWctbWVkaXVtIiB0aXRsZT0iVXNlZCBpbiA0IGFydGljbGVzIj5DaGFuZ2UmbmJzcDtNYW5hZ2VyPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLENvZGVSYWdlLzNyZHJhaWwiIGNsYXNzPSJ0YWctc21hbGwiIHRpdGxlPSJVc2VkIGluIDIgYXJ0aWNsZXMiPkNvZGVSYWdlPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLERhdGFiYXNlLzNyZHJhaWwiIGNsYXNzPSJ0YWctbWVkaXVtIiB0aXRsZT0iVXNlZCBpbiA0IGFydGljbGVzIj5EYXRhYmFzZTwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixEQkFydGlzYW4vM3JkcmFpbCIgY2xhc3M9InRhZy1tZWRpdW0iIHRpdGxlPSJVc2VkIGluIDMgYXJ0aWNsZXMiPkRCQXJ0aXNhbjwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixEZWxwaGkvM3JkcmFpbCIgY2xhc3M9InRhZy1tZWRpdW0iIHRpdGxlPSJVc2VkIGluIDYgYXJ0aWNsZXMiPkRlbHBoaTwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixEZWxwaGklMjBmb3IlMjBQSFAvM3JkcmFpbCIgY2xhc3M9InRhZy1zbWFsbCIgdGl0bGU9IlVzZWQgaW4gMiBhcnRpY2xlcyI+RGVscGhpJm5ic3A7Zm9yJm5ic3A7UEhQPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLEVtYmFyY2FkZXJvJTIwVGVjaG5vbG9naWVzLzNyZHJhaWwiIGNsYXNzPSJ0YWctc21hbGwiIHRpdGxlPSJVc2VkIGluIDIgYXJ0aWNsZXMiPkVtYmFyY2FkZXJvJm5ic3A7VGVjaG5vbG9naWVzPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLEVSJTJmU3R1ZGlvLzNyZHJhaWwiIGNsYXNzPSJ0YWctbWVkaXVtIiB0aXRsZT0iVXNlZCBpbiAzIGFydGljbGVzIj5FUi9TdHVkaW88L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sSW5zdGFsbC8zcmRyYWlsIiBjbGFzcz0idGFnLXNtYWxsIiB0aXRsZT0iVXNlZCBpbiAyIGFydGljbGVzIj5JbnN0YWxsPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLEludGVyQmFzZS8zcmRyYWlsIiBjbGFzcz0idGFnLXNtYWxsIiB0aXRsZT0iVXNlZCBpbiAyIGFydGljbGVzIj5JbnRlckJhc2U8L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4samF2YS8zcmRyYWlsIiBjbGFzcz0idGFnLW1lZGl1bSIgdGl0bGU9IlVzZWQgaW4gMyBhcnRpY2xlcyI+amF2YTwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixKQnVpbGRlci8zcmRyYWlsIiBjbGFzcz0idGFnLW1lZGl1bSIgdGl0bGU9IlVzZWQgaW4gMyBhcnRpY2xlcyI+SkJ1aWxkZXI8L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sbmV3c2xldHRlci8zcmRyYWlsIiBjbGFzcz0idGFnLXNtYWxsIiB0aXRsZT0iVXNlZCBpbiBvbmUgYXJ0aWNsZSI+bmV3c2xldHRlcjwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixQSFAvM3JkcmFpbCIgY2xhc3M9InRhZy1tZWRpdW0iIHRpdGxlPSJVc2VkIGluIDMgYXJ0aWNsZXMiPlBIUDwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixQb3dlclNRTC8zcmRyYWlsIiBjbGFzcz0idGFnLW1lZGl1bSIgdGl0bGU9IlVzZWQgaW4gMyBhcnRpY2xlcyI+UG93ZXJTUUw8L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sUmFpbHMvM3JkcmFpbCIgY2xhc3M9InRhZy14LWxhcmdlIiB0aXRsZT0iVXNlZCBpbiAxNiBhcnRpY2xlcyI+UmFpbHM8L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sUm9hZG1hcC8zcmRyYWlsIiBjbGFzcz0idGFnLXNtYWxsIiB0aXRsZT0iVXNlZCBpbiAyIGFydGljbGVzIj5Sb2FkbWFwPC9hPjwvc3Bhbj4gPHNwYW4gY2xhc3M9InRhZyI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vdGFnL2VuLFJvUi8zcmRyYWlsIiBjbGFzcz0idGFnLWxhcmdlIiB0aXRsZT0iVXNlZCBpbiA5IGFydGljbGVzIj5Sb1I8L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sUnVieS8zcmRyYWlsIiBjbGFzcz0idGFnLXh4LWxhcmdlIiB0aXRsZT0iVXNlZCBpbiAyNCBhcnRpY2xlcyI+UnVieTwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixTb2Z0d2FyZSUyMEFyY2hlb2xvZ3kvM3JkcmFpbCIgY2xhc3M9InRhZy1zbWFsbCIgdGl0bGU9IlVzZWQgaW4gb25lIGFydGljbGUiPlNvZnR3YXJlJm5ic3A7QXJjaGVvbG9neTwvYT48L3NwYW4+IDxzcGFuIGNsYXNzPSJ0YWciPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL3RhZy9lbixWaWRlby8zcmRyYWlsIiBjbGFzcz0idGFnLW1lZGl1bSIgdGl0bGU9IlVzZWQgaW4gNyBhcnRpY2xlcyI+VmlkZW88L2E+PC9zcGFuPiA8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sWXVraWhpcm8lMjBNYXRzdW1vdG8vM3JkcmFpbCIgY2xhc3M9InRhZy1zbWFsbCIgdGl0bGU9IlVzZWQgaW4gMiBhcnRpY2xlcyI+WXVraWhpcm8mbmJzcDtNYXRzdW1vdG88L2E+PC9zcGFuPg0KPC9kaXY+DQpkAgwPDxYCHwBnZBYCZg8WAh8BBaoFPHVsPg0KICA8bGk+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zODg0MiIgdGl0bGU9IlVwZGF0ZXMgdG8gaW5zdGFsbGF0aW9uIG5vdGVzIiB0YXJnZXQ9IiI+M3JkUmFpbCAyLjAgSW5zdGFsbGF0aW9uIE5vdGVzPC9hPjwvbGk+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM4ODc3IiB0aXRsZT0iUmVsZWFzZSBOb3RlcyIgdGFyZ2V0PSIiPjNyZFJhaWwgMi4wIFJlbGVhc2UgTm90ZXM8L2E+PC9saT4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL2FydGljbGUvMzg4NzgiIHRpdGxlPSJSZWxlYXNlIE5vdGVzIiB0YXJnZXQ9IiI+VHVyYm9SdWJ5IDIuMCBSZWxlYXNlIE5vdGVzPC9hPjwvbGk+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM4ODk1IiB0aXRsZT0iVHVyYm9SREsgMi4wIFJlYWRtZSIgdGFyZ2V0PSIiPlR1cmJvUkRLIDIuMCBSZWFkbWU8L2E+PC9saT4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL2FydGljbGUvMzg4NDciIHRpdGxlPSJOb3RlcyBvbiBpbnN0YWxsaW5nIFR1cmJvUnVieSIgdGFyZ2V0PSIiPlR1cmJvUnVieSAyLjAgSW5zdGFsbGF0aW9uIE5vdGVzPC9hPjwvbGk+DQo8L3VsPmQCEQ8PFgIfAGdkFgJmDxYCHwEF8wo8dWw+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM4MzMzIiB0aXRsZT0iT24gSnVseSAzMSwgR3JlZyBLZWxsZXIsIENoaWVmIEV2YW5nZWxpc3QgZm9yIERhdGFiYXNlR2VhciB3aWxsIGRlbW9uc3RyYXRlIEVtYmFyY2FkZXJvIGRhdGFiYXNlIHByb2R1Y3Qgc29sdXRpb25zIHRvIHRoZSBDb2RlR2VhciBjb21tdW5pdHkuIFRoZXNlIGxpdmUgZGVtb25zdHJhdGlvbnMgd2lsbCB0YWtlIHBsYWNlIGF0IHRocmVlIGRpZmZlcmVudCB0aW1lcyBvbiBKdWx5IDMxc3QsIDZhbSwgMTFhbSwgYW5kIDZwbSAoUGFjaWZpYyBUaW1lLCBVVEMtNykuIiB0YXJnZXQ9IiI+TGl2ZSBXZWJpbmFyLCBKdWx5IDMxOiAgSW50cm9kdWNpbmcgdGhlIERhdGFiYXNlR2VhciBwcm9kdWN0cyB0byB0aGUgQ29kZUdlYXIgRGV2ZWxvcGVyIE5ldHdvcms8L2E+PC9saT4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL2FydGljbGUvMzcyMzEiIHRpdGxlPSLjgIzjg5Pjg4fjgqotUnVieeiogOiqnuWFpemWgOOAjeOBruWGheWuueOCkuewoeWNmOOBq+iqrOaYjuOBl+OBn+iomOS6i+OBp+OBmSIgdGFyZ2V0PSIiPlJ1Ynkg6KiA6Kqe5YWl6ZaAPC9hPjwvbGk+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM2ODI4IiB0aXRsZT0iVGhpcyBwYWdlIGNvbnRhaW5zIGNvbnRlbnQgcmVsYXRlZCB0byAzcmRSYWlsIiB0YXJnZXQ9IiI+M3JkUmFpbCBUZWNobmljYWwgUmVzb3VyY2VzPC9hPjwvbGk+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM2NjY3IiB0aXRsZT0i56ysNeWbnkNvZGVHZWFy44OH44OZ44Ot44OD44OR44O844Kt44Oj44Oz44OX44Gr44Gm5pel5pys5Yid5YWs6ZaL44GX44GfUnVieSBJREXjgIJSdWJ55L2c6ICF44Gu44G+44Gk44KC44Go44KG44GN44Gy44KN5rCP44Go44Gu44OI44O844Kv44KS44GU6Kan44GE44Gf44Gg44GR44G+44GZ44CCIiB0YXJnZXQ9IiI+44OT44OH44KqIC0g44CMQ29kZUdlYXLjga5SdWJ56ZaL55m655Kw5aKD44OX44Os44OT44Ol44O844CNPC9hPjwvbGk+DQogIDxsaT48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS9hcnRpY2xlLzM2NjYyIiB0aXRsZT0iVGhpcyBhcnRpY2xlIGNvbnRhaW5zIHRoZSByZXBsYXkgdmlkZW9zIG9mIHNlbGVjdGVkIHNlc3Npb25zIHRoYXQgdG9vayBwbGFjZSBhdCB0aGUgQ29kZUdlYXIgSmFwYW4gRGV2ZWxvcGVyIENhbXAgaW4gVG9reW8gb24gSnVuZSA1LCAyMDA3LiIgdGFyZ2V0PSIiPkNvZGVHZWFyIEphcGFuIERldmVsb3BlciBDYW1wIC0gSnVuZSAyMDA3IC0gVmlkZW8gUmVwbGF5czwvYT48L2xpPg0KPC91bD5kAhYPZBYCZg8WAh8BBYoKPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHBzOi8vZm9ydW1zLmNvZGVnZWFyLmNvbS90aHJlYWQuanNwYT90aHJlYWRJRD0xNDIwMyIgdGl0bGU9Ikp1c3QgYm91Z2h0IDNyZFJhaWwgMi4wIHRvZGF5LCBhbmQgSSB0aGluayBpdCBpcyBhYnNvbHV0ZWx5IHJpZGljdWxvdXMgdGhhdCAuLi4iPjEgWWVhcj8/PC9hPjwvbGk+PGxpPjxhIGhyZWY9Imh0dHBzOi8vZm9ydW1zLmNvZGVnZWFyLmNvbS90aHJlYWQuanNwYT90aHJlYWRJRD0xMjQ4NiIgdGl0bGU9IkRlYXIgM3JkUmFpbCBDb21tdW5pdHksLi4uIj5EQiBNaWdyYXRpb24gd2l0aCBJQjIwMDkgZmFpbHM8L2E+PC9saT48bGk+PGEgaHJlZj0iaHR0cHM6Ly9mb3J1bXMuY29kZWdlYXIuY29tL3RocmVhZC5qc3BhP3RocmVhZElEPTEyODMyIiB0aXRsZT0iR2V0dGluZyBlcnJvciAiIE15bHluIEJyaWRnZTogRWNsaXBzZSBJREUgKDMuMC4yLnYyMDA4MDkxOC0xMTAwLWUzMykgcmVxdWlyZXMgZmVhdHVyZSAib3JnLmVjbGlwc2UubXlseW4udGVhbV9mZWF0dXJlICgzLjAuMi52MjAwODA5MTgtMTEwMC1lMzMpIiB3aGVuIHRyeWluZyB0byBleGVjdXRlIGEgIlNlYXJjaCBmb3IgdXBkYXRlcyBvZiB0aGUgY3VycmVudGx5IGluc3RhbGxlZCBmZWF0dXJlcyIuIFRoZSBvdGhlciB0d28gd2VudCBmaW5lLi4uIj5FcnJvciBhdHRlbXB0aW5nIHVwZGF0ZTwvYT48L2xpPjxsaT48YSBocmVmPSJodHRwczovL2ZvcnVtcy5jb2RlZ2Vhci5jb20vdGhyZWFkLmpzcGE/dGhyZWFkSUQ9MTE4NDciIHRpdGxlPSJXaGVuIEkgcnVuIHRoZSByYWlscyBzZXJ2ZXIgKG1vbmdyZWwpIGluIGRlYnVnIG1vZGUgZnJvbSAzcmQgUmFpbCBpdCBydW5zIDxiPmV4dHJlbWVseTwvYj4gc2xvd2x5LiAgIFdoZW4gSSBydW4gdGhlIHNlcnZlciBpbiBkZWJ1ZyBtb2RlIGZyb20gTmV0YmVhbnMgdXNpbmcgZXhhY3RseSB0aGUgc2FtZSBpbnRlcnByZXRlciBhbmQgY29uZmlndXJhdGlvbnMgdGhlIHNsb3dkb3duIGlzIG5vdCBub3RpY2VhYmxlLi4uLiI+QXJlIHRoZXJlIHNldHRpbmdzIHRoYXQgd2lsbCBzcGVlZCB1cCBkZWJ1ZyBtb2RlPzwvYT48L2xpPjxsaT48YSBocmVmPSJodHRwczovL2ZvcnVtcy5jb2RlZ2Vhci5jb20vdGhyZWFkLmpzcGE/dGhyZWFkSUQ9MTA4NjMiIHRpdGxlPSJJIGNyZWF0ZWQgYSBjb250cm9sbGVyIGFuZCBkZWxldGVkIGxheW91dCBmb3IgdGhpcyBjb250cm9sbGVyIGJlY2F1c2UgSSB1c2UgYXBwbGljYXRpb24uaHRtbC5lcmIgbGF5b3V0Li4uLiI+UG9zc2libHkgYnVnIGluIHZhbGlkYXRpb248L2E+PC9saT4NCjwvdWw+ZAIbDw8WAh8AZ2QWAmYPFgIfAQW/EDx1bD4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9jYy5lbWJhcmNhZGVyby5jb20vSXRlbS8yNjcwNSIgdGl0bGU9IkZ1bGwgcHJvZHVjdCBpbnN0YWxsIG9mIDNyZFJhaWwgMi4wIGZvciBNYWMgT1MgWCAxMC41IChFbmdsaXNoIG9ubHkpLiBJbmNsdWRlcyAzcmRSYWlsLCBSdWJ5IFZNLCBSYWlscywgSW50ZXJCYXNlLCBNeVNRTCwgYW5kIFNRTGl0ZS4iIHRhcmdldD0iIj4zcmRSYWlsIDIuMCBJbnN0YW50T24gRG93bmxvYWQgLSBXaW5kb3dzIC0gRW5nbGlzaDwvYT48L2xpPg0KICA8bGk+PGEgaHJlZj0iaHR0cDovL2NjLmVtYmFyY2FkZXJvLmNvbS9JdGVtLzI2NjE2IiB0aXRsZT0iRnVsbCBwcm9kdWN0IGluc3RhbGwgb2YgM3JkUmFpbCAyLjAgZm9yIFVidW50dSBMaW51eCA4LjA0IChKYXBhbmVzZSkuIEluY2x1ZGVzIDNyZFJhaWwsIFJ1YnkgVk0sIFJhaWxzLCBJbnRlckJhc2UsIE15U1FMIGFuZCBTUUxpdGUuIiB0YXJnZXQ9IiI+M3JkUmFpbCAyLjAgRnVsbCBQcm9kdWN0IERvd25sb2FkIC0gTGludXggLSBKYXBhbmVzZTwvYT48L2xpPg0KICA8bGk+PGEgaHJlZj0iaHR0cDovL2NjLmVtYmFyY2FkZXJvLmNvbS9JdGVtLzI2NjE1IiB0aXRsZT0iRnVsbCBwcm9kdWN0IGluc3RhbGwgb2YgM3JkUmFpbCAyLjAgZm9yIFdpbmRvd3MgKEphcGFuZXNlKS4gSW5jbHVkZXMgM3JkUmFpbCwgUnVieSBWTSwgUmFpbHMsIEludGVyQmFzZSwgTXlTUUwgYW5kIFNRTGl0ZS4iIHRhcmdldD0iIj4zcmRSYWlsIDIuMCBGdWxsIFByb2R1Y3QgRG93bmxvYWQgLSBXaW5kb3dzIC0gSmFwYW5lc2U8L2E+PC9saT4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9jYy5lbWJhcmNhZGVyby5jb20vSXRlbS8yNjYxNCIgdGl0bGU9IkZ1bGwgcHJvZHVjdCBpbnN0YWxsIG9mIDNyZFJhaWwgMi4wIGZvciBNYWMgT1MgWCAxMC41IChKYXBhbmVzZSkuIEluY2x1ZGVzIDNyZFJhaWwsIFJ1YnkgVk0sIFJhaWxzLCBJbnRlckJhc2UsIE15U1FMLCBhbmQgU1FMaXRlLiIgdGFyZ2V0PSIiPjNyZFJhaWwgMi4wIEZ1bGwgUHJvZHVjdCBEb3dubG9hZCAtIE1hYyBPUyBYIC0gSmFwYW5lc2U8L2E+PC9saT4NCiAgPGxpPjxhIGhyZWY9Imh0dHA6Ly9jYy5lbWJhcmNhZGVyby5jb20vSXRlbS8yNjQ5OSIgdGl0bGU9IjxwPkZ1bGx5IGZ1bmN0aW9uYWwgMzAtZGF5IHRyaWFsIG9mIFR1cmJvUnVieSBKYXBhbmVzZSBFZGl0aW9uIGZvciBVYnVudHUgTGludXggOC4wNCAoRW5nbGlzaCBvbmx5KS48cD48aDM+SW5zdGFsbGluZyB0aGUgVHVyYm9SdWJ5IFRyaWFsPC9oMz48b2w+PGxpPlJlcXVlc3QgYSBUdXJib1J1Ynkgc2VyaWFsIG51bWJlciB0byBhY3RpdmF0ZSB5b3VyIHRyaWFsIGJ5IGNsaWNraW5nIHRoZSBDb25maXJtIGJ1dHRvbiBiZWxvdyB5b3VyIGluZm9ybWF0aW9uIGluIHRoZSBsZWZ0IGNvbHVtbiBvZiB0aGlzIHBhZ2UuIEEgc2VyaWFsIG51bWJlciB3aWxsIGJlIHNlbnQgdG8geW91IHZpYSBlbWFpbC48bGk+RG93bmxvYWQgYW5kIGV4dHJhY3QgdGhlIFR1cmJvUnVieSBwcm9kdWN0IGZpbGVzPGxpPk9wZW4gYSB0ZXJtaW5hbCBhbmQgbmF2aWdhdGUgdG8gdGhlIFR1cmJvUnVieSBpbnN0YWxsIGRpcmVjdG9yeSA8bGk+TGF1bmNoIGluc3RhbGxfbGludXguc2ggIDxsaT5XaGVuIHlvdSBhcmUgcHJvbXB0ZWQgdG8gZW50ZXIgdGhlIFR1cmJvUnVieSBzZXJpYWwgbnVtYmVyLCBlbnRlciB0aGUgdHJpYWwgc2VyaWFsIG51bWJlciB5b3UgcmVjZWl2ZWQgYnkgZW1haWwgKG9yIGNsaWNrIHRoZSBjb25maXJtIGJ1dHRvbiB0byB0aGUgbGVmdCBhZ2FpbiB0byBzZWUgdGhlIHNlcmlhbCBudW1iZXIgZGlzcGxheWVkIG9uIHRoaXMgcGFnZSk8bGk+T3B0aW9uYWxseSBydW4gdGhlIEludGVyQmFzZSAyMDA5IERldmVsb3BlciBFZGl0aW9uIGluc3RhbGxlcjxsaT4gV2hlbiB5b3UgYXJlIHByb21wdGVkIHRvIGVudGVyIHRoZSBJbnRlckJhc2UgRGV2ZWxvcGVyIEVkaXRpb24gc2VyaWFsIG51bWJlciwgZW50ZXI6PGJsb2NrcXVvdGU+U2VyaWFsIG51bWJlcjogREJDRS1LNFNCVEotQkxYOUtFLTNFSEM8L29sPiIgdGFyZ2V0PSIiPlR1cmJvUnVieSBGdWxsIFByb2R1Y3QgVHJpYWwgZm9yIExpbnV4IChKYXBhbmVzZSk8L2E+PC9saT4NCjwvdWw+ZAIgDw8WAh8AZ2QWAmYPFgIfAQUGDQoNCg0KZAIoD2QWAmYPDxYCHwBoZGQCKg9kFjQCAQ8PFgIfAQUJVGltZSBab25lZGQCAw8PFgQeC05hdmlnYXRlVXJsBVhodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90aW1lem9uZT9yZXR1cm51cmw9aHR0cCUzYSUyZiUyZmVkbi5lbWJhcmNhZGVyby5jb20lMmYzcmRyYWlsHwEFKihHTVQtMDg6MDApIFBhY2lmaWMgVGltZSAoVVMgJmFtcDsgQ2FuYWRhKWRkAgcPDxYEHwIFDi8zcmRyYWlsL2VmZWVkHghJbWFnZVVybAUpaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vaW1hZ2VzL3Jzcy5naWZkZAIJDw8WAh8BBQZFdmVudHNkZAILDw8WAh8BBQZFdmVudHNkZAINDw8WAh8BBQhVcGNvbWluZ2RkAg8PDxYGHwEFCFVwY29taW5nHwIFCC8zcmRyYWlsHwBoZGQCEQ8PFgQfAQUGTGF0ZXN0HwBoZGQCEw8PFgQfAQUGTGF0ZXN0HwIFGS8zcmRyYWlsP2V2ZW50dmlldz1sYXRlc3RkZAIVDw8WBB8BBQNEYXkfAGhkZAIXDw8WBB8BBQNEYXkfAgUWLzNyZHJhaWw/ZXZlbnR2aWV3PWRheWRkAhkPDxYEHwEFBFdlZWsfAGhkZAIaDw8WBB8BBQRXZWVrHwIFFy8zcmRyYWlsP2V2ZW50dmlldz13ZWVrZGQCHA8PFgQfAQUFTW9udGgfAGhkZAIeDw8WBB8BBQVNb250aB8CBRgvM3JkcmFpbD9ldmVudHZpZXc9bW9udGhkZAIgDw8WAh8BBQdQcm9kdWN0ZGQCIg8PFgIfAQUMQWxsIFByb2R1Y3RzZGQCJA8WAh8BBY0LPGxpPjxhIGhyZWY9Ii8zcmRyYWlsIj5BbGwgUHJvZHVjdHM8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTE3Ij4zcmRSYWlsPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii8zcmRyYWlsP2V2ZW50cHJvZHVjdD0xNiI+QmxhY2tmaXNoIFNRTDwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MyI+Qm9ybGFuZCBEZXZlbG9wZXIgU3R1ZGlvPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii8zcmRyYWlsP2V2ZW50cHJvZHVjdD01Ij5DKytCdWlsZGVyPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii8zcmRyYWlsP2V2ZW50cHJvZHVjdD0yNCI+Q2hhbmdlIE1hbmFnZXI8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTI4Ij5EQiBPcHRpbWl6ZXI8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTIzIj5EQkFydGlzYW48L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTE1Ij5EZWxwaGkgZm9yIFBIUDwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MTgiPkRlbHBoaSBmb3IgV2luMzI8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTExIj5EZWxwaGkgUHJpc208L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTIwIj5EZWxwaGkvNDAwIDwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MzEiPkRTQXVkaXRvcjwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MjYiPkVBL1N0dWRpbzwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MjEiPkVSL1N0dWRpbzwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9OCI+SW50ZXJCYXNlPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii8zcmRyYWlsP2V2ZW50cHJvZHVjdD0xIj5KQnVpbGRlcjwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MTkiPkpHZWFyPC9hPjwvbGk+PGxpPjxhIGhyZWY9Ii8zcmRyYWlsP2V2ZW50cHJvZHVjdD05Ij5PcHRpbWl6ZWl0IFByb2dyZXNzIFRyYWNrZXI8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTMwIj5QZXJmb3JtYW5jZSBDZW50ZXI8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTIyIj5Qb3dlclNRTDwvYT48L2xpPjxsaT48YSBocmVmPSIvM3JkcmFpbD9ldmVudHByb2R1Y3Q9MTQiPlJBRCBTdHVkaW88L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTI1Ij5SYXBpZCBTUUw8L2E+PC9saT48bGk+PGEgaHJlZj0iLzNyZHJhaWw/ZXZlbnRwcm9kdWN0PTI5Ij5TY2hlbWEgRXhhbWluZXI8L2E+PC9saT5kAiYPDxYCHwEFBk9ubGluZWRkAigPDxYCHwEFA0FsbGRkAioPDxYGHwEFA0FsbB8CBQgvM3JkcmFpbB8AaGRkAiwPDxYEHwEFA1llcx8AaGRkAi4PDxYEHwEFA1llcx8CBRkvM3JkcmFpbD9vbmxpbmVldmVudHM9eWVzZGQCMA8PFgQfAQUCTm8fAGhkZAIyDw8WBB8BBQJObx8CBRgvM3JkcmFpbD9vbmxpbmVldmVudHM9bm9kZAI0DxYCHwEFMzxwPlRoZXJlIGFyZSBubyBldmVudHMgdGhhdCBtYXRjaCB5b3VyIGZpbHRlcnMuPC9wPmQCLA9kFgQCAw8WAh8AZxYCZg9kFgRmD2QWBGYPDxYCHwEFB1NvcnQgYnlkZAICDxBkDxYHZgIBAgICAwIEAgUCBhYHEAUTRGF0ZSAobmV3ZXN0IGZpcnN0KWVnEAUTRGF0ZSAob2xkZXN0IGZpcnN0KQUGb2xkZXN0ZxAFC1RpdGxlIChhLXopBQV0aXRsZWcQBQtUaXRsZSAoei1hKQUKdGl0bGUtZGVzY2cQBQZBdXRob3IFBmF1dGhvcmcQBQpUeXBlIChhLXopBQR0eXBlZxAFClR5cGUgKHotYSkFCXR5cGUtZGVzY2cWAWZkAgIPZBYEAgEPDxYEHwMFKWh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tL2ltYWdlcy9yc3MuZ2lmHwIFJmh0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tLzNyZHJhaWwvcnNzZGQCAw8PFgQfAwUqaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vaW1hZ2VzL2F0b20uZ2lmHwIFJ2h0dHA6Ly9lZG4uZW1iYXJjYWRlcm8uY29tLzNyZHJhaWwvZmVlZGRkAgkPFgIfAGhkZFFY3/Gp6zro1dieMPmfgWrNHYIb" />
+
+
+<script src="/ScriptResource.axd?d=R4_FFKlaD61feJN_-3xC27Zv4Nj-yjvnOU1DR_cDRr5G3Gel9fTT3YUUZSw3nFlR0&amp;t=633049125920000000" type="text/javascript"></script>
+		    
+        	<div class="top">    
+        	            
+            	<div class="print_btn">
+            	    <ul>
+  <li class="add-content"><a href="http://gp.embarcadero.com/articles/new.aspx?map=5,827"><span>Add Content</span></a></li>
+  <li class="print"><a onmouseover="window.status='Print';return true;" onmouseout="window.status='';return true;" href="javascript:window.print();"><span>Print</span></a></li>
+</ul>
+                </div>
+                
+                
+                
+                <div class="breadcrumb">
+                    <ul>
+  <li><a href="http://edn.embarcadero.com"><span>EDN</span></a></li>
+  <li><span>&#187;</span></li>
+  <li><a href="http://edn.embarcadero.com/3rdrail"><span>3rdRail &amp; TurboRuby</span></a></li>
+</ul>
+                </div>
+                
+            </div>
+            
+            
+            
+        
+			<h1 class="rule" style="margin-bottom:20px;">3rdRail and TurboRuby - Ruby and Rails Community<div class="subhdr"></div></h1>
+			
+        	<div class="content_wrapper_top">
+			    
+                <div class="colleft">
+                	<div class="lhn_nav_wrapper">
+                	    <div class="module-container pe-navigation-container">
+<div id="secondary-nav-wrapper" class="module pe-navigation">
+<h2><a class="top" href="http://edn.embarcadero.com/3rdrail">3rdRail & TurboRuby</a></h2><div id="ModuleContent124" class="secondary-nav">
+<ul><li><a href="http://edn.embarcadero.com/3rdrail/rails">Rails</a>
+</li>
+<li><a href="http://edn.embarcadero.com/3rdrail/tools">Tools</a>
+</li>
+</ul>
+</div></div>
+</div>
+
+                        <div class="clearblock"></div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                
+                
+                <div class="colright" style="width:230px;">                   
+                    <div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container chat-invitation-container">
+<div id="secondary-nav-wrapper" class="module chat-invitation">
+<script language="JavaScript" type="text/javascript">showRoomInfo("3rdrail");</script>
+</div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container popular-tags-container">
+<div id="secondary-nav-wrapper" class="module popular-tags">
+<h2><span id="Module99" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('Module99', 'ModuleContent99')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module99', 'ModuleContent99')">Popular Tags</a></h2><div id="ModuleContent99"><div class="tagcloud">
+<span class="tag"><a href="http://edn.embarcadero.com/tag/en,3rdRail/3rdrail" class="tag-xx-large" title="Used in 22 articles">3rdRail</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Application%20Factories/3rdrail" class="tag-small" title="Used in 2 articles">Application&nbsp;Factories</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,C%2b%2b/3rdrail" class="tag-small" title="Used in one article">C++</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Change%20Manager/3rdrail" class="tag-medium" title="Used in 4 articles">Change&nbsp;Manager</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,CodeRage/3rdrail" class="tag-small" title="Used in 2 articles">CodeRage</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Database/3rdrail" class="tag-medium" title="Used in 4 articles">Database</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,DBArtisan/3rdrail" class="tag-medium" title="Used in 3 articles">DBArtisan</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Delphi/3rdrail" class="tag-medium" title="Used in 6 articles">Delphi</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Delphi%20for%20PHP/3rdrail" class="tag-small" title="Used in 2 articles">Delphi&nbsp;for&nbsp;PHP</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Embarcadero%20Technologies/3rdrail" class="tag-small" title="Used in 2 articles">Embarcadero&nbsp;Technologies</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,ER%2fStudio/3rdrail" class="tag-medium" title="Used in 3 articles">ER/Studio</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Install/3rdrail" class="tag-small" title="Used in 2 articles">Install</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,InterBase/3rdrail" class="tag-small" title="Used in 2 articles">InterBase</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,java/3rdrail" class="tag-medium" title="Used in 3 articles">java</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,JBuilder/3rdrail" class="tag-medium" title="Used in 3 articles">JBuilder</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,newsletter/3rdrail" class="tag-small" title="Used in one article">newsletter</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,PHP/3rdrail" class="tag-medium" title="Used in 3 articles">PHP</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,PowerSQL/3rdrail" class="tag-medium" title="Used in 3 articles">PowerSQL</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Rails/3rdrail" class="tag-x-large" title="Used in 16 articles">Rails</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Roadmap/3rdrail" class="tag-small" title="Used in 2 articles">Roadmap</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,RoR/3rdrail" class="tag-large" title="Used in 9 articles">RoR</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Ruby/3rdrail" class="tag-xx-large" title="Used in 24 articles">Ruby</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Software%20Archeology/3rdrail" class="tag-small" title="Used in one article">Software&nbsp;Archeology</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Video/3rdrail" class="tag-medium" title="Used in 7 articles">Video</a></span> <span class="tag"><a href="http://edn.embarcadero.com/tag/en,Yukihiro%20Matsumoto/3rdrail" class="tag-small" title="Used in 2 articles">Yukihiro&nbsp;Matsumoto</a></span>
+</div>
+
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container product-updates-container">
+<div id="secondary-nav-wrapper" class="module product-updates">
+<h2><span id="Module68" class="sectionexpand" title="Expand section"><a href="javascript:hideShowElement('Module68', 'ModuleContent68')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module68', 'ModuleContent68')"><img src="/images/w3/cubes.gif">&nbsp;Product Updates</a></h2><div id="ModuleContent68" style="display: none;"><ul>
+  <li><a href="http://edn.embarcadero.com/article/38842" title="Updates to installation notes" target="">3rdRail 2.0 Installation Notes</a></li>
+  <li><a href="http://edn.embarcadero.com/article/38877" title="Release Notes" target="">3rdRail 2.0 Release Notes</a></li>
+  <li><a href="http://edn.embarcadero.com/article/38878" title="Release Notes" target="">TurboRuby 2.0 Release Notes</a></li>
+  <li><a href="http://edn.embarcadero.com/article/38895" title="TurboRDK 2.0 Readme" target="">TurboRDK 2.0 Readme</a></li>
+  <li><a href="http://edn.embarcadero.com/article/38847" title="Notes on installing TurboRuby" target="">TurboRuby 2.0 Installation Notes</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container top-rated-container">
+<div id="secondary-nav-wrapper" class="module top-rated">
+<h2><span id="Module69" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('Module69', 'ModuleContent69')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module69', 'ModuleContent69')"><img src="/images/w3/topstar.gif">&nbsp;Top Rated</a></h2><div id="ModuleContent69"><ul>
+  <li><a href="http://edn.embarcadero.com/article/38333" title="On July 31, Greg Keller, Chief Evangelist for DatabaseGear will demonstrate Embarcadero database product solutions to the CodeGear community. These live demonstrations will take place at three different times on July 31st, 6am, 11am, and 6pm (Pacific Time, UTC-7)." target="">Live Webinar, July 31:  Introducing the DatabaseGear products to the CodeGear Developer Network</a></li>
+  <li><a href="http://edn.embarcadero.com/article/37231" title="「ビデオ-Ruby言語入門」の内容を簡単に説明した記事です" target="">Ruby 言語入門</a></li>
+  <li><a href="http://edn.embarcadero.com/article/36828" title="This page contains content related to 3rdRail" target="">3rdRail Technical Resources</a></li>
+  <li><a href="http://edn.embarcadero.com/article/36667" title="第5回CodeGearデベロッパーキャンプにて日本初公開したRuby IDE。Ruby作者のまつもとゆきひろ氏とのトークをご覧いただけます。" target="">ビデオ - 「CodeGearのRuby開発環境プレビュー」</a></li>
+  <li><a href="http://edn.embarcadero.com/article/36662" title="This article contains the replay videos of selected sessions that took place at the CodeGear Japan Developer Camp in Tokyo on June 5, 2007." target="">CodeGear Japan Developer Camp - June 2007 - Video Replays</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container forums-container">
+<div id="secondary-nav-wrapper" class="module forums">
+<h2><span id="Module133" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('Module133', 'ModuleContent133')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module133', 'ModuleContent133')">Discussion Forums</a></h2><div id="ModuleContent133"><ul>
+<li><a href="https://forums.codegear.com/thread.jspa?threadID=14203" title="Just bought 3rdRail 2.0 today, and I think it is absolutely ridiculous that ...">1 Year??</a></li><li><a href="https://forums.codegear.com/thread.jspa?threadID=12486" title="Dear 3rdRail Community,...">DB Migration with IB2009 fails</a></li><li><a href="https://forums.codegear.com/thread.jspa?threadID=12832" title="Getting error " Mylyn Bridge: Eclipse IDE (3.0.2.v20080918-1100-e33) requires feature "org.eclipse.mylyn.team_feature (3.0.2.v20080918-1100-e33)" when trying to execute a "Search for updates of the currently installed features". The other two went fine...">Error attempting update</a></li><li><a href="https://forums.codegear.com/thread.jspa?threadID=11847" title="When I run the rails server (mongrel) in debug mode from 3rd Rail it runs <b>extremely</b> slowly.   When I run the server in debug mode from Netbeans using exactly the same interpreter and configurations the slowdown is not noticeable....">Are there settings that will speed up debug mode?</a></li><li><a href="https://forums.codegear.com/thread.jspa?threadID=10863" title="I created a controller and deleted layout for this controller because I use application.html.erb layout....">Possibly bug in validation</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container codecentral-container">
+<div id="secondary-nav-wrapper" class="module codecentral">
+<h2><span id="Module71" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('Module71', 'ModuleContent71')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module71', 'ModuleContent71')"><img src="/images/w3/icons-small-download.gif">&nbsp;CodeCentral Items</a></h2><div id="ModuleContent71"><ul>
+  <li><a href="http://cc.embarcadero.com/Item/26705" title="Full product install of 3rdRail 2.0 for Mac OS X 10.5 (English only). Includes 3rdRail, Ruby VM, Rails, InterBase, MySQL, and SQLite." target="">3rdRail 2.0 InstantOn Download - Windows - English</a></li>
+  <li><a href="http://cc.embarcadero.com/Item/26616" title="Full product install of 3rdRail 2.0 for Ubuntu Linux 8.04 (Japanese). Includes 3rdRail, Ruby VM, Rails, InterBase, MySQL and SQLite." target="">3rdRail 2.0 Full Product Download - Linux - Japanese</a></li>
+  <li><a href="http://cc.embarcadero.com/Item/26615" title="Full product install of 3rdRail 2.0 for Windows (Japanese). Includes 3rdRail, Ruby VM, Rails, InterBase, MySQL and SQLite." target="">3rdRail 2.0 Full Product Download - Windows - Japanese</a></li>
+  <li><a href="http://cc.embarcadero.com/Item/26614" title="Full product install of 3rdRail 2.0 for Mac OS X 10.5 (Japanese). Includes 3rdRail, Ruby VM, Rails, InterBase, MySQL, and SQLite." target="">3rdRail 2.0 Full Product Download - Mac OS X - Japanese</a></li>
+  <li><a href="http://cc.embarcadero.com/Item/26499" title="<p>Fully functional 30-day trial of TurboRuby Japanese Edition for Ubuntu Linux 8.04 (English only).<p><h3>Installing the TurboRuby Trial</h3><ol><li>Request a TurboRuby serial number to activate your trial by clicking the Confirm button below your information in the left column of this page. A serial number will be sent to you via email.<li>Download and extract the TurboRuby product files<li>Open a terminal and navigate to the TurboRuby install directory <li>Launch install_linux.sh  <li>When you are prompted to enter the TurboRuby serial number, enter the trial serial number you received by email (or click the confirm button to the left again to see the serial number displayed on this page)<li>Optionally run the InterBase 2009 Developer Edition installer<li> When you are prompted to enter the InterBase Developer Edition serial number, enter:<blockquote>Serial number: DBCE-K4SBTJ-BLX9KE-3EHC</ol>" target="">TurboRuby Full Product Trial for Linux (Japanese)</a></li>
+</ul>
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container codegear-blogs-container">
+<div id="secondary-nav-wrapper" class="module codegear-blogs">
+<h2><span id="Module67" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('Module67', 'ModuleContent67')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module67', 'ModuleContent67')"><img src="/images/w3/icons-small-blog.gif">&nbsp;CodeGear Blogs</a></h2><div id="ModuleContent67">
+
+
+
+</div></div>
+</div>
+</div>
+<br style="clear: both">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container share-this-container">
+<div id="secondary-nav-wrapper" class="module share-this">
+<h2><span id="Module62" class="sectionexpand" title="Expand section"><a href="javascript:hideShowElement('Module62', 'ModuleContent62')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module62', 'ModuleContent62')"><img src="/images/w3/share-icon-16x16.gif">&nbsp;Share This</a></h2><div id="ModuleContent62" style="display: none;"><table border="0">
+<tr><td><a href="mailto:?subject=3rdRail and TurboRuby - Ruby and Rails Community&body=Have you seen this?%0d%0a%0d%0a3rdRail and TurboRuby - Ruby and Rails Community%0d%0a%0d%0ahttp://edn.embarcadero.com/3rdrail">Email this to a friend</a></td></tr>
+<tr>
+<td>
+  <a href="http://del.icio.us/post?url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/delicious.gif" border="0" alt=""> del.icio.us</a><br />
+  <a href="http://digg.com/submit?phase=2&url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/digg.gif" border="0" alt=""> Digg</a><br />
+  <a href="http://furl.net/storeIt.jsp?u=http://edn.embarcadero.com/3rdrail&t=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/furl.gif" border="0" alt=""> Furl</a><br />
+  <a href="http://www.netscape.com/submit/?U=http://edn.embarcadero.com/3rdrail&T=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/netscape.gif" border="0" alt=""> Netscape</a><br />
+  <a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u=http://edn.embarcadero.com/3rdrail&t=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/yahoo_myweb.gif" border="0" alt=""> Yahoo! My Web</a><br />
+  <a href="http://www.stumbleupon.com/submit?url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/stumbleupon.gif" border="0" alt=""> StumbleUpon</a><br />
+  <a href="http://www.google.com/bookmarks/mark?op=edit&bkmk=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/google_bmarks.gif" border="0" alt=""> Google Bookmarks</a><br />
+  <a href="http://www.technorati.com/faves?add=http://edn.embarcadero.com/3rdrail" target="_blank"><img src="/images/share/technorati.gif" border="0" alt=""> Technorati</a><br />
+  <a href="http://blinklist.com/index.php?Action=Blink/addblink.php&Url=http://edn.embarcadero.com/3rdrail&Title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/blinklist.gif" border="0" alt=""> BlinkList</a><br />
+  <a href="http://www.newsvine.com/_wine/save?u=http://edn.embarcadero.com/3rdrail&h=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/newsvine.gif" border="0" alt=""> Newsvine</a><br />
+  <a href="http://ma.gnolia.com/bookmarklet/add?url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/magnolia.gif" border="0" alt=""> ma.gnolia</a><br />
+  <a href="http://reddit.com/submit?url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/reddit.gif" border="0" alt=""> reddit</a><br />
+  <a href="http://tailrank.com/share/?link_href=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community" target="_blank"><img src="/images/share/tailrank.gif" border="0" alt=""> Tailrank</a><br />
+  <a href="https://favorites.live.com/quickadd.aspx?marklet=1&mkt=en-us&url=http://edn.embarcadero.com/3rdrail&title=3rdRail+and+TurboRuby+-+Ruby+and+Rails+Community&top=1" target="_blank"><img src="/images/share/windows_live.gif" border="0" alt=""> Windows Live</a><br />
+</td>
+</tr>
+</table>
+
+</div></div>
+</div>
+</div>
+
+                    					
+                </div>
+                
+                
+                <div id="article-div" class="article" style="overflow: hidden;">
+				    				    
+				    
+                    
+                    
+                    
+                    
+                    
+                    
+				    
+
+<div class="events-div"><div>
+<div class="top"><div><div></div></div></div>
+<div class="content"><div>
+<table class="eventsarea" cellspacing="0" cellpadding="0">
+	<tr class="eventsareatop">
+		<td class="eventsarea-left"><div class="eventsarea-left"></div></td>
+		<td class="eventsarea-middle"><div class="eventsarea-middle"></div></td>
+		<td class="eventsarea-right"><div class="eventsarea-right"></div></td>
+	</tr>
+	<tr class="eventsareatitle">
+		<td class="eventsarea-left"><div class="eventsarea-left"></div></td>
+		<td class="eventsarea-middle">
+			<h1>
+				<div style="float: right;">
+					<table width="100%" cellspacing="0" cellpadding="0" class="eventnav">
+						<tr>
+							<td class="timezone">
+								<span id="EventList_StrEventsBarTimeZone">Time Zone</span>: <a id="EventList_TimeZoneLink" href="http://edn.embarcadero.com/timezone?returnurl=http%3a%2f%2fedn.embarcadero.com%2f3rdrail">(GMT-08:00) Pacific Time (US &amp; Canada)</a>
+							</td>
+							<td class="pagebar">
+								&nbsp;<a id="EventList_FeedLink" href="/3rdrail/efeed"><img src="http://edn.embarcadero.com/images/rss.gif" border="0" /></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<span id="EventList_EventsTitleLabel">Events</span>
+			</h1>
+		</td>
+		<td class="eventsarea-right"></td>
+	</tr>
+	<tr class="eventsareacontent">
+		<td class="eventsarea-left"><div class="eventsarea-left"></div></td>
+		<td class="eventsarea-middle">
+			<table class="eventsnav" cellpadding="0" cellspacing="0" width="100%">
+				<tr>
+					<td width="100%">
+						<span id="EventList_StrEvents">Events</span>:
+						<span id="EventList_StrEventsUpcoming">Upcoming</span>
+						
+						|
+						
+						<a id="EventList_LatestLink" href="/3rdrail?eventview=latest">Latest</a>
+						|
+						
+						<a id="EventList_DayLink" href="/3rdrail?eventview=day">Day</a>
+						|
+						<a id="EventList_WeekLink" href="/3rdrail?eventview=week">Week</a>
+						|
+						
+						<a id="EventList_MonthLink" href="/3rdrail?eventview=month">Month</a>
+					</td>
+					<td>
+						<div class="primary-menu" style="BACKGROUND: none transparent scroll repeat 0% 0%">
+							<ul class="langbg">
+								<li>
+											<span id="EventList_StrEventsProduct">Product</span>:</li>
+								<li><a href="#"><span id="EventList_ProductNameLabel">All Products</span></a>
+									<ul><li><a href="/3rdrail">All Products</a></li><li><a href="/3rdrail?eventproduct=17">3rdRail</a></li><li><a href="/3rdrail?eventproduct=16">Blackfish SQL</a></li><li><a href="/3rdrail?eventproduct=3">Borland Developer Studio</a></li><li><a href="/3rdrail?eventproduct=5">C++Builder</a></li><li><a href="/3rdrail?eventproduct=24">Change Manager</a></li><li><a href="/3rdrail?eventproduct=28">DB Optimizer</a></li><li><a href="/3rdrail?eventproduct=23">DBArtisan</a></li><li><a href="/3rdrail?eventproduct=15">Delphi for PHP</a></li><li><a href="/3rdrail?eventproduct=18">Delphi for Win32</a></li><li><a href="/3rdrail?eventproduct=11">Delphi Prism</a></li><li><a href="/3rdrail?eventproduct=20">Delphi/400 </a></li><li><a href="/3rdrail?eventproduct=31">DSAuditor</a></li><li><a href="/3rdrail?eventproduct=26">EA/Studio</a></li><li><a href="/3rdrail?eventproduct=21">ER/Studio</a></li><li><a href="/3rdrail?eventproduct=8">InterBase</a></li><li><a href="/3rdrail?eventproduct=1">JBuilder</a></li><li><a href="/3rdrail?eventproduct=19">JGear</a></li><li><a href="/3rdrail?eventproduct=9">Optimizeit Progress Tracker</a></li><li><a href="/3rdrail?eventproduct=30">Performance Center</a></li><li><a href="/3rdrail?eventproduct=22">PowerSQL</a></li><li><a href="/3rdrail?eventproduct=14">RAD Studio</a></li><li><a href="/3rdrail?eventproduct=25">Rapid SQL</a></li><li><a href="/3rdrail?eventproduct=29">Schema Examiner</a></li>
+									</ul></li>
+								<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+								<li>
+											<span id="EventList_StrEventsOnline">Online</span>:</li>
+								<li>
+										<span id="EventList_StrEventsOnlineAll">All</span>
+										</li>
+								<li>|</li>
+								<li>
+										
+										<a id="EventList_OnlineYesLink" href="/3rdrail?onlineevents=yes">Yes</a></li>
+								<li>|</li>
+								<li>
+										
+										<a id="EventList_OnlineNoLink" href="/3rdrail?onlineevents=no">No</a></li>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<p>There are no events that match your filters.</p>
+		</td>
+		<td class="eventsarea-right"><div class="eventsarea-right"></div></td>
+	</tr>
+	<tr class="eventsareabottom">
+		<td class="eventsarea-left"><div class="eventsarea-left"></div></td>
+		<td class="eventsarea-middle"><div class="eventsarea-middle"></div></td>
+		<td class="eventsarea-right"><div class="eventsarea-right"></div></td>
+	</tr>
+</table>
+</div></div>
+<div class="bottom"><div><div></div></div></div>
+</div></div>
+<br style="clear: both;" />
+
+
+<div class="article-list"><div>
+<div class="top"><div><div></div></div></div>
+<div class="content"><div>
+<h1 id="ArticleList_ArticleListTitle">Articles
+</h1>
+<table id="ArticleList_PageSortBar" border="0" cellpadding="2" cellspacing="0" width="100%" style="MARGIN-BOTTOM: 16px; BORDER-BOTTOM: #ccc 1px solid">
+	<tr>
+		<td id="ArticleList_SortCell" nowrap="nowrap"><span id="ArticleList_SortByLabel">Sort by</span>: <select name="ArticleList$SortList" id="ArticleList_SortList">
+			<option selected="selected" value="">Date (newest first)</option>
+			<option value="oldest">Date (oldest first)</option>
+			<option value="title">Title (a-z)</option>
+			<option value="title-desc">Title (z-a)</option>
+			<option value="author">Author</option>
+			<option value="type">Type (a-z)</option>
+			<option value="type-desc">Type (z-a)</option>
+
+		</select>
+</td>
+		<td id="ArticleList_PageCell" nowrap="nowrap" align="right" width="100%">
+			Page 1 of 5 | 1 <a href="/3rdrail?page=2">2</a> <a href="/3rdrail?page=3">3</a> <a href="/3rdrail?page=4">4</a> <a href="/3rdrail?page=5">5</a>  | <a href="/3rdrail?page=2">Next</a>
+		</td>
+		<td id="ArticleList_FeedCell" nowrap="nowrap" align="right">
+			<a id="ArticleList_FeedLink" href="http://edn.embarcadero.com/3rdrail/rss"><img src="http://edn.embarcadero.com/images/rss.gif" border="0" /></a>
+			<a id="ArticleList_AtomLink" href="http://edn.embarcadero.com/3rdrail/feed"><img src="http://edn.embarcadero.com/images/atom.gif" border="0" /></a>
+		</td>
+	</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="article-list-table">
+<tr class="header-row"><td></td><td><span><a href="?sort=oldest">Date</a></span></td><td><span><a href="?sort=title">Title</a></span></td><td><span><a href="?sort=author">Author</a></span></td><td><span><a href="?sort=type">Type</a></span></td><td></td><td></td></tr>
+<tr id="ArticleList_ctl12_ArticleTableRow">
+	<td class="translations-col">
+	<span id="ArticleList_ctl12_lblTranslations"><img src="/images/buttons/docmain.gif"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl12_lblDate">29 Dec 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl12_lblNumber"></span>
+	
+	<a id="ArticleList_ctl12_hlArticle" href="http://edn.embarcadero.com/article/39150">CodeGear/Embarcadero Developer Network Newsletter - December 2008</a>
+	
+	<div id="ArticleList_ctl12_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl12_lblDescription">CodeGear (from Embarcadero Technologies) Developer Network (CDN) News is an email newsletter for members of the CodeGear Developer Network.</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl12_lblAuthor">David Intersimone</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl12_lblContentType">Newsletter</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl12_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl13_ArticleTableRow" class="alt-row">
+	<td class="translations-col">
+	<span id="ArticleList_ctl13_lblTranslations"><img src="/images/buttons/docmain.gif"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl13_lblDate">2 Dec 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl13_lblNumber"></span>
+	
+	<a id="ArticleList_ctl13_hlArticle" href="http://edn.embarcadero.com/article/38997">CodeRage III happening now!!</a>
+	
+	<div id="ArticleList_ctl13_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl13_lblDescription">This article lists the CodeRage III technical sessions by product by date/time.</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl13_lblAuthor">David Intersimone</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl13_lblContentType">Newsletter</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl13_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl14_ArticleTableRow" class="">
+	<td class="translations-col">
+	<span id="ArticleList_ctl14_lblTranslations"><img src="/images/buttons/docmain.gif"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl14_lblDate">20 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl14_lblNumber"></span>
+	
+	<a id="ArticleList_ctl14_hlArticle" href="http://edn.embarcadero.com/article/38973">Press Release: Embarcadero Ships Latest Edition of 3rdRail™ and Introduces TurboRuby IDEs</a>
+	
+	<div id="ArticleList_ctl14_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl14_lblDescription">Announcement of 3rdRail version 2.0 and Turbo Ruby powers Ruby and Ruby on Rails Development. Debut of New Licensing Provides Low Cost One-year Term Subscription.</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl14_lblAuthor">David Intersimone</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl14_lblContentType">Press Release</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl14_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl15_ArticleTableRow" class="alt-row">
+	<td class="translations-col">
+	<span id="ArticleList_ctl15_lblTranslations"><img src="/images/buttons/docmain.gif"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl15_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl15_lblNumber"></span>
+	
+	<a id="ArticleList_ctl15_hlArticle" href="http://edn.embarcadero.com/article/38942">CodeGear/Embarcadero Developer Network Newsletter - November 2008</a>
+	
+	<div id="ArticleList_ctl15_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl15_lblDescription">CodeGear (from Embarcadero Technologies) Developer Network (CDN) News is an email newsletter for members of the CodeGear Developer Network.</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl15_lblAuthor">David Intersimone</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl15_lblContentType">Newsletter</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl15_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl16_ArticleTableRow" class="">
+	<td class="translations-col">
+	<span id="ArticleList_ctl16_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38842\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38842\'><b>3rdRail 2.0 Installation Notes</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/39234\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/39234\'><b>3rdRail™ インストール・ノート</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl16_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl16_lblNumber"></span>
+	
+	<a id="ArticleList_ctl16_hlArticle" href="http://edn.embarcadero.com/article/38842">3rdRail 2.0 Installation Notes</a>
+	
+	<div id="ArticleList_ctl16_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl16_lblDescription">Updates to installation notes</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl16_lblAuthor">Mark Deckert</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl16_lblContentType">Updates</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl16_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl17_ArticleTableRow" class="alt-row">
+	<td class="translations-col">
+	<span id="ArticleList_ctl17_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38877\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38877\'><b>3rdRail 2.0 Release Notes</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/39232\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/39232\'><b>3rdRail™ リリース・ノート</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl17_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl17_lblNumber"></span>
+	
+	<a id="ArticleList_ctl17_hlArticle" href="http://edn.embarcadero.com/article/38877">3rdRail 2.0 Release Notes</a>
+	
+	<div id="ArticleList_ctl17_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl17_lblDescription">Release Notes</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl17_lblAuthor">Mark Deckert</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl17_lblContentType">Updates</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl17_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl18_ArticleTableRow" class="">
+	<td class="translations-col">
+	<span id="ArticleList_ctl18_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38878\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38878\'><b>TurboRuby 2.0 Release Notes</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/39235\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/39235\'><b>TurboRuby™ リリース・ノート</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl18_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl18_lblNumber"></span>
+	
+	<a id="ArticleList_ctl18_hlArticle" href="http://edn.embarcadero.com/article/38878">TurboRuby 2.0 Release Notes</a>
+	
+	<div id="ArticleList_ctl18_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl18_lblDescription">Release Notes</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl18_lblAuthor">Mark Deckert</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl18_lblContentType">Updates</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl18_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl19_ArticleTableRow" class="alt-row">
+	<td class="translations-col">
+	<span id="ArticleList_ctl19_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38895\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38895\'><b>TurboRDK 2.0 Readme</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/39237\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/39237\'><b>TurboRDK™ リリース・ノート</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl19_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl19_lblNumber"></span>
+	
+	<a id="ArticleList_ctl19_hlArticle" href="http://edn.embarcadero.com/article/38895">TurboRDK 2.0 Readme</a>
+	
+	<div id="ArticleList_ctl19_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl19_lblDescription">TurboRDK 2.0 Readme</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl19_lblAuthor">Mark Deckert</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl19_lblContentType">Updates</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl19_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl20_ArticleTableRow" class="">
+	<td class="translations-col">
+	<span id="ArticleList_ctl20_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38847\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38847\'><b>TurboRuby 2.0 Installation Notes</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/39236\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/39236\'><b>TurboRuby™ インストール・ノート</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl20_lblDate">17 Nov 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl20_lblNumber"></span>
+	
+	<a id="ArticleList_ctl20_hlArticle" href="http://edn.embarcadero.com/article/38847">TurboRuby 2.0 Installation Notes</a>
+	
+	<div id="ArticleList_ctl20_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl20_lblDescription">Notes on installing TurboRuby</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl20_lblAuthor">Mark Deckert</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl20_lblContentType">Updates</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl20_lblMappings"></span>
+  </td>
+</tr>
+
+<tr id="ArticleList_ctl21_ArticleTableRow" class="alt-row">
+	<td class="translations-col">
+	<span id="ArticleList_ctl21_lblTranslations"><img src="/images/buttons/doctrans.gif" onmouseover="this.T_STICKY=true;this.T_TEMP=3500;this.T_STATIC=true;this.T_WIDTH=300;this.T_TITLE='<center>Translations</center>';this.T_BGCOLOR='#eeeeee';this.T_SHADOWWIDTH=4;return escape('<table><tr><td width=\'40px\'><div class=\'article-language\'><a href=\'http://edn.embarcadero.com/article/38425\'>en</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38425\'><b>Webinar Replay:  Introducing the DatabaseGear products to the CodeGear Developer Network</b></a></td></tr><tr><td width=\'40px\'><div class=\'article-alternatelanguage\'><a href=\'http://edn.embarcadero.com/article/38426\'>jp</a></div></td><td class=\'translation-title\'><a href=\'http://edn.embarcadero.com/article/38426\'><b>ビデオ - CDNメンバー向けDatabaseGear製品の概要（英語）</b></a></td></tr></table> ')"></span>
+  </td>
+	<td class="date-col">
+	<span id="ArticleList_ctl21_lblDate">7 Aug 2008</span>
+  </td>
+	<td class="title-col">
+    <span id="ArticleList_ctl21_lblNumber"></span>
+	
+	<a id="ArticleList_ctl21_hlArticle" href="http://edn.embarcadero.com/article/38425">Webinar Replay:  Introducing the DatabaseGear products to the CodeGear Developer Network</a>
+	
+	<div id="ArticleList_ctl21_AbstractSection" class="abstract-section">
+	  <span id="ArticleList_ctl21_lblDescription">On July 31, Greg Keller, Chief Evangelist for DatabaseGear gave a demonstration of Embarcadero database product solutions to the CodeGear community. The replay of the 11am webinar is now available for viewing and download.</span>
+	</div>
+	
+  </td>
+	<td class="author-col">
+	<span id="ArticleList_ctl21_lblAuthor">David Intersimone</span>
+  </td>
+	<td class="type-col">
+	<span id="ArticleList_ctl21_lblContentType">Video</span>
+  </td>
+	<td class="ratings-col">
+	
+  </td>
+	<td class="mappings-col">
+    <span id="ArticleList_ctl21_lblMappings"></span>
+  </td>
+</tr>
+
+
+</table>
+
+
+</div></div>
+<div class="bottom"><div><div></div></div></div>
+</div></div>
+
+<script type="text/javascript">
+	if(!document.all) {
+		window.onbeforeunload = function() {
+			Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endRequest);
+		}
+	}
+
+	function endRequest(sender, e) {
+		err = e.get_error();
+		if(err){
+			if (err.name == "Sys.WebForms.PageRequestManagerServerErrorException") {
+				e.set_errorHandled(true);
+			}
+		}
+  }
+</script>
+
+
+				    
+				    
+                </div>
+                
+                <div class="clearblock"><img src="images/spacer.gif" /></div>
+            	
+                
+                <p><small>Server Response from: SC2</small></p>
+                
+                
+            </div>
+
+          
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCALRqZnyAQLDoqX4BgL/qaGGBALI2bOaCALIjP+/BQKR1JusBwLlw/XyCgKarc/nARJ4zqDsNKGaL8vqWfypIVObEzBU" />
+
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+//]]>
+</script>
+</form>  
+        </div>
+		
+        </div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer2">
+    <div class="footer_center">
+    
+    <div class="rss">
+        <div class="left">
+            <div class="right">
+				 <div class="center">
+            		<a href="http://edn.embarcadero.com/3rdrail/rss"><img src="/images/edn/icon_rss1.gif" /></a>
+            		<a href="http://edn.embarcadero.com/3rdrail/feed"><img src="/images/edn/icon_rss2.gif" /></a>
+            		<a href="http://edn.embarcadero.com/3rdrail/opml"><img src="/images/edn/icon_rss3.gif" /></a>
+            	</div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="float:left;">
+    	Copyright© 1994 - 2009 Embarcadero Technologies, Inc. All rights reserved.
+        &nbsp;&nbsp;
+	  <a href="http://edn.embarcadero.com/sitemap" class="logintxt">Site Map</a>
+	</div>
+	</div>
+  </div>
+</div>
+
+
+
+
+<!-- START SUB NAV -->
+        <div class="subnav_wrapper" id="subnav_wrapper">
+            <div id="Communities_subnav" class="subnav">
+                <div class="col">
+					<h1>Developer Tools</h1>
+					<div class="col">
+						<a href="http://edn.embarcadero.com/blackfish_sql" style="border-top-style:solid;">Blackfish SQL</a>
+						<a href="http://edn.embarcadero.com/c_builder">C++Builder</a>
+						<a href="http://edn.embarcadero.com/delphi">Delphi</a>
+						<a href="http://edn.embarcadero.com/delphi_for_php">Delphi for PHP</a>
+						<a href="http://edn.embarcadero.com/delphi_prism">Delphi Prism</a>
+						<a href="http://edn.embarcadero.com/interbase">InterBase</a>
+						<a href="http://edn.embarcadero.com/jbuilder">JBuilder</a>
+						<a href="http://edn.embarcadero.com/j_optimizer">J Optimizer</a>
+						<a href="http://edn.embarcadero.com/3rdrail">3rdRail &amp; TurboRuby</a>
+					</div>
+					<div class="clearblock"><img src="images/spacer.gif" /></div>
+				</div>
+				<div class="col">
+				<h1>Database Tools</h1>
+					<a href="http://edn.embarcadero.com/change_manager" style="border-top-style:solid;">Change Manager</a>
+					<a href="http://edn.embarcadero.com/dbartisan">DBArtisan</a>
+					<a href="http://edn.embarcadero.com/db_optimizer">DB Optimizer</a>
+					<a href="http://edn.embarcadero.com/er_studio">ER/Studio</a>
+					<a href="http://edn.embarcadero.com/performance_center">Performance Center</a>
+					<a href="http://edn.embarcadero.com/rapid_sql">Rapid SQL</a>
+				</div>
+            </div>
+            <div id="Articles_subnav" class="subnav">
+               <div class="col">
+					<a href="http://edn.embarcadero.com/articles" style="border-top-style:solid;">Technical Articles</a>
+					<a href="http://edn.embarcadero.com/tutorials">Tutorials</a>
+					<a href="http://edn.embarcadero.com/whitepapers">White Papers</a>
+					<a href="http://edn.embarcadero.com/press">Press Releases</a>
+					<a href="http://edn.embarcadero.com/newsletters">Newsletters</a>
+				</div>
+            </div>
+            <!--
+            <div id="Blogs_subnav" class="subnav">
+            </div>
+            -->
+            <div id="Resources_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://gp.embarcadero.com" title="Submit your own articles for publication and (optionally) get paid." >Add Content (GetPublished)</a>
+					<a href="http://edn.embarcadero.com/audio" title="Listen to CodeGear's developers and management." style="border-top-style:solid;">Audio</a>
+                    <a href="http://edn.embarcadero.com/tv" title="View product demonstrations & listen to CodeGear's developers and management." >Audio & Video</a>
+                    <a href="http://edn.embarcadero.com/video" title="Watch presentations and product demonstrations." >Video</a>
+                    <a href="http://qc.embarcadero.com" title="Submit bugs and feature requests. Also known as QualityCentral." >Bugs & Suggestions (QualityCentral)</a>
+                    <a href="https://forums.codegear.com" title="Discussion Forums">Discussion Forums</a>
+                    <a href="http://cc.embarcadero.com" title="Examples, code, etc.. Also known as CodeCentral." >Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/tag" title="Tags" >Tags</a>
+                    <a href="http://tp.codegear.com" title="Browse the CodeGear Technology Partners database." >Technology Partners</a>
+                    <!--
+                    <a href="http://chat.embarcadero.com" >Chats</a>
+                    <a href="http://edn.embarcadero.com/article/37476" title="CodeGear powered-by logos">Logos</a>
+                    <a href="http://conferences.embarcadero.com" title="Browse the rich resources of CodeGear's Annual Developer Conference Procedings." >Conference Proceedings</a>
+                    <a href="http://edn.embarcadero.com/museum" title="Download antique versions of CodeGear software." >Museum</a>
+                    <a href="http://support.embarcadero.com/forums/directory" >Discussion Forums</a>
+                    -->
+				</div>
+				
+            </div>
+            <div id="Downloads_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://www.embarcadero.com/downloads" style="border-top-style:solid;">Downloads</a>
+					<a href="http://cc.embarcadero.com/free">Free Trials</a>
+					<a href="http://cc.embarcadero.com/myreg">Registered User Downloads</a>
+					<a href="http://www.embarcadero.com/products/beta_programs.html">Beta Programs</a>
+				</div>
+            </div>
+            <div id="Help_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://edn.embarcadero.com/help/gp">Add Content (GetPublished)</a>
+                    <a href="http://edn.embarcadero.com/help/articles" style="border-top-style:solid;">Articles</a>
+                    <a href="http://edn.embarcadero.com/help/blogs">Blogs</a>
+                    <a href="http://edn.embarcadero.com/help/qc">Bugs & Suggestions (QualityCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/chats">Chats</a>
+                    <a href="http://edn.embarcadero.com/help/forums">Discussion Forums</a>
+                    <a href="http://edn.embarcadero.com/help/cc">Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/members">Member Services</a>
+                    <a href="http://edn.embarcadero.com/help/about">About</a>
+				</div>
+            </div>
+        </div>
+        <!-- END SUB NAV -->
+
+
+    <script language="JavaScript" type="text/javascript" src="http://static.embarcadero.com/javascript/wz_tooltip.js"></script>
+
+
+    <script language="JavaScript" type="text/javascript"><!--
+showExpandCollapseAll();
+// -->
+    </script>
+  
+
+</body>
+</html>

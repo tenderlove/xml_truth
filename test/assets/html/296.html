@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <title>The Ruby Object Model - Structure and Semantics</title>
+<link rel="alternate" type="application/rss+xml" title="The Ruby Object Model - Structure and Semantics - All Posts" href="http://feeds.feedburner.com/VidarHokstad" />
+<link rel="stylesheet" type="text/css" href="/static/style.css" /><link rel="shortcut icon" href="http://www.hokstad.com/favicon.ico" /><link rel="openid.server" href="http://www.myopenid.com/server" /><link rel="openid.delegate" href="http://vhokstad.myopenid.com/" /><meta name="description" content="As part of my compiler project [http://www.hokstad.com/compiler], one of my imminent decisions is what object model to use, and sine I like Ruby it seemed a good time to go through Ruby and look at the" /></head>
+<body class="yui-skin-sam">
+<div class='header'>
+<div class='fragment'>
+<span id='Header'><span class="text"><h1>Vidar Hokstad V2.0</h1><span class="links"><a href="/">Home</a> <a href="/blog">Blog</a></span> </span>
+
+
+</span>
+</div>
+</div>
+<div class='left'>
+<div class='entries'>
+<div class='entry'>
+<h2 class="title"><span class="date">2009-03-02 07:26 UTC</span> <a href="/ruby-object-model.html">The Ruby Object Model - Structure and Semantics</a></h2>
+<div class='tags'>
+<span class="lead">Posted in:</span>
+  <a href="/tag/ruby" rel="tag">ruby</a>,   <a href="/tag/oo" rel="tag"> oo</a>,   <a href="/tag/programming" rel="tag"> programming</a>
+</div>
+<div class='summary'>
+As part of my <a href="http://www.hokstad.com/compiler">compiler project</a>, one of my imminent decisions is what object model to use, and sine I like Ruby it seemed a good time to go through Ruby and look at the guts of the Ruby object model. If you've dabbled in meta-programming etc. for Ruby this post probably doesn't contain much new stuff for you. If you're a beginner you may want to look at a tutorial instead.&nbsp;<p>If you're somewhere in between, hopefully there may be some insights here and there - especially if you're interested specifically in how things work "under the hood" rather than just what is visible to Ruby.</p><p>The information in this post is based largely on the Ruby 1.8.x interpreter (you'll see it referred to as MRI as well - Matz Ruby interpreter - to distinguish it from other Ruby implementations), and we'll look at code fragments, as well as a diagram or two to illustrate.</p><p></p><h2>Suggested reading</h2><p></p><p>The Ruby object model can make you go insane. _why has a great article that <a href="http://whytheluckystiff.net/articles/seeingMetaclassesClearly.html">illuminates the particular hairy beast that is meta classes</a>. You should read it.</p><h2><span style="font-size: 15px; line-height: 18px; "><h2><br /></h2><h2>Ruby Objects</h2></span></h2><br /><br /><span style="font-weight: bold;"><span style="text-decoration: underline;">Conceptually, Ruby objects consists of the following:</span></span><br /><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><li><span>A reference to the objects immediate class - the MRI interpreter stores this in a field named "klass" and you may see the term "klass" show up in Ruby-land a lot for that reason. For an object that has an meta-class this</span>&nbsp;is a pointer to the meta-class</li>
+<li>A hash table of instance variables</li>
+<li>A set of flags (taint etc.)</li>
+</ul>
+MRI "cheats" in that objects of the built-in classes Class, Float, Bignum,Struct, String, Array, Regexp, Hash and File are not real Ruby objects: They don't have the hash table of instance variables. Instead they have a fixed structure. You can still set instance variables for these objects, but behind the scenes MRI 1.8.x at least will then create an instance variable hash table and store that hash table in a hash mapping from the object. This saves a little bit of space if (as is usually the case) most objects of these built in classes don't have instance variables besides the "hardcoded" ones - for small objects like Float in particular this can be a significant saving.<br /><br />(The following is updated per comment from Rick DeNatale below:)<br /><br />For some other classes, there's not even a pointer. MRI takes advantage of the fact that there are certain values the object pointer won't take. When MRI determines the class of an "object" it follows the following procedure:<br /><ul>
+<li><span>If the least significant bit (bit 0) is set to 1, the object is a Fixnum. This works since the object pointer will point to an address that's aligned in memory, and so never will have bit 0 set.</span></li>
+<li>If the value matches 0, it's class is FalseClass, 2 = TrueClass, 4 = NilClass, 6 = undefined.</li>
+<li>If the lowest byte of the value matches 0x0e, it's a Symbol, and the Symbol is determined from the top 3 bytes.</li>
+</ul>
+This use of part of the value to indicate type is often called a "type tag" - some language environments will use more bits or more complicated schemes to avoid having to allocate full objects.<br /><br /><br /><h2>Ruby Classes</h2>There are two types of Ruby classes:<br /><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><li><span>"Real" classes.</span></li>
+<li>Meta-classes or "<em>eigenclasses</em>" as they are often called. MRI also refers to them as "virtual" classes.</li>
+</ul>
+A meta-class is for all practical purposes an actual class. It is an object of type Class. The only thing "special" about a meta-class is that it is created as needed and inserted in the inheritance chain before the objects "real" class. So inside the MRI interpreter object->klass can refer to a meta-class, that has a pointer named "super" that refers to the next class in the chain. When you call object.class in MRI, the interpreter actually "skips" over the meta-class (and modules) if it's there.<p>The diagram below shows the actual inheritance of Object, Module and Class in MRI as visible from C. If this doesn't make sense to you, read the section on #send below, but particularly keep in mind that:</p><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><li><span>Classes are objects. So they are also instances of another class.</span></li>
+<li>A class object is NOT an instance of it's superclass. [some class object].class denotes "instance of", [some class object].superclass denotes "inherits from".</li>
+<li>To find out which method implementation is called for any object, you go "out and up". That is, you find the objects "klass", and then follow the "super" chain up until you find a matching method. This gets confusing for classes because they are also objects: You do NOT follow super for the first step for classes - they behave exactly like objects.</li>
+</ul>
+In the diagram below, "normal" classes are green, and meta-classes are blue. The dashed lines represent "instance off" (the "klass" pointer), and the solid lines represent "inherits" (the "super" method):<br />
+<img class="selected                            " src="/static/rom/rom.png" alt="" align="center" style="border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-top-style: dashed; border-right-style: dashed; border-bottom-style: dashed; border-left-style: dashed; border-top-color: black; border-right-color: black; border-bottom-color: black; border-left-color: black; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 100px; display: block; " />
+<br />
+<p/>So, for example, when sending a message to the object Class, you step out, to the meta class "Class" (in blue), and look for it there, if you don't find it, you follow the solid arrows until you do. This in turn will get you: the Module meta class, the Object meta class, Class, Module, Object, Kernel (since classes in Ruby are open, you might also find someone has reopened the class and caused additional modules etc. to get inserted into the inheritance chain).<br />
+<br /><br />Because Ruby's #class method skips metaclasses, you will get "Class" returned if you do Class.class - it's following the same chain as above, but skipping the blue boxes (and any included Module's)<br /><br />To explore the class/metaclass inheritance in Ruby, you can use this minimal extension to see what values MRI actually operates on:<br /><p>
+</p><pre class="c">#include "ruby.h"
+<p/>VALUE real_super(VALUE self) {
+  return RCLASS(self)->super;
+}
+<p/>VALUE real_klass(VALUE self) {
+  return RBASIC(self)->klass;
+}
+<p/><p/>void Init_inheritance() {
+  rb_define_method(rb_cClass,"real_super",real_super,0);
+  rb_define_method(rb_cClass,"real_klass",real_klass,0);
+}
+</pre>
+<br />
+<p>
+Put the above in "inheritance.c" and create extconf.rb:
+</p><p>
+</p><pre class="rb">require 'mkmf'
+<p/>extension_name = 'inheritance'
+dir_config(extension_name)
+create_makefile(extension_name)
+</pre>
+<br />
+<p>
+To use it do "ruby extconf.rb ; make", and then:
+</p><p>
+</p><pre class="ruby"><span class="ident">require</span> <span class="punct">'</span><span class="string">inheritance</span><span class="punct">'</span>
+<p/><span class="ident">p</span> <span class="constant">Object</span><span class="punct">.</span><span class="ident">real_klass</span>
+<span class="ident">p</span> <span class="constant">Object</span><span class="punct">.</span><span class="ident">real_super</span>
+</pre>
+<br /><br /><br /><span style="font-weight: bold;"><span style="text-decoration: underline;">Conceptually a Class object consist of:</span></span><br /><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><li>A reference to the objects immediate class (as for a "real" Ruby object)<span>&nbsp;&nbsp;- this would normally be the class "Class"</span></li>
+<li>A set of flags (taint etc.)</li>
+<li>A hash table of instance variables (for the class)</li>
+<li>A hash table of methods&nbsp;</li>
+<li>A reference to the superclass, i.e. the class this class has inherited from.</li>
+</ul>
+<span style="font-size: 15px; font-weight: bold; line-height: 18px; "><br /><h2>Ruby Modules</h2></span><br />A Ruby Module is an object that acts as a placeholder for methods and constants. Module is actually the superclass of Class. The main distinction is that you can't create instances of a module, but you can (obviously) create instances of a class.<br /><br />Internally in MRI the structure of a Module and Class objects is the same.<br /><br /><br />
+<p/><h3>Taint, Frozen and other flags</h3>
+<p/>MRI defines the following flags for an object:<br /><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><p/><li><span>Singleton</span></li>
+<li><span>Mark</span></li>
+<li><span>Finalize</span></li>
+<li><span>Taint</span></li>
+<li><span>Exivar</span></li>
+<li><span>Freeze</span></li>
+<li><span>A number of "user" flags.</span></li>
+</ul>
+"Singleton" is set on objects of type Class that are meta-classes.<br /><br />
+Mark and Finalize are used by the garbage collector. "Taint" is used for the "taint mode" - depending on the security level, some objects may be marked as "tainted" and thus unsafe, and certain operations may be disallowed.<br /><br />"Exivar" is used for objects of the "fake" builtin classes to indicate that this instance has an <em>external instance variable hash table </em>that must be looked up elsewhere.<br /><br />"Freeze" prevents an object from being modified.<br /><br />Of these, only Singleton, Taint and Freeze represent behavior that are "observable" from inside Ruby, as opposed to when delving under the hood of MRI.<br /><br /><br /><h2><span style="font-size: 15px; line-height: 18px; "><h2>Send</h2></span></h2>Send is perhaps the most vital concept in the Ruby object model beyond classes and objects. Almost all actions in Ruby at least conceptually boils down to sending a message to an object.<br /><br />Send operates roughly like this (lots of details omitted):<br /><br /><ul>
+<p/><p/><p/><p/><p/><p/><p/><p/><li><span>Identify the class to start at. "Objects" of class Fixnum are treated specially since they're not actually objects at all. nil, true and false are also special cased. For other objects this means grabbing the "klass" pointer.</span></li>
+<li>The method cache is checked, to avoid complex lookups of the method on repeated calls.</li>
+<li>If not in the method cache, the method is searched for. This is done by lookup up the method in the "klass", and if not found replace "klass" with "klass->super" and try again, until the top of the inheritance chain is found (in which case the method doesn't exist). The result is put in the cache.</li>
+<li>If the method is not found, method_missing is called in roughly the same way.</li>
+<li>private/protected access checks are carried out</li>
+<p/><li>Access checks are done in case the safe level is set to trigger exceptions for unsafe operations.</li>
+<li>The arguments are prepared</li>
+<li>A "stack frame" is prepared - MRI maintains it's own "Ruby stack"</li>
+<li>If the method is a C function various special setup is done.</li>
+<li>If the method is an attribute getter/setter (attr_accessor/attr_read/attr_write), the appropriate built in MRI functions are called rather than executing a method body. Same with methods consisting of "super"</li>
+<li>The method is finally called.</li>
+</ul>
+This makes MRI method calls extremely expensive. The method cache alleviates some of it, but the remaining work still has a huge cost compared to C++ for example, where the worst case runtime overhead is a virtual method in a multiple-inherited class, which consists of an indirect pointer lookup and a call to a "thunk" function that fixes up the object pointer (a couple of instructions at most) so the method can access the right data, and jumps to the real method, and the typical cost is an indirect pointer lookup and a call instruction. Some of this overhead is avoidable in a more streamlined implementation, but quite a bit of it is extremely hard or impossible to get rid of within the required semantics of Ruby.<br /><br /><h2>method_missing</h2><span>In MRI, relying on method_missing is even more expensive than #send, as the method first needs to be looked up and then method_missing itself causes another looup, but the method cache makes it a reasonable choice for dynamically "adding" methods to objects as "send" is short-circuited early in loops etc., so after the first call the cost is fairly low. A brief benchmarks surprisingly shows that defining a new method using #define_method is actually slower than relying on method_missing. Here's the benchmark:</span><br />
+<pre class="ruby"><span class="comment">#!/bin/env ruby                                                                                                                                            </span>
+<p/><span class="ident">require</span> <span class="punct">'</span><span class="string">benchmark</span><span class="punct">'</span>
+<p/><span class="keyword">class </span><span class="class">Foo</span>
+  <span class="keyword">def </span><span class="method">test1</span>
+  <span class="keyword">end</span>
+<p/>  <span class="keyword">def </span><span class="method">method_missing</span> <span class="ident">sym</span>
+    <span class="keyword">if</span> <span class="ident">sym</span> <span class="punct">==</span> <span class="symbol">:test2</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+<p/><span class="constant">Foo</span><span class="punct">.</span><span class="ident">class_eval</span> <span class="keyword">do</span>
+  <span class="ident">define_method</span> <span class="symbol">:test3</span> <span class="keyword">do</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+<p/><span class="ident">n</span> <span class="punct">=</span> <span class="number">1000000</span>
+<span class="ident">f</span> <span class="punct">=</span> <span class="constant">Foo</span><span class="punct">.</span><span class="ident">new</span>
+<span class="constant">Benchmark</span><span class="punct">.</span><span class="ident">bmbm</span><span class="punct">(</span><span class="number">20</span><span class="punct">)</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">x</span><span class="punct">|</span>
+  <span class="ident">x</span><span class="punct">.</span><span class="ident">report</span><span class="punct">(&quot;</span><span class="string">test1</span><span class="punct">&quot;)</span> <span class="punct">{</span> <span class="ident">n</span><span class="punct">.</span><span class="ident">times</span> <span class="punct">{</span> <span class="ident">f</span><span class="punct">.</span><span class="ident">test1</span> <span class="punct">}</span> <span class="punct">}</span>
+  <span class="ident">x</span><span class="punct">.</span><span class="ident">report</span><span class="punct">(&quot;</span><span class="string">test2 (method_missing)</span><span class="punct">&quot;)</span>  <span class="punct">{</span> <span class="ident">n</span><span class="punct">.</span><span class="ident">times</span> <span class="punct">{</span> <span class="ident">f</span><span class="punct">.</span><span class="ident">test2</span> <span class="punct">}</span> <span class="punct">}</span>
+  <span class="ident">x</span><span class="punct">.</span><span class="ident">report</span><span class="punct">(&quot;</span><span class="string">test3 (define method)</span><span class="punct">&quot;)</span> <span class="punct">{</span> <span class="ident">n</span><span class="punct">.</span><span class="ident">times</span> <span class="punct">{</span> <span class="ident">f</span><span class="punct">.</span><span class="ident">test3</span> <span class="punct">}</span> <span class="punct">}</span>
+<span class="keyword">end</span>
+</pre>
+<br /><br />
+<p>
+And here are the results from one of my machines:
+</p><p>
+</p><pre>$ ruby send_vs_method_missing.rb 
+Rehearsal ----------------------------------------------------------
+test1                    1.390000   0.390000   1.780000 (  1.788041)
+test2 (method_missing)   1.660000   0.460000   2.120000 (  2.626747)
+test3 (define method)    1.880000   0.450000   2.330000 (  2.326830)
+------------------------------------------------- total: 6.230000sec
+<p/>                             user     system      total        real
+test1                    1.320000   0.450000   1.770000 (  1.777432)
+test2 (method_missing)   1.660000   0.480000   2.140000 (  2.124609)
+test3 (define method)    1.870000   0.450000   2.320000 (  2.326343)
+</pre><br /><br /><br /></div>
+<div class='content'>
+</div>
+<div class='flares'>
+<span class='feedburner'>
+<script src="http://feeds.feedburner.com/~s/VidarHokstad?i=http://www.hokstad.com/ruby-object-model.html" type="text/javascript" charset="utf-8"></script>
+</span>
+<span class='dzone'>
+<script type="text/javascript">var dzone_url = 'http://www.hokstad.com/ruby-object-model.html';</script>
+<script type="text/javascript">var dzone_title = 'The Ruby Object Model - Structure and Semantics';</script>
+<script type="text/javascript">var dzone_style = '2';</script>
+<script language="javascript" src="http://widgets.dzone.com/widgets/zoneit.js"></script>
+</span>
+<br style='clear: both;' />
+</div>
+
+</div>
+</div>
+<div class='comments'>
+<h2>Comments</h2>
+<div class='comment'>
+<div class='date'>
+2009-03-03 22:16 UTC</div>
+<div class='name'>
+<a href="http://talklikeaduck.denhaven2.com/">Rick DeNatale</a></div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=8f6f95c4bd64d5f10dfddfdcd03c19d6&size=40" height="40" /></a></div>
+<div class='content'>
+Nice job.
+<p/>A few comments.  
+<p/>You say "So integers that will fit within 31 bits (on 32 bit systems) will be shifted left one bit (multiplied by 2), and then the least significant bit is set to indicate that this is an integer. This is often called a "type tag" - some language environments will use more bits."
+<p/>Actually MRI does use more bits.  If either of the two low order bits is set or if the entire value is 0 then the value represents an immediate object, and is interpreted as follows:
+<p/> value</br/> 
+ = 0    value is false its class is FalseClass
+ = 2    value is TrueClass<br />
+ = 4    NilClass<br />
+ = 6    marks a reference as undefined
+<p/>And if the low order byte of the value is x0E then the value represents a Symbol, where the high three bytes of the value are the id of the symbol.
+<p/>Your diagram is slightly wrong I think.  The klass of the meta class of Class is Class, not itself.
+<p/>Also it should be noted that Modules are never directly inserted in the inheritance (or more properly method lookup) chain.  Instead module proxy objects are created, and marked as as a T_IClass (for included class). All of the proxies for a given module refer to the module's instance method hash, this allows modules to be included in different chains by different classes, and also reflect changes to the methods of the module.</div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-04 00:33 UTC</div>
+<div class='name'>
+Vidar Hokstad</div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=b94d3947daf98d3d6c0dd5b50215e4af&size=40" height="40" /></a></div>
+<div class='content'>
+Rick,
+<p/>Thanks for the clarifications on the type tag and the module proxy objects.
+<p/>As for the diagram, I'll double check it, but I created it based on the C extension given by walking the klass / super pointers, and that's what it appears to show. It confused me, and I walked through the MRI code line by line, and it appears that the bootstrap code as is at least in 1.8.5 will give that result - I haven't tested with 1.8.6/1.8.7 or 1.9.x.
+<p/></div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-04 01:56 UTC</div>
+<div class='name'>
+Vidar Hokstad</div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=b94d3947daf98d3d6c0dd5b50215e4af&size=40" height="40" /></a></div>
+<div class='content'>
+So to clarify on the type issue (this is for 1.8.6 btw.), as far as I can see the rule is as follows:
+<p/>- If the low order bit is set, it's a Fixnum.
+- If the *whole* value matches the values you gave it has the corresponding class. Just the second bit being set doesn't make it a special value.
+- If the low order byte matches 0x0e as you say it's a symbol.
+<p/></div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-06 21:44 UTC</div>
+<div class='name'>
+<a href="http://blog.ritirisi.com">Ryan Sobol</a></div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=6bc0021ca7d5d4aedb41c6c3493b509a&size=40" height="40" /></a></div>
+<div class='content'>
+Great write-up Vlad!
+<p/>In your final benchmark example, I changed the implementation of #test3 to this.
+<p/><pre>
+Foo.class_eval do
+  def test3
+  end
+end
+</pre>
+<p/>And on my machine, the benchmark for test1 and test3 are now equivalent speeds.  It appears there is significant overhead when using define_method to pass-in and execute a block.
+</div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-06 21:45 UTC</div>
+<div class='name'>
+<a href="http://blog.ritirisi.com">Ryan Sobol</a></div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=6bc0021ca7d5d4aedb41c6c3493b509a&size=40" height="40" /></a></div>
+<div class='content'>
+Here's the gist of my benchmark.
+<p/>http://gist.github.com/74999
+<p/></div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-06 21:48 UTC</div>
+<div class='name'>
+<a href="http://blog.ritirisi.com">Ryan Sobol</a></div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=6bc0021ca7d5d4aedb41c6c3493b509a&size=40" height="40" /></a></div>
+<div class='content'>
+BTW...
+<p/>$ ruby -v
+ruby 1.8.6 (2007-09-24 patchlevel 111) [i686-darwin9.2.2]
+<p/></div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-07 00:20 UTC</div>
+<div class='name'>
+Jacob Fugal</div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=cff9eed5d8099e4c2d34eae663aae87e&size=40" height="40" /></a></div>
+<div class='content'>
+Thanks for the writeup. I think in your 'inheritance' extension, it might be more useful if you attach the real_klass method to rb_cObject instead of rb_cClass, then you could use it to also see the eigenclass of any Object instance (that has one), not just Class instances.
+<p/>That is, change:
+<p/><pre>
+void Init_inheritance() {
+  rb_define_method(rb_cClass,"real_super",real_super,0);
+  rb_define_method(rb_cClass,"real_klass",real_klass,0);
+}
+</pre>
+<p/>to:
+<p/><pre>
+void Init_inheritance() {
+  rb_define_method(rb_cClass,"real_super",real_super,0);
+  rb_define_method(rb_cObject,"real_klass",real_klass,0);
+}
+</pre></div>
+</div>
+<div class='comment'>
+<div class='date'>
+2009-03-07 09:45 UTC</div>
+<div class='name'>
+<a href="wiki.with.us">Sunny Hirai</a></div>
+<div class='gravatar'>
+<a href="http://www.gravatar.com/"><img src="http://www.gravatar.com/avatar.php?gravatar_id=a5aea9a89dcbbe75653bbcd3ef5727a6&size=40" height="40" /></a></div>
+<div class='content'>
+Thanks for this excellent article. Reading more about Ruby internals is always valuable.
+<p/>I did want to add to Ryan's post.
+<p/>(1) I believe the reason for the performance degradation is that the block must execute within the binding where the block was defined in addition to the instance of the class where as a regular instance method only needs to execute within the context of the instance.
+<p/>(2) Method missing is valuable for having methods that do behaviors based on the name of the method. Using class_eval with a "def" doesn't accomplish this; however, you can use "class_eval" with a String that is dynamicaly defined. Since the method is creating from a String, it doesn't have a binding and the methods execute at the same speed as regular methods.
+<p/>Sunny Hirai</div>
+</div>
+</div>
+<div class='commentform'>
+<h2>Post a Comment</h2>
+<div class='help'>
+Basic HTML allowed. Javascript required for anti-spam check (I am testing a new anti-spam measure. Problems commenting? Please e-mail me: vidar@hokstad.com)
+</div>
+<form id='postcomment' method='POST'>
+    <div><label for='name'>Name:</label> <input type='text' id='name' name='name' value=''/></div>
+    <div><label for='email'>E-mail (not shown / gravatar enabled):</label> <input type='text' id='email' name='email' value=''/></div>
+    <div><label for='url'>URL (optional):</label> <input type='text' id='url' name='url' value=''/></div>
+    <div><label for='content'>Comment:</label>
+    <textarea name='content' id='content'></textarea></div>
+<input type='text' id='fakecaptcha' name='captcha' value='' />
+<script type="text/javascript">
+   document.write("<input type='hidden' name='h' value='b96407"+"b22b3d971ab67710b7f7504baa' />");
+</script>
+ <div><input class='submit' type='submit' name='save' value='Post' /></div>
+</form>
+</div>
+</div>
+<div class='right'>
+<div class='box'>
+<div class='fragment'>
+<span id='Bio'><h1>About me</h1>
+
+<img id="face" src="/static/images/face3.jpg">
+
+<div class="bio">
+    <p>
+    E-mail: <a href="mailto:vidar@hokstad.com">vidar@hokstad.com</a><br>
+Skype: vhokstad<br>
+    <a href="http://www.linkedin.com/in/vhokstad">View my LinkedIn profile</a>
+    </p>
+<p>
+    I was born April 21st, 1975, in Oslo, Norway. Since 2000 I've been living in London, UK. I'm married and awaiting my <a href="http://www.hokstad.com/static/us1.jpg">first child</a>, due in April '09
+   </p><p>I'm     
+    working for <a href="http://www.aardvarkmedia.co.uk/">Aardvark Media</a> as Director of Technology. 
+    I'm also currently on the board of <a href="http://www.spatialq.com/">SpatialQ</a>, a startup in the GIS space, and an advisor to <a href="http://www.skoach.com/">Skoach</a>, a startup doing a time management app for people with ADD.
+    </p><p>
+    </p>
+</div>
+
+</span>
+</div>
+</div>
+<div class='box recent'>
+<h1>Recent posts to <a href='/blog'>my blog</a></h1>
+<ul class="feedbox">
+        <li class="item"><span class="time">21:47</span> <span class="title"><a href="http://www.hokstad.com/the-home-cloud.html">The Home Cloud</a></span></li>
+        <li class="item"><span class="time">Mar 10.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-19.html">Writing a compiler in Ruby bottom up - step 19</a></span></li>
+        <li class="item"><span class="time">Mar 02.</span> <span class="title"><a href="http://www.hokstad.com/ruby-object-model.html">The Ruby Object Model - Structure and Semantics</a></span></li>
+        <li class="item"><span class="time">Feb 23.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-18.html">Writing a compiler in Ruby bottom up - step 18</a></span></li>
+        <li class="item"><span class="time">Feb 21.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-17.html">Writing a compiler in Ruby bottom up - step 17</a></span></li>
+        <li class="item"><span class="time">Feb 19.</span> <span class="title"><a href="http://www.hokstad.com/slidingstats-rack-middleware.html">Sliding Stats: Rack Middleware to keep an eye on your traffic</a></span></li>
+        <li class="item"><span class="time">Feb 17.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-16.html">Writing a compiler in Ruby bottom up - step 16</a></span></li>
+        <li class="item"><span class="time">Feb 14.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-15.html">Writing a compiler in Ruby bottom up - step 15</a></span></li>
+        <li class="item"><span class="time">Feb 12.</span> <span class="title"><a href="http://www.hokstad.com/writing-a-compiler-in-ruby-bottom-up-step-14.html">Writing a compiler in Ruby bottom up - step 14</a></span></li>
+        <li class="item"><span class="time">Feb 04.</span> <span class="title"><a href="http://www.hokstad.com/simple-charts-in-ruby-using-svg-graph.html">Simple charts in Ruby using SVG::Graph</a></span></li>
+</ul>
+</div>
+<div class='box'>
+<h2>Tags</h2>
+<span class='tagcloud'>
+<span class='tag tag_1'><a href='/tag/blog' rel='tag' class='name'>blog</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/books' rel='tag' class='name'>books</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/cairo' rel='tag' class='name'>cairo</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/cohesion' rel='tag' class='name'>cohesion</a><span class='count'>(2)</span></span>
+<span class='tag tag_4'><a href='/tag/compiler' rel='tag' class='name'>compiler</a><span class='count'>(26)</span></span>
+<span class='tag tag_3'><a href='/tag/compiler in Ruby bottom up' rel='tag' class='name'>compiler in Ruby bottom up</a><span class='count'>(20)</span></span>
+<span class='tag tag_1'><a href='/tag/compilers' rel='tag' class='name'>compilers</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/coupling' rel='tag' class='name'>coupling</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/databases' rel='tag' class='name'>databases</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/debugging' rel='tag' class='name'>debugging</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/diagrams' rel='tag' class='name'>diagrams</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/dot' rel='tag' class='name'>dot</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/frameworks' rel='tag' class='name'>frameworks</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/git' rel='tag' class='name'>git</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/github' rel='tag' class='name'>github</a><span class='count'>(3)</span></span>
+<span class='tag tag_2'><a href='/tag/graphics' rel='tag' class='name'>graphics</a><span class='count'>(6)</span></span>
+<span class='tag tag_1'><a href='/tag/graphviz' rel='tag' class='name'>graphviz</a><span class='count'>(3)</span></span>
+<span class='tag tag_2'><a href='/tag/howto' rel='tag' class='name'>howto</a><span class='count'>(6)</span></span>
+<span class='tag tag_1'><a href='/tag/hpricot' rel='tag' class='name'>hpricot</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/incompetence' rel='tag' class='name'>incompetence</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/iso' rel='tag' class='name'>iso</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/javascript' rel='tag' class='name'>javascript</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/linux' rel='tag' class='name'>linux</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/mvc' rel='tag' class='name'>mvc</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/ooxml' rel='tag' class='name'>ooxml</a><span class='count'>(4)</span></span>
+<span class='tag tag_2'><a href='/tag/openvz' rel='tag' class='name'>openvz</a><span class='count'>(6)</span></span>
+<span class='tag tag_1'><a href='/tag/operator precedence' rel='tag' class='name'>operator precedence</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/opinion' rel='tag' class='name'>opinion</a><span class='count'>(4)</span></span>
+<span class='tag tag_1'><a href='/tag/parser' rel='tag' class='name'>parser</a><span class='count'>(5)</span></span>
+<span class='tag tag_1'><a href='/tag/politics' rel='tag' class='name'>politics</a><span class='count'>(3)</span></span>
+<span class='tag tag_4'><a href='/tag/programming' rel='tag' class='name'>programming</a><span class='count'>(43)</span></span>
+<span class='tag tag_2'><a href='/tag/rack' rel='tag' class='name'>rack</a><span class='count'>(6)</span></span>
+<span class='tag tag_1'><a href='/tag/rails' rel='tag' class='name'>rails</a><span class='count'>(3)</span></span>
+<span class='tag tag_4'><a href='/tag/ruby' rel='tag' class='name'>ruby</a><span class='count'>(48)</span></span>
+<span class='tag tag_1'><a href='/tag/scifi' rel='tag' class='name'>scifi</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/sequel' rel='tag' class='name'>sequel</a><span class='count'>(4)</span></span>
+<span class='tag tag_1'><a href='/tag/shunting yard' rel='tag' class='name'>shunting yard</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/spam' rel='tag' class='name'>spam</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/sqlite' rel='tag' class='name'>sqlite</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/strace' rel='tag' class='name'>strace</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/svg' rel='tag' class='name'>svg</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/templates' rel='tag' class='name'>templates</a><span class='count'>(2)</span></span>
+<span class='tag tag_3'><a href='/tag/tutorial' rel='tag' class='name'>tutorial</a><span class='count'>(14)</span></span>
+<span class='tag tag_1'><a href='/tag/typing' rel='tag' class='name'>typing</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/virtualization' rel='tag' class='name'>virtualization</a><span class='count'>(5)</span></span>
+<span class='tag tag_1'><a href='/tag/visualization' rel='tag' class='name'>visualization</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/vm' rel='tag' class='name'>vm</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/web development' rel='tag' class='name'>web development</a><span class='count'>(3)</span></span>
+<span class='tag tag_1'><a href='/tag/x86' rel='tag' class='name'>x86</a><span class='count'>(2)</span></span>
+<span class='tag tag_1'><a href='/tag/xsl' rel='tag' class='name'>xsl</a><span class='count'>(2)</span></span>
+</span>
+</div>
+<div class='box stumbleupon'>
+      <h1><a href="http://vidarh.stumbleupon.com"><img 
+              align="absmiddle" border="0" width="103" height="19" src="http://www.stumbleupon.com/images/small_su_logo2.png" alt="StumbleUpon"> My link page</a></h1>
+<ul class="feedbox">
+        <li class="item"><span class="time">Mar 02.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fwww.hokstad.com%2Fruby-object-model.html">The Ruby Object Model - Structure and Semantics</a></span></li>
+        <li class="item"><span class="time">Feb 18.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fwww.burlaca.com%2F2009%2F01%2Fgraph-visualization-apache-logs%2F">Graph Visualization for Apache log files | Oleg Burlacas Blog</a></span></li>
+        <li class="item"><span class="time">Feb 13.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fmacournoyer.com%2Fblog%2F">                  macournoyers blog    </a></span></li>
+        <li class="item"><span class="time">Feb 12.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fcukes.info%2F">Cucumber - Making BDD fun</a></span></li>
+        <li class="item"><span class="time">Feb 11.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fdocstore.mik.ua%2Forelly%2Fnetworking_2ndEd%2Fdns%2Fch09_05.htm">unix.org.ua</a></span></li>
+        <li class="item"><span class="time">Feb 11.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fpikchur.com%2Fftc">            Pikchur / Bianconeri4ever / Where your Apple tax goes...        </a></span></li>
+        <li class="item"><span class="time">Feb 06.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fwww.the-art-of-web.com%2Fcss%2Fcss-animation%2F">The Art of Web ~ CSS: Animation Using CSS Transforms</a></span></li>
+        <li class="item"><span class="time">Feb 06.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fejohn.org%2Fblog%2Ftalk-performance-improvements-in-browsers%2F">John Resig -   Talk: Performance Improvements in Browsers</a></span></li>
+        <li class="item"><span class="time">Feb 02.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Fbash.org%2F%3F448392">QDB: Quote #448392</a></span></li>
+        <li class="item"><span class="time">Feb 02.</span> <span class="title"><a href="http://www.stumbleupon.com/click_redir.php?webtb=1&t=49cbedea82346&src=favorites&u=http%3A%2F%2Faigamedev.com%2Ftutorials%2Fpotential-fields">  Using Potential Fields in a Real-time Strategy Game Scenario (Tutorial) &amp;8212; AiGameDev.com</a></span></li>
+</ul>
+<div class='about'>
+(Links I have <a href="http://www.stumbleupon.com/">stumbled</a> and like)</div>
+</div>
+</div>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    _uacct = "UA-2159311-2";
+    urchinTracker();
+    </script>
+<script src="/static/fragment.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>Build Your Own Ruby&nbsp;on&nbsp;Rails Web&nbsp;Applications - SitePoint Books</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="keywords" content="ruby on rails, ruby, rails, RoR, frameworks, ajax, web design, web development, javascript, server side, client side, scripting, book, tutorial" />
+<meta name="description" content="Ruby on Rails is a revolutionary web development framework designed to put the fun back into developing web applications. Ruby On Rails enables you to build robust web applications faster and using less code than other platforms." />
+<meta name="robots" content="follow,index" />
+
+<link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" />
+
+<link rel="stylesheet" type="text/css" media="all" href="http://1.sitepointstatic.com/bundle/structure.css,standard.css,format.css,tabs-v5.css,cart.css,books.css,cart.css" />
+<link rel="stylesheet" type="text/css" media="all" href="http://1.sitepointstatic.com/css2/promobar.css" />
+
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie.css" />
+<![endif]-->
+<!--[if IE7]>
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie6.css" />
+<![endif]-->
+<!--[if lt IE 6]>
+<link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/css2/ie5.css" />
+<![endif]-->
+
+
+<style type="text/css" ?>
+div#flow div#tab div.wrap{background:#fff url(/images/books/pdfonly.png) no-repeat right top;}
+div#flow div#tab div.wrap h1 {margin-right:80px; }
+</style>
+
+<script src="http://2.sitepointstatic.com/bundle/x.js,util-books.js" type="text/javascript"></script>
+
+
+
+<script src="/popup/popupjs.php?zoneid=2&amp;popupid=92" type="text/javascript"></script><!-- The exclusive period has ended :( - Today: - Ends: --><link rel="stylesheet" type="text/css" media="all" href="http://sitepointstatic.com/books/rails1/extra.css" />
+<!-- page specific  --></head><body >
+<div id="header">
+	<h1>
+		<a href="/?SID=4b29eea305c91b6f09849828a887930c"><span></span>SitePoint</a>
+	</h1>
+
+</div>
+	<!-- Search -->
+
+	<form id="search" method="get" action="/search/search.php"><input type="hidden" name="SID" value="4b29eea305c91b6f09849828a887930c" />
+		<div><label for="mainsearchbox">Search Site</label>
+			<input type="hidden" name="ps" value="10" />
+			<input id="mainsearchbox" type="text" name="q" value="" class="tbox" />
+			<input type="submit" value="Search" name="submit" class="button" />
+				<ul id="searchlinks">
+					<li><a href="/search/?SID=4b29eea305c91b6f09849828a887930c">Advanced Search</a></li> 
+					<li><a href="/sitemap?SID=4b29eea305c91b6f09849828a887930c">Sitemap</a></li>
+				</ul>
+		</div>
+	</form>
+
+
+
+<!-- /Search -->
+  <!-- navigation bar -->
+  <div id="navcontainer">
+
+	<ul id="navlist">
+		<li><a id="tabz" href="/?SID=4b29eea305c91b6f09849828a887930c" title="The best place to begin your SitePoint session">Home</a></li>
+		<li><a id="taba" href="/recentarticles/?SID=4b29eea305c91b6f09849828a887930c" title="One of the Web&rsquo;s largest repositories of web know-how">Articles</a></li>
+		<li><a id="tabb" href="/books/?SID=4b29eea305c91b6f09849828a887930c" title="SitePoint&rsquo;s renowned web development books">Books</a></li>
+		<li><a id="tabc" href="/kits/?SID=4b29eea305c91b6f09849828a887930c" title="SitePoint&rsquo;s renowned web development kits">Kits</a></li>
+		<li><a id="tabd" href="/videos/?SID=4b29eea305c91b6f09849828a887930c" title="SitePoint&rsquo;s renowned web development training videos">Videos</a></li>
+		<li><a id="tabe" href="/blogs/?SID=4b29eea305c91b6f09849828a887930c" title="Daily comment across a range of web subjects by some of the top experts in their field">Blogs</a></li>
+		<li><a id="tabf" href="/contest/?SID=4b29eea305c91b6f09849828a887930c" title="Let designers compete for your business in SitePoint&rsquo;s Design Contests">Contests</a></li>
+		<li><a id="tabg" href="http://marketplace.sitepoint.com/" title="Buy and sell goods and services in one of the world&rsquo;s largest web communities">Marketplace</a></li>
+		<li><a id="tabh" href="/forums/?SID=4b29eea305c91b6f09849828a887930c" title="Our friendly, vibrant and well-informed community">Forums</a></li>
+		<li><a accesskey="9" id="tabi" href="http://reference.sitepoint.com/" title="The Web&rsquo;s most complete and up-to-date reference">Reference </a></li>
+	</ul>
+
+
+	</div>
+<div id="content"  class="clearfix">
+  <div id="maincontent"><!--  full width container-->
+
+<!-- *********  Start Column 2 ******** -->
+<div id="flow">
+ <div id="tab">
+
+ <div class="wrap">
+ <h3>Product Overview</h3>
+         
+<div id="update">
+    <h2>Hooray! A new and improved edition of this book is now available!</h2>
+	<p>The 1st edition of <em><strong>Build Your Own Ruby on Rails Web Applications</strong></em> was a very fine book but we replaced it with <a href='http://www.sitepoint.com/books/rails2'> a new and updated edition</a> in May 2008.
+    
+</p>
+  <p>However, if you do happen to own a copy of <em>'Build Your Own Ruby on Rails Web Applications'</em> you may still be interested in:</p>
+	<ul>
+    	<li>Downloading the 1st edition <a href="http://www.sitepoint.com/books/rails1/code.php">code archive</a></li> 
+    	<li>Viewing the list of known <a href="http://www.sitepoint.com/books/rails1/errata.php">corrections and typos</a></li>
+	</ul>
+	
+	</div>  
+  
+ <h1 id="title-book">Build Your Own Ruby&nbsp;on&nbsp;Rails Web&nbsp;Applications</h1>
+
+<img src="/images/books/rails1/rails1-pdf-only.jpg" alt="Build Your Own Ruby on Rails Web Applications" width="167" height="190"  class="imgleft" id="bookshot" />
+
+<h4 class="catch">&#8220;Build bulletproof web apps with ease using Ruby&nbsp;on&nbsp;Rails.&#8221;</h4>
+<ul class="specialo">
+  <li>Build and deploy a fully-featured Web&nbsp;2.0&nbsp;application using&nbsp;Ruby&nbsp;on&nbsp;Rails.</li>
+  <li>Learn best practice approaches to web application development.</li>
+  <li>Use Rails&rsquo;s Ajax features to create slick interfaces.</li>
+</ul>
+
+<!-- The free offer period has ended :( - Today: - Ends: -->	<p class="pdfnotice">
+		<img class="imgleft" src="/images/icons/pdficon_large.gif" alt="" />
+		<strong>Instant Download!</strong><br />
+		<strong>This title available in <em>Adobe PDF</em> format only</strong>
+	</p>
+
+<div class="actions">
+<a class="nice_button" href="/books/rails1/samplechapters.php?SID=4b29eea305c91b6f09849828a887930c" title="Get your sample chapters now!">&nbsp;&nbsp;Download FREE Preview!&nbsp;&nbsp;&nbsp;</a>
+
+
+<a class="nice_button" href="https://sitepoint.com/bookstore/go/97">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order
+this PDF  NOW! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a> 
+
+
+</div> 
+<h5>*Note: Free PDF offer expired: </h5>
+
+<h4>Overview</h4>
+<div class="reviewgrab reviewgrab300wide" style="width: 300px;">
+	<blockquote>
+		<p>Ruby on Rails is a breakthrough in lowering the barriers of entry to programming. Powerful web applications that formerly might have taken weeks or months to develop can be produced in a matter of days.</p>
+	</blockquote>
+	<cite>
+		<a>
+			<img style="margin: 5px 15px;" alt="O'Reilly Logo" src="http://sitepointstatic.com/images/books/rails1/oreilly.jpg" height="35" width="112" />
+			<span>Tim O'Reilly</span>
+			<span>Founder and CEO</span>
+			<span>O'Reilly Media</span>
+		</a>
+	</cite>
+</div>
+<p><em>Build Your Own Ruby on Rails Web Applications</em> is an easy-to-follow, practical and fun guide to Ruby on Rails for beginners. It covers all you need to get up and running, from installing Ruby, Rails and MySQL to building and deploying a fully featured web application.</p>
+<p>This book will:</p>
+<ul class="specialo">
+  <li>show you how to install Ruby on Rails on Windows, Mac, or Linux</li>
+  <li>walk you, step by step, through the development of a Web 2.0 social news application, just like <a href="http://digg.com/">digg.com</a></li>
+  <li>show you how to test, debug, benchmark, and deploy your Rails application</li>
+</ul>
+<p>Unlike other Rails books, this book doesn't assume that you are an experienced web developer, or that you've used Ruby before. An entire chapter is devoted to learning Ruby in a fun way, using the interactive Ruby console, so you can follow along at home. You'll be an accomplished Ruby programmer in no time!</p>
+<p>This book focuses on the practical parts of Rails that you can use to build next-generation web applications, rather than the obscure features of Rails that no one uses. Learn how to:</p>
+
+<ul class="specialo">
+  <li><strong>Interact with your database</strong> using ActiveRecord and migrations instead of arcane SQL commands.</li>
+  <li><strong>Add Ajax and visual effects</strong> to your application, using the built-in Prototype and script.aculo.us JavaScript libraries.</li>
+  <li>Understand and use a <strong>model-view-controller architecture</strong>, maximizing code reuse and simplifying code maintenance.</li>
+</ul>
+
+<p>The book uses Rails 1.2 &mdash; the very latest version of Rails &mdash; so you can take advantage of all of the latest features of the framework.</p>
+<p>Packed with easy-to-understand instructions and sample code, <em>Build Your Own Ruby on Rails Web Applications</em> is the ultimate beginner's guide to Ruby on Rails.</p>
+
+<h4>What is Ruby on Rails?</h4>
+
+
+<p><a href="http://www.rubyonrails.org/down"><img src="http://sitepointstatic.com/images/books/rails1/rails-logo.png" alt="Rails Logo" width="111" height="180" class="imgleft" rel="external" /><em>Ruby on Rails</em></a> is a revolutionary web development framework  designed to put the fun back into developing web applications.</p>
+<p>Ruby is a powerful, object oriented language that makes your code readable and intuitive. Because Rails is written in Ruby, it's incredibly easy to get started with. In fact, it's possible to build a live, fully functional application in a matter of minutes!</p>
+<p>Rails takes care of the boring parts of web development, such as database interaction and client-side integration, allowing you to focus on adding cool features to your application.</p>
+
+<h4>Why Use Ruby on Rails?</h4>
+<p class="dropcaps"><span class="first-letter">R</span>uby On Rails enables you to build robust web applications faster, using less code than other platforms.</p>
+<p>As a result of the huge amount of interest in Rails, <a href="http://weblog.rubyonrails.org/2006/8/14/recent-rails-job-postings-from-the-37signals-job-board">demand for Rails programmers is on the rise</a>. Learning Ruby on Rails is the smartest thing you could do for your career as a web developer.</p>
+<p>Of 5,000 web developers surveyed in 2006, 24% indicated that they wanted to learn more about Ruby &mdash; a higher percentage than any other language! [source: <a href="http://www.sitepoint.com/reports/reportwebsurvey2006/">The State of Web Development 2006/2007</a>]. Before Rails came along, Ruby was virtually unheard of; now it is being used to power thousands of high-traffic web applications. Yours could be next!</p>
+
+<h5>View the <a href="toc.php?SID=4b29eea305c91b6f09849828a887930c">Table of Contents </a></h5>
+
+<h4>Who Should Read This Book?</h4>
+<p><em>Build Your Own Ruby On Rails Web Applications</em> is ideal for beginner-to-intermediate web designers and developers who are familiar with HTML and want a practical, results-driven book that teaches Ruby on Rails from the ground up.</p>
+<div class="reviewgrab reviewgrab300wide" style="width: 300px;">
+	<blockquote>
+		<p>Build Your Own Ruby On Rails Web Applications does for Ruby on Rails what Kevin Yank's book did for PHP/MySQL five years ago.</p>
+	</blockquote>
+	<cite>
+		<a href="http://www.sitepoint.com/about/media/release?id=51">
+			<img style="margin: 5px 15px;" alt="O'Reilly Logo" src="http://sitepointstatic.com/images/books/rails1/sitepoint.jpg" height="35" width="112" />
+			<span>Mark Harbottle</span>
+			<span>Co-founder and CEO</span>
+			<span>SitePoint</span>
+		</a>
+	</cite>
+</div><p>The book is written in the usual SitePoint style: it's clear and fun to read, with plenty of example code that you can apply immediately to your own web sites.</p>
+<p>There's no need to re-type any of the code from the book. As always, all customers will receive instant download access to all the code and files used in the book &mdash; you can apply them immediately to your own projects.</p>
+
+<h4>What Will You Learn?</h4>
+<img src="http://sitepointstatic.com/images/books/rails1/shovell2.gif" alt="Work through real world examples including this Rails-powered, 'Digg-like' application -- Shovell" width="252" height="274" class="imgright" />
+<p>This book will teach you how to:</p>
+<ul class="specialo">
+  <li>Program with confidence in the Ruby language.</li>
+  <li>Build and deploy a complete Rails web application.</li>
+  <li>Exploit the new features available in Rails 1.2.</li>
+  <li>Use Rails' Ajax features to create slick interfaces.</li>
+  <li>Reap the benefits of a best-practice MVC architecture.</li>
+  <li>Work with databases easily using ActiveRecord.</li>
+  <li>Create a user authentication system.</li>
+  <li>Use object oriented concepts like inheritance and polymorphism.</li>
+  <li>Build a comprehensive automated testing suite for your application.</li>
+  <li>Add plugins to easily enhance your application's functionality.</li>
+  <li>Implement caching to alleviate database performance issues.</li>
+  <li>Use migrations to manage your database schema without data loss.</li>
+  <li>Achieve maximum code reuse with filters and helper functions.</li>
+  <li>Implement clean URLs and generate permalinks.</li>
+  <li>Debug your application using the breakpoint client.</li>
+  <li>Analyze your application's performance using the Rails logging infrastructure.</li>
+  <li>Benchmark your application to determine performance bottlenecks.</li>
+</ul>
+<p>And a whole lot more&hellip;</p>
+<p style="text-align: right"><strong>Take a look at the <a href="toc.php?SID=4b29eea305c91b6f09849828a887930c">Table of Contents</a></strong></p>
+
+
+<h4>No-risk Money-back Guarantee</h4>
+<p class="dropcaps">Of course we&rsquo;re <i>so confident</i> that you&rsquo;ll
+  treasure this book for years to come that we&rsquo;re happy, as always, for you to try it risk-free for 30 days. If you purchase a copy of <em> Build Your Own Ruby on Rails Web Applications </em>and you think it fails to be everything you wanted, we would like you to have your money back.</p>
+  
+  <p>Simply contact us and we will see to it that you receive a prompt and courteous refund of the full purchase price.</p>  
+
+<h5>What could be fairer than this?</h5>
+
+<h4>How To Order This Book</h4>
+<a name="options"></a>
+
+
+<img src="/images/books/rails1/photo1.jpg"  alt="Build Your Own Ruby on Rails Web Applications" class="imgleft" />
+<h5>Unfortunately, this book is no longer available!</h5>
+<p>The <strong>1st edition</strong> of <em><strong>Build Your Own Ruby on Rails Web Applications</strong></em> was a fine book but we replaced it with <a href='http://www.sitepoint.com/books/rails2'> a new and updated edition</a> in May 2008.
+    
+</p>
+<p>We don&rsquo;t sell the old version now, but check out the new edition if you're looking for an updated book along the same lines.</p>
+
+
+        
+
+
+
+<!-- Payment Options -->
+<div id="orderdirectreasons">
+<img src="http://sitepointstatic.com/images/books/stack-07.png" alt="Quality SitePoint Books" />
+<h5>Our promise to you... Order direct from sitepoint.com and receive:</h5>
+
+<ul>
+	<li>The very latest editions of all our books</li>
+	<li>Exclusive offers only available to direct customers</li>
+	<li>Lightning-fast shipping world-wide</li>
+	<li>30 day money-back guarantee</li>
+	<li>Shipping worldwide is free when you purchase more than one printed book!</li>
+</ul>
+</div>
+
+</div><!-- close wrap-->
+
+</div><!-- close tab-->
+
+</div><!-- close flow-->
+
+  <div class="spotlight" id="booktitle">
+	<img src="http://sitepointstatic.com/images/books/rails1/patrick.jpg" width="140" height="192"  alt="Patrick Lenz" />
+	<p><a href="/books/rails1/about.php?SID=4b29eea305c91b6f09849828a887930c">By Patrick Lenz</a> </p>
+  </div>
+
+
+<div id="col1">
+
+
+
+
+
+<div class="nav">
+	<h3>Product Information</h3>
+
+  <ul  style="border-bottom:0 none">    <li class="navitem-atv"><a href="/books/rails1/?SID=4b29eea305c91b6f09849828a887930c" title="The Home Page of this Book">Home</a></li>
+    
+        <li class="navitem"><a href="/books/rails1/toc.php?SID=4b29eea305c91b6f09849828a887930c" title="Browse the Table of Contents">Table of Contents</a> </li>
+            
+           		
+    <li class="navitem"><a href="/books/reviews.php?book=rails1&amp;SID=4b29eea305c91b6f09849828a887930c" title="Published reviews of this book">Editorial Reviews</a></li>
+	<li class="navitem"><a href="/books/usercomment.php?p=rails1&amp;SID=4b29eea305c91b6f09849828a887930c" title="What our customers have said about this book">Customer Reviews</a></li>
+	
+	<li class="navitem"><a href="/books/rails1/code.php?SID=4b29eea305c91b6f09849828a887930c" title="Download The Code Archive">Code Archive</a></li>		
+
+	
+	
+			<li class="navitem"><a href="/books/rails1/bookindex.php?SID=4b29eea305c91b6f09849828a887930c" title="Browse the Index">Browse the Index</a></li>
+	    
+        <li class="navitem"><a href="/books/rails1/errata.php?SID=4b29eea305c91b6f09849828a887930c" title="Corrections &amp; Typos">Corrections &amp; Typos</a> </li>
+        
+    <li class="navitem"><a href="/books/faq.php?book=rails1&amp;SID=4b29eea305c91b6f09849828a887930c" title="Frequently Asked Questions">FAQ</a></li>
+
+
+    </ul>
+</div>
+<div class="nav"><h3>Features</h3><div class="textad">
+	<h5>Features</h5>
+	<p>Latest Update: January 2007</p>
+	<ul>
+	    <li>Uses Rails 1.2.3 &mdash; the latest version of Rails!</li>
+	    <li>All example code available for download</li>
+	    <li>Lay-flat binding stays open on your desk</li>
+	</ul>
+</div>
+
+</div>
+
+
+<div class="nav"><h3>Customer Reviews</h3><p><strong>Live, unmoderated reviews from our customers, typos and all.</strong></p><p class="quoteme">Excellent book.  Very details.</p><h6>K. Leung, USA <img class="smallicon" src="/images/books/gstars4.gif" alt="4 stars" title="Rated 8 out of 10" /></h6><p class="quoteme">Overall I have really enjoyed the book and found the information useful to get a good overall understanding of the RoR platform.</p><h6>Christopher Bauer, USA <img class="smallicon" src="/images/books/gstars4.5.gif" alt="4.5 stars" title="Rated 9 out of 10" /></h6><p class="quoteme">I found the book well written and easy to follow.</p><h6>john Canning, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">i havn't finished in completly.. i liked it, worth for personal delf</p><h6>vips, USA <img class="smallicon" src="/images/books/gstars4.gif" alt="4 stars" title="Rated 8 out of 10" /></h6><p class="quoteme">Good book with an easy to understand introduction in Ruby on Rails.<br />I liked it, thanks!</p><h6>Ekkehard, Austria, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">Very good book that details building a fun application from scratch.  Well written and easy to follow!</p><h6>Kevin, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">Great gentle introduction to Ruby and Rails. I loved it and read it cover to cover.</p><h6>Thembile, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">I thought the book did a very good job of explaining the basics and bringing the beginner quickly up to speed with RoR. I liked the book.</p><h6>Robert -- NYC, USA <img class="smallicon" src="/images/books/gstars4.5.gif" alt="4.5 stars" title="Rated 9 out of 10" /></h6><p class="quoteme">Very Good!<br />Is the best Ruby on Rails book!<br />Thanks!</p><h6>Hugo Leonardo Canalli, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">Book was well written and organized. The flow was easy to understand and very helpful.</p><h6>Bryan Allred, USA <img class="smallicon" src="/images/books/gstars4.gif" alt="4 stars" title="Rated 8 out of 10" /></h6><p class="quoteme">I've just started reading, but seems to be a great book!</p><h6>Luiz Viana, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">Excellent book!  Easy to read and the directions were all accurate.</p><h6>E. L. Perry, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">I am not one for writing reviews, but I did enjoy this book.  It was very informative, and it explained everything where I could understand it.  I am new to Ruby so this book helped a great deal.</p><h6>Corey DeBot, USA <img class="smallicon" src="/images/books/gstars5.gif" alt="5 stars" title="Rated 10 out of 10" /></h6><p class="quoteme">I'm reading this book by now. My fisrt feeling is: good and interesting</p><h6>triumxml, USA <img class="smallicon" src="/images/books/gstars4.gif" alt="4 stars" title="Rated 8 out of 10" /></h6><p><a href="/books/usercomment.php?p=rails1&amp;SID=4b29eea305c91b6f09849828a887930c">See More Reviews</a> or <a href="/books/usercomment.php?p=rails1&amp;c=1&amp;SID=4b29eea305c91b6f09849828a887930c">Write Your Own</a></p></div>
+
+
+</div><!-- close col1-->
+</div><!-- close maincontent-->
+<div id="col3">
+
+<div class="sampledownloadbox">
+
+	
+	<a class="sampledownloadbutton" href="/books/rails1/samplechapters.php?SID=4b29eea305c91b6f09849828a887930c" title="Get your free preview now!">Download the FREE Sample!</a>
+
+</div>
+
+
+<div class="nav">
+  <h3>Product Details</h3>
+
+  
+<div class="wrapcenter"> 
+<br />
+<a href="/books/rails1/showme.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|380|550" target="_blank" title="Launch Detailed View in Popup"><img src="/images/books/rails1/cover.png" width="165" height="215" alt="Build Your Own Ruby on Rails Web Applications" /></a> 
+<h6><a href="/books/rails1/showme.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|380|550" target="_blank" title="Launch Detailed View in Popup">[+] Enlarge Image</a></h6>
+</div>
+
+  <!-- css1 spec -->  
+<table summary="Book Details">
+    <tr> 
+      <td><strong>Edition:</strong> <br />
+      </td>
+        <td>1st&nbsp;</td>
+    </tr>
+    <tr> 
+      <td><strong>Price:</strong> </td>
+        <td>NO LONGER AVAILABLE</td>
+    </tr>
+    <tr> 
+      <td><strong>Pages:</strong> </td>
+        <td>447</td>
+    </tr>
+    <tr> 
+      <td><strong>ISBN:</strong></td>
+        <td>0-9758419-5-5</td>
+    </tr>
+    <tr> 
+      <td><strong>Last Updated:</strong></td>
+        <td>January 2007</td>
+    </tr>
+  </table></div>
+
+
+
+
+<div class="nav">
+	<h4>Questions?</h4>
+  	<ul>
+	<li><a href="/books/why_sitepoint.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580" title="Find out about the SitePoint difference!">Why Order from SitePoint?</a></li>  
+    <li><a href="/books/faq-general.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580|elastic" title="Find answers to some common questions">Frequently Asked Questions</a></li>  
+    <li><a href="/books/orders/?SID=4b29eea305c91b6f09849828a887930c" title="Find out the current status of your order">Track My Order</a></li> 
+    <li><a href="/books/volume_discount.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580" title="Access details on our FREE Shipping Offer">FREE Shipping Offer</a></li>
+    <li><a href="/books/shipping.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580|elastic" title="Shipping Details">Shipping Times and Rates</a> </li>
+    <li><a href="/books/ordering.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580|elastic" title="Ordering Information">Payment Options</a> </li>
+    <li><a href="/books/guarantee.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580" title="Access details on our 100% Money Back Guarantee">100% Money-Back Guarantee</a></li>
+    <li><a href="/books/contact.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|580|elastic" title="Contact Sales Support">Contact Sales Support</a></li>
+    </ul>
+
+	<h4>Claim Your PDF</h4>
+	<p>Bought a SitePoint PDF? Download the PDF here.</p>
+  	<ul>
+	<li><a href="/books/pdf/claimpdf.php?SID=4b29eea305c91b6f09849828a887930c" title="Claim your PDF">Claim Your PDF</a></li> 
+    </ul>  
+		<h4>Code Archive</h4>
+	<p>Bought this SitePoint book? Download it's code archive for free.</p>
+  	<ul>
+	<li><a href="/books/codearchive.php?SID=4b29eea305c91b6f09849828a887930c" title="Download the code archive from one of our books">Code Archive Downloads</a></li> 
+    </ul>
+        
+    
+</div>		
+<div class="product">
+<h4>SitePoint Books</h4> 
+<div class="wrap">
+<ul class="tickme">
+<li>advocate <em>best practice</em> techniques</li>
+<li>lead you through <em>practical</em> examples</li>
+<li>provide <em>working code</em> for your web site</li>
+<li>make learning <em>easy</em> and fun</li>
+</ul>
+<div class="wrapcenter">
+<br />
+<a href="/books/guarantee.php?SID=4b29eea305c91b6f09849828a887930c" rel="popup|450|450"  title=" View 100% Money Back Guarantee in Popup"><img alt="100% Money Back Guarantee" src="http://sitepointstatic.com/images/books/guarantee3.gif" height="140" width="140" /></a></div>	
+</div>
+</div>
+</div>
+<!-- close col3-->
+
+</div><!-- close content -->
+<div id="footer">
+
+<div id="tertiary">
+
+<ul>
+	<li><a href="/mediakit?SID=4b29eea305c91b6f09849828a887930c">Advertise</a> </li>
+	<li><a href="/about/?SID=4b29eea305c91b6f09849828a887930c">About Us</a> </li>
+	<li><a href="/contact?SID=4b29eea305c91b6f09849828a887930c">Contact Us</a> </li>
+	<li><a href="/sitemap?SID=4b29eea305c91b6f09849828a887930c" accesskey="3">Site Map</a> </li>
+	<li><a href="/about/writeforus?SID=4b29eea305c91b6f09849828a887930c">Write For Us</a> </li>
+	<li><a href="/syndication/?SID=4b29eea305c91b6f09849828a887930c">RSS</a> </li>
+	<li><a href="/search/search.php?SID=4b29eea305c91b6f09849828a887930c" accesskey="4">Search</a> </li>
+	<li><a href="/privacy/?SID=4b29eea305c91b6f09849828a887930c" accesskey="8">Privacy</a> </li>
+	<li><a href="/glossary.php?q=A&amp;SID=4b29eea305c91b6f09849828a887930c">Glossary</a> </li>
+	<li><a href="/about/terms.php/?SID=4b29eea305c91b6f09849828a887930c">Terms &amp; Conditions</a> </li>
+	<li><a href="/about/jobs/?SID=4b29eea305c91b6f09849828a887930c">Jobs</a> </li>
+
+</ul>
+
+</div><!-- close tertiary -->
+<div class='shuffle2'>
+<a href="http://www.sitepoint.com.au"  title="Visit our development site">Web Design and Development by SitePoint, Melbourne, Australia</a> - <a href="http://www.99designs.com" >Logo Design, Web page Design - 99designs.com </a>
+</div>
+The contents of this web page are copyright &copy; 1998&ndash;2009 SitePoint Pty. Ltd. All Rights Reserved. 
+ 
+</div><!-- close footer -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-30131-1";
+urchinTracker();
+</script>
+<script src="http://sitepointstatic.com/js/promobar.js" type="text/javascript"></script>
+
+
+</body>
+</html>

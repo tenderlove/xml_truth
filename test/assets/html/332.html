@@ -1,0 +1,1581 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>DreamHost Blog &raquo; How Ruby on Rails Could Be Much Better</title>
+	
+	<meta name="generator" content="WordPress 2.7.1" /> <!-- leave this for stats please -->
+
+	<style type="text/css" media="screen">
+		@import url(http://blog.dreamhost.com/wp-content/themes/pool/style.css);
+	</style>
+
+	<link rel="Shortcut Icon" href="http://blog.dreamhost.com/wp-content/themes/pool/images/favicon.ico" type="image/x-icon" />
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://blog.dreamhost.com/feed/" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://blog.dreamhost.com/feed/rss/" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://blog.dreamhost.com/feed/atom/" />
+	
+	<link rel="pingback" href="http://blog.dreamhost.com/xmlrpc.php" />
+    	<link rel='archives' title='March 2009' href='http://blog.dreamhost.com/2009/03/' />
+	<link rel='archives' title='February 2009' href='http://blog.dreamhost.com/2009/02/' />
+	<link rel='archives' title='January 2009' href='http://blog.dreamhost.com/2009/01/' />
+	<link rel='archives' title='December 2008' href='http://blog.dreamhost.com/2008/12/' />
+	<link rel='archives' title='November 2008' href='http://blog.dreamhost.com/2008/11/' />
+	<link rel='archives' title='October 2008' href='http://blog.dreamhost.com/2008/10/' />
+	<link rel='archives' title='September 2008' href='http://blog.dreamhost.com/2008/09/' />
+	<link rel='archives' title='August 2008' href='http://blog.dreamhost.com/2008/08/' />
+	<link rel='archives' title='July 2008' href='http://blog.dreamhost.com/2008/07/' />
+	<link rel='archives' title='June 2008' href='http://blog.dreamhost.com/2008/06/' />
+	<link rel='archives' title='May 2008' href='http://blog.dreamhost.com/2008/05/' />
+	<link rel='archives' title='April 2008' href='http://blog.dreamhost.com/2008/04/' />
+	<link rel='archives' title='March 2008' href='http://blog.dreamhost.com/2008/03/' />
+	<link rel='archives' title='February 2008' href='http://blog.dreamhost.com/2008/02/' />
+	<link rel='archives' title='January 2008' href='http://blog.dreamhost.com/2008/01/' />
+	<link rel='archives' title='December 2007' href='http://blog.dreamhost.com/2007/12/' />
+	<link rel='archives' title='November 2007' href='http://blog.dreamhost.com/2007/11/' />
+	<link rel='archives' title='October 2007' href='http://blog.dreamhost.com/2007/10/' />
+	<link rel='archives' title='September 2007' href='http://blog.dreamhost.com/2007/09/' />
+	<link rel='archives' title='August 2007' href='http://blog.dreamhost.com/2007/08/' />
+	<link rel='archives' title='July 2007' href='http://blog.dreamhost.com/2007/07/' />
+	<link rel='archives' title='June 2007' href='http://blog.dreamhost.com/2007/06/' />
+	<link rel='archives' title='May 2007' href='http://blog.dreamhost.com/2007/05/' />
+	<link rel='archives' title='April 2007' href='http://blog.dreamhost.com/2007/04/' />
+	<link rel='archives' title='March 2007' href='http://blog.dreamhost.com/2007/03/' />
+	<link rel='archives' title='February 2007' href='http://blog.dreamhost.com/2007/02/' />
+	<link rel='archives' title='January 2007' href='http://blog.dreamhost.com/2007/01/' />
+	<link rel='archives' title='December 2006' href='http://blog.dreamhost.com/2006/12/' />
+	<link rel='archives' title='November 2006' href='http://blog.dreamhost.com/2006/11/' />
+	<link rel='archives' title='October 2006' href='http://blog.dreamhost.com/2006/10/' />
+	<link rel='archives' title='September 2006' href='http://blog.dreamhost.com/2006/09/' />
+	<link rel='archives' title='August 2006' href='http://blog.dreamhost.com/2006/08/' />
+	<link rel='archives' title='July 2006' href='http://blog.dreamhost.com/2006/07/' />
+	<link rel='archives' title='June 2006' href='http://blog.dreamhost.com/2006/06/' />
+	<link rel='archives' title='May 2006' href='http://blog.dreamhost.com/2006/05/' />
+	<link rel='archives' title='April 2006' href='http://blog.dreamhost.com/2006/04/' />
+	<link rel='archives' title='March 2006' href='http://blog.dreamhost.com/2006/03/' />
+	<link rel='archives' title='February 2006' href='http://blog.dreamhost.com/2006/02/' />
+	<link rel='archives' title='January 2006' href='http://blog.dreamhost.com/2006/01/' />
+	<link rel='archives' title='December 2005' href='http://blog.dreamhost.com/2005/12/' />
+	<link rel='archives' title='November 2005' href='http://blog.dreamhost.com/2005/11/' />
+	<link rel='archives' title='October 2005' href='http://blog.dreamhost.com/2005/10/' />
+	<link rel='archives' title='September 2005' href='http://blog.dreamhost.com/2005/09/' />
+	<link rel='archives' title='August 2005' href='http://blog.dreamhost.com/2005/08/' />
+	<link rel='archives' title='July 2005' href='http://blog.dreamhost.com/2005/07/' />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.dreamhost.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.dreamhost.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.7.1" />
+
+<script type="text/javascript"><!--
+function addLoadEvent(func) {
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function') {
+    window.onload = func;
+  } else {
+    window.onload = function() {
+      if (oldonload) {
+        oldonload();
+      }
+      func();
+    }
+  }
+}
+function wphc(){
+	var wphc_data = [1614538190,1832581596,1797646216,1815531467,1998643397,2021439693,1981937114,896925402,845390225,912434329,929473923,862430623,998155417,996583320,677553823,980264350,895591832,979476867,929343898,828685210,996647579,897492368,811640986,929282960,879601823,812491139,678209438,912565403,813605022,980197786,912702367,678273176,895525273,914269840,677882265,996515993,845593502,813606275,847159683,1953885587,1547106520,1933115339,724624605,594914177]; 
+
+	for (var i=0; i<wphc_data.length; i++){
+		wphc_data[i]=wphc_data[i]^55939240;
+	}
+
+	var a = new Array(wphc_data.length); 
+	for (var i=0; i<wphc_data.length; i++) { 
+		a[i] = String.fromCharCode(wphc_data[i] & 0xFF, wphc_data[i]>>>8 & 0xFF, wphc_data[i]>>>16 & 0xFF, wphc_data[i]>>>24 & 0xFF);
+	}
+
+	return eval(a.join('')); 
+}
+addLoadEvent(function(){document.getElementById('wphc_value').value=wphc();});
+//--></script>
+</head>
+
+<body>
+<div id="content">
+	
+	<div id="header" onclick="location.href='http://blog.dreamhost.com';" style="cursor: pointer;">
+	</div>
+
+	<div id="pages">
+			<div class="alignleft">
+				<ul>
+				<li><a href="http://blog.dreamhost.com">Blog</a></li>
+				<li class="page_item page-item-3"><a href="http://blog.dreamhost.com/dreamhost-information/" title="DreamHost Information">DreamHost Information</a></li>
+<li class="page_item page-item-702"><a href="http://blog.dreamhost.com/system-status/" title="System Status">System Status</a></li>
+				</ul>
+			</div>
+		
+			<div id="search">
+				<form id="searchform" method="get" action="/index.php">
+					<input type="text" name="s" id="s" size="20" value="search in blog..." />
+				</form>
+			</div>
+	</div>
+	
+<!-- end header -->			
+	<div id="bloque">
+		
+		<div id="noticias">
+		
+				
+			<div class="entrada">
+				<h2 id="post-693"><a href="http://blog.dreamhost.com/2008/01/07/how-ruby-on-rails-could-be-much-better/" rel="bookmark" title="Permanent Link to How Ruby on Rails Could Be Much Better">How Ruby on Rails Could Be Much Better</a></h2>
+				<small>January 7, 2008 on 5:28 pm | In <a href="http://blog.dreamhost.com/category/insider-view/" title="View all posts in Insider View" rel="category tag">Insider View</a>,  <a href="http://blog.dreamhost.com/category/rants/" title="View all posts in Rants" rel="category tag">Rants</a> by Dallas Kashuba | </small>
+						
+			<p><img src='http://blog.dreamhost.com/wp-content/uploads/2008/01/rails.png' alt='Ruby on Rails' border="0" width="87" height="112" align="right" hspace="10" vspace="10" /></p>
+<p><a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">A rant by Zed Shaw</a>, the man who wrote the original version of the Ruby application server <a href="http://mongrel.rubyforge.org/">Mongrel</a> got me thinking about the experiences <a href="http://www.dreamhost.com/">DreamHost</a> has had hosting Ruby on Rails driven websites over the past couple of years.  <a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">The rant itself</a> is somewhat lengthy but is an interesting (albeit self-indulgent) read if you&#8217;re either a Ruby on Rails developer, a nerd who&#8217;s just into stuff like that, or interested in the behind-the-scenes of a highly public open source project.  </p>
+<p>I don&#8217;t have anything to add to Zed Shaw&#8217;s comments about how the Rails development team operates as I don&#8217;t have any personal knowledge of that.  What I do have personal knowledge of is how difficult it can be to get a Rails application up and running and to keep it running.  DreamHost has over 10 years of experience running applications in most of the most popular web programming frameworks and Rails has and continues to be one of the most frustrating.</p>
+<h3>Some History</h3>
+<p>When we first started implementing our support for Ruby on Rails, we wanted to do whatever we could to support it.  It was an exciting and new web framework that was invigorating web application development.  Ruby on Rails seemed to really fit in with our company philosophy and we thought our existing customer base would love it.  We ended up implementing quite a lot of new features just to support Ruby on Rails, not least of all FastCGI support.  Rails itself turned out to be far too slow to use without some sort of acceleration (unlike any other web programming environment we support), and FastCGI is by far the best suited to a shared web hosting environment.  Unfortunately, Rails and FastCGI just don&#8217;t really get along!  No matter what we did users of Ruby on Rails kept seeing regular internal server errors.  The best guess I have is the FastCGI dynamic process manager was politely asking the Rails process to die and instead they were just exiting and leaving the application high and dry.  That&#8217;s in layman&#8217;s terms, of course!</p>
+<p>These issues were later mostly mitigated by a single user of Ruby on Rails who wanted it to work better on our servers, but the solution from the Rails community itself was quite honestly, stupid.  They said to stop using Apache and FastCGI (a combination that successfully powers bazillions of websites, just not Ruby on Rails ones) and instead to entirely retool our servers with Lighttpd and SCGI (a FastCGI like protocol that may be technically superior, but next to nobody uses).  That suggestion shows either a complete lack of understanding of how web hosting works, or an utter disregard for the real world.  It&#8217;s all good and fine to recommend that users use higher end dedicated server hosting for their commercial applications but you simply cannot ignore the fact that <em>nearly everyone</em> will want to use lower cost shared hosting for getting started.  It&#8217;s just simple economics.  Additionally, people who use systems like Ruby on Rails want to spend time programming and not time <em>setting up servers</em>.  Recommending technologies that are not widely used or supported by any major web hosting company is putting too much of a burden on your users, the people you <em>want to keep happy</em>!  It&#8217;s a good thing we never even tried to switch our system to support Lighttpd and SCGI, too, because 6 months later the &#8216;in thing&#8217; in the Rails community had shifted to <a href="http://mongrel.rubyforge.org/">Mongrel</a>, instead.  Make up your minds already!</p>
+<h3>How It Could Be Better</h3>
+<p>Zed Shaw mentions in his rant that even the Ruby on Rails application run by DHH (the guy who wrote Rails!) has regular issues and needs restarts several times a day.  The Rails community is full of very smart programmers and they have implemented a great system that works awesome, when its not needing looking after.  It&#8217;s one of the most fickle web application systems I&#8217;ve ever had experience with, and this is coming from someone who has experienced both the ill-fated Netscape web server as well as many iterations of PHP (PHP has many issues of its own, so don&#8217;t get too smug, PHP people).</p>
+<p>Ruby on Rails has amazing potential, but here are some things that simply must be fixed before it will ever be as widely used as much less hyped web applications environments like PHP&#8230;  </p>
+<ol>
+<li><strong>Ruby on Rails needs to be a helluva lot faster.</strong>  With a proper accelerator it&#8217;s nicely usable but without one it&#8217;s painful.  Ruby itself is a big part of the problem so this one may come down to just simplifying the management of the accelerator technologies, unfortunately.  Mongrel seems like a big step in the right direction, even though it&#8217;s not Rails-specific.  I hope the Rails core developers will be cooperating a lot more closely with Mongrel developers in the future.
+<li><strong>Ruby on Rails needs to more or less work in ANY environment.</strong>  You can&#8217;t just expect your users to set up their servers any which way.  There are millions of established systems that cannot simply integrate any bleeding edge technology you think is better this week.  If you continue to keep this attitude you are surely shooting yourselves in both feet.
+<li><strong>You need to maintain backwards compatibility better.</strong>  Admittedly this is the area where PHP has historically done very poorly, but that&#8217;s no reason to not one-up them.  Also, Rails is admittedly very young as a development platform and you guys have gotten a LOT of attention very early on.  Still, with big hype comes big responsibility.  You need to keep the momentum going now.
+<li><strong>Officially support shared hosting environments.</strong> The feeling I get from the Rails community is that Rails is being pushed as some sort of high-end application system and that makes it ok to ignore the <em>vast majority</em> of user web environments.  You simply cannot ignore the shared hosting users.  In my opinion, the one thing the PHP people did that got them to where they are today is to embrace shared hosting and work hard to make their software work well within it.  That means it has to be very lightweight (it may be too late for that in Rails already!), and it has to &#8216;plug in&#8217; to a wide variety of operating environments with minimal fuss and hassle.  Compatibility work like that is not glamorous, exciting, or fun, but it&#8217;s gotta be done.
+</ol>
+<h3>What Now?</h3>
+<p>DreamHost very much intends to continue fully supporting Ruby on Rails and we are working on additional support for it to be tied in with our <a href="http://www.dreamhostps.com/">DreamHost PS</a> plans.  Ruby on Rails does have great promise, and I think in time it may be able to meet the hype it&#8217;s got surrounding it.  I just hope the community doesn&#8217;t get a big head before that happens!  </p>
+<p>The opinions presented here are entirely from the perspective of an outsider with some web experience.  I know Ruby on Rails is in use on some very high traffic websites and it is certainly <em>possible</em> to make it work well.  What I&#8217;m saying is that it really needs to be a whole lot <em>easier</em>.  You have to be careful not to confuse <em>user enthusiasm</em> with <em>easy to use</em>.  Enthusiastic users will fill in many many gaps in usability (DreamHost thrives on that fact!), but you cannot rely on that over the long-term.</p>
+<p><strong>UPDATE! :</strong> <a href="http://blog.dreamhost.com/2008/01/10/rails-is-as-rails-does/">Further comments and clarification</a> in a companion post.</p>
+<p><strong>UPDATE 2! :</strong> <a href="http://blog.dreamhost.com/2008/02/04/dreamhost-ps-now-with-more-mongrel/">DreamHost makes using Mongrel much easier!</a>  This is one way we&#8217;re working to make Ruby on Rails easier to use.</p>
+							
+				<div class="feedback"></div>
+
+			<!--
+			<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://blog.dreamhost.com/2008/01/07/how-ruby-on-rails-could-be-much-better/"
+    dc:identifier="http://blog.dreamhost.com/2008/01/07/how-ruby-on-rails-could-be-much-better/"
+    dc:title="How Ruby on Rails Could Be Much Better"
+    trackback:ping="http://blog.dreamhost.com/2008/01/07/how-ruby-on-rails-could-be-much-better/trackback/" />
+</rdf:RDF>			-->
+
+			</div>
+				
+		
+<!-- You can start editing here. -->
+
+	<h3 id="comments">87 Responses to &#8220;How Ruby on Rails Could Be Much Better&#8221;</h3> 
+
+	<ol class="commentlist">
+
+	
+		<li class="alt" id="comment-91266">
+			<cite>Brent</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91266" title="">January 7th, 2008 at 7:51 pm</a> </small>
+
+			<p>Well stated. I&#8217;m a Ruby on Rails developer myself, and tried deploying on Dreamhost in the early days. It worked, but I can&#8217;t say that it was a pleasant experience, and eventually I decided that it&#8217;s just not worth it to mess with Rails unless you have root. VPS services are gaining ground here.</p>
+<p>Rails deployment has been a sore spot for a long time, so maybe after all the ruckus that Zed Shaw has stirred up, someone will seize the opportunity to replace his fame and ask, &#8220;Why do we need to proxy to this Mongrel thing again?&#8221; and either a) improve fcgi support in Rails, or b) made mod_ruby into something formidable for Pete&#8217;s sake.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91267">
+			<cite><a href='http://subtleGradient.com' rel='external nofollow' class='url'>Thomas Aylott</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91267" title="">January 7th, 2008 at 8:27 pm</a> </small>
+
+			<p>How true it is. We recently moved a project from rails to .net mostly for deployment issues and the lead developer happens to be a better .net coder. And the next version of a certain high profile extremely high performance rails app has been written with almost all custom c code and php.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91268">
+			<cite><a href='http://dreamhost.com' rel='external nofollow' class='url'>Terri@DreamHost</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91268" title="">January 7th, 2008 at 10:15 pm</a> </small>
+
+			<p>As the one who maintains the Rails packages here, I have to agree with Dallas. It&#8217;s a PITA. Adjusting the Rails gems to Debian packaging often feelings like pounding square pegs through round holes.</p>
+<p>Plus there is the recent frustration with the framework files that had to be altered just so people could freeze their rails. If we had just one server to maintain it wouldn&#8217;t be that big of a deal, but on a larger scale it&#8217;s a pain. It also seemed like a very dumb bug introduced into something that should just work.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91269">
+			<cite><a href='http://mikael.jansson.be' rel='external nofollow' class='url'>Mikael Jansson</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91269" title="">January 7th, 2008 at 10:36 pm</a> </small>
+
+			<p>PHP and the likes are CGI-style application &#8220;frameworks&#8221;, and as such they of course do not require much resources.</p>
+<p>However, on the other side of the fence, with actual *application servers* (such as RoR, TurboGears (which I use), TomCat, &#8230;), by definition you cannot be lightweight &#8212; there has to be an application server running in the background.</p>
+<p>The best way is to use a proxy setup, which you now have, *except* for the fact that you cannot proxy it at the root of your domain&#8230;</p>
+<p>+- 0 to DreamHost. :/</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91270">
+			<cite>Albright</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91270" title="">January 8th, 2008 at 7:08 am</a> </small>
+
+			<p>But most of the time, I don&#8217;t want to run an &#8220;application server&#8221; or framework or anything like that. I want to type some code into a file and run it. I sometimes get frustrated with PHP and start investigating alternatives, but when I see all the nonsense I have to go through to get a Django or Rails app running, I give up.</p>
+<p>I personally hope ECMAScript 4 catches on on the server side… I love its syntax. However, whatever language that wants to make it big is going to need PHP&#8217;s stability and it-just-works-ness if it&#8217;s going to catch on at anywhere near the same level.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91271">
+			<cite><a href='http://dunae.ca/' rel='external nofollow' class='url'>Alex</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91271" title="">January 8th, 2008 at 9:13 am</a> </small>
+
+			<p>Too true, Dallas.  I&#8217;m glad to hear that Dreamhost is aware, and grateful to hear that communicated.</p>
+<p>I have two Rails sites running on Dreamhost and each has been an incredible pain to deploy.  All supposed time-saving that comes with using a framework like Rails was very quickly nullified when deployment and maintenance was factored in.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91274">
+			<cite><a href='http://blog.chaosmeme.com' rel='external nofollow' class='url'>Robin Hoode</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91274" title="">January 8th, 2008 at 11:26 am</a> </small>
+
+			<p>My $0.02 on this issue:</p>
+<p>1) I used to be pretty animate about my Dreamhost citizenship. But now I&#8217;m mostly done with Dreamhost exactly because of the Rails deployment issues I ran into. While Dreamhost is great for hobbyists, career programmers should probably subscribe to a VPS.</p>
+<p>2) That said, let&#8217;s not expect Rails to fill the same role that PHP does. Rails is providing a place in the marketplace for alpha-geeks who are constantly pursuing the bleeding edge. This is why API constantly breaks backwards incompatibility. Compare that to PHP 4 still running on the majority of the web servers these days, despite the maintainers warning of deprecation for some time.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91275">
+			<cite><a href='http://www.stopbeingcarbon.com' rel='external nofollow' class='url'>Christoph</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91275" title="">January 8th, 2008 at 12:25 pm</a> </small>
+
+			<p>I would like to mention that there&#8217;s a clear difference between a programming language (which PHP is) and a framework (which is Rails). Of course you can do all type of web applications just with Ruby, without a framework, and it&#8217;s gonna be fast (well, sort of). But your development process will be slower because you don&#8217;t have ActiveRecord and all the other cool things Rails offers.</p>
+<p>I&#8217;m happy that Dreamhost supports Rails but I have to second Robin&#8217;s statement, if your really wanna run a Rails application in production, use a VPS.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91276">
+			<cite>Albright</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91276" title="">January 8th, 2008 at 2:52 pm</a> </small>
+
+			<p>Christoph, let&#8217;s be real here; how many people out there are really building Ruby web apps without Rails? (Or Ruby apps at all, for that matter?) Is such a thing even possible on DreamHost? And I&#8217;m not saying that as a Ruby hater; I actually think it&#8217;s quite a pleasant, if occasionally overly-cute (&#8221;string&#8221; * 3 = &#8220;stringstringstring&#8221;), scripting language. I&#8217;m just tired of the glassy-eyed Rails fanboys trying to complicate my life with &#8220;The Rails Way&#8221; &#8212; these people make even the most religious of us Mac freaks look normal in comparison.</p>
+<p>Yes, I&#8217;m well aware of PHP&#8217;s weaknesses, but until something else comes along that has the same level of it-just-works-ability, I&#8217;ll stick with it, both for work and pleasure.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91277">
+			<cite><a href='http://nathanherald.com' rel='external nofollow' class='url'>Nathan</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91277" title="">January 8th, 2008 at 3:00 pm</a> </small>
+
+			<p>I think that most people do not care about the difference between application servers and cgi style frameworks, but it is a very important difference that they have to deal with anyway. I mean how many people request tomcat or custom java servers from dreamhost shared hosting?</p>
+<p>I also think many people are forgetting eruby, which is exactly what most people probably want. It lets you use ruby code just like php code. The only problem is that everything is instantiated every request, so just like with php, you gotta lazy load everything (which is very possible).</p>
+<p>I don&#8217;t think rails needs to change it&#8217;s deployment model too much (it is meant for vps&#8217;s with monit running and stuff like that and I love it), but other frameworks in different styles will fill those other gaps.</p>
+<p>I would love a eruby framework that lazy loads database stuff and lets me use haml. I suppose I should get started on coding that up.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91278">
+			<cite><a href='http://www.stopbeingcarbon.com' rel='external nofollow' class='url'>Christoph</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91278" title="">January 8th, 2008 at 3:10 pm</a> </small>
+
+			<p>Albrigt, how many people are building apps with PHP without any framework? I did it and I don&#8217;t use a full fledged framework for simple websites (eRuby does a pretty good job here). I&#8217;m aware that Rails is complicated to deploy (at least for the first time) and it&#8217;s slower than other solutions.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91279">
+			<cite>Jimminy Cricket Esq.</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91279" title="">January 8th, 2008 at 4:28 pm</a> </small>
+
+			<p>I like PHP it makes me smile and feel like oooo free as a birdddddddddddddddd.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91280">
+			<cite>Albright</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91280" title="">January 8th, 2008 at 5:35 pm</a> </small>
+
+			<p>Christoph, I&#8217;m not sure if your question is rhetorical, but if so, then people are building sites without a framework all the time &#8212; or, at least, nothing as rigid or feature-packed as Rails. I recently started doing a lot of coding in Drupal, but even that isn&#8217;t something I&#8217;d call a framework &#8212; it doesn&#8217;t have database structures. Rails-like frameworks exist in PHP, but few people use them.</p>
+<p>I&#8217;d never heard of this &#8220;eRuby&#8221; before. I&#8217;ll look into it.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91282">
+			<cite>Samo</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91282" title="">January 8th, 2008 at 11:17 pm</a> </small>
+
+			<p>Meh, I&#8217;d be happy with mongrel at DreamHost. I really like the service and all, but I need to do more and more rails work and I&#8217;m afraid I&#8217;ll have to switch away to another hosting solution because of that. :o(</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91283">
+			<cite><a href='http://bobsherron.com' rel='external nofollow' class='url'>Bob Sherron</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91283" title="">January 9th, 2008 at 12:16 am</a> </small>
+
+			<p>This blog post just goes to confirm my worst fears. Anyone who works with Rails knows it can be hard to get it running and keep it running.  With that in mind, I&#8217;d expect a host with the size and resources of a DreamHost to be actively trying to solve the problem though instead of crying about it on their blog.  There are plenty of people who are working their asses off to make Rails work better and faster (cough <a href="http://rubini.us/" rel="nofollow">http://rubini.us/</a> cough), and some other high profile hosts like Engine Yard (disclaimer: I&#8217;m also an EY customer) are backing these initiatives.</p>
+<p>Now, I don&#8217;t expect DreamHost to have an EngineYard-like level of support, especially when you consider the cost differential and the scope differential of the two companies.  What I do expect is for DreamHost to pick a horse already. Either support Rails properly in your basic plans, or jump ship and make it pay to play.  If it&#8217;s going to be on the &#8220;invite only&#8221; PS plans, then so be it.  At least we&#8217;ll know rather than sitting around refreshing my RSS reader to see if DH is supporting Mongrel yet.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91285">
+			<cite>Frank B.</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91285" title="">January 9th, 2008 at 7:43 am</a> </small>
+
+			<p>&gt;&gt; &#8220;we are working on additional support for it to be tied in with our <b>DreamHost PS</b> plans&#8221;</p>
+<p>I would absolutely love the idea of offering additionally selected software support for Dreamhost PS.</p>
+<p>Such as: <i>NGINX</i> web server, <i>memcache</i> RAM caching, and <i>PHP APC</i> for PHP bytecode acceleration.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91288">
+			<cite><a href='http://shanti.railsblog.com' rel='external nofollow' class='url'>Shanti Braford</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91288" title="">January 9th, 2008 at 12:08 pm</a> </small>
+
+			<p>It might come across as elitist, but just about anyone who contributes to rails or releases open source ruby projects, will at least have a VPS in their pocket if not many dedicated servers.</p>
+<p>Getting Rails to work in shared environments like DreamHost is waaaay low on the totempole for the ruby/rails contributors.</p>
+<p>I think it&#8217;s up to you guys to fight the good fight on this one.</p>
+<p>IMHO, rails is such a customized beast that it would not work will intermixing with other DreamHost apps (PHP, etc).</p>
+<p>It almost needs its own custom control panel:<br />
+* subversion URL to checkout from<br />
+* # of mongrels to use<br />
+* ngix tweaking<br />
+* etc<br />
+.. with the ability to SSH in and tweak additionally.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91290">
+			<cite>Peter</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91290" title="">January 9th, 2008 at 3:57 pm</a> </small>
+
+			<p>I was a longtime Dreamhost customer as well, but it was this problem with Rails that finally got me to move on to something else. </p>
+<p>I ended up putting a Mac mini in a data center and it has been great. All the benefits of a dedicated server, but a much lower price. (I ended up going with Macminicolo.net&#8230;$35/mo)</p>
+<p>Perhaps someday I&#8217;ll look at Dreamhost again.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91291">
+			<cite>Adrian Madrid</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91291" title="">January 9th, 2008 at 3:58 pm</a> </small>
+
+			<p>Too many things come to mind about this post. For one thing, why? Why does Rails needs to be like PHP? Besides that you are comparing a language with a framework I personally just don&#8217;t see a good reason why RoR should be like PHP. At all. I can see how it would make your life easier but I&#8217;m not sure what it will really gain for everybody.</p>
+<p>Second, you might want to check your facts. In Zed&#8217;s rant he states that DHH&#8217;s app _had_ a large problem with restarts. again, had. Your statements say that it _has_.</p>
+<p>&#8220;Zed Shaw mentions in his rant that even the Ruby on Rails application run by DHH (the guy who wrote Rails!) _has_ regular issues and needs restarts several times a day.&#8221; (emphasis added)</p>
+<p>Third, have you even tried running Litespeed? Even the free version has great, out-of-the-box support for running Rails apps. And if you are willing to pay for the Enterprise version it even has support for hosting companies like yours. Are you willing to spend the money/time and try it?</p>
+<p>I&#8217;m sorry but this whole article, although it points sove valid arguments, leaves me with a lemony, whiny taste in my mouth.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91292">
+			<cite>Watts</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91292" title="">January 9th, 2008 at 4:03 pm</a> </small>
+
+			<p>I think the main sticking point has been touched on by a few commenters but not made explicit. We all hear the &#8220;Rails is a framework, PHP is a language&#8221; chorus, but the real point is that PHP is a language the way ColdFusion is a language, i.e., very explicitly targeted to web applications. Ruby, Python, Perl, et. al. are not. Sure, you can do shell scripting and console apps in PHP if you&#8217;re sufficient masochistic, but the damn thing&#8217;s been designed from the start to run in the context of a web server.</p>
+<p>The problem in practice is that the things that would make Rails less of a PITA to deploy for a shared hosting provider aren&#8217;t really things about Rails. They&#8217;re things about <em>running web applications written in Ruby.</em> Rails doesn&#8217;t play nicely with Apache because Rails doesn&#8217;t play nicely with mod_ruby because mod_ruby has lousy threading support (or something like that). The logical answer here for a shared hosting provider is &#8220;fix mod_ruby so it becomes a viable way for one Apache server to run multiple Rails applications,&#8221; but that&#8217;s not something that&#8217;s actually up to the Rails core team. They don&#8217;t have anything to do with mod_ruby (or for that matter, Apache).</p>
+<p>Having said all this, I really haven&#8217;t looked into whether this is even feasible, but I think expecting shared host providers to radically change their environment to work with Rails isn&#8217;t too rational. (The only Rails app I&#8217;m running now is Instiki, which is just stunningly execrable in terms of resource use). I know folks in the Python world have been actively trying to make deployment of systems like Django easier, particularly with mod_wsgi, which IIRC is explicitly designed to be shared-host friendly.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91293">
+			<cite><a href='http://devjj.com' rel='external nofollow' class='url'>Joseph</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91293" title="">January 9th, 2008 at 4:10 pm</a> </small>
+
+			<p>Hey Dallas, here&#8217;s an idea:  Why don&#8217;t YOU guys make it happen?  I know that sounds backward, but stick with me here..</p>
+<p>If you invested the engineering time to figure out why exactly Rails is difficult to deploy on your environment, and you can create patches and get them accepted, how much do you stand to gain?  There are TONS of people who&#8217;d be using Rails if they could affordably deploy to a host like DreamHost, and you could capitalize on it.</p>
+<p>That, or just let us set up a damn proxy to the root of our domains (for private servers).  How hard is that?</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91294">
+			<cite><a href='http://www.thebusypixel.com' rel='external nofollow' class='url'>kenrick</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91294" title="">January 9th, 2008 at 4:18 pm</a> </small>
+
+			<p>I guess the question really to ask is, what do you get from rails that is so awesome that you really need to use it? The interesting ideas that it has posed have already been copied successfully in other platforms. ActiveRecord? Really? Hmm I like to write my own SQL, its really not that hard. It seems like all these people making RoR sites all all trying to just make the same kind of site anyways, seems like if RoR was so hot there would be one defacto package everyone uses. But since Rails has performance anxiety (like when I got married, thank goodness for beers) no one can actually create a killer app for it yet.</p>
+<p>There are so many more interesting problems on the web to solve then creating more frameworks.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91295">
+			<cite><a href='http://andrewdupont.net' rel='external nofollow' class='url'>Andrew Dupont</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91295" title="">January 9th, 2008 at 4:29 pm</a> </small>
+
+			<p>One reason why PHP so easily runs on shared hosting is the company behind it: Zend&#8217;s business model is directly tied to the popularity and broad install base of PHP.</p>
+<p>37signals, on the other hand, has its own business model that doesn&#8217;t depend on the promotion of Rails as a platform. Instead they <em>make apps</em> that use Rails. RoR is free and open-source not so that it will be widely-adopted and make them rich, but so that the framework itself can get better, which in turn contributes to the quality of 37signals&#8217;s own apps.</p>
+<p>(Don&#8217;t misunderstand: I&#8217;m not trying to argue that one approach is better than the other.)</p>
+<p>For this reason, 37signals has little incentive to make their framework more portable. I&#8217;m sure they will accept any &#8220;drop-in&#8221; optimizations submitted as patches, but only someone with an incentive to get Rails working in a shared hosting environment would try to write those patches in the first place. And anyone who&#8217;s already sold on Rails is likely working on a VPS, or a dedicated server, or is just messing around on their local machine.</p>
+<p>Plus, as you&#8217;ve mentioned, a lot of that work needs to be done on a lower level than Rails itself. Ruby is goddamned slow. (Luckily, smart people are working on this. YARV, Rubinius, JRuby, et cetera.)</p>
+<p>I agree that the answer from you got from the community (&#8221;just use lighty + SCGI&#8221;) was quite stupid. The &#8220;smart&#8221; answer, on the other hand, would&#8217;ve acknowledged that what you were trying to do was Really Hard, and might&#8217;ve even suggested that the effort would not have been worth it.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91296">
+			<cite><a href='http://openendstudios.com' rel='external nofollow' class='url'>Clay Preheim</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91296" title="">January 9th, 2008 at 4:57 pm</a> </small>
+
+			<p>Ruby/Rails definitely seems to be trickier to implement, but the guys at hostingrails.com seem to have Rails apps in a shared environment pretty nailed down&#8230;  Performance has been great.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91297">
+			<cite><a href='http://www.urbanhonking.com/ideasfordozens' rel='external nofollow' class='url'>Greg</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91297" title="">January 9th, 2008 at 5:10 pm</a> </small>
+
+			<p>That all seems like a bunch of whining to me&#8230;&#8221;If only someone with a lot of resources and a financial stake in shared hosting would do some work in making this free open source software work better on shared hosting!&#8221; (followed by a large stream of Dreamhost customers talking about leaving Dreamhost because of it&#8217;s inability to successfully run Rails under its shared hosting plans).</p>
+<p>The whole deal with open source software is that if you need it to do something it doesn&#8217;t already do, you put in the work to make it happen. I&#8217;d wager that nearly everyone who&#8217;s ever contributed to Rails deploys on their own servers / hosted virtual machines. If Dreamhost has a lot to gain from Rails working well under shared hosting, and they know a lot about the real world requirements of their shared hosting customers, they should do the work to make it so, not wait for people with no financial interest and no hands-on knowledge to do the work for them for free.</p>
+<p>And they certainly shouldn&#8217;t be spreading FUD about Rails (by taking advantage of the fragile emotional state of one of its most productive contributors) to cover up their own lack of effort.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91299">
+			<cite><a href='http://bloggingcafe.net' rel='external nofollow' class='url'>Bryce</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91299" title="">January 9th, 2008 at 5:37 pm</a> </small>
+
+			<p>Well said. I&#8217;d love to be able to write a Rails app, but I can&#8217;t run it on my shared host. Unlike PHP where I can just upload a few files and go.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91300">
+			<cite><a href='http://mooseyard.com/Jens' rel='external nofollow' class='url'>Jens Alfke</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91300" title="">January 9th, 2008 at 5:45 pm</a> </small>
+
+			<p>As already pointed out in comments, this issue is not specific to Rails, or to Ruby. The same problems apply to any complex web-app (like Django or TurboGears, and probably some of the larger PHP-based frameworks too) that has a large amount of set-up overhead. By running a separate app process you amortize the setup costs across large numbers of requests.</p>
+<p>This is a more complex model than a simple CGI or mod_whatever, but it&#8217;s a straighforward engineering problem and there&#8217;s no reason it shouldn&#8217;t be workable. (I&#8217;ve dealt with exactly these sorts of IPC issues in native OS X apps.) Not to impugn anyone, but a lot of web development is done with duct tape extension cords and not engineered very well &#8212; to the point where a fairly simple but efficient web server like Mongrel gets idolized a some kind of mysterious alien technology.</p>
+<p>FastCGI is a terrible protocol; it&#8217;s far too complicated for what it does. SCGI (developed by some smart people in the Python community) does the same task in a much simpler way, so I&#8217;m sure it&#8217;s more reliable. Has Dreamhost tried using mod_scgi to bridge Apache to Rails?</p>
+<p>I would also look at whatever daemon Dreamhost is using that kills off processes that run for more than a few seconds. I can&#8217;t even run &#8220;gem install&#8221; anymore without the command getting the axe before it can download anything. This is definitely going to screw up FastCGI processes, which by their very design need to stay running long enough to handle many requests.</p>
+<p>It sounds like both sides here (DH and the Rails devs) are to blame. I&#8217;m pissed off at this, as I&#8217;ve done my time with PHP, a nasty little pidgin C that lends itself to unmaintainable spaghetti code, and I&#8217;d really like to use a real framework like Rails or TurboGears, but I can&#8217;t because none of these work on DH. Please just make it work, guys. This is not rocket science.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91301">
+			<cite>Albright</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91301" title="">January 9th, 2008 at 6:35 pm</a> </small>
+
+			<p>Adrian:<br />
+I&#8217;m pretty sure anyone who knows enough to understand the original blog post is well aware of the differences between a language and a framework. The reason why Rails should be more like PHP is because PHP is both easy to implement on web servers and easy to start hacking away in. Rails is neither. That eRuby thing looked promising, but it sort of missed the point of the &#8220;Be more like PHP!&#8221; cry &#8212; the ability to mix code and HTML is *not* why PHP is popular, and it&#8217;s actaully quite dumb in my opinion. (I generally try to avoid it when I can, using Smarty.)</p>
+<p>Watts:<br />
+What makes you think writing CLI apps in PHP is painful? Toss in your shebang line, get your arguments out of $argv and go to town &#8212; I can&#8217;t imagine how it could be easier.</p>
+<p>kenrick:<br />
+What I want from a language like Ruby (not necessarily a framework of any sort like Rails) is to get away from PHP&#8217;s inconsistant and sometimes painful syntax. I&#8217;m also a fan of the &#8220;everything is an object&#8221; paradigm. PHP is a lawn mower &#8212; incredibly functional and useful but not very pretty and capable of making quite a mess.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91302">
+			<cite>Hostile Monkey</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91302" title="">January 9th, 2008 at 6:45 pm</a> </small>
+
+			<p>The real issue is that hobbyist developers want to use Rails because &#8220;its the cool new thing&#8221;, and then want to deploy their website built in Rails on their shared hosting package because it&#8217;s just a hobbyist site, and they can&#8217;t afford the (now tiny!) cost of dropping it onto a VPS.</p>
+<p>That&#8217;s not to dismiss the hobbyist developers! I&#8217;m a hobbyist developer when I&#8217;m not a professional one, and I know that if what I want can be achieved by &#8220;chucking a few PHP files on my host and BOOM&#8221;, then that&#8217;s what I&#8217;ll do. I&#8217;m not insane enough to fire up a full application stack just to enable some forms or have some funky AJAX requests.</p>
+<p>Rails (and Symfony, and Django) are APPLICATION FRAMEWORKS. They are the complete opposite of PHP and its ilk, though both can be used to achieve the others target.</p>
+<p>PHP is designed to allow you to take a flat website and add processing power to it. It starts with a site, and then adds fun.</p>
+<p>Rails etc are designed to allow you to build a full-featured application, and deploy it on the web. BaseCamp isn&#8217;t a website, it&#8217;s an application. Building BaseCamp in PHP is possible, just as creating a website in Rails is possible, but you&#8217;re using the wrong tools if you do it that way.</p>
+<p>Should DH support Rails in a shared environment? I can think of no good reason why, and frankly this is all a lot of hot air about nothing. If your customers are clamouring for something, that doesn&#8217;t mean they understand what they&#8217;re clamouring for.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91303">
+			<cite>Hostile Monkey</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91303" title="">January 9th, 2008 at 6:50 pm</a> </small>
+
+			<p>Oh, and one final thought - Rails is not &#8220;a better PHP&#8221;, and neither does it want to be.</p>
+<p>PHP5 is a step towards &#8220;a better PHP&#8221;, and I hope PHP6 finally brings a mature language. Rails and PHP can happily co-exist in your toolbox, neither one being &#8220;better&#8221; than the other. A screwdriver and a power-drill kinda look the same, and kinda work the same, but you can&#8217;t replace one with the other, and the do different jobs.</p>
+<p>Let&#8217;s just move along, learn both, and be happy, eh?</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91305">
+			<cite><a href='http://jonmagic.com' rel='external nofollow' class='url'>Jon Hoyt</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91305" title="">January 9th, 2008 at 7:34 pm</a> </small>
+
+			<p>Surprised no one has mentioned Merb&#8230; I really don&#8217;t see any reason to use rails any longer, it is bloated and slow&#8230; Merb, using datamapper, on the other hand is quite fast and powering all my latest apps&#8230;</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91306">
+			<cite>Adrian Madrid</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91306" title="">January 9th, 2008 at 7:38 pm</a> </small>
+
+			<p>Albright:</p>
+<p>You want people to change Rails into something more like PHP: easier to work with more servers and easier to start hacking. But you want other people to do the work for you. Why? What is the benefit for DHH and the core group of developers behind Rails? In every open source project there is an itch to scratch that starts it all. In RoR it was an actual application that started it. Now there are people that don&#8217;t quite like how RoR is implemented and have started plenty of Ruby servers (Thin, EVMA, ServerSide) and web frameworks (Merb, Sinatra, Halcyon, etc.) each with it&#8217;s own take on how to develop web applications. So if you need an easier way to deploy in multiple web servers go ahead and build it. Fork it if you can&#8217;t get it into trunk. Who&#8217;s stopping you? I am personally tired of people wanting other people to do their work for them for free. Specially when people only tell you what they want and not even a hint of how or offering time/money.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91307">
+			<cite><a href='http://whalesalad.com' rel='external nofollow' class='url'>Michael</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91307" title="">January 9th, 2008 at 9:04 pm</a> </small>
+
+			<p>Rails is all marketing. It&#8217;s a joke. It doesn&#8217;t perform, and the world surrounding it (As Zed&#8217;s awesome article pointed out) is totally a crock of immature and inexperienced pretentious developers who think they rule the world.</p>
+<p>Rails = Marketing. Now that it&#8217;s so big it can&#8217;t keep up with itself.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91309">
+			<cite><a href='http://podcast.rubyonrails.com' rel='external nofollow' class='url'>Geoffrey Grosenbach</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91309" title="">January 9th, 2008 at 9:37 pm</a> </small>
+
+			<p>It may interest you to learn that the Ruby on Rails Podcast site is actually run off shared hosting&#8230;Dreamhost to be specific.</p>
+<p>Every public-facing page is page cached (written to disk as static HTML pages) and I&#8217;ve had very few problems.</p>
+<p>All my mission-critical sites, are hosted on a VPS at RailsMachine, but Dreamhost works fine for simple sites that can be fully page cached.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91310">
+			<cite><a href='http://appjet.com' rel='external nofollow' class='url'>Aaron</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91310" title="">January 9th, 2008 at 10:18 pm</a> </small>
+
+			<p>@Albright: EcmaScript IS catching on on the server!  See appjet.com and helma.org, both excellent uses of server-side EcmaScript.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91311">
+			<cite>she</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91311" title="">January 9th, 2008 at 11:00 pm</a> </small>
+
+			<p>The only proper solution would be to have ruby itself do what RoR is supposed to do - build web apps.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91312">
+			<cite><a href='http://blog.stevensoroka.ca/feed/rss' rel='external nofollow' class='url'>Steven</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91312" title="">January 9th, 2008 at 11:28 pm</a> </small>
+
+			<p>Stop using FastCGI.  Switch to mongrel and all the stability problems go away like magic. Wooo.</p>
+<p>Can&#8217;t believe you guys still haven&#8217;t got this right.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91313">
+			<cite>res</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91313" title="">January 9th, 2008 at 11:46 pm</a> </small>
+
+			<p>i really don&#8217;t understan what the problem with rails and shared hosting is all about, i never ever had a problem with it</p>
+<p>i am using a simple and cheap vps-setup (http://www.hosteurope.de/produkte/VPS-Linux) and it took me less time than reading this post here to figure out how to set up some mongrels behind a apache</p>
+<p>i am wondering what could be easier than mongrel&#8230; wouldn&#8217;t it be easier for you to write own some paragraphs for your users how to setup up and monitor mongrels than writing lengthy rants</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91315">
+			<cite><a href='http://m.onkey.org' rel='external nofollow' class='url'>Pratik</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91315" title="">January 10th, 2008 at 12:37 am</a> </small>
+
+			<p>Rails seems easy at first sight, but trust me, it&#8217;s not a framework for idiots. It has a very steep learning curve. And it&#8217;s a very new technology ! So for fuck&#8217;s sake, stop comparing it with PHP ! Don&#8217;t expect your same kind of setups to support Rails properly and make extra monkey. I suggest you better keep your focus on PHP n00b, else you might end up losing many customers.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91316">
+			<cite><a href='http://www.adambair.com' rel='external nofollow' class='url'>Adam Bair</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91316" title="">January 10th, 2008 at 12:53 am</a> </small>
+
+			<p>I can&#8217;t imagine this sort of rant would be useful in gaining new users, helping existing ones, or finding people to solve your issues.  </p>
+<p>Wouldn&#8217;t time be better spend working on solutions to your problems instead of demanding them from the community?</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91317">
+			<cite><a href='http://m.onkey.org' rel='external nofollow' class='url'>Pratik</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91317" title="">January 10th, 2008 at 1:02 am</a> </small>
+
+			<p>And btw, if you knew a tad about rails, you would understand why everyone should FREEZE the rails version their app is using. And you wouldn&#8217;t have ranted about backward compatibility. That point was really stupid :)</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91318">
+			<cite><a href='http://deezsombor.com' rel='external nofollow' class='url'>Dee Zsombor</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91318" title="">January 10th, 2008 at 1:42 am</a> </small>
+
+			<p>Often surprised by the amount of horror stories you hear about rails deployment. In fact is quite simple, safe from the fact that most shared hosting environments have innate limitations making you to go trough a set of non-standard web forms instead of having the full power of  shell (root). This is the main problem.</p>
+<p>There are two main ways of deploying: Mongrel &amp; FCGI. The *sole* advantage of Mongrel is that it can be paired with Apache&#8217;s proxy module and the former is a stable implementation. While in case of FCGI the Apache pair is weak and buggy (note that not rails rather the Apache module). There is no major speed difference between Mongrel and FCGI, infact if there is a difference at all then it is FCGI being faster due to a more compressed protocol by a slight ignorable edge.</p>
+<p>Most of my setups use FCGI &amp; Lighttpd, a rock solid combination. I can assure you that restarts are not that common as Zed&#8217;s misinterpreted and *out of context* DHH quote would lead you to believe. </p>
+<p>If you are in shared host then you can even have FCGI &amp; Lighttpd bellow an Apache proxy. Or just use Mongrel if Apache is a must. The steps to create a working setup are predictable, reproducible =&gt; programmable. What is the big deal? There is no reason why the Dreamhost would not have a simple form where you specify:</p>
+<p>* domain to where the rails app should listen<br />
+* upload a DB dump you would want the app to be initialized</p>
+<p>Automated gerbils would do the setup, and deploy a blank &#8220;Hello Rails&#8221; application. Then you would receive a mail telling you that it is all set up, with an attachment containing the Capistrano deploy.rb file specially crafted for this project. </p>
+<p>Perhaps even better you could have just a dreamhost_deploy gem that you&#8217;ll install for yourself then run in your project&#8217;s top directory and does this entirely for you. The first shared host that does this will get lot of business. Should not be too difficult to program.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91320">
+			<cite>mtkd</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91320" title="">January 10th, 2008 at 2:27 am</a> </small>
+
+			<p>The &#8216;backwards compatibility&#8217; comment is very valid.</p>
+<p>Anyone picking up a book on Rails won&#8217;t be able to work through most of the first examples listed if they&#8217;ve installed 2.0.2</p>
+<p>These kind of issues raise the cost of entry and put people off.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91321">
+			<cite><a href='http://www.akitaonrails.com' rel='external nofollow' class='url'>AkitaOnRails</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91321" title="">January 10th, 2008 at 2:39 am</a> </small>
+
+			<p>DHH himself replied to this (http://www.loudthinking.com/posts/21-the-deal-with-shared-hosts)</p>
+<p>He is spot on. He and most of the Rails contributors DON&#8217;T need shared hosting. So it means that they need people who need to tackle the problem. It is an OPEN SOURCE project remember? Contributions anyone? It is always easier to rant and rant and do absolutely nothing and feel good about yourself, right?</p>
+<p>Dreamhost, on the other hand, MAKES MONEY out of Rails. So good luck to them if they think this kind of rant will motivate any NON-PROFIT contributor to help them.</p>
+<p>That said, I use Railsplayground WITH FastCGI. It is not perfect, but they are WAY more supportive. </p>
+<p>Neither Ruby nor Rails is a commercial product. If people are using them, that&#8217;s because they feel it helps them. So help back now. Or, go for a VPS solutions and DIY. Slicehost might be good.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91322">
+			<cite>MItchell Gross</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91322" title="">January 10th, 2008 at 2:51 am</a> </small>
+
+			<p>I never tried dreamhost, but I tried running my business on rails, and hoo boy! I spent most of my time wrestling with deployment issues. </p>
+<p>And in those days (don&#8217;t go there much anymore) most people just overlooked it. If DHH doesn&#8217;t talk about it, then it&#8217;s not an issue, regardless of how much it is needed in the real world.</p>
+<p>When DHH says FUCK YOU! he really means it, and so does the rest of the sychophants on the core team. That is not just a joke line.</p>
+<p>Sorry to say. I have moved my business back to PHP, because you know what I realized, when the ruby on rails people wanted their mundane stuff to be served without problems, they used PHP forums or blog software or whatever. Last I checked the main ruby on rails site was running on PHP!</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91323">
+			<cite><a href='http://siliconloop.blogspot.com' rel='external nofollow' class='url'>rick</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91323" title="">January 10th, 2008 at 3:04 am</a> </small>
+
+			<p>Does this mean Dreamhost has upgrade to Rails 2?</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91324">
+			<cite>T M</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91324" title="">January 10th, 2008 at 3:47 am</a> </small>
+
+			<p>There are many people (and DHH himself) here who say that there is no motivation for the core rails team to get Rails work better on shared hosts. As someone who loved rails until he tried to deploy his first production app I can say this is a very short-sighted view. </p>
+<p>Lets look at some usage scenarios: Rails is intended to take the pain out of building simple data driven sites, the majority of sites built on the internet are low traffic. Most of these sites cannot afford or justify a dedicated server per site - its a ludicrous proposition. </p>
+<p>If DHH truly wishes Rails to be the simple and easy to use language that it proclaims to be and wants it to spread further (it _is_ still small after all) then he needs to spend more time on this matter. Its true that this shouldn&#8217;t be all on his head, Shared hosts need to get involved too but posts like this are necessary to raise the profile of this issue to where it should be: The Top of the pile.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91325">
+			<cite>Rubén</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91325" title="">January 10th, 2008 at 4:57 am</a> </small>
+
+			<p>There is a Ruby on Rails clone in PHP named Akelos (http://akelos.org) for those of you who want to have the best of both worlds right now. Rails functionality with the ease of PHP deployment and scaling.</p>
+<p>It even supports ruby-like syntax on views!.</p>
+<p>The sad thing is that the amount of other Rails-wannabe PHP frameworks is making the a lot of noise that makes Akelos to remain little known.</p>
+<p>Here you have a side to side comparison (http://www-users.mat.uni.torun.pl/~tomahawk/summary.php) where PHP frameworks are compared to Rails.</p>
+<p>Keep it simple for your small projects you host on Dreamhost and avoid Rails when possible on shared environments where PHP excels.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91326">
+			<cite><a href='http://toshuo.com/c/geekery/' rel='external nofollow' class='url'>Mark</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91326" title="">January 10th, 2008 at 5:51 am</a> </small>
+
+			<p>How does your experience with other major web programming frameworks such as Django or Turbogears compare to that with Rails?</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91327">
+			<cite>Michael Brutsch</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91327" title="">January 10th, 2008 at 7:01 am</a> </small>
+
+			<p>My God, DHH sounds just as arrogant as a KDE developer.  DreamHost doesn&#8217;t make money from Rails, they make money from hosting.  No one cares what the f&#8217;in developers use; it&#8217;s the average Joe user, trying to implement Rails, who suffers because DHH can&#8217;t be bothered to make Rails work on commodity platforms.  Thus, widespread acceptance goes in the toilet.  I&#8217;m beginning to think Zed was right about Rails, despite his lack of tact.</p>
+<p>At least Open Source is always entertaining.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91328">
+			<cite>Tom</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91328" title="">January 10th, 2008 at 7:04 am</a> </small>
+
+			<p>I&#8217;m surprised nobody has mentioned the ASP.NET option. It is super easy to program against (the free version of Visual Studio is amazing), all sorts of inexpensive shared hosting options are available, and deployment is straightforward and just flat out works. Oh, and performance is blazing&#8230;</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91329">
+			<cite><a href='http://www.FollowSteph.com' rel='external nofollow' class='url'>Stephane Grenier</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91329" title="">January 10th, 2008 at 8:20 am</a> </small>
+
+			<p>I think you hit the nail on the head. Even if not everyone agrees, the reality is that many web shops don&#8217;t want to setup and configure their own servers (shared, VPS, or dedicated), this why there are managed solutions. </p>
+<p>Even for dedicated boxes, for my own company LandlordMax, we don&#8217;t want to spend much time configuring the box. It&#8217;s not our core competency. It&#8217;s not our core business. It&#8217;s as simple as that!</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91330">
+			<cite>Eric</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91330" title="">January 10th, 2008 at 8:26 am</a> </small>
+
+			<p>The post purports to address the difficulties of deploying Rails on shared hosting in general, yet it seems that the only source of information is Dreamhost. I use Joyent shared hosting and deploying my rails apps is dead simple, follow-the-steps easy, and I&#8217;ve never had a single problem with reliability. As far as performance, who has an app so big it bogs down a cpu with rails, and yet doesn&#8217;t have the budget for a dedicated virtual machine?</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91331">
+			<cite>Brian Hogan</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91331" title="">January 10th, 2008 at 8:29 am</a> </small>
+
+			<p>I deploy Rails apps on Dreamhost. The pain comes from the way Dreamhost runs FastCGI, and their aggressive process killer.  Rails apps die constantly unless you patch them.  DH sends a TERM signal to the fascgi processes.</p>
+<p>A simple patch to the Rails dispatch.fcgi script to ignore the TERM signal and issue a restart has kept my rails applications running for nearly one year without incident.</p>
+<p>The other problem is that sometimes setting up your domain to use fastcgi just doesn&#8217;t work. Don&#8217;t know why. Support tells me to just delete the domain and add it again.</p>
+<p>Finally, in order to host Rails apps you need to understand the way a Rails app works. A Rails app is memory intensive. You have to have 25 to 100 mb for EACH fastcgi dispatcher that runs. That part of the app needs to stay in memory, which is why FastCGI is a good fit, but other methods (like an app server) are better.  Dreamhost doesn&#8217;t have those resources available for all of its users, hence the aggressive process killing. You can think of Rails like a Java app. You can&#8217;t just drop a java app with servlets into your public_html folder and expect it to work.</p>
+<p>This sounds like a Dreamhost problem.  Check the forums and you&#8217;ll find lots of posts about this which have gone largely ignored by DH support. The wiki even offers up all sorts of hacks to make it work.</p>
+<p>As for DHH&#8217;s rebuttal, I agree with him on this.  Rails doesn&#8217;t support deployment on the Windows platform via IIS either. It appears that Microsoft is working on that though. Apparently, someone from there even submitted a patch to Rails to help it out.  Very few people get paid to work on Rails&#8230; it&#8217;s voluntary. The things that get fixed are the things that the contributers struggle with.   If you feel strongly about making Rails work on Dreamhost, get involved. Post to the Rails list about this. If Dreamhost was really serious about this, I know they&#8217;d get people from the Rails community to help.  I know I would.</p>
+<p>If you want to know more about deploying Rails apps, see <a href="http://www.pragprog.com/titles/fr_deploy" rel="nofollow">http://www.pragprog.com/titles/fr_deploy</a>.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91332">
+			<cite><a href='http://pixelated-dreams.com' rel='external nofollow' class='url'>Davey Shafik</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91332" title="">January 10th, 2008 at 8:29 am</a> </small>
+
+			<p>Too funny, I tried to post the url to this article on Twitter, one of the Rails poster-children&#8230; and got a temporarily overloaded error. GJ Rails!</p>
+<p>Anyhow, I&#8217;m not sure I entirely agree with BC issues in PHP, they have been few and far between, and for the most part, the new solution is worthy of the issues it causes.</p>
+<p>- Davey</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91333">
+			<cite>justin</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91333" title="">January 10th, 2008 at 8:31 am</a> </small>
+
+			<p>I&#8217;ve been running several Rails sites in Dreamhost shared environments for several years now, and although it has been stressful at times to deploy, I think I have all the bugs worked out.</p>
+<p>Before I took one of my Rails applications offline a few weeks ago, I was maintaining (either in my account or accounts I setup for other people) 5 different Rails applications in a shared Dreamhost environement, all running fine with a frozen Rails gem, and all reliable.</p>
+<p>^ To the guy talking about ASP.NET, this is about Rails. Also, deploying a .NET application to a production environment is a royal pain. I lost a lot of hairs in my earlier years with that framework.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91334">
+			<cite>ed</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91334" title="">January 10th, 2008 at 8:52 am</a> </small>
+
+			<p>Quote:<br />
+^ To the guy talking about ASP.NET, this is about Rails. Also, deploying a .NET application to a production environment is a royal pain. I lost a lot of hairs in my earlier years with that framework.<br />
+&#8212;&#8212;&#8211;</p>
+<p>No, it isn&#8217;t.</p>
+<p>Step One: Upload files via FTP<br />
+Step Two: Done.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91335">
+			<cite><a href='http://www.simpleweight.com/blog/' rel='external nofollow' class='url'>Scott</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91335" title="">January 10th, 2008 at 8:53 am</a> </small>
+
+			<p>I&#8217;ve deploy, develop, and support ASP.net, PHP, and Ruby on Rails applications.  </p>
+<p>Rails is by the far the most difficult to deploy, but it is the most fun to code due to ruby&#8217;s meta language and Rails focus on convention over configuration.</p>
+<p>I say Why can&#8217;t Ruby on Rails be a premium framework? I&#8217;ve read most of the comments, and most of you all say, it should work on shared hosting, because PHP does.  I ask why?  Why should it because PHP does it?  Rails works great within a VPS with root access.  Yes, it&#8217;s still a pain to deploy, but it&#8217;s acceptable with the multiple capistrano recipes out there. </p>
+<p>I think some of you don&#8217;t really understand the Rails Way, and  37signals.com getting real meme.  Basically, Rails is not meant to be all things to all people.  From what I have done, Rails does what it does and does it well.  It makes writing web applications fun and allows you to focus on the business problem rather than framework.  </p>
+<p>Now, does that mean the Rails core team is not arrogant? I don&#8217;t know.  Does that mean future Rails functionality can not be created to allow simple easy deployment on shared hosting?  I don&#8217;t know, but I think it&#8217;s feasible.  It&#8217;s just waiting for the right apache developer to build mod_rails or enhance mod_ruby or some other solution.<br />
+Now, I also agree with some Zed&#8217;s statements.</p>
+<p>Why Not ASP.net?  Well, because the MVC architecture is only becoming available.  Although, I&#8217;ve always liked ASP.net, and I have yo look more closely.</p>
+<p>PHP is great for what it does.  It&#8217;s a great language for just throwing down some code and just letting it run.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91336">
+			<cite>Niko</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91336" title="">January 10th, 2008 at 9:01 am</a> </small>
+
+			<p>I&#8217;m running a rails test-site on Dreamhost as well and for testing purpose it work well enough for me.</p>
+<p>For any thing serious get a vps!</p>
+<p>Rails just isn&#8217;t made for shared hosting and it never will be.  One Rails process uses 30MB RAM and more and the whole framework takes several seconds to boot.  That means, you can&#8217;t boot it on demand, but have to keep it (and it&#8217;s 30MB) around all the time. No shared hoster can dedicate 30MB permanently to each single site of each single user. Last time I looked on &#8216;my&#8217; Dreamhost machine where about 1000 users. If these 1000 users would run 100 Rails sites that alone would take Dreamhost 3G of RAM just for Rails.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91337">
+			<cite><a href='http://www.idallas.com/' rel='external nofollow' class='url'>Dallas</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91337" title="">January 10th, 2008 at 9:07 am</a> </small>
+
+			<p>Thanks to everyone for their comments!</p>
+<p>The commenter that compared the business models of Zend to 37 Signals makes a very good point.  37 Signals should proceed ahead with their own agenda because they are the most important user of their software.</p>
+<p>The suggestions that DreamHost put in the effort to make this happen are entirely in line with one of the main points of my rant.  In all honesty, we do NOT stand to make a significant amount of money from doing this work ourselves.  Rails does not have the user base or the critical mass to make it enough of a mainstream platform for that to worth it for us.</p>
+<p>This rant is primarily an attempt to reach out to the Rails COMMUNITY (not Rails core) to improve Ruby on Rails in a way that I strongly believe would be ultimately beneficial for Rails as a platform.  In fact, I believe the benefit to Rails itself would be far more significant than any benefit DreamHost would see directly.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91338">
+			<cite>justin</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91338" title="">January 10th, 2008 at 9:30 am</a> </small>
+
+			<p>re: ed</p>
+<p>Step One: Upload files via FTP<br />
+Step Two: Done.</p>
+<p>That&#8217;s the exact same deployment recipe I use for all my rails sites running in a shared environment on Dreamhost!</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91339">
+			<cite>Carlos Júnior</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91339" title="">January 10th, 2008 at 10:26 am</a> </small>
+
+			<p>What I think is (not that it matter): Rails is a Free and Open Source Software, you win much much money with rails, so why don&#8217;t stop complain and work on it? Why don&#8217;t spend a bit of money hiring a Ruby developer to help on Rails development?</p>
+<p>My 2 cents.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91340">
+			<cite>Name Withheld</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91340" title="">January 10th, 2008 at 10:38 am</a> </small>
+
+			<p>There are low cost shared hosts that support rails.  Dreamhost is not that painful to get a rails app running, if you are cool with fcgi, it&#8217;s actually pretty simple.<br />
+If someone wants mongrel, there is hostingrails.com and railsplayground.com, price comparable, but not as much space/bandwidth.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91341">
+			<cite>Tim</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91341" title="">January 10th, 2008 at 10:42 am</a> </small>
+
+			<p>Some link love from DHH to Dreamhost</p>
+<p><a href="http://www.loudthinking.com/posts/21-the-deal-with-shared-hosts" rel="nofollow">http://www.loudthinking.com/posts/21-the-deal-with-shared-hosts</a></p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91342">
+			<cite><a href='http://www.cuppadev.co.uk' rel='external nofollow' class='url'>James Urquhart</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91342" title="">January 10th, 2008 at 11:12 am</a> </small>
+
+			<p>Coming from the PHP world, i found the development of rails apps to be quite strange. </p>
+<p>With PHP, one just plonks the files in a directory, perhaps edits a single file, runs the installer, and then they are up and running.</p>
+<p>With Rails, it&#8217;s a whole other story. I almost screamed when i read up on mod_proxy, mongrel, fastcgi, and capistrano, and memory usage.</p>
+<p>(Granted it can just be a simple matter of copying files via FTP, but i rarely find it is anything but)</p>
+<p>I guess its just another one of those double-edged swords.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91343">
+			<cite><a href='http://www.cuppadev.co.uk' rel='external nofollow' class='url'>James Urquhart</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91343" title="">January 10th, 2008 at 11:12 am</a> </small>
+
+			<p>Coming from the PHP world, i found the development of rails apps to be quite strange. </p>
+<p>With PHP, one just plonks the files in a directory, perhaps edits a single file, runs the installer, and then they are up and running.</p>
+<p>With Rails, it&#8217;s a whole other story. I almost screamed when i read up on mod_proxy, mongrel, fastcgi, and capistrano, and memory usage.</p>
+<p>(Granted it can just be a simple matter of copying files via FTP, but i rarely find it is)</p>
+<p>I guess its just another one of those double-edged swords.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91344">
+			<cite><a href='http://www.rubyinside.com/' rel='external nofollow' class='url'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91344" title="">January 10th, 2008 at 11:57 am</a> </small>
+
+			<p>We are discussing this issue, as a community, over at:</p>
+<p><a href="http://www.rubyinside.com/no-true-mod_ruby-is-damaging-rubys-viability-on-the-web-693.html" rel="nofollow">http://www.rubyinside.com/no-true-mod_ruby-is-damaging-rubys-viability-on-the-web-693.html</a></p>
+<p>It seems Rails in particular might be too slow to run in a mod_php-esque fashion, but there should be a way to build a Tomcat like application server that can manage multiple apps, rather than have to set up lots of Mongrel clusters manually. This might eventually prove to be a solution for shared hosts, especially if it can terminate dormant apps, and only focus on those in actual usage.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91348">
+			<cite>Frankie Robertson</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91348" title="">January 10th, 2008 at 2:39 pm</a> </small>
+
+			<p>Perhaps consider replacing mod_fcgid as it seems to have better process management than mod_fastcgi. (I know it&#8217;s rails&#8217; fault but still.) Additionally this would benefit Djangonauts like myself and anyone else using fastcgi.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91356">
+			<cite><a href='http://www.oneinspired.com' rel='external nofollow' class='url'>RJ</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91356" title="">January 10th, 2008 at 3:47 pm</a> </small>
+
+			<p>Dallas,</p>
+<p>I disagree that you don&#8217;t stand to make more money by getting RUBY to work better in a shared hosting environment.  I would love to deploy Merb and Sinatra apps at DreamHost.  Help make Ruby run right by hiring a couple of devs to work full time on it.  Don&#8217;t just think about Rails.  Fix Ruby in a shared hosting environment, and someone else will fix Rails to meet that environment. </p>
+<p>1. Fix mod_ruby (or replace it with something that works)<br />
+2. Give me an easy option for installing my own gems<br />
+3. Charge me $5 more per month<br />
+4. Profit!</p>
+<p>Take a look at EngineYard.  They are investing in Ruby to make it faster via Rubinius.</p>
+<p>There may come a day when I actually stop using DH for my shared hosting projects.  A possible replacement will be <a href="http://www.heroku.com" rel="nofollow">http://www.heroku.com</a>.  They make rails run without dealing with any deployment.  You can import a .tar, change the database.yml and run your migrations - and then it&#8217;s live.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91357">
+			<cite><a href='http://mogul.webmogulenterprises.com' rel='external nofollow' class='url'>Robert</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91357" title="">January 10th, 2008 at 4:14 pm</a> </small>
+
+			<p>Very good post. I recently chose to build an application in PHP just because of RoR&#8217;s deploying problems. Even Java, of which my day job consists of, is easier to deploy on. Yes hosting companies don&#8217;t like it, but that is a side issue.</p>
+<p>If the RoR gang weren&#8217;t so elitist and actually help people out, RoR would grow much larger. If not, it will be relegated down to startups and enterprise apps, and they will have a hard time competing with Java in the enterprise realm (even with JRuby).</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91363">
+			<cite>Albright</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91363" title="">January 10th, 2008 at 5:37 pm</a> </small>
+
+			<p>Adrian Madrid:<br />
+I do *not* want Rails to be more like PHP. For one, I know that&#8217;s like saying I want a carriage to be more like a horse; for two, you seemed to have missed that I don&#8217;t like the idea of using these really thick &#8220;frameworks&#8221; for 90% of web development anyway, especially if it&#8217;s just hobbyist stuff. No, I want *Ruby* (or some other language with better syntax and coherency than PHP) to be more like PHP, in terms that I can write code, upload it to a server, and have it just work. I&#8217;ll say it again; what Rails (and Ruby itself, as far as I&#8217;ve seen so far) lacks as a method of developing web apps is anything approaching PHP&#8217;s It Just Works factor.</p>
+<p>Aaron:<br />
+That AppJet thing is interesting, but not quite what I had in mind… I&#8217;ll give Helma a further look, though. I hope it can do ES4.</p>
+<p>Pratik:<br />
+In 41, you seem to be making the argument that arbitrary breakings of backward-compatibility is a-okay…</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91381">
+			<cite>Ben</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91381" title="">January 10th, 2008 at 11:11 pm</a> </small>
+
+			<p>This is a passage from this months dreamhost newsletter:</p>
+<p>&#8220;Of course, it&#8217;s not like the newsletter is late because we&#8217;ve been<br />
+working on a lot of features or anything. Nope, just your average<br />
+everyday run of the mill holiday laziness and overall slackitude plus<br />
+slothibility at work.&#8221;</p>
+<p>That says alot&#8230;</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91431">
+			<cite><a href='http://l2g.to/' rel='external nofollow' class='url'>Larry Gilbert</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91431" title="">January 13th, 2008 at 10:01 am</a> </small>
+
+			<p>Glad to see DreamHost&#8217;s candid comments, especially those from Terri, the one apparently in charge of the Rails side of things. Now I see that if I&#8217;m going to continue to get serious about Rails, I&#8217;m going to have to start looking outside of DreamHost for committed support.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91441">
+			<cite><a href='http://www.wysmedia.com' rel='external nofollow' class='url'>adwin</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91441" title="">January 13th, 2008 at 10:59 pm</a> </small>
+
+			<p>I love how the rails work and still envy for it. I would love to see &#8220;nice php version&#8221; for rails someday (cakephp, have the same features but it has no good documentation). </p>
+<p>I also wish, i could install rails application as easy as copy and paste into apache server like the php one.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-91442">
+			<cite>Rick New</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91442" title="">January 13th, 2008 at 11:16 pm</a> </small>
+
+			<p>I&#8217;m one of those Rails newbies, just about ready to bail because of deployment issues.</p>
+<p>For the last 3 weeks I&#8217;ve been trying to learn both Rails and Ruby.  Learning Ruby has been pretty straight-forward. I&#8217;m taking a free tutorial from Satish Talim. The community is great and the course is nice. The Ruby books are pretty clear and up to date. There are a lot of free resources and pretty much everything makes sense.</p>
+<p>As to learning Rails, it&#8217;s been a whole different experience. I  attended a local users group, and while the community was nice, not a single person reached out to offer any learning assistance, even when I asked if I could hire someone for personal training.  </p>
+<p>I&#8217;ve bought 3 books and had to return them all because after a few days I ran into the major differences between 2.0 and the previous version in all the books. </p>
+<p>I signed up with Joyent (the official Rails host) to try and deploy a test application. The KB docs for deployment were difficult and the host stated they &#8220;will not support deployment issues.&#8221;</p>
+<p>I think I&#8217;ll stick with learning Ruby for a while and continue to watch Rails develop. Yes, I think they could reach  out a little bit more during the early stages of folks coming into the community.</p>
+<p>I&#8217;m currently developing on .NET with Visual Studio 2005.  Shared hosting deployment is as simple as choosing a .NET host and uploading to the server.  </p>
+<p>Visual Studio has improved a lot since the 2003 version and C# is a joy to write.  </p>
+<p>I&#8217;m not ranting, if anyone has some suggestions for moving from .NET to Rails, please give me some advice. I want to use Rails, but the hype (at least in the early stages) seems disconnected to the reality.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-91445">
+			<cite><a href='http://talknightlife.com' rel='external nofollow' class='url'>Ryan</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-91445" title="">January 14th, 2008 at 7:49 am</a> </small>
+
+			<p>I&#8217;ve been a Dreamhost customer for something like 10 years.  11?  Not even sure.  Obviously I&#8217;m relatively content.  I&#8217;m also a Rails developer and I&#8217;m using Dreamhost as a host for a commercial, public-facing Rails app, as well as a B2B system.  I&#8217;m a very experienced Perl and PHP developer.</p>
+<p>My impression of Rails has been that although the hype FAR outpaces the reality, Rails is really neat stuff.  I was aggravated to discover that Capistrano isn&#8217;t anywhere near as simple as Rails advocates will have you believe, I spent two full days just trying to find current and accurate documentation for it.  That was partly Dreamhost&#8217;s fault for hosting out-of-date documentation in their wiki, partly Capistrano&#8217;s fault for ignoring backwards compatibility, and partly the Rails community&#8217;s fault for religiously pretending that Rails &#8220;Just Works&#8221; with no problems.  Rails people tend to skip the standard &#8216;troubleshooting&#8217; talk because they have faith that there will be no troubles.  That&#8217;s not impressing potential new converts to their religion.</p>
+<p>I still spend at least a full day just setting up deployment for every new app even now that I know what I&#8217;m doing.  Most recently because when Rails can&#8217;t open a log file for writing at runtime, it doesn&#8217;t even tell you the path of the file in the HTTP stderr log message.  That&#8217;s just one of many, many, many examples of rough edges on Rails that make it just not ready for prime time.  You can&#8217;t open a log file for writing, so that&#8217;s a catastrophic error, and you make a log entry where you don&#8217;t even tell me which file so that I can make some progress?  &#8220;Just Works&#8221;, heh&#8230;  Zed has it right when he says that the Agile book&#8217;s introductory development session is pure fantasy.  Rails proponents would like you to believe that Rails is far more solid, stable, and reliable than it really is.</p>
+<p>I&#8217;ve come to love Rails and I&#8217;m not turning back.  I&#8217;ve come to learn to make Rails work with Dreamhost and I&#8217;m not turning back.  But now that I know better, I chuckle when I read some of the propaganda coming out of the Rails community about how it &#8220;Just Works&#8221;.  No, sorry, Perl and PHP &#8220;Just Work&#8221;, but Rails is a delicate machine that requires a lot of love.  It&#8217;s cool enough to keep my attention as long as I keep that perspective in mind.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-92036">
+			<cite><a href='http://gwolf.org' rel='external nofollow' class='url'>Gunnar Wolf</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-92036" title="">January 16th, 2008 at 11:42 am</a> </small>
+
+			<p>Being a DreamHost customer, a Rails developer, a Debian developer and member of the Debian <a href="http://pkg-ruby-extras.alioth.debian.org" rel="nofollow">pkg-ruby-extras team</a> (co-maintainer of Mongrel in fact ;-) ), I must say it amazed me how hard it was to get my systems running in DreamHost. I agree with Brent (first comment to this post - Shame that this blogging software limits postings with over three links :) Yes, spam sucks big-time), it is not a pleasant experience at all.<br />
+Terri complains about installing Gems in Debian systems (third comment to the post) - And boy, I share your pain. Our group in Debian has long been a <a href="http://pkg-ruby-extras.alioth.debian.org/rubygems.html" rel="nofollow">strong critic of mixing RubyGems and Debian</a>, as it is a sure way to mayhem and chaos.<br />
+But, DreamHost guys: Please reconsider moving away from FastCGI (which sucks) towards Mongrel. Yes, I agree with Dallas&#8217; comment regarding Lighttpd and SCGI - In its due time, I bit the SCGI bullet and <a href="http://packages.debian.org/experimental/rails-scgi" rel="nofollow">packaged SCGI for Debian</a>. I even used it at one of my servers with libapache2-mod-scgi&#8230; And I recognize it is easier and more reliable than FastCGI. But just when I was about to make my experimental package into an official one, the Mongrel hype came up.<br />
+Anyway&#8230; Mongrel <em>is</em> reliable, it <em>is</em> quite easy to install - and (shared hosting providers, this is interesting to you!) it easily provides perfectly separated processes for each user. Even more, it is built to be used in clusters, so (putting that combined to Dreamhost&#8217;s way, where user directories are shared over NFS) it&#8217;s potentially very easy to make it scale, even send it to other machines. I have enjoyed a much easier deployment (and much more reliable ongoing operation) since I moved over to Mongrel.<br />
+Now, regarding how The Rails Way is sometimes a royal PITA&#8230; Yes, indeed. It shares very little with the Debian culture (with which I&#8217;m much more comfortable) that values long-term stability over changing features with the newest fads. But then again, Rails is a very productive and nice environment to work in!</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-92658">
+			<cite><a href='http://thecodingway.com' rel='external nofollow' class='url'>Rob Morris</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-92658" title="">January 18th, 2008 at 10:23 am</a> </small>
+
+			<p>I dunno, guys.  I use A2Hosting.com for my Rails hosting on a $100/yr shared hosting package with shell access.  They have cPanel 11 with Rails support, Mongrel, and I have never, NOT ONCE, had a server error due to deployment.  I run 4 sites on two shared hosting accounts.  It&#8217;s a piece of cake.</p>
+<p>YMMV, but I think DreamHost may be scrimping on per/user RAM or some such, if this is such a big headache for them.  I think extrapolating from one host&#8217;s experiences to a major problem with the Rails application stack (&amp; core team) is a bit of a stretch.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-92989">
+			<cite>Aaron Blohowiak</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-92989" title="">January 21st, 2008 at 11:12 am</a> </small>
+
+			<p>Make your shared hosting force users to use jruby, this way most of your complaints disappear or become readily manageable.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-93005">
+			<cite>Kondo</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93005" title="">January 21st, 2008 at 7:21 pm</a> </small>
+
+			<p>I have to say that dreamhost has good to me in the past years but I pretty close to take my rails app in to public beta and Dreamhost is just not suited to rails apps in its current state. I&#8217;m going with another provider where they gives user mongrel support and apache support (its not hard to do). Virtualization is a great thing and this other provider has embraced it very well.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-93115">
+			<cite><a href='http://remi.org' rel='external nofollow' class='url'>remi</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93115" title="">January 24th, 2008 at 11:01 pm</a> </small>
+
+			<blockquote><p>
+Christoph, let’s be real here; how many people out there are really building Ruby web apps without Rails? (Or Ruby apps at all, for that matter?) Is such a thing even possible on DreamHost?
+</p></blockquote>
+<p>@Albrigh: </p>
+<p>You would be surprised!  <em>Especially</em> since Christian Neukirchen&#8217;s awesome <a href="http://rack.rubyforge.org/" rel="nofollow">Rack</a>.</p>
+<p>I love Ruby.  I very much like Rails, especially for the part it&#8217;s played in helping me to learn Ruby and &#8230; cause it&#8217;s just plain awesome.</p>
+<p>That said &#8230; I don&#8217;t write many Rails apps.  That&#8217;s mostly because of the resources they require, which is pretty ridiculous, and also because I typically just don&#8217;t need all of the overhead and the things Rails does.  I&#8217;m happy working closer to the &#8220;real code.&#8221;</p>
+<p>Lots of developers are writing apps using either Rack-compatible web frameworks, or using Rack, itself.  Support Rack and you can easily run your site using CGI, FastCGI, Mongrel/Thin &#8230; or anything that has a Rack handler.</p>
+<p>You would also be surprised about the number of people using Ruby &#8216;off rails&#8217; or off the web, in general.  It&#8217;s a good general purpose programming language.  All you have to do is watch/browse Rubyforge to see all of the various thing people are doing.</p>
+<p>Also, I like me frameworks that support Rack because it means it&#8217;ll run OK on dreamhost  :)</p>
+<p>Also, I dunno how people so easily overlook things like &#8230; eruby?  Dreamhost has information about it in its wiki.  It&#8217;s basically PHP-style development for Ruby.  I&#8217;ve build sites that I would&#8217;ve used PHP for in Ruby, using eruby (on dreamhost) and I&#8217;ve had great experiences with it.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-93118">
+			<cite>phil</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93118" title="">January 25th, 2008 at 4:36 am</a> </small>
+
+			<p>You can&#8217;t compare an MVC application framework with a programming language/templating system. You need to either compare Rails and some PHP MVC framework or Ruby/ERB and PHP.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-93199">
+			<cite><a href='http://linuxemr.org' rel='external nofollow' class='url'>andres</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93199" title="">January 29th, 2008 at 6:58 pm</a> </small>
+
+			<p>It&#8217;s sort of lame asking the rails developers to thing about the shared environment, specially coming for a company that hosts several hundred of thousands sites.<br />
+The right move is to contribute with one developer, full time, and help rails having the features you are asking for.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-93376">
+			<cite>toadalee</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93376" title="">February 6th, 2008 at 11:37 pm</a> </small>
+
+			<p>So am I wrong to recommend using phpcake as your framework instead of rails if you want to use php? I have been looking at RoR and PHPCake and they seem very similar. Mambo has actually chosen phpcake for their next version (5). That should give it some clout.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-93624">
+			<cite><a href='http://google.com/translate_c?hl=en&amp;langpair=esen&amp;u=http://www.buyusapills.com/buyphentermineonline/' rel='external nofollow' class='url'>Buy Phentermine Online</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-93624" title="">February 23rd, 2008 at 1:40 pm</a> </small>
+
+			<p>Hi, nice post. I couldn&#8217;t understand some parts of the article but it sounds interesting..<br />
+Continue writing&#8230;</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-94581">
+			<cite><a href='http://google.com' rel='external nofollow' class='url'>Jourgenz</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-94581" title="">April 17th, 2008 at 3:32 pm</a> </small>
+
+			<p>It&#8217;s test.<br />
+I could&#8217;t post a message&#8230;</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-108291">
+			<cite><a href='http://www.ankarasohbet.org' rel='external nofollow' class='url'>Ankara Sohbet</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-108291" title="">October 28th, 2008 at 3:53 pm</a> </small>
+
+			<p>teşekkür ederim.</p>
+
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+			
+		
+				</div>
+
+<!-- begin footer -->
+
+<!-- begin sidebar -->
+		<div id="sidebar">
+			
+				
+			<div id="categories">			
+
+<!-- <a target="new"
+href="http://www.bloggerschoiceawards.com/blogs/show/361/?utm_source=bloggerschoiceawards&utm_medium=badge&utm_content=bestcorporateblog"><img 
+src="http://www.bloggerschoiceawards.com/images/bca_badges/bca_badge_bestcorporateblog.gif" border="0" alt="We were nominated 
+for Best Corporate Blog 2008 too!"></a><br>
+
+<a target="new" href="http://www.bloggerschoiceawards.com/main/winners?page=2"><img src="http://blog.dreamhost.com/wp-content/uploads/2007/12/bca.gif" height="115" width="150" alt="Winner - Best Corporate Blog 2007" /></a><br><br> -->
+
+<a href="http://blog.dreamhost.com/feed/"><img src="http://blog.dreamhost.com/images/rss2.gif" width="38" height="15" alt="Blog.dreamhost.com RSS feed" border="0" /></a>
+			<h3>Categories:</h3>
+				<ul>
+					<li class="cat-item cat-item-13"><a href="http://blog.dreamhost.com/category/business/" title="DreamHost is a business!">Business</a> (<a href="http://blog.dreamhost.com/category/business/feed/" title="rss">rss</a>) (46)
+</li>
+	<li class="cat-item cat-item-125"><a href="http://blog.dreamhost.com/category/dreamhost-apps/" title="Free hosting for web-based applications!">Dreamhost Apps</a> (<a href="http://blog.dreamhost.com/category/dreamhost-apps/feed/" title="rss">rss</a>) (2)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blog.dreamhost.com/category/foobars/" title="Every once in a while, believe it or not, even DreamHost makes a mistake. Let us learn from this and never, ever, do the same thing as DreamHost.">Foobars</a> (<a href="http://blog.dreamhost.com/category/foobars/feed/" title="rss">rss</a>) (33)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blog.dreamhost.com/category/funnyish/" title="Sometimes something is soooo funny we just like to post it even if it&#039;s not really technically worth it.">Funnyish</a> (<a href="http://blog.dreamhost.com/category/funnyish/feed/" title="rss">rss</a>) (64)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.dreamhost.com/category/hardware/" title="Hardware is a big part of web hosting we hear!">Hardware</a> (<a href="http://blog.dreamhost.com/category/hardware/feed/" title="rss">rss</a>) (19)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://blog.dreamhost.com/category/insider-view/" title="An inner look into the mysterious workings of DreamHost!">Insider View</a> (<a href="http://blog.dreamhost.com/category/insider-view/feed/" title="rss">rss</a>) (118)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://blog.dreamhost.com/category/jobs/" title="Get a haircut and a real job!">Jobs</a> (<a href="http://blog.dreamhost.com/category/jobs/feed/" title="rss">rss</a>) (9)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://blog.dreamhost.com/category/musings/" title="Deep thoughts.">Musings</a> (<a href="http://blog.dreamhost.com/category/musings/feed/" title="rss">rss</a>) (62)
+</li>
+	<li class="cat-item cat-item-2"><a href="http://blog.dreamhost.com/category/new-features/" title="What new features has DreamHost been adding to their services?">New Features</a> (<a href="http://blog.dreamhost.com/category/new-features/feed/" title="rss">rss</a>) (30)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://blog.dreamhost.com/category/promotions/" title="Once in a lifetime opportunities you just CAN&#039;T PASS UP!">Promotions</a> (<a href="http://blog.dreamhost.com/category/promotions/feed/" title="rss">rss</a>) (21)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://blog.dreamhost.com/category/rants/" title="It&#039;s nothing personal.">Rants</a> (<a href="http://blog.dreamhost.com/category/rants/feed/" title="rss">rss</a>) (36)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.dreamhost.com/category/tech-news/" title="News tidbits from the world of technology that are of interest to the world of web hosting.">Tech News</a> (<a href="http://blog.dreamhost.com/category/tech-news/feed/" title="rss">rss</a>) (32)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://blog.dreamhost.com/category/updates/" title="Just random posts that don&#039;t fit in any other category!">Updates</a> (<a href="http://blog.dreamhost.com/category/updates/feed/" title="rss">rss</a>) (63)
+</li>
+				</ul>
+			</div>
+			
+			<div id="archives">			
+			<h3>Archives:</h3>
+				<ul>
+					<li><a href='http://blog.dreamhost.com/2009/03/' title='March 2009'>March 2009</a>&nbsp;(2)</li>
+	<li><a href='http://blog.dreamhost.com/2009/02/' title='February 2009'>February 2009</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2009/01/' title='January 2009'>January 2009</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2008/12/' title='December 2008'>December 2008</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2008/11/' title='November 2008'>November 2008</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2008/10/' title='October 2008'>October 2008</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2008/09/' title='September 2008'>September 2008</a>&nbsp;(2)</li>
+	<li><a href='http://blog.dreamhost.com/2008/08/' title='August 2008'>August 2008</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2008/07/' title='July 2008'>July 2008</a>&nbsp;(2)</li>
+	<li><a href='http://blog.dreamhost.com/2008/06/' title='June 2008'>June 2008</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2008/05/' title='May 2008'>May 2008</a>&nbsp;(6)</li>
+	<li><a href='http://blog.dreamhost.com/2008/04/' title='April 2008'>April 2008</a>&nbsp;(2)</li>
+	<li><a href='http://blog.dreamhost.com/2008/03/' title='March 2008'>March 2008</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2008/02/' title='February 2008'>February 2008</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2008/01/' title='January 2008'>January 2008</a>&nbsp;(7)</li>
+	<li><a href='http://blog.dreamhost.com/2007/12/' title='December 2007'>December 2007</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2007/11/' title='November 2007'>November 2007</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2007/10/' title='October 2007'>October 2007</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2007/09/' title='September 2007'>September 2007</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2007/08/' title='August 2007'>August 2007</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2007/07/' title='July 2007'>July 2007</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2007/06/' title='June 2007'>June 2007</a>&nbsp;(7)</li>
+	<li><a href='http://blog.dreamhost.com/2007/05/' title='May 2007'>May 2007</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2007/04/' title='April 2007'>April 2007</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2007/03/' title='March 2007'>March 2007</a>&nbsp;(8)</li>
+	<li><a href='http://blog.dreamhost.com/2007/02/' title='February 2007'>February 2007</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2007/01/' title='January 2007'>January 2007</a>&nbsp;(6)</li>
+	<li><a href='http://blog.dreamhost.com/2006/12/' title='December 2006'>December 2006</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2006/11/' title='November 2006'>November 2006</a>&nbsp;(2)</li>
+	<li><a href='http://blog.dreamhost.com/2006/10/' title='October 2006'>October 2006</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2006/09/' title='September 2006'>September 2006</a>&nbsp;(4)</li>
+	<li><a href='http://blog.dreamhost.com/2006/08/' title='August 2006'>August 2006</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2006/07/' title='July 2006'>July 2006</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2006/06/' title='June 2006'>June 2006</a>&nbsp;(3)</li>
+	<li><a href='http://blog.dreamhost.com/2006/05/' title='May 2006'>May 2006</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2006/04/' title='April 2006'>April 2006</a>&nbsp;(6)</li>
+	<li><a href='http://blog.dreamhost.com/2006/03/' title='March 2006'>March 2006</a>&nbsp;(7)</li>
+	<li><a href='http://blog.dreamhost.com/2006/02/' title='February 2006'>February 2006</a>&nbsp;(6)</li>
+	<li><a href='http://blog.dreamhost.com/2006/01/' title='January 2006'>January 2006</a>&nbsp;(8)</li>
+	<li><a href='http://blog.dreamhost.com/2005/12/' title='December 2005'>December 2005</a>&nbsp;(7)</li>
+	<li><a href='http://blog.dreamhost.com/2005/11/' title='November 2005'>November 2005</a>&nbsp;(5)</li>
+	<li><a href='http://blog.dreamhost.com/2005/10/' title='October 2005'>October 2005</a>&nbsp;(8)</li>
+	<li><a href='http://blog.dreamhost.com/2005/09/' title='September 2005'>September 2005</a>&nbsp;(19)</li>
+	<li><a href='http://blog.dreamhost.com/2005/08/' title='August 2005'>August 2005</a>&nbsp;(11)</li>
+	<li><a href='http://blog.dreamhost.com/2005/07/' title='July 2005'>July 2005</a>&nbsp;(4)</li>
+				</ul>
+			</div>
+			
+			<div id="blogroll">
+			<h3>Other Sites</h3>
+				<ul>
+				<li><a href="http://www.dreamhoststatus.com/" title="An off-network page for all DreamHost Announcements! (Not as silly as this blog.)">DreamHost Status</a> - An off-network page for all DreamHost Announcements! (Not as silly as this blog.)</li>
+<li><a href="http://www.dreamhost.com/" rel="me" title="The host behind the blog.">DreamHost!</a> - The host behind the blog.</li>
+<li><a href="http://discussion.dreamhost.com/" title="Discuss DreamHost and web hosting!">Forum</a> - Discuss DreamHost and web hosting!</li>
+<li><a href="https://panel.dreamhost.com/" title="Manage your account.">Web Control Panel</a> - Manage your account.</li>
+<li><a href="http://wiki.dreamhost.com/" title="On DreamHost and web hosting.">Wiki</a> - On DreamHost and web hosting.</li>
+				</ul>
+			</div>
+
+			<div id="meta">
+				<h3>Meta:</h3>
+				<ul>
+								<li><a href="http://blog.dreamhost.com/wp-login.php">Log in</a></li>
+				<li><a href="http://gmpg.org/xfn/"><abbr title="XHTML Friends Network">XFN</abbr></a></li>
+				<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform."><abbr title="WordPress">WP</abbr></a></li>
+								</ul>
+			</div>
+		
+		</div>
+			
+<div class="both"></div>
+			
+</div>
+
+<!-- end sidebar -->
+
+<p id="credits">
+Powered by <a href="http://wordpress.org">WordPress</a>.  <a href="http://www.lamateporunyogur.net/pool" title="Pool Theme for Wordpress, download it">Pool theme</a> by <a href="http://www.lamateporunyogur.net/">Borja Fernandez</a>, modified by DreamHost.<br />
+
+Like WordPress? Consider attending <a href="http://la.wordcamp.org/">WordCamp LA</a>.<br />
+
+<a href="http://blog.dreamhost.com/feed/">Entries</a> and <a href="http://blog.dreamhost.com/comments/feed/">comments</a> feeds. 
+^<a href="#">Top</a>^<br />
+
+<!-- 13 queries. 0.367 seconds. -->
+</p>
+
+</div>
+
+<script src="http://stats.wordpress.com/e-200913.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'3833216',v:'ext',post:'693'});
+var load_cmc = function(){linktracker_init(3833216,693,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-135853-2";
+urchinTracker();
+</script>
+<!-- Piwik -->
+<a href="http://piwik.org" title="Web analytics" onclick="window.open(this.href);return(false);">
+<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://blog.dreamhost.com/piwik/" : "http://blog.dreamhost.com/piwik/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript">
+piwik_action_name = '';
+piwik_idsite = 1;
+piwik_url = pkBaseURL + "piwik.php";
+piwik_log(piwik_action_name, piwik_idsite, piwik_url);
+</script>
+<object><noscript><p>Web analytics <img src="http://blog.dreamhost.com/piwik/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript></object></a>
+<!-- End Piwik Tag -->
+</body>
+</html>
+

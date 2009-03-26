@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>DebGem (beta), Ruby packages for Debian</title>
+	<link href="/stylesheets/application.css?1235317603" media="screen" rel="stylesheet" type="text/css">
+	
+	<style type="text/css">
+		#non_header_area {
+			margin-top: 104px;
+		}
+	</style>
+
+</head>
+
+<body>
+<div id="page_container">
+	<div id="page_header">
+		<div id="site_logo_icon"><a href="/" title="DebGem homepage"></a></div>
+		<div id="site_logo_banner"><a href="/" title="DebGem homepage"></a></div>
+		<div id="site_logo_text">
+			<h1><a href="/">DebGem</a></h1>
+			<div class="footnote">Ruby packages for Debian</div>
+		</div>
+		<div class="navigation">
+			<ul class="public">
+				<li class="active"><a href="/" class="active"><span>Home</span></a></li>
+				<li><a href="/usage"><span>Usage & FAQ</span></a></li>
+				<li><a href="/pricing_signup"><span><b>Pricing &amp; Signup</b></span></a></li>
+				<li><a href="http://groups.google.com/group/debgem-support-forum"><span>Support</span></a></li>
+				<li class="last"><a href="mailto:info@phusion.nl">Contact</a></li>
+			</ul>
+			<!-- <ul class="user_specific">
+				<li class="last"><a href="/login">Login</a></li>
+			</ul> -->
+		</div>
+		<div class="search">
+			<form action="/packages/search" method="get">
+			<div>
+				<span class="label">Search:</span>
+				<input id="global_search_box" type="text" name="gem_name">
+				<input type="submit" value="Search gems">
+			</div>
+			</form>
+		</div>
+	</div>
+	
+	<div id="non_header_area">
+		<div id="eyecatcher">
+			
+			
+	<div class="frontpage introduction">
+	<div class="inner1">
+	<div class="inner2">
+		<div class="summary">
+			<div class="what">
+				Ruby programs and libraries
+			</div>
+			<div class="operating_systems">
+				for <b>Debian</b> and <b>Ubuntu</b>
+			</div>
+			<div class="benefit">
+				easy to install with <b>apt-get</b><br>
+				and no longer a pain
+			</div>
+			<div class="logos">
+				<img alt="Ubuntu" height="48" src="/images/ubuntu.png?1235317603" width="48">
+				<img alt="Ubuntu" height="48" src="/images/debian.png?1235317603" width="48">
+			</div>
+		</div>
+		<div class="example">
+			<pre># edit /etc/apt/sources.list
+# apt-get update
+# apt-get install rails
+# apt-get install libmemcache-client-ruby</pre>
+			...it all works!
+		</div>
+		
+		<div style="clear: both"></div>
+		
+		<div class="install_pane">
+			<a href="/usage"><img alt="Install" height="60" src="/images/install.png?1235317603" width="174"></a>
+			<span class="separator">--</span>
+			<span class="description">It's free during the public beta period!</span>
+		</div>
+	</div>
+	</div>
+	</div>
+
+		</div>
+		
+		<div id="page_content">
+			
+
+
+
+
+
+<form action="/packages/search" class="frontpage search panel" method="get">
+<div>
+	<h2>Virtually all Ruby gems at your disposal as Debian packages!</h2>
+	<p class="first">
+		Enter a Ruby gem name and learn how to install the<br>
+		corresponding DebGem Debian package with Apt.
+	</p>
+	
+	<input type="text" name="gem_name" value="rails" class="gem_name">
+	<input type="submit" value="Search">
+</div>
+</form>
+
+<div class="frontpage information">
+
+<h2>What is it?</h2>
+<p>
+	<b>Apt</b> is the package management system of choice for Debian users.
+	Historically, only a very limited number of Ruby programs and libraries
+	are packaged for Debian and installable through Apt.
+	Instead, most Ruby programs and libraries are installed through
+	<a href="http://www.rubygems.orsg/">RubyGems</a>, a separate package
+	management system created specifically for Ruby.
+</p>
+<p>
+	DebGem provides an <b>Apt repository for Ruby programs and libraries</b>
+	which are currently available as gems. Debian users can now manage all
+	their Ruby software through a single, centralized package manager -
+	Apt - thereby making system administration a joy again!
+</p>
+
+<div class="column left">
+	<h2>Advantages of DebGem over plain RubyGems</h2>
+	<ul class="advantages">
+	<li>If you're setting up a new server, then DebGem is easier to setup
+		than RubyGems. RubyGems needs to be installed from source, but
+		before that, you need to install the correct Ruby programs,
+		libraries and build tools by hand. Installing DebGem just
+		involves <a href="/usage">adding an Apt source</a>.
+	</li>
+	<li>Debian packages integrate better into the system. Gems cannot handle
+		native dependencies. For example, if you install the RMagick gem,
+		then RubyGems won’t install ImageMagick for you. The DebGem
+		Debian packages do, so installing an arbitrary Ruby library
+		just involves a single command.
+	</li>
+	<li>Security: the DebGem Apt repository is PGP-signed, making it less
+		vulnerable to man-in-the-middle network attacks.
+	</li>
+	<li>Debian system administrators are typically very skilled with Apt,
+		but less so with RubyGems. Debian system administrators who are
+		skilled with RubyGems are not as easy to find. RubyGems can be
+		taught, but a typical Debian system administrator is likely to
+		make less mistakes if he only has to deal with Apt, a tool
+		he/she is already intimately familiar with.
+	</li>
+	</ul>
+	
+	<h2>Supported distributions</h2>
+	<table class="supported_distributions">
+	<tr>
+		<th>Distribution</th>
+		<th>Pure-Ruby gems</th>
+		<th>Gems with native extensions</th>
+	</tr>
+	<tr>
+		<td>Debian 4.0 (Etch), x86</td>
+		<td class="supported">Supported</td>
+		<td class="supported">Supported</td>
+	</tr>
+	<tr>
+		<td>Debian 4.0 (Etch), x86_64</td>
+		<td class="supported">Supported</td>
+		<td class="unsupported">Not yet supported</td>
+	</tr>
+	<tr>
+		<td>Ubuntu 8.04 LTS (Hardy), x86</td>
+		<td class="supported">Supported</td>
+		<td class="supported">Supported</td>
+	</tr>
+	<tr>
+		<td>Ubuntu 8.04 LTS (Hardy), x86_64</td>
+		<td class="supported">Supported</td>
+		<td class="unsupported">Not yet supported</td>
+	</tr>
+	<tr>
+		<td>Ubuntu 8.10 (Intrepid), x86</td>
+		<td class="supported">Supported</td>
+		<td class="supported">Supported</td>
+	</tr>
+	<tr>
+		<td>Ubuntu 8.10 (Intrepid), x86_64</td>
+		<td class="supported">Supported</td>
+		<td class="unsupported">Not yet supported</td>
+	</tr>
+	</table>
+	
+	We're working on support for more distributions. Join our
+	<a href="http://groups.google.com/group/debgem-support-forum">support forum</a>
+	if you desire us to support your distribution.
+</div>
+<div class="column right">
+	<h2>How does it work?</h2>
+	<p>
+		Just <a href="/usage">add our Apt repository URL</a> to your
+		Apt sources list, and you can immediately start installing
+		Ruby software through Apt.
+	</p>
+	<p>
+		Many gems from <a href="http://www.rubyforge.org/">RubyForge</a>,
+		<a href="http://www.rubyonrails.org/">RubyOnRails.org</a> and
+		<a href="http://www.github.com/">Github</a> are automatically
+		converted to Debian packages in a periodic manner. No longer will
+		one have to wait until Debian packages have been manually created
+		by maintainers!
+	</p>
+	
+	<h2>Does it work well?</h2>
+	<p>
+		Even though many packages are automatically converted from gems,
+		the greatest care has been taken into making sure that the
+		converted Debian packages work and integrate well into the system.
+	</p>
+	
+	<h3>Gems that require native extensions are hand-tuned
+	so that they depend on the correct Debian packages.</h3>
+	<p>
+		For example, the RMagick library requires on ImageMagick.
+		The RMagick Debian package that DebGem provides properly
+		depends on <em>libmagick10</em>.
+	</p>
+	
+	<h3>Ruby on Rails works out of the box.</h3>
+	<p>
+		With DebGem, it is even possible to install multiple Ruby on
+		Rails versions, ideal for developers who need to maintain
+		applications for multiple Rails versions.
+	</p>
+	
+	<h3>Debian packages register themselves as gems.</h3>
+	<p>
+		Even if you have Ruby software that insists that a certain
+		dependency is a gem, DebGem will still work. All DebGem packages
+		register themselves as Ruby gems, thereby providing full
+		compatibility with Ruby software that expect gems.
+	</p>
+	
+	<h3>FHS-compliant</h3>
+	<p>
+		The DebGem packages comply to the Filesystem Hierarchy Standard.
+	</p>
+</div>
+
+<div class="install_pane">
+	<h2>Finally, a service which allows Ruby software to<br>
+	    integrate well into Debian and Ubuntu systems!</h2>
+	
+	<a href="/usage"><img alt="Install" height="60" src="/images/install.png?1235317603" width="174"></a>
+	<span class="separator">--</span>
+	<span class="description">It's free during the public beta period!</span>
+</div>
+
+</div> <!-- frontpage.information -->
+
+		</div> <!-- #page_content -->
+		
+		
+			<!-- Start of StatCounter Code -->
+			<script type="text/javascript">
+			var sc_project=4356198; 
+			var sc_invisible=0; 
+			var sc_partition=55; 
+			var sc_click_stat=1; 
+			var sc_security="3c86046d"; 
+			</script>
+
+			<script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><div class="statcounter"><a title="hit counter" href="http://www.statcounter.com/free_hit_counter.html" target="_blank"><img class="statcounter" src="http://c.statcounter.com/4356198/0/3c86046d/0/" alt="hit counter" ></a></div></noscript>
+			<!-- End of StatCounter Code -->
+		
+
+		<div id="page_footer">
+		<div class="inner">
+			<div>
+				DebGems is a service provided by
+				<a href="http://www.phusion.nl/">Phusion</a>,
+				creators of <a href="http://www.modrails.com/">Phusion Passenger&reg;</a>
+				and <a href="http://www.rubyenterpriseedition.com/">Ruby
+				Enterprise Edition</a>.
+			</div>
+			<div>
+				Copyright &copy; 2008 Phusion.
+			</div>
+		</div>
+		</div>
+	</div>
+</div> <!-- #page_container -->
+</body>
+</html>

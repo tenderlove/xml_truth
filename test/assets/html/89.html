@@ -1,0 +1,137 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="generator" content="Fog Creek CityDesk 3.0.0" />
+<meta name="citydesk" content="D227B580/1030" />
+<title>Ruby Performance Revisited - Joel on Software</title>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/StyleSheets/item.css" />
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.joelonsoftware.com/rss.xml" />
+</head>
+
+<body style="background-color:rgb(245,244,223); text-align:center;">
+
+    <div style="text-align:left; margin: 0px auto; width: 898px;">
+
+        <div style="background-image:url(/i/newdesign-top.png); width:898px; height:87px;"></div>
+        <div style="background-image:url(/i/newdesign-middle.png); background-repeat: repeat-y; width:898px;">
+        
+            <div style="width:780px; padding:10px 3em 1em 5em; margin: 0; text-align: left;">
+        
+			    <a href="http://www.joelonsoftware.com/">
+                    <img src="/i/newdesign-header.jpg" 
+                         style="width:804px; height:298px; position:relative; top: -47px; left:-32px;" 	      
+                         border="0"
+ 				         title="Joel on Software"
+				         alt="[A picture of private offices at Fog Creek Software]"/>
+			    </a>
+			    
+
+			    <img src="/i/newdesign-ancient.png" alt="Alert! This ancient trifle retrieved from the Joel on Software archive is well-past its expiration date. Proceed with care." style="position:relative;top:-47px; left:-10px;" />
+
+
+                <blockquote class="jobAd">
+                
+                	
+	    <strong>Wanted:</strong> <a href="http://jobs.joelonsoftware.com/?4641">Software Engineer 
+	    at Yodle</a> (New York, NY  10010).
+	    See this and other great job listings on 
+	    <a href="http://jobs.joelonsoftware.com">the jobs page</a>.
+    
+                
+                </blockquote>
+
+                <div style="width:500px">
+
+                    <h1>
+			            <a href="http://www.joelonsoftware.com/">Joel on Software</a>
+                    </h1>
+
+			        <h2>Ruby Performance Revisited</h2>
+
+			        <div class="author">by Joel Spolsky</div>
+
+
+			        <div class="date">Tuesday, September 12, 2006</div>
+            
+<p>Jack Herrington emailed me, in reference to the issue of Ruby on Rails performance, to write:</p>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+<p>I agree with you about unicode. And I agree that Rails needs some time to evolve. But I use a bunch of web technologies and they all have issues.</p>
+<p></p>
+<p>I do disagree with the scalability statements. I don't think Rails has scaling issues that can't be gotten around, and which don't have cousins in other technologies.</p>
+<p></p>
+<p>What I would ask is that you at least put some framing around your scalability comments. Tell us about the scalability problems. Even if we don't fix it for you, the entire community can gain from your experience.</p></blockquote>
+<p dir="ltr">David Heinemeier Hansson wrote:</p>
+<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+<p dir="ltr">Rails is for the vast majority of web applications Fast Enough. We got sites doing millions of dynamic page views per day. If you end up being with the Yahoo or Amazon front page, it's unlikely that an off-the-shelve framework in ANY language will do you much good. You'll probably have to roll your own. But sure, I'd like free CPU cycles too. I just happen to care much more about free developer cycles and am willing to trade the former for the latter.</p></blockquote>
+<p dir="ltr">By way of clarification, I'm not concerned with <strong>Rails</strong> performance, I'm concerned with Ruby performance, and here's why.</p>
+<p dir="ltr">I've seen lots of comparisons of Ruby's performance with bytecode languages like Java which I would consider slow, and I see a lot of reports of performance claiming Ruby is <a href="http://www.pankaj-k.net/archives/2005/11/ruby_or_java_a.html">10x slower</a>, <a href="http://fishbowl.pastiche.org/2004/10/28/ruby_performance">50x slower</a>, etc. Besides the random blogobuzz, Ruby comes pretty darn close to dead last in the <a href="http://shootout.alioth.debian.org/">Computer Language Shootout Benchmarks</a>.</p>
+<p>Without knowing much about the implementation of Ruby, I would guess that the biggest issue is around late binding and especially duck typing, which prevents type inference or strong typing, which means that function calls will always be slow because you can never get something compiled down to the point where a function call is just a single&nbsp;<a href="http://www.penguin.cz/~literakl/intel/c.html#CALL">CALL</a> instruction (on x86)... you always have to be exploring the object, possibly even scanning a hash table to find the function you want to call. Calling methods on objects is really, really, really, really common, especially in pure OO languages, and that bit of the code needs to get down to at least a CALL indirect on the CPU for Ruby to offer the same performance as languages where the type of the object can be determined at compile time and therefore the instruction where you're jumping to can be gotten either at compile time (like in C) or with a single indirection through a single vtable (like in C++).</p>
+<p>I understand the philosophy that developer cycles are more important than cpu cycles, but frankly that's just a bumper-sticker slogan and not fair to the people who are complaining about performance. Even though our product, FogBugz, seems like something that should be perfect for Ruby on Rails, we have several parts of code where performance is extremely important. In FogBugz 6 there's one place where we need to do literally millions of calculations to display a single chart on a single web page. We have gotten it down to 3 seconds or so in our current development environment with a lot of optimization, but frankly with a duck-typed function call I really don't think we could do it before the web browser gave up and timed out and the sun cooled down a couple of degrees. We also have to scan incoming email messages for spam using Bayesian filtering. This is compute-intensive can take 1 sec. per message. Receiving one email per second is not unreasonable for many of our customers so we are very close to being CPU pegged. That is using a language which we know to be orders of magnitude faster than Ruby at this type of code. We would be absolutely dead on Ruby.</p>
+<p>Even classic, simple CRUD applications -- the kind of application that basically just shows you a table from a database and gives you operations to add, delete, and edit records -- often discover somewhere down the line that there's something enormously computationally intensive that they want to do, for example, blog software might want to add Bayesian filtering to eliminate spam from comments. This is where you suddenly realize that if your language of choice is 10x slower than the competition, you may be simply unable to add that feature, or you may have to call out to another language (with all the marshalling overhead that implies).&nbsp;&nbsp;
+<p></p>This doesn't apply to everyone, but when people say they have performance problems with Ruby or that they just need to be able to run code faster than the core Ruby language engine can run it, it doesn't help to have Ruby advocates singing hymns about developer cycles vs. CPU cycles. Even if you aren't doing compute-intensive things, if you find yourself needing to buy 100 servers instead of 10 servers, you may suddenly revisit the whole developer cycle vs. CPU cycle equation.</p>
+<p></p>
+<p>I understand that there are plans for Ruby to address performance with some kind of bytecode compiler and that will be nice. When these things happen and when Ruby starts getting competitive benchmarks it will be a lot more appropriate for a lot more types of applications. In the meantime I stand by my claim that it's not appropriate for every situation.</p>
+<br clear="all" />
+<blockquote class="textmessage">
+	Work with me, here! Fog Creek Software has great <a href="http://www.fogcreek.com/Jobs/SummerIntern.html">paid internships</a> in software development for qualified college students. They’re in New York City. Free housing, lunch, and more. And you get to work on real, shipping software with the smartest developers in the business.
+</blockquote>
+
+
+	
+
+	<h4 class="microhead">Want to know more? </h4> 
+	<p>You’re reading <a href="http://www.joelonsoftware.com/">Joel on Software</a>, stuffed 
+	with years and years of completely raving mad articles about software development, managing 
+	software teams, designing user interfaces, running successful software companies, 
+	and rubber duckies.
+	</p>
+
+	<br />
+	<br />
+	<h4 class="microhead">About the author. </h4> 
+	<p>I’m <a href="/AboutMe.html">Joel Spolsky</a>,
+	founder of <a href="http://www.fogcreek.com/">Fog Creek Software</a>,
+	a <span style="WHITE-SPACE: nowrap">New York</span> company that proves that 
+	you can treat programmers well and still be highly profitable. 
+	Programmers get private offices, free lunch, and work 40 
+	hours a week. Customers only pay for software if they’re delighted.
+	We make <a href="http://www.fogcreek.com/FogBugz/">FogBugz</a>, an
+	enlightened project management system designed to help great teams develop brilliant
+	software, and <a href="https://www.copilot.com/">Fog Creek Copilot</a>, which makes 
+	remote desktop access easy.
+	</p>
+
+		            <div class="bottom">
+			            &copy; 2000-2009 Joel Spolsky<br />
+			            <script language="Javascript" type="text/javascript">
+			                <!--
+			                document.write('<a href="mai');
+			                document.write('lto');
+			                document.write(':&#106;&#111;&#101;&#108;');
+			                document.write('@');
+			                document.write('&#106;&#111;&#101;&#108;&#111;&#110;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#46;&#99;&#111;&#109;">');
+			                document.write('&#106;&#111;&#101;&#108;');
+			                document.write('@');
+			                document.write('&#106;&#111;&#101;&#108;&#111;&#110;&#115;&#111;&#102;&#116;&#119;&#97;&#114;&#101;&#46;&#99;&#111;&#109;<\/a>');
+			                // -->
+		                </script>
+        		    </div>
+		        </div>
+	        </div>
+            <div style="background-image:url(/i/newdesign-bottom.png); width: 898px; height:88px;">
+            </div>
+        </div>
+    </div>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-225715-5";
+urchinTracker();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <title>Redland RDF Library - Ruby Interface</title>
+  <link rel="stylesheet" type="text/css" href="/docs/stylesheet.css" />
+  </head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" summary="" class="headingbox">
+<tr>
+<td class="heading" rowspan="2" valign="top">
+         <h1 class="heading"><a class="home" href="/">Redland</a></h1>
+         <h3 class="heading"><a  class="author" href="http://www.dajobe.org/">Dave Beckett</a></h3>
+</td>
+
+<td rowspan="2" class="navdisplay">&nbsp; <!-- logo --></td>
+
+<td class="heading" align="right">&nbsp;</td>
+
+<td rowspan="2" width="20%" align="right" valign="bottom" class="header">
+  <div class="logo">
+  <a href="http://www.w3.org/RDF/" title="RDF Resource Description Framework"> <img src="http://www.w3.org/RDF/icons/rdf_w3c_icon.48" alt="" /></a>
+  </div>
+</td>
+</tr>
+
+<tr>
+<td align="right" valign="bottom" class="headerback">
+
+<!-- main navigation bar -->
+<table border="0" cellspacing="0" cellpadding="0" summary="Main navigation">
+<tr>
+<td valign="top">&nbsp;</td>
+<td class="mainnavback" align="center" valign="top">
+<a class="mainnavlink" href="/" title="Redland RDF API">Redland RDF API</a>
+</td>
+<td class="mainnavback" align="center" valign="top">
+<a class="mainnavlink" href="/bindings/" title="Redland Language Bindings in Perl, PHP, Python and Ruby">Redland RDF Language Bindings</a>
+</td>
+<td class="mainnavback" align="center" valign="top">
+<a class="mainnavlink" href="/raptor/" title="Raptor RDF Parser Library for RDF syntaxes">Raptor RDF Parser Library</a>
+</td>
+<td class="mainnavback" align="center" valign="top">
+<a class="mainnavlink" href="/rasqal/" title="Rasqal RDF Query Library">Rasqal RDF Query Library</a>
+</td>
+</tr>
+</table>
+<!-- end main navigation bar -->
+
+</td>
+</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" summary="">
+
+<tr>
+<td valign="top">
+
+<div class="category">
+<h2 class="catheader">Redland Bindings</h2>
+<div class="catitems">
+<a href="/bindings/NEWS.html">News</a><br />
+<a href="/bindings/RELEASE.html">Release Notes</a><br />
+<a href="/bindings/INSTALL.html">Installation</a><br />
+<a href="http://bugs.librdf.org/">Report bugs</a><br />
+<!--<a href="/bindings/TODO.html">To&nbsp;do list</a><br />-->
+<a href="/bindings/LICENSE.html">License</a><br />
+<a href="/lists/">Getting help</a><br />
+<a href="/using.html">Applications</a><br />
+<a href="http://svn.librdf.org/view/bindings/trunk/">Subversion</a>
+</div>
+
+<h2 class="catheader">Languages</h2>
+<div class="catitems">
+<a href="/docs/perl.html">Perl</a><br />
+<a href="/docs/php.html">PHP</a><br />
+<a href="/docs/python.html">Python</a><br />
+<a href="/docs/ruby.html">Ruby</a>
+</div>
+</div>
+
+
+
+<div class="category">
+<h2 class="catheader">Demonstrations</h2>
+<div class="catitems">
+<a href="/demo/">RDF Database</a><br />
+<a href="/parse/">RDF Parsing</a><br />
+<a href="/query/">RDF Querying</a><br />
+<a href="/rss/">RSS 1.0 Validator</a><br />
+<a href="/ntriples/">N-Triples Validator</a><br />
+<a href="http://svn.librdf.org/view/librdf/trunk/demos/">Demo Sources</a><br />
+</div>
+</div>
+
+<div class="category">
+<h2 class="catheader">Downloads</h2>
+<div class="catitems">
+<a href="http://download.librdf.org/">Download area</a><br />
+<small>(<a href="http://sourceforge.net/projects/librdf/">SourceForge mirror</a>)</small><br />
+<a href="http://download.librdf.org/source/">Sources</a><br />
+<a href="http://download.librdf.org/binaries/debian/">Debian packages</a><br />
+<a href="http://download.librdf.org/binaries/redhat/">Fedora packages</a><br />
+<a href="http://svn.librdf.org/view/">Subversion Sources</a><br />
+<a href="http://download.librdf.org/snapshots/">Latest Snapshots</a>
+</div>
+</div>
+
+
+
+
+
+<div class="category">
+<h2 class="catheader">Data</h2>
+<div class="catitems">
+<a href="/bindings/bindings.rdf" title="Description of Redland RDF Language Bindings in DOAP format"><img src="/images/doap.png" width="50" height="16" alt="DOAP" /></a><br />
+<span class="footnote">(See <a href="http://usefulinc.com/doap">DOAP Project</a></span>)<br />
+</div>
+</div>
+
+
+
+
+
+</td>
+
+<td valign="top">
+
+<div class="cbody">
+
+  <h1>Redland RDF Language Bindings - Ruby Interface</h1>
+
+  
+
+
+
+<h2>Installing the Redland Ruby interface</h2>
+
+<p>This is built if <tt>--with-ruby</tt> is given to the configure
+line, or <tt>--with-ruby=ruby1.8</tt> to use a particular Ruby
+version/program.  The standard 'make' at the top level will build it.</p>
+
+<p>You can also compile the Ruby interface by hand as follows:</p>
+
+<pre>
+  cd ruby
+  make
+
+  # optional (some tests require test/unit.rb - ships with ruby 1.8.0+)
+  make check
+</pre>
+
+<p>To install it system wide do this as <em>root</em> (or maybe via
+sudo make install):</p>
+
+<pre>
+  root# make install
+</pre>
+
+<p>The Ruby interface was originally written by Dominic Sisneros at the 
+<a href="http://rubyforge.org/projects/rdf-redland/">rdf-redland</a>
+project on <a href="http://rubyforge.org/">RubyForge</a>.  The interface
+here is an update of that with some fixes.
+</p>
+
+<p>The Ruby interface has been tested with Ruby 1.8.3, 1.8.2, 1.8.1, 1.8.
+The minimum version is likely 1.8 although older ones may work.  </p>
+
+
+<h2>Testing the Redland Ruby interface</h2>
+
+<p>The example program provided parses an RDF/XML source file into a
+model.  It should be run with two arguments - the URI of the content
+(as <tt>file:</tt><em>/path/to/content</em>) and the syntax name
+(say, rdfxml):</p>
+<pre>
+   # If installed
+   ruby example.ruby file:../data/dc.rdf rdfxml
+
+   # In source tree
+   ruby -I. -Ilib example.ruby file:../data/dc.rdf rdfxml
+</pre>
+
+
+<h2>Using the Redland Ruby API</h2>
+
+<p>Read the Ruby Doc <a href="rdoc/index.html">Redland Ruby Doc API</a>
+for details of the classes and methods provided wrapping the C API.</p>
+
+<p>The Ruby API is an object-based API reflecting the same structure
+of the Redland objects with simple mappings between them:</p>
+
+<table border="1">
+<tr>
+<th>Concept</th><th>Redland Class</th><th>Ruby Class</th><th>Purpose</th>
+</tr>
+<tr>
+<td>Resource / Literal</td><td><a href="/docs/api/node.html">librdf_node</a></td><td><a href="rdoc/classes/Redland/Node.html"><tt>Redland::Node</tt></a><br /><a href="rdoc/classes/Redland/BNode.html"><tt>Redland::BNode</tt></a><br /><a href="rdoc/classes/Redland/Literal.html"><tt>Redland::Literal</tt></a></td>
+<td>RDF Model &amp; Syntax nodes</td>
+</tr>
+<tr>
+<td>Statement / Triple</td><td><a href="/docs/api/statement.html">librdf_statement</a></td><td><a href="rdoc/classes/Redland/Statement.html"><tt>Redland::Statement</tt></a></td>
+<td>RDF Model &amp; Syntax arcs (statements, triples) [isa Resource]</td>
+</tr>
+<tr>
+<td>Model</td><td><a href="/docs/api/model.html">librdf_model</a></td><td><a href="rdoc/classes/Redland/Model.html"><tt>Redland::Model</tt></a></td>
+<td>Set of <em>Statement</em>s usually held in one <em>Storage</em>.</td>
+</tr>
+<tr>
+<td>Storage</td><td><a href="/docs/api/storage.html">librdf_storage</a></td><td><a href="rdoc/classes/Redland/TripleStore.html"><tt>Redland::TripleStore</tt></a><br /><a href="rdoc/classes/Redland/FileStore.html"><tt>Redland::FileStore</tt></a><br /><a href="rdoc/classes/Redland/HashStore.html"><tt>Redland::HashStore</tt></a><br /><a href="rdoc/classes/Redland/MemoryStore.html"><tt>Redland::MemoryStore</tt></a></td>
+<td>Storage for <em>Model</em>s either persistant or in-memory.</td>
+</tr>
+<tr>
+<td>Stream</td><td><a href="/docs/api/stream.html">librdf_stream</a></td><td><a href="rdoc/classes/Redland/Stream.html"><tt>Redland::Stream</tt></a></td>
+<td>Providing sequences of <em>Statement</em>s from <em>Parser</em>s, queries.</td>
+</tr>
+<tr>
+<td>Parser</td><td><a href="/docs/api/parser.html">librdf_parser</a></td><td><a href="rdoc/classes/Redland/Parser.html"><tt>Redland::Parser</tt></a></td>
+<td>Syntaxes parsers delivering <em>Stream</em> of <em>Statement</em>s or writing to a <em>Model</em></td>
+</tr>
+<tr>
+<td>Query</td><td><a href="/docs/api/query.html">librdf_query</a></td><td><a href="rdoc/classes/Redland/Query.html"><tt>Redland::Query</tt></a></td>
+<td>Querying of an <em>Model</em> delivering a <em>QueryResults</em></td>
+</tr>
+<tr>
+<td>QueryResults</td><td><a href="/docs/api/query_results.html">librdf_query_results</a></td><td><a href="rdoc/classes/Redland/QueryResults.html"><tt>Redland::QueryResults</tt></a></td>
+<td>Results of applying an <em>Query</em> to a <em>Model</em> giving either variable bindings with <em>Node</em> values or <em>Stream</em> of <em>Statement</em>s</td>
+</tr>
+<tr>
+<td>Serializer</td><td><a href="/docs/api/serializer.html">librdf_serializer</a></td><td><a href="rdoc/classes/Redland/Serializer.html"><tt>Redland::Serializer</tt></a></td>
+<td>Serializes a <em>Model</em> into a syntax such as RDF/XML</td>
+</tr>
+<tr>
+<td>Iterator</td><td><a href="/docs/api/iterator.html">librdf_iterator</a></td><td>&nbsp;</td>
+<td>Enumerating lists (of <em>Node</em>) from queries.</td>
+</tr>
+<tr>
+<td>URI</td><td><a href="/docs/api/uri.html">librdf_uri</a></td><td><a href="rdoc/classes/Redland/Uri.html"><tt>Redland::Uri</tt></a></td>
+<td>Provides URIs for <em>Resource</em>s, <em>Parser</em>s, ...</td>
+</tr>
+<tr>
+<td>World</td><td>&nbsp;</td><td><a href="rdoc/classes/Redland/World.html"><tt>Redland::World</tt></a></td>
+<td>RDF wrapper class handling Redland startup/shutdown</td>
+</tr>
+<tr>
+<td>Digest</td><td><a href="/docs/api/digest.html">librdf_digest</a></td><td>&nbsp;</td>
+<td>Internal content digest class</td>
+</tr>
+<tr>
+<td>Hash</td><td><a href="/docs/api/hash.html">librdf_hash</a></td><td>&nbsp;</td>
+<td>Internal key:value maps class</td>
+</tr>
+</table>
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+<hr />
+
+<div class="footer">
+Copyright (C) 2000-2008 <a href="http://www.dajobe.org/">Dave Beckett</a>, Copyright (C) 2002-2005 <a href="http://www.bristol.ac.uk/">University of Bristol</a>
+</div>
+
+</body>
+</html>

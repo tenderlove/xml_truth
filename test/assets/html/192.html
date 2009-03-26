@@ -1,0 +1,1105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Matasano Chargen  &raquo; Blog Archive   &raquo; Ruby for Pen-Testers: JRuby</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<meta name="author" content="" />
+		<meta name="keywords" content="" />
+<script src="/mint/?js" type="text/javascript"></script>
+		<link type="text/css" rel="stylesheet" media="screen" href="http://www.matasano.com/log/wp-content/themes/matasano/style.css" />
+		<link  type="application/rss+xml" rel="alternate" title="Matasano Chargen RSS Feed" href="http://www.matasano.com/log/feed/" />
+		<link rel="pingback" href="http://www.matasano.com/log/xmlrpc.php" />
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.matasano.com/log/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.matasano.com/log/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.6.2" />
+
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<div class="wrapper">
+					<a href="http://www.matasano.com"><img class="logo header-logo" src="http://www.matasano.com/log/wp-content/themes/matasano/images/logo-big.gif" width="262" height="120" alt="Matasano Logo" /></a>
+					<div id="nav" class="nav">
+                                                  <li><a href="http://www.matasano.com/" title="Matasano Security Home Page">Home</a></li>
+<li><a href="http://www.matasano.com/careers" title="Employment opportunities">Careers</a></li>
+<li><a href="http://www.matasano.com/contact" title="Contact Matasano Security">Contact</a></li>
+<li><a href="http://www.matasano.com/log/" title="Matasano Chargen: A Vulnerability Research Blog">Blog</a></li>
+<li><a href="http://www.matasano.com/log/the-product" title="Matasano Playbook">Product</a></li>
+<li><a href="http://www.matasano.com/mtso/services" title="Security Assessments for Enterprises and Vendors">Services</a></li>
+<li><a href="http://www.matasano.com/mtso/team" title="The Matasano Security Team">Team</a></li>
+
+<!--						<ul>
+							<li><a href="" class="active">Home</a></li>
+							<li><a href="">Team</a></li>
+							<li><a href="">Services</a></li>
+							<li><a href="">Blog</a></li>
+							<li><a href="">Contact</a></li>
+						</ul> -->
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>				
+			<div id="main">
+				<div class="wrapper">
+					<div id="content">
+																					<div class="post" id="post-1399">
+			<h3 class="title">Ruby for Pen-Testers: JRuby</h3>
+<p class="details">Eric Monti | February 6th, 2009 | Filed Under: <a class="category" href=""><a href="http://www.matasano.com/log/category/development/" title="View all posts in Development" rel="category tag">Development</a>,  <a href="http://www.matasano.com/log/category/uncategorized/" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></a></p>
+									<p><img src="http://www.matasano.com/log/wp-content/uploads/2009/01/coffee.jpg" alt="" /></p>
+<p>This post is part of an informal series discussing the Ruby programming language for various tasks related to penetration testing. Many of us at Matasano do a lot of our coding in Ruby. We like using it when we need to write our own tools (which we do frequently) because it helps us rapidly get off the ground doing all kinds of bespoke things that would be more tedious and time-consuming (or even impossible) using off-the-shelf tools. Go ahead! Call us fanboys (and girls!!!). We can live with it. We want to share some practical tips based on our experiences in this realm.</p>
+<p>Recently, Timur Duehr and I had the opportunity to look at a rather large third-party product based mostly on Java/J2EE.  Timur had been focusing mostly on the web front ends, but had already identified a lot of Java enterprise components and asked me my thoughts about writing some custom security testing tools for them. We&#8217;d  been using &#8216;jad&#8217; (our <a href="http://www.kpdus.com/jad.html">java decompiler of choice</a>) to decompile some of the classes we had access to and we were already sifting through Java code getting a sense of things. One of us (I honestly don&#8217;t remember who) piped up and said, &#8220;I wonder if we could use <a href="http://jruby.codehaus.org/">JRuby</a> to hook into this stuff.&#8221;</p>
+<p>In the past when I&#8217;ve found myself doing security testing on Java-based targets, I usually &#8220;go with the flow&#8221; for the target and may develop some of my custom tools in Java when I need to. But, I definitely don&#8217;t code in Java &#8220;just for fun&#8221;. This is because frankly, Java just really isn&#8217;t fun to code in.  So, even though neither of us had really done much with JRuby before this point, Timur and I didn&#8217;t spend much time debating this, and we quickly decided to give JRuby a try and see how far it got us. The idea now seems like a no-brainer in retrospect. I&#8217;m happy to say that it was a great experience. I just wish I&#8217;d started doing this a lot earlier.</p>
+<p>Here&#8217;s some of the basic rationale and a few short code examples to highlight things.</p>
+<p>First and foremost: we have tons of ruby code laying around for common tasks that we were able to leverage using JRuby, most of which works just fine since it&#8217;s &#8220;native ruby&#8221; (or.. MRI, the Matz Ruby Interpreter)  Avoiding the use of too many third-party C library extensions pays off big-time here. All together, I&#8217;ve written way too many incarnations of little utility function libraries in a variety of languages over the years. I&#8217;m done for a while&#8230; I don&#8217;t want to again if I can avoid it. &#8216;Nuff said.</p>
+<p>But beyond that, JRuby really shines on its own in several ways. Aside from just MRI integration, it sports truly seamless Java integration. Here&#8217;s a simple &#8220;hello world&#8221; using &#8216;jirb&#8217;, the JRuby equivalent to the interactive ruby shell.</p>
+<blockquote>
+<pre>$ <strong>jirb</strong>
+&gt;&gt; <strong>java.lang.System.out.println "Hello, ruby!"</strong>
+Hello, ruby!
+=&gt; nil</pre>
+</blockquote>
+<p>&#8220;Whoopie&#8221; right? Well here&#8217;s a slightly more interesting example messing around with Java Serialization from jirb.</p>
+<blockquote>
+<pre>$ <strong>jirb</strong>
+&gt;&gt; <strong>saved_time = Time.now</strong>
+=&gt; Thu Feb 05 20:21:27 -0600 2009
+&gt;&gt; <strong>saved_time.class</strong>
+=&gt; Time
+&gt;&gt; <strong>fos = java.io.FileOutputStream.new "saved_time.ser"</strong>
+=&gt; #&lt;Java::JavaIo::FileOutputStream:...&gt;
+&gt;&gt; <strong>oos = java.io.ObjectOutputStream.new fos</strong>
+=&gt; #&lt;Java::JavaIo::ObjectOutputStream:...&gt;
+&gt;&gt; <strong>oos.writeObject saved_time</strong>
+=&gt; nil
+&gt;&gt; <strong>oos.close</strong>
+=&gt; nil</pre>
+</blockquote>
+<p>So we just created a ruby Time object containing the current time and saved it to a file using Java serialization methods very much the same way a pure Java program would be written. It&#8217;s interesting to note that we created a *Ruby* Time object, not a Java one. Somehow everything worked just fine. So, obviously now we want to restore it back right?</p>
+<blockquote>
+<pre>$ <strong>jirb</strong>
+&gt;&gt; <strong>fis = java.io.FileInputStream.new "saved_time.ser"</strong>
+=&gt; #&lt;Java::JavaIo::FileInputStream:...&gt;
+&gt;&gt; <strong>ois = java.io.ObjectInputStream.new fis</strong>
+=&gt; #&lt;Java::JavaIo::ObjectInputStream:...&gt;
+&gt;&gt; <strong>restored_time = ois.readObject</strong>
+=&gt; #&lt;Java::JavaUtil::Date:...&gt;
+&gt;&gt; <strong>ois.close</strong>
+=&gt; nil
+&gt;&gt; <strong>Time.now.to_s</strong>
+=&gt; "Thu Feb 05 20:25:41 -0600 2009"
+&gt;&gt; <strong>restored_time.to_s</strong>
+=&gt; "Thu Feb 05 20:21:27 CST 2009"
+&gt;&gt; <strong>restored_time.class</strong>
+=&gt; Java::JavaUtil::Date</pre>
+</blockquote>
+<p>Notice at the end that the &#8216;restored_time&#8217; object is actually of a Java type now (java.util.Date or Java::JavaUtil::Date to ruby&#8217;s namespace). What happened here? JRuby&#8217;s automatic type conversion took over as the object was serialized to the &#8216;saved_time.ser&#8217; file. When we restored it, that&#8217;s how it came back to us in Ruby via the JVM.</p>
+<p>Next, (and this is where things begin to get interesting for pen-testing) if you want to hook into a third party &#8216;jar&#8217; or &#8216;class&#8217; file and mess around with it, it&#8217;s very straightforward. JRuby loads classes automatically using the same classloader rules as Java. If you need to do so explicitely it&#8217;s as simple as &#8216;require &#8220;/path/to/whatever.jar&#8221;&#8217; or &#8216;require &#8220;/path/to/SomeClass&#8221; (which pulls in SomeClass.class).</p>
+<p>Getting back to pen-testing: The app Timur and I were looking at had several components using <a href="http://java.sun.com/j2se/1.3/docs/guide/rmi/spec/rmiTOC.html">Java Remote Method Invocation (JRMI</a>) as a communication protocol behind the scenes. This included &#8220;thick client&#8221; components using JRMI to talk back to central management servers for things like administration and system monitoring as well as some of the servers using it to communicate with each other between tiers. RMI actually uses Java Serialization to transfer objects across the network under the hood (see&#8230; I was going somewhere with that). RMI is basically CORBA for Java. RMI has been around for a while, too &#8212; it&#8217;s at least 10+ years old.</p>
+<p>We run into JRMI frequently enough in both custom in-house developed apps as well as third-party Java/J2EE based enterprise products out there these days. RMI is yucky stuff from a security standpoint. Gotta be blunt here: whenever a technology empowers people to shovel business logic around the network without really thinking about security (because it&#8217;s totally abstracted from the process)&#8230; you get yucky stuff.</p>
+<p>RMI is one of those things for which, from a pen-testing standpoint, very few tools exist. Frankly, RMI probably gets overlooked and glossed over a lot because of this misinterpreted &#8220;obscurity&#8221;. One security tool comes to mind that did anything with RMI. It&#8217;s been a while since I used Nessus, but I <a href="http://www.nessus.org/plugins/index.php?view=single&amp;id=22227">recall it pulling down RMI registry listings</a> when it identified an RMI registry server. So to kick off, <a href="http://github.com/emonti/jruby_jrmi_toys/blob/dfa68087bf86559e49396331acf285c1daab54c7/rmiscan.rb">here&#8217;s a basic RMI port scanner written in JRuby</a> that does basically the same thing I remember Nessus doing. It looks for RMI endpoints on remote ports, then attempts to list the registry for endpoint names if an RMI registry server is on that port.</p>
+<p>Here&#8217;s the relevant bits of code that do the registry listing:</p>
+<blockquote>
+<pre>include Java
+import java.rmi.Naming
+...</pre>
+<pre>rmi = Naming.list("//#{host}:#{port}")
+puts "** Found RMI Registry at: //#{host}:#{port}"
+rmi.each {|x| puts "  " + x}</pre>
+</blockquote>
+<p>Lets try this out against a basic RMI example. <a href="http://github.com/emonti/jruby_jrmi_toys/blob/dfa68087bf86559e49396331acf285c1daab54c7/hello_rmi.tgz">Here is one</a> I whipped up and expanded slightly from <a href="http://www.eg.bucknell.edu/~cs379/DistributedSystems/rmi_tut.html">this Sun tutorial</a>.</p>
+<blockquote>
+<pre>$ <strong>rmiregistry &amp;</strong>
+$ <strong>java HelloServer &amp;</strong>
+Hello Server is ready.
+$ <strong>./rmiscan.rb localhost 1099</strong>
+** Found a possible RMI endpoint at //localhost:1099
+** Found RMI Registry at: //localhost:1099
+  //localhost:1099/Hello</pre>
+</blockquote>
+<p>Listing endpoints is about as far as Nessus went, as I recall. &#8220;Whoopie&#8221; right? How about actually identifying the methods exported via those endpoints? &#8230; and then calling them? Note, I&#8217;m not knocking Nessus here, there&#8217;s reasons why it doesn&#8217;t go much further than this, as we&#8217;ll see later.</p>
+<p>Ok so sure, you could probably code something up pretty quick in Java. This is what people have done historically when testing RMI-based applications. But then you&#8217;d be coding in Java&#8230;</p>
+<p>&#8230; cut to &#8230;</p>
+<blockquote><p>&#8230; somewhere far away, a kitten named &#8220;<a title="Aww... she looks like a panda" href="http://www.firstclasscats.de/kitten%20bilder/rogenstein/Panda1.jpg" target="_blank">Panda</a>&#8221; tragically strangles herself to death while playing adorably with her ball of yarn &#8230;</p></blockquote>
+<p>&#8230; cut to &#8230;</p>
+<blockquote><p>You don&#8217;t realize it yet, at least not fully, but your &#8220;inner happy&#8221; has just died a little bit at this very same moment.</p>
+<p>This is because you&#8217;re just 5 lines into writing your &#8220;quick proof of concept&#8221;&#8230; in Java&#8230; and you&#8217;ve stopped to ponder whether it would be better to refactor your &#8220;quick proof of concept&#8221; as a HelloScroobalizer factory before you compile and oh&#8230; which methods should be protected&#8230;</p></blockquote>
+<p>Oh, the humanity.</p>
+<p>Instead, write a POC in JRuby! Seriously! If not for yourself, then at least <a href="http://www.colinfahey.com/funny_images/kitten_running_away_from_domo_kun_creatures_of_japan_nhk_television.jpg" target="_blank">think of the kittens</a>! In-fact, <a href="http://github.com/emonti/jruby_jrmi_toys/blob/dfa68087bf86559e49396331acf285c1daab54c7/rmiquery.rb" target="_blank">here&#8217;s an example of just such a tool</a>.</p>
+<p>(Again, the code we care about is below):</p>
+<blockquote>
+<pre>include Java
+import java.rmi.Naming
+#...
+registry = Naming.lookup(regurl)
+registry.list.each do |remote_name|
+  puts "RMI Interface Found: #{remote_name}"
+  begin
+    remote = registry.lookup(remote_name)
+    puts "  #{remote}"
+    remote.java_class.declared_instance_methods.each do |meth|
+      puts "    #{meth.to_s}"
+    end
+  rescue
+    puts "     **ERROR** #{$!}"
+  end
+  puts
+end</pre>
+</blockquote>
+<p>Running this tool, we get:</p>
+<blockquote>
+<pre>$ <strong>./rmiquery.rb //127.0.0.1:1099</strong>
+
+RMI Interface Found: Hello
+     **ERROR** java.rmi.UnmarshalException:
+        error unmarshalling return; nested exception is:
+        java.lang.ClassNotFoundException: Hello_Stub
+        (no security manager: RMI class loader disabled)</pre>
+</blockquote>
+<p>Oops&#8230; what just happened? Well, RMI uses Java serialization, remember? So this means that in order for RMI to do its deserializing thing on the client, we need our client&#8217;s JVM to be able to instantiate the relevant interface classes exported by the remote RMI server. Actually, what the error is really telling us is that it the JVM doesn&#8217;t have the interface class definition, and our RMI security manager (the one we didn&#8217;t specify in our project so the default took over) wouldn&#8217;t let the class loader dynamically look for one on the network. I&#8217;ll um&#8230; just&#8230; copy this over for now.</p>
+<blockquote>
+<pre>$ <strong>cp ~/jstuff/rmi_samples/hello_world/HelloInterface.class .</strong></pre>
+</blockquote>
+<p>This isn&#8217;t JRuby&#8217;s doing, it&#8217;s the same for Java. RMI just works this way. We&#8217;re supposed to have, at a minimum, the class files with the object&#8217;s interface in order to interact with it fully on the remote RMI server. JRMI does support <a href="http://java.sun.com/j2se/1.3/docs/guide/rmi/spec/rmi-server7.html">dynamic network class loading mechanisms</a> over the network. But, in practice, most apps just include the necessary &#8216;.jar&#8217; files somewhere in the local class loader library path. This is where pen-testers and bad guys will find them too. I like to think people do the simple thing because of some sense of automatic self-preservation kicking in when hearing things like &#8220;dynamic network class loading&#8221; and &#8220;RMI class-loading over HTTP <a href="http://www.fitc.unc.edu.ar/javadev/rmi/specissues.html#11" target="_blank">uses a hard-coded URL</a>&#8221;. But, in the end, the classes usually aren&#8217;t that hard to get either way and having access to the necessary interface classes is the only &#8220;security requirement&#8221; most JRMI apps enforce on their clients.</p>
+<blockquote><p><em style="font-size: 10px">Since we&#8217;re on this tangent: some pretty <a href="http://video.google.com/videoplay?docid=1673714450539106400&amp;hl=en">interesting security research work</a> was recently presented by <a href="http://aboulton.blogspot.com/2008/10/owasp-nyc.html">Adam Boulton</a> (formerly of Corsaire) on fully enumerating RMI interfaces and calling their methods starting with no class definitions at all. Despite some cloaked caveats in Adam&#8217;s presentation (&#8220;oh&#8230; and&#8230; there&#8217;s this apparently random 64-bit number you need to know, but don&#8217;t worry about that.&#8221;) his attack really does help drive home how insecure most JRMI implementations probably are. Unfortunately, it looks like the tools he wrote in Java will not be published any time soon. On that note, I&#8217;ll say that in Adam&#8217;s video, he used a pretty hands-on process in the later steps of his presentation. Not knocking his work, but using a dynamic scripting language like ruby for the same thing might raise some exciting possibilities for automation and even dynamic class generation. But I&#8217;ll leave this as an exercise for the reader for now.</em></p></blockquote>
+<p>So anyway, with the HelloInterface.class in hand, we run the same command again: (quick note, the Java class loader rules kick in now and load the file automatically from the current directory)</p>
+<blockquote>
+<pre>$ <strong>./rmiquery.rb //127.0.0.1:1099</strong>
+RMI Interface Found: Hello
+  Proxy[HelloInterface,RemoteObjectInvocationHandler[UnicastRef ... ]]</pre>
+</blockquote>
+<blockquote>
+<pre><span style="#ff0000;">    public final java.lang.String $Proxy1.say() throws java.rmi.RemoteException
+    public final int $Proxy1.getCacheSize() throws java.rmi.RemoteException
+    public final void $Proxy1.setCacheSize(int) throws java.rmi.RemoteException
+    public final int $Proxy1.hashCode()
+    public final boolean $Proxy1.equals(java.lang.Object)
+    public final java.lang.String $Proxy1.toString()
+    public final int $Proxy1.add(int,int) throws java.rmi.RemoteException</span></pre>
+<p><strong></strong><strong></strong></p></blockquote>
+<p>There we go. This time our tool produced prototypes for all the methods exported via the &#8220;//127.0.0.1:1099/Hello&#8221; endpoint. Now, finally, lets call some of them from jirb. It&#8217;s incredibly straightforward&#8230; I can see why people would want to use this JRMI stuff in their products:</p>
+<blockquote>
+<pre>$ <strong>jirb</strong>
+&gt;&gt; <strong>registry = java.rmi.Naming.lookup("//localhost:1099")</strong>
+=&gt; #&lt;Java::SunRmiRegistry::RegistryImpl_Stub: ... &gt;
+&gt;&gt; <strong>remote = registry.lookup("Hello")</strong>
+=&gt; #&lt;#&lt;Class:01xd16868&gt;:0x1d929f ... &gt;
+&gt;&gt; <strong>remote.say</strong>
+=&gt; "Hello, ruby! (via RMI)!"
+&gt;&gt; <strong>remote.add(1,2)</strong>
+=&gt; 3
+&gt;&gt; <strong>remote.getCacheSize</strong>
+=&gt; 200
+&gt;&gt; <strong>remote.setCacheSize 8000</strong>
+=&gt; nil
+&gt;&gt; <strong>remote.getCacheSize</strong>
+=&gt; 8000</pre>
+</blockquote>
+<p>So there you have it. Just a scratch on the surface of what you can do with JRuby, but not too shabby. We&#8217;ve identified Java-based remote procedure services, enumerated them, and interacted with them them by invoking remote methods, all without having to touch a line of actual Java code. If you&#8217;re like me, and too much Java makes you cranky, give JRuby a shot next time you run into something where you need to dig into Java technologies! You&#8217;ll probably spend less time coding and go home with more findings (to your kittens who miss you!)</p>
+
+								
+				</div>
+				
+<link rel="stylesheet" href="http://disqus.com/stylesheets/matasanochargen/disqus.css" type="text/css" media="screen" />
+
+<div id="disqus_thread">
+	<div id="dsq-content">
+		<div id="dsq-post-top" style="display: none">
+							<div id="dsq-auth">
+					<div class="dsq-by"><a href="http://disqus.com/" target="_blank"><img src="http://media.disqus.com/images/embed/dsq-button-120x19.png" alt="discussion by DISQUS" /></a></div>
+					<div class="dsq-auth-header">
+						<h3 id="dsq-add-new-comment">Add New Comment</h3>
+						<span id="dsq-auth-as"><noscript><br />You must have JavaScript enabled to comment.</noscript></span>
+					</div>
+				</div>
+					</div>
+		<div style="margin:10px 0">
+			<a id="dsq-options-toggle" href="#" onclick="Dsq.Thread.toggleOptions(); return false"><img src="http://media.disqus.com/images/embed/dsq-options-plus.png" /></a>
+		</div>
+
+		<div id="dsq-options" style="display:none">
+			<span id="dsq-auth-wrap"></span>
+			<div id="dsq-extra-links">
+				<li>
+					<img src="http://media.disqus.com/images/embed/bullet-feed.png" /><strong>Subscribe</strong>:&nbsp;
+					<a href="http://matasanochargen.disqus.com/ruby_for_pen_testers_jruby/latest.rss">This Thread</a>
+				</li>
+				<li>
+					<img src="http://media.disqus.com/images/embed/bullet-go.png" /><strong>Go to</strong>:&nbsp;
+					<a href="http://disqus.com/track/">My Comments</a>&nbsp;&middot;&nbsp;
+					<a href="http://matasanochargen.disqus.com/ruby_for_pen_testers_jruby/">Community Page</a>
+				</li>
+			</div>
+			<div class="dsq-extra-meta">
+									Sort thread by:
+					<select onchange="Dsq.Thread.sortBy(this.value);">
+						<option value="hot" >Hot comments</option>
+						<option value="best" >Best comments</option>
+						<option value="newest" >Newest first</option>
+						<option value="oldest" >Oldest first</option>
+					</select>
+							</div>
+		</div>
+
+		<h3 id="dsq-comments-count">
+							Viewing 6 Comments					</h3>
+
+		<div id="dsq-alerts">
+			<p id="dsq-alerts-approve" style="display: none">Thanks. Your comment is awaiting approval by a moderator.</p>
+			<p id="dsq-alerts-claim" style="display: none">Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.</p>
+		</div>
+
+		<ul id="dsq-comments">
+															<div id="comment-6053329"></div>
+					<li id="dsq-comment-6053329" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6053329" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6053329">
+							<li id="dsq-rate-up-6053329"><a id="dsq-rate-up-a-6053329" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6053329"><a id="dsq-rate-down-a-6053329" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6053329" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6053329">
+								<a id="dsq-avatar-6053329" href="http://disqus.com/people/2812d833a4002efd42eec1d49fdf4b2b/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=2812d833a4002efd42eec1d49fdf4b2b&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-6053329" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6053329">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6053329" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6053329" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6053329" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6053329" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6053329" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-6053329" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6053329" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6053329">
+																	<span id="dsq-author-user-6053329">
+										a									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6053329" class="dsq-header-time" href="#comment-6053329" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6053329" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6053329" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6053329" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6053329" class="dsq-comment-message">:-) ! Thank you</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6053329">
+															<a href="#" id="dsq-reply-link-6053329">reply</a>
+								<span id="dsq-edit-wrap-6053329" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6053329" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6053329" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6053329" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6053329" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6053329" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6053329"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6053329" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-6053329"></span>
+								<span style="display: none" id="dsq-hidden-userurl-6053329">/people/2812d833a4002efd42eec1d49fdf4b2b/</span>
+								<span style="display: none" id="dsq-hidden-facebook-6053329"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6053329"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6053329"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6053329"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6053329"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6053329"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6053329"><img src="http://www.gravatar.com/avatar.php?gravatar_id=2812d833a4002efd42eec1d49fdf4b2b&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-6069654"></div>
+					<li id="dsq-comment-6069654" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6069654" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6069654">
+							<li id="dsq-rate-up-6069654"><a id="dsq-rate-up-a-6069654" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6069654"><a id="dsq-rate-down-a-6069654" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6069654" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6069654">
+								<a id="dsq-avatar-6069654" href="http://disqus.com/people/5d1658ac36692c8b5ff5612aa9d6a837/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=5d1658ac36692c8b5ff5612aa9d6a837&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-6069654" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6069654">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6069654" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6069654" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6069654" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6069654" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6069654" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-6069654" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6069654" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6069654">
+																	<span id="dsq-author-user-6069654">
+										inactiv8									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6069654" class="dsq-header-time" href="#comment-6069654" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6069654" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6069654" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6069654" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6069654" class="dsq-comment-message">Excellent tutorial.  jython is an equally good fit for those over-the-hill hackers who prefer python.  I regularly use similar techniques to intercept/modify/replay serialized java objects used by client/server enterprise apps.<br><br>One thing I have been struggling with is the best way to debug classes for which no debug symbol info is available.  This is in a large application, where rebuilding from jad&#39;s output is not really an option.  <br><br>You can breakpoint and inspect function arguments, but no debugger (including sun&#39;s) seems to expose local variables without symbols being available.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6069654">
+															<a href="#" id="dsq-reply-link-6069654">reply</a>
+								<span id="dsq-edit-wrap-6069654" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6069654" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6069654" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6069654" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6069654" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6069654" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6069654"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6069654" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-6069654"></span>
+								<span style="display: none" id="dsq-hidden-userurl-6069654">/people/5d1658ac36692c8b5ff5612aa9d6a837/</span>
+								<span style="display: none" id="dsq-hidden-facebook-6069654"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6069654"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6069654"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6069654"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6069654"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6069654"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6069654"><img src="http://www.gravatar.com/avatar.php?gravatar_id=5d1658ac36692c8b5ff5612aa9d6a837&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-6070410"></div>
+					<li id="dsq-comment-6070410" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6070410" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6070410">
+							<li id="dsq-rate-up-6070410"><a id="dsq-rate-up-a-6070410" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6070410"><a id="dsq-rate-down-a-6070410" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6070410" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6070410">
+								<a id="dsq-avatar-6070410" href="http://disqus.com/people/Eric_Monti/" title="Profile">
+									<img src="http://media.disqus.com/uploads/users/11/2259/avatar32.jpg" />
+								</a>
+								<ul id="dsq-menu-6070410" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6070410">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6070410" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6070410" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6070410" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6070410" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6070410" href="#">Remove&nbsp;Post</a></li>
+																							<li><a id="dsq-block-username-6070410" href="#">Block username</a></li>
+																						<li><a id="dsq-block-email-6070410" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6070410" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6070410">
+																	<span id="dsq-author-user-6070410">
+										Eric Monti									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6070410" class="dsq-header-time" href="#comment-6070410" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6070410" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6070410" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6070410" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6070410" class="dsq-comment-message">inactiv8: Thanks<br><br>Your debugging with no symbols is an interesting problem. Got me a bit curious, even though I honestly haven&#39;t done much with java debugging myself. Here&#39;s a question: have you considered hooking a Java debugging API directly yourself? Something like...<br><br><a href="http://java.sun.com/javase/technologies/core/toolsapis/jpda/" rel="nofollow">http://java.sun.com/javase/technologies/core/to...</a><br><a href="http://java.sun.com/j2se/1.4.2/docs/guide/jpda/jdi/index.html" rel="nofollow">http://java.sun.com/j2se/1.4.2/docs/guide/jpda/...</a><br><br>These sound like perfect APIs to wrap with JRuby or Jython too, btw.<br><br>Also there&#39;s JVM Tools Interface, which looks like it&#39;s lower level, and probably more powerful. You&#39;d probably be writing C/C++ to use it:<br><br><a href="http://java.sun.com/j2se/1.5.0/docs/guide/jvmti/jvmti.html" rel="nofollow">http://java.sun.com/j2se/1.5.0/docs/guide/jvmti...</a></div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6070410">
+															<a href="#" id="dsq-reply-link-6070410">reply</a>
+								<span id="dsq-edit-wrap-6070410" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6070410" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6070410" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6070410" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6070410" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6070410" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6070410"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6070410" style="display:none">
+															<span style="display: none" id="dsq-hidden-clout-6070410">1</span>
+								<span style="display: none" id="dsq-hidden-userurl-6070410">/people/Eric_Monti/</span>
+								<span style="display: none" id="dsq-hidden-follow-6070410">/people/Eric_Monti/following/</span>
+
+								<span style="display: none" id="dsq-hidden-blog-6070410"></span>
+								<span style="display: none" id="dsq-hidden-facebook-6070410"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6070410"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6070410"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6070410"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6070410"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6070410"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6070410"><img src="http://media.disqus.com/uploads/users/11/2259/avatar32.jpg" /></span>
+						</div>
+					</li>
+																			<div id="comment-6134759"></div>
+					<li id="dsq-comment-6134759" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6134759" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6134759">
+							<li id="dsq-rate-up-6134759"><a id="dsq-rate-up-a-6134759" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6134759"><a id="dsq-rate-down-a-6134759" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6134759" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6134759">
+								<a id="dsq-avatar-6134759" href="http://disqus.com/people/55b084d75d365b3e85fb2f61d97e73e3/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=55b084d75d365b3e85fb2f61d97e73e3&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-6134759" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6134759">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6134759" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6134759" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6134759" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6134759" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6134759" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-6134759" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6134759" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6134759">
+																	<span id="dsq-author-user-6134759">
+										mac									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6134759" class="dsq-header-time" href="#comment-6134759" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6134759" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6134759" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6134759" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6134759" class="dsq-comment-message">Regarding the "I need to know in advance the class defs before they can be instantiated" problem, I once had a similar issue with a Flash application that used the binary AMF protocol.<br><br>The library I used, however, had a nice option that if enabled would instantiate generic objects instead (e.g. HashMap). This was very useful for "discovering" the application and it worked perfectly when serializing (modified) objects back on the wire.<br><br>Perhaps you could do something similar with if you can "hook" the serializer / deserializer  methods/classes.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6134759">
+															<a href="#" id="dsq-reply-link-6134759">reply</a>
+								<span id="dsq-edit-wrap-6134759" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6134759" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6134759" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6134759" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6134759" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6134759" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6134759"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6134759" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-6134759"></span>
+								<span style="display: none" id="dsq-hidden-userurl-6134759">/people/55b084d75d365b3e85fb2f61d97e73e3/</span>
+								<span style="display: none" id="dsq-hidden-facebook-6134759"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6134759"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6134759"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6134759"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6134759"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6134759"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6134759"><img src="http://www.gravatar.com/avatar.php?gravatar_id=55b084d75d365b3e85fb2f61d97e73e3&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-6137197"></div>
+					<li id="dsq-comment-6137197" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6137197" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6137197">
+							<li id="dsq-rate-up-6137197"><a id="dsq-rate-up-a-6137197" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6137197"><a id="dsq-rate-down-a-6137197" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6137197" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6137197">
+								<a id="dsq-avatar-6137197" href="http://disqus.com/people/Eric_Monti/" title="Profile">
+									<img src="http://media.disqus.com/uploads/users/11/2259/avatar32.jpg" />
+								</a>
+								<ul id="dsq-menu-6137197" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6137197">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6137197" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6137197" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6137197" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6137197" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6137197" href="#">Remove&nbsp;Post</a></li>
+																							<li><a id="dsq-block-username-6137197" href="#">Block username</a></li>
+																						<li><a id="dsq-block-email-6137197" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6137197" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6137197">
+																	<span id="dsq-author-user-6137197">
+										Eric Monti									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6137197" class="dsq-header-time" href="#comment-6137197" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6137197" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6137197" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6137197" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6137197" class="dsq-comment-message">@mac:<br>As far as I know, no RMI "option" exists. In fact there&#39;s more of a mindset that this is a security feature.<br><br>I&#39;ve done a little playing around with the serializer code in Java specifically trying things like this, and although it&#39;s certainly possible one way or another, the RMI/Serialize class model does not lend itself too well to low level hooking like this. You can see this in Adam&#39;s presentation. Adam&#39;s obviously a sharp guy, but has to go through some pretty crazy hoops to get talking with foreign interfaces.<br><br>Also, the Java serialization format is well documented, and there&#39;s a ton of information you&#39;d want to know about objects and their classes available on the wire if you know how to speak the protocol.<br><br>There&#39;s definitely something to be said to identifying completely foreign remote interfaces.(Un)fortunately, this isn&#39;t really a problem I&#39;ve had to overcome. I just thought it was interesting. I&#39;m sure I&#39;ll end up in this territory again, though, and I&#39;ll update the blog if I do.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6137197">
+															<a href="#" id="dsq-reply-link-6137197">reply</a>
+								<span id="dsq-edit-wrap-6137197" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6137197" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6137197" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6137197" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6137197" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6137197" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6137197"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6137197" style="display:none">
+															<span style="display: none" id="dsq-hidden-clout-6137197">1</span>
+								<span style="display: none" id="dsq-hidden-userurl-6137197">/people/Eric_Monti/</span>
+								<span style="display: none" id="dsq-hidden-follow-6137197">/people/Eric_Monti/following/</span>
+
+								<span style="display: none" id="dsq-hidden-blog-6137197"></span>
+								<span style="display: none" id="dsq-hidden-facebook-6137197"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6137197"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6137197"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6137197"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6137197"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6137197"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6137197"><img src="http://media.disqus.com/uploads/users/11/2259/avatar32.jpg" /></span>
+						</div>
+					</li>
+																			<div id="comment-6537056"></div>
+					<li id="dsq-comment-6537056" style="margin-left:0px" class="dsq-comment ">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6537056" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6537056">
+							<li id="dsq-rate-up-6537056"><a id="dsq-rate-up-a-6537056" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6537056"><a id="dsq-rate-down-a-6537056" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6537056" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6537056">
+								<a id="dsq-avatar-6537056" href="http://disqus.com/people/dbaa4cc59dbf87f25cef1880722104f1/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=dbaa4cc59dbf87f25cef1880722104f1&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-6537056" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6537056">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6537056" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6537056" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6537056" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6537056" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6537056" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-6537056" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6537056" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6537056">
+																	<a id="dsq-author-user-6537056" href="http://natemcfeters.blogspot.com">
+										Nathan McFeters									</a>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6537056" class="dsq-header-time" href="#comment-6537056" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6537056" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6537056" style="display:none">Please <a href="http://disqus.com/login/?next=article:11232040">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6537056" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6537056" class="dsq-comment-message">Isn&#39;t it amazing how easy high level languages make this kinda thing?  I meant to post on this earlier, this is excellent work and a great example of using whatever tools you need, or making your own if you need them.<br><br>It&#39;s funny, I talked to Tom about this today and mentioned that I had done something similar in straight Java for a client, and he reminded me that we discussed that at some point in the past in an interview.  I could&#39;ve saved you the time and sent it to you if I had realized, but then again, I don&#39;t think mine was nearly as complete, and it was in straight Java... which just makes me feel dirty to use.<br><br>I&#39;m really digging that Ruby just knows how to make this happen... that&#39;s something I would&#39;ve expected.<br><br>Awesome work guys!</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6537056">
+															<a href="#" id="dsq-reply-link-6537056">reply</a>
+								<span id="dsq-edit-wrap-6537056" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6537056" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6537056" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6537056" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6537056" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6537056" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6537056"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6537056" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-6537056">http://natemcfeters.blogspot.com</span>
+								<span style="display: none" id="dsq-hidden-userurl-6537056">/people/dbaa4cc59dbf87f25cef1880722104f1/</span>
+								<span style="display: none" id="dsq-hidden-facebook-6537056"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6537056"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6537056"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6537056"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6537056"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6537056"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6537056"><img src="http://www.gravatar.com/avatar.php?gravatar_id=dbaa4cc59dbf87f25cef1880722104f1&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+									</ul>
+		<div id="dsq-pagination"></div>
+		<div id="dsq-post-bottom" style="display: none">
+							<div id="dsq-auth">
+					<div class="dsq-by"><a href="http://disqus.com/" target="_blank"><img src="http://media.disqus.com/images/embed/dsq-button-120x19.png" alt="discussion by DISQUS" /></a></div>
+					<div class="dsq-auth-header">
+						<h3 id="dsq-add-new-comment">Add New Comment</h3>
+						<span id="dsq-auth-as"><noscript><br />You must have JavaScript enabled to comment.</noscript></span>
+					</div>
+				</div>
+					</div>
+					<h3>Trackbacks</h3>
+			<ul id="dsq-references">
+			</ul>
+			</div>
+</div>
+
+
+<!-- embed_thread_profile.html -->
+
+<!-- profile -->
+<div id="dsq-template-profile" class="dsq-popupdiv" style="display:none">
+	<div id="dsq-popup-profile">
+		<div id="dsq-popup-top">
+		</div>
+		<div id="dsq-popup-body" class="clearfix">
+			<div id="dsq-popup-body-padding">
+				<div id="dsq-popup-header">
+					<a class="dsq-close-link" href="#" onclick="Dsq.Popup.hidePopup(); return false">close</a>
+					<span id="dsq-profile-avatar"></span>
+					<cite>
+						<span id="dsq-profile-cite"></span>(<a id="dsq-profile-userurl" href="#"></a>)
+					</cite>
+				</div>
+				<div id="dsq-profile-services">
+					<a id="dsq-profile-clout" class="dsq-profile-badge" href="#"></a>
+					<ul>
+						<li style="display:none">
+							<a id="dsq-service-blog" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/blog.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-facebook" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/facebook.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-linkedin" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/linkedin.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-twitter" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/twitter.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-delicious" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/delicious.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-flickr" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/flickr.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-tumblr" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/tumblr.png" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="dsq-profile-status">
+					<p class="dsq-profile-label">status via twitter</p>
+					<p></p>
+				</div>
+				<div id="dsq-profile-recentcomments">
+					<p class="dsq-profile-label">recent comments <span>(<a href="#" id="dsq-profile-follow">follow comments</a>)</span></p>
+					<ul id="dsq-profile-commentlist"></ul>
+				</div>
+				<div class="show-more"><a href="#" id="dsq-profile-showmore">View Profile »</a></div>
+				<div class="powered-by"><a href="http://disqus.com">Powered by <span class="disqus">Disqus</span></a>&nbsp;&middot;&nbsp;<a href="http://disqus.com">Learn more</a></div>
+			</div> <!-- padding -->
+		</div> <!-- body -->
+		<div id="dsq-popup-bottom"></div>
+	</div>
+</div>
+
+<!-- reblog -->
+<div id="dsq-template-reblog" class="dsq-reblogdiv">
+	<div id="dsq-popup-profile">
+		<div id="dsq-popup-top">
+		</div>
+		<div id="dsq-popup-body" class="clearfix">
+			<div id="dsq-popup-body-padding">
+				<div id="dsq-popup-header">
+					<a class="dsq-close-link" id="dsq-close-reblog" href="#" onclick="Dsq.Popup.hidePopup(); return false">close</a>
+					<cite>Reblog this comment</cite>
+				</div>
+				<div id="dsq-reblog-form">
+				</div>
+				<div class="powered-by"><a href="http://disqus.com">Powered by <span class="disqus">Disqus</span></a>&nbsp;&middot;&nbsp;<a href="http://disqus.com/">Learn more</a></div>
+			</div> <!-- padding -->
+		</div> <!-- body -->
+		<div id="dsq-popup-bottom"></div>
+	</div>
+</div>
+
+<!-- /embed_thread_profile.html -->
+
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript">
+</script>
+<script type="text/javascript" charset="utf-8">
+	var disqusMediaUrl = "http://media.disqus.com";
+	var threadEl = document.getElementById('dsq-content');
+	var disqus_url = 'http://www.matasano.com/log/1399/ruby-for-pen-testers-jruby/ ';
+</script>
+<script type="text/javascript" src="http://disqus.com/scripts/matasanochargen/disqus.js?t=ruby_for_pen_testers_jruby"></script>
+<script type="text/javascript" src="http://disqus.com/api/v1/embed_reply.js?forum_url=matasanochargen&thread_id=11232040"></script>
+
+									</div>
+					<div class="navigation">
+						<span></span> <span></span>
+					</div>
+					
+                                        				<div id="sidebar">
+					<!-- <form method="get" id="searchform" action="http://www.matasano.com/log/">
+<div><input type="text" value="" name="s" id="s" />
+<input type="submit" id="searchsubmit" value="Search" />
+</div>
+</form>
+ -->
+<!--
+					<h6>Wordpress Section Heading</h6>
+					<ul class="safe">
+						<li><span>Verify trustworthy vendors</span></li>
+						<li><span>Expedite patches and bugfixes before deployment</span></li>
+						<li><span>Assure safety of customer data</span></li>
+					</ul>
+					<h6>Wordpress Section Heading</h6>
+					<div class="clear"></div>
+					<ul class="safe">
+						<li><span>Control release schedules</span></li>
+						<li><span>Simplify Regulatory Compliance problems</span></li>
+						<li><span>Build competitive advantage around security</span></li>
+					</ul>
+					<div class="clear"></div>
+					<h4>Pages</h4>
+						<ul class="quick">
+							<li class="page_item page-item-449"><a href="http://www.matasano.com/log/predictions-page/" title="Predictions Page">Predictions Page</a></li>
+<li class="page_item page-item-296"><a href="http://www.matasano.com/log/bigten/" title="A &#8220;Big Ten&#8221; Roundup of Acquirers">A &#8220;Big Ten&#8221; Roundup of Acquirers</a></li>
+<li class="page_item page-item-793"><a href="http://www.matasano.com/log/case-against-dnssec/" title="A Case Against DNSSEC">A Case Against DNSSEC</a></li>
+<li class="page_item page-item-2"><a href="http://www.matasano.com/log/about/" title="About">About</a></li>
+<li class="page_item page-item-1008"><a href="http://www.matasano.com/log/basic-uncommented-crappy-binary-radix-trie/" title="Basic Uncommented Crappy Binary Radix Trie">Basic Uncommented Crappy Binary Radix Trie</a></li>
+<li class="page_item page-item-583"><a href="http://www.matasano.com/log/d4dac40a8e996e345c7c5c9730b0c741/" title="Cisco Can Kill Crossbeam Any Time It Wants">Cisco Can Kill Crossbeam Any Time It Wants</a></li>
+<li class="page_item page-item-238"><a href="http://www.matasano.com/log/consulting-services/" title="Consulting Services">Consulting Services</a></li>
+<li class="page_item page-item-479"><a href="http://www.matasano.com/log/d530649489bed028cc8ec06a5924341f/" title="d530649489bed028cc8ec06a5924341f">d530649489bed028cc8ec06a5924341f</a></li>
+<li class="page_item page-item-235"><a href="http://www.matasano.com/log/dave-goldsmith/" title="Dave Goldsmith">Dave Goldsmith</a></li>
+<li class="page_item page-item-237"><a href="http://www.matasano.com/log/dino-dai-zovi/" title="Dino Dai Zovi (Emeritus)">Dino Dai Zovi (Emeritus)</a></li>
+<li class="page_item page-item-406"><a href="http://www.matasano.com/log/agents-talk/" title="Do Enterprise Management Systems Dream Of Electric Sheep?">Do Enterprise Management Systems Dream Of Electric Sheep?</a></li>
+<li class="page_item page-item-481"><a href="http://www.matasano.com/log/e0b7a081f5df127d7bff8ef8ab89be72/" title="e0b7a081f5df127d7bff8ef8ab89be72">e0b7a081f5df127d7bff8ef8ab89be72</a></li>
+<li class="page_item page-item-293"><a href="http://www.matasano.com/log/fake/" title="Fake Welcome">Fake Welcome</a></li>
+<li class="page_item page-item-403"><a href="http://www.matasano.com/log/msft-mtso/" title="Full Disclosure Regarding Microsoft and Matasano">Full Disclosure Regarding Microsoft and Matasano</a></li>
+<li class="page_item page-item-468"><a href="http://www.matasano.com/log/6aa03bd833e938a14ded64eafc6afe16/" title="Help Us Help You Help Us: A Guest Posting Proposal">Help Us Help You Help Us: A Guest Posting Proposal</a></li>
+<li class="page_item page-item-538"><a href="http://www.matasano.com/log/6cfd7c0a4/" title="Helu">Helu</a>
+<ul>
+	<li class="page_item page-item-539"><a href="http://www.matasano.com/log/6cfd7c0a4/deploysafe-for-enterprises/" title="DeploySafe for Enterprises">DeploySafe for Enterprises</a></li>
+	<li class="page_item page-item-541"><a href="http://www.matasano.com/log/6cfd7c0a4/dummy-page/" title="Dummy Page">Dummy Page</a></li>
+	<li class="page_item page-item-540"><a href="http://www.matasano.com/log/6cfd7c0a4/shipsafe-for-vendors/" title="ShipSafe for Vendors">ShipSafe for Vendors</a></li>
+</ul>
+</li>
+<li class="page_item page-item-857"><a href="http://www.matasano.com/log/i-am-a-test-page/" title="I am a test page">I am a test page</a></li>
+<li class="page_item page-item-234"><a href="http://www.matasano.com/log/jeremy-rauch/" title="Jeremy Rauch">Jeremy Rauch</a></li>
+<li class="page_item page-item-410"><a href="http://www.matasano.com/log/rui-argument/" title="My Response To Rui Carmo&#8217;s Response To Me, or, &#8220;We Need Threaded Blog Readers&#8221;">My Response To Rui Carmo&#8217;s Response To Me, or, &#8220;We Need Threaded Blog Readers&#8221;</a></li>
+<li class="page_item page-item-239"><a href="http://www.matasano.com/log/the-product/" title="The Product">The Product</a></li>
+<li class="page_item page-item-233"><a href="http://www.matasano.com/log/thomas-ptacek/" title="Thomas Ptacek">Thomas Ptacek</a></li>
+<li class="page_item page-item-267"><a href="http://www.matasano.com/log/mtso/" title="Welcome">Welcome</a>
+<ul>
+	<li class="page_item page-item-983"><a href="http://www.matasano.com/log/mtso/careers/" title="Careers">Careers</a></li>
+	<li class="page_item page-item-271"><a href="http://www.matasano.com/log/mtso/contact/" title="Contact Matasano">Contact Matasano</a></li>
+	<li class="page_item page-item-276"><a href="http://www.matasano.com/log/mtso/competitive/" title="Matasano Competitive Strengths">Matasano Competitive Strengths</a></li>
+	<li class="page_item page-item-277"><a href="http://www.matasano.com/log/mtso/ethics/" title="Matasano Disclosure Ethics">Matasano Disclosure Ethics</a></li>
+	<li class="page_item page-item-270"><a href="http://www.matasano.com/log/mtso/team/" title="Matasano Management Team">Matasano Management Team</a></li>
+	<li class="page_item page-item-281"><a href="http://www.matasano.com/log/mtso/rfp/" title="Matasano RFP Responses">Matasano RFP Responses</a>
+	<ul>
+		<li class="page_item page-item-282"><a href="http://www.matasano.com/log/mtso/rfp/qualifications/" title="Matasano Qualifications">Matasano Qualifications</a></li>
+		<li class="page_item page-item-283"><a href="http://www.matasano.com/log/mtso/rfp/questions/" title="Matasano RFP Questions">Matasano RFP Questions</a></li>
+	</ul>
+</li>
+	<li class="page_item page-item-269"><a href="http://www.matasano.com/log/mtso/services/" title="Matasano Services">Matasano Services</a>
+	<ul>
+		<li class="page_item page-item-272"><a href="http://www.matasano.com/log/mtso/services/deploysafe/" title="Matasano DeploySafe Services">Matasano DeploySafe Services</a>
+		<ul>
+			<li class="page_item page-item-275"><a href="http://www.matasano.com/log/mtso/services/deploysafe/vulnerabilities/" title="DeploySafe Addressed Vulnerabilities">DeploySafe Addressed Vulnerabilities</a></li>
+			<li class="page_item page-item-273"><a href="http://www.matasano.com/log/mtso/services/deploysafe/details/" title="DeploySafe Details">DeploySafe Details</a></li>
+			<li class="page_item page-item-278"><a href="http://www.matasano.com/log/mtso/services/deploysafe/web/" title="DeploySafe For Web Applications">DeploySafe For Web Applications</a></li>
+			<li class="page_item page-item-274"><a href="http://www.matasano.com/log/mtso/services/deploysafe/techniques/" title="DeploySafe Techniques">DeploySafe Techniques</a></li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="page_item page-item-1096"><a href="http://www.matasano.com/log/mtso/netapp-and-matasano-collaborate-on-multistore-security/" title="NetApp and Matasano Collaborate on MultiStore Security">NetApp and Matasano Collaborate on MultiStore Security</a></li>
+	<li class="page_item page-item-284"><a href="http://www.matasano.com/log/mtso/reversing/" title="Reverse Engineering Services">Reverse Engineering Services</a></li>
+	<li class="page_item page-item-285"><a href="http://www.matasano.com/log/mtso/speaking/" title="Speaking Engagements">Speaking Engagements</a></li>
+	<li class="page_item page-item-1098"><a href="http://www.matasano.com/log/mtso/the-pitch/" title="The Pitch">The Pitch</a></li>
+	<li class="page_item page-item-268"><a href="http://www.matasano.com/log/mtso/markdown-test/" title="This Is A Test">This Is A Test</a></li>
+	<li class="page_item page-item-307"><a href="http://www.matasano.com/log/mtso/chargen/" title="Welcome to Matasano Chargen">Welcome to Matasano Chargen</a></li>
+	<li class="page_item page-item-1099"><a href="http://www.matasano.com/log/mtso/who-we-are/" title="Who We Are">Who We Are</a></li>
+</ul>
+</li>
+<li class="page_item page-item-236"><a href="http://www.matasano.com/log/window-snyder/" title="Window Snyder (Emeritus)">Window Snyder (Emeritus)</a></li>
+						</ul>
+-->
+
+					<h3>People We Read</h3>
+						<ul class="quick">
+							<li><a href="http://www.emergentchaos.com/" title="Security, privacy, says nice things about us.">Adam Shostack &#038; Friends</a></li>
+<li><a href="http://ideasinfood.typepad.com/" title="The &#8216;us&#8217; of food, if we may be permitted to flatter ourselves. Three words: hot ice cream.">Aki Kamozawa &#038; H. Alexander Talbot</a></li>
+<li><a href="http://techbuddha.wordpress.com/" title="As soon as I fix my copy of Illustrator, the PunditCon&#8217;s got Amrit&#8217;s name all over it.">Amrit Williams</a></li>
+<li><a href="http://d-kriptik.com/blog" title="Security, NYC, says nice things about us.">Andrew Donofrio</a></li>
+<li><a href="http://www.bunniestudios.com/wordpress" title="Reversing, hardware, could destroy us with pinky finger.">Bunnie Huang</a></li>
+<li><a href="http://www.lightbluetouchpaper.org" title="Security, privacy, society, British, must be smart.">Cambridge Security Lab Blog</a></li>
+<li><a href="http://www.davidlitchfield.com/blog" title="This link is added in fulfillment of our obligatation by the Vuln Researchers Guild to read and promote Litchfield&#8217;s blog.">David Litchfield</a></li>
+<li><a href="http://www.taossa.com" title="The best secure coding blog, by three of the world&#8217;s best code reviewers.">Dowd, McDonald, and Schuh</a></li>
+<li><a href="http://www.educatedguesswork.org/" title="Security, IETF punditry, wrote SSLdump.">Eric Rescorla</a></li>
+<li><a href="http://addxorrol.blogspot.com" title="Reversing, security, if you click him he&#8217;ll write more.">Halvar Flake</a></li>
+<li><a href="http://www.hexblog.com/" title="Reversing, wrote IDA Pro.">Ilfak Guilfanov</a></li>
+<li><a href="http://jeremiahgrossman.blogspot.com/" title="Like us, but for web application security.">Jeremiah Grossman</a></li>
+<li><a href="http://www.nynaeve.net/" title="Skywing made windbg bearable for us. Our favorite Win32 internals blog.">Ken &#8220;Skywing&#8221; Johnson</a></li>
+<li><a href="http://metasploit.blogspot.com" title="Exploits, reversing, Freshmeat for vulnerabilities.">Metasploit Team</a></li>
+<li><a href="http://securityincite.com/blog/mike-rothman" title="Excellent security market coverage. Lando to Lindstrom&#8217;s Vader.">Mike Rothman</a></li>
+<li><a href="http://rdist.root.org" title="Nate Lawson can divide by zero. Nate Lawson can win a game of Connect 4 in just three moves. Nate Lawson counted to infinity. Twice.">Nate Lawson</a></li>
+<li><a href="http://blog.ncircle.com/" title="Security, vulnerabilities, high-frequency, high-quality blog.">nCircle Team</a></li>
+<li><a href="http://spiresecurity.typepad.com/spire_security_viewpoint/" title="Peter Lindstrom thinks we should be in jail.">Peter Lindstrom</a></li>
+<li><a href="http://taosecurity.blogspot.com" title="Security, networking, the TaoSecurity guy, best network security blog.">Richard Bejtlich</a></li>
+<li><a href="http://www.veracode.com/blog/" title="The Chris&#8217;s Three of reversing and code security. Wow, I&#8217;m a dork.">The Veracode Blog</a></li>
+						</ul>
+					<h3>Things We Write</h3>
+					<ul class="quick">
+							<li class="cat-item cat-item-15"><a href="http://www.matasano.com/log/category/apple/" title="View all posts filed under Apple">Apple</a> (50)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.matasano.com/log/category/bitching-about-protocols/" title="View all posts filed under Bitching About Protocols">Bitching About Protocols</a> (30)
+</li>
+	<li class="cat-item cat-item-26"><a href="http://www.matasano.com/log/category/citysec/" title="View all posts filed under Citysec">Citysec</a> (1)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.matasano.com/log/category/defenses/" title="View all posts filed under Defenses">Defenses</a> (110)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.matasano.com/log/category/development/" title="View all posts filed under Development">Development</a> (26)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.matasano.com/log/category/disclosure/" title="View all posts filed under Disclosure">Disclosure</a> (77)
+</li>
+	<li class="cat-item cat-item-25"><a href="http://www.matasano.com/log/category/dont-believe-the-hype/" title="View all posts filed under Don&#039;t Believe The Hype">Don&#039;t Believe The Hype</a> (2)
+</li>
+	<li class="cat-item cat-item-27"><a href="http://www.matasano.com/log/category/feature/" title="View all posts filed under Feature">Feature</a> (7)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.matasano.com/log/category/gatherings/" title="View all posts filed under Gatherings">Gatherings</a> (71)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.matasano.com/log/category/guests/" title="View all posts filed under Guests">Guests</a> (22)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.matasano.com/log/category/security-industry/" title="View all posts filed under Industry Punditry">Industry Punditry</a> (181)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.matasano.com/log/category/interviews/" title="View all posts filed under Interviews">Interviews</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.matasano.com/log/category/malware/" title="View all posts filed under Malware">Malware</a> (12)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.matasano.com/log/category/matasano/" title="View all posts filed under Matasano">Matasano</a> (68)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.matasano.com/log/category/navel-gazing/" title="View all posts filed under Navel Gazing">Navel Gazing</a> (46)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.matasano.com/log/category/new-findings/" title="View all posts filed under New Findings">New Findings</a> (55)
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.matasano.com/log/category/nysec/" title="View all posts filed under NYSec">NYSec</a> (5)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.matasano.com/log/category/playbook/" title="View all posts filed under Playbook">Playbook</a> (2)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.matasano.com/log/category/reversing/" title="View all posts filed under Reversing">Reversing</a> (36)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.matasano.com/log/category/slashdot-rounddown/" title="View all posts filed under Slashdot Rounddown">Slashdot Rounddown</a> (16)
+</li>
+	<li class="cat-item cat-item-2"><a href="http://www.matasano.com/log/category/this-old-vulnerability/" title="View all posts filed under This Old Vulnerability">This Old Vulnerability</a> (11)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.matasano.com/log/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (402)
+</li>
+					</ul>
+					<br/>
+					<a href="http://www.matasano.com/log/feed/"><img class="left" src="http://www.matasano.com/log/wp-content/themes/matasano/images/rss.gif" width="36" height="36" alt="RSS Feed" /></a> <h6 class="left rss">RSS Feed</h6>
+					<div class="clear"></div>
+					<br/>
+					<h3>Archives</h3>
+						<ul class="quick">
+								<li><a href='http://www.matasano.com/log/date/2009/03/' title='March 2009'>March 2009</a></li>
+	<li><a href='http://www.matasano.com/log/date/2009/02/' title='February 2009'>February 2009</a></li>
+	<li><a href='http://www.matasano.com/log/date/2009/01/' title='January 2009'>January 2009</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/12/' title='December 2008'>December 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/10/' title='October 2008'>October 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/09/' title='September 2008'>September 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/07/' title='July 2008'>July 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/06/' title='June 2008'>June 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/05/' title='May 2008'>May 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/04/' title='April 2008'>April 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/03/' title='March 2008'>March 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/02/' title='February 2008'>February 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2008/01/' title='January 2008'>January 2008</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/12/' title='December 2007'>December 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/11/' title='November 2007'>November 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/10/' title='October 2007'>October 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/09/' title='September 2007'>September 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/08/' title='August 2007'>August 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/07/' title='July 2007'>July 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/06/' title='June 2007'>June 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/05/' title='May 2007'>May 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/04/' title='April 2007'>April 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/03/' title='March 2007'>March 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/02/' title='February 2007'>February 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2007/01/' title='January 2007'>January 2007</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/12/' title='December 2006'>December 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/11/' title='November 2006'>November 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/10/' title='October 2006'>October 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/09/' title='September 2006'>September 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/08/' title='August 2006'>August 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/07/' title='July 2006'>July 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/06/' title='June 2006'>June 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/05/' title='May 2006'>May 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/04/' title='April 2006'>April 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/03/' title='March 2006'>March 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/02/' title='February 2006'>February 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2006/01/' title='January 2006'>January 2006</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/12/' title='December 2005'>December 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/11/' title='November 2005'>November 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/10/' title='October 2005'>October 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/09/' title='September 2005'>September 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/08/' title='August 2005'>August 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/07/' title='July 2005'>July 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/06/' title='June 2005'>June 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/05/' title='May 2005'>May 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/04/' title='April 2005'>April 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/03/' title='March 2005'>March 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2005/01/' title='January 2005'>January 2005</a></li>
+	<li><a href='http://www.matasano.com/log/date/2004/12/' title='December 2004'>December 2004</a></li>
+						</ul>
+									</div>
+				<!--
+										-->
+
+					<div class="clear"></div>
+					<div id="bottom">
+						<div id="bottom-inner">
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="wrapper">
+					<a href=""><img class="logo footer-logo" src="http://www.matasano.com/log/wp-content/themes/matasano/images/logo-small.gif" width="162" height="74" alt="Matasano Logo" /></a>
+					<div id="footer-nav" class="nav">
+						<ul>
+                                                  <li><a href="http://www.matasano.com/" title="Matasano Security Home Page">Home</a></li>
+<li><a href="http://www.matasano.com/careers" title="Employment opportunities">Careers</a></li>
+<li><a href="http://www.matasano.com/contact" title="Contact Matasano Security">Contact</a></li>
+<li><a href="http://www.matasano.com/log/" title="Matasano Chargen: A Vulnerability Research Blog">Blog</a></li>
+<li><a href="http://www.matasano.com/log/the-product" title="Matasano Playbook">Product</a></li>
+<li><a href="http://www.matasano.com/mtso/services" title="Security Assessments for Enterprises and Vendors">Services</a></li>
+<li><a href="http://www.matasano.com/mtso/team" title="The Matasano Security Team">Team</a></li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+					<div id="copy">
+						<p>&copy;2008 Matasano. All Rights Reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,909 @@
+<html><head><title>MF Bliki: ruby</title><link rel="alternate" type="application/atom+xml" title="Feed" href="http://www.martinfowler.com/bliki/bliki.atom"><style type =' text/css'><!--@import url(bliki.css); --></style></head><body><STYLE>
+				<!--
+				A.nav:link {color: #D54000; font-weight: bold}
+				A.nav:visited {color: #D54000}
+				A.nav:hover {color: blue}
+			 	-->
+			</STYLE>
+	<div>
+		<table
+			style="height: 70px;
+			border-collapse: collapse;
+			vertical-align: bottom"	>
+			<tr style = "">
+				<td>
+					<a href="http://www.martinfowler.com">
+						<img
+							src="http://www.martinfowler.com/mflogo.gif"
+							alt = "martinfowler.com logo"
+							style = "border: none"
+							/>
+					</a>
+				</td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com" class="nav">Home</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com/bliki" class="nav">Blog</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com/articles.html" class="nav">Articles</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com/books.html" class="nav">Books</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com/aboutMe.html" class="nav">About Me</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://martinfowler.com/aboutMe.html#contactInfo" class="nav">Contact Me</a></td>
+	<td style = "padding: 5px; border-bottom: thick solid #D54000"><a href="http://www.thoughtworks.com" class="nav">ThoughtWorks</a></td>
+</tr>
+</table>
+<p style = "clear: left"/>
+</div>
+
+<p></p>
+<TABLE cellspacing = '10'><tr><TD valign = 'top'>
+<h1>Ruby bliki</h1>
+<hr></hr>
+<p><a href = 'EnterpriseRails.html'>EnterpriseRails</a>, <a href = 'EvaluatingRuby.html'>EvaluatingRuby</a>, <a href = 'GroovyOrJRuby.html'>GroovyOrJRuby</a>, <a href = 'RailsConf2007.html'>RailsConf2007</a>, <a href = 'RubyMicrosoft.html'>RubyMicrosoft</a>, <a href = 'RubyPeople.html'>RubyPeople</a>, <a href = 'RubyPloticus.html'>RubyPloticus</a></p>
+<hr></hr>
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'GroovyOrJRuby.html'>GroovyOrJRuby</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>28 November 2007</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/GroovyOrJRuby.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p>Currently there's quite a debate raging over the relative merits
+	of Groovy and JRuby as scripting languages running on the Java
+	virtual machine. Curious minds want to know - which of these
+	languages will win this upcoming language war? People want to know
+	which language to pick for a project, or which language to commit to
+	learn.</p><p>Perhaps the first thing to point out is that it's perhaps rather
+	unfair to see this as a race between these particular two
+	horses. Scripting has been available on the JVM for a long
+	time. Jython, a Java implementation of Python, has been around for
+	several years. There's plenty of other, more obscure languages,
+	which I daren't mention for fear of offending all the ones I miss out.</p><p>JRuby has got a lot of attention due to the attention of the Ruby
+	language generally - attention particularly ignited by the interest
+	around Rails. We've seen a sharp spike of interest around Ruby and
+	Rails work at ThoughtWorks, and JRuby adds an extra dimension since
+	it allows people to deploy Rails applications using their existing
+	Java infrastructure.</p><p>Groovy gets its attention because it, more than any other
+	language, is designed to work seamlessly with the JVM, and got a lot
+	of attention from an early JSR.</p><p>Personally I'd dropped Groovy from my radar a couple of years ago
+	when its development seemed to bog down. With its 1.0 release and
+	further interesting positive vibes from some of my colleagues I've
+	started to pay attention again.</p><p>Lets begin by talking about similarities. Both JRuby and Groovy
+	(and indeed Jython) are modern OO scripting languages. They combine
+	the well-chosen terseness of scripting languages with good solid
+	structures for building larger programs. As such they are suitable
+	both for classical scripting and for writing larger programs. Both
+	are comfortable with dynamic type checking, although Groovy does
+	offer some static facilities too. Both support <a href = 'Closures.html'>Closures</a>
+	which are an important feature for the greater expressiveness that
+	people want from this kind of language.</p><p>The biggest difference between them is their broader platform
+	philosophy. Groovy is designed to be a scripting language for
+	Java. As much as possible its syntax tries to match the equivalent
+	in Java. (Including such ugly things as the default fall-through in
+	switch statements.) It also works with Java's class library
+	directly, although it dynamically adds many methods to Java's
+	classes, vital in order to make use of things like closures.</p><p>JRuby, however, is a Java implementation of the Ruby
+	<i>platform</i>. Ruby can run directly on mainstream operating systems with
+	a C runtime, and is starting to run on .NET's CLR. When you
+	program in JRuby you primarily use Ruby's libraries which are
+	implemented in Java, and may also use Java's libraries at your
+	discretion. If you stick to Ruby's libraries, or at least wrap any
+	foreign elements, you can run Ruby programs on the C, Java, or (in
+	time) .NET
+	runtimes. So you can use JRuby to both run Ruby programs on the JVM
+	and as a language for scripting the JVM.</p><p>One of the big differences between JRuby and Jython is around the
+	libraries. One of the tricky aspects of porting this kind of
+	scripting language to the JVM is that these languages are usually
+	closely intertwined with libraries implemented in C. Porting these
+	libraries to Java involves rewriting the libraries in Java. Jython
+	didn't do much of this, as a result many Python apps can't run in
+	Jython. However the JRuby implementers decided from early on that their
+	goal was to run Rails apps, as a result many libraries including all
+	the Ruby standard libraries needed to be ported.</p><p>The fact that JRuby is a Ruby platform on the JVM means that in
+  JRuby you have two kinds of objects - JRuby objects and Java
+  objects. Although there are ways for the two to talk to each other
+  and to convert there is a difference. There are times when you need
+  to know whether you're dealing with a Java string or a JRuby
+  string. With Groovy you don't have that boundary, there are just
+  Java objects.</p><p>It's too early, or rather too difficult, to say if one language
+	will win out. Both are pretty young, only just finding their feet on
+	the JVM. On a more personal level, your choice has a lot to do with what
+	you expect to do with it. If you are only interested in running on
+	the JVM, then Groovy could well be the easier choice. You are
+	working directly with Java's library and object model, and the syntax
+	requires less getting used to. A strong reason to prefer Ruby is the
+	fact that it lives in multiple implementations. Ruby is a tool you
+	can use in a lot of other places. As a long time Rubyist, there's
+	not much incentive for me personally to get heavily into Groovy,
+	even though I actually like the language a lot from what I've seen
+	of it.</p><p>Rails is an important factor. The Java world is hardly
+	lacking in web frameworks, but Rails is widely liked by those who've
+	used it. I've not got many reports yet about Grails (the Groovy
+	knock-off) so can't give a firm opinion on that. But I can imagine
+	that the ability to deploy web apps with Rails could be a major
+	factor in making JRuby popular. Something else to look at is the
+	growth of RSpec as a new spin on testing environments.</p><p>With any platform it's as important to consider the people
+involved in the community as much as any technical factors. Good people
+can overcome technical weaknesses quickly and a vibrant community is a
+potent source for big innovations. <a href = 'RubyPeople.html'>RubyPeople</a> have formed
+a particularly strong community, which has already spawned things like
+Rails, Rake, and Rspec. </p><p>Will either matter to Java? After all Jython's been around for a
+	long time without making a huge impact on the JVM. Tool support is
+	frankly pathetic for any of these languages when you compare it to
+	what you have for Java at the moment.</p><p>I think we're actually at an inflection point with Java. Until
+recently the Java cry was One VM and <a href = 'OneLanguage.html'>OneLanguage</a>. (As
+opposed to the CLR which started with the cry of one VM and many
+languages - providing
+they're C# or VB.) This seems to be changing as people realize the
+limitations of Java and begin to seek out different capabilities. It's
+likely the future will see multiple languages closely integrated
+within the JVM.</p><p>There are plenty of people who dislike the hype around Rails and
+	Ruby. But even if you dislike Ruby, the hype has led to a resurgence
+	of interest in new languages. I doubt if the interest in Groovy
+	would be anywhere near as great as it is if it wasn't for this hype,
+	nor would Jython be awaking from its slumbers. The ruby/rails hype
+	has also generated interest in other exotic JVM languages. The
+	really nice thing here is that the JRuby people have been
+	encouraging their dynamic rivals - recognizing that the point
+	here is to encourage multi-lingual inter-operability and innovation.</p><hr></hr></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'RubyMicrosoft.html'>RubyMicrosoft</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>28 July 2007</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/RubyMicrosoft.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p><b>Update:</b> Recently we've seen some very encourging signs coming out
+  of Redmond. In particular, <a href = 'http://www.iunknown.com/2007/07/a-first-look-at.html'>IronRuby</a> will be hosted on RubyForge with
+  what looks like a very permissive licence - Ola <a href = 'http://ola-bini.blogspot.com/2007/07/ironruby-scoop.html'>approves</a>.</p><p>At <a href = 'RailsConf2007.html'>RailsConf2007</a> there was a lot of excitement over JRuby. This small
+  team had taken a moribund project and turned it into what looks like
+  a first class implementation of the Ruby platform on the JVM. They
+  got a lot of cheers and deserved them all.</p><p>So with JRuby pretty much here, the spotlight moves onto the other
+	common managed code runtime - .NET. Microsoft's intentions for Ruby
+	are currently much less clear. They have announced Ruby as a
+	language for scripting Silverlight - but that still leaves a lot of
+	open questions. Is this a full implementation of the ruby language,
+	or is some form of Ruby++ - an enhanced subset of Ruby?</p><p>JRuby serves two distinct but complementary purposes. On the one
+  hand it's a powerful scripting language for the JVM, allowing you to
+  weave a dynamic language into a Java application. It's second
+  purpose is an implementation of the Ruby platform in the JVM, which
+  allows a Ruby application, in particular a Ruby on Rails
+  application, to run on the JVM just as well as it runs on the MRI
+  (Matz's Ruby Interpreter, the current C runtime). </p><p>The big question for Microsoft's "Iron Ruby" is how compatible will it be? Will
+it be a full implementation on the CLR? All the signals I hear tell me
+that John Lam, the main force behind Iron Ruby, is determined to get a
+fully compatible implementation. However this may be very difficult to
+do as things stand. Soon-to-be-ThoughtWorker Ola Bini, a JRuby
+committer,  reckons that it's almost impossible to figure out how to
+implement a Ruby runtime without looking at source code of the MRI - but
+Microsoft imposes drastic limitations on its employees' ability to
+download open source software, let alone look at the source. The
+open-source community does much of its communication through source
+code - so this makes collaboration with an open-source community very
+difficult.</p><p>Overshadowing this, of course, is Microsoft's historically difficult
+	relationship with the open source world. In the past Microsoft has
+	gone out of its way to vilify and threaten the open source
+	community. In recent years things have improved, but there's a real
+	question about Microsoft's core intentions. The recent patent
+	threats are seen by many as proof that Microsoft is still intent on
+	fighting open source to the death.</p><p>Unlike most other technology companies, Microsoft has struggled
+to find a way to co-exist with the open source world. It is harder for
+Microsoft - unlike Sun, Apple, or IBM they are overwhelmingly a
+software company. Open source projects like Linux, GNU, and Open
+Office are directly competing with Microsoft's crown jewels. However
+I've never felt that declaring war on open-source, trying to stamp it
+out, was a viable long-term solution. Open-source is here to stay, the
+question is how to accommodate  it. </p><p>With Ruby Microsoft is in a different position to the more
+visible death match. Ruby doesn't compete with the core revenue
+generators in Microsoft's line up.  What's more there is a real desire
+in the Ruby community to co-operate with Microsoft. Most people I
+talked to at RailsConf were very keen to see a full
+range of support for Ruby on Microsoft - and there were a lot of
+creative ideas floating around on how we could try to come with an
+approach that could make it work. The overwhelming sense I heard in
+the community was not "Ruby will kill evil Microsoft" but "how can we
+overcome the problems to get Ruby on Microsoft."</p><p>As Chris Sells pointed out, we do have to consider the question
+"what's in this for Microsoft". I see a couple of reasons. First off
+is the role of .NET and Windows in the data center. If Microsoft
+doesn't support the Ruby platform, it runs the risk of people moving
+away from .NET (and Windows) on server farms if Ruby on Rails becomes
+successful.</p><p>Another reason is people. Microsoft doesn't like to acknowledge
+this in public, but there is a real concern that
+<a href = 'AlphaGeek.html'>AlphaGeek</a>s are <a href = 'http://www.hanselman.com/blog/IsMicrosoftLosingTheAlphaGeeks.aspx'>moving away</a> from the Microsoft platform.
+There's a growing sense that Microsoft's vision is armies of Morts in
+command-and-control organizations. There often seems to be outright
+discouragement of tools to enable talented enterprise developers, or
+of agile development processes. </p><p>A few years ago my (limited) contacts in Redmond told me that
+	they were seeing a real drift of technical leaders away from
+	the Windows platform. More recently these signs seem to be increasing. Reading
+	the 'softie part of my blogroll I got a sense of real disillusionment
+	amongst people who have been long-time Microsoft
+	supporters. Agile-oriented developers have been frustrated with the
+	direction of Microsoft tools. Microsoft conferences barely
+	mentioning agile processes, leaning much more to waterfall
+	approaches. The tools, with their rigid role-separations, actively
+	discourage the blurry boundaries that agilists prefer.</p><p>At RailsConf, Tim Bray contended that the key decisions on
+	technology are made by the programming community. I partly agree
+	with this. The reason we have so much bloatware in IT is because IT
+	purchasing decisions are usually made on golf courses by people who
+	have lost meaningful contact with the realities of software
+	development. However golf-course decisions may dominate the
+	short-term, but as time rolls on I think Tim's contention is
+	true. So losing the alpha geeks may not matter this year or next, but will
+	inexorably harm Microsoft over time.</p><p>Indeed it's already past next year for Microsoft. We've seen a
+noticeable drop-off in interest from our clients for Microsoft
+projects, particularly in the US. In Australia, .NET hasn't got any
+foothold at all amongst our clients. I'm not sure what to make of this
+data. We aren't so big to be a statistically valid sample on our own.
+But it's a useful data point nonetheless particularly since we like to
+think our clients are the "alpha IT shops". </p><p>Perhaps more significant is the story within ThoughtWorks. When
+.NET appeared there was a lot of interest in the platform. Many people
+were pleased to see a strong competitor to the Java platform and were
+keen to get involved on .NET projects. Yet over the last year or so
+there's been a big turn away from .NET. This is despite the fact that
+there is some really interesting things coming out of Redmond. Mike
+Two is very keen on the windows workflow tools, I've been very
+impressed by Linq and other language developments. But the general
+view of Microsoft technologies is a loud yawn. This is important
+because, as Tim O'Reilly believes, the alpha geeks point to what
+everyone else will be doing in a few years time. And the crucial point
+is that the attitude to Microsoft isn't hatred (a common attitude
+amongst many geeks) but boredom. This is what Paul Graham means when
+he says that <a href = 'http://www.paulgraham.com/microsoft.html'>Microsoft is dead</a> because it's no longer dangerous.</p><p>The attitude to open-source is a large part of this problem. When
+Java appeared there were yawning gaps in its portfolio, and worse some
+dreadful standard tools in its API (visions of Entity Beans spring to mind).
+Those gaps and bad ideas were fixed by the open-source community. Ant
+gave us a build tool, EJB was displaced by Spring and Hibernate. .NET
+has also got its gaps, and again the open source community has stepped
+up to fill them. Yet Microsoft refuses to collaborate with these
+efforts, even seems to go out of its way to undermine them. I was
+particularly sickened by Microsoft's reaction to <a href = 'http://nunit.com'>NUnit</a> - an excellent
+XUnit testing tool, elements of whose design were lauded by Anders
+Hejlsberg at OOPSLA. Microsoft ended not just bringing out a
+competitive library, but deliberately making it incompatible. That's
+not the kind of reaction that encourages people to invest their time
+in the platform.</p><p>To be fair, that debacle was a couple of years ago. Actions like
+	hiring Jim Hugunin and John Lam have helped counter that
+	impression. Technologists like Chris Sells, Don Box, and Jim Newkirk
+	are working to make Microsoft are a more open environment. But like
+	any large organization, Microsoft is full of contradictory forces
+	and we don't know which ones will prevail. </p><p>My colleague John Kordyback pointed out that at the heart of all
+this is realizing that Ruby is not Yet Another .NET Language but a
+whole community and attitude to software development. Ruby is a
+community where open source, agile thinking, and lightweight solutions
+are deeply ingrained values. He says a common problem in Redmond is
+that "They ask me 'Why is this language important' rather than 'Why is
+this <i>thinking</i> important?'"
+</p><p>So what I see for Ruby and Microsoft is an opportunity. The Ruby
+community seems eager to work with Microsoft. This provides an
+opportunity for Redmond to figure out how to deal with the problems of
+working with open source and for this effort to serve as an exemplar
+for future collaboration. A first class implementation of the full
+Ruby platform on .NET would be a wonderful product of this
+collaboration. Perhaps an even better result would be for this work to
+serve as  an example of how Microsoft can collaborate with a community
+that's centered on openness and agility; an example that can be a
+springboard for further spreading of attitudes that can further help
+programmers and their customers throughout the Microsoft world.</p><p>There's been quite a few reactions to this (see <a href = 'http://technorati.com/search/http://martinfowler.com/bliki/RubyMicrosoft.html'>Technorati</a> for a
+  full list). Particularly worth reading are the ones from: <a href = 'http://codebetter.com/blogs/sam.gentile/archive/2007/05/31/microsoft-at-the-crossroads.aspx'>Sam
+  Gentile</a>, 
+<a href = 'http://www.cornetdesign.com/2007/05/martin-fowler-on-ruby-at-microsoft.html'>Cory Foy</a>, <a href = 'http://www.lukemelia.com/blog/archives/2007/05/30/microsoft-ruby-open-source/'>Luke Melia</a>, <a href = 'http://codebetter.com/blogs/jeremy.miller/archive/2007/06/01/maybe-it-s-just-not-that-bad-to-be-a-microsoft-developer.aspx'>Jeremy Miller</a>, <a href = 'http://www.lhotka.net/weblog/ALackOfEnthusiasmInTheMicrosoftWorld.aspx'>Rockford Lhotka</a>, <a href = 'http://www.iunknown.com/2007/05/microsoft_and_i.html'>John Lam</a>, 
+<a href = 'http://evanhoff.com/archive/2007/06/02/18.aspx'>Evan
+Hoff</a>, 
+<a href = 'http://codebetter.com/blogs/karlseguin/archive/2007/06/02/jeremy-s-right-being-a-microsoft-developer-isn-t-that-bad.aspx'>Karl Seguin</a>,  
+<a href = 'http://ola-bini.blogspot.com/2007/06/there-can-be-only-one-tale-about-ruby.html'>Ola Bini</a>, 
+<a href = 'http://thinkwrap.wordpress.com/2007/06/03/martin-fowlers-article-on-ruby-and-microsoft/'>Miro Adamy</a>, 
+<a href = 'http://headius.blogspot.com/2007/06/response-to-olas-ironruby-post.html'>Charles Nutter</a>, 
+<a href = 'http://blogs.msdn.com/peterlau/archive/2007/06/11/shaking-out-the-innovation.aspx'>Peter Laudati</a>, 
+<a href = 'http://blogs.msdn.com/nickmalik/archive/2007/06/12/martin-fowler-wants-to-see-ruby-on-microsoft-to-save-the-alpha-geek.aspx'>Nick Malik</a></p><hr></hr></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'RailsConf2007.html'>RailsConf2007</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>22 May 2007</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/RailsConf2007.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p>I don't go to as many conferences as I used to, but the advantage
+  of that is that I have time to go to ones that take my fancy. I've
+  long had a particular fondness for the Ruby community, so I turned
+  up as an attendee at this year's RailsConf.</p>
+<div class = 'photo' style = 'width: 240px'><a href = 'http://www.flickr.com/photos/x180/503554396'><img src = 'chadKilmer.jpg' height = '160px' width = '240px'></img></a>
+<p>Chad Fowler and
+  Rich Kilmer introduced
+the conference. Chad shares my name but I don't share his ukulele skills.</p>
+</div>
+<p>With a young technology there's lots of new and important pieces
+	appearing, but for me the  most important of these is
+	<a href = 'http://jruby.codehaus.org/'>JRuby</a>. Now in its final cycle of release candidates, JRuby offers a
+	full implementation of the Ruby Platform on the Java JVM, as well as
+	providing a scripting language for the JVM. For what we do at
+	ThoughtWorks, and for many Ruby/Rails developers this matters a
+	great deal even if you never "include java". </p><p>One of the biggest issues our Ruby teams run into is
+	deployment. Getting a ruby app into production involves a whole
+	bunch of new technologies, and data centers tend to be conservative
+	on this kind of thing. Our <a href = 'http://studios.thoughtworks.com/rubyworks'>RubyWorks</a> stack tries to simplify this,
+	but JRuby offers the choice of just deploying into a Java container,
+	turning a Rails app into an easily deployed war file. I think this
+	will make Ruby on Rails a much more viable choice in lots of
+	enterprise environments.</p><p>JRuby's maturity on the JDK raised the obvious question of what
+will happen with the other popular managed runtime. Signals from
+Microsoft were faint and unclear. It was good to see notable
+Microsoft-oriented geeks
+<a href = 'http://www.hanselman.com/blog/'>Scott Hanselman</a> and <a href = 'http://www.sellsbrothers.com/'>Chris Sells</a> at the show, even
+if when I saw Chris Sells it felt like being in an arena. What I like
+is that there is  a real desire within the ruby community to
+collaborate with Microsoft rather than  the usual competition and
+Redmond-bashing.</p><p>Indeed the overwhelming impression I got at RailsConf was a sense
+	of industry-changing mission. At last year's conference my sense was
+	that of a community delighted and rather stunned by its success. My
+	iconic image was DHH as Neo of the Matrix, breaking the rules of
+	enterprise software and reveling in the success.</p><p>This year my sense is that this morphed into something much more
+important. Success is not just being an outbreak of sanity in the IT
+world, but actually leading that world. There seems an excellent
+chance that Ruby and Rails could become a significant platform for IT
+develop over the next few years. We're already seeing signs of this at
+ThoughtWorks - 40% of our new business this year in the US is Ruby
+work.</p><p>Unlike previous platforms, this one isn't controlled or even
+	dominated by vendors. Ruby is a community effort. I've been hoping
+	for a long time that one of the LAMP technologies would break through
+	into corporate IT, and it looks like Ruby could well do it.</p><p>Corporate IT is dominated by bloatware. Time and time again we
+	have to deal with expensive software purchased on golf-courses that
+	just get in our way while sucking funds and development
+	hours. Technologies that make it harder for programmers to do what
+	they like to do best - make a difference for the businesses they are
+	supporting. (This week's memorable tale was of a large company
+	that spent eight million dollars on an enterprise-wide version control
+	system that couldn't branch properly.)</p><p>My hope that with a platform that's controlled by a community
+	we'll see a platform that focuses on simplicity - finding the key
+	things that need to be done and doing them in a way enables
+	programmers to provide their best. </p>
+<div class = 'photo' style = 'width: 160px'><a href = '
+  http://www.flickr.com/photos/x180/506281043'><img src = 'kozBuck.jpg' height = '240px' width = '160px'></img></a>
+<p>Michael
+  Koziarski and Jamis Buck describing the Rails Way - establishing the
+  good style which lies deep in the Ruby community.</p>
+</div>
+<p>It's helped by the fact that the ruby community has formed around
+	the best ideas of the OO and Extreme Programming
+	communities. Listening to the keynote of <a href = 'http://therailsway.com/'>Jamis Buck and Michael Koziarski</a> I was
+	delighted to reflect on the thought that they were right there in
+	the values of Ward, Kent, and all the other people who've been
+	advocating clean code, well-factored object-oriented design, and
+	testability. These ideas have made a great impact on many other
+	technological communities, but in Ruby-land they are the orthodoxy.</p><p>Throughout the conference there was a sense that we are at an inflection-point in our
+	industry, a key technological shift that promotes a new major
+	platform. Listening and reading about JavaOne I got the sense that
+	a big shift had happened there, people no longer focusing on Java
+	the language but on Java the JVM, replacing one language with
+	multiple languages closely collaborating. </p><p>A particularly fascinating thing about the Ruby community is the
+	diversity of ages of people in it. Not just do you have the young
+	paradigm breakers like DHH and the core team, you also have the, ahem,
+	rather more seasoned campaigners like PragDave and the RubyCentral
+	triumvirate. The important thing is that there's a lot of respect
+	and collaboration across this generation gap. There isn't the wall
+	between the  old
+	farts and the loud teenagers that you often get, instead a real
+	appreciation for what both groups have to offer.</p><p>Not that all is good, however. There is a marked lack of women in
+the ruby community which, apart from the fact that we're missing out
+on some serious talent, probably is a sign of  other problems within the
+community. The <a href = 'http://www.devchix.com/'>DevChix</a> group was
+pretty active in looking for ways to try to correct this  and I
+was pleased to see several conversations sprout up during the
+conference on finding ways to improve our <a href = 'Diversity.html'>Diversity</a>
+problems.</p><p>A couple of years ago I wrote about the impressions people had
+	that the <a href = 'RubyPeople.html'>RubyPeople</a> were notably more friendly than most software
+	communities. Talking to people at RailsConf I got the message that
+	that had changed for the worse. Both the ruby lists and particularly
+	the rails lists had tended more towards the sad Internet mean. In
+	his opening keynote Chad Fowler said that the rails community had a
+	reputation as "a bunch of arrogant bastards" and I cringed as an,
+	admittedly small, group raised a triumphant cheer. </p><p>What pleased me was, that starting with Chad, there was a strong push
+from the ruby leadership to try and change this. A theme that came
+from several talks was that our community had an opportunity to try to
+lead the software profession away from this tar-pit of
+<a href = 'NetNastiness.html'>NetNastiness</a> and lack of diversity, to create a community
+that really welcomed many types of people into a nurturing and pleasant
+environment. I've been sick of the tone of geek discussion for many
+years and if the Ruby community could really show a direction to lift
+us out of this quagmire, this would delight me even more than all of
+the other prizes that glitter in front of us.</p><p><i>(Photos courtesy <a href = 'http://blog.duncandavidson.com/'>James Duncan Davidson</a>.)</i></p><hr></hr></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'EnterpriseRails.html'>EnterpriseRails</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>11 July 2006</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/EnterpriseRails.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p>In the newly formed Rails community, the word 'enterprise' is
+	becoming a dirty word. For many people the Rails framework, with its
+	aggressive simplicity, is the antithesis of over-complex
+	<a href = 'http://patricklogan.blogspot.com/2006/03/its-enterprisey.html'>'enterprisey'</a> frameworks.</p><p>At the recent <a href = 'http://www.railsconf.org/'>RailsConf</a>,
+	<a href = 'http://blogs.pragprog.com/cgi-bin/pragdave.cgi'>PragDave</a>'s
+	opening <a href = 'http://blog.scribestudio.com/articles/2006/06/30/railsconf-2006-keynote-series-dave-thomas'>keynote</a> highlighted a
+	bunch of unsolved issues with Rails, several of which involved
+	dealing with some of these enterprisey concerns. An example of this
+	was his call for support of more
+	varied database structures, such as having compound primary keys.</p><p><a href = 'http://www.loudthinking.com/'>DHH</a>'s response to this could not have been a more emphatic
+	refusal. With a clever visual manipulation of his recent wired
+	cover, DHH projected himself as the <a href = 'http://imdb.com/title/tt0133093/'>Neo</a> of the software world,
+	forcefully proclaiming himself to be in a better place, and telling
+	the enterprise world that they need to join him, not the other way
+	around. Applying this principle to compound keys, the reaction is
+	"no way". Rails will do what it does, and will not complicate itself
+	to support things it doesn't like.</p><p>Here is a solid example of what makes Rails "opinionated
+	software". In the Rails mindset, life is much simpler if you keep
+	your tables isomorphic to your objects, and give your tables
+	surrogate, integer, primary keys. If you play the Rails way - life
+	is easy; if not - use something else.</p><p>I confess I like this opinionated attitude. Perhaps it reflects my
+	Unix background, which thrives on many tools that do one thing well,
+	rather than a complex tool that tries to do many different things. I
+	like Rails's focus, its determination to pick a certain class of
+	application and serve that well.</p><p>In this sense I see a startling parallel between DHH and Kent
+	Beck. For either of them, if you present them with a constrained
+	world, they'll look at constraints we take for granted,
+	consider them to be unessential, and create a world without them. I
+	don't have that quality, I tend to try to work within the
+	constraints gradually pushing at them, while they just stick some
+	intellectual dynamite under them and move on. That's why they can
+	create things like Extreme Programming and Rails which really give
+	the industry a jolt.</p><p>Lying under PragDave's talk was a deeper concern. Like me he's
+	spent much of this life working with people who can't apply the
+	dynamite. When you need data from a database that's run by a data
+	management group and has run for a decade with compound keys, you
+	can't just don a pair of cool sunglasses and blow the constraint
+	away. One answer to this is to "change your organization or change
+	your organization", but to those who can't should they be utterly
+	abandoned by Ruby?</p><p>The last word of the last paragraph is the key to the
+	answer. Rails is right, I think, to ignore the enterprisey world,
+	but that doesn't mean that Ruby should. One of the great strengths
+	of scripting languages, like Ruby, is their
+	<a href = 'http://www.martinfowler.com/bliki/PostModernProgramming.html'>post-modern</a> delight in diving into the muck of a chaotic software
+	ecosystem. Ruby is a great place for other frameworks to fill the
+	gaps left behind by Rails's opinions.</p><p>My colleague Badri gave a talk, that was sadly not very well
+attended, about one of these - rBatis. rBatis is a ruby port of the
+popular Java framework <a href = 'http://ibatis.apache.org'>iBatis</a>
+(led by Clinton Begin, another colleague). The port is being done by
+yet a third colleague <a href = 'http://jutopia.tirsen.com/'>Jon
+Tirs&eacute;n</a>. rBatis is still a work in progress but already it
+shows the same elements that made iBatis popular - fearlessly
+embracing the strength of SQL rather than just trying to hide it under
+layer of Query Objects. It also strengthens its appeal by making the
+most of Ruby - stealing many functions from Active Record (such as
+validation), and using
+convenient Ruby syntax rather than XML. (Is XML the hunchback of
+programming languages?) rBatis could be the answer to complicated
+database issues, still fitting into a Rails web-app, but introducing a
+different set of trade-offs. If you're comfortable with SQL, rBatis
+looks pretty damn simple. (BTW any Rubyists out there Sydney? We may
+need you to kidnap Jon's surfboard if work slows down on rBatis.)</p><p>All this tilts our perspective. Enterprise Rails may well be
+	an oxymoron, but Enterprise Ruby is anything but. Indeed as I look at
+	the way the enterprise world is going - a greater use of messaging,
+	autonomous services featuring <a href = 'ApplicationDatabase.html'>ApplicationDatabase</a>s, a
+	post-modern acceptance of variety - <a href = 'http://blogs.pragprog.com/cgi-bin/pragdave.cgi/Tech/UnsetGlue.html'>the glue that doesn't set</a> seems
+	to be the ideal tool.</p><p>Although some people felt these talks implied that there was a rift appearing between the
+Davids, further conversation suggests to me any rift is founded
+on misunderstanding (now there's a mangled metaphor). PragDave's call
+wasn't for Rails to support these things but for the wider community
+to find a way. Similarly DHH's response was about the Rails core team;
+which hardly limits other peoples' efforts - as rBatis demonstrates.
+Furthermore DHH felt that most of PragDave's calls were consistent
+with the Core. The notion of a narrow core rails and a wider
+ruby world (including rails) supports both concerns - this is the
+strength of composing small tools.</p><p>However this wide-ruby / narrow-rails view of the world has a
+	catch. I joked during my keynote that RailsConf was a sign of a
+	failure of Rails - since if it was truly successful Rails would be
+	too simple to need a conference. The underlying truth, however, is
+	that Rails has become the keyword for Web apps (even Enterprise
+	apps) in Ruby. I suspect we'll see more enterprisey people at
+	RailsConf than at <a href = 'http://www.rubyconf.com/'>RubyConf</a>, because Rails has got the
+	attention. The consequence of this is that there's a danger that
+	people will hear the opinionated nature of Rails as
+	a statement about Ruby, and thus give the impression that Ruby isn't
+	a suitable enterprise glue. That would be a shame.</p><hr></hr></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'RubyPloticus.html'>RubyPloticus</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>19 June 2006</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/RubyPloticus.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p>In my recent post on <a href = 'EvaluatingRuby.html'>EvaluatingRuby</a> I mentioned that a colleague
+	had put together a web app with some fancy numerical graphs. Someone
+	emailed to ask how he did that. I added my short answer, ploticus,
+	to the original bliki entry, but that led to the question of how he
+	interfaced ruby with ploticus?</p><p>I actually ran into a similar problem myself recently as I wanted
+	to use ploticus to graph some data for a personal project. The
+	solution I came up with was actually very similar, if rather less
+	refined, than the one my colleague used. As a result I thought I'd
+	share it.</p><p>First a caveat - this is literally something I knocked up one
+	evening. It isn't intended to be robust, performant or otherwise
+	enterprisey. It's just for some data I use for me, myself, and I.</p><p>A sophisticated way to drive a C library like ploticus is to bind
+	directly to the C API. Ruby makes this easy, so I'm told, but it's
+	too much work for me (particularly if I want to be done before
+	cocktail-hour). So my approach is to build a ploticus script and
+	pipe it into ploticus. Ploticus can run by taking a script from
+	standard input that controls what it does, so all I have to do is
+	run ploticus within ruby and pipe commands into it. Roughly like
+	this:</p><pre>
+  def generate script, outfile
+    IO.popen("ploticus -png -o #{outfile} -stdin", 'w'){|p| p &lt;&lt; script}
+  end
+</pre><p>To build up the script, I like to get objects that can work in my
+	terms, and produce the necessary ploticus stuff. If you have
+	anything that uses the prefabs, then putting together something is
+	easy. I wanted to do clustered bar graphs, <a href = 'http://ploticus.sourceforge.net/gallery/students.htm'>like this</a>, which requires
+	a ploticus script. </p><p>I built what I needed in three levels. At the lowest level is
+	PloticusScripter, a class that builds up ploticus script
+	commands. Here it is:</p><pre>
+class PloticusScripter
+  def initialize
+    @procs = []
+  end
+  def proc name
+    result =  PloticusProc.new name
+    yield result
+    @procs &lt;&lt; result
+    return result
+  end
+  def script
+    result = ""
+    @procs.each do |p|
+      result &lt;&lt; p.script_output &lt;&lt; "\n\n"
+    end
+    return result    
+  end
+end
+class PloticusProc
+  def initialize name
+    @name = name
+    @lines = []
+  end
+  def script_output
+    return (["#proc " + @name] + @lines).join("\n")
+  end
+  def method_missing name, *args, &amp;proc
+    line = name.to_s + ": "
+    line.tr!('_', '.')
+    args.each {|a| line &lt;&lt; a.to_s &lt;&lt; " "}
+    @lines &lt;&lt; line
+  end
+end</pre><p>As you see the scripter is just a list of proc commands (well
+	they could be anything that responds to script_output - but I didn't
+	need anything else yet). I can instantiate the scripter, call proc
+	repeatedly to define my ploticus procs, then when I'm done call
+	script to get the entire script for piping into ploticus.</p><p>The next level is something to build clustered bar graphs:</p><pre>
+class PloticusClusterBar 
+  attr_accessor :rows, :column_names
+  def initialize
+    @rows = []
+  end
+  def add_row label, data
+    @rows &lt;&lt; [label] + data
+  end
+  def getdata scripter
+    scripter.proc("getdata") do |p|
+      p.data generate_data
+    end
+  end
+  def colors
+    %w[red yellow blue green  orange]
+  end
+  def clusters scripter
+    column_names.size.times do |i|
+      scripter.proc("bars") do |p|
+        p.lenfield i + 2
+        p.cluster i+1 , "/", column_names.size
+        p.color colors[i]
+        p.hidezerobars 'yes'
+        p.horizontalbars 'yes'
+        p.legendlabel column_names[i]
+      end    
+    end
+  end
+
+  def generate_data
+    result = []
+    rows.each {|r| result &lt;&lt; r.join(" ")}
+    result &lt;&lt; "\n"
+    return result.join("\n")    
+  end  
+end
+</pre><p>This allows me to build a graph with simple calls to
+	<code>add_row</code> to add data rows. This makes it much more easy
+	for me to build up the data for the graph.</p><p>To make a particular graph, I'll write a third class on top of
+	that:</p><pre>
+#produces similar to  ploticus example in ploticus/gallery/students.htm
+
+class StudentGrapher
+  def initialize
+    @ps = PloticusScripter.new
+    @pcb = PloticusClusterBar.new
+  end
+  def run
+    load_data
+    @pcb.getdata @ps
+    areadef
+    @pcb.clusters @ps    
+  end
+  def load_data
+    @pcb.column_names = ['Exam A', 'Exam B', 'Exam C', 'Exam D']
+    @pcb.add_row '01001', [44, 45, 71, 89]
+    @pcb.add_row '01002', [56, 44, 54, 36]
+    @pcb.add_row '01003', [46, 63, 28, 87]
+    @pcb.add_row '01004', [42, 28, 39, 49]
+    @pcb.add_row '01005', [52, 74, 84, 66]    
+  end
+  def areadef
+    @ps.proc("areadef") do |p|
+      p.title "Example Student Data"
+      p.yrange 0, 6
+      p.xrange 0, 100
+      p.xaxis_stubs "inc 10"
+      p.yaxis_stubs "datafield=1"
+      p.rectangle 1, 1, 6, 6
+    end
+  end
+  def generate outfile
+    IO.popen("ploticus -png -o #{outfile} -stdin", 'w'){|p| p &lt;&lt; script}
+  end
+  def script
+    return @ps.script
+  end
+
+end
+
+
+def run
+  output = 'fooStudents.png'
+  File.delete output if File.exists? output
+  s = StudentGrapher.new
+  s.run
+  s.generate output
+end
+
+</pre><p>It's a very simple example, but it's a good illustration of what
+	I call the <a href = 'http://martinfowler.com/eaaCatalog/gateway.html'>Gateway</a>
+	pattern. The PloticusClusterBar class is the gateway with the
+	perfect interface for what I want to do. I make it transform between
+	that convenient interface and what the real output needs to be. The
+	PloticusScripter class is another level of gateway. Even for a
+	simple thing like this I find a design of composed objects like this
+	a good way to go. Which may only say how my brain's got twisted over
+	the years.</p><hr></hr></td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td style = 'font-size: larger; font-style: bold'><a href = 'EvaluatingRuby.html'>EvaluatingRuby</a></td>
+
+<TD valign = 'bottom' width = '15%'><a href = 'ruby.html'>ruby</a></TD>
+
+<TD valign = 'bottom' width = '20%'><b>10 May 2006</b></TD>
+
+<TD valign = 'bottom' width = '10%'><a href = 'http://technorati.com/search/http://martinfowler.com/bliki/EvaluatingRuby.html'>Reactions</a></TD>
+</tr>
+
+<tr>
+<td colspan = '4'>
+<p></p>
+<p>If you're reading this I assume you're aware of the fact that
+	there's been a huge amount of fuss about the Ruby programming
+	language, and in particular the Rails framework for developing web
+	applications. Some see it as the future of programming, others as a
+	dangerous diversion.</p><p>I started with ruby several years ago. The <a href = 'http://www.pragmaticprogrammer.com/'>pragmatics</a> got me
+	interested and it soon became my preferred scripting language. Over
+	time it grew to handle much of the production of this website - in
+	particular this bliki. I like the language a lot.</p><p>There's a jump between my personal liking and whether it's
+something that should be used by our clients. We can evaluate its
+suitability for client projects based on its features - and this leads
+to many arguments about the pros and cons of dynamic typing, convention
+over configuration, processes versus threads, and the like. Such
+discussions are useful but I remain wary of them. Too many things are
+hard to judge that way - hence we spend so much of our time on client
+projects being slowed down by technology that sounded good on a golf
+course. My preference is to make this judgment based on experience - 
+find people who have a track record for delivering in the mainstream
+environments and who have tried using Ruby. </p><p>Some of this can be seen with public writers. Ruby has attracted
+	many people who have good experience elsewhere but feel Ruby gives
+	them an additional edge, names like the <a href = 'http://www.toolshed.com/blog'>both</a> the <a href = 'http://pragprog.com/pragdave'>Prags</a>, <a href = 'http://blogs.relevancellc.com/'>Justin Gehtland</a>,
+	<a href = 'http://weblogs.java.net/blog/batate/'>Bruce Tate</a>, <a href = 'http://www.jroller.com/page/dgeary'>David Geary</a> et al should be enough to make Ruby worth
+	looking at. But parochial as I may be I've been keeping my ear
+	closest to ThoughtWorkers: people whose history I know and whose
+	projects I can more easily check up on.</p><p>It's still early days yet, but I now have a handful of project
+	experiences to draw on. So far the results are firmly in favor of
+	Ruby. When I ask the question "do you think you're significantly
+	more productive in Ruby rather than Java/C#", each time I've got a
+	strong 'yes'. This is enough for me to start saying that for a suitable
+	project, you should give Ruby a spin. Which, of course, only leaves
+	open the small question of what counts as 'suitable'.</p><p>One thing to mention is that although we have a couple of what I
+	might call typical web projects that fit in well with what's
+	currently talked about as prime Rails territory, there are also
+	elements that are different. </p><ul><li>A kiosk device where
+	consumers are directly manipulating a touch screen. Rails is present
+	here, as the UI is a very Ajaxian web front end. But there's also
+	communication with hardware devices, crypto, odd networking stuff -
+	all on an appliance like Linux box.</li><li>A lot of SQL
+	manipulation in batch processes where Ruby is used to specify what's
+	needed and the resulting Ruby expressions are converted to SQL to
+	carry out the real work. There's a splash of Rails on the front end
+	- but again it's not the typical Rails app.</li><li>A project that looks like a standard web app in many ways, but
+		involves a great deal of munging data from different formats and
+		some very fancy graphs and charts (using <a href = 'http://ploticus.sourceforge.net/'>Ploticus</a>).</li></ul><p>In all these cases, those involved said they are getting
+	functionality, and value, faster out of the door than they had in
+	other platforms. This suggests to me that if you're looking for
+	delivery speed and productivity you should take a serious look at Ruby.</p><p>There are still some open questions. In particular it's still too
+	early to see what happens in later enhancement stages, particularly
+	when you get team changes. Some people think that the dynamic nature
+	of Ruby and the lack of tools will be a problem, others that the
+	simplicity that Ruby encourages will make up for the
+	difference. Such is the nature of the question that we can't really
+	tell yet - I'll update you when I find out more.</p><p>Cedric Beust <a href = 'http://www.beust.com/weblog/archives/000382.html'>argues effectively</a> that even if Ruby is a superior
+platform it may not become mainstream. I certainly understand that argument,
+like many an ex-smalltalker I've long known of more productive
+platforms than the current mainstream enterprise choices. If it's
+important to you that you are only using mainstream platforms, you'll
+need to wait longer to see what happens. There are plenty of course,
+who <a href = 'http://www.loudthinking.com/arc/000584.html'>don't care about following the mainstream</a>.</p><p>There's also plenty of projects where development productivity is
+	swamped by political and other communication factors. Here Ruby's
+	advantage would be significantly attenuated.</p><p>But overall these experiences, from trusted colleagues mean I'm
+increasingly positive about using Ruby for serious work where speed,
+responsiveness, and productivity are important.</p><hr></hr></td>
+</tr>
+</table>
+</TD><TD valign = 'top' width = '15%'>
+<table><tr bgcolor = '#FFB595'><td><b>Links</b></td></tr><tr>
+<td><a href = 'http://martinfowler.com'>home</a></td>
+</tr><tr>
+<td><a href = 'http://martinfowler.com/bliki'>bliki</a></td>
+</tr><tr>
+<td><a href = 'bliki.atom'>feed</a>&nbsp;<a href = 'bliki.atom'><img href = 'bliki.atom' src = 'feed-icon-14x14.png' border = '0'></img></a></td>
+</tr><tr bgcolor = '#FFB595'><td><b>Translations</b></td></tr><tr>
+<td><a href = 'http://capsctrl.que.jp/kdmsnr/wiki/bliki/'>Japanese</a></td>
+</tr><tr>
+<td><a href = 'http://www.agile-spain.com/agilev2/blog/traduccionmartinfowler'>Spanish</a></td>
+</tr><tr>
+<td><a href = 'http://younghoe.info/category/MartinFowler'>Korean</a></td>
+</tr><tr>
+<td><a href = 'http://blog.csdn.net/mfowler/'>Chinese</a></td>
+</tr><tr>
+<td><a href = 'http://fowler.thaidev.org/'>Thai</a></td>
+</tr><tr bgcolor = '#FFB595'><td><b>Categories</b></td></tr><tr>
+<td><a href = 'agile.html'>agile</a></td>
+</tr><tr>
+<td><a href = 'design.html'>design</a></td>
+</tr><tr>
+<td><a href = 'dsl.html'>dsl</a></td>
+</tr><tr>
+<td><a href = 'leisure.html'>leisure</a></td>
+</tr><tr>
+<td><a href = 'refactoring.html'>refactoring</a></td>
+</tr><tr>
+<td><a href = 'ruby.html'>ruby</a></td>
+</tr><tr>
+<td><a href = 'thoughtWorks.html'>thoughtWorks</a></td>
+</tr><tr>
+<td><a href = 'tools.html'>tools</a></td>
+</tr><tr>
+<td><a href = 'uml.html'>uml</a></td>
+</tr><tr>
+<td><a href = 'writing.html'>writing</a></td>
+</tr><tr bgcolor = '#FFB595'><td><b>Blog Roll</b></td></tr><tr>
+<td><a href = 'http://blogs.thoughtworks.com'><b>Thought</b>Blogs</a><hr></hr></td>
+</tr><tr>
+<td><a href = 'http://blogs.thoughtworks.com/alumni/'>TW Alumni</a></td>
+</tr><tr>
+<td><a href = 'http://www.roughtype.com/'>Nicholas Carr</a></td>
+</tr><tr>
+<td><a href = 'http://blogs.msdn.com/stevecook/default.aspx'>Steve Cook</a></td>
+</tr><tr>
+<td><a href = 'http://www.laputan.org/catfish/'>Brian Foote</a></td>
+</tr><tr>
+<td><a href = 'http://www.redhillconsulting.com.au/blogs/simon/'>Simon Harris</a></td>
+</tr><tr>
+<td><a href = 'http://www.eaipatterns.com/ramblings.html'>Gregor Hohpe</a></td>
+</tr><tr>
+<td><a href = 'http://www.toolshed.com/blog'>/\ndy Hunt</a></td>
+</tr><tr>
+<td><a href = 'http://www.cincomsmalltalk.com/userblogs/ralph/blogView'>Ralph Johnson</a></td>
+</tr><tr>
+<td><a href = 'http://patricklogan.blogspot.com/'>Patrick Logan</a></td>
+</tr><tr>
+<td><a href = 'http://www.from9till2.com/'>David Ing</a></td>
+</tr><tr>
+<td><a href = 'http://www.testing.com/cgi-bin/blog'>Brian Marick</a></td>
+</tr><tr>
+<td><a href = 'http://codebetter.com/blogs/jeremy.miller/default.aspx'>Jeremy Miller</a></td>
+</tr><tr>
+<td><a href = 'http://www.jnsk.se/weblog/rss.xml'>Jimmy Nilsson</a></td>
+</tr><tr>
+<td><a href = 'http://www.pepysdiary.com/'>Samuel Pepys</a></td>
+</tr><tr>
+<td><a href = 'http://homepage.mac.com/keithray/blog/'>Keith Ray</a></td>
+</tr><tr>
+<td><a href = 'http://www.jrothman.com/weblog/blogger.html'>Johanna Rothman</a></td>
+</tr><tr>
+<td><a href = 'http://headrush.typepad.com/creating_passionate_users/'>Kathy Sierra</a></td>
+</tr><tr>
+<td><a href = 'http://blogs.pragprog.com/cgi-bin/pragdave.cgi'>Dave Thomas</a></td>
+</tr></table>
+</TD></tr></TABLE>	<hr/>
+		<table width="100%">
+			<tr>
+				<td align="left">
+					<a href="http://www.martinfowler.com">
+						<img width="147" height="51"
+						src="http://www.martinfowler.com/mflogo.gif"
+						alt="martinfowler.com logo"	
+							style = "border: 0"/>
+					</a>
+				</td>
+					<td align="right">
+					<a href="http://studios.thoughtworks.com/mingle-project-intelligence">
+						<img
+						src="http://www.martinfowler.com/mingle.png"
+							alt = "mingle logo"
+							style = "border: 0"/>
+					</a>
+				</td>
+			<td align="right">
+					<a href="http://www.thoughtWorks.com">
+						<img
+						src="http://www.martinfowler.com/twlogo.gif"
+							alt = "thoughtworks logo"
+							style = "border: 0"/>
+					</a>
+				</td>
+			</tr>
+		</table>
+		<hr/>
+			<p>
+			&copy; <small>Copyright <a href="http://www.martinfowler.com">Martin
+					Fowler</a>, all rights reserved</small>
+			</p>
+
+</body></html>

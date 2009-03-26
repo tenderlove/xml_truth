@@ -1,0 +1,1954 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Learn Ruby on Rails from Scratch: Week 1 - Nettuts+</title>
+<link rel="stylesheet" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/css/print.css" type="text/css" media="print" />
+
+<link rel="shortcut icon" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/favicon.ico"/>
+
+<link rel="stylesheet" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/css/switcher.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="http://net.tutsplus.com/wp-content/themes/tuts_theme/js/switcher.js"></script>
+<script type="text/javascript" src="http://net.tutsplus.com/wp-content/themes/tuts_theme/js/comments.js"></script>
+
+<!--[if IE]>
+<link rel="stylesheet" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/css/ie.css" type="text/css" media="screen" />
+<![endif]-->
+
+<!--[if lt IE 7.]>
+<link rel="stylesheet" href="http://net.tutsplus.com/wp-content/themes/tuts_theme/css/ie6.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://net.tutsplus.com/wp-content/themes/tuts_theme/js/ie6.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="Nettuts+ RSS Feed" href="http://net.tutsplus.com/feed/" />
+<link rel="pingback" href="http://net.tutsplus.com/xmlrpc.php" />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://net.tutsplus.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://net.tutsplus.com/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://net.tutsplus.com/wp-includes/js/comment-reply.js?ver=20081210'></script>
+<script type="text/javascript" src="http://net.tutsplus.com/wp-content/plugins/flash-player/swfobject.js"></script>
+<style type='text/css'  media='screen'>.infoLeft{ width:140px; } #wpUserLinks_form label { display:block; } #wpUserLinks_form { text-align:left; } .req { color:red; } </style><link rel='alternate' type='application/rss+xml' title='' href='http://feedproxy.google.com/NettutsUserLinkFeed' />
+</head>
+<body>
+<div id="header_wrap">
+<!-- begin header -->
+<div id="header"> 
+  <img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/header_gradient.jpg" alt="" class="gradient" />
+  <a href="http://net.tutsplus.com"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/logo.gif" alt="Logo" class="logo" /></a>
+
+  <div id="switcher">
+    <h6 id="switcher-trigger"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/Button_NETTUTS.png" alt="" /></h6>
+    <div id="links">
+      <div id="first">
+        <table>
+        	<tr>
+            <td class="alt"><a href="http://tutsplus.com" title="Tutorials &amp; Resources - Tuts+">Tuts+</a></td>
+            <td><a href="http://tutsplus.com" title="Tutorials &amp; Resources - Tuts+">Tutorials &amp; Resources</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://psd.tutsplus.com" title="Photoshop &amp Graphics - Psdtuts+">Psdtuts+</a></td>
+            <td><a href="http://psd.tutsplus.com" title="Photoshop &amp Graphics - Psdtuts+">Photoshop &amp; Graphics</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://net.tutsplus.com" title="Web Design &amp; Development - Nettuts+">Nettuts+</a></td>
+            <td><a href="http://net.tutsplus.com" title="Web Design &amp; Development - Nettuts+">Web Design &amp; Development</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://vector.tutsplus.com" title="Vectors &amp; Illustration - Vectortuts+">Vectortuts+</a></td>
+            <td><a href="http://vector.tutsplus.com" title="Vectors &amp; Illustration - Vectortuts+">Vectors &amp; Illustration</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://audio.tutsplus.com" title="Music &amp; Sound - Audiotuts+">Audiotuts+</a></a></td>
+            <td><a href="http://audio.tutsplus.com" title="Music &amp; Sound - Audiotuts+">Music &amp; Sound</a></td>
+          </tr>         
+          <tr>
+            <td class="alt"><a href="http://ae.tutsplus.com" title="AfterEffects &amp; Motion - Aetuts+">Aetuts+</a></a></td>
+            <td><a href="http://ae.tutsplus.com" title="AfterEffects &amp; Motion - Aetuts+">AfterEffects &amp; Motion</a></td>
+          </tr>
+        </table>
+      </div>
+      <div id="second">
+      
+      	<img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/envato_marketplace.gif" alt="Envato Marketplaces" style="margin: 10px auto; display: block; margin-top:0" />
+        <table>
+          <tr>
+            <td class="alt"><a href="http://flashden.net/" title="Flash Marketplace - FlashDen">FlashDen</a></td>
+            <td><a href="http://flashden.net/" title="Flash Marketplace - FlashDen">Flash Marketplace</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://themeforest.net/" title="Web &amp; CMS Themes - ThemeForest">ThemeForest</a></td>
+            <td><a href="http://themeforest.net/" title="Web &amp; CMS Themes - ThemeForest">Web &amp; CMS Themes</a></td>
+          </tr>         
+          <tr>
+          	<td class="alt"><a href="http://graphicriver.net/" title="Graphics, Vectors &amp; Icons - GraphicRiver">GraphicRiver</a></td>
+            <td><a href="http://graphicriver.net/" title="Graphics, Vectors &amp; Icons - GraphicRiver">Graphics, Vectors &amp; Icons</a></td>
+		 			</tr>
+          <tr>
+          	<td class="alt"><a href="http://videohive.net/" title="Motion Graphics &amp; Projects - VideoHive">VideoHive</a></td>
+            <td><a href="http://videohive.net/" title="Motion Graphics &amp; Projects - VideoHive">Motion Graphics &amp; Projects</a></td>
+		 			</tr>
+          <tr>
+            <td class="alt"><a href="http://audiojungle.net/" title="Loops &amp; Effects - AudioJungle">AudioJungle</a></td>
+            <td><a href="http://audiojungle.net/" title="Loops &amp; Effects - AudioJungle">Loops &amp; Effects</a></td>
+          </tr>       
+		 		</table>
+		 		
+		 		<img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/envato_sites.gif" alt="Envato Sites" style="margin: 10px auto; display: block;" />
+		 		<table>
+          <tr>
+            <td class="alt"><a href="http://freelanceswitch.com" title="Freelance Jobs &amp; Community - FreelanceSwitch">FreelanceSw</a></td>
+            <td><a href="http://freelanceswitch.com" title="Freelance Jobs &amp; Community - FreelanceSwitch">Freelance Jobs &amp; Community</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://rockablepress.com" title="Books &amp; How-To - Rockable">Rockable</a></td>
+            <td><a href="http://rockablepress.com" title="Books &amp; How-To - Rockable">Books &amp; How-To</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://creattica.com" title="Design Community - Creattica">Creattica</a></td>
+            <td><a href="http://creattica.com" title="Design Community - Creattica">Design Community</a></td>
+          </tr>
+          <tr>
+            <td class="alt"><a href="http://faveup.com" title="Design Inspiration Gallery - FAVEUP">FaveUp</a></td>
+            <td><a href="http://faveup.com" title="Design Inspiration Gallery - FAVEUP">Design Inspiration</a></td>
+          </tr>
+          <tr>
+	    			<td class="alt"><a href="http://mac.appstorm.net/" title="Mac Apps - AppStorm">AppStorm</a></td>
+	    			<td><a href="http://mac.appstorm.net/" title="Mac Apps - AppStorm">Mac Apps</a></td>
+	  			</tr>
+          <tr>
+            <td class="alt"><a href="http://www.envato.com" title="About Us - Envato">Envato</a></td>
+            <td><a href="http://www.envato.com" title="About Us - Envato">About Us</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- #lists -->
+  </div>
+  <!-- #switcher -->
+  
+  <div id="localize_head">
+    <h6 id="localize_head_trigger"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/english.png" alt="" /></h6>
+    <div id="localize">
+      <div>
+        <table>
+          <tr>
+            <td>More Coming Soon!</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!-- #lists -->
+  </div>
+  <!-- #localize_head -->
+  
+  <!-- Search -->
+  <form action="http://net.tutsplus.com/" id="searchForm" method="get">
+    <fieldset>
+    <input type="text" id="search_term" name="s" value="SEARCH NETTUTS" onblur="if(this.value.length == 0) this.value='SEARCH NETTUTS';" onclick="if(this.value == 'SEARCH NETTUTS') this.value='';" />
+    <input type="submit" class="submit_button" value="Search" />
+    </fieldset>
+  </form>
+
+</div>
+<!-- end header -->
+</div>
+<!-- begin navigation -->
+<div id="navigation_wrap">
+<div id="navigation">
+  <ul id="main_nav">
+    <li><a href="http://net.tutsplus.com/">Home</a></li>
+    <li class="current_page_item"><a href="http://net.tutsplus.com/category/tutorials/">Tutorials</a></li>
+    <li><a href="http://net.tutsplus.com/category/articles/">Articles</a></li>
+    <li><a href="http://net.tutsplus.com/category/freebies/">Freebies</a></li>
+    <li><a href="http://net.tutsplus.com/category/videos/">Videos</a></li>
+    <li><a href="http://net.tutsplus.com/about">About</a></li>
+  </ul>
+  <ul id="navigation_rss">
+    <li>Subscribe By</li>
+    <li><a href="http://feeds.feedburner.com/nettuts">RSS</a> | </li>
+    <li><a href="http://feedburner.google.com/fb/a/mailverify?uri=nettuts">Email</a> | </li>
+    <li><a href="http://net.tutsplus.com/about/rss-feeds/">Other</a></li>
+  </ul>
+  <a href="http://feeds.feedburner.com/nettuts"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/navigation_rss.png" alt="RSS" width="59" height="45" class="navigation_rss_icon" /></a> 
+</div>
+<!-- end navigation -->
+<div id="bc_extended"></div>
+</div>
+<!-- begin page wrap -->
+
+<div id="page_wrap">
+  <!-- begin page -->
+  <div id="page" class="clearfix">
+   <div id="content_wrap">
+    <div id="breadcrumb">
+	<ul class="crumb">
+	  <li><a href="http://net.tutsplus.com">Home</a>&nbsp;&nbsp;\&nbsp;</li>
+<!-- Breadcrumb NavXT 3.0.1 -->
+<li><a title="Go to the Tutorials category archives." href="http://net.tutsplus.com/category/tutorials/">Tutorials</a></li>&nbsp;&nbsp;\&nbsp;&nbsp;<li><a title="Go to the Ruby category archives." href="http://net.tutsplus.com/category/tutorials/ruby/">Ruby</a></li>&nbsp;&nbsp;\&nbsp;&nbsp;<li>Learn Ruby on Rails from&hellip;</li>    </ul>
+        	            <ul id="categories">
+              <li><span><a href="#" class="arrow">Categories</a></span>
+                <ul>
+                	<li class="cat-item cat-item-8"><a href="http://net.tutsplus.com/category/tutorials/html-css-techniques/" title="View all posts filed under HTML &amp; CSS">HTML &amp; CSS</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://net.tutsplus.com/category/tutorials/javascript-ajax/" title="View all posts filed under Javascript &amp; AJAX">Javascript &amp; AJAX</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://net.tutsplus.com/category/tutorials/other/" title="View all posts filed under Other">Other</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://net.tutsplus.com/category/tutorials/php/" title="View all posts filed under PHP">PHP</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://net.tutsplus.com/category/tutorials/ruby/" title="View all posts filed under Ruby">Ruby</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://net.tutsplus.com/category/tutorials/site-builds/" title="View all posts filed under Site Builds">Site Builds</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://net.tutsplus.com/category/tutorials/tools-and-tips/" title="View all posts filed under Tools &amp; Tips">Tools &amp; Tips</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://net.tutsplus.com/category/tutorials/wordpress/" title="View all posts filed under Wordpress">Wordpress</a>
+</li>
+                </ul>
+              </li>
+            </ul>
+                 </div>
+	
+    <div id="content">
+    <div id="entry">
+	  	  <div class="exerpt" id="post-570">
+	    <img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/200x200.png" alt="Ruby On Rails" />	    <h1>Learn Ruby on Rails from Scratch: Week 1</h1>
+	    <small>Aug 28th in <a href="http://net.tutsplus.com/category/tutorials/ruby/" title="View all posts in Ruby" rel="category tag">Ruby</a>		 by <a href="http://net.tutsplus.com/author/connorzwick/" title="Posts by Connor Zwick">Connor Zwick</a></small>
+                   <div class="text">
+	      <p><em>Ruby  on Rails. . .by now most people have heard the hype about it. It promises more  effective code, total object orientation, and true MVC architecture to say the  least. As far as my own personal experience, it has been all that and more. The  code is beautiful, easy to maintain, and edit. In a recent project I was working on, it took me less than 10 hours to do the application, as compared to  at least double that if I was writing in PHP. </em></p>	
+	    
+           		
+	    </div>
+        <div class="clear" ></div>
+	  </div>
+            <div id="about_author" class="clearfix"> 
+	  <img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fnettuts.s3.amazonaws.com%2FMisc%2Fwriter_nettuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />              <div class="author_text">
+          <h4>Author: Connor Zwick</h4>
+                    <p>I am a freelance web designer. I am currently renovating my personal site, which will be up within the month hopefully. I know HTML, CSS, Javascript, JQuery, PHP, Flash, and Ruby on Rails. I am also doing several website for pay currently. As well as designing a web site for a robotics team for free. This website will feature a lot of what I will cover in this tutorial. I have also coded a media management site and blog in Ruby on Rails. I also have extensive Photoshop experience.</p>
+                    
+        </div>
+        <div class="clear"></div>
+      </div>
+            
+
+<p>I've heard a lot of web developers that know  other languages, usually ASP or PHP, that want to learn Ruby on Rails, but just don't know  where to get started. From personal experience, I know it is very different  from PHP. Personally, I learned Ruby on Rails less than a year ago, and have  had few to no problems with it so far. If you haven't already, I highly recommend  hopping on board with the up and coming web framework, Ruby on Rails!</p>
+
+<h2>Mission Statement </h2>
+<p>In this series of  tutorials, I hope to take you from knowing nothing about Ruby on Rails (if  that's true), to being able to write fully featured web applications in  it. I remember what it was like to learn  it. I couldn't find any series of tutorials that took you through all of the  essentials in plain English and in an order that was benefiticial to me, the learner. Although there are very good resources out there, they need to be combined with others as well. At the bottom of this tutorial, I'm also going to list resources that I have found useful in the past as well. </p>
+
+<p>This series will be similar to the PHP from scratch series, but with Ruby on Rails.There will be one published every week, gradually getting more advanced. </p>
+
+<h2>This Tutorial</h2>
+<p>I warn you, this  first tutorial might be a little dry, but it's necessary for learning RoR  (let's just call it that from now on!). This week, we're going to cover setting  up the framework and web server as well as how the framework works. We're going  to set the necessary foundation for learning RoR. This is where many web  developers that want to learn RoR fail.I promise we will be doing much much  more exciting things next time!</p>
+
+<h2>What is Ruby?</h2>
+<p>Ruby is the language  that the framework rails extends. It is very object orientated. It's syntax is  inspired by Perl's, and therefore is very similar. It is also similar to  Python, Lisp, Dylan, and CLU. To quote <a href="http://en.wikipedia.org/wiki/Ruby_%28programming_language%29">Wikipedia</a>:</p>
+
+<p> &quot;Ruby was conceived on February 24, 1993  by Yukihiro Matsumoto who wished to create a new language that balanced  functional programming with imperative programming.According to Matsumoto he  'wanted a scripting language that was more powerful than Perl, and more  object-oriented than Python.That's why I decided to design my own  language'. &quot;</p>
+
+<p>It was most popular  in Japan, that is until the framework Rails came out. Ever since, it has  continued to grow at a phenomenal rate everywhere. </p>
+<h2>What is Rails?</h2>
+<p>Rails is the famous  framework that works off of ruby. It's user base is constantly growing. Developed by David Heinemeier Hansson of 37signals for basecamp, it was  released as open source in July 2004. It uses MVC (Model - View - Controller ) architecture. If  you want a brush up on MVC, be sure to check out the MVC tutorial. The latest  release is 2.1.0. There were some significant changes in the v2. This includes  the famous scaffolding feature of v1. It's changed a little bit in version 2. </p>
+
+<h2>Concepts of Ruby on  Rails </h2>
+<p>Ruby on Rails  follows several principles to help keep it's code sleek and clean. You should  try to live by these principles while you're working with RoR to get the most  of it. For one, it follows the Agile programming term of <strong>DRY (Don't repeat yourself)</strong>. Obviously, this means that you only  write your code once in a certain consistent place. For example, if you need  the code to do a certain thing, then you'll put it in a certain place every  time. </p>
+
+
+<p>The second concept  that RoR follows is <strong>CoC (Conventions over  Configuration)</strong>.This pretty much  means that ruby assumes a lot, and explains most of the automatic defaults you'll see ruby generate for us. Instead of you always having to configure  everything, in every single project, ruby does it for you automatically.Then,  if you want to do something that's unconventional, you simply override the sensible defaults that RoR already has in  place.This generally leads to less code having to be written. </p>
+<p><strong>Advantages of Learning Ruby on Rails:</strong></p>
+<ul>
+  <li>It is pretty easy to learn compared to other languages</li>
+  <li>Completely Object Orientated </li>
+  <li>MVC Architecture</li>
+  <li>You don't have to write as much code</li>
+  <li>Very extendible </li>
+  <li>Open Source</li>
+  <li>The community is extremely helpful in answering questions</li>
+  <li>Despite being a relatively new framework, it is pretty fully featured, and has very few bugs.</li>
+</ul>
+<p><strong>Disadvantages of Ruby</strong>:</p>
+<ul>
+  <li>Processed different, so the code can be a little bit slower on servers that aren't really built to handle ruby code</li>
+</ul>
+<p>I've only heard this claim, but more and more servers are becoming better equipped for Rails as it continues to grow anyway so it's becoming less and less of a problem. </p>
+<h2>A Ruby File</h2>
+<p>A ruby file has the extension of .rb. These files will usually contain no HTML. This is an excerpt of a ruby file (specifically a controller) from a game engine I recently made. As you might be able to see. It pulls data from a database, and lists games according to the variables category and title:<br>
+</p>
+<pre name="code" class="ruby">class GameController &lt; ApplicationController
+
+	def game_list<br>		@title = '3'<br>		@category = 'Action'<br>		@games = Game.find(:all, <br>		:conditions =&gt; [&quot;title LIKE ? AND category = ?&quot;, '%' + title + '%', category],<br>		:order =&gt; 'title, category ASC',<br>		:limit =&gt; 5, :offset =&gt; 0)<br>	end
+
+end
+</pre>
+<h2>An embedded Ruby File</h2>
+<p>Like many other web languages, Rails allows you to embed ruby with HTML. Seki Masatoshi wrote a program called ERb, embedded ruby, which scans all .rhtml files (embedded ruby files), until it comes across either &lt;% Ruby Code that is only processed -%&gt; or &lt;%= Ruby Code that is then outputted %&gt;. It then processes the ruby code and fills in the blank if neccesary. </p>
+<p>Here is an example of Embedded Ruby: </p>
+<pre name="code" class="rails">&lt;% title = &quot;Nettuts&quot; %&gt;<br>&lt;% header_text = &quot;Ruby on Rails Tutorial&quot; %&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;h2&gt;&lt;%= header_text %&gt;&lt;/h2&gt;<br>&lt;p&gt;This is an example of a .rhtml page. &lt;/p&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;
+</pre>
+<p name="code" class="rails">This is how the user will get it:</p>
+<pre name="code" class="rails">
+&lt;html&gt;<br>
+  &lt;head&gt;<br>
+  &lt;title&gt; Nettuts &lt;/title&gt;<br>
+  &lt;/head&gt;<br>
+  &lt;body&gt;<br>
+  &lt;h2&gt;Ruby on Rails Tutorial&lt;/h2&gt;<br>
+  &lt;p&gt;This is an example of a .rhtml page. &lt;/p&gt;<br>
+  &lt;/body&gt;<br>
+  &lt;/html&gt; <br>
+</pre>
+<p>&nbsp;</p>
+<h2>Installing Ruby on  Rails For Windows </h2>
+
+<p>Windows and OSX  users are both very lucky. Both operating systems get an all-in-one installer/manager program that installs ruby, rails, and the server.For windows, you have the  option of Instant Rails. Go to <a href="http://instantrails.rubyforge.org/wiki/wiki.pl">http://instantrails.rubyforge.org/wiki/wiki.pl</a> to download it. I personally have used this, and have had no major problems  with it.Trust me, it is much easier to do this, then install everything  separately. </p>
+<p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/instantrails.PNG" alt="Instant Rails">
+</div>
+</p>
+<p>Click download to  get instantrails. </p>
+<p>When you click download, you will be redirected to <a href="http://rubyforge.org/frs/?group_id=904">rubyforge.org</a>. There you can choose the latest version. At the time of this writing, 2.0 was the latest. Also at the time of this writing, a lot of popular hosts that supported ruby, only supported 1.8.x version. There are considerable differences between version 1 and 2. So it's up to you which version you'd like to install. In this tutorial I'll download version 2.0. </p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/instantrails_download.PNG" alt="Instant Rails Download" />
+</div>
+<p>Now that it's downloaded, extract it to a directory that contains no spaces. </p>
+<h2>Installing Ruby on  Rails For Other OS's</h2>
+<p>OSX also has the good fortune of having an all in one Ruby on Rails manager, locomotive. For OSX, and other Operating Systems, you can find a very good resource at Ruby on Rail's <a href="http://wiki.rubyonrails.org/rails/pages/GettingStartedWithRails">wiki</a>.</p>
+<p>&nbsp;</p>
+<h2>Getting Started with the Framework</h2>
+<p>From now on, I'm going to be using Instant Rails. It isn't very different from any other set up so if you're using another technique you should still be able to follow along easily. If you run into any problems, be sure to let me know in the comments and/or check out the resources. </p>
+<p>So now that you have all of the files needed in place for your setup. Start it up! For windows, go to the directory you put Instant Rails, and run InstantRails.exe . You probably will get this message, but for your directory, which you can press 'yes' for:</p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/instantrails_message.PNG" alt="Instant Rails Message"></div>
+<p>Now that Instant Rails is running, you can do several things. Right now, you only need to able to:</p>
+<p>- Open a console window</p>
+<p>-Create a new project. </p>
+<p>- Start the server for a current project</p>
+<p>We'll go through each action separately. </p>
+<h3>Open up a console window</h3>
+<p>1) Click on the upper left icon:</p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/instantrails_console.PNG" alt="Instant Rails UI"></div>
+<p>2) Go to &quot;Rails Applications&quot; &gt; &quot;Open Ruby Console Window&quot; </p>
+<p>3) We now have a console window open. Here you can do many things in ruby like generating new projects, controllers, and other tasks that we'll cover later. Now we're going to use this Console Window to create a new application. </p>
+<h3>Creating A New Application</h3>
+<p>1) Now we're going to type in &quot;rails nettuts&quot;, where nettuts is the name of your application. Choose the name carefully, as you'll be using it for the rest of the application. Since we're not really doing anything particular yet, we'll just choose nettuts as our name:</p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/console_rails_nettuts.PNG" alt="Console Create Nettuts"></div>
+<p>2) It will now generate all of the necessary files for the application. These are the files that the framework uses and needs. It will help provide the <strong>CoC (Conventions over Configuration)</strong>. </p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/console_rails_generated.PNG" alt="Console Create Nettuts">
+</div>
+<p>3)We now have a Ruby on Rails application generated!</p>
+<h3>Running an Application</h3>
+<p>1) To run our application, we need to go to Instant Rails and click on the icon again:</p>
+<p><img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/instantrails_console.PNG" alt="Instant Rails UI"></p>
+<p>2) Then we'll go to &quot;Rails Applications&quot; &gt; &quot;Manage Rails Applications...&quot;</p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/manage_applications.PNG" alt="Manage Applications">
+
+</div>
+<p>2) You can see Instant Rails ships with two projets already. The cookbook is a pretty neat demo of what you can do easily with Rails. I highly encourage you to check it out. And then after you learn a little bit more about Rails check out the source code. You'll be surprised at the simplicity! Anyway, check the box next to nettuts, and click &quot;Start with Mongrel&quot; . Your firewall might object, but allow it. A console window should pop-up with the port number and other useful information:</p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/server.PNG" alt="Manage Applications"></div>
+<p>So in my case (and probably in yours too), we can view our application at port 3000. So just navigate to  127.0.0.1:3000, and you should get this default Rails page (plus the sidebar to the right):</p>
+<div class="tutorial_image"><img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/application.PNG" alt="Manage Applications"></div>
+<p>We can now start building our application!</p>
+<h2>How the Framework Works</h2>
+<h3>MVC Architecture</h3>
+<p>Rails runs off of MVC Architecture. Basically that means we break up our code into three sections; the model, the view, and the controller. If you'd like to learn more about MVC Architecture be sure to visit the Nettuts <a href="http://nettuts.com">MVC</a> introduction tutorial. In this intro to Ruby on Rails, we'll only cover the basics of the controller: </p>
+<h3>The Controller</h3>
+<p> The controller will be the path after the main url. For example, if we have a controller that is named &quot;learn&quot;, it would represent <em>yoursite.com/learn</em> or locally <em>127.0.0.1:3000/learn</em> . Each controller relies on many specific files, therefore to create a controller, you need to generate it via the console. We're now going to create a new controller, learn:</p>
+<p>1) First, we open up a console window via Instant Rails, or which ever setup you're using. </p>
+<p>2)Next we navigate to the current application. Since we are currently one level above our application, we type in &quot;cd nettuts&quot; (<em>change directory to nettuts</em>). </p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/console_navigate.PNG" alt="cd nettuts"></div>
+<p>3)Now that we're in the application, we need to access a script that will generate the controller. If you examine the file structure of the app, you'll notice that there's a script folder. And inside the script folder, there is a generate file. We need to target that, and run it. </p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/file_structure.PNG" alt="directory"></div>
+<p>4) We'll target it via the console. Notice the other scripts as well, they all have their purpose. Anyway, in windows type in &quot;ruby script/generate controller learn&quot; to generate a controller called learn. If I remember right, you don't need the ruby in other Operating Systems. The console will now generate some files. Check these out in an explore window if you want. The two most important files here are the controller learn, which was just one of several files created; but notice also that a view called learn was also created. These are the <strong>sensible defaults </strong>that rails comes with to limit the amount of work involved. </p>
+<div class="tutorial_image">
+<img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/learn_controller.PNG" alt="Controllers"/></div>
+<p><strong>So how does a controller work?</strong></p>
+<p>Well let's take it step by step. </p>
+<p>-User requests yoursite.com/learn</p>
+<p>-Rails automatically looks in the servers directory for app/learn_controller</p>
+<p>-Rails scans the .rb file for an index file's definition</p>
+<p>-Rails does what the definition tells it to do, and eventually creates or redirects to a view.</p>
+<p>-This view (learn), is then sent back to the user. </p>
+<p>Don't worry if this isn't quite making sense. Next tutorial we will go in more depth into controllers. For right now, just be familiar with how to create a controller, and that they exist. </p>
+<h2>Resources </h2>
+<ul class="webroundup">
+
+<li>
+  <div><img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/lynda.jpg" alt="Lynda.com"></div>
+    <h4>Lynda.com : Ruby on Rails Essential Training</h4>
+
+    <p>Ruby on Rails aims to make building web applications simpler. In <em>Ruby on Rails Essential Training</em>,  expert instructor Kevin Skoglund focuses on the same goal. Kevin  explains the complete process--from understanding the fundamental  concepts behind any Ruby on Rails project to creating full-featured,  easy-to-maintain applications using the Ruby on Rails framework.</p>
+    <p><a href="http://movielibrary.lynda.com/html/modPage.asp?ID=324">Visit Article</a></p>
+</li>
+
+<li>
+  <div>
+   <img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/tutorialspoint.jpg" alt="Developer's Zone"></div>
+    <h4>Tutorial's Point Ruby on Rails Series</h4>
+    <p>This is an incredible series of Ruby on Rails tutorial, which covers a lot, but it's sometimes hard to follow.</p>
+
+    <p><a href="http://www.tutorialspoint.com/ruby-on-rails/">Visit Article</a></p>
+</li>
+
+<li>
+  <div><img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/rubyonrails.jpg" alt="Ruby on Rails"></div>
+    <h4>Ruby on Rails</h4>
+    <p>This is Rail's official site. If you want to get excited about Rails, go here! Here you can download the newest version, get the latest news, and find some other resources for learning Rails. </p>
+    <p><a href="http://rubyonrails.com">Visit Article</a></p>
+</li>
+
+<li>
+  <div>
+   <img src="http://nettuts.s3.amazonaws.com/057_rubyOnRailsFromScratch/images/railswiki.jpg" alt="PHP.NET"></div>
+    <h4>Rails Wiki</h4>
+    <p>This is another great resource. Once you become the next Rails ninja, you might even be compelled to edit some of the information here!</p>
+    <p><a href="http://wiki.rubyonrails.org/rails">Visit Article</a></p>
+</li>
+</ul>
+
+<p>Be sure to check out as many of these resources before the next tutorial. </p>
+<h2 style="clear: both;">Next Week and Final Words</h2>
+<p>Well, I hope you were able to survive through all of that information. Trust me, you'll be glad you did. Be sure you get the overall grasp of this tutorial. As we go on, most of your questions will be answered, and you will start feeling more &quot;enlightened&quot;, on what Rails is. And I promise next week will be more fun! Next week we will cover a little bit more of the framework, and start getting into ruby syntax, and a little more of what you can do with rails. If this tutorial helped you, please Digg it!</p>
+
+<ul class="webroundup">
+    <li>Subscribe to the <a href="http://feeds.feedburner.com/nettuts" title="NETTUTS RSS Feed">NETTUTS RSS Feed</a> for more daily web development tuts and articles.</li></ul>
+
+<p>
+<script type="text/javascript"><!--digg_url = "post permalink (not digg url)"; // -->
+</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script></p><br class="clear" />      </div>
+      
+      <div id="post_meta" class="clearfix">
+        <div id="realted_post_text">
+          <h3>Related Posts</h3><p>Check out some more great tutorials and articles that you might like</p>          </div>
+          <div id="related_posts">          
+          <ul><li><a href="http://net.tutsplus.com/tutorials/ruby/ruby-on-rails-from-scratch-week-2/" rel="bookmark" title="September 8, 2008">Learn Ruby on Rails from Scratch: Week 2</a> <span>Ruby </span></li>
+
+<li><a href="http://net.tutsplus.com/tutorials/ruby/ruby-on-rails-from-scratch-week-3/" rel="bookmark" title="September 26, 2008">Ruby on Rails from Scratch Week 3</a> <span>Ruby </span></li>
+
+<li><a href="http://net.tutsplus.com/tutorials/php/getting-started-with-cakephp/" rel="bookmark" title="October 17, 2008">Getting Started With CakePHP</a> <span>PHP </span></li>
+</ul><!-- Similar Posts took 15.003 ms -->        </div>
+        <div class="clear"></div>
+        <div id="social_text">
+        <h3>Enjoy this Post?</h3>
+          <p>Your vote will help us grow this site and provide even more awesomeness</p>
+        </div>
+        <div id="social_bookmarks">
+          <div class="social_images">
+            <div class="digg">
+              <script type="text/javascript">
+				digg_url = "http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/";
+			  </script>
+			  <script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>
+            </div>
+            <div class="dzone">
+              <script type="text/javascript">var dzone_url = 'http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/';</script>
+              <script type="text/javascript">var dzone_title = 'Learn Ruby on Rails from Scratch: Week 1';</script>
+              <script type="text/javascript">var dzone_style = '1';</script>
+              <script language="javascript" src="http://widgets.dzone.com/widgets/zoneit.js"></script>
+            </div>
+            <div class="dzone">
+              <script>reddit_url='http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/'</script>
+              <script>reddit_title='Learn Ruby on Rails from Scratch: Week 1'</script>
+              <script type="text/javascript" src="http://www.reddit.com/button.js?t=2"></script>
+            </div>
+            <ul>
+            <li><a href="http://www.stumbleupon.com/submit?url=http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/&title=Learn Ruby on Rails from Scratch: Week 1"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/bookmark_su.jpg" alt="Add to StumbleUpon" class="push_r_img push_d_img" /></a></li>
+            <li><a href="http://www.mixx.com/submit?page_url=http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/bookmark_mixx.jpg" alt="Add to Mixx" class="push_d_img" /></a></li>
+            <li><a href="http://del.icio.us/post?url=http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/&title=Learn Ruby on Rails from Scratch: Week 1"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/bookmark_delicious.jpg" alt="Add to Delicious" class="push_r_img" /></a></li>
+            <li><a href="http://www.designfloat.com/submit.php?url=http://net.tutsplus.com/tutorials/ruby/learn-ruby-on-rails-from-scratch-week-1/&title=Learn Ruby on Rails from Scratch: Week 1"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/bookmark_designfloat.jpg" alt="Add to designfloat" /></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      	  					<div id="tuts_plus" class="non_subscriber clear clearfix">
+	      	<h2 class="tutsplus_header">Plus Members</h2>
+	      	<p class="tuts_text">Source Files, Bonus Tutorials and <br />More for $9 a month for all TUTS+ <br />sites in one subscription.</p>
+	        <p class="button"><a href="http://tutsplus.com/amember/signup.php" class="join_tuts">Join Now</a></p>
+	        <form name="login" method="post" action="http://tutsplus.com/amember/member.php" id="signIn">
+	          <fieldset>
+	          <input type="text" name="amember_login" id="username" class="input" />
+	          <input type="password" name="amember_pass" id="password" class="input" />
+	          <input type="submit" id="submit_plus" class="submit_button" value="Sign In" />
+	          </fieldset>
+	        </form>
+	      </div>
+			            
+	  <div id="comments_wrap" class="clearfix">
+	<div id="comments" class="clearfix">
+  <div class="clearfix">
+		<h3 class="left">User Comments</h3><span class="get_avatar right">( <a href="#add">ADD YOURS</a> )</span>
+              <br class="clear" />
+	</div>
+     
+		<ol class="comment_list parent">
+			
+	<li id="comment-8980">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/e33519dfb3124da2fd05a6681d53503c?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://jailbait.gr' rel='external nofollow' class='url'>Basilakis</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Cool that u guys play with Rails. Really nice language, but a bit hardy!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8980#respond' onclick='return addComment.moveForm("comment-8980", "8980", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8981">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/25894ec044d8bdd0bca320723eb7e5c3?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Matt <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Nice tutorial, and a good start to what looks like a good series. I just hope you actually get a second article out, unlike the &#8220;PHP From Scratch&#8221; series <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> (unless I missed them being published?)</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8981#respond' onclick='return addComment.moveForm("comment-8981", "8981", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8982">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/981b46396a22bf5a8190506fe892b3b5?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.alfystudio.com' rel='external nofollow' class='url'>Ahmad Alfy</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Awesome tutorial <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+ROR is essential for new developers, You gotta love it!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8982#respond' onclick='return addComment.moveForm("comment-8982", "8982", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8983">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/e9fa499f24fe2f05353b6d98f1c922f9?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.richanomix.com' rel='external nofollow' class='url'>Richard Neary</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Very nice tutorial, really wish this was being presented on a mac os x though.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8983#respond' onclick='return addComment.moveForm("comment-8983", "8983", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8984">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/e4552f373f94150b338fbae9fd7bbbd7?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://xseria.com' rel='external nofollow' class='url'>Sam</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Very nice, thanks!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8984#respond' onclick='return addComment.moveForm("comment-8984", "8984", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8985">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/d946581d71d1f42bfe63dc4aaf9a362a?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.1pixelbrush.com' rel='external nofollow' class='url'>Dan</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Looking forward to more</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8985#respond' onclick='return addComment.moveForm("comment-8985", "8985", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8987">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/54bf0e910c19473e72a9fd58cea55b07?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Mark Edwards <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Its worth pointing out that since Leopard Ruby on Rails has been included in OSX and anyone running it can get started by opening up a terminal and typing<br />
+rails<br />
+cd<br />
+script/server</p>
+<p>and visiting <a href="http://localhost:3000" rel="nofollow">http://localhost:3000</a> to see the Welcome Aboard page.</p>
+<p>upgrading rails to 2.1 is as simple as &#8217;sudo gem install rails&#8217;</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8987#respond' onclick='return addComment.moveForm("comment-8987", "8987", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8988">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/52709762b3bbdf11b009881290d86c63?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Anthony Bruno <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Guess I have no excuse for not getting into RoR now.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8988#respond' onclick='return addComment.moveForm("comment-8988", "8988", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8989">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Yes&#8230;I plan on continuing this series too ;P Next week, will be much more interesting too!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8989#respond' onclick='return addComment.moveForm("comment-8989", "8989", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8992">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/9a21948603b992f276258240c1794e48?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://ndezigns.com' rel='external nofollow' class='url'>Nate</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Should be fun learning this, since I haven&#8217;t taken the time yet.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8992#respond' onclick='return addComment.moveForm("comment-8992", "8992", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8993">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/951f9192c099ce203edb03f4dedc218d?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>qBox <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Finally! I have been waiting for a series on RoR!</p>
+<p>I can&#8217;t wait for the next entry&#8230;</p>
+<p>great work!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8993#respond' onclick='return addComment.moveForm("comment-8993", "8993", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8994">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/14271b9ea2c38ceef7ee48c1bbbb9d9c?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>grzesiek <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>i would rather prefer cakephp tutorial which is a lot more easier framework to step into in my opinion.<br />
+besides not all shared hosting accounts are offered with ror support - i mean it is not as popular as php.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8994#respond' onclick='return addComment.moveForm("comment-8994", "8994", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8995">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/15b4778119324c2ee06c62ecb5ab448a?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.maxkpage.com' rel='external nofollow' class='url'>Max</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Have been wanting to learn RoR for along time. Keep the posts coming.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8995#respond' onclick='return addComment.moveForm("comment-8995", "8995", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8996">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/1eda1d855342f96be8b579e319e27662?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://na' rel='external nofollow' class='url'>w1sh</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Nice! A server-side from scratch series!<br />
+Have I told you how much I love you guys?</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8996#respond' onclick='return addComment.moveForm("comment-8996", "8996", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8997">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/bbee2bb32667e7f5dc2ab22a97f16de6?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.stimul8d.com' rel='external nofollow' class='url'>Stimul8d</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Okay, no excuses. Always been an ASP developer from classic 2.0 through to .net 3.5 MVC.  Last month i learned php (properly) which i STILL don&#8217;t like.  This month it&#8217;s RoR. Honestly, it looks pretty neat and i&#8217;m looking forward to it.  </p>
+<p>Thanks guys, there&#8217;s so much noise out there; it&#8217;s awesome to have people like you seperating the wheat from the chaff!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8997#respond' onclick='return addComment.moveForm("comment-8997", "8997", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8998">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/93468d34c43eaae3fa56f7efbe0a3f4a?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.jaysalvat.com/' rel='external nofollow' class='url'>Jay Salvat</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks a lot for this one.</p>
+<p>There are some bad  in the first code samples. <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8998#respond' onclick='return addComment.moveForm("comment-8998", "8998", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-8999">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/5ceccd73e885d4072508c40790b5b4d4?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://paulgendek.com' rel='external nofollow' class='url'>Paul Gendek</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I can&#8217;t wait for the next post!  Thanks for this guys!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=8999#respond' onclick='return addComment.moveForm("comment-8999", "8999", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9000">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/93468d34c43eaae3fa56f7efbe0a3f4a?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.jaysalvat.com/' rel='external nofollow' class='url'>Jay Salvat</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Hum&#8230; Html doesn&#8217;t display in my previous message.</p>
+<p>There are some bad &lt;br&gt; in the first code samples.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9000#respond' onclick='return addComment.moveForm("comment-9000", "9000", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9001">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/50c285fa5b3e879126ed7e5848b405b1?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.insicdesigns.info' rel='external nofollow' class='url'>insic</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>its been a while planning to study ruby. and now its the time. thank you for this very good post.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9001#respond' onclick='return addComment.moveForm("comment-9001", "9001", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9002">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/ef0e63113a3f8f9c55435061bb9747bd?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>oisean <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Nice. This may get my lazy self to look at RoR properly.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9002#respond' onclick='return addComment.moveForm("comment-9002", "9002", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9003">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/2fd05144977af5723ecbc9f30ef9df0d?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://laminbarrow.com' rel='external nofollow' class='url'>Lamin Barrow</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Ruby is great.  I have tired it before and i like the true Model View controller (MVC) design pattern it follows and the extensionless URLs but still i kind of prefer C# which i think has a nicer syntax view.</p>
+<p>Thanx for the tut. <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9003#respond' onclick='return addComment.moveForm("comment-9003", "9003", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9005">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Yeah&#8230;the code segments did get a little messed up&#8230; </p>
+<p>That&#8217;s because the &#8217;s were all processed as part of the pre code, instead of breaking the code into lines.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9005#respond' onclick='return addComment.moveForm("comment-9005", "9005", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9006">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/289994917fba837558f6517b098fed44?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Windows?! Hmmmm... <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>On Vista?!<br />
+How strange, and uncomfortable&#8230;.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9006#respond' onclick='return addComment.moveForm("comment-9006", "9006", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9007">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/21d9c11de70ec53e5ec6c60ac3f747c0?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Joel Perras <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>&#8220;In a recent project I was working on, it took me less than 10 hours to do the application, as compared to at least double that if I was writing in PHP.&#8221;</p>
+<p>I don&#8217;t think you should be comparing a Framework (Rail) to a language (PHP).  PHP has some excellent MVC frameworks available ( <a href="http://www.cakephp.org" rel="nofollow">http://www.cakephp.org</a> ) which provide the same productivity boost that Rails does for Ruby with respect to developing web applications.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9007#respond' onclick='return addComment.moveForm("comment-9007", "9007", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9008">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/cd457310949ed8c856c3fc5dab8d28dc?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Blud <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thx a lot ! If your RoR tutorials are as good as the average of this site, it&#8217;ll be perfect!<br />
+Just a remark, I&#8217;ve just bought some books on RoR and felt very disappointed that they were based on some old versions of it.<br />
+Instant rails works with the last one and a lot of stuff in syntax and commands have changed since (like scaffolding which is very appealing for the noobs).</p>
+<p>So I hope you&#8217;ll be dealing with the current one.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9008#respond' onclick='return addComment.moveForm("comment-9008", "9008", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9009">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/ba1205ba78845cf9f922d21d4f3716d2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://vailo.wordpress.com' rel='external nofollow' class='url'>Niklas</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Very nice! Another great series to follow next to the PHP Framework series. Well written and sleek!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9009#respond' onclick='return addComment.moveForm("comment-9009", "9009", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9011">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/384e8fd04c2610355b6ee5f9611ccae9?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.matrich.net/' rel='external nofollow' class='url'>Matrich</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Wow!!</p>
+<p>Great tutorial. I guess I too have no excuse for getting into RoR. I have been working with PHP frameworks however I will give RoR a try as I&#8217;ve heard many gr8 things about it. Hope this series will help me to see what it is exactly and get into it hopefully.</p>
+<p>Can&#8217;t wait for the next post.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9011#respond' onclick='return addComment.moveForm("comment-9011", "9011", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9014">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/dae5d7a0e610bf8fb2fd268e37aaf523?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.clipcroma.com' rel='external nofollow' class='url'>jonatan</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>it&#8217;s not cool&#8230;.<br />
+it&#8217;s AMAZING!?!</p>
+<p>Thanks&#8230;</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9014#respond' onclick='return addComment.moveForm("comment-9014", "9014", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9015">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/0eadb450d580ff716f5db0ce5031c088?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.wangapoa.com' rel='external nofollow' class='url'>Sebastian</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>thanks very much! been waiting for a chance to learn ruby sooo long, this is it!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9015#respond' onclick='return addComment.moveForm("comment-9015", "9015", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9023">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Yeah Joel&#8230;you have a point. I also have experience though with PHP frameworks as well. I&#8217;ve probably used Cake PHP the most, of any php framework. But they too are still not as productive and not as mature of a framework as rails is.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9023#respond' onclick='return addComment.moveForm("comment-9023", "9023", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9024">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/032f1a85263f21ff1f013421967ef99e?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.freshivore.net' rel='external nofollow' class='url'>Vince</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Another great way to pick up rails as a framework is to understand Ruby better as a language. Here is the beta revision of the trusty Pickaxe book. <a href="http://www.pragprog.com/titles/ruby3/programming-ruby-3" rel="nofollow">http://www.pragprog.com/titles/ruby3/programming-ruby-3</a></p>
+<p>Also Ryan Bates&#8217; screencast as absolutely amazing. Re-factoring, tips, tricks, etc. You must subscribe!<br />
+<a href="http://railscasts.com/" rel="nofollow">http://railscasts.com/</a></p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9024#respond' onclick='return addComment.moveForm("comment-9024", "9024", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9025">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/bf52e9879a293a43269759d3c7728a47?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://mcarthurgfx.com/' rel='external nofollow' class='url'>Sean McArthur</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I second Joel.  CakePHP or CodeIgniter are both excellent MVC frameworks for PHP.</p>
+<p>A word of caution to those wanting to use Ruby: it may be pretty to the eyes, but its an interpreted language instead of compiled.  Meaning it&#8217;s performance is far worse than PHP, for instance.  So in terms of choosing between PHP vs Ruby, it comes down to whether you want to be nicer to you as the programmer, or nicer to all the users that must wait on your server side scripting.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9025#respond' onclick='return addComment.moveForm("comment-9025", "9025", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9029">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/0434ca04942936b25f11286f410e86e2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://talkingtofu2.iblogger.org/blog/' rel='external nofollow' class='url'>Taylor Satula</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Were you just on vista? If i ignore the vista this was a great tutor hopefully i will get good at ruby</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9029#respond' onclick='return addComment.moveForm("comment-9029", "9029", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9030">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4d9dd9bd8d3d4d0ba8af2acc41d14006?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.paperplanes.de' rel='external nofollow' class='url'>Mathias</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Sean, while it&#8217;s true that Ruby has performance issues (though in my experience in three years of Rails consulting, Ruby was never the issue with most applications), it mostly comes down to database, caching and other tasty ingredients, the same problems you have with every web applications of a certain size, but I have yet to see an example where Ruby itself was the sole reason for a slow web application.</p>
+<p>I picked up both Ruby and Rails quite a ago, and I have never looked back.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9030#respond' onclick='return addComment.moveForm("comment-9030", "9030", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9034">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/ccf3b8c638f15d005e5d070aeb1a3923?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.freshclickmedia.com' rel='external nofollow' class='url'>Shane</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I agree totally with @Joel about his point regarding language and framework.</p>
+<p>Like @Stimul8d, I&#8217;m an ASP.NET developer, and have been since, well, version 1.1, but I too have picked up a bit of Ruby On Rails (RoR) and found as a long-term developer (not just web), I found the Ruby language and framework elegant and fun.  It just felt right.</p>
+<p>Hats off to Apple for including Rails in their latest OS release - for me, this open-arms approach to interesting and productive frameworks is one reason why I find myself turning more and more to non-Microsoft platforms and frameworks.  ASP.NET MVC is now picking up steam, related in no small part to the success of RoR no doubt.</p>
+<p>My only reservation on RoR comes from reports of its relatively slow running speed, and difficulties in deployment in shared hosting environments.  My hosting company, Dreamhost, supports RoR, but forums tell of many problems deploying projects in a shared set up.</p>
+<p>My freelance career is only just beginning, but I&#8217;ve made a conscious decision not to use ASP.NET and Microsoft technologies.  Much of my output involves PHP, but I&#8217;m still considering Rails as a framework, though my concerns on performance are still much in my mind.</p>
+<p>Any comments on its performance on shared environments?  </p>
+<p>Oh - by the way - thanks for posting the article. <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9034#respond' onclick='return addComment.moveForm("comment-9034", "9034", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9035">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Sean&#8230;what you&#8217;re saying is kind of misleading&#8230;</p>
+<p>As you can see in the article, Rails <b>used</b> to be slow on non-modern web servers. Most servers now a days are equipped to equally handle how ruby and other, compiled, languages work.</p>
+<p>Bottom line, if you chose your web server wisely, you will not have any problems. </p>
+<p>All of the current best valuable web servers out there that I can think of, handle Rails just as good. </p>
+<p>For an example, look at twitter. That&#8217;s made in Rails-is it slow? <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9035#respond' onclick='return addComment.moveForm("comment-9035", "9035", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9036">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/047290109c6cd9a5cf37f40fffaa8d18?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.italo-design.com' rel='external nofollow' class='url'>Nicola B.</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>thanks! you&#8217;re articles are always one feet above the others!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9036#respond' onclick='return addComment.moveForm("comment-9036", "9036", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9037">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Sorry Shane didn&#8217;t see your post when I last posted. </p>
+<p>Personally, I&#8217;ve done projects with Rails on dreamhost, and have had no problems. Now, if you&#8217;re <b>only</b> going to be using Rails for everything, and no PHP whatsoever, then I would recommend using a specialized Rails host.</p>
+<p>So unless you&#8217;re doing an extremely complex project that expects a lot of computing, you should be fine.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9037#respond' onclick='return addComment.moveForm("comment-9037", "9037", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9038">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/fa733a58dcb2193e6005aa5e873676c8?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.evanbot.com' rel='external nofollow' class='url'>Evan Byrne</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Why is it that some people commenting here have a problem with the tutorial being done on Vista? It&#8217;s not a bad OS at all I use it all the time and it works perfectly for me. For me it&#8217;s better than XP.</p>
+<p>back to topic:</p>
+<p>Your tutorial looks very good. I&#8217;m already a seasoned PHP developer so I don&#8217;t think I&#8217;ll be trying to learn Ruby just now though.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9038#respond' onclick='return addComment.moveForm("comment-9038", "9038", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9041">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/ccf3b8c638f15d005e5d070aeb1a3923?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.freshclickmedia.com' rel='external nofollow' class='url'>Shane</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Connor - that&#8217;s good to know - thanks very much.  Things do seem to have changed quite a bit over the last year.  People now seem to be saying that Rails performance on a good host isn&#8217;t an issue.</p>
+<p>However - you mention Twitter&#8230; that&#8217;s suffered a lot of downtime.  I know it&#8217;s not all Rails-based, but it is one of the highest profile Rails sites.  Having said that, perhaps part of the issue is caused by the sheer number of mash-ups that involve Twitter.</p>
+<p>I&#8217;ve also heard that deployment is an absolute nightmare.  I know there&#8217;s Capistrano, but even so, I&#8217;ve heard reports that things aren&#8217;t quite as simple on &#8216;real-world&#8217; projects.</p>
+<p>I&#8217;m not having a go at Rails, just considering it&#8217;s drawbacks.  Nothing&#8217;s perfect.  Nothing.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9041#respond' onclick='return addComment.moveForm("comment-9041", "9041", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9042">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4d9dd9bd8d3d4d0ba8af2acc41d14006?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.paperplanes.de' rel='external nofollow' class='url'>Mathias</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Shane, deployment is never a simple issue. It&#8217;s far from being an absolute nightmare, especially with Capistrano. It requires thought just like all deployment setups. The more servers, the more consumed services, the higher your deployment complexity. Nothing very specific to Rails.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9042#respond' onclick='return addComment.moveForm("comment-9042", "9042", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9043">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Well, this blog explains why twitter was having issues:</p>
+<p><a href="http://www.web-strategist.com/blog/2008/05/28/the-truth-why-twitter-is-over-capacity/" rel="nofollow">http://www.web-strategist.com/blog/2008/05/28/the-truth-why-twitter-is-over-capacity/</a></p>
+<p>Hehe, anyway, I believe they fixed that last Friday&#8230;It wasn&#8217;t really Rails scalability issues, like people thought. It was because a &#8220;background process to watch and end long-running queries on the databases silently failed&#8221; and they didn&#8217;t notice.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9043#respond' onclick='return addComment.moveForm("comment-9043", "9043", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9045">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/ccf3b8c638f15d005e5d070aeb1a3923?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.freshclickmedia.com' rel='external nofollow' class='url'>Shane</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks for your replies Mathias and Connor.   </p>
+<p>Mathias - are you saying that deployment is perhaps the hardest part of Rails? Everything else seems so simple <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>Connor - interesting bird theory <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9045#respond' onclick='return addComment.moveForm("comment-9045", "9045", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9046">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/c30395d069a1dfb7b3a4972cd9587c26?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>fatnic <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Awesome. Got it up and running now. Can&#8217;t wait for lesson 2 to make it DO something!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9046#respond' onclick='return addComment.moveForm("comment-9046", "9046", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9050">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/c17f6c016875b827276ad2cd653eeb36?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://matt-radel.com' rel='external nofollow' class='url'>Matt Radel</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Wow, pretty ambitious series&#8230;I can&#8217;t wait to read all of &#8216;em. <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9050#respond' onclick='return addComment.moveForm("comment-9050", "9050", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9051">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4d9dd9bd8d3d4d0ba8af2acc41d14006?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.paperplanes.de' rel='external nofollow' class='url'>Mathias</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I would say that it&#8217;ll take you some time and thought to get your setup right, but once you&#8217;re past that it&#8217;s an issue of firing a command and watching Capistrano do its magic. Depending on experience it doesn&#8217;t need to be a hard part <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9051#respond' onclick='return addComment.moveForm("comment-9051", "9051", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9057">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/7f283d67b9b2fd10179d26fac72dae63?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.ben-griffiths.com' rel='external nofollow' class='url'>Ben Griffiths</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks! Good AND easy to follow Ruby tut&#8217;s are hard to come by, so will be following this one closely <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_biggrin.gif' alt=':D' class='wp-smiley' /> (Plus I use Vista, so even more useful to me!)</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9057#respond' onclick='return addComment.moveForm("comment-9057", "9057", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9059">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/c1ea41b801b245fddfb04a0b05cbd7b3?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.impresslab.com' rel='external nofollow' class='url'>Steve</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>wow. i am looking forward to this. i too could never find a meaningful and easy to use tut for newbies to RoR.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9059#respond' onclick='return addComment.moveForm("comment-9059", "9059", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9061">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/f2a80c31e24260858df7fa4fbbe659a1?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Simon <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks for the tute <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+<p>I&#8217;ve often wondered which would suit me better (PHP or RoR) and would like to find a non biased opinion/blog that states the pro&#8217;s and con&#8217;s of each. Anyone got some suggestions? There is nothing worse than fanboy sites that just slam a particular language rather than researching it fully.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9061#respond' onclick='return addComment.moveForm("comment-9061", "9061", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9069">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/700b8e685f19dede6e27ec1d299b1b5e?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>xym <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>why it listens on 0.0.0.0:3000 instead of 127.0.0.1? It runs on Windows 2000.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9069#respond' onclick='return addComment.moveForm("comment-9069", "9069", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9072">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Simon. </p>
+<p>That&#8217;s true- it is hard to come by. Although there isn&#8217;t just one superior language. It really depends on your needs.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9072#respond' onclick='return addComment.moveForm("comment-9072", "9072", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9074">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/06f2b3c2f82910fce5e05d7545810eb9?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Jordan Perr <span>August 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I really like how your tutorial is written. I have read other intros, but this one promises to &#8220;stick!&#8221;<br />
+I would like to learn about Models as well as Controllers.. You kinda hinted that you were just going to glaze over them, but I like the idea of having tables and rows show up as classes and objects.</p>
+<p>Looking forward to the next post!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9074#respond' onclick='return addComment.moveForm("comment-9074", "9074", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9089">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/613dd6b227dc37ac9b8b1741eac160ce?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.anti-pixel.net' rel='external nofollow' class='url'>antipix</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>very good idea to speak of ruby on rails ^^</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9089#respond' onclick='return addComment.moveForm("comment-9089", "9089", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9097">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/f20a8166141a622f04bc988a33a380dd?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Idil <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thank god! Finally, I have been looking for a good RoR tuts. can&#8217;t wait for next weeks session.  </p>
+<p>Thanks a lot.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9097#respond' onclick='return addComment.moveForm("comment-9097", "9097", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9102">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/a8af49d15c7eda84e6b1483ae4e72940?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://widgye.net' rel='external nofollow' class='url'>Diego Gomes</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Really Cool tutorial!<br />
+Awesome, I hope it&#8217;ll be a really long serie</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9102#respond' onclick='return addComment.moveForm("comment-9102", "9102", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9103">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/a8af49d15c7eda84e6b1483ae4e72940?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://widgy.net' rel='external nofollow' class='url'>Diego Gomes</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>cant wait for next&#8230; and lets make it a little harder</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9103#respond' onclick='return addComment.moveForm("comment-9103", "9103", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9108">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/6832d6b6a80cd8daef47a4f2709eb217?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Eye_Roller <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>All you people saying &#8220;OMG VISTA?!! OMGLOL!&#8221; sound like absolute children. Get over yourselves.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9108#respond' onclick='return addComment.moveForm("comment-9108", "9108", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9125">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/c54458d4d18dbc55200e63555f59e8fb?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.nutrihealth.in' rel='external nofollow' class='url'>yamaniac</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>You guys rock! I was waiting for this from Nettuts. And I knew that you guys will surely come up with the ruby tutorial someday!! Cheers! yea!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9125#respond' onclick='return addComment.moveForm("comment-9125", "9125", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9130">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/1eda1d855342f96be8b579e319e27662?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://na' rel='external nofollow' class='url'>w1sh</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I&#8217;d love to see a list of sites assembled in the different languages. I think if I saw something like that, I could chose what language to focus on.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9130#respond' onclick='return addComment.moveForm("comment-9130", "9130", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9161">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/cb04e7d2909114037f04c1212872b150?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.marcusmccurdy.com/' rel='external nofollow' class='url'>Marcus</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Some people were asking for more mac info and I found some docs from apple.</p>
+<p>Installing/Updating: <a href="http://developer.apple.com/tools/deployonrailsleopard.html" rel="nofollow">http://developer.apple.com/tools/deployonrailsleopard.html</a></p>
+<p>Developing: <a href="http://developer.apple.com/tools/developonrailsleopard.html" rel="nofollow">http://developer.apple.com/tools/developonrailsleopard.html</a></p>
+<p>Hope these help.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9161#respond' onclick='return addComment.moveForm("comment-9161", "9161", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9164">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Marcus </p>
+<p>That&#8217;s the hard way to install! <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_razz.gif' alt=':P' class='wp-smiley' /> </p>
+<p>If you look above, I gave a link to Rail&#8217;s wiki which also gives instructions. Also, for Mac&#8217;s you have locomotive, the mac equivalent of Instant Rails.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9164#respond' onclick='return addComment.moveForm("comment-9164", "9164", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9165">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4d9dd9bd8d3d4d0ba8af2acc41d14006?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.paperplanes.de' rel='external nofollow' class='url'>Mathias</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Connor, I wouldn&#8217;t recommend using Locomotive. It&#8217;s still based on Rails 1.2 and hasn&#8217;t seen an update in two years.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9165#respond' onclick='return addComment.moveForm("comment-9165", "9165", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9167">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>My bad&#8230;you&#8217;re right. Shows how little I use mac <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9167#respond' onclick='return addComment.moveForm("comment-9167", "9167", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9185">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/804369357227587eeb001ea8fc6413e2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.aldrinponce.com' rel='external nofollow' class='url'>weblizzer</a> <span>August 29th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>great tutorial, i&#8217;m about to learn this language, but don&#8217;t have enough time to study further but, it&#8217;s great to know that you have this one. Such a great post. Hope to expect coming from you.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9185#respond' onclick='return addComment.moveForm("comment-9185", "9185", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9201">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/55a73cec67282dbf2567e189c78b4caa?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.jonathansace.com' rel='external nofollow' class='url'>Designer</a> <span>August 30th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I have&#8217;nt tried Ruby on Rails, Do you think it is better than PHP? IS this easy to learn?</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9201#respond' onclick='return addComment.moveForm("comment-9201", "9201", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9205">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/205c553a0a36e0fad9937e71fdc8f2c5?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://fluidmarkup.com' rel='external nofollow' class='url'>Chris</a> <span>August 30th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Connor: Twitter? Oh&#8230; right! You mean the site that completely recoded their service from Rails to PHP BECAUSE it was slow?</p>
+<p>I remember them&#8230;</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9205#respond' onclick='return addComment.moveForm("comment-9205", "9205", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9439">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/bec93852d4047a458c76dd9c78641738?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.subooa.com' rel='external nofollow' class='url'>mattems</a> <span>September 1st</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks for the intro into ruby. I was definately interested but then when i think about it, i have a special friend called codeigniter. </p>
+<p>Ill stick to my guns, but definately good to know more.</p>
+<p>thanks again for the tut.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9439#respond' onclick='return addComment.moveForm("comment-9439", "9439", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9785">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/bf52e9879a293a43269759d3c7728a47?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://mcarthurgfx.com/blog/javascript/make-yui-editor-more-pluggable/' rel='external nofollow' class='url'>Sean McArthur</a> <span>September 3rd</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>As Chris said, Twitter is switching from Ruby to PHP for a performance boost.</p>
+<p>What I said wasn&#8217;t misleading.  Ruby is an interpreted language.  Meaning it doesn&#8217;t get the speed benefit of having been compiled.  A simple search on Google will confirm what I&#8217;m saying.  Most info in first few SERPs is up-to-date.</p>
+<p>Jeff Croft, whom NETTUTS just interviewed, even states <a href="http://jeffcroft.com/links/2008/may/14/twitter-said-to-be-abandoning-ruby-on-rails/" rel="nofollow">&#8220;Ruby is undeniably slow compared to Python, Java, and PHP&#8221;</a>.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9785#respond' onclick='return addComment.moveForm("comment-9785", "9785", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9899">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/92754895f52fe2e357b94cbeff8a52af?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.image2markup.com' rel='external nofollow' class='url'>Ivan</a> <span>September 4th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>First: I really have no idea why so many folks here have a problem with Vista. People, Vista is actually a good OS. Not as good as X, but still a good one.</p>
+<p>Second: PHP is a language, Rails is a framework.</p>
+<p>Third: When will the next part be published? <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9899#respond' onclick='return addComment.moveForm("comment-9899", "9899", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-9906">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4ef65a9158aee7a8ff017414738be0fe?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.detacheddesigns.com' rel='external nofollow' class='url'>Jeffrey Way</a> <span>September 4th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Ivan - It&#8217;ll go up any day now!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=9906#respond' onclick='return addComment.moveForm("comment-9906", "9906", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-10286">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/4d9dd9bd8d3d4d0ba8af2acc41d14006?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://www.paperplanes.de' rel='external nofollow' class='url'>Mathias</a> <span>September 7th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Sean and Chris, please point to us to whichever source you have that Twitter is actually switching to PHP. I&#8217;m not denying they&#8217;re moving away from Rails, in fact, most of the application code hasn&#8217;t been using Rails for a while now, but I&#8217;m curios where you found specific evidence that PHP is their new language of choice.</p>
+<p>And Sean, you can keep insisting that Ruby is slower than PHP, Java and Python (I don&#8217;t even argue with that), but I&#8217;m saying that in a lot of cases, it&#8217;s not an issue, because Ruby is still fast enough.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=10286#respond' onclick='return addComment.moveForm("comment-10286", "10286", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-10439">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/bf52e9879a293a43269759d3c7728a47?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://mcarthurgfx.com' rel='external nofollow' class='url'>Sean</a> <span>September 8th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I apologize, the source I had read on <a href="http://www.techcrunch.com/2008/05/01/twitter-said-to-be-abandoning-ruby-on-rails/" rel="nofollow">Techcrunch</a> had actually said &#8220;PHP or Java&#8221;, and I simply read the PHP part.  But what they were switching to wasn&#8217;t the important part.</p>
+<p>Obviously, Ruby can handle itself in smaller situations, or all developers would shun it.  But to me, &#8220;fast enough&#8221; isn&#8217;t a good philosophy, especially when working on large applications.  Faster is always better when it doesn&#8217;t sacrifice quality.  The company I work for is rewriting <a href="http://ripetv.com" rel="nofollow">RipeTV&#8217;s</a> new CMS into PHP, that originally had been written in Ruby and could not handle the demand.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=10439#respond' onclick='return addComment.moveForm("comment-10439", "10439", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-10874">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/5059943bfbf8624bdda1dbee647bf8ae?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>Luke Faccini <span>September 12th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks a lot everything that I wanted!</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=10874#respond' onclick='return addComment.moveForm("comment-10874", "10874", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-10942">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/fff060513c7b777b4079eebf06a0f6d1?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://is.gd/2tyF/219477988' rel='external nofollow' class='url'>solicitor bulgaria</a> <span>September 12th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Looks like a good series to follow</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=10942#respond' onclick='return addComment.moveForm("comment-10942", "10942", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-12666">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/0f7ec8171072620a9397ffe6058093cf?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p>CzaRD <span>September 28th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>EXCELLENT tutorial, thank you so much, I&#8217;ve been looking everywhere that simplifies RoR like this.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=12666#respond' onclick='return addComment.moveForm("comment-12666", "12666", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-14346">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/70311bce5ef94cd07b5b0da8c2f8461e?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://dalsvaag.net' rel='external nofollow' class='url'>Christian Dalsvaag</a> <span>October 15th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Hi,</p>
+<p>This tutorial was OK, I guess - but it&#8217;s lacking essential things.</p>
+<p>Like;<br />
+- You didn&#8217;t cover installation on OS X? And only mentioned that Locomotive works? Well, everyone running anything else than 10.4.x can not install Locomotive on their systems. For those of you who want to run rails on your Leopard; go to Terminal, and simply type: &#8220;sudo gem update rails&#8221; (ommit the quotes). Then type &#8220;rails your_app_name&#8221; to get started.<br />
+- You didn&#8217;t really talk about Ruby as a language, you only mentioned it was similar to Perl and others. Ruby is a beautiful language, and it&#8217;s syntax is quite unique. I wouldn&#8217;t really compare it to other SCRIPTING languages, as it is not a language itself.<br />
+- Again, covering basic things about Ruby; variables, arrays and hashes, blocks and iterators, objects? This really needs to be introduced at the beginning.<br />
+- You mention; &#8220;It is _very_ object oriented&#8221;. This is wrong, in fact the WHOLE language is object oriented. OOL; Object Oriented Language. EVERYTHING in Ruby is an object, even numbers and strings.<br />
+- What about the filestructure in Rails? This could also be introduced in the first post.</p>
+<p>By all means, I bet you know most of the things I said - but hey, this is a tutorial - and considering it costs a $150, I really think you could improve it. And I also know it&#8217;s part of a series - but it&#8217;s way too short, considering an intro tutorial needs to get people interested.</p>
+<p>Your resources were great, and I intend to check some out myself.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=14346#respond' onclick='return addComment.moveForm("comment-14346", "14346", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-15699">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/84a4b72c996bfc158c43e23288499bd2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://cyberantix.org' rel='external nofollow' class='url'>Connor</a> <span>October 24th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Christian,</p>
+<p>You&#8217;re entitled to your own opinion. As much as I would have liked to combine multiple weeks into one tutorial, it is much more effective to put it in slightly smaller chunks. This was an introduction with following tutorials later that will go into specific essential topics. For example, If you check in a later week, I covered syntax.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=15699#respond' onclick='return addComment.moveForm("comment-15699", "15699", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-24337">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/6ec940e957647cafede831c5943bea84?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://blogspot.fluidnewmedia.com' rel='external nofollow' class='url'>Ahad</a> <span>December 22nd</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Connor -&gt; it is easier to install Instant Rails, however people are going to hit a bad patch with Instant Rails (if) they continue their careers as Rails Developers.  To check out the capability of Rails is fine.</p>
+<p>Better to go for the manual install so you know the exact configurations..<br />
+Good tutorial btw, and yeah if you go for the manual install bit you are going to have alot of unhappy comments&#8230;.</p>
+<p>Here is a link to Installing Manually:  <a href="http://www.buildingwebapps.com" rel="nofollow">http://www.buildingwebapps.com</a> (or)http://www.learningrails.com</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=24337#respond' onclick='return addComment.moveForm("comment-24337", "24337", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-24338">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/6ec940e957647cafede831c5943bea84?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://blogspot.fluidnewmedia.com' rel='external nofollow' class='url'>Ahad</a> <span>December 22nd</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Twitter Commentors:  Don&#8217;t blame Rails BLAME Coble&#8230;</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=24338#respond' onclick='return addComment.moveForm("comment-24338", "24338", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-26950">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/6ec940e957647cafede831c5943bea84?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://blogspot.fluidnewmedia.com' rel='external nofollow' class='url'>Ahad</a> <span>January 4th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>@Girls/Guys:  To install Rails manually is simple (On Windows).</p>
+<p>A.  First install Ruby using the Ruby Installer.  (check all options when installing)</p>
+<p>B.   At the command prompt type:  gem install rails mysql capistrano mongrel mongrel_cluster (the command differs very slightly on the MAC)</p>
+<p>C.  You are done.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=26950#respond' onclick='return addComment.moveForm("comment-26950", "26950", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-37344">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/9fd9455038af91c0fb7b322ece8d625f?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://joshtam.net' rel='external nofollow' class='url'>Josh Tam</a> <span>February 20th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>I agree that RoR is a wonderful language.  It really saved me quite some time as well.</p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=37344#respond' onclick='return addComment.moveForm("comment-37344", "37344", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>
+	<li id="comment-43726">
+	<div class="comment_wrap">
+	
+		<div class="comment_author">
+			<img alt='PG' src='http://www.gravatar.com/avatar/5205203588500898bdd26a19a5e063d2?s=80&amp;d=http%3A%2F%2Fpsdtuts.s3.amazonaws.com%2FMisc%2Freader_psdtuts.jpg%3Fs%3D80&amp;r=PG' class='avatar avatar-80 photo' height='80' width='80' />      <p><a href='http://crawllog.blogspot.com' rel='external nofollow' class='url'>tagnu</a> <span>March 10th</span></p>
+    </div>
+
+		<div class="single_comment"> 
+			<img src="http://psdtuts.s3.amazonaws.com/Misc/comment_arrow.png" alt="" class="comment_arrow" />
+      	      <p>Thanks for the tut. It was a great help to get started <img src='http://net.tutsplus.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+      <span class="comment-reply">( <a rel='nofollow' class='comment-reply-link' href='/misc/learn-ruby-on-rails-from-scratch-week-1/?replytocom=43726#respond' onclick='return addComment.moveForm("comment-43726", "43726", "respond", "570")'>Reply</a> )</span>    </div>
+  </div>
+
+</li>		</ol>	
+    
+
+
+
+	  <div id="respond">       
+	    <div class="clearfix form_header">
+	    	<a name="add"><h3 class="left">Add Your Comment</h3></a><span class="get_avatar right">( <a href="http://en.gravatar.com/">GET A GRAVATAR</a> )</span><br class="clear" />
+	    </div>
+			<ol class="comment_form_wrap">
+				<li>
+				<img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/comment_arrow.png" alt="Arrow" class="textarea_arrow" />
+	      	      <div class="comment_author">
+					<img src="http://psdtuts.s3.amazonaws.com/Misc/reader_psdtuts.jpg" alt="Gravatar" />
+			    <p>Your Name <br /><span>March 10th</span></p>
+			  </div>
+	      <form action="http://net.tutsplus.com/wp-comments-post.php" method="post" id="comment_form">
+	      	<fieldset>
+	          
+	          <input type='hidden' name='comment_post_ID' value='570' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+	          
+	          <textarea name="comment" id="comment" rows="8" cols="10" tabindex="1" class="input textarea required" defaultvalue="Your Message..."></textarea>
+	          
+	          	            <input type="text" name="author" id="author" size="22" tabindex="2" class="input required" defaultvalue="Name" value=""/>
+	      			<input type="text" name="email" id="email" size="22" tabindex="3" class="input required" defaultvalue="Email" value=""/>
+	      			<input type="text" name="url" id="url" size="22" tabindex="4" class="input" defaultvalue="URL (Optional)" value=""/>
+	          	          
+	  				<div id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="/misc/learn-ruby-on-rails-from-scratch-week-1/#respond" style="display:none;">Cancel</a></div>
+	          <button name="submit" type="submit" id="submit_comment" class="submit_button" tabindex="5">Add Comment</button>
+	          	  			</fieldset>
+	  			<br class="clear" />
+	      </form>
+	      </li>
+	    </ol>
+		</div>
+
+	</div>
+</div>
+
+
+		<div id="trackbacks">
+	  <h2>Trackbacks</h2>
+		<ul class="commentlist">
+			
+		<li id="comment-9062">
+			<a href='http://vbharat.com/Programming/2008/08/28/learn-ruby-on-rails-from-scratch-week-1' rel='external nofollow' class='url'>vBharat.com &#187; Learn Ruby on Rails From Scratch: Week 1</a>		</li>
+		
+</li>
+
+		<li id="comment-12484">
+			<a href='http://nettuts.com/misc/ruby-on-rails-from-scratch-week-3/' rel='external nofollow' class='url'>Ruby on Rails from Scratch Week 3 - NETTUTS</a>		</li>
+		
+</li>
+
+		<li id="comment-14500">
+			<a href='http://nettuts.com/php/getting-started-with-cakephp/' rel='external nofollow' class='url'>Getting Started With CakePHP - NETTUTS</a>		</li>
+		
+</li>
+
+		<li id="comment-15422">
+			<a href='http://nettuts.com/general/how-web-development-created-blog-action-day/' rel='external nofollow' class='url'>How Web Development Created Blog Action Day - NETTUTS</a>		</li>
+		
+</li>
+
+		<li id="comment-15424">
+			<a href='http://nettuts.com/interviews/quick-fire-with-jeff-croft/' rel='external nofollow' class='url'>Quick Fire with Jeff Croft - NETTUTS</a>		</li>
+		
+</li>
+
+		<li id="comment-16071">
+			<a href='http://arbent.net/blog/arbentings-best-of-the-week-0824-0830' rel='external nofollow' class='url'>Arbenting’s Best of the Week (08/24 - 08/30) | Arbenting</a>		</li>
+		
+</li>
+
+		<li id="comment-35459">
+			<a href='http://aladdin-lamps.cn/blog/2009/02/ruby-on-rails_finest_collection/' rel='external nofollow' class='url'>Aladdin With A Lamp &raquo; 『Ruby on Rails』|很好很好的资料！</a>		</li>
+		
+</li>
+		</ul>
+	</div>
+    
+  
+
+	  	
+	      </div>
+  </div>
+    <div id="sidebar" class="clearfix">
+      <div class="sidebar_plus"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/sidebar_net_plus.png" alt="NET Plus" class="img" />
+        					<ul class="non_subscriber">
+	          <li><a href="http://tutsplus.com/plus-program/net-plus/" title="Learn More">Learn More &amp; SignUp</a> | </li>
+	          <li><a href="http://tutsplus.com/amember/login.php" title="Login Here">Login Here</a></li>
+	        </ul>
+				      </div>
+      <div class="sidebar_adspace">
+        <div class="image_wrap clearfix">
+        <script type="text/javascript">
+						Vertical1616 = false;
+						ShowAdHereBanner1616 = true;
+						RepeatAll1616 = false;
+						NoFollowAll1616 = false;
+						BannerStyles1616 = new Array(
+							"a{display:block;font-size:11px;color:#888;font-family:verdana,sans-serif;margin:0 10px 10px 0;text-align:center;text-decoration:none;overflow:hidden;float:left;}",
+							"img{border:0;clear:right;}",
+							"a.adhere{color:#666;font-weight:bold;font-size:12px;border:1px solid #ccc;background:#e7e7e7;text-align:center;}",
+							"a.adhere:hover{border:1px solid #999;background:#ddd;color:#333;}"
+						);
+						
+						document.write(unescape("%3Cscript src='"+document.location.protocol+"//s3.buysellads.com/1616/1616.js?v="+Date.parse(new Date())+"' type='text/javascript'%3E%3C/script%3E"));
+					</script>
+        </div>
+      </div>
+      
+      <div class="sidebar_subscribe"> <img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/sidebar_subscribe.gif" alt="" class="img" />
+        <div class="sidebar_subscribe_text">
+          <h2>Subscribe</h2>
+          <p>Subscribe to an update feed:</p>
+          <ul class="button clearfix">
+            <li><a href="http://feeds.feedburner.com/nettuts">Full RSS</a></li>
+            <li><a href="http://feedproxy.google.com/nettuts-summary">Short RSS</a></li>
+            <li><a href="http://twitter.com/nettuts">Twitter</a></li>
+            <li><a href="http://feedburner.google.com/fb/a/mailverify?uri=nettuts">Email</a></li>
+            <li><a href="http://feedproxy.google.com/NettutsUserLinkFeed">Link Feed</a></li>
+            <li><a href="http://feedproxy.google.com/NETTUTSFreebies">Freebies</a></li>
+            <li><a href="http://feeds.feedburner.com/NETTUTSVideos">Videos</a></li>
+          </ul>
+          <p class="clear" style="padding-bottom:10px"><a href="http://feeds.feedburner.com/nettuts"><img style="border:0" src="http://feeds.feedburner.com/~fc/nettuts?bg=eeeeee&amp;fg=548f86&amp;anim=0" alt="" width="88" height="26" /></a></p>
+          <p class="clear">Confused? <a href="http://net.tutsplus.com/about/rss-feeds/">Click Here!</a></p>
+        </div>
+      </div>
+      <div class="sidebar_write"> <img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/sidebar_write.gif" alt="" class="img" />
+        <h2>Write for us!</h2>
+        <p>We pay $150 for user submitted tutorials and articles that we publish. Anyone can send in a contribution</p>
+        <p class="button"><a href="http://net.tutsplus.com/about/write-a-tutorial/">Learn More</a></p>
+      </div>
+            <div class="sidebar_user_plus_link">
+        <div class="sidebar_user_plus"> <img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/sidebar_user_plus_feed.gif" alt="" class="img" />
+          <h2>User Plus</h2>
+          <p>Community Link Feed</p>
+        </div>
+			
+            <div class="wpUserLinks"><h4></h4><ul><li><a href="http://www.guerrillafreelancing.com/10-great-places-to-promote-your-designs-online/" rel='NOFOLLOW'   class="wpUserLinks_link">10 Great Places To Promote Your Designs</a><br />
+				<span class="wpUserLinks_descript">If you're designing websites or logos/posters (and anything inbetween), you need to check out these ten resources to promote your work and be seen.</span>
+				</li><li><a href="http://www.tripwiremagazine.com/Tools/Font-Tools/typography-font-mega-toolbox.html" rel='NOFOLLOW'   class="wpUserLinks_link">60+ Typography & Font Mega Toolbox </a><br />
+				<span class="wpUserLinks_descript">In this article tripwire magazine provides a collection of more than 60 very useful Typography and Font Tools, Techniques and Inspiration. </span>
+				</li><li><a href="http://www.2expertsdesign.com/2009/03/18/80-beautiful-examples-of-reflective-photography/" rel='NOFOLLOW'   class="wpUserLinks_link">80 Beautiful Examples Of Reflective Photography</a><br />
+				<span class="wpUserLinks_descript">Here is the list of 80 beautiful examples of reflective photography.</span>
+				</li><li><a href="http://www.2expertsdesign.com/2009/03/13/150-adobe-photoshp-web-design-layout-tutorials/" rel='NOFOLLOW'   class="wpUserLinks_link">150 Photoshp WebDesign Layout Tutorials, Technique</a><br />
+				<span class="wpUserLinks_descript">Here we’ve compiled 150 high quality Adobe Photoshop tutorials that guides you gradually.</span>
+				</li><li><a href="http://www.awebdesignblog.com/8-things-every-beginner-seo-should-know/" rel='NOFOLLOW'   class="wpUserLinks_link">8 Things Every Beginner SEO Should Know</a><br />
+				<span class="wpUserLinks_descript">A list of the absolute vitals that any aspiring SEO should know including titles, in-links, content and sitemaps.</span>
+				</li><li><a href="http://www.myinkblog.com/2009/03/21/4-principles-of-good-design-for-websites/" rel='NOFOLLOW'   class="wpUserLinks_link">4 Principles Of Good Design For Websites</a><br />
+				<span class="wpUserLinks_descript">This post dissects 4 principles of web design that help you create cleaner, more aesthetically pleasing sites. </span>
+				</li><li><a href="http://spyrestudios.com/quick-tip-easy-way-to-create-drop-caps-on-your-blog/" rel='NOFOLLOW'   class="wpUserLinks_link">Quick Tip: Easy Way To Create Drop Caps On Your Bl</a><br />
+				<span class="wpUserLinks_descript">A drop cap is when the first letter of a paragraph is larger than the average font size and that letter ‘drops’ down 2 (or more) lines. Here's a quick tutorial for creating drop caps for your blog.</span>
+				</li><li><a href="http://www.1stwebdesigner.com/development/the-best-and-fastest-way-to-creat-blog-post/" rel='NOFOLLOW'   class="wpUserLinks_link">The Best And Fastest Way To Create Blog Post</a><br />
+				<span class="wpUserLinks_descript">I try to give advice how to create new blog post more effectively in few simple steps, using weblog client and find/replace feature.</span>
+				</li><li><a href="http://www.1stwebdesigner.com/resources/101-more-quality-css-xhtml-free-templates/" rel='NOFOLLOW'   class="wpUserLinks_link">101 More Quality CSS, XHTML Free Templates: Part 2</a><br />
+				<span class="wpUserLinks_descript">The second part follows with even more very well designed and high quality XHTML and CSS free templates. Put them in good use! Enjoy!</span>
+				</li><li><a href="http://www.webdesignerdepot.com/2009/03/30-useful-web-design-books-for-2009/" rel='NOFOLLOW'   class="wpUserLinks_link">30 Useful Web Design Books For 2009</a><br />
+				<span class="wpUserLinks_descript">30 web design related books from some of the brightest designers and developers in the industry, that will likely be influential must-reads in 2009.</span>
+				</li></ul></div> 
+			
+            <ul id="feed_links" class="button">
+              <li class="left"><a href="http://net.tutsplus.com/link-feed/#add">Submit</a></li>
+              <li class="left"><a href="http://net.tutsplus.com/link-feed/">More</a></li>
+              <li class="right"><a href="http://feedproxy.google.com/NettutsUserLinkFeed">Subscribe</a></li>
+           </ul>
+      </div>
+<a href="http://rockablepress.com/books/rockstar-wordpress-designer/"><img src="http://rockable.s3.amazonaws.com/Affiliates/WP_250x250.jpg" style="margin:25px; margin-right: 0px" /></a>
+    </div>   <div class="clear"></div>
+  </div>
+  <!-- end page -->
+</div>
+<!-- end page wrap -->
+<div id="footer_wrap">
+  <div id="footer" class="clearfix"> 
+  <a href="http://net.tutsplus.com"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/logo_footer.gif" alt="Logo" class="logo" /></a>
+  <img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/footer_spoon.png" alt="Spoonfed Photoshop Tutorials" class="spoon" /> <span><a href="http://www.youtube.com/watch?v=45-rds44NiE">I don't know how to put this but i'm kind of a big deal</a></span>
+    <div class="clearfix">
+      <div class="box">
+        <h1>Copyright &amp; Usage</h1>
+        <p>The effects and techniques demonstrated in tutorials on the Tuts+ network can be used in whatever manner you wish without attribution.</p>
+        <p>The text, images and tutorials themselves are copyright their respective owners.</p>
+        <p>You cannot copy whole tutorials, either in English or translated to another language.</p>
+      </div>
+      <div class="box">
+        <h1>Write a Tutorial</h1>
+        <p>Writing a tutorial or article for the site is not only a great way to get exposure and give back to the community, but we'll also give you $150 cash to boot!</p>
+        <p><a href="http://net.tutsplus.com/about/write-a-tutorial/">Read More Details</a></p>
+      </div>
+      <div class="box">
+        <h1>Suggestions?</h1>
+        <p>This is YOUR site, so if you have suggestions or feedback on how we can improve it for you, please let us know!  We do our best to keep up!</p>
+        <p><a href="http://psdtuts.uservoice.com/pages/nettuts_tutorial_suggestions">Make a Suggestion</a></p>
+      </div>
+      <div class="box">
+        <h1>Related Sites</h1>
+        <ul>
+          <li><a href="http://envato.com">Envato</a></li>
+          <li><a href="http://psd.tutsplus.com">Psdtuts+</a></li>
+          <li><a href="http://net.tutsplus.com">Nettuts+</a></li>
+          <li><a href="http://audio.tutsplus.com">Audiotuts+</a></li>
+          <li><a href="http://vector.tutsplus.com">Vectortuts+</a></li>
+          <li><a href="http://ae.tutsplus.com">Aetuts+</a></li>
+          <li><a href="http://wiki.psdtuts.com">Photoshop Wiki</a></li>
+          <li><a href="http://tutsplus.com">Tuts+ Dashboard</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="icons clear"> <a href="http://tutsplus.com"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/envato_tuts_plus.gif" alt="Envato Tuts+" /></a>  <a href="http://wefunction.com/"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/function.gif" alt="Icons by: Function" /></a> <a href="http://envato.com"><img src="http://net.tutsplus.com/wp-content/themes/tuts_theme/images/envato_logo.gif" alt="Envato" class="last" /></a> </div>
+  </div>
+</div>
+<script class="javascript" src="http://net.tutsplus.com/wp-content/plugins/google-syntax-highlighter/Scripts/shCore.js"></script>
+<script class="javascript" src="http://net.tutsplus.com/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushAll.js"></script>
+	<script class="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = 'http://net.tutsplus.com/wp-content/plugins/google-syntax-highlighter/Scripts/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-249823-22";
+urchinTracker();
+</script>
+</body>
+</html>
+<!-- Dynamic Page Served (once) in 0.262 seconds -->

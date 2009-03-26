@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>
+      * Ruby Script Beautifier
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rev="made" href="http://www.arachnoid.com"/>
+    <meta http-equiv="Content-language" content="en"/>
+    <meta name="author" content="Paul Lutus"/>
+    <meta name="owner" content="Paul Lutus"/>
+    <meta name="description" content="A beautifier for Ruby source files ... written in Ruby."/>
+    <meta name="group" content="ARACH/RUBY/BEAUTIFIER"/>
+    <meta name="menuCat" content="Ruby"/>
+    <meta name="groupTitle" content="Ruby Script Beautifier"/>
+    <meta name="keywords" content="ruby linux unix programming"/>
+    <meta name="rating" content="General"/>
+    <meta name="ROBOTS" content="ALL"/>
+    <meta name="GENERATOR" content="Arachnophilia 5.2"/>
+    <meta name="FORMATTER" content="Arachnophilia 5.2"/>
+    <link rel="stylesheet" type="text/css" href="../styles/default_article.css"/>
+    <link rel="stylesheet" type="text/css" href="../styles/roundcorner_16_parch.css"/>
+  </head>
+  <body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#ff0000">
+  <!-- SiteIndexBegin -->
+  <!-- Menus created by SiteGen, http://www.arachnoid.com/SiteGen -->
+  <table><tr><td><a href="../index.html">Home</a>&nbsp;|&nbsp;</td><td><a href="index.html">Ruby</a>&nbsp;|&nbsp;</td><td><a href="rubyBeautifier.html">Ruby Script Beautifier</a>&nbsp;|&nbsp;</td><td>
+      <script type="text/javascript" language="JavaScript">
+        function toNewPage(t) { location.href = t.options[t.selectedIndex].value; }
+      </script>
+      <select onchange="toNewPage(this)" title="Open this list to choose a page">
+        <option value="rubyBeautifier.html" selected="selected">* Ruby Script Beautifier</option>
+        <option value="rbeautify.rb.html">Ruby Beautifier Script Listing</option>
+      </select>
+    </td><td><a href="rbeautify.rb.html"><img src="../images/rightarrow.png" border="0" alt="" title="Click for next page"/></a></td><td>&nbsp;<a href="../administration/submit.php" title="Recommend this page to friends"><img src="../images/addthis16.gif" style="border:0px;" alt=""/>&nbsp;&nbsp;Share This Page</a></td></tr></table>
+  <!-- SiteIndexEnd -->
+  <div align="center">
+      <div class="article_title_inverse">Ruby Script Beautifier</div>
+      <div class="article_linklist_inverse">All content Copyright &copy; 2007, <a href="../administration/index.html" title="Click for biography">P. Lutus</a> &mdash; <a href="../messages/index.php">Message Page</a><br/><br/>
+      Version 2.9, 10/24/2008</div>
+    </div>
+    <p></p>
+
+    <div class="article_wrapper">
+      <span class="roundcorner_16_parch">
+        <span class="roundcorner_16_parch0"></span>
+        <span class="roundcorner_16_parch1"></span>
+        <span class="roundcorner_16_parch2"></span>
+        <span class="roundcorner_16_parch3"></span>
+        <span class="roundcorner_16_parch4"></span>
+        <span class="roundcorner_16_parch5"></span>
+        <span class="roundcorner_16_parch6"></span>
+        <span class="roundcorner_16_parch7"></span>
+        <span class="roundcorner_16_parch8"></span>
+        <span class="roundcorner_16_parch9"></span>
+      </span>
+      <div class="roundcorner_16_parch_content">
+        <div class="article_heading">Introduction</div>
+        <div class="article_section_color_bar">
+          <p></p><b>I have always felt that a language hasn't really arrived until there is a source beautifier utility for it.</b><p></p>
+
+          So, failing to find a Ruby beautifier online, I decided to write one.<p></p>
+
+          Those programmers who have experience with source code beautifiers will know they don't handle all cases &mdash; there is always a borderline case that the beautifier won't know about, preventing it from indenting the source perfectly. That rule is certainly true in this case, since I have only tested this script on perhaps thirty Ruby scripts, most from the standard Ruby library, as well as some of my own. At the present stage of development, the script correctly beautifies all the source files I have fed it.<p></p>
+
+          I am certain that people will find scripts that this beautifier won't fully understand, and I hope they will send along the problem scripts so I can try to improve the algorithm as time passes. There are some perverse aspects to Ruby's syntax that makes beautification somewhat tricky.<p></p>
+
+          This Ruby beautifier is itself written in Ruby, and it is surprisingly short. It will undoubtedly get longer as time passses and its ability to handle borderline cases improves.
+        </div>
+        <div class="article_heading">Download</div>
+        <div class="article_section_color_bar">
+          <ul>
+            <li><a href="rbeautify.rb.html">Click here</a> to see a Web page with the Ruby script.</li>
+            <li><a href="rbeautify.rb.txt">Click here</a> for a plain text file containing the script.</li>
+          </ul>
+        </div>
+        <div class="article_heading">Notes</div>
+        <div class="article_section_color_bar">
+          <ul>
+            <li>Examine the script listing. Note the arrays named "IndentExp" and "OutdentExp". These lists of regular expressions are responsible for most of the program's logic.</li>
+            <li>This script accepts a command-line list of file names, creates a backup copy of each named file and beautifies the originals.</li>
+            <li>The script can also be used as part of a stream (note the "-" argument): (source) | (script_name) - > output_file</li>
+            <li>If there is an indentation error (an imbalance of opening and closing keywords), the script will print an error message but will save the result anyway.</li>
+            <li>Indentation errors that appear in working scripts are obviously the fault of the beautifier, not the script. I would appreciate hearing about such errors, with details, so I can improve the beautifier's logic.<p></p></li>
+
+          </ul>
+        </div>
+        <div class="article_heading">Revision History</div>
+        <div class="article_section_color_bar">
+          <ul style="font-family: monospace;">
+            <li>Version 2.9 10/24/2008. Restored some error printing code that was unwisely taken out.</li>
+            <li>Version 2.8 10/22/2008. Arranged to return an error code in the event of mismatched indent/outdent, to simplify automation.</li>
+            <li>Version 2.7 10/22/2008. Cleaned up a few style problems, increased the robustness of the here-doc test code.</li>
+            <li>Version 2.6 10/21/2008. Added code to pass here-doc content unchanged.</li>
+            <li>Version 2.5 10/09/2008. Fixed a misnamed function call.</li>
+            <li>Version 2.4 08/25/2008. Added code to distinguish between loading as a module and launching as a standalone program.</li>
+            <li>Version 2.3 08/18/2008. Rewrote the program as a Ruby module for greater flexibility.</li>
+            <li>Version 2.2 10/29/2007. Added code to avoid scanning within comments that appear at the end of lines.</li>
+            <li>Version 2.1 09/11/2006. Made more changes to the filtering code.</li>
+            <li>Version 2.0 09/06/2006. Revised code to improve the beautifier's ability to deal with special cases.</li>
+            <li>Version 1.9 09/01/2006. Reworked the filtering code yet again.</li>
+            <li>Version 1.8 08/31/2006. Dealt with backtick-delimited sequences.</li>
+            <li>Version 1.7 08/24/2006. Corrected bad handling of a particular form of "case".</li>
+            <li>Version 1.6 08/19/2006. Changed pre-indentation line filtering.</li>
+            <li>Version 1.5 08/12/2006. Added code to properly handle the Ruby program-end mark "__END__".</li>
+            <li>Version 1.4 08/11/2006. Corrected a bug that failed to sort out sequences of forward slashes.</li>
+            <li>Version 1.3 04/03/2006. Corrected a bug having to do with entering and exiting Ruby comment blocks.</li>
+            <li>Version 1.2 03/31/2006. Refactored the code that deals with extended lines.</li>
+            <li>Version 1.1 03/30/2006. After more testing, revised the algorithm to accommodate a larger variety of Ruby scripts.</li>
+            <li>Version 1.0 03/29/2006. Initial Public Release.</li>
+          </ul>
+          <div align="center">This script beautifier is Copyright 2008, <a href="../administration/index.html" title="Click for biography">P. Lutus</a>, and is released under the <a href="../GPL/GPL.txt">GPL</a>.</div>
+        </div>&nbsp;
+      </div> <!-- content -->
+      <span class="roundcorner_16_parch">
+        <span class="roundcorner_16_parch9"></span>
+        <span class="roundcorner_16_parch8"></span>
+        <span class="roundcorner_16_parch7"></span>
+        <span class="roundcorner_16_parch6"></span>
+        <span class="roundcorner_16_parch5"></span>
+        <span class="roundcorner_16_parch4"></span>
+        <span class="roundcorner_16_parch3"></span>
+        <span class="roundcorner_16_parch2"></span>
+        <span class="roundcorner_16_parch1"></span>
+        <span class="roundcorner_16_parch0"></span>
+      </span>
+    </div> <!-- wrapper -->
+    <p></p>
+  <!-- SiteIndexBegin -->
+  <!-- Menus created by SiteGen, http://www.arachnoid.com/SiteGen -->
+  <table><tr><td><a href="../index.html">Home</a>&nbsp;|&nbsp;</td><td><a href="index.html">Ruby</a>&nbsp;|&nbsp;</td><td><a href="rubyBeautifier.html">Ruby Script Beautifier</a>&nbsp;|&nbsp;</td><td>
+      <select onchange="toNewPage(this)" title="Open this list to choose a page">
+        <option value="rubyBeautifier.html" selected="selected">* Ruby Script Beautifier</option>
+        <option value="rbeautify.rb.html">Ruby Beautifier Script Listing</option>
+      </select>
+    </td><td><a href="rbeautify.rb.html"><img src="../images/rightarrow.png" border="0" alt="" title="Click for next page"/></a></td><td>&nbsp;<a href="../administration/submit.php" title="Recommend this page to friends"><img src="../images/addthis16.gif" style="border:0px;" alt=""/>&nbsp;&nbsp;Share This Page</a></td></tr></table>
+  <!-- SiteIndexEnd -->
+  </body>
+</html>

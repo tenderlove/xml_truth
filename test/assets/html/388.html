@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <meta name="description" content="" /> 
+    <meta name="keywords" content="" />
+    <title>Ruby on Rails Developers, Online Marketing, Social Networking | Ruby Pond</title>
+    <link href="http://feeds.feedburner.com/rubypond" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/syntax_highlighting.css" />
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3477215-2");
+pageTracker._trackPageview();
+</script>
+<script src="http://feeds.feedburner.com/~s/rubypond/JXRc?i=/" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/flashembed.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+  <div id="site-title">
+    rubypond
+    
+  </div>
+</div>
+    <div id="content">
+      
+      
+
+
+  <h1><a href="/articles/2009/02/06/capturing-a-form-cancel/">Capturing a form cancel</a></h1>
+  <p class="info">Posted by glenn on Feb 06, 2009</p>
+  <p class="info">Posted in <a rel="nofollow" href="/tag/?tag=forms" class="tag">forms</a>, <a rel="nofollow" href="/tag/?tag=usability" class="tag">usability</a>, <a rel="nofollow" href="/tag/?tag=accessibility" class="tag">accessibility</a>, <a rel="nofollow" href="/tag/?tag=rubyonrails" class="tag">rubyonrails</a></p>
+  <img src="/assets/64/capturing-form-cancel_thumbnail.png"  alt='capturing-form-cancel' />
+  <p>I&#8217;ve been meaning to write this one up for months now, ever since I originally posted the <a href="http://rubypond.com/articles/2008/07/16/sexy-forms-in-rails/">sexy forms in rails</a>. The form builder I talk about in that post makes it easy to put a submit and cancel button on a the form, and a few people have asked how to handle the cancel action. Some have suggested using javascript to redirect back using an onclick, ick! What happens if the user doesn&#8217;t have javascript support? Sure you might try and justify it by saying, &#8220;Well, how many users don&#8217;t have javascript these days?&#8221; but there is absolutely no reason why this <em>has</em> to use javascript, so lets make it work for <em>everybody</em>.</p>
+
+<p>It&#8217;s actually much easier than you&#8217;d think, within <em>application.rb</em> I&#8217;ve got the following:</p>
+
+<pre><code>class ApplicationController &lt; ActionController::Base
+  before_filter :catch_cancel, :update =&gt; [:create, :update, :destroy]
+  after_filter :set_referrer, :only =&gt; [:index, :show]
+
+  private
+    def set_referrer
+      session[:referrer] = url_for(params)
+    end
+
+    def catch_cancel
+      redirect_to session[:referrer] if params[:commit] == &quot;Cancel&quot;
+    end
+end</code></pre>
+
+<p>The logic being, that if we&#8217;ve got a fully RESTful architecture the only pages we&#8217;ll ever want to go &#8220;back&#8221; will be the index or show actions on each controller. So we cheekily call url<em>for in an after filter with the current params to get the path of the page we&#8217;ve just display the user, and stash it in the session. Theoretically it may be possible to use ENV[&#8220;HTTP</em>REFERER&#8221;] instead but it&#8217;s not guaranteed, this approach however ensures we keep track of the page to go back to explicitly ourselves.</p>
+
+<p>Then, to piece it all together there&#8217;s a before filter checking if the user has clicked the submit button labeled with &#8220;Cancel&#8221;. You&#8217;ll need to change that equality test dependent on what text you put on your button. You may also need to move the before filter into the controllers that require them, depending on the order it needs to run with other filters you have.</p>
+
+<p>Hope that helps.</p>
+  
+    <div id="extended">
+      
+    </div>
+  
+  <a href="/articles/2009/02/06/capturing-a-form-cancel/#comments" rel="nofollow">view comments</a>
+
+
+
+
+
+      
+    </div>
+    <div id="sidebar">
+      
+    </div>
+    <div id="footer">
+<div class="posts">
+  <h2>Posts</h2>
+  <ol>
+    
+      
+       <li><a href="/articles/2009/02/06/capturing-a-form-cancel/" rel="nofollow">Capturing a form cancel</a></li>
+      
+       <li><a href="/articles/2009/01/16/ruby-manor-videos-available/" rel="nofollow">Ruby Manor Videos Available</a></li>
+      
+       <li><a href="/articles/2009/01/16/scrubyt-gets-plugins/" rel="nofollow">scRUBYt! Gets Plugins!</a></li>
+      
+       <li><a href="/articles/2009/01/15/web-scraping---the-amazon-example-finale/" rel="nofollow">Web Scraping - The Amazon Example Finale</a></li>
+      
+       <li><a href="/articles/2009/01/13/more-web-scrapers-with-the-upcoming-scrubyt/" rel="nofollow">More web scrapers with the upcoming scRUBYt!</a></li>
+      
+    
+  </ol>
+</div>
+
+<div class="archives">
+  <h2>Archives</h2>
+  <ol>
+    
+      
+        <li><a rel="nofollow" href="/articles/2009/02/">February 2009</a></li>
+      
+        <li><a rel="nofollow" href="/articles/2009/01/">January 2009</a></li>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/12/">December 2008</a></li>
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/11/">November 2008</a></li>
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/10/">October 2008</a></li>
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/08/">August 2008</a></li>
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/07/">July 2008</a></li>
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/06/">June 2008</a></li>
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/04/">April 2008</a></li>
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/03/">March 2008</a></li>
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/02/">February 2008</a></li>
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2008/01/">January 2008</a></li>
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2007/12/">December 2007</a></li>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2007/11/">November 2007</a></li>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2007/09/">September 2007</a></li>
+      
+        
+      
+        <li><a rel="nofollow" href="/articles/2007/08/">August 2007</a></li>
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+  </ol>
+</div>
+  <br class="clear">
+  <p>Copyright &copy; 2008, Ruby Pond Limited. All rights reserved.<br />
+    powered by <a href="http://www.ruby-lang.org/en/" rel="nofollow">ruby</a> / <a href="http://www.rubyonrails.org/" rel="nofollow">ruby on rails</a> / <a href="http://radiantcms.org/" rel="nofollow">radiant cms</a></p>
+</div>
+ <div id="logo"><a href="/">ruby pond</a></div>
+  </body>
+</html>
+

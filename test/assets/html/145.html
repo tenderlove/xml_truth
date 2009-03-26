@@ -1,0 +1,1208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+
+   <meta name="Robots" content="index,follow" /> 
+   <meta name="description" content="exploring the security of Rails and friends" /> 
+  
+  <!-- rorsecurity -->
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+  <link id="primaryStylesheet" rel="stylesheet" type="text/css" href="/display/common.css?styleId=246919&amp;RK=1223580060427&amp;CE=15"/>
+
+  
+    <link rel="alternate" type="application/atom+xml" title="ATOM" href="http://www.rorsecurity.info/journal/atom.xml" />
+  
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.rorsecurity.info/journal/rss.xml" />
+  
+    <link rel="alternate" type="application/rdf+xml" title="RDF" href="http://www.rorsecurity.info/journal/rdf.xml" />
+  
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.rorsecurity.info/journal/rsd.xml" />
+  
+
+  <script type="text/javascript" src="/universal/yui/yahoo-dom-event/yahoo-dom-event-animation.js?CE=15"></script>
+<script type="text/javascript" src="/universal/scripts/global.js?CE=15"></script>
+<script type="text/javascript" src="/universal/scripts/lightbox.js?CE=15"></script>
+
+
+  <script type="text/javascript">
+  // <![CDATA[
+
+    Squarespace.Constants.SS_AUTHKEY = "MXXHHLSG";
+
+     Squarespace.Constants.CURRENT_MODULE_ID = "2845483"; 
+    Squarespace.Constants.WEBSITE_TITLE =  "Ruby on Rails Security Project"; 
+    
+    
+    
+    
+
+    
+
+    
+
+  // ]]>
+  </script>
+
+      <title>Ruby on Rails Security Project - Journal </title>
+  
+
+  <!-- End Heading -->
+
+  
+
+</head>
+
+  <body id="modulePage2845483">
+
+  <script type="text/javascript">
+  YAHOO.util.Event.onDOMReady(function() {
+    if (document.location.href.indexOf("SSLogoutOk=true") != -1) {
+      new Squarespace.FixedPositionTip("Logout Successful", "You have been successfully logged out.", { xMargin: 15, yMargin: 15, icon: "/universal/images/helptip-info.png", orientation: "upper-right", viewportFixed: true, autoHide: 1800 }).show();
+    }
+  });
+</script>
+
+    
+
+  <script type="text/javascript">
+    YAHOO.util.Event.addListener(document, "keyup", function (e) { if (!e) { e = event; } if (e.keyCode == 27) { document.location.href = "/display/Login?returnUrl=%2F"; } });
+  </script>
+
+
+
+
+  
+
+  <div id="canvasWrapper"><div id="canvas">
+  
+  
+
+  <div id="pageHeaderWrapper"><div id="pageHeader">
+
+      <div id="navigationTop"><div id="navigationTop-sectionContent1491307" class="horizontalNavigationBar"><ul class="content-navigation">
+    
+  <li class="module active-module  " id="navigationTop-moduleContentWrapper2845483">
+
+    <div id="navigationTop-moduleContent2845483">
+
+              <a id="navigationTop-moduleLink2845483" class=" " href="/journal/" ><span>Journal</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2845484">
+
+    <div id="navigationTop-moduleContent2845484">
+
+              <a id="navigationTop-moduleLink2845484" class=" " href="/about/" ><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2849203">
+
+    <div id="navigationTop-moduleContent2849203">
+
+              <a id="navigationTop-moduleLink2849203" class=" " href="/the-book/" ><span>The Book</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2849214">
+
+    <div id="navigationTop-moduleContent2849214">
+
+              <a id="navigationTop-moduleLink2849214" class=" " href="/security-audits/" ><span>Security Audits</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2849217">
+
+    <div id="navigationTop-moduleContent2849217">
+
+              <a id="navigationTop-moduleLink2849217" class=" " href="/cheatsheet/" ><span>Cheatsheet</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2849225">
+
+    <div id="navigationTop-moduleContent2849225">
+
+              <a id="navigationTop-moduleLink2849225" class=" " href="/contact/" ><span>Contact</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2851836">
+
+    <div id="navigationTop-moduleContent2851836">
+
+              <a id="navigationTop-moduleLink2851836" class=" " href="/search/" ><span>Search</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationTop-moduleContentWrapper2864556">
+
+    <div id="navigationTop-moduleContent2864556">
+
+              <a id="navigationTop-moduleLink2864556" class=" " href="/links/" ><span>Links</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  </ul><br class="clearer"/></div></div>
+
+    
+        
+      
+  
+      <div id="bannerAreaWrapper"><div id="bannerArea">
+
+        
+        <div id="bannerWrapper"><a href="http://www.rorsecurity.info/"><img id="banner" src="/storage/header_round.png" alt="Ruby on Rails Security Project" title="Ruby on Rails Security Project"/></a></div>
+  
+      
+      
+      </div></div>
+    
+    
+    
+
+      <div id="navigationBottom"><div id="navigationBottom-sectionContent1491307" class="horizontalNavigationBar"><ul class="content-navigation">
+    
+  <li class="module active-module  " id="navigationBottom-moduleContentWrapper2845483">
+
+    <div id="navigationBottom-moduleContent2845483">
+
+              <a id="navigationBottom-moduleLink2845483" class=" " href="/journal/" ><span>Journal</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2845484">
+
+    <div id="navigationBottom-moduleContent2845484">
+
+              <a id="navigationBottom-moduleLink2845484" class=" " href="/about/" ><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2849203">
+
+    <div id="navigationBottom-moduleContent2849203">
+
+              <a id="navigationBottom-moduleLink2849203" class=" " href="/the-book/" ><span>The Book</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2849214">
+
+    <div id="navigationBottom-moduleContent2849214">
+
+              <a id="navigationBottom-moduleLink2849214" class=" " href="/security-audits/" ><span>Security Audits</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2849217">
+
+    <div id="navigationBottom-moduleContent2849217">
+
+              <a id="navigationBottom-moduleLink2849217" class=" " href="/cheatsheet/" ><span>Cheatsheet</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2849225">
+
+    <div id="navigationBottom-moduleContent2849225">
+
+              <a id="navigationBottom-moduleLink2849225" class=" " href="/contact/" ><span>Contact</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2851836">
+
+    <div id="navigationBottom-moduleContent2851836">
+
+              <a id="navigationBottom-moduleLink2851836" class=" " href="/search/" ><span>Search</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="navigationBottom-moduleContentWrapper2864556">
+
+    <div id="navigationBottom-moduleContent2864556">
+
+              <a id="navigationBottom-moduleLink2864556" class=" " href="/links/" ><span>Links</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  </ul><br class="clearer"/></div></div>
+
+
+  </div></div>
+  
+  
+
+  
+
+  
+  <div id="pageBodyWrapper"><div id="pageBody">
+  
+  <div id="sidebar1Wrapper" class="verticalNavigationBarWrapper"><div class="iw-vnb1"><div class="iw-vnb2"><div class="iw-vnb3"><div class="iw-vnb4"><div id="sidebar1" class="verticalNavigationBar">
+
+  
+
+    <div id="sectionContent1491307" class="sectionWrapper promotedContainer "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Top</div> 
+
+      
+        
+          <ul class="content-navigation">
+  <li class="module active-module  " id="moduleContentWrapper2845483">
+
+    <div id="moduleContent2845483">
+
+              <a id="moduleLink2845483" class=" " href="/journal/" ><span>Journal</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2845484">
+
+    <div id="moduleContent2845484">
+
+              <a id="moduleLink2845484" class=" " href="/about/" ><span>About</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2849203">
+
+    <div id="moduleContent2849203">
+
+              <a id="moduleLink2849203" class=" " href="/the-book/" ><span>The Book</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2849214">
+
+    <div id="moduleContent2849214">
+
+              <a id="moduleLink2849214" class=" " href="/security-audits/" ><span>Security Audits</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2849217">
+
+    <div id="moduleContent2849217">
+
+              <a id="moduleLink2849217" class=" " href="/cheatsheet/" ><span>Cheatsheet</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2849225">
+
+    <div id="moduleContent2849225">
+
+              <a id="moduleLink2849225" class=" " href="/contact/" ><span>Contact</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2851836">
+
+    <div id="moduleContent2851836">
+
+              <a id="moduleLink2851836" class=" " href="/search/" ><span>Search</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+
+  <li class="module   " id="moduleContentWrapper2864556">
+
+    <div id="moduleContent2864556">
+
+              <a id="moduleLink2864556" class=" " href="/links/" ><span>Links</span></a>
+      
+
+      
+
+    </div>
+
+  </li>
+
+</ul>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent1493608" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Welcome</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper2851739" class="passthrough-block "><div id="moduleContent2851739">
+
+
+
+
+
+  <p>The Ruby on Rails Security Project wants to make Rails (applications) more secure. <a href="http://www.workingwithrails.com/person/8145-heiko-webers">Heiko Webers</a> of <a href="/about/">bauland42</a> writes blog posts about Rails and security related topics and carries out security audits for your web applications. We have a <a href="/the-book/">free book</a> for you, too. Contact Heiko at 42 -the AT sign- bauland42.de.</p>
+</div></div><div id="moduleContentWrapper2870140" class="passthrough-block "><div id="moduleContent2870140">
+
+
+
+
+
+  <p><span class="full-image-block ssNonEditable"><span><a href="/the-book"><img src="/storage/book_cover.png?__SQUARESPACE_CACHEVERSION=1234364383973" alt="" /></a></span></span></p>
+</div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent1495335" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Search</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper2856458" class="passthrough-block "><div id="moduleContent2856458">
+
+
+<form method="get" action="/display/Search">
+
+<div class="search-form-pt-wrapper">
+  <div class="search-form-pt">
+    <span class="queryFieldWrapper"><input type="text" class="text queryField" name="searchQuery" value=""/></span>
+    <span class="queryButtonWrapper"><input type="submit" class="button queryButton" value="&raquo;"/></span>
+    <input type="hidden" name="moduleId" value="2856458"/>
+    <br class="clearer"/>
+  </div>
+</div> 
+
+</form></div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent1495336" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Feeds / Syndication</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper2856464" class="passthrough-block "><div id="moduleContent2856464">
+
+
+
+  <ul class="feed-list-inline">
+    
+          <li><a href="http://www.rorsecurity.info/journal/rss.xml" class="feed-link">Journal RSS</a></li>
+        
+  </ul>
+
+</div></div><div id="moduleContentWrapper2862476" class="passthrough-block "><div id="moduleContent2862476">
+
+
+
+
+
+  <p /><p><a href="http://feeds.feedburner.com/RubyOnRailsSecurity"><img src="http://feeds.feedburner.com/~fc/RubyOnRailsSecurity?bg=66CC33&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p>
+  
+  <p><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/>&nbsp;<a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=792732&amp;loc=en_US">New posts by email</a></p>
+</div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+    <div id="sectionContent1539072" class="sectionWrapper  "><div class="iw-s1"><div class="iw-s2"><div class="iw-s3"><div class="iw-s4"><div class="section">
+
+       <div class="caption">Most Popular</div> 
+
+      
+        
+          <div class="content-passthrough"><div id="moduleContentWrapper2988641" class="passthrough-block "><div id="moduleContent2988641">
+
+
+
+
+
+
+  <ul class="link-group-list-pt">
+
+    
+
+          <li id="linkGroup169569">
+
+            
+             <div class="title">Most Popular&nbsp;Posts</div> 
+            
+
+            <ul>
+
+            
+
+                      <li id="link515665">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/11/4/rails-security-guide-and-book.html">Rails Security Guide and&nbsp;Book</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515666">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/10/13/new-redcloth-security.html">New Redcloth&nbsp;Security</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515667">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/6/17/automatic-security.html">Automatic&nbsp;Security</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515668">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/5/5/csrf-an-underestimated-attack-method.html">Underestimated&nbsp;CSRF</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515670">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/4/4/webappsec-the-idea-of-negative-captchas.html">Negative&nbsp;CAPTCHAs</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515674">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/3/3/intranet-and-admin-security.html">Intranet And Admin&nbsp;Security</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515678">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2008/2/13/the-tainted-edition.html">The Tainted&nbsp;Edition</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515679">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/10/28/restful_authentication-login-security.html">restful_authentication&nbsp;security</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515684">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/6/19/everything-you-always-wanted-to-know-about-web-application-s.html">App Security&nbsp;FAQ</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515688">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/6/5/use-good-passwords.html">Use good&nbsp;passwords</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515692">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/4/16/ruby-regular-expression-fun.html">Ruby Regular&nbsp;Expressions</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515693">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/4/15/session-fixation-in-rails.html">Session&nbsp;Fixation</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+                      <li id="link515697">
+                        <div class="title"><a onclick="this.target='new';" href="http://www.rorsecurity.info/journal/2007/4/2/dont-trust-primary-key-parameters.html">Privilege&nbsp;Escalation</a></div>
+                        <div class="description"></div>
+                        
+                      </li>
+
+                    
+
+            </ul>
+
+          </li>
+
+        
+
+  </ul>
+
+</div></div></div>
+
+        
+
+      
+  
+    </div></div></div></div></div></div>
+
+  
+
+  
+
+</div></div></div></div></div></div>
+  <div id="sidebar2Wrapper" class="verticalNavigationBarWrapper"><div class="iw-vnb1"><div class="iw-vnb2"><div class="iw-vnb3"><div class="iw-vnb4"><div id="sidebar2" class="verticalNavigationBar">
+
+  
+
+  
+
+</div></div></div></div></div></div>
+  
+  
+
+  <div id="contentWrapper"><div id="content">
+    
+          
+    
+
+
+  
+
+
+  
+
+  
+    
+
+  
+  
+  <div class="list-journal-entry-wrapper">
+
+          
+
+
+<div class="journal-entry-wrapper post-text authored-by-rorsecurity ">
+<div id="item3318194" class="journal-entry">
+
+  <div class="journal-entry-float-day"><span class="name">Sunday</span></div><div class="journal-entry-float-date"><span class="month">15</span><span class="date">Mar</span></div>
+  
+  
+  
+  <div class="journal-entry-text">
+  
+      
+      <h2 class="title">
+    
+        
+    
+        <a href="/journal/2009/3/15/ssl-and-rails.html">SSL and&nbsp;Rails</a>  
+     
+         
+    
+      </h2>
+      
+       <div class="journal-entry-tag journal-entry-tag-post-title"><span class="posted-on">   <img title="Date" alt="Date" class="inline-icon date-icon" src="/universal/images/transparent.png" />Sunday, March 15, 2009 at 5:24PM</span> </div> 
+
+    
+  
+      
+      <div class="body">
+  
+        
+        
+        
+          <p><strong><span style="font-size: 130%;">About SSL</span></strong><br />Secure Socket Layer (SSL), or its successor Transport Layer Security (TLS), gives us assurance of two things: Firstly when a client connects to a web server, the client can be sure that it is talking to the right server by checking the certificate the server sends it. Secondly, SSL assures you of the confidentiality of the data, as the client and the server exchange encrypted messages that cannot be understood by anybody else. Before messages can be encrypted, the client and the server need to shake hands and exchange a secret key for this session, the so-called session key. This is how the SSL handshake works (using <a href="http://en.wikipedia.org/wiki/RSA" target="_blank">RSA</a>):</p>
+<ol>
+<li><strong>Server sends certificate</strong>: When the client requests for a SSL page, the server sends a certificate that it has obtained from a trusted certificate authority.</li>
+<li><strong>Client generates session key</strong>: This certificate contains the public key of the server. After satisfying itself that the certificate is correct and the server is a genuine one, the client generates one random number, the session key.</li>
+<li><strong>Encrypt the session key and send it</strong>: This key is encrypted using the public key of the server and the private key of the client. Then it will be sent across.</li>
+<li><strong>Server decrypts it</strong>: The server decrypts the message with its private key. Now both sides have a session key known only to the two of them, because only the server and the client have access to their private keys needed for decryption and encryption of the session key. All communication to and fro will now be encrypted and decrypted with the session key.</li>
+</ol>
+<p><strong><span style="font-size: 140%;">SSL Ciphers and Protocol</span></strong><br />This is a simple SSL handshake, because only the client makes sure talking to the right server, but not the other way round. Today's browsers normally perform only a simple SSL handshake. In the first phase of the handshake the server and the client also exchange the highest TLS protocol version and a list of suggested cipher and compression suites. In most browsers SSL version 2 is disabled by default as it is insecure. But you can also disable SSL version 2 and several cipher suites on the server side. In order to find out about what ciphers with high strength (128 or more bits) your server machine supports, type in:</p>
+<p>$ openssl ciphers -ssl3 -v 'HIGH:!ADH:@STRENGTH'</p>
+<p>This will display a list of ciphers ordered by its strength and without anonymous DH (!ADH) which is very basic. Make sure to specify the SSL ciphers your webserver is going to use in its configuration to at least the "HIGH:!ADH" level. Many web servers try to be as compatible as possible by default and accept 40, 56 and 80 bit DES keys, but they are very weak. This configuration works in all modern browsers. It is highly recommended denying weak ciphers by only accepting 3DES and AES SSL cipher suites of at least 128 bits and above. Here is an example SSL configuration for nginx - Apache configuration should be similar.</p>
+<blockquote>
+<p>ssl on;<br /> ssl_certificate /etc/nginx/certs/example.com.crt;<br /> ssl_certificate_key /etc/nginx/certs/example.com.key;<br /> keepalive_timeout 70; #reduces the cpu load<br /> ssl_protocols SSLv3; # only use SSL version 3<br /> ssl_ciphers HIGH:!ADH;<br /> ssl_prefer_server_ciphers on; # don't trust the client<br /> # caches 1 MB of SSL sessions in memory, faster than OpenSSL's cache:<br /> ssl_session_cache shared:SSL:1m;<br /> # cache the SSL sessions for 5 minutes, just as long as today's browsers<br /> ssl_session_timeout 5m;</p>
+</blockquote>
+<p><strong style="font-size: 140%;">Replay attacks</strong><br />Hackers might also try to repeat recorded requests. In order to fend of these replay attacks, the SSL handshake protocol uses random numbers and sequence numbers. If someone repeats old sequence numbers, the server will reset the connection.</p>
+<p><span style="font-size: 140%;"><strong>Cryptographic attacks</strong></span><br />The attacks against SSL include cryptographic attacks. Brute Force Attacks on the cryptography aim at breaking the cryptography in use. It is feasible to break a 40-bit key by brute force attacks, but it takes a fairly large number of computers. Therefore keys should be at least 128-bits long, though 256-bits are standard now. You also want to use AES encryption, as it is the successor of 3DES. When generating a public and private key for the certification authority, you can choose to enter a pass phrase with at least 8 characters. This pass phrase is like a password and you will need to type it in to start the web server using the SSL key. You can leave the pass phrase out if you want, but this is less secure. One reason to leave it out would be that automatic restarts of the web server will work then.</p>
+<p><strong><span style="font-size: 140%;">Man-in-the-middle attack</span></strong><br />A man-in-the-middle (MITM) attack is only successful when the attacker can impersonate the client and the server and when he has access to the network of the client (like an insecure wireless LAN). The man-in-the-middle behaves like the server for the client and sends the clients' requests to the original server. It also behaves like the client to the server. The MITM uses his self-generated certificate to authenticate against the user. Therefore today's browsers include a list of mutual trusted certification authorities and throw an error when certificate is self-signed. There are also many cases where the client's browser issued a warning that the certificate is not valid, but in real life most users ignore this message and just accept it. This protection might only be circumvented if a certification authority cooperated with the attacker or if the attacker managed to create his own certificates signed by a certification authority known to the victim's browser. The latter means breaking a cryptographic hash function, such as MD5, <a href="http://www.rorsecurity.info/journal/2009/2/17/start-to-replace-md5-soon.html" target="_blank">which is already theoretically possible</a>. SSH (Secure Shell) provides a method to check the fingerprint of the server's certificate after the first login. This fingerprint will be verified on each next login and it will throw an error if it changes. MITM attacks are quite unlikey, but not totally unfeasible.</p>
+<p><span style="font-size: 140%;"><strong>Software versions</strong></span><br />It is very important to always run the latest versions of OpenSSL and nginx or Apache. Recently there was a vulnerabilty in OpenSSL which <a href="http://www.rorsecurity.info/journal/2008/5/28/server-did-you-update-openssl.html" target="_blank">rendered several SSL certificates insecure</a>.</p>
+<p><strong style="font-size: 140%;">SSL and Rails</strong></p>
+<p>Rails provides the request.ssl? method to find out whether it is HTTP or HTTPS. In order to make this method work correctly, you have to include the following line in your web server configuration file in the HTTPS part:</p>
+<blockquote>
+<p>proxy_set_header X-FORWARDED_PROTO https;</p>
+</blockquote>
+<p>This is how it works in nginx, and it should be similar in Apache. <a href="http://www.sslshopper.com/article-ruby-on-rails-ssl-configuration.html" target="_blank">More details are here</a>. The problem is, that a malicious user could <span style="text-decoration: underline;">pretend that this request is HTTPS</span> by intercepting a request and sending a "X-FORWARDED_PROTO: https" header field over HTTP. Whether this may do any harm to your application depends on your application. But you don't want the users to pretend, don't you? Note that this works with a stand-alone Mongrel, but I couldn't manage it when a front-end web server (nginx, Apache) is there. Nevertheless, it might be possible.</p>
+<p><span style="font-size: 140%;"><strong>Countermeasures and Conclusion<br /></strong></span></p>
+<ol>
+<li>Securely configure you web server as described above</li>
+<li>Do use proxy_set_header X-FORWARDED_PROTO https; in the HTTPS part of the configuration</li>
+<li>Do use proxy_set_header X-FORWARDED_PROTO http; in the HTTP part of the configuration, just to be sure</li>
+</ol>
+
+        
+  
+          
+  
+         
+  
+      </div>
+
+    
+
+  </div>
+
+      <div class="journal-entry-tag journal-entry-tag-post-body">
+      <div class="journal-entry-tag-post-body-line1"><span class="posted-by">  <a href="/journal/author/rorsecurity"> <img title="Author" alt="Author" class="inline-icon user-registered-icon" src="/universal/images/transparent.png" />Heiko</a></span> |  <span class="post-comments"><a href="/journal/2009/3/15/ssl-and-rails.html#comments"> <img title="Comment" alt="Comment" class="inline-icon comment-icon" src="/universal/images/transparent.png" />Post a Comment</a></span> |  <span class="share-item"><a href="javascript:noop();" onclick="Squarespace.Interaction.shareLink(this,'%2Fjournal%2F2009%2F3%2F15%2Fssl-and-rails.html','SSL%20and%20Rails');"> <img title="Share Article" alt="Share Article" class="inline-icon share-icon" src="/universal/images/transparent.png" />Share Article </a></span> </div>
+      <div class="journal-entry-tag-post-body-line2"></div>
+      <div class="journal-entry-tag-post-body-line3"></div>
+    </div>
+  
+  
+  <div class="clearer"></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="journal-entry-wrapper post-text authored-by-rorsecurity ">
+<div id="item3148940" class="journal-entry">
+
+  <div class="journal-entry-float-day"><span class="name">Saturday</span></div><div class="journal-entry-float-date"><span class="month">28</span><span class="date">Feb</span></div>
+  
+  
+  
+  <div class="journal-entry-text">
+  
+      
+      <h2 class="title">
+    
+        
+    
+        <a href="/journal/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin.html">XSS and CSRF Vulnerabilities in the in_place_editing&nbsp;plugin</a>  
+     
+         
+    
+      </h2>
+      
+       <div class="journal-entry-tag journal-entry-tag-post-title"><span class="posted-on">   <img title="Date" alt="Date" class="inline-icon date-icon" src="/universal/images/transparent.png" />Saturday, February 28, 2009 at 10:47AM</span> </div> 
+
+    
+  
+      
+      <div class="body">
+  
+        
+        
+        
+          <p>The <a href="http://weblog.rubyonrails.com/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin" target="_blank">Ruby on Rails Weblog</a> reports two vulnerabilities in the <a href="http://github.com/rails/in_place_editing/tree/master" target="_blank">in_place_editing plugin</a>:</p>
+<blockquote>
+<ul>
+<li>The actions generated by in_place_edit_for perform no verification of the request method, allowing a hostile website to bypass built in <span class="caps">CSRF</span> protection.</li>
+<li>The the input controls generated by in_place_editor_field perform no output sanitization, leaving the application vulnerable to <span class="caps">XSS</span> attacks.</li>
+</ul>
+</blockquote>
+<p>Users of this plugin are advised to update the plugin from git://github.com/rails/in_place_editing.git . <a href="http://weblog.rubyonrails.com/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin" target="_blank">The original post</a> provides a zip file and a patch if you're unable to use git.</p>
+
+        
+  
+          
+  
+         
+  
+      </div>
+
+    
+
+  </div>
+
+      <div class="journal-entry-tag journal-entry-tag-post-body">
+      <div class="journal-entry-tag-post-body-line1"><span class="posted-by">  <a href="/journal/author/rorsecurity"> <img title="Author" alt="Author" class="inline-icon user-registered-icon" src="/universal/images/transparent.png" />Heiko</a></span> |  <span class="post-comments"><a href="/journal/2009/2/28/xss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin.html#comments"> <img title="Comment" alt="Comment" class="inline-icon comment-icon" src="/universal/images/transparent.png" />Post a Comment</a></span> |  <span class="share-item"><a href="javascript:noop();" onclick="Squarespace.Interaction.shareLink(this,'%2Fjournal%2F2009%2F2%2F28%2Fxss-and-csrf-vulnerabilities-in-the-in_place_editing-plugin.html','XSS%20and%20CSRF%20Vulnerabilities%20in%20the%20in_place_editing%20plugin');"> <img title="Share Article" alt="Share Article" class="inline-icon share-icon" src="/universal/images/transparent.png" />Share Article </a></span> </div>
+      <div class="journal-entry-tag-post-body-line2"></div>
+      <div class="journal-entry-tag-post-body-line3"></div>
+    </div>
+  
+  
+  <div class="clearer"></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="journal-entry-wrapper post-text authored-by-rorsecurity ">
+<div id="item3142565" class="journal-entry">
+
+  <div class="journal-entry-float-day"><span class="name">Friday</span></div><div class="journal-entry-float-date"><span class="month">27</span><span class="date">Feb</span></div>
+  
+  
+  
+  <div class="journal-entry-text">
+  
+      
+      <h2 class="title">
+    
+        
+    
+        <a href="/journal/2009/2/27/mime-sniffing-countermeasures.html">MIME sniffing&nbsp;countermeasures</a>  
+     
+         
+    
+      </h2>
+      
+       <div class="journal-entry-tag journal-entry-tag-post-title"><span class="posted-on">   <img title="Date" alt="Date" class="inline-icon date-icon" src="/universal/images/transparent.png" />Friday, February 27, 2009 at 10:38AM</span> </div> 
+
+    
+  
+      
+      <div class="body">
+  
+        
+        
+        
+          <p>This post is a follow-up on my <a href="http://www.rorsecurity.info/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html" target="_blank">previous post</a>.</p>
+<p>Sending out files is a tricky thing. Rails' send_file() method may send a file inline or as attachment. But in order to send a file inline, you have send the correct content type (:type parameter) as well. If you set send_file :disposition =&gt; 'inline' AND the :type is set to a correct and matching content type, the file will be displayed inside the browser if it understands the file format. If the :type attribute is not set correctly or the default (application/octet-stream) then Firefox will present the download box, but IE6 and IE7 still display it in the browser. If the content type, file extension and file signature do not match, IE6 and IE7 will start the MIME sniffing (<a href="http://www.rorsecurity.info/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html" target="_blank">see previous post for details</a>). So if the first 256 bytes of the file to be downloaded contain any HTML, the browsers will show it and run any included JavaScript code.</p>
+<p>If you set send_file :disposition =&gt; 'attachment', the browser will display a download box even if the browser could display this type (such as HTML).</p>
+<p>To sum it up: If someone uploads a poisoned image with file extension ".html", ".pdf" or whatever and you send out the file with send_file :disposition =&gt; 'inline', IE6 and IE7 will run the included JavaScript code. This is because most upload plugins (such as the popular <a href="http://github.com/technoweenie/attachment_fu/tree/master" target="_blank">attachment_fu</a>) assume the content type to be "text/html" or "application/pdf" in this case. More correct: Actually the browser already assumes it when uploading the file, but the plugin doesn't verify it.</p>
+<p>The conclusion of this is, that (1) setting the correct content type when sending files with send_file :disposition =&gt; 'inline' is crucial. And (2) it is very likely that you want to reject images or other files the browser can display that have malicious code in it.</p>
+<h3>1. Setting the correct content type</h3>
+<p>I use attachment_fu so I added a before_create :set_content_type_by_content method to my model. If you allow users to upload another file when editing, you can do the same in before_update. This method uses the <a href="http://www.freedesktop.org/wiki/Software/shared-mime-info" target="_blank">shared-mime-info</a> package and its <a href="http://shared-mime.rubyforge.org/" target="_blank">Ruby wrapper</a> with the same name. This package is basically a XML-database with known MIME types, its typical file extensions and some magic numbers to determine a file's real MIME type. Magic numbers are constants found in binary files used to identify a file format.</p>
+<p>You can install the package on OS X using MacPorts:</p>
+<blockquote>
+<p>sudo port install shared-mime-info</p>
+</blockquote>
+<p>and follow the OS X <a href="http://nullcreations.net/entries/general/ruby-shared-mime-info-gem-and-os-x" target="_blank">specific instructions here</a>. Use your favourite installer for other systems.</p>
+<p>Install the gem like this:</p>
+<blockquote>
+<p>sudo gem install shared-mime-info</p>
+</blockquote>
+<p>Now you can require 'shared-mime-info' and get the MIME type for a file: MIME.check(filename). The <a href="http://shared-mime.rubyforge.org/classes/MIME.html#M000004" target="_blank">check() method</a> actually uses the file extension to determine the MIME type in cases where <a href="http://shared-mime.rubyforge.org/classes/MIME.html#M000003" target="_blank">MIME.check_magics(filename)</a> doesn't work. I overwrote this behaviour, i.e. method, so that it doesn't, because that's what we wanted to avoid.</p>
+<p><a href="http://pastie.org/401937" target="_blank">Here's the code to overwrite the behaviour</a>. You can put in lib/core_extensions.rb and require the file in initializer (config/initializers). And here is the before_create callback for the model with attachment_fu:</p>
+<blockquote>
+<p>def set_content_type_by_content<br />&nbsp;&nbsp; mime = MIME.check_magics(self.temp_path) #try magic numbers first<br />&nbsp; mime = MIME.check(self.temp_path) if self.content_type.nil? #do other checks if it failed<br />&nbsp;&nbsp; self.content_type = mime.to_s<br />&nbsp;&nbsp; self.filename += mime.typical_file_extension unless mime.match_filename?(self.filename)<br /> end</p>
+</blockquote>
+<p>At the end I will add the typical file extension for this MIME type to the file name if the current doesn't match the MIME type.</p>
+<h3>2. Reject malicious files</h3>
+<p>So far so good, now there won't be any MIME type sniffing in the browser because the MIME type, the filename and the content matches. But nonetheless, you may want to reject images/files that contain JavaScript in the first place. In order to check that I suggested a regular expression in <a href="http://www.rorsecurity.info/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html" target="_blank">my previous post</a>. As I said, this was meant as a starting point, because it is not quite good. There were suggestions using a whitelist, but unfortunately binary files contain all kinds of &lt;&gt; so that a whitelist filter is not feasible. We do need a blacklist filter that recognizes <a href="http://ha.ckers.org/xss.html" target="_blank">all kind of injection tricks</a>.</p>
+<p><a href="http://pastie.org/401954" target="_blank">Here is the solution I came up with</a>. The magic happens in the regular expression in the MimeTypeInjection module. The regex is quite complicated, because it has to recognize tags like &lt;sc\0ript&gt;, too (yes, these quirks work in some browsers). The browser_displays_this_type? method determines which content types you want to check for HTML. Of course the "text/html" content type contains HTML, so you have to adjust this method according to your requirements (what types of files users are allowed to upload). Also, this list might not be complete, there might be <a href="http://www.iana.org/assignments/media-types/index.html" target="_blank">other content types</a> the browser displays inline (post a comment for other types).</p>
+
+        
+  
+          
+  
+         
+  
+      </div>
+
+    
+
+  </div>
+
+      <div class="journal-entry-tag journal-entry-tag-post-body">
+      <div class="journal-entry-tag-post-body-line1"><span class="posted-by">  <a href="/journal/author/rorsecurity"> <img title="Author" alt="Author" class="inline-icon user-registered-icon" src="/universal/images/transparent.png" />Heiko</a></span> |  <span class="post-comments"><a href="/journal/2009/2/27/mime-sniffing-countermeasures.html#comments"> <img title="Comment" alt="Comment" class="inline-icon comment-icon" src="/universal/images/transparent.png" />Post a Comment</a></span> |  <span class="share-item"><a href="javascript:noop();" onclick="Squarespace.Interaction.shareLink(this,'%2Fjournal%2F2009%2F2%2F27%2Fmime-sniffing-countermeasures.html','MIME%20sniffing%20countermeasures');"> <img title="Share Article" alt="Share Article" class="inline-icon share-icon" src="/universal/images/transparent.png" />Share Article </a></span> </div>
+      <div class="journal-entry-tag-post-body-line2"></div>
+      <div class="journal-entry-tag-post-body-line3"></div>
+    </div>
+  
+  
+  <div class="clearer"></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="journal-entry-wrapper post-text authored-by-rorsecurity ">
+<div id="item3046280" class="journal-entry">
+
+  <div class="journal-entry-float-day"><span class="name">Tuesday</span></div><div class="journal-entry-float-date"><span class="month">17</span><span class="date">Feb</span></div>
+  
+  
+  
+  <div class="journal-entry-text">
+  
+      
+      <h2 class="title">
+    
+        
+    
+        <a href="/journal/2009/2/17/start-to-replace-md5-soon.html">Start to replace MD5&nbsp;soon</a>  
+     
+         
+    
+      </h2>
+      
+       <div class="journal-entry-tag journal-entry-tag-post-title"><span class="posted-on">   <img title="Date" alt="Date" class="inline-icon date-icon" src="/universal/images/transparent.png" />Tuesday, February 17, 2009 at 11:10AM</span> </div> 
+
+    
+  
+      
+      <div class="body">
+  
+        
+        
+        
+          <p>SSL certificates are usually signed by a Certification Authority using a <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function" target="_blank">cryptographic hash function</a> like <a href="http://en.wikipedia.org/wiki/MD5" target="_blank">MD5</a>. An <a href="http://www.win.tue.nl/hashclash/rogue-ca/" target="_blank">international team of researchers</a> has carried out an attack on MD5 using a cluster of 200 Playstation 3 systems. They managed to abuse the signature of a Certification Authority to sign their own certificate in only two days time. As this Certification Authority is known by any browser, the certificate was accepted as trustworthy by them.</p>
+<p>The attack method was a <a href="http://en.wikipedia.org/wiki/Collision_attack" target="_blank">collision attack</a>. The idea is to create other input texts with the same MD5 result. These kind of attacks are not new, but they have become much more feasible. Nevertheless <span style="text-decoration: underline;">there is no immediate danger and no reason to panic</span>. But the attack showed that it is possible to crack MD5 and thus you can start to replace MD5 now. Make sure your SSL and SSH aren't signed using MD5, but with SHA-1. Although there have been attacks on SHA-1 too, these attacks have no practical relevance, yet.</p>
+<p>The <a href="http://www.heise-online.co.uk/security/Consequences-of-the-successful-MD5-attacks--/features/112365" target="_blank">original article at the H Security</a> provides a more detailed description of the attack and a FAQ.</p>
+
+        
+  
+          
+  
+         
+  
+      </div>
+
+    
+
+  </div>
+
+      <div class="journal-entry-tag journal-entry-tag-post-body">
+      <div class="journal-entry-tag-post-body-line1"><span class="posted-by">  <a href="/journal/author/rorsecurity"> <img title="Author" alt="Author" class="inline-icon user-registered-icon" src="/universal/images/transparent.png" />Heiko</a></span> |  <span class="post-comments"><a href="/journal/2009/2/17/start-to-replace-md5-soon.html#comments"> <img title="Comment" alt="Comment" class="inline-icon comment-icon" src="/universal/images/transparent.png" />Post a Comment</a></span> |  <span class="share-item"><a href="javascript:noop();" onclick="Squarespace.Interaction.shareLink(this,'%2Fjournal%2F2009%2F2%2F17%2Fstart-to-replace-md5-soon.html','Start%20to%20replace%20MD5%20soon');"> <img title="Share Article" alt="Share Article" class="inline-icon share-icon" src="/universal/images/transparent.png" />Share Article </a></span> </div>
+      <div class="journal-entry-tag-post-body-line2"></div>
+      <div class="journal-entry-tag-post-body-line3"></div>
+    </div>
+  
+  
+  <div class="clearer"></div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="journal-entry-wrapper post-text authored-by-rorsecurity ">
+<div id="item3008478" class="journal-entry">
+
+  <div class="journal-entry-float-day"><span class="name">Wednesday</span></div><div class="journal-entry-float-date"><span class="month">11</span><span class="date">Feb</span></div>
+  
+  
+  
+  <div class="journal-entry-text">
+  
+      
+      <h2 class="title">
+    
+        
+    
+        <a href="/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html">MIME sniffing in IE enables XSS&nbsp;attacks</a>  
+     
+         
+    
+      </h2>
+      
+       <div class="journal-entry-tag journal-entry-tag-post-title"><span class="posted-on">   <img title="Date" alt="Date" class="inline-icon date-icon" src="/universal/images/transparent.png" />Wednesday, February 11, 2009 at 2:23PM</span> </div> 
+
+    
+  
+      
+      <div class="body">
+  
+        
+        
+        
+          <p>Nearly every web application allows its users to upload files. If not carefully handled, these files may cause cross-site scripting attacks on other visitors of the site using Microsoft Internet Explorer.</p>
+<p>The problem is that under certain circumstances IE executes HTML or JavaScript code hidden in image files. Basically this is because there are many ways to determine the content type of files: A filename extension, the Content-Type HTTP header field, the first few bytes with known patterns (the so-called signature) or <a href="http://msdn.microsoft.com/en-us/library/ms775147.aspx" target="_blank">MIME-sniffing</a> which analyses the first 256 bytes. MIME-sniffing was introduced in IE 4, but it is carried out only if the user calls the URL of the file directly, so MIME-sniffing won't be done for image tags (IMG) in HTML.</p>
+<p>MIME-sniffing was originally a feature and has been around for a while already, but now it becomes a problem when more and more sites allow its users to upload files. If a file's extension, the signature and the Content-Type differ, IE will determine the MIME type by its first 256 bytes. However, if an uploaded image contains HTML and/or JavaScript code and the user clicks on a link to download the file, IE will execute that code.</p>
+<p>You can try this out yourself in this <a href="http://www.heise-online.co.uk/security/Risky-MIME-sniffing-in-Internet-Explorer--/features/112589" target="_blank">Heise Security article</a>.</p>
+<p>Microsoft has <a href="http://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx" target="_blank">identified</a> the problem (already!) and plans to remove the problem in IE 8. However, IE 6 and IE 7 are still in heavy use. To fend off these attacks, the <a href="http://www.heise-online.co.uk/security/Risky-MIME-sniffing-in-Internet-Explorer--/features/112589" target="_blank">Heise Security article</a> proposes several options. One of the most effective is to analyse file uploads closely by reading the first 256 bytes and rejecting the file if there are HTML tags in it. In order to find HTML tags you will propably use a regular expression. <a href="http://www.rubular.com/regexes/6147" target="_blank">Here is an example regex</a> to identify matching opening and closing tags. This is meant as a starting point, because the attacker may ommit the closing tag. It is however an effective countermeasure because the attacker will most likely give up if the first try doesn't work.</p>
+<p>Three lines of code may already fend this attack method off:</p>
+<p>File.open("security_logo_en.jpg", "r") do |f|<br />&nbsp; puts "reject file" if f.read(256) =~ /&lt;(.)+&gt;(.)*&lt;\/(.)+&gt;/i<br />end</p>
+
+        
+  
+          
+  
+         
+  
+      </div>
+
+    
+
+  </div>
+
+      <div class="journal-entry-tag journal-entry-tag-post-body">
+      <div class="journal-entry-tag-post-body-line1"><span class="posted-by">  <a href="/journal/author/rorsecurity"> <img title="Author" alt="Author" class="inline-icon user-registered-icon" src="/universal/images/transparent.png" />Heiko</a></span> |  <span class="post-comments"><a href="/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html#comments"> <img title="Comment" alt="Comment" class="inline-icon comment-icon" src="/universal/images/transparent.png" />3 Comments</a></span> |  <span class="post-references"><a href="/journal/2009/2/11/mime-sniffing-in-ie-enables-xss-attacks.html#references"> <img title="Reference" alt="Reference" class="inline-icon reference-icon" src="/universal/images/transparent.png" />1 Reference</a></span> |  <span class="share-item"><a href="javascript:noop();" onclick="Squarespace.Interaction.shareLink(this,'%2Fjournal%2F2009%2F2%2F11%2Fmime-sniffing-in-ie-enables-xss-attacks.html','MIME%20sniffing%20in%20IE%20enables%20XSS%20attacks');"> <img title="Share Article" alt="Share Article" class="inline-icon share-icon" src="/universal/images/transparent.png" />Share Article </a></span> </div>
+      <div class="journal-entry-tag-post-body-line2"></div>
+      <div class="journal-entry-tag-post-body-line3"></div>
+    </div>
+  
+  
+  <div class="clearer"></div>
+
+</div>
+</div>
+
+
+
+
+
+    
+    
+  </div>
+
+  
+  <div  class="paginationControlWrapper journal-navigation" >
+
+    <!-- 1 - 5 of 69 (page 1 of 14) -->
+
+    <span class="paginationControlPrefix">
+      
+              Page
+       
+    </span>
+    
+    
+
+    
+              <a class="paginationPageNumber activePage" href="javascript:noop();">1</a>
+      
+    
+              <a class="paginationPageNumber"  href="/journal/?currentPage=2" >2</a>
+      
+    
+              <a class="paginationPageNumber"  href="/journal/?currentPage=3" >3</a>
+      
+    
+              <a class="paginationPageNumber"  href="/journal/?currentPage=4" >4</a>
+      
+    
+              <a class="paginationPageNumber"  href="/journal/?currentPage=5" >5</a>
+      
+     
+
+          <span class="paginationEllipsis">...</span> <a class="paginationPageNumber"  href="/journal/?currentPage=14" >14</a>
+    
+
+          <span class="paginationControlNextPageSuffix">
+        <a  href="/journal/?currentPage=2" >
+          Next 5 Entries »
+        </a>
+      </span>
+    
+    
+    
+
+  </div>
+
+
+
+  
+
+
+</div></div> <!-- Content -->
+  
+    
+  
+    </div></div> <!-- Page Body -->
+
+    
+    
+    <div id="pageFooterWrapper"><div id="pageFooter">
+  
+              Copyright &copy; 2006-2009, bauland42. All rights reserved.
+      
+  
+      
+  
+    </div></div>
+  
+  </div></div> <!-- Canvas -->
+  
+   
+
+
+  <div class="clearer" id="bodyClearer"></div>
+
+  
+</body>
+</html>

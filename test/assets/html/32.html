@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- InstanceBegin template="/Templates/ss_template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!--LOCAL STYLE SHEETS FOR DEVELOPMENT ONLY -->
+<link href="typographie.css" rel="stylesheet" type="text/css" />
+<link href="habillage.css" rel="stylesheet" type="text/css" />
+
+
+<!-- InstanceBeginEditable name="doctitle" -->
+
+<title>SapphireSteel Software:: The Visual Studio IDE Company</title>
+
+
+
+<style type="text/css">
+
+
+#pscroller1{
+width: 140px;
+height: 130px;
+border: 0px solid black;
+padding: 4px;
+background-color: white;
+}
+
+
+</style>
+
+
+
+
+
+<!-- InstanceEndEditable -->
+<meta name="description" content="Ruby in Steel :: Ruby On Rails programming in Visual Studio" />
+<meta name="keywords" content="ruby ide, ruby programming, visual studio, rails, plugin, sapphire, steel, ruby in steel, ruby, ide, editor, debugger, fast debugger, cylon, visual" />
+
+	
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- Ceci est la feuille de style par defaut pour les types internes a SPIP -->
+<link rel="stylesheet" href="spip_style.css" type="text/css" />
+
+<!-- Les feuilles de style specifiques aux presents squelettes -->
+<link rel="stylesheet" href="squelettes/typographie.css" type="text/css" />
+
+<!-- media="..." permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) -->
+<link rel="stylesheet" href="squelettes/habillage.css" type="text/css" media="print, projection, screen, tv" />
+
+<!-- Lien vers le backend pour navigateurs eclaires -->
+<link rel="alternate" type="application/rss+xml" title="Syndicate the whole site" href="backend.php" />
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /><style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+
+
+<script language="JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body onLoad="MM_preloadImages('IMG/ss/sapphiresteel_pagegfx_r2_c4_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c5_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c7_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c9_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c11_f2.gif');">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="60" nowrap><div align="left">
+      
+
+
+<table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+	  <tr>
+	   <td background="IMG/ss/sapphiresteel_pagegfx_r1_c3.gif"><a href="http://www.sapphiresteel.com"><img name="sapphiresteel_pagegfx_r1_c1" src="IMG/ss/sapphiresteel_pagegfx_r1_c1.gif" width="296" height="84" border="0" alt="SapphireSteel Software"></a></td>
+	   <td width="355"><table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="355">
+		  <tr>
+		   <td width="355"><img name="sapphiresteel_pagegfx_r1_c4" src="IMG/ss/sapphiresteel_pagegfx_r1_c4.gif" width="355" height="62" border="0" alt=""></td>
+		  </tr>
+		  <tr>
+		   <td><table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="355">
+			  <tr>
+			   <td><a href="http://www.sapphiresteel.com/Buy-Ruby-In-Steel" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c4','','IMG/ss/sapphiresteel_pagegfx_r2_c4_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c4" src="IMG/ss/sapphiresteel_pagegfx_r2_c4.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/spip?page=download" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c5','','IMG/ss/sapphiresteel_pagegfx_r2_c5_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c5" src="IMG/ss/sapphiresteel_pagegfx_r2_c5.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/Ruby-In-Steel-Developer-Overview" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c7','','IMG/ss/sapphiresteel_pagegfx_r2_c7_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c7" src="IMG/ss/sapphiresteel_pagegfx_r2_c7.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/forum" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c9','','IMG/ss/sapphiresteel_pagegfx_r2_c9_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c9" src="IMG/ss/sapphiresteel_pagegfx_r2_c9.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/-Blog-" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c11','','IMG/ss/sapphiresteel_pagegfx_r2_c11_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c11" src="IMG/ss/sapphiresteel_pagegfx_r2_c11.gif" width="69" height="22" border="0" alt=""></a></td>
+			   <td><img name="IMG/ss/sapphiresteel_pagegfx_r2_c13" src="IMG/ss/sapphiresteel_pagegfx_r2_c13.gif" width="14" height="22" border="0" alt=""></td>
+			  </tr>
+			</table></td>
+		  </tr>
+		</table></td>
+	  </tr>
+	</table>
+
+      
+      
+    </div></td>
+  </tr>
+  <tr>
+    <td><table width="100%" height="100%"  border="0" align="left" cellpadding="0" cellspacing="0" bordercolor="#FF00FF">
+      <tr valign="top">
+        <td width="155" height="100%" background="IMG/ss/sapphiresteel_pagegfx_r3_c1.gif" bgcolor="#ECEBED"><p>&nbsp;</p>
+          <table width="145" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>NAVIGATION</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com" title="Home page" class="menutext">Home</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="spip.php?page=plan" class="menutext">Site
+                  Map </a>	</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="spip.php?page=recherche" class="menutext">Search</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>RUBY IN STEEL </strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Buy-Ruby-In-Steel">Buy</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip?page=download" class="menutext">Download</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/The-Ruby-In-Steel-User-Guide">User
+                  Guide </a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>Information</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-IDE-Screenshots-of-Ruby-In">Screenshots</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip.php?page=feature-list">Feature List</a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/About-Ruby-In-Steel">License </a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>Developers</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/-Blog-">Blog</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-In-Steel-Road-Map">Roadmap</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://sapphiresteel.com/forum/">FORUM</a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>COMPANY</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/About-us" class="menutext">About
+                  Us </a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip.php?page=contacts" class="menutext">Contact</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Press-Information" class="menutext">Press</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext">&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+          <p>&nbsp;</p>
+          <table width="155"  border="0" cellpadding="0">
+            <tr>
+              <td width="10">&nbsp;</td>
+              <td align="left" valign="middle" class="smalltext"><a href="http://www.sapphiresteel.com/spip.php?page=backend"><img src="ecrire/img_pack/feed.png" alt="rss" width="24" height="24" border="0" align="middle" /></a> <br />
+                <a href="http://www.sapphiresteel.com/spip.php?page=backend">RSS (SITE)</a></td>
+              <td width="10">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="left" valign="middle" class="smalltext"><a href="http://www.sapphiresteel.com/spip.php?page=backend&amp;id_rubrique=1"><img src="ecrire/img_pack/feed.png" alt="rss" width="24" height="24" border="0" align="middle" /></a> <br />                <a href="http://www.sapphiresteel.com/spip.php?page=backend&amp;id_rubrique=1">RSS (BLOG ONLY)</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top" class="smalltext">
+			  
+			  <script type="text/javascript" src="http://embed.technorati.com/embed/rnf3duxuht.js"></script>			  </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top"><br /></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top">&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+		  
+<!-- InstanceBeginEditable name="leftcol" -->
+
+
+<!-- InstanceEndEditable -->
+		  
+          <p>&nbsp;              </p></td>
+        <td height="100%" bgcolor="#FFFFFF"><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top">
+			  
+<!-- InstanceBeginEditable name="Main" -->
+                
+
+
+
+
+<div class="contenu">
+
+  <div align="center">
+   
+	
+    <p>&nbsp;</p>
+    <p>
+    
+    <img src="IMG/ss/frontpage/frontpageimage.jpg" alt="ruby in steel" border="0" usemap="#heMap" />
+      <map name="heMap" id="heMap">
+        <area shape="rect" coords="3,3,559,132" href="http://www.sapphiresteel.com/Ruby-In-Steel-Developer-Overview" alt="Ruby In Steel Developer Overview" />
+        <area shape="rect" coords="493,212,556,238" href="http://www.sapphiresteel.com/Ruby-In-Steel-Developer-Overview" alt="Ruby In Steel Developer Overview" />
+        <area shape="rect" coords="224,324,557,349" href="http://www.sapphiresteel.com/Ruby-In-Steel-Text-Edition" alt="Ruby In Steel Text Edition Overview" />
+        <area shape="rect" coords="10,384,555,456" href="http://www.sapphiresteel.com/Download-Amethyst-PE-Adobe-Flex" alt="Amethyst" />
+        <area shape="rect" coords="224,350,556,372" href="http://www.sapphiresteel.com/Ruby-In-Steel-New-Free-Edition" alt="Personal Edition" />
+      </map>
+      
+      
+          </p>
+    <table width="550" border="0" cellspacing="0" cellpadding="0">
+      
+      <tr>
+        <td><table width="550" border="0" cellspacing="0" cellpadding="2">
+          <tr bgcolor="#ECEBED">
+            <td width="225" bgcolor="#ECEBED" class="smallcrosshead">Ruby In
+              Steel :: The Software </td>
+            <td width="5" bgcolor="#FFFFFF">&nbsp;</td>
+            <td width="225" class="smallcrosshead"><a href="http://www.sapphiresteel.com/-Blog-">Latest Blog Entries</a></td>
+          </tr>
+          <tr>
+            <td width="225" align="left" valign="top" class="smalltext"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /> <a href="http://www.sapphiresteel.com/Ruby-In-Steel-Developer-Overview">Overview of Ruby In Steel Developer<br />
+               </a><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /> <a href="http://www.sapphiresteel.com/Ruby-In-Steel-Text-Edition">Overview of Ruby In Steel Text </a><br />
+              <img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /> <a href="http://www.sapphiresteel.com/The-Ruby-In-Steel-User-Guide">Download
+              User Guide</a><br /></td>
+            <td width="5">&nbsp;</td>
+            <td width="225" align="left" valign="top" class="smalltext">
+                
+              <img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="ActionScript-Code-Behind-in" >ActionScript &#8217;Code Behind&#8217; in Amethyst</a><br />
+              
+              <img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="Amethyst-Flex-IDE-Beta-4" >Amethyst Flex IDE Beta 4</a><br />
+              
+              <img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="Debugging-Adobe-Flex-Applications" >Debugging Adobe Flex Applications With Amethyst</a><br />
+              
+              </td>
+          </tr>
+        </table></td>
+      </tr>
+    </table>
+    </div>
+</div>
+
+<!-- SPIP :: Admin buttons and updating of Spip stats calcs-->
+<!-- SPIP-CRON --><div style="background-image: url('http://www.sapphiresteel.com/spip.php?action=cron');"></div>
+
+
+
+              <!-- InstanceEndEditable --></td>
+            </tr>
+          </table>
+          <p>&nbsp;</p>
+          <p align="center"><span class="smalltext">&copy; 2009 SapphireSteel Software. All rights reserved</span></p></td>
+        <td width="156" height="100%" bgcolor="#FFFFFF">
+		
+<p>&nbsp;</p>
+<!-- InstanceBeginEditable name="rightcol" -->
+
+
+
+
+<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC">
+  <tr>
+    <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td colspan="2" bgcolor="#ECEBED" class="smallcrosshead"><div align="center">Ruby
+            In Steel<br />
+          Developer Edition </div></td>
+      </tr>
+      <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="http://www.sapphiresteel.com/Buy-Ruby-In-Steel">Buy
+            Now </a> </td>
+      </tr>
+      <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="http://www.sapphiresteel.com/spip?page=download">60 Day Trial</a> </td>
+      </tr>
+      <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="spip.php?page=feature-list">Feature List</a> </td>
+      </tr>
+      <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-IDE-Screenshots-of-Ruby-In">Screenshots</a></td>
+      </tr>
+       <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="http://www.sapphiresteel.com/Learn-Ruby-In-Steel-With-Movies">Movie Tutorials</a></td>
+      </tr>
+      <tr>
+        <td>&nbsp;<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+        <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-In-Steel-Movies">Screencasts</a></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+<table width="100%" border="1" cellpadding="4" cellspacing="0" bordercolor="#ECEBED">
+  
+  <tr>
+    <td><div align="center"><a href="http://www.sapphiresteel.com/What-People-Are-Saying" class="smalltext">[ Testimonials ] </a></div></td>
+  </tr>
+</table>
+
+
+
+<table width="100%" border="1" cellpadding="1" cellspacing="0" bordercolor="#CCCCCC">
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="1">
+            <tr>
+              <td colspan="2" bgcolor="#ECEBED" class="smallcrosshead"><div align="center"><a href="http://www.sapphiresteel.com/-Blog-">Latest
+                  From The Blog</a></div></td>
+            </tr>
+
+            <tr>
+              <td>&nbsp;</td>
+              <td class="menutext">
+
+
+<a href="ActionScript-Code-Behind-in" >ActionScript &#8217;Code Behind&#8217; in Amethyst</a><br>
+
+			  </td>
+            </tr>
+        </table></td>
+      </tr>
+    </table>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="1">
+  <tr>
+    <td bgcolor="#ECEBED"><div align="center" class="smallcrosshead">Free Downloads </div>
+        <div align="center" class="menutext"></div></td>
+  </tr>
+  <tr>
+    <td>
+
+<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/Ruby-In-Steel-New-Free-Edition">Ruby In Steel PE 2008</a></div>
+<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/The-Book-Of-Ruby">The Book Of Ruby</a></div>
+<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/The-Little-Book-Of-Ruby">Little Book Of Ruby</a></div>
+<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/SapphireSteel-Downloads">.NET/Ruby Connector</a></div>
+<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/Ruby-In-Steel-For-IronRuby">IronRuby IDE alpha</a></div>
+
+	</td>
+  </tr>
+</table>
+
+<table width="100%" border="1" cellspacing="0" cellpadding="1">
+  <tr>
+    <td bgcolor="#ECEBED"><div align="center" class="smallcrosshead">Support</div>
+        <div align="center" class="menutext"></div></td>
+  </tr>
+  <tr>
+    <td><div align="center" class="menutext"><a href="http://www.sapphiresteel.com/forum">JOIN
+          THE FORUM  </a></div>
+        <div align="center" class="menutext"><a href="http://www.sapphiresteel.com/-FAQ-">FAQ</a></div>
+        <div align="center" class="menutext"><a href="http://www.sapphiresteel.com/-Tutorials-" class="menutext">Tutorials</a></div>
+        <div align="center" class="menutext"><a href="http://www.sapphiresteel.com/Where-To-Begin" class="menutext">Getting Started</a></div>        </td>
+  </tr>
+  
+   <tr>
+    <td><div align="center"><img src="IMG/ss/logos/amethyst-small.jpg" width="154" height="39" alt="Amethyst - Flex IDE" /><br />
+        <span class="smallmenutext"><em>Adobe Flex IDE</em></span></div>
+    	<div align="center" class="menutext"><a href="http://www.sapphiresteel.com/Download-Amethyst-PE-Adobe-Flex">Download Beta</a></div>
+        <div align="center" class="menutext"><a href="http://www.sapphiresteel.com/+-Amethyst-+">More Info</a></div>
+             </td>
+  </tr>
+  
+  
+</table>
+<!-- InstanceEndEditable --></td>
+
+        <td bgcolor="#FFFFFF">&nbsp;&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+
+</body>
+<!-- InstanceEnd --></html>

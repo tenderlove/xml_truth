@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+  <head>
+    <title>Spree - Online Commerce for Ruby on Rails</title>
+    <link href="http://feeds.feedburner.com/spreehq" rel="alternate" title="RSS" type="application/rss+xml" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/code.css" />
+    <script type="text/javascript" src="/javascripts/code_highlighter.js"></script> 
+    <script type="text/javascript" src="/javascripts/ruby.js"></script>
+  </head>
+  <body>
+    <div id="container" class="clearfix">
+      <div id="content" class="clearfix">
+        <meta name="verify-v1" content="frtLR/X2d7vHKnRJxA1D9iUIR17zDd2JNnZQRGgWH9c=" />
+<div id="header">
+  <table class="table-header">
+    <tr>
+      <td>
+        <img src="/images/spree_logo.png" alt="" />
+        <br/>
+      </td>
+      <td valign="top" style="padding-top: 20px">
+  <a href="/">Home</a> | <a href="/features">Features</a> | <a href="/screenshots">Screenshots</a> | <a href="/demo">Demo</a> | <a href="/support">Support</a> | <a href="/documentation">Documentation</a>
+      </td>
+    </tr>
+  </table>
+</div>
+        <div id="main">
+          
+          <h1>Online Commerce for Ruby on Rails</h1>
+
+
+<h2>
+  <a href="http://feeds.feedburner.com/spreehq"><img src="images/rss.gif" alt="" /></a> Spree News               
+</h2>
+
+<div class="first entry">
+  <h3><a href="/articles/2009/03/26/spree-0-7-1-released/">Spree 0.7.1 Released</a></h3>
+  <div class="info">Posted by Sean Schofield on Mar 26, 2009</div>
+  <div class="story-teaser">
+    <p>Spree 0.7.1 has been released.  This is just a minor patch release to fix some of the issues from the last release.  From the <code>CHANGELOG</code>:</p>
+
+<ul>
+<li>298 &#8211; rake spree:i18n:sync fails on yml files with empty lines</li>
+<li>303 &#8211; &#8220;What&#8217;s This?&#8221; <span class="caps">CVV</span> link broken</li>
+<li>308 &#8211; Unable to change country for credit card payment (Admin form)</li>
+<li>309 &#8211; Last name of shipping address is wrong field</li>
+<li>310 &#8211; Fixed typo in Tennessee</li>
+<li>311 &#8211; No shipping method can be selected in <span class="caps">IE 7</span></li>
+<li>312 &#8211; Remove assumption that order has shipment (when finalizing the order)</li>
+<li>315 &#8211; state selector failing on <span class="caps">IE7</span> due to &#8220;Object not supported&#8221; js error</li>
+<li>317 &#8211; gem dependency command does not list all dependencies</li>
+<li>314 &#8211; Refactor checkout steps as partials</li>
+</ul>
+  </div>
+</div>
+
+<div class="entry">
+  <h3><a href="/articles/2009/03/23/rails-2-3-support/">Rails 2.3 Support</a></h3>
+  <div class="info">Posted by Sean Schofield on Mar 23, 2009</div>
+  <div class="story-teaser">
+    <p>The upcoming version of Spree will feature Rails 2.3.x support.  We&#8217;ve upgraded the edge version of the source code and the basic functionality appears to be fine.  The new version of Rails includes <a href="http://guides.rubyonrails.org/2_3_release_notes.html">lots of goodies</a> that we will soon be taking advantage of.  </p>
+
+<p>Rails 2.3 has some interesting support for <a href="http://railscasts.com/episodes/149-rails-engines">engines</a> which are very similar to Spree extensions.  We&#8217;re taking a &#8220;wait and see&#8221; approach with Engines right now.  Engines do not support all of the features that we require for extensions and there is <a href="http://en.oreilly.com/rails2009/public/schedule/detail/7785">talk of further changes</a> in the upcoming Rails 3.0 release.</p>
+
+<p>Please report any bugs you may encounter working with this code.  We suspect there are some possible Rails 2.3 issues out there yet to be discovered.</p>
+  </div>
+</div>
+
+<div class="entry">
+  <h3><a href="/articles/2009/03/23/interface-refactoring-has-begun/">Interface Refactoring Has Begun</a></h3>
+  <div class="info">Posted by Sean Schofield on Mar 23, 2009</div>
+  <div class="story-teaser">
+    <p>A common criticism that I hear of Spree is that the interface is kind of lame and not worthy of the actual code that lies beneath it.  There were a few good reasons for that of course.  The primary reason was that we were putting an emphasis on the actual features (substance) over the appearance (style.)  The second reason was that my personal graphics skillz are quite limited and there was a shortage of volunteers.  </p>
+
+<p>Fortunately, some of our community members stepped forward and offered to take on the massive task of overhauling the user interface.  We decided to start with the admin interface first.  <a href="http://github.com/davidnorth">David North</a> and <a href="http://github.com/pengwynn/">Wynn Netherland</a> have worked together to produce an excellent new design for the back end.  The code was on its own branch for a few weeks but with the 0.7.0 release behind us, we&#8217;ve moved it into the master branch for your enjoyment.  The <a href="http://demo.spreehq.org">demo server</a> has also been updated with the new code (rememmber to login in with user: <code>admin</code> password: <code>spree</code>.)                       </p>
+
+<p>We&#8217;re also making progress on the front end side of things.  David has made some changes already which I have pushed to a <a href="http://github.com/schof/spree/tree/new_frontend">new_frontend</a> branch in GitHub.  There are some catches to getting this branch running &#8211;  you will need to install Haml from the source and make sure that GithHub is in your gem resources.  We&#8217;ll be making further changes to the frontend on this branch over the next few weeks so feel free to monitor our progress.  Code contributions are always welcome.  Please see the <a href="http://support.spreehq.org/wiki/spree/Contributors">contributor guide</a> for details.</p>
+  </div>
+</div>
+
+<div class="entry">
+  <h3><a href="/articles/2009/03/10/spree-0-7-0-released/">Spree 0.7.0 Released</a></h3>
+  <div class="info">Posted by Sean Schofield on Mar 10, 2009</div>
+  <div class="story-teaser">
+    <p>Spree 0.7.0 is now official.  The most important new feature is the new single page checkout which uses <span class="caps">AJAX</span> to walk you through the process.  <a href="http://www.magentocommerce.com/">Magento</a> and other popular commerce platforms support this method already.  Single page checkout helps solve a host of problems created by unusual user behavior (back buttons, refresh, etc.)  When we looked at the logs of some actual customer traffic we were shocked to see some of the crazy stuff customers were trying (ex. back, back, refresh, forward, forward, submit.)  </p>
+
+<p>Spree (like Magento and others) now requires javascript for checkout.  Multiple page checkout without javascript will still be possible, except now you will have to roll your own solution.  You will still be able to take advantage of the models and most of the controller logic of course.  </p>
+
+<p>The current checkout screen is quite plain.  The plan is to improve the look and feel of this form in the upcoming 0.8.0 release.  We&#8217;ll also be making modifications to the checkout form (splitting into partials, etc.) to make customization easier.  Improvements in the client side javascript validation are also expected.</p>
+
+<p><strong>Release Highlights</strong></p>
+
+<ul>
+<li>Order numbers are now permalinks </li>
+<li>Restrict shipping methods based on order contents</li>
+<li>Google Analytics for Order Tracking</li>
+<li>French, Norwegian and Russian Translations</li>
+</ul>
+
+<p><strong>Upgrade Considerations</strong></p>
+
+<p>When you run the migrations, existing order numbers will be altered (they will now have an &#8216;R&#8217; appended to the beginning.)  Be sure to backup your datbase before you perform the upgrade.  You can also run <code>rake spree:upgrade</code> to copy over the latest javascripts and styles into your deployed app.  You&#8217;ll need to modify your application&#8217;s <code>environment.rb</code> to make sure you have the necessary gem depencies.</p>
+  </div>
+</div>
+
+<div class="entry">
+  <h3><a href="/articles/2009/03/05/searchable-models---now-with-searchlogic/">Searchable Models &#8211; Now With Searchlogic</a></h3>
+  <div class="info">Posted by Sean Schofield on Mar 05, 2009</div>
+  <div class="story-teaser">
+    <p>The upcoming release of Spree is now using <a href="http://github.com/binarylogic/searchlogic/tree/master">searchlogic</a> to improve the way we do searching and paging.  Checkout the very excellent <a href="http://github.com/binarylogic/searchlogic/blob/d110d07a2176582a4aeb9667e64cd22125a36fdd/README.rdoc"><span class="caps">README</span></a> for more details on how searchlogic works.  Unfortunately there is currently a <a href="http://binarylogic.lighthouseapp.com/projects/16601/tickets/60-text-dates-are-incorrectly-converted-into-utc">small error</a> in the date searching.  I&#8217;ve fixed the error but we need to release before this patch can be accepted.  Normally I would just vendor a hacked gem but lately <a href="http://binarylogic.lighthouseapp.com/projects/16601/tickets/49-view-helpers-not-available-on-production">we&#8217;ve been having problems with vendored gems</a>.  So we&#8217;ve created our own gem.  This means there are a few additional steps you will need to do to get Spree running.</p>
+
+<h3>Special Steps For Obtaining the Modified Searchlogic Gem</h3>
+
+<p><em><strong>1.</em></strong> Add the GitHub Gem Repository to your Gem Resources</p>
+
+<pre><code>
+gem sources -a http://gems.github.com
+</code></pre>
+
+	<p><b>2.</b> Instal this gem (and any other dependencies) the usual way</p>
+
+
+<pre><code>
+rake gems:install
+</code></pre>
+
+<h3>Possible Changes Needed for your Extension Controllers and Views</h3>
+
+
+
+
+	<p>There are some important implications for the controllers and views in your custom extensions.  If you have any views where you are using paging you are going to need to change your paging controls slightly.</p>
+
+
+<h4>The Old Way</h4>
+
+
+
+
+	<p>Inside of your index.html.erb you would have something like this in your `index.html.erb`</p>
+
+
+<pre><code class="ruby">
+&lt;%= render :partial =&gt; 'shared/paginate', :locals =&gt; {:collection =&gt; @orders, :options =&gt; generate_search_options(@filter)} unless @orders.empty? %&gt;
+</pre></code>
+
+	<p>You then had a big giant pile of code in the `shared/paginate` partial</p>
+
+
+<pre><code class="ruby">
+&lt;!-- Code by Ilya Grigorik - http://www.igvita.com/blog/2006/09/10/faster-pagination-in-rails/ --&gt;
+&lt;% if collection.page_count != collection.first_page -%&gt;
+&lt;div class="pagination"&gt;
+  &lt;ul&gt;
+    &lt;% if collection.previous_page? -%&gt;
+    &lt;li class="nextpage"&gt;
+      &lt;%= link_to "&amp;#171; #{t('previous')}", { :p =&gt; collection.previous_page }.merge(options) %&gt;
+    &lt;/li&gt;
+    &lt;% else -%&gt;
+    &lt;li class="disablepage"&gt;&amp;#171; &lt;%= t('previous') %&gt;&lt;/li&gt;
+    &lt;% end -%&gt;
+
+    &lt;% last_page = 0 -%&gt;
+    &lt;% windowed_pagination_links(collection, :window_size =&gt; 2, :link_to_current_page =&gt; true, :always_show_anchors =&gt; true) do |n| -%&gt;
+    &lt;% if collection.page == n -%&gt;
+    &lt;li class="currentpage"&gt;&lt;%= n %&gt;&lt;/li&gt;
+    &lt;% else -%&gt;
+    &lt;li&gt;&lt;%= "..." if last_page+1 &lt; n %&gt;
+        &lt;%= link_to n, {:id =&gt; params[:id], :p =&gt; n}.merge(options) %&gt;
+    &lt;/li&gt;
+    &lt;% end -%&gt;
+    &lt;% last_page = n -%&gt;
+    &lt;% end -%&gt;
+
+    &lt;% if collection.next_page? -%&gt;
+    &lt;li class="nextpage"&gt;
+      &lt;%=  link_to "#{t('next')} &amp;#187;", { :p =&gt; collection.next_page }.merge(options) %&gt;
+    &lt;/li&gt;
+    &lt;% else -%&gt;
+    &lt;li class="disablepage"&gt;&amp;#171; &lt;%= t('next') %&gt;&lt;/li&gt;
+    &lt;% end -%&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+&lt;% end -%&gt;         
+</pre></code>
+
+<h4>The New Way</h4>
+
+
+
+
+	<p>Inside of your `index.html.erb` you have this</p>
+
+
+<pre><code class="ruby">
+&lt;%= page_links(:prev =&gt; "&amp;#171; #{t('previous')}", :next =&gt; "#{t('next')} &amp;#187;") if @search.page_count &gt; 1 %&gt;
+</code></pre>
+
+	<p>That&#8217;s it.  No more shared partials.  Now you&#8217;re starting to see how this simplifies things.</p>
+
+
+	<p>Now lets move on to the controllers.  Each controller that needs to have any kind of search or paging needs to have a special `collection` method which is used by `resource_controller`.</p>
+
+
+<h4>The Old Way</h4>
+
+
+
+
+<pre>
+<code class="ruby">
+&lt;%= render :partial =&gt; 'shared/paginate', :locals =&gt; {:collection =&gt; @orders, :options =&gt; generate_search_options(@filter)} unless @orders.empty? %&gt;   
+</code>
+</pre>
+
+<h4>The New Way</h4>
+
+<pre>
+<code class="ruby">
+def collection
+  @search = Order.new_search(params[:search])
+
+  if params[:search].nil? || params[:search][:conditions].nil?
+    @search.conditions.checkout_complete = true
+  end
+
+  @search.order_by ||= :created_at
+  @search.order_as ||= "DESC" 
+  @search.per_page = Spree::Config[:orders_per_page]
+
+  @collection = @search.find(:all, :include =&gt; [:user, :shipments, {:creditcards =&gt; :address}] )
+end 
+</code>
+</pre>
+
+<p>Obviously the new way is simpler with less lines of code to maintain.  The searchlogic gem also takes care of a lot of what we used to do ourselves in terms of performing searches.  All existing Spree searches have been overhauled to work with searchlogic.  So if you&#8217;re doing any custom searching in your applications you will want to look at <code>admin/orders_controller.rb</code> or other relevant controllers for some ideas on how to pull it off.  Just to repeat, the searchlogic <a href="http://github.com/binarylogic/searchlogic/blob/d110d07a2176582a4aeb9667e64cd22125a36fdd/README.rdoc"><span class="caps">README</span></a> is very detailed.  It will explain everything you need to know about how searchlogic works.</p>
+
+<p>Most applications will only have to make minor changes.  Again, you don&#8217;t need to do anything unless you are overriding a Spree view that uses paging or a Spree controller that provides a searchable list and/or paging.  This should also allow us to build a very powerful advanced search form for the customer facing portion.  We&#8217;re steadily working towards that and other great features so stay tuned.</p>
+  </div>
+</div>
+        </div>
+        <div id="sidebar">
+          <p><div class="panel-blue">
+  <div class="hd">
+    <div class="c"></div>
+  </div>
+  <div class="bd">
+    <div class="c">
+      <h1><a href="http://rubyforge.org/projects/spree/">Spree 0.7.1</a></h1>  
+      <ul class="panel-blue-bullet">
+        <li>Free open source commerce platform</li>
+        <li>Built on the popular Rails 2.2.x platform</li>
+        <li>Distributed as a Ruby Gem</li>
+    <li>Completely extensible: Developer can override views, styles and business logic</li>
+    <li>Production ready data model and administrative interface</li>
+      </ul>
+      <p align="center">
+    <img src="/images/spree_store.png" alt="" />
+      </p>            
+    </div>
+  </div>
+  <div class="ft">
+    <div class="c"></div>
+  </div>
+ </div>
+ <div class="panel-orange">
+  <div class="hd">
+    <div class="c"></div>
+  </div>
+  <div class="bd">
+    <div class="c">
+      <h1><a href="/documentation/">Getting Started</a></h1>  
+      Get Spree up and running in 5 minutes using our easy to follow <ins><a href="/documentation">Quickstart Guide</a></ins>.
+    </div>
+  </div>
+  <div class="ft">
+    <div class="c"></div>
+  </div>
+ </div>  
+ <div class="panel-blue">
+  <div class="hd">
+    <div class="c"></div>
+  </div>
+  <div class="bd">
+    <div class="c">
+      <h1>About Spree</h1>  
+      Spree is the complete open source commerce solution for Ruby on Rails originally developed by Sean Schofield.  It is completely free to use and is licensed under the <ins><a href="/license">New <span class="caps">BSD</span> License</a></ins>.          
+    </div>
+  </div>
+  <div class="ft">
+    <div class="c"></div>
+  </div>
+ </div>
+ <div class="panel-gray">
+  <div class="hd">
+    <div class="c"></div>
+  </div>
+  <div class="bd">
+    <div class="c">
+      <h1><a href="http://www/endpoint.com">Sponsorship</a></h1>  
+      A special thanks to <ins><a href="http://www.endpoint.com">End Point Corporation</a></ins> for their sponsorship of the Spree project.  
+      <p align="center">
+        <a href="http://www.endpoint.com"><img src="images/eplogo.png" alt="" /></a>
+      </p>            
+    </div>
+  </div>
+  <div class="ft">
+    <div class="c"></div>
+  </div>
+ </div></p>
+
+
+<table style="background-color: #fff; padding: 5px;" cellspacing=0>
+  <tr><td>
+  <img src="http://groups.google.com/groups/img/3nb/groups_bar.gif" alt="" />
+  </td></tr>
+  <tr><td style="padding-left: 5px;font-size: 125%">
+  <b>Spree</b>
+  </td></tr>
+  <tr><td style="padding-left: 5px">
+  <a href="http://groups.google.com/group/spree-user">Visit this group</a>
+  </td></tr>
+</table>
+
+<div style="padding: 5px">
+<h3>Archives By Month</h3>
+<ul>
+
+<li><a href="/articles/2009/03/">March 2009</a></li>
+
+<li><a href="/articles/2009/02/">February 2009</a></li>
+
+<li><a href="/articles/2009/01/">January 2009</a></li>
+
+<li><a href="/articles/2008/12/">December 2008</a></li>
+
+<li><a href="/articles/2008/11/">November 2008</a></li>
+
+<li><a href="/articles/2008/10/">October 2008</a></li>
+
+<li><a href="/articles/2008/09/">September 2008</a></li>
+
+<li><a href="/articles/2008/08/">August 2008</a></li>
+
+<li><a href="/articles/2008/07/">July 2008</a></li>
+
+<li><a href="/articles/2008/06/">June 2008</a></li>
+
+<li><a href="/articles/2008/05/">May 2008</a></li>
+
+<li><a href="/articles/2008/04/">April 2008</a></li>
+
+<li><a href="/articles/2008/03/">March 2008</a></li>
+
+</ul>
+</div>
+        </div>
+        <!-- google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3914566-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+<!--
+<div id="footer">
+  <p>
+    This site is powered by <a href="http://radiantcms.org/">Radiant CMS</a>.</p>
+</div>
+-->
+      </div>
+    </div>
+  </body>
+</html>

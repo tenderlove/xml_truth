@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>MySQL ::  Using MySQL With Ruby</title> 
+     
+	<link rel="stylesheet" type="text/css" media="screen" href="/common/css/mysql.css" />
+	<link rel="stylesheet" type="text/css" media="projection" href="/common/css/mysql.css" />
+	<link rel="stylesheet" type="text/css" media="print" href="/common/css/print.css" />
+	 
+	
+	    
+	<link rel="shortcut icon" href="/common/favicon.ico" />
+    <script language="javascript" type="text/javascript" src="/common/js/clear_search_text.js"></script>
+    		<noscript></noscript>
+        
+        
+            
+    
+</head>
+<body  >
+
+<div id="container">
+<!--UdmComment-->
+<a class="skipToContent" href="#mainContent">Skip navigation links</a>
+<div id="header" >
+
+
+	<div id="logo">
+		<span class="nobr"><a href="http://www.mysql.com/" title="MySQL.COM"><img src="/common/logos/logo_mysql_sun_a.gif" width="114" height="68" alt="MySQL" /></a><a href="http://www.sun.com" title="Sun.COM"><img src="/common/logos/logo_mysql_sun_b.gif" width="91" height="68" alt="Sun Microsystems, Inc." /></a></span>
+	</div>
+
+<div id="systemsButton"><p><a href="http://www.sun.com/systems/solutions/mysql/?intcmp=2327"><img src="/common/img/list-orange-arrow-grey.gif" border="0" width="7" height="9" alt="" />&nbsp;Recommended Servers for MySQL</a></p></div>
+
+
+	<div id="tag">
+		<p>The world's most popular open source database</p>
+	</div>
+	
+	<div id="contactButton"><p><a href="http://www.mysql.com/company/contact/" onClick="javascript: pageTracker._trackPageview('/FP/Contact-Rep-Button');">Contact a MySQL Representative</a></p></div>
+		
+
+
+
+    
+  <div id="toplogin" >
+	
+  	
+		
+					 <p><a href="http://www.mysql.com/login/?dest=http%3a%2f%2fdev.mysql.com%2Fusingmysql%2Fruby%2F">Login</a> | <a href="http://www.mysql.com/register.php">Register</a></p>
+			  </div>
+  
+    
+	
+	<div id="worldwide">
+	<br />
+	</div> 
+</div> 
+<span style="clear: both; display: block"></span>
+
+<div class="outerTabsMinWidth">
+<div class="innerTabsMinWidth">
+	<ul id="tabs">
+		<li ><a href="http://www.mysql.com">MySQL.com</a></li>
+		<li class="current"><a href="http://dev.mysql.com">Developer Zone</a></li>
+		<li ><a href="http://solutions.mysql.com?setlang=en">Partners &amp; Solutions</a></li>
+		<li><a href="https://customer.mysql.com">Customer Login</a></li>
+	</ul>
+</div></div>
+
+
+<div id="menu">
+    <div class="bgRight">
+	<ul>
+	<li class="current"><a class="current " href="http://dev.mysql.com/">DevZone</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/downloads/">Downloads</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/doc/">Documentation</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/articles/">Articles</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="http://forums.mysql.com/">Forums</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="http://bugs.mysql.com/">Bugs</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="http://forge.mysql.com/">Forge</a>
+	
+		
+		
+	</li>
+	
+	<li class="link last"><a  href="http://blogs.mysql.com/">Blogs</a>
+	
+		
+		
+	</li>
+	
+</ul>
+	<ul id="search"><li class="last">
+	 	 <form id="searchform" name="searchform" action="http://search.mysql.com/search" method="get">
+		<input class="searchBox" type="text" id="q" name="q"   value="Search" size="12" maxlength="255" onfocus="clearSearchText();" />
+		<input type="hidden" name="ie" value="" />
+		<input type="hidden" name="lr" value="lang_en" />
+		<input style="vertical-align: bottom;" type="image" src="/common/img/button/button-search.gif" alt="Search" value="Search" />
+	 </form>
+	 	</li></ul>
+	&nbsp;</div>
+</div><!--/UdmComment-->
+
+<div class="page_container">
+
+		
+	 <div class="page_sidebar">
+		<!--UdmComment-->
+	
+	
+		<div id="submenu">
+				<ul>
+	<li class="link"><a  href="/usingmysql/get_started.html">Get Started with MySQL</a>
+	
+		
+		
+	</li>
+	
+	<li class="current"><a class="current subitems" href="/usingmysql/">Development with MySQL</a>
+	
+		
+			<ul class="subitems1">
+	<li class="link"><a  href="/usingmysql/php/">PHP</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/usingmysql/perl/">Perl</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/usingmysql/python/">Python</a>
+	
+		
+		
+	</li>
+	
+	<li class="current"><a class="current " href="/usingmysql/ruby/">Ruby</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/usingmysql/java/">Java/JDBC</a>
+	
+		
+		
+	</li>
+	
+	<li class="link last"><a  href="/usingmysql/dotnet/">.NET/C#/Visual&nbsp;Basic/Powershell</a>
+	
+		
+		
+	</li>
+	
+</ul>		
+	</li>
+	
+	<li class="link"><a  href="http://mysql.meetup.com/">MySQL Meetups</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="/guilds/">Guilds</a>
+	
+		
+		
+	</li>
+	
+	<li class="link"><a  href="http://lists.mysql.com/">Lists</a>
+	
+		
+		
+	</li>
+	
+</ul> 
+		</div>
+	
+		<br class="clear" />
+		
+				
+			 
+	 
+	
+				
+				
+				
+			
+			
+						
+						
+					
+							<hr />
+				 <div><a href="/click.php?e=35115"><img src="/common/promo/h1-mysql-newsletter.en.png" alt="MySQL Newsletter - Subscribe Today!" width="230" height="85" border="0" /></a></div>
+						
+			
+			
+										
+				<div class="sidebarBannerAd">
+					<script type="text/javascript">
+					<!--
+					google_ad_client = "pub-3255031602947757";
+					google_ad_width = 160;
+					google_ad_height = 600;
+					google_ad_format = "160x600_as";
+					google_ad_type = "text_image";
+
+										
+										google_ad_channel = "0028485735";
+					google_color_border = "e0e0e0";
+					google_color_bg = "fbfbfb";
+					google_color_link = "00759f";
+					google_color_url = "00759f";
+					google_color_text = "000000";
+					//-->
+					</script>
+					<noscript></noscript>
+					<script type="text/javascript"
+						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+					<noscript></noscript>
+				</div>	
+				
+			
+	<!--/UdmComment-->
+	</div>		
+	
+	  
+<!-- Main content -->
+<a name="mainContent"></a>
+<div id="page" class="sidebar" >
+
+	 
+		<h1 class="page_header">Using MySQL With Ruby</h1>
+	 
+	
+	
+
+
+
+
+	<div style="width: 99%">
+
+<div style="width: 60%; float: left">
+
+<h3>Downloads</h3>
+
+<h3>Documentation</h3>
+
+<h3>Tutorials</h3>
+
+<ul>
+    <li><a href="http://www.onlamp.com/pub/a/onlamp/2005/01/20/rails.html">OnLAMP: "Rolling with Ruby on Rails" Tutorial</a></li> 
+    <li><a href="http://hivelogic.com/narrative/articles/ruby-rails-mongrel-mysql-osx">Building Ruby, Rails, Subversion, Mongrel, and MySQL on Mac OS X</a></li> 
+    <li><a href="http://hivelogic.com/narrative/articles/railsconf-2007-slides">Presentation: Building Community Focused Apps with Rails</a>
+</ul>
+
+<h3>MySQL Users Conference Presentations</h3>
+
+<ul>
+    <li><a href="http://www.mysqluc.com/presentations/mysql06/mashraqi_farhan.ppt">Applied Ruby on Rails and AJAX</a></li>    
+</ul>
+
+<h3>Articles</h3>
+
+<ul>
+    <li><a href="/tech-resources/interviews/david-heinemeier-hansson-rails.html">Interview with David Heinemeier Hansson from Ruby on Rails</a></li>    
+</ul>
+
+<h3>Forums</h3>
+
+<ul>
+    <li><a href="http://forums.mysql.com/list.php?116">Ruby</a></li>
+</ul>
+
+<h3>Blogs</h3> 
+
+<ul>
+    <li><a href="http://planet.mysql.com">Planet MySQL</a></li>
+    <li><a href="http://planetruby.0x42.net/">Planet Ruby</a></li>
+</ul>
+
+<h3>Web Sites</h3>
+
+<ul>
+    <li><a href="http://www.ruby-doc.org/">Ruby Documentation Project</a></li>
+    <li><a href="http://www.rubygarden.org/ruby/">Ruby Garden</a></li>
+    <li><a href="http://www.ruby-lang.org/">Ruby Language Page</a></li>
+    <li><a href="http://www.ruby-doc.org/stdlib/libdoc/rdoc/rdoc/index.html">RDOC - Ruby Documentation System</a></li>
+</ul>
+ 
+<h3>Examples of MySQL & Ruby Customers</h3>
+
+<ul>
+    <li><a href="http://adoppt.com/">Adoppt</a></li> 
+</ul>
+
+</div>
+
+<div style="width: 35%; float: right">
+
+<div class="news box">
+<h2 class="m"><a href="http://planet.mysql.com/">Ruby on Planet MySQL</a></h2>
+	
+<ul>
+  <li><a href="http://planet.mysql.com/entry.php?id=18120">Developing GlassFish- and MySQL-Backed Applications with Netbeans and JRuby-on-Rails - Free Webinar on Mar 26</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=17340">Nice Webinar: MySQL, NetBeans, JRuby-on-Rails</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=17339">Webinar Replay Available: GlassFish and MySQL-backed applications with NetBeans and JRuby-on-Rails</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=17191">Developing GlassFish- and MySQL-Backed Applications with Netbeans and JRuby-on-Rails - Free Webinar on Jan 27</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=17112">MySQL and GlassFish Webinars - Sailfin, JRuby, High Availability, and more</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=17049">Why Ruby (and Rails) is Awesome</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=15677">ActiveMQ + Ruby Stomp Client: How to process elements one by one</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=15201">JRuby for Java Skeptics, GAP in Sao Paolo,  Brazil, OpenSSO, OpenDS and GF, MySQL Users Conference</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=14258">Using Ruby to Migrate Databases</a></li>
+  <li><a href="http://planet.mysql.com/entry.php?id=13867">Rails/Ruby News - Resources, Tutorials, Adoption Stories</a></li>
+</ul>
+
+<div align="right">
+  <a class="moreinfo" href="http://planet.mysql.com/">More&nbsp;posts&nbsp;&raquo;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+</div>
+
+<div class="news box">
+<h2 class="m"><a href="http://forums.mysql.com/read.php?116">MySQL Ruby Forum</a></h2>
+	
+<ul>
+  <li><a href="http://forums.mysql.com/read.php?116,254532,254532#msg-254532">HELP: Gem install mysql (error) APTANA</a>
+  <li><a href="http://forums.mysql.com/read.php?116,250371,250371#msg-250371">Posterous: Building and Scaling a Startup on Rails: 12 Things We Learned the Hard Way</a>
+  <li><a href="http://forums.mysql.com/read.php?116,250011,250011#msg-250011">Installing Ruby MySQL gem from a remote server</a>
+  <li><a href="http://forums.mysql.com/read.php?116,249538,249538#msg-249538">segmentation fault in every .query("...</a>
+  <li><a href="http://forums.mysql.com/read.php?116,245268,245268#msg-245268">Parallel Statement execution on single Connection object in mysql jdbc</a>
+  <li><a href="http://forums.mysql.com/read.php?116,241338,241338#msg-241338">Segmentation error</a>
+  <li><a href="http://forums.mysql.com/read.php?116,240223,240223#msg-240223">The bundled mysql.rb driver has been removed from Rails 2.2</a>
+  <li><a href="http://forums.mysql.com/read.php?116,239454,239454#msg-239454">'access is denied' - trying to load schema</a>
+  <li><a href="http://forums.mysql.com/read.php?116,239079,239079#msg-239079">JRuby Co-Developer to conduct Workshop on JRuby, Testing Java with Ruby</a>
+  <li><a href="http://forums.mysql.com/read.php?116,237626,237626#msg-237626">MySQL 5.1 Ruby Gem</a>
+</ul>
+
+<div align="right">
+  <a class="moreinfo" href="http://forums.mysql.com/read.php?116">More posts &raquo;</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+<!--UdmComment-->
+ <div id="footer">
+    <div id="copyright">&copy; 1995-2008 MySQL AB, 2008-2009 Sun Microsystems, Inc.</div>
+     <ul>
+ 		<li><a href="http://shop.mysql.com">Online Shop</a></li>
+		<li><a href="http://www.mysql.com/sitemap.html">Site Map</a></li>
+		<li><a href="http://www.mysql.com/about/">About MySQL</a></li> 
+		<li><a href="http://www.mysql.com/about/legal/">Legal</a></li>
+		<li><a href="http://www.mysql.com/about/legal/mysql_web_privacy_policy.html">Privacy Policy</a></li>
+ 		<li><a href="http://www.mysql.com/about/contact/">Contact Us</a></li> 
+		<li class="last"><a href="http://www.mysql.com/about/jobs/">Job Opportunities</a></li> 
+     </ul>
+
+</div> <!--/UdmComment-->
+
+ </div> 
+</div> </div> 
+
+		        <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-225536-3");
+        pageTracker._trackPageview();
+        </script>
+	
+<script type="text/javascript" src="/common/js/s_code_remote.js"></script> 
+
+</body>
+</html>

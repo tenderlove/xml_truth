@@ -1,0 +1,84 @@
+<HTML><HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>Ruby Regexp Class - Regular Expressions in Ruby</TITLE>
+
+<link rel="alternate" type="application/rss+xml" title="Regex Guru" href="http://www.regexguru.com/feed/">
+<META NAME="Author" CONTENT="Jan Goyvaerts">
+<META NAME="Description" CONTENT="Learn how to use regular expressions with Ruby and the Ruby Regexp class">
+<META NAME="Keywords" CONTENT="">
+<LINK REL=StyleSheet HREF="regex.css" TYPE="text/css">
+</HEAD>
+<BODY BGCOLOR=white TEXT=black>
+<DIV CLASS=top><DIV CLASS=logo><IMG SRC="img/logo.gif" WIDTH=530 HEIGHT=100></DIV></DIV>
+<DIV CLASS=btntop><a class=btntop href="tutorial.html" target="_top">Tutorial</a><a class=btntop href="tools.html" target="_top">Tools&nbsp;&amp;&nbsp;Languages</a><a class=btntop href="examples.html" target="_top">Examples</a><a class=btntop href="books.html" target="_top">Books&nbsp;&amp;&nbsp;Reference</a></DIV>
+<DIV CLASS=bodytext>
+<TABLE CLASS=topad>
+<TR><TD VALIGN=top><A HREF="http://www.regexbuddy.com/ruby.html" TARGET="_top"><IMG SRC="img/rxb48.gif" WIDTH=48 HEIGHT=48 ALT="RegexBuddy" BORDER=0></A></TD>
+<TD CLASS=topad><B><A HREF="http://www.regexbuddy.com/ruby.html" TARGET="_top">Easily use the power of regular expressions with Ruby</A> and RegexBuddy.</B><BR>
+Create and analyze regex patterns with RegexBuddy's intuitive regex building blocks.  Implement regexes in your Ruby scripts with instant code snippets.  Just tell RegexBuddy what you want to achieve, and copy and paste the auto-generated Ruby code. <A HREF="http://www.regexbuddy.com/">Get your own copy of RegexBuddy now</A>.</TD>
+</TR></TABLE>
+
+
+<H1>Using Regular Expressions with Ruby</H1>
+
+<P>Ruby supports regular expressions as a language feature.  In Ruby, a regular expression is written in the form of <TT CLASS=code>/pattern/modifiers</TT> where "pattern" is the regular expression itself, and "modifiers" are a series of characters indicating various options.  The "modifiers" part is optional.  This syntax is borrowed from <A HREF="perl.html" TARGET="_top">Perl</A>.  Ruby supports the following <A HREF="modifiers.html" TARGET="_top">modifiers</A>:</P>
+
+<UL>
+<LI><TT CLASS=code>/i</TT> makes the regex match case insensitive.
+<LI><TT CLASS=code>/m</TT> makes <A HREF="dot.html" TARGET="_top">the dot match newlines</A>.  Ruby indeed uses /m, whereas Perl and many other programming languages use /s for "dot matches newlines".
+<LI><TT CLASS=code>/x</tt> tells Ruby to <A HREF="freespacing.html" TARGET="_top">ignore whitespace between regex tokens</A>.
+<LI><TT CLASS=code>/o</TT> causes any #{...} substitutions in a particular regex literal to be performed just once, the first time it is evaluated. Otherwise, the substitutions will be performed every time the literal generates a Regexp object.
+</UL>
+
+<P>You can combine multiple modifiers by stringing them together as in <TT CLASS=code>/regex/is</TT>.</P>
+
+<P>In Ruby, the <A HREF="anchors.html" TARGET="_top">caret and dollar always match before and after newlines</A>.  Ruby does not have a modifier to change this.  Use <TT CLASS=regex>\A</TT> and <TT CLASS=regex>\Z</TT> to <A HREF="anchors.html#az">match at the start or the end of the string</A>.</P>
+
+<P>Since forward slashes delimit the regular expression, any forward slashes that appear in the regex need to be escaped.  E.g. the regex <TT CLASS=regex>1/2</TT> is written as <TT CLASS=code>/1\/2/</TT> in Ruby.</P>
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-7485249680256358";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel = "";
+google_color_border = "FF6600";
+google_color_bg = "FFF4E8";
+google_color_link = "0000FF";
+google_color_text = "000000";
+google_color_url = "803300";
+google_ui_features = "rc:0";
+//-->
+</script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><H2>How To Use The Regexp Object</H2>
+
+<P><TT CLASS=code>/regex/</TT> creates a new object of the class Regexp.  You can assign it to a variable to repeatedly use the same regular expression, or use the literal regex directly.  To test if a particular regex matches (part of) a string, you can either use the <TT CLASS=code>=~</TT> operator, call the regexp object's <TT CLASS=code>match()</TT> method, e.g.: <TT CLASS=code>print "success" if subject =~ /regex/</TT> or <TT CLASS=code>print "success" if /regex/.match(subject)</TT>.</P>
+
+<P>The <TT CLASS=code>=~</TT> operator returns the character position in the string of the start of the match (which evaluates to true in a boolean test), or nil if no match was found (which evaluates to false).  The <TT CLASS=code>match()</TT> method returns a MatchData object (which also evaluates to true), or nil if no matches was found.  In a string context, the MatchData object evaluates to the text that was matched.  So <TT CLASS=code>print(/\w+/.match("test"))</TT> prints "test", while <TT CLASS=code>print(/\w+/ =~ "test")</TT> prints "0".  The first character in the string has index zero.  Switching the order of the <TT CLASS=code>=~</TT> operator's operands makes no difference.</P>
+
+<h2>Special Variables</h2>
+
+<p>The <tt class=code>=~</tt> operator and the <tt class=code>match()</tt> method sets the special variables <tt class=code>$~</tt>.  This variables is thread-local and method-local.  That means you can use this variable until your method exits, or until the next time you use the <tt class="code">=~</tt> operator in your method, without worrying that another thread or another method in your thread will overwrite them.  <tt class=code>$~</tt> holds the same MatchData object returned by <tt class=code>Regexp.match()</tt>.</p>
+
+<p>A number of other special variables are derived from the <tt class=code>$~</tt> variable.  All of these are read-only.  If you assign a new MatchData instance to <tt class=code>$~</tt>, all of these variables will change too.  <tt class=code>$&</tt> holds the text matched by the whole regular expression.  <tt class=code>$1</tt>, <tt class=code>$2</tt>, etc. hold the text matched by the first, second, and following capturing groups.  <tt class=code>$+</tt> holds the text matched by the highest-numbered capturing group that actually participated in the match.  <tt class=code>$`</tt> and <tt class=code>$'</tt> hold the text in the subject string to the left and to the right of the regex match.</p>
+
+<H2>Search And Replace</H2>
+
+<P>Use the <TT CLASS=code>sub()</TT> and <TT CLASS=code>gsub()</TT> methods of the String class to search-and-replace the first regex match, or all regex matches, respectively, in the string.  Specify the regular expression you want to search for as the first parameter, and the replacement string as the second parameter, e.g.: <TT CLASS=code>result = subject.gsub(/before/, "after")</TT>.</P>
+
+<P>To re-insert the regex match, use <TT CLASS=code>\0</TT> in the replacement string.  You can use the contents of <A HREF="brackets.html" TARGET="_top">capturing groups</A> in the replacement string with backreferences <TT CLASS=code>\1</TT>, <TT CLASS=code>\2</TT>, <TT CLASS=code>\3</TT>, etc.  Note that numbers escaped with a backslash are treated as octal escapes in double-quoted strings.  Octal escapes are processed at the language level, before the sub() function sees the parameter.  To prevent this, you need to escape the backslashes in double-quoted strings.  So to use the first backreference as the replacement string, either pass <TT CLASS=code>'\1'</TT> or <TT CLASS=code>"\\1"</TT>.  <TT CLASS=code>'\\1'</TT> also works.</P>
+
+<H2>Splitting Strings and Collecting Matches</H2>
+
+<P>To collect all regex matches in a string into an array, pass the regexp object to the string's <TT CLASS=code>scan()</TT> method, e.g.: <TT CLASS=code>myarray = mystring.scan(/regex/)</TT>.  Sometimes, it is easier to create a regex to match the delimiters rather than the text you are interested in.  In that case, use the <TT CLASS=code>split()</TT> method instead, e.g.: <TT CLASS=code>myarray = mystring.split(/delimiter/)</TT>.  The <TT CLASS=code>split()</TT> method discards all regex matches, returning the text between the matches.  The <TT CLASS=code>scan()</TT> method does the opposite.</P>
+
+<P>If your regular expression contains <A HREF="brackets.html" TARGET="_top">capturing groups</A>, <TT CLASS=code>scan()</TT> returns an array of arrays.  Each element in the overall array will contain an array consisting of the overall regex match, plus the text matched by all capturing groups.</P><h2>Make a Donation</h2>
+<p>Did this website just save you a trip to the bookstore?  Please <a href="donate.html">make a donation</a> to support this site, and you'll get a lifetime of advertisement-free access to this site!</p>
+<DIV CLASS=copyright> <P CLASS=copyright>Page URL: <A HREF="http://www.Regular-Expressions.info/ruby.html" TARGET="_top">http://www.Regular-Expressions.info/ruby.html</A><BR> Page last updated: 16 August 2008<BR> Site last updated: 02 February 2009<BR> Copyright &copy; 2003-2009 Jan Goyvaerts. All rights reserved.</P> </DIV> </DIV> <DIV CLASS=side><TABLE CLASS=side CELLSPACING=0 CELLPADDING=4><TR><TD CLASS=sideheader>Regex Tools</TD></TR><TR><TD><A HREF="grep.html" TARGET=_top>grep</A></TD></TR><TR><TD><A HREF="powergrep.html" TARGET=_top>PowerGREP</A></TD></TR><TR><TD><A HREF="regexbuddy.html" TARGET=_top>RegexBuddy</A></TD></TR>
+</TABLE><TABLE CLASS=side CELLSPACING=0 CELLPADDING=4><TR><TD CLASS=sideheader>General Applications</TD></TR><TR><TD><A HREF="editpadpro.html" TARGET=_top>EditPad&nbsp;Pro</A></TD></TR>
+</TABLE><TABLE CLASS=side CELLSPACING=0 CELLPADDING=4><TR><TD CLASS=sideheader>Languages &amp; Libraries</TD></TR><TR><TD><A HREF="delphi.html" TARGET=_top>Delphi</A></TD></TR><TR><TD><A HREF="gnu.html" TARGET=_top>GNU&nbsp;(Linux)</A></TD></TR><TR><TD><A HREF="java.html" TARGET=_top>Java</A></TD></TR><TR><TD><A HREF="javascript.html" TARGET=_top>JavaScript</A></TD></TR><TR><TD><A HREF="dotnet.html" TARGET=_top>.NET</A></TD></TR><TR><TD><A HREF="pcre.html" TARGET=_top>PCRE&nbsp;(C/C++)</A></TD></TR><TR><TD><A HREF="perl.html" TARGET=_top>Perl</A></TD></TR><TR><TD><A HREF="php.html" TARGET=_top>PHP</A></TD></TR><TR><TD><A HREF="posix.html" TARGET=_top>POSIX</A></TD></TR><TR><TD><A HREF="powershell.html" TARGET=_top>PowerShell</A></TD></TR><TR><TD><A HREF="python.html" TARGET=_top>Python</A></TD></TR><TR><TD><A HREF="rlanguage.html" TARGET=_top>R</A></TD></TR><TR><TD><A HREF="realbasic.html" TARGET=_top>REALbasic</A></TD></TR><TR><TD><A HREF="ruby.html" TARGET=_top>Ruby</A></TD></TR><TR><TD><A HREF="tcl.html" TARGET=_top>Tcl</A></TD></TR><TR><TD><A HREF="vbscript.html" TARGET=_top>VBScript</A></TD></TR><TR><TD><A HREF="vb.html" TARGET=_top>Visual&nbsp;Basic&nbsp;6</A></TD></TR><TR><TD><A HREF="wxwidgets.html" TARGET=_top>wxWidgets</A></TD></TR><TR><TD><A HREF="xml.html" TARGET=_top>XML&nbsp;Schema</A></TD></TR><TR><TD><A HREF="xpath.html" TARGET=_top>XQuery&nbsp;&amp;&nbsp;XPath</A></TD></TR>
+</TABLE><TABLE CLASS=side CELLSPACING=0 CELLPADDING=4><TR><TD CLASS=sideheader>Databases</TD></TR><TR><TD><A HREF="mysql.html" TARGET=_top>MySQL</A></TD></TR><TR><TD><A HREF="oracle.html" TARGET=_top>Oracle</A></TD></TR><TR><TD><A HREF="postgresql.html" TARGET=_top>PostgreSQL</A></TD></TR>
+</TABLE><TABLE CLASS=side CELLSPACING=0 CELLPADDING=4><TR><TD CLASS=sideheader>More Information</TD></TR><TR><TD><A HREF="index.html" TARGET=_top>Introduction</A></TD></TR><TR><TD><A HREF="quickstart.html" TARGET=_top>Quick&nbsp;Start</A></TD></TR><TR><TD><A HREF="tutorial.html" TARGET=_top>Tutorial</A></TD></TR><TR><TD><A HREF="tools.html" TARGET=_top>Tools&nbsp;and&nbsp;Languages</A></TD></TR><TR><TD><A HREF="examples.html" TARGET=_top>Examples</A></TD></TR><TR><TD><A HREF="books.html" TARGET=_top>Books</A></TD></TR><TR><TD><A HREF="reference.html" TARGET=_top>Reference</A></TD></TR><TR><TD><A HREF="print.html" TARGET=_top>Print&nbsp;PDF</A></TD></TR><TR><TD><A HREF="about.html" TARGET=_top>About&nbsp;This&nbsp;Site</A></TD></TR><TR><TD><A HREF="updates.html" TARGET=_top>RSS&nbsp;Feed&nbsp;&amp;&nbsp;Blog</A></TD></TR></TABLE></DIV></BODY></HTML>

@@ -1,0 +1,975 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <title>John Resig -   Ruby VM in JavaScript</title>
+  <link href="/css/style.css" media="screen" rel="Stylesheet" type="text/css"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/index.rdf" />
+</head>
+<body>
+
+<div id="head" class="other">
+        <div class="nav">
+                <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/blog/">Archives</a></li>
+                        <li><a href="/projects/">Projects</a></li>
+                        <!--<li><a href="/interests/">Interests</a></li>-->
+                        <li><a href="/about/">About Me</a></li>
+                </ul>
+        </div>
+        <div class="side">
+                <a href="http://ejohn.org/about/"><img src="/files/jeresig-wordpress-sm.jpg" class="logo" alt="John Resig" /></a>
+                <div class="text">
+                        <a href="/about/" class="name"><strong>John</strong> Resig</a><br/>
+                        <a href="/about/">Contact</a>,
+                        <a href="/index.rdf">Subscribe</a>
+                </div>
+        </div>
+</div>
+<div class="drop"><img src="/images/ejohn-main-drop.gif"/></div>
+<div id="wrap">
+        <div id="body"><div class="wrap">
+<h2>  Ruby VM in JavaScript</h2><br/>
+
+		
+		
+<style>.postentry h3 { font-weight: bold; }
+.postentry blockquote { padding-left: 5px; border-left: 3px solid #BBB; }
+.syntax_hilite ol { list-style: none; }</style>
+  			
+				<div class="postentry">
+
+
+	<blockquote><p>Welcome <a href="http://waxy.org/links/">Waxy.org</a> and <a href="http://developers.slashdot.org/article.pl?sid=08/04/28/1813223&#038;from=rss">Slashdot</a> readers. I <a href="http://ejohn.org/">blog about JavaScript</a>, like it's <a href="http://ejohn.org/about/">my job</a>, feel free to <a href="http://ejohn.org/index.rdf">subscribe</a> for a ton more posts like this.</p>
+	<p><b>Related Posts:</b></p>
+	<ul>
+	<li><a href="http://ejohn.org/blog/running-java-in-javascript/">Running Java in JavaScript</a></li>
+	<li><a href="http://ejohn.org/blog/javascript-talk-at-northeastern/">JavaScript Talk at Northeastern University</a></li>
+	<li><a href="http://ejohn.org/blog/state-of-ecmascript-4-dec-07/">State of ECMAScript 4</a></li>
+	<li><a href="http://ejohn.org/blog/the-world-of-ecmascript/">The World of ECMAScript</a></li>
+	<li><a href="http://ejohn.org/blog/javascript-as-a-language/">JavaScript As A Language</a></li>
+	</ul>
+	<p><b>Note:</b> I'm not the creator of <a href="http://hotruby.accelart.jp/">HotRuby</a>, as mentioned elsewhere - it is the work of a highly-skilled <a href="http://d.hatena.ne.jp/yukoba/">Japanese developer</a>.</p></blockquote>
+	<p><a href="http://hotruby.accelart.jp/">HotRuby</a> is a project which aims to port the Ruby Virtual Machine over to ECMAScript (allowing it to run, directly, in a browser using JavaScript or indirectly using ActionScript in Flash).</p>
+	<p>Currently the code works by using Ruby 1.9's YARV (Yet Another Ruby VM) to compile down a Ruby script into opcodes, which are then serialized and passed to the browser for execution. It's a little bit indirect but it still capable of creating a compelling result.</p>
+	<p>If you were to run one of <a href="http://hotruby.accelart.jp/test-web/bm_loop_times.html">the examples</a> in your browser the actual chain of execution would be something like this:</p>
+	<ol>
+	<li>Script finds &lt;script type="text/ruby">&lt;/script> tags and extracts the inline Ruby code from them.</li>
+	<li>The Ruby code is sent to the server via an XMLHttpRequest.</li>
+	<li>The server-side CGI script (in Ruby, using Ruby 1.9) compiles the incoming Ruby into its associated opcodes and serializes it into a JSON data structure.</li>
+	<li>The browser consumes the opcodes, translating it into JavaScript, and executes it.</li>
+	</ol>
+	<p>To observe this full process we can take a look at the code in the <a href="http://hotruby.accelart.jp/test-web/bm_loop_times.html">provided benchmark</a> and watch its full path through the server and final execution:</p>
+	<div class="syntax_hilite">
+<div id="js-1">
+	<div>startTime = Time.<span style="color: #006600;">new</span>.<span style="color: #006600;">to_f</span><br />
+&nbsp; <br />
+sum = <span style="color: #3366CC;">""</span><br />
+<span style="color: #CC0000;">50000</span>.<span style="color: #006600;">times</span><span style="color:#008800; font-weight:bold;">&#123;</span>|e| sum += e.<span style="color: #006600;">to_s</span><span style="color:#008800; font-weight:bold;">&#125;</span><br />
+&nbsp; <br />
+endTime = Time.<span style="color: #006600;">new</span>.<span style="color: #006600;">to_f</span><br />
+puts <span style="color:#008800; font-weight:bold;">&#40;</span>endTime - startTime<span style="color:#008800; font-weight:bold;">&#41;</span>.<span style="color: #006600;">to_s</span> + <span style="color: #3366CC;">' sec'</span></div>
+	</div>
+</div>
+	<p>For example, observe this portion of the CGI script:</p>
+	<div class="syntax_hilite">
+<div id="js-2">
+	<div>#!<span style="color: #0066FF;">/usr/local/bin/</span>ruby<br />
+# Requires Ruby <span style="color: #CC0000;">1</span>.<span style="color: #CC0000;">9</span>.<span style="color: #CC0000;">0</span><br />
+# The license of <span style="color: #000066; font-weight: bold;">this</span> source <span style="color: #000066; font-weight: bold;">is</span> <span style="color: #3366CC;">"Ruby License"</span></p>
+	<p>require <span style="color: #3366CC;">'json'</span><br />
+require <span style="color: #3366CC;">'cgi'</span></p>
+	<p>cgi = CGI.<span style="color: #006600;">new</span></p>
+	<p>puts <span style="color: #3366CC;">"Content-type: text/plain<span style="color: #000099; font-weight: bold;">\n</span><span style="color: #000099; font-weight: bold;">\n</span>"</span><br />
+puts VM::InstructionSequence.<span style="color: #006600;">compile</span><span style="color:#008800; font-weight:bold;">&#40;</span>cgi<span style="color:#008800; font-weight:bold;">&#91;</span><span style="color: #3366CC;">'src'</span><span style="color:#008800; font-weight:bold;">&#93;</span>, <span style="color: #3366CC;">"src"</span>, <span style="color: #CC0000;">1</span>, <span style="color:#008800; font-weight:bold;">&#123;</span><span style="color:#008800; font-weight:bold;">&#125;</span><span style="color:#008800; font-weight:bold;">&#41;</span>.<span style="color: #006600;">to_a</span>.<span style="color: #006600;">to_json</span></div>
+	</div>
+</div>
+	<p>and a sample of the opcode data returned by the server:</p>
+	<p><small><tt>["YARVInstructionSequence\/SimpleDataFormat",1,1,1,{"arg_size":0,"local_size":4,"stack_max":3},"<compiled>","src","top",["startTime","sum","endTime"],0,[["break",null,"label_21","label_29","label_29",0]],[2,["putnil"],["getconstant","Time"],["send","new",0,null,0,null],["send","to_f",0,null,0,null],["setlocal",4],4,["putstring",""],["setlocal",3],"label_21",5,["putobject",50000],["send","times",0,["YARVInstructionSequence\/SimpleDataFormat",1,1,1,{"arg_size":1,"local_size":1,"stack_max":2},"block in <compiled>","src","block",["e"],[1,[],0,0,-1,-1,3],[["redo",null,"label_0","label_22","label_0",0],["next",null,"label_0","label_22","label_22",0]],["label_0",5,["getdynamic",3,1],["getdynamic",1,0],["send","to_s",0,null,0,null],["send","+",1,null,0,null],["dup"],["setdynamic",3,1],"label_22",["leave"]]],0,null],"label_29",["pop"],7,["putnil"],["getconstant","Time"],["send","new",0,null,0,null],["send","to_f",0,null,0,null],["setlocal",2],9,["putnil"],8,["getlocal",2],["getlocal",4],["send","-",1,null,0,null],["send","to_s",0,null,0,null],["putstring"," sec"],9,["send","+",1,null,0,null],["send","puts",1,null,8,null],8,["leave"]]]</tt></small></p>
+	<p>and you can find the full client-side virtual machine here: <a href="http://hotruby.accelart.jp/js/HotRuby.js">HotRuby.js</a>.</p>
+	<p>Perhaps most fascinating about this, though, is the speeds that are able to be achieved with this script. Granted, the above benchmark is rather contrived, but the end performance results are quite fascinating:</p>
+	<table>
+	<tr>
+<td>Firefox 3.0b5</td>
+	<td>2.47s</td>
+</tr>
+	<tr>
+<td>Firefox 2</td>
+	<td>6.71s</td>
+</tr>
+	<tr>
+<td>Ruby 1.8.2</td>
+	<td>12.25s</td>
+</tr>
+	</table>
+	<p>We can see a <b>2.71x</b> speed improvement from Firefox 2 to Firefox 3 and a <b>5x</b> performance improvement over regular Ruby 1.8.2, running on the command-line.</p>
+	<p>It's a fascinating time to be working with JavaScript. The performance improvements that are being provided to us by the browser afford us a realm of possibility that wasn't, previously, viable. The fact that we're even discussing running a virtual machine, implemented in JavaScript, is quite impressive. I'm curious to see what applications end up being built with this implementation - and within what context they end up using it.
+</p>
+ 
+
+				</div>
+
+		<p><small><strong>Posted:</strong> April 8th, 2008		&#183; <strong>Tags:</strong> <a href="http://ejohn.org/blog/tags/javascript/" target="_self">javascript</a>, <a href="http://ejohn.org/blog/tags/ecmascript/" target="_self">ecmascript</a>, <a href="http://ejohn.org/blog/tags/ruby/" target="_self">ruby</a>, <a href="http://ejohn.org/blog/tags/vm/" target="_self">vm</a>				</small></p>
+				<!--
+				<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	    xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://ejohn.org/blog/ruby-vm-in-javascript/"
+    dc:identifier="http://ejohn.org/blog/ruby-vm-in-javascript/"
+    dc:title="Ruby VM in JavaScript"
+    trackback:ping="http://ejohn.org/blog/ruby-vm-in-javascript/trackback/" />
+</rdf:RDF>				-->
+			
+
+<!-- You can start editing here. -->
+
+
+	<h4 id="comments">
+	39 Comments		<a href="#postcomment" title="Jump to the comments form" id="showcomment" onclick="document.getElementById('commentlist').style.display='block';">(Show Comments)</a>
+		</h4>
+
+	<style>#commentlist li { font-size: 13px; }
+	#commentlist li h3 { background: #F5F5F5; border-bottom: 1px solid #BBB; padding: 4px; }
+	#commentlist li div.comment-text { margin-left: 15px; }
+	#commentform { border-top: 1px solid #BBB; border-bottom: 1px solid #BBB; margin-left: 20px; margin-right: 20px; background: #F5F5F5; padding: 5px; margin-top: 50px; }
+	#commentform h4 { margin: 0; }</style>
+	
+	<ol id="commentlist" style="list-style:none;margin:0;padding:0;display:none;">
+
+	
+		<li class="alt" id="comment-301083">
+		
+		<h3 class="commenttitle"><b>micha17</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301083" title="Permanent link to this comment">9:28 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>isn't that a bit unfair:<br />
+the classic ruby version is 1.8.2 but the CGI version is 1.9.</p>
+	<p>nevertheless.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301085">
+		
+		<h3 class="commenttitle"><b><a href='http://www.simplicidade.org/' rel='external nofollow'>Pedro Melo</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301085" title="Permanent link to this comment">9:45 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Hi,</p>
+	<p>micha17: why unfair? The CGI does not execute the Ruby benchmark, it only converts to JavaScript.</p>
+	<p>But back to the story: let me get this straight, because I'm having a hard time believing - You take Ruby code, convert it to JavaScript, and execute it in a browser, and after all that the runtime is between 1.8 and 5 time faster?</p>
+	<p>That's impressive.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301086">
+		
+		<h3 class="commenttitle"><b>Kirk Cerny</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301086" title="Permanent link to this comment">10:01 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>I wonder how this process compares with the speed of PHP or perl?
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301087">
+		
+		<h3 class="commenttitle"><b><a href='http://ejohn.org/' rel='external nofollow'>John Resig</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301087" title="Permanent link to this comment">10:31 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@micha17: Pedro is correct - the CGI only converts the Ruby code into the opcodes (compiles it) - it doesn't actually execute it. The command-line version of Ruby gets all the same benefits (in that compile time is not taken into consideration).</p>
+	<p>@Pedro: That's correct! Although, as I mentioned above, it is quite contrived. There was some discussion over at RubyInside where <a href="http://www.rubyinside.com/hotruby-a-javascript-flash-virtual-machine-that-runs-ruby-821.html#comment-35821" rel="nofollow">one commenter</a> tried the Fibonacci sequence - seeing a much lower performance improvement. Although, he doesn't mention what browser he was using, so it may not be as bad as he makes it out to be.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301088">
+		
+		<h3 class="commenttitle"><b><a href='http://mar.anomy.net/' rel='external nofollow'>MÃ¡r</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301088" title="Permanent link to this comment">10:38 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Uhm... why (outside of "proof of concept") would anyone in his or her right mind want to do this?
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301089">
+		
+		<h3 class="commenttitle"><b>markus</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301089" title="Permanent link to this comment">10:56 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>'Uhm... why (outside of "proof of concept") would anyone in his or her right mind want to do this?'</p>
+	<p>Simple.<br />
+Because you can write in ruby code.</p>
+	<p>The key is that (one day) you abolish the limitation of javascript in certain situations. For the local network here for example (all using firefox mind you) I could concentrate on writing in ruby, and never have to touch javascript again.</p>
+	<p>This is a huge advantage. If you fail to see that I just cant help. But to the others I can assure that "web apps" that leave the "web" part out of the name will be a solid future. Not only Mozilla prism, but in general - the artificial separation of "web apps vs non-web apps" is bad. </p>
+	<p>It should be ONLY about apps, no matter where they originated from. (But i see this is slowly improving, so I am patient.)</p>
+	<p>Lets just hope that Ruby 1.9.x will be production ready within a forseeable time.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301090">
+		
+		<h3 class="commenttitle"><b><a href='http://sstrudeau.com' rel='external nofollow'>Scott Trudeau</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301090" title="Permanent link to this comment">11:01 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@MÃ¡r that was my first reaction.  I assume you could also generate the opcode for some scripts on the initial page request and include it in the page, rather than do the XHR loop.  </p>
+	<p>Then you could write all Ruby code that runs both on the server and can be "compiled" for execution on the client as well.  I always encounter this for complex form validation/input processing, where I often end up writing two sets of identical functions, one in the server-side language and one in JS.  The reverse of this is probably something like Jaxer.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301091">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301091" title="Permanent link to this comment">11:04 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Not a bad solution for running Ruby in the client. One group of people who might want this are the people doing IronRuby in Silverlight. They could fall back to this solution when Silverlight is not available.</p>
+	<p>Although JavaScript is probably my favorite language, I must admit I'm fascinated by the idea of running other languages in the browser.</p>
+	<p>Script# and Haxe seem especially well-thought out. In both cases, you write in another language (C# or Haxe), and then run the code through a compiler which translates to JavaScript. Both solutions produce nice code. But the advantage of type-checking at compile time may be outweighed by the oddness of seeing code you didn't write at debug time.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301093">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301093" title="Permanent link to this comment">11:14 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>&gt;&gt;Uhm... why (outside of "proof of concept") would anyone in his or her right mind want to do this?</p>
+	<p>It's an easy way to obfuscation, for one reason. No obfuscation method is perfect, but this looks like a pretty good one. :-)
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301094">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301094" title="Permanent link to this comment">11:31 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>I imagine it's even faster when compiled to ActionScript than to JavaScript.</p>
+	<p>And since AIR runs on Webkit with fast JS and fast AS, people might reasonably do a full AIR app, mostly in Ruby.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301095">
+		
+		<h3 class="commenttitle"><b><a href='http://mjijackson.com' rel='external nofollow'>Michael Jackson</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301095" title="Permanent link to this comment">11:42 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Kirk: This is a pure guess but I imagine the virtual machine would be fairly similar for other languages. It's all the same stuff right? Operators, functions, etc. The only major difference that I can see would be in PHP/perl's speed via CGI in getting the opcodes back to the VM, and that may be significant. Like I said, pure guess.</p>
+	<p>@MÃ¡r: Granted, there is very little use for the implementation in its current state. However, the possibility is fascinating. The point here is not to allow web developers to start writing all their old JavaScripts in Ruby and start serving them up with some help from XHR, but rather the potential of JavaScript (or the ECMA script interpreter) to serve as a platform for more robust applications, in this case, a virtual machine for the Ruby language. And it's fast to boot. I believe it reveals just how far the language has progressed in recent years.</p>
+	<p>@John: Thanks for this post. You have a knack for sniffing out stories that I would never otherwise hear of. That saves me a lot of time searching them out myself. Thanks. ;)
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301096">
+		
+		<h3 class="commenttitle"><b><a href='http://mjijackson.com' rel='external nofollow'>Michael Jackson</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301096" title="Permanent link to this comment">11:48 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@markus: "Simple. Because you can write in ruby code."</p>
+	<p>Syntactical differences are hardly a reason to slow down your script to a crawl (when compared to pure JavaScript).</p>
+	<p>"The key is that (one day) you abolish the limitation of javascript in certain situations."</p>
+	<p>How do you abolish the "limitation" of JavaScript? Remember...the VM is written IN JavaScript. In the end, you're executing JavaScript code...NOT Ruby!
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301097">
+		
+		<h3 class="commenttitle"><b>Wanli</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301097" title="Permanent link to this comment">11:48 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>What about the coming JS2? I think maybe after 1 or 2 years, we will take the JS2 as the first class language (or just CLR?), many other languages can be converted to JavaScript2 and run in the Tamarin VM.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301098">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301098" title="Permanent link to this comment">11:48 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Michael Jackson,</p>
+	<p>You may want to watch Ajaxian.com. I saw HotRuby there a week or two ago and my kids spent hours playing with the physics toys that are one of the demos. I check John's blog and Ajaxian every morning.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301099">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301099" title="Permanent link to this comment">11:50 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>&gt;&gt;In the end, you're executing JavaScript code...NOT Ruby!</p>
+	<p>What's the difference? In the end, you're really executing processor opcodes.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301101">
+		
+		<h3 class="commenttitle"><b>Wanli</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301101" title="Permanent link to this comment">11:54 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Michael Jackson:<br />
+Maybe it's not good solution now, but it tamarin gives JS performance a boost. I think it's OK for ruby/python to finish some routine jobs (!glue up the mozilla2).
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301102">
+		
+		<h3 class="commenttitle"><b><a href='http://mjijackson.com' rel='external nofollow'>Michael Jackson</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301102" title="Permanent link to this comment">11:59 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@timothy: You're absolutely right. I concede the point.</p>
+	<p>@Wanli: I agree that this could definitely have positive implications for the future. That's what I said above (or was trying to say).
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301103">
+		
+		<h3 class="commenttitle"><b>Wanli</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301103" title="Permanent link to this comment">12:01 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@timothy:<br />
+If you write in ruby:<br />
+ruby -&gt; ruby opcode -&gt; XHR -&gt; ruby "vm" in JS -&gt; js code -&gt; JIT compile (future)-&gt; execute<br />
+While write in JS:<br />
+JS code -&gt; XHR -&gt; JIT compile (future)-&gt; execute</p>
+	<p>If any mistakes, please let me known.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301104">
+		
+		<h3 class="commenttitle"><b><a href='http://weblogs.asp.net/bleroy' rel='external nofollow'>Bertrand Le Roy</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301104" title="Permanent link to this comment">12:05 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>That's quite fascinating to see. The number of languages that can compile to JavaScript (or at least to a JS-executable form) seems to be growing every day. The performance qould probably need to be confirmed by a larger scale test but it would be interesting to see a post on why interpreting a language on another interpreter could be faster than running directly in a native interpreter. Doesn't that say a lot about Ruby 1.8.2, more than it does about HotRuby?<br />
+Also, the one thing that would make HotRuby usable in reasonably-sized projects is debugger support: debugging opcode doesn't seem to be a lot of fun...<br />
+What do you guys think about running Ruby code in Silverlight to achieve Ruby on the client?
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301105">
+		
+		<h3 class="commenttitle"><b><a href='http://mar.anomy.net/' rel='external nofollow'>MÃ¡r</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301105" title="Permanent link to this comment">12:06 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Scott, that was my main point... why not simply serve the opcode on the first HTTP request and do away with the Bandwidth + DOM parsing + XHR overhead?  The speed of the opcode translation+execution seems pretty trivial compared to that.</p>
+	<p>@markus: "Simple. Because you can write in ruby code."</p>
+	<p>Somehow I knew someone would come up with that answer. :-)
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301106">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301106" title="Permanent link to this comment">12:23 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Wanli,</p>
+	<p>I don't see the whole XHR step as relevant. In my opinion, this technique is most useful when you have already compile the Ruby. The output can be in the HTML, PHP, JS, or whatever file.</p>
+	<p>At the very least, it's an interesting technique.</p>
+	<p>Have you seen this?</p>
+	<p><a href='http://osteele.com/sources/javascript/functional/' rel='nofollow'>http://osteele.com/sources/javascript/functional/</a></p>
+	<p>It's effectively JavaScript executing a handmade functional language.</p>
+	<p>We are stuck with JavaScript in the browser (for the good and the bad), but sometimes what you want is Forth, APL, Ruby, C#, or something else.</p>
+	<p>I come from the game industry. 20 years ago I would have bet you that there would have never, ever be an interpreter in a game. I was wrong. Once performance is sufficient, it ceases to drive all decisions.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301108">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301108" title="Permanent link to this comment">12:36 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>&gt;&gt;What do you guys think about running Ruby code in Silverlight to achieve Ruby on the client?</p>
+	<p>Problems:</p>
+	<p>1) Development (as far as I can determine) requires you to buy Visual Studio. Doesn't look like DLR languages are yet supported by Express versions of MS tools. And I'm not aware that any free (even as in beer) IDEs are ready to tackle this. I hate to be locked into one development solution.</p>
+	<p>2) Terrible installed-base problem. Flash is near-ubiquitous. I never even had Silverlight until I downloaded IE8 beta. This means many of your users will have to go through Silverlight installation or may even reject it. You'll be chasing people away.</p>
+	<p>For now, if I were using Silverlight, I'd just check for it and not try to trigger the installation (maybe a badge telling people it's Silverlight enhanced would be a reasonable option). I'd run my Silverlight code if Silverlight is there, or else fall back to Flash. That strategy makes most sense with JavaScript all around, so the code doesn't have to be rewritten over and over.</p>
+	<p>But perhaps it would be reasonable with Ruby on Silverlight and HotRuby. You'd do all debugging possible on the Silverlight side and then just kinda print-n-pray otherwise.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301113">
+		
+		<h3 class="commenttitle"><b><a href='http://lhorie.blogspot.com' rel='external nofollow'>Leo Horie</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301113" title="Permanent link to this comment">2:41 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Perhaps also interesting is that the author of HotRuby has also written a Scheme interpreter written in Javascript. I think that (at least from a programming language enthusiast point of view) being able to use different programming paradigms in the browser allows programmers to write more concise and domain-specific code when lightning-speed isn't that much of a concern.</p>
+	<p>Like timothy said, sometimes what you want is another language. Heck, many selector libraries essentially have ports of CSS to javascript. Maybe the next big thing will require continuations, or lisp macros. Who knows.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301115">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301115" title="Permanent link to this comment">3:48 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Also note that anything that gets used a lot (like the CSS selectors Leo mentions) has a chance of getting a native assist in the browser. Getting ANY tokenized interpreter in the browser would be great, because then you could target that interpret with any compiler. My ideal future browser has a JavaScript interpreter and </p>
+	<p>That's pretty much what CLR and DLR are in Silverlight, and what the ActionScript token interpreter is.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301132">
+		
+		<h3 class="commenttitle"><b><a href='http://www.ntecs.de/blog' rel='external nofollow'>Michael Neumann</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301132" title="Permanent link to this comment">5:26 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>HotRuby is a great project. But the benchmark is totally flawed. Please replace "+=" with "
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301133">
+		
+		<h3 class="commenttitle"><b><a href='http://www.ntecs.de/blog' rel='external nofollow'>Michael Neumann</a></b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301133" title="Permanent link to this comment">5:27 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>with "&lt;&lt;" and you'll see that Ruby is 10x faster than the HotRuby version.</p>
+	<p><a href='http://www.ntecs.de/blog/articles/2008/03/26/rubyjs-vs-hotruby' rel='nofollow'>http://www.ntecs.de/blog/articles/2008/03/26/rubyjs-vs-hotruby</a>
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301138">
+		
+		<h3 class="commenttitle"><b>Wanli</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301138" title="Permanent link to this comment">9:38 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@timothy<br />
+Thank you for your link, it's an interesting lib.<br />
+I agree with you that *sometimes what you want is Forth, APL, Ruby, C#, or something else.*, but it's NOT for RIA, because I think even JS itself is not fast enought to do the HTML/SVG/Canvas animation jobs.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301142">
+		
+		<h3 class="commenttitle"><b>timothy</b>
+	
+		<small><small>
+			(April 8, 2008 
+			at <a href="#comment-301142" title="Permanent link to this comment">11:17 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>&gt;&gt;...I think even JS itself is not fast enought to do the HTML/SVG/Canvas animation jobs.</p>
+	<p>Yeah, but "fast enough" is always just a matter of time.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301149">
+		
+		<h3 class="commenttitle"><b><a href='http://asbjor.nu/' rel='external nofollow'>AsbjÃ¸rn Ulsberg</a></b>
+	
+		<small><small>
+			(April 9, 2008 
+			at <a href="#comment-301149" title="Permanent link to this comment">2:49 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>The fact that JavaScript is so much faster than Ruby, even with the little bit of network latency, op code translation, execution, etc., just makes it even clearer to me that what I really want is a server-side JavaScript framework.</p>
+	<p>I'm hoping the result of Steve Yegge's endeavour in implementing "EcmaScript on Rails" will be available through the Google App Engine soon. The existing server-side JavaScript frameworks simply haven't got a high enough degree of availability. Less penetration than Python and you're out.</p>
+	<p>What I'd love to see, actually, is JavaScript in PHP. That is, the PHP execution environment, scripted with JavaScript (and with a proper object model supporting it), made available with a simple PHP module that could be plugged in to any existing PHP environment.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301154">
+		
+		<h3 class="commenttitle"><b><a href='http://www.ntecs.de/blog' rel='external nofollow'>Michael Neumann</a></b>
+	
+		<small><small>
+			(April 9, 2008 
+			at <a href="#comment-301154" title="Permanent link to this comment">5:37 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@asbjorn: I don't see the fact (that JavaScript is so much faster than Ruby) at all. I'd be nice to see a benchmark showing this.</p>
+	<p>Here is one:</p>
+	<p><a href='http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=javascript&amp;lang2=ruby' rel='nofollow'>http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=javascript&amp;lang2=ruby</a></p>
+	<p>Javascript is quite good (it's actually faster than Ruby in most benchmarks, but memory consumption is a lot higher!),<br />
+but this compares against Ruby 1.8.<br />
+Ruby 1.9 should be a lot faster. Try to compare against Python which should give an impression how fast Ruby 1.9 is roughly (~ 2x as fast as Spidermonkey Javascript).</p>
+	<p>But there might be faster implementations than Spidermonkey out there...
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301167">
+		
+		<h3 class="commenttitle"><b><a href='http://oldmoe.blogspot.com' rel='external nofollow'>oldmoe</a></b>
+	
+		<small><small>
+			(April 9, 2008 
+			at <a href="#comment-301167" title="Permanent link to this comment">11:36 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>There are huge semantic differences between += for strings in Ruby and JavaScript.</p>
+	<p>In Ruby you will get a huge amount of intermediate strings that will trigger the GC (several times I guess) for the Ruby implementation.</p>
+	<p>Not the case seemingly with the JavaScript Implementation.</p>
+	<p>As mentioned above, replacing += with &lt;&lt; produces the same results but this time it is ~25x faster! (using Ruby 1.8.6 on my machine)</p>
+	<p>It would be crazy to think that an interpreter (even for compiled opcodes) written in JavaScript can outperform one written in C (Ruby's interpretter)</p>
+	<p>I would expect that a decent implementation of any of both languages should perform similarly. I am actually looking forward for a Ruby implementation on Tamarin.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301190">
+		
+		<h3 class="commenttitle"><b>CptOatmeal</b>
+	
+		<small><small>
+			(April 9, 2008 
+			at <a href="#comment-301190" title="Permanent link to this comment">10:21 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>I completely agree.  I posted on the RubyInside thread on this as well.  The benchmarks are completely misleading and should in no way be taken to say that HotRuby is faster than any standard Ruby installation.</p>
+	<p>What's more, saying that an implementation "is already faster than X" is misleading, as often languages are made slower by having to implement certain dynamic features.  A subset of the language can be made to run very quickly.  Creating a design that works with all the dynamic features and retains the same speed is the real feat.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-301215">
+		
+		<h3 class="commenttitle"><b>Ali</b>
+	
+		<small><small>
+			(April 10, 2008 
+			at <a href="#comment-301215" title="Permanent link to this comment">8:45 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Do you guys know any similar project for Python?
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-301218">
+		
+		<h3 class="commenttitle"><b><a href='http://www.ntecs.de/blog' rel='external nofollow'>Michael Neumann</a></b>
+	
+		<small><small>
+			(April 10, 2008 
+			at <a href="#comment-301218" title="Permanent link to this comment">9:32 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Ali: No, except Pyjamas, which is a Python -&gt; Javascript compiler (http://code.google.com/p/pyjamas/). But I think, as Python is bytecode compiled as well, it shouldn't be too hard, if not easier because Python for example has immutable strings like Javascript.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-302051">
+		
+		<h3 class="commenttitle"><b><a href='http://jonathanfine.wordpress.com' rel='external nofollow'>Jonathan Fine</a></b>
+	
+		<small><small>
+			(April 22, 2008 
+			at <a href="#comment-302051" title="Permanent link to this comment">4:13 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>@Ali: The PyPy project has tools that compile a restricted subset of Python (RPython) to JavaScript.<br />
+    <a href='http://codespeak.net/pypy/dist/pypy/doc/js/using.html' rel='nofollow'>http://codespeak.net/pypy/dist/pypy/doc/js/using.html</a></p>
+	<p>As someone else said, the great thing is that you can program in Python (or Ruby) rather than JavaScript.</p>
+	<p>That said, I've not used it, and the code it produces does not seem to be optimal.  But the PyPy project is very thorough about achieving consistency - they want RPython on JavaScript to be the same as RPython in the ordinary Python interpreter, for example.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-302634">
+		
+		<h3 class="commenttitle"><b><a href='http://www.cuppadev.co.uk' rel='external nofollow'>James Urquhart</a></b>
+	
+		<small><small>
+			(April 28, 2008 
+			at <a href="#comment-302634" title="Permanent link to this comment">3:05 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>Neat! Kind of reminds me of that SCUMM interpreter i writ in haXe a while back. I was able to execute SCUMM opcodes both in Flash 9 and JavaScript, enough to get a certain SCUMM game to load its first room, which in itself was neat.</p>
+	<p>Sadly though, never got round to any benchmarks. I more or less stopped work on it when i figured there wasn't really a market for it. :)</p>
+	<p>( For reference, <a href='http://www.cuppadev.co.uk/2007/11/22/flash-plays-scumm-take-two/' rel='nofollow'>http://www.cuppadev.co.uk/2007/11/22/flash-plays-scumm-take-two/</a> )
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-302635">
+		
+		<h3 class="commenttitle"><b><a href='http://johndehope3.blogger.com' rel='external nofollow'>John DeHope</a></b>
+	
+		<small><small>
+			(April 28, 2008 
+			at <a href="#comment-302635" title="Permanent link to this comment">3:18 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>My question is: how can I *replace* javascript with X, where X is some other language. I don't hate JS, but it would be a lot of fun to be able to code web apps using an arbitrary language implementation of my own choice (creation?).</p>
+	<p>But anyway, this is really cool from a purely geek perspective.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="" id="comment-309721">
+		
+		<h3 class="commenttitle"><b>Jose Dadural</b>
+	
+		<small><small>
+			(May 20, 2008 
+			at <a href="#comment-309721" title="Permanent link to this comment">11:18 am</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>hi Leo Horie, whats up man? r u still in toronto?<br />
+email me back (jose@lightland.ca) if this is Leo who went to humber in 2000. thanks.
+</p>
+</div>
+		
+		</li>
+
+		
+	
+		<li class="alt" id="comment-314869">
+		
+		<h3 class="commenttitle"><b>joshua</b>
+	
+		<small><small>
+			(June 3, 2008 
+			at <a href="#comment-314869" title="Permanent link to this comment">11:39 pm</a>)
+					</small></small>
+		</h3>
+		
+		<div class="comment-text">	<p>listen im new to ruby and i no the basics like how to tell it to do something when a certain word his typed in but i am just wondering if anyone knows of a website that gives u some codes to type </p>
+	<p>if anyone does can u pls email me and tell me at <a href="mailto:josh_hendricks_@hotmai.com">josh_hendricks_@hotmai.com</a>
+</p>
+</div>
+		
+		</li>
+
+		
+	
+	</ol>
+	
+	<!--<p class="small">
+	<a href='http://ejohn.org/blog/ruby-vm-in-javascript/feed/'><abbr title="Really Simple Syndication">RSS</abbr> feed for comments on this post</a>		</p>-->
+
+
+
+<br/><hr/>
+<p><b>Comments are closed.</b><br/>
+Comments are automatically turned off two weeks after the original post. If you have a question
+concerning the content of this post, please feel free to <a href="http://ejohn.org/about/">contact me</a>.</p>
+<hr/>
+
+
+		<script src="http://feeds.feedburner.com/~s/JohnResig?i=http://ejohn.org/blog/ruby-vm-in-javascript/" type="text/javascript" charset="utf-8"></script>
+		<img src="http://ejohn.org/apps/rss/?from=single&id=5570" style="width:0px;height:0px;"/>
+				
+		
+				
+	
+        </div></div>
+
+        <div id="side">
+                <div id="projects">
+                        <h2>Current <span>Projects</span></h2>
+
+                        <div class="box">
+                        <a href="http://jquery.com/" title="jQuery JavaScript Library"><img src="/images/ejohn-side-jquery.gif" class="icon" alt="jQuery JavaScript Library" /></a>
+                        <div class="desc">
+                                <h3><a href="http://jquery.com/" title="jQuery JavaScript Library">jQuery</a></h3>
+                                <p>Comprehensive DOM, Event, Animation, and Ajax JavaScript Library.</p>
+                        </div>
+                        </div>
+
+                        <h2>Recent <span>Projects</span></h2>
+
+                        <div class="box">
+                        <a href="http://jspro.org/"><img src="/images/ejohn-side-book.gif" class="icon" alt="Pro JavaScript Techniques"/></a>
+                        <div class="desc">
+                                <h3><a href="http://jspro.org/">JavaScript Book</a></h3>
+                                <p>The best techniques for professional  JavaScript. Published by Apress.</p>
+                        </div>
+                        </div>
+
+                        <div class="more"><a href="/projects/"><strong>More</strong> Projects...</a><br />
+				</div>
+                </div>
+
+		<br/><p style="width:80%;font-size:13px;">Hosting provided by the cool dudes at
+                <a href="http://engineyard.com/">Engine Yard</a>.</p>
+        </div>
+
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-50335-1";urchinTracker();</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <title>.NET Services for Ruby</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf8" />
+  <link href="/stylesheets/reset-min.css?1237800313" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/grids-min.css?1237800313" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/billboard.css?1237800313" media="screen" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/prototype.js?1237800313" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1237800313" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1237800313" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1237800313" type="text/javascript"></script>
+<script src="/javascripts/application.js?1237800313" type="text/javascript"></script>
+  
+
+<!-- Google Analytics -->
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-6099121-1");
+    pageTracker._trackPageview();
+  </script>
+<!-- End Google Analytics -->
+</head>
+
+<body>
+  <div id="doc" class="yui-t7">
+    <div id="hd">
+      <div id="header">
+
+  <div class="banner">
+      <a href="http://www.dotnetservicesruby.com/billboard" class="logo"><img alt="Net_ruby_logo" src="/images/net_ruby_logo.gif?1237800313" /></a>
+  </div>
+
+  <div class="separator"/>
+
+  <div class="top_menu">
+    &nbsp;<a href="http://www.dotnetservicesruby.com/" class="home_link">Home</a>&nbsp;&nbsp;|
+    &nbsp;<a href="/content/documentation" class="documentation_link">Documentation</a> |
+    &nbsp;<a href="http://rubyforge.org/frs/?group_id=7155" class="download_link">Download</a>&nbsp;&nbsp;|
+    &nbsp;<a href="/content/team" class="team_link">Team</a>&nbsp;&nbsp;|
+    &nbsp;<a href="http://www.dotnetservicesruby.com/billboard" class="demo_link">Demo</a>&nbsp;&nbsp;|
+    &nbsp;<a href="/content/blog" class="license_link">Blog</a>&nbsp;&nbsp;
+  </div>
+
+  <div class="separator"/>
+
+</div>
+
+    </div>
+
+    <div id="bd">
+    <div class="yui-g">
+        
+        
+        
+        
+        <div class="content">
+          <div class="header-gradient"><h3>Overview</h3></div>
+
+<p>Microsoft&reg; .NET Services is a key component of the
+<a href="http://go.microsoft.com/fwlink/?LinkID=129428">Microsoft Cloud Computing Platform</a> that offers a set
+of Microsoft-hosted, highly scalable, developer-oriented services that
+provide key building blocks required by many cloud-based and
+cloud-aware applications. Much like the .NET Framework provides
+higher-level class libraries that make developers more productive,
+.NET Services enables a developer to focus on their application logic
+rather than building and deploying their own cloud-based
+infrastructure services.</p>
+ 
+<div class="header-gradient"><h3>Interoperability Goals</h3></div>
+
+<div class="ruby_logo_mainpage"><a href="http://www.ruby-lang.org/"><img alt="Ruby_logo" src="/images/ruby_logo.png?1237800313" /></a></div>
+
+<p>As part of Microsoft&reg's commitment to <a href="http://microsoft.com/interop/">interoperability</a>, .NET Services offers
+interoperability by design through industry standards and web
+protocols such as REST, SOAP, WS-*, as well as through community based
+libraries that make it easier to use the services.  While more
+services are in the works, .NET Services currently includes three core
+components—Access Control, Service Bus, and Workflow service.</p>
+
+<p>.NET Services for Ruby is an open source software development kit
+(SDK) that helps Ruby programs communicate with Microsoft .NET
+Services using plain HTTP. Specifically the SDK includes set of REST
+libraries, tools, prescriptive patterns &amp; guidance &amp; sample
+applications that will enhance productivity for Ruby
+developers. Developers will be able to leverage the .NET Services to
+extend their Ruby applications by using the Microsoft cloud services
+platform to build, deploy and manage reliable, Internet-scale
+applications.</p>
+
+<br /><br />
+
+<div class="header-gradient"><h3>High Level Architecture Overview</h3></div>
+
+<p style="text-align: center;"><img alt="Diagram" src="/images/diagram.gif?1237800313" /></p>
+
+<div class="header-gradient"><h3>Roadmap</h3></div>
+
+<p>The following milestones are planned for next 6 months:</p>
+
+<p><b><a href="http://rubyforge.org/frs/?group_id=7155">Milestone 1: October 27th, 2008 (Alpha/Community Technology Preview)</a></b></p>
+
+<p>The focus of this release is to demonstrate interoperable
+architecture, Service Bus and Web-Style (REST) Authentication. The
+detailed API documentation is available <a href="/documentation/">here</a>. We are excited about
+making this initial version available to you and look forward to your
+<a href="http://rubyforge.org/tracker/?group_id=7155">feedback</a>.</p>
+
+<p>Some of the features we have included in the Alpha build are:</p>
+
+<ul class="milestone-features">
+  <li class="milestone-features">Access Control Service</li>
+  <li class="milestone-features">Volatile Message Buffer (interactions)</li>
+  <li class="milestone-features">Authentication</li>
+  <li class="milestone-features">Web-style-HttpRelayBinding</li>
+  <li class="milestone-features">Interactive Credentials</li>
+  <li class="milestone-features">Notification Service</li>
+  <li class="milestone-features">ServiceBus Environment Settings</li>
+</ul>
+
+<p><b>Milestone 2: Summer 2009</b></p>
+
+<ul class="milestone-features">
+  <li class="milestone-features">Service Registry</li>
+  <li class="milestone-features">Eventing</li>
+  <li class="milestone-features">Enhancements to Web-Style REST Protocol</li>
+  <li class="milestone-features">Enhancements to Access Control Service</li>
+  <li class="milestone-features">Support for Service Bus Naming & Discovery</li>
+  <li class="milestone-features">Workflow Service</li>
+</ul>
+
+        </div>
+    </div>
+
+    </div>
+    <div id="ft"><div id="footer">
+
+  <span class="title">
+    <a href="http://go.microsoft.com/fwlink/?LinkID=129428">.NET Services</a>
+    +
+    <a href="http://www.ruby-lang.org/en/">Ruby</a>
+  </span>
+  <span class="copyright"><a href="http://www.thoughtworks.com"><b>Thought</b>Works</a> &copy; 2008</span>
+
+  <span class="ft_links">
+    <a href="http://www.thoughtworks.com/homepage/privacy-policy.html">Privacy policy</a> |
+    <a href="http://rubyforge.org/mailman/listinfo/dotnetsrv-ruby-users">Contact us</a> |
+    <a href="http://rubyforge.org/scm/?group_id=7155">Source code</a> |
+    <a href="http://www.codeplex.com/DotNetServicesRuby">Codeplex</a> |
+    <a href="/content/license">License</a>
+  </span>
+
+</div>
+</div>
+  </div>
+
+</body>
+
+</html>

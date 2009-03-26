@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>   Arachno Ruby IDE - Editor and Debugger                   </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="robots" content="follow">
+<meta name="revisit-after" content="7 days">
+<link rel="stylesheet" type="text/css" href="/ruby/ruby_stylesheet.css" media="all" >
+<link rel="SHORTCUT ICON" href="/img/arachno_ruby.ico" >
+    <STYLE TYPE="text/css">
+
+
+body {
+   font-family: verdana, sans-serif;
+   font-size: 70%;
+   font-weight: Normal;
+   margin: 0px;
+   padding: 0px;
+}
+
+h1 {
+   color: #202020; /* #4E81AC;*/
+   font-size: 160%;
+}
+
+h2 {
+   color: #202020; /* #4E81AC;*/
+   font-size: 130%;
+}
+
+h3 {
+   color: #2D3B5E;
+   font-size: 100%;
+}
+
+h4 {
+	margin-top: 40px;
+   color: #4E81AC;
+   font-size: 130%;
+}
+
+
+div,p {
+   font-size: 10pt;
+    /*line-height: 180%;  */
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+
+ul {	
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: normal;
+   list-style-image: url("/img/checkbox.gif");
+   list-style-type: disc;
+}
+li {	
+   margin-bottom: 12pt;
+/*   font-size: 70%;        
+	font-weight: normal; */
+}
+
+tr {
+   vertical-align: top;
+}
+
+td {
+}
+
+tr.home {
+   border-bottom: solid thin #C0C0C0;
+}
+
+
+
+#content {
+   background-color: #FFFFFF;
+   margin: 0px 1px 1px 10px;
+   min-width: 250px;
+   min-height: 100px; 
+   padding: 10px;
+   top: 110px;
+   width: auto;
+}
+
+#content h1 {
+  border-bottom: 1px dashed #2D3B5E;
+ } 
+    
+ 
+#content h2  {
+  background: #eee; color: #333;
+  font-size: 12pt; font-weight: bold; font-style: italic;
+  text-align: right;
+  padding: 2px 0.6em 2px; margin: 0.8em 0em 0em 0em;
+}
+
+#content h3 {
+  color: #E0323F;
+  padding: 2px 0em 2px; margin: 0.8em 0em 0em 0em;
+}
+
+p.notice_head {
+        font-weight: bold;
+        margin-top: 0px;
+  	color: #E0323F;
+}
+
+span.promise {
+  	font-size: 10pt;
+  	color: #E0323F;
+  	font-weight: Bold;
+  
+}
+
+span.benefit  {
+  	font-size: 10pt;
+  	color: #E0323F;
+  	font-weight: Bold;
+  
+}
+
+#content a {
+  font-weight: Bold;
+}
+
+
+#opinions h3 {
+  background: #eee; color: #333;
+  font-size: 100%; font-weight: normal; font-style: italic;
+  text-align: right;
+  padding: 0px 0em 0px; margin: 0.8em 0em 0em 0em;   
+}
+
+#opinions p {
+  padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;   
+}
+
+</STYLE>
+
+</head>
+<body bgcolor="#FFFFFF" style="margin: 0 0 0 0;">
+
+
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr class="arachno_topmost">
+<td class="arachno_topmost1_left" width="100%">&nbsp;</td>
+<td class="arachno_topmost1_right" width="*"><a 
+class="arachno_top_link" href="/ruby/contact_us.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">&nbsp;&nbsp;Contact&nbsp;Us&nbsp;&nbsp;</a>|<a 
+class="arachno_top_link" href="/ruby/about_us.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">&nbsp;&nbsp;About&nbsp;Us&nbsp;&nbsp;</a>|<a 
+class="arachno_top_link" href="/ruby/support.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">&nbsp;&nbsp;Support&nbsp;&nbsp;</a>
+</td>
+</tr>
+</table> 
+<!-- gradient2_ruby.png-->
+<table width="100%" cellspacing="0" cellpadding="0"  >
+<tr> 
+<td width="100%" class="arachno_topmost2_left" align="right">
+<a href="http://www.scriptolutions.com/shared/scriptolutions_home.php">
+<img align="left" class="arachno_logo" src="/img/ruby_logo.gif" width="230" height="58" border="0" alt="Scriptolution Logo"/>
+</a>
+   <table><tr><td>
+<form style="margin-right: 5px;" method="post" action="/engine/newsletter_subscribe.php"><input type="hidden" name="PHPSESSID" value="84c3238b4974870a512c4e82aaa09183" />
+<div align="left"><br><b>Subscribe Newsletter:</b></div>
+<div align="right">
+<input class="arachno_email_input"  type="text" name="email" size="16" value="your email..."
+onblur="if(this.value=='') this.value='your email...';" onfocus="if(this.value=='your email...') this.value='';" />&nbsp;<input type='hidden' name='page' value='200'><input type='hidden' name='source' value='web'><select name="product" class="arachno_email_select" ><option value="all">All Products<option value="ruby">Only Arachno Ruby<option value="python">Only Arachno Python<option value="php">Only Arachno PHP<option value="perl">Only Arachno Perl</select>&nbsp;<input type="image" src="/img/go.gif?PHPSESSID=84c3238b4974870a512c4e82aaa09183" name="Submit" align="top"/></div></form></td></tr></table></td></tr>
+</table>
+
+
+
+
+<table width="100%" cellspacing="0" cellpadding="0">
+<tr>
+<td width="150" class="arachno_titlerow_left">
+<a class="arachno_titlerow_link" href="/weblog/?PHPSESSID=84c3238b4974870a512c4e82aaa09183" style= "padding-left: 20pt; padding-right: 20pt" >WebBlog</a>
+</td>
+<td class="arachno_titlerow_gap" width="10"><img src="/img/spacer.gif" width="10" height="1" alt="" ></td>
+<td class="arachno_titlerow_middle" width="*" colspan="3" 
+>
+<!--
+<a href="/ruby/ruby_ide_and_ruby_editor.php?web_lang=de&PHPSESSID=84c3238b4974870a512c4e82aaa09183"><img src="/img/german.gif" align="right" width="35" height="16" border="0"/></a>
+<a href="/ruby/ruby_ide_and_ruby_editor.php?web_lang=en&PHPSESSID=84c3238b4974870a512c4e82aaa09183"><img src="/img/english.gif" align="right" width="35" height="16" border="0"/></a> 
+-->
+<a class="arachno_titlerow_current" href="/ruby/ruby_ide_and_ruby_editor.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Arachno Ruby</a> |
+<a class="arachno_titlerow_link" href="http://www.python-ide.com/python/python_ide_and_python_editor.php">Arachno Python</a> |
+<a class="arachno_titlerow_link" href="http://www.php-ide.info/php/php_ide_and_php_editor.php">Arachno PHP</a> |
+<a class="arachno_titlerow_link" href="http://www.perl-editor.com/pearl/perl_ide_and_perl_editor.php">Arachno Perl</a>
+</td>
+</tr>
+
+
+
+<tr>
+<td width="150" class="arachno_left_column"></td> 
+<td width="10"><img src="/img/left_box_corner.gif" width="10" height="18" alt="" /></td>
+<td width="100%" style="background-image:url(/img/top_box.gif)"><img src="/img/top_box.gif" width="1" height="18" alt="" /></td>
+<td width="10"><img src="/img/right_box_corner.gif" width="10" height="18" alt="" /></td>
+<td width="150"  class="arachno_right_column" ></td> 
+</tr>
+
+
+<tr>
+<td width="150" class="arachno_left_column" valign="top"><!-- left column -->
+<img src="/img/spacer.gif" alt="" width="150" height=1><br>
+<br>
+<!--LEFT-COLUMN-MENU--><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/screenshots.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Screenshots</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/features.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Feature List</a></div><div align="left" id="ArachnoL100" class="arachno_leftrow_link"> <img src="/img/next.gif" width="6" height="9" alt=""> <a href="/ruby/project.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Project Handling</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/editor.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Advanced Editing</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/ruby_editor.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Ruby Editing</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/debugger.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Fast Debugger</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/web.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Web Support</a></div><div align="left" class="arachno_leftrow_link"> <img src="/img/next.gif" alt="" width="6" height="9" > <a href="/ruby/diff.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Diff & Backup</a></div><!--RIGHT-COLUMN-MENU--><br>&nbsp;
+<div align="center" class="arachno_leftrow_button" ><a href="/ruby/buy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> <img src="/img/large_buy_ruby.jpg" width="121" height="33" border="0" alt="Buy Now"></a></div>
+<div align="center" class="arachno_leftrow_button" ><a href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> <img src="/img/large_download_ruby.jpg" width="121" height="33"border="0" alt="Download"></a></div>
+<br>&nbsp;
+<div align="center" class="arachno_leftrow_button" ><a href="/ruby/money_back.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">
+<img src="/img/30days_moneyback.jpg" width="150" border="0" height="163" alt="30 Days Money Back">
+</a></div>
+</td>
+
+
+      
+<td width="10" style="background-image:url(/img/left_box.gif)"><img src="/img/left_box.gif" width="10" height="1" alt="" />
+<td valign="top" width="100%"   >  
+<!-- BEGIN Content -->
+	<div id="content">
+
+<h1>The Professional IDE for Ruby</h1>
+
+
+<p>Arachno Ruby is a professional Integrated Development Environment for all users of the 
+fantastic Ruby programming language. You already save a lot of time by using Ruby, now you can 
+improve it even further. This fast, powerful and convenient editor with its integrated debugger 
+will save you time and make your work much more enjoyable. </p>
+
+<img src="/img/screens/ruby_main.png" alt="Arachno Ruby Editor and Ruby IDE Main Screenshoot" width="500" height=317">
+
+<h2>Key Benefits</h2>
+<ul>
+    <li><span class="benefit">Type your code faster</span> and increase your productivity by eliminating repetitive typing 
+    with our full featured editor that is inspired by the famous emacs and vi editors and mixed with the
+    convenience of Delphis Code Rush extensions. Use active templates, macros and configure it 
+    to match your preferences.
+ 
+    <li><span class="benefit">Don't get lost in your source code</span> by using our source code browser, you always 
+    have the complete overview of all methods and classes in your program, the used modules and the 
+    core language.
+
+    <li><span class="benefit">Save hours of work</span> spend previously for finding bugs. Now use our powerful source 
+    code debugger for all development, with its breakpoint, out of context evaluation, watchpoints etc. .
+
+    <li> <span class="benefit">Have more fun</span> when doing your job with the right tools in a highly ergonomical 
+        and stable environment that supports the complete toolchain for todays "Edit - Debug - 
+        Test - Optimize" development cycle.
+</ul>
+
+<p>
+This is only a selected subset of our most interesting benefits. Try our free 30 day trail version to 
+discover all of the great features that are provided by Arachno Ruby. 
+</p>
+
+
+<div id="opinions">
+<h2>Opinions</h2>
+
+<h3>Danilo Berger, GeBit Solutions</h3>
+<p>
+"One word: Wow! I've fallen in love with Arachno Ruby. It is so incredibly well done, with all the little 
+details that makes the difference between an average and an excellent tool."
+<p>
+
+
+<h3>Chris Verreault, Java and Ruby Engineer</h3>
+<p>
+"I don't want to live anymore without such an excellent search facility. Sometimes i'm using
+Arachno Ruby also on other non ruby projects just to do a complicated search and replace operation."
+</p>      
+
+</div>
+<div align="center" class="arachno_leftrow_button" >
+<a style="margin-right: 30px;" href="/ruby/buy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> <img src="/img/large_buy_ruby.jpg" width="121" height="33" border="0" alt="Buy Now"></a>
+<a style="margin-left: 30px;" href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> <img src="/img/large_download_ruby.jpg" width="121" height="33"border="0" alt="Download"></a>
+</div>
+
+
+</div>
+
+<!-- END Content -->
+</td>
+<td width="10" style="background-image:url(/img/right_box.gif)"><img src="/img/right_box.gif" width="10" height="1" alt="" /></td>
+
+
+<td width="150" valign="top" class="arachno_right_column">
+<table width="150" cellpadding="0" cellspacing="0">
+
+<tr><td style="padding-bottom: 40px;">
+<center><a href="/ruby/buy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"><img src="/img/ruby_box.png" alt="Product Box" border="0" height="190" width="150"></a></center>
+&nbsp;<br>
+<center>
+<a href="/ruby/buy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">
+<img src="/img/large_buy_ruby.jpg" width="121" height="31" border="0" alt="Buy Now"></a></center>
+<div class="arachno_right_price"><strong style='font-size: 20px;'>Starting&nbsp;at<br>US$&nbsp;49</strong></div>
+</td></tr>
+
+
+
+
+<tr><td width="100%" class="arachno_right_header" valign="top">Latest Versions</td></tr>
+<tr><td>
+<tr><td class="arachno_right_header_menu_outer" valign="top"><table cellpadding="0" cellspacing="0" width="100%"><tr><td class="arachno_right_header_menu_inner">
+<table class="arachno_last_version_info" cellpadding="0" cellspacing="0">
+<tr><td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'"><img border="0" src="/img/win-os.gif" alt="Windows"height="16" width="18">&nbsp;</a></td><td width="40%"><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'">System:</a></td><td width="*"><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'"><strong>Win&nbsp;2000/XP</strong></a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'">Version:</a></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'"> 0.7.13</a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'">Date:</a></td>    <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'"> 17.&nbsp;Jul.&nbsp;2007</a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'">Size:</a></td>    <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#win32'"> 8,4 MB</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'"><img border="0" src="/img/tux.gif" alt="Linux" height="16" width="16">&nbsp;</a></td><td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'">System:</a></td><td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'"><strong>Linux</strong></a></td></tr>
+<tr><td></td>  <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'">Version:</a></td>  <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'"> 0.5.6</a></td></tr>
+<tr><td></td>  <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'">Date:</a></td>    <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'"> 27.&nbsp;Apr.&nbsp;2005</a></td></tr>
+<tr><td></td>  <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'">Size:</a></td>    <td><a  style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#linux'"> 14,4 MB</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'"><img border="0" src="/img/mac.gif" alt="MacOSX" height="16" width="16">&nbsp;</a></td><td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'">System:</a></td><td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'"><strong>MacOSX&nbsp;<small>(X11)</small></strong></a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'">Version:</a></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'"> Not Released</a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'">Date:</a></td>    <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'"> ----</a></td></tr>
+<tr><td></td>  <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'">Size:</a></td>    <td><a style='font-size: 10px;' href="/ruby/download.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183#macosx'"> ----</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+</table>
+</td></tr></table></td></tr>
+
+<tr><td>&nbsp;</td></tr>
+
+<tr><td class="arachno_right_header" valign="top">Additional Links</td></tr><tr><td class="arachno_right_header_menu_outer" valign="top">
+<table cellpadding="0" cellspacing="0" width="100%"><tr><td class="arachno_right_header_menu_inner">
+ <ul class="arachno_right_menu_list" >
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/faq.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Frequently Asked Questions</a></li>
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/changelog.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Changelog</a></li>
+<!-- <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/testimonials.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Testimonials</a></li> -->
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/documentation.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Documentation</a></li> 
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/bugtracker.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Bug Tracker</a></li>
+<!-- <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/newsfeed.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">News Feed</a></li>  -->
+<!-- <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/links.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Ruby Links</a><br>&nbsp;</li> -->
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/forum.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Support Forum</a><br>&nbsp;</li>
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/support.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Support</a></li>
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/contact_us.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> Contact Us</a></li> 
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/about_us.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> About Us</a></li> 
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/privacy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> Privacy Policy</a></li> 
+ <li class="arachno_right_menu"><a style='font-size: 12px;' href="/ruby/sitemap.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183"> Site Map</a></li> 
+ </ul>
+</td></tr></table></td></tr>
+
+</table> 
+</td>
+
+
+
+
+
+
+            
+<tr>
+<td class="arachno_left_column" ></td>
+<td class="arachno_bottomrow_sheet" width="10"><img src="/img/left_box_bottom_corner.gif" width="10" height="18" alt=" " /></td>
+<td class="arachno_bottomrow_sheet" width="100%" style="background-image:url(/img/bottom_box.gif)"><img src="/img/bottom_box.gif" width="1" height="18" alt=" " /></td>
+<td class="arachno_bottomrow_sheet" width="10"><img src="/img/right_box_bottom_corner.gif" width="10" height="18" alt=" " /></td>
+<td class="arachno_right_column"></td>
+</tr>
+
+<tr>
+<td class="arachno_left_column"></td>
+<td class="arachno_page_icons"></td>
+<td class="arachno_page_icons">
+<div style="margin-bottom: 10px;" align="center">
+<span class="arachno_page_icon"><a href="/ruby/ruby_ide_and_ruby_editor.php?arachno_printer=1&PHPSESSID=84c3238b4974870a512c4e82aaa09183"><img align="bottom" alt="Print" src="/img/print.gif" height="16" width="16" border="0"> Printer-Friendly&nbsp;Version</a></span>
+<span class="arachno_page_icon"><a href="mailto:?subject=Found%20this%20web%20site%20for%20Ruby%20programmers&amp;body=Here%27s%20a%20web%20page%20you%20might%20be%20interested%20in%3A%0A%0Ahttp%3A%2F%2Fwww.ruby-ide.com%2Fruby%2Fruby_ide_and_ruby_editor.php" ><img align="bottom" alt="EMail" src="/img/mail.gif" height="16" width="16" border="0">&nbsp;EMail&nbsp;URL&nbsp;To&nbsp;Friend</a></span>
+<span class="arachno_page_icon"><a href="/ruby/send_page_feedback.php?arachno_lang=ruby&amp;arachno_ref_page=200&PHPSESSID=84c3238b4974870a512c4e82aaa09183">
+<img align="bottom" alt="Feedback" src="/img/feedback.gif" height="16" width="16" border="0">&nbsp;Comment&nbsp;Page</a></span>
+<img src="/img/spacer.gif" width="1" height="20" alt=""/>
+</div>
+</td>
+<td class="arachno_page_icons"></td>
+<td class="arachno_right_column" ></td>
+            
+</table>  
+
+
+
+
+
+<table width="100%" cellspacing="0" cellpadding="0" class="arachno_footer">
+<tr>
+<td class="arachno_footer">
+<a href="http://jigsaw.w3.org/css-validator/check/referer">
+<img src="/img/css.png" alt="Valid CSS!" align="right" border="0" height="31" width="88">
+</a>
+<a href="http://validator.w3.org/check?uri=referer">
+<img src="/img/html.gif" alt="Valid HTML 4.01!" align="right" border="0" height="31" width="88">
+</a>
+Copyright© 2005 Scriptolutions, All rights reserved. | 
+<a class="arachno_top_link" href="/ruby/privacy.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Privacy Policy</a> | 
+<a class="arachno_top_link" href="/ruby/contact_us.php?PHPSESSID=84c3238b4974870a512c4e82aaa09183">Contact Us</a> |
+ Unauthorised reproduction prohibited.
+</td>
+</tr>
+</table>
+
+           </body>
+</html>

@@ -1,0 +1,1269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+
+  <!-- BEGIN META TAG INFO -->
+  <meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+  <link rel="home" href="http://developer.apple.com/">
+  <link rel="find" href="http://developer.apple.com/search/">
+  <link rel="stylesheet" type="text/css" href="/css/adcstyle.css" title="fonts">
+  <script language="JavaScript" src="/js/adc.js" type="text/javascript"></script>
+  <!-- END META TAG INFO -->
+  
+  <!-- BEGIN TITLE -->
+  <title>Using Ruby on Rails for Web Development on Mac OS X</title>
+  <!-- END TITLE -->
+
+</head>
+
+<!-- BEGIN BODY OPEN -->
+<body>
+<!--END BODY OPEN -->
+
+<!-- START CENTER OPEN -->
+<center>
+<!-- END CENTER OPEN -->
+
+<!-- BEGIN LOGO AND SEARCH -->
+<!-- SiteCatalyst code version: H.8. Copyright 1997-2006 Omniture, Inc. --><script language="JavaScript"><!--/* RSID: */var s_account="appleglobal,appleusdeveloper"//--></script><script language="JavaScript" type="text/javascript" src="http://images.apple.com/global/metrics/js/cid_check.js"></script><script language="JavaScript" type="text/javascript" src="http://images.apple.com/global/metrics/js/s_code_h.js"></script><script language="JavaScript"><!--s.pageName=document.title+" (US)";s.server=""s.channel="www.us.developer"s.pageType=""s.prop1=""s.prop2=""s.prop3=""s.prop4=document.location;/* E-commerce Variables */s.campaign=""s.state=""s.zip=""s.events=""s.products=""s.purchaseID=""s.eVar1=""s.eVar2=""s.eVar3=""s.eVar4=""s.eVar5=""/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/var s_code=s.t();if(s_code)document.write(s_code)//--></script><!-- End SiteCatalyst code version: H.8. -->	<!-- googleoff: all -->	<div id="adcnavheader">	<table width="680" border="0" cellspacing="0" cellpadding="0">		<tr>			<td><img width="480" height="25" src="/images/1dot.gif" alt=""></td>			<td><img width="200" height="25" src="/images/1dot.gif" alt=""></td>		</tr>		<tr valign="top">			<!-- START ADC LOGO -->			<td align="left" width="480"><h6><a href="/"><img width="245" height="30" src="/images/developer_logo.gif" alt="Apple Developer Connection" border="0"></a></h6></td>			<!-- END ADC LOGO -->			<td align="right" width="200">			<!-- START SEARCH TABLE -->				<form name="MidSearch" method="post" action="http://developer.apple.com/cgi-bin/simpsearch.pl">				<table border="0" cellpadding="0" cellspacing="0">					<tr>						<td colspan="2"><img width="1" height="8" src="/images/1dot.gif" alt=""></td>					</tr>					<tr align="right">						<td><input onblur="if (value == '') {value = 'Search'}" onfocus="if (value == 'Search') {value =''}" type="text" value="Search" name="Search"></td>						<td><input type="image" src="/images/btn_search.gif" alt="Search" class="searchbutton"></td>					</tr>					<tr>						<td colspan="2"><img width="1" height="3" src="/images/1dot.gif" alt=""></td>					</tr>					<tr>						<td colspan="2" align="left"><a href="/search/">Advanced Search</a></td>					</tr>					<tr>						<td colspan="2"><img src="/images/1dot.gif" width="1" height="5" alt=""></td>					</tr>					</table>				</form>			<!-- END SEARCH TABLE -->			</td>		</tr>		<tr>			<td colspan="3"><img width="680" height="10" src="/images/1dot.gif" alt=""></td>		</tr>	</table>	<!-- START ADC NAVBAR-->	<table width="680" border="0" cellpadding="0" cellspacing="0">		<tr>			<td width="27"><img height="1" width="27" src="/images/1dot.gif" alt=""></td>			<td width="313"><img height="1" width="313" src="/images/1dot.gif" alt=""></td>			<td width="340"><img height="1" width="340" src="/images/1dot.gif" alt=""></td>		</tr>		<tr bgcolor="#DBDBDB">			<td align="right"><a href="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/promo?source=ADCLOG&amp;code=ADCLOG-NEX" target="_top"><img width="25" height="24" src="/images/btn_login_arrow.gif" border="0" alt="Member Login"></a></td>			<td align="left" class="textpadding"><a href="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/promo?source=ADCLOG&amp;code=ADCLOG-NEX" target="_top">Log In</a> | <a href="/membership/" target="_top">Not a Member?</a></td>			<td align="right" class="textpadding"><a href="/contact/" target="_top">Contact ADC</a> <img width="7" height="1" src="/images/1dot.gif" alt=""></td>		</tr>		<tr>			<td colspan="3"><img height="1" width="680" src="/images/1dot_919699.gif" alt=""></td>		</tr>	</table>	</div>	<!-- END ADC NAVBAR-->	<!-- googleon: all -->
+<!-- END LOGO AND SEARCH -->
+
+
+<!-- START BREADCRUMB -->
+<div id="breadcrumb">
+  <table width="680" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td><img width="340" height="10" src="/images/1dot.gif" alt=""></td>
+      <td><img width="340" height="10" src="/images/1dot.gif" alt=""></td>
+    </tr>
+    <tr valign="middle">
+      <td align="left"><a href="/">ADC Home</a> &gt; <a href="/tools/">Tools</a> &gt;</td>
+      <td align="right"><!-- DROP DOWN INCLUDE GOES HERE IF NEEDED --></td>
+    </tr>
+    <tr>
+      <td colspan="2"><img width="680" height="35" src="/images/1dot.gif" alt=""></td>
+    </tr>
+  </table>
+</div>
+<!-- END BREADCRUMB -->
+
+
+<!-- START MAIN CONTENT -->
+
+<!-- START WIDE COLUMN -->
+<table width="680" border="0" cellpadding="0" cellspacing="0">
+  <tr align="left" valign="top">
+
+    <td>
+      <h1> 
+	<img src="images/title_rubyonrails.gif" alt="Using Ruby on Rails for Web Development on Mac OS X" width="540" height="74">
+      </h1>
+      
+<p>
+The Ruby on Rails web application framework has built up a tremendous
+head of steam over the last year.  Fueled by some significant benefits and
+an impressive portfolio of real-world applications already in
+production, Rails is destined to continue making significant inroads
+in 2006.  Simply put,  Ruby on Rails is an open source tool that gives you the advantage of
+rapidly creating great web applications backed by SQL databases to
+keep up with the speed of the web.  And with the release of Rails 1.0
+kicking off the new year, there's never been a better time to climb
+aboard.
+</p>
+
+<p>
+It should come as no surprise that Mac OS X is a favored platform for
+Rails development.  Rails and its supporting cast of web servers and
+databases thrive on the rich Mac OS X environment.  A popular text
+editor used by many Rails programmers is TextMate,
+a Cocoa application.  And all members of the Rails core development
+team work with Macs.
+</p>
+
+<p>
+This article introduces you to Ruby on Rails by building a trivial web
+application step by step.  Consider it a ride on the express
+train&mdash;an overview of what Rails can do, including a look at
+features new to Rails 1.0.  In the end you'll be better equipped to consider the advantages of powering 
+ your web application with Rails.
+</p>
+
+<h2>Why Ruby on Rails?</h2>
+
+<p>
+First, you might be wondering: Web application frameworks are a dime a
+dozen, so what's different about Rails?  Here are a few things that
+make Ruby on Rails stand above the crowd:
+</p>
+<ul>
+  <li>
+    <p>
+      <b>Full-Stack Web Framework.</b>  Rails is an MVC web framework
+      where models, views, and controllers are fully integrated in a
+      seamless fashion.  That means you automatically get all the
+      benefits of an MVC design without the hassle of explicitly
+      configuring each component to play well with the others.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>Real-World Usage.</b>  The Rails framework was extracted from
+      real-world web applications.  That is, Rails comes from real
+      need, not anticipating what might be needed.  The result is an
+      easy to use and cohesive framework that's rich in functionality,
+      and at the same time it does its best to stay out of your way.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>One Language: Ruby.</b> Everything from business logic to
+      configuration files (there aren't many) are written in the Ruby
+      programming language.  With just one language, you hope it's a
+      good one, and Ruby doesn't disappoint.  Ruby is a full
+      object-oriented language with clean syntax and it has a way of
+      making programming truly fun.  Using one language means you
+      don't have to juggle between multiple languages and dialects as
+      you're building your application.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>Convention over Configuration.</b> Rails works hard to take
+      care of all the repetitive and error-prone chores associated
+      with starting to build a web application, and maintaining it
+      over time.  Rails uses simple naming conventions and clever use
+      of reflection to make your work easier with near-zero
+      configuration.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>It's Productive!</b>  At the end of the day, Rails is all
+      about helping you stay productive.  And in a world where being
+      the first to market and keeping customers happy adds up to
+      increased revenues for you, it pays to pick a tool aligned with
+      those goals. Many <a href="http://rubyonrails.com/applications">
+      real-world applications</a> are already reaping the benefits.
+    </p>
+  </li>
+</ul>
+
+<p>
+All that being said, the best way to judge Rails is to experience it
+while building an application.  So let's get right to it.
+</p>
+
+<h2>Installing Rails</h2>
+
+<p>The version of Ruby that shipped on Mac OS X Tiger prior to v10.4.6 did not work
+well with Rails.   If you're running an earlier version of Tiger, you'll need to
+either upgrade to 10.4.6 or upgrade your copy of Ruby to version 1.8.4 or later using
+the open source distribution. </p>
+
+<p>And to do any serious Rails development you'll want to
+install a production-quality web server, database server, and a few other
+goodies.  Thankfully, a golden-path installation guide is already
+available.
+</p>
+
+<p class="notebox"><b>NOTE: </b>If you already have MySQL, you can get everything else by using <a href="http://locomotive.raaum.org/">Locomotive</a>,
+a drag-install of all the relevant pieces. </p>
+
+<p> Walk through the step-by-step instructions outlined in 
+<a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">&quot;Building
+    Ruby, Rails, LightTPD, and MySQL on Tiger&quot;</a>.  It starts by
+installing Ruby 1.8.4 without overwriting the system-installed Ruby
+(it puts the new version in <tt>/usr/local</tt>).  That way, the
+default system works as expected for other users or programs already
+coded for the system-installed ruby.  It also installs
+the <a href="http://docs.rubygems.org/">RubyGems</a> package manager,
+<a href="http://www.rubyonrails.org/">Rails</a>,
+the <a href="http://www.lighttpd.net/">LightTPD</a> web server, and
+the <a href="http://www.mysql.com/">MySQL</a> database server (with
+native bindings), all of which we'll use in this tutorial.  And the
+instructions have even been tuned to work well for those of you that
+are using the latest Intel-based Macs.  By the end you'll have an
+ideal development and production environment.
+</p>
+ 
+<p>
+Once you have a working version of Ruby and RubyGems installed, you
+can upgrade to future versions of Rails simply by typing
+</p>
+
+<pre class="sourcecodebox">$ gem install rails --include-dependencies</pre>
+
+<p>
+Finally, we recommend that you download and install the 30-day
+trial of <a href="http://macromates.com/">TextMate</a> to use
+throughout this tutorial.  It's a popular editor  for Rails
+developers on Mac OS X.
+</p>
+
+<h2>Creating a New Rails Application</h2>
+
+<p>
+We're going to build an online expense tracking application.  You
+could use this for tracking expenditures for your personal budget, a
+small company, a group or club, etc.  Say, for example, our club
+organizes fund-raising campaigns and we need to make sure expenses are
+in line with the budget for each event.  The old paper and pencil
+system broke down last month, so we've decided that we need an online
+web application that everyone can share.
+</p>
+
+<p>
+First we need to create the application.  All Rails applications have
+a consistent directory structure so that Rails can find stuff without
+needing to be told where to look.  Create a skeleton directory
+structure and a set of files for our expenses application by typing
+</p>
+
+<pre class="sourcecodebox">$ rails expenses</pre>
+
+<p>
+Next, open the new project directory with TextMate by typing
+</p>
+
+<pre class="sourcecodebox">$ mate expenses</pre>
+
+<p>
+In the TextMate Project Drawer, shown in Figure 1, you should see the
+directory structure that the <tt>rails</tt> command created.
+</p>
+
+<img src="images/DirectoryStructure.jpg" alt="DirectoryStructure.jpg" 
+width="431" height="356">
+<br>
+<p class="smalltext">
+  <strong>Figure 1:</strong>
+  Application Directory Structure (as shown in TextMate)
+</p>
+
+<p>
+We'll peek inside these directories a bit later.  But first, we're
+ready to run our application for the first time.  Change directory to
+the <tt>expenses</tt> directory, then type:
+</p>
+
+<pre class="sourcecodebox">$ script/server</pre>
+
+<p>
+You've just started a web server.  If you have the LightTPD web server
+installed, Rails will attempt to use it by default.  Otherwise
+WEBrick, the pure-Ruby web server that comes with Ruby, will be used.
+Either web server works well for development purposes.
+</p>
+
+<p>
+Now point your web browser
+at <a href="http://localhost:3000">http://localhost:3000</a>.  You
+should see a web page welcoming you aboard Rails.  That tells us that
+the application is running, but it doesn't help our fund-raising
+campaign.  Let's fix that. 
+</p>
+
+<h2>Jump-Starting the Application</h2>
+
+<p>
+Now we're ready to put some meat on the bones of the generated
+directory structure.  Ultimately (in the next few minutes) we want to
+end up with a web interface that lets us track expenditures for
+accounts.  For starters, we need to create and configure a database to
+hold those accounts and expenses.
+</p>
+
+<h3>Setting Up the Database</h3>
+
+<p>
+Telling Rails which database to use and how to connect to it is one of
+the few times you'll need to touch a configuration file.  In
+the <tt>config/database.yml</tt> file you'll notice that Rails has
+pre-configured three database
+connections&mdash;<tt>development</tt>, <tt>test</tt>,
+and <tt>production</tt>&mdash;that correspond to three runtime
+environments.  We're doing development now, so have a look at that
+particular section of the <tt>config/database.yml</tt> file.
+</p>
+
+<pre class="sourcecodebox">
+development:
+  adapter: mysql
+  database: expenses_development
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+</pre>
+
+<p>
+By default, Rails assumes we're using the MySQL database server with a
+database called <tt>expenses_development</tt>.  If you set a MySQL
+password for the 'root' user to something other than the default
+(which is always a good idea), then set that password as the value of
+the <tt>password</tt> field.  Also, if your <tt>mysqld.sock</tt> isn't
+in the usual place, you can explicitly set it in the <tt>socket</tt>
+field.
+</p>
+
+<p>The default <tt>database.yml</tt> file includes example configurations for other
+databases. The following database servers are currently supported by Rails:
+MySQL, PostgreSQL, SQLite, SQL Server, DB2, Firebird, and Oracle. </p>
+
+<p>Now we need to actually create the expenses_development database. Feel free to
+use whatever tool you're comfortable with. Here's how to create the database
+using the mysqladmin command-line tool: </p>
+
+<pre class="sourcecodebox">$ mysqladmin -u root -p create expenses_development
+</pre>
+
+
+<p>
+We'll test the database connectivity a bit later.
+</p>
+
+<h3>Creating the Database Schema</h3>
+
+<p>
+We've created the database, but it doesn't have any tables yet.  We
+need to store accounts in an <tt>accounts</tt> table, so let's start
+there.  Rather than using raw DDL or a SQL administration tool, we'll
+use a Rails <i>migration</i> to create the <tt>accounts</tt> table.
+Migrations are database-agnostic representations of database schemas,
+which means we can easily switch to another database server later, if
+necessary.  Better yet, migrations let us conveniently evolve a schema
+over time.
+</p>
+
+<p>
+First, create the migration using the Rails migration generator.
+</p>
+
+<pre class="sourcecodebox">
+$ script/generate migration accounts
+</pre>
+
+<p>
+That command creates a <tt>db/migrate/001_accounts.rb</tt> file that
+defines an empty migration.  We need to fill it in to create
+an <tt>accounts</tt> table with two columns: a name that identifies
+the account (a text string) and a budget (we'll use a float for the
+sake of simplicity).  Update the <tt>db/migrate/001_accounts.rb</tt>
+file as follows:
+</p>
+
+<pre class="sourcecodebox">
+class Accounts &lt; ActiveRecord::Migration
+
+  def self.up
+    create_table :accounts do |table|
+      table.column :name, :string
+      table.column :budget, :float
+    end
+  end
+
+  def self.down
+    drop_table :accounts
+  end
+end
+</pre>
+
+<p>
+This may be your first look at Ruby code.  The file defines a class
+with two class-level methods&mdash;<tt>up</tt> and <tt>down</tt>.
+The <tt>up</tt> method moves the migration forward by creating
+the <tt>accounts</tt> table and its columns; the <tt>down</tt> method
+rolls the migration backward by dropping the <tt>accounts</tt> table.
+Note that unless told not to, <tt>create_table</tt> will implicitly
+create a primary key column.
+</p>
+
+<p>
+Now let's apply the migration.  We'll use Rake (Ruby's equivalent of
+Make) to run a task that's available in every Rails application. </p>
+
+ <p>Simply type:  </p>
+
+<pre class="sourcecodebox">
+$ rake migrate
+</pre>
+
+<p>
+Our <tt>expenses_development</tt> database should now have
+an <tt>accounts</tt> table.  (Running <tt>'rake migrate'</tt> is also a
+handy way to test database connectivity, so if the migration failed
+it's probably because your database isn't configured properly.)
+</p>
+
+<p>
+Migrations are also reversible.  For example, if you wanted to migrate
+the schema back to its original form, you'd simply type <tt>'rake
+migrate VERSION=0'</tt>.
+</p>
+
+
+<h3>Putting Up Scaffolding</h3>
+
+<p>
+Now that we have a database and a schema for storing accounts, we need
+to start creating accounts.  The fastest way to get from a database
+schema to a web interface is to use what Rails
+calls <i>scaffolding</i>.  Scaffolding is the initial support for
+building an application&mdash;<i>models</i>,
+<i>controllers</i>, and <i>views</i> that handle the basic CRUD
+(create/read/update/delete) operations of any database-backed web
+application.  Unlike tools that generate code that's never intended to
+be modified by humans, Rails scaffolding is generated with the express
+intent of encouraging you to tweak it.  And just like scaffolding used
+to support the construction of a building, gradually the application
+scaffolding disappears.
+</p>
+
+<p>
+Generate the scaffolding by typing
+</p>
+
+<pre class="sourcecodebox">
+$ script/generate scaffold account expenses
+</pre>
+
+<p>
+That command generates a number of files for us; files we'd rather not
+create by hand.  The first parameter (<tt>account</tt>) specifies the
+name of the model, which is generated in
+the <tt>app/models/account.rb</tt> file.  The second parameter
+(<tt>expenses</tt>) specifies the name of the controller, which is
+generated in the <tt>app/controllers/expenses_controller.rb</tt> file.
+The scaffold generator also created template files for the views of
+our application.  We'll look at how all these components work together
+a bit later.
+</p>
+
+<p>
+Let's see how close scaffolding get us to a web interface for managing
+accounts.  If the application is still running, press CTRL-C in the
+terminal where it's running.  You may have changed the database
+connection, which requires a restart, so restart the application by
+typing
+</p>
+
+<pre class="sourcecodebox">
+$ script/server
+</pre>
+
+<p>
+Then point your web browser
+at <a
+href="http://localhost:3000/expenses">http://localhost:3000/expenses</a>.
+You should see the web page that lets you create new accounts.  Go
+ahead: create an account, click the &quot;Create&quot; button, and the
+new account will show up in the account listing.  From there you can
+show, edit, or delete the account.  Figure 2 shows example accounts
+for our fund-raising campaign.
+</p>
+
+<img src="images/ListingAccounts.jpg" alt="ListingAccounts.jpg" 
+     width="473" height="287">
+<p class="smalltext">
+  <strong>Figure 2:</strong>
+  Using scaffolding to manage accounts
+</p>
+
+<p>
+This interface won't win any web design awards, but it's functional
+and gives us a jump-start on our application.  With no explicit
+configuration, the model, views, and controller work together to give
+us a quick and dirty web interface.
+</p>
+
+<h2>Tiptoeing Through the Generated Code</h2>
+
+<p>
+How does all this work?  At the core it uses simple naming conventions
+to eliminate most configuration.  Take, for example, the
+&quot;Show&quot; hyperlink for the account with an id of 1.  The URL
+for this link is:  </p>
+
+<pre class="sourcecodebox">
+http://localhost:3000/expenses/show/1
+</pre>
+
+<p>
+The first part of the URL path, <tt>expenses</tt>, is the name of the
+controller responsible for handling the incoming request.  The second
+part of the path, <tt>show</tt>, is the name of an action defined by
+that controller.  The last part of the path, <tt>1</tt>, is the id (in
+this case, the database primary key) of the account to be shown.
+Figure 3 shows the MVC components in play, and their file equivalents.
+</p>
+
+<img src="images/MVC.jpg" alt="MVC.jpg" 
+     width="554" height="271">
+<p class="smalltext">
+  <strong>Figure 3:</strong>
+  MVC components and their files
+</p>
+
+<p>
+So, using those URL path parts (called a <i>route</i>) as a guide,
+Rails will invoke the <tt>show</tt> method of
+the <tt>ExpensesController</tt>, supplying the account id in the HTTP
+request parameters.  The controller code is found in
+the <tt>app/controllers/expenses_controller</tt> file.
+</p>
+
+<pre class="sourcecodebox">
+class ExpensesController &lt; ApplicationController
+  
+  def show
+    @account = Account.find(params[:id])
+  end
+
+  # plus other action methods for creating, reading,
+  # updating, and deleting accounts
+end
+</pre>
+
+<p>
+The <tt>show</tt> method uses the account id supplied
+in <tt>params[:id]</tt> to find and populate an <tt>Account</tt> model
+object containing the values of the row in the <tt>accounts</tt>
+database table corresponding to the account id.  The
+resulting <tt>Account</tt> model object is referenced by
+the <tt>@account</tt> instance variable.  (Ruby identifies instance
+variables as variables starting with an <tt>@</tt> symbol.)
+The <tt>Account</tt> model class itself lives in
+the <tt>app/models/account.rb</tt> file.
+</p>
+
+<pre class="sourcecodebox">
+class Account &lt; ActiveRecord::Base
+end
+</pre>
+
+<p>
+At first glance, this class appears to do nothing, but in fact it
+already has a lot of functionality inherited through its parent
+class <tt>ActiveRecord::Base</tt>.  Rails uses reflection and naming
+conventions to transparently map relational tables into model objects.
+The <tt>Account</tt> model encapsulates access to
+the <tt>accounts</tt> table in our database.  An instance of
+an <tt>Account</tt> model class represents a row in
+the <tt>accounts</tt> table, with each table column mapping to an
+attribute of the <tt>Account</tt> instance.
+</p>
+
+<p>
+After fetching and populating an <tt>Account</tt> model object and
+assigning it to the <tt>@account</tt> instance variable,
+the <tt>show</tt> action renders the template found
+in <tt>app/views/expenses/show.rhtml</tt>.  Rendering this template is
+all implicitly done with naming conventions.  If an action doesn't
+explicitly render a named template, then a template matching the
+action's name is used.
+</p>
+
+<pre class="sourcecodebox">
+&lt;% for column in Account.content_columns %&gt;
+&lt;p&gt;
+  &lt;b&gt;&lt;%= column.human_name %&gt;:&lt;/b&gt; 
+  &lt;%=h @account.send(column.name) %&gt;
+&lt;/p&gt;
+&lt;% end %&gt;
+
+&lt;%= link_to 'Edit', :action =&gt; 'edit', :id =&gt; @account %&gt; |
+&lt;%= link_to 'Back', :action =&gt; 'list' %&gt;
+</pre>
+
+<p>
+The template is a mix of HTML and Ruby code.  Any expression
+between <tt>&lt;%=</tt> and <tt>%&gt;</tt> is evaluated as Ruby code
+and the result is substituted for the expression.  Notice that
+the <tt>show</tt> template has access to the <tt>@account</tt>
+instance variable that was set in the <tt>show</tt> action of the
+controller.  The <tt>show</tt> template simply outputs the value of
+each attribute of the <tt>@account</tt> object with its associated
+column name.  Hyperlinks to the <tt>edit</tt> and <tt>list</tt>
+actions are generated using the built-in <tt>link_to</tt> helper.  The
+resulting web view is shown in Figure 4.
+</p>
+
+<img src="images/ShowAction.jpg" alt="ShowAction.jpg" 
+     width="583" height="287">
+<p class="smalltext">
+  <strong>Figure 4:</strong>
+  The 'show' action renders the 'show' template
+</p>
+
+<p>
+Again, this template doesn't output the most visually appealing
+interface, but it's easy enough to change to your liking.
+</p>
+
+
+<h3>Customizing: Validating Models</h3>
+
+<p> 
+You may have noticed that the web form used to create and edit
+accounts will let you enter anything in the fields, and even let you
+leave required fields blank.  Maintaining the consistency of the
+application's data is a model's job, so let's add some validations to
+ensure the account has a name and a valid budget amount.  
+</p>
+
+<p>
+Thankfully, running the scaffold generator created a set of working
+files that we can incrementally tweak.  Update
+the <tt>app/models/account.rb</tt> file as follows:
+</p>
+
+<pre class="sourcecodebox">
+class Account &lt; ActiveRecord::Base
+  validates_presence_of :name
+  validates_numericality_of :budget
+end
+</pre>
+
+<p>
+Now try to get past the web form by leaving the name field blank or
+using anything but a number in the budget field.  You should see
+something similar to the web form shown in Figure 5.
+</p>
+
+<img src="images/Validations.jpg" alt="Validations.jpg" 
+     width="582" height="539">
+<p class="smalltext">
+  <strong>Figure 5:</strong>
+  Model validations at work
+</p>
+
+<h2>Linking Models Together</h2>
+
+<p>
+Account management is working well, but we're missing the ability to
+add expenses to accounts.  An expense is comprised of the date on
+which it was paid, a string identifying who it was paid to, and the
+amount paid.  We need to store expenses in their own database table,
+which calls for another migration.  Create the expense migration by
+typing
+</p>
+
+<pre class="sourcecodebox">
+$ script/generate migration expenses
+</pre>
+
+<p>
+Then fill it in by updating the
+resulting <tt>db/migrate/002_expenses.rb</tt> file as follows:
+</p>
+
+<pre class="sourcecodebox">
+class Expenses &lt; ActiveRecord::Migration
+
+  def self.up
+    create_table :expenses do |table|
+      table.column :paid_on, :date
+      table.column :payable_to, :text
+      table.column :amount, :float, :default => 0.0
+      table.column :account_id, :integer
+    end
+  end
+
+  def self.down
+    drop_table :expenses
+  end
+end
+</pre>
+
+<p>
+Notice that in addition to expense data, rows in the <tt>expenses</tt>
+table have a foreign key reference (<tt>account_id</tt>) that links
+the expense to its account.  Apply the migration by typing
+</p>
+
+<pre class="sourcecodebox">
+$ rake migrate
+</pre>
+
+<p>
+Next we need an <tt>Expense</tt> model to wrap the <tt>expenses</tt>
+table.  Use the generator to create the model by typing
+</p>
+
+<pre class="sourcecodebox">
+$ script/generate model expense
+</pre>
+
+<p>
+That command gives us an empty <tt>Expense</tt> model class.  Now we
+have to tell Rails that a relationship exists between
+the <tt>accounts</tt> and <tt>expenses</tt> tables.  (Rails can't
+accurately derive relationships simply by looking at the database
+schema.)  Specifically, an expense <i>belongs to</i> an account.
+Declare that relationship in the <tt>Expense</tt> model by updating
+the <tt>app/models/expense.rb</tt> file as follows:
+</p>
+
+<pre class="sourcecodebox">
+class Expense &lt; ActiveRecord::Base
+  belongs_to :account
+end
+</pre>
+
+<p>
+The <tt>belongs_to</tt> declaration dynamically adds methods to
+the <tt>Expense</tt> class, including methods for assigning an account
+to the expense and returning the account that the expense belongs to.
+For that to work, Rails assumes that the <tt>account_id</tt> column in
+the <tt>expenses</tt> table references the <tt>id</tt> column of
+the <tt>accounts</tt> table.  It's another example of how Rails uses
+naming conventions to keep external configuration at a minimum, and
+you can always override the default behavior.
+</p>
+
+<p>
+That takes care of one side of the relationship.  We also need to tell
+Rails about the link in the opposite direction: an account <i>has
+many</i> expenses.  Declare that relationship in the <tt>Account</tt>
+model by updating the <tt>app/models/account.rb</tt> file as follows:
+</p>
+
+<pre class="sourcecodebox">
+class Account &lt; ActiveRecord::Base
+
+  validates_presence_of :name
+  validates_numericality_of :budget
+  
+  has_many :expenses, :order => "paid_on"
+end
+</pre>
+
+<p>
+The <tt>has_many</tt> declaration dynamically adds several methods to
+the <tt>Account</tt> class for managing an account's expenses.  Note,
+however, that it's not required that we add relationships to both
+the <tt>Account</tt> and <tt>Expense</tt> models.  Setting up
+relationships in both directions just means that we can access and
+operate on the relationships from either side. </p>
+
+<h3>Accessing Your Application Through the Back Door</h3>
+
+     <pre class="sourcecodebox">
+$ script/console
+</pre>
+
+<p>
+That command loads the application into an interactive environment,
+and prompts you to enter Ruby code.  Let's add two expenses to an
+existing account.  Using one of the account names you created through
+the web interface, type the following lines, with each line followed
+by a Return:
+</p>
+
+<pre class="sourcecodebox">
+&gt;&gt; account = Account.find_by_name("Chili Cookoff")
+&gt;&gt; account.expenses.create(:paid_on =&gt; Time.now, :payable_to =&gt; 'Parties R Us', :amount =&gt; 75.00)
+&gt;&gt; account.expenses.create(:paid_on =&gt; 1.day.ago, :payable_to =&gt; 'Fire Department', :amount =&gt; 25.00)
+&gt;&gt; account.expenses(true)
+</pre>
+
+<p>
+(After entering each line and pressing Return, it will show the value
+of each expression.  Use <tt>quit</tt> to exit the session.)
+</p>
+
+<p>
+First we use a dynamic finder (<tt>find_by_name</tt>) to find
+an <tt>Account</tt> model object in the database.  Dynamic finder
+methods work for any database column
+(e.g., <tt>find_by_budget(150)</tt>).  Then we create and add
+two <tt>Expense</tt> model objects to the <tt>expenses</tt>
+relationship of the account.  Finally, we
+call <tt>account.expenses(true)</tt> to get a collection of all
+expenses belonging to the account, ordered by the date the expenses
+were paid.  (Using <tt>true</tt> forces the expenses to be reloaded.)
+</p>
+
+<p>
+Now that we have an account with expenses, it would be helpful if we
+listed the expenses on the account detail page.
+</p>
+
+<h3>Dressing Up the View</h3>
+
+<p>
+The account detail page is still being generated by the <tt>show</tt>
+template that was created by the scaffolding.  So when we show an
+account, we don't see any expenses.  But we can easily change that by
+customizing the <tt>show</tt> template slightly.  Add the following
+snippet to the bottom of the <tt>app/views/expenses/show.rhtml</tt>
+file:
+</p>
+
+<pre class="sourcecodebox">
+&lt;% if @account.has_expenses? %&gt;
+  &lt;h3&gt;Itemized Expenses&lt;/h3&gt;
+  &lt;table&gt;
+  &lt;% for expense in @account.expenses %&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;%= expense.paid_on %>&lt;/td&gt;
+      &lt;td&gt;&lt;%= expense.payable_to %>&lt;/td&gt;
+      &lt;td align="right">&lt;%= number_to_currency(expense.amount) %>&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;% end %&gt;
+  &lt;/table&gt;
+&lt;% end %&gt;
+</pre>
+
+<p>
+The template loops through all the expenses for the account,
+generating an HTML table row for each expense.  Notice the use of the
+built-in <tt>number_to_currency</tt> helper to display the expense
+amount as dollars.  Navigating to the account detail page for the
+account you added expenses to using <tt>script/console</tt>
+previously, you should now see a page similar to the one shown in
+Figure 6.
+</p>
+
+<img src="images/AccountExpenses.jpg" alt="AccountExpenses.jpg" 
+     width="585" height="297">
+<p class="smalltext">
+  <strong>Figure 6:</strong>
+  An account has many expenses
+</p>
+
+<h2>Working with Web Forms</h2>
+
+<p>
+We don't yet have a way to record expenditures for an account using
+the web interface, so let's add an HTML form that captures the
+expense.  We'll have the form post the expense to the <tt>record</tt>
+action in the <tt>ExpensesController</tt>.  
+</p>
+
+<p>
+First, add the following snippet to the bottom of
+the <tt>app/views/expenses/show.rhtml</tt> file:
+</p>
+
+<pre class="sourcecodebox">
+&lt;%= start_form_tag :action => 'record', :id => @account %&gt;
+  &lt;p&gt;
+    On &lt;%= date_select 'expense', 'paid_on', :order => [:month, :day, :year] %&gt;
+    to &lt;%= text_field 'expense', 'payable_to', :size => 25 %&gt;
+    in the amount of $&lt;%= text_field 'expense', 'amount', :size => 9 %&gt;
+  &lt;/p&gt;
+  &lt;%= submit_tag 'Record!' %&gt;
+&lt;%= end_form_tag %&gt;
+</pre>
+
+<p>
+This creates an HTML form using built-in form helpers.
+The <tt>start_form_tag</tt> helper generates an HTML form that, in
+this case, posts to the <tt>record</tt> action of
+the <tt>ExpensesController</tt> with the current account id assigned
+to the <tt>:id</tt> URL parameter.  The <tt>date_select</tt> helper
+generates a date selection widget bound to the <tt>paid_on</tt>
+attribute of the &quot;thing&quot; named <tt>expense</tt>.  (Stay
+tuned for what we mean by &quot;thing&quot;.)  The <tt>text_field</tt>
+helper generates an <tt>&lt;input&gt;</tt> tag of type <tt>text</tt>
+bound to the <tt>payable_to</tt> attribute of the thing
+named <tt>expense</tt>.  Finally, the <tt>submit_tag</tt> generates a
+submit button.
+</p>
+
+<p>
+Reload a <tt>show</tt> page and you should see a page similar to the
+one shown in Figure 7.
+</p>
+
+<img src="images/WebForm.jpg" alt="WebForm.jpg" 
+     width="680" height="330">
+<p class="smalltext">
+  <strong>Figure 7:</strong>
+  Recording expenses through a web form
+</p>
+
+<p>
+If you try to submit the form, Rails complains that it can't find
+the <tt>record</tt> action to handle the form post.  We need to define
+that action in the <tt>ExpensesController</tt>.  Add the following
+action method to the <tt>app/controllers/expenses_controller.rb</tt>
+file:
+</p>
+
+<pre class="sourcecodebox">
+def record
+  Account.find(params[:id]).expenses.create(params[:expense])
+  redirect_to :action => 'show', :id => params[:id]
+end
+</pre>
+
+<p>
+Remember we said that the date and text were bound to a thing called
+&quot;expense&quot;?  Just what is that &quot;thing?&quot; Well, in
+this case, it simply means that we can reference all
+the <tt>expense</tt> fields in the form by
+referencing <tt>params[:expense]</tt>.  First we find the account
+corresponding to the account id supplied by the form
+(in <tt>params[:id]</tt>).  Then we create an <tt>Expense</tt> model
+object from the form data (available in <tt>params[:expenses]</tt>)
+and add the expense to the account's collection of expenses.  Finally,
+we redirect the browser to the <tt>show</tt> action to display the
+updated account details, including the newly-added expense.
+</p>
+
+<p>
+Go ahead and use the web form to add expenses to your accounts.  You
+can get insight into what's going on behind the scenes (including what
+SQL is being run) by watching the log file.  In a separate terminal,
+type: </p>
+
+<pre class="sourcecodebox">$ tail -f log/development.log</pre>
+
+<p>
+Note that if <tt>script/server</tt> started with the LightTPD web
+server (rather than falling back onto WEBrick), the log will be tailed
+automatically for you.
+</p>
+
+<h2>Adding Business Logic</h2>
+
+<p>
+We have an account budget and a list of expenses, now all we need to
+do is total the expenses to see if we're within budget.  That
+calculation is business logic that belongs in the <tt>Account</tt>
+model.  So add the following method to
+the <tt>app/models/account.rb</tt> file:
+</p>
+
+<pre class="sourcecodebox">
+def total_expenses
+  expenses.inject(0) {|total, expense| total + expense.amount }
+end
+</pre>
+
+<p>
+We use the <tt>expenses</tt> relationship to iterate through the
+account's expenses and accumulate the total.  Don't worry about the
+syntax used here.  The <tt>inject</tt> method is a Ruby idiom for
+accumulating while stepping through a collection of objects.
+The <tt>total_expenses</tt> method then returns the value of the last
+expression, which is the total of the expenses.
+</p>
+
+<h3>Using Helpers</h3>
+
+<p>
+At this point we need to update the view to show the total.  But
+there's a bit of view logic that has to happen: If the expense total
+is greater than the account budget, then we want to display the total
+in red.  Otherwise, we'll display the total in black.  (The club
+treasurer likes it better this way.)  We could put this logic in the
+template itself, but it's wise to keep logic out of the template.
+Instead, view-specific logic is best kept in a custom helper method.
+Add the following method to
+the <tt>app/helpers/expenses_helper.rb</tt> file:
+</p>
+
+<pre class="sourcecodebox">
+def total(account)
+  style = account.total_expenses > account.budget ? 'color: red' : 'color: black'
+  %(&lt;span style="#{style}"&gt;#{number_to_currency(account.total_expenses)}&lt;/span&gt;)
+end
+</pre>
+
+<p>
+This helper method simply generates styled HTML to show the total
+expenses for an account, depending on whether the account is within
+budget or not.
+</p>
+
+<p>
+Finally, modify the template in
+the <tt>app/views/expenses/show.rhtml</tt> file to display the total
+using the <tt>total</tt> helper by adding a row to the bottom of the
+itemized expenses table, as follows:
+</p>
+
+<pre class="sourcecodebox">
+&lt;tr&gt;
+  &lt;td align="right" colspan="3"&gt;
+    &lt;strong&gt;Total&lt;/strong&gt;: &lt;%= total(@account) %&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+</pre>
+
+<p>
+Reload a <tt>show</tt> page, add enough expenses to bust the budget,
+and you should see a page similar to Figure 8.
+</p>
+
+<img src="images/Helper.jpg" alt="Helper.jpg" 
+     width="680" height="397">
+<p class="smalltext">
+  <strong>Figure 8:</strong>
+  Using business logic and a helper to show total expenses
+</p>
+
+<p>
+Now that we have business logic, trivial as it may be, we're wise to
+test it.
+</p>
+
+<h2>Writing Tests</h2>
+
+<p>
+Rails makes doing the right things easy.  One of those things is
+testing.  In fact, when we generated the scaffolding Rails went ahead
+and created unit tests for our models and functional tests for our
+controllers.  But the tests won't run until we create the test
+database.
+</p>
+
+<p>
+Remember that Rails has three default runtime environments.  When you
+run tests, they're run with Rails configured according to
+the <tt>test</tt> environment.  In our case, the default database
+configured in the <tt>config/database.yml</tt> file for
+the <tt>test</tt> environment is called <tt>expenses_test</tt>.  To
+create that database using the mysqladmin command-line tool, type 
+</p>
+
+<pre class="sourcecodebox">$ mysqladmin -u root -p create expenses_test
+</pre>
+
+<p>
+Now let's add a new unit test to cover the <tt>total_expenses</tt>
+method we added to the <tt>Account</tt> model.  Add the following test
+method to the <tt>test/unit/account_test.rb</tt> file:
+</p>
+
+<pre class="sourcecodebox">
+def test_total_expenses
+  account = Account.new
+  account.expenses.create :amount => 10.00
+  account.expenses.create :amount => 20.50
+
+  assert_equal 30.50, account.total_expenses
+end
+</pre>
+
+<p>
+The test adds two expenses to an account, then checks that the total
+expenses is the sum of both expenses.  Run all the unit tests by
+running <tt>'rake test_units'</tt>.
+</p>
+
+<pre class="sourcecodebox">$ rake test_units
+...
+Finished in 0.084544 seconds.
+
+3 tests, 3 assertions, 0 failures, 0 errors
+</pre>
+
+<p>
+Rails encourages you to test more by making it easy to write and run
+tests.  In addition to unit tests, functional tests let you easily
+generate simulated HTTP requests against a controller, then assert
+that the controller works as you'd expect.  To run all the unit and
+functional tests in one fell swoop, simply run <tt>rake</tt>.  (As it
+stands, the functional tests fail because we've modified
+the <tt>ExpensesController</tt> and its test is now out of step with
+the code.)
+</p>
+
+<h2>Ship It!</h2>
+
+<p>
+We're done with version 1.0 of the application.  Now it's time to
+deploy it onto a production server and share it with the world.  We
+need to do at least two things: configure a web server on the
+production machine and deploy our code onto that machine.
+</p>
+
+<h3>Configuring a Web Server</h3>
+
+<p>
+The easiest path is to use the LightTPD (or &quot;lighty&quot;) web
+server: a production-quality web server that's very popular in the
+Rails community.  In fact, Rails 1.0 will use the LightTPD web server
+by default if it's installed on the local machine.
+</p>
+
+<p>
+The first time you start the application by
+typing <tt>script/server</tt>, a LightTPD configuration file is
+created in the <tt>config/lighttpd.conf</tt> file.  By default, your
+Rails application will run in the <tt>development</tt> runtime
+environment.  To switch to the <tt>production</tt> environment, simply
+update the <tt>config/lighttpd.conf</tt> file and set
+the <tt>RAILS_ENV</tt> environment variable as follows:
+</p>
+
+<pre class="sourcecodebox">"RAILS_ENV" => "production"</pre>
+
+<p>
+The production environment changes the runtime characteristics of the
+application to suit production needs: the application runs faster,
+logging is less verbose, users see friendlier error pages, etc.
+</p>
+
+<h3>Deploying the Application</h3>
+
+<p>
+When it comes to deploying the code to the production server, and
+re-deploying your application with each new release, you're in for a
+treat.  <a
+href="http://manuals.rubyonrails.com/read/book/17">Capistrano</a> (formerly SwitchTower) is
+an automated deployment utility that makes deploying Rails
+applications a breeze.  To summarize, after installing Capistrano,
+deploying a new version of your application to one or more deployment
+machines is as simple as typing
+</p>
+
+<pre class="sourcecodebox">$ rake deploy</pre>
+
+<p>
+If there's a problem with that version, you can easily roll back to
+the previous version by typing
+</p>
+
+<pre class="sourcecodebox">$ rake rollback</pre>
+
+<p>
+When you run a SwitchTower task such as <tt>deploy</tt>
+or <tt>rollback</tt>, it's run in parallel (and atomically) on all
+machines that are assigned to that task in the Capistrano recipe
+file.  Think about that: As the number of machines and processes in
+your deployment environment increases, your deployment procedure
+remains constant at a single command.
+</p>
+
+<p>
+For complete instructions on how to configure LightTPD and use
+Capistrano, see the online recipe <a
+    href="http://duncandavidson.com/essay/2005/12/railsonlighty">Deploying
+    Rails with LightTPD</a>.
+</p>
+
+<h2>Features for Version 2.0</h2>
+
+<p>
+In a short amount of time we've built a functional expense-tracking
+application.  Our treasure's job is already made easier.  Indeed,
+we're off to a good start, but here are just a few ideas we could
+implement by the end of the day:
+</p>
+
+<ul>
+  <li>
+    <p>
+      <b>Add Expense Categories.</b>  We may well want to associate
+      expenses with expense categories.  For example, an expense for
+      printing flyers might go in the &quot;Advertising&quot;
+      category.  To do that, we'll need a relationship between
+      the <tt>Expense</tt> model and a new <tt>Category</tt> model,
+      for example.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>Make the Interface More Dynamic.</b> Currently, recording a
+      new expense forces a reload of the page.  Using the Ajax
+      libraries and helpers integrated with Rails, when a new expense
+      is added we could dynamically add the expense to the list of
+      itemized expenses, update the total, and highlight the new item.
+      All that would happen without needing to reload the page.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>Export Accounts and Expenses.</b>  To integrate with other
+      systems, users may want to export their data as XML, CSV, PDF,
+      etc.  To do that, we'll need to use builder-style templates
+      supported by Rails.  Instead of generating HTML, builder
+      templates use Ruby code to generate output in arbitrary formats.
+    </p>
+  </li>
+  <li>
+    <p>
+      <b>Support Multiple Users.</b>  If we want to bring this
+      application to the masses, we'll need to add the concept of an
+      account owner.  Users should only be able to add expenses to
+      accounts they own.  To do that, we'll need to
+      use <i>sessions</i> and <i>filters</i> to support logging in
+      users and restricting their access.
+    </p>
+  </li>
+</ul>
+
+<h2>Conclusion</h2>
+
+<p>
+Ruby on Rails is a highly-productive and industrial-strength web
+application framework.  It scales from the simplest expense tracking
+application we built to full-featured applications with respectable
+numbers of users.  As with any useful tool, it's not suited to handle
+every job, but it's a great complement to your Mac OS X development
+environment.
+</p>
+
+<h2>For More Information</h2>
+
+<p>
+This article has introduced you to Ruby on Rails.  The following
+references will help you dig in deeper:
+</p>
+
+<ul>
+  <li>
+    <a href="http://rubyonrails.com/">Official Rails web site</a>
+  </li>
+  <li>
+    <a href="http://api.rubyonrails.com/">Complete Rails API documentation</a>
+  </li>
+  <li>
+    The
+    book <a
+    href="http://pragmaticprogrammer.com/titles/rails/index.html">Agile
+    Web Development with Rails</a> is an excellent guide to learning
+    and mastering Rails.
+  </li>
+  <li>
+    <a
+       href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">Building
+      Ruby, Rails, LightTPD, and MySQL on Tiger</a> provides
+      step-by-step installation instructions.
+  </li>
+  <li>
+    <a
+    href="http://duncandavidson.com/essay/2005/12/railsonlighty">Deploying
+      Rails with LightTPD</a> is a handy recipe for setting up
+      production systems using LightTPD and Capistrano.
+  </li>
+  <li>
+    <a href="http://pragmaticstudio.com">Pragmatic Studio</a> offers a
+    three-day, interactive Ruby on Rails workshop.
+  </li>
+  <li><a href="http://www.bignerdranch.com/classes/ruby.shtml">Big Nerd Ranch</a> also offers a five-day Ruby on Rails Bootcamp. </li>
+</ul>
+
+      <p><b>Updated:</b> 2006-06-08</p>
+    </td>
+  </tr>
+</table>
+<!-- END WIDE COLUMN -->
+
+<!-- END MAIN CONTENT -->
+
+<!-- START BOTTOM APPLE NAVIGATION -->
+	<!-- googleoff: all -->	<!-- START FOOTER TABLE -->	<div id="footer" align="center">	<table width="680" border="0" cellspacing="0" cellpadding="0">		<tr>			<td><img width="680" height="1" src="/images/1dot_919699.gif" alt=""><br>			<img src="/images/1dot.gif" width="680" height="17" alt=""></td>		</tr>		<tr>			<td align="center">				<p>Get information on <a href="http://www.apple.com/" target="_top">Apple</a> products.<br>				Visit the Apple Store <a href="http://store.apple.com" target="_top">online</a> or at <a href="http://www.apple.com/retail/" target="_top">retail</a> locations.<br>				1-800-MY-APPLE</p>				<p>Copyright &copy; 2009 Apple Inc.<br>				<a href="http://www.apple.com/legal/" target="_top">All rights reserved.</a> | <a href="http://www.apple.com/legal/" target="_top">Terms of use</a> | <a href="http://www.apple.com/legal/privacy/" target="_top">Privacy Notice</a></p>			</td>		</tr>		<tr>			<td><img width="680" height="20" src="/images/1dot.gif" alt=""></td>		</tr>	</table>	</div>	<!-- END FOOTER TABLE -->	<!-- googleon: all -->
+<!-- END BOTTOM APPLE NAVIGATION -->
+
+<!-- START CENTER CLOSE -->
+</center>
+<!-- END CENTER CLOSE -->
+
+</body>
+</html>

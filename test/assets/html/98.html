@@ -1,0 +1,1616 @@
+
+<!-- strlength of title is 23 smalltitle=smalltitle-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+ <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"> 
+ </script> 
+ <script type="text/javascript">
+ _uacct = "UA-290307-12";
+ urchinTracker();
+ </script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<title>Ruby on Rails Tutorials - Tutorialized</title>
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+<link href="/css/edit_tut.css" rel="stylesheet" type="text/css" />
+<link href="/css/profile_form.css" rel="stylesheet" type="text/css" />
+<link href="/css/register_form.css" rel="stylesheet" type="text/css" />
+<link href="/css/submit_tut.css" rel="stylesheet" type="text/css" />
+<link href="/css/small.css" rel="stylesheet" type="text/css" />
+
+<meta name="description" content="Ruby on Rails Tutorials" />
+<meta name="keywords" content="Ruby on Rails, Ruby on Rails tutorials, Ruby on Rails Getting Started tutorials, Ruby on Rails Image Manipulation tutorials, Ruby on Rails Database Related tutorials, Ruby on Rails Security tutorials, Ruby on Rails eCommerce tutorials, Ruby on Rails Helpers tutorials" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="alternate" type="application/rss+xml" title="Tutorialized.com Macromedia Fireworks Tutorials RSS" href="/rss-feed-s-524.xml" />
+</head>
+<body bgcolor="#efefef">
+<div id="wrapper">
+<div align=center>
+<table width="1003" height="18" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td bgcolor="#FFFFFF">
+      <table width="730" border="0" align="right" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="20"><img src="http://images.devshed.com/tut/tutorialized-01.gif" width="20" height="21" /></td>
+          <td width="35" bgcolor="#33AEEA">&nbsp;</td>
+          <td width="675" valign="middle" bgcolor="#33AEEA"><center><style type="text/css">
+<!--
+#topnavbox {	
+	clear: both;
+	text-align:center;
+	font-size: 0.8em;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.topnavtxt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	text-decoration: normal;
+    padding: 0;
+    margin: 0;
+color: #ffffff;\n}
+
+-->
+</style>
+<div id="topnavbox" align=center>
+	<div class="topnavtxt">
+<script type="text/javascript" language="JavaScript">
+<!--
+function ttgo1(url)
+{
+	if (url.length > 1)
+	{
+		document.location.href = "http://" + url + "/";
+	}
+}
+
+function ttfstart1(name)
+{
+	document.write('<div style="display: inline; top: 0; padding:0; border: 0px;"><B>' + name + '</b> <form style="display: inline; margin: 0;" name="jumptt"><select style="font-size: 10px; font-family: Verdana, Arial;" name="menutt" onChange="javascript:ttgo(this.options[this.selectedIndex].value);">');
+	document.write('<option value="" selected> - Select - </option>');	
+}
+
+function ttfend1()
+{
+	document.write('</select></form></div>');
+}
+
+function ttfadd1(name, val)
+{
+	document.write('<option value="' + val + '">' + name + '</option>');
+}
+
+function ttspace1()
+{
+	document.write('&nbsp;&nbsp;&nbsp;');
+}
+
+ttfstart1('Tutorials:');
+ttfadd1('Dev Shed', 'www.devshed.com');
+ttfadd1('ASP Free', 'www.aspfree.com');
+ttfadd1('Dev Articles', 'www.devarticles.com');
+ttfadd1('Dev Hardware', 'www.devhardware.com');
+ttfadd1('SEO Chat', 'www.seochat.com');
+ttfadd1('Web Hosting', 'webhosting.devshed.com');
+ttfadd1('Codewalkers', 'www.codewalkers.com');
+ttfend1();
+
+ttspace1();
+
+ttfstart1('Resources:');
+ttfadd1('Scripts', 'www.scripts.com');
+ttfadd1('Tutorialized', 'www.tutorialized.com');
+ttfadd1('Dev Mechanic', 'tools.devshed.com');
+//ttfadd1('iWatchIT', 'www.iwatchit.com');
+//ttfadd1('IT Marketplace', 'www.itmarketplace.com');
+ttfadd1('igrep', 'www.igrep.com');
+ttfend1();
+
+ttspace1();
+
+ttfstart1('Forums:');
+ttfadd1('Dev Shed Forums', 'forums.devshed.com');
+ttfadd1('ASP Free Forums', 'forums.aspfree.com');
+ttfadd1('Dev Articles Forums', 'forums.devarticles.com');
+ttfadd1('Dev Hardware Forums', 'www.devhardware.com/forums');
+ttfadd1('SEO Chat Forums', 'forums.seochat.com');
+ttfadd1('Codewalkers Forums', 'forums.codewalkers.com');
+ttfadd1('Tutorialized Forums', 'forums.tutorialized.com');
+ttfadd1('Dev Archives Forums', 'archives.devshed.com/forums');
+ttfend1();
+//-->
+</script>
+	</div>
+</div>
+</center></td>
+        </tr>
+      </table>
+      <div align="right"></div>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" background="http://images.devshed.com/tut/current/tutorialized.jpg">
+      <table width="1003" border="0" cellspacing="0" cellpadding="0">
+        <tr><td height="20" colspan="3" align=right><table cellpadding=0 cellspacing=0><tr><td><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=511");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=33143831' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=511&amp;cb=33143831&amp;n=a72b9207' border='0' alt='' /></a></noscript></td></tr></table></td></tr>
+        <tr>
+          <td width="120" height="57"><a rel="nofollow"
+		href="/" class=title2 title="Tutorialized&trade;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></td>
+          <td width="883" valign="bottom" class="pagename">
+		<table border=0 cellpadding=0 cellpadding=0>
+		  <tr>
+<td><a rel='nofollow' href='/' class='title2' title='Tutorialized'></a><a rel='nofollow' href='/' class='smalltitle' title='Ruby on Rails Tutorials'><nobr>Ruby on Rails Tutorials</nobr></a>		    </td>
+		    <td valign=top class=trademark></td>
+        	  </tr>
+      		</table>
+          </td>
+	   </td>
+        </tr>
+        <!-- <tr><td colspan=3>&nbsp;</td></tr> --> 
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">
+     <table width="848" border="0" align="right" cellpadding="0" cellspacing="0">
+      <tr>
+        <td bgcolor="#33AEEA" width="20"><img src="http://images.devshed.com/tut/tutorialized-02-heigh23.gif" width="22"  /></td>
+        <td width="1" bgcolor="#33AEEA">&nbsp;</td>
+        <td width="465" bgcolor="#33AEEA" class=pathwaybg><nobr>Ruby on Rails Tutorials - <span class=txtwhite><a rel=nofollow href='http://www.hostway.com' target='_blank'><font color=white>Hosted by Hostway</font></a></span></nobr></td>
+    	<td height="22" width="360" bgcolor="#33AEEA">
+	   <div align="right">
+	     <!-- NEW BANNER ZONE TOP TEXT -->
+	     	     <!-- END TOP TEXT AD -->
+	   </div>
+	     <!-- TOP SEARCH BOX -->
+	   <table width="100%" border="0" height=22 cellspacing="0" cellpadding="0">
+  	     <form action="/search.php" method="get">
+              <tr valign="middle"> 
+                <td align="right" height=22 >
+		<select name="id" class="footerblack">
+        <option value="0" height="22">All Categories</option>
+			<option value="275">3DS MAX</option><option value="484">Accounting</option><option value="577">Adobe Flex</option><option value="61">ASP</option><option value="473">ASP.NET</option><option value="426">AutoCAD</option><option value="419">Blender 3d</option><option value="510">Bryce 3d</option><option value="8">C and Cpp</option><option value="390">Cinema 4D</option><option value="63">ColdFusion</option><option value="470">CSS</option><option value="450">DB Design</option><option value="359">DB2</option><option value="472">Delphi</option><option value="309">Dreamweaver</option><option value="487">eCommerce</option><option value="558">Final Cut Studio</option><option value="444">Fireworks</option><option value="5">Flash</option><option value="535">Gimp</option><option value="2">HTML</option><option value="431">Illustrator</option><option value="6">Java</option><option value="7">Javascript</option><option value="485">Legal</option><option value="474">Lightwave 3D</option><option value="369">Linux</option><option value="486">Marketing</option><option value="310">Maya</option><option value="384">MM Fusion</option><option value="358">MS Access</option><option value="71">MS Excel</option><option value="425">MS FrontPage</option><option value="295">MS PowerPoint</option><option value="72">MS Word</option><option value="360">MsSQL</option><option value="357">MySQL</option><option value="356">Oracle</option><option value="499">P2P Filesharing</option><option value="308">Paint Shop Pro</option><option value="4">Perl and CGI</option><option value="1">Photoshop</option><option value="3">PHP</option><option value="60">Premiere</option><option value="64">Python</option><option value="466">QuarkXPress</option><option value="524">Ruby on Rails</option><option value="582">SEO</option><option value="367">SQL Basics</option><option value="361">Sybase</option><option value="70">Visual Basic</option><option value="471">Visual C</option><option value="437">Web Design</option><option value="349">Web Hosting</option><option value="476">Windows</option><option value="9">XML</option>  		</select> 
+		<input name="s" class="footerblack" type="text" onfocus="if(this.value=='Search')this.value='';" onblur="if(this.value=='')this.value='Search';" value="Search" />
+		<input align="top" type="submit" class="footerblack" border="0" name="submit" value="GO!" alt="Search Now!" />
+		<!-- <input type="image" name="arrow" class="search" src="/design-images/submit-arrow.jpg" id="arrow" /> -->
+	        </td>
+             </tr>
+	      </form>
+           </table>
+	  </td>
+  	</tr>
+    </table>
+   </td>
+  </tr>
+</table>
+</div>
+<table align=center width="1003" border="0" cellspacing="0" cellpadding="0">
+  <tr valign="top"> 
+    <td width=158  bgcolor="#FFFFFF">
+	<div align=center>
+	  <table cellpadding=0>
+           <tr>
+             <td align="center"><div style="margin: 6px 0px;"><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=515");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=94784578' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=515&amp;cb=94784578&amp;n=a72b9207' border='0' alt='' /></a></noscript></div></td>
+	    </tr>
+	  </table>
+	</div>
+    </td>
+    <td align=center height="115"  bgcolor="#FFFFFF">
+	<table width=100% cellpadding=0 cellspacing=0>
+         <tr valign="middle"><td align=center height="115" background="http://images.devshed.com/common/bckg-topbanner.gif"><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=499");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=1688070420' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=499&amp;cb=1688070420&amp;n=a72b9207' border='0' alt='' /></a></noscript></td></tr>
+	  <tr><td></td></tr>
+	</table>
+    </td>
+  </tr>
+</table>
+  <div id="contentWrap">
+  
+  <div id="LeftColumn">
+
+
+  
+    <div class="Lblock">
+<div class="Lblocktitle">User Tools</div>
+<div class="Lblockcontent">
+    <ul>
+<li class=odd2><a href="http://forums.tutorialized.com/" title="Forums">Forums</a></li><li class=even2><a href="/login.php" title="Login">Login</a></li><li class=odd2><a href="/register.php" title="Register">Register</a></li><li class=even2><a href="/profile.php" title="User Profile">User Profile</a></li><li class=odd2><a href="http://www.tutorialized.com/submit.php" title="Submit"><b>Submit a Tutorial</b></a></li> <li class=even2><a href="http://www.tutorialized.com/faq.php" title="FAQS">Faqs</a></li> <li class=odd2><a href="http://www.developershed.com/newsletter.php" title="Newsletter">Newsletter</a></li> <li class=even2><a href="http://www.developershed.com/advertise.php" title="Advertise">Advertise</a></li><li class=odd2><a href="http://www.developershed.com/contact.php" title="Contacts">Contacts</a></li><li class=even2><a href="/sitemap/" title="Site Map">Site Map</a></li>    </ul>
+</div>
+</div>    <div class="Lblock"><div class="Lblocktitle">2D Graphics</div><div class="Lblockcontent"><ul><li class="odd"><a href="/tutorials/Fireworks/1" title="Fireworks Tutorials">Fireworks </a><span>(158)</span></li><li class="even"><a href="/tutorials/Flash/1" title="Flash Tutorials">Flash </a><span>(2841)</span></li><li class="odd"><a href="/tutorials/Gimp/1" title="Gimp Tutorials">Gimp </a><span>(146)</span></li><li class="even"><a href="/tutorials/Illustrator/1" title="Illustrator Tutorials">Illustrator </a><span>(374)</span></li><li class="odd"><a href="/tutorials/Paint-Shop-Pro/1" title="Paint Shop Pro Tutorials">Paint Shop Pro </a><span>(50)</span></li><li class="even"><a href="/tutorials/Photoshop/1" title="Photoshop Tutorials">Photoshop </a><span>(11085)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">3D Graphics</div><div class="Lblockcontent"><ul><li class="odd"><a href="/tutorials/3DS-MAX/1" title="3DS MAX Tutorials">3DS MAX </a><span>(1210)</span></li><li class="even"><a href="/tutorials/AutoCAD/1" title="AutoCAD Tutorials">AutoCAD </a><span>(61)</span></li><li class="odd"><a href="/tutorials/Blender-3d/1" title="Blender 3d Tutorials">Blender 3d </a><span>(111)</span></li><li class="even"><a href="/tutorials/Bryce-3d/1" title="Bryce 3d Tutorials">Bryce 3d </a><span>(15)</span></li><li class="odd"><a href="/tutorials/Cinema-4D/1" title="Cinema 4D Tutorials">Cinema 4D </a><span>(76)</span></li><li class="even"><a href="/tutorials/Lightwave-3D/1" title="Lightwave 3D Tutorials">Lightwave 3D </a><span>(21)</span></li><li class="odd"><a href="/tutorials/Maya/1" title="Maya Tutorials">Maya </a><span>(316)</span></li></ul></div></div>    <div align="center">
+			<script type="text/javascript"><!--
+			google_ad_client = "pub-6422417422167576";
+			/* Left Square Home, 200x200, created 1/21/09 */
+			google_ad_slot = "2622059385";
+			google_ad_width = 200;
+			google_ad_height = 200;
+			//-->
+			</script>
+			<script type="text/javascript"
+			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+			</script>
+		</div>
+    <div class="Lblock"><div class="Lblocktitle">Web Design & Development</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/Adobe-Flex/1" title="Adobe Flex Tutorials">Adobe Flex </a><span>(19)</span></li><li class="odd"><a href="/tutorials/ASP/1" title="ASP Tutorials">ASP </a><span>(420)</span></li><li class="even"><a href="/tutorials/ASP.NET/1" title="ASP.NET Tutorials">ASP.NET </a><span>(233)</span></li><li class="odd"><a href="/tutorials/ColdFusion/1" title="ColdFusion Tutorials">ColdFusion </a><span>(46)</span></li><li class="even"><a href="/tutorials/CSS/1" title="CSS Tutorials">CSS </a><span>(322)</span></li><li class="odd"><a href="/tutorials/Dreamweaver/1" title="Dreamweaver Tutorials">Dreamweaver </a><span>(402)</span></li><li class="even"><a href="/tutorials/HTML/1" title="HTML Tutorials">HTML </a><span>(254)</span></li><li class="odd"><a href="/tutorials/Java/1" title="Java Tutorials">Java </a><span>(451)</span></li><li class="even"><a href="/tutorials/Javascript/1" title="Javascript Tutorials">Javascript </a><span>(374)</span></li><li class="odd"><a href="/tutorials/MM-Fusion/1" title="MM Fusion Tutorials">MM Fusion </a><span>(5)</span></li><li class="even"><a href="/tutorials/MS-FrontPage/1" title="MS FrontPage Tutorials">MS FrontPage </a><span>(31)</span></li><li class="odd"><a href="/tutorials/Perl-and-CGI/1" title="Perl and CGI Tutorials">Perl and CGI </a><span>(68)</span></li><li class="even"><a href="/tutorials/PHP/1" title="PHP Tutorials">PHP </a><span>(1194)</span></li><li class="odd"><a href="/tutorials/Python/1" title="Python Tutorials">Python </a><span>(36)</span></li><li class="even"><a href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails </a><span>(70)</span></li><li class="odd"><a href="/tutorials/SEO/1" title="SEO Tutorials">SEO </a><span>(92)</span></li><li class="even"><a href="/tutorials/Web-Design/1" title="Web Design Tutorials">Web Design </a><span>(224)</span></li><li class="odd"><a href="/tutorials/XML/1" title="XML Tutorials">XML </a><span>(155)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Business Applications</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/MS-Excel/1" title="MS Excel Tutorials">MS Excel </a><span>(251)</span></li><li class="odd"><a href="/tutorials/MS-PowerPoint/1" title="MS PowerPoint Tutorials">MS PowerPoint </a><span>(167)</span></li><li class="even"><a href="/tutorials/MS-Word/1" title="MS Word Tutorials">MS Word </a><span>(127)</span></li><li class="odd"><a href="/tutorials/QuarkXPress/1" title="QuarkXPress Tutorials">QuarkXPress </a><span>(9)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Business Development</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/Accounting/1" title="Accounting Tutorials">Accounting </a><span>(34)</span></li><li class="odd"><a href="/tutorials/eCommerce/1" title="eCommerce Tutorials">eCommerce </a><span>(52)</span></li><li class="even"><a href="/tutorials/Legal/1" title="Legal Tutorials">Legal </a><span>(9)</span></li><li class="odd"><a href="/tutorials/Marketing/1" title="Marketing Tutorials">Marketing </a><span>(68)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Databases</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/DB-Design/1" title="DB Design Tutorials">DB Design </a><span>(6)</span></li><li class="odd"><a href="/tutorials/DB2/1" title="DB2 Tutorials">DB2 </a><span>(25)</span></li><li class="even"><a href="/tutorials/MS-Access/1" title="MS Access Tutorials">MS Access </a><span>(100)</span></li><li class="odd"><a href="/tutorials/MsSQL/1" title="MsSQL Tutorials">MsSQL </a><span>(18)</span></li><li class="even"><a href="/tutorials/MySQL/1" title="MySQL Tutorials">MySQL </a><span>(83)</span></li><li class="odd"><a href="/tutorials/Oracle/1" title="Oracle Tutorials">Oracle </a><span>(37)</span></li><li class="even"><a href="/tutorials/SQL-Basics/1" title="SQL Basics Tutorials">SQL Basics </a><span>(48)</span></li><li class="odd"><a href="/tutorials/Sybase/1" title="Sybase Tutorials">Sybase </a><span>(4)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Desktop Programming</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/C-and-Cpp/1" title="C and Cpp Tutorials">C and Cpp </a><span>(212)</span></li><li class="odd"><a href="/tutorials/Delphi/1" title="Delphi Tutorials">Delphi </a><span>(18)</span></li><li class="even"><a href="/tutorials/Visual-Basic/1" title="Visual Basic Tutorials">Visual Basic </a><span>(176)</span></li><li class="odd"><a href="/tutorials/Visual-C/1" title="Visual C Tutorials">Visual C </a><span>(10)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Operating Systems</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/Linux/1" title="Linux Tutorials">Linux </a><span>(472)</span></li><li class="odd"><a href="/tutorials/Windows/1" title="Windows Tutorials">Windows </a><span>(618)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Video Editing</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/Final-Cut-Studio/1" title="Final Cut Studio Tutorials">Final Cut Studio </a><span>(13)</span></li><li class="odd"><a href="/tutorials/Premiere/1" title="Premiere Tutorials">Premiere </a><span>(127)</span></li></ul></div></div><div class="Lblock"><div class="Lblocktitle">Miscellaneous</div><div class="Lblockcontent"><ul><li class="even"><a href="/tutorials/P2P-Filesharing/1" title="P2P Filesharing Tutorials">P2P Filesharing </a><span>(4)</span></li><li class="odd"><a href="/tutorials/Web-Hosting/1" title="Web Hosting Tutorials">Web Hosting </a><span>(114)</span></li></ul></div></div>    <div style="margin: 6px 0px;" align=center>
+      <script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=502");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=445689611' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=502&amp;cb=445689611&amp;n=a72b9207' border='0' alt='' /></a></noscript>    </div>
+    <!-- <div class="Lblock">
+  <div class="Lblocktitle">Web Hosting</div>
+  <div class="Lblockcontent">
+    <ul>
+      <li class="even"><a href="http://www.aspfree.com/asp/freeasphost.asp" title="ASP Web Hosting">ASP Web Hosting</a></li>
+      <li class="even"><a href="http://www.aspfree.com/asp.net-web-hosting" title="ASP.NET Web Hosting">ASP.NET Web Hosting</a></li>
+      <li class="even"><a href="http://www.devshed.com/dedicated-servers" title="Dedicated Servers">Dedicated Servers</a></li>
+      <li class="even"><a href="http://www.devshed.com/e-commerce-hosting" title="E-Commerce Hosting">E-Commerce Hosting</a></li>
+      <li class="even"><a href="http://www.devshed.com/linux-web-hosting" title="Linux Web Hosting">Linux Web Hosting</a></li>	  
+      <li class="even"><a href="http://www.devshed.com/managed-hosting" title="Managed Hosting">Managed Hosting</a></li>	  
+      <li class="even"><a href="http://www.devshed.com/small-business-hosting" title="Small Business Hosting">Small Business Hosting</a></li>
+      <li class="even"><a href="http://www.devshed.com/virtual-private-servers" title="VPS Hosting">VPS Hosting</a></li>
+      <li class="even"><a href="http://webhosting.devshed.com/" title="Web Hosting">Web Hosting</a></li>
+      <li class="even"><a href="http://www.aspfree.com/windows-web-hosting.asp" title="Windows Web Hosting">Windows Web Hosting</a></li>	  	  	  	  
+    </ul>
+  </div>
+</div> -->
+<div class="Lblock">
+  <div class="Lblocktitle">Newsletter</div>
+  <div class="Lblockcontent2">
+    <ul>
+  <form action="http://newsletter.developershed.com/sendstudio/users/form.php?FormID=4" 
+	method="post" name="wfrmSS" onSubmit="return CheckwSS()">
+      <li>
+<script language="JavaScript">
+<!--
+	function CheckwSS()
+	{
+		theFrm = document.wfrmSS;
+		hasDot = theFrm.Email.value.indexOf(".");
+		hasAt = theFrm.Email.value.indexOf("@");
+		
+		if (hasDot == -1 || hasAt == -1)
+		{
+			alert("Please enter a valid email address.");
+			theFrm.Email.focus();
+			theFrm.Email.select();
+			return false;
+		}
+		return true;
+	}
+//-->	
+</script>	  
+        <nobr><INPUT class=form 
+onblur="if (this.value=='') {this.value='Your E-mail';}" 
+title="Your Google Toolbar can fill this in for you. Select AutoFill" 
+style="BACKGROUND-COLOR: #ffffa0" 
+onfocus="if ((this.value=='') || (this.value=='Your E-mail')) {this.value='';};" 
+size=16 value="Your E-mail" name=Email> <input type="hidden" name="SelectLists[4]" value="YES"> 
+        <input type="hidden" name="Format" value="2"> <input type="hidden" name="FormCode" value="ed2d31d9cdcac5a40f6ff626f4acefa3"> 
+        <INPUT class=form type=submit value=GO name=Submit></nobr>
+	  </li>
+  </form>	  
+    </ul>
+  </div>
+</div>
+<div class="Lblock">
+  <div class="Lblocktitle">User Login</div>
+  <div class="Lblockcontent">
+    <form action="/login.php" method="post" name="login">
+      <ul>
+	 <li class=even2>Username</li>
+        <li class=even2><input type="text" name="username" id="membername" /></li>
+	 <li class=even2>Password</li>
+	 <li class=even2><input type="password" name="password" id="wordpass" /></li>
+	 <li class=even3><input name="Login" type="image" class="logbut" src="/design-images/login_button.jpg"/></li>
+      </ul>
+    </form>
+  </div>
+</div>
+
+      <div class="Lblock">
+    <div class="Lblocktitle">Stats</div>
+    <div class="Lblockcontent">
+      <ul class="stats">
+	  	<li><em>Tutorials:</em> 23,663</li>
+	  	<li><em>Categories:</em> 572</li>
+      </ul>
+    </div>
+  </div>	
+  </div>
+<div id="CenterColumn">
+  <div id="CatResults"><div class="CATtitle"><table height=30 valign=middle cellspacing=0 class=subtitblack cellpadding=0 border=0 width=590><tr><td>&nbsp;&nbsp;&nbsp;<a href="/" title="Home"">Home</a> : Ruby on Rails Tutorials</td><td align=right>RSS <a href="/rss-feeds-s-524.html"><img src="http://images.devshed.com/common/rss.gif" alt="Subscribe to this feed using your favorite reader" width="15" height="14" vspace="4" border="0" align="absmiddle" /></a></td></tr></table></div><div id="Ccontent"><div id="categories"><div align=center><table class=txt width=95%><TR><TD align=left> Ruby on Rails is an open source web application framework. It is written in Ruby and follows the MVC or Model-View-Controller architecture. Developers using RoR appreciate the ability to create applications using less code and requiring a minimum of configuration. If you're new to RoR or just want to learn more, the tutorials in this section can help.   </td></tr></table></div><BR><div align=center><table width=95% border=0 align=center><tr><td><ul><li><a href="/tutorials/Ruby-on-Rails/Database-Related/1" title="Ruby on Rails Database Related Tutorials"><span class=site-txt>Database Related</span></a><span class=pagenumber-small>(4)</span></li>
+<li><a href="/tutorials/Ruby-on-Rails/eCommerce/1" title="Ruby on Rails eCommerce Tutorials"><span class=site-txt>eCommerce</span></a><span class=pagenumber-small>(0)</span></li>
+<li><a href="/tutorials/Ruby-on-Rails/Getting-Started/1" title="Ruby on Rails Getting Started Tutorials"><span class=site-txt>Getting Started</span></a><span class=pagenumber-small>(55)</span></li>
+</ul><ul><li><a href="/tutorials/Ruby-on-Rails/Helpers/1" title="Ruby on Rails Helpers Tutorials"><span class=site-txt>Helpers</span></a><span class=pagenumber-small>(6)</span></li>
+<li><a href="/tutorials/Ruby-on-Rails/Image-Manipulation/1" title="Ruby on Rails Image Manipulation Tutorials"><span class=site-txt>Image Manipulation</span></a><span class=pagenumber-small>(1)</span></li>
+<li><a href="/tutorials/Ruby-on-Rails/Security/1" title="Ruby on Rails Security Tutorials"><span class=site-txt>Security</span></a><span class=pagenumber-small>(4)</span></li>
+</ul></td></tr></table></div></div>&nbsp;  <table width="610" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+      <td style="padding-left:10px;text-decoration:underline;font-weight:bold;" class="site-bckgtit3"><a style="font-weight:bold;" class=site-txt href="http://forums.tutorialized.com/ruby-on-rails-93/" title="Ruby on Rails Forum">JOIN OUR RUBY ON RAILS DISCUSSION FORUM</a></td>
+    </tr>
+  </table>
+</div>
+</div>
+<div class="Ccontent">
+    
+		<dl id="tutorials">
+		<div id="BrowseTopResults">
+			<em>Total</em>: 
+			<h2>70 Ruby on Rails Tutorials</h2> 
+			<span class="displaying">Displaying:</span> 
+			1 - 10 
+		</div>
+		<div class="pageinate" style="text-align:center;">
+			<span class="bypage">[<<]</span> <span class="bypage">[<]</span> 1<a href="/tutorials/Ruby-on-Rails/2" title="Ruby on Rails Tutorials Page 2">2</a><a href="/tutorials/Ruby-on-Rails/3" title="Ruby on Rails Tutorials Page 3">3</a><a href="/tutorials/Ruby-on-Rails/4" title="Ruby on Rails Tutorials Page 4">4</a><a href="/tutorials/Ruby-on-Rails/5" title="Ruby on Rails Tutorials Page 5">5</a><a href="/tutorials/Ruby-on-Rails/6" title="Ruby on Rails Tutorials Page 6">6</a><a href="/tutorials/Ruby-on-Rails/7" title="Ruby on Rails Tutorials Page 7">7</a> <span class="bypage"><a href="/tutorials/Ruby-on-Rails/2">[>]</a></span> <span class="bypage"><a href="/tutorials/Ruby-on-Rails/7">[>>]</a></span>
+		</div><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Harness-the-power-of-Ruby-for-efficient-system-administration/40638" class="TutTitle"  title="Harness the power of Ruby for efficient system administration Ruby on Rails tutorial"><b>Harness the power of Ruby for efficient system administration</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Helpers/1" class="txtblack" style="font-weight:bold;">Helpers</a></span><br>
+            <span class="subtitblack">2009-02-02</span>
+          </td>
+          <td width=60><img src="/upload/20081210113412_compl.JPG" alt="Harness the power of Ruby for efficient system administration Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Harness the power of Ruby for efficient system administration</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/40638" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.07" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.07" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.07" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 3.07" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 3.07" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">686</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Harness-the-power-of-Ruby-for-efficient-system-administration/40638" title="Ruby on Rails Tutorials: Harness the power of Ruby for efficient system administration Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">14</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/40638" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_40638" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/40638" title="Review Ruby on Rails Tutorial: Harness the power of Ruby for efficient system administration"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Ruby-on-Rails-2-scaffolding/40468" class="TutTitle"  title="Ruby on Rails 2 scaffolding Ruby on Rails tutorial"><b>Ruby on Rails 2 scaffolding</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2009-01-24</span>
+          </td>
+          <td width=60><img src="/upload/20081203012140_prodevtips.png" alt="Ruby on Rails 2 scaffolding Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Basic tutorial on how scaffolding in RoR 2 can work.</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/40468" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.47" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.47" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.47" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.47" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.47" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1368</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Ruby-on-Rails-2-scaffolding/40468" title="Ruby on Rails Tutorials: Ruby on Rails 2 scaffolding Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">19</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/40468" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_40468" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/40468" title="Review Ruby on Rails Tutorial: Ruby on Rails 2 scaffolding"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Ruby-on-Rails-Week-4/39765" class="TutTitle"  title="Ruby on Rails - Week 4 Ruby on Rails tutorial"><b>Ruby on Rails - Week 4</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-12-25</span>
+          </td>
+          <td width=60><img src="/upload/20081030180045_ruby.gif" alt="Ruby on Rails - Week 4 Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Ruby on Rails - Week 4 for Beginners</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/39765" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.06" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.06" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 3.06" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 3.06" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 3.06" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1226</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Ruby-on-Rails-Week-4/39765" title="Ruby on Rails Tutorials: Ruby on Rails - Week 4 Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">16</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/39765" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_39765" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/39765" title="Review Ruby on Rails Tutorial: Ruby on Rails - Week 4"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Ruby-on-Rails-from-Scratch-Week-3/39216" class="TutTitle"  title="Ruby on Rails from Scratch - Week 3 Ruby on Rails tutorial"><b>Ruby on Rails from Scratch - Week 3</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-11-30</span>
+          </td>
+          <td width=60><img src="/upload/20081002140411_rails3.gif" alt="Ruby on Rails from Scratch - Week 3 Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Ruby on Rails from Scratch - Week 3</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/39216" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.78" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.78" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.78" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.78" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.78" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1363</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Ruby-on-Rails-from-Scratch-Week-3/39216" title="Ruby on Rails Tutorials: Ruby on Rails from Scratch - Week 3 Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">40</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/39216" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_39216" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/39216" title="Review Ruby on Rails Tutorial: Ruby on Rails from Scratch - Week 3"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Ruby-on-Rails-from-Scratch-Week-2/39215" class="TutTitle"  title="Ruby on Rails from Scratch - Week 2 Ruby on Rails tutorial"><b>Ruby on Rails from Scratch - Week 2</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-11-30</span>
+          </td>
+          <td width=60><img src="/upload/20081002140305_rails_week2.gif" alt="Ruby on Rails from Scratch - Week 2 Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Ruby on Rails from Scratch - Week 2</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/39215" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.56" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.56" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.56" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.56" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.56" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">2191</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Ruby-on-Rails-from-Scratch-Week-2/39215" title="Ruby on Rails Tutorials: Ruby on Rails from Scratch - Week 2 Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">32</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/39215" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_39215" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/39215" title="Review Ruby on Rails Tutorial: Ruby on Rails from Scratch - Week 2"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Rails-101-Routing/39111" class="TutTitle"  title="Rails 101: Routing Ruby on Rails tutorial"><b>Rails 101: Routing</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-11-26</span>
+          </td>
+          <td width=60><img src="/upload/20080927062551_avatar_tutorialized.jpg" alt="Rails 101: Routing Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Rails produces pretty URLs. The URLs don't setup automatically though, learn how in under 10 minutes</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/39111" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.90" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.90" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.90" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.90" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.90" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1597</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Rails-101-Routing/39111" title="Ruby on Rails Tutorials: Rails 101: Routing Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">30</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/39111" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_39111" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/39111" title="Review Ruby on Rails Tutorial: Rails 101: Routing"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Fast-prototyping-with-Apache-Derby-and-JRuby-on-Rails/38594" class="TutTitle"  title="Fast prototyping with Apache Derby and JRuby on Rails Ruby on Rails tutorial"><b>Fast prototyping with Apache Derby and JRuby on Rails</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-10-29</span>
+          </td>
+          <td width=60><img src="/upload/20080903105237_compl.jpg" alt="Fast prototyping with Apache Derby and JRuby on Rails Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">Fast prototyping with Apache Derby and JRuby on Rails</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/38594" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.89" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.89" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.89" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.89" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.89" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1221</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Fast-prototyping-with-Apache-Derby-and-JRuby-on-Rails/38594" title="Ruby on Rails Tutorials: Fast prototyping with Apache Derby and JRuby on Rails Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">53</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/38594" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_38594" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/38594" title="Review Ruby on Rails Tutorial: Fast prototyping with Apache Derby and JRuby on Rails"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/RUBY-ON-RAILS-TUTORIAL-USING-INSTANT-RAILS/36499" class="TutTitle"  title="RUBY-ON-RAILS TUTORIAL USING INSTANT RAILS Ruby on Rails tutorial"><b>RUBY-ON-RAILS TUTORIAL USING INSTANT RAILS</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Database-Related/1" class="txtblack" style="font-weight:bold;">Database Related</a></span><br>
+            <span class="subtitblack">2008-07-21</span>
+          </td>
+          <td width=60><img src="/upload/20080619054955_gee.jpg" alt="RUBY-ON-RAILS TUTORIAL USING INSTANT RAILS Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">nice beginner's tutorial  using instant rails</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/36499" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.75" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.75" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.75" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.75" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.75" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">6192</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/RUBY-ON-RAILS-TUTORIAL-USING-INSTANT-RAILS/36499" title="Ruby on Rails Tutorials: RUBY-ON-RAILS TUTORIAL USING INSTANT RAILS Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">140</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/36499" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_36499" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/36499" title="Review Ruby on Rails Tutorial: RUBY-ON-RAILS TUTORIAL USING INSTANT RAILS"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/New-Wiki-Launched-that-Promises-to-Ease-the-Software-Troubleshooting-Process/36440" class="TutTitle"  title="New Wiki Launched that Promises to Ease the Software Troubleshooting Process Ruby on Rails tutorial"><b>New Wiki Launched that Promises to Ease the Software Troubleshooting Process</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Helpers/1" class="txtblack" style="font-weight:bold;">Helpers</a></span><br>
+            <span class="subtitblack">2008-07-18</span>
+          </td>
+          <td width=60><img src="/upload/20080617033438_Logo_Template5050_-_Logo_05.jpg" alt="New Wiki Launched that Promises to Ease the Software Troubleshooting Process Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">TroubleshootingWiki.org is a new website designed to provide users with comprehensive, free guides</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/36440" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.62" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.62" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.62" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.62" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.62" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">1527</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/New-Wiki-Launched-that-Promises-to-Ease-the-Software-Troubleshooting-Process/36440" title="Ruby on Rails Tutorials: New Wiki Launched that Promises to Ease the Software Troubleshooting Process Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">117</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/36440" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_36440" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/36440" title="Review Ruby on Rails Tutorial: New Wiki Launched that Promises to Ease the Software Troubleshooting Process"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd><dd>
+<table cellspacing=0 cellpadding=2 border=0 width=610>
+  <tr valign="top">
+    <td width="70%">
+      <table cellspacing=0 cellpadding=0 border0>
+        <tr valign="top">
+          <td width="10"></td>
+          <td width=350>
+            <a style="line-height:16px;" class="site-tit1" href="/tutorial/Rails-101-Generators/36429" class="TutTitle"  title="Rails 101: Generators Ruby on Rails tutorial"><b>Rails 101: Generators</b></a><br/>
+            <span class=txtblack style="font-weight:bold;">in </span><span class=txtblack><a class="txtblack" style="font-weight:bold;" href="/tutorials/Ruby-on-Rails/1" title="Ruby on Rails Tutorials">Ruby on Rails</a> / <a href="/tutorials/Ruby-on-Rails/Getting-Started/1" class="txtblack" style="font-weight:bold;">Getting Started</a></span><br>
+            <span class="subtitblack">2008-07-18</span>
+          </td>
+          <td width=60><img src="/upload/20080616151929_avatar_tutorialized.jpg" alt="Rails 101: Generators Ruby on Rails tutorial" width="50" height="50" align="top" /></td>
+        </tr>
+        <tr>
+          <td width="10"></td>
+          <td colspan="2" class="txt">So you're about to dive into code, but you don't need to, Rails sets you of with no effort!</td>
+        </tr>
+      </table>
+    </td>
+    <td width="30%" background="http://images.devshed.com/scr/scripts-bckg.gif">
+      <table width="208" border="0" valign="top" align="center" cellpadding="0" cellspacing="0">
+        <tr >
+          <td height="24" class="txt">Rating:</td>
+          <td><span class="one"><a href="/rate/36429" target="_rate"><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.86" /><img src="/design-images/ratings/one.jpg" border="0" alt="Tutorial Rating 2.86" /><img src="/design-images/ratings/half.jpg" border="0" alt="Tutorial Rating 2.86" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.86" /><img src="/design-images/ratings/zero.jpg" border="0" alt="Tutorial Rating 2.86" /></a></span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+        </tr>
+ 		<tr >
+   		  <td width="79" height="24" class="txt">Hits: <img src="/design-images/links/hits.jpg" width="12" height="12"></td>
+   		  <td width="129" class="txt">3066</td>
+ 		</tr>
+ 		<tr>
+     	  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24"><span class="txt">Comments:</span> <img src="/design-images/links/tut-comments.jpg" width="13" height="12"></td>
+   		  <td class="txt"><a href="/tutorial/Rails-101-Generators/36429" title="Ruby on Rails Tutorials: Rails 101: Generators Comments">0</a></td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+    	<tr >
+     	  <td height="24" class="txt">Votes:</td>
+   		  <td class="txt">96</td>
+ 		</tr>
+ 		<tr>
+   		  <td colspan="2"><img src="http://images.devshed.com/scr/dots.gif" width="208" height="1" /></td>
+ 		</tr>
+ 		<tr >
+   		  <td height="24" colspan="2" class=txt><a href="/broken/36429" target="_broken" >Broken Link?</a></td>
+ 		</tr>
+	  </table>
+	</td>
+  </tr>
+</table></dd>
+<!-- <dt> <a href="/tutorials//1" title=" Tutorials"></a> /<a href="/tutorials///1" title=" Tutorials"></a></dt> -->
+<!-- <dd>
+  <div class="tutorialWrap">
+    <div class="imageclmn"><img src="/upload/" alt="" width="50" height="50" /></div>
+    <div class="TutSummary">
+      <p><a href="/tutorial//" class="TutTitle"  title=""></a></p>
+      <p></p>
+      <ul class="Tutlinks">
+        <li class="TutHits"><span> Hits</span></li>
+        <li class="Tutcomments"> -->
+          <!--add js call-commentCatID should be unique for each full set of comments to a specific tutorial-->
+          <!-- <a href="/tutorial//" title=""></a></li>
+        <li class="Tutrating"><span class="rated">Rating </span><span class="one"><a href="/rate/" target="_rate"></a></span></li>
+                <li class="TutVotes">( votes)</li>
+        <li class="BrokenLink"><a href="/broken/" target="_broken" >Broken Link?</a></li>
+      </ul>
+    </div>
+  </div>
+</dd> 
+ begin comments block commentCatID should be unique for each set of comments to a specific tutorial-->
+
+	<dd class="comments" id="comment_36429" style="display:none;" >
+		<div class="addcomment">
+			<span class="left">
+								<a href="/review/36429" title="Review Ruby on Rails Tutorial: Rails 101: Generators"> Add your Comments </a>
+							</span>
+
+		</div>
+	</dd>
+	<dd><table cellpadding=0 cellspacing=0 border=0 bgcolor='#cccccc' width=610 height=1><tr><td> </td></tr></table></dd>
+		</dl>
+		<div id="lowerpaginate">
+			<span class="bypage">[<] </span> <span class="bypage">[<<]</span> <span class="bypage">[<]</span> 1<a href="/tutorials/Ruby-on-Rails/2" title="Ruby on Rails Tutorials Page 2">2</a><a href="/tutorials/Ruby-on-Rails/3" title="Ruby on Rails Tutorials Page 3">3</a><a href="/tutorials/Ruby-on-Rails/4" title="Ruby on Rails Tutorials Page 4">4</a><a href="/tutorials/Ruby-on-Rails/5" title="Ruby on Rails Tutorials Page 5">5</a><a href="/tutorials/Ruby-on-Rails/6" title="Ruby on Rails Tutorials Page 6">6</a><a href="/tutorials/Ruby-on-Rails/7" title="Ruby on Rails Tutorials Page 7">7</a> <span class="bypage"><a href="/tutorials/Ruby-on-Rails/2">[>]</a></span> <span class="bypage"><a href="/tutorials/Ruby-on-Rails/7">[>>]</a></span> <span class="bypage"><a href="/tutorials/Ruby-on-Rails/2" title="Ruby on Rails Tutorials Page 2">[>]</a></span>
+		</div>  </div>
+<div align=center>
+<script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=728");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=1436101904' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=728&amp;cb=1436101904&amp;n=a72b9207' border='0' alt='' /></a></noscript></div>
+</div>
+
+<div id="RightColumn">
+  <div align=center>
+  <table><TR><TD><div align=left><table width=100% border=0 cellpadding=0 cellspacing=0>
+<tr><td>
+<table width='160' align="left" cellpadding='0' cellspacing='0' bgcolor='#FFFFFF'>
+  <tr><td bgcolor='#FFFFFF'>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="art_title">
+        <tr>
+                <td><a href="http://www.devshed.com/white-papers"><img src="http://images.devshed.com/common/whitepapers-top.gif" border=0 width="160" height="87" /></a></td>
+        </tr>
+        <tr>
+                <td background="http://images.devshed.com/common/whitepapers-bckg.gif">
+			<table width="96%" border="0" align="center" cellpadding="3" cellspacing="3"><tr><td>
+
+<style type='text/css'>
+<!--
+  .tightline  {line-height: .5}
+-->
+</style>
+
+<div class='tightline'>&nbsp;</div>
+<span class="contentpaneopen" id='articlebox'><a class='title_readon' href='http://www.webbuyersguide.com/resource/brief.aspx?id=12677&amp;kc=devshedwidget0109&amp;src=devshedw'>Create the Optimal Architecture for your Critical Applications</a><br><span style="font-size: 10px;">Warburton's the largest independently owned bakery in the UK faced a number of d....</span></span><BR><div class='tightline'>&nbsp;</div>
+<span class="contentpaneopen" id='articlebox'><a class='title_readon' href='http://www.webbuyersguide.com/resource/brief.aspx?id=13048&amp;kc=devshedwidget0109&amp;src=devshedw'>Five Best Practices for Deploying a Successful Service-Oriented Architecture</a><br><span style="font-size: 10px;">This white paper describes the benefits you can expect with SOA, and how IBM can....</span></span><BR><div class='tightline'>&nbsp;</div>
+<span class="contentpaneopen" id='articlebox'><a class='title_readon' href='http://www.webbuyersguide.com/resource/brief.aspx?id=12388&amp;kc=devshedwidget0109&amp;src=devshedw'>Gartner Magic Quadrant for Application Delivery Controllers</a><br><span style="font-size: 10px;">Gartner summarizes its view on Application Delivery Controllers, evaluates stren....</span></span><BR><div class='tightline'>&nbsp;</div>
+<span class="contentpaneopen" id='articlebox'><a class='title_readon' href='http://www.webbuyersguide.com/resource/brief.aspx?id=13222&amp;kc=devshedwidget0109&amp;src=devshedw'>Knowledge is Power</a><br><span style="font-size: 10px;">What you don't know can hurt you, and is likely costing you money and increasing....</span></span><BR><div class='tightline'>&nbsp;</div>
+<span class="contentpaneopen" id='articlebox'><a class='title_readon' href='http://www.webbuyersguide.com/resource/brief.aspx?id=12784&amp;kc=devshedwidget0109&amp;src=devshedw'>Rationalizing the Multi-Tool Environment</a><br><span style="font-size: 10px;">The rationalized multi-tool approach is flexible, scalable and cost effective. I....</span></span><BR><div class='tightline'>&nbsp;</div>
+        </td></tr>
+
+      </table>        <tr>
+          <td><img src="http://images.devshed.com/common/whitepapers-bottom.gif" width="160" height="14" /></td>
+        </tr>
+    </td></tr>
+  </table>
+  </td></tr>
+</table>
+</td></tr>
+</table>
+</div> </td></tr></table>
+  
+  <script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=509");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=2048177980' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=509&amp;cb=2048177980&amp;n=a72b9207' border='0' alt='' /></a></noscript>  
+  <table width="160" border="0" cellpadding="1">
+  <tr>
+    <td><script type="text/javascript">
+    // Ad Setting, Mandatory
+     _ad_custkey      = "wls17";
+     _ad_siteid       = "87310";
+     _ad_format       = "C_160_x_400";
+
+    //Optional Parameters
+     _ad_color_link   = "053962";
+     _ad_color_text   = "5D5D5D";
+     _ad_color_url    = "4C7B07";
+     _ad_color_border = "B5B5B5";
+     _ad_color_bg     = "F3F3F3";
+     _ad_font_names   = "Arial,Sans-serif,Verdana";
+</script>
+<script src="http://js.syn.affinity.com/jsc/show_ads_c.js" type="text/javascript" ></script>
+
+</td>
+  </tr>
+</table>
+
+
+  
+  
+    
+  </div>
+</div>
+
+<br clear=all>
+<table width=90% align=center><tr>
+	<td valign=middle align=center width=50%>
+		<div align=center><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=495");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=639917704' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=495&amp;cb=639917704&amp;n=a72b9207' border='0' alt='' /></a></noscript></div>
+	</td>
+	<td><!--
+		<div align=center><script type='text/javascript'>
+
+    _ad_custkey = 'wls17';
+
+    _ad_siteid  = '87310';
+
+    _ad_format  = 'dv_c_336_x_280';
+
+</script>
+
+<script src='http://js.syn.affinity.com/jsc/show_ads_c.js'
+type='text/javascript' ></script>--><script type='text/javascript'><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://zde.am.affinity.com/www/delivery/ajs.php':'http://zde.am.affinity.com/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=205");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></script><noscript><a rel=nofollow href='http://zde.am.affinity.com/www/delivery/ck.php?n=a72b9207&amp;cb=53849259' target='_blank'><img src='http://zde.am.affinity.com/www/delivery/avw.php?zoneid=205&amp;cb=53849259&amp;n=a72b9207' border='0' alt='' /></a></noscript></div>
+	</td>
+	</tr>
+</table>
+
+<BR>
+
+<script type="text/javascript">
+        function comments(id) {
+                var x = document.getElementById(id);
+
+                if (x.style.display == "block") {
+                        x.style.display = "none";
+                } else {
+                        x.style.display = "block";
+                }
+
+        }
+</script>
+
+
+  </div>
+</div>
+
+
+
+
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td bgcolor="#33AEEA"><BR></td>
+    </tr>
+  </table>
+<style type="text/css">
+<!--
+#botfooter {	
+	clear: both;
+	text-align:center;
+	font-size: 0.8em;
+	background-color:#f1f1f1;
+	font-family:Arial, Helvetica, sans-serif;
+        width: 100%;
+}
+.bottxt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	text-decoration: none;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+}
+A.botnetwork:link, A.botnetwork:visited, A.botnetwork:active { 
+  font-family: Verdana,Arial,Helvetica; 
+  font-size: 9px; 
+  color: #000000; 
+  text-decoration: none;
+}
+
+A.botnetwork:hover { 
+  color:blue; 
+  text-decoration: underline;
+}
+.botoverlink {
+  	 cursor:pointer; 
+  	 cursor:hand;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 10px;
+        color: #FFFFFF;
+        text-decoration: underline;
+}
+-->
+</style>
+<br/><div id="botfooter" align=center><table width="100%" class=contentpaneopen cellpadding=3 cellspacing=0 border=0><tr><td width="50"></td><div class="bottxt"><script type="text/javascript" language="JavaScript">
+<!--
+function ttgo(url)
+{
+if (url.length > 1)
+{
+document.location.href = "http://" + url + "/";
+}
+}
+function ttfstart(name)
+{
+document.write('<td width=\'125\'><div style="display: inline;"><b>' + name + '</b></div></td><td width=\'40\'><div style="display: inline;"><form style="display: inline; margin: 0;" name="jumptt"><select style="font-size: 10px;font-family: Verdana, Arial;" name="menutt" onChange="javascript:ttgo(this.options[this.selectedIndex].value);">');
+document.write('<option value="" selected> - Select - </option>'); 
+}
+function ttfend()
+{
+document.write('</select></form></div></td>');
+}
+function ttfadd(name, val)
+{
+document.write('<option value="' + val + '">' + name + '</option>');
+}
+function ttspace()
+{
+document.write('&nbsp;&nbsp;&nbsp;');
+}
+ttfstart('Developer&nbsp;Tutorials:');
+ttfadd('Dev Shed', 'www.devshed.com');
+ttfadd('ASP Free', 'www.aspfree.com');
+ttfadd('Dev Articles', 'www.devarticles.com');
+ttfadd('Dev Hardware', 'www.devhardware.com');
+ttfadd('SEO Chat', 'www.seochat.com');
+ttfadd('Web Hosting', 'webhosting.devshed.com');
+ttfadd('Codewalkers', 'www.codewalkers.com');
+ttfend();
+//ttspace();
+ttfstart('Developer&nbsp;Resources:');
+ttfadd('Scripts', 'www.scripts.com');
+ttfadd('Tutorialized', 'www.tutorialized.com');
+ttfadd('Dev Mechanic', 'tools.devshed.com');
+//ttfadd('iWatchIT', 'www.iwatchit.com');
+//ttfadd('IT Marketplace', 'www.itmarketplace.com');
+ttfadd('igrep', 'www.igrep.com');
+ttfend();
+//ttspace();
+ttfstart('Developer&nbsp;Forums:');
+ttfadd('Dev Shed Forums', 'forums.devshed.com');
+ttfadd('ASP Free Forums', 'forums.aspfree.com');
+ttfadd('Dev Articles Forums', 'forums.devarticles.com');
+ttfadd('Dev Hardware Forums', 'www.devhardware.com/forums');
+ttfadd('SEO Chat Forums', 'forums.seochat.com');
+ttfadd('Codewalkers Forums', 'forums.codewalkers.com');
+ttfadd('Tutorialized Forums', 'forums.tutorialized.com');
+ttfadd('Dev Archives Forums', 'archives.devshed.com/forums');
+ttfend();
+//-->
+</script>
+</tr><tr><td width="50"></td>
+<div class="bottxt"><script type="text/javascript" language="JavaScript">
+<!--
+function ttgo(url)
+{
+if (url.length > 1)
+{
+document.location.href = "http://" + url + "/";
+}
+}
+function ttfstart(name)
+{
+document.write('<td width=\'125\'><div style="display: inline;"><b>' + name + '</b></div></td><td width=\'40\'><div style="display: inline;"><form style="display: inline; margin: 0;" name="jumptt"><select style="font-size: 10px;font-family: Verdana, Arial;" name="menutt" onChange="javascript:ttgo(this.options[this.selectedIndex].value);"><option value="" selected> - Select - </option>'); 
+}
+function ttfend()
+{
+document.write('</select></form></div></td>');
+}
+function ttfadd(name, val)
+{
+document.write('<option value="' + val + '">' + name + '</option>');
+}
+function ttspace()
+{
+document.write('&nbsp;&nbsp;&nbsp;');
+}
+ttfstart('IT Professionals:');
+ttfadd('Baseline', 'www.baselinemag.com');
+ttfadd('Careers', 'careers.eweek.com');
+ttfadd('CIO Insight', 'www.cioinsight.com');
+ttfadd('eWeek', 'www.eweek.com');
+ttfadd('Networking', 'networking.eweek.com');
+ttfadd('Publish', 'www.publish.com');
+ttfadd('Security IT Hub', 'security.ithub.com');
+ttfadd('Web Buyers Guide', 'www.webbuyersguide.com');
+ttfend();
+//ttspace();
+ttfstart('IT Marketing:');
+ttfadd('Channel Insider', 'www.channelinsider.com');
+ttfadd('eSeminars', 'www.eseminarslive.com');
+ttfadd('Mid-market', 'midmarket.eweek.com');
+ttfadd('Strategic Partner', 'esp.eweek.com');
+ttfend();
+//ttspace();
+ttfstart('Open&nbsp;Source&nbsp;/&nbsp;Microsoft:');
+ttfadd('Desktoplinux', 'www.desktoplinux.com');
+ttfadd('DeviceForge', 'www.deviceforge.com');
+ttfadd('DevSource', 'www.devsource.com');
+ttfadd('LinuxDevices', 'www.linuxdevices.com');
+ttfadd('Linux Watch', 'www.linux-watch.com');
+ttfadd('Microsoft Watch', 'www.microsoft-watch.com');
+ttfadd('PDF Zone', 'www.pdfzone.com');
+ttfadd('Windows for Devices', 'www.windowsfordevices.com');
+ttfend();
+//-->
+</script><td width="50"></td></tr></table><br>
+<span class="bottxt">&copy; 2003-2009 by <a href="http://www.developershed.com"><font color=blue>Developer Shed</font></a>. All rights reserved. DS Cluster 1 hosted by <span class="botoverlink" onClick="window.location='http://www.hostway.com'"><font color=blue>Hostway</font></span>.&nbsp;<br/>
+Stay green...<a href="http://www.eweek.com/c/s/Green-IT/" target="new">Green IT</a></span>
+	</div>
+</div>
+<!-- FM Tracking Pixel -->
+<script type='text/javascript' src='http://static.fmpub.net/site/devshed'></script>
+<!-- FM Tracking Pixel -->
+
+
+<!-- start Vibrant Media IntelliTxt script section -->
+<STYLE type="text/css">
+.iTt{
+    FONT-FAMILY:       Verdana, Arial, Helvetica;
+    FONT-SIZE:         11px;
+    FONT-STYLE:        normal;
+    FONT-WEIGHT:       normal;
+    COLOR:             black;
+    BACKGROUND-COLOR:  lightyellow;
+    BORDER:            black 1px solid;
+    PADDING:           2px;
+}
+</STYLE>
+<script type="text/javascript" src="http://tutorialized.us.intellitxt.com/intellitxt/front.asp?ipid=5500&MK=6&FG=blue"></script>
+<!-- end Vibrant Media IntelliTXT script section -->
+
+
+
+</body>
+</html>
+
+<!-- ZAZA [1.234000] - Complete -->

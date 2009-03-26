@@ -1,0 +1,1155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="distribution" content="global" />
+<meta name="robots" content="follow, all" />
+<meta name="language" content="en-US" />
+
+<title>The Great Ruby Shootout (December 2008) | Zen and the Art of Programming</title>
+
+<link rel="stylesheet" href="http://antoniocangiano.com/wp-content/themes/blue-zinfandel-2column/pygments.css" type="text/css" media="all" />
+<link rel="Shortcut Icon" href="http://antoniocangiano.com/wp-content/themes/blue-zinfandel-2column/images/favicon.ico" type="image/x-icon" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming" />
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming" />
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming" />
+<link rel="pingback" href="http://antoniocangiano.com/xmlrpc.php" />
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://antoniocangiano.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://antoniocangiano.com/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://antoniocangiano.com/wp-includes/js/jquery/jquery.js?ver=1.2.6'></script>
+<meta name="generator" content="WordPress 2.7.1" />
+
+
+<!-- all in one seo pack 1.4.7.4 [409,446] -->
+<meta name="keywords" content="mac,merb,ruby,ruby benchmark suite,ruby on rails" />
+<!-- /all in one seo pack -->
+<style type="text/css">.recentcomments a{display:inline !important;padding: 0 !important;margin: 0 !important;}</style>
+
+	<!-- Clean Archives Reloaded v3.1.2 | http://www.viper007bond.com/wordpress-plugins/clean-archives-reloaded/ -->
+	<style type="text/css">.car-collapse .car-yearmonth { cursor: s-resize; } </style>
+	<script type="text/javascript">
+		/* <![CDATA[ */
+			jQuery(document).ready(function() {
+				jQuery('.car-collapse').find('.car-monthlisting').hide();
+				jQuery('.car-collapse').find('.car-monthlisting:first').show();
+				jQuery('.car-collapse').find('.car-yearmonth').click(function() {
+					jQuery(this).next('ul').slideToggle('fast');
+				});
+				jQuery('.car-collapse').find('.car-toggler').click(function() {
+					if ( 'Expand All' == jQuery(this).text() ) {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').show();
+						jQuery(this).text('Collapse All');
+					}
+					else {
+						jQuery(this).parent('.car-container').find('.car-monthlisting').hide();
+						jQuery(this).text('Expand All');
+					}
+					return false;
+				});
+			});
+		/* ]]> */
+	</script>
+
+<style type="text/css" media="all">
+<!-- @import url( http://antoniocangiano.com/wp-content/themes/blue-zinfandel-2column/style.css ); -->
+</style>
+</head>
+
+<body>
+	<div id="header">
+		<a href="http://antoniocangiano.com/">Zen and the Art of Programming</a><br />
+		By Antonio Cangiano, Software Engineer and Technical Evangelist at IBM</div>
+
+<div id="navbar">
+	<ul>
+		<li><a href="http://antoniocangiano.com">Home</a></li>
+    <li><a href="http://antoniocangiano.com/about/" title="About">About</a></li>
+    <li><a href="http://antoniocangiano.com/ruby-and-rails-recommended-books/" title="Ruby Books">Ruby Books</a></li>
+    <li><a href="http://antoniocangiano.com/rails-books/" title="Rails Books">Rails Books</a></li>
+    <li><a href="http://antoniocangiano.com/table-of-contents/" title="Table of Contents">Table of Contents</a></li>
+		<!--  -->
+	</ul>
+</div>
+
+<div id="wrap">
+
+<div id="content">
+
+<!-- begin sidebar -->
+
+	<div id="sidebar">
+	<ul id="sidebarwidgeted">
+			<li id="text-227166711" class="widget widget_text">						<div class="textwidget"><p align="center"><a href="http://feeds2.feedburner.com/ZenAndTheArtOfRubyProgramming"><img src="http://feeds2.feedburner.com/~fc/ZenAndTheArtOfRubyProgramming?bg=0099CC&amp;fg=000000&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></div>
+		</li>
+		<li id="text-379390011" class="widget widget_text">			<h2 class="widgettitle">My Book</h2>
+			<div class="textwidget"><ul><li><p align="center"><a href="http://www.amazon.com/gp/product/0470374950?ie=UTF8&tag=zenruby-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0470374950"><img src="/images/rorforms.jpg" alt="My book" title="Ruby on Rails for Microsoft Developers" /></a></p></li></ul></div>
+		</li>
+		<li id="text-293045191" class="widget widget_text">			<h2 class="widgettitle">Follow me</h2>
+			<div class="textwidget"><div align="center"><img src="/images/twitter_small.png" alt="Follow me on Twitter" align="absmiddle" title="Twitter" /><a href="http://twitter.com/acangiano">Follow me on Twitter</a></div></div>
+		</li>
+		<li id="text-4" class="widget widget_text">			<h2 class="widgettitle">Download DB2</h2>
+			<div class="textwidget"><ul>
+<li>
+<div align="center">
+<a href='http://www.ibm.com/software/data/db2/express/download.html?S_CMP=ECDDWW01&S_TACT=ACDB201' title='Download DB2'><img src='http://antoniocangiano.com/wp-content/uploads/2008/06/download.gif' alt='Download DB2' style="border: 1px solid #fff;" /></a>
+</div>
+</li>
+</ul></div>
+		</li>
+<li id="search" class="widget widget_search"><form method="get" id="searchform" action="http://antoniocangiano.com/" >
+	<label class="hidden" for="s">Search for:</label>
+	<div><input type="text" value="" name="s" id="s" />
+	<input type="submit" id="searchsubmit" value="Search" />
+	</div>
+	</form></li>
+		<li id="recent-posts" class="widget widget_recent_entries">			<h2 class="widgettitle">Recent Posts</h2>
+			<ul>
+						<li><a href="http://antoniocangiano.com/2009/03/23/rubys-biggest-challenge-for-2009/">Ruby&#8217;s Biggest Challenge for 2009 </a></li>
+						<li><a href="http://antoniocangiano.com/2009/03/18/ibm-cloud-computing-webinar/">IBM Cloud Computing Webinar </a></li>
+						<li><a href="http://antoniocangiano.com/2009/03/17/do-you-read-the-rubyist-and-rails-magazine/">Do you read the Rubyist and Rails Magazine? </a></li>
+						<li><a href="http://antoniocangiano.com/2009/03/17/ibms-python-driver-is-out-of-beta/">IBM&#8217;s Python driver is out of beta </a></li>
+						<li><a href="http://antoniocangiano.com/2009/03/16/new-look-and-feel-do-you-like-it/">New look and feel. Do you like it? </a></li>
+						<li><a href="http://antoniocangiano.com/2009/03/11/introducing-redis-a-key-value-database/">Introducing Redis: a fast key-value database </a></li>
+						<li><a href="http://antoniocangiano.com/2009/02/26/scaling-rails-screencasts/">Scaling Rails Screencasts </a></li>
+						<li><a href="http://antoniocangiano.com/2009/02/23/do-you-really-need-venture-capital-funding/">Do you really need Venture Capital funding? </a></li>
+						<li><a href="http://antoniocangiano.com/2009/02/18/db2-support-for-django-is-coming/">DB2 support for Django is coming </a></li>
+						<li><a href="http://antoniocangiano.com/2009/02/16/unlocking-intermediate-resolutions-on-sony-vaio-fws/">Unlocking intermediate resolutions on Sony Vaio FWs </a></li>
+						</ul>
+		</li>
+
+		<li id="recent-comments" class="widget widget_recent_comments">			<h2 class="widgettitle">Recent Comments</h2>
+			<ul id="recentcomments"><li class="recentcomments">Steve <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on <a href="http://antoniocangiano.com/2009/03/23/rubys-biggest-challenge-for-2009/comment-page-1/#comment-5828">Ruby&#8217;s Biggest Challenge for 2009</a></li><li class="recentcomments"><a href='http://db2onrails.com/2009/03/26/support-for-ruby-191-and-rails-23-is-here/' rel='external nofollow' class='url'>Support for Ruby 1.9.1 and Rails 2.3 is here | DB2 on Rails</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6.3' title='WordPress 2.6.3' width='14' height='14' class='fs_browsericon' />  on <a href="http://antoniocangiano.com/2009/03/23/rubys-biggest-challenge-for-2009/comment-page-1/#comment-5827">Ruby&#8217;s Biggest Challenge for 2009</a></li><li class="recentcomments">iggy <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.1b3' title='Mozilla Firefox 3.1b3' width='14' height='14' class='fs_browsericon' />  on <a href="http://antoniocangiano.com/2009/03/23/rubys-biggest-challenge-for-2009/comment-page-1/#comment-5826">Ruby&#8217;s Biggest Challenge for 2009</a></li><li class="recentcomments">glen worstell <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.7' title='Mozilla Firefox 3.0.7' width='14' height='14' class='fs_browsericon' />  on <a href="http://antoniocangiano.com/2007/11/28/holy-shmoly-ruby-19-smokes-python-away/comment-page-3/#comment-5825">Holy Shmoly, Ruby 1.9 smokes Python away!</a></li><li class="recentcomments"><a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows Vista' title='Windows Vista' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 530.1' title='Safari 530.1' width='14' height='14' class='fs_browsericon' />  on <a href="http://antoniocangiano.com/2009/02/16/review-of-the-sony-vaio-fw-series/comment-page-1/#comment-5823">Sony Vaio FW Series: A Developer&#8217;s Review</a></li></ul>
+		</li>
+<li id="categories-1" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-134"><a href="http://antoniocangiano.com/category/dotnet/" title="View all posts filed under .NET">.NET</a> (13)
+</li>
+	<li class="cat-item cat-item-133"><a href="http://antoniocangiano.com/category/books/" title="View all posts filed under Books">Books</a> (29)
+</li>
+	<li class="cat-item cat-item-136"><a href="http://antoniocangiano.com/category/cocoa-and-objective-c/" title="View all posts filed under Cocoa and Objective-C">Cocoa and Objective-C</a> (5)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://antoniocangiano.com/category/db2/" title="View all posts filed under DB2">DB2</a> (41)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://antoniocangiano.com/category/django/" title="View all posts filed under Django">Django</a> (20)
+</li>
+	<li class="cat-item cat-item-141"><a href="http://antoniocangiano.com/category/erlang/" title="View all posts filed under Erlang">Erlang</a> (4)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://antoniocangiano.com/category/general/" title="View all posts filed under General">General</a> (57)
+</li>
+	<li class="cat-item cat-item-168"><a href="http://antoniocangiano.com/category/hardware/" title="View all posts filed under Hardware">Hardware</a> (3)
+</li>
+	<li class="cat-item cat-item-132"><a href="http://antoniocangiano.com/category/haskell/" title="View all posts filed under Haskell">Haskell</a> (6)
+</li>
+	<li class="cat-item cat-item-108"><a href="http://antoniocangiano.com/category/mac/" title="View all posts filed under Mac">Mac</a> (20)
+</li>
+	<li class="cat-item cat-item-26"><a href="http://antoniocangiano.com/category/mathematics/" title="View all posts filed under Mathematics">Mathematics</a> (3)
+</li>
+	<li class="cat-item cat-item-142"><a href="http://antoniocangiano.com/category/merb/" title="View all posts filed under Merb">Merb</a> (10)
+</li>
+	<li class="cat-item cat-item-137"><a href="http://antoniocangiano.com/category/photography/" title="View all posts filed under Photography">Photography</a> (1)
+</li>
+	<li class="cat-item cat-item-138"><a href="http://antoniocangiano.com/category/python/" title="View all posts filed under Python">Python</a> (26)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://antoniocangiano.com/category/quick-tips/" title="View all posts filed under Quick Tips">Quick Tips</a> (15)
+</li>
+	<li class="cat-item cat-item-167"><a href="http://antoniocangiano.com/category/reviews/" title="View all posts filed under Reviews">Reviews</a> (2)
+</li>
+	<li class="cat-item cat-item-131"><a href="http://antoniocangiano.com/category/ruby/" title="View all posts filed under Ruby">Ruby</a> (82)
+</li>
+	<li class="cat-item cat-item-161"><a href="http://antoniocangiano.com/category/ruby-benchmark-suite/" title="View all posts filed under Ruby Benchmark Suite">Ruby Benchmark Suite</a> (10)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://antoniocangiano.com/category/ruby-on-rails/" title="View all posts filed under Ruby on Rails">Ruby on Rails</a> (81)
+</li>
+	<li class="cat-item cat-item-169"><a href="http://antoniocangiano.com/category/startup/" title="View all posts filed under Startup">Startup</a> (3)
+</li>
+	<li class="cat-item cat-item-146"><a href="http://antoniocangiano.com/category/this-week-in-ruby/" title="View all posts filed under This Week in Ruby">This Week in Ruby</a> (15)
+</li>
+	<li class="cat-item cat-item-139"><a href="http://antoniocangiano.com/category/zenbits/" title="View all posts filed under Zenbits">Zenbits</a> (3)
+</li>
+		</ul>
+</li>
+<li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Blogroll</h2>
+
+	<ul class='xoxo blogroll'>
+<li><a href="http://jhingran.typepad.com/">Anant Jhingran</a></li>
+<li><a href="http://channeldb2.com">ChannelDB2</a></li>
+<li><a href="http://www.db2express.com/">DB2 Express-C</a></li>
+<li><a href="http://db2onrails.com/">DB2 on Rails Blog</a></li>
+<li><a href="http://www.djangoproject.com/">Django</a></li>
+<li><a href="http://freedb2.com" target="_blank">FreeDB2</a></li>
+<li><a href="http://tempe.st/">Giovanni Intini</a></li>
+<li><a href="http://haskell.org/haskellwiki/Haskell">Haskell</a></li>
+<li><a href="http://irshadraihan.wordpress.com/">Irshad Raihan</a></li>
+<li><a href="http://math-blog.com/">My Math Blog</a></li>
+<li><a href="http://passiomatic.com/" rel="friend" title="Web and Interaction Design">Passiomatic</a></li>
+<li><a href="http://www.planetdb2.com">Planet DB2</a></li>
+<li><a href="http://www.python.org/">Python</a></li>
+<li><a href="http://ruby-lang.org/">Ruby</a></li>
+<li><a href="http://rubyonrails.org/">Ruby on Rails</a></li>
+<li><a href="http://stacktrace.it" title="Notizie e articoli IT">Stacktrace.it (ITA)</a></li>
+
+	</ul>
+</li>
+
+		</ul>
+			
+</div>
+
+<!-- end sidebar -->
+<div id="contentmiddle">
+
+        <div align="center">
+        	<a href="http://engineyard.com" title="Engine Yard"><img src="/images/ey_banner_468x60.png" alt="Engine Yard" style="border: 1px solid #000;"></a>
+	</div>
+	<br/>
+
+
+	
+	<div class="contentdate">
+		<h3>Dec</h3>
+		<h4>9</h4>
+	</div>
+		
+	<div class="contenttitle">
+		<h1><a href="http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/" rel="bookmark">The Great Ruby Shootout (December 2008)</a></h1>
+		<p>By <a href="http://antoniocangiano.com/author/Antonio Cangiano/" title="Posts by Antonio Cangiano">Antonio Cangiano</a>. Filed under <a href="http://antoniocangiano.com/category/mac/" title="View all posts in Mac" rel="category tag">Mac</a>,  <a href="http://antoniocangiano.com/category/merb/" title="View all posts in Merb" rel="category tag">Merb</a>,  <a href="http://antoniocangiano.com/category/ruby/" title="View all posts in Ruby" rel="category tag">Ruby</a>,  <a href="http://antoniocangiano.com/category/ruby-benchmark-suite/" title="View all posts in Ruby Benchmark Suite" rel="category tag">Ruby Benchmark Suite</a>,  <a href="http://antoniocangiano.com/category/ruby-on-rails/" title="View all posts in Ruby on Rails" rel="category tag">Ruby on Rails</a>&nbsp;</p>
+		</div>
+		<p>The long awaited Ruby virtual machine shootout is here. In this report I&#8217;ve compared the performances of several Ruby implementations against a set of synthetic benchmarks. The implementations that I tested were <a hre="http://www.ruby-lang.org/en/">Ruby 1.8</a> (aka MRI), <a href="http://www.ruby-lang.org/en/downloads/">Ruby 1.9</a> (aka Yarv), <a href="http://www.rubyenterpriseedition.com/">Ruby Enterprise Edition</a> (aka REE), <a href="http://jruby.codehaus.org/">JRuby 1.1.6RC1</a>, <a href="http://rubini.us/">Rubinius</a>, <a href="http://ruby.gemstone.com/">MagLev</a>, <a href="http://www.macruby.org/trac/wiki/MacRuby">MacRuby 0.3</a> and <a href="http://www.ironruby.net/">IronRuby</a>.</p>
+<p><br/></p>
+<h4>Disclaimer</h4>
+<p><br/></p>
+<p>Just as with <a href="http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/">the previous shootout</a>, before proceeding to the results, I urge you to consider the following important points:</p>
+<ul>
+<li><a href="http://www.engineyard.com/">Engine Yard</a> sponsors this website, and also happens to sponsor, to a much greater extent, the Rubinius project. Needless to say, there is no bias in the reporting of the data below concerning Rubinius;</li>
+<li>Don&#8217;t read too much into this and don&#8217;t draw any final conclusions. Each of these exciting projects has its own reason for being, as well as different pros and cons, which are not considered in this post. They each have a different level of maturity and completeness. Furthermore, not all of them have received the same level of optimization yet. Take this post for what it is: an interesting and fun comparison of Ruby implementations;</li>
+<li>The results here may change entirely in a matter of months. There will be other future shootouts on this blog. If you wish, <a href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming">grab the feed and follow along</a>;</li>
+<li>The scope of the benchmarks is limited because they can&#8217;t test every single feature of each implementation nor include every possible program. They&#8217;re just a sensible set of micro-benchmarks which give us a general idea of where we are in terms of speed. They aren&#8217;t meant to be absolutely accurate when it comes to predicting real world performance;</li>
+<li>Many people are interested in the kind of improvements that the tested VMs can bring to a Ruby on Rails deployment stack. Please do not assume that if VM A is three times faster than VM B, that Rails will serve three times the amount of requests per minute. It won&#8217;t. That said, a faster VM is good news and can definitely affect Rails applications positively in production;</li>
+<li>These tests were run on the machines at my disposal, your mileage may vary. Please do test the VMs that interest you on your hardware and against programs you actually need/use;</li>
+<li>In this article, I sometimes blur the distinction between &#8220;virtual machine&#8221; and &#8220;interpreter&#8221; by simply calling them &#8220;virtual machines&#8221; for the sake of simplicity;</li>
+<li>Some of the benchmarks are more interesting for VM implementers than for end users. That said, if you think the benchmarks being tested are silly/inadequate/lame, feel free to contribute code to the <a href="http://github.com/acangiano/ruby-benchmark-suite/tree/master">Ruby Benchmark Suite</a> and if accepted, they&#8217;ll make it into the next shootout;</li>
+<li>Finally, keep in mind that there are three kinds of lies: <a href="http://en.wikipedia.org/wiki/Lies,_damned_lies,_and_statistics">lies, damned lies, and statistics</a>.</li>
+</ul>
+<p><br/></p>
+<h4>Ruby implementations being tested</h4>
+<p><br/></p>
+<p>All of the Ruby implementations that were able to run the current Ruby Benchmark Suite have been grouped together in one main shootout. This group consists of Ruby 1.8.7 (p72, built from source, and installed through apt-get), Ruby 1.9.1 (from trunk, p5000 revision 20560), Ruby Enterprise Edition (1.8.6-20081205), JRuby 1.1.6RC1 and Rubinius (from trunk), all of them were tested on Ubuntu 8.10 x64, plus Ruby 1.8.6 (p287. from the One-Click Installer) on Windows Vista Ultimate x64. The hardware used for this benchmark was my desktop workstation with an Intel Core 2 Quad Q6600 (2.4 GHz) CPU and 8 GB of RAM. JRuby was run with the -J-server option enabled and by specifying 4 Mb of stack (required to pass certain recursive benchmarks). The best times out of five iterations were reported, and these do not include startup times or the time required to parse and compile classes and method for the first time. Several of these new tests also have variable input sizes.</p>
+<p>The MagLev team provided me with an early alpha version of MagLev for the purpose of testing it in this shootout. Since this VM is not mature enough yet to run the Ruby Benchmark Suite, I used custom scripts against an old version of the Ruby Benchmark Suite on Ubuntu 8.10 x64. MagLev was tested, along with Ruby 1.8.6 (p287), on the same machine as that of the main shotoout, though the benchmarks were different (even when they had the same names as the ones in the main shootout).</p>
+<p>MacRuby 0.3 and Ruby 1.8.6 (p114) were tested on Mac OS X Leopard using the previous version of the Ruby Benchamrk Suite. Since my MacBook Pro died (sigh), for this benchmark I used a Mac Pro, with two Quad-Core Intel Xeon 2.8 Ghz processors and 18 GB of RAM.</p>
+<p>IronRuby (from trunk) and Ruby 1.8.6 (p287) were tested on a previous version of the Ruby Benchmark Suite on Windows Vista x64 on the same quad-core used for the main shootout. The MagLev, MacRuby and IronRuby numbers reported here were the best times out of five iterations, and include startup time. IronRuby on Mono was not tested because I couldn&#8217;t get it to work on my machine, despite having tried several IronRuby versions and two different Mono versions. Please also notice that Ruby 1.8.6 (p287) was tested twice on Windows, once for the main shootout against the current Ruby Benchmark Suite, and a second time to compare it with IronRuby, against the old benchmarks.
+<p><b>Note</b>: As tempting as it is, do not compare implementations that belong to different shootouts directly to one another. It would be very disingenuous to directly compare VMs tested with different benchmarks and/or different machines. The only comparisons that make sense are the ones within each of the four groups.</p>
+<p><br/></p>
+<h4>Main shootout</h4>
+<p><br/></p>
+<p>The following table shows the run times for the main implementations. The table is fairly wide, so you&#8217;ll have to click on the image to view the data in a new tab.</p>
+<div align="center"><a href="http://antoniocangiano.com/images/shootout3/main_time.png" title="Click to enlarge this figure" target="_blank"><img src="http://antoniocangiano.com/images/shootout3/main_time_small.gif" alt="Main Shootout's times" /></a></div>
+<p><br/></p>
+<p>Green, bold values indicate that the given virtual machine was faster than Ruby 1.8.7 on GNU/Linux (our baseline), whereas a yellow background indicates the absolute fastest implementation for a given benchmark. Values in red are slower than the baseline. Timeout indicates that the script didn’t terminate in a reasonable amount of time and was (automatically) interrupted. The values reported at the bottom are the total amounts of time (in seconds) that it would take to run the common subset of benchmarks which were successfully executed by every virtual machine. When our baseline VM generated an error, others were used, starting with Ruby 1.8.7 on Vista (for color coding purposes only).</p>
+<p>The following image shows a bar chart of the total time requested for the common subset of successfully executed benchmarks (those whose names are in blue within the tables):</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/chart_total_time_small.png" alt="Total Time" /></div>
+<p><br/></p>
+<p>More interestingly, the following table shows the ratios of each Ruby implementation based on the baseline (MRI):</p>
+<div align="center"><a href="http://antoniocangiano.com/images/shootout3/main_geomean.png" title="Click to enlarge this figure" target="_blank"><img src="http://antoniocangiano.com/images/shootout3/main_geomean_small.gif" alt="Main Shootout's ratios" /></a></div>
+<p><br/></p>
+<p>The baseline time is divided by the time at hand to obtain a number that tells us &#8220;how many times faster&#8221; an implementation is for a given benchmark. 2.0 means twice as fast, while 0.5 means half the speed (so twice as slow). The geometric mean at the bottom of the table tells us how much faster or slower a virtual machine was when compared to the main Ruby interpreter, on &#8220;average&#8221;. Just as with the totals above, only those 101 tests, which were successfully run by each VM, where included in the calculation.</p>
+<p>More concisely, here is a bar chart showing the geometric mean of the ratios for the various implementations tested:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/chart_geomean_small.png" alt="Geometric Mean" /></div>
+<p><br/></p>
+<p>I prefer to let the data speak for itself, but I&#8217;d like to briefly comment on these results. Just a few quick considerations.</p>
+<p>Working off of the <a href="http://en.wikipedia.org/wiki/Geometric_mean">geometric mean</a> of the ratios for the successful tests, Ruby MRI compiled from source is twice as fast than the Ruby shipped by Ubuntu, and by the One-Click Installer on Vista. The huge performance gap between ./configure &#038;&#038; make &#038;&#038; sudo make install and sudo apt-get install ruby-full should not be taken lightly when deploying in production. These numbers also reveal what most of us already knew: Ruby is particularly slow on Windows (<a href="http://groups.google.com/group/capistrano/msg/f5213577eaeadc47?pli=1">800-pound gorillas in the room</a>, or not).</p>
+<p>Performance-wise Rubinius has more work left to be done to catch up with Ruby 1.8.7 and other faster VMs, particularly if we take into account the number of timeouts. But it has improved in the past year and I think it’s on the right track.</p>
+<p>Ruby Enterprise Edition is about as fast as Ruby 1.8.7 compiled from source, which is reasonable considering that it&#8217;s a patched version of Ruby 1.8.6 aimed at the reduction of memory consumption (a parameter which wasn&#8217;t tested within the current shootout).</p>
+<p>Speaking of excellent results, Ruby 1.9.1 and JRuby 1.1.6 both did <b>very</b> well. It looks like we finally have a couple of relatively fast alternatives to what is a slow main interpreter. According to the results above, and with the exception of a few tests, on average they are respectively 2.5 and 2 times faster than Ruby 1.8.7 (from source), and 5 and 4 times faster than Ruby 1.8.7 installed through apt-get on Ubuntu or Ruby 1.8.6 installed through the One-Click installer on Vista. Again, this does not mean than every program (particularly Rails) will gain that kind of speed, but these results are very encouraging nevertheless.</p>
+<p><br/></p>
+<h4>MagLev</h4>
+<p><br/></p>
+<p>There has been a lot of buzz about MagLev since Avi Bryant&#8217;s first benchmarks were shown a few months ago. Here we finally see it being put to the test. The table below shows the times obtained by running MagLev and Ruby 1.8.6 (p287) against MagLev&#8217;s set of benchmarks based on the old Ruby Benchmark Suite:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/maglev_time.png" alt="MagLev's times" /></div>
+<p><br/></p>
+<p>And here are the ratios:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/maglev_geomean.png" alt="MagLev's ratios" /></div>
+<p><br/></p>
+<p>You&#8217;ll notice how MagLev swings from being much faster than MRI to being much slower. I believe there is much room for improvement, but at almost twice the speed of MRI, these early results are definitely promising.</p>
+<p><br/></p>
+<h4>MacRuby</h4>
+<p><br/></p>
+<p>These are the times for MacRuby 0.3 on Mac OS X 10.5.5:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/macruby_time.png" alt="MacRuby's times" /></div>
+<p><br/></p>
+<p>And of course, the ratios against the MRI baseline:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/macruby_geomean.png" alt="MacRuby's ratios" /></div>
+<p><br/></p>
+<p>MacRuby is relatively new, so these are not bad results. More work is required, but it&#8217;s a good start.</p>
+<p><br/></p>
+<h4>IronRuby</h4>
+<p><br/></p>
+<p>Finally (I promise these are the last ones), here are the two tables for IronRuby and Ruby 1.8.6:</p>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/ironruby_time.png" alt="IronRuby's times" /></div>
+<div align="center"><img src="http://antoniocangiano.com/images/shootout3/ironruby_geomean.png" alt="IronRuby's ratios" /></div>
+<p><br/></p>
+<p>IronRuby is slower than Ruby 1.8.6 on Windows, which in turn is much slower than Ruby 1.8.7 on GNU/Linux. This is not very surprising. This project has been focusing on integrating with .NET and catching up with the implementation of the language by improving the RSpec pass rate, as opposed to performing any optimizations and/or fine tuning (as per <a href="http://rubyconf2008.confreaks.com/ironruby.html">John Lam&#8217;s presentation</a> at RubyConf 2008). We&#8217;ll measure its improvements in the next shootouts.</p>
+<p><br/></p>
+<h4>Conclusion</h4>
+<p><br/></p>
+<p>Overall I think these are great results. Ruby 1.8 (MRI), with its slowness and memory leaks, belongs to the past. It&#8217;s time for the community to move forward and on to something better and faster - and we don&#8217;t lack interesting alternatives to do so at this stage.</p>
+<p>I hope that for the next shootout, MagLev, MacRuby and IronRuby will be able to run the benchmark suite, so that they can all be tested and directly compared with each other. I also hope to include Tim Bray&#8217;s XML benchmark, some sort of &#8220;Pet Shop&#8221; sample Rails and Merb application and, above all, include memory usage statistics.</p>
+<p>You can find the Excel file for the main shootout <a href="http://antoniocangiano.com/files/MainShootout3.0.xls">here</a>. That&#8217;s all for now. Feel free to comment, <a href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming">subscribe to my feed</a>, share this link and promote it on <a href="http://news.ycombinator.com/item?id=391301">Hacker News</a>, <a href="http://www.reddit.com/r/programming/comments/7ic05/the_great_ruby_shootout_december_2008/">Reddit</a>, <a href="http://www.dzone.com/links/the_great_ruby_shootout_december_2008.html">DZone</a>, StumbleUpon, <a href="http://twitter.com/">Twitter</a>, and Co. Putting together this shootout was a lot of work, so I definitely appreciate you spreading the word about it. Until next time&#8230;</p>
+<p><b>Update (December 10, 2008)</b>: This article has been updated to correct a couple of major issues with yesterday&#8217;s results. I adjusted my commentary as well, in light of the corrected figures.</p>
+<p><b>Update (February 7, 2009)</b>: Thanks to Makoto Kuwata, <a href="http://jp.rubyist.net/magazine/?0025-TheGreatRubyShootout">a Japanese version of this article</a> was published in the Rubyist Magazine.</p>
+		<p><br/>If you enjoyed this post, then make sure you subscribe to our <a href="http://feeds.feedburner.com/ZenAndTheArtOfRubyProgramming">RSS Feed</a>.</p>
+		<!--
+		<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/"
+    dc:identifier="http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/"
+    dc:title="The Great Ruby Shootout (December 2008)"
+    trackback:ping="http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/trackback/" />
+</rdf:RDF>		-->
+	
+			
+		<h1>Comments</h1>
+		
+<!-- You can start editing here. -->
+
+<div id="commentblock">
+	<p id="comments"><b>60 Responses to &#8220;The Great Ruby Shootout (December 2008)&#8221;</b></p>
+
+	<ol class="commentlist">
+
+	
+		<li class="alt" id="comment-4810">
+			lg2046 <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/cn.png' alt='CHINA' title ='CHINA' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 9:37 am 
+			<div class="commenttext">
+			<p>does the meaning of jruby is best?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4811">
+			<a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 9:51 am 
+			<div class="commenttext">
+			<p>@lg2047: JRuby was the second best, Ruby 1.9.1 was fastest.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4812">
+			Joao Pedrosa <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 10:37 am 
+			<div class="commenttext">
+			<p>Thanks for putting this together. I had recently tested JRuby, IronRuby and the Ruby versions myself, but MacRuby, Rubinius and MagLev I had yet to test&#8230; <img src='http://antoniocangiano.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /><br />
+<br />
+JRuby is decidedly a good 1.8.6 implementation at this point. I have recently switched to it on my Web applications serving in order to test it in a longer running application and so far it looks to be stable:<br />
+</p>
+<pre>junior     15740  0.0 51.9 702848 123756 ?       Sl   Dec05   6:12  \_ java -client -Djruby.memory.max=500m -Djruby.stack.max=1</pre>
+<p>
+Process uptime:</p>
+<pre>$ ps --no-headers -o etime -p 15740</pre>
+<p> 4-08:16:32<br />
+<br />
+It may use more memory than Ruby 1.9 when doing the same sort of thing, but Java can handle lots of memory due its maturity and excellent garbage collectors and stuff. <img src='http://antoniocangiano.com/wp-includes/images/smilies/icon_smile.gif' alt=':-)' class='wp-smiley' /><br />
+<br />
+But Ruby 1.9 is decidedly the way to go for pure Ruby.<br />
+<br />
+Regarding the other Ruby implementations, while they had an easier time trying to beat the oldie Ruby 1.8, with Ruby 1.9 it has become a little tougher, so in terms of incentive, they have just got what they asked for. Go and create great Ruby implementations for all of us! Thanks!</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4814">
+			<a href='http://blog.huikau.com/2008/12/09/new-ruby-shootout-1208/' rel='external nofollow' class='url'>Huikau? &raquo; Blog Archive &raquo; New Ruby Shootout 12/08</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.5.1' title='WordPress 2.5.1' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 10:45 am 
+			<div class="commenttext">
+			<p>[...] Cangiano has released another Ruby Shootout which are always fun to check out.  Looks like Ruby 1.9 is leading the pack with JRuby 1.1.6RC1 [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4815">
+			<a href='http://blog.headius.com' rel='external nofollow' class='url'>Charles Oliver Nutter</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/be.png' alt='BELGIUM' title ='BELGIUM' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 10:54 am 
+			<div class="commenttext">
+			<p>The results look very nice, thanks for updating the suite and running this shootout again.<br />
+<br />
+I&#8217;m looking forward to seeing another update once JRuby finishes 1.9 support, since these JRuby numbers don&#8217;t reflect execution and library optimizations 1.9 provides. I expect that JRuby in 1.9 mode will perform much closer to Ruby 1.9.<br />
+<br />
+Until then, it&#8217;s good to hear we&#8217;re the fastest 1.8 implementation. Thanks again!</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4816">
+			<a href='http://www.khelll.com/blog' rel='external nofollow' class='url'>khelll</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/sy.png' alt='SYRIAN ARAB REPUBLIC' title ='SYRIAN ARAB REPUBLIC' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 10:58 am 
+			<div class="commenttext">
+			<p>Well, Jruby is doing very well!<br />
+I hope we can benchmark rails or merb with this various implementations also.<br />
+<br />
+Thanks</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4817">
+			<a href='http://sam.aaron.name' rel='external nofollow' class='url'>Sam Aaron</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/nl.png' alt='NETHERLANDS' title ='NETHERLANDS' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.27.1' title='Safari 525.27.1' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:15 am 
+			<div class="commenttext">
+			<p>This is really encouraging for all of the new Ruby implementations. </p>
+<p>I&#8217;d also be very interested in seeing how JRuby does in 1.9 mode when it&#8217;s finished (somepoint in the next couple of months I believe)</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4818">
+			Isaac Gouy <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:18 am 
+			<div class="commenttext">
+			<p>Suggest you label the &#8220;Total Time&#8221; and &#8220;Geometric Mean&#8221; title or x-axis so that they can survive being cut/pasted out of context.<br />
+<br />
+Time - what units?<br />
+<br />
+Geometric Mean - relative to what?<br />
+<br />
+As the charts only show those tests which every implementation successfully completed - how many tests out of the total were successfully completed?<br />
+<br />
+The tests are run with a range of input values - so are timings from all input values included in the &#8220;Total Time&#8221; and &#8220;Geometric Mean&#8221; or only times for some particular input value?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4819">
+			Stephen P. Schaefer <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/fedora.png' alt='Fedora Linux ' title='Fedora Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 2.0.0.18' title='Mozilla Firefox 2.0.0.18' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:21 am 
+			<div class="commenttext">
+			<p>Could you comment on the errors?  E.g., were they a matter of memory exhaustion, or bad memory references (e.g., segfault), or wrong results?  Thank you for distinguishing timeout from error.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4820">
+			<a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:28 am 
+			<div class="commenttext">
+			<p>Isaac, you make a good point about them being pasted out of context. I&#8217;ll see if I can update the two bar charts. All the input values were included in the total time.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4821">
+			<a href='http://jianshi.org/?p=94' rel='external nofollow' class='url'>jianshi.org &raquo; Blog Archive &raquo; Ruby Performance</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6.3' title='WordPress 2.6.3' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:31 am 
+			<div class="commenttext">
+			<p>[...] Read more about it here - http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/ [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4822">
+			<a href='http://www.marc-seeger.de' rel='external nofollow' class='url'>Marc</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/de.png' alt='GERMANY' title ='GERMANY' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:38 am 
+			<div class="commenttext">
+			<p>Thanks for taking the time to run these tests! really interesting <img src='http://antoniocangiano.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4823">
+			<a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 11:55 am 
+			<div class="commenttext">
+			<p>Stephen, I didn&#8217;t want to overload the post with details about errors, but since you asked, let me give you a bit more information regarding the more established VMs.<br />
+<br />
+Ruby 1.8 on Ubuntu: Each error resulted in a &#8220;stack level too deep&#8221; message. On Windows, the first is a &#8220;stack level too deep&#8221;, the second a &#8220;wrong constant name (null)&#8221;, while the last three errors were all &#8220;failed to allocate memory&#8221; ones.<br />
+<br />
+Ruby 1.9.1: The first error was a &#8220;stack level too deep&#8221; and the second a &#8220;undefined method `zero?&#8217; for &#8220;\x01&#8243;:String&#8221;.<br />
+<br />
+Ruby Enterprise Edition: &#8220;stack level too deep&#8221; for all three errors.<br />
+<br />
+JRuby: The first error is an Internal Error (Error: guarantee(false,&#8221;missing exception handler&#8221;)) that dumped a pid log, while the last two errors were &#8220;org.jruby.util.ByteList:193:in `ensure&#8217;: java.lang.NegativeArraySizeException&#8221;.<br />
+<br />
+Rubinius: There was a segmentation fault.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4824">
+			Jochen Bedersdorfer <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 1:24 pm 
+			<div class="commenttext">
+			<p>We should all switch to JRuby.<br />
+Second in the performance test and first concerning security. The sandbox built into the JVM is really great and is one the reasons tons of server-side code is written in Java and not C++ nowadays.<br />
+The JVM is a mature piece of software and JRuby benefits from this naturally.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4825">
+			<a href='http://believeinanything.com' rel='external nofollow' class='url'>Phill</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 1:45 pm 
+			<div class="commenttext">
+			<p>+1, sir. Good show</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4827">
+			<a href='http://railsenvy.com' rel='external nofollow' class='url'>Jason Seifer</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/mozilla.png' alt='Mozilla 1.9.1b3pre' title='Mozilla 1.9.1b3pre' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 1:53 pm 
+			<div class="commenttext">
+			<p>Thanks so much for this, it was a fascinating read.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4828">
+			<a href='http://www.flex888.com' rel='external nofollow' class='url'>Moxie</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 2:18 pm 
+			<div class="commenttext">
+			<p>Now we know which Ruby runtime is the best. How about a shootout with PHP, Perl, Python, ASP and JSP? That&#8217;ll be very interesting too.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4829">
+			<a href='http://ibm.com' rel='external nofollow' class='url'>Lex Sheehan</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 3:58 pm 
+			<div class="commenttext">
+			<p>Ruby 1.8.7 uses green threads, right?<br />
+<br />
+How is that that JRuby fell behind Ruby 1.8.7 in the thread management set of tests?<br />
+<br />
+Any chance you could throw into the shootout a java-language-based application that runs in the same environment as the JRuby application?<br />
+<br />
+Thank you for this enlightening article.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4831">
+			<a href='http://grigio.org' rel='external nofollow' class='url'>grigio</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/it.png' alt='ITALY' title ='ITALY' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 4:18 pm 
+			<div class="commenttext">
+			<p>Thank you for your benchmarks!<br />
+Submitted to Digg</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4832">
+			<a href='http://www.rubyinside.com/ruby-implementation-shootout-a-bright-future-for-ruby-performance-1390.html' rel='external nofollow' class='url'>Ruby Implementation Shootout: A Bright Future for Ruby Performance!</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6' title='WordPress 2.6' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 4:20 pm 
+			<div class="commenttext">
+			<p>[...] Antonio has put together an all new December 2008 Great Ruby Shootout! There&#8217;s a lot of reading to do but the results are very exciting. JRuby&#8217;s performance has come [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4834">
+			<a href='http://www.yehudakatz.com' rel='external nofollow' class='url'>Yehuda Katz</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.20.1' title='Safari 525.20.1' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 4:46 pm 
+			<div class="commenttext">
+			<p>Just to be clear, these results are not very representative of real-life scenarios. Assuming, from these benches, that &#8220;Ruby 1.9 is fastest&#8221; and &#8220;Ruby 1.8.7 is slowest&#8221; would be a mistake, and not borne out by benches on even slightly complex scenarios (like running a Rails or Merb request through the dispatch cycle or even running a simple Rack or Mongrel request).<br />
+<br />
+Of course, real-life scenarios are confounded by other variables (is it really fair to compare MRI&#8217;s mongrel with JRuby&#8217;s?) so these VM benches provide some measure of head-to-head performance, but again, I&#8217;d be wary about drawing any high-level conclusions from these results.<br />
+<br />
+I&#8217;d be very interested in participating in a project to create a more representative suite for real-life results, as Antonio seems to be interested in according to his post <img src='http://antoniocangiano.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /><br />
+<br />
+I am in no way demeaning Antonio&#8217;s work. I think it&#8217;s useful and important. The question is what exactly it tells us.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4836">
+			<a href='http://push.cx' rel='external nofollow' class='url'>Peter Harkins</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 4:58 pm 
+			<div class="commenttext">
+			<p><i>Overall I think these are great results. Ruby 1.8 (MRI), with its slowness and memory leaks, belongs to the past.</i><br />
+<br />
+What in this test led you to the conclusion that MRI 1.9.1 doesn&#8217;t suffer from 1.8&#8217;s memory leaks?<br />
+<br />
+I&#8217;m not familiar with the test suite, does it deliberately try to exercise those bugs?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4837">
+			<a href='http://www.pagestacker.com/' rel='external nofollow' class='url'>José Valim</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 5:06 pm 
+			<div class="commenttext">
+			<p>Great, great, great work!</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4839">
+			<a href='http://dkoontz.wordpress.com/2008/12/09/jruby-still-the-fastest-ruby-implementation/' rel='external nofollow' class='url'>JRuby, still the fastest Ruby implementation &laquo; Does Not Compute</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress MU' title='WordPress MU' width='14' height='14' class='fs_browsericon' />  on
+						December 9th, 2008 5:19 pm 
+			<div class="commenttext">
+			<p>[...] The Great Ruby Shootout [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4848">
+			Shimon Amit <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/il.png' alt='ISRAEL' title ='ISRAEL' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 3:57 am 
+			<div class="commenttext">
+			<p>Some higher level conclusions:<br />
+<br />
+- These results give a boost in confidence that Matz made a great choice with YARV and that the upgrade to 1.9 is looking like a success (duh?). It is crucial that the leader of the pack stay ahead of the pack so nobody looses confidence in their decisions and starts a rebellion.<br />
+<br />
+- JRuby is the leader in the alternative implementations and is a viable alternative especially to those already on the JVM.<br />
+<br />
+- MagLev looks like the rising star but they have yet to prove themselves. Still, this platform is extremely secretive, closed and will probably be expensive.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4850">
+			Isaac Gouy <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 12:04 pm 
+			<div class="commenttext">
+			<p>1) Antonio, I  can&#8217;t get the Excel file &#8220;Times&#8221; to sum (using OpenOffice) to the same totals you show!</p>
+<p>For example, even if I set all the Error and Timeout values to 0 Rubinius sums to 714.65 not 601.01?</p>
+<p>2) &#8220;All the input values were included in the total time.&#8221;</p>
+<p>Doesn&#8217;t that mean some implementations had 0s included in the total time when they failed or timedout while successful implementations were disadvantaged because they succeeded? That would mean the &#8220;Total Times&#8221; chart is really really misleading.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4851">
+			Isaac Gouy <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 12:28 pm 
+			<div class="commenttext">
+			<p>The Geometric Mean values seem to sum differently also - JRuby 4.68 not 3.62?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4852">
+			Isaac Gouy <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 12:47 pm 
+			<div class="commenttext">
+			<p>Seems like when a test is only run with one input size the input size is set to n/a - why not just provide the information, that single input value?</p>
+<p>For example, micro-benchmarks/bm_nbody.rb takes 9.96s with Ruby 1.8.7 so I&#8217;d guess something like 100,000 but why make me guess?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4853">
+			<a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 1:04 pm 
+			<div class="commenttext">
+			<p>@Isaac, thank you so much for inspecting my results. There are a couple of mistakes that affect the results. Tonight I&#8217;ll update this post with the due corrections. Regarding the input size parameter, it&#8217;s there to distinguish amongst identical benchmarks, but yours is a good suggestion for the next shootout.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4854">
+			<a href='http://www.fansnap.com' rel='external nofollow' class='url'>Arnon</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 2:02 pm 
+			<div class="commenttext">
+			<p>This is a very interesting article. Thanks for the excellent work. One thing that I am still wondering about and cannot get a straight answer for is - why is rails so slow on Windows. While the performance of the VM is not very different on Windows vs. linux, the observed difference in our practice has been much larger. Rails startup time on Windows is on an order of 10x slower than on linux on the same machine. Our rspec suite (not a performance benchmark) runs similarly slow mostly due to the poor performance of boot.rb on Windows (I was using Vista 64bit on a dual core w/ 4GB RAM for those observations).<br />
+<br />
+I noticed that the benchmarks that performed poorly on Windows in your shootout seemed to be focused on string processing more than others (maybe? am I off?). Does this account for the Rails performance difference? Not sure.<br />
+<br />
+Another thing is that rails produces a large amount of transient objects, which can tax the VM garbage collector. Could this account for a large difference. Does this hint at possibly better performance of JRuby, especially on Windows, if garbage collection is delegated to the Java VM (is it?)<br />
+<br />
+So bottom line - I&#8217;ve been unable to get straight answers from the rails community, as there seems to be overt hostility to Windows, and commonly the anser one gets is &#8220;switch to Linux&#8221;, which is no answer at all.<br />
+<br />
+I&#8217;d be *very* interested in seeing a rails based benchmark numbers, and would also like to get solid numbers on JRuby performance differences between Linux and Windows. Do you know of any that were done already? Does any reader know *objectively* why there are such huge performance differences between rails performance on Windows and Linux, even though the underlying VM has very similar performance characteristics? Does anyone know of any serious effort to fix this problem?<br />
+<br />
+Thanks</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4855">
+			<a href='http://antoniocangiano.com/2008/12/10/reflections-on-the-ruby-shootout/' rel='external nofollow' class='url'>Reflections on the Ruby shootout | Zen and the Art of Programming</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6.5' title='WordPress 2.6.5' width='14' height='14' class='fs_browsericon' />  on
+						December 10th, 2008 11:47 pm 
+			<div class="commenttext">
+			<p>[...] I published The Great Ruby Shootout and it quickly gathered a fair deal of attention. It was on the front page of Slashdot, Hacker [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4865">
+			BlackHand <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/pe.png' alt='PERU' title ='PERU' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 11th, 2008 6:47 am 
+			<div class="commenttext">
+			<p>I recommend to you to test JRuby with -J-client option for reasons behind the jruby implementation in some cases several JRuby programs can run faster with this option instead of -J-server</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4882">
+			Elise <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 12th, 2008 10:37 am 
+			<div class="commenttext">
+			<p>I also share Arnons curiosity about the performance issues surrounding Ruby on windows.</p>
+<p>Switching to Linux is not an option for us. All our internal (yes, these are &#8216;enterprise&#8217; apps) applications run on Windows and management will not budge on this issue.</p>
+<p>Has anyone done any benchmarks of JRuby and Ruby 1.9.1 (if possible) on Windows?</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4883">
+			Balast <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 12th, 2008 10:42 am 
+			<div class="commenttext">
+			<p>Has anyone successfully deployed JRuby on an IBM AS400, iSeries or Power products?</p>
+<p>I would love to see JRuby and Rails/Merb applications running on these products. RPG, COBOL and C are WAY long in the tooth and I&#8217;m surprised that IBM hasn&#8217;t supported Ruby or Python on these platforms. If they did, these platforms may prove viable for sometime to come, instead of dying in the slow death spiral in which they currently find themselves.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4884">
+			<a href='http://blog.john.yerhot.org' rel='external nofollow' class='url'>John Yerhot</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/netscape.png' alt='Netscape Navigator 5.0' title='Netscape Navigator 5.0' width='14' height='14' class='fs_browsericon' />  on
+						December 12th, 2008 1:11 pm 
+			<div class="commenttext">
+			<p>Looks like I&#8217;m going to look at JRuby again. Thanks!</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4885">
+			tiago nogueira <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/br.png' alt='BRAZIL' title ='BRAZIL' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ie.png' alt='Internet Explorer 7.0' title='Internet Explorer 7.0' width='14' height='14' class='fs_browsericon' />  on
+						December 12th, 2008 1:48 pm 
+			<div class="commenttext">
+			<p>Man, very great this tests!<br />
+Good job man, very good.<br />
+Bye</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4895">
+			<a href='http://betterlogic.com/roger' rel='external nofollow' class='url'>roger pack</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 13th, 2008 7:19 am 
+			<div class="commenttext">
+			<p><a href="http://lloydforge.org/projects/misc/" rel="nofollow">http://lloydforge.org/projects/misc/</a><br />
+also has some nice &#8216;gc related&#8217; benchmarks that might be nice to add to the suite [with some modification].<br />
+Thanks for your good work on this.<br />
+-=R</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4896">
+			<a href='http://betterlogic.com/roger' rel='external nofollow' class='url'>roger pack</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 13th, 2008 7:32 am 
+			<div class="commenttext">
+			<p>Also interesting would be to try to &#8216;eke&#8217; out performance of MRI, using compile options [compilers, etc], though I suppose that merits its own separate test <img src='http://antoniocangiano.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4908">
+			Greg Lorriman <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/gb.png' alt='UNITED KINGDOM' title ='UNITED KINGDOM' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ie.png' alt='Internet Explorer 7.0' title='Internet Explorer 7.0' width='14' height='14' class='fs_browsericon' />  on
+						December 13th, 2008 2:15 pm 
+			<div class="commenttext">
+			<p>Isn&#8217;t Ruby suposed to be horribly slow on Windows? Possibly we should ignore the 1.8.6 results.</p>
+<p>Assuming 1.8.7 is on Linux or some such then this test confirms again that Yarv is about 3 times faster than the old Ruby. I was hoping for 10x. So it does look like Ruby is always going to be slower than Python.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4925">
+			<a href='http://betterlogic.com/roger' rel='external nofollow' class='url'>roger pack</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows XP' title='Windows XP' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 13th, 2008 8:00 pm 
+			<div class="commenttext">
+			<p>why was REE slow?<br />
+<br />
+You can also get better windows performance out of the mingw version in the works.<br />
+<a href="http://www.akitaonrails.com/2008/7/26/still-playing-with-ruby-on-windows" rel="nofollow">http://www.akitaonrails.com/2008/7/26/still-playing-with-ruby-on-windows</a><br />
+<br />
+Cheers!<br />
+-=R</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-4944">
+			<a href='http://blog.headius.com' rel='external nofollow' class='url'>Charles Oliver Nutter</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.4' title='Mozilla Firefox 3.0.4' width='14' height='14' class='fs_browsericon' />  on
+						December 14th, 2008 6:47 pm 
+			<div class="commenttext">
+			<p>Balast: Yes, we have heard of at least one person deploying on AS/400. I don&#8217;t know about the others, but we recently made an effort to get JRuby running well on IBM JDKs. It ought to work fine.<br />
+<br />
+All interested in Windows: Hotspot has had a lot of work done to run well on Windows, and I doubt we&#8217;d see any significant performance drop from using JRuby on Windows. Give it a try yourself, but if Ruby has such severe perf issues on Windows, then JRuby could be a really excellent option for you.<br />
+<br />
+BlackHand: The -client option is usually on by default, and switches to the faster-starting, non-optimizing JIT compiler. So it&#8217;s faster for some things, but in almost all cases the -server option will perform a lot better.<br />
+<br />
+Arnon: JRuby is internally &#8220;just Java&#8221; so we&#8217;re taking full advantage of the JVM&#8217;s GC, threading, and optimization capabilities.<br />
+<br />
+Shimnon: JRuby is much more than a good option for those already on the JVM; we have many users starting to switch to JRuby simply because it performs so well and scales well on multicore systems. The JVM is just a means for us to create an excellent Ruby impl.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-4971">
+			<a href='http://www.johnny-site.com' rel='external nofollow' class='url'>Thiago Alessio</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/macos.png' alt='Mac OS X' title='Mac OS X' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.27.1' title='Safari 525.27.1' width='14' height='14' class='fs_browsericon' />  on
+						December 19th, 2008 1:35 pm 
+			<div class="commenttext">
+			<p>Hey man, great ! Is nice to see Ruby rising up! good job !</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5062">
+			<a href='http://ninjamurai.com/blog/2008/12/27/ruby-performance-benchmarks/' rel='external nofollow' class='url'>Ninjamurai &raquo; Ruby Performance Benchmarks</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						December 27th, 2008 2:56 pm 
+			<div class="commenttext">
+			<p>[...] Cangiano has posted some great benchmarks for Ruby incorporating all the big implementations of the language (e.g. IronRuby, 1.9, [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5074">
+			Nicolas Piguet <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/ubuntu.png' alt='Ubuntu Linux ' title='Ubuntu Linux ' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/firefox.png' alt='Mozilla Firefox 3.0.5' title='Mozilla Firefox 3.0.5' width='14' height='14' class='fs_browsericon' />  on
+						December 28th, 2008 5:34 pm 
+			<div class="commenttext">
+			<p>Could you please tell us which version of the JVM was used to test JRuby? If I&#8217;m not mistaken, Ubuntu includes many implementations of the JVM, the 3 most popular beeing Sun&#8217;s 6.10, Sun&#8217;s 1.5.0.16 and OpenJDK&#8217;s 6b12.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5075">
+			<a href='http://antoniocangiano.com' rel='external nofollow' class='url'>Antonio Cangiano</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/ca.png' alt='CANADA' title ='CANADA' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/windows.png' alt='Windows Vista' title='Windows Vista' width='14' height='14' class='fs_browsericon' /> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/safari.png' alt='Safari 525.19' title='Safari 525.19' width='14' height='14' class='fs_browsericon' />  on
+						December 28th, 2008 6:18 pm 
+			<div class="commenttext">
+			<p>Nicolas, I used Sun&#8217;s 6.10.</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5275">
+			<a href='http://www.khelll.com/blog/ruby/the-power-of-jruby/' rel='external nofollow' class='url'>The power of JRuby - Khaled alHabache&#8217;s official blog</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						January 11th, 2009 3:08 am 
+			<div class="commenttext">
+			<p>[...] the performance of JRuby. According to Antonio Cangiano, the guy behind the great ruby shootout here and here: Ruby 1.9 and JRuby are very close, respectively 2.5 and 1.9 faster than Ruby 1.8.7 (from [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5314">
+			<a href='http://www.timrosenblatt.com/blog/2009/01/20/there-are-many-rubies-but-one-is-faster/' rel='external nofollow' class='url'>There are many Rubies, but one is faster</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.3.3' title='WordPress 2.3.3' width='14' height='14' class='fs_browsericon' />  on
+						January 20th, 2009 10:43 pm 
+			<div class="commenttext">
+			<p>[...] (From: The Great Ruby Shootout)   coding, science  Subscribe to RSS feed  a2a_linkname=document.title;a2a_linkurl=location.href;   [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5409">
+			<a href='http://ihower.idv.tw/blog/archives/2509' rel='external nofollow' class='url'>{|ihower.idv.tw| blog } | Ruby 1.9.1 ??</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						January 30th, 2009 1:27 pm 
+			<div class="commenttext">
+			<p>[...] 1.8 ??????? (?? Antonio Cangiano ? benchmarks [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5413">
+			<a href='http://www.rubyinside.com/ruby-191-released-first-production-release-of-the-fastest-ruby-ever-1480.html' rel='external nofollow' class='url'>Ruby 1.9.1 Released - First Production Release of the Fastest Ruby Ever!</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6' title='WordPress 2.6' width='14' height='14' class='fs_browsericon' />  on
+						January 30th, 2009 10:00 pm 
+			<div class="commenttext">
+			<p>[...] a month ago, Antonio Cangiano ran some benchmarks against a Ruby 1.9.1 preview versus several other Ruby interpreters. Ruby 1.9.1 clocked in at at least twice as fast as Ruby [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5414">
+			<a href='http://www.beritateknologi.com/ruby-191-dirilis-ayo-download/' rel='external nofollow' class='url'>Ruby 1.9.1 Telah dirilis Ayo Download! | Berita Komputer Terbaru - Berita Teknologi Informasi - Berita IT terkini</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						January 30th, 2009 11:25 pm 
+			<div class="commenttext">
+			<p>[...] Ruby 1.9.1 merupakan rilis stabil dari seri Ruby 1.9 sudah dirilis di mana Ruby 1.9 banyak mengalami peningkatan kecepatan dari versi 1.8 dan bisa dikatakan versi Ruby tercepat saat ini. Untuk melihat performa benchmark versi 1.9.1 ini dapat dilihat di: <a href="http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/" rel="nofollow">http://antoniocangiano.com/2008/12/09/the-great-ruby-shootout-december-2008/</a> [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5419">
+			<a href='http://zef.me/2009/02/ruby-191-out/' rel='external nofollow' class='url'>Zef.me &rsaquo; Ruby 1.9.1 out</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/flags/us.png' alt='UNITED STATES' title ='UNITED STATES' width='16' height='11' class='fs_flagicon'/> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						February 1st, 2009 11:52 am 
+			<div class="commenttext">
+			<p>[...] 1.9.1 is out: Just a month ago, Antonio Cangiano ran some benchmarks against a Ruby 1.9.1 preview versus several other Ruby interpreters. Ruby 1.9.1 clocked in at at [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5426">
+			<a href='http://ruby-br.org/?p=886' rel='external nofollow' class='url'>Lançado Ruby 1.9.1 - A versão mais rápida do Ruby | Ruby Brasil</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6.5' title='WordPress 2.6.5' width='14' height='14' class='fs_browsericon' />  on
+						February 2nd, 2009 2:08 am 
+			<div class="commenttext">
+			<p>[...] a 1.8.7 como a atual versão estável da linguagem Ruby. Alguns testes demonstram que Ruby 1.9 é bem mais rápida que a versão 1.8 (isso vai para aqueles que diziam &#8220;Ruby é [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5434">
+			<a href='http://www.underbjerg.com/2009/02/04/rails-production-setup/' rel='external nofollow' class='url'>&#8216;Erik L. Underbjerg&#8217;.blog &raquo; Blog Archive &raquo; My Rails production setup - &#8230;a strange mix of photography, programming and dance</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7' title='WordPress 2.7' width='14' height='14' class='fs_browsericon' />  on
+						February 4th, 2009 5:13 am 
+			<div class="commenttext">
+			<p>[...] though, comparisons here and here indicate that the tides may be changing, and that Ruby 1.9 or JRuby might be faster. For now, [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5435">
+			<a href='http://thailehuy.wordpress.com/2009/02/04/ruby-191-released-first-production-release-of-the-fastest-ruby-ever/' rel='external nofollow' class='url'>Ruby 1.9.1 Released - First Production Release of the Fastest Ruby Ever! &laquo; A little story</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress MU' title='WordPress MU' width='14' height='14' class='fs_browsericon' />  on
+						February 4th, 2009 7:24 am 
+			<div class="commenttext">
+			<p>[...] a month ago, Antonio Cangiano ran some benchmarks against a Ruby 1.9.1 preview versus several other Ruby interpreters. Ruby 1.9.1 clocked in at at least twice as fast as Ruby [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5460">
+			<a href='http://www.rubyinside.com/23-useful-ruby-19-links-and-resources-1498.html' rel='external nofollow' class='url'>23 Useful Ruby 1.9 Links and Resources</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6' title='WordPress 2.6' width='14' height='14' class='fs_browsericon' />  on
+						February 9th, 2009 10:05 am 
+			<div class="commenttext">
+			<p>[...] The December 2008 Great Ruby Shootout - Antonio Cangiano&#8217;s famous Ruby benchmarking shootout. It wasn&#8217;t without flaws (what benchmarks are?) but it showed us that Ruby 1.9 is approximately double the speed of 1.8. [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5480">
+			<a href='http://www.rubyinside.com.br/23-links-e-recursos-uteis-do-ruby-19-11' rel='external nofollow' class='url'>23 links e recursos úteis do Ruby 1.9</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7.1' title='WordPress 2.7.1' width='14' height='14' class='fs_browsericon' />  on
+						February 12th, 2009 10:39 pm 
+			<div class="commenttext">
+			<p>[...] O grande duelo de Ruby em Dezembro 2008 - O famoso duelo de Benchmarking de Antonio Cangiano. Não é sem defeitos (qual benchmark é?) mas mostrou que o Ruby 1.9 é aproximadamente 2 vezes mais rápido que o 1.8. [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5481">
+			<a href='http://thailehuy.wordpress.com/2009/02/13/23-useful-ruby-19-links-and-resources/' rel='external nofollow' class='url'>23 Useful Ruby 1.9 Links and Resources &laquo; A little story</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress MU' title='WordPress MU' width='14' height='14' class='fs_browsericon' />  on
+						February 13th, 2009 7:59 am 
+			<div class="commenttext">
+			<p>[...] The December 2008 Great Ruby Shootout - Antonio Cangiano&#8217;s famous Ruby benchmarking shootout. It wasn&#8217;t without flaws (what benchmarks are?) but it showed us that Ruby 1.9 is approximately double the speed of 1.8. [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5488">
+			<a href='http://ruby-br.org/?p=964' rel='external nofollow' class='url'>Listão de links sobre Ruby 1.9 | Ruby Brasil</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.6.5' title='WordPress 2.6.5' width='14' height='14' class='fs_browsericon' />  on
+						February 14th, 2009 10:48 pm 
+			<div class="commenttext">
+			<p>[...] The December 2008 Great Ruby Shootout [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-5497">
+			<a href='http://www.rubyinside.com.br/ruby-191-lancado-primeiro-release-de-producao-do-ruby-mais-rapido-que-ja-existiu-178' rel='external nofollow' class='url'>Ruby 1.9.1 lançado - Primeiro release de produção do Ruby mais rápido que já existiu</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.7.1' title='WordPress 2.7.1' width='14' height='14' class='fs_browsericon' />  on
+						February 16th, 2009 7:28 am 
+			<div class="commenttext">
+			<p>[...] a um mês atrás, Antonio Cangiano rodou alguns benchmarks com o Ruby 1.9.1 preview Ruby 1.9.1 fez números no minimo duas vezes mais rápidos que o Ruby 1.8.7. Isso é um grande [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-5562">
+			<a href='http://ramblings.gibberishcode.net/archives/rails-vs-ramaze-performance-comparison/31' rel='external nofollow' class='url'>Ramblings Rails vs. Ramaze Performance Comparison</a> <img src='http://antoniocangiano.com/wp-content/plugins/firestats/img/browsers/wp.png' alt='WordPress 2.5.1' title='WordPress 2.5.1' width='14' height='14' class='fs_browsericon' />  on
+						February 19th, 2009 4:07 pm 
+			<div class="commenttext">
+			<p>[...] 1.9.1. However, I fully replicated Antonio Cangiano&#8217;s benchmarks in my test environment (see The Great Ruby Shootout (December 2008)) and MRI 1.9.1. did indeed crush the other Ruby interpreters in Fibonacci number crunching (amongst [...]</p>
+			</div>
+
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+
+<p id="respond"><b>Leave a Reply</b></p>
+
+
+<form action="http://antoniocangiano.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><label for="author">Name (required)</label><br />
+<input type="text" name="author" id="author" value="" size="40" tabindex="1" /></p>
+
+<p><label for="email">Email Address(required)</label><br />
+<input type="text" name="email" id="email" value="" size="40" tabindex="2" /></p>
+
+<p><label for="url">Website</label><br />
+<input type="text" name="url" id="url" value="" size="40" tabindex="3" /></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="45" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="407" /></p>
+
+
+</form>
+</div>
+
+
+	</div>
+	
+</div>
+
+<!-- The main column ends  -->
+
+<!-- begin footer -->
+
+<div style="clear:both;"></div>
+<div style="clear:both;"></div>
+</div>
+
+<div id="footer">
+Copyright &copy; 2005 - 2009 <a href="mailto:acangiano@gmail.com">Antonio Cangiano</a> &bull; Powered by <a href="http://www.wordpress.org">WordPress</a> &bull; Using <a href="http://www.briangardner.com/themes/blue-zinfandel-wordpress-theme.htm" >Blue Zinfandel </a> theme by <a href="http://www.briangardner.com" >Brian Gardner</a>.
+</div>
+
+<script src="http://stats.wordpress.com/e-200913.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'1397766',v:'ext',post:'407'});
+var load_cmc = function(){linktracker_init(1397766,407,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-437611-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
+
+<!-- Dynamic Page Served (once) in 0.480 seconds -->
+<!-- Cached page generated by WP-Super-Cache on 2009-03-26 17:08:31 -->

@@ -1,0 +1,955 @@
+<!-- print.view -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html>
+<head>
+	<title>Ruby the Rival | O'Reilly Media</title>
+	<meta name="keywords" content="Ruby,Rails,Ruby on Rails,java,J2EE,EJB,bloat,enterprise,Bruce Tate,James Duncan Davidson,Robert Cooper,Bill Venners, ,O'Reilly Media,O'Reilly author, oreilly.com,oreilly,o'reilly" />
+	<meta name="description" content="Bruce Tate's Beyond Java singles out Ruby as a top contender to displace Java. Tate, James Duncan Davidson, Robert Cooper and Bill Venners weigh in with their opinions on Ruby and its challenge to Java." />
+	<meta name="date" content="Nov. 16, 2005" />
+	<meta name="search_date" content="2005-11-16" />
+	<meta name="pagename" content="Ruby the Rival" />
+	<meta name="site" content="ONJava.com" />
+	<meta name="subtitle" content="" />
+	<meta name="author" content=" " />
+	<meta name="safariu_url" content="http://www.onjava.com/pub/a/onjava/2005/11/16/ruby-the-rival.html" />
+<meta name="target" content="" />
+
+
+<!-- feed autodiscovery links -->
+<link rel="alternate" type="application/atom+xml" title="ONJava Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/7" />
+
+<link rel="alternate" type="application/rdf+xml" title="ONJava Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/7?format=rss1" />
+
+<link rel="alternate" type="application/rss+xml" title="ONJava Articles and Weblogs" href="http://www.oreillynet.com/pub/feed/7?format=rss2" />
+
+
+<!-- sc/388 Common JavaScript -->
+<script language="JavaScript" type="text/javascript" src="http://www.oreillynet.com/common.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/assets/js/common.js"></script>
+
+<link rel="STYLESHEET" type="text/css" href="http://www.oreillynet.com/styles/main.css" />
+ <!--WEBSIDESTORY CODE HBX1.0 (Universal)-->
+    <!--COPYRIGHT 1997-2004 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com / privacy-->
+    <script language="javascript" type="text/javascript">
+    var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+    var hbx=_hbEvent("pv");hbx.vpc="HBX0100u";hbx.gn="ehg-oreilly.hitbox.com";
+
+    //"BCB: onjava.com,/a/onjava/2005/11/16/ruby-the-rival.html, DM52040251VS";
+
+    hbx.acct="DM52040251VS;DM520404M4ZR"; //ACCOUNT NUMBER(S)
+    hbx.pn="Ruby+the+Rival"; //PAGE NAME(S)
+    hbx.mlc="/a/onjava/2005/11/16/;/onjava.com/a/onjava/2005/11/16/"; //MULTI-LEVEL CONTENT CATEGORY
+    hbx.pndef="title"; //DEFAULT PAGE NAME
+    hbx.ctdef="full"; //DEFAULT CONTENT CATEGORY
+
+    hbx.lt="auto"; //LINK TRACKING 
+    hbx.dlf="n"; //DOWNLOAD FILTER
+    hbx.dft="n"; //DOWNLOAD FILE NAMING
+    hbx.elf="n"; //EXIT LINK FILTER
+
+    //SEGMENTS AND FUNNELS
+    hbx.seg=""; //VISITOR SEGMENTATION
+    hbx.fnl=""; //FUNNELS
+
+    //CAMPAIGNS
+    hbx.cmp=""; //CAMPAIGN ID
+    hbx.cmpn="CMP"; //CAMPAIGN ID IN QUERY
+    hbx.hra=""; //RESPONSE ATTRIBUTE
+    hbx.hqsr=""; //RESPONSE ATTRIBUTE IN REFERRAL QUERY
+    hbx.hqsp="ATT"; //RESPONSE ATTRIBUTE IN QUERY
+    hbx.hlt=""; //LEAD TRACKING
+    hbx.hla=""; //LEAD ATTRIBUTE
+    hbx.gp=""; //CAMPAIGN GOAL
+    hbx.gpn=""; //CAMPAIGN GOAL IN QUERY
+    hbx.hcn=""; //CONVERSION ATTRIBUTE
+    hbx.hcv=""; //CONVERSION VALUE
+    hbx.cp="null"; //LEGACY CAMPAIGN
+    hbx.cpd=""; //CAMPAIGN DOMAIN
+
+    //CUSTOM VARIABLES
+    hbx.ci="";//CUSTOMER ID
+    hbx.hc1="";//CUSTOM 1
+    hbx.hc2="";//CUSTOM 2
+    hbx.hc3="";//CUSTOM 3
+    hbx.hc4="";//CUSTOM 4 
+    hbx.pec="";//ERROR CODES
+    </script><script language="javascript1.1" defer="defer"  src="http://www.oreillynet.com/hbx.js" type="text/javascript"></script><!--//-->  
+    <!-- END WEBSIDESTORY CODE  -->
+ 
+<!-- end hitbox -->
+
+<script type="text/javascript" src="http://www.oreillynet.com/tabber.js"></script>
+
+<!-- additional css -->
+<link rel="stylesheet" type="text/css" href="http://www.oreillynet.com/styles/articles.css" />
+
+</head>
+<body id="onjava">
+<div id="page">
+<div id="header" class="noindex">
+<h1><a href="http://www.onjava.com/"><img src="/images/onjava/onjava_logo.jpg" width="294" height="82" border="0" alt="ONJava.com -- The Independent Source for Enterprise Java" hspace="0" vspace="0" /></a></h1>
+
+</div> 
+
+
+<!-- tabs 
+<csinclude record="sc/1097" field="html" />
+-->
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td align="right" valign="bottom">
+<a href="/cs/user/login?x-redirect=/cs/user/home" class="tiny">Sign In/My Account</a>&nbsp;|&nbsp;<a href="http://epoch.oreilly.com/shop/cart.orm" class="tiny">View Cart</a>&nbsp;&nbsp;</td>
+</tr></table>
+
+
+<div id="newheaders">
+
+<br />
+<div id="newHead">
+
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/all.css" type="text/css" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/about-121707.css" />
+
+<style type="text/css">
+
+#search-box {
+background-color:#F6F6F6;
+border-bottom:1px solid #CCCCCC;
+padding-top:11px;
+text-align:center;
+}
+#search-form {
+margin:0pt auto;
+text-align:left;
+width:400px;
+}
+#search-title {
+color:#888888;
+display:block;
+float:left;
+font-size:17px;
+padding:5px 5px 4px 0pt;
+}
+#search-input {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_mid.gif) repeat-y scroll left top;
+display:block;
+float:left;
+padding:0pt 5px 0pt 0pt;
+width:260px;
+}
+#search-input-top {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_top.gif) no-repeat scroll left top;
+display:block;
+width:260px;
+}
+#search-input-bot {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_bot.gif) no-repeat scroll left bottom;
+display:block;
+width:260px;
+}
+#search-field {
+float:left;
+}
+#search-field input {
+background:transparent none repeat scroll 0%;
+border:0pt none;
+color:#990000;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:16px;
+margin:0pt;
+padding:3px 0pt 4px 10px;
+width:215px;
+}
+#search-field input:focus {
+outline-color:invert;
+outline-style:none;
+outline-width:0pt;
+}
+#search-button {
+float:right;
+}
+#search-button input {
+font-size:0pt;
+height:18px;
+line-height:0pt;
+margin:4px 4px 2px 0pt;
+padding:0pt;
+width:28px;
+}
+#search-tips {
+display:block;
+float:left;
+font-size:10px;
+padding:6px 0pt 0pt;
+}
+#search label {
+text-transform:uppercase;
+}
+#search legend {
+display:none;
+}
+#search label {
+left:-9999px;
+position:absolute;
+}
+fieldset {
+border:0pt none;
+margin:0pt;
+padding:0pt;
+}
+.clear {
+display:block;
+line-height:0pt;
+}
+#wrapper {
+margin:1em 0pt 2em 19em;
+overflow:hidden;
+}
+#features {
+float:left;
+margin:0pt;
+padding:0pt 2em 0pt 0pt;
+width:41em;
+
+a{text-decoration:none;} 
+
+#search-box{
+
+padding-top: 11px;
+
+padding-bottom: 0pt;
+
+background-color: #f6f6f6;
+
+border-bottom-width: 1px;
+
+border-top-style: solid;
+
+border-top-width: 1px;
+
+border-top-color: #cccccc;
+
+border-bottom-style: solid;
+
+border-bottom-color: #cccccc;
+
+text-align: center;
+
+}
+
+</style>
+
+
+<div id="nav" class="noindex">
+<ul>
+<li><a href="http://oreilly.com/">O'Reilly Home</a></li>
+<li><a href="http://community.oreilly.com/">Community</a></li>
+<li><a href="http://oreilly.com/store/">Books & Videos</a></li>
+<li><a href="http://safari.oreilly.com/?cid=orm-nav-global">Safari Books Online</a></li>
+<li><a href="http://conferences.oreillynet.com/">Conferences</a></li>
+<li><a href="http://training.oreilly.com/">Training</a></li>
+<li><a href="http://www.oreillylearning.com">School of Technology</a></li>
+<li><a href="http://oreilly.com/about/">About</a></li>
+
+</ul>
+<div class="clear"></div>
+</div><!-- /#nav -->
+
+
+
+
+
+
+
+<div id="newsearch">
+
+
+
+
+<style type="text/css">
+
+#search-box {
+background-color:#F6F6F6;
+border-bottom:1px solid #CCCCCC;
+padding-top:11px;
+text-align:center;
+}
+#search-form {
+margin:0pt auto;
+text-align:left;
+width:400px;
+}
+#search-title {
+color:#888888;
+display:block;
+float:left;
+font-size:17px;
+padding:5px 5px 4px 0pt;
+}
+#search-input {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_mid.gif) repeat-y scroll left top;
+display:block;
+float:left;
+padding:0pt 5px 0pt 0pt;
+width:260px;
+}
+#search-input-top {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_top.gif) no-repeat scroll left top;
+display:block;
+width:260px;
+}
+#search-input-bot {
+background:transparent url(http://www.oreilly.com/images/oreilly/search_bar_bot.gif) no-repeat scroll left bottom;
+display:block;
+width:260px;
+}
+#search-field {
+float:left;
+}
+#search-field input {
+background:transparent none repeat scroll 0%;
+border:0pt none;
+color:#990000;
+font-family:Verdana,Arial,Helvetica,sans-serif;
+font-size:16px;
+margin:0pt;
+padding:3px 0pt 4px 10px;
+width:215px;
+}
+#search-field input:focus {
+outline-color:invert;
+outline-style:none;
+outline-width:0pt;
+}
+#search-button {
+float:right;
+}
+#search-button input {
+font-size:0pt;
+height:18px;
+line-height:0pt;
+margin:4px 4px 2px 0pt;
+padding:0pt;
+width:28px;
+}
+#search-tips {
+display:block;
+float:left;
+font-size:10px;
+padding:6px 0pt 0pt;
+}
+#search label {
+text-transform:uppercase;
+}
+#search legend {
+display:none;
+}
+#search label {
+left:-9999px;
+position:absolute;
+}
+fieldset {
+border:0pt none;
+margin:0pt;
+padding:0pt;
+}
+.clear {
+display:block;
+line-height:0pt;
+}
+#wrapper {
+margin:1em 0pt 2em 19em;
+overflow:hidden;
+}
+#features {
+float:left;
+margin:0pt;
+padding:0pt 2em 0pt 0pt;
+width:41em;
+
+a{text-decoration:none;} 
+
+#search-box{
+
+padding-top: 11px;
+
+padding-bottom: 0pt;
+
+background-color: #f6f6f6;
+
+border-bottom-width: 1px;
+
+border-top-style: solid;
+
+border-top-width: 1px;
+
+border-top-color: #cccccc;
+
+border-bottom-style: solid;
+
+border-bottom-color: #cccccc;
+
+text-align: center;
+
+}
+
+</style>
+
+
+
+<div id="search-box">
+
+
+
+<div>
+
+
+
+<br />
+<b>
+We've expanded our <a style="text-decoration:none" href="http://java.oreilly.com/">Java news coverage</a> and improved our search! </b> Search for all things Java across O'Reilly!
+
+<br /><br />
+
+
+</div>
+
+ 
+            <form method="get" action="http://search.oreilly.com" id="search-form" name="searchfield">
+                <fieldset>
+
+
+
+                    <span id="search-title" style="color:#474747">Search</span>
+                    <span id="search-input">
+                        <span id="search-input-top">
+                            <span id="search-input-bot">
+                                <span id="search-field"><input style="//height: 25px;" id="q" name="q" type="text" maxlength="64" accesskey="s" value="" /></span>
+                                <span id="search-button"><input type="image" name="submit" src="http://www.oreilly.com/images/oreilly/search_bar_btn.gif" alt="Submit" onclick="return searchverif();" /></span>
+                                <span class="clear"></span>
+                            </span>
+    </span>
+                    </span>
+                            <div id="autocomplete"></div>
+                                <script type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/autocompletelist.js"></script>
+                    
+                    <span id="search-tips"><a href="http://www.oreillynet.com/search/tips.csp" target="_blank">Search Tips</a></span>
+                </fieldset>
+            </form>
+
+<br />
+        </div><!-- /#search-box -->
+</center>
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- menubar
+<csinclude record="sc/1117" field="html" />
+-->
+<!--
+<csinclude record="sc/2032" field="html" />
+-->
+
+<div id="leaderboard">
+<img src="http://www.oreillynet.com/images/ads/ad-tag-vertical.gif" width="11" height="90" border="0" alt="advertisement" style="float:right;"/>
+
+<div style="width:728px;margin:0 auto;">
+
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - ONJava // Page: ONJava // Placement: ros_728x90 (425854) // created at: Oct 9, 2008 5:48:42 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425854/0/225/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425854/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425854/0/225/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="728" height="90"></a></noscript>
+
+<!-- End of JavaScript Tag -->
+</div>
+</div> <!-- end leaderboard -->
+
+<div id="textbar"></div>
+<!-- </div>  end header -->
+
+
+<div id="page-content">
+<div id="article-onjava">
+
+<!-- feature bar ad : layout component 1894 -->
+
+<div align="center" style="visibility: hidden">
+<!-- begin ad tag -->
+
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: O'ReillyNet // Page: O'ReillyNet // Placement: text (425846) // created at: Oct 9, 2008 6:10:33 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425846/0/16/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425846/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425846/0/16/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="1" height="1"></a></noscript>
+<!-- End of JavaScript Tag -->
+
+
+<!-- End ad tag -->
+</div>
+
+<!-- end feature bar ad -->
+<br />
+
+
+
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = location.href; addthis_title = document.title; return addthis_click(this);" target="_blank"><img src="http://s5.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a> <script type="text/javascript">var addthis_pub = 'odewahn';</script><script type="text/javascript" src="http://s5.addthis.com/js/widget.php?v=10"></script>  
+
+<p>
+
+<!-- begin content-->
+
+
+
+
+
+
+
+<br />
+<!-- begin  print-discuss-del.icio.us options -->
+<div style="margin: 0px 10px 0px 6px;">
+<div style="float: right; width: 170px;">
+
+
+
+<a target="_new" class="listen2" title="Listen to this page." href="http://asp2.readspeaker.net/cgi-bin/oreillyrsone?lang=us&voice=Paul&customerid=171&url=http://www.oreillynet.com/lpt/a/6334">Listen</a> 
+
+
+
+<a class="print" title="Go to a print-friendly version of this page." href="/lpt/a/6334">Print</a>
+
+<a class="discuss" title="Join the talkback discussion about this article" href="/pub/a/onjava/2005/11/16/ruby-the-rival.html?page=last#thread">Discuss</a>
+
+
+
+
+
+
+
+
+
+<a class="subscribe" title="Subscribe" href="http://www.oreillynet.com/pub/feed/7">Subscribe to ONJava</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a class="newsletter" href="http://www.oreillynet.com/cs/nl/home">Subscribe to Newsletters</a>
+
+
+<!--
+<csif perl="(($RECORD{'id_subject'} eq '3') || #($RECORD{'id_subject'} eq '7') || ($RECORD{'id_subject'} eq #'14') || ($RECORD{'id_subject'} eq '8') || #($RECORD{'id_subject'} eq '22') || ($RECORD{'id_subject'} eq #'19') || ($RECORD{'id_subject'} eq '17') || #($RECORD{'id_subject'} eq '62'))"><a class="intellitxt" #href="http://www.oreillynet.com/pub/a/general/intellitxt.html">What #are those green links?</a>
+</csif> -->
+
+
+
+</div>
+</div>
+<!-- end  print-discuss-del.icio.us options -->
+
+
+
+
+
+<!-- content here -->
+<span id="intelliTxt">
+
+
+	<!-- mega preparse mp:yes -->
+
+<h2>
+Ruby the Rival</h2>
+by <a href="/pub/au/1045">Chris Adamson</a><br />
+11/16/2005
+
+<p>Bruce Tate's <a href=
+"http://www.oreilly.com/catalog/beyondjava/">Beyond Java</a>
+argues that Java's reign as the top enterprise development language
+must eventually come to an end and that, for the first time in a
+decade, major enterprise innovation is occurring outside of the
+Java realm. In the book, he looks at the unique traits that has
+allowed to Java to achieve its unprecedented level of success, and
+then considers what new languages would have to do and be to
+succeed Java.</p>
+
+<!--ONJava MPU Ad -->
+
+<div style="float:right;width:300px;padding-left:15px;">
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - ONJava // Page: ONJava // Placement: ros_300x250 (425855) // created at: Oct 9, 2008 5:48:41 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425855/0/170/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425855/0/170/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425855/0/170/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="300" height="250"></a></noscript>
+<!-- End of JavaScript Tag -->
+</div>
+
+
+
+<p>Later chapters look at specific languages contending in this
+space, and clearly favors Ruby as the front-runner. This comes from
+Tate's own performance breakthroughs (fueled by Ruby on Rails), an
+analysis of the language, and anecdotal evidence from others who've
+tried the language.</p>
+<p>Is Ruby already shaping up to succeed Java? What's broken with
+Java that Ruby fixes? And are the two mutually incompatible?</p>
+<p>To survey the situation, we contacted several prominent authors,
+bloggers, and developers to get their takes. Their responses are
+reprinted in whole in this article.</p>
+
+<!-- bruce tate -->
+<h3>Bruce Tate: Stirring the Pot</h3>
+<p>Bruce Tate doesn't come to <i>Beyond Java</i> as an outsider.
+His consulting company focuses on Java persistence frameworks and
+lightweight development methods, and he's the author of the popular
+Java books <a href=
+"http://www.oreilly.com/catalog/springadn">Spring: A Developer's
+Notebook</a>, <a href=
+"http://www.oreilly.com/catalog/bfljava">Better, Faster, Lighter
+Java</a>, and <a href="http://www.manning.com/books/tate">Bitter
+Java</a>.</p>
+<p><b>1. You spend a lot of time on Ruby in <i>Beyond Java</i>, and it
+seems to be the front-runner among your "contenders" to succeed
+Java. What do you think gives it an edge over PHP, Python,
+etc.?</b></p>
+<p>All are good languages, with some holes. PHP and Perl haven't
+consistently produced readable code for larger applications. Lisp,
+Python and Smalltalk have lacked the catalyst that great languages
+seem to need. Ruby is a good language, offering a compelling new
+value (in productivity) with a catalyst (in Rails) and what looks
+to be explosive growth. Ruby may not be the best language, but it's
+the most probable that I see. But it probably won't succeed Java
+across the board. It's likely to do well in a smaller niche first,
+but an important one: a big, fat relational database with a web
+UI.</p>
+<p><b>2. Does Rails imply Ruby? Can't the same ideas be done in
+other languages, including Java?</b></p>
+<p>Right now, Rails is that catalyst that transcends the language
+just as Netscape, with the promise of delivering applications via
+the internet, served as the catalyst for Java. But I think that
+Rails may possibly be the first of a wave of metaprogramming
+frameworks in Ruby.</p>
+<p><b>3. The Ruby success cases seem to be small projects of just
+one or two developers, the typical "connect a web interface to a
+database" scenario that you base a lot of the book on. But you also
+acknowledge the value of Java's heavy-duty enterprise frameworks to
+a certain set of projects (e.g., big apps on big iron). At what
+point does a project get too big for RoR? What happens if an RoR
+project feature-creeps in that direction?</b></p>
+
+
+
+<!-- sidebar begins -->
+<table width="140" border="1" cellspacing="2" cellpadding="10" align="right" style="border: 1px solid #333333; margin: 8px;"><tr>
+<td width="140" valign="top" bgcolor="#ffffff" style="border: none;">
+<p class="headline">Related Reading</p>
+
+<a href="http://www.oreilly.com/catalog/9780596100940/index.html?CMP=ILL-4GV796923290">
+
+<img src="/catalog/covers/0596100949_cat.gif" alt="Beyond Java" border="0" />
+
+</a>
+<p class="medlist"><span class="title"><a href="http://www.oreilly.com/catalog/9780596100940/index.html?CMP=ILL-4GV796923290">Beyond Java</a></span><strong><br />
+
+By <a href="http://www.oreillynet.com/pub/au/1794">Bruce A. Tate</a></strong>
+</p>
+<div class="secondary">
+<!-- builds links to list in sidebar -->
+ <a href="http://www.oreilly.com/catalog/9780596100940/toc.html?CMP=ILL-4GV796923290">Table of Contents</a><br /> 
+ 
+
+<br /><b><a href="http://safari.oreilly.com/0596100949?cid=orm-cat-readnow-0596100949">Read Online--Safari</a></b>
+<span class="tiny">Search this book on Safari:</span>
+<form action="http://safari.oreilly.com/JVXSL.asp" method="post">
+<input type="hidden" name="s" value="1" /><input type="hidden" name="b" value="1" />
+<input type="hidden" name="t" value="1" /><input type="hidden" name="f" value="1" />
+<input type="hidden" name="c" value="1" /><input type="hidden" name="l" value="1" />
+<input type="hidden" name="view" value="section" />
+<input tabindex="1" name="se_text" type="text" value="" size="15" />&nbsp;<input name="go" type="image" title="Execute the search" src="http://www.oreillynet.com/images/safari_btn_go.gif" width="23" height="17" border="0" align="absmiddle"  alt="Go" /><br />
+<select name="se_isbn">
+<option value="0-596-10094-9">Only This Book</option>
+<option value="">All of Safari</option>
+</select><br />
+<input type="checkbox" name="code" value="1" /><span class="tiny">Code Fragments only</span>
+</form>						  
+
+</div>
+</td>
+</tr></table>
+<!-- sidebar ends -->
+
+
+<p>Well, you can do a lot with Ruby and small teams of people. Base
+Camp was basically written with one person, and it's a bread and
+butter application for a whole company. We won't know how far you
+can push Ruby or Rails until some major companies get serious about
+trying. One of the things that's the most interesting to me is the
+economy of scale--smaller scale. What if the productivity numbers
+are real? What if you really can get a 5x boost? Then, you can do
+the work of divisions with a department, and the work of
+departments with a team of two. Communication becomes less of a
+problem. Management and oversight are less of an issue. We all know
+what the tipping points are for growth in a company. It's hard to
+scale past one, five, ten, 40 and 100. These are all barriers to growth
+based on adding new levels of communication and management. But
+intellectually, Ruby on Rails scales very, very well.</p>
+<p><b>4. Do you see Java developers transitioning to Ruby, or is
+Ruby going to be adopted by a new generation of developers?</b></p>
+<p>I think both. There are developers that can't stomach learning
+servlets, Spring, XML, Hibernate, Struts and then some UI glue
+frameworks. They're going to be unleashed in Rails. There are also
+Java developers who are already looking for more leverage and
+finding it in Ruby on Rails. The number of Java visionaries
+adopting Rails, from Thought Works to James Duncan Davidson to
+Stuart Halloway to David Geary, is staggering.</p>
+<p><b>5. Isn't there anything Java can do by itself to maintain its
+prominence? If the complexity and bloat is such a problem, what's
+to stop developers from just rolling the clock back to JDK 1.4 and
+staying there?</b></p>
+<p>Java will do fine in the enterprise for a number of years on the
+top end, but time rolls on. It will be replaced at some point.
+We're going to need a higher abstraction. The best we can hope for
+is a sound investment in the JVM for dynamic languages to embrace
+the new, and to continue the conservative stewardship of the
+language to support the millions of lines of Java code, I
+think.</p>
+<p><b>6. Should we expect to see Ruby make a splash in other
+fields? If it's so great for developing web apps, would it be
+useful for desktop apps if there were a suitable UI framework it
+could call?</b></p>
+<p>It's much too early to say. Ruby is but one candidate, though
+it's the language with the catalyst behind it right now. What
+happens next? I don't think anyone knows.</p>
+
+<table id="page-break" width="100%" border="0" cellspacing="0" cellpadding="0" style="clear:left;"><tr><td><p class="secondary">
+Pages: <b>1</b>, <a href="/pub/a/onjava/2005/11/16/ruby-the-rival.html?page=2">2</a>, <a href="/pub/a/onjava/2005/11/16/ruby-the-rival.html?page=3">3</a>, <a href="/pub/a/onjava/2005/11/16/ruby-the-rival.html?page=4">4</a>
+</p></td><td><p class="secondary" align="right">
+<a href="/pub/a/onjava/2005/11/16/ruby-the-rival.html?page=2">
+Next Page<img src="/images/arrows/arrows-66.gif" border="0" alt="arrow" width="12" height="13" hspace="2" vspace="0" align="baseline"></a></p></td></tr></table>
+
+
+
+
+
+
+
+</span>
+<!-- end content -->
+
+
+<img src="/images/trans.gif" alt=" " width="400" height="1" /><br />
+
+
+
+<br /><br />
+
+
+<!-- end content -->
+
+</div><!-- #article -->
+
+<div id="related">
+
+<!--Add Beautiful Code Feeds -->
+<div class="sidebar-item">
+<div class="sidebar-item-content">
+<a href="http://beautifulcode.oreillynet.com/">
+   <img 
+  src="http://www.oreillynet.com/images/beautiful_code_weblogs.gif"
+   border="0"
+/></a>
+<p class="secondary"><b><a href="http://beautifulcode.oreillynet.com/2008/04/resource_management_a_critical.php">Resource Management: A Critical Look at RAII</a></b> <em>Michael Feathers</em></p><p class="secondary"><b><a href="http://beautifulcode.oreillynet.com/2008/04/the_logs_that_bind_1.php">The Logs That Bind..</a></b> <em>Michael Feathers</em></p><p class="secondary"><b><a href="http://beautifulcode.oreillynet.com/2008/04/the_design_boundary.php">Outside the Design Boundary</a></b> <em>Michael Feathers</em></p><p class="secondary"><b><a href="http://beautifulcode.oreillynet.com/2008/04/can_a_program_lie_to_you_the_w.php">Can a program lie to you the way a story or essay can?</a></b> <em>Andy Oram</em></p>
+<p align="right" class="smalltext"><a href="http://beautifulcode.oreillynet.com/">&gt; More from Beautiful Code</a></p>
+</div>
+</div>
+
+
+<div class="sidebar-item">
+<h3>Tagged Articles</h3>
+<div class="sidebar-item-content tags">
+<p style="padding:10px 10px 6px 10px;margin:0;"><a class="delicious" title="Post to del.icio.us." href="http://del.icio.us/post" onclick="window.open('http://del.icio.us/post?v=4&partner=orn&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title),'delicious','toolbar=no,width=700,height=400'); return false;">Be the first to post this article to del.icio.us</a></p>
+</div></div>
+
+<!-- sponsored developer resources -->
+<div class="sidebar-item">
+<h3>Sponsored Resources</h3>
+<div class="sidebar-item-content">
+
+<ul style="margin: 0 0 0 1.2em;padding: 0;">
+<li><a href="http://digitalmedia.oreilly.com/lightroom/">Inside Lightroom</a></li>
+</ul>
+
+</div>
+</div>
+
+
+<!-- csperl file="article_related_to" topic="25" / -->
+
+
+
+<!-- ###### AK start ###### -->
+
+<div>
+
+
+
+
+
+<a id="akAPI"></a>
+
+<script type="text/javascript">
+
+    var akApiKey = 'RecEngine-49CCF850-02C7-B730-5489-DB7D929405CD';
+
+    var akTarget = 'http://www.onjava.com/pub/a/onjava/2005/11/16/ruby-the-rival.html';
+
+    var akDescription = 'Ruby the Rival';
+
+    var akThumbnailUrl = 'http://oreilly.com/images/oreilly/java.png';
+
+    var akTargetType = 'article';
+    var akRegion = 'OnJavaArticle';
+    var akIntent = 'VIEW';
+    var akKeywords = 'publishDate:20051116';
+
+    var akScript = document.createElement('script');
+
+    akScript.setAttribute('src','http://api.aggregateknowledge.com/2007/01/15/js/'  + (new Date()).valueOf() % 3600000 + '.js');
+
+   document.getElementsByTagName('head')[0].appendChild(akScript);
+
+</script>
+
+
+
+
+
+</div>
+
+
+
+<!-- ####### AK end ###### -->
+
+<div style="text-align:center;background-color:#eee;padding-top:10px;padding-bottom:10px;">
+<img src="/images/ads/advertisement.gif" alt="Advertisement" style="padding-bottom:10px;" /><br />
+<div align="center">
+<!--JavaScript Tag // Tag for network 5159: TechVertical // Website: OR - ONJava // Page: ONJava // Placement: ros_160x600 (425852) // created at: Oct 9, 2008 5:48:40 PM-->
+<script language="javascript"><!--
+document.write('<scr'+'ipt language="javascript1.1" src="http://adserver.adtechus.com/addyn/3.0/5159/425852/0/154/ADTECH;loc=100;target=_blank;key=key1+key2+key3+key4;grp=[group];misc='+new Date().getTime()+'"></scri'+'pt>');
+//-->
+</script><noscript><a href="http://adserver.adtechus.com/adlink/3.0/5159/425852/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" target="_blank"><img src="http://adserver.adtechus.com/adserv/3.0/5159/425852/0/154/ADTECH;loc=300;key=key1+key2+key3+key4;grp=[group]" border="0" width="160" height="600"></a></noscript>
+
+<!-- End of JavaScript Tag --></div>
+</div>
+
+</div><!-- #related -->
+
+</div><!-- #page-content -->
+
+<br clear="all">
+
+<!-- footer -->
+<div id="footer" class="noindex">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4591498-1");
+pageTracker._trackPageview();
+</script>
+
+<!-- Start Quantcast tag -->
+
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+
+ <!-- End Quantcast tag -->
+
+<table border="0">
+<tr><td valign="top" align="left" width="25%" style="padding-left: 20px; padding-right: 20px;">
+<a href="http://oreilly.com/"><img src="http://www.oreillynet.com/images/oreilly/oreilly-logo-footer.gif" border="0" width="155" height="35" alt="O'Reilly Media" style="border-style:none;" /></a><br />
+&copy; 2009, O'Reilly Media, Inc.<br />(707) 827-7000 / (800) 998-9938<br />
+All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.
+</td>
+
+<td valign="top"  width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>About O'Reilly</strong><br />
+
+<a href="http://academic.oreilly.com/">Academic Solutions</a><br />
+<a href="http://oreilly.com/authors/">Authors</a><br />
+<a href="http://oreilly.com/contact.html">Contacts</a><br /> 
+
+<a href="http://oreilly.com/oreilly/cs/">Customer Service</a><br /> 
+<a href="http://jobs.oreilly.com/">Jobs</a><br />
+<a href="http://elists.oreilly.com/">Newsletters</a><br />
+<a href=" http://labs.oreilly.com">O'Reilly Labs</a><br />
+<a href="http://press.oreilly.com/">Press Room</a><br />
+<a href="http://oreilly.com/oreilly/privacy.csp">Privacy Policy</a><br />
+<a href="http://oreilly.com/feeds/">RSS Feeds</a><br />
+
+<a href="http://oreilly.com/terms/">Terms of Service</a><br />
+
+<a href="http://ug.oreilly.com/">User Groups</a><br />
+
+
+<a href="http://oreilly.com/oreilly/author/intro.csp">Writing for O'Reilly</a><br />
+
+
+</td>
+
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Other O'Reilly Sites</strong><br />
+<a href="http://radar.oreilly.com/">O'Reilly Radar</a><br />
+
+<a href="http://ignite.oreilly.com/">Ignite</a><br /> 
+<a href="http://toc.oreilly.com/">Tools of Change for Publishing</a><br /> 
+<a href="http://digitalmedia.oreilly.com/">Digital Media</a><br /> 
+<a href="http://digitalmedia.oreilly.com/iphone/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=iphone">Inside iPhone</a><br />
+<a href="http://fyi.oreilly.com">O'Reilly FYI</a><br /> 
+<a href="http://makezine.com/">makezine.com</a><br /> 
+<a href="http://craftzine.com">craftzine.com</a><br /> 
+<a href="http://hackszine.com">hackszine.com</a><br /> 
+<a href="http://perl.com/">perl.com</a><br /> 
+<a href="http://xml.com/">xml.com</a><br /> 
+</td>
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Partner Sites</strong><br />
+
+<a href="http://insideria.com/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=ria">InsideRIA</a><br />
+<a href="http://java.net/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=java">java.net</a><br />
+</td>
+</tr>
+</table>
+</div><!-- /#footer -->
+
+
+<!-- #footer -->
+</div></body><!-- #page -->
+
+
+</html>
+

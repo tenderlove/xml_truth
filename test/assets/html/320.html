@@ -1,0 +1,1017 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+
+<style>
+  div#sideLeft div.feedBox{border: 1px solid #cfcfcf;}
+	div#sideLeft div.feedBox p{ margin:0px;}
+	div#sideLeft div.feedBox h2{}
+	div.rss_feed{ margin:0px; padding:0px;}
+  div.rss_feed #rss_message{
+    float:left;
+    margin:5px;
+    width:100px;
+    font-size:120%;
+    font-family:"Trebuchet MS",Arial,sans-serif;
+  }
+	div.rss_feed a{float:left}
+	div.rss_feed img{border:none;margin:5px;width:20px;}
+	div.feedBox{ width:149px; overflow:hidden}
+  * html div.feedBox{ width:145px;}
+  div.feed a{
+    text-decoration: none;
+    font-size: 80%;
+  }
+</style>
+
+
+    <!-- LOGIN-FORM -->
+
+
+<style>
+  div.stats{
+  height:30px;
+  overflow:hidden;
+  margin-bottom:3px;
+  }
+</style>
+    <!-- IDENTITY-BOX -->
+  <style>
+    .badge_box img{width:23px; height:25px;}
+    .badge_box img.club {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll 0px 0px;}
+    .badge_box img.i5 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -23px 0px;}
+    .badge_box img.i10 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -46px 0px;}
+    .badge_box img.i20 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -69px 0px;}
+    .badge_box img.i50 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -92px 0px;}
+    .badge_box img.i1 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -115px 0px;}
+    .badge_box img.i100 {background:transparent url(/static/images/iconsBadges.png) repeat-x scroll -138px 0px;}
+    .authorcount{ border-bottom:none}
+    .authorcount .pic{float:left;width:30px; overflow:hidden}
+    .authorcount img{height:25px;}
+    .authorcount .nameetc{padding-top:8px; float:left; width:130px; overflow:hidden}
+    .authorcount .name a{font-size:12px; font-weight:bold;}
+    .authorcount .count{margin:0 5px; font-size:12px; font-weight:bold; font-style:italic}
+  </style>
+  <style>
+    .spacedGrid{
+      border:1px solid #ccc;
+      padding:0px 0 0px;
+      float:left;
+      margin:10px;
+      }
+    .sg_title h1{
+    font-family: Arial, sans;
+    font-size:16px;
+    font-weight:bold;
+    display: inline;
+    top:-4px;
+    position:relative;
+    }
+    .sg_title img{
+    margin-top:2px;
+    }
+    .sg_title span{
+    }
+    .sg_body{
+    padding:10px;
+    }
+    .sg_topstrip{
+    padding:0 8px 0 8px;
+    background:#ddd;
+    height:24px;
+    border-bottom:1px solid #ccc;
+    }
+    .spacedGrid .sg_title img{
+      width:20px;
+      margin-right:5px;
+      }
+    .spacedGrid#Popular_Categories .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll 0 -20px;}
+    .spacedGrid#Popular_Topics .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -20px -20px;}
+    .spacedGrid#Topic_Tags .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -20px -20px;}
+    .spacedGrid#Most_Viewed_Video_Tutorials .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll 0px 0px;}
+    .spacedGrid#Most_Popular_Video_Tutorials .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -20px 0px;}
+    .spacedGrid#Incoming .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -40px 0px;}
+    .spacedGrid#Incoming_Video_Tutorials .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -40px 0px;}
+    .spacedGrid#Most_Commented_Video_Tutorials .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -60px 0px;}
+    .spacedGrid#Random_Video_Tutorials .sg_title img{background:transparent url(/static/images/iconsSpacedGrid.png) repeat-x scroll -80px 0px;}
+  </style>
+  <style>
+    .seriesWrapper2{
+      width:115px;
+      margin:5px 0;
+      margin-right:15px;
+      padding:0 5px;
+      float:left;
+      }
+      .img_border_out{
+      border:1px solid #666;
+      width:122px;
+      }
+      .img_border_in{
+      border:1px solid #fff;
+      height:72px;
+      overflow:hidden;
+      width:120px;
+      }
+      .img_thumb{
+      margin-top:-10px;
+      width:120px;
+      height:90px;
+      border:none;
+      }
+      .text_capsule{
+      margin-top:2px;
+      }
+      .tc_title{
+      font-weight:bold;
+      font-size:12px;
+      height:30px;
+      overflow:hidden;
+      padding-left:1px;
+      display:block;
+      }
+      .tc_title a{
+      text-decoration:none;
+      }
+      .tc_info{
+      font-size:11px;
+      color:#333;
+      }
+      .tc_info span{
+      display:block;
+      padding-left:1px;
+      }
+      .tc_info a{
+      text-decoration:none;
+      font-size:
+      }
+      .end_box{
+      margin-right:7px;
+      }
+      .tc_info .user_name{
+      height:12px;
+      overflow:hidden;
+      }
+      .tc_info .short_desc{
+      padding-top:2px;
+      }
+      .tc_info a.authorTitle{
+      font-size:11px;
+      }
+  </style>
+<style>
+.tagBox{
+float:left;
+width:118px;
+overflow:hidden;
+}
+.tagBox a{
+  font-size:12px;
+  font-weight: normal;
+  text-decoration:none;
+  background: url('/static/images/rightArrow.gif') no-repeat 0px 6px;
+  padding-left: 6px;
+}
+</style>
+<style>
+  .announceBox{
+  padding:6px 10px 5px;
+  background:#ffe;
+  border:1px solid #ccc;
+  float:left;
+  margin:10px;
+  }
+  .ab_body{
+  padding:0 5px;
+  }
+  .ab_heading{
+  font-size:16px;
+  padding-bottom:5px;
+  font-weight:bold;
+  position:relative;
+  color:#c60;
+  }
+  .ab_slot{
+  padding:3px 0;
+  position:relative;
+  }
+  .ab_slot_image{
+  width:45px;
+  height:55px;
+  margin-bottom:auto;
+  float:left;
+  }
+  .ab_slot_image img{
+  border:none;
+  }
+  .ab_slot_image a{
+  text-decoration:none;
+  }
+  .ab_slot_desc{
+  margin-bottom:10px;
+  margin-left:50px;
+  font-size:12px;
+  }
+  .ab_slot_desc a{
+  text-decoration:none;
+  }
+</style>
+<style>
+  .statsBox{
+  padding:5px;
+  float:left;
+  }
+  .stat{
+  float:left;
+  color:#333;
+  font-weight:bold;
+  font-size:14px;
+  overflow:hidden;
+  margin-right:14px;
+  }
+  .stat img{
+  width:16px;
+  height:16px;
+  overflow:hidden;
+  }
+    .statsBox div.votes img{background:transparent url(/static/images/iconsStats.png) repeat-x scroll 0px 0px;}
+    .statsBox div.comments img{background:transparent url(/static/images/iconsStats.png) repeat-x scroll 16px 0px;}
+  .stat span{
+  margin:0 2px 0 0;
+  vertical-align:top;
+  }
+</style>
+<style>
+  div.feeditem{
+  font-size:13px;
+  margin:10px;
+  }
+  div.feeditem h2, div.feeditem h3{
+  margin:2px auto;
+  }
+  div.feeditem h3{
+  line-height:1.25;
+  font-size:0.86em;
+  font-family:arial, sans-serif;
+  }
+  div.feeditem h3.author{
+  font-weight:bold;
+  }
+    .spacedGrid#Blog_Roll .sg_title img{background:transparent url(/static/images/iconsMisc.png) repeat-x scroll 0 0;}
+    .spacedGrid#Blog_Roll .sg_body{
+    padding:0;
+    overflow:auto;
+    width:100%;
+    max-height:300px;
+    background:#f9f9f9;
+    }
+</style>
+
+
+<style>
+  .blurb_box{
+  font-size:14px;
+  padding:10px 10px 0;
+  }
+</style>
+
+
+
+
+
+<style>
+  #series-feed h3.userName{ background:#ccc; }
+</style>
+
+
+<style>
+  h1#mainFront{
+    text-align:center;
+    font-size:160%;
+    margin:7px;
+    font-weight:bold;
+  }
+</style>
+<!--<div py:def="testimonialBoxes(series)" class='testimonial' py:for="t in get_all_tstimonials_for_series(series.id)[:5]" >-->
+
+<head>
+<link rel="alternate" type="application/rss+xml" title="The Latest Showmedo Videos" href="http://showmedo.com/latestVideoFeed/rss2.0">
+    <title>Learning Python, Linux, Java, Ruby and more with Tutorial Videos</title>
+        <style type="text/css">
+@import url("../static/css/master.css");
+@import url("../static/css/identity.css");
+@import url("../static/css/superfish.css");
+div.showmedoAdBox{
+/*border:1px solid blue;*/
+float:left;
+margin:50px auto auto 105px;
+}
+div.showmedoAdBox img{
+float:left;
+}
+div.showmedoAdBox ul{
+float:left;
+margin:0px 0px;
+padding-left:20px;
+}
+div.showmedoAdBox a{
+color: blue;
+text-decoration:none;
+}
+div#google_search_box{
+  float:right;
+  margin:3px;
+}
+</style>
+        <meta name="verify-v1" content="6Ok6XQpNtI+ShfwnhE+WhPSDWSalR/Po//40JgrXfNY=">
+<script type="text/javascript" src="../static/javascript/jquery.js"></script>
+<script type="text/javascript" src="../static/javascript/helperPlugins.js"></script>
+<script type="text/javascript" src="../static/javascript/hoverIntent.js"></script>
+<script type="text/javascript" src="../static/javascript/superfish.js"></script>
+<script type="text/javascript">
+
+  jQuery(document).ready(function(){
+      jQuery("ul#top_nav_bar").superfish();
+  });
+  
+</script>
+<!-- Google CSE Search Box Begins  -->
+<style type="text/css">
+@import url(http://www.google.com/cse/api/branding.css);
+</style>
+<!-- Google CSE Search Box Ends -->
+<!-- Google CSE Search Box Begins  -->
+<!-- Google CSE Search Box Ends -->
+    <script type="text/javascript" src="../static/javascript/ui.tabs.js"></script><script type="text/javascript" src="../static/javascript/jquery.truncate.js"></script><script type="text/javascript" src="../static/javascript/swfobject.js"></script><script type="text/javascript" src="../static/javascript/smd_moreless.js"></script><style type="text/css"> @import url("../static/css/rolodex.css"); </style><style type="text/css"> @import url("../static/css/front_page.css"); </style><style type="text/css"> @import url("../static/css/ui.tabs.css"); </style><style type="text/css">
+    @import url("../static/css/notice_boards.css");
+    @import url("../static/css/blue/style.css");
+/*
+ul#promoList{ margin:5px 0px 5px 20px; }
+p{ margin-bottom:5px; }
+div#content{
+  width:775px;
+  margin-left:5px;
+}
+div.feedBoxes{
+  float:left;
+  margin:10px;
+}
+*/
+div#content{
+  margin-left:0px;
+  width:530px;
+}
+div#contentRight{
+  width:447px;
+}
+div#contentRight h2#h2_tabbed_series{
+  font-size:120%;
+}
+h2{
+margin:5px auto;
+}
+div#mission_statement{
+float:left;
+/*width:100%;*/
+padding:0px 20px;
+background:#ffefef;
+}
+div#mission_statement a{
+text-decoration:none;
+}
+.seriesWrapper{
+width:316px;
+margin-right:10px;
+}
+.series{
+height:120px;
+}
+.end_box{
+margin-right:0px;
+}
+.seriesWrapper2{
+margin-right:10px;
+}
+.badge_box{
+width:55px;
+}
+table.tablesorter{
+width:440px;
+margin:auto;
+}
+.announceBox{
+width:500px;
+float:none;
+}
+.spacedGrid#Blog_Roll{
+width:520px;
+}
+</style><script type="text/javascript">
+
+$(document).ready(function(){
+  $(".bodyQuote").wrap('<div class="outerQuote"><div class="centerQuote"></div></div>');
+  $("#example > ul").tabs(//{
+//click: function() {
+    //console.log($(this));
+    //alert($('span').html());
+    //alert(this.href);
+        //}
+  );
+  $("a.promoTab").click(function(){
+    //console.log($(this));
+    $('#h2_tabbed_series').text('Videos With ' + this.text + ' in Last 90 Days');
+    });
+  $("a.promoFeatureTab").click(function(){
+    //console.log($(this));
+    $('#h2_tabbed_series').text(this.text);
+    });
+  $("a.bookmarksTab").click(function(){
+    //console.log($(this));
+    $('#h2_tabbed_series').text('Your Bookmarked Videos');
+    });
+  });
+
+</script>
+</head>
+<body>
+    <div id="main_content">
+  <div id="header">
+  <div id="logo">
+    <div id="logoMain">
+      <a href="/">
+        <!--<img src="../static/images/showmedologo_h70.png" border="0px" style='margin:7px 0px 0px 7px' />-->
+        <img src="../static/images/showmedo_logo_long.png" border="0px" style="margin:7px 0px 0px 7px">
+        <!--<img src="../static/images/showmedoLogoOS.png" border="0px" style='margin:5px 0px 0px 7px' />-->
+      </a>
+    </div>
+    <div id="banner">
+      <div id="loginSignup" style="float:right; color:black;">
+        <form id="login_form_2" action="/login" style="margin-top:5px" method="post">
+      <!--<input type="hidden" id="forward_url" name="forward_url" value="/about" />-->
+      <span class="label">email:</span>
+      <input type="text" id="user_name" name="user_name">
+      <br>
+      <span class="label">password:</span>
+      <input type="password" id="password" name="password">
+      <br>
+      <span class="linkMessage">
+        <a href="/registration/lost_password">Lost password?</a>
+      </span>
+      <input type="submit" class="submitbutton" name="login" value="Login">
+      <br>
+      <span class="linkMessage">
+        <a href="/registration/new">Join ShowMeDo</a>
+      </span>
+    </form>
+      </div>
+    </div>
+    <div style="clear:both; font-size:0;height:2px">
+</div>
+  </div>
+  <div id="menu">
+    <ul id="top_nav_bar" class="sf-menu">
+      <li id="home">
+        <a href="/">home</a>
+      </li>
+      <li>
+        <a href="/videos">video tutorials</a>
+      </li>
+      <!--<li>-->
+        <!--<a href="/learningpaths">learning-paths</a>-->
+      <!--</li>-->
+      <li>
+        <a href="#abc">make videos</a>
+        <ul>
+          <li>
+            <a href="/addVideoInstructions">add a video to
+            ShowMeDo</a>
+          </li>
+          <!--<li>-->
+          <!--<a href="/requests">vote for video requests</a>-->
+          <!--</li>-->
+          <!--<li>-->
+          <!--<a href="/requestsForm">Request a video</a>-->
+          <!--</li>-->
+          <li>
+            <a href="/videos/screencasting">How-to make a ShowMeDo
+            screencast</a>
+          </li>
+          <li>
+            <a href="http://wiki.showmedo.com">Visit our wiki for
+            tips and advice</a>
+          </li>
+        </ul>
+      </li>
+      <!--<li>-->
+        <!--<a href="/joinus">club</a>-->
+      <!--</li>-->
+      <li>
+        <a href="http://blog.showmedo.com">blog</a>
+      </li>
+      <li>
+        <a href="/about">about</a>
+      </li>
+      <li>
+        <a href="/joinus"><img title="learn Python with Club Showmedo" src="/static/images/club_icon_h20.png"></a>
+      </li>
+    </ul>
+    <div id="google_search_box"><div class="cse-branding-" style="background-color:#;color:#">
+  <div class="cse-branding-form">
+    <form action="/search_results" id="searchbox_002884903177541871589:clzjdeefmh0">
+      <input type="hidden" name="cx" value="002884903177541871589:clzjdeefmh0">
+      <input type="hidden" name="cof" value="FORID:9">
+      <input type="text" name="q" size="25" style="margin-top:2px; width:200px">
+      <input type="submit" name="sa" value="Search">
+    </form>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_002884903177541871589%3Aclzjdeefmh0&amp;lang=en"></script>
+  </div>
+</div></div>
+    <br style="clear:both">
+  </div>
+  <!--${breadcrumbs()}-->
+</div>
+  <div id="container">
+    <div id="content">
+      <div id="blogroll">
+        <div class="spacedGrid" id="Blog_Roll">
+    <div class="sg_topstrip">
+      <div class="sg_title">
+        <img src="/static/images/1x1.png">
+        <span><h1>Blog Roll</h1></span>
+      </div>
+    </div>
+    <div class="sg_body">
+      <div class="row row_0">
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="feeditem">
+  <h2><a href="http://blog.showmedo.com/2009/03/10/showmedo-relaunching/">Showmedo Relaunching</a></h2>
+  <!--<h3 class='author'>${feed['author']}</h3>-->
+  <h3 class="author">Kyran Dale</h3>
+  <h3>Tue, 10 Mar 2009 02:41:03 +0000</h3>
+  <p>Frantic scenes aboard the SS Showmedo as we move to a new server and introduce a much-changed site. According to google analytics about one third of our regular audience are currently lost in cyberspace as various DNS caches around the globe send them off to the old site or some weird fusion of old and new.</p>
+<p>Moving server has been as stressful as I imagined, probably the reason for all those ‘moving servers is stressful’ blog entries around the web. We’re currently a little rickety and scared to crank up the engines for fear of shaking the ship apart. But, thanks to some caching magic, we seem to be serving pages and videos.</p>
+<p>The new site design is the result of finally having a big chunk of hours to dedicate to Showmedo, rather than cadging them after hours from the day-job. I think things are a deal cleaner and more professional, allowing for my being rather an accidental web-developer. The feedback has been pretty positive, which is always nice.</p>
+<p>Our new initiative viz web-education is Learning-paths. I’ll be blogging a little about this as soon as I manage to get the server software installed. For all you linux users out there used to the simple pleasures of ‘apt-get install’ or ‘yum’ or ‘rpm’ or any one of the new-fangled ways of getting software onto your *buntu, opensuse, fedora, etc. box, be very thankful; I have been plunged back a couple of decades or so to library-dependency hell and it is a head-trip indeed.</p>
+</div>
+        <div style="clear:both; font-size:0;height:10px">
+</div>
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div>
+  </div>
+      </div>
+      <!--${videoPitchBox()}-->
+      <div style="clear:both; font-size:0;height:10px">
+</div>
+      <div class="announceBox">
+  <div class="ab_body">
+    <div class="ab_heading">
+      What's New
+    </div>
+    <div class="ab_slot">
+      <div class="ab_slot_image">
+        <a href="/videos"><img src="/static/images/ab_smdclapper.png"></a>
+      </div>
+      <div class="ab_slot_desc">
+          <b><a href="/videos">Checkout Our New Video Page</a></b><br>
+          We've cleaned things up a little, aiming at making things easier to find and the site a more pleasant experience.
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div><div class="ab_slot">
+      <div class="ab_slot_image">
+        <a href="/learningpaths"><img src="/static/images/ab_path.png"></a>
+      </div>
+      <div class="ab_slot_desc">
+          <b><a href="/learningpaths">Showmedo Introduces Learning-paths</a></b><br>
+          We're stepping up a gear with our new learning-paths. By structuring Showmedo's content we hope to make the site a more effective learning centre.
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div><div class="ab_slot">
+      <div class="ab_slot_image">
+        <a href="/learningpaths"><img src="/static/images/ab_notices.png"></a>
+      </div>
+      <div class="ab_slot_desc">
+          <b><a href="/learningpaths">Showmedo's Notice Boards</a></b><br>
+          !!COMING VERY SOON!! To encourage collaborative education and increase community feedback, we've introduced notice-boards. These allow requests for new learning-paths to be posted and subsequent responses followed.
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div><div class="ab_slot">
+      <div class="ab_slot_image">
+        <a href="/halloffame"><img src="/static/images/ab_bigboard.png"></a>
+      </div>
+      <div class="ab_slot_desc">
+          <b><a href="/halloffame">Showmedo's Stats Page</a></b><br>
+          Our authors are the true heros of Showmedo. Here we start gathering some info on their contributions. Kudos.
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div><div class="ab_slot">
+      <div class="ab_slot_image">
+        <a href="/learningpaths"><img src="/static/images/ab_competition.png"></a>
+      </div>
+      <div class="ab_slot_desc">
+          <b><a href="/learningpaths">Our New Monthly Competition</a></b><br>
+          To celebrate the introduction of Learning-paths we're offering a prize of $100 for the best learning-path this month. The judges will be drawn from existing star authors.
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div>
+  </div>
+</div>
+      <!--${spacedGrid(author_long_bits, authors, title='Author Stats', cols=1, rowlimit=7)}-->
+      <!--${pretty_table2(requests, [('Status', traw),('', author_bits, 'user'), ('Author', tlink), ('Path', tlink), ('Title', tlink), ('Responses', tlinks), ('Date', traw)], 'Requests for Learning-paths and Steps')}-->
+      <!--${spacedGrid(promoBox, series, title='Videos', cols=1, rowlimit=4)}-->
+    </div>
+    <div id="contentRight">
+      <div class="blurb_box">
+  <h2>Welcome to Showmedo!</h2>
+  <!--<p>This site is about learning and free and open source software (FOSS). If you haven't heard of FOSS, it's behind most of the software powering the internet. According to our stats it's likely you are viewing this site using the Firefox FOSS browser. You don't need to know about the ideas and ideals underlying FOSS to benefit from Showmedo but if you're curious <a href='http://www.opensource.org/'>here</a> and <a href='http://www.fsf.org'>here</a> are good places to start.  In the spirit of FOSS, Showmedo is about the authors who freely donate their time to produce the large majority of videos and other learning material on this site. Giving something back in this fashion can be very rewarding and is a great way to thank the producers of that cool piece of software you couldn't live without.</p> -->
+  <p>Showmedo is about learning and (Free and) Open-source software (FOSS). We were inspired to start Showmedo by watching some very effective web video-tutorials/screencasts. These convinced us that web-videos can be a great way to quickly and efficiently acquire knowledge. It can even be fun, or at least painless. For some things there is no substitute to seeing it done.</p>
+  <!--<p>Like learning itself, Showmedo intends to be a constant work in progress. While screencasts are still the backbone of the site, we are looking for new and innovative ways to direct your learning experience. In this endeavor we are currently rolling in a new feature called <a href='/learningpaths/'>learning-paths</a>. It's hoped these will significantly improve the richness and continuity of your learning with us. For more details try our <a href='/about'>about page</a>. </p>  -->
+</div>
+      <!--${pretty_table2(authors[:10], [('Author', author_bits), ('Name', tlink), ('Videos(V)', traw), ('Votes(Vt)', traw)])}-->
+      <!--${pretty_table2(requests, [('', author_bits, 'user'), ('Author', tlink), ('Title', tlink)], '')}-->
+      <div id="fragment-1">
+        <div class="spacedGrid" id="Incoming_Video_Tutorials">
+    <div class="sg_topstrip">
+      <div class="sg_title">
+        <img src="/static/images/1x1.png">
+        <span><h1>Incoming Video Tutorials</h1></span>
+      </div>
+    </div>
+    <div class="sg_body">
+      <div class="row row_0">
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=NHDk9ZapS">
+          <img alt="Python Terminology - introduction -" src="http://images.showmedo.com/static/thumbnails/6950000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=NHDk9ZapS" class="tc_title_link">
+          Python Terminology - introduction -
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=3253">gasto</a></span>
+        <span class="short_desc">
+Python Terminology (bite-sized chunks). Is a series of videos that show specific terminol [...]
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=7Ja4c8YuL">
+          <img alt="C++ Tutorials - Absolute n00b spoonfeed" src="http://images.showmedo.com/static/thumbnails/6780000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=7Ja4c8YuL" class="tc_title_link">
+          C++ Tutorials - Absolute n00b spoonfeed
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=14849">antiRTFM</a></span>
+        <span class="short_desc">
+Video tutorials about programming in the C++ programming language.
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=RmKpb1ezZ">
+          <img alt="Misc" src="http://images.showmedo.com/static/thumbnails/2590000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=RmKpb1ezZ" class="tc_title_link">
+          Misc
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=1922">Dai</a></span>
+        <span class="short_desc">
+one of or odd videos an a particular subject
+        </span>
+      </div>
+    </div>
+  </div>
+        <div style="clear:both; font-size:0;height:10px">
+</div>
+      </div><div class="row row_1">
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=6WiUOGJBb">
+          <img alt="Python 3.0 changes" src="http://images.showmedo.com/static/thumbnails/6150000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=6WiUOGJBb" class="tc_title_link">
+          Python 3.0 changes
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=3253">gasto</a></span>
+        <span class="short_desc">
+This series should explain the main changes happening from CPython 2.x to CPython 3.0
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=sotQ6bWNm">
+          <img alt="VMware Raw Device Mappings" src="http://images.showmedo.com/static/thumbnails/6130000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=sotQ6bWNm" class="tc_title_link">
+          VMware Raw Device Mappings
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=14489">GoVirtual.tv</a></span>
+        <span class="short_desc">
+This GoVirtual.tv video tutorial will walk you through the steps of installing a VMware E [...]
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=FIYNIah67">
+          <img alt="Reverse Engineering Using BOUML" src="http://images.showmedo.com/static/thumbnails/6120000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=FIYNIah67" class="tc_title_link">
+          Reverse Engineering Using BOUML
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=14487">TheBoss</a></span>
+        <span class="short_desc">
+This is a brief introduction into creating class diagrams using BOUML. This is intended f [...]
+        </span>
+      </div>
+    </div>
+  </div>
+        <div style="clear:both; font-size:0;height:10px">
+</div>
+      </div><div class="row row_2">
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=19XhWGBk9">
+          <img alt="Python 3" src="http://images.showmedo.com/static/thumbnails/4540000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=19XhWGBk9" class="tc_title_link">
+          Python 3
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=14069">chyld</a></span>
+        <span class="short_desc">
+Videos using Python 3.
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=wKQrywla5">
+          <img alt="Introduction to Boa Constructor" src="http://images.showmedo.com/static/thumbnails/4010090.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=wKQrywla5" class="tc_title_link">
+          Introduction to Boa Constructor
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=110">cmpython</a></span>
+        <span class="short_desc">
+A nine video series introducing Boa Constructor, a free cross-platform wxPython IDE and v [...]
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=hys3dcMcM">
+          <img alt="A short Hello World using both Python2.5 and Python 3.0 with Ulipad to see the difference. " src="http://images.showmedo.com/static/thumbnails/4520000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=hys3dcMcM" class="tc_title_link">
+          A short Hello World using both Python2.5 and Python 3.0 with Ulipad to see the difference.
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=84">Robert Marchetti</a></span>
+        <span class="short_desc">
+The is a short Hello World screen casting on using Python 3.0 and Ulipad.  Ulipad support [...]
+        </span>
+      </div>
+    </div>
+  </div>
+        <div style="clear:both; font-size:0;height:10px">
+</div>
+      </div><div class="row row_3">
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=vXJsRwlBX">
+          <img alt="Developing emol!" src="http://images.showmedo.com/static/thumbnails/1510060.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=vXJsRwlBX" class="tc_title_link">
+          Developing emol!
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=116">Erik Thompson</a></span>
+        <span class="short_desc">
+This video series will document the development of a moderately complex program from star [...]
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=WrTGJWRn9">
+          <img alt="Python Beginners - the 'if' statement" src="http://images.showmedo.com/static/thumbnails/4050000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=WrTGJWRn9" class="tc_title_link">
+          Python Beginners - the 'if' statement
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=2">Ian Ozsvald</a></span>
+        <span class="short_desc">
+This short series introduces logic in Python by showing you the 'if' statement.  Logical  [...]
+        </span>
+      </div>
+    </div>
+  </div>
+          <!--<div py:when="cols-1" py:strip="">-->
+            <!--${boxtype(obj, 'end_box')}-->
+          <!--</div>-->
+          <div class="seriesWrapper2 ">
+    <div class="img_border_out">
+      <div class="img_border_in">
+        <a href="/videos/series?name=mhE9pn0Xy">
+          <img alt="Map Making Techniques Using GIMP" src="http://images.showmedo.com/static/thumbnails/2620000.png" class="img_thumb">
+        </a>
+      </div>
+    </div>
+    <div class="text_capsule">
+      <div class="tc_title">
+        <a href="/videos/series?name=mhE9pn0Xy" class="tc_title_link">
+          Map Making Techniques Using GIMP
+        </a>
+      </div>
+      <div class="tc_info">
+        <span class="user_name"><a class="authorTitle" href="http://showmedo.com/videos/?author=3482">RobA</a></span>
+        <span class="short_desc">
+Tips and techniques for using GIMP to help in the creation of maps, mainly for fantasy ca [...]
+        </span>
+      </div>
+    </div>
+  </div>
+        <div style="clear:both; font-size:0;height:10px">
+</div>
+      </div>
+      <div style="clear:both; font-size:0;height:1px">
+</div>
+    </div>
+    <div class="moreless">
+      <a href="2">more...</a>
+    </div>
+  </div>
+      </div>
+      <!--<div id="fragment-2">-->
+        <!--${spacedGrid(promoBox, most_viewed_videos, title='Most Viewed', cols=3, rowlimit=2)}-->
+      <!--</div>-->
+      <!--<div id="fragment-3">-->
+        <!--${spacedGrid(promoBox, most_liked_videos, title='Most Popular', cols=3, rowlimit=2)}-->
+      <!--</div>-->
+      <!--<div id="fragment-4">-->
+        <!--${spacedGrid(promoBox, most_discussed_videos, title='Most Comments', cols=3, rowlimit=2)}-->
+      <!--</div>-->
+    </div>
+   <div id="footer">
+      <div class="footer_col">
+        <!--<img src="../static/images/showmedoClubLogoOS.png" alt="showmedo club logo" class="" /> -->
+	<img src="../static/images/club_logo_full.png" alt="showmedo club logo" class="">
+      </div>
+      <div class="footer_col">
+        <h2>CLUB SHOWMEDO</h2>
+        <p>
+          Are you learning Python?  To keep the site running clean and ad-free we've started <a href="/joinus">Club ShowMeDo</a>. The club will allow you access to some special <a href="/joinus#videos">videos</a> we're making to pass on programming skills we consider important to the development and enjoyment of Free Open Source Software (FOSS). </p><p>The focus at the moment is on developing with the <a href="http://www.python.org">Python</a> programming language, one of the backbones of the FOSS movement with a huge number of included and third-party libraries. </p>
+      </div>
+      <div class="footer_col">
+        <h2>CONTACT</h2>
+            <p>We welcome feedback and we want to hear your ideas.</p>
+            <p>The best way to discuss new ideas is in our <a href="http://groups.google.com/group/showmedo">Google Group</a>.</p>
+            <p>To reach either of us (Ian, Kyran) you will find our email addresses on the <a href="/about">About</a> page.</p>
+            <h2>THANKS</h2>
+            <p>Check out our <a href="/thanks">thanks-page</a> for a roll call of the great software that enables Showmedo to function.</p>
+        </div>
+      <div style="clear:both; font-size:0;height:10px">
+</div>
+            <p id="copyright">©2009 ShowMeDo</p>
+    </div>
+  </div>
+    <!-- End of main_content -->
+    </div>
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-529483-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+    </script>
+    <!--crazy egg tracker for frontpage 20080318-->
+    <!--<script type="text/javascript" src="http://cetrk.com/pages/scripts/0008/1682.js"> </script>    -->
+</body>
+</html>

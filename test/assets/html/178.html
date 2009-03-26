@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>RedCloth - Textile for Ruby</title>
+  <meta name="author" content="Jason Garber">
+	
+  <link rel="stylesheet" href="/css/blueprint/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="/css/blueprint/print.css" type="text/css" media="print"> 
+  <!--[if IE]><link rel="stylesheet" href="/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="header">
+    <div class="container">
+      <div class="span-24">
+        <a href="/"><img src="/logo.jpg" alt="RedCloth" /></a>
+      </div>
+    </div>
+  </div>
+  <div id="header-divider"></div>
+
+  <div class="container">
+    <div class="span-20">
+      
+<p style="font-size:120%;"><strong style="color:#770300;">RedCloth</strong> is a module for using <a href="http://www.textism.com/tools/textile/">Textile</a> in <a href="http://www.ruby-lang.org/">Ruby</a>. Textile is a simple text format that can be converted to <acronym title="Hyper Text Markup Language"><span class="caps">HTML</span></acronym>, eliminating the need to use <span class="caps">HTML</span> directly to create documents, blogs, or web pages. Textile gives you readable text while you&#8217;re writing and beautiful text for your readers.  If you need to break out into <span class="caps">HTML</span>, Textile allows you to do so easily.</p>
+<table>
+	<tr>
+		<th>Textile </th>
+		<th>to </th>
+		<th><span class="caps">HTML</span> </th>
+	</tr>
+	<tr>
+		<td> <code>_emphasized_</code> </td>
+		<td> &#8594; </td>
+		<td> <em>emphasized</em> </td>
+	</tr>
+	<tr>
+		<td> <code>*strong*</code> </td>
+		<td> &#8594; </td>
+		<td> <strong>strong</strong> </td>
+	</tr>
+	<tr>
+		<td> <code>"Ruby on Rails":http://www.rubyonrails.org</code> </td>
+		<td> &#8594; </td>
+		<td> <a href="http://www.rubyonrails.org">Ruby on Rails</a> </td>
+	</tr>
+	<tr>
+		<td> <code>* an item</code><br><code>* and another</code> </td>
+		<td> &#8594; </td>
+		<td> <ul><li>an item</li><li>and another</li></ul> </td>
+	</tr>
+	<tr>
+		<td> <code># one</code><br><code># two</code> </td>
+		<td> &#8594; </td>
+		<td> <ol><li>one</li><li>two</li></ol> </td>
+	</tr>
+</table>
+<h2>Installing RedCloth 4</h2>
+<h3>Using RubyGems</h3>
+<pre><code>$ gem install RedCloth</code></pre>
+<p><em><strong>NB: RedCloth is CamelCase, not lowercase.</strong>  If you mistakenly do a <code>gem install redcloth</code>, you&#8217;ll get <code>ERROR: could not find redcloth locally or in a repository</code>.</em></p>
+<h3>From source</h3>
+<p>To install from source, get it from the repository:</p>
+<pre><code>$ git clone git://github.com/jgarber/redcloth.git
+$ cd redcloth
+$ rake install</code></pre>
+<p>You&#8217;ll need <a href="http://www.cs.queensu.ca/~thurston/ragel/">Ragel</a> to compile it.</p>
+<h2>Using RedCloth</h2>
+<pre><code>RedCloth.new("Some text").to_html
+  #=&gt; "&lt;p&gt;Some text&lt;/p&gt;"</code></pre>
+<p>See the <a href="/textile">Official Textile Reference Manual for RedCloth 4</a> for help with Textile formatting.</p>
+<h2>Reporting bugs</h2>
+<p><a href="http://jgarber.lighthouseapp.com/projects/13054-redcloth">Bug tracking is on Lighthouse</a>. <strong>Please only report bugs about RedCloth 4.0.</strong>  The 3.0.4 version&#8217;s bugs are <a href="http://code.whytheluckystiff.net/redcloth/report/2">many</a> and <a href="http://wiki.rubyonrails.com/rails/pages/RedCloth3">well-known</a></p>
+<p>For the latest information on installing, bugs, and contributions, see the <a href="http://github.com/jgarber/redcloth">development site</a>.</p>
+      
+    </div>
+    <div class="span-4 last sidebar">
+
+<h4>Get RedCloth 4</h4>
+<p>Stable version: <a href="http://rubyforge.org/frs/?group_id=216&amp;release_id=31557">4.1.9</a></p>
+<p>Upgrade with RubyGems: <code>gem install RedCloth</code>.</p>
+<h4>Textile references:</h4>
+<ul>
+	<li><a href="/textile">Official RedCloth 4 Textile Reference</a></li>
+	<li><a href="http://hobix.com/textile">Hobix Textile Reference</a></li>
+	<li><a href="http://hobix.com/textile/quick.html">Hobix Quick Reference</a></li>
+	<li><a href="http://textile.thresholdstate.com/">Textile Dingus</a></li>
+</ul>
+<h4>Got questions?</h4>
+<ul>
+	<li><a href="/faq"><span class="caps">FAQ</span></a></li>
+	<li><a href="http://rubyforge.org/mailman/listinfo/redcloth-upwards">RedCloth mailing list</a></li>
+	<li><a href="http://twitter.com/jasongarber">@jasongarber</a></li>
+</ul>
+<h4>Support RedCloth:</h4>
+<p><a href='http://www.pledgie.com/campaigns/1081'><img alt='Click here to lend your support to: redcloth and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/1081.png?skin_name=chrome' /></a></p>      
+      
+    </div>
+    <div class="span-24 last" id="footer">
+      <hr>
+<div id="validation">
+<a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-html401" alt="" /></a>
+</div>
+<p>RedCloth.org uses RedCloth 4.1.9 on <a href="http://www.radiantcms.org">Radiant</a>.</p>
+<div id="copyright">
+&copy; 2008 RedCloth.org | Maintained by Jason Garber | <script type="text/javascript">
+/* <![CDATA[ */
+function hivelogic_enkoder(){var kode=
+"kode=\"oked\\\"=);''):-1thnglee.od(kAtarche.od?kthnglee.od<k(ix+e=od}ki)t("+
+"rAha.cdeko)++1(iAtarche.od=kx+){=2i+);-1thnglee.od(ki<0;i=r(fo';=';x\\\"\\"+
+"\\)''(nioj.)(esrever.)''(tilps.edok=edok\\\"\\\\\\\\\\\\o;ek\\\\d\\\\\\\"="+
+"\\\\\\\\o\\\\\\\\e\\\\\\\\k\\\\\\\\d\\\\\\\"\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"+
+"\\=\\\\\\\\n\\\\gr@hj%ius{tk4zx}zo.kB(&gxnlkbCs(ogzr@umppFygtugmhxxki4su(b"+
+"D&uiztigBzg5(DA/>%@{**i>url+3@l>n?gr1hhojqkwl>..~,@frnhgf1dkFugrDh+w,l60l>"+
+"+i?f,3.f4@;5{>@.wVlujqi1ruFpdkFugr+h\\\\f\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"+
+"\\\\\\\\\\\\\\\\\\\\\\\\0\\\\n,g0@0\\\\r\\\\\\\\h\\\\\\\"\\\\\\\\\\\\\\\\"+
+"\\\\\\\\\\\\\\\\{\\\\\\\\;\\\\=x''f;roi(0=i;k<do.eelgnhti;++{)=cokedc.ahCr"+
+"doAe(t)i3-i;(f<c)0+c1=82x;=+tSirgnf.orCmahCrdo(e)ck}do=e\\\\x\\\\\\\\\\\\"+
+"\\\\\\\\\\\"x\\\\';;=o'(f=r;i<0kid(.oeeglhn1t;-+)2i{=+)kxd=.oherctaiA1(++o"+
+")ekcda.Ah(r)tkid}=o+eixk(d<.oeeglhnktd?.oherctakAd(.oeeglhn1t:-');'=)\\\""+
+"\\\\\\\\\\\\edok\\\"\\\\e=od\\\"kk;do=eokeds.lpti'()'r.verees)(j.io(n'')\""+
+";x='';for(i=0;i<(kode.length-1);i+=2){x+=kode.charAt(i+1)+kode.charAt(i)}k"+
+"ode=x+(i<kode.length?kode.charAt(kode.length-1):'');"
+;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+/* ]]> */
+</script>
+<p>RedCloth.org is sponsored by <a href="http://typefasterwithdvorak.com/">TypeFasterWithDvorak.com</a>.  Typing causing you pain?  <a href="http://typefasterwithdvorak.com/">Try Dvorak</a>!</p>
+</div>
+    </div>
+  </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-345379-5");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>
+

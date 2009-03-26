@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>   Ruby Polyglot: Talking with Erlang - igvita.com</title>
+<link rel="stylesheet" href="http://www.igvita.com/wp-content/themes/igvita/style.css" type="text/css" media="screen" />
+
+
+<link rel="openid.server" href="http://www.myopenid.com/server" />
+<link rel="openid.delegate" href="http://openid.igvita.com/igrigorik" />
+<link rel="openid2.local_id" href="http://openid.igvita.com/igrigorik" />
+<link rel="openid2.provider" href="http://www.myopenid.com/server" />
+
+<link rel="alternate" type="application/rss+xml" title="igvita.com RSS Feed" href="http://www.igvita.com/feed/" />
+<link rel="pingback" href="http://www.igvita.com/xmlrpc.php" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.igvita.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.igvita.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.7.1" />
+
+
+<script type="text/javascript">
+function showme(thisdiv)
+{
+   if(document.getElementById(thisdiv).style.display=='none')
+   document.getElementById(thisdiv).style.display='block';
+   else document.getElementById(thisdiv).style.display='none';
+}
+</script>
+	
+<link rel="stylesheet" href="http://www.igvita.com/wp-content/plugins/sifr/sIFR-print.css" type="text/css" media="print" />
+<script src="http://www.igvita.com/wp-content/plugins/sifr/sifr.js" type="text/javascript"></script>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://www.igvita.com/wp-content/plugins/lifestream/lifestream.css"/><script type="text/javascript" src="http://www.igvita.com/wp-content/plugins/lifestream/lifestream.js"></script><style type="text/css">
+a.postrank {
+	border:1px solid #333333;
+	color:#000000;
+	display:block;
+	float:right;
+	font-size:1.2em;
+	font-weight:bold;
+	margin: 0 0.2em;
+	position:relative;
+	text-align:center;
+	width:34px;
+}
+
+a.postrank span.topLeft, a.postrank span.topRight, a.postrank span.bottomLeft, a.postrank span.bottomRight {
+	background:transparent url(http://www.igvita.com/wp-content/plugins/wp-postrank/images/corners.png) no-repeat scroll 0 0;
+	display:block;
+	height:3px;
+	position:absolute;
+	width:3px;
+}
+
+a.postrank span.topLeft {
+	background-position:0 0;
+	left:-1px;
+	top:-1px;
+}
+
+a.postrank span.topRight {
+	background-position:-3px 0;
+	right:-1px;
+	top:-1px;
+}
+
+a.postrank span.bottomLeft {
+	background-position:0 -3px;
+	left:-1px;
+	bottom:-1px;
+}
+
+a.postrank span.bottomRight {
+	background-position:-3px -3px;
+	right:-1px;
+	bottom:-1px;
+}
+
+/* metrics */
+#postrank_metrics { margin: 3px; background-color: #f6faff; border: 1px #c3d9ff solid; }
+#postrank_metrics table{ margin: 5px 0; font-size: 1.3em; border-collapse: collapse; }
+#postrank_metrics table td{ padding: 7px 11px 9px 14px; border: #c3d9ff solid; border-width: 0 0 0 1px; }
+#postrank_metrics table td:first-child{ border: 0; padding-left: 11px; }
+#postrank_metrics table td a, #postrank_metrics table td span{ padding: 1px 0 0 21px; background: url( http://postrank.com/graphics/spriteSet_3.png ) no-repeat; height: 15px; display: block; }
+#postrank_metrics .bloglines{ background-position: 0 -16px; }
+#postrank_metrics .reddit{ background-position: 0 -32px; }
+#postrank_metrics .technorati{ background-position: 0 -48px; }
+#postrank_metrics .magnolia{ background-position: 0 -64px; }
+#postrank_metrics .digg{ background-position: 0 -80px; }
+#postrank_metrics .twitter{ background-position: 0 -96px; }
+#postrank_metrics .comments{ background-position: 0 -112px; }
+#postrank_metrics .icerocket{ background-position: 0 -128px; }
+#postrank_metrics .delicious{ background-position: 0 -144px; }
+#postrank_metrics .google{ background-position: 0 -160px; }
+#postrank_metrics .pownce{ background-position: 0 -176px; }
+#postrank_metrics .views{ background-position: 0 -192px; }
+#postrank_metrics .bookmarks{ background-position: 0 -208px; }
+#postrank_metrics .clicks{ background-position: 0 -224px; }
+</style>
+<script type="text/javascript">
+//<![CDATA[
+if( document.all && !document.getElementsByTagName )
+	document.getElementsByTagName = function( nodeName )
+	{
+		if( nodeName == '*' ) return document.all;
+		var result = [], rightName = new RegExp( nodeName, 'i' ), i;
+		for( i=0; i<document.all.length; i++ )
+			if( rightName.test( document.all[i].nodeName ) )
+				result.push( document.all[i] );
+		return result;
+	};
+if(!document.getElementsByClassName)
+	document.getElementsByClassName = function( className, nodeName )
+	{
+		var result = [], tag = nodeName||'*', node, seek, i;
+		var rightClass = new RegExp( '(^| )'+ className +'( |$)' );
+		seek = document.getElementsByTagName( tag );
+		for( i=0; i<seek.length; i++ )
+			if( rightClass.test( (node = seek[i]).className ) )
+				result.push( seek[i] );
+		return result;
+	};
+
+function postrank_badge_step2(data)
+{
+	// %r is raw url, %e is encoded url
+	var sources = {"comments":"%r", "twitter":"", "reddit":"",
+	"rocket":"http://blogs.icerocket.com/search?q=%e&ql=en&s=f&pop=l&news=m", "digg":"http://digg.com/submit?phase=2&url=%e",
+	"bloglines":"http://www.bloglines.com/search?q=Bcite:%e&ql=en&s=f&pop=l&news=m", "technorati":"http://www.technorati.com/search/%e", 
+	"magnolia":"http://ma.gnolia.com/meta/get?url=%e&title=title", "google":"http://blogsearch.google.com/blogsearch?q=link:%e",
+	"delicious":"http://del.icio.us/url/?url=%e"};
+	var metrics = document.getElementById('postrank_metrics');
+	metrics.innerHTML = '<table><tr></tr><tr></tr><tr></tr></table>';
+	var rows = metrics.getElementsByTagName('tr');
+	var length = 0;
+	var currentRow = 0;
+	for(var source in data)
+	{
+		if(!data[source] || data[source] < 1) {continue;}
+		var sourceName = source.substr(0,1).toUpperCase() + source.substr(1).replace(/_/,' ');
+		var el = document.createElement('td');
+		if(sources[source]) {
+			el.innerHTML = '<a style="position:relative;z-index:9;" title="' + sourceName + '" class="metric ' + source + '" href="' + sources[source].replace('%r', metrics.getAttribute('url')).replace('%e', encodeURIComponent(metrics.getAttribute('url'))) + '">' + data[source] + '</a>';
+		} else {
+			el.innerHTML = '<span title="' + sourceName + '" class="metric ' + source + '">' + data[source] + '</span>';
+		}
+		rows[currentRow].appendChild(el);
+		currentRow++;
+		if(currentRow >= rows.length) currentRow = 0;
+		length++;
+	}
+	if(length < 1) metrics.innerHTML = '<div style="padding:10px;">No Data</div>';
+	var wrapper = document.createElement('div');
+	wrapper.style.position = 'absolute';
+	wrapper.style.top = '-2px';
+	wrapper.style.bottom = '0px';
+	wrapper.style.left = '0px';
+	wrapper.style.right = '0px';
+	wrapper.className = 'metric';
+	wrapper.zIndex = 5;
+	wrapper.onmouseout = function(e)
+	{
+		if(!e.relatedTarget.className.match(/metric/))
+			this.parentNode.parentNode.removeChild(this.parentNode);
+	};
+	metrics.appendChild(wrapper);
+	metrics.style.marginLeft = (38 - metrics.offsetWidth) + 'px';
+	//wrapper.style.top = (-1*wrapper.parentNode.previousSibling.offsetHeight) + 'px'; // extend wrapper to cover postrank badge
+	document.getElementById('postrank_metrics').style.display = 'block';
+}
+
+function postrank_badge_setup()
+{
+	var badges = document.getElementsByClassName('postrank-badge');
+	for(var i = 0; i < badges.length; i++)
+	{
+		badges[i].onmouseover = function()
+		{
+			this.onmouseout = function(e) {
+				if(!e.relatedTarget.className.match(/metric/))
+					document.getElementById('postrank_metrics').parentNode.removeChild(document.getElementById('postrank_metrics'));
+			};
+			var metrics = document.getElementById('postrank_metrics') || document.createElement('div');
+			metrics.style.position = 'absolute';
+			metrics.style.marginTop = this.offsetHeight + 'px';
+			metrics.style.zIndex = 10;
+			metrics.id = 'postrank_metrics';
+			metrics.setAttribute('url', this.lastChild.innerHTML);
+			this.parentNode.appendChild(metrics);
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.src = 'http://api.postrank.com/v2/entry/' + this.id.match(/^entry-(.*)$/)[1] + '/metrics?format=json&appkey=wordpress&callback=postrank_badge_step2';
+			document.body.appendChild(script);
+		};
+	}
+}
+
+//adds an onload event to the current page
+function addLoadEvent(func)
+{
+	var oldonload = window.onload;
+	if (typeof(window.onload) != 'function')
+	{
+		window.onload = func;
+	}
+	else
+	{
+		window.onload = function()
+		{
+			oldonload();
+			func();
+		}
+	}
+}
+addLoadEvent(postrank_badge_setup);
+//]]>
+</script>
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="favicon" href="/favicon.ico" />
+
+</head>
+<body>
+	<div id="header">
+		<div class="inside"><!--
+			<div id="search">
+				<form method="get" id="sform" action="http://www.igvita.com/">
+ 					<div class="searchimg"></div>
+					<input type="text" id="q" value="" name="s" size="15" />
+				</form>
+			</div>-->
+			
+			<h2><a href="http://www.igvita.com/"><img src="/wp-content/themes/igvita/images/igvita.gif" alt="igvita.com" /></a></h2>
+			<p class="description">A goal is a dream with a deadline.</p>
+			<div class="menu">
+				<ul id="nav">
+					<li><span>&nbsp;</span></li>
+					<li class="page_item"><a  href="http://www.igvita.com/">Blog</a></li>
+					<li class="page_item page-item-184"><a href="http://www.igvita.com/lifestream/" title="Lifestream">Lifestream</a></li>
+<li class="page_item page-item-31"><a href="http://www.igvita.com/about/" title="About">About</a></li>
+<li class="page_item page-item-96 current_page_ancestor"><a href="http://www.igvita.com/archives/" title="Archives">Archives</a></li>
+					<li><span class="right">&nbsp;</span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- [END] #header -->
+
+	<div id="primary" class="single-post">
+		<div class="inside">
+						<div class="primary">
+				<h3><span>Ruby Polyglot: Talking with Erlang</span></h3>
+				<p><img align="left" style="margin: 0pt 1em 0pt 0pt;" src="http://www.igvita.com/blog/posts/09/erlang-ruby-logos.png"/>Functional programming languages such as Erlang, Haskell, and Clojure have been gaining momentum over the last year and a half, promising us support for easy distributed, fault-tolerant, non-stop applications. Arguably the most appealing aspects are the <a href="http://en.wikipedia.org/wiki/Actor_model">high-concurrency actor</a> and <a href="http://en.wikipedia.org/wiki/Message_passing">message passing</a> models, especially in the light of imposed limits by the GIL on the Ruby interpreter (<a href="http://www.igvita.com/2008/11/13/concurrency-is-a-myth-in-ruby/">Concurrency is a Myth in Ruby</a>). However, working my way through <a href="http://armstrongonsoftware.blogspot.com/">Joe Armstrong's</a> "<a href="http://www.amazon.com/Programming-Erlang-Software-Concurrent-World/dp/193435600X/ref=pd_bbs_sr_1/105-5162226-7304414?ie=UTF8&s=books&qid=1184837752&sr=8-1">Programming Erlang</a>", which is an excellent introductory book by the way, you quickly come to appreciate the lack of third party libraries that are available to any Ruby programmer.</p>
+<blockquote><p>Polyglot (person) (from the Greek πολύς /po΄lis/ and γλώττα /΄ɣlota/), someone who uses two or more languages</p></blockquote>
+<h4><strong>Erlectricity bridge: Connecting Ruby and Erlang</strong></h4>
+<p align="center"><img src="http://www.igvita.com/posts/09/erlang-ruby.png" /></p>
+<p>Turns out, <a href="http://nullstyle.com/">Scott Fleckenstein</a> and <a href="http://tom.preston-werner.com/">Tom Preston-Werner</a> have already solved this problem for us, allowing bi-directional data exchange between Erlang and Ruby via  <a href="http://erlang.org/doc/tutorial/c_portdriver.html">Erlang Ports</a>. As far as Erlang is concerned, this communication pattern is seen as direct communication with another Erlang process, which also means we can transparently invoke our Ruby interpreter whenever we need it! To get started, <strong>gem install <a href="http://github.com/mojombo/erlectricity">erlectricity</a></strong>: <i>Erlectricity allows a Ruby program to receive and respond to Erlang messages sent over the Erlang binary protocol.</i></p>
+<h4><strong>Hello World from Erlang, through Ruby</strong></h4>
+<p>Erlectricity source provides a couple of great examples of interfacing Ruby and Erlang: <a href="http://github.com/mojombo/erlectricity/tree/fdfa626150604cbeeeae03436509781e117fc4e9/examples/gruff">echo server</a>, <a href="http://github.com/mojombo/erlectricity/tree/fdfa626150604cbeeeae03436509781e117fc4e9/examples/gruff">generating charts with Gruff</a>, and even <a href="http://github.com/mojombo/erlectricity/tree/fdfa626150604cbeeeae03436509781e117fc4e9/examples/tinderl">chatting with the Campfire API</a>. In our case, we're going to connect Ruby and Erlang to create a "<a href="http://twitter.com/igrigorik/status/1358682092">Hello World tweet</a>". To do this, we're going to use <a href="http://twitter.rubyforge.org/">John Nunemaker's twitter gem</a> to avoid building an API client in Erlang: </p>
+<p><a href="javascript:showme('5398_1');"> <b>> twitter-erl.rb</b></a>
+<div style=" background:white;" id=5398_1>
+<pre class="ruby"><span style="color:#CC0066; font-weight:bold;">require</span> <span style="color:#996600;">'rubygems'</span>
+<span style="color:#CC0066; font-weight:bold;">require</span> <span style="color:#996600;">'erlectricity'</span>
+<span style="color:#CC0066; font-weight:bold;">require</span> <span style="color:#996600;">'stringio'</span>
+<span style="color:#CC0066; font-weight:bold;">require</span> <span style="color:#996600;">'twitter'</span>
+&nbsp;
+receive <span style="color:#9966CC; font-weight:bold;">do</span> |f|
+  f.<span style="color:#9966CC; font-weight:bold;">when</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#ff3333; font-weight:bold;">:post</span>, <span style="color:#CC0066; font-weight:bold;">String</span><span style="color:#006600; font-weight:bold;">&#41;</span> <span style="color:#9966CC; font-weight:bold;">do</span> |msg|
+&nbsp;
+    <span style="color:#008000; font-style:italic;"># connect to twitter &amp; post Hello World</span>
+    id = <span style="color:#6666ff; font-weight:bold;">Twitter::Base</span>.<span style="color:#9900CC;">new</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#996600;">'username'</span>, <span style="color:#996600;">'pass'</span><span style="color:#006600; font-weight:bold;">&#41;</span>.<span style="color:#9900CC;">post</span><span style="color:#006600; font-weight:bold;">&#40;</span>msg<span style="color:#006600; font-weight:bold;">&#41;</span>.<span style="color:#9900CC;">id</span>
+    f.<span style="color:#9900CC;">send</span>!<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#ff3333; font-weight:bold;">:result</span>, <span style="color:#996600;">&quot;Tweet sent! Status id: #{id}&quot;</span><span style="color:#006600; font-weight:bold;">&#41;</span>
+&nbsp;
+    f.<span style="color:#9900CC;">receive_loop</span>
+  <span style="color:#9966CC; font-weight:bold;">end</span>
+<span style="color:#9966CC; font-weight:bold;">end</span>
+&nbsp;</pre>
+</div>
+<p>Our Ruby process will be invoked via Erlang and will process incoming messages by listening in the receive state. In this case, we will only pattern match on a 'post' request with String. Now the Erlang side:</p>
+<p><a href="javascript:showme('5398_2');"> <b>> twitter.erl</b></a>
+<div style=" background:white;" id=5398_2>
+<pre class="ruby">-<span style="color:#9966CC; font-weight:bold;">module</span><span style="color:#006600; font-weight:bold;">&#40;</span>twitter<span style="color:#006600; font-weight:bold;">&#41;</span>.
+-export<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#91;</span>hello_world/<span style="color:#006666;">0</span><span style="color:#006600; font-weight:bold;">&#93;</span><span style="color:#006600; font-weight:bold;">&#41;</span>.
+&nbsp;
+<span style="color:#9900CC;">hello_world</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#41;</span> -&gt;
+  Cmd = <span style="color:#996600;">&quot;ruby twitter-erl.rb&quot;</span>,
+  Port = open_port<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#123;</span>spawn, Cmd<span style="color:#006600; font-weight:bold;">&#125;</span>, <span style="color:#006600; font-weight:bold;">&#91;</span><span style="color:#006600; font-weight:bold;">&#123;</span>packet, <span style="color:#006666;">4</span><span style="color:#006600; font-weight:bold;">&#125;</span>, use_stdio, exit_status, binary<span style="color:#006600; font-weight:bold;">&#93;</span><span style="color:#006600; font-weight:bold;">&#41;</span>,
+  Payload = term_to_binary<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#006600; font-weight:bold;">&#123;</span>post, &lt;&lt;<span style="color:#996600;">&quot;Hello World! (from Erlang, through Ruby)&quot;</span>&gt;&gt;<span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#41;</span>,
+&nbsp;
+ % send command to Ruby script &amp; wait <span style="color:#9966CC; font-weight:bold;">for</span> response
+  port_command<span style="color:#006600; font-weight:bold;">&#40;</span>Port, Payload<span style="color:#006600; font-weight:bold;">&#41;</span>,
+&nbsp;
+  receive
+    <span style="color:#006600; font-weight:bold;">&#123;</span>Port, <span style="color:#006600; font-weight:bold;">&#123;</span>data, <span style="color:#CC00FF; font-weight:bold;">Data</span><span style="color:#006600; font-weight:bold;">&#125;</span><span style="color:#006600; font-weight:bold;">&#125;</span> -&gt;
+      <span style="color:#006600; font-weight:bold;">&#123;</span>result, Text<span style="color:#006600; font-weight:bold;">&#125;</span> = binary_to_term<span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#CC00FF; font-weight:bold;">Data</span><span style="color:#006600; font-weight:bold;">&#41;</span>,
+&nbsp;
+      % <span style="color:#CC0066; font-weight:bold;">print</span> out resulting tweet
+      io:<span style="color:#CC0066; font-weight:bold;">format</span><span style="color:#006600; font-weight:bold;">&#40;</span><span style="color:#996600;">&quot;~p~n&quot;</span>, <span style="color:#006600; font-weight:bold;">&#91;</span>Text<span style="color:#006600; font-weight:bold;">&#93;</span><span style="color:#006600; font-weight:bold;">&#41;</span>
+  <span style="color:#9966CC; font-weight:bold;">end</span>.
+&nbsp;</pre>
+</div>
+<p><div class='download-link'>
+							<a href='http://www.igvita.com/download.php?file=http://www.igvita.com/downloads/twitter-ruby-erl.zip'><img alt='Download' class='leftalign' src='http://www.igvita.com/wp-content/plugins/dBeautifier/icons/downloads.png' /></a>
+							<h4>
+								<a href='http://www.igvita.com/download.php?file=http://www.igvita.com/downloads/twitter-ruby-erl.zip'>twitter-ruby-erl.zip (Full source, connecting Ruby and Erlang)</a>
+							</h4><p>Downloads: 56 File Size: 0.9 KB </p>
+						</div></p>
+<p>The Erlang code is slightly longer, but very straightforward. We declare a hello_world function and open a byte-oriented port to the Ruby interpreter. From there, we send the command and block, waiting for the response. Now we can post <a href="<br />
+http://twitter.com/igrigorik/status/1358682092">our tweet</a>:</p>
+<blockquote><p>Eshell V5.6.5  (abort with ^G)<br />
+1> <strong>c(twitter).</strong><br />
+{ok,twitter}<br />
+2> <strong>twitter:hello_world().</strong><br />
+<<"Tweet sent! Status id: 1358682092">>
+</p></blockquote>
+<h4><strong>Polyglot future: Imperative + Declarative programming</strong></h4>
+<p>While a trivial one, this is an incredibly powerful example of polyglot programming. Languages such as Erlang, and functional / declarative programming in general, are definitely here to stay and will occupy an important architectural niche moving forward. However, one paradigm does not have to come at the cost of another, and in fact, it is most likely the combination of both OO and functional programming that will be the cornerstone of our future architectures and applications. </p>
+			</div>
+			<hr class="hide" />
+			<div class="secondary">
+				<h2>About this entry</h2>
+				<div class="featured">
+					<dl class="both">
+						<dt>Published:</dt>
+						<dd>20.03.09 / 7am</dd>
+					</dl>
+					<dl>
+						<dt>Category:</dt>
+						<dd><a href="http://www.igvita.com/category/ruby/" title="View all posts in Ruby" rel="category tag">Ruby</a></dd>
+					</dl>
+										<dl><dt>Tagged:</dt><dd>
+                        		<a href="http://www.igvita.com/tag/erlang/" rel="tag">erlang</a>, <a href="http://www.igvita.com/tag/polyglot/" rel="tag">polyglot</a>, <a href="http://www.igvita.com/tag/ruby/" rel="tag">Ruby</a>			</dd>
+                    </dl>
+					<br />
+            <br />
+      
+      					
+  <h2> Related Posts</h2>
+   <ul class="dates">
+       <li class="inverse"><a href="http://www.igvita.com/2007/09/28/managing-ec2-reservations-with-ruby/" class="inverse" rel="bookmark" title="Permanent Link: Managing EC2 Reservations with Ruby"><span class="date-white">28.09</span>  Managing EC2 Reservations with Ruby</a></li><li class="inverse"><a href="http://www.igvita.com/2005/12/24/happy-holidays/" class="inverse" rel="bookmark" title="Permanent Link: Happy Holidays!"><span class="date-white">24.12</span>  Happy Holidays!</a></li><li class="inverse"><a href="http://www.igvita.com/2007/05/15/distributed-ruby-workers-on-ec2/" class="inverse" rel="bookmark" title="Permanent Link: Distributed Ruby Workers on EC2"><span class="date-white">15.05</span>  Distributed Ruby Workers on EC2</a></li><li class="inverse"><a href="http://www.igvita.com/2008/09/22/high-performance-dns-for-the-cloud/" class="inverse" rel="bookmark" title="Permanent Link: High-Performance DNS for The Cloud"><span class="date-white">22.09</span>  High-Performance DNS for The Cloud</a></li><li class="inverse"><a href="http://www.igvita.com/2009/03/07/collaborative-swarm-computing-notes/" class="inverse" rel="bookmark" title="Permanent Link: Collaborative / Swarm Computing Notes"><span class="date-white">07.03</span>  Collaborative / Swarm Computing Notes</a></li>    </ul>
+	  <br />
+    <ul id="widget">
+    <li id="postrank" class="widget widget_postrank">
+<script type="text/javascript" src="http://api.postrank.com/static/widget-v2.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+	var options = {
+		"feed_hash": "421df2d86ab95100de7dcc2e247a08ab", // Unique feed identifier
+		"num": 6, // Number of top posts to display
+		"theme": "theDarkSide" // blueAndBlue, blackAndGray
+	}   
+	new PostRankWidget(options);
+//]]>
+</script>
+
+</li>
+  </ul>
+
+   <div>
+        <div style="float:left; width:42%;">
+            <a href="http://feeds.igvita.com/igvita"><img src="/wp-content/themes/igvita/images/rss-symbol.png" width="88" height="43" alt="Subscribe to igvita via RSS"/></a><br />
+            <a href="http://feeds.igvita.com/igvita"><img src="http://feeds.feedburner.com/~fc/igvita?bg=99dd00&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+        </div>
+        <div style="float:right; width:57%; padding-top:0px">
+            <img src="/wp-content/themes/igvita/images/email.png" width="105" height="43" alt="Subscribe to igvita via Email"/><br />
+            <form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com/fb/a/emailverifySubmit?feedId=532799', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+            <input type="text" style="width:100px; border: 1px solid #6b9a00; padding:3px; margin:0;font-size:11px;" value="email updates..." onclick="if(this.value==this.defaultValue)this.value='';" name="email"/>
+            <input type="hidden" value="http://feeds.feedburner.com/~e?ffid=532799" name="url"/>
+            <input type="hidden" value="igvita.com" name="title"/>
+            <input type="hidden" name="loc" value="en_US"/>
+            <input type="submit" value="Go" style="border:1px solid #6b9a00; background: #99dd00; padding:1px;" />
+            </form>
+        </div>
+  </div>
+
+
+
+
+ 
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- [END] #primary -->
+	
+	<hr class="hide" />
+	<div id="secondary">
+		<div class="inside">
+			
+							<div class="comment-head">
+					<h2>10 Comments</h2>
+					<span class="details"><a href='http://www.igvita.com/2009/03/20/ruby-polyglot-talking-with-erlang/feed/'>comments rss</a> | <a href="http://www.igvita.com/2009/03/20/ruby-polyglot-talking-with-erlang/trackback/">trackback uri</a> </span>
+				</div>
+						
+			
+<!-- You can start editing here. -->
+
+
+	<ol id="comments">
+
+			<li id="comment-178693">
+			<cite>
+								<span class="author"><a href='http://www.agaelebe.com.br' rel='external nofollow'><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/e7997218f62952608fb958fbd2e3b47d?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/></a><a href='http://www.agaelebe.com.br' rel='external nofollow'>Hugo</a></span>
+				<span class="date">20.03.09 / 8am</span>
+			</cite>
+			<div class="content">
+								<p>Yet another very interesting article!</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-178740">
+			<cite>
+								<span class="author"><a href='http://squishtech.com' rel='external nofollow'><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/9046f1681dc8375fd81b34799d5abd36?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/></a><a href='http://squishtech.com' rel='external nofollow'>Jeff Smick</a></span>
+				<span class="date">20.03.09 / 10am</span>
+			</cite>
+			<div class="content">
+								<p>Wow! I&#8217;d seen the erlectricity library, but never had time to play with it. Now that I&#8217;m actively working to learn Erlang, this is great! Thanks for the article Ilya.</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-178844">
+			<cite>
+								<span class="author"><a href='http://carlopecchia.eu/blog' rel='external nofollow'><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/7ec76fde95878f95d7ae2e23cd99533e?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/></a><a href='http://carlopecchia.eu/blog' rel='external nofollow'>Carlo Pecchia</a></span>
+				<span class="date">20.03.09 / 7pm</span>
+			</cite>
+			<div class="content">
+								<p>Great post, thanks!<br />
+I agree with you: OO and functional/declarative paradigm will run together. Maybe we should take a look at &#8220;Scala&#8221; too&#8230;</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-178851">
+			<cite>
+								<span class="author"><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/4f7bc9e515f9381269da206dd7698d54?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/>Christof TD</span>
+				<span class="date">20.03.09 / 8pm</span>
+			</cite>
+			<div class="content">
+								<p>Great post!<br />
+Hybrids are the way 2 go! Mix n&#8217; match. (I could imagine mixing in OCaml or Haskell as well.)<br />
+Aggregating specialized tools (where they are effective) is so powerful.</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-178856">
+			<cite>
+								<span class="author"><a href='http://sheysrebellion.net/blog' rel='external nofollow'><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/fcd5fd83fab01ac9302ab019e3867e76?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/></a><a href='http://sheysrebellion.net/blog' rel='external nofollow'>Shey</a></span>
+				<span class="date">20.03.09 / 8pm</span>
+			</cite>
+			<div class="content">
+								<p>Another great post</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-178958">
+			<cite>
+								<span class="author"><a href='http://greatnotion.net' rel='external nofollow'><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/5b5040033d94e7db0f1ba9041da7eb1d?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/></a><a href='http://greatnotion.net' rel='external nofollow'>KeyZee</a></span>
+				<span class="date">21.03.09 / 6am</span>
+			</cite>
+			<div class="content">
+								<p>Nice post, Ilya&#8230;I&#8217;ve been meaning to dive into Erlang, but I haven&#8217;t been able to find the time.  This might be the extra motivation that I needed.</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-179014">
+			<cite>
+								<span class="author"><a href='http://blarneyfellow.wordpress.com/2009/03/22/links-for-2009-03-21/' rel='external nofollow' class='url'>links for 2009-03-21 &laquo; Blarney Fellow</a></span>
+				<span class="date">21.03.09 / 12pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] Ruby Polyglot: Talking with Erlang - igvita.com (tags: concurrency erlang) [...]</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-179103">
+			<cite>
+								<span class="author"><a href='http://williamtozier.com/slurry/2009/03/22/links-for-2009-03-21' rel='external nofollow' class='url'>Notional Slurry &raquo; links for 2009-03-21</a></span>
+				<span class="date">21.03.09 / 6pm</span>
+			</cite>
+			<div class="content">
+								<p>[...] Ruby Polyglot: Talking with Erlang - igvita.com &quot;Turns out, Scott Fleckenstein and Tom Preston-Werner have already solved this problem for us, allowing bi-directional data exchange between Erlang and Ruby via Erlang Ports. As far as Erlang is concerned, this communication pattern is seen as direct communication with another Erlang process, which also means we can transparently invoke our Ruby interpreter whenever we need it! To get started, gem install erlectricity: Erlectricity allows a Ruby program to receive and respond to Erlang messages sent over the Erlang binary protocol.&quot; (tags: Erlang Ruby programming language scripting functional-programming concurrency gem Nudge) [...]</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-179465">
+			<cite>
+								<span class="author"><a href='http://me2day.net/kkung/2009/03/23#12:05:10' rel='external nofollow' class='url'>kkung's me2DAY</a></span>
+				<span class="date">22.03.09 / 3pm</span>
+			</cite>
+			<div class="content">
+								<p><strong>민영의 생각&#8230;</strong></p>
+<p>Ruby Polyglot: Talking with Erlang via 뜨거운 루비. 하앍하앍. 역시 내가 생각할 수 있는 것은 이미 나와 있다&#8230;.</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+			<li id="comment-179599">
+			<cite>
+								<span class="author"><img style='border:1px solid #BFBFBF; float:right; margin-left:10px;' src='http://www.gravatar.com/avatar/f3b0831608afa9ff99a59a94de79d15c?rating=X&amp;default=http://www.igvita.com/wp-content/themes/igvita/images/gravatar.png' alt='No Gravatar' width=50 height=50/>rhat</span>
+				<span class="date">24.03.09 / 2am</span>
+			</cite>
+			<div class="content">
+								<p>FYI erlang programmers, this does not appear to produce a linked-in port. That&#8217;s a good thing, since it won&#8217;t crash the runtime when it crashes. You may want to go and check for yourself to make certain though.</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+
+
+	
+	
+	</ol>
+
+ 
+
+
+		<div id="comment-form">
+				<h3 class="formhead">Have your say</h3>
+				<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>
+								<form action="http://www.igvita.com/wp-comments-post.php" method="post" id="commentform">
+								
+				<input type="text" name="author" id="author" value="" class="textfield" tabindex="1" /><label class="text">Name (required)</label><br />
+				<input type="text" name="email" id="email" value="" class="textfield" tabindex="2" /><label class="text">Email (required)</label><br />
+				<input type="text" name="url" id="url" value="" class="textfield" tabindex="3" /><label class="text">Website</label><br />
+				
+								
+				<textarea name="comment" id="comment" class="commentbox" tabindex="4"></textarea>
+				<div class="formactions">
+					
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+	<label for="subscribe">Notify me of follow up comments via e-mail</label>
+	</p>
+
+
+					<span style="visibility:hidden">Safari hates me</span>
+					<input type="submit" name="submit" tabindex="5" class="submit" value="Add your comment" />
+				</div>
+				<input type="hidden" name="comment_post_ID" value="296" />
+								</form>
+			</div>
+
+
+			
+					</div>
+	</div>
+<hr class="hide" />
+
+	<div id="ancillary">
+		<div class="inside">
+			<div class="block first">
+				<a href="http://www.twitter.com/igrigorik" title="Follow me on Twitter"><img src="/wp-content/themes/igvita/images/twitter_logo.gif" style="float:right;" /></a>
+<h2>Twitter Updates</h2>
+<div style="margin-top:-0.5em;" class="twitter">
+
+	<div id="twitter_div">
+		<ul id="twitter_update_list"></ul>
+	</div>
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/igrigorik.json?callback=twitterCallback2&count=5"></script>
+	<span class="read-on"><a href="http://www.twitter.com/igrigorik">follow igrigorik</a></span>
+</div>
+			</div>
+			
+			<div class="block">
+				<h2>Recently</h2>
+<ul class="dates">
+			<li><a href="http://www.igvita.com/2009/03/20/ruby-polyglot-talking-with-erlang/"><span class="date">20.03</span> Ruby Polyglot: Talking with Erlang </a></li>
+		<li><a href="http://www.igvita.com/2009/03/07/collaborative-swarm-computing-notes/"><span class="date">07.03</span> Collaborative / Swarm Computing Notes </a></li>
+		<li><a href="http://www.igvita.com/2009/03/03/collaborative-map-reduce-in-the-browser/"><span class="date">03.03</span> Collaborative Map-Reduce in the Browser </a></li>
+		<li><a href="http://www.igvita.com/2009/02/27/activerecord-optimization-with-scrooge/"><span class="date">27.02</span> ActiveRecord Optimization with Scrooge </a></li>
+		<li><a href="http://www.igvita.com/2009/02/13/tokyo-cabinet-beyond-key-value-store/"><span class="date">13.02</span> Tokyo Cabinet: Beyond Key-Value Store </a></li>
+		<li><a href="http://www.igvita.com/2009/02/04/ruby-19-internals-ordered-hash/"><span class="date">04.02</span> Ruby 1.9 Internals: Ordered Hash </a></li>
+		<li><a href="http://www.igvita.com/2009/01/27/ruby-swarms-visualizing-rails-git/"><span class="date">27.01</span> Ruby Swarms: Visualizing Rails &#038; Git </a></li>
+		<li><a href="http://www.igvita.com/2009/01/15/bridging-mri-jruby-rubinius-with-ffi/"><span class="date">15.01</span> Bridging MRI, JRuby &#038; Rubinius with FFI </a></li>
+		<li><a href="http://www.igvita.com/2008/12/27/scalable-datasets-bloom-filters-in-ruby/"><span class="date">27.12</span> Scalable Datasets: Bloom Filters in Ruby </a></li>
+		<li><a href="http://www.igvita.com/2008/12/11/ruby-ast-for-fun-and-profit/"><span class="date">11.12</span> Ruby AST for Fun and Profit </a></li>
+		<li><a href="http://www.igvita.com/2008/12/02/zero-downtime-restarts-with-haproxy/"><span class="date">02.12</span> Zero-Downtime Restarts with HAProxy </a></li>
+		<li><a href="http://www.igvita.com/2008/11/13/concurrency-is-a-myth-in-ruby/"><span class="date">13.11</span> Concurrency is a Myth in Ruby </a></li>
+	</ul>
+			</div>
+			
+			<div class="block">
+				<h2> Amazon Review </h2>
+
+<div class="amazon">
+
+	
+		<a href="http://www.amazon.com/exec/obidos/ASIN/0060523808/igvitacom-20?tag=igvitacom-20">
+			<img class="cover" src="http://ecx.images-amazon.com/images/I/515HFJX642L.jpg" width="59" height="90" alt="Who Says Elephants Can't Dance?" />
+		</a>
+
+		<p><a href="http://www.amazon.com/exec/obidos/ASIN/0060523808/igvitacom-20?tag=igvitacom-20">Who Says Elephants Can't Dance?</a> <span class="separator">by</span> <span class="author">Louis V. Gerstner</span></p>
+
+		<p><img src="/wp-content/themes/igvita/images/stars/stars-5-0.gif" valign="middle" />
+			&nbsp; &nbsp; <span class="date"> Big Blue comeback</span><br />
+			March 21, 2009		</p>
+
+		<span class="read-on"><a href="http://www.amazon.com/gp/cdp/member-reviews/A2MGUNKW1ANLT5">read review</a></span>
+
+
+	
+</div>
+
+
+<h2>My <span class="flickrblue">Flick</span><span class="flickrpink">r</span> Photos</h2>
+
+	<div class="flickr">	
+		<a href="http://www.flickr.com/photos/ig/3338038433/" title="Spring is near"><img src="http://farm4.static.flickr.com/3409/3338038433_a14eeb4a76_s.jpg" alt="Spring is near" /></a><a href="http://www.flickr.com/photos/ig/3192234533/" title="Chillin'"><img src="http://farm4.static.flickr.com/3485/3192234533_046f1770ce_s.jpg" alt="Chillin'" /></a><a href="http://www.flickr.com/photos/ig/3193071904/" title="Polar bears in Quebec"><img src="http://farm4.static.flickr.com/3497/3193071904_ff33350156_s.jpg" alt="Polar bears in Quebec" /></a><a href="http://www.flickr.com/photos/ig/3192222069/" title="Ice shot glasses!"><img src="http://farm4.static.flickr.com/3109/3192222069_fd04e99908_s.jpg" alt="Ice shot glasses!" /></a><a href="http://www.flickr.com/photos/ig/3192217041/" title="Refreshing drink anyone?"><img src="http://farm4.static.flickr.com/3377/3192217041_74a328acf8_s.jpg" alt="Refreshing drink anyone?" /></a><a href="http://www.flickr.com/photos/ig/3192211909/" title="-20C in the Tropics"><img src="http://farm4.static.flickr.com/3484/3192211909_36c4a175f4_s.jpg" alt="-20C in the Tropics" /></a>				
+		<span class="read-on"><a href="http://flickr.com/photos/ig/">view gallery</a></span>
+</div>	
+
+			</div>
+			
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- [END] #ancillary -->	
+
+<hr class="hide" />
+	<div id="footer">
+		<div class="inside">
+						<p class="copyright"><a href="http://wordpress.org"><img src="/wp-content/themes/igvita/images/wordpress.gif" alt="wordpress" valign="middle" /></a> &nbsp;&nbsp;Copyright &copy; 2005-2009 Ilya Grigorik</p>
+			<p class="attributes"><a href="http://www.igvita.com/feed/"><img src="/wp-content/themes/igvita/images/rss.gif" style="vertical-align:middle;"/>&nbsp; Entries RSS</a> <a href="http://www.igvita.com/comments/feed/"><img src="/wp-content/themes/igvita/images/rss.gif" style="vertical-align:middle;"/>&nbsp; Comments RSS</a></p>
+		</div>
+	</div>
+	<!-- [END] #footer -->	
+
+	<!-- 48 queries. 1.532 seconds. -->
+				<script type="text/javascript">
+			//<![CDATA[
+			/* Replacement calls. Please see documentation for more information. */
+			
+			if(typeof sIFR == "function"){
+		sIFR.replaceElement(".primary h3 span", "http://www.igvita.com/wp-content/plugins/sifr/human.swf", "#555555", "#555555", "#0044AA", "#FFFFFF", 0, 0, 0, 0, "", "", "transparent");
+sIFR.replaceElement(".primary h2 span", "http://www.igvita.com/wp-content/plugins/sifr/human.swf", "#555555", "#333333", "#0044AA", "#FFFFFF", 0, 0, 0, 0, "", "", "transparent");
+sIFR.replaceElement(".primary h4 strong", "http://www.igvita.com/wp-content/plugins/sifr/human.swf", "#333333", "#000066", "#0044AA", "#FFFFFF", 0, 0, 0, 0, "", "", "transparent");
+sIFR.replaceElement(".primary h1 span", "http://www.igvita.com/wp-content/plugins/sifr/human.swf", "#555555", "#000066", "#0044AA", "#FFFFFF", 0, 0, 0, 0, "", "", "transparent");
+sIFR.replaceElement(".primary .lifestream_date span", "http://www.igvita.com/wp-content/plugins/sifr/human.swf", "#333333", "#000066", "#0044AA", "#FFFFFF", 0, 0, 0, 0, "", "", "transparent");
+	
+			};
+			
+			//]]>
+			</script>
+		
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={
+qacct:"p-1eZUZ-mfpiyU2"
+};
+</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-1eZUZ-mfpiyU2.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+</body>
+</html>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">_uacct = "UA-71196-3"; urchinTracker();</script>
+<script type="text/javascript" src="http://include.reinvigorate.net/re_.js"></script>
+<script type="text/javascript">//<![CDATA[
+re_("1k7q7-i0d7gsq187");
+//]]>
+</script>
+
+<!-- Dynamic Page Served (once) in 1.531 seconds -->
+<!-- Cached page generated by WP-Super-Cache on 2009-03-24 11:08:47 -->
+<!-- super cache -->

@@ -1,0 +1,1245 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+
+<!--
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+-->
+
+
+
+<title>Learning Ruby | O'Reilly Media</title>
+<meta name="subtitle" content="The Language that Powers Rails" />
+<meta name="object.type" content="book" />
+<meta name="book.title" content="Learning Ruby" />
+<meta name="book.author" content="Michael Fitzgerald" />
+<meta name="book.isbn" content="9780596529864" />
+<meta name="book.year" content="2007" />
+<meta name="book.link" content="http://oreilly.com/catalog/9780596529864/" />
+<meta name="book.image" content="http://oreilly.com/catalog/covers/9780596529864_bkt.gif" />
+<meta name="book.tags" content="oreilly,ruby" />
+<meta name="target" content="Learning Ruby, 0596529864, 0-596-52986-4, 9780596529864" />
+<meta name="status" content="100" />
+<meta name="reference" content="9780596529864" />
+<meta name="isbn" content="0596529864" />
+<meta name="ean" content="9780596529864" />
+<meta name="graphic" content="/catalog/covers/9780596529864_sm.gif" />
+<meta name="graphic_medium" content="/catalog/covers/9780596529864_bkt.gif" />
+<meta name="graphic_large" content="/catalog/covers/9780596529864_cat.gif" />
+<meta name="safari" content="Safari" />
+<meta name="book_title" content="Learning Ruby" />
+<meta name="author" content="Michael Fitzgerald" />
+<meta name="keywords" content="Learning Ruby, Ruby,Rails,objects,beginner,regular expressions,regex,data structures,exceptions,Tk,XML,metaprogramming, 0-596-52986-4, 0596529864, Michael Fitzgerald, Michael Fitzgerald,oreilly, O'Reilly, o'reilly" />
+<meta name="description" content="You don't have to know everything about a car to drive one, and you don't need to know everything about Ruby to start programming with it. Written for both experienced and new programmers alike, Learning Ruby is a just-get-in-and-drive book -- a hands..." />
+<meta name="date" content="May. 14, 2007" />
+<meta name="search_date" content="2007-05-14" />
+<meta name="publisher" content="O'Reilly" />
+<meta name="series" content="" />
+<meta name="Category" content="Books" />
+	<meta name="edition" content="1" />
+	<meta name="edition_full" content="First Edition" />
+	<meta name="sr" content="271" />
+<meta name="SubCategory" content="Format~Format~Format~Publisher" />
+<meta name="SubCategory_Value" content="Print~Ebook~Safari Books Online~O'Reilly" />
+<meta name="bookeditionsorder" content="1st Edition" />
+<meta name="bookeditionsreference" content="9780596529864" />
+
+
+
+
+<!-- common javascript, css and hitbox -->
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/all.css?2" type="text/css"/>
+
+<script language="JavaScript" type="text/javascript" src="http://www.oreillynet.com/engine.js"></script>
+
+<script language="JavaScript" type="text/javascript" src="http://www.oreillynet.com/common.js"></script>
+
+
+<script type="text/javascript" src="http://content.atomz.com/static/ac/1.0/autocomplete.js"></script>
+<link rel="stylesheet" type="text/css" href="http://content.atomz.com/pb000035c5/publish/autocompletestyles.css" />
+
+
+ <!--WEBSIDESTORY CODE HBX1.0 (Universal)-->
+    <!--COPYRIGHT 1997-2004 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com / privacy-->
+    <script language="javascript" type="text/javascript">
+    var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+    var hbx=_hbEvent("pv");hbx.vpc="HBX0100u";hbx.gn="ehg-oreilly.hitbox.com";
+
+    //"BCB: oreilly.com,/b/2934, DM52032830WV";
+
+    hbx.acct="DM52032830WV;DM520404M4ZR"; //ACCOUNT NUMBER(S)
+    hbx.pn="PUT+PAGE+NAME+HERE"; //PAGE NAME(S)
+    hbx.mlc="/b/2934;/OReilly/b/2934"; //MULTI-LEVEL CONTENT CATEGORY
+    hbx.pndef="title"; //DEFAULT PAGE NAME
+    hbx.ctdef="full"; //DEFAULT CONTENT CATEGORY
+
+    hbx.lt="auto"; //LINK TRACKING 
+    hbx.dlf="n"; //DOWNLOAD FILTER
+    hbx.dft="n"; //DOWNLOAD FILE NAMING
+    hbx.elf="n"; //EXIT LINK FILTER
+
+    //SEGMENTS AND FUNNELS
+    hbx.seg=""; //VISITOR SEGMENTATION
+    hbx.fnl=""; //FUNNELS
+
+    //CAMPAIGNS
+    hbx.cmp=""; //CAMPAIGN ID
+    hbx.cmpn="CMP"; //CAMPAIGN ID IN QUERY
+    hbx.hra=""; //RESPONSE ATTRIBUTE
+    hbx.hqsr=""; //RESPONSE ATTRIBUTE IN REFERRAL QUERY
+    hbx.hqsp="ATT"; //RESPONSE ATTRIBUTE IN QUERY
+    hbx.hlt=""; //LEAD TRACKING
+    hbx.hla=""; //LEAD ATTRIBUTE
+    hbx.gp=""; //CAMPAIGN GOAL
+    hbx.gpn=""; //CAMPAIGN GOAL IN QUERY
+    hbx.hcn=""; //CONVERSION ATTRIBUTE
+    hbx.hcv=""; //CONVERSION VALUE
+    hbx.cp="null"; //LEGACY CAMPAIGN
+    hbx.cpd=""; //CAMPAIGN DOMAIN
+
+    //CUSTOM VARIABLES
+    hbx.ci="";//CUSTOMER ID
+    hbx.hc1="";//CUSTOM 1
+    hbx.hc2="";//CUSTOM 2
+    hbx.hc3="";//CUSTOM 3
+    hbx.hc4="";//CUSTOM 4 
+    hbx.pec="";//ERROR CODES
+    </script><script language="javascript1.1" defer="defer"  src="http://www.oreillynet.com/hbx.js" type="text/javascript"></script><!--//-->  
+    <!-- END WEBSIDESTORY CODE  -->
+ 
+
+ 
+<script type="text/javascript" src="http://www.oreillynet.com/tabber.js"></script>
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/store2.css?2" />
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreilly.com/styles/catalog.css" />
+
+<link rel="stylesheet" rev="stylesheet" href="http://catalog.oreilly.com/buy_buttons.css" />
+
+<link rel="stylesheet" rev="stylesheet" href="http://www.oreillynet.com/styles/tabs.css" media="screen">
+<link rel="stylesheet" rev="stylesheet"  href="http://www.oreillynet.com/styles/tabs-print.css" media="print">
+
+
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function checkBookWrap(bookList) {
+	if (document.getElementById) {
+                if ( document.getElementById(bookList) ) {
+		var pList = document.getElementById(bookList);
+		var bookRowPos = 0;
+		
+		// For the book list, run through each node.
+		for (var i = 0; i < pList.childNodes.length; i++) {
+			listObj = pList.childNodes[i];
+			
+			// If the childNode has no value (it's probably an empty text node)...
+			if (listObj.childNodes[0] != null) {
+				// Find the position of the book list node.
+				var pos = findPos(pList.childNodes[i]);
+				
+				// If the position of the book is below the last one...
+				if (pos[1] > bookRowPos) {
+					// Clear left so this node jumps to the next row.
+					if (pList.childNodes[i].setAttribute) {
+						//Create a new list element
+						var spacerLi = document.createElement("LI");
+						spacerLi.style.clear = "left";
+						
+						//Insert the new list element before the current one.
+						pList.insertBefore(spacerLi, pList.childNodes[i]);
+						//Adds one to "i" because a new node was inserted.
+						i++;
+						
+						// Find the new position of this node.
+						pos = findPos(pList.childNodes[i]);
+						// Replace bookRowPos with the new position.
+						bookRowPos = pos[1];
+					}
+				}
+			}
+                        }
+		}
+	}
+}
+
+// Finds the distance of the object from the left and top of the window.
+function findPos(obj) {
+	var curleft = curtop = 0;
+	if (obj.offsetParent) {
+		curleft = obj.offsetLeft
+		curtop = obj.offsetTop
+		while (obj = obj.offsetParent) {
+			curleft += obj.offsetLeft
+			curtop += obj.offsetTop
+		}
+	}
+	return [curleft,curtop];
+}
+
+function wopen(url, name, w, h)
+{
+// Fudge factors for window decoration space.
+ // In my tests these work well on all platforms & browsers.
+w += 58;
+h += 130;
+ var win = window.open(url,
+  name,
+  'width=' + w + ', height=' + h + ', ' +
+  'location=no, menubar=no, ' +
+  'status=no, toolbar=no, scrollbars=no, resizable=no');
+ win.resizeTo(w, h);
+ win.focus();
+}
+// -->
+</script>
+
+</head>
+<body onload="setMenu();checkBookWrap('booklist1');checkBookWrap('booklist2');" id="store">
+
+
+<div id="page">
+
+
+<div id="header" class="noindex">
+
+<script language="JavaScript" type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/assets/js/common.js"></script>
+
+<div id="logo">
+<a href="http://oreilly.com">
+<img alt="O'Reilly" src="http://oreilly.com/images/oreilly/oreilly.gif"/>
+</a>
+</div>
+
+
+<ul>
+
+<li><a href="https://members.oreilly.com/" class="acct">My Account</a></li>
+<li><a href="https://epoch.oreilly.com/shop/cart.orm" class="cart">View Cart</a></li>
+</ul>
+<span id="animal">
+</span>
+</div><!-- /#header -->
+
+
+<div id="nav" class="noindex">
+<ul>
+<li><a href="http://oreilly.com/">Home</a></li>
+<li><a href="http://community.oreilly.com/">Community</a></li>
+<li class="nav_selected"><a href="http://oreilly.com/store/">Books</a></li>
+<li><a href="http://safari.oreilly.com/?cid=orm-nav-global">Safari Books Online</a></li>
+<li><a href="http://conferences.oreillynet.com/">Conferences</a></li>
+<li><a href="http://training.oreilly.com/">Training</a></li>
+<li><a href="http://www.oreillyschool.com/">School of Technology</a></li>
+<li><a href="http://oreilly.com/about/">About</a></li>
+</ul>
+</div><!-- /#nav -->
+
+<div id="subnav" class="noindex">
+<ul>
+<li>
+<a href="http://oreilly.com/store/complete.html">Complete List</a></li>
+
+<li>
+<a href="http://oreilly.com/store/bestsellers.html">Bestsellers</a></li>
+
+<li>
+<a href="http://oreilly.com/store/newreleases.html">New Releases</a></li>
+
+<li>
+<a href="http://oreilly.com/roughcuts/">Rough Cuts</a></li>
+
+<li>
+<a href="http://oreilly.com/store/upcoming.html">Upcoming Titles</a></li>
+
+<li>
+<a href="http://oreilly.com/ebooks">Ebooks</a></li>
+
+<li>
+<a href="http://oreilly.com/store/publisher.html">By Publisher</a></li>
+
+<li>
+<a href="http://oreilly.com/store/series.html">By Series</a></li>
+
+<li>
+<a href="http://oreilly.com/store/outofprint.html">Out of Print</a></li>
+
+<li>
+<a href="http://oreilly.com/store/order.html">Order Info</a></li>
+</ul>
+</div><!-- /#subnav -->
+
+<!-- new search box -->
+
+<div id="search-box">
+ 
+<form method="get" action="http://search.oreilly.com" id="search-form" name="searchfield">
+<fieldset>
+ <span id="search-title" style="color:#474747">Search</span>
+                    <span id="search-input">
+                        <span id="search-input-top">
+                            <span id="search-input-bot">
+                                <span id="search-field"><input style="//height: 25px;" id="q" name="q" type="text" maxlength="64" accesskey="s" value="" /></span>
+                                <span id="search-button"><input type="image" name="submit" src="/images/oreilly/search_bar_btn.gif" alt="Submit" onclick="return searchverif();" /></span>
+                                <span class="clear"></span>
+                            </span>
+   
+                            <div id="autocomplete"></div>
+</span>
+                    </span>
+                                <script type="text/javascript" src="http://content.atomz.com/pb000035c5/publish/autocompletelist.js"></script>
+                     
+                    <span id="search-tips"><a href="http://www.oreillynet.com/search/tips.csp" target="_blank">Search Tips</a></span>
+                </fieldset>
+            </form><br clear="all" />
+        </div><!-- /#search-box -->
+
+
+
+<!-- begin content -->
+<!-- print.view -->
+
+<div id="content_store">
+
+
+<!-- TEMP promotion actions code -->
+<div id="actions2">
+
+<!-- ########## Reg Books ########### -->
+
+
+
+
+<!-- ######### EBooks ######### -->
+
+
+
+<script src="http://catalog.oreilly.com/catalog/9780596529864/widgets/buy_buttons.js" type="text/javascript"></script>
+
+
+<div class="tellfriend" align="center">
+<img src="http://oreilly.com/images/icons/envelope.gif" width="18" height="11" alt="Envelope" align="absbottom" /> <a href="http://oreilly.com/catalog/email_page.csp?nick=9780596529864">Tell a friend</a>
+</div> <!-- tellfriend -->
+
+
+
+
+
+<!-- ########## Sitepoint Kits  ########### -->
+
+
+
+
+<!-- ########## POD Books no book button ########### -->
+
+
+
+
+<!-- ############### DVDs ############# -->
+
+
+
+
+<!-- ############### TOC Keynote Videos ############# -->
+
+
+
+
+
+<!-- ############### Out of Print OOP ############# -->
+
+
+
+
+
+
+<!-- ############## PDFs / Short Cuts ############# -->
+
+
+
+
+<!-- ############# Rough Cuts ########## -->
+
+
+
+
+
+<!-- ############ MAKE ########### -->
+
+
+
+
+<!-- ######## CRAFT  ###########-->
+
+
+<!-- ######### END of all catalog pages ######### -->
+
+</div> <!-- /#actions -->
+
+<a name="top"></a>
+<h1 class="book-title">
+Learning Ruby
+
+</h1>
+
+
+<span class="subtitle">The Language that Powers Rails</span>
+
+
+
+<!--
+<csfield name="subtitle" before="<span class='subtitle'>" after="</span>">
+-->
+<p class="book-details">
+
+By <span style="white-space: nowrap;"><a href="http://www.oreillynet.com/pub/au/1365">Michael Fitzgerald</a></span><br />
+
+
+
+
+
+
+
+
+May 2007
+
+
+
+
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+<!-- new for DVD -->
+
+Pages: 255 <br />
+
+
+<!-- new book details here -->
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ISBN 10: 0-596-52986-4 | 
+ISBN 13: 9780596529864<br />
+
+
+<!-- Press Releases -->
+
+
+
+
+<!-- end Press Releases -->
+
+
+
+
+<!-- end moved book details -->
+
+<!-- TEMP Art book -->
+
+
+
+
+<img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_on.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_off.gif" alt="star" align="absbottom" border="0" height="17" width="18"><img src="/images/icons/star_off.gif" alt="star" align="absbottom" border="0" height="17" width="18"> <span class="details">(<a href="#rr">Average of 8 Customer Reviews</a>)</span>
+
+
+
+ <!-- TEMP Art book -->
+
+</p>
+
+
+
+
+
+
+
+
+<p>
+
+<!-- Buy 2 Get 1 Free -->
+<a href="http://www.oreilly.com/oreilly/cs/b2g1f.html" onmouseover="MM_swapImage('Buy 2 Get 1 Free','','/images/oreilly/b2g1f-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/b2g1f-button-off.gif" alt="Buy 2 Get 1 Free" name="Buy 2 Get 1 Free" style="padding:0;margin:0;" id="b2g1f" /></a>
+
+
+<a href="http://www.oreilly.com/news/freeshipping_0703.html" onmouseover="MM_swapImage('Free Shipping','','/images/oreilly/free_shipping-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/free_shipping-button-off.gif" alt="Free Shipping" name="Free Shipping" style="padding:0;margin:0;" id="freeshipping" /></a><a href="http://www.oreilly.com/oreilly/cs/guarantee.csp" onmouseover="MM_swapImage('Guarantee','','/images/oreilly/guarantee-button-on.gif',1)" onmouseout="MM_swapImgRestore()"><img src="/images/oreilly/guarantee-button-off.gif" alt="Guarantee" name="Guarantee" style="padding:0;margin:0;" id="guarantee" /></a></p>
+
+
+
+
+<!-- TEMP for Art book -->
+
+
+<span class="book-subtitle">Description</span>
+
+<p class="book-details">You don't have to know everything about a car to drive one, and you don't need to know everything about Ruby to start programming with it. Written for both experienced and new programmers alike, <em>Learning Ruby</em> is a just-get-in-and-drive book -- a hands-on tutorial that offers lots of Ruby programs and lets you know how and why they work, just enough to get you rolling down the road.
+<br />
+<a href="#top" onclick="toggleSheet('fulldesc'); return true" id="fulldescButton" class="rollup">Full Description</a>
+
+</p>
+
+<div id="fulldesc">You don't have to know everything about a car to drive one, and you don't need to know everything about Ruby to start programming with it. Written for both experienced and new programmers alike, <em>Learning Ruby</em> is a just-get-in-and-drive book -- a hands-on tutorial that offers lots of Ruby programs and lets you know how and why they work, just enough to get you rolling down the road.<br />
+<br />
+Interest in Ruby stems from the popularity of Rails, the web development framework that's attracting new devotees and refugees from Java and PHP. But there are plenty of other uses for this versatile language. The best way to learn is to just try the code! You'll find examples on nearly every page of this book that you can imitate and hack. Briefly, this book:<ul>
+<li>Outlines many of the most important features of Ruby</li>
+<li>Demonstrates how to use conditionals, and how to manipulate strings in Ruby. Includes a section on regular expressions</li>
+<li>Describes how to use operators, basic math, functions from the Math module, rational numbers, etc.</li>
+<li>Talks you through Ruby arrays, and demonstrates hashes in detail</li>
+<li>Explains how to process files with Ruby</li>
+<li>Discusses Ruby classes and modules (mixins) in detail, including a brief introduction to object-oriented programming (OOP)</li>
+<li>Introduces processing XML, the Tk toolkit, RubyGems, reflection, RDoc, embedded Ruby, metaprogramming, exception handling, and other topics</li>
+<li>Acquaints you with some of the essentials of Rails, and includes a short Rails tutorial.</li>
+</ul>
+Each chapter concludes with a set of review questions, and appendices provide you with a glossary of terms related to Ruby programming, plus reference material from the book in one convenient location. If you want to take Ruby out for a drive, <em>Learning Ruby</em> holds the keys.</div>
+
+
+<div style="clear:left;"></div>
+
+ <!-- TEMP for Art book -->
+
+<!-- AK here -->
+<!-- #### AK Begin #### -->
+
+
+
+<hr>
+
+<div style="clear:right;"></div>
+
+<!--
+<div class="recommended_div">
+-->
+
+
+<a id="akAPI"></a>
+
+<script type="text/javascript">
+    var akApiKey = 'RecEngine-49CCF850-02C7-B730-5489-DB7D929405CD';
+
+    var akTarget = 'http://oreilly.com/catalog/9780596529864';
+    var akDescription = 'format: print, ebook, ';
+
+
+    
+    var akItemTitle = 'Learning Ruby,';
+    var akThumbnailUrl = 'http://oreilly.com/catalog/covers/9780596529864_bkt.gif';
+    var akTargetType = 'book';
+    var akRegion = 'catalog';
+    var akIntent = 'VIEW';
+    var _akOurPrice ='34.99';
+    var akKeywords=' ean:9780596529864.BOOK';
+
+
+
+
+
+
+    var akScript = document.createElement('script');
+    akScript.setAttribute('src','http://api.aggregateknowledge.com/2007/01/15/js/' + (new Date()).valueOf() % 3600000 + '.js');
+    document.getElementsByTagName('head')[0].appendChild(akScript);
+</script>
+
+
+<!--
+
+</div>
+-->
+
+<div style="clear:left;"></div>
+
+
+<!-- ########## AK end ####### -->
+
+
+
+ 
+
+<hr />
+
+<!-- TEMP for Art book -->
+
+<a name="rr"></a>
+<br />
+<span class="book-subtitle">Featured customer reviews</span>
+
+
+
+
+<p><a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_disc/19932&x-lr2=b/2934&x-t=rr_create.form"><img src="/images/button_review.gif" border="0" width="116" height="20" alt="Write a Review" /></a></p>
+
+
+<br />
+
+
+
+
+
+
+<span class="headline">A good introduction, with a few annoying errors</span>, &nbsp;<em>June 02 2008</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Forrest
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/96158&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/96158">View</a>]<br /><br />
+Overall, this is a very good introduction to the Ruby language.<br />
+<br />
+There are, however, a few annoying errors (some reflected in the user-contributed Errata) that can throw a new user off.  In particular, he doesn't often explain some of the functions he uses like "p" and its significance to other similar functions, which can be confusing.<br />
+<br />
+Hopefully a second, expanded edition is in the works that will have these corrections and more material for the new user to learn from.<br />
+<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">Read the description and you'll get what you want from this book</span>, &nbsp;<em>January 31 2008</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Matt Polito
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/94859&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/94859">View</a>]<br /><br />
+<i>Learning Ruby</i> is exactly what the title says. This book offers a great 'introduction' to Ruby as a fun, powerful language. Now I would say that as a Ruby user, I'm not quite advanced but not really a beginner.&nbsp; I would have to say that this book is definitely catered to someone very new to the Ruby world. The books author, Michael Fitzgerald, uses a very easy to read style of writing that, to me, made this read far easier than a normal technical book. He uses this same easy to follow/read style in Ruby Pocket Reference (http://www.oreilly.com/catalog/9780596514815/?CMP=AK)  and Learning XSLT (http://www.oreilly.com/catalog/learnxslt/index.html)  as well. <br><br>Inside you will find small easy to digest chapters that give a quick explanation on what you'll need to know such as: blocks, arrays, loops, functions. The basic stuff that will lay the groundwork. I believe that the books description may be the most accurate depiction of this book. It does not lie about it's intent. Going in you will know that this is a book that will show you how to get started and really primes you for other more in-depth books (The Ruby Way).<br><br>Personally I didn't really understand why at the end of the book you get an extremely brief introduction to Rails (http://www.rubyonrails.org) . The only reason I think is because on the cover you get a tagline of 'The Language That Powers Rails.' So they kind of needed to put something in there. That is really the only grief I found with the book.&nbsp; While doing some searching for other reviews of this book... I found that many people didn't like it, but I truly believe that those people may have already been using Ruby for a bit.&nbsp; Then of course this book would seem like a waste. It is what it is and that's a beginner's introduction.<br><br>Rated: *** out of 5<br /><br /><br />
+
+
+
+
+<a href="/pub/au/1365"><img src="/images/people/weblogs/mike_fitzgerald.jpg" width="50" class="aleft" alt="Michael Fitzgerald photo" border="0" /></a>
+
+
+<span class="headline">Re: Good, but buggy</span>, &nbsp;<em>January 09 2008</em><br />
+
+Submitted by 
+<a href="http://www.oreillynet.com/pub/au/1365">Michael Fitzgerald</a> | 
+<a href="http://oreilly.com/badges.html" target="popup" onclick="javascript:window.open('http://oreilly.com/badges.html', 'popup', 'width=300, height=300');"><img title="O'Reilly Author" src="/images/badge_author.gif" alt="O'Reilly Author" width="14" height="14" style="padding-right:5px;margin-bottom:-3px;" /></a><a href="http://oreilly.com/badges.html" target="popup" onclick="javascript:window.open('http://oreilly.com/badges.html', 'popup', 'width=300, height=300');"><img title="O'Reilly Blogger" src="/images/badge_blogger.gif" alt="O'Reilly Blogger" width="14" height="14" style="padding-right:5px;margin-bottom:-3px;" /></a>
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/94540&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/94540">View</a>]<br /><br />
+I am not sure what you mean by this: "...the requirement of parenthesis to arguments that appeared recently." To discuss this directly, feel free to contact me via http://www.oreillynet.com/pub/au/1365. <br />
+<br />
+<br />
+<br /><br />
+<p><a href="#rr" onclick="toggleSheet('reviews'); return true" id="reviewsButton" class="rollup">Read all reviews</a></p>
+
+<div id="reviews">
+<br />
+
+
+
+
+<span class="headline">I want my money back</span>, &nbsp;<em>January 09 2008</em><br />
+
+Submitted by Anonymous Reader &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/94539&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/94539">View</a>]<br /><br />
+Thank you. These lines will be replaced with the following in the next edition or printing:<br />
+<br />
+r1 = rand(6) + 1 <br />
+r2 = rand(6) + 1 <br />
+total = r1 + r2<br />
+<br />
+Thanks to Adrián Mugnolo of Buenos Aires for this improvement. It should have been obvious to me. Feel free to contact me Shiro directly through my author page:<br />
+<br />
+http://www.oreillynet.com/pub/au/1365<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">I want my money back</span>, &nbsp;<em>January 01 2008</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+ShiroNanami
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/94410&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/94410">View</a>]<br /><br />
+When you have code like this:<br />
+<br />
+[An example of rolling 2 dices]<br />
+r_1 = rand(6); r_2 = rand(6)<br />
+r1 = r1>0?r_1:1; r2 = r2>0?r_2:6<br />
+<br />
+And a comment like this:<br />
+"...a little fancy footwork to make sure it does not return 0..."<br />
+<br />
+These are signs that you just got duped. <br />
+<br />
+Obviously the author isn't well-versed in Ruby.<br />
+<br />
+No feedback, lots of errors, low on technical.<br />
+<br />
+More importantly, this thin book has a price of a THICK book.<br />
+<br />
+<br /><br /><br />
+
+
+
+
+<span class="headline">Good, but buggy</span>, &nbsp;<em>October 02 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by Anonymous Reader &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/93151&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/93151">View</a>]<br /><br />
+I agree with a previous poster, there are several syntactical (and logical) bugs here.  One of them doesn't take into account the requirement of parenthesis to arguments that appeared recently.<br />
+<br />
+The lack of response to the bug reports is a bit of a turnoff, considering we paid for the book.<br />
+<br />
+Also, though the book says this is available for free online for 30 days; when I checked, it was not (that's false advertising).<br />
+<br />
+<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">Should be titled: Learning Ruby *Fast*</span>, &nbsp;<em>October 02 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Scott Schram
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/93145&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/93145">View</a>]<br /><br />
+Michael Fitzgerald directs his book "Learning Ruby" to two audiences:<br />
+<br />
+* "experienced programmers who want to learn Ruby"<br />
+<br />
+For this audience, the book excels.  The author suggests that experienced programmers "read the code, skim the explanations as needed".  Ruby syntax is very readable, so this works very well.  An experienced programmer could learn Ruby in about a day using this technique.  You won't know every intricacy of the Ruby language, but you'll know enough to start reading and writing in the real world and where to look for more information.<br />
+<br />
+* "new programmers who want to learn to program"<br />
+<br />
+I think most new programmers would be comfortable with more explanation than this book provides.  However, the examples are small, and with some hands-on using Ruby's interactive interpreter (irb) it might work for some.<br />
+<br />
+Following the introduction to the Ruby language, the author includes:<br />
+<br />
+More Fun with Ruby - a mixture of topics including sprintf (for formatting strings), XML handling libraries, RubyGems (a package utility for Ruby that provides access to a repository of re-usable libraries), rDoc (the Ruby documentation generator) and a light introduction to some other advanced topics.<br />
+<br />
+A Short Guide to Ruby on Rails - a nice introduction, followed by a short tutorial.<br />
+<br />
+A Ruby Reference.<br />
+<br />
+A glossary of Ruby terms.<br />
+<br />
+Throughout the book, the author points out planned additions to version 1.9 of the Ruby language.  Those changes would not make this book obsolete.<br />
+<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">Buggy</span>, &nbsp;<em>September 13 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Virgininan
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/92798&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/92798">View</a>]<br /><br />
+The challenge for this book is not that it has errors, it is that their are little to no feedback on the errata page from the author, or responses to user submitted issues.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">An introduction to Ruby</span>, &nbsp;<em>September 09 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+-jason
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/92690&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/92690">View</a>]<br /><br />
+Having never been exposed to Ruby I decided on this book to begin learning the language.  At first glance this book isn't a big  overwhelming manual as is obvious from the number of pages, but rather a very achievable read that covers the necessary topics of learning a language.<br />
+<br />
+The author starts out by discussing some basic commands, and an overview of the book.  This first chapter also includes information on how to get and install Ruby on various operation systems.<br />
+<br />
+By the second chapter the author is giving an overview of the Ruby language that gives the reader some idea of what to expect. And then its off to learning the syntax much as you would expect when learning any language. <br />
+<br />
+For the curious the chapter subjects continue as follows.  Conditional statements, strings, math, arrays, hashes, files, classes, more fun with Ruby (covers things like XML, Tk, RubyGems and Rdoc), and finishes up with a brief introduction to Ruby on Rails. The author also includes a great Ruby Reference as an appendix.<br />
+<br />
+Check out the book online for more information:<br />
+http://www.oreilly.com/catalog/9780596529864/index.html<br />
+<br />
+CONCLUSION<br />
+--<br />
+This is a simple book that does a great job of explaining to the reader the basics about Ruby.  I liked this book and would recommend this book to those looking to learn Ruby or as a reference.  I really liked this book, but I only gave it 4 stars because a 5 star rating means definitive and this is book is not a definitive reference, it is a basics book.<br /><br /><br />
+
+
+
+
+
+
+<span class="headline">A Great Ruby Primer</span>, &nbsp;<em>August 11 2007</em><br />
+
+<div style="white-space: nowrap;padding:1px 0 2px 0;margin:0;">
+Rating:
+<img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_on.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" /><img src="/images/icons/star_off.gif" alt="Star" width="18" height="17" hspace="1" vspace="0" border="0" align="absbottom" />
+
+
+
+</div>
+
+Submitted by 
+Dave Walz-Burkett
+
+ &nbsp;&nbsp;[<a href="http://www.oreillynet.com/cs/catalog/create/cs_msg?x-lr=cs_msg/92215&amp;x-lr2=b/2934" title="Respond to this review">Respond</a> | <a href="http://www.oreillynet.com/cs/catalog/view/cs_msg/92215">View</a>]<br /><br />
+If you are new to Ruby, there is an O'Reilly title you may want to check out: Learning Ruby by Michael Fitzgerald. This book is a short and concise introduction to the Ruby programming language that will help any Ruby newbie come up to speed quickly. At 238 pages, it is a light, easy read.<br />
+<br />
+Experienced programmers will find a book that jumps right in and introduces language features one after another. The basics are covered in the first chapter, followed by a fairly comprehensive 'Quick Tour of Ruby' in the second chapter. After that, each chapter spends more time with a certain aspect of Ruby, like conditional operators, strings, math, arrays and hashes, files and classes.<br />
+<br />
+The detailed chapters are followed by a chapter that covers some extras like processing XML, working with dates and times, reflection, metaprogramming, and exception handling among other topics. A final chapter takes a dip into the Ruby on Rails framework with a quick, 18 page tour.<br />
+<br />
+The book finishes with a 'Ruby Reference' in Appendix A and the answers to the end-of-chapter questions in Appendix B. The Ruby Reference packs a lot of info into a handful of pages and is a great shortcut to the online documentation if the book happens to be next to your computer.<br />
+<br />
+I enjoyed reading this book and the author's sometimes irreverent writing style.<br />
+<br /><br />
+</div> <!-- /reviews -->
+
+ 
+
+<!-- staff pick? -->
+
+
+
+
+<hr />
+<a name="media"></a>
+<span class="book-subtitle">Media reviews</span>
+
+
+
+
+
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"This is a well-thought-out well-presented introduction to Ruby. If that's what you want, I'd go for it."<br />
+-- George Woolley, <a href="http://www.metaart.org/opug/reviews/learn_ruby.html">Oakland Perl Mongers</a>
+
+
+<br /><br />
+<!--
+</div>
+-->
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"From the basic features of Ruby and how to use regular expressions to using operators, arrays, and modules, <em>Learning Ruby</em> is perfect for learning: each chapter concludes with review questions, making it the perfect 'course in a book' as well as a basic computer library reference."<br />
+-- James Cox, The Bookwatch - Computer Shelf
+
+
+<br /><br />
+<!--
+</div>
+-->
+<!--
+<div class="p2">
+
+-->
+<br />
+
+
+
+"This book is a short and concise introduction to the Ruby programming language that will help any Ruby newbie come up to speed quickly...Experienced programmers will find a book that jumps right in and introduces language features one after another...I enjoyed reading this book and the author's sometimes irreverent writing style."<br />
+-- Dave Walz-Burkett, Albuquerque Ruby Group
+
+
+<br /><br />
+<!--
+</div>
+-->
+
+
+
+
+
+
+<br /><br />
+<a href="http://oreilly.com/catalog/9780596529864/reviews.html#media">Read all reviews</a>
+
+
+
+ <!-- TEMP for Art book -->
+
+</div> <!--  /#content  -->
+
+<!-- Note: this is in use with print.view now -->
+
+<style type="text/css">
+ul {
+    margin: 0 0 0 1.2em;
+    padding: 1px 0 1px 0;
+    line-height:1.3em;
+}  
+</style>
+
+<div id="cover">
+
+
+
+
+<!-- if cover -->
+
+<!-- Google book search preview OR deli TOC -->
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596529864']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>
+<script type="text/javascript">
+var found = "no";  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<ul id="browsebook">');
+      document.write('<li class="coverimage">');
+      document.write('<a href="http://oreilly.com/catalog/9780596529864/preview.html">'); 
+      document.write('<img ' + 'src="/images/oreilly/browse.gif" ' + 'width="180" height="20" alt="Browse Book" />'); document.write('<\/a><br \/>'); 
+      document.write('<a href="http://oreilly.com/catalog/9780596529864/preview.html">');
+      found = "yes";
+      break; 
+   } 
+} 
+if (found == "no") {
+   document.write('<ul id="browsebook">');
+   document.write('<li class="coverimage">');
+   document.write('<a href="http://oreilly.com/catalog/9780596529864/toc.html">'); 
+   document.write('<img ' + 'src="/images/oreilly/browse.gif" ' + 'width="180" height="20" alt="Browse Book" />');  
+   document.write('<\/a><br \/>'); 
+   document.write('<a href="http://oreilly.com/catalog/9780596529864/cover.html">');
+}
+</script>
+<img src="/catalog/covers/9780596529864_cat.gif" alt="Learning Ruby" border="0" />
+</a>
+</li>   
+</ul> <br />
+<div align="center"> 
+<span class="details"><a href="/catalog/9780596529864/cover.html">See larger cover</a></span><br />
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596529864']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>  
+<script type="text/javascript">  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<br /><a href="http://oreilly.com/catalog/9780596529864/preview.html">'); 
+      document.write('<img ' + 'src="/images/oreilly/gbs_preview_button1.gif" ' + 'style="border:0; margin:3px;" />'); document.write('<\/a>'); 
+      break; 
+   } 
+} 
+</script>
+ 
+ <!-- /deli TOC -->
+
+</div> <!-- /div align=center -->
+
+ <!-- if cover exists -->
+
+<!-- TEMP for Art book -->
+
+
+<hr />
+
+<!-- supporting links -->
+<ul>
+
+
+<!-- instructor supplement --->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end instructor supp -->
+
+
+<!-- oreilly only -->
+
+<!-- no need to display TOC, Index or Sample Chapters if book is on GBS. -->
+<script type="text/javascript">  
+// Enter the ISBNs for this book here 
+var keys = ['ISBN:9780596529864']; 
+// Your cobrand URL here (or just use http://books.google.com/books) 
+var cburl = "http://books.google.com/books"; 
+// Check with Google servers 
+var api_url = cburl + "?jscmd=viewapi&bibkeys=" + keys.join();
+document.write(unescape("%3Cscript src=" + api_url + " type='text/javascript'%3E%3C/script%3E")); 
+</script>  
+<script type="text/javascript">  
+for (isbn in _GBSBookInfo) { 
+   var b = _GBSBookInfo[isbn]; 
+   if (b && (b.preview == "full" || b.preview == "partial")) { 
+      document.write('<style type="text/css">.browselink{display:none;}<\/style>');
+      document.write('<style type="text/css">.toclink{display:none;}<\/style>');
+      break; 
+   } 
+} 
+</script>
+
+ <li class="toclink"><a href="toc.html">Table of Contents</a></li>
+  <li><b><a href="http://examples.oreilly.com/9780596529864/">Examples</a></b></li>
+ 
+
+
+
+<li><a href="http://oreilly.com/catalog/9780596529864/colophon.html">Colophon</a></li>
+
+
+
+<li>
+
+<a href="http://register.oreilly.com/">Register Your Book</a> 
+
+</li>
+ <!-- edoc -->
+
+
+<li><a href="/catalog/9780596529864/errata/">View/Submit Errata</a></li>
+
+
+ <!-- end oreilly only -->
+
+<li><a href="/catalog/9780596529864#rr">View/Submit Review</a></li>
+</ul>
+
+<!-- VIDEO -->
+
+<!-- End VIDEO -->
+
+<!-- book blog -->
+
+
+<!-- forum -->
+
+
+<!-- ######### Get Satisfaction removed per Laura A. 2/20/09 -->
+
+
+
+
+<!-- END ########## Get Satisfaction -->
+
+<!-- quote -->
+ 
+
+<!-- TEMP for Art book -->
+
+</div><!--  /#cover  -->
+<!-- end content -->
+
+<div id="footer" class="noindex">
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-4591498-1");
+pageTracker._trackPageview();
+</script>
+
+<!-- Start Quantcast tag -->
+
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<script type="text/javascript">
+_qacct="p-20l78bOOCbhcg";quantserve();</script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-20l78bOOCbhcg.gif" style="display: none" height="1" width="1" alt="Quantcast"/></noscript>
+
+ <!-- End Quantcast tag -->
+
+<table border="0">
+<tr><td valign="top" align="left" width="25%" style="padding-left: 20px; padding-right: 20px;">
+<a href="http://oreilly.com/"><img src="http://www.oreillynet.com/images/oreilly/oreilly-logo-footer.gif" border="0" width="155" height="35" alt="O'Reilly Media" style="border-style:none;" /></a><br />
+&copy; 2009, O'Reilly Media, Inc.<br />(707) 827-7000 / (800) 998-9938<br />
+All trademarks and registered trademarks appearing on oreilly.com are the property of their respective owners.
+</td>
+
+<td valign="top"  width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>About O'Reilly</strong><br />
+
+<a href="http://academic.oreilly.com/">Academic Solutions</a><br />
+<a href="http://oreilly.com/authors/">Authors</a><br />
+<a href="http://oreilly.com/contact.html">Contacts</a><br /> 
+
+<a href="http://oreilly.com/oreilly/cs/">Customer Service</a><br /> 
+<a href="http://jobs.oreilly.com/">Jobs</a><br />
+<a href="http://elists.oreilly.com/">Newsletters</a><br />
+<a href=" http://labs.oreilly.com">O'Reilly Labs</a><br />
+<a href="http://press.oreilly.com/">Press Room</a><br />
+<a href="http://oreilly.com/oreilly/privacy.csp">Privacy Policy</a><br />
+<a href="http://oreilly.com/feeds/">RSS Feeds</a><br />
+
+<a href="http://oreilly.com/terms/">Terms of Service</a><br />
+
+<a href="http://ug.oreilly.com/">User Groups</a><br />
+
+
+<a href="http://oreilly.com/oreilly/author/intro.csp">Writing for O'Reilly</a><br />
+
+
+</td>
+
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Other O'Reilly Sites</strong><br />
+<a href="http://radar.oreilly.com/">O'Reilly Radar</a><br />
+
+<a href="http://ignite.oreilly.com/">Ignite</a><br /> 
+<a href="http://toc.oreilly.com/">Tools of Change for Publishing</a><br /> 
+<a href="http://digitalmedia.oreilly.com/">Digital Media</a><br /> 
+<a href="http://digitalmedia.oreilly.com/iphone/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=iphone">Inside iPhone</a><br />
+<a href="http://fyi.oreilly.com">O'Reilly FYI</a><br /> 
+<a href="http://makezine.com/">makezine.com</a><br /> 
+<a href="http://craftzine.com">craftzine.com</a><br /> 
+<a href="http://hackszine.com">hackszine.com</a><br /> 
+<a href="http://perl.com/">perl.com</a><br /> 
+<a href="http://xml.com/">xml.com</a><br /> 
+</td>
+
+<td valign="top" width="25%" style="padding-left: 20px; padding-right: 20px;"><strong>Partner Sites</strong><br />
+
+<a href="http://insideria.com/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=ria">InsideRIA</a><br />
+<a href="http://java.net/?CMP=ILC-orm_sponsor_footer_links&amp;ATT=java">java.net</a><br />
+</td>
+</tr>
+</table>
+</div><!-- /#footer -->
+
+
+</div></body><!-- /#page -->
+
+</html>

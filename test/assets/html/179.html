@@ -1,0 +1,1342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Rails Envy: Ruby on Rails Rake Tutorial (aka. How rake turned me into an alcoholic)</title>
+<style type="text/css" media="screen">
+#rightCol #adzerk p { font-size: 8pt; text-align: center; }
+#rightCol #adzerk_by { padding-top: 5px; }
+#rightCol #adzerk { text-align: center; }
+</style>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="verify-v1" content="fBXlYCxRGle9+CjQm4ZAqAbQ0yvudrn31eDCxVYItqg=" />
+
+  
+  <!-- Include Mephisto's default RSS feed -->
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/rails-envy" />
+  <link href="/stylesheets/index.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/lightbox.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/sifr.js" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/scriptaculous.js?load=effects" type="text/javascript"></script>
+  <script src="/javascripts/scribbish.js" type="text/javascript"></script>
+  <script src="/javascripts/lightbox.js" type="text/javascript"></script>
+  <script src="/javascripts/swfobject.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="content">
+			<h1><a href="/" title="Rails Envy - Home">Rails Envy</a></h1>
+			<ul>
+				<li><a  id="homeBtn" href="/" title="Home">Home</a></li>
+				<li><a  id="companyBtn" href="/company" title="Company">Company</a></li>
+				<li><a  id="portfolioBtn" href="/portfolio" title="Portfolio">Portfolio</a></li>
+				<li><a  id="speakingBtn" href="/speaking" title="Speaking">Speaking</a></li>
+				<li><a  id="podcastBtn" href="/podcast" title="Podcast">Podcast</a></li>
+				<li><a  id="hireUsBtn" href="/hire-us" title="Hire Us">Hire Us</a></li>
+			</ul>                                                                 
+			<h3><em>It&rsquo;s not the size of the app that matters, it&rsquo;s how you code it.</em></h3>
+			<div class="clear"></div>
+		</div>
+	</div>    
+	<div id="main">
+		<div class="content">
+			<div id="leftCol">
+				
+				
+  <div class="post" id="article-308">
+
+
+
+
+
+	<div class="postHead">
+
+	  	
+<h3><a href="/2007/6/11/ruby-on-rails-rake-tutorial">Ruby on Rails Rake Tutorial (aka. How rake turned me into an alcoholic)</a></h3>
+
+<p>by <strong>gregg</strong> on <abbr class="published" title="2007-06-11T10:00:00+00:00">Jun 11, 2007</abbr> </p>
+
+ 		<div class="clear"></div>
+	</div>
+
+  	<div class="entry-content">
+  <p>As a Rails developer you're probably familiar with running <strong>"rake"</strong> to run your tests or maybe you've used <strong>"rake db:migrate"</strong> to run your migrations.  But do you really understand what's going on under the hood of these Rake tasks?  Did you realize that you can write your own tasks or create your own library of useful Rake files?</p>
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/monkey_rake_small.jpg" title="Rake Monkey" align="left" />
+
+<p>Here are a few examples of how I've used Rake tasks:</p>
+
+<ul>
+	<li>Pulling a list of members to send out an email.</li>
+	<li>Doing nightly data calculations and reporting.</li>
+	<li>Expiring and regenerating caches.</li>
+	<li>Making backups of my database and subversion repository.</li>
+        <li>Running any sort of data manipulation script.</li>
+        <li>Pouring drinks to get a good buzz on.</li>
+</ul>
+
+<p>In this article we're going to discover why Rake was created, and how it can help our Rails applications.  By the end you should be able to write your own tasks, and learn how to get piss drunk using rake in no less then three steps.</p>
+
+<p>This article is also available in <a href="http://fredericdevillamil.com/ruby-on-rake-ou-comment-rake-ma-rendu-alcoolique">French</a>,  
+<a href="http://rubyroid.org/blog/rake-tutorial/">Russian</a>, <a href="http://hi.baidu.com/%D0%C7203/blog/item/ebda2dd09f1d698ea1ec9c7a.html">Chinese</a>, <a href="http://ruby-on-rails.pl/szkola/2007/09/02/tutorial-ruby-on-rails-rake/">Polish</a>, and <a href="http://www.rodolinux.com.ar/node/60">Spanish</a>.</p>
+
+<h3>Table of Contents</h3>
+
+<ol>
+<li><a href="#why">Why make, a retrospective?</a></li>
+<li><a href="#how">How did we get Rake?</a></li>
+<li><a href="#how_does_rake_work">How does Rake work?</a></li>
+<li><a href="#dependancies">How do Rake dependancies work?</a></li>
+<li><a href="#documentation">How do I document my Rake tasks?</a></li>
+<li><a href="#namespaces">Rake Namespaces</a></li>
+<li><a href="#do_stuff">How do I write useful Ruby Tasks?</a></li>
+<li><a href="#rails_rake">How do I write Rake tasks for my Rails application?</a></li>
+<li><a href="#rails_models">Can I access my Rails Models inside a Task?</a></li>
+<li><a href="#useful_resources">Where can I find more examples?</a></li>
+</ol>
+
+<a name="why"></a><h3>Why make, a retrospective?</h3>
+
+<p>In order to understand why we have Rake, we first need to take a look at Rake's older grandpa Make.</p>
+
+<p>Travel with me for a moment back to the olden days when every piece of code had to be compiled, before interpreted languages and iPhones roamed the Earth.  </p>
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/oldcomputers-small.jpg" align="left" title="Old Computers" />
+
+<p>Back then when you downloaded large programs they came as a bunch of raw source code and a shell script. This shell script would contain every line of code needed by your computer to compile/link/build the application.  You'd run "install_me.sh" (the shell script), each line of code would then run (typically compiling each source file), and out would pop an executable you could run.</p>
+
+<p>This worked fine for most people, except if you were one of the unlucky few developing the program.  Every time you made a small change to the source and wanted to test it, you would have to rerun the shell script which would then recompile everything.  Obviously this could take a long time with large programs.</p>
+
+<div style="float:right;margin-left:10px;">
+<img src="http://www.railsenvy.com/assets/2007/6/8/feldman_stuart.gif" title="Stuart Feldman" /><br />
+<strong>Stuart Feldman</strong>
+</div>
+
+<p>In 1977 (the year I was born) Stuart Feldman at Bell Labs invented "Make", which solved the problem of these long compile times.  Make is used to compile programs just the same, with two big advances:</p>
+
+<ol>
+<li> Make can recognize which files/source changed since the last time the application was compiled.  Using this information it will <strong>only compile the modified source files the second time Make is run</strong>.  This dramatically reduces the time involved in recompiling a large program.</li>
+
+<li> Make also <strong>contains dependency tracking</strong> so you can tell the compiler that "Source File A" requires "Source File B" to compile properly, and "Source File B" requires "Source File C" to compile properly.  Thus, if Make wants to compile "Source File A" and "Source File B" is not yet compiled, the system compiles B first.</li>
+</ol>
+
+<p>It should also be explained that <strong>"Make" is simply an executable program</strong> like "dir" or "ls".  In order for make to understand how to compile a program, a "makefile" needs to be created which references all the source and dependencies.  "makefiles" have their own cryptic syntax which you don't need to know about.</p>
+
+<p>Over the years Make has evolved and other programming languages even started using it.  In fact, many Ruby coders used it before rake came along.</p>
+
+<p><strong>"But Ruby doesn't have to get compiled, so why would Ruby programmers use it?"</strong> I hear you exclaim.</p>
+
+<p>Yes, Ruby is an interpreted language and we don't compile our code, so why were Ruby coders using Make files?</p>
+
+<p>Well, for two big reasons:</p>
+
+<ol>
+<li><strong>Task creation</strong> - With every large application you almost always end up writing scripts that you can run from the command line.  You might want to clear the cache, run a maintenance task, or migrate the database.  Rather than creating 10 separate shell scripts (or one big complex one) you can create a single "Makefile" in which you can organize things by task.  Tasks then can be run by typing something like "make stupid" (which runs the stupid task).</li>
+
+<li><strong>Dependancy Task Tracking</strong> - When you start writing a library of maintenance tasks, you start to notice that some tasks might partially repeat themselves.  For instance, the task "migrate" and the task "schema:dump" both require getting a connection to the database.  I could create a task called "connect_to_database", and set both "migrate" and "schema:dump" to depend on "connect_to_database".  Then the next time I run "migrate", "connect_to_database" is run before the "migrate" task is run.</li>
+</ol>
+
+<a name="how"></a><h3>How did we get Rake?</h3>
+
+<p>Well, a few years ago <a href="http://onestepback.org/" target="_new">Jim Weirich</a> was working on a Java project where he was using Make.  While working with his Makefile he realized how convenient things would be if he could write <strong>small snippets of Ruby inside his makefile</strong>. So he created rake.  We were lucky enough to meet Jim at Railsconf last month, and he is a really nice guy:</p>
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/jim_1.jpg" title="Jim and Us"/><br />
+
+<p><br />Jim built in the ability to create Tasks, do dependency task tracking, and even built in the same timestamp recognition (rebuild only modified source files since last compilation).  Obviously this last feature is not something we often use in Ruby, since we don't compile.</p>
+
+<p>I always wondered what "Jim Weirich" did, now you know too!  Jim never intended to write this code, I guess he was just <a href="http://rake.rubyforge.org/files/doc/rational_rdoc.html" target="_new">born into it</a>.</p>
+
+<a name="how_does_rake_work"></a><h3>So how does rake work already?</h3>
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/me_drink_1.jpg?1181337324" title="Gregg Drinking" align="right" />
+
+<p>I initially wanted to title this section <strong>"How to get wasted with Rake"</strong>, but well, that's not very intuitive.</p>
+
+<p>Lets say I wanted to get drunk, what steps would be involved?</p>
+
+<ol>
+<li>Purchase alcohol</li>
+<li>Mix myself a drink</li>
+<li>Achieve drunkenness</li>
+</ol>
+
+<p>If I wanted to use Rake to call each of these tasks, I might create a file called "Rakefile" which contains something like this:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">task <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Purchased Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>task <span class="sy">:mixDrink</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Mixed Fuzzy Navel</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>task <span class="sy">:getSmashed</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Dood, everthing's blurry, can I halff noth'r drinnnk?</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>Then I can run each of these tasks from the same directory my rake file is in, kinda like this:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="er">$</span> rake purchaseAlcohol<tt>
+</tt> <span class="co">Purchased</span> <span class="co">Vodka</span><tt>
+</tt><span class="er">$</span> rake mixDrink<tt>
+</tt> <span class="co">Mixed</span> <span class="co">Fuzzy</span> <span class="co">Navel</span><tt>
+</tt><span class="er">$</span> rake getSmashed<tt>
+</tt> <span class="co">Dood</span>, everthing<span class="s"><span class="dl">'</span><span class="k">s blurry, can I halff noth</span><span class="dl">'</span></span>r drinnnk?</pre></td>
+</tr></table>
+
+
+<p>Pretty cool! However, from a dependancy standpoint, I could run these tasks in any order.  Although sometimes I wish I could "getSmashed" before I "mixDrink" or "purchaseAlcohol", this is simply not humanly possible.</p>  
+
+<a name="dependancies"></a><h3>So how do I express rake dependencies?</h3>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">task <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Purchased Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>task <span class="sy">:mixDrink</span> =&gt; <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Mixed Fuzzy Navel</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>task <span class="sy">:getSmashed</span> =&gt; <span class="sy">:mixDrink</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Dood, everthing's blurry, can I halff noth'r drinnnk?</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>So now I'm saying that "In order to mixDrink, I must first purchaseAlcohol", and "In order to getSmashed I must mixDrink".  As you might hope, the dependancies stack, thus:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="er">$</span> rake purchaseAlcohol<tt>
+</tt> <span class="co">Purchased</span> <span class="co">Vodka</span><tt>
+</tt><span class="er">$</span> rake mixDrink        <tt>
+</tt> <span class="co">Purchased</span> <span class="co">Vodka</span><tt>
+</tt> <span class="co">Mixed</span> <span class="co">Fuzzy</span> <span class="co">Navel</span><tt>
+</tt><span class="er">$</span> rake getSmashed<tt>
+</tt> <span class="co">Purchased</span> <span class="co">Vodka</span><tt>
+</tt> <span class="co">Mixed</span> <span class="co">Fuzzy</span> <span class="co">Navel</span><tt>
+</tt> <span class="co">Dood</span>, everthing<span class="s"><span class="dl">'</span><span class="k">s blurry, can I halff noth</span><span class="dl">'</span></span>r drinnnk?</pre></td>
+</tr></table>
+
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/jason_drunk_2.jpg?1181338316" title="Jason Smashed" align="right" />
+
+<p>As you can see, now when I go to "getSmashed", the dependent tasks "purchaseAlcohol" and "mixDrink" get called.</p>
+
+<p>After a while you might be tempted to expand your addictions, and thus expand your Rakefile.  You might also be tempted to get your friends addicted.  Just like a real software project, when you add people to your team, you need to make sure you have good documentation. The question becomes:</p>
+
+<a name="documentation"></a><h3>How do I document my rake tasks?</h3>
+
+<p>Rake comes with a very easy way to document tasks called "desc", here's how you'd use it.</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt>13<tt>
+</tt>14<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will purchase your Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt>task <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Purchased Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will mix a good cocktail</span><span class="dl">&quot;</span></span><tt>
+</tt>task <span class="sy">:mixDrink</span> =&gt; <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Mixed Fuzzy Navel</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt>desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will drink one too many</span><span class="dl">&quot;</span></span><tt>
+</tt>task <span class="sy">:getSmashed</span> =&gt; <span class="sy">:mixDrink</span> <span class="r">do</span><tt>
+</tt>  puts <span class="s"><span class="dl">&quot;</span><span class="k">Dood, everthing's blurry, can I halff noth'r drinnnk?</span><span class="dl">&quot;</span></span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>As you can see, each of my tasks now has a "desc".  This allows me and my friends to type "rake -T" or "rake --tasks"</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="gv">$rake</span> --tasks<tt>
+</tt> rake getSmashed        <span class="c"># This task will drink one too many</span><tt>
+</tt> rake mixDrink          <span class="c"># This task will mix a good cocktail</span><tt>
+</tt> rake purchaseAlcohol  <span class="c"># This task will purchase your Vodka</span></pre></td>
+</tr></table>
+
+
+<p>Pretty easy huh? </p>
+
+<a name="namespaces"></a><h3>Rake Namespaces</h3>
+
+<p>Once you become an alcoholic and you're using lots of Rake tasks, you may need a better way to categorize them.  This is where namespaces come in.  If I were to use namespaces in the above example, it might look like this:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt>13<tt>
+</tt>14<tt>
+</tt>15<tt>
+</tt>16<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">namespace <span class="sy">:alcoholic</span> <span class="r">do</span><tt>
+</tt>  desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will purchase your Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt>  task <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>    puts <span class="s"><span class="dl">&quot;</span><span class="k">Purchased Vodka</span><span class="dl">&quot;</span></span><tt>
+</tt>  <span class="r">end</span><tt>
+</tt><tt>
+</tt>  desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will mix a good cocktail</span><span class="dl">&quot;</span></span><tt>
+</tt>  task <span class="sy">:mixDrink</span> =&gt; <span class="sy">:purchaseAlcohol</span> <span class="r">do</span><tt>
+</tt>    puts <span class="s"><span class="dl">&quot;</span><span class="k">Mixed Fuzzy Navel</span><span class="dl">&quot;</span></span><tt>
+</tt>  <span class="r">end</span><tt>
+</tt><tt>
+</tt>  desc <span class="s"><span class="dl">&quot;</span><span class="k">This task will drink one too many</span><span class="dl">&quot;</span></span><tt>
+</tt>  task <span class="sy">:getSmashed</span> =&gt; <span class="sy">:mixDrink</span> <span class="r">do</span><tt>
+</tt>    puts <span class="s"><span class="dl">&quot;</span><span class="k">Dood, everthing's blurry, can I halff noth'r drinnnk?</span><span class="dl">&quot;</span></span><tt>
+</tt>  <span class="r">end</span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>Namespaces allow you to group tasks according to category, and YES, you can have more then one namespace inside a Rakefile.  Now if I do a "<strong>rake --tasks</strong>" here's what I would see:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">        rake alcoholic<span class="sy">:getSmashed</span>        <span class="c"># This task will drink one too many</span><tt>
+</tt>        rake alcoholic<span class="sy">:mixDrink</span>          <span class="c"># This task will mix a good cocktail</span><tt>
+</tt>        rake alcoholic<span class="sy">:purchaseAlcohol</span>  <span class="c"># This task will purchase your Vodka</span></pre></td>
+</tr></table>
+
+
+<p>So now to run these tasks you would obviously run "<strong>rake alcoholic:getSmashed</strong>".</p>
+
+<a name="do_stuff"></a><h3>How do I write useful Ruby Tasks?</h3>
+
+<p>Well, you simply write Ruby! No kidding. Recently I needed to create a script that created a couple of directories, so I ended up creating a Rake task that looked something like this:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt>13<tt>
+</tt>14<tt>
+</tt>15<tt>
+</tt>16<tt>
+</tt>17<tt>
+</tt>18<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">desc <span class="s"><span class="dl">&quot;</span><span class="k">Create blank directories if they don't already exist</span><span class="dl">&quot;</span></span><tt>
+</tt>task(<span class="sy">:create_directories</span>) <span class="r">do</span><tt>
+</tt>  <tt>
+</tt>  <span class="c"># The folders I need to create</span><tt>
+</tt>  shared_folders = [<span class="s"><span class="dl">&quot;</span><span class="k">icons</span><span class="dl">&quot;</span></span>,<span class="s"><span class="dl">&quot;</span><span class="k">images</span><span class="dl">&quot;</span></span>,<span class="s"><span class="dl">&quot;</span><span class="k">groups</span><span class="dl">&quot;</span></span>]<tt>
+</tt>  <tt>
+</tt>  <span class="r">for</span> folder <span class="r">in</span> shared_folders<tt>
+</tt>    <tt>
+</tt>    <span class="c"># Check to see if it exists</span><tt>
+</tt>    <span class="r">if</span> <span class="co">File</span>.exists?(folder)<tt>
+</tt>      puts <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="k"> exists</span><span class="dl">&quot;</span></span><tt>
+</tt>    <span class="r">else</span><tt>
+</tt>      puts <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="k"> doesn't exist so we're creating</span><span class="dl">&quot;</span></span><tt>
+</tt>      <span class="co">Dir</span>.mkdir <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="dl">&quot;</span></span><tt>
+</tt>    <span class="r">end</span><tt>
+</tt>    <tt>
+</tt>  <span class="r">end</span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>By default rake has access to everything you find in <a target="_new" href="http://corelib.rubyonrails.org/classes/FileUtils.html">File Utils</a>, but you can include anything extra you want just like you would in Ruby.
+</p>
+
+<a name="rails_rake"></a><h3>How do I write Rake tasks for my Rails application?</h3>
+
+<p>Rails applications come with a bunch of pre-existing rake tasks, which you can list by going to your application directory and typing "<strong>rake --tasks</strong>".  If you haven't tried this yet, go do it, I'll wait.... </p>
+
+<p>To create new rake tasks for your Rails app, you need to go open the <strong>/lib/tasks</strong> directory (which you should already have).  In this directory if you create your own Rakefile, and call it "something.rake", the tasks will automatically get picked up.  These tasks will be added to the list of application rake tasks, and you can run them from the root application directory.  Lets take the above example and bring it into our rails application.</p>
+
+<p><strong>utils.rake</strong></p>
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt>13<tt>
+</tt>14<tt>
+</tt>15<tt>
+</tt>16<tt>
+</tt>17<tt>
+</tt>18<tt>
+</tt>19<tt>
+</tt><strong>20</strong><tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">namespace <span class="sy">:utils</span> <span class="r">do</span><tt>
+</tt>  desc <span class="s"><span class="dl">&quot;</span><span class="k">Create blank directories if they don't already exist</span><span class="dl">&quot;</span></span><tt>
+</tt>  task(<span class="sy">:create_directories</span>) <span class="r">do</span><tt>
+</tt>  <tt>
+</tt>    <span class="c"># The folders I need to create</span><tt>
+</tt>    shared_folders = [<span class="s"><span class="dl">&quot;</span><span class="k">icons</span><span class="dl">&quot;</span></span>,<span class="s"><span class="dl">&quot;</span><span class="k">images</span><span class="dl">&quot;</span></span>,<span class="s"><span class="dl">&quot;</span><span class="k">groups</span><span class="dl">&quot;</span></span>]<tt>
+</tt>          <tt>
+</tt>    <span class="r">for</span> folder <span class="r">in</span> shared_folders<tt>
+</tt>        <tt>
+</tt>      <span class="c"># Check to see if it exists</span><tt>
+</tt>      <span class="r">if</span> <span class="co">File</span>.exists?(<span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span><span class="co">RAILS_ROOT</span><span class="dl">}</span></span><span class="k">/public/</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="dl">&quot;</span></span>)<tt>
+</tt>        puts <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span><span class="co">RAILS_ROOT</span><span class="dl">}</span></span><span class="k">/public/</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="k"> exists</span><span class="dl">&quot;</span></span><tt>
+</tt>      <span class="r">else</span><tt>
+</tt>        puts <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span><span class="co">RAILS_ROOT</span><span class="dl">}</span></span><span class="k">/public/</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="k"> doesn't exist so we're creating</span><span class="dl">&quot;</span></span><tt>
+</tt>        <span class="co">Dir</span>.mkdir <span class="s"><span class="dl">&quot;</span><span class="il"><span class="dl">#{</span><span class="co">RAILS_ROOT</span><span class="dl">}</span></span><span class="k">/public/</span><span class="il"><span class="dl">#{</span>folder<span class="dl">}</span></span><span class="dl">&quot;</span></span><tt>
+</tt>      <span class="r">end</span><tt>
+</tt>         <tt>
+</tt>    <span class="r">end</span><tt>
+</tt>  <span class="r">end</span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>Notice in this snippet how I was able to use #{RAILS_ROOT} to get the full path.  If I now ran "<strong>rake --tasks</strong>" in my base directory application, I would see this new function intermixed will all the other rails rake tasks:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">...<tt>
+</tt>rake tmp<span class="sy">:pids</span><span class="sy">:clear</span>              <span class="c"># Clears all files in tmp/pids</span><tt>
+</tt>rake tmp<span class="sy">:sessions</span><span class="sy">:clear</span>          <span class="c"># Clears all files in tmp/sessions</span><tt>
+</tt>rake tmp<span class="sy">:sockets</span><span class="sy">:clear</span>           <span class="c"># Clears all files in tmp/sockets</span><tt>
+</tt>rake utils<span class="sy">:create_directories</span>    <span class="c"># Create blank directories if they don't already exist</span><tt>
+</tt>...</pre></td>
+</tr></table>
+
+
+<p>Very cool!  Now here's where it gets really useful..</p>
+
+<a name="rails_models"></a><h3>Can I access my Rails Models inside a Task?</h3>
+
+<p><strong>VERY YES!</strong> In fact this is what I use rake for the most: <strong>Writing tasks that I need to run manually on occasion, or ones that I'll schedule to run automatically (using <a target="_new" href="http://www.aota.net/Script_Installation_Tips/cronhelp.php3">cronjobs</a>)</strong>.  As I said at the start of the article, I use Rake tasks for the following things:</p>
+
+<ul>
+	<li>Pulling a list of members to send out an email.</li>
+	<li>Doing nightly data calculations and reporting.</li>
+	<li>Expiring and regenerating caches.</li>
+	<li>Making backups of my database and subversion repository.</li>
+        <li>Running any sort of data manipulation script.</li>
+</ul>
+
+<p>Pretty darn useful, and it's easy.  Here's a rake task that finds users who subscription is about to expire, and sends them an email:</p>
+
+<p>utils.rake</p>
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }">namespace <span class="sy">:utils</span> <span class="r">do</span><tt>
+</tt>  desc <span class="s"><span class="dl">&quot;</span><span class="k">Finds soon to expire subscriptions and emails users</span><span class="dl">&quot;</span></span><tt>
+</tt>  task(<span class="sy">:send_expire_soon_emails</span> =&gt; <span class="sy">:environment</span>) <span class="r">do</span><tt>
+</tt>        <span class="c"># Find users to email</span><tt>
+</tt>        <span class="r">for</span> user <span class="r">in</span> <span class="co">User</span>.members_soon_to_expire<tt>
+</tt>                puts <span class="s"><span class="dl">&quot;</span><span class="k">Emailing </span><span class="il"><span class="dl">#{</span>user.name<span class="dl">}</span></span><span class="dl">&quot;</span></span><tt>
+</tt>                <span class="co">UserNotifier</span>.deliver_expire_soon_notification(user)<tt>
+</tt>        <span class="r">end</span><tt>
+</tt>  <span class="r">end</span><tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>As you can see, there is only one step to get access to your models, the "=> :environment" thing:</p>
+
+<ol>
+	<li>task(:send_expire_soon_emails => :environment) do</li>
+</ol>
+
+<p>To run this task on my development db I would run <strong>"rake utils:send_expire_soon_emails"</strong>.  If I wanted to run this on my production database, I would run <strong>"rake RAILS_ENV=production utils:send_expire_soon_emails"</strong>.</p>
+
+<p>If I then wanted this to run nightly on my production database at midnight, I might write a <a target="_new" href="http://www.aota.net/Script_Installation_Tips/cronhelp.php3">cronjob</a> that looks something like this:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="i">0</span> <span class="i">0</span> * * * cd <span class="rx"><span class="dl">/</span><span class="k">var</span><span class="dl">/</span></span>www/apps/rails_app/ &amp;&amp; <span class="rx"><span class="dl">/</span><span class="k">usr</span><span class="dl">/</span></span>local/bin/rake <span class="co">RAILS_ENV</span>=production utils<span class="sy">:send_expire_soon_emails</span></pre></td>
+</tr></table>
+
+
+<p>Pretty convenient!</p>
+
+<a name="useful_resources"></a><h3>Where can I find more examples?</h3>
+
+<img src="http://www.railsenvy.com/assets/2007/6/8/rakenarrow.jpg" align="right" title="rakes" />
+
+<p>Now that you know enough to start writing useful rake tasks, I figured I should leave you with a few more resources.  The best way to improve your programming is to read other people's code, so a few of these are existing useful rake tasks people have written.</p>
+
+<ul>
+<li>These <a target="_new" href="http://dev.rubyonrails.org/changeset/6849">brand new rake tasks</a> in Edge Rails create and reset your databases for you.  Neato!</li>
+<li>Craig Ambrose wrote a Rake task to do <a href="http://blog.craigambrose.com/articles/2007/03/01/a-rake-task-for-database-backups">database backups</a>, which you can use.</li>
+<li>Adam Greene put together a <a href="http://www.rubyinside.com/advent2006/15-s3rake.html" target="_new">set of Rake tasks</a> that allow you to backup all your data to Amazon S3. He sent me an updated version of these libraries you can download <a href="http://www.railsenvy.com/assets/2007/6/19/s3_rake_tasks.zip">here</a>.</li>
+<li>Jay Fields made a good point when he talked about <a href="http://blog.jayfields.com/2006/11/ruby-testing-rake-tasks.html" target="_new">testing rake tasks</a></li>
+<li>Err the blog talks about <a href="http://errtheblog.com/post/33" target="_new">a new way of setting the RAILS_ENV and teaches how to use rake to boot you into a Mysql shell</a> (be sure to read the comments if you browse this one).</li>
+<li>Last, but not least, there's the <a href="http://docs.rubyrake.org/" target="_new">Rake Bookshelf Books</a> and Martin Fowler's <a href="http://www.martinfowler.com/articles/rake.html">Using the Rake Build Language</a> tutorial .  Both of these are pretty thorough, but also a little dated.</li>
+</ul>
+
+<p>You're all set!  If you find any other good ones, feel free to post them in the comments.</p>
+
+<p>Still reading?  If you are, I wanted to let you know that we're looking for more people to write for RailsEnvy.  If you have an idea for a good rails tutorial we want to hear from you!  Basically we would work with you to flesh out the tutorial and help polish (acting as an editor).  It could definitely be a great way to get your name out there, and start getting some hits (for your blog or company).  Email Gregg at RailsEnvy if you're interested.</p>
+
+<hr>
+<strong>Follow Up</strong>
+
+<p>As a follow up, I got an email from Jim a few minutes ago, explaining how I could simplify my directory creation script:</p>
+
+<table class="CodeRay"><tr>
+  <td class="line_numbers" title="click to toggle" onclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre>1<tt>
+</tt>2<tt>
+</tt>3<tt>
+</tt>4<tt>
+</tt>5<tt>
+</tt>6<tt>
+</tt>7<tt>
+</tt>8<tt>
+</tt>9<tt>
+</tt><strong>10</strong><tt>
+</tt>11<tt>
+</tt>12<tt>
+</tt>13<tt>
+</tt>14<tt>
+</tt>15<tt>
+</tt></pre></td>
+  <td class="code"><pre ondblclick="with (this.style) { overflow = (overflow == 'auto' || overflow == '') ? 'visible' : 'auto' }"><span class="c"># This is needed because the existing version of directory in Rake is slightly broken, but Jim says it'll be fixed in the next version.</span><tt>
+</tt><span class="r">alias</span> <span class="sy">:original_directory</span> <span class="sy">:directory</span><tt>
+</tt><span class="r">def</span> <span class="fu">directory</span>(dir)<tt>
+</tt>  original_directory dir<tt>
+</tt>  <span class="co">Rake</span>::<span class="co">Task</span>[dir]<tt>
+</tt><span class="r">end</span><tt>
+</tt><tt>
+</tt><span class="c"># Do the directory creation</span><tt>
+</tt>namespace <span class="sy">:utils</span> <span class="r">do</span><tt>
+</tt>  task <span class="sy">:create_directories</span> =&gt; [<tt>
+</tt>    directory(<span class="s"><span class="dl">'</span><span class="k">public/icons</span><span class="dl">'</span></span>),<tt>
+</tt>    directory(<span class="s"><span class="dl">'</span><span class="k">public/images</span><span class="dl">'</span></span>),<tt>
+</tt>    directory(<span class="s"><span class="dl">'</span><span class="k">public/groups</span><span class="dl">'</span></span>),<tt>
+</tt>  ]<tt>
+</tt><span class="r">end</span></pre></td>
+</tr></table>
+
+
+<p>Pretty cool.</p>
+
+<hr>
+Flickr Photos: <a href="http://www.flickr.com/photos/eurleif/" target="_new">eurleif</a>, <a href="http://www.flickr.com/photos/mimk/" target="_new">mimk</a>
+  
+  <div class="extended">
+    <p><a href="/2007/6/11/ruby-on-rails-rake-tutorial">Continue reading...</a></p>
+  </div>
+  
+</div>
+
+  	<div class="cmntBar">
+<p>
+
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="addthis_url   = 'http://www.railsenvy.com/2007/6/11/ruby-on-rails-rake-tutorial'; addthis_title = 'Rails Envy: Ruby on Rails Rake Tutorial (aka. How rake turned me into an alcoholic)'; return addthis_click(this);" target="_blank"><img src="http://s7.addthis.com/button0-bm.gif" width="83" height="16" border="0" alt="AddThis Social Bookmark Button" style="float:right" /></a> <script type="text/javascript">var addthis_pub = 'railsenvy';</script><script type="text/javascript" src="http://s7.addthis.com/js/widget.php?v=10"></script>  
+<!-- AddThis Bookmark Button END -->
+
+
+	
+  
+  
+  <b>Tags:</b> <a href="/tags/rake tutorial">rake tutorial</a>&nbsp; |
+  
+    
+    <b><a href="/2007/6/11/ruby-on-rails-rake-tutorial">permalink</a></b>
+    
+  	
+</p>
+	<div class="clear"></div>
+</div>
+
+	
+	
+	
+	<script type="text/javascript">
+	    if (typeof window.Delicious == "undefined") window.Delicious = {};
+	    Delicious.BLOGBADGE_DEFAULT_CLASS = 'delicious-blogbadge-line';
+	</script>
+	<script src="http://images.del.icio.us/static/js/blogbadge.js"></script>
+
+        <br />
+        <h5><a name="comments">Comments</a></h5>
+<p><a href="#comment-form">Leave a response</a></p>
+<div id="comments_div">
+    
+    <div class="box" style="padding-5px" id="comment-314">
+      <div class="author">
+        <span class="author"><a href="http://roderick.dk" rel="nofollow">Morgan Roderick</a></span> &#150; 
+        <abbr title="June 11, 2007 11:39"><span class="date">June 11, 2007 @ 11:39 AM</span></abbr>
+      </div>
+      <p>
+        <p>Very nice overview of Rake.</p>
+
+
+	<p>I&#8217;ll be spending more and more time on all things ruby, so it&#8217;s very nice to get overview articles to get you started on all the new stuff to learn.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-315">
+      <div class="author">
+        <span class="author"><a href="http://mc-kenna.com/" rel="nofollow">Damien McKenna</a></span> &#150; 
+        <abbr title="June 11, 2007 12:03"><span class="date">June 11, 2007 @ 12:03 PM</span></abbr>
+      </div>
+      <p>
+        <p>Awesome stuff, Gregg.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-316">
+      <div class="author">
+        <span class="author"><a href="http://www.mmahq.com" rel="nofollow">Dr J</a></span> &#150; 
+        <abbr title="June 11, 2007 13:09"><span class="date">June 11, 2007 @ 01:09 PM</span></abbr>
+      </div>
+      <p>
+        <p>Excellent writeup.  Once again, you guys have posted something that will be very useful to the Ruby community</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-317">
+      <div class="author">
+        <span class="author"><a href="http://kesor.net" rel="nofollow">Evgeny</a></span> &#150; 
+        <abbr title="June 11, 2007 13:11"><span class="date">June 11, 2007 @ 01:11 PM</span></abbr>
+      </div>
+      <p>
+        <p>A very nice article! Somehow that bit about creating directories in a loop spoils it a bit. There are rules in rake, which would suit very well for creating directories &#8211; especially a large number of them. And FileUtils for all kinds of nifty file manipulations, and MultiTasks to get you and your friends drunk simultaneously. And much more &#8230;</p>
+
+
+	<p>Actually I have been using rake compiling java and c++ software, so using the more &#8220;makish&#8221; features of rake has been a great productivity boost on its own. (before I start writing ruby helpers that is).</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-318">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">Christoph Olszowka</a></span> &#150; 
+        <abbr title="June 11, 2007 13:13"><span class="date">June 11, 2007 @ 01:13 PM</span></abbr>
+      </div>
+      <p>
+        <p>Hi, thanks for the nice overview. I&#8217;ve been wondering for quite some time already if it is possible to execute a Rake-task from within another one? On our project, we have 5 tables that we need to export to fixtures via a Rake task that does so. As I did not want to hard-code this one specific fixture-export, I ended up invoking rake with the specific params via `rake fixtures&#8230;`. This works, but it has one huge disadvantage, which is that the environment gets reloaded every time one of the tasks gets invoked, which means that the export of 5 simple tables takes about 2 minutes. Any ideas?</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-321">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">Garth</a></span> &#150; 
+        <abbr title="June 11, 2007 14:25"><span class="date">June 11, 2007 @ 02:25 PM</span></abbr>
+      </div>
+      <p>
+        <p>Great overview.  I&#8217;m converted!</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-322">
+      <div class="author">
+        <span class="author"><a href="http://blog.mmediasys.com" rel="nofollow">Luis Lavena</a></span> &#150; 
+        <abbr title="June 11, 2007 15:50"><span class="date">June 11, 2007 @ 03:50 PM</span></abbr>
+      </div>
+      <p>
+        <p>Great (and funny) overview of rake.</p>
+
+
+	<p>I use it for things too weird to be listed! ;-)</p>
+
+
+	<p>One note, you cannot access <code>@RAILS_ROOT</code>@ unless you depend on <code>@:environment</code>@</p>
+
+
+<pre><code>task(:create_directories =&gt; :environment)</code></pre>
+
+	<p>And now you&#8217;re ready to get drunk :-P</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-323">
+      <div class="author">
+        <span class="author"><a href="http://heri.madmediac.a" rel="nofollow">heri</a></span> &#150; 
+        <abbr title="June 11, 2007 16:21"><span class="date">June 11, 2007 @ 04:21 PM</span></abbr>
+      </div>
+      <p>
+        <p>this is a great article. i thought rake was made for the rails framework. so now i know i can write rake scripts to manipulate the /config files and /public files.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-324">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">David McNally</a></span> &#150; 
+        <abbr title="June 11, 2007 16:57"><span class="date">June 11, 2007 @ 04:57 PM</span></abbr>
+      </div>
+      <p>
+        <p>Gregg, nice article.  One thing I&#8217;m particularly interested in is where you mention &#8220;Expiring and regenerating caches&#8221;.  Would you be ever so kind as to elaborate a little on this, maybe with an example.  Thanks in advance.  Dave.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-325">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">Chris Lloyd</a></span> &#150; 
+        <abbr title="June 11, 2007 18:23"><span class="date">June 11, 2007 @ 06:23 PM</span></abbr>
+      </div>
+      <p>
+        <p>Nice tutorial!
+You can also have rake comments using &#8221;&#8212;&#8221; instead of &#8220;desc&#8221;</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-327">
+      <div class="author">
+        <span class="author"><a href="http://www.paulstovell.net" rel="nofollow">Paul Stovell</a></span> &#150; 
+        <abbr title="June 11, 2007 21:10"><span class="date">June 11, 2007 @ 09:10 PM</span></abbr>
+      </div>
+      <p>
+        <p>This is a great tutorial. I was using Nant just this weekend to automate a lot of continuous integration and deployment tasks because I couldn&#8217;t quite understand Rake. I&#8217;ll now go back and replace it with Rake :)</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-328">
+      <div class="author">
+        <span class="author"><a href="http://mad.ly/" rel="nofollow">Geoff Buesing</a></span> &#150; 
+        <abbr title="June 11, 2007 22:39"><span class="date">June 11, 2007 @ 10:39 PM</span></abbr>
+      </div>
+      <p>
+        <p>Very helpful, thanks!</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-329">
+      <div class="author">
+        <span class="author"><a href="http://www.pablocorral.com.ar" rel="nofollow">PabloC</a></span> &#150; 
+        <abbr title="June 11, 2007 22:47"><span class="date">June 11, 2007 @ 10:47 PM</span></abbr>
+      </div>
+      <p>
+        <p><span class="caps">GREAT</span> tutorial! Thank you!</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-330">
+      <div class="author">
+        <span class="author"><a href="http://www.mindloop.be" rel="nofollow">Mindloop</a></span> &#150; 
+        <abbr title="June 12, 2007 05:43"><span class="date">June 12, 2007 @ 05:43 AM</span></abbr>
+      </div>
+      <p>
+        <p>Thanks for the tutorial,
+this has convinced me even more to start using Ruby for my clients projects.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-331">
+      <div class="author">
+        <span class="author"><a href="http://www.chrysaliswebdesign.co.uk" rel="nofollow">infrid</a></span> &#150; 
+        <abbr title="June 12, 2007 05:47"><span class="date">June 12, 2007 @ 05:47 AM</span></abbr>
+      </div>
+      <p>
+        <p>This is great stuff, and I commend you on downing 3 bottles of vodka. I can see why one might need cronjobs and rake tasks now: I imagine typing is impossible for at least 2 days after drinking that much (tip tap click clack &#8211; ouch!).</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-332">
+      <div class="author">
+        <span class="author"><a href="http://mega-tokyo.com/blog" rel="nofollow">Stu</a></span> &#150; 
+        <abbr title="June 12, 2007 07:32"><span class="date">June 12, 2007 @ 07:32 AM</span></abbr>
+      </div>
+      <p>
+        <p>Personally I like/use &#8216;rant&#8217; over &#8216;rake&#8217; but one would hope that the two build systems could merge in the future.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-334">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">Anne</a></span> &#150; 
+        <abbr title="June 12, 2007 10:12"><span class="date">June 12, 2007 @ 10:12 AM</span></abbr>
+      </div>
+      <p>
+        <p>If this is for real, about the alcoholic part, I have been sober for 22 years.  Not an easy road but I give him credit if he got sober</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-335">
+      <div class="author">
+        <span class="author"><a href="http://hervalicio.us/blog" rel="nofollow">Herval</a></span> &#150; 
+        <abbr title="June 12, 2007 10:27"><span class="date">June 12, 2007 @ 10:27 AM</span></abbr>
+      </div>
+      <p>
+        <p>awesome tutorial! Two little questions stand out for me, though:</p>
+
+
+	<p>1 &#8211; why do you need require File.expand_path(File.dirname(<i><span class="caps">FILE</span></i>) + &#8221;/../../config/environment&#8221;)? I have a couple of rake files that access models, and all I needed to do was making the task extend env (:bla =&gt; :environment)...</p>
+
+
+	<p>2 &#8211; I wonder how do you pass parameters to the rake tasks&#8230;?</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-336">
+      <div class="author">
+        <span class="author"><a href="http://www.psychicboom.co.uk" rel="nofollow">psychic readings</a></span> &#150; 
+        <abbr title="June 12, 2007 10:45"><span class="date">June 12, 2007 @ 10:45 AM</span></abbr>
+      </div>
+      <p>
+        <p>interesting article.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-337">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">regeya</a></span> &#150; 
+        <abbr title="June 12, 2007 11:14"><span class="date">June 12, 2007 @ 11:14 AM</span></abbr>
+      </div>
+      <p>
+        <p>Heh, I use rake to do such weird things as transcoding and building <span class="caps">DVD</span> images.  Entirely too nerdy, I know, but I do. :-&gt;</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-338">
+      <div class="author">
+        <span class="author"><a href="http://www.mrblack.co.uk/blog" rel="nofollow">Andy</a></span> &#150; 
+        <abbr title="June 12, 2007 11:39"><span class="date">June 12, 2007 @ 11:39 AM</span></abbr>
+      </div>
+      <p>
+        <p>Excellent. Time say good bye to those clunky croned rails actions.  Leaning Rails first makes it easy to simply &#8216;not know&#8217; about things like this.  Thanks.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-339">
+      <div class="author">
+        <span class="author"><a href="http://seog.net" rel="nofollow">Michael_SEOG</a></span> &#150; 
+        <abbr title="June 12, 2007 11:47"><span class="date">June 12, 2007 @ 11:47 AM</span></abbr>
+      </div>
+      <p>
+        <p>Great writeup Gregg. The bottles, drunken pictures, and photos of rakes adds to the magical fun of Ruby Rake. Especially drunken monkeys with a rake. Have to have the drunken monkey.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-340">
+      <div class="author">
+        <span class="author"><a href="http://blog.tektag.com" rel="nofollow">Tim</a></span> &#150; 
+        <abbr title="June 12, 2007 12:53"><span class="date">June 12, 2007 @ 12:53 PM</span></abbr>
+      </div>
+      <p>
+        <p>Nice tutorial.  One of the better ones we&#8217;ve seen.  Posted in our Ruby section http://www.tektag.com/tag/ruby.  Feel free to bookmark future ones.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-341">
+      <div class="author">
+        <span class="author"><a href="http://bexhuff.com" rel="nofollow">bex</a></span> &#150; 
+        <abbr title="June 12, 2007 15:01"><span class="date">June 12, 2007 @ 03:01 PM</span></abbr>
+      </div>
+      <p>
+        <p>@Christoph</p>
+
+
+	<p>Did you try this:</p>
+
+
+	<p>Rake::Task[&#8220;my-sub-task&#8221;]</p>
+
+
+	<p>Does that force an environment reload as well?</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-342">
+      <div class="author">
+        <span class="author"><a href="http://www.benr75.com" rel="nofollow">Ben Reubenstein</a></span> &#150; 
+        <abbr title="June 12, 2007 15:44"><span class="date">June 12, 2007 @ 03:44 PM</span></abbr>
+      </div>
+      <p>
+        <p>Superb write up and I enjoyed the history lesson.  I owe many thanks to Mr. Weirich.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-343">
+      <div class="author">
+        <span class="author"><a href="" rel="nofollow">Christoph Olszowka</a></span> &#150; 
+        <abbr title="June 13, 2007 02:53"><span class="date">June 13, 2007 @ 02:53 AM</span></abbr>
+      </div>
+      <p>
+        <p>@bex and in answer to my own question:
+I&#8217;ve actually managed to find out how you can call other tasks from a running one:
+Simply do Rake::Task[“my-sub-task”].invoke
+If you want to pass command-line params, set <span class="caps">ENV</span>[&#8220;MY_PARAM_NAME&#8221;] to the value you would have given it on the shell.</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+    <div class="box" style="padding-5px" id="comment-345">
+      <div class="author">
+        <span class="author"><a href="http://zoob.ru" rel="nofollow">Ivan Nemytchenko</a></span> &#150; 
+        <abbr title="June 13, 2007 03:27"><span class="date">June 13, 2007 @ 03:27 AM</span></abbr>
+      </div>
+      <p>
+        <p>Here is russian translation of this article:
+http://rubyroid.org/blog/rake-tutorial/</p>
+      </p>
+    </div>
+    <div class="clear"></div>
+<br />
+    
+
+</div>
+
+<p>Sorry, comments are closed for this Post, but feel free to email Gregg & Jason with your input. We'd love to hear it.</p>
+
+
+
+	
+</div>
+	
+	
+
+
+
+			</div>
+				<div id="rightCol">
+
+<div class="box">
+  <h4>Blog</h4>
+<a class="feedBurner" href="http://feeds.feedburner.com/rails-envy"><img src="http://feeds.feedburner.com/~fc/rails-envy?bg=90E395&amp;fg=285A0E&amp;anim=0"  alt="Subscribe to RSS Feed" /></a>
+
+<a class="rss" style="width:45%" href="http://feeds.feedburner.com/rails-envy" title="Subscribe"><img src="/images/rss.gif" alt="Subscribe"  style="vertical-align:middle;margin-right:5px" />RSS</a>
+
+<div class="clear"></div>
+</div>
+<div class="boxBtm"></div>
+
+<div class="box">
+<h4>Podcast</h4>
+<div style="width:30%;float:left">
+<a class="rss" href="http://feeds.feedburner.com/railsenvy-podcast"><img src="/images/rss.gif" alt="Subscribe" style="vertical-align:middle;margin-right:5px;width:16px;height:16px"/>RSS</a> 
+</div>
+
+<div style="width:30%;float:left">
+<a class="rss" href="http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=265693109"><img src="/images/iTunes.gif" style="vertical-align:middle;width:16px;height:16px;margin-right:5px">iTunes</a>
+</div>
+
+
+<div style="width:33%;float:left">
+<a class="rss" href="/podcast"><img src="/images/archiveicon.gif" style="vertical-align:middle;width:16px;height:16px;margin-right:5px">Archive</a>
+</div>
+
+
+<div class="clear"></div>
+</div>
+<div class="boxBtm"></div>
+
+
+<div class="box">
+<div id="adzerk">
+    <div id="adzerk_ad_div">
+        <script type="text/javascript" src="http://rubyrow.net/AdServer/RUBY/RAILSENVY/VERTCENTER"></script>
+    </div>
+    <p id="adzerk_by">
+        <a href='http://rubyrow.net'>Ads from Ruby Row</a>
+    </p>
+</div>
+</div>
+<div class="boxBtm"></div>
+
+<div class="box">
+  <form action="/search" id="sform" method="get" name="sform">
+            <label for="q" style="color: #588848">Search:</label> &nbsp; &nbsp; <input type="text" id="q" name="q" value="" size="15" />
+  </form>
+
+<div class="clear"></div>
+</div>
+<div class="boxBtm"></div>
+
+					<div class="box">
+						<h2 id="videoHead">Looking for Videos?</h2>
+<ul>
+
+<li><a href="/2008/11/26/rubyconf-videos" title="Rubyconf Videos">Rubyconf in 31 minutes</a></li>
+<li><a href="/2008/9/16/lone-star-ruby-conference" title="Lone Star Ruby Conference in 21 minutes">Lone Star Ruby in 21 minutes</li>
+<li><a href="/2008/8/12/the-ruby-hoedown-in-10-minutes" title="Ruby Hoedown in 10 minutes">Ruby Hoedown in 10 minutes</a></li>
+<li><a href="/2008/7/29/oscon-videos" title="Oscon in 37 minutes">Oscon in 37 minutes</a></li>
+<li><a href="/2008/6/2/Railsconf-videos" title="Railsconf in 36 minutes">Railsconf in 36 minutes</a></li>
+</ul>
+
+<h4>FUNNY VIDEOS</h4>
+						<ul>
+                                                        <li><a href="/tags/MVC" title="MVC Videos">MVC Videos</a></li>
+                                                        <li><a href="/2008/6/2/Railsconf-videos" title="Railsconf in 36 minutes">Railsconf in 36 minutes</a></li>
+
+
+                                                        <li><a href="/2007/10/9/ruby-on-rails-vs-net-2" title="Ruby on Rails vs .NET">Rails vs .NET #2</a></li>
+                                                        <li><a href="/2007/10/3/ruby-on-rails-vs-coldfusion" title="Ruby on Rails vs ColdFusion">Rails vs ColdFusion</a></li>
+							<li><a href="/2007/9/10/ruby-on-rails-vs-django-commercial-7" title="Ruby on Rails vs Django">Rails vs Django</a></li>
+							<li><a href="/2007/8/24/rails-vs-php" title="Ruby on Rails vs CakePHP">Rails vs PHP #4</a></li>
+							<li><a href="/2007/8/23/Rails-vs-NET" title="Ruby on Rails vs .NET">Rails vs .NET</a></li>
+							<li><a href="/tags/Commercials" title="View All Commercials"><strong>View All Commercials</strong></a></li>
+						</ul> 
+
+
+						<h4>SPEAKING</h4>
+						<ul>
+<li><a href="http://envycasts.com/products/scaling-ruby" title="Scaling Ruby">Scaling Ruby</a></li>
+<li><a href="http://envycasts.com/products/ruby-on-rails-22-screencast" title="Ruby on Rails 2.2">Ruby on Rails 2.2</a></li>
+<li><a href="http://envycasts.com/products/advanced-activerecord" title="Advanced ActiveRecord">Advanced ActiveRecord</a></li>
+                                                        <li><a href="http://railsenvy.com/2008/1/3/unobtrusive-javascript" title="Unobtrusive Javascript">Unobtrusive Javascript</a></li>
+                                                        <li><a href="/2007/12/17/the-future-of-web-services" title="The Future of Web Services">The Future of Web Services</a></li>
+                                                        <li><a href="/2007/10/4/how-i-learned-to-love-testing-presentation" title="How I leared to love testing">How I learned to love testing</a></li>
+							<li><a href="/2007/8/8/activerecord-tutorial" title="ActiveRecord Tutorial">ActiveRecord Tutorial</a></li>
+							<li><a href="/2007/3/22/ruby-on-rails-video-presentation" title="Why Ruby on Rails">Why Ruby on Rails</a></li>
+                                                        <li><a href="/speaking" title="More Speaking Topics"><strong>More speaking topics</strong></a></li>
+						</ul>
+						<h4>TUTORIALS</h4>
+						<ul>
+							<li><a href="/2007/6/11/ruby-on-rails-rake-tutorial" title="Ruby on Rails Rake Tutorial">Ruby on Rails Rake Tutorial</a></li>
+							<li><a href="/2007/2/19/acts-as-ferret-tutorial" title="acts_as_ferret tutorial">acts_as_ferret Tutorial</a></li>
+							<li><a href="/2007/2/28/rails-caching-tutorial" title="Ruby on Rails Caching Tutorial">Rails Caching</a> Part <a href="/2007/2/28/rails-caching-tutorial">1</a> | <a href="/2007/3/20/ruby-on-rails-caching-tutorial-part-2">2</a></li>
+						</ul>											
+					</div>
+					<div class="boxBtm"></div>
+
+<div class="box">
+
+<!-- Put extra blog badges here -->
+
+</div>
+<div class="boxBtm"></div>
+
+					
+					<div class="box">
+						<h2 id="tagHead">Tags</h2>
+						<ul>
+						
+							<li><a href="/tags/barcamp video">barcamp video</a> (1)</li>
+						
+							<li><a href="/tags/BarCampOrlando">BarCampOrlando</a> (1)</li>
+						
+							<li><a href="/tags/Behavior Driven Development">Behavior Driven Development</a> (1)</li>
+						
+							<li><a href="/tags/caching">caching</a> (1)</li>
+						
+							<li><a href="/tags/coldfusion">coldfusion</a> (1)</li>
+						
+							<li><a href="/tags/Commercials">Commercials</a> (9)</li>
+						
+							<li><a href="/tags/conference">conference</a> (1)</li>
+						
+							<li><a href="/tags/conferences">conferences</a> (6)</li>
+						
+							<li><a href="/tags/Django">Django</a> (1)</li>
+						
+							<li><a href="/tags/Events">Events</a> (1)</li>
+						
+							<li><a href="/tags/expo">expo</a> (1)</li>
+						
+							<li><a href="/tags/funny">funny</a> (1)</li>
+						
+							<li><a href="/tags/Groovy">Groovy</a> (1)</li>
+						
+							<li><a href="/tags/hoedown">hoedown</a> (1)</li>
+						
+							<li><a href="/tags/javascript">javascript</a> (1)</li>
+						
+							<li><a href="/tags/MVC">MVC</a> (3)</li>
+						
+							<li><a href="/tags/net">net</a> (1)</li>
+						
+							<li><a href="/tags/oscon">oscon</a> (1)</li>
+						
+							<li><a href="/tags/osx">osx</a> (1)</li>
+						
+							<li><a href="/tags/Out-takes">Out-takes</a> (1)</li>
+						
+							<li><a href="/tags/php">php</a> (1)</li>
+						
+							<li><a href="/tags/podcast">podcast</a> (66)</li>
+						
+							<li><a href="/tags/Presentation">Presentation</a> (1)</li>
+						
+							<li><a href="/tags/Presentations">Presentations</a> (1)</li>
+						
+							<li><a href="/tags/rails">rails</a> (5)</li>
+						
+							<li><a href="/tags/Railsconf">Railsconf</a> (2)</li>
+						
+							<li><a href="/tags/rake tutorial">rake tutorial</a> (1)</li>
+						
+							<li><a href="/tags/REST">REST</a> (1)</li>
+						
+							<li><a href="/tags/rmagick">rmagick</a> (1)</li>
+						
+							<li><a href="/tags/RSpec">RSpec</a> (1)</li>
+						
+							<li><a href="/tags/ruby">ruby</a> (2)</li>
+						
+							<li><a href="/tags/ruby on rails">ruby on rails</a> (8)</li>
+						
+							<li><a href="/tags/rubyconf">rubyconf</a> (1)</li>
+						
+							<li><a href="/tags/rubyonrails">rubyonrails</a> (2)</li>
+						
+							<li><a href="/tags/scaling">scaling</a> (1)</li>
+						
+							<li><a href="/tags/screencast">screencast</a> (2)</li>
+						
+							<li><a href="/tags/screencasts">screencasts</a> (1)</li>
+						
+							<li><a href="/tags/Test Driven Development">Test Driven Development</a> (1)</li>
+						
+							<li><a href="/tags/textmate">textmate</a> (1)</li>
+						
+							<li><a href="/tags/video">video</a> (4)</li>
+						
+							<li><a href="/tags/videos">videos</a> (6)</li>
+						
+							<li><a href="/tags/voicemail">voicemail</a> (1)</li>
+						
+							<li><a href="/tags/web 2.0">web 2.0</a> (1)</li>
+						
+							<li><a href="/tags/Web Services">Web Services</a> (1)</li>
+						
+						</ul>
+					</div>  
+					<div class="boxBtm"></div>
+					
+                                     <div class="box">
+					        <h2 id="contactHead">Contact Us</h2>
+					        <p>Like what you see? Contact us today to get the ball rolling on your next great idea.</p>
+					        <h3>(407) 574-8059</h3>
+				        </div>  
+				        <div class="boxBtm"></div>
+
+                                        <div class="box" style="text-align:center">
+                                           <a href="http://www.railsmachine.com/"><img src="http://www.railsenvy.com/assets/2008/5/1/rm_badge.png" title="Rails Machine" /></a><br />Hosting by Rails Machine
+                                         </div><div class="boxBtm"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+
+
+
+		<div id="footer">
+			<div class="content">
+				<div class="col">
+					<h2>WHAT WE READ</h2>
+					<ul>
+						<li><a href="http://www.orug.org" title="Orlando Ruby Users Group">Orlando Ruby Users Group</a></li>
+						<li><a href="http://www.therailsway.com/" title="The Rails Way">The Rails Way</a></li>
+						<li><a href="http://blog.hasmanythrough.com/" title="has_many :through">has_many :through</a></li>
+						<li><a href="http://headrush.typepad.com/creating_passionate_users/" title="Creating Passionate Users">Creating Passionate Users </a></li>
+						<li><a href="http://weblog.jamisbuck.org/" title="the { buckblogs :here }">the {buckblogs :here}</a></li>
+						<li><a href="http://www.rubyinside.com/" title="Ruby Inside">Ruby Inside</a></li>
+						<li><a href="http://weblog.techno-weenie.net/" title="techno weenie">techno weenie</a></li>
+						<li><a href="http://rails.co.za/" title="rails co za">Rails co za</a></li>
+						<li><a href="http://www.anthonyeden.com/" title="Anthony Eden">Anthony Eden</a></li>
+						<li><a href="http://www.igvita.com/blog/" title="igvita.com">igvita.com</a></li>
+                                                <li><a href="http://jasonseifer.com">Jason Seifer</a></li>
+					</ul>                         			      
+				</div>
+				<div class="col">
+					<h2>WHAT WE USE</h2>
+					<ul>
+                                                 <li><a href="http://www.railsmachine.com">Hosting by Rails Machine</a></li>
+                                                <li><a href="http://www.erikagreco.com">Site Design by Erika Greco</a></li>
+                                                <li><a href="http://www.mephistoblog.com" title="Mephisto">Mephisto Blog Engine</a></li>
+					</ul>
+
+				</div>    
+				
+				
+			</div>
+		</div>
+	<div id="copyright">
+		<div class="content">
+			<p>&copy; Copyright 2007 Rails Envy | <a href="http://www.erikagreco.com">Site Design by Erika Greco</a> <br />The Rails Logo was created by Kevin Milden and is distrubuted under the BY-ND Creative Commons Licence.</p>
+			<ul>
+				<li><a href="/index.html" title="Home">Home</a> | </li>
+				<li><a href="/company.html" title="Company">Company</a> | </li>
+				<li><a href="/portfolio.html" title="Portfolio">Portfolio</a> | </li>
+				<li><a href="/speaking.html" title="Speaking">Speaking</a> | </li>
+				<li><a href="/podcast.html" title="Podcast">Podcast</a> | </li>
+				<li><a href="/hire-us.html" title="Hire Us">Hire Us</a> | </li>
+                                <li><a href="http://technorati.com/claim/s8dcrqyfnc" rel="me">Technorati Profile</a></li>
+			</ul>
+		</div>
+	</div>
+		<script type="text/javascript">
+		//<![CDATA[
+		if(typeof sIFR == "function"){
+			sIFR.replaceElement("#leftCol h3.boxTitle", "/images/amasis.swf", named({sColor:"#3c5d31",sWmode:"transparent"}));
+			sIFR.replaceElement("h2.pageTitle", "/images/amasis.swf", named({sColor:"#74cd5d",sWmode:"transparent"}));
+			sIFR.replaceElement("#footer .col h2", "/images/amasis.swf", named({sColor:"#c7ebbc",sWmode:"transparent"}));
+		};
+		//]]>
+		</script>
+
+
+
+
+
+
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-88637-2";
+urchinTracker();
+</script>
+
+</body>
+</html>

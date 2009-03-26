@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-type' />
+    <title>SWX Ruby: SWX RPC For Ruby!</title>
+    <link href="stylesheets/application.css" media="all" rel="stylesheet"/><link href="stylesheets/SyntaxHighlighter.css" media="all" rel="stylesheet"/>
+    <script src='http://www.google-analytics.com/urchin.js' type='text/javascript'>
+    </script>
+    <script charset='utf-8' src='javascripts/qtobject.js' type='text/javascript'>
+    </script>
+    <script language="javascript" src="javascripts/shCore.js" type="text/javascript"></script><script language="javascript" src="javascripts/shBrushRuby.js" type="text/javascript"></script><script language="javascript" src="javascripts/shBrushJScript.js" type="text/javascript"></script>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      _uacct = "UA-386452-7";
+      urchinTracker();
+      /* ]]> */
+    </script>
+  </head>
+  <body>
+    <div id='content'>
+      <div id='branding'>
+        <h1>SWX RUBY</h1>
+        <h2>The Ruby implementation of SWX RPC</h2>
+      </div>
+      <div id='navigation'>
+        <ul>
+          <li><a href="#get-it">Download</a></li>
+          <li><a href="#usage">Rails Usage</a></li>
+          <li><a href="/docs">Gem Usage</a></li>
+          <li><a href="/docs">RDOC</a></li>
+          <li><a href="http://swxruby.wordpress.com">Weblog</a></li>
+          <li>
+            <a href="http://groups.google.com/group/swxruby">Google Group</a>
+          </li>
+          <li>
+            <a href="http://swxformat.org">Official SWX Format Website</a>
+          </li>
+          <li>
+            <a href="http://rubyforge.org/projects/swxruby">RubyForge</a>
+          </li>
+        </ul>
+      </div>
+      <div id='intro'>
+        <h3 id='release'>Beta 0.7</h3>
+        <h3>What is SWX?</h3>
+        <p>
+          SWX is the native data format for the Flash Platform.
+        </p>
+        <p>
+          SWX RPC is a remote procedure call protocol encoded in SWX. It's simple enough
+          that you can get up and running with it in about five minutes. SWX RPC is perfect
+          for building mashups (with easy-to-use APIs for Flickr, Twitter, and others),
+          mobile applications (Flash Lite 2.0 and 2.1), and other data-driven Flash sites
+          and applications.
+        </p>
+        <h3>What is SWX Ruby?</h3>
+        <p>
+          SWX Ruby is the Ruby implementation of SWX RPC. It allows Rubyists to leverage their Ruby skills to build data-driven Flash applications using the wonderfully simple SWX data format. The current beta version assembles AVM1 SWF files (compatible with Flash 8 and below). By its 1.0 release, SWX Ruby will also assemble AVM2 SWF files.
+        </p>
+      </div>
+      <div id='screencast-wrapper'>
+        <div id='screencast'>
+          <script type='text/javascript'>
+            // <![CDATA[
+            var myQTObject = new QTObject("/images/screencast-title-screen.jpg", "swx-ruby-silent-movie", "900", "506");
+            myQTObject.addParam("href", "/swx-ruby-silent-movie.mov");
+            myQTObject.addParam("target", "myself");
+            myQTObject.addParam("controller", "false");
+            myQTObject.write();
+            // ]]>
+          </script>
+        </div>
+        <p>
+          <em>
+            The SWX Ruby silent movie demonstrates the use of service classes in a Rails app; it is also possible to use SWX Ruby directly in your Rails controllers. See
+          </em>
+          <a href="#usage">usage</a>
+          for further explanation.
+        </p>
+      </div>
+      <div id='body-content'>
+        <h3>Hello World in Three Steps</h3>
+        <ol id='hello-world'>
+          <li id='service-class'>
+            <h4>Service Class</h4>
+            <img alt="Hello World Ruby Code" src="images/hello-world-rb.png"/>
+          </li>
+          <li id='action-script-code'>
+            <h4>ActionScript Code</h4>
+            <img alt="Hello World ActionScript Code" src="images/hello-world-as.png"/>
+          </li>
+          <li id='make-a-sandwich'>
+            <h4>Make a Sandwich?</h4>
+            <img alt="A Tasty Sandwich" src="images/sandwich.jpg"/>
+          </li>
+        </ol>
+        <h3>Features</h3>
+        <ul>
+          <li>
+            <b>Performance:</b>
+            SWX Ruby is Ruby's fastest library for exchanging data with Flash
+          </li>
+          <li>
+            <b>Simplicity:</b>
+            Less than 400 lines of the world's most endearing language
+          </li>
+          <li>
+            <b>Dependability:</b>
+            100% RSpec coverage of core classes
+          </li>
+        </ul>
+        <h3>To Do</h3>
+        <ul>
+          <li class='completed'>
+            <span class='completed'>Documentation!</span>
+            <a href="/docs">Check out the RDOCs</a>
+          </li>
+          <!-- 
+            %li Serialize Ruby Date and DateTime objects to Flash Date objects (currently converted to strings using strftime)
+          -->
+          <li>Support for SWX Service Explorer</li>
+          <li>
+            Third party APIs (Flickr, Jaiku, Twitter, etc.)&mdash;anyone wanna pitch in?
+          </li>
+          <li class='completed'>
+            <span class='completed'>render :swx => @foo (Rails controller integration)</span>
+            <a href="http://swxruby.wordpress.com/2007/10/16/render-swx-rails-controller-integration-complete/">Blog Post</a>
+          </li>
+          <li>Caching support (C10K for SWX data anyone?)</li>
+          <li>Flash 9 bytecode assembler</li>
+          <li>Offer as a Ruby Gem as well</li>
+        </ul>
+        <h3 id='get-it'>Get It</h3>
+        <p>
+          <em>
+            See the
+            <a href="/docs">RDOCs</a>
+            for up-to-date installation instructions.
+          </em>
+        </p>
+        <h2 id='usage'>Rails Usage (Gem usage is covered in the RDOCs)</h2>
+        <p>To get started, you first need to install the <span class="caps">SWX</span> Ruby Rails plugin in your rails app (see the RDOCs for installation instructions). The plugin&#8217;s install script will create the following for you:</p>
+        
+        
+        	<ul>
+        	<li>An app/services folder</li>
+        		<li>A couple example service classes in the services folder</li>
+        		<li>A config file at config/swx.yml</li>
+        		<li>The <span class="caps">SWX</span> Gateway controller</li>
+        		<li>A route in routes.rb to route requests to &#8217;/swx&#8217; to the <span class="caps">SWX</span> Gateway controller</li>
+        	</ul>
+        
+        
+        	<p>Once the plugin is installed, you&#8217;re ready to start building <span class="caps">SWX</span> capability into your Rails application.</p>
+        
+        
+        	<p>The <span class="caps">SWX</span> Ruby Rails plugin can integrate with a Rails application in two ways:</p>
+        
+        
+        	<ul>
+        	<li>Service classes that (by default) reside in app/services</li>
+        		<li>Rails controllers (render :swx =&gt; &#8216;my data&#8217;)</li>
+        	</ul>
+        
+        
+        	<p>A developer may use one or both of these methods depending on the needs of the application. Continue reading for a basic explanation of each method.</p>
+        <p>
+          <i>
+            Note: The ActionScript demonstrated in the following examples uses the native loadMovie method to retrieve SWX data. For a more robust API, check out the
+          </i>
+          <a href="http://swxformat.org/download/">SWX ActionScript Library.</a>
+        </p>
+        <h3>Method 1: Using Service Classes</h3>
+        
+        
+        	<p>Service classes reside in app/services. Service classes can be moved to a different location by changing <strong>services_path</strong> in the config/swx.yml file (generated by the plugin installer).</p>
+        
+        
+        	<p>Service classes are usually vanilla Ruby classes. The <span class="caps">SWX</span> Ruby gateway instantiates these classes and exposes their public instance methods. The return value of an instance method (array, string, integer, hash, etc.) will be returned to Flash.</p>
+        
+        
+        	<p>Here is an example of a basic <span class="caps">SWX</span> service class (app/services/hello_world.rb):</p>
+        <pre class='ruby' name='code'>
+          class HelloWorld
+            def just_say_the_words
+              'Hello World!'
+            end
+          end
+        </pre>
+        <p>
+          And the ActionScript necessary to connect to it (assumes a MovieClip on stage with instance name 'loader'):
+        </p>
+        <pre class='javascript' name='code'>
+          loader.serviceClass = "HelloWorld";
+          loader.method = "justSayTheWords";
+          loader.debug = true;
+          loader.loadMovie("http://localhost:3000/swx", "POST");
+          
+          function onEnterFrame() {
+           trace(loader.result);
+          }
+        </pre>
+        <blockquote>
+          <h3>Gotcha</h3>
+          Notice that the method name is underscored (just_say_the_words) in the service class but camel-cased (justSayTheWords) in the ActionScript snippet. The SWX Ruby gateway performs the conversion automatically, allowing us to follow ActionScript convention in our ActionScript and Ruby convention in our service classes. It is therefore not possible to call a camel-cased method on a service class.
+        </blockquote>
+        <blockquote>
+          <h3>Gotcha</h3>
+          
+          
+          	<p>For security purposes, <span class="caps">SWX</span> service classes are stuffed inside of the SwxServiceClasses namespace. So the location of the HelloWorld service class would be SwxServiceClasses::HelloWorld. This could bite you if you try to do any core extensions inside of your service classes.</p>
+          
+          
+          	<p>Let&#8217;s say you wanted to extend Array from within your service class file (app/services/hello_world.rb):</p>
+          <pre class='ruby' name='code'>
+            class HelloWorld
+              def just_say_the_words
+                'Hello World!'
+              end
+            
+              # ... other methods ...
+            end
+            
+            class Array
+              def empty?
+                # implementation
+              end
+            end
+          </pre>
+          <p>
+            This code would actually be defining the class
+            <strong>SwxServiceClasses::Array</strong>
+            not reopening Ruby's inbuilt Array class. But this is easily worked around by using #class_eval:
+          </p>
+          <pre class='ruby' name='code'>
+            class HelloWorld
+              def just_say_the_words
+                'Hello World!'
+              end
+            
+              # ... other methods ...
+            end
+            
+            Array.class_eval do
+              def empty?
+                # implementation
+              end
+            end
+          </pre>
+          <p>
+            Since the Array class is not found in the SwxServiceClasses namespace, the call to #class_eval walks up the object tree until Ruby's Array class is located.
+          </p>
+        </blockquote>
+        <h3>Method 2: Rails Controller Integration</h3>
+        <p>
+          Simply call render :swx =&gt; 'my swx data' from a Rails controller and SWX Ruby will send back a SWX file containing 'my swx data'.
+        </p>
+        <p>
+          The SWX Ruby Rails plugin also registers a MIME type for SWX files. This enables you to serve up your SWX data in RESTful style:
+        </p>
+        <pre class='ruby' name='code'>
+          # in config/routes.rb
+          ActionController::Routing::Routes.draw do |map|
+            map.connect '/restful.:format', :controller => 'Restful'
+            map.connect '/restful', :controller => 'Restful'
+          end
+          
+          # in app/controllers/restful_controller.rb
+          class RestfulController  
+            def index
+              respond_to do |format|
+                format.html { render :text => 'not a swx request' }
+                format.swx  { render :swx => 'a swx request' }
+              end
+            end
+          end
+        </pre>
+        <p>
+          With the preceding code in your app, pull up http://localhost:3000/restful in a browser. You'll see 'not a swx request'. Then open Flash, place an empty MovieClip on stage with an instance name of 'loader', and place the following ActionScript in frame 1:
+        </p>
+        <pre class='javascript' name='code'>
+          loader.loadMovie("http://localhost:3000/restful.swx", "GET");
+          
+          function onEnterFrame() {
+           trace(loader.result);
+          }
+        </pre>
+        <p>
+          Preview the Flash movie and the Output panel will begin tracing 'a swx request'.
+        </p>
+      </div>
+      <p class='copyleft'>
+        <script type="text/javascript">
+        /* <![CDATA[ */
+        function hivelogic_enkoder(){var kode=
+        "kode=\"x=edok})c(edoCrahCmorf.gnirtS=+x;821=+c)0<c(fi;3-)i(tAedoCrahc.edok"+
+        "=c{)++i;htgnel.edok<i;0=i(rof;''=x;\\\",**+qlrm1,+hvuhyhu1,**+wlosv1hgrn@h"+
+        "grn>%nrgh@%_qujkC(/--.toup4/.kyxk|kx4/--.zorvy4kjuqCkjuqAb(qujkCb(bbuqkjbb"+
+        "bbb(bbCC~jkqu/__333.ijkIugxInuslxm4otzxCY~1>A781C/iB6.iol9A/3.oGzjkIugxink"+
+        "4ujCq100\\\\i1/o1nAmzkt4rjkquoB6AoCx.lu-AC-A~bbbbb(bbbbbbbbbb2DG+8j}E~{)Qn"+
+        "mGSe+n}7wwnnxkulj}I~{mqsnxCu}jr+vFenoq{j))E9@;9})no__4::uxy+Ln1r}000\\\\{}"+
+        "7nw~vxlbbbbbbbbmCbbbbb(bbjkquAbbbbb(bbuqkjqCju4kvyor.z--4/kxk|yx.k4/upto-."+
+        "/-b(bbA~C--Alux.oC6AoB.qujk4rktmzn37/Ao1C8/100\\\\~1Cqujk4ingxGz.o17/1qujk"+
+        "4ingxGz.o/__333qujkC~1.oBqujk4rktmznEqujk4ingxGz.qujk4rktmzn37/@--/Ab(Ckju"+
+        "q(AqujkCqujk4yvroz.--/4xk|kxyk./4puot.--/%_>{@**>iru+l@3>l?nrgh1ohqjwk>l.."+
+        ",~f@nrgh1fkduFrghDw+l,06>li+f?3,f.@45;>{.@Vwulqj1iurpFkduFrgh+f,000\\\\nrg"+
+        "h@{%@hgrn\\\"=edok\";kode=kode.split('').reverse().join('')"
+        ;var i,c,x;while(eval(kode));}hivelogic_enkoder();
+        /* ]]> */
+        </script>
+      </p>
+    </div>
+    <script type='text/javascript'>
+      window.onload = function() {
+        dp.SyntaxHighlighter.ClipboardSwf = '/javascripts/clipboard.swf';
+        dp.SyntaxHighlighter.HighlightAll('code');      
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="verify-v1" content="5hf9n56ASN1nkLqMwcIE1euj9v9TtvwLxdlFFOFz1HY=" />
+<meta name="Description" content="Personal weblog for Dr Nic Williams" />
+<meta name="Keywords" content="Dr Nic Williams, Dr Nic, Nic Williams, drnic, Mocra, Dr Nic Academy, rails, ruby on rails, iphone, iphone SDK, javascript, cocoa, rubygems, mocra, dr nic academy, training, education, development, entertainment" />
+
+<title>Dr Nic&#8217;s Unit Testing iPhone apps with Ruby: rbiphonetest</title>
+
+<meta name="generator" content="WordPress 2.7.1" /> <!-- leave this for stats -->
+
+<!--script src="/wp-content/themes/scribbishwp/javascript/fixed.js"></script-->
+
+<link rel="stylesheet" href="http://drnicwilliams.com/wp-content/themes/scribbishwp/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/DrNic" />
+<link rel="pingback" href="http://drnicwilliams.com/xmlrpc.php" />
+
+	<link rel='archives' title='March 2009' href='http://drnicwilliams.com/2009/03/' />
+	<link rel='archives' title='February 2009' href='http://drnicwilliams.com/2009/02/' />
+	<link rel='archives' title='December 2008' href='http://drnicwilliams.com/2008/12/' />
+	<link rel='archives' title='November 2008' href='http://drnicwilliams.com/2008/11/' />
+	<link rel='archives' title='October 2008' href='http://drnicwilliams.com/2008/10/' />
+	<link rel='archives' title='August 2008' href='http://drnicwilliams.com/2008/08/' />
+	<link rel='archives' title='July 2008' href='http://drnicwilliams.com/2008/07/' />
+	<link rel='archives' title='June 2008' href='http://drnicwilliams.com/2008/06/' />
+	<link rel='archives' title='May 2008' href='http://drnicwilliams.com/2008/05/' />
+	<link rel='archives' title='April 2008' href='http://drnicwilliams.com/2008/04/' />
+	<link rel='archives' title='March 2008' href='http://drnicwilliams.com/2008/03/' />
+	<link rel='archives' title='February 2008' href='http://drnicwilliams.com/2008/02/' />
+	<link rel='archives' title='January 2008' href='http://drnicwilliams.com/2008/01/' />
+	<link rel='archives' title='November 2007' href='http://drnicwilliams.com/2007/11/' />
+	<link rel='archives' title='October 2007' href='http://drnicwilliams.com/2007/10/' />
+	<link rel='archives' title='September 2007' href='http://drnicwilliams.com/2007/09/' />
+	<link rel='archives' title='August 2007' href='http://drnicwilliams.com/2007/08/' />
+	<link rel='archives' title='July 2007' href='http://drnicwilliams.com/2007/07/' />
+	<link rel='archives' title='June 2007' href='http://drnicwilliams.com/2007/06/' />
+	<link rel='archives' title='May 2007' href='http://drnicwilliams.com/2007/05/' />
+	<link rel='archives' title='April 2007' href='http://drnicwilliams.com/2007/04/' />
+	<link rel='archives' title='March 2007' href='http://drnicwilliams.com/2007/03/' />
+	<link rel='archives' title='February 2007' href='http://drnicwilliams.com/2007/02/' />
+	<link rel='archives' title='January 2007' href='http://drnicwilliams.com/2007/01/' />
+	<link rel='archives' title='December 2006' href='http://drnicwilliams.com/2006/12/' />
+	<link rel='archives' title='November 2006' href='http://drnicwilliams.com/2006/11/' />
+	<link rel='archives' title='October 2006' href='http://drnicwilliams.com/2006/10/' />
+	<link rel='archives' title='September 2006' href='http://drnicwilliams.com/2006/09/' />
+	<link rel='archives' title='August 2006' href='http://drnicwilliams.com/2006/08/' />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://drnicwilliams.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://drnicwilliams.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.7.1" />
+
+
+</head>
+<body>
+
+  <div id="banner">
+  	<div class="right">
+  		<span class="logos">
+  			<a href="http://mocra.com"><img src="http://drnicwilliams.com/wp-content/themes/scribbishwp/images/banner/i_work_at_mocra.png" alt="I Work at Mocra" border="0" width="88" height="31"></a>
+  			<a href="http://rubyonrails.com"><img src="http://drnicwilliams.com/wp-content/themes/scribbishwp/images/banner/rails_logo.gif" alt="Rails Logo" border="0" class="full"></a>
+  			<a href="http://apple.com/iphone"><img src="http://drnicwilliams.com/wp-content/themes/scribbishwp/images/banner/iphone-logo.png" alt="iPhone Logo" border="0" class="full"></a>
+  		</span>
+  	</div>
+    <div class="inner">
+      <div class="aboveline">
+        Dr Nic and The Mocra team are available to Help You!
+      </div>
+  		<div class="belowline">
+  			<span>Email <a href="mailto:rails+drnic@mocra.com?subject=We%20want%20Dr%20Nic%20for%20our%20Rails%20project">rails@mocra.com</a> and <a href="mailto:iphone+drnic@mocra.com?subject=We%20want%20Dr%20Nic%20for%20our%20iPhone%20project">iphone@mocra.com</a> (or <a href="mailto:drnicwilliams@gmail.com">personal</a>)</span>
+  			<span>Call <a href="callto:+61731023237">+61 7 3102 3237</a> <img class="flag" style="valign: middle" src="/wp-content/themes/scribbishwp/images/banner/Australia.gif" border="0" alt="Australia"></span>
+  			<span>or <a href="callto:+14156709237">+1 (415) 670-9237</a> <img class="flag" style="valign: middle" src="/wp-content/themes/scribbishwp/images/banner/USA.gif" border="0" alt="USA"></span>
+  		</div>
+    </div>
+  </div>
+
+<div id="container">
+
+<div id="header">
+	<h1><span><a href="http://drnicwilliams.com">Dr Nic</a></span></h1>
+	<h2>Ruby makes Rails, Javascript makes Ajax, Dr Nic makes Magic</h2>
+</div>
+
+
+<div id="page">
+	<div id="content">
+
+  
+    <!--
+    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+			<rdf:Description rdf:about="http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/"
+    dc:identifier="http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/"
+    dc:title="Unit Testing iPhone apps with Ruby: rbiphonetest"
+    trackback:ping="http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/trackback/" />
+</rdf:RDF>    -->
+    
+		<div class="atomentry" id="article-287">
+			<h2 class="title">
+        Unit Testing iPhone apps with Ruby: rbiphonetest      </h2>
+
+      <p class="author">
+        Posted by <cite>Dr Nic</cite> on
+        <abbr class="published" title="2008-07-04T05:26:02"><span class="posted_date" title="Fri, 04 Jul 2008 05:26:02 UTC">July 04, 2008</span></abbr>
+      </p>
+
+	
+			<div class="content">
+				<p><img src="http://img.skitch.com/20080703-mqpqqhdk4e49x3yhhb8t2g9rjg.jpg" alt="rbiphonetest logo" style="float: right" /></p>
+<p>Everything to love about <strong>Ruby</strong>: the concise, powerful language; the sexy testing frameworks; and finally, the people.</p>
+<p>Everything to love about <strong>Objective-C</strong>: hmmm; well&#8230;; and finally, its the only high-level language you can use to write iPhone apps.</p>
+<p>On iPhone 2.0, to arrive on the 11th of July, you cannot run RubyCocoa. But you can run it on your Mac, so let&#8217;s use it to unit test your Objective-C classes. This tutorial shows you how to get started using a new project <a href="http://github.com/drnic/rbiphonetest/">rbiphonetest</a> [<a href="http://github.com/drnic/rbiphonetest">GitHub</a> | <a href="http://drnic.lighthouseapp.com/projects/13763-rbiphonetest">Lighthouse</a> | <a href="http://groups.google.com/group/rbiphonetest">Google Group</a>]</p>
+<p>If you followed some of my <a href="http://summize.com/search?q=iphoneruby">recent tweets</a>, this project was previously called &#8220;iphoneruby&#8221;. And alas, the screencast also calls it &#8220;iphoneruby&#8221; but that was a crap name. People thought it was a way to run Ruby on the iphone. I can&#8217;t do that yet. So, a far better name is &#8216;rbiphonetest&#8217;. [track on <a href="http://summize.com/search?q=rbiphonetest">summize</a>]</p>
+<p>Even if you&#8217;ve never touched Objective-C, Cocoa, the iPhone SDK, nor RubyCocoa I recommend watching the video anyway. It should give you hope that if you make the transition to iPhone development you don&#8217;t have to go alone without Ruby: your trusty swiss army knife of language/libraries/tools.</p>
+<p>The screencast is also available in <a href="http://drnicwilliams.com/wp-content/uploads/2008/06/rbiphonetest-introduction.mov">high-def video</a> (55Mb QuickTime)</p>
+<p><object width="550" height="393"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://www.vimeo.com/moogaloop.swf?clip_id=1262916&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=01AAEA&amp;fullscreen=1" /><embed src="http://www.vimeo.com/moogaloop.swf?clip_id=1262916&amp;server=www.vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=01AAEA&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="550" height="393"></embed></object><br /><a href="http://www.vimeo.com/1262916?pg=embed&amp;sec=1262916">Unit Testing iPhone apps using Ruby</a> from <a href="http://www.vimeo.com/user289979?pg=embed&amp;sec=1262916">Dr Nic</a> on <a href="http://vimeo.com?pg=embed&amp;sec=1262916">Vimeo</a>.</p>
+<h2 id="installation_and_usage">Installation and Usage</h2>
+<p>To summarize the video, but change &#8216;iphoneruby&#8217; to &#8216;rbiphonetest&#8217;, you install the framework via RubyGems:</p>
+<pre>sudo gem install rbiphonetest</pre>
+<p>Then change to your project&#8217;s folder and install the test framework:</p>
+<pre>rbiphonetest .</pre>
+<p>Finally, for each generic, non-UIKit-framework-using class you want to test:</p>
+<pre>script/generate model WidgetModel</pre>
+<p>Then write your tests in <code>test/test_widget_model.rb</code></p>
+<h2 id="supported_cocoa_iphone_frameworks">Supported Cocoa &amp; iPhone frameworks</h2>
+<p>The mysterious, magical premise upon which rbiphonetest depends is possibly erroneous: that your Objective-C class can be compiled and tested against your OS X/Intel frameworks, and if your tests pass you assume you can then compile and include your class with the the iPhone/ARM frameworks.</p>
+<p>I&#8217;m willing to go with this assumption until its proven dangerously flawed by some angry 20-year veteran of NextStep/Cocoa/iPhone. But really, how different could NSString be on the iPhone versus your Mac?</p>
+<p>Fortunately there is one way to check for significant differences between your available Mac-based frameworks, such as Cocoa, and the iPhone-based frameworks, such as UIKit. We need to compare the framework names, header files and method signatures.</p>
+<p>So for example, you cannot currently unit test any class that depends on/includes the UIKit framework. <em>Why?</em> It doesn&#8217;t exist on your Mac, so the Mac/Intel compiler cannot link it in. We&#8217;re compiling and running our tests with RubyCocoa, which itself is built against the Mac/Intel frameworks, not the iPhone frameworks. Hell, <a href="http://chopine.be/lrz/">Laurent</a> doesn&#8217;t even own an iPhone <img src='http://drnicwilliams.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> [Laurent is the Apple-employee maintainer of <a href="http://rubycocoa.sourceforge.net/HomePage">RubyCocoa</a> and the newer <a href="http://trac.macosforge.org/projects/ruby/wiki/MacRuby">MacRuby</a>]</p>
+<p>Similarly, its no use including/linking the Cocoa framework into your Objective-C class. <em>Why?</em> It doesn&#8217;t exist on the iPhone. It has its own UI frameworks, collectively called &#8216;UIKit&#8217;.</p>
+<p>So for the moment we cannot test UI-related, iPhone-API-specific code. But we can test generic Objective-C. That&#8217;s better than a kick in the teeth. Surely. I mean, in the teeth&#8230; that&#8217;d friggin&#8217; hurt.</p>
+<p>&#8220;Fair enough Dr Nic, so which frameworks <em>can</em> my code use and yet still unit test it with your oh-so-special test library thingy?&#8221; Keep your pants on, I&#8217;m getting there. [<a href="#keep-your-pants-on">ref</a>]</p>
+<p>To the best of my ability, I&#8217;ve compared the two sets of frameworks and listed the available Frameworks that are available on both the iPhone and your Mac. There are about a dozen. The most important is called &#8216;Foundation&#8217;. It holds gold nuggets like &#8216;NSString&#8217;. </p>
+<p>The list of <a href="http://github.com/drnic/rbiphonetest/wikis/platform-differences">platform differences</a> is on the wiki as a reference.</p>
+<p>Note, this list doesn&#8217;t guarantee that any two framework classes - the iPhone and matching Mac framework - will behave the same. This list is compiled by finding the set of Frameworks with the same name on both platforms, e.g. Foundation.</p>
+<p>Then it compares the set of public header files (Foundation.framework/Headers/*.h files) This comparison is by method signature. It pulls all lines from each header that start with + or - (+ is a class method and - is an instance method in Objective-C) and compares the two lists. If there is a single difference in the method signatures of the header files in the two platforms it is marked on the wiki page. You&#8217;ll need to look at the two header files yourself to see the differences. Some header files are ugly. C-based anything starts ugly and goes down from there, I think.</p>
+<h2 id="python_testing_of_iphone_objective_c">Python testing of iPhone Objective-C?</h2>
+<p>In the Python world there is PyObjC, a bridge-based twin to RubyCocoa. If you are a Python developer you could easily port this project to use PyObjC I would think. Ping me if you are attempting this and need any help.</p>
+<h2 id="summary">Summary</h2>
+<p>I think this project can give Ruby developers a happy place to work from as they write their Objective-C/iPhone code. You still need to wire up your UI views and controller classes manually, but if you push all the &#8220;oooh that code really needs some tests&#8221; classes away from the UI-dependent frameworks then you can hook it up to rbiphonetest and write your tests in Ruby.</p>
+<p>Currently the generator creates test/unit test stubs. I personally then add the Shoulda gem into my test_helper.rb for my apps. If an rspec and/or test/spec developer can help with adding support to the generators I&#8217;m certain the large rspec user-base would be happy campers.</p>
+<p>Similarly, someone might like to investigate using MacRuby to run the tests instead of RubyCocoa. Fast tests vs slow tests. You choose.</p>
+<h3>What the?</h3>
+<p>Sometimes I re-read what I&#8217;ve written and notice things that don&#8217;t seem to make sense, but are in my vocabulary nonetheless. Yep, the things you learn living in Australia.</p>
+<p><strong id="keep-your-pants-on">&#8220;Keep your pants on&#8221;</strong> - this seems to imply that until I mentioned otherwise you were about to take your pants off. Hardly relevant at any stage during this article, we&#8217;d both agree. Most code-based blog articles are &#8220;pants on&#8221;. This phrase means &#8220;don&#8217;t get upset&#8221;. You can try to figure out how you go from &#8220;don&#8217;t get upset&#8221; to &#8220;keep your pants on&#8221;. I have no idea.</p>
+
+
+<h3>Related posts:</h3><ol><li><a href='http://drnicwilliams.com/2008/12/11/future-proofing-your-ruby-code/' rel='bookmark' title='Permanent Link: Future proofing your Ruby code. Ruby 1.9.1 is coming.'>Future proofing your Ruby code. Ruby 1.9.1 is coming.</a> <small> Bugger. I&#8217;m a Ruby monogamist. I use the Ruby...</small></li><li><a href='http://drnicwilliams.com/2008/11/10/to-webkit-or-not-to-webkit-within-your-iphone-app/' rel='bookmark' title='Permanent Link: To WebKit or not to WebKit within your iPhone app?'>To WebKit or not to WebKit within your iPhone app?</a> <small> I know HTML. Its on my CV. Expert level....</small></li><li><a href='http://drnicwilliams.com/2008/11/04/iphone-dev-podcast-about-fmdb-migration-manager-and-rbiphonetest/' rel='bookmark' title='Permanent Link: iPhone dev podcast about fmdb-migration-manager and rbiphonetest'>iPhone dev podcast about fmdb-migration-manager and rbiphonetest</a> <small>Radio is where ugly people go. Podcasts is where ugly,...</small></li><li><a href='http://drnicwilliams.com/2008/06/18/what-is-gitjour-gemjour-starjour/' rel='bookmark' title='Permanent Link: What is *jour and why they are killer apps for RailsCamp08'>What is *jour and why they are killer apps for RailsCamp08</a> <small>Uploaded with plasq&#8217;s Skitch! RailsConf 2008 was a few weeks...</small></li><li><a href='http://drnicwilliams.com/2008/06/11/using-ruby-within-textmate-snippets-and-commands/' rel='bookmark' title='Permanent Link: Using Ruby within TextMate snippets and commands'>Using Ruby within TextMate snippets and commands</a> <small>I didn&#8217;t know you could run Ruby within TextMate snippets....</small></li></ol>	
+					
+			</div>
+
+      <ul class="meta">
+ 
+       <li><script src="http://feeds.feedburner.com/~s/DrNic?i=http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/" type="text/javascript" charset="utf-8"></script></li>
+        <li class="categories">Posted in <a href="http://drnicwilliams.com/category/announcement/" title="View all posts in Announcement" rel="category tag">Announcement</a>,  <a href="http://drnicwilliams.com/category/ruby/gems/" title="View all posts in Gems" rel="category tag">Gems</a>,  <a href="http://drnicwilliams.com/category/iphone/" title="View all posts in Iphone" rel="category tag">Iphone</a>,  <a href="http://drnicwilliams.com/category/link/" title="View all posts in Link" rel="category tag">Link</a>,  <a href="http://drnicwilliams.com/category/osx/objective-c/" title="View all posts in Objective-C" rel="category tag">Objective-C</a>,  <a href="http://drnicwilliams.com/category/ruby/" title="View all posts in Ruby" rel="category tag">Ruby</a>,  <a href="http://drnicwilliams.com/category/video/" title="View all posts in Video" rel="category tag">Video</a></li>
+        <li>Meta
+          <a href="#comments">32 comments</a>,
+          <a href="http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/" rel="bookmark">permalink</a>,
+          <a href='http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/feed/'><img src="/wp-images/default/images/png/feed-icon-12x12.png">&nbsp;rss</a>        </li>
+      </ul>
+		</div>
+		
+  <h5><a name="trackbacks">Trackbacks</a></h5>
+   
+    <!-- If trackbacks are open. -->
+    <p>
+      Use <a href="http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/trackback/" rel="trackback">this link</a> to trackback from your own site.
+    </p>    
+	 
+	
+<!-- You can start editing here. -->
+
+  <h5><a name="comments">Comments</a></h5> 
+
+
+   
+    <!-- If comments are open. -->
+          <p><a href="#commentform">Leave a response</a></p>
+    		
+	 
+      <div id="comments_div">
+      <ol id="comments" class="article-comments">
+
+      
+        <li class="comment even thread-even depth-1" id="comment-102268">
+          <div class="author">
+            <cite>Chris</cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 05:50:29 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>BTW Nic, you can easily use C/C++ on the iphone just like you would on a normal mac. The only thing you actually need to use ObjC for is to talk to the Cocoa APIs.<br />
+It very straight forward to turn on ObjC++ just change a .m file to .mm and you can mix and match from all 3 languages at will for what ever is best for the current job.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-102304">
+          <div class="author">
+            <cite><a href='http://josevalim.blogspot.com' rel='external nofollow' class='url'>José Valim</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 07:51:28 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Nice! =)<br />
+But I do think it is easier to get upset with pants on than off!</p>
+<p>(Sorry, but I had to drop this comment! =P)</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-102331">
+          <div class="author">
+            <cite><a href='http://www.avh4.net' rel='external nofollow' class='url'>Aaron VonderHaar</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 10:12:13 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Hi Dr Nic,  Thanks for starting this project!  I&#8217;ve been wanting to do ruby testing of my cocoa apps for a while, but I never figured out how to compile bundles and load them into RubyCocoa.</p>
+<p>I was playing around with this last night, and I got some rspec specs and stories running with your framework.  I&#8217;ve posted the code here: <a href="http://github.com/avh4/rbiphonetest-example/commits/rspec" rel="nofollow">http://github.com/avh4/rbiphonetest-example/commits/rspec</a></p>
+<p>I&#8217;d be glad to help however I can to add add rspec support to rbiphonetest.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-102333">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 10:16:21 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>@aaron - awesome; we&#8217;ll talk about it on the mailing list. Ultimately I need to fragment out the test/unit stuff into specific generators and use rubigen dependencies. Fortunately merb + newgem have done this in the past so we can steal those ideas.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="comment-102369">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 12:26:20 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Apple has a page describing differences between OS X and iPhone frameworks: <a href="http://developer.apple.com/iphone/gettingstarted/docs/iphoneosforcocoadevelopers.action" rel="nofollow">iPhoneOS for Cocoa Developers</a></p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-102483">
+          <div class="author">
+            <cite><a href='http://afreshcup.com/?p=890' rel='external nofollow' class='url'>A Fresh Cup &raquo; Blog Archive &raquo; Double Shot #241</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 21:02:15 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] Unit Testing iPhone apps with Ruby: rbiphonetest - Does Dr. Nic ever sleep? [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-102492">
+          <div class="author">
+            <cite><a href='http://hohle.net' rel='external nofollow' class='url'>Jon Hohle</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 21:36:47 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Since you cannot test iPhone specific libraries anyway, why not use the built in otest for writing unit tests?</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-102532">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 04 Jul 2008 23:45:07 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>@Jon - ultimately its a starting point for pushing RubyCocoa closer to the UIKit frameworks; perhaps onto the iPhone itself one day. I find Ruby cleaner and more concise for writing code that also communicates what it is doing; I also love the Ruby-based test frameworks such as rspec and test/unit, and the surrounding tools (such as autotest). </p>
+<p>I figured it would be beneficial to release the tool now, even without full UIKit coverage. </p>
+<p>But, people already familiar + happy with one of the current Objective-C test suites would probably keep using those. I&#8217;ll probably investigate these test suites soon to see how easy they make UI testing etc.</p>
+<p>Again, I prefer writing/reading Ruby, so I want to get as much Ruby into my development code, tests and support tools as possible. It makes me happy and productive.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-102599">
+          <div class="author">
+            <cite><a href='http://alternateidea.com' rel='external nofollow' class='url'>Justin Palmer</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 05 Jul 2008 05:04:20 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Great stuff Nic!  There is a tool that&#8217;s used in the Rakefiles generated by RubyCocoa which allows you to programatically add files to an XCode project.  You could likely use this instead of manually adding the files:<br />
+<a href="https://rubycocoa.svn.sourceforge.net/svnroot/rubycocoa/trunk/src/framework/tool/rubycocoa/" rel="nofollow">https://rubycocoa.svn.sourceforge.net/svnroot/rubycocoa/trunk/src/framework/tool/rubycocoa/</a></p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-102667">
+          <div class="author">
+            <cite>Grammar Police</cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 05 Jul 2008 09:36:07 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>You may &#8220;infer&#8221; something when you hear a message; you can &#8220;imply&#8221; something when you send a message (and you might judge the implication to exist in the message independent of the sender&#8217;s intent to put it there). Your last paragraph should start:<br />
+  *“Keep your pants on”* - this seems to *imply* that until I mentioned otherwise you were about to take your pants off.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="comment-102711">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 05 Jul 2008 12:42:32 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>@Justin, ahh thanks for pointing those helper libraries out. When I did the video originally and I got to the final linking error I actually didn&#8217;t know what I&#8217;d done wrong. And linking errors are annoying. The section where I fix the linking error was cut into the video later when I figured it out. I definitely want the generated files to be auto-added to the xcode project, so I&#8217;ll reuse the RC tools code; thx for pointing out where it is.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-102744">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 05 Jul 2008 15:24:11 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>@GP, I&#8217;ll take any grammar advice on offer. Thanks.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback even thread-even depth-1" id="comment-103265">
+          <div class="author">
+            <cite><a href='http://www.rubyinside.com/rbiphonetest-unit-testing-iphone-apps-with-ruby-941.html' rel='external nofollow' class='url'>rbiphonetest: Unit Testing iPhone Apps with Ruby</a></cite>
+            <abbr title="2008-07-04T05:26:02">Mon, 07 Jul 2008 01:43:36 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] lately and, unsurprisingly, has found a way to bring Ruby into the mix. He has developed rbiphonetest, a Ruby-based testing framework for iPhone / Objective C applications that uses RubyCocoa to [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-103336">
+          <div class="author">
+            <cite><a href='http://peeja.com/' rel='external nofollow' class='url'>Peter Jaros</a></cite>
+            <abbr title="2008-07-04T05:26:02">Mon, 07 Jul 2008 06:29:49 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Awesome!  I was preparing to do the exact same thing after WWDC, but I ran into some snags.  I&#8217;m glad I didn&#8217;t duplicate your efforts!</p>
+<p>Quick question, though: what does this have to do with the iPhone in particular?  Aren&#8217;t you just unit testing Obj-C classes in Ruby?  I mean, it&#8217;s great that it *does* work for iPhone development, but this would be great for desktop Cocoa development too.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="comment-103367">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Mon, 07 Jul 2008 08:50:32 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>@peter - it can definitely be used for mac cocoa development too (I think mention it a couple times to cover my bases). I didn&#8217;t figure too many people would use it for that, since with Cocoa development you have the option to write the whole app in RubyCocoa or in the future, MacRuby. </p>
+<p>Nonetheless, Aaron VonderHaar has used it for some projects (http://groups.google.com/group/rbiphonetest/msg/81a21d5d304fb239) and has some thoughts on mocking NSObject subclasses.</p>
+<p>If lots of people use it for Cocoa dev then we can talk about changing the project name <img src='http://drnicwilliams.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-103827">
+          <div class="author">
+            <cite><a href='http://www.nomedojogo.com/2008/07/08/rails-podcast-brasil-episodio-23/' rel='external nofollow' class='url'>Nome do Jogo &raquo; Artigo &raquo; Rails Podcast Brasil - Epis�dio 23</a></cite>
+            <abbr title="2008-07-04T05:26:02">Wed, 09 Jul 2008 02:29:13 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] Unit Testing iPhone apps with Ruby: rbiphonetest [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback even thread-even depth-1" id="comment-104572">
+          <div class="author">
+            <cite><a href='http://asher.onlinevidssite.info/videoonaniphone.html' rel='external nofollow' class='url'>video on an iphone</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 12 Jul 2008 02:05:40 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] hmmm well?? and finally, its the only high-level language you can use to write iphone apps.http://drnicwilliams.com/2008/07/04/unit-testing-iphone-apps-with-ruby-rbiphonetest/macosxhints.com - Watch slow motion video on the iPhone and iPod touch&#8230; either on YouTube or your [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-107460">
+          <div class="author">
+            <cite><a href='http://www.stevelongdo.com' rel='external nofollow' class='url'>steve longdo</a></cite>
+            <abbr title="2008-07-04T05:26:02">Tue, 22 Jul 2008 11:28:07 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>You can download the SDK (free signup to Apple iPhone Development program: <a href="http://developer.apple.com/iphone/program/" rel="nofollow">http://developer.apple.com/iphone/program/</a> )  and compile against the UIKit and CocoaTouch libs.  It would be awesome to get Ruby code to simulate gestures, etc.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-108209">
+          <div class="author">
+            <cite><a href='http://news.sitespot.org' rel='external nofollow' class='url'>Thomas</a></cite>
+            <abbr title="2008-07-04T05:26:02">Thu, 24 Jul 2008 21:05:11 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>thats pretty cool, thanks for the hint</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-110642">
+          <div class="author">
+            <cite><a href='http://bymatthew.com' rel='external nofollow' class='url'>Matt</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sun, 03 Aug 2008 06:06:14 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Awesome, I look forward to trying it out today at the dev camp.</p>
+<p>(PS: you may want to add this dependency to the gemspec: rubigen) <img src='http://drnicwilliams.com/wp-includes/images/smilies/icon_smile.gif' alt=':)' class='wp-smiley' /> </p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-111819">
+          <div class="author">
+            <cite>stefan</cite>
+            <abbr title="2008-07-04T05:26:02">Sat, 09 Aug 2008 21:07:22 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Hi,</p>
+<p>I really like your testframework!</p>
+<p>Just a quick note:</p>
+<p>It should be [calculator relase]; instead of [calculator dealloc]; in<br />
+- (void) dealloc;</p>
+<p>Cheers,<br />
+Stefan</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-113186">
+          <div class="author">
+            <cite><a href='http://www.ockhamresearch.com' rel='external nofollow' class='url'>Rusty Zarse</a></cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 15 Aug 2008 21:28:15 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Thanks for the gem, Dr Nic!<br />
+I am new to mac development, coming (screaming) from a Windows world.  I have been slowly dabbling in Ruby and am quite pleased for this business driving opportunity to finally pursue it seriously.  </p>
+<p>Finally, I believe &#8220;keep your pants on&#8221; is derived from &#8220;don&#8217;t get excited&#8221; rather than &#8220;don&#8217;t get upset&#8221; which makes more sense should you imply that before you said topic phrase, we were all so excited we were about to take our pants off.  I&#8217;ll let you &#8216;infer&#8217; for what purpose&#8230;.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback even thread-even depth-1" id="comment-126482">
+          <div class="author">
+            <cite><a href='http://codeforfun.wordpress.com/2008/09/30/iphone-unit-tdd/' rel='external nofollow' class='url'>iPhone Unit? TDD? &laquo; Can&#8217;t see nothing but the source code</a></cite>
+            <abbr title="2008-07-04T05:26:02">Wed, 01 Oct 2008 13:33:51 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] God for people like Dr Nic. I managed to test drive a simple calculator project on the iPhone using his screencast. Just a quick note if you don&#8217;t come from the Ruby camp, (you know, like you spend most of [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-134585">
+          <div class="author">
+            <cite>Simon T</cite>
+            <abbr title="2008-07-04T05:26:02">Fri, 24 Oct 2008 23:55:14 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>Nice one Dr Nic, I have been wondering how to get my iPhone app done test first and finally stumbled across your blog&#8230;SUBSCRIBED!</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-136694">
+          <div class="author">
+            <cite><a href='http://codeforfun.wordpress.com' rel='external nofollow' class='url'>Cliff</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sun, 02 Nov 2008 11:53:41 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>RSpec? Has RSpec been successfully run on your Ruby iPhone testing framework? I&#8217;ve seen bits and pieces of promise from the project page to the email lists but I&#8217;d like to see a screencast or some official documentation. I could figure it out eventually, I&#8217;m sure but since I&#8217;m new to both ObjC and Ruby I&#8217;d liet ot hear from the pros. I&#8217;m at a point in a project where I could definitely use something like RSpec to describe the screen flow. Tell me there&#8217;s a simple solution here, please?</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-136709">
+          <div class="author">
+            <cite><a href='http://drnicwilliams.com' rel='external nofollow' class='url'>Dr Nic</a></cite>
+            <abbr title="2008-07-04T05:26:02">Sun, 02 Nov 2008 13:59:11 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>There shouldn&#8217;t be any issues with using rspec vs test/unit. You just need the line that loads the bundle into RubyCocoa (<code>OSX.ns_import :Calculator</code>)</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback even thread-even depth-1" id="comment-138090">
+          <div class="author">
+            <cite><a href='http://codeforfun.wordpress.com/2008/11/10/rspec-for-iphone-development/' rel='external nofollow' class='url'>RSpec for iPhone development &laquo; Can&#8217;t see nothing but the source code</a></cite>
+            <abbr title="2008-07-04T05:26:02">Tue, 11 Nov 2008 01:35:56 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] BowlingController as a vanilla NSObject using the &#8220;script/generate model&#8221; command from Dr. Nic&#8217;s RBiPhoneTest. I use rbiPhoneTest to setup the project test structure as well so now I have a rake file in my [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-144994">
+          <div class="author">
+            <cite><a href='http://www.jabbertags.com/popular/uikit' rel='external nofollow' class='url'>Recent Links Tagged With "uikit" - JabberTags</a></cite>
+            <abbr title="2008-07-04T05:26:02">Wed, 10 Dec 2008 03:19:46 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] Sun 07-12-2008   Fix top level domain list in Mobile Safari Saved by thecdude on Sun 30-11-2008   Unit Testing iPhone apps with Ruby: rbiphonetest Saved by rytnelle on Tue 18-11-2008   Update: Einstein emulator on the iPhone Saved by nextManage [...]</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-145480">
+          <div class="author">
+            <cite>Rob</cite>
+            <abbr title="2008-07-04T05:26:02">Sun, 14 Dec 2008 10:11:01 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>I don&#8217;t know if this is useful, but looking at some iPhone example code, SQLiteBookList, I see this in the book.h model class:</p>
+<p>#import </p>
+<p>Book isn&#8217;t an iPhone specific class, so I would hope that the Jobians would only ship example code that will run both on a mac and an iPhone.</p>
+<p>This test framework looks totally rad.  I am very very very new to iPhone / mac development and have been looking for a way to do test first.  Thanks!!!</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-145481">
+          <div class="author">
+            <cite>Rob</cite>
+            <abbr title="2008-07-04T05:26:02">Sun, 14 Dec 2008 10:12:11 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>ummmm&#8230;..</p>
+<p>&#8220;#import&#8221; in my previous post should be:</p>
+<p>#import &lt;Foundation/Foundation.h&gt;</p>
+<p>forgot the escapes.</p>
+          </div>
+
+        </li>
+
+      
+        <li class="comment even thread-even depth-1" id="comment-145540">
+          <div class="author">
+            <cite>Rob</cite>
+            <abbr title="2008-07-04T05:26:02">Mon, 15 Dec 2008 04:14:01 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>One more question:  My model classes are going to be tied to tables in an SQLite database, is there a slick way to use fixtures to populate the db with test data?  Kind of like how it works with rails?</p>
+          </div>
+
+        </li>
+
+      
+        <li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-145669">
+          <div class="author">
+            <cite><a href='http://www.urlrecorder.com/objectivec' rel='external nofollow' class='url'>Recent URLs tagged Objectivec - Urlrecorder</a></cite>
+            <abbr title="2008-07-04T05:26:02">Tue, 16 Dec 2008 03:31:24 UTC</abbr>
+                        <small></small>
+          </div>
+
+          <div class="content">
+ <!-- GRAVATARS2:  Here is the only line you need to add to insert a gravatar image w/ a link: -->
+            <!--?php if (function_exists('gravatar')) { gravatar_image_link(); } ?-->
+<!-- GRAVATARS2:  That's it.  This comment, and the one before can be deleted.  -->
+           <p>[...] Recent public urls tagged &#8220;objectivec&#8221;  &rarr; Unit Testing iPhone apps with Ruby: rbiphonetest [...]</p>
+          </div>
+
+        </li>
+
+      
+      </ol>
+    </div>
+
+	
+
+
+
+<form action="http://drnicwilliams.com/wp-comments-post.php" class="comments" id="commentform" method="post">
+
+<fieldset>
+  <legend>Comments</legend>
+      
+    <!--h4>OpenID <span id="show_openid_count"></span></h4>
+    
+    <p>
+      <label for="openid_url_comment_form">OpenID Identity<br />
+        <input style="background: white url(http://drnicwilliams.com/wp-content/plugins/wpopenid/images/openid.gif) 
+              no-repeat; background-position: 0 50%; padding-left: 18px;"
+      			 type="text" name="openid_url" id="openid_url_comment_form" size="28" tabindex="1"/>
+      </label>
+    </p>
+    
+    <h4>DIY details</h4-->
+
+    <p>
+      <label>Name: <small>(required)</small><br />
+        <input name="author" id="author" value="" size="30" type="text" tabindex="2" />
+      </label>
+    </p>
+
+    <p>
+      <label>Email: <small>(required)</small><br />
+        <input name="email" id="email" value="" size="30" type="text" tabindex="3" />
+        <small>(will not be published)</small>
+      </label>
+    </p>
+
+    <p>
+      <label>Url:<br />
+        <input name="url" id="url" value="" size="30" type="text" tabindex="4" />
+      </label>
+    </p>
+
+  
+  <!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+  <p>
+    <label>
+      Comments:<br />
+      <textarea name="comment" id="comment" cols="100%" rows="20" tabindex="5"></textarea>
+<!--div id="commenters_menu" class="auto_complete commenters"/-->
+
+</p>
+
+  <p>
+    <input name="submit" type="submit" id="submit" tabindex="6" value="Submit" />
+    <input type="hidden" name="comment_post_ID" value="287" />
+  </p>
+  <input type="hidden" id="sk2_my_js_check1" name="sk2_my_js_check1" value="499jhjewoy" />
+<input type="hidden" id="sk2_my_js_check2" name="sk2_my_js_check2" value="2cca06e242ba38f07c18217ea91a04d2" />
+<script type="text/javascript">
+<!--
+	document.write('<input type="hidden" id="sk2_my_js_payload" name="sk2_my_js_payload" value="');
+	document.write(Math.round ( Math.abs(Math.max(Math.min(Math.round ( Math.abs(Math.round ( Math.abs((Math.max(Math.min(Math.max((1 * 19), 39), 14), 32) + 21) % 5)) / 12)), 8), 39))));
+	document.write('" />');
+-->
+</script>
+<input type="hidden" id="sk2_time" name="sk2_time" value="1238101625" /><input type="hidden" id="sk2_ip" name="sk2_ip" value="32.177.49.1" /><input type="hidden" id="sk2_payload" name="sk2_payload" value="78b11ed3cf382ed7d697ce60d665785d" /></fieldset>
+</form>
+
+
+
+	
+		
+	</div>
+
+<div id="sidebar_group">
+  <table>
+    <tr valign="top"><td id="sidebar">
+    <ul>
+      
+      <!-- search -->
+      <li id="search" class="search">
+        <form method="get" id="searchform" action="/index.php">
+  <div>
+    <input type="text" value="" name="s" id="s"  tabindex="20" />
+    <input type="submit" id="searchsubmit" value="Search"  tabindex="21"/>
+  </div>
+</form>
+      </li>
+      <!-- sidebar components -->
+      <li><h2>Author</h2>
+      <p>
+        <!--a href="http://www.flickr.com/photos/rrrodrigo/2394137488/" title="Speaking at Euruko2008, photo by Marcin Bajer"><img src="http://farm4.static.flickr.com/3113/2394137488_934c80d382_t.jpg" width="66" height="100" alt="Dr Nic at Euruko2008" style="float:left; padding-right: 5px"/></a-->
+        <a href="http://www.flickr.com/photos/rrrodrigo/2394137488/" title="Speaking at Euruko2008, photo by Marcin Bajer"><img src="http://farm4.static.flickr.com/3113/2394137488_934c80d382_s.jpg" width="75" height="75" alt="Dr Nic at Euruko2008" style="float:left; padding-right: 5px"/></a>
+        <ul>
+          <li><a href="http://drnicwilliams.com/about/">About Dr Nic</a></li>
+          <li><a href="http://drnicwilliams.com/2007/04/17/an-interview-with-dr-nic/">Interview with Dr Nic</a></li>
+          <li><a href="http://rubylearning.com/blog/2008/10/07/little-known-ways-to-ruby-mastery-by-dr-nic-williams/">Dr Nic on 'How to learn Ruby'</a></li>
+          <li><a href="http://www.mobileorchard.com/iphone-development-podcast-2-dr-nic-williams/">Podcast on iPhone dev</a></li>
+          <li><a href="http://workingwithrails.com/recommendation/new/person/5426-dr-nic-williams"><strong>Recommend me</strong></a></li>
+        </ul>
+      </p>
+      <br/>
+      </li>
+
+      <li><h2>Appreciated Sponsor</h2>
+      <p>
+        <div id="adzerk">
+          <div id="adzerk_ad_div">
+            <script type="text/javascript" src="http://rubyrow.net/Server/RUBY/DRNIC/HORIZ"></script>
+          </div>
+          <p id="adzerk_by">
+            <a href='http://rubyrow.net'>Ads from Ruby Row</a>
+          </p>
+        </div>
+      </p>
+      </li>
+      
+      <li>
+            </li>
+
+      <li><h2><a href="http://feeds.feedburner.com/DrNic"><img src="/wp-images/default/images/png/feed-icon-16x16.png"></a>&nbsp;Syndicate/Subscribe</h2>
+        <ul>
+          <li><a class="image" href="http://feeds.feedburner.com/DrNic"><img src="http://feeds.feedburner.com/~fc/DrNic?bg=993300&amp;fg=ffffff&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
+        </ul>
+      </li>
+
+
+      <li><h2>Presentations</h2>
+        <ul>
+          <li><a href="http://drnicwilliams.com/2008/12/05/my-rubygems-development-tools-and-workflow/">How to package your Ruby code</a> [<a href="http://www.slideshare.net/drnic/rubygem-dev-and-workflow-presentation/">slides</a>] - OSDC, Sydney, 5/12/08</li>
+          <li><a href="http://rubyconf2007.confreaks.com/d3t1p1_rubigen.html">RubiGen at RubyConf07</a> <strong>[VIDEO]</strong> - Charlotte, 4/11/07</li>
+          <li><a href="http://drnicwilliams.com/category/rejectconf/">RejectConf at RailsConf2007</a> <strong>[VIDEO]</strong> - Portland, 19/5/07</li>
+          <li><a href="http://drnicwilliams.com/2007/03/22/meta-magic-in-ruby-presentation/">Meta-Magic in Rails: Weaponry</a> <strong>[VIDEO]</strong> - Stockholm, 20/3/07</li>
+        </ul>
+      </li>
+
+      <li id="github-badge"></li>
+      <script type="text/javascript" charset="utf-8">
+        GITHUB_USERNAME="drnic";
+        GITHUB_HEAD="h2";
+      </script>
+      <script src="http://drnicjavascript.rubyforge.org/github_badge/dist/github-badge-launcher.js" type="text/javascript"></script>
+      
+      <li id="runcoderun-badge"></li>
+      <script type="text/javascript" charset="utf-8">
+        RUNCODERUN = {
+          username: 'drnic'
+        };
+      </script>
+      <script src="http://thinkrelevance.rubyforge.org/runcoderun_badge/dist/runcoderun-badge-launcher.js" type="text/javascript"></script>
+
+      
+
+      <li>
+        <div id="dopplr-blog-badge"><script src="http://www.dopplr.com/blogbadge/script/894a68c01bea9bd0650a0c29281538d4"></script></div>
+      </li>
+
+      <li><h2>Categories</h2>
+        <ul id="categories">
+        	<li class="cat-item cat-item-10"><a href="http://drnicwilliams.com/category/announcement/" title="View all posts filed under Announcement">Announcement</a> (33)
+</li>
+	<li class="cat-item cat-item-19"><a href="http://drnicwilliams.com/category/blogs/" title="View all posts filed under Blogs">Blogs</a> (5)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://drnicwilliams.com/category/bts/" title="View all posts filed under BTS">BTS</a> (8)
+</li>
+	<li class="cat-item cat-item-57"><a href="http://drnicwilliams.com/category/capistrano/" title="View all posts filed under Capistrano">Capistrano</a> (1)
+</li>
+	<li class="cat-item cat-item-72"><a href="http://drnicwilliams.com/category/cocoa/" title="View all posts filed under Cocoa">Cocoa</a> (1)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/composite-keys/" title="View all posts filed under Composite Keys">Composite Keys</a> (8)
+</li>
+	<li class="cat-item cat-item-52"><a href="http://drnicwilliams.com/category/conferences/" title="View all posts filed under Conferences">Conferences</a> (2)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://drnicwilliams.com/category/css/" title="View all posts filed under CSS">CSS</a> (1)
+</li>
+	<li class="cat-item cat-item-70"><a href="http://drnicwilliams.com/category/cucumber/" title="View all posts filed under Cucumber">Cucumber</a> (2)
+</li>
+	<li class="cat-item cat-item-48"><a href="http://drnicwilliams.com/category/dr-nic-academy/" title="View all posts filed under Dr Nic Academy">Dr Nic Academy</a> (2)
+</li>
+	<li class="cat-item cat-item-22"><a href="http://drnicwilliams.com/category/dsl/" title="View all posts filed under DSL">DSL</a> (5)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://drnicwilliams.com/category/essay/" title="View all posts filed under Essay">Essay</a> (10)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://drnicwilliams.com/category/family/" title="View all posts filed under Family">Family</a> (4)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://drnicwilliams.com/category/for-hire/" title="View all posts filed under For Hire">For Hire</a> (1)
+</li>
+	<li class="cat-item cat-item-29"><a href="http://drnicwilliams.com/category/ruby/gems/" title="View all posts filed under Gems">Gems</a> (13)
+</li>
+	<li class="cat-item cat-item-56"><a href="http://drnicwilliams.com/category/git/" title="View all posts filed under Git">Git</a> (8)
+</li>
+	<li class="cat-item cat-item-41"><a href="http://drnicwilliams.com/category/interviews/" title="View all posts filed under Interviews">Interviews</a> (2)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://drnicwilliams.com/category/introductions/" title="View all posts filed under Introductions">Introductions</a> (4)
+</li>
+	<li class="cat-item cat-item-67"><a href="http://drnicwilliams.com/category/iphone/" title="View all posts filed under Iphone">Iphone</a> (3)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://drnicwilliams.com/category/javascript/" title="View all posts filed under Javascript">Javascript</a> (23)
+</li>
+	<li class="cat-item cat-item-24"><a href="http://drnicwilliams.com/category/javascript/jquery/" title="View all posts filed under JQuery">JQuery</a> (4)
+</li>
+	<li class="cat-item cat-item-34"><a href="http://drnicwilliams.com/category/javascript/json/" title="View all posts filed under JSON">JSON</a> (4)
+</li>
+	<li class="cat-item cat-item-27"><a href="http://drnicwilliams.com/category/learning/" title="View all posts filed under Learning">Learning</a> (1)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://drnicwilliams.com/category/link/" title="View all posts filed under Link">Link</a> (27)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/magic-models/magic-model-generator/" title="View all posts filed under Magic Model Generator">Magic Model Generator</a> (2)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/magic-models/" title="View all posts filed under Magic Models">Magic Models</a> (12)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/magic-models/magic-wiggly-lines/" title="View all posts filed under Magic Wiggly Lines">Magic Wiggly Lines</a> (2)
+</li>
+	<li class="cat-item cat-item-54"><a href="http://drnicwilliams.com/category/magiccgi/" title="View all posts filed under MagicCGI">MagicCGI</a> (1)
+</li>
+	<li class="cat-item cat-item-30"><a href="http://drnicwilliams.com/category/ruby/gems/map_by_method/" title="View all posts filed under map_by_method">map_by_method</a> (7)
+</li>
+	<li class="cat-item cat-item-32"><a href="http://drnicwilliams.com/category/meeting/" title="View all posts filed under Meeting">Meeting</a> (1)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://drnicwilliams.com/category/merb/" title="View all posts filed under Merb">Merb</a> (2)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://drnicwilliams.com/category/meta-programming/" title="View all posts filed under Meta-Programming">Meta-Programming</a> (10)
+</li>
+	<li class="cat-item cat-item-71"><a href="http://drnicwilliams.com/category/mocra/" title="View all posts filed under Mocra">Mocra</a> (2)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://drnicwilliams.com/category/myconfplan/" title="View all posts filed under MyConfPlan">MyConfPlan</a> (5)
+</li>
+	<li class="cat-item cat-item-44"><a href="http://drnicwilliams.com/category/ruby/gems/newgem/" title="View all posts filed under NewGem">NewGem</a> (7)
+</li>
+	<li class="cat-item cat-item-63"><a href="http://drnicwilliams.com/category/newjs/" title="View all posts filed under newjs">newjs</a> (1)
+</li>
+	<li class="cat-item cat-item-66"><a href="http://drnicwilliams.com/category/osx/objective-c/" title="View all posts filed under Objective-C">Objective-C</a> (1)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://drnicwilliams.com/category/openid/" title="View all posts filed under OpenID">OpenID</a> (6)
+</li>
+	<li class="cat-item cat-item-36"><a href="http://drnicwilliams.com/category/osx/" title="View all posts filed under OSX">OSX</a> (1)
+</li>
+	<li class="cat-item cat-item-38"><a href="http://drnicwilliams.com/category/presentation/" title="View all posts filed under Presentation">Presentation</a> (3)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://drnicwilliams.com/category/preview/" title="View all posts filed under Preview">Preview</a> (3)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://drnicwilliams.com/category/programming/" title="View all posts filed under Programming">Programming</a> (13)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://drnicwilliams.com/category/javascript/prototype/" title="View all posts filed under Prototype">Prototype</a> (7)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://drnicwilliams.com/category/radrails/" title="&lt;a&gt;RadRails&lt;/a&gt; is an IDE for developing Ruby on Rails/Ruby projects.">RadRails</a> (6)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/railscore/" title="View all posts filed under RailsCore">RailsCore</a> (1)
+</li>
+	<li class="cat-item cat-item-40"><a href="http://drnicwilliams.com/category/ruby/rake/" title="View all posts filed under Rake">Rake</a> (3)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://drnicwilliams.com/category/rejectconf/" title="View all posts filed under RejectConf">RejectConf</a> (4)
+</li>
+	<li class="cat-item cat-item-51"><a href="http://drnicwilliams.com/category/rubigen/" title="View all posts filed under RubiGen">RubiGen</a> (6)
+</li>
+	<li class="cat-item cat-item-2"><a href="http://drnicwilliams.com/category/ruby/" title="View all posts filed under Ruby">Ruby</a> (79)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://drnicwilliams.com/category/ruby/ruby-on-rails/" title="View all posts filed under Ruby on Rails">Ruby on Rails</a> (61)
+</li>
+	<li class="cat-item cat-item-65"><a href="http://drnicwilliams.com/category/rubyforge/" title="View all posts filed under RubyForge">RubyForge</a> (1)
+</li>
+	<li class="cat-item cat-item-50"><a href="http://drnicwilliams.com/category/socialos/" title="View all posts filed under SocialOS">SocialOS</a> (1)
+</li>
+	<li class="cat-item cat-item-53"><a href="http://drnicwilliams.com/category/speaking/" title="View all posts filed under Speaking">Speaking</a> (1)
+</li>
+	<li class="cat-item cat-item-43"><a href="http://drnicwilliams.com/category/testing/" title="View all posts filed under Testing">Testing</a> (4)
+</li>
+	<li class="cat-item cat-item-61"><a href="http://drnicwilliams.com/category/textmate/" title="View all posts filed under TextMate">TextMate</a> (8)
+</li>
+	<li class="cat-item cat-item-64"><a href="http://drnicwilliams.com/category/training/" title="View all posts filed under Training">Training</a> (1)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://drnicwilliams.com/category/translation/" title="View all posts filed under Translation">Translation</a> (4)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://drnicwilliams.com/category/trick/" title="View all posts filed under Trick">Trick</a> (19)
+</li>
+	<li class="cat-item cat-item-37"><a href="http://drnicwilliams.com/category/tumblr/" title="View all posts filed under Tumblr">Tumblr</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://drnicwilliams.com/category/tutorial/" title="View all posts filed under Tutorial">Tutorial</a> (36)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://drnicwilliams.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (3)
+</li>
+	<li class="cat-item cat-item-25"><a href="http://drnicwilliams.com/category/unix/" title="View all posts filed under Unix">Unix</a> (2)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://drnicwilliams.com/category/video/" title="View all posts filed under Video">Video</a> (18)
+</li>
+	<li class="cat-item cat-item-26"><a href="http://drnicwilliams.com/category/wish/" title="View all posts filed under Wish">Wish</a> (2)
+</li>
+	<li class="cat-item cat-item-33"><a href="http://drnicwilliams.com/category/javascript/xss/" title="View all posts filed under XSS">XSS</a> (1)
+</li>
+        </ul>
+      </li>
+
+      <li><h2>Archives</h2>
+        <ul id="archives">
+        	<li><a href='http://drnicwilliams.com/2009/03/' title='March 2009'>March 2009</a></li>
+	<li><a href='http://drnicwilliams.com/2009/02/' title='February 2009'>February 2009</a></li>
+	<li><a href='http://drnicwilliams.com/2008/12/' title='December 2008'>December 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/11/' title='November 2008'>November 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/10/' title='October 2008'>October 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/08/' title='August 2008'>August 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/07/' title='July 2008'>July 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/06/' title='June 2008'>June 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/05/' title='May 2008'>May 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/04/' title='April 2008'>April 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/03/' title='March 2008'>March 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/02/' title='February 2008'>February 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2008/01/' title='January 2008'>January 2008</a></li>
+	<li><a href='http://drnicwilliams.com/2007/11/' title='November 2007'>November 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/10/' title='October 2007'>October 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/09/' title='September 2007'>September 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/08/' title='August 2007'>August 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/07/' title='July 2007'>July 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/06/' title='June 2007'>June 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/05/' title='May 2007'>May 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/04/' title='April 2007'>April 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/03/' title='March 2007'>March 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/02/' title='February 2007'>February 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2007/01/' title='January 2007'>January 2007</a></li>
+	<li><a href='http://drnicwilliams.com/2006/12/' title='December 2006'>December 2006</a></li>
+	<li><a href='http://drnicwilliams.com/2006/11/' title='November 2006'>November 2006</a></li>
+	<li><a href='http://drnicwilliams.com/2006/10/' title='October 2006'>October 2006</a></li>
+	<li><a href='http://drnicwilliams.com/2006/09/' title='September 2006'>September 2006</a></li>
+	<li><a href='http://drnicwilliams.com/2006/08/' title='August 2006'>August 2006</a></li>
+        </ul>
+      </li>
+
+      
+    </ul>
+	</td>
+      </tr>
+    </table>
+</div>
+
+
+  <br style="clear:both;" />
+</div>
+
+<div id="footer">
+  <hr />
+	<p><a href="http://drnicwilliams.com">Dr Nic</a></p>
+  <ul>
+    <li>powered by <a href="http://wordpress.org">WordPress</a> /
+        styled with <a href="http://pittcrew.net/geekblog/scribbishwp">ScribbishWP</a></li>
+  </ul>
+	<!-- php echo $wpdb->num_queries; ?> queries. 2.006 seconds. -->
+</div>
+</div>
+
+
+<!-- Original theme design by Packagethief - http://quotedprintable.com/pages/scribbish -->
+<!-- WordPress theme port by Kenny Pitt - http://pittcrew.net/geekblog/scribbishwp -->
+
+		<div id="sk2-footer" style="color:#FFF; background-color:#444; padding: 3px 2px 3px 2px; border-top: #888 solid 1px;">This blog is protected by <a href="http://unknowngenius.com/blog/" title="Dave">Dave</a>'s <strong><a href="http://unknowngenius.com/blog/wordpress/spam-karma/" title="SK2">Spam Karma 2</a></strong>: <strong>178393</strong>  Spams eaten and counting...</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-567811-1";
+urchinTracker();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,978 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+	<title>
+		InfoQ: Mr. Neighborly's Humble Little Ruby Book
+	</title>
+    
+	
+	<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="copyright" content="&copy; 2006 C4Media" />
+<meta name="author" content="alex[at]c4media[dot]com" />
+
+	
+	
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/style.css;jsessionid=AEE09E80640F28E649C54C2565F614DA" />
+    <link rel="stylesheet" type="text/css" media="print" href="/styles/print.css;jsessionid=AEE09E80640F28E649C54C2565F614DA" />
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/style-ie.css;jsessionid=AEE09E80640F28E649C54C2565F614DA" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    
+    <script src="/scripts/JSResource_en.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/scripts/commons.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/scripts/ContentSummary.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/scripts/CategoryManagement.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/scripts/__utm.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/dwr/engine.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/dwr/util.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/dwr/interface/UserCategoryUtil.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	<script src="/dwr/interface/DWRRewriteAction.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+	
+
+	
+	<meta name="keywords" content="ruby,Ruby,Dynamic Languages,Programming,Language Features,"/>
+	<meta name="description" content="The Humble Little Ruby Book covers the base syntax of the language, including working with values, flow control, and object oriented programming, into some of the library functionality of Ruby, such as databases, web services, and string manipulation."/>
+	
+
+</head>
+
+<body > 
+
+
+
+
+
+<script src="/scripts/prototype.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+<script src="/scripts/login.js;jsessionid=AEE09E80640F28E649C54C2565F614DA" type="text/javascript"></script>
+<script type="text/javascript">
+var loginLanguage='en';
+var loginURL='/login.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var registerURL='/reginit.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var reactivateURL='/reactivate.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var reserpasswordURL='/resetpassword.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var loggedIn=false;
+var logoutURL='/logout.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var editUserURL='/edituser.action;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var aboutURL='/about.jsp;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+var homeURL='/;jsessionid=AEE09E80640F28E649C54C2565F614DA';
+</script>
+<div id="tooltip" style="display:none;"></div>
+<div id="loginWindow" style="display:none;">
+	
+
+
+
+
+<div id="innerLoginWindow" class="popup login-popup" style="display:none; z-index: 25550; position: absolute;">
+		<div class="popup-wrapper">
+			<p class="popup-close"><a href="javascript:void(0);" onclick="javascript:hideLoginWindow();">Close</a></p>
+			<h2>Existing Users:</h2>
+			<div id="loginArea">
+				<div id="loginAreaFields">
+					<form onsubmit="doLogin();return false;" style="margin-bottom: 1px;">
+						<p><label for="username">Email:</label> <input id="username" name="username" style="width: 100%;" type="text"></p>
+						<p><label for="password">Password:</label> <input id="password" name="password" style="width: 100%;" onkeydown="if ((event.which &amp;&amp; event.which == 13)||(event.keyCode &amp;&amp; event.keyCode == 13)){doLogin();return false;} else return true;" type="password"></p>
+						<p><input value="Login" type="submit"></p>
+					</form>	
+				</div>
+				<div id="loginUpperArea" style="display:none;"></div>
+				<div style="display: none; text-align: left;" id="loginMessage"></div>	
+				<h2>New Users:</h2>
+				<p><input value="Register" id="submitButton" onclick="javascript:document.location.href='/reginit.action'" type="button"></p>
+			</div>
+		</div>
+</div>
+</div>
+<div id="tagPopup" style="display:none;"></div>
+<div id="container">
+	<h1 class="logo"><a href="#">InfoQ</a></h1>
+
+	
+
+
+
+
+
+
+
+<div id="header">
+	<p class="skip"><a href="#content">Skip to Content</a></p>
+
+	<div id="quote"><p>Tracking change and innovation in the enterprise software development community</p></div>
+
+	<div style="float: left;width: 29%;position: relative;margin: 0 0 2px 0;padding: 0;">
+		
+
+
+
+
+
+
+<p style="margin:0;padding: 6px 37px 0 0;margin: 0;float: right;">
+	En | <a href="/cn/;jsessionid=AEE09E80640F28E649C54C2565F614DA">中文</a> | <a href="/jp/;jsessionid=AEE09E80640F28E649C54C2565F614DA">日本語</a> | <a href="/br/;jsessionid=AEE09E80640F28E649C54C2565F614DA">Br</a>
+	
+</p>
+<p style="margin: 0;padding: 6px 9px;text-align:left;">
+	<a href="http://www.qconlondon.com" target="_blank">QCon London 3/09</a>
+	
+</p>
+	</div>
+</div>
+
+	
+	
+	<div id="sidebar">
+	<div id="sidebar-wrapper">
+		
+
+
+
+
+<div class="s-logo">
+	
+	<p class="r-logo"><a href="/;jsessionid=AEE09E80640F28E649C54C2565F614DA">InfoQ</a></p>
+</div>
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-size: x-small;#font-size: xx-small;">
+
+    
+    
+345,935 Feb unique visitors
+</span>
+
+
+
+		    
+		
+		
+
+
+
+
+
+
+	<div class="box-simple">
+		<div class="box-simple-top"></div>
+		<div id="mainLoginArea" class="box-simple-content">
+			
+			
+			<ul>
+	            <li><a href="/reginit.action;jsessionid=AEE09E80640F28E649C54C2565F614DA">Register</a></li>
+			    <li><a href="javascript:void(0)" onClick="javascript:showLoginWindow(this,ALIGN_LEFT,new Function('void(0);'));">Login</a></li>
+	            <li><a href="/about.jsp;jsessionid=AEE09E80640F28E649C54C2565F614DA">About us</a></li>
+	            
+	            
+		        	
+		        		
+		        	
+	   	            <li><a href="/rss/rss.action?token=OvzKD2gJoD7Ev05uoF4QDQFmcidXCAg3">Personal feed <img src="/styles/i/btn-rss-blue.gif;jsessionid=AEE09E80640F28E649C54C2565F614DA" alt="RSS Feed" /></a></li>
+				
+			    <li><a href="/;jsessionid=AEE09E80640F28E649C54C2565F614DA">Home</a></li>
+			</ul>
+			
+		</div>
+		<div class="box-simple-bottom"></div>
+	</div>
+
+
+		
+
+
+
+
+
+
+<div id="mainCommunitiesArea" class="box">
+    <h2>Your Communities</h2>
+    <div class="top-corners"><div></div></div>
+    <div class="box-content">
+    <div class="box-content-2">
+    	
+
+
+
+
+<script language="JavaScript">
+var communityChangeMessage = 'Your new preferences will be used starting with the next refresh.';
+</script>	
+
+<div id="communities">
+    <ul>
+	
+		<li><input type="checkbox" name="java" value="true" checked="checked" id="community1" onclick="includeExcludeCommunity(this);"/>
+ <a href='/java/'>Java</a></li>
+	
+		<li><input type="checkbox" name="dotnet" value="true" checked="checked" id="community4" onclick="includeExcludeCommunity(this);"/>
+ <a href='/dotnet/'>.NET</a></li>
+	
+		<li><input type="checkbox" name="ruby" value="true" checked="checked" id="community5" onclick="includeExcludeCommunity(this);"/>
+ <a href='/ruby/'>Ruby</a></li>
+	
+		<li><input type="checkbox" name="soa" value="true" checked="checked" id="community2" onclick="includeExcludeCommunity(this);"/>
+ <a href='/soa/'>SOA</a></li>
+	
+		<li><input type="checkbox" name="agile" value="true" checked="checked" id="community3" onclick="includeExcludeCommunity(this);"/>
+ <a href='/agile/'>Agile</a></li>
+	
+		<li><input type="checkbox" name="architecture" value="true" checked="checked" id="community1389" onclick="includeExcludeCommunity(this);"/>
+ <a href='/architecture/'>Architecture</a></li>
+	
+    </ul>
+</div>
+<div id="communitiesMessage"></div>
+    </div></div>
+    <div class="bottom-corners"><div></div></div>
+</div>
+
+
+
+
+		
+
+
+
+
+
+<script type="text/javascript">
+	function doSearch(){
+		var searchString = document.getElementById("searchId").value;
+		document.getElementById("searchTerm").value =  searchString + " site:www.infoq.com";		
+		document.getElementById("submitForm").submit();
+	}
+	
+	function clearSearchText(){	
+		var searchtext =  document.getElementById("searchId").value
+		if(searchtext==JSResource.search){
+			document.getElementById("searchId").value="";
+		}
+	}
+</script>
+<form action="http://www.google.com/search" method="GET" id="submitForm" target="_blank">
+	<input type="hidden" name="q" id="searchTerm" />
+</form>
+
+	<div style="background: url('/images/bg-search.gif;jsessionid=AEE09E80640F28E649C54C2565F614DA') no-repeat 0 4px;">	
+			<input type="text" name="search" id="searchId" value="Search" style="width: 85%; border: 0px none; background-color: transparent; height: 19px; padding-left:9px; padding-right:9px; padding-top:0; padding-bottom:0" onclick="clearSearchText();" onkeypress="if ((event.which && event.which == 13)||(event.keyCode && event.keyCode == 13)){doSearch();}" onblur="if(this.value=='') this.value=JSResource.search"/>	
+			<a href="#" onclick="doSearch();return false;"><img src="/images/btn-search.gif;jsessionid=AEE09E80640F28E649C54C2565F614DA" alt="Search" /></a> 
+	</div>
+
+		
+
+
+
+
+<div class="box-simple">
+<div class="box-simple-top"></div>
+<div id="featuredTopics" class="box-simple-content">
+	
+
+
+
+
+
+    <h2>Featured Topics</h2>
+    <div>
+		<ul>
+			<li><a href="/collaboration/;jsessionid=AEE09E80640F28E649C54C2565F614DA">Team Collaboration</a></li>
+            <li><hr style="width: 100%; height: 1px; border: 0; color: #C8C8C8; background-color: #C8C8C8;"/></li>            
+            <li><a href="/ria/;jsessionid=AEE09E80640F28E649C54C2565F614DA">RIA/Ajax</a></li>
+            <li><hr style="width: 100%; height: 1px; border: 0; color: #C8C8C8; background-color: #C8C8C8;"/></li>
+            <li><a href="/governance/;jsessionid=AEE09E80640F28E649C54C2565F614DA">SOA Governance</a></li>
+        </ul>
+	</div>
+		
+	
+</div>
+<div class="box-simple-bottom"></div>
+</div>
+
+		
+
+
+
+
+
+
+
+
+	<div class="box-ekit-left">
+		<div class="box-ekit-title"></div>
+		<p><a href="http://www.infoq.com/vendorcontent/show.action?vcr=496">Open Source SOA</a></p>
+	</div>
+	
+	<div class="box-webinar-left">
+		<div class="box-webinar-title"></div>
+		<!-- div class="box-simple-top"></div>
+		<div class="box-webinar-content"-->
+			<p><a href="http://www.infoq.com/vendorcontent/show.action?vcr=520">Best Practices for Application Performance Management</a></p>
+			<p>Presented by Forrester and dynaTrace</br><b>March 31</b></p>
+		<!-- /div>
+		<div class="box-simple-bottom"></div-->
+	</div>
+
+
+
+
+
+<div class="box-simple">
+	<div class="box-simple-top"></div>
+	<div class="box-simple-content">
+		<p class="banner" id="bannerparagraph">
+			
+
+
+
+
+
+	<a class="towerAdLeft" id="sk-81" href="http://clk.atdmt.com/MRT/go/116704915/direct/01/" onclick="Ads.clickSkyscraper(this, 81 );" target="_blank"><img src="http://view.atdmt.com/MRT/view/116704915/direct/01/"/></a>
+
+
+
+		</p>
+	</div>
+	<div class="box-simple-bottom"></div>
+</div>
+
+
+	<div class="box-simple">
+		<div class="box-simple-top"></div>
+		<div class="box-simple-content adsTower2" id="leftbartextlinks">
+			<div style="width:120px;background:white;">
+				
+
+
+
+
+
+<h3>Sponsored Links</h3>
+
+
+<p>Save 30% &amp;<br/><a id="tl-100" onclick="Ads.clickTextLink(this, 100);" href="http://www.microsoft.com/visualstudio/en-us/howtobuy/vsts-2008-offers.mspx" target="_blank">Upgrade to<br/>Visual Studio</a></p>
+
+
+			</div>
+		</div>
+		<div class="box-simple-bottom"></div>
+	</div>
+
+
+<div class="box-simple">
+	<div class="box-simple-top"></div>
+	<div class="box-simple-content">
+		<p class="banner">
+			<img src="/styles/i/banners/books.gif;jsessionid=AEE09E80640F28E649C54C2565F614DA" usemap="#booksmap" alt="" />
+			<map name="booksmap">
+				<area href="http://www.infoq.com/minibooks/scrum-xp-from-the-trenches" alt="Scrum and XP from the Trenches" title="Scrum and XP from the Trenches" shape=rect coords="0,75,120,100">
+				<area href="http://www.infoq.com/minibooks/starting-struts2" alt="Starting Struts 2" title="Starting Struts 2" shape=rect coords="0,110,120,125">		     	
+				<area href="http://www.infoq.com/minibooks/agile-patterns" alt="Agile Patterns: The Technical Cluster" title="Agile Patterns: The Technical Cluster" shape=rect coords="0,130,120,160">
+				<area href="http://www.infoq.com/minibooks/ruby" alt="Mr. Neighborly's Humble Little Ruby Book" title="Mr. Neighborly's Humble Little Ruby Book" shape=rect coords="0,165,120,205">
+				<area href="http://www.infoq.com/minibooks/grails" alt="Getting Started with Grails" title="Getting Started with Grails" shape=rect coords="0,210,120,235">
+				<area href="http://www.infoq.com/minibooks/domain-driven-design-quickly" alt="Domain Driven Design Quickly" title="Domain Driven Design Quickly" shape=rect coords="0,245,120,270">
+				<area href="http://www.infoq.com/minibooks/scrum-checklists" alt="Scrum Checklists" title="Scrum Checklists" shape=rect coords="0,275,120,290">
+				<area href="http://www.infoq.com/minibooks/enterprise-soa" alt="Enterprise SOA Adoption Strategies" title="Enterprise SOA Adoption Strategies" shape=rect coords="0,300,120,323">
+				<area href="http://www.infoq.com/minibooks/vsnettt" alt="Visual Studio .NET Tips and Tricks" title="Visual Studio .NET Tips and Tricks" shape=rect coords="0,330,120,355">
+				<area href="http://www.infoq.com/minibooks/JTDS" alt="Java Transaction Design Strategies" title="Java Transaction Design Strategies" shape=rect coords="0,365,120,390">
+			</map>
+		</p>
+	</div>
+    <div class="box-simple-bottom"></div>
+</div>
+
+				
+		<div class="sidebar-bottom"></div>
+	</div>
+	</div>
+	
+
+	<div id="clearer"></div>
+
+	
+	<div id="content">
+	<div id="content-wrapper">
+		
+		<div class="box">
+			
+			
+
+    <h2>Minibook</h2>
+    <div class="top-corners"><div></div></div>    
+    <div class="box-content">
+    <div class="box-content-2">
+    <div class="box-content-5">
+
+	<h1>Mr. Neighborly's Humble Little Ruby Book</h1>
+
+	<p class="info">
+		Posted by
+		<strong>Jeremy McAnally</strong>
+		on
+		Jan 28, 2007 05:26 PM
+	</p>
+	
+	<dl class="tags2">
+		<dt class="community">Community</dt>
+		
+			<dd><a href="/ruby;jsessionid=AEE09E80640F28E649C54C2565F614DA" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+		
+		
+     	
+       		
+
+
+
+
+
+
+
+
+
+
+
+<dt class="topics">Topics</dt>
+
+   	<dd>
+   		
+   			
+   			<a href="/dynamic_languages;jsessionid=AEE09E80640F28E649C54C2565F614DA" name="dynamic_languages" id="213" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Dynamic Languages</a>
+    
+   		,
+   	</dd>
+
+   	<dd>
+   		
+   			
+   			<a href="/Programming;jsessionid=AEE09E80640F28E649C54C2565F614DA" name="Programming" id="210" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Programming</a>
+    
+   		
+   	</dd>
+
+
+	<dt class="topics">Tags</dt>
+	
+		<dd>
+			
+				
+				<a href="/languageFeatures;jsessionid=AEE09E80640F28E649C54C2565F614DA" name="languageFeatures" id="244" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Language Features</a>
+    
+			
+		</dd>
+	
+
+       		
+    </dl>
+
+	<p class="image">
+	
+		<img src="/resource/minibooks/ruby/en/cover/landingpage.jpg;jsessionid=AEE09E80640F28E649C54C2565F614DA" alt="" /><br/>
+	
+	
+   	</p> 
+   		    
+   	Ruby has taken the programming world by storm.&nbsp; With the slow decline of Java and the catalyst of Rails, it has risen to become one of the most popular programming languages, rising to #10 on the TIOBE index and winning their &quot;Programming Language of the Year&quot; award.<br /><br /><span style="font-weight: bold;">Mr. Neighborly's Humble Little Ruby Book</span> is a book about this fine language, but it is not a language book per se.&nbsp; It is perhaps best described as a mix between your favorite novel, your favorite Spanish textbook, and a Richard Simmons exercise video: it walks you through the very basics of working with Ruby, but by the end of it, you'll no doubt be<br />sweatin' it to the oldies.&nbsp;&nbsp; It covers the base syntax of the language, including working with values, flow control, and object oriented programming, into some of the library functionality of Ruby, such as databases, web services, and string manipulation.<br /><br />Expect this book to rock your world.&nbsp; Or at least teach you a programming language.<br /><br />144 pages, 6&quot;x9&quot;<br /><br />
+<h2>Free download, buy the print version for $9.95</h2>
+If you enjoyed reading the free downloadable version, please support the author as well as future InfoQ books by <a href="http://www.lulu.com/content/433384">purchasing the print copy</a> for only $9.95, or: 
+	
+	 
+		<span id="beforeLogin" style="display:inline">	
+			<a href="javascript:void(0)" onClick="showLoginWindow(this,ALIGN_RIGHT,new Function('document.getElementById(\'beforeLogin\').style.display=\'none\';document.getElementById(\'afterLogin\').style.display=\'inline\''))">
+		Login to download this book FREE (PDF)</a>
+		</span>
+		<span id="afterLogin" style="display:none">
+			<a href="/resource/minibooks/ruby/en/pdf/humblerubybook.pdf;jsessionid=AEE09E80640F28E649C54C2565F614DA">Download this book FREE (PDF)</a>
+		</span>
+	
+   	 <br /><br />
+<h2>Table of contents</h2>
+<br /><span style="font-weight: bold;">1 Welcome to Ruby</span><br />Basic Concepts of Ruby<br />Types in Ruby<br />Collections<br />Variables and the Like<br /><br /><span style="font-weight: bold;">2 Break it down now!</span><br />Methods<br />Blocks and Proc Objects<br />Modules<br />Files<br /><br /><span style="font-weight: bold;">3 Hustle and flow (control)</span><br />Conditionals<br />Loops<br />Exceptions<br /><br /><span style="font-weight: bold;">4 The System Beneath</span><br />Filesystem Interaction<br />Threads and Forks and Processes<br />Environment variables, command line<br />Win32 and Beyond<br /><br /><span style="font-weight: bold;">5 Looking Beyond Home</span><br />Networking and the Web<br />It's Like Distributed or Something...<br />Data my base, please!<br /><br /><span style="font-weight: bold;">6 It's a Library!</span><br />String Manipulation <br />Date/Time <br />Hashing and Cryptography<br />Unit testing <br /><br /><span style="font-weight: bold;">Appendix A</span> Links and the Like<br /><span style="font-weight: bold;">Appendix B</span> High Performance Ruby with C/C++<br /><br />
+<h2>Author Bio</h2>
+<br />Jeremy McAnally is a husband, developer, author, college student, and aspiring panda trainer who resides in Knoxville, TN with his wife.&nbsp; He enjoys working with Rails, Ruby, and Indian food.&nbsp; He recently penned this book and currently working on another book with Manning Publications titled <span style="font-weight: bold;">Ruby in Practice</span>.&nbsp; You can find him at <a href="http://www.jeremymcanally.com/">http://www.jeremymcanally.com/</a>, which links to his projects and blogs.
+
+	<div style="display:block;margin-top:15px;">
+        <div style="display: inline; margin-right: 0px;" align="right">
+            
+            
+
+
+
+
+<dl class="tags3">
+<dt>Bookmark</dt>
+<dd>
+<a target="_blank" href="" onclick="this.href='http://digg.com/submit?phase=2&url=' + escape(window.location)" rel="nofollow">digg+</a>,
+</dd>
+<dd>
+<a target="_blank" href="" onclick="this.href='http://reddit.com/submit?url=' + escape(window.location) + '&title=' + escape('Mr. Neighborly's Humble Little Ruby Book')" rel="nofollow">reddit+</a>,
+</dd>
+<dd>
+<a target="_blank" href="" onclick="this.href='http://del.icio.us/post?url=' + escape(window.location) + '&title=' + escape('Mr. Neighborly's Humble Little Ruby Book')" rel="nofollow">del.icio.us+</a>,
+</dd>
+<dd>
+<a target="_blank" href="" onclick="this.href='http://www.dzone.com/links/add.html?url=' + escape(window.location) + '&title=' + escape('Mr. Neighborly's Humble Little Ruby Book')" rel="nofollow">dzone+</a>,
+</dd>
+<dd>
+<a target="_blank" href="" onclick="this.href='http://www.facebook.com/share.php?u=' + escape(window.location)" rel="nofollow">facebook+</a>
+</dd>
+</dl>
+
+        </div>
+   		
+	</div>
+   	
+	
+
+
+
+
+
+
+<div class="vendor-content-box">
+	
+	<h3>Related<span class="vendor">Vendor</span>Content</h3>
+	
+	
+		
+			
+		
+		<p class="entrypdf">
+			<a href="/vendorcontent/show.action;jsessionid=AEE09E80640F28E649C54C2565F614DA?vcr=503" >
+				Lean Software Development Governance, a whitepaper by Per Kroll and Scott Ambler
+			</a>
+		</p>
+	
+		
+			
+		
+		<p class="entrypdf">
+			<a href="/vendorcontent/show.action;jsessionid=AEE09E80640F28E649C54C2565F614DA?vcr=508" >
+				5 Myths of Agile Development Explained
+			</a>
+		</p>
+	
+		
+			
+		
+		<p class="entrypdf">
+			<a href="/vendorcontent/show.action;jsessionid=AEE09E80640F28E649C54C2565F614DA?vcr=520" >
+				Webinar: Best Practices for Application Performance Management - March 31
+			</a>
+		</p>
+	
+		
+			
+		
+		<p class="entrypdf">
+			<a href="/vendorcontent/show.action;jsessionid=AEE09E80640F28E649C54C2565F614DA?vcr=330" >
+				The Agile Business Analyst: Skills and Techniques needed for Agile
+			</a>
+		</p>
+	
+		
+			
+		
+		<p class="entrydownload">
+			<a href="/vendorcontent/show.action;jsessionid=AEE09E80640F28E649C54C2565F614DA?vcr=513" target="_blank">
+				Download Adobe AIR SDK - Drag your Rich Internet Applications from browser to desktop
+			</a>
+		</p>
+	
+	
+	
+	
+	
+	
+	
+</div>
+
+
+		
+	
+
+
+
+
+
+
+	
+	
+	
+    <div class="box-bottom"></div>
+    </div>
+    </div> 
+    <div class="bottom-corners"><div></div></div>
+    </div> 
+
+
+			
+		</div>
+		
+	</div></div>
+	
+		
+	
+
+
+
+
+
+<!-- right side start -->
+
+	<div id="rightbar">
+	<div id="right-wrapper">
+	    <!-- box start -->
+	    <div class="box">
+	        <h2>Educational Content</h2>
+	        <ul class="menu" id="tabsmenu">
+	   			<li id="tab_ALL_EXCEPT_NEWS" class="m-ALL_EXCEPT_NEWS-on"><a href="#" onclick="ContentSummary.switchTab('ALL_EXCEPT_NEWS');return false;">All</a></li>
+	            <li id="tab_ARTICLE" class="m-ARTICLE-off"><a href="#" onclick="ContentSummary.switchTab('ARTICLE');return false;">Articles</a></li>
+	            <li id="tab_PRESENTATION" class="m-PRESENTATION-off"><a href="#" onclick="JSResource.presentationsTab();return false;">Presentations</a></li>
+	            <li id="tab_INTERVIEW" class="m-INTERVIEW-off"><a href="#" onclick="JSResource.interviewsTab();return false;">Interviews</a></li>
+	            <li id="tab_MINIBOOK" class="m-MINIBOOK-off"><a href="#" onclick="JSResource.minibooksTab();return false;">Minibooks</a></li>
+	        </ul>
+		    <div class="top-corners"><div></div></div>
+		    
+		    <div class="box-content">
+			    <div class="box-content-2">
+			    <div id="rightbarcontentbox" class="box-content-3">
+                    
+					
+                        
+						
+								
+<form id="tabstateform" onsubmit="customOnsubmit(); return true;" action="">
+<table class="wwFormTable">
+
+	<input id="startIndex" type="hidden" name="startIndex" value="0"/>
+	<input id="selectedTab" type="hidden" name="selectedTab" value="ALL_EXCEPT_NEWS"/>
+	<input id="rightBarLanguage" type="hidden" name="language" value="en" />
+</table>
+</form>
+
+
+<script>
+	function customOnsubmit() {
+		
+	}
+</script>
+
+
+
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-presentations"><a href="/presentations/Facebook-Software-Stack">Facebook: Science and the Social Graph</a></h1>
+    	
+        	<p class="image"><a href="/presentations/Facebook-Software-Stack"><img src="/resource/presentations/Facebook-Software-Stack/en/smallimage/AA.jpg" alt="" /></a></p>
+        
+        <p>Aditya Agarwal discusses Facebook’s architecture, more exactly the software stack used, presenting the advantages and disadvantages of its major components: PHP, MySQL, Memcache, Thrift, Scribe.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 25, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/presentations/Facebook-Software-Stack"><span>&nbsp;</span>
+	    	    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-articles"><a href="/articles/agile-testing-book-excerpt">Book Excerpt: Agile Testing</a></h1>
+    	
+        	<p class="image"><a href="/articles/agile-testing-book-excerpt"><img src="/resource/articles/agile-testing-book-excerpt/en/smallimage/AgileTesting.jpg" alt="" /></a></p>
+        
+        <p>This  book is for testers on an agile team, test and quality assurance managers transitioning to agile development, and agile teams learning how to approach testing.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 24, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/articles/agile-testing-book-excerpt"><span>&nbsp;</span>
+	    	    		
+    		    			1
+    		    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-articles"><a href="/articles/tulach-practical-api-design">Interview and Book Excerpt: Jaroslav Tulach's Practical API Design</a></h1>
+    	
+        	<p class="image"><a href="/articles/tulach-practical-api-design"><img src="/resource/articles/tulach-practical-api-design/en/smallimage/PracticalAPIDesign.jpg" alt="" /></a></p>
+        
+        <p>InfoQ spoke with Jaroslav Tulach about his latest book Practical API Design. We are also making an excerpt from the book available for our readers.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 24, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/articles/tulach-practical-api-design"><span>&nbsp;</span>
+	    	    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-presentations"><a href="/presentations/Evolving-JVM-Ola-Bini">Evolving the Java Platform</a></h1>
+    	
+        	<p class="image"><a href="/presentations/Evolving-JVM-Ola-Bini"><img src="/resource/presentations/Evolving-JVM-Ola-Bini/en/smallimage/Ola.jpg" alt="" /></a></p>
+        
+        <p>Ola Bini talks about the current status of the JVM regarding languages running on top of it and the need to evolve in order to support dynamic languages.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 23, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/presentations/Evolving-JVM-Ola-Bini"><span>&nbsp;</span>
+	    	    		
+    		    			1
+    		    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-interviews"><a href="/interviews/tim-bray-future-of-web">Tim Bray on the Future of the Web</a></h1>
+    	
+        	<p class="image"><a href="/interviews/tim-bray-future-of-web"><img src="/resource/interviews/tim-bray-future-of-web/en/smallimage/tim-bray-interview.jpg" alt="" /></a></p>
+        
+        <p>Tim Bray talks about why he is not convinced with the buzz surrounding Rich Internet Applications, shares his ideas on Cloud Computing and expresses his opinion regarding the debate REST vs. WS-*.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 23, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/interviews/tim-bray-future-of-web"><span>&nbsp;</span>
+	    	    		
+    		    			14
+    		    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-articles"><a href="/articles/brown-et-al-soa-governance">Interview with the Book Authors: Brown, Laird, Gee, Mitra: SOA Governance</a></h1>
+    	
+        	<p class="image"><a href="/articles/brown-et-al-soa-governance"><img src="/resource/articles/brown-et-al-soa-governance/en/smallimage/book.jpg" alt="" /></a></p>
+        
+        <p>InfoQ spoke with Clive Gee, William A. Brown, Robert G. Laird, Tilak Mitra about their latest book SOA Governance: Achieving and Sustaining Business and IT Agility.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 20, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/articles/brown-et-al-soa-governance"><span>&nbsp;</span>
+	    	    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-interviews"><a href="/interviews/todd-halcyon">Matt Todd on Halcyon</a></h1>
+    	
+        	<p class="image"><a href="/interviews/todd-halcyon"><img src="/resource/interviews/todd-halcyon/en/smallimage/MattTodd.jpg" alt="" /></a></p>
+        
+        <p>In this interview recorded at RubyFringe, Matt Todd talks about his work on the Halcyon framework and how to stop worrying and simple start implementing ideas, dumb or not. </p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 19, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/interviews/todd-halcyon"><span>&nbsp;</span>
+	    	    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+	
+		
+	
+	<div class="entry">
+    	<h1 class="ex-presentations"><a href="/presentations/DSL-Magnus-Christerson-Henk-Kolk">Domain Expert DSLs</a></h1>
+    	
+        	<p class="image"><a href="/presentations/DSL-Magnus-Christerson-Henk-Kolk"><img src="/resource/presentations/DSL-Magnus-Christerson-Henk-Kolk/en/smallimage/DSLs.jpg" alt="" /></a></p>
+        
+        <p>Magnus Christerson discusses about using DSLs to freely express the domain knowledge using familiar tools. Henk Kolk presents a concrete example addressing pension fund issues and based on a DSL.</p>
+        <ul class="info link-col">
+            <li>
+			
+			</li>
+	        <li class="author"><span>&nbsp;</span>Mar 18, 2009,</li>
+    	    
+    	    	<li class="comments">
+    	    		<a href="/presentations/DSL-Magnus-Christerson-Henk-Kolk"><span>&nbsp;</span>
+	    	    		    		    		
+    		    	</a>
+    		    </li>
+    		 
+        </ul>
+    </div>
+        
+    <div class="clearer"></div>
+
+
+<ul class="newsnav link-col">
+
+
+    <li><a href="#" onclick="ContentSummary.setStartIndex('8');return false;">Older &gt;</a></li>
+
+</ul>
+
+	                <!-- Rightbar:2ms -->
+    
+				    <div class="box-bottom"></div>
+				</div>
+				</div>
+				<div class="bottom-corners"><div></div></div>
+			</div>
+		</div>
+		<!-- box end -->
+		<script type="text/javascript">
+			ContentSummary.setSelectedTab('en');
+		</script>
+	</div>
+	</div>
+
+<!-- right side end -->
+
+
+	<div class="clearer"></div>
+
+	
+
+
+
+
+
+
+	<div id="footer">
+		<p>
+			InfoQ.com and all content copyright &#169; 2006-2008 C4Media Inc.
+			InfoQ.com hosted at <a href="http://www.contegix.com/">Contegix</a>, the best ISP we've ever worked with.
+			<a href="/PrivacyPolicy.jsp;jsessionid=AEE09E80640F28E649C54C2565F614DA">Privacy policy</a>
+		</p>
+	</div>
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	var includeName = 'Include';
+	var excludeName = 'Exclude';
+	var includeHint = 'You can include this category.';
+	var excludeHint = 'You can exclude this category.';
+	var excludeCategoryMessage = 'You can re-include from your profile personalization, or right now.<BR />';
+	var viewallCategoryMessage = 'You can view all items that belong to this category.';
+	var busyMessage = 'Please wait...';
+	var contextPath = '' + '/';
+	var viewallCategoryPath= 'en';
+	var includeExcludeLink= true;
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6608133-2");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+</body>
+</html>
+

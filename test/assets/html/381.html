@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Ruby XML Performance Shootout: Nokogiri vs LibXML vs Hpricot vs REXML</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="http://www.rubyinside.com/wp-content/themes/default/style.css" type="text/css" />
+  <!--[if IE 6]>
+    <style type="text/css">.shrinkie6 { width: 405px; }
+PRE { width: 90%; }
+</style>
+  <![endif]-->
+  <link rel="alternate" type="application/rss+xml" title="Ruby Inside" href="http://www.rubyinside.com/feed" />
+  <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.rubyinside.com/wp-includes/wlwmanifest.xml" />
+  <link rel="icon" href="/favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+
+</head>
+<body class="front">
+<div id="page">
+
+<div id="header">
+	<a href="/"><img src="/simg/logo.gif" id="logo" alt="Ruby Inside" /></a>
+	<div style="position: absolute; top: 4px; right: 0px"><a href="http://feedproxy.google.com/RubyInside/" style="text-decoration: none" rel="nofollow"><img src="http://feeds.feedburner.com/~fc/RubyInside?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" alt="Subscribe To Feed" />&nbsp;<img src="simg/feedicon.gif" alt="Ruby Inside Feed" /></a></div>
+	
+	<div id="othersites">
+		<script><!--
+document.write('Other SuperDaring Sites:&nbsp;&nbsp;&nbsp;<a href="http://www.railsinside.com/" rel="nofollow">RAILS INSIDE</a>&nbsp;&nbsp;&nbsp;<a href="http://www.rubyflow.com/" rel="nofollow">RUBYFLOW</a>');
+--></script>&nbsp;&nbsp;&nbsp;<a href="http://www.rubyinside.com.br/">RUBY INSIDE BRASIL</a>
+	</div>
+	<div id="sections">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+<!-- li><a href="/chat">Chat</a></li -->
+			<li><a href="http://www.railsinside.com/" rel="nofollow">Rails</a></li>
+			<li><a href="http://ruby.jobamatic.com/" title="Ruby and Rails Jobs">Ruby Jobs</a></li>
+			<li><a href="/advertise">Spon<span></span>sor Us</a></li>
+			<li><a href="/contact">Contact</a></li>
+			<li><a href="/archives">Archives</a></li>
+		</ul>
+	</div>
+	<div id="tagline">
+		<div style="float: right">Established May 2006</div>
+		The #1 Ruby and Rails News Site
+	</div>
+
+</div>
+
+<div id="wrapper" class="clearfix">
+<div id="twocols" class="clearfix">	<div id="content">
+
+				
+  	
+
+		<div class="post" id="post-1641">
+
+
+<p style="font-weight: bold; color: #933; font-size: 12px; margin-top: 0px; text-transform: uppercase">Post by Peter Cooper on March 16th, 2009</p>
+			<h1>Ruby XML Performance Shootout: Nokogiri vs LibXML vs Hpricot vs REXML</h1>
+
+			<div id="centralfloater">
+<div><img src="/simg/similar.gif" alt="Similar Posts" /></div>
+<ul style="margin: 8px 0px; padding: 0"><li style="list-style: none; padding:3px 0; margin:0;"><a href="http://www.rubyinside.com/nokogiri-ruby-html-parser-and-xml-parser-1288.html" rel="bookmark" title="October 31, 2008">Nokogiri: A Faster, Better HTML and XML Parser for Ruby (than Hpricot)</a></li>
+
+<li style="list-style: none; padding:3px 0; margin:0;"><a href="http://www.rubyinside.com/libxml-ruby-1x-released-ruby-now-a-serious-xml-player-1630.html" rel="bookmark" title="March 12, 2009">libxml-ruby 1.x Released: Ruby Now A Serious XML Player</a></li>
+
+<li style="list-style: none; padding:3px 0; margin:0;"><a href="http://www.rubyinside.com/how-to-install-a-ruby-18-stack-on-ubuntu-810-from-scratch-1566.html" rel="bookmark" title="February 27, 2009">How To Install A Ruby 1.8 Stack on Ubuntu 8.10 From Scratch</a></li>
+</ul><!-- Similar Posts took 11.220 ms -->
+
+				<div><img src="/simg/popularposts.gif" alt="Popular Posts" /></div>
+				<!-- Blog ID: 316 -->
+
+				<div id="aidewidget"></div>
+
+
+				
+				<div style="margin-top: 8px"><img src="/simg/jobs.gif" alt="Jobs" /></div>
+				<div class="jobszone"><!-- ul style="list-style-type: none; padding-left: 0px; background-color: #ffd"><li><a href="http://www.rubyinside.com/neco-rails-guru-needed">Awesome Ruby Opportunity</a><br /> at <strong>National Events Company</strong> (New York or telecommute)</li></ul -->
+				<div id="jbb_adaptive_widget_body"></div>
+<div id="jbb_adaptive_widget_post_a_job" style="display:none"></div>
+
+				<p style="font-weight: bold"><a href="http://ruby.jobamatic.com/">View All Jobs</a> | <a href="http://ruby.jobamatic.com/a/jbb/post-job" rel="nofollow">Post a Job</a></p>
+				<script type="text/javascript">var jbb_widget_list_count = 3;var jbb_widget_domain = 'http://ruby.jobamatic.com';</script>
+				<script src="http://ruby.jobamatic.com/c/jbb/js/jbb_widget_adaptive.js" type="text/javascript"></script>
+				<script src="http://ruby.jobamatic.com/a/jbb/find-jobs-json/jbb_widget_list_jobposts" type="text/javascript"></script>
+</div><!-- jobszone -->
+				
+			</div>
+
+
+<div style="margin: 0px 0px 6px 0px; font-size: 11px"><a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html">Permanent Link</a>&nbsp;|&nbsp;<a href="http://del.icio.us/post?url=http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html&title=Ruby XML Performance Shootout: Nokogiri vs LibXML vs Hpricot vs REXML"><img src="/wp-content/delicious.gif" alt="book mark Ruby XML Performance Shootout: Nokogiri vs LibXML vs Hpricot vs REXML in del.icio.us">Click here to add on del.icio.us</a>&nbsp;|&nbsp;<a href="#respond">16 Comments</a></div>
+
+	
+			<div class="entrytext">
+				<p><img src="http://www.rubyinside.com/wp-content/uploads/2009/03/xmlresults.gif" width="121" height="112" alt="xmlresults.gif" style="float:left; margin-right:12px; margin-bottom:12px; border:1px #000000 solid;" /><em>Disclaimer: Every time we've run a piece about benchmarking or performance numbers on Ruby Inside, a retraction or significant correction has come out shortly thereafter. Benchmarking is hard, ugly, and quite often wrong or biased. It is not useless, however, but if you depend on the results in any way, you should certainly try to do your own benchmarking to confirm.</em></p>
+<p>Last week, <a href="http://www.rubyinside.com/libxml-ruby-1x-released-ruby-now-a-serious-xml-player-1630.html">libxml-ruby 1 was released</a> - a significant achievement since it had been under development for seven years. I <em>suspected</em> that it might just pip <a href="http://www.rubyinside.com/nokogiri-ruby-html-parser-and-xml-parser-1288.html">Nokogiri</a> to the "fastest way to parse XML in Ruby" post and invited people to benchmark them. Turns out.. it ain't so. Nokogiri is the fastest.</p>
+<p><a href="http://twitter.com/tenderlove">Aaron Peterson</a>, the developer behind Nokogiri, decided to run some tests and <a href="http://github.com/tenderlove/xml_truth/blob/29c76c4fab978ca9dfbe146d90aba21f9f7ca267/document_parsing.rdoc">he's published the results</a> in a dossier called xml_truth. The benchmarking environment was Ruby 1.8.6 on OS X 10.5 with libxml2 2.7.3 installed. <a href="http://wiki.github.com/why/hpricot">Hpricot</a> 0.6.170 competes against Nokogiri 1.2.2, LibXML-Ruby 1.1.2, and the standard library's <a href="http://www.germane-software.com/software/rexml/">REXML</a>.</p>
+<p>Aaron put together a whole suite of benchmarks, but if you just want an overview, here's a chart showing the results for in memory parsing of a 14 megabyte XML document. Note that the parsing time is in seconds and the Y-axis is <em>logarithmic</em>. Yes, Hpricot took over a minute, and REXML took over two minutes, while Nokogiri and libxml-ruby came in at a few seconds each:</p>
+<p><img src="http://www.rubyinside.com/wp-content/uploads/2009/03/xmlresults1.gif" width="282" height="263" alt="xmlresults.gif" style="margin-right:12px;" /></p>
+<p>Want all the actual numbers? Want to see the actual tests? Want to run them for yourself? Head over to Aaron's project <a href="http://github.com/tenderlove/xml_truth/blob/29c76c4fab978ca9dfbe146d90aba21f9f7ca267/document_parsing.rdoc">here</a>. Have fun! I'll putting on my flame-retardant jacket in preparation for all of the fallout about how inaccurate these tests are in 3.. 2.. 1.. :-)</p>
+<p><b>Update: <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/331411">Hpricot 0.7 has been released</a> and Patrick Tulskie has run <a href="http://github.com/PatrickTulskie/xml_truth/blob/c9bd1b932e74059ae3d93efaf8fcb306619f1fd3/document_parsing_v2.rdoc">some extra benchmarks.</a></b> These results show that Hpricot beats libxml-ruby and Nokogiri under certain circumstances (quite significantly under an XPath test).</p>
+<p><b>Update 2 (March 22, 2009):</b> libxml-ruby's developer Charles Savage has found why libxml-ruby lagged behind Nokogiri and <a href="http://cfis.savagexi.com/2009/03/21/libxml-ruby-1-1-3-boosting-performance">has resolved it..</a> :)</p>
+<p class="s" style="font-family:verdana;font-style:italic;padding:8px 4px;font-size: 12px"><strong>Support from: <a href="http://www.brightbox.co.uk/">Brightbox</a>; - Europe's leading provider of <a href="http://www.brightbox.co.uk/rails-hosting-pricing">Ruby on Rails hosting</a>.</strong> Now with Phusion Passenger support, each Brightbox server comes with access to a managed MySQL cluster and redundant SAN storage. Brightbox also provides managed services for large scale applications and dedicated clusters.</p>
+<p><a class="tt-small" href="http://twitter.com/home/?status=http://is.gd/nvPP+Ruby+XML+Performance+Shootout%3A+Nokogiri+vs+LibXML+vs+Hpricot+vs+REXML" title="Post to Twitter (http://is.gd/nvPP)"><img class="nothumb" src="http://www.rubyinside.com/wp-content/plugins/tweet-this/tweet-this-small.png" alt="[Post to Twitter]" /> Tweet This</a></p>	
+					
+				<p class="postmetadata alt">
+					<small>
+						This entry was posted
+						 
+						on Monday, March 16th, 2009 at 8:25 am						and is filed under <a href="http://www.rubyinside.com/category/controversy" title="View all posts in Controversy" rel="category tag">Controversy</a>,  <a href="http://www.rubyinside.com/category/news" title="View all posts in News" rel="category tag">News</a>.
+						
+						
+													You can <a href="#respond">leave a response</a>, or <a href="http://www.rubyinside.com/ruby-xml-performance-benchmarks-1641.html/trackback" rel="trackback">trackback</a> from your own site.
+						
+												
+					</small>
+				</p>
+	
+			</div>
+		</div>
+
+		<div class="navigation">
+			Previous Post: <a href="http://www.rubyinside.com/libxml-ruby-1x-released-ruby-now-a-serious-xml-player-1630.html">libxml-ruby 1.x Released: Ruby Now A Serious XML Player</a><br />Next Post: <a href="http://www.rubyinside.com/twibot-a-ruby-microframework-for-building-twitter-bots-1643.html">Twibot: A Ruby Microframework for Building Twitter Bots</a>		</div>
+		
+	
+<!-- You can start editing here. -->
+
+	<h3 style="font-size: 1.2em" id="comments">16 Responses to &#8220;Ruby XML Performance Shootout: Nokogiri vs LibXML vs Hpricot vs REXML&#8221;</h3> 
+
+	<ol class="commentlist">
+	
+		<li class="alt" id="comment-38290">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#1<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/6268c7528d855f1cef5696a00d159909?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.petercooper.co.uk/' rel='external nofollow'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38290" title="">March 16th, 2009 at 8:26 am</a> </small>
+
+			<p>Just in case anyone's wondering, Y-axis is seconds ;-) Now I know why statistics was my least favorite part of math..</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38292">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#2<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/1f33d1fadc1df2f24b3a69a4f5df786e?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://pootytang.tumblr.com' rel='external nofollow'>Peter Weitzman</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38292" title="">March 16th, 2009 at 1:56 pm</a> </small>
+
+			<p>I use hpricot to parse thousands of very small (&lt; 1k) xml documents.  I wonder what that benchmark would look like.  (I am currently happy with the performance, so only a big boost would cause me to switch.)</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38293">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#3<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/f29327647a9cff5c69618bae420792ea?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://tenderlovemaking.com/' rel='external nofollow'>Aaron Patterson</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38293" title="">March 16th, 2009 at 6:11 pm</a> </small>
+
+			<p>These benchmarks are not complete.  I want to compare document parse times, xpath search, css search, document traversal, attribute accessing, and memory usage.</p>
+<p>I would also like to compare API for similar functions.</p>
+<p>I will post to my website when I feel it is "done".</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38294">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#4<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/5a837592409354297424994e8d62f722?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://blog.zenspider.com/' rel='external nofollow'>Ryan Davis</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38294" title="">March 16th, 2009 at 6:16 pm</a> </small>
+
+			<p>I think just as important as the speed, if not more so, is the API:</p>
+<p>    LibXML::XML::Parser.string(@xml).parse # in memory<br />
+    LibXML::XML::Parser.io(xml).parse # via file/socket/whatever</p>
+<p>vs:</p>
+<p>    Nokogiri::XML(xml) # both</p>
+<p>No contest.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38295">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#5<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/ed8067f345dcf963c701ad50faf99d93?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+flavio</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38295" title="">March 16th, 2009 at 6:26 pm</a> </small>
+
+			<p>I tested, rexml and libxml<br />
+the benchmarking it's true</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38298">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#6<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/e7997218f62952608fb958fbd2e3b47d?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.agaelebe.com.br' rel='external nofollow'>Hugo</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38298" title="">March 17th, 2009 at 3:22 am</a> </small>
+
+			<p>I'd like to see these tests for Ruby 1.9.1</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38299">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#7<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/07f4eea7b23c39ffa063f20564607341?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.petercooper.co.uk/' rel='external nofollow'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38299" title="">March 17th, 2009 at 5:21 am</a> </small>
+
+			<p>If you can get Hpricot running on 1.9.1, you can run Aaron's code. Despite trying many times, I've never succeeded, although Nokogiri installs fine. Perhaps I'll install libxml-ruby on 1.9.1 now and just run the head to head tests...</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38300">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#8<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/07f4eea7b23c39ffa063f20564607341?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.petercooper.co.uk/' rel='external nofollow'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38300" title="">March 17th, 2009 at 5:27 am</a> </small>
+
+			<p>Okay, tests are running... :) Commented out the Hpricot parts!</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38302">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#9<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/07f4eea7b23c39ffa063f20564607341?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.petercooper.co.uk/' rel='external nofollow'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38302" title="">March 17th, 2009 at 5:39 am</a> </small>
+
+			<p><strong>Ruby 1.9.1. Nokogiri: 1.2.2 vs LibXML: 1.1.2</strong></p>
+<pre>test_IO_parsing N=100
+                  user     system      total        real   kBps
+null         10.250000   0.750000  11.000000 ( 10.990493) 64822.66
+nokogiri     44.870000   1.560000  46.430000 ( 46.380883) 15360.49
+libxml-ruby  53.670000   1.470000  55.140000 ( 55.097135) 12930.49</pre>
+<p>So, nokogiri still wins. Including REXML and going to N=10:</p>
+<pre>test_IO_parsing N=10
+                  user     system      total        real   kBps
+null          0.990000   0.070000   1.060000 (  1.063771) 66972.40
+nokogiri      4.160000   0.240000   4.400000 (  4.400213) 16190.88
+libxml-ruby   5.270000   0.170000   5.440000 (  5.440546) 13094.88
+rexml       420.520000   1.530000 422.050000 (421.625631) 168.97</pre>
+<p>So REXML is still a waste of time, even in 1.9.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38303">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#10<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/577053972bc30f59cf29714765a8b49f?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+Michael Campbell</cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38303" title="">March 17th, 2009 at 11:28 am</a> </small>
+
+			<p>Using a log scale with a linearly spaced axis is bad form, btw.   Despite your footnote, it is counter-intuitive.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38305">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#11<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/07f4eea7b23c39ffa063f20564607341?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.petercooper.co.uk/' rel='external nofollow'>Peter Cooper</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38305" title="">March 17th, 2009 at 7:05 pm</a> </small>
+
+			<p>That's Numbers for you. It's really shitty at making graphs. Sadly the linear axis was even worse.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38308">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#12<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/597be50d3d0dd0cca34c00604010b87c?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.patricktulskie.com' rel='external nofollow'>Patrick Tulskie</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38308" title="">March 17th, 2009 at 10:14 pm</a> </small>
+
+			<p>I think we need to modify the tests to take into consideration this little announcement here:</p>
+<p><a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/331411" rel="nofollow">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/331411</a></p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38309">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#13<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/791b37fe1616de7f240cd42545d704eb?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.patricktulskie.com' rel='external nofollow'>Patrick Tulskie</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38309" title="">March 18th, 2009 at 4:33 am</a> </small>
+
+			<p>Couldn't wait for someone to address Why's complaints so I forked the tests, updated a few things, and re-ran them.  Here's my fork and I've submitted a pull request to Aaron: <a href="http://github.com/PatrickTulskie/xml_truth/" rel="nofollow">http://github.com/PatrickTulskie/xml_truth/</a></p>
+<p>Interesting to say the least.  I'm a performance nut and I love knowing what each gem is best at.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38311">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#14<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/6ef9aa6aad6b3a0251d6872bc4c5bdae?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://www.wedesoft.demon.co.uk/' rel='external nofollow'>Jan Wedekind</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38311" title="">March 18th, 2009 at 9:26 am</a> </small>
+
+			<p>I haven't used XML with Ruby so far. In the past I've used Xalan-C with C++. It supports XML parsing, XPath queries, XSD verification, and XSLT transformations. In terms of functionality most other XML libraries are not even close. But then again you don't need to rely on XML so much if you are using Ruby.</p>
+
+		</li>
+
+	
+	
+		<li class="alt" id="comment-38340">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#15<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/ff880f3622a3ecd57d5e8d8721e4ef35?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://cfis.savagexi.com' rel='external nofollow'>Charlie</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38340" title="">March 22nd, 2009 at 5:24 am</a> </small>
+
+			<p>Finally had a chance to look into this.  libxml-ruby and nokogiri should have equivalent performance, and now do with the libxml-ruby 1.1.3 release.  I posted what was causing the difference on my blog at <a href="http://cfis.savagexi.com/2009/03/21/libxml-ruby-1-1-3-boosting-performance" rel="nofollow">http://cfis.savagexi.com/2009/03/21/libxml-ruby-1-1-3-boosting-performance</a>.</p>
+
+		</li>
+
+	
+	
+		<li class="" id="comment-38342">
+			<div class="commentnumber" style="float:left; font-size: 20px; text-align: right; padding-right: 10px; font-family: georgia, serif; color: #999">#16<br /><div style="border: 1px solid #666"><img alt='' src='http://www.gravatar.com/avatar/57053c3320e9426dda3909868cd46947?s=48&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D48&amp;r=G' class='avatar avatar-48' height='48' width='48' /></div></div> <cite>
+<a href='http://interkonect.com' rel='external nofollow'>Kris</a></cite> Says:
+						<br />
+
+			<small class="commentmetadata"><a href="#comment-38342" title="">March 22nd, 2009 at 12:49 pm</a> </small>
+
+			<p>On Ubuntu Hardy:</p>
+<p>sudo apt-get update<br />
+sudo apt-get install libxslt1-dev<br />
+sudo apt-get install libxml2-dev<br />
+sudo gem install nokogiri</p>
+
+		</li>
+
+	
+	
+	</ol>
+
+ 
+
+
+<h3 id="respond" style="font-size: 1.2em">Leave a Reply</h3>
+
+
+<form action="http://www.rubyinside.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" />
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2" />
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3" />
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="40" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
+<input type="hidden" name="comment_post_ID" value="1641" />
+</p>
+
+</form>
+
+
+	
+		
+	</div>
+
+	<div id="sidebar">
+		
+				<div style="margin-bottom: 0px; padding-bottom: 0px"><img src="/simg/subscribe.gif" alt="Subscribe to Ruby Inside" /></div>
+		<div id="subscribebox" class="box" style="background-color: #eee; padding-bottom: 0px; border-top-width: 0px; padding-top: 1px">
+			
+			<p style="margin-top: 8px; margin-bottom: 8px"><a href="http://feeds.feedburner.com/RubyInside" style="text-decoration: none"><img src="/simg/feediconsmall.gif" align="top" alt="Feed Icon" /></a> <a href="http://feeds.feedburner.com/RubyInside">Subscribe to Ruby Inside with RSS</a></p>
+			<p style="margin-top: 0px; margin-bottom: 8px"><a href="http://twitter.com/RubyInside" style="text-decoration: none"><img src="/simg/twitter.gif" align="top" alt="Twitter Icon" /></a> <a href="http://twitter.com/RubyInside">Follow Ruby Inside on Twitter</a></p>
+			<form action="http://www.feedburner.com/fb/a/emailverify" method="post" target="popupwindow" onsubmit="window.open('http://www.feedburner.com', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true" style="margin-left: 17px; margin-top: 0px"><p style="margin-top: 6px">Or, subscribe to your e-mail:<br /><input type="text" style="width:180px" name="email"/>&nbsp;<input type="submit" value="Subscribe" /><br /><span class="weak">Delivered by Google's <a href="http://www.feedburner.com/" target="_blank">FeedBurner</a> - no spam</span><input type="hidden" value="http://feeds.feedburner.com/~e?ffid=362021" name="url"/><input type="hidden" value="Ruby Inside" name="title"/></p></form>
+		</div>
+		
+			<h3>Ruby Inside's <script type="text/javascript">document.write('Sponsors');</script></h3>
+
+			<div class="hmm" id="sp9"><a href="http://www.scrumd.com/?ref=rubyinside"><img src="http://www.rubyinside.com/images/scrumd.gif" alt="Scrumd" /></a></div>
+
+<div class="hmm" id="sp4"><a href="http://intridea.com/"><img src="http://www.rubyinside.com/images/intridea-services.png" alt="Intridea - Rails developers" /></a></div>
+
+			<div class="hmm" id="sp7"><a href="http://railslab.newrelic.com/?utm_source=rubyinside&amp;utm_medium=banner&amp;utm_campaign=railslab" rel="nofollow"><img src="http://www.rubyinside.com/images/railslab.gif" alt="New Relic Rails Lab" /></a></div>
+
+<div class="hmm" id="sp8"><a href="http://www.rubysophic.com/products/RubyRun/" rel="nofollow"><img src="http://www.rubyinside.com/images/rubyrun.jpg" alt="Ruby Run" /></a></div>
+
+			<!-- div class="hmm" id="sp1"><a href="http://www.fiveruns.com/products/manage?utm_source=rubyinside&amp;utm_medium=banner&amp;utm_content=bannercopy1&amp;utm_campaign=Manage" title="Five Runs"><img src="http://www.rubyinside.com/images/fiveruns_manage.gif" alt="Five Runs" /></a></div -->
+			<div class="hmm" id="sp2"><a href="http://www.brightbox.co.uk/" title="Brightbox Rails Hosting" rel="nofollow"><img src="http://www.rubyinside.com/images/brightbox_310by90.jpg" title="Brightbox Rails Hosting" alt="Brightbox Rails Hosting" /></a></div>
+			<div class="hmm" id="sp3"><a href="http://www.linode.com/r-rubyinside/" title="Linode" rel="nofollow"><img src="http://www.rubyinside.com/images/linode.png" alt="Linode" /></a></div>
+			
+			<div class="hmm" id="sp5"><a href="http://www.fynspire.com/" rel="nofollow"><img src="http://www.rubyinside.com/images/fynspire.gif" alt="Fynspire" /></a></div>
+
+			<div class="hmm"><a href="http://www.peepcode.com/" rel="nofollow"><img src="http://www.rubyinside.com/wp-content/peepcode.png" alt="PeepCode Rails Screencasts" title="PeepCode Rails Screencasts" border="1" /></a></div>
+			
+			
+			<script type="text/javascript">
+<!--
+			function randomizeSpons() {
+				sps = ['sp2', 'sp3', 'sp4', 'sp5', 'sp7', 'sp8'];
+				spscodes = [];
+				for (var x = 0; x < sps.length; x++) {
+					spscodes.push(document.getElementById(sps[x]).innerHTML);
+				}
+				function rSort() { return (Math.round(Math.random()) - 0.5); }
+				spscodes.sort(rSort);
+				for (var x = 0; x < sps.length; x++) {
+					document.getElementById(sps[x]).innerHTML = spscodes[x];
+				}
+			}
+			randomizeSpons();
+setTimeout("randomizeSpons();", 15000);
+-->
+			</script>
+			
+
+		
+		<table class="twocol">
+			<tr><td class="left">
+
+		
+		
+<a href="http://www.railsconf.com">
+<img src="http://assets.en.oreilly.com/1/event/24/rails2009_120x240.jpg" width="120" height="240"  border="0"  alt="RailsConf 2009" title="RailsConf 2009"  />
+</a>
+
+		</td>
+		<td class="right">
+
+
+
+		</td></tr></table>
+		
+		
+<br /><br />
+<script type="text/javascript" language="javascript" src="http://s3.polldaddy.com/p/1472409.js"></script>
+
+
+	</div>
+
+
+</div>
+
+	<div id="leftcol">
+	</div>
+</div>
+
+
+
+	<div id="footer">
+	
+			<div style="float: right; padding-top: 12px">
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="http://ruby.jobamatic.com/">Ruby Jobs</a></li>
+<li><a href="/chat">Chat</a></li>
+				<li><a href="/advertise">Advertise</a></li>
+				<li><a href="/archives">Archives</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+			</div>
+		<p>
+			Ruby Inside is a <a href="http://www.superdaring.com/" rel="nofollow">SuperDaring!</a> publication.
+		</p>
+	</div>
+</div>
+
+	
+	
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2237791-3");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+				<script type="text/javascript"
+				src="http://api.aiderss.com/static/top_posts.js">
+				</script>
+				<script type="text/javascript">
+				new AideWidget('aidewidget', 316, 'month', 3);
+				</script>
+
+<script src="cufon-edge.js" type="text/javascript"></script><script src="f.font.js" type="text/javascript"></script>		<script type="text/javascript">
+<!--
+		Cufon.replace('h2 a', {
+		  fontFamily: 'f',
+			hover: true
+		});
+		Cufon.replace('h1', {
+		  fontFamily: 'f'
+		});
+-->		</script>
+</body>
+</html>

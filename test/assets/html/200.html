@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Ruby Tips - Learn Ruby Language (Also known as Programmer&#8217;s Best Friend!)</title>
+
+<link rel="stylesheet" href="http://www.rubytips.org/wp-content/themes/ProSense/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds2.feedburner.com/RubyTips" />
+<link rel="pingback" href="http://www.rubytips.org/xmlrpc.php" />
+
+	<link rel='archives' title='May 2008' href='http://www.rubytips.org/2008/05/' />
+	<link rel='archives' title='April 2008' href='http://www.rubytips.org/2008/04/' />
+	<link rel='archives' title='January 2008' href='http://www.rubytips.org/2008/01/' />
+	<link rel='archives' title='December 2007' href='http://www.rubytips.org/2007/12/' />
+	<link rel='archives' title='October 2007' href='http://www.rubytips.org/2007/10/' />
+	<link rel='archives' title='September 2007' href='http://www.rubytips.org/2007/09/' />
+	<link rel='archives' title='July 2007' href='http://www.rubytips.org/2007/07/' />
+	<link rel='archives' title='May 2007' href='http://www.rubytips.org/2007/05/' />
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.rubytips.org/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.rubytips.org/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.7.1" />
+
+
+	<link type="text/css" rel="stylesheet" href="http://www.rubytips.org/wp-content/plugins/syntax/Styles/SyntaxHighlighter.css" />
+
+<!-- Protected by WP-SpamFree v2.0.0.1 :: JS BEGIN -->
+<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/wp-spamfree/js/wpsf-js.php"></script> 
+<!-- Protected by WP-SpamFree v2.0.0.1 :: JS END -->
+
+</head>
+<body>
+
+<div id="page">
+
+<div id="header">
+	
+	
+		<div id="header_left">
+			<h1><a href="http://www.rubytips.org">Ruby Tips</a></h1>
+			<div class="description">Learn Ruby Language (Also known as Programmer&#8217;s Best Friend!)</div>
+		</div>
+	
+		<div id="header_right">
+			<div id="subscribe">
+				<a href="http://feeds2.feedburner.com/RubyTips" title="Subscribe to RSS feed" rel="nofollow"><img src="http://www.rubytips.org/wp-content/themes/ProSense/images/rss-feed-icon.jpg" alt="Subscribe to RSS feed" /></a>
+			</div>
+		</div>
+
+	
+<div class="menu">
+<ul>
+  <li><a href="http://www.rubytips.org/">Home</a></li>
+  <li><a href="http://www.rubytips.org/free-ruby-book/" title="Free Ruby Book">Free Ruby Book</a></li>
+  <li><a href="http://www.rubytips.org/about/">About</a></li>
+</ul>
+</div>	
+		<div style="clear:both;"></div>
+</div>
+
+<div id="wrapper">
+	<div id="content">
+
+	<div id="adsense_homepage_linkunit">
+<script type="text/javascript"><!--
+google_ad_client = "pub-5529588696645669";
+/* 468x15, linktop */
+google_ad_slot = "5760794220";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+									
+			<div class="post" id="post-43">
+				<h2><a href="http://www.rubytips.org/2008/05/15/distributing-your-ruby-program-as-a-standalone-executable-exe/" rel="bookmark" title="Permanent Link to Distributing your Ruby program as a standalone executable (exe)">Distributing your Ruby program as a standalone executable (exe)</a></h2>
+				
+				<div class="entry">
+					<p>Since ruby is an interpreted language, whenever you want to release your program you need to release the source code. Also your program users must install Ruby virtual machine before they can run your program. Is there a way to distribute ruby program as a standalone executable?</p>
+<p><a title="RubyScript2Exe" href="http://www.erikveen.dds.nl/rubyscript2exe/" target="_blank">Erik Veenstra has created a nifty tool called RubyScript2Exe</a> which can convert your ruby program to an executable program. It achieves this by combining ruby interpreter code and your source code files into a single exe file.</p>
+<p>First <a href="http://www.erikveen.dds.nl/rubyscript2exe/#6.0.0" target="_blank">download the RubyScript2Exe tool from here</a>. It is a ruby program (950kb size). Create a simple ruby program called helloworld.rb and save it to the same location where RubyScript2Exe.rb is stored.</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+puts "Hello World"
+</textarea>
+<p>From the command prompt, type the following,</p>
+<blockquote><p><strong>ruby rubyscript2exe helloworld.rb</strong></p></blockquote>
+<p>You will see the following output on console. Now you have a standalone executable program (helloworld.exe) which can be executed in any Windows machine! Combined with Win32API, you can create cool command line apps for Windows.</p>
+<p><img src="http://www.rubytips.org/wp-content/uploads/2008/05/creating-helloworldexe.jpg" alt="creating windows exe using ruby" width="335" height="105" /></p>
+<p>The only problem with this executable is that it contains the entire ruby VM and hence is large (helloworld.exe size is around 1.5MB). Also note that this is not really a ruby compiler. It doesn&#8217;t convert your ruby code to machine code. It only packages ruby virtual machine along with your ruby code. Hence the code is still interpreted.</p>
+<p>RubyScript2Exe can also create executable files for Linux and Mac OS X (Darwin). RubyScrip2Exe is released under GNU GPL license.</p>
+				</div>
+		
+				<p class="postmetadata"><small>May 15th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-tools/" title="View all posts in Ruby Tools" rel="category tag">Ruby Tools</a>,  <a href="http://www.rubytips.org/category/windows-programming/" title="View all posts in Windows Programming" rel="category tag">Windows Programming</a> |   <a href="http://www.rubytips.org/2008/05/15/distributing-your-ruby-program-as-a-standalone-executable-exe/#respond" title="Comment on Distributing your Ruby program as a standalone executable (exe)">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-39">
+				<h2><a href="http://www.rubytips.org/2008/05/13/accessing-windows-api-from-ruby-using-win32api-library/" rel="bookmark" title="Permanent Link to Accessing Windows API from Ruby - Using Win32API library">Accessing Windows API from Ruby - Using Win32API library</a></h2>
+				
+				<div class="entry">
+					<p>Ruby is used extensively in Web applications thanks to Ruby on Rails. But you can also develop Windows applications using Ruby. Interestingly the Windows API support is part of the standard installation (only on Microsoft Windows installations) and it is quite easy to use it!</p>
+<p>In order to use Windows API, you need to import &#8220;Win32API&#8221; library in your applications.<br />
+You can then use the Win32API class to create a reference to an API method and can call it. The following sample program shows how this can be done. This application will display a native Windows message box,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> 
+
+require "Win32API"
+
+message = "This is a sample Windows message box generated using Win32API"
+title = "Win32API from Ruby"
+
+api = Win32API.new('user32','MessageBox',['L', 'P', 'P', 'L'],'I')
+api.call(0,message,title,0)
+
+</textarea>
+<p>When you run the above program, you will get a message box similar to the following one,<br />
+<img src="http://www.rubytips.org/wp-content/uploads/2008/05/win32api-from-ruby.jpg"/></p>
+<p>Now let us analyze our sample program in depth. The first line imports the standard Win32API library. Then we create two variables (message and title) which will hold the message to be displayed and the title of the message box.</p>
+<p>Now using Win32API.new, we are creating a new instance of a Windows API method. The first parameter (user32) indicates the DLL which contains the API method. In this case the DLL is user32.dll. The second parameter is the name of the API method (MessageBox). The third parameter is an array indicating the type of all the parameters passed to API method (MessageBox). In the array, L stands for long number and P stands for pointer to string (string variable). The last parameter indicates the return type. In this case I stands for Integer.</p>
+<p>Now using call method on the API reference we invoke MessageBox method. Note that the type of parameters matches the third array parameter in the constructor. First parameter is the id of the parent windows (in this case there is no parent and hence 0) and the last parameter indicates the type of message box (0 indicates default message box).</p>
+<p>Following is another sample ruby program which uses Windows API to print out the logged in user name and also the computer name,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+require "Win32API"
+
+# Returns the computer name
+def getComputerName
+  name = " " * 128
+  size = "128"
+  Win32API.new('kernel32','GetComputerName',['P','P'],'I').call(name,size)
+  return name.unpack("A*")
+end
+
+# Returns current logged in Windows user name
+def getUserName
+  name = " " * 128
+  size = "128"
+  Win32API.new('advapi32','GetUserName',['P','P'],'I').call(name,size)
+  return name.unpack("A*")
+end
+
+puts "Computer Name: #{getComputerName}"
+puts "User Name: #{getUserName}"
+</textarea>
+<p>In the above sample, note that the second parameter is a pointer to the size of the first parameter. In Ruby there are no pointers and hence the size needs to be passed as a string value. Also we need to use unpack method to remove the trailing null character returned by API call.</p>
+<p>Check out the following <a href="http://msdn.microsoft.com/en-us/library/ms724432(VS.85).aspx">API definition for GetUserName (from MSDN)</a>,</p>
+<textarea name="code" class="c:nogutter" cols="60" rows="10">
+BOOL WINAPI GetUserName(
+  __out    LPTSTR lpBuffer,
+  __inout  LPDWORD lpnSize
+);
+</textarea>
+<blockquote><p>
+lpBuffer<br />
+A pointer to the buffer to receive the user&#8217;s logon name. If this buffer is not large enough to contain the entire user name, the function fails. A buffer size of (UNLEN + 1) characters will hold the maximum length user name including the terminating null character. UNLEN is defined in Lmcons.h.</p>
+<p>lpnSize<br />
+On input, this variable specifies the size of the lpBuffer buffer, in TCHARs. On output, the variable receives the number of TCHARs copied to the buffer, including the terminating null character.</p></blockquote>
+<p>As you can guess, the parameter passing and parsing return values from API quickly becomes tedious. So from a productivity angle using Windows API to build full fledged Windows applications is not recommended.</p>
+				</div>
+		
+				<p class="postmetadata"><small>May 13th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/windows-programming/" title="View all posts in Windows Programming" rel="category tag">Windows Programming</a> |   <a href="http://www.rubytips.org/2008/05/13/accessing-windows-api-from-ruby-using-win32api-library/#comments" title="Comment on Accessing Windows API from Ruby - Using Win32API library">1 Comment</a></small></p>
+			</div>
+			
+			<div id="adsense_homepage_banner">
+<script type="text/javascript"><!--
+google_ad_client = "pub-5529588696645669";
+/* 468x60, content top */
+google_ad_slot = "7865487699";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>			
+				
+						
+			<div class="post" id="post-38">
+				<h2><a href="http://www.rubytips.org/2008/05/11/ruby-talk-rb_str_new2-cleanup-ruby-gui-libraries-and-ruby-vs-python/" rel="bookmark" title="Permanent Link to Ruby-Talk - rb_str_new2 cleanup, ruby GUI libraries and Ruby vs Python">Ruby-Talk - rb_str_new2 cleanup, ruby GUI libraries and Ruby vs Python</a></h2>
+				
+				<div class="entry">
+					<p><em>Note: This is a weekly round up of interesting stuff found on ruby-talk mailing list.</em> <em><a href="http://www.ruby-lang.org/en/community/mailing-lists/" target="_blank">You can subscribe to this list here</a></em>.</p>
+<p>1. <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/67a1c224babb98fb/2a690f9b055b6e96" target="_blank">Steven wondered</a> whether it is necessary to clean up the string created from native C code(rb_str_new2) and passed to rb_funcall. Matz replied,</p>
+<blockquote><p>You don&#8217;t have to (and you shouldn&#8217;t) free string objects.</p></blockquote>
+<p>2. <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/cb01fb982ac99eac/ccad357ccf9f75ca" target="_blank">Mohsin asked which is the better Ruby GUI Library</a>, Ruby-GTK or FXRuby?. Both seemed good candidates and there were some additional recommendations such as JRuby + Swing + Monkeybars(James). Daniel recommended <a href="http://wxruby.rubyforge.org/" target="_blank">WxRuby</a>,</p>
+<blockquote><p>I&#8217;ve had very good results with WxRuby <a href="http://wxruby.rubyforge.org/;">http://wxruby.rubyforge.org/;</a> It didn&#8217;t take long to learn, is NOT very rubyish (basically the C++ APIs are reimplemented in Ruby), but was very useful for cross-platform development. So you might want to consider that as a third option.</p></blockquote>
+<p>3. <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/1900b19f4db151f6/f9f6e7d6837e2b38" target="_blank">There was a big discussion</a> (started by Marc) on differences between Python and Ruby. Michael had some good points on Ruby,</p>
+<blockquote><p>a. Flexible syntax of Ruby</p>
+<p>b. Enough support for functional programming without having to fight with the language</p>
+<p>c. A friendly community - he laments that this is on the decline!</p>
+<p>d. No syntactic whitespace as in Python</p></blockquote>
+<p>As Ruby and Rails is becoming a mainstream language/framework it is only natural that you get more of the RTFM type of questions in the mailing groups. In my opinion there is no point in bitching about it, but rather politely point to the relevant documentation.</p>
+<p>As far as Rails is concerned it is a big mess. The Rails 2 is out, but there is no documentation for a beginner in Rails 2. All the books are still stuck at earlier versions and for any documentation available online you need to pay! The only book available (3rd edition of Agile Web development with Rails) is still in beta and requires a lot of rewrite before it can be useful. So it is only natural that you get basic rails questions even on Ruby mailing lists and forums!</p>
+<p>In another thread <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/65378457ad782932/524dd4425959d867" target="_blank">Mohit gives this explanation</a>,</p>
+<blockquote><p>I see this as a sign that Ruby is picking up and gaining traction in other places.  There was a time when there were a lot of people who were discovering Ruby on their own free will and were looking at documents (online or offline) and trying out different things.  As it gains traction, it approaches the point where people are having Ruby thrust on them (possibly more Rails than Ruby) either due to preference of people further up in the food chain or due to clients (specially in the case of outsourced projects).  In such cases, it&#8217;s likely that the engineer is just venting frustration about the language on a forum cos it&#8217;s something they werem&#8217;t born to, or achieved - it was thrust on them.</p></blockquote>
+<p>4. <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/bc44c03365f17f4d/64e612ae512b513c" target="_blank">Tim wanted to know the best way to delete</a> every other value in a ruby array.  For example [a b c d e f g h i j k] becomes [a c e g i k]. There were a number of solutions proposed,</p>
+<blockquote><p>Harry,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+arr = %w[a b c d e f g h i j k]
+p arr.select{|x| arr.index(x) % 2 == 0}
+
+</textarea>
+<p>Yermej,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> a = %w(a b c d e f g h i j k)
+1.upto(a.size/2) {|i| a.delete_at i}
+
+</textarea>
+<p>Joel,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+a = %w(a b c d e f g h i j k)
+n = (a.size/2.0).ceil
+n.times do |i|
+a[i] = a[2*i]
+end
+a.slice!(n..-1)
+
+</textarea>
+</blockquote>
+				</div>
+		
+				<p class="postmetadata"><small>May 11th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-talk/" title="View all posts in Ruby Talk" rel="category tag">Ruby Talk</a> |   <a href="http://www.rubytips.org/2008/05/11/ruby-talk-rb_str_new2-cleanup-ruby-gui-libraries-and-ruby-vs-python/#respond" title="Comment on Ruby-Talk - rb_str_new2 cleanup, ruby GUI libraries and Ruby vs Python">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-37">
+				<h2><a href="http://www.rubytips.org/2008/04/07/10-unique-ruby-language-features/" rel="bookmark" title="Permanent Link to 10 unique ruby language features">10 unique ruby language features</a></h2>
+				
+				<div class="entry">
+					<p>Learning Ruby is easy if you already know a programming language. But there are some ruby language features which can cause headache for a programmer migrating from C++ or Java. In this post, I will look at 10 interesting language features that are unique to Ruby.</p>
+<p><strong>1. Objects everywhere!</strong> - In Ruby everything is an object including simple numeric values. Here is an example,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  5.times { print "Hello World" }
+
+</textarea>
+<p><strong>2. Blocks</strong> - Blocks is a powerful feature in Ruby which simplifies programming. Blocks are code blocks which can be passed as a parameter to a method. Using this feature it is easy to build code libraries which can delegate varying functionality to code blocks to be built later. Here is an example which prints out all elements in an array,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  sample_array.each { |element| print element }
+
+</textarea>
+<p><strong>3. Implicit return value in methods</strong> - Value of the last expression in a method becomes the return value of the method. In Ruby return keyword is optional. In the following example, 8 is the return value,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  def testMethod
+
+    x = 4+4
+
+  end
+
+</textarea>
+<p><strong>4. In Ruby everything is open!</strong> - In Ruby you can easily extend classes and modules. This means that nothing in Ruby (including built in classes and modules) are closed!. Interestingly additional methods can be added to a class even at runtime. Here is an example in which we add a previous method to FixNum class (which is the data type for all integers),</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  class Fixnum
+    def previous
+      return self-1
+    end
+  end
+
+  6.previous  # prints 5
+
+</textarea>
+<p><strong>5. Missing unary operators in Ruby</strong> - Unary operators ++ and &#8212; are not supported in Ruby. Instead you can use += operator.</p>
+<p><strong>6. Ruby supports parallel assignment</strong> - It is possible to change multiple variables in a single assignment. The best example is the swapping of two variables as given below,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  a , b = b, a
+
+</textarea>
+<p><strong>7. In Ruby strings are mutable - </strong>In Ruby it is possible to change a string variable in place. Hence unlike Java, the same string literal when used multiple times will point to different object instances.</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  print "hello".object_id
+
+  print "hello".object_id   # prints a different value
+
+</textarea>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+  a = "hello"
+
+  a[1] = "a"
+
+  print a  # prints hallo
+
+</textarea>
+<p><strong>8. True and false in Ruby</strong> - In Ruby only nil and false evaluate to false. This means that everything else evaluates to true! Hence even the value 0 evaluate to true in ruby. Following code snippet will output &#8220;Hello World&#8221; on console,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+
+if (0) then
+
+  print "Hello World"
+
+end
+
+</textarea>
+<p><strong>9. Native support for ranges and regular expressions - </strong>Ruby language has native support for regular expressions and ranges.  This is backed up with a rich set of API methods. Control structures such as a case statement natively supports ranges for value comparison.</p>
+<p><strong>10. Method indicators</strong> - In Ruby the last character of a method name can indicate its behaviour. If the method ends with a question mark it indicates that the return value is boolean. If the method ends with an exclamation, it indicates that the method can change the state of the object. In many cases a non exclamation version of the method is provided which modifies a copy of the object.</p>
+				</div>
+		
+				<p class="postmetadata"><small>April 7th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-tips/" title="View all posts in Ruby Tips" rel="category tag">Ruby Tips</a> |   <a href="http://www.rubytips.org/2008/04/07/10-unique-ruby-language-features/#respond" title="Comment on 10 unique ruby language features">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-36">
+				<h2><a href="http://www.rubytips.org/2008/01/26/what-is-a-ruby-symbol-symbols-explained/" rel="bookmark" title="Permanent Link to What is a ruby symbol? - symbols explained">What is a ruby symbol? - symbols explained</a></h2>
+				
+				<div class="entry">
+					<p>Many programmers who are new to Ruby get confused when they see Ruby symbols. A lot us came to know about Ruby language through Ruby on Rails projects. In Ruby on Rails, symbols are everywhere! So it is essential to understand the concept of symbols in Ruby.</p>
+<p>A symbol in Ruby is an instance of the class Symbol. A symbol is defined by prefixing a colon with an identifier. <strong>:name</strong>, <strong>:id</strong>, <strong>:user</strong> etc. are examples of symbols.</p>
+<p>Let us see what is there in the class Symbol.</p>
+<p>Symbol class in Ruby contains one class method all_symbols and instance methods id2name, inspect, to_i, to_int, to_s and to_sym.</p>
+<ul>
+<li><strong>all_symbols</strong> - Returns an array of all the symbols in Ruby’s symbol table.</li>
+<li><strong>id2name</strong> - Returns the string representation of the symbol - :name.id2name returns “name”.</li>
+<li><strong>inspect</strong> - Returns the symbol literal</li>
+<li><strong>to_i</strong> - Returns an integer unique for each symbol</li>
+<li><strong>to_int</strong> - Same as to_i</li>
+<li><strong>to_s </strong>- Same as id2name</li>
+<li><strong>to_sym</strong> - Convert the symbol to a symbol!</li>
+</ul>
+<p>Symbols are most commonly used in creating hashes. For example, consider the following hash,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> h = {:name =&gt; "Jayson", :email =&gt; "admin2@rubytips.org"} </textarea>
+<p>We could have used strings instead of symbols in this case,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> h = {"name" =&gt; "Jayson", "email" =&gt; "admin2@rubytips.org"} </textarea>
+<p>But the advantage in using symbols is the efficient use of memory. Maximum space taken by a symbol is never more than the space taken by an integer. This is because internally symbol is stored as an integer. In case of strings the memory space depends on the size of the string.</p>
+<p>Also whenever a string is used in the program, a new instance is created. But for symbols, same identifier points to the same memory location! This can be easily checked by running the following,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> puts "name".object_id # prints -605705088
+puts "name".object_id # prints -605705108 
+puts :name.object_id # prints 34258 
+puts :name.object_id # prints 34258 </textarea>
+<p>The memory saved may look trivial in this case. But when a predefined hash key structure is used as parameter to a method and if the method is used many times in the program, the savings can be substantial! For example, in RoR a sample link is defined as,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10"> &lt;%= link_to("Edit", :controller =&gt; "editcontroller", :action =&gt; "edit") %&gt; </textarea>
+<p>The first parameter is the label used for the link and the second parameter is a hash. The second parameter is defined as a hash to enable dynamic parameters.</p>
+<p>Now in the implementation of link_to method, a check is done to see if :action key exists in the hash and then corresponding value is used. Similarly :controller is also checked and if found is used. Hence using hashes is a good way to implement optional parameters.</p>
+<p>In this example we could have used “controller” and “action” strings instead of symbols :controller and :action. But we will be missing two important advantages - efficient memory usage and speed of processing.</p>
+<p>In a rails application, you might be using link_to hundreds of times. Assume that you have used it 10000 times in a big application. If we assume every call contained :controller and :action symbols, total memory required by the symbols = 2 * size of an integer. Whether we call link_to once or millions of times the memory taken remains same. But things would be different in case of strings as keys. Whenever a link_to is called 2 new strings “controller” and “action” will be created. Hence a total memory allocation of 10000*16 bytes would have done by Ruby interpreter (of course garbage collector will ensure memory usage at any point to be much less than this).</p>
+<p>Second is the question of speed. We know that link_to internally compares hash key to :controller and :action. This is extremely fast since it is equivalent to comparing integers. But if we had used strings, comparison such as “controller”==”controller” is inefficient since it involves comparison of all the characters in it.</p>
+<p>Strings are scoped and they get destroyed/garbage collected when the execution goes out of scope. But in case of symbols, they remain defined as long as the program is running. So if you have a very large number of symbols there could be a lot of unusable memory.</p>
+<p>It is possible convert a string to symbol using the to_sym method. Hence “controller”.to_sym returns :controller. Symbol identifiers can be quoted and they can also contain special characters. Hence <strong>:”wow, this is a symbol!”</strong> is a valid symbol.</p>
+<p>In short, symbols are used instead of strings wherever we care only about the identity and not the content. Why we use them? Because they are memory efficient and comparison operation on them are really fast.</p>
+<p>Now if you are still confused about symbols, just forget about them. In time you will realize what they are! <img src="http://www.rubytips.org/wp-includes/images/smilies/icon_smile.gif" alt=":-)" class="wp-smiley" /></p>
+				</div>
+		
+				<p class="postmetadata"><small>January 26th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-tips/" title="View all posts in Ruby Tips" rel="category tag">Ruby Tips</a> |   <span>Comments Off</span></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-34">
+				<h2><a href="http://www.rubytips.org/2008/01/11/using-temporary-files-in-ruby-tempfilenew/" rel="bookmark" title="Permanent Link to Using temporary files in Ruby - Tempfile.new">Using temporary files in Ruby - Tempfile.new</a></h2>
+				
+				<div class="entry">
+					<p>For certain programming solutions, you might need a temporary file. Different operating systems store temporary files in different locations. Also you don&#8217;t want to explicitly name the file since that is irrelevant in the program. How do you ensure that there are no filename conflicts? The solution for all these is to use library for temp file processing.</p>
+<p>Ruby comes a with a default library &#8216;tempfile&#8217; for handling temporary file creation. Given a filename prefix, it creates a temporary file in the following format.</p>
+<p>[prefix]-[process].[unique_number]</p>
+<p>This ensures that there is no conflict in creating multiple temporary files in the same directory. Once your program terminates the temporary file is automatically deleted. Also by default, the temporary file is created in the operating system&#8217;s temporary folder (In my ubuntu system it is /tmp).</p>
+<p>In the following program, a temporary file with prefix &#8216;random&#8217; to store 50 random numbers is created. When the program terminates you cannot see the temp file. Hence I have added a &#8216;gets&#8217; which stops for user input. In my case I could see a temporary file named &#8216;random.5789.0&#8242; under \tmp dir.</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+require 'tempfile'
+
+class TempSample
+
+temp_file = Tempfile.new('random')
+1.upto(50) do
+  num = rand(50) # random number generation in ruby
+  temp_file.print(num,"\n") # print number and newline to the file
+end
+temp_file.flush # flush it so that you can see it using cat
+
+gets # wait for user input. At this point you can see a temp file /tmp
+# The filename in my case was random.5789.0
+
+end
+</textarea>
+<p>If you want to the temp file in a specific directory, you can pass the directory name as the second parameter to new. For example - Tempfile.new(&#8217;new1&#8242;,&#8217;/usr/home/jay&#8217;)</p>
+				</div>
+		
+				<p class="postmetadata"><small>January 11th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/code-snippets/" title="View all posts in Code Snippets" rel="category tag">Code Snippets</a>,  <a href="http://www.rubytips.org/category/ruby-howto/" title="View all posts in Ruby Howto" rel="category tag">Ruby Howto</a> |   <a href="http://www.rubytips.org/2008/01/11/using-temporary-files-in-ruby-tempfilenew/#comments" title="Comment on Using temporary files in Ruby - Tempfile.new">1 Comment</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-33">
+				<h2><a href="http://www.rubytips.org/2008/01/10/a-quick-dose-of-ruby-history/" rel="bookmark" title="Permanent Link to A Quick Dose of Ruby History">A Quick Dose of Ruby History</a></h2>
+				
+				<div class="entry">
+					<p>When you are learning something new, the first thing you should check out is its history. When you go through the history, you get a better perspective. It is the same with Ruby language and hence let us get a quick dose of Ruby history.</p>
+<p>Ruby programming language is created by a Japanese programmer, Yukihiro Matsumoto. He is popularly known as &#8220;Matz&#8221; in the Ruby community. Matz started work on the language sometime in February 1993. The first alpha version was released in December 1994. Since then there has been numberous releases and the current production release 1.8.6 was done on March 2007. On 25th December 2007 there was a development release of Ruby 1.9 (this is not intended for production systems).</p>
+<p>Ruby 2.0 will be the next major release and it is intended to expand Ruby lanugage and to improve the interpreter performance.</p>
+<p>Matz main goal in developing Ruby was to create a scripting language that was more powerful than perl, and more object oriented than Python. Matz named the language after the &#8220;Ruby&#8221; gemstone and is inspired by &#8220;Perl&#8221;. Major guiding philosophy for the language has been &#8220;the principle of least surprise&#8221;. The first thing many new programmers note in Ruby is its elegance.</p>
+<p>Following are the key turning points in Ruby history,</p>
+<ul>
+<li>1993, Feb 24 - Matz starts work on Ruby</li>
+<li>1993, April - First &#8220;hello world&#8221; works in Ruby</li>
+<li>1995, December 21 - Ruby 0.95 was released to the public</li>
+<li>1996, December 25 - Ruby 1.0 was released</li>
+<li>1998, December - ruby-talk mailing list was started</li>
+<li>2000 - Official Ruby newsgroup started</li>
+<li>2001 - RubyConf started</li>
+<li>2001, December 15 - Pickaxe book on Ruby was released</li>
+<li>2003, August - Ruby 1.8.0 was released</li>
+<li>2004, July - Web application framework Ruby on Rails released</li>
+<li>2007, March - Ruby 1.8.6 was released</li>
+<li>2007, December 25 - Ruby 1.9 (experimental version) was released</li>
+<li>??? - Ruby 2.0 release in future</li>
+</ul>
+				</div>
+		
+				<p class="postmetadata"><small>January 10th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-history/" title="View all posts in Ruby History" rel="category tag">Ruby History</a> |   <a href="http://www.rubytips.org/2008/01/10/a-quick-dose-of-ruby-history/#respond" title="Comment on A Quick Dose of Ruby History">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-32">
+				<h2><a href="http://www.rubytips.org/2008/01/09/using-rubys-http-library-download-and-process-web-pages-i/" rel="bookmark" title="Permanent Link to Using Ruby&#8217;s http library - download and process web pages - I">Using Ruby&#8217;s http library - download and process web pages - I</a></h2>
+				
+				<div class="entry">
+					<p>Ruby has excellent networking support. Ruby has low level networking features such as sockets and tcp/ip protocols. It also has a high level API for handling protocols such as http and ftp. In this post we will look the Ruby http library. We also look at how this library can be used to download and process web pages.</p>
+<p><strong>1. Downloading a web page using Ruby</strong></p>
+<p>Following code illustrates using net/http library for downloading the Google&#8217;s home page. You should see the google homepage html in console!</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+require 'net/http'
+class HttpSample
+def downloadGoogleHome
+  http_response = Net::HTTP.get_response(URI.parse('http://www.google.com/'))
+  puts http_response.body
+end
+s = HttpSample.new
+s.downloadGoogleHome
+end
+</textarea>
+<p>Now in my machine, this returns text which says &#8220;document has moved&#8221;. This is because google is send a redirect to www.google.co.in. Following code shows how we can handle http redirect.</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+require 'net/http'
+class HttpSample
+def downloadGoogleHome
+  http_response = Net::HTTP.get_response(URI.parse('http://www.google.com/'))
+  if(http_response.kind_of?(Net::HTTPRedirection))
+    new_url = http_response['Location']
+    http_response = Net::HTTP.get_response(URI.parse(new_url))
+  end  
+  puts http_response.body
+end
+s = HttpSample.new
+s.downloadGoogleHome
+end
+</textarea>
+<p>Now how do we rewrite this if we need to use a proxy server to connect to internet? In Ruby it is pretty simple. Check out the new version below.</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+require 'net/http'
+class HttpSample
+def downloadGoogleHome
+  proxy = Net::HTTP::Proxy('ipaddress', portnumber) # use actual ip and port
+  url = URI.parse('http://www.google.com')
+  http_response = proxy.get_response(url)
+  puts http_response.body
+end
+s = HttpSample.new
+s.downloadGoogleHome
+end
+</textarea>
+				</div>
+		
+				<p class="postmetadata"><small>January 9th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/code-snippets/" title="View all posts in Code Snippets" rel="category tag">Code Snippets</a>,  <a href="http://www.rubytips.org/category/ruby-howto/" title="View all posts in Ruby Howto" rel="category tag">Ruby Howto</a>,  <a href="http://www.rubytips.org/category/ruby-tips/" title="View all posts in Ruby Tips" rel="category tag">Ruby Tips</a> |   <a href="http://www.rubytips.org/2008/01/09/using-rubys-http-library-download-and-process-web-pages-i/#respond" title="Comment on Using Ruby&#8217;s http library - download and process web pages - I">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-31">
+				<h2><a href="http://www.rubytips.org/2008/01/09/rails-controversy-zed-shaw-gets-dreamhost-support/" rel="bookmark" title="Permanent Link to Rails controversy - Zed Shaw gets Dreamhost support!">Rails controversy - Zed Shaw gets Dreamhost support!</a></h2>
+				
+				<div class="entry">
+					<p>All hell broke loose after Zed Shaw (the guy behind Mongrel) wrote a post <a target="_blank" href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">claiming Rails is Ghetto</a>. In the post he points out the ugly part of &#8220;Rails Community&#8221;.</p>
+<blockquote><p>&#8220;This is that rant. It is part of my grand exit strategy from the Ruby and Rails community. I don&#8217;t want to be a &#8216;Ruby guy&#8217; anymore, and will probably start getting into more Python, Factor, and Lua in the coming months. I&#8217;ve got about three or four more projects in the works that will use all of those and not much Ruby planned. This rant is full of stories about companies and people who&#8217;ve either pissed in my cheerios somehow or screwed over friends..&#8221;</p></blockquote>
+<p>Now Dreamhost (one of the biggest web hosts out there) comes with <a target="_blank" href="http://blog.dreamhost.com/2008/01/07/how-ruby-on-rails-could-be-much-better/">a rant on the technical problems with Ruby on Rails</a>. Following sums up the whole post.</p>
+<blockquote><p>I don’t have anything to add to Zed Shaw’s comments about how the Rails development team operates as I don’t have any personal knowledge of that. What I do have personal knowledge of is how difficult it can be to get a Rails application up and running and to keep it running. DreamHost has over 10 years of experience running applications in most of the most popular web programming frameworks and Rails has and continues to be one of the most frustrating.</p></blockquote>
+<p>The main problems pointed out by DH blog are,</p>
+<ul>
+<li>Performance problems</li>
+<li>Poor support for shared hosting platform</li>
+<li>Backward compatibility issues</li>
+</ul>
+<p>Also worth noting&#8230;</p>
+<blockquote><p>It’s all good and fine to recommend that users use higher end dedicated server hosting for their commercial applications but you simply cannot ignore the fact that <em>nearly everyone</em> will want to use lower cost shared hosting for getting started. It’s just simple economics. Additionally, people who use systems like Ruby on Rails want to spend time programming and not time <em>setting up servers</em>. Recommending technologies that are not widely used or supported by any major web hosting company is putting too much of a burden on your users, the people you <em>want to keep happy</em>! It’s a good thing we never even tried to switch our system to support Lighttpd and SCGI, too, because 6 months later the ‘in thing’ in the Rails community had shifted to Mongrel, instead.</p></blockquote>
+				</div>
+		
+				<p class="postmetadata"><small>January 9th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/ruby-news/" title="View all posts in Ruby News" rel="category tag">Ruby News</a>,  <a href="http://www.rubytips.org/category/ruby-on-rails/" title="View all posts in Ruby on Rails" rel="category tag">Ruby on Rails</a> |   <a href="http://www.rubytips.org/2008/01/09/rails-controversy-zed-shaw-gets-dreamhost-support/#respond" title="Comment on Rails controversy - Zed Shaw gets Dreamhost support!">No Comments</a></small></p>
+			</div>
+			
+						
+				
+						
+			<div class="post" id="post-30">
+				<h2><a href="http://www.rubytips.org/2008/01/07/advanced-ruby-dynamic-code-execution/" rel="bookmark" title="Permanent Link to Advanced Ruby - Dynamic code execution">Advanced Ruby - Dynamic code execution</a></h2>
+				
+				<div class="entry">
+					<p>One of the advanced features of Ruby, which is behind the success of rails is the dynamic code execution. Code fragments can be executed using eval method. This is very similar to JavaScript eval function.</p>
+<p>following is an example,</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+eval "x =10; puts x;" # print 10 using dynamic code execution
+</textarea>
+<p>eval executes the code in the current context. It is also possible to execute the code in a different context.</p>
+<p>Code can also be executed in class context using another method class_eval. class_eval can add methods due to a class during execution! In the following example, we add a method doHello to the Sample class during execution of initialize. Then we execute doHello!</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+class Sample
+  def initialize
+    Sample.class_eval "def doHello; puts 'Hello World';end"
+  end
+  m = Sample.new
+  m.doHello
+end
+</textarea>
+<p>Now this is the technique which is behind the secret of attr_accessor used in classes. In fact attr_accessor is just a method. We will try to create a similar functionality using attr_accessor2. All the classes in Ruby are subclassed automatically from the class Class. Hence we will modify Class and add attr_accessor2 method which in turn will add getter and setter methods for the passed variable!</p>
+<textarea name="code" class="ruby:nogutter" cols="60" rows="10">
+class Class
+  def attr_accessor2(var_name)
+    string_val = "def #{var_name}; "+
+                 "   @#{var_name}; "+
+                 "end; "+
+                 "def #{var_name}=(value);"+
+                 "   @#{var_name} = value;"+
+                 "end; "
+   self.class_eval string_val
+  end
+end
+
+# Using the new attribute accessor method!
+class M
+  attr_accessor2 :test_var
+
+  m = M.new
+  m.test_var = "hello"
+  puts m.test_var
+end
+
+</textarea>
+				</div>
+		
+				<p class="postmetadata"><small>January 7th, 2008 <!-- by admin --> | Posted in <a href="http://www.rubytips.org/category/code-snippets/" title="View all posts in Code Snippets" rel="category tag">Code Snippets</a>,  <a href="http://www.rubytips.org/category/ruby-howto/" title="View all posts in Ruby Howto" rel="category tag">Ruby Howto</a>,  <a href="http://www.rubytips.org/category/ruby-tips/" title="View all posts in Ruby Tips" rel="category tag">Ruby Tips</a> |   <a href="http://www.rubytips.org/2008/01/07/advanced-ruby-dynamic-code-execution/#respond" title="Comment on Advanced Ruby - Dynamic code execution">No Comments</a></small></p>
+			</div>
+			
+						
+				
+		
+		<div class="navigation">
+			<div class="alignleft"><a href="http://www.rubytips.org/page/2/" >&laquo; Previous Entries</a></div>
+			<div class="alignright"></div>
+			<div style="clear:both;"></div>
+		</div>
+		
+	
+	</div>
+
+	<div id="sidebar">
+				
+		<div class="sidebar_left">
+			<ul>
+				<li>
+					<script type="text/javascript"><!--
+google_ad_client = "pub-5529588696645669";
+/* rt.org sidebar */
+google_ad_slot = "7044989918";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>				</li>
+				
+						
+							</ul>
+		</div>
+
+		<div class="sidebar_right">
+			<ul>
+						
+<li><b><a href="http://www.jayson.in" target="_blank">Jayson Online!</a></b></li>
+<li><p><a href="http://feeds.feedburner.com/RubyTips"><img src="http://feeds.feedburner.com/~fc/RubyTips?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></p></li>
+	<li>
+					<div>
+<form method="get" id="searchform" action="/index.php"><p><input type="text" value="Search..." name="s" id="s" onfocus="if (this.value == 'Search...') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search...';}" /></p></form>
+</div>
+</form>				</li>
+			<!--
+				<li class="pagenav"><h2>Pages</h2><ul><li class="page_item page-item-41"><a href="http://www.rubytips.org/free-ruby-book/" title="Free Ruby Book">Free Ruby Book</a>
+<ul>
+	<li class="page_item page-item-42"><a href="http://www.rubytips.org/free-ruby-book/introduction/" title="Introduction">Introduction</a></li>
+</ul>
+</li>
+<li class="page_item page-item-2"><a href="http://www.rubytips.org/about/" title="About">About</a></li>
+</ul></li>                  -->
+
+<li><h2>Recent Entries</h2>
+				<ul>
+															<li><a href="http://www.rubytips.org/2008/05/15/distributing-your-ruby-program-as-a-standalone-executable-exe/">Distributing your Ruby program as a standalone executable (exe)</a></li>
+										<li><a href="http://www.rubytips.org/2008/05/13/accessing-windows-api-from-ruby-using-win32api-library/">Accessing Windows API from Ruby - Using Win32API library</a></li>
+										<li><a href="http://www.rubytips.org/2008/05/11/ruby-talk-rb_str_new2-cleanup-ruby-gui-libraries-and-ruby-vs-python/">Ruby-Talk - rb_str_new2 cleanup, ruby GUI libraries and Ruby vs Python</a></li>
+										<li><a href="http://www.rubytips.org/2008/04/07/10-unique-ruby-language-features/">10 unique ruby language features</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/26/what-is-a-ruby-symbol-symbols-explained/">What is a ruby symbol? - symbols explained</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/11/using-temporary-files-in-ruby-tempfilenew/">Using temporary files in Ruby - Tempfile.new</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/10/a-quick-dose-of-ruby-history/">A Quick Dose of Ruby History</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/09/using-rubys-http-library-download-and-process-web-pages-i/">Using Ruby&#8217;s http library - download and process web pages - I</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/09/rails-controversy-zed-shaw-gets-dreamhost-support/">Rails controversy - Zed Shaw gets Dreamhost support!</a></li>
+										<li><a href="http://www.rubytips.org/2008/01/07/advanced-ruby-dynamic-code-execution/">Advanced Ruby - Dynamic code execution</a></li>
+									</ul>
+				</li>
+				
+								
+					  <li id="linkcat-2" class="linkcat"><h2>Ruby Links</h2>
+	<ul>
+<li><a href="http://www.codingtips.org" title="Coding Tips - Ruby, Java, JavaScript, HTML, CSS etc.">Coding Tips</a></li>
+<li><a href="http://www.jaysonjc.org" title="Jayson on programming, technology and more&#8230;">Jayson Online</a></li>
+<li><a href="http://www.ruby-forum.com/" title="Official Ruby Forum">Ruby Forum</a></li>
+<li><a href="http://www.ruby-lang.org/en/" title="Official Ruby Website">Ruby Home</a></li>
+<li><a href="http://www.rubyquiz.com/" title="Ruby Programming Problems">Ruby Quiz</a></li>
+
+	</ul>
+</li>
+				
+				<li><h2>Categories</h2>
+					<ul>
+						<li class="cat-item cat-item-12"><a href="http://www.rubytips.org/category/code-snippets/" title="View all posts filed under Code Snippets">Code Snippets</a> (7)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.rubytips.org/category/ruby-history/" title="View all posts filed under Ruby History">Ruby History</a> (1)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.rubytips.org/category/ruby-howto/" title="View all posts filed under Ruby Howto">Ruby Howto</a> (4)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.rubytips.org/category/ruby-news/" title="View all posts filed under Ruby News">Ruby News</a> (3)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.rubytips.org/category/ruby-on-rails/" title="View all posts filed under Ruby on Rails">Ruby on Rails</a> (2)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.rubytips.org/category/ruby-reference/" title="View all posts filed under Ruby Reference">Ruby Reference</a> (1)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.rubytips.org/category/ruby-talk/" title="View all posts filed under Ruby Talk">Ruby Talk</a> (1)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.rubytips.org/category/ruby-tips/" title="View all posts filed under Ruby Tips">Ruby Tips</a> (7)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.rubytips.org/category/ruby-tools/" title="View all posts filed under Ruby Tools">Ruby Tools</a> (4)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.rubytips.org/category/site-updates/" title="View all posts filed under Site Updates">Site Updates</a> (1)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.rubytips.org/category/windows-programming/" title="View all posts filed under Windows Programming">Windows Programming</a> (2)
+</li>
+					</ul>
+				</li>
+
+				<li><h2>Archives</h2>
+				<ul>
+					<li><a href='http://www.rubytips.org/2008/05/' title='May 2008'>May 2008</a></li>
+	<li><a href='http://www.rubytips.org/2008/04/' title='April 2008'>April 2008</a></li>
+	<li><a href='http://www.rubytips.org/2008/01/' title='January 2008'>January 2008</a></li>
+	<li><a href='http://www.rubytips.org/2007/12/' title='December 2007'>December 2007</a></li>
+	<li><a href='http://www.rubytips.org/2007/10/' title='October 2007'>October 2007</a></li>
+	<li><a href='http://www.rubytips.org/2007/09/' title='September 2007'>September 2007</a></li>
+	<li><a href='http://www.rubytips.org/2007/07/' title='July 2007'>July 2007</a></li>
+	<li><a href='http://www.rubytips.org/2007/05/' title='May 2007'>May 2007</a></li>
+				</ul>
+				</li>			
+	
+				
+						</ul>
+		</div>
+		<div style="clear:both;"></div>
+	</div></div>
+<hr />
+<div id="footer">
+	<div id="footer_left">
+		Copyright &copy; <a href="http://www.rubytips.org">Ruby Tips</a> - Powered by <a href="http://wordpress.org">WordPress</a>
+	</div>
+	<div id="footer_right">
+Site partner - <a href="http://www.javaopensourcetools.com/">Java Open Source Tools</a>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+</div>
+
+		
+
+<!-- SyntaxHighlighter Start -->
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shCore.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushCpp.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushCSharp.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushCss.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushDelphi.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushJava.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushPhp.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushPython.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushRuby.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushSql.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushVb.js"></script>
+	<script type="text/javascript" src="http://www.rubytips.org/wp-content/plugins/syntax/Scripts/shBrushXml.js"></script>
+	<script type="text/javascript">dp.SyntaxHighlighter.HighlightAll('code');</script>
+<!-- SyntaxHighlighter End -->
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-885064-18";
+urchinTracker();
+</script>
+</body>
+</html>
+<!-- Dynamic Page Served (once) in 1.118 seconds -->

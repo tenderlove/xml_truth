@@ -1,0 +1,1211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title>Automating Data Visualization with Ruby and Graphviz - OmniNerd</title>
+    
+    <link href="/stylesheets/standard.css?1234142558" media="screen" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="http://www.omninerd.com/feeds/all_content" rel="alternate" title="OmniNerd" type="application/rss+xml" /> 
+    <script src="/javascripts/jquery-1.2.6.min.js?1234142558" type="text/javascript"></script>
+    <script src="/javascripts/jquery.js?1234142558" type="text/javascript"></script>
+<script src="/javascripts/jquery-ui.js?1234142558" type="text/javascript"></script>
+<script src="/javascripts/jrails.js?1234142558" type="text/javascript"></script>
+<script src="/javascripts/application.js?1234142558" type="text/javascript"></script>
+    <script src="/javascripts/jquery.history.js?1234142558" type="text/javascript"></script>
+    <script src="/javascripts/rounded_corners_lite.js?1234142558" type="text/javascript"></script>
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      <div id="top">
+        
+<div id="title_area">
+
+<div id="title_banner">
+
+  
+
+  <div id="logo">
+  <a href="http://www.omninerd.com/"><img alt="OmniNerd" src="/images/theme/omninerd_logo.gif?1234142558" style="width: 250px" /></a>
+  </div>
+  <div id="title_tagline"><a href="http://www.omninerd.com/">A Suppository of Knowledge.</a></div>
+  
+  <div id="user_area">
+  	
+  </div>
+  
+  <div id="search_area">
+    <form action="/search" method="get" style="margin: 0px">
+
+<div>
+<input class="user_input" id="search_area_text_field" name="q" onblur="document.getElementById('search_area_text_field').style.color = '#888'           ;
+                 document.getElementById('search_area_text_field').style.borderColor = '#ccc';
+                 if (document.getElementById('search_area_text_field').value == '') {
+                    document.getElementById('search_area_text_field').value = 'search';
+                 };" onfocus="document.getElementById('search_area_text_field').style.color = 'black';
+                 document.getElementById('search_area_text_field').style.borderColor = '#999';
+               if (document.getElementById('search_area_text_field').value == 'search') {
+                 document.getElementById('search_area_text_field').value = '';
+               };" style="color: #999; font-size: 1.0em; font-family: Arial; border: 1px solid #ccc; margin: 0px; padding: 2px" type="text" value="search" />
+</div>
+</form>
+  </div>
+  
+  
+  <div id="title_user_menu">
+    <ul>
+      <li id="title_login_area" style="display: none; font-size: 0.9em">
+          <form action="/login" method="post">
+<fieldset style="border: 0px">
+  <label for="title_login_name">Name:</label>
+  <input class="user_input" id="title_login_name" name="user[name]" size="8" style="margin-right: 10px; padding: 1px" type="text" value="" />
+  <label for="user_password">Password:</label>
+  <input class="user_input" id="user_password" name="user[password]" size="8" type="password" />
+  <input checked="checked" id="persistent_login" name="persistent_login" style="margin: 0px 3px 0px 3px" type="checkbox" value="true" /><label for="persistent_login">Remember?</label>&nbsp;&nbsp;
+  <input name="commit" style="border: 1px outset #036; background: #58b; color: white; font-size: 0.9em;" type="submit" value="Go" />&nbsp;&nbsp;
+  <a href="/password/reset">I Forgot!</a>&nbsp;&nbsp;
+</fieldset>
+</form>
+      </li>
+      <li><a href="#" onclick="$('#title_login_area').fadeToggle();
+document.getElementById('title_login_name').focus();; return false;">Log In</a></li>
+      <li class="spacer">&nbsp;</li>
+      <li><a href="/register" style="color: #f93">Register</a></li>
+  	</ul>
+  </div>
+  
+
+
+  <div class="float_gap"></div>
+  
+</div>
+
+<div id="header_bottom">
+  <ul id="filter_list">
+    <li ><a href="http://www.omninerd.com/">All Content</a></li>
+    <li class="viewing"><a href="/articles">Articles</a></li>
+    <li ><a href="/links">Links</a></li>
+    <li ><a href="/books">Books</a></li>
+    <li ><a href="/comments">Comments</a></li>
+    <li ><a href="/tags">Tags</a></li>
+    <li ><a href="/nerds">Nerds</a></li>
+    <li ><a href="/contacts">Contact</a></li>
+    <li><a href="/about/omniflow">OmniFlow</a></li>
+  </ul>
+</div>
+<div class="float_gap"></div>
+</div>
+
+        <script type="text/javascript">omninerd__roundDiv("header_bottom","id",0,0,3,3);</script>
+      </div>
+      
+      <div id="middle">
+        <div style="text-align: center">
+        <script type="text/javascript"><!--
+ch_client = "omninerd";
+ch_type = "mpu";
+ch_width = 728;
+ch_height = 90;
+ch_non_contextual = 4;
+ch_vertical ="premium";
+ch_sid = "Chitika Premium";
+var ch_queries = new Array( );
+var ch_selected=Math.floor((Math.random()*ch_queries.length));
+if ( ch_selected < ch_queries.length ) {
+ch_query = ch_queries[ch_selected];
+}
+//--></script>
+<script  src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript">
+</script>
+        </div>
+        <div id="side">
+  <div>
+  <h3>OmniNerd Article Propagation</h3>
+  <div class="content_meta">
+    <ul>
+      <li>
+        <!-- AddThis Button BEGIN -->
+        <script type="text/javascript">var addthis_pub="markmcb";</script>
+        <a href="http://www.addthis.com/bookmark.php" onmouseover="return addthis_open(this, '', '[URL]', '[TITLE]')" onmouseout="addthis_close()" onclick="return addthis_sendto()"><img src="http://s7.addthis.com/static/btn/lg-share-en.gif" width="125" height="16" border="0" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+        <!-- AddThis Button END -->
+      </li>
+      <li><a href="/articles/Automating_Data_Visualization_with_Ruby_and_Graphviz/print_friendly"><img alt="Print Friendly" src="/images/theme/printer.png?1234142558" style="border: 0px; vertical-align: middle" /> Print Friendly</a></li>
+      <li style="font-size: 0.9em">
+        <a href="/content/new"><img alt="Write an Article" src="/images/theme/page_white_add.png?1234142558" style="border: 0px; vertical-align: middle" /> Write an Article</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+  <div class="side_ads">
+  <script  src="http://tag.contextweb.com/TagPublish/getjs.aspx?action=VIEWAD&cwrun=200&cwadformat=300X250&cwpid=511817&cwwidth=300&cwheight=250&cwpnet=1&cwtagid=46574"></script>
+  </div>
+  <div id="showcase">
+  <h3>
+    <a class="" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/1/Article'}); return false;">Most Nerd-Its</a>
+    <span style="color: #9ab">|</span> 
+    <a class="" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/2/Votes'}); return false;">Nerd Trends</a>
+    <span style="color: #9ab">|</span> 
+    <a class="showcase_selected_category" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/4/Article'}); return false;">Last Ten</a>
+  </h3>
+  <div class="side_area" style="margin: 0px; padding: 0px;">
+    <div id="showcase_target">
+      <div id="showcase_class_names">
+  <div style="font-size: 0.9em;">
+    <a class="" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/4/Article'}); return false;">Articles</a> 
+    <a class="" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/4/Poll'}); return false;">Polls</a>
+    <a class="" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/4/Book'}); return false;">Books</a>
+    <a class="showcase_selected" href="#" onclick="$.ajax({dataType:'script', type:'get', url:'/showcase_items/4/Comment'}); return false;">Comments</a>
+  </div>
+</div>
+<div id="showcase_items">
+  <ol>
+  
+    <li>
+      <a href="/comments/22520">RE: The Jake Desantis Resignation</a>
+        in Bonuses for AIG Executives
+    </li>
+  
+    <li>
+      <a href="/comments/22519">the endless cycle of don't eat this</a>
+        in Meat Intake and Mortality
+    </li>
+  
+    <li>
+      <a href="/comments/22518">RE: Unelegant - Yet More Useful</a>
+        in Cloud Databases to Replace Traditional Databases
+    </li>
+  
+    <li>
+      <a href="/comments/22517">RE: Unelegant - Yet More Useful</a>
+        in Cloud Databases to Replace Traditional Databases
+    </li>
+  
+    <li>
+      <a href="/comments/22516">RE: It's interesting to see this..</a>
+        in Using unintentionally open and unsecured wireless Internet connections?
+    </li>
+  
+    <li>
+      <a href="/comments/22515">Unelegant - Yet More Useful</a>
+        in Cloud Databases to Replace Traditional Databases
+    </li>
+  
+    <li>
+      <a href="/comments/22513">RE: It's interesting to see this..</a>
+        in Using unintentionally open and unsecured wireless Internet connections?
+    </li>
+  
+    <li>
+      <a href="/comments/22512">RE: The Jake Desantis Resignation</a>
+        in Bonuses for AIG Executives
+    </li>
+  
+    <li>
+      <a href="/comments/22511">RE: I hope SOME military SOMEWHER uses their nerds.</a>
+        in How Do Militaries Treat Their Nerds? 
+    </li>
+  
+    <li>
+      <a href="/comments/22510">The Jake Desantis Resignation</a>
+        in Bonuses for AIG Executives
+    </li>
+  
+  </ol>
+</div>
+    </div>
+  </div>
+</div>
+
+    <div style="margin-bottom: 20px">
+  	<h3>What is OmniNerd?</h3>
+  	<div class="side_area">
+        <p> <a href="/welcome">Welcome!</a> OmniNerd's content is generated by you, the reader.  
+      Through voting and moderation we strive to highlight the nerdiest of what's around and provide content that's a little more
+      thought provoking than other sites.</p>
+    </div>
+    </div>
+
+  <div id="side_right_2"></div>
+  
+  <div class="side_ads">
+  <div id="chitika_square">
+      <!-- This unit is hidden on your page, and will only display to your US search engine traffic (and certain other traffic).
+        To preview, paste the code up on your site, then add #chitikatest=mortgage to the end of your URL in your browser's address bar.
+        Example:  www.yourwebsite.com#chitikatest=mortgage.
+        This will show you what the ad would look like to a user who is interested in "mortgages." -->
+      <script type="text/javascript"><!--
+      ch_client = "omninerd";
+      ch_type = "mpu";
+      ch_width = 336;
+      ch_height = 280;
+      ch_color_border = "CCCCCC";
+      ch_color_bg = "F1F1F1";
+      ch_color_title = "336699";
+      ch_color_text = "333333";
+      ch_non_contextual = 4;
+      ch_vertical ="premium";
+      ch_default_category = "200001";
+      ch_font_title = "Verdana"; 
+      ch_font_text = "Verdana"; 
+      ch_sid = "Chitika Premium";
+      var ch_queries = new Array( );
+      var ch_selected=Math.floor((Math.random()*ch_queries.length));
+      if ( ch_selected < ch_queries.length ) {
+        ch_query = ch_queries[ch_selected];
+      }
+      //--></script>
+      <script  src="http://scripts.chitika.net/eminimalls/amm.js" type="text/javascript">
+      </script>
+    </div>
+  </div>
+  
+  
+  
+
+  <div>
+  <h3>Voting Booth</h3>
+
+<div class="side_area">
+  <div id="voting_booth">
+    <form action="/polls/289/cast_vote" method="post">
+    <h4>Has the U.S. adopted Socialism?</h4>
+    <table>
+      
+        <tr>
+          <td style="padding-left: 5px">
+            <input id="poll_option_id_1965" name="poll_option[id]" type="radio" value="1965" />
+          </td>
+          <td style="padding-right: 5px">
+            <label for="poll_option_id_1965">Yes, the people want everyone else to work for them.</label>
+          </td>
+        </tr>
+      
+        <tr>
+          <td style="padding-left: 5px">
+            <input id="poll_option_id_1966" name="poll_option[id]" type="radio" value="1966" />
+          </td>
+          <td style="padding-right: 5px">
+            <label for="poll_option_id_1966">Not yet, but Obama and this congress are getting there.</label>
+          </td>
+        </tr>
+      
+        <tr>
+          <td style="padding-left: 5px">
+            <input id="poll_option_id_1967" name="poll_option[id]" type="radio" value="1967" />
+          </td>
+          <td style="padding-right: 5px">
+            <label for="poll_option_id_1967">Getting close, but it'll disappear after the next election.</label>
+          </td>
+        </tr>
+      
+        <tr>
+          <td style="padding-left: 5px">
+            <input id="poll_option_id_1968" name="poll_option[id]" type="radio" value="1968" />
+          </td>
+          <td style="padding-right: 5px">
+            <label for="poll_option_id_1968">No, our flag stands for freedom.</label>
+          </td>
+        </tr>
+      
+    </table>
+    <div><input class="submit_button" name="commit" type="submit" value="Vote!" /></div>
+    </form>
+    <div class="links">
+      <a href="/polls/Has_the_U_S_adopted_Socialism">View Results</a>,
+      <a href="/polls">All Polls</a>
+    </div>
+    
+    <div class="tally">
+      37&nbsp;votes, 
+      14&nbsp;comments
+    </div>
+  </div>
+</div>
+  </div>
+
+</div>
+
+        
+        <div id="main">
+          
+    			<div class="full_content">
+  <div class="header">
+    <div class="vote_area">
+  <table><tr><td>
+  <div class="vote_box" id="vote_box_article_2319">
+    <div id="vote_result_for_Article_2319">
+      <div class="net_count" id="net_count_box_article_2319">12</div>
+      <div class="net_count_tagline">Nerd-Its</div>
+    </div>   
+  </div>
+  </td>
+  </tr><tr>
+  <td>
+  <div class="cast_vote">      
+    <a href="#" onclick="document.getElementById('vote_result_for_Article_2319').style.display = 'none';; $.ajax({complete:function(request){$('#vote_result_for_Article_2319').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Article&amp;vote[content_id]=2319&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Nerd it down!" /></a>
+    
+    <a class="vote_up" href="#" onclick="document.getElementById('vote_result_for_Article_2319').style.display = 'none';; $.ajax({complete:function(request){$('#vote_result_for_Article_2319').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Article&amp;vote[content_id]=2319&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Nerd it up!" /></a>
+  </div>
+  </td></tr></table>
+</div>
+
+    <!-- google_ad_section_start -->
+    <h1><a href="http://www.omninerd.com/articles/Automating_Data_Visualization_with_Ruby_and_Graphviz">Automating Data Visualization with Ruby and Graphviz</a></h1>
+    <!-- google_ad_section_end -->
+    <img alt="Page_white_text" class="inline_icon" src="/images/theme/page_white_text.png?1234142558" style="float: left" />
+    <h2>
+      article
+      by <a href="/nerds/markmcb">Mark A. McBride (markmcb)</a>
+      on 19 January 2009, tagged as <a href="/tags/ruby">ruby</a>, <a href="/tags/graphviz">graphviz</a>, <a href="/tags/dot">dot</a>, <a href="/tags/graph">graph</a>, and <a href="/tags/script">script</a>    </h2>
+  </div>
+</div>
+
+
+<div id="article">
+  <div class="full_content">
+  <!-- google_ad_section_start -->
+  <div class="body">
+      <p>I often have the need to visualize data from the <a href="http://en.wikipedia.org/wiki/Enterprise_resource_planning">enterprise resource planning</a> system we use at work.  For those not familiar, an <span class="caps">ERP</span> is a collection of servers and software that essentially create a common environment for people to monitor and plan a business.  One of the downsides I&#8217;ve ran into with our <span class="caps">ERP</span> system is that the data within is huge, complex, and not easy to visualize.</p>
+<h2>An Illustrative Example of Complex Data</h2>
+<p>To better illustrate this visualization issue, consider a small manufacturing company.  For a typical operation it&#8217;s not uncommon to deal with several thousand unique part numbers.  For each part, there is what is known as &#8220;master data,&#8221; i.e., the data elements in the <span class="caps">ERP</span> system that tell you <em>what</em> that part is.  For example, if you&#8217;re manufacturing jeans, part 12345 may be boot cut, black, button-fly, faded jeans.  All of those attributes are stored in the master data set.  Ensuring that you both define and maintain that master data is less than trivial and often times downright tedious.</p>
+<h3>Obtaining Raw, Structured Data</h3>
+<p>One thing that is possible with most any <span class="caps">ERP</span> is the ability to &#8220;dump&#8221; data.  You can think of a data dump as a spreadsheet as most times this dump will be available in comma-separated value (<span class="caps">CSV</span>) format or something similar.  If you ask the <span class="caps">ERP</span> for all items, it will simply return a line per item with the attributes listed in the columns.  Let&#8217;s consider a mock dump using a jeans company as an example. Moreover, let&#8217;s keep things really simple and only consider eight total items.</p>
+<table>
+	<tr>
+		<th>Part #</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>001</td>
+		<td>Blue Jeans, button fly</td>
+	</tr>
+	<tr>
+		<td>002</td>
+		<td>Blue Jeans, zipper fly</td>
+	</tr>
+	<tr>
+		<td>003</td>
+		<td>Black Jeans, button fly</td>
+	</tr>
+	<tr>
+		<td>004</td>
+		<td>Black Jeans, zipper fly</td>
+	</tr>
+	<tr>
+		<td>005</td>
+		<td>Zipper</td>
+	</tr>
+	<tr>
+		<td>006</td>
+		<td>Button</td>
+	</tr>
+	<tr>
+		<td>007</td>
+		<td>Denim</td>
+	</tr>
+	<tr>
+		<td>008</td>
+		<td>Black Dye</td>
+	</tr>
+</table>
+<p>Easy enough, right?  How hard can eight items be?  Let&#8217;s now consider the fact we&#8217;re a global company that deals with plants all over the globe.  Luckily, for our eight items only three plants are involved.</p>
+<table>
+	<tr>
+		<th>Plant #</th>
+		<th>City</th>
+		<th>State #</th>
+		<th>Country</th>
+	</tr>
+	<tr>
+		<td>1000</td>
+		<td>San Francisco</td>
+		<td>California</td>
+		<td><span class="caps">USA</span></td>
+	</tr>
+	<tr>
+		<td>1001</td>
+		<td>Dallas</td>
+		<td>Texas</td>
+		<td><span class="caps">USA</span></td>
+	</tr>
+	<tr>
+		<td>1002</td>
+		<td>Munich</td>
+		<td>Bavaria</td>
+		<td>Germany</td>
+	</tr>
+</table>
+<p>So far so good, but here&#8217;s where it gets messy.  In ERPs you have what are known as recipes.  Much like you use a recipe to bake a batch of cookies, you use a recipe to produce a batch (or lot) of jeans.  Recipes often list items in terms of end items and components, i.e., which parts get used to make an end item.  Master data dumps at this point get cryptic.  In our example we&#8217;ll show just five columns of data, but in a real world example they would be in the hundreds.</p>
+<table>
+	<tr>
+		<th>Recipe #</th>
+		<th>End Item #</th>
+		<th>End Item Plant of Mfg</th>
+		<th>Component Item #</th>
+		<th>Component Source Plant</th>
+	</tr>
+	<tr>
+		<td>900</td>
+		<td>001</td>
+		<td>1000</td>
+		<td>006</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>900</td>
+		<td>001</td>
+		<td>1000</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>901</td>
+		<td>002</td>
+		<td>1000</td>
+		<td>005</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>901</td>
+		<td>002</td>
+		<td>1000</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>902</td>
+		<td>003</td>
+		<td>1000</td>
+		<td>006</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>902</td>
+		<td>003</td>
+		<td>1000</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>902</td>
+		<td>003</td>
+		<td>1000</td>
+		<td>008</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>903</td>
+		<td>004</td>
+		<td>1000</td>
+		<td>005</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>903</td>
+		<td>004</td>
+		<td>1000</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>903</td>
+		<td>004</td>
+		<td>1000</td>
+		<td>008</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>904</td>
+		<td>001</td>
+		<td>1001</td>
+		<td>006</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>904</td>
+		<td>001</td>
+		<td>1001</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+	<tr>
+		<td>905</td>
+		<td>002</td>
+		<td>1001</td>
+		<td>005</td>
+		<td>1002</td>
+	</tr>
+	<tr>
+		<td>905</td>
+		<td>002</td>
+		<td>1001</td>
+		<td>007</td>
+		<td>1001</td>
+	</tr>
+</table>
+<p>Yikes!  It&#8217;s starting to get impossible to easily keep track of what&#8217;s going on and we&#8217;re only dealing with 8 items, 3 plants, and 6 recipes.  Now, imagine thousands of parts, plants, and items.  Even worse, imagine your boss walking in the room and asking, &#8220;hey, is our master data correct for jeans?&#8221;  Hopefully you&#8217;re starting to see the issue at hand.  If not, you&#8217;re probably some kind of robot.  Never fear though.  You may not realize it yet, but your data is a diamond in the rough.  All you need to do is visualize it.</p>
+<h3>Don&#8217;t Use a Purely Visual Presentation Tool for a Data Problem</h3>
+<p>If you feel yourself reaching for Microsoft PowerPoint or Visio, quickly find a mirror and haze yourself.  While both of those programs can be used for good, you&#8217;ll only further complicate things if you use them in this situation to jump from raw data to visualization.  Imagine you spend a week building charts and slides of your recipes.  Then, as you&#8217;re basking in all of their graphical glory, you hear of an initiative to rework most of the recipes as they have been causing issues in the plants.  That&#8217;s right, a week of work is now obsolete.  So much for productivity.</p>
+<p>The problem is that your data lives, breaths, and evolves.  As such you need something between it and your slide shows.  Enter Graphviz<sup class="footnote"><a href="#fn1">1</a></sup> and the <span class="caps">DOT</span> language, which is free software that is oh-so-good at letting you visualize data that is graph-like in nature.</p>
+<h2>Understanding Graphviz and the <span class="caps">DOT</span> Language</h2>
+<p>Graphviz transforms a very simple language called <span class="caps">DOT</span> into amazingly well-rendered graphs based on a variety of layout algorithms.  One of the best things about Graphviz is that it is very well documented.<sup class="footnote"><a href="#fn2">2</a></sup>  Rather than spend a lot of time describing the syntax, I&#8217;ll provide an easy example and leave it to you to read up on the details.</p>
+<p>A typical Graphviz <span class="caps">DOT</span> file has 3 major sections:</p>
+<ol>
+	<li>Header data that applies attributes to nodes, edges, and graphs</li>
+	<li>Node definitions</li>
+	<li>Edge definitions</li>
+</ol>
+<p>Given this simplicity, it&#8217;s quite easy to get started once you&#8217;ve installed Graphviz.<sup class="footnote"><a href="#fn3">3</a></sup>  Start by opening a plain text editor and saving a file <code>graph_example.gv</code>.  Next, paste in the following text and save.  Note that this only includes 1 of the 3 sections mentioned above, the edge definitions.</p>
+<pre><code>digraph graph_example {
+ a -&gt; b
+ b -&gt; c
+ c -&gt; d
+ b -&gt; d
+ a -&gt; d
+}</code></pre>
+<p>If you&#8217;re using Mac, simply double click on the gv file you just saved.  If you&#8217;re using Windows, you need to generate an output image and open it.  If you use something like Microsoft Picture Manager, open the image with that and it will update as you regenerate your graphic.  Once open, you should have something like the following.</p>
+<div style="display: block; text-align: center">
+    <style type='text/css'>td.caption {font-size: 0.9em;}</style>
+    <table style="margin-left: auto; margin-right: auto" class="content_image">
+      <tr>
+        <td>
+        
+        </td>
+        <td style="width: 169px; text-align: left" class="caption">
+          
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+      <tr>
+        <td class="caption" >
+          
+        </td>
+        <td style="text-align: center">
+          <a href="/images/content/2/2_article_2319_full_graph_example_simple.png"><img alt="2_article_2319_thumb_graph_example_simple" src="/images/content/2/2_article_2319_thumb_graph_example_simple.png?1232390596" style="padding: 0px; margin: 0px; border: 0px" /></a>
+        </td>
+        <td class="caption" >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+        
+        </td>
+        <td class="caption" style="width: 169px; text-align: left">
+          A simple Graphviz-generated image.
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+    </table>
+    </div>
+<p>Note how little syntax is required to get a functional, albeit simple, graph generated.  In this case, all we&#8217;ve done is define edges and let Graphviz/<span class="caps">DOT</span> imply the rest.  In our file we created edges between the nodes a, b, c, and d.  Graphviz takes this <span class="caps">DOT</span> definitions and renders the graph you see according to its default settings (which we&#8217;ll soon begin tweaking).</p>
+<p>Let&#8217;s begin adding some of the more powerful attributes available to us in the <span class="caps">DOT</span> language.  In the same manner as before, use the following code to generate your next graph.</p>
+<pre><code>digraph graph_example {</code>
+
+<code> /***** GLOBAL SETTINGS *****/</code>
+
+<code> graph          [rotate=0, rankdir="LR"]
+ node           [color="#333333", style=filled,
+                 shape=box, fontname="Trebuchet MS"]
+ edge           [color="#666666", arrowhead="open", 
+                 fontname="Trebuchet MS", fontsize="11"]
+ node           [fillcolor="#294b76", fontcolor="white"]
+ 
+/***** Nodes *****/
+ a              [label="Node A"]
+ b              [label="Node B"]
+ c              [label="Node C"]
+ d              [label="Node D", fillcolor="#116611"]</code>
+
+<code> /***** Edges *****/
+ a              -&gt; b
+ b              -&gt; c
+ c              -&gt; d
+ b              -&gt; d
+ a              -&gt; d [label="direct path"]
+}</code></pre>
+<p>This code should produce the following.</p>
+<div style="display: block; text-align: center">
+    <style type='text/css'>td.caption {font-size: 0.9em;}</style>
+    <table style="margin-left: auto; margin-right: auto" class="content_image">
+      <tr>
+        <td>
+        
+        </td>
+        <td style="width: 563px; text-align: left" class="caption">
+          
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+      <tr>
+        <td class="caption" >
+          
+        </td>
+        <td style="text-align: center">
+          <a href="/images/content/2/2_article_2319_full_graph_example.png"><img alt="2_article_2319_thumb_graph_example" src="/images/content/2/2_article_2319_thumb_graph_example.png?1232390819" style="padding: 0px; margin: 0px; border: 0px" /></a>
+        </td>
+        <td class="caption" >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+        
+        </td>
+        <td class="caption" style="width: 563px; text-align: left">
+          A Graphviz-generated image demonstrating a few features in the DOT language.
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+    </table>
+    </div>
+<p>You can connect the dots (no pun intended) and figure out what&#8217;s driving the various changes as compared to our original graph.<sup class="footnote"><a href="#fn4">4</a></sup>  Note the three sections in our code: graph, nodes, and edges.  As long as you see the distinction between each, you&#8217;ll find <span class="caps">DOT</span> very easy.  It should be noted that the lines in the global section can be placed anywhere in the file.  For example, if after defining the first 2 nodes I decide that I want every remaining node to be red, I can re-define &#8220;node&#8221; in the same manner I did in the global section above.  It will only apply to the lines below it.</p>
+<h3>Great Output, Verbose Input</h3>
+<p>You&#8217;re probably already thinking about how complex the input file is going to be when we get back to our <span class="caps">ERP</span> example.  This is an issue, i.e., it&#8217;s just as painful to generate a Graphviz file for complex data as it is to deal with the complex data itself.  Never fear though, we&#8217;re going to automate the nastiness.</p>
+<h2>Generating Graphviz Images with Ruby</h2>
+<p>We now have two very systematic things at our disposal:</p>
+<ol>
+	<li>structured data &#8211; we know how this will look with <em>every</em> extraction from our <span class="caps">ERP</span> system</li>
+	<li>an appropriate language &#8211; we know our language listens and speaks in ways very similar to our structured data set</li>
+</ol>
+<p>To put these two items to work, we&#8217;re going to employ a Ruby gem called <code>ruby-graphviz</code> to allow us to parse the data dumps we&#8217;ve reviewed and auto-generate graphical files.  Moreover, we can generate the <span class="caps">DOT</span> language files that we can further manipulate/archive if necessary.  Lucky for us, both of these are extremely simple once we write a few lines of Ruby to do our dirty work.</p>
+<pre><code>require 'rubygems'  # allows for the loading of gems
+require 'graphviz'  # this loads the ruby-graphviz gem</code>
+
+<code># Constants defining file names and paths
+CSVRecipeFileName   = "recipes.csv"
+CSVRecipeFilePath   = File.join(".")
+CSVMaterialFileName = "materials.csv"
+CSVMaterialFilePath = File.join(".")
+CSVPlantFileName    = "plants.csv"
+CSVPlantFilePath    = File.join(".")
+OutputPath          = File.join(".")</code>
+
+<code># load 3 arrays with CSV data
+recipes = []; materials = []; plants = []
+[[CSVRecipeFileName,   CSVRecipeFilePath,   recipes], 
+ [CSVMaterialFileName, CSVMaterialFilePath, materials],
+ [CSVPlantFileName,    CSVPlantFilePath,    plants]].each do |array|
+   File.open(File.join(array[1], array[0])).each do |line| 
+     array[2] &lt;&lt; line.chop.split(",")
+   end
+end</code>
+
+<code># initialize new Graphviz graph
+g = GraphViz::new( "structs", "type" =&gt; "graph" )
+g[:rankdir] = "LR"</code>
+
+<code># set global node options
+g.node[:color]    = "#ddaa66"
+g.node[:style]    = "filled"
+g.node[:shape]    = "box"
+g.node[:penwidth] = "1"
+g.node[:fontname] = "Trebuchet MS"
+g.node[:fontsize] = "8"
+g.node[:fillcolor]= "#ffeecc"
+g.node[:fontcolor]= "#775500"
+g.node[:margin]   = "0.0"</code>
+
+<code># set global edge options
+g.edge[:color]    = "#999999"
+g.edge[:weight]   = "1"
+g.edge[:fontsize] = "6"
+g.edge[:fontcolor]= "#444444"
+g.edge[:fontname] = "Verdana"
+g.edge[:dir]      = "forward"
+g.edge[:arrowsize]= "0.5"</code>
+
+<code># draw our nodes, i.e., plants
+plants.each do |plant|
+  g.add_node(plant[0]).label = plant[1]+"\\n"+
+    plant[2]+", "+plant[3]+"\\n("+plant[0]+")"
+end</code>
+
+<code># brute force, but simple function to find a material record by number
+def find_material_record(materials_array, material_number)
+  materials_array.collect{|m| m[1] unless m.index(material_number).nil?}.compact[0]
+end</code>
+
+<code># connect the nodes with our recipes, add labels from material data
+recipes.each do |recipe|
+  end_material       = find_material_record(materials, recipe[1])
+  component_material = find_material_record(materials, recipe[3])
+  g.add_edge(recipe[4],recipe[2]).label=
+    component_material+" for\\n"+end_material+"\\n(Recipe "+recipe[0]+")"
+end</code>
+
+<code>g.output( "output" =&gt; "png", :file =&gt; OutputPath+"/graph.png" )</code></pre>
+<p>And that&#8217;s it.  A few dozen lines of reusable code now gives us a script that will generate visual representations of our data like the one below which uses the data from the tables at the beginning of the article.  Tweaking that last line will allow us to not only allow for the generation of graphic files, but also of text <span class="caps">DOT</span> files.<sup class="footnote"><a href="#fn5">5</a></sup></p>
+<div style="display: block; text-align: center">
+    <style type='text/css'>td.caption {font-size: 0.9em;}</style>
+    <table style="margin-left: auto; margin-right: auto" class="content_image">
+      <tr>
+        <td>
+        
+        </td>
+        <td style="width: 0px; text-align: left" class="caption">
+          
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+      <tr>
+        <td class="caption" >
+          
+        </td>
+        <td style="text-align: center">
+          <a href="/images/content/2/2_article_2319_full_graph.png"><img alt="2_article_2319_thumb_graph" src="/images/content/2/2_article_2319_thumb_graph.png?1232397061" style="padding: 0px; margin: 0px; border: 0px" /></a>
+        </td>
+        <td class="caption" >
+          
+        </td>
+      </tr>
+      <tr>
+        <td>
+        
+        </td>
+        <td class="caption" style="width: 0px; text-align: left">
+          
+        </td>
+        <td>
+        
+        </td>
+      </tr>
+    </table>
+    </div>
+<h2>Conclusion</h2>
+<p>Obviously, this is a trivial example, but you get the idea.  If you have access to a plotter, Graphviz gives you a great deal of flexibility with regards to how big these images can physically be.  Regardless of whether you print or view your output on-screen, the benefit is clear.  They say a picture is worth a thousand words, but in this case, it&#8217;s worth a few thousand lines of raw data.</p>
+<p>The nice thing about the Ruby integration is that you can allow for a variety of options to tweak the output you get for the same data.  In our example, maybe we only want to see which parts move between which plant.  In that case, the recipe isn&#8217;t important and we can consolidate many of our edges.  Moreover, if you&#8217;re a Rails user, slapping this in a Rails app is trivial and then you can give many users web access to this information and leave the data extraction and processing to a background process and the code we&#8217;ve just written.</p>
+<p>If you find this useful, or if you know of other/better ways to visualize complex data sets, I&#8217;d love to hear about them.  Whatever path you choose (hopefully you choose the <a href="http://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">shortest path first</a>), good luck in your visualization endeavors!</p>
+<h4 style="border-top: 1px solid #666; padding-top: 5px;">Notes</h4>
+<p class="footnote" id="fn1"><sup>1</sup> Graphviz is freely available from <a href="http://www.graphviz.org">http://www.graphviz.org</a>.</p>
+<p class="footnote" id="fn2"><sup>2</sup> Graphviz documentation is available at <a href="http://www.graphviz.org/Documentation.php">http://www.graphviz.org/Documentation.php</a>.  Of particular note are the <a href="http://www.graphviz.org/doc/info/lang.html"><span class="caps">DOT</span></a> reference and the <a href="http://www.graphviz.org/doc/info/attrs.html">Node, Edge, and Graph Attribute</a> references.</p>
+<p class="footnote" id="fn3"><sup>3</sup> Installation varies between platforms.  See the notes on the <a href="http://www.graphviz.org/Download..php">Graphviz download page</a> for the details pertaining to your platform.</p>
+<p class="footnote" id="fn4"><sup>4</sup> All of the attributes used are documented at <a href="http://www.graphviz.org/doc/info/attrs.html">http://www.graphviz.org/doc/info/attrs.html</a>.</p>
+<p class="footnote" id="fn5"><sup>5</sup> Documentation for ruby-graphviz can be obtained from the project page by downloading the latest package and reading the contained files. <a href="http://raa.ruby-lang.org/project/ruby-graphviz/">http://raa.ruby-lang.org/project/ruby-graphviz/</a>. Accessed 19 January 2009.</p>
+    <div style="font-size: 0.8em">
+    </div>
+  </div>
+  <div style="clear: left"></div>
+  <div id="before_comments_ad">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1318948815382357";
+/* 468x60, created 1/17/09 */
+google_ad_slot = "9484586304";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <!-- google_ad_section_end -->
+</div>
+</div>
+
+<div style="float: right; margin-top: -10px">
+  
+  
+</div>
+
+<div id="comments"><div id="comment_target_area"><div class="content_sub_header" id="content_sub_header">
+  <ul>
+    <li><a href="/comments/new?content_id=2319&amp;content_type=Article#comment_form_header"><img alt="Comment" class="inline_icon" src="/images/theme/comment.png?1234142558" /> Add a Comment (15)</a> | </li>
+    
+    <li><a href="/login"><img alt="Email" class="inline_icon" src="/images/theme/email.png?1234142558" /> Email This</a></li>
+     <li> | <a href="/messages/new?content_type=Article&amp;content_id=2319&amp;to=markmcb"><img alt="Comments" class="inline_icon" src="/images/theme/comments.png?1234142558" />&nbsp;Send&nbsp;Message&nbsp;to&nbsp;Author</a></li>
+    <li> |
+ 
+      <a href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/content_statistics/Article/2319'}); return false;"><img alt="Table" class="inline_icon" src="/images/theme/table.png?1234142558" />&nbsp;Statistics</a>
+    </li>
+  </ul>
+</div>
+<div id="thread_view_selection">
+  <div style="float: left; width: 150px">
+  Thread parent sort order:
+  </div>
+  <div>
+    <a class="unselected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_sort_order=3'}); return false;">Highest Voted</a> :
+    <a class="unselected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_sort_order=4'}); return false;">Lowest Voted</a> :
+    <a class="selected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_sort_order=1'}); return false;">Oldest</a> :
+    <a class="unselected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_sort_order=2'}); return false;">Newest</a>
+  </div>
+  <div style="float: left; width: 150px; clear: left">
+  Thread verbosity:
+  </div>
+  <div>
+    <a class="unselected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_verbosity=1'}); return false;">Expand All</a> :
+    <a class="selected_thread_view" href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/comment_thread/Article/2319?comment_thread_verbosity=2'}); return false;">Minimize Replies to Comments</a>
+  </div>
+</div><div class="top_comment_thread"><div class="comment" id="comment_id_21779">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21779" class="net_count_target">
+          <span class="vote_count" id="comment_id_21779_initial_count"  >
+          3&nbsp;Nerd-Its
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21779&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21779').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21779&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21779&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21779').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21779&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21779">Nice article</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/podvent">podvent</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21779" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21779').fadeToggle(800);
+$(&quot;#comment_show_link_21779&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21779" >
+    <p>Good to have this input!<br />
+Graphviz is wonderful, works great to generate hierarchy display on the fly. <br />
+I tried to extract data from my existing db to generate a graph for <br />
+upline &#8594; downline relation,  it works great and fast.</p>
+<p>Before,I used to do it using a vb script inside ms ppt and from there generate an org chart.</p>
+<p>Tnx for all the input!<br />
+Keep it UP!</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 20&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21779').fadeToggle(800);
+$(&quot;#comment_show_link_21779&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21779#comment_form_header">Reply</a>
+</div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21780">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21780" class="net_count_target">
+          <span class="vote_count" id="comment_id_21780_initial_count"  >
+          1&nbsp;Nerd-It
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21780&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21780').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21780&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21780&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21780').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21780&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21780">Try out the GUESS java graph visualization</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21780" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21780').fadeToggle(800);
+$(&quot;#comment_show_link_21780&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21780" >
+    <p>Hi,<br />
+I found out that graphviz fails on large data sets.</p>
+<p>Try out the <a href="http://graphexploration.cond.org/download.html"><span class="caps">GUESS</span></a> project instead. It uses java, allows zooming, and allows dynamic scripting of data with python.</p>
+<p><a href="http://graphexploration.cond.org/"><span class="caps">GUESS</span> project homepage</a></p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 20&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21780').fadeToggle(800);
+$(&quot;#comment_show_link_21780&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21780#comment_form_header">Reply</a>
+</div><div class='more_child_comments_link' id='more_child_comments_link_21780'>This comment thread has <a href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/show_more_child_comments/21780'}); return false;">4&nbsp;replies</a>.</div><div id='more_child_comments_target_21780'></div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21782">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21782" class="net_count_target">
+          <span class="vote_count" id="comment_id_21782_initial_count"  >
+          0&nbsp;Nerd-Its
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21782&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21782').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21782&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21782&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21782').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21782&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21782">BA</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21782" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21782').fadeToggle(800);
+$(&quot;#comment_show_link_21782&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21782" >
+    <p>Until I learnd2BA I would have done similarly, but now I&#8217;d definitely go with a BA package (after investigation I chose Pentaho [http://www.pentaho.com])<br />
+Basic steps are:<br />
+- install analysis server<br />
+- load your denormalized data<br />
+- define the cube (pentaho has the schema workbench for this)<br />
+- analyze!</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 20&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21782').fadeToggle(800);
+$(&quot;#comment_show_link_21782&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21782#comment_form_header">Reply</a>
+</div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21783">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21783" class="net_count_target">
+          <span class="vote_count" id="comment_id_21783_initial_count"  >
+          0&nbsp;Nerd-Its
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21783&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21783').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21783&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21783&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21783').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21783&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21783">Hypergraph</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21783" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21783').fadeToggle(800);
+$(&quot;#comment_show_link_21783&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21783" >
+    <p>Hooray that ridiculous language ruby can finally do graphviz.  Check out http://hypergraph.sourceforge.net/examples.html</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 20&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21783').fadeToggle(800);
+$(&quot;#comment_show_link_21783&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21783#comment_form_header">Reply</a>
+</div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21791">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21791" class="net_count_target">
+          <span class="vote_count" id="comment_id_21791_initial_count"  >
+          0&nbsp;Nerd-Its
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21791&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21791').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21791&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21791&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21791').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21791&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21791">Graphviz + Perl</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21791" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21791').fadeToggle(800);
+$(&quot;#comment_show_link_21791&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21791" >
+    <p>Your examples don&#8217;t really address &#8220;gigantic&#8221; data. I generated about 1000 Graphviz nodes automatically using Perl in 2000 AD. See http://groups.google.com/group/perfviz?hl=en</p>
+<p>So, Graphviz can handle large data sets (in that sense, at least) and if you produce the output as <span class="caps">PDF</span>, you can scale it visually.</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 21&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21791').fadeToggle(800);
+$(&quot;#comment_show_link_21791&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21791#comment_form_header">Reply</a>
+</div><div class='more_child_comments_link' id='more_child_comments_link_21791'>This comment thread has <a href="#" onclick="$.ajax({dataType:'script', url:'http://www.omninerd.com/show_more_child_comments/21791'}); return false;">3&nbsp;replies</a>.</div><div id='more_child_comments_target_21791'></div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21807">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21807" class="net_count_target">
+          <span class="vote_count" id="comment_id_21807_initial_count"  >
+          4&nbsp;Nerd-Its
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21807&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21807').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21807&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21807&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21807').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21807&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21807">No need to deal with nodes and edges</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21807" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21807').fadeToggle(800);
+$(&quot;#comment_show_link_21807&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21807" >
+    <p>I wrote a tool called <a href="http://afterglow.sf.net">AfterGlow</a> which takes a <span class="caps">CSV</span> file that defines edges and generates a <span class="caps">DOT</span> description of the graph. In addition to the <span class="caps">CSV</span> input you can use a configuration file that allows for the decoration of nodes, aggregations, filtering, etc.<br />
+If you want to see what people have done with AfterGlow, check out <a href="http://secviz.org">SecViz.org</a></p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 22&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21807').fadeToggle(800);
+$(&quot;#comment_show_link_21807&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21807#comment_form_header">Reply</a>
+</div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21869">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21869" class="net_count_target">
+          <span class="vote_count" id="comment_id_21869_initial_count"  >
+          1&nbsp;Nerd-It
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21869&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21869').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21869&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21869&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21869').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21869&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21869">RGL: a simple way to graphviz</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21869" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21869').fadeToggle(800);
+$(&quot;#comment_show_link_21869&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21869" >
+    <p>I had some good experience with the <a href="http://rgl.rubyforge.org/rgl/index.html">Ruby Graph Library</a> . It&#8217;s more about graphs and uses graphviz (i.e. dot/dotty) as an output method. Definitely not a full interface to graphivz, but very usefull for simple visualisations.</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 29&nbsp;January&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21869').fadeToggle(800);
+$(&quot;#comment_show_link_21869&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21869#comment_form_header">Reply</a>
+</div></div><div class="top_comment_thread"><div class="comment" id="comment_id_21912">
+  <div class="title" >
+    
+    <div class="comment_control">
+      <span class="vote_count">
+        <span id="vote_result_for_Comment_21912" class="net_count_target">
+          <span class="vote_count" id="comment_id_21912_initial_count"  >
+          1&nbsp;Nerd-It
+          </span>
+          <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21912&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21912').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21912&amp;vote[choice]=0'}); return false;"><img alt="-" src="/images/theme/arrow-down.gif?1234142558" title="Vote down" /></a> <a href="#" onclick="document.getElementById(&quot;vote_result_for_Comment_21912&quot;).style.display = 'none'; $.ajax({complete:function(request){$('#vote_result_for_Comment_21912').fadeToggle(500);}, data:'', dataType:'script', type:'post', url:'http://www.omninerd.com/votes?vote[content_type]=Comment&amp;vote[content_id]=21912&amp;vote[choice]=1'}); return false;"><img alt="+" src="/images/theme/arrow-up.gif?1234142558" title="Vote up" /></a>
+        </span>
+      </span>
+    </div>
+    
+    <h5><a href="/comments/21912">Tk::GraphViz for perl</a>
+      <span class="author">
+        by&nbsp;<a href="/nerds/Anonymous">Anonymous</a>
+        <span style="color: gray"> :: NR0
+          <span id="comment_show_link_21912" style="display: none"> :: 
+            <a href="#" onclick="$('#comment_body_id_21912').fadeToggle(800);
+$(&quot;#comment_show_link_21912&quot;).hide();; return false;">Show</a>
+          </span>
+        </span>
+      </span>
+    </h5>
+  </div>
+  <div class="body" id="comment_body_id_21912" >
+    <p>I wrote <a href="http://search.cpan.org/~jgs/Tk-GraphViz-1.01/GraphViz.pm">Tk::GraphViz</a> for perl to render interactive graphs in a perl/Tk canvas.  I&#8217;ve wanted the same for ruby/Tk, but haven&#8217;t taken the time to do it yet.  Thanks for the reminder of graphviz goodness.</p>
+  </div>
+</div>
+<div class="comment_footer">
+  <span class="comment_left_footer">
+      Posted 04&nbsp;February&nbsp;2009,
+      <a href="#" onclick="$('#comment_body_id_21912').fadeToggle(800);
+$(&quot;#comment_show_link_21912&quot;).show();; return false;">Hide</a>,
+      </span>
+      <a href="/comments/new?content_type=Comment&amp;content_id=21912#comment_form_header">Reply</a>
+</div></div></div></div>
+    		</div>
+    		<script type="text/javascript">omninerd__roundDiv("content_round","class",4,4,4,4);</script>
+        <div id="pre-footer"></div>
+      </div>
+    </div>
+    <div id="footer">
+  <table>
+    <tr>
+      <td style="width: 25%">
+        <p style="text-align: left">
+        <a href="/feeds/rss"><img alt="" class="inline_icon" src="/images/theme/feed.png?1234142558" title="Subscribe to our RSS Feed" /> RSS</a>
+        </p>
+      </td>
+      <td style="width: 50%">
+        <p><a href="/legal">Copyright &#x00A9; 2004-2009 OmniNerd</a></p>
+        <p>OmniNerd uses valid, standards-based markup. 
+          <a href="http://validator.w3.org/check?uri=referer"><img alt="XHTML 1.0 Strict" class="inline_icon" src="/images/theme/xhtml.png?1234142558" title="XHTML 1.0 Strict" /></a>
+          <a href="http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fwww.omninerd.com%2Fstylesheets%2Fstandard.css&amp;usermedium=all"><img alt="Cascading Style Sheets 2.1" class="inline_icon" src="/images/theme/css.png?1234142558" title="Cascading Style Sheets 2.1" /></a>
+        </p>
+        <p>Maximize enjoyment with a <a href="http://www.webdevout.net/browser-support">standards-compliant browser</a>.</p>
+      </td>
+      <td style="width: 25%">
+        <p style="text-align: right">
+        <a href="/bugs/new">Bugs <img alt="" class="inline_icon" src="/images/theme/bug.png?1234142558" title="Report a bug" /></a>
+        </p>
+      </td>
+    </tr>
+  </table>
+</div>
+    <script type="text/javascript">omninerd__roundDiv("footer","id",5,5,0,0);</script>
+    <!-- Begin Google Analytics -->
+    
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    try {
+    var pageTracker = _gat._getTracker("UA-1132841-1");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+    
+    <!-- End Google Analytics -->
+  </body>
+</html>

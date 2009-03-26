@@ -1,0 +1,784 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Shades of Gray: Getting Code Ready for Ruby 1.9</title>
+
+    <link href="/stylesheets/application.css?1187902189" media="screen" rel="Stylesheet" type="text/css" />
+    <script src="/javascripts/prototype.js?1187902189" type="text/javascript"></script>
+<script src="/javascripts/effects.js?1187902189" type="text/javascript"></script>
+<script src="/javascripts/dragdrop.js?1187902189" type="text/javascript"></script>
+<script src="/javascripts/controls.js?1187902189" type="text/javascript"></script>
+<script src="/javascripts/application.js?1187902189" type="text/javascript"></script>
+    <link href="http://blog.grayproductions.net/articles/getting_code_ready_for_ruby_19.rss" rel="alternate" title="RSS" type="application/rss+xml" />
+</head><body>
+    <table cellspacing="10" cellpadding="0" id="page">
+        <tr>
+            <td colspan="2" id="header">
+                <a href="/"><img alt="Shades of Gray" height="40" src="/images/logo.png?1187902189" width="215" /></a>
+            </td>
+        </tr><tr>
+            <td id="sidebar">
+                <div class="author"><h2>About the Author</h2>
+
+<p>
+    James Edward Gray II joined the Ruby community in 2004 and they just haven't
+    been able to get rid of him since then.
+</p>
+
+<p>
+    James writes Ruby code for fun and profit, pens books with a good deal of
+    Ruby in them, gives speeches about the language, and runs the local support
+    group for Ruby addicts.  He definitely sees the world through Ruby-colored
+    glasses.
+</p>
+</div>
+                <div class="search"><h2>Search</h2>
+
+<form action="#" method="post" onsubmit="return false">
+    <input id="search_terms" name="terms" type="text" />
+    <img alt="Busy" height="15" id="search_busy_icon" src="/images/busy.gif?1187902189" style="display: none" width="15" />
+    <script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('search_terms', 0.5, function(element, value) {new Ajax.Request('/searches', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_busy_icon')}, onLoading:function(request){Element.show('search_busy_icon')}, parameters:'terms=' + value})})
+//]]>
+</script>
+</form>
+
+<div id="search_results"></div>
+</div>
+                <div class="categories"><h2>Categories</h2>
+
+<ul class="links">
+    
+        <li>
+            <a href="/categories/about_this_blog">About This Blog</a>
+            <span class="count">(4)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/book_reviews">Book Reviews</a>
+            <span class="count">(7)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/character_encodings">Character Encodings</a>
+            <span class="count">(8)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/conferences">Conferences</a>
+            <span class="count">(5)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/early_steps">Early Steps</a>
+            <span class="count">(4)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/fastercsv">FasterCSV</a>
+            <span class="count">(3)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/ghost_wheel">Ghost Wheel</a>
+            <span class="count">(1)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/higherorder_ruby">Higher-Order Ruby</a>
+            <span class="count">(6)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/highline">HighLine</a>
+            <span class="count">(1)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/language_comparisons">Language Comparisons</a>
+            <span class="count">(4)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/my_heroes">My Heroes</a>
+            <span class="count">(2)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/noncode">Non-Code</a>
+            <span class="count">(9)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/parsing">Parsing</a>
+            <span class="count">(1)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/rails">Rails</a>
+            <span class="count">(4)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/rake_tasks">Rake Tasks</a>
+            <span class="count">(1)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/ruby_tutorials">Ruby Tutorials</a>
+            <span class="count">(24)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/ruby_voodoo">Ruby Voodoo</a>
+            <span class="count">(10)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/screencasts">Screencasts</a>
+            <span class="count">(1)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/the_gateway">The Gateway</a>
+            <span class="count">(4)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/the_ruby_vm_interview">The Ruby VM Interview</a>
+            <span class="count">(6)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/the_standard_library">The Standard Library</a>
+            <span class="count">(10)</span>
+        </li>
+    
+        <li>
+            <a href="/categories/tools_of_the_trade">Tools of the Trade</a>
+            <span class="count">(5)</span>
+        </li>
+    
+</ul>
+
+</div>
+                <div class="links"><h2>Books by the Author</h2>
+
+<ul class="links">
+    <li><a href="http://www.pragmaticprogrammer.com/titles/textmate/index.html">TextMate</a></li>
+    <li><a href="http://www.pragmaticprogrammer.com/titles/fr_quiz/index.html">Best of Ruby Quiz</a></li>
+</ul>
+
+<h2>Other Ruby Projects</h2>
+
+<ul class="links">
+    <li><a href="http://rubyquiz.com/">Ruby Quiz</a></li>
+    <li><a href="http://rubyforge.org/projects/fastercsv/">FasterCSV</a></li>
+    <li><a href="http://highline.rubyforge.org/">HighLine</a></li>
+    <li><a href="http://ghostwheel.rubyforge.org/">Ghost Wheel</a></li>
+    <li><a href="http://rubyforge.org/projects/elif/">Elif</a></li>
+    <li><a href="http://github.com/JEG2/rrdb/">RRDB</a></li>
+</ul>
+</div>
+            </td>
+            <td id="content">
+                
+                    
+                
+                    
+                
+                <div class="article">
+    <h2>
+        Getting Code Ready for Ruby 1.9
+        
+    </h2>
+    
+    <div class="details">
+        Posted about 1 year ago
+        in <a href="/categories/fastercsv">FasterCSV</a>, <a href="/categories/ruby_tutorials">Ruby Tutorials</a>, and <a href="/categories/the_standard_library">The Standard Library</a>.
+    </div>
+    
+    <p>The call came down from on high just before the Ruby 1.9 release:  replace the standard csv.rb library with faster_csv.rb.  With only hours to make the change it was a little harder than I expected.  The <code>FasterCSV</code> code base was pretty vanilla Ruby, but it required more work than I would have guessed to get running on Ruby 1.9.  Let me share a few of the tips I learned while doctoring the code in the hope that it will help others get their code ready for Ruby 1.9.</p>
+
+<h3>Ruby's <code>String</code> Class Grows Up</h3>
+
+<p>One of the biggest changes in Ruby 1.9 is the addition of m17n (multilingualization).  This means that Ruby's Strings are now encoding aware and we must clarify in our code if we are working with bytes, characters, or lines.</p>
+
+<p>This is a good change, but the odds are that most of us have lazily used the old way to our advantage in the past.  If you've ever written code like:</p>
+
+<pre><code>lines = str.to_a
+</code></pre>
+
+<p>you have bad habits to break.  I sure did.  Under Ruby 1.9 that code would translate to:</p>
+
+<pre><code>lines = str.lines.to_a
+</code></pre>
+
+<p><code>String#lines()</code> returns an <code>Enumerable::Enumerator</code> by default (more on that shortly), so you need to add the <code>to_a()</code> call unless you are going to follow-up with other iteration methods.</p>
+
+<p>Now, if you need the code to run on both 1.8 and 1.9, you will need one more trick.  First, if you just need to iterate over the lines you can use <code>String#each_line()</code> which is present in both versions.  For less basic iterations, I recommend:</p>
+
+<pre><code>lines = str.send(str.respond_to?(:lines) ? :lines : :to_s).to_a
+</code></pre>
+
+<p>Here I just call <code>String#lines()</code> if it is available and a no-op <code>String#to_s()</code> when it's not.  You can safely follow that with any <code>Enumerable</code> method and it will work in Ruby 1.8 and Ruby 1.9.</p>
+
+<h3><code>Enumerable#zip()</code> Took a Beating</h3>
+
+<p>If you were a fan of <code>Enumerable#zip()</code> under Ruby 1.8, odds are good that it's going to surprise you under Ruby 1.9.</p>
+
+<p>First, the standard <code>Enumerable::Enumerator</code> library has been moved into the core as we already saw with <code>String#lines()</code>.  With this move the core iteration methods have been enhanced to return an <code>Enumerable::Enumerator</code>, if called without a block.  This is generally a nice iterator chaining feature.  For example, making the fictional but oft-requested <code>map_with_index()</code> is now as easy as:</p>
+
+<pre><code>enum.each_with_index.map { … }
+</code></pre>
+
+<p><code>Enumerable#zip()</code> may be the exception though.  It already had a meaningful return value when called without a block.  That has been overridden by the new behavior though, so you will now get an <code>Enumerable::Enumerator</code> when you probably expected an <code>Array</code>.  I've found that I now need to type the following to get what I usually want:</p>
+
+<pre><code>enum.zip(other_enum).to_a
+</code></pre>
+
+<p>It's hard to see that as an improvement, but the fact is that it gets worse.  For some reason I can't justify, another change was made to <code>Enumerable#zip()</code>.  Let's look at what happens with <code>Enumerable</code> objects of different sizes under Ruby 1.8:</p>
+
+<pre><code>&gt;&gt; short = [1, 2]
+=&gt; [1, 2]
+&gt;&gt; long = %w[one two three four]
+=&gt; ["one", "two", "three", "four"]
+&gt;&gt; short.zip(long)
+=&gt; [[1, "one"], [2, "two"]]
+&gt;&gt; long.zip(short)
+=&gt; [["one", 1], ["two", 2], ["three", nil], ["four", nil]]
+</code></pre>
+
+<p>Note that the size of the result set is based on the size of the <code>Enumerable</code> that is used as the receiver for the <code>Enumerable#zip()</code> call.  This works out well in practice, because you can always find the longer count if you need to preserve all of the data.  If you want the shorter results, you can lead with the smaller set or filter out the <code>nil</code> objects.  The choice is in your hands.</p>
+
+<p>Unfortunately, Ruby 1.9 changes the rules:</p>
+
+<pre><code>&gt;&gt; short.zip(long).to_a
+=&gt; [[1, "one"], [2, "two"]]
+&gt;&gt; long.zip(short).to_a
+=&gt; [["one", 1], ["two", 2]]
+</code></pre>
+
+<p>As you can see, the shortest <code>Enumerable</code> now limits the results no matter where it occurs.  The problem with this change is that it discards data and you have to go out of your way to save it.  This new behavior is documented though, so I assume it's intentional.</p>
+
+<p>What do you do if you want a safe 1.8 data preserving <code>Enumerable#zip()</code> that works on 1.8 and 1.9?  About the best I can come up with is:</p>
+
+<pre><code>require "enumerator"
+zipped = long.enum_for(:each_with_index).map { |e, i| [e, short.to_a[i]] }
+</code></pre>
+
+<p>Obviously, I'm open to better ideas.</p>
+
+<h3><code>FasterCSV</code> is the New <code>CSV</code></h3>
+
+<p>I found the above incompatibilities by introducing a new one.  <code>FasterCSV</code> has replaced the standard <code>CSV</code> class in the standard library.  By replaced, I mean that it is now called <code>CSV</code>.  This will cause code that used the old library problems.</p>
+
+<p>The methods provided on the <code>CSV</code> object are similar, but the old <code>CSV</code> code used positional parameters where as the new library user a <code>Hash</code> argument syntax (e.g., <code>:row_sep =&gt; "\r\n"</code>).  That's going to trip up any non-trivial usage.</p>
+
+<p>The new library is feature rich and fully documented, so I don't expect anyone to have trouble getting their code working under 1.9.  The problem will be writing code that works on both versions.  For that, I recommend using code like the following to determined which library you are working with:</p>
+
+<pre><code>require "csv"
+if CSV.const_defined? :Reader
+  # use old CSV code here…
+else
+  # use FasterCSV style code, but with CSV class, here…
+end
+</code></pre>
+
+<p>Feel free to <a href="mailto:james@grayproductions.net">email me</a> with any other <code>CSV</code> compatibility questions.</p>
+
+<h3>This is Just a Start</h3>
+
+<p>The above is a short list of issues I've run into a couple of times now.  Please feel free to add your own observations about Ruby 1.9 compatibility in the comments below.  Let's do our best to make this post a generally useful resource for all.</p>
+    
+    <div id="comments">
+        
+            <div id="comment_1009" class="comment">
+    <div class="details">
+        <span class="name"><a href="http://intertwingly.net/blog/">Sam Ruby</a></span> added
+        19 minutes later:
+        
+    </div>
+
+    <p><a href="http://intertwingly.net/blog/2007/12/31/Porting-REXML-to-Ruby-1-9">Porting REXML to Ruby 1.9</a> overlaps slightly and covers some additional ground.</p>
+</div>
+
+        
+            <div id="comment_1010" class="comment">
+    <div class="details">
+        <span class="name">Alex Fenton</span> added
+        about 1 hour later:
+        
+    </div>
+
+    <p>Ruby 1.9 introduces an incompatible syntax change for conditional statements such as 'if' and 'case/when'. Previously a colon could be used as  a shorthand for a 'then' statement; this is perhaps most useful with multiple 'when' statements on one line. </p>
+
+<p>The following is legitimate ruby in 1.8:</p>
+
+<pre><code>case x 
+when Regexp  : puts 'a regex'
+when Hash    : puts 'a regex'
+when Numeric : puts 'a number'
+when String  : puts 'a string'
+end
+</code></pre>
+
+<p>But not in ruby 1.9; now an explicit 'then' statement must be used:</p>
+
+<pre><code>case x
+when Regexp then puts 'a regex'
+...
+</code></pre>
+</div>
+
+        
+            <div id="comment_1011" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        about 1 hour later:
+        
+    </div>
+
+    <p>Just to be clear the "then" keyword was also supported in Ruby 1.8 so using it for conditionals is fine for both versions.</p>
+</div>
+
+        
+            <div id="comment_1022" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:frederick.cheung@gmail.com">Frederick Cheung</a></span> added
+        about 15 hours later:
+        
+    </div>
+
+    <p>A bunch of methods like instance_variables, constants etc... that used to return strings now return symbols.</p>
+</div>
+
+        
+            <div id="comment_1031" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:fla@synapps.de">Francisco Laguna</a></span> added
+        about 21 hours later:
+        
+    </div>
+
+    <p>I found what Frederick said is especially important for the typical BlankSlate type of class. What was in 1.8:</p>
+
+<pre><code>class BlankSlate
+  instance_methods.each { |meth| undef_method(meth) unless meth =~ /\A__/ }
+  ...
+end
+</code></pre>
+
+<p>becomes in 1.9 (for example):</p>
+
+<pre><code>class BlankSlate
+  instance_methods.each { |meth| undef_method(meth) unless meth.to_s =~ /\A__/ }
+  ...
+end
+</code></pre>
+
+<p>Other than that, I noticed that Thread#critical and Thread#critical= went away, but for those of us who want to explicitely schedule stuff, Fibers are nicer anyway. </p>
+
+<p>IO.getc will return a String thats one character long instead of the ASCII value of the character itself.</p>
+
+<p>1.8:</p>
+
+<pre><code>STDIN.getc
+a
+=&gt; 97
+</code></pre>
+
+<p>1.9:</p>
+
+<pre><code>irb(main):002:0&gt; STDIN.getc
+a
+=&gt; "a"
+</code></pre>
+
+<p>This also breaks the excellent HighLine lib. <em>hint hint</em> </p>
+</div>
+
+        
+            <div id="comment_1032" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        about 21 hours later:
+        
+    </div>
+
+    <p>Yes, I do need to get HighLine working under 1.9.  I'll try to get to that before too long now.  Thanks for reminding me.</p>
+</div>
+
+        
+            <div id="comment_1033" class="comment">
+    <div class="details">
+        <span class="name">Sander Land</span> added
+        about 23 hours later:
+        
+    </div>
+
+    <p>Using each or map on a result from Enumerable#zip is also extremely slow in 1.9.
+I discovered this when an application took twice as long in 1.9 as in 1.8. The innermost loop had a zip_with() call (zip -> map) which caused this.</p>
+
+<pre><code>require 'benchmark'
+a = Array.new(25){rand}
+Benchmark.bmbm{|x|
+  x.report("zip"){ 1_000_000.times { a.zip(a).map{} } }
+}
+</code></pre>
+
+<p>Results in 1.8.6</p>
+
+<pre><code>          user     system      total        real
+zip  16.170000   0.320000  16.490000 ( 16.576643)
+</code></pre>
+
+<p>Results in 1.9</p>
+
+<pre><code>          user     system      total        real
+zip 192.360000   1.430000 193.790000 (195.467429)
+</code></pre>
+
+<p>Using to_a gives the same results.</p>
+
+<p>And this is with the slow 1.8.6 ubuntu/enable-pthread version vs an -O3/no pthread compiled 1.9. On most code the 1.9 version is about four times as fast as the 1.8.6 version.</p>
+</div>
+
+        
+            <div id="comment_1034" class="comment">
+    <div class="details">
+        <span class="name">gga</span> added
+        1 day later:
+        
+    </div>
+
+    <p>For extension writers, ruby1.9 has, incorrectly in my opinion, deprecated ruby's version.h file.<br/>
+This means it is not possible to know the ruby version easily and you now MUST write a Makefile of some sort to pass the proper defines or to check if your ruby supports some feature through some try-compile checks.
+This probably ranks as one of the worst changes in ruby 1.9.
+This obviously begs the question why this was done (as there's no benefit) and what should extension developers do if some function exists in both ruby1.8 and ruby1.9 but has different functionality (as some of the cases show here).</p>
+</div>
+
+        
+            <div id="comment_1039" class="comment">
+    <div class="details">
+        <span class="name">hk</span> added
+        1 day later:
+        
+    </div>
+
+    <p>Alex Fenton:</p>
+
+<p>"But not in ruby 1.9; now an explicit 'then' statement must be used"</p>
+
+<p>Or you could just do what everyone else does, and put what happens "then" on a new line. Then, you won't need "then", and your code is more consistent and readable.</p>
+
+<p>I prefer this implementation. Allowing same-line "then" with a colon was bad style, IMO - as is the use of colons as meaningful operators in general.</p>
+</div>
+
+        
+            <div id="comment_1042" class="comment">
+    <div class="details">
+        <span class="name">Chris Gaffney</span> added
+        1 day later:
+        
+    </div>
+
+    <p>If you still prefer the single character single line notation you can just substitute the colon with a semi-colon</p>
+
+<p>1.9:</p>
+
+<pre><code>case sound
+    when /bamf/i; puts 'Nightcrawler'
+    when /boff/i; puts 'Batman'
+end
+</code></pre>
+</div>
+
+        
+            <div id="comment_1057" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:robert.dober@gmail.com">Robert Dober</a></span> added
+        2 days later:
+        
+    </div>
+
+    <p>James I am just working on RQ#151 and I want my solution to be version agnostic, up to now the following was my idea:</p>
+
+<p>Write the code in v1.9 and just require a file to upgrade 1.8 ruby just enough to run your code, such the require can go away one day, here is a very first shot:</p>
+
+<pre>
+   class String
+      unless instance_methods.include?( "to_char" ) then
+        require "enumerator"
+        def each_char &blk
+          return enum_for(:each_byte).map{ |b| b.chr } unless                  
+                blk
+          enum_for(:each_byte).each do |b| blk.call b.chr end
+        end 
+      end
+   end
+</pre>
+
+<p>of course it would be much better to wrap the whole include
+file into a version test, but that very test might be a tough one, the following is rather a bad example:</p>
+
+<pre>
+ begin
+   "".to_a
+   def to_char...
+      ...
+   end
+ rescue
+   nil
+ end
+</pre>
+
+<p>Going for the ruby version constant</p>
+
+<pre>
+   if /^1\.8/ === RUBY_VERSION then
+      ...
+   end
+</pre>
+
+<p>is probably a sound decision after all.</p>
+
+<p>What do you think?</p>
+
+<p>Cheers
+Robert</p>
+</div>
+
+        
+            <div id="comment_1066" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        3 days later:
+        
+    </div>
+
+    <p>I would probable just do:</p>
+
+<pre><code>require "jcode" unless "".respond_to? :each_char
+</code></pre>
+</div>
+
+        
+            <div id="comment_1070" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:robert.dober@gmail.com">Robert Dober</a></span> added
+        3 days later:
+        
+    </div>
+
+    <p>James
+first of all sorry for the double comment above, but I guess it was better not to post another comment saying: "Sorry for being stupid", as everyone could see I have been stupid ;)</p>
+
+<p>Now for the idea of saying</p>
+
+<pre>
+   require "jcode" unless "".respond_to? :each_char
+</pre>
+
+<p>This is an approach I have seen first in Javascript for Browser  Quirks but after some thoughts I believe that it is a bad idea for libraries. What if a require before our require just added <code>each_char</code> to String? And that is not exactly far fetched an idea either. </p>
+
+<p>For applications however it will work, unless you require third part libraries carelessly before the code above, this however
+can be debugged easily...</p>
+
+<p>For libraries there would be no way to debug or even fix it in a general manner.</p>
+
+<p>One could of course argue that someone could tamper with <code>RUBY_VERSION</code> too, but well we still have to let
+people kill themselves if they insist, sigh!</p>
+
+<p>Robert</p>
+</div>
+
+        
+            <div id="comment_1075" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        3 days later:
+        
+    </div>
+
+    <p>Well, I hope that any <code>each_char()</code> implementation would give me the expected one character at a time.</p>
+
+<p>My main point though was that I felt safer using the <code>each_char()</code> method that comes with Ruby 1.8 than building my own.</p>
+</div>
+
+        
+            <div id="comment_1076" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:robert.dober@gmail.com">Robert Dober</a></span> added
+        4 days later:
+        
+    </div>
+
+    <p>I see we are talking about two different things.</p>
+
+<ol>
+<li> I wanted a guard against the ruby version for <b>lots</b> of definitions, not only <code>String#to_char</code>.</li>
+
+<li> I cannot use Ruby's <code>String#to_char</code> because I need the 1.9 functionality of the returned Enumerator in case
+it is called without a block.</li>
+</ol>
+
+<p>Maybe the idea to write version agnostic code was not really what you are after here, and you emphasis on 1.9, in that case I am a little bit OT, as usual...</p>
+
+<p>Robert</p>
+</div>
+
+        
+            <div id="comment_1082" class="comment">
+    <div class="details">
+        <span class="name">Daniel Luz</span> added
+        4 days later:
+        
+    </div>
+
+    <p>Francisco Laguna, since symbols now respond to #=~, I don't think that change is necessary, unless I am missing something. It should be noted, though, that for some reason Ruby 1.9 now emits a warning about undef'ing object_id, so you may want to preserve it too.</p>
+</div>
+
+        
+            <div id="comment_1084" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        4 days later:
+        
+    </div>
+
+    <p>Robert:  I guess I am still a little confused about our discussion.  You've mentioned both <code>String#to_char()</code> and <code>String#each_char()</code> and your code checks for one but creates the other.  <code>String#to_char()</code> isn't a method I'm familiar with and I can't locate and documentation on it.</p>
+
+<p>Just FYI, I believe your code also has a bug in it.  Checks like <code>instance_methods.include?("some_str")</code> don't work as expected in Ruby 1.9.  Those method names are now returned as <code>Symbol</code> objects so <code>include?()</code> will fail to match the <code>String</code>.</p>
+
+<p>You can load jcode and enumerator and use <code>enum_for(:each_char)</code> to get an <code>Enumerable::Enumerator</code> in Ruby 1.8 or 1.9.  I do now understand that we were discussing many methods instead of a specific example though, so that may not help.</p>
+</div>
+
+        
+            <div id="comment_1085" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:robert.dober@gmail.com">Robert Dober</a></span> added
+        4 days later:
+        
+    </div>
+
+    <p>James</p>
+
+<p>many apologies about such many typos, I was referring to <code>#each_char</code> <b>only</b>. Thanks for the hint with <code>jcode</code> and <code>instance_methods.include?</code>.
+I missed <code>jcode</code>'s functionality.</p>
+
+<p>Robert</p>
+</div>
+
+        
+            <div id="comment_1104" class="comment">
+    <div class="details">
+        <span class="name"><a href="firstname dot lastname at gmail">Sander Land</a></span> added
+        6 days later:
+        
+    </div>
+
+    <p>The "zip" problems appear to be fixed with the january 8th version, it's still ~50% slower than 1.8, but that's manageable.</p>
+
+<p>James, I saw you post about this on Ruby-CORE mailing list. Is this the way to go for posting bugs?
+I'm asking this because I discovered what I think is a rather serious bug and posted a bug report on rubyforge about three weeks ago, but there is no reply to the report or any of my follow-ups, other than the bug getting assigned to Matz.</p>
+</div>
+
+        
+            <div id="comment_1110" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        6 days later:
+        
+    </div>
+
+    <p>Yes, I was able to sway Matz and <code>Enumerable#zip()</code> has been "repaired."</p>
+
+<p>Opinions seem to differ on whether on not to use the bug tracker on Rubyforge or the Ruby Core mailing list.  I believe the core team is trying to get more into the bug tacker habit, so it's probably best to start there for most things.  I find I have more success with topics that should be discussed, like the <code>Enumerable#zip()</code> issue, on Ruby Core though.  For serious issues, I recommend putting it on in the bug tracker then drawing attention to it on Ruby Core.</p>
+</div>
+
+        
+            <div id="comment_1168" class="comment">
+    <div class="details">
+        <span class="name">Gavin Sinclair</span> added
+        11 days later:
+        
+    </div>
+
+    <p>When Ruby 1.8 was on the horizon and 1.6 was the normal version for people to use, someone created a library called "shim", which allowed the use of 1.7/1.8-style features in 1.6 code.</p>
+
+<p>With compatibility between 1.8 and 1.9 a key issue for many people, such a "shim" library could be very useful.</p>
+</div>
+
+        
+            <div id="comment_30178" class="comment">
+    <div class="details">
+        <span class="name"><a href="mailto:tj@vision-media.ca">TJ Holowaychuk</a></span> added
+        about 1 year later:
+        
+    </div>
+
+    <p>I thought the semi colon functioning as an alias for 'then' was great, its easier to look read IMO</p>
+</div>
+
+        
+            <div id="comment_30179" class="comment">
+    <div class="details">
+        <span class="name">James Edward Gray II</span> added
+        about 1 year later:
+        
+    </div>
+
+    <p>It's actually the colon, not semicolon, that use to stand in for <em>then</em>.  It was removed because it is being used in other ways, like the new <code>Hash</code> syntax.</p>
+</div>
+
+        
+        
+    </div>
+    
+    <form action="/articles/getting_code_ready_for_ruby_19/comments" id="new_comment" method="post">
+        <h3>Add Your Thoughts</h3>
+        
+        <p>
+            You can use
+            <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+            in the body of your comment to format text and make links.
+        </p>
+        
+        <p>
+            Note that I reserve the right to edit any content you post here.  I
+            typically exercise this right to fix formatting issues.  All posts
+            must be approved so spam will never be seen on these pages.
+        </p>
+        
+        <div id="comment_results">
+            
+        </div>
+        
+        
+
+<dl>
+    <dt>Author:</dt>
+    <dd><input class="wide" id="comment_author" name="comment[author]" size="30" type="text" /></dd>
+
+    <dt>URL or Email (optional):</dt>
+    <dd><input class="wide" id="comment_authors_url" name="comment[authors_url]" size="30" type="text" /></dd>
+
+    <dt>Body:</dt>
+    <dd><textarea class="wide" cols="40" id="comment_body" name="comment[body]" rows="10"></textarea></dd>
+</dl>
+
+        <input name="commit" type="submit" value="Comment" />
+    </form>
+</div>
+                
+            </td>
+        </tr><tr>
+            <td colspan="2" id="footer">
+                <a href="mailto:james@grayproductions.net"><img alt="james@grayproductions.net" height="30" src="/images/signature.png?1187902189" width="200" /></a>
+            </td>
+        </tr>
+    </table>
+</body></html>

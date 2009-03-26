@@ -1,0 +1,824 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+  <head>
+    <meta name="description" content="Tips for a Debian GNU/Linux System Administrator.">
+<meta name="keywords"  content="Debian System Administration News, Debian Sysadmin, Linux Administration, Linux Sysadmin, Sysadmin">
+<meta name="copyright" content="(c) 2004-2009 Debian Administration">
+<meta name="author"  content="Debian Administration">
+<meta name="robots" content="index,follow">
+<meta name="resource-type" content="document">
+<meta name="classification" content="Personal">
+<meta name="language" content="en">
+<link rel="icon" href="/favicon.ico" >
+<link rel="shortcut icon" href="/favicon.ico" >
+<link rel="top"    title="home"    href="/" >
+<link rel="stylesheet" type="text/css" media="print, handheld" href="/css/print.css">
+<link rel="search" title="Search" href="/about/search">
+<link rel="alternate" title="Debian Administration RSS" href="/articles.rdf" type="application/rdf+xml">
+<link rel="alternate" title="Atom" href="/atom.xml" type="application/atom+xml">
+<link rel="search" href="/opensearchdescription.xml" type="application/opensearchdescription+xml"  title="Debian Administration" >
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen" title="Default Layout">
+
+    <title>Creating Filesystems with Ruby  and FUSE</title>
+
+    <link rel="stylesheet" type="text/css" media="" href="/css/jquery.autocomplete.css">
+    <script src="/js/jquery.js" type="text/javascript"></script>
+    <script src="/js/jquery.autocomplete.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.autogrow.js" type="text/javascript"></script>
+  </head>
+  <body id="yawns">
+    <div id="no-rightBar">
+
+<div id="sidebar">
+  
+<!--[if gte IE 5.5000]>
+   <script language="JavaScript" type="text/javascript"> var ie55up = true </script>
+<![endif]-->
+<script language="JavaScript" type="text/javascript">
+function fixPNG(myImage) // correctly handle PNG transparency in Win IE 5.5 or higher.
+   {
+    if (window.ie55up)
+	 {
+	 var imgID = (myImage.id) ? "id='" + myImage.id + "' " : ""
+	 var imgClass = (myImage.className) ? "class='" + myImage.className + "' " : ""
+	 var imgTitle = (myImage.title) ? "title='" + myImage.title + "' " : "title='" + myImage.alt + "' "
+	 var imgStyle = "display:inline-block;" + myImage.style.cssText 
+	 var strNewHTML = "<span " + imgID + imgClass + imgTitle
+	 strNewHTML += " style=\"" + "width:" + myImage.width + "px; height:" + myImage.height + "px;" + imgStyle + ";"
+	 strNewHTML += "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'" + myImage.src + "\', sizingMethod='scale');\"></" + "span>"
+	 myImage.outerHTML = strNewHTML
+	 }
+   }
+</script>
+
+<div id="logo">
+ <p><a href="/" title="Go back to homepage">
+
+  <!-- Internet Explorer; needs fixPNG -->
+<!--[if IE]>
+    <img src="/images/logo.png" alt="Logo" width="104" height="115"  onload="fixPNG(this)" />
+<![endif]-->
+
+  <!-- Sane browser.  No need for PNG fixups -->
+<!--[if !IE]><!-->
+    <img src="/images/logo.png" alt="Logo" width="104" height="115"  />
+<!--<![endif]-->
+
+  </a></p>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+ 
+        <h3 class="sideBarTitle">Contribute</h3>
+	<ul>
+	<li><a href="/create/article">Submit an Article</a></li>
+	<li><a href="/create/poll">Submit a Poll</a></li>
+	</ul>
+ 
+
+
+
+ 
+        <h3 class="sideBarTitle">Current Poll</h3>
+	
+	<form method="post" action="/polls/137">
+	<p><input type="hidden" name="poll_id" value="137" /><b>Do you use Avahi?</b></p><p>
+	
+	<label><input type="radio" name="pollanswer" value="1" />Often</label><br />
+	
+	<label><input type="radio" name="pollanswer" value="2" />Rarely</label><br />
+	
+	<label><input type="radio" name="pollanswer" value="3" />Never</label><br />
+	
+	<label><input type="radio" name="pollanswer" value="4" />I don&#39;t have it installed</label><br />
+	
+	<label><input type="radio" name="pollanswer" value="5" />What is Avahi?</label><br />
+	
+	<input type="submit" name="pollvote" value="Vote" /><br />
+        <span class="votescast">
+	( <a href="/polls/137">870 votes ~ 16 comments</a> )</span></p>
+	</form>
+	
+ 
+
+
+
+	<h3 class="sideBarTitle">Recent Weblogs</h3>
+	    
+	<div class="weblogs">
+              
+	<div class="body">
+	<div class="title"><a href="/users/dkg/weblog/45">Leslie Pack Kaelbling for Ada Lovelace Day</a></div>
+        <div class="tagline">by <a href="/users/dkg">dkg</a></div>
+	<div class="comments"> </div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/Utumno/weblog/53">DHCP, iptables gurus wanted</a></div>
+        <div class="tagline">by <a href="/users/Utumno">Utumno</a></div>
+	<div class="comments">  <a href="/users/Utumno/weblog/53#comments">1 comment</a></div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/BoyziiMen/weblog/2">Example</a></div>
+        <div class="tagline">by <a href="/users/BoyziiMen">BoyziiMen</a></div>
+	<div class="comments"> </div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/pmate/weblog/1">A brief list as post #1</a></div>
+        <div class="tagline">by <a href="/users/pmate">pmate</a></div>
+	<div class="comments">  <a href="/users/pmate/weblog/1#comments">2 comments</a></div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/ajt/weblog/157">More small computers</a></div>
+        <div class="tagline">by <a href="/users/ajt">ajt</a></div>
+	<div class="comments">  <a href="/users/ajt/weblog/157#comments">2 comments</a></div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/Nilshar/weblog/5">Lenny udev and vmware</a></div>
+        <div class="tagline">by <a href="/users/Nilshar">Nilshar</a></div>
+	<div class="comments">  <a href="/users/Nilshar/weblog/5#comments">3 comments</a></div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/Steve/weblog/206">Host upgraded to Lenny</a></div>
+        <div class="tagline">by <a href="/users/Steve">Steve</a></div>
+	<div class="comments">  <a href="/users/Steve/weblog/206#comments">1 comment</a></div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/simonw/weblog/314">IT - the devil is in the details</a></div>
+        <div class="tagline">by <a href="/users/simonw">simonw</a></div>
+	<div class="comments"> </div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/mcortese/weblog/11">Onda MT505UP</a></div>
+        <div class="tagline">by <a href="/users/mcortese">mcortese</a></div>
+	<div class="comments"> </div>
+	</div>
+              
+	<div class="body">
+	<div class="title"><a href="/users/toryoni/weblog/1">Software Engineer, Linux Admin</a></div>
+        <div class="tagline">by <a href="/users/toryoni">toryoni</a></div>
+	<div class="comments">  <a href="/users/toryoni/weblog/1#comments">2 comments</a></div>
+	</div>
+              
+	</div>
+
+
+	    <h3 class="sideBarTitle">More Weblogs</h3>
+	    <ul>
+	    <li><a href="http://planet.debian-administration.org" title="Planet Debian Administration">Archived Weblogs</a></li>	   
+            </ul>
+
+
+	    
+
+
+
+
+</div>
+
+<!-- Main body -->
+<div id="mainContent">
+   <!-- ./templates/pages/view_article.inc## Header ./templates/pages/view_article.inc## -->
+   <div id="header">
+    <div class="midHeader">
+    <h1 class="headerTitle"><a href="/">Debian Administration</a></h1>
+
+    <h2 id="headerSubTitle">System Administration Tips and Resources</h2>
+
+    </div>
+    <div class="subHeader">
+    [
+ <a href="/about/Debian%20Administration" title="About this site">About</a> |
+ <a href="/adverts/all" title="See our community adverts">Adverts</a> |
+ <a href="/archive" title="Archived Articles, by Month">Archive</a> |
+ <a href="/about/FAQ" title="Frequently asked questions with answers">FAQ</a> |
+ <a href="/hof" title="Article statistics">Hall of Fame</a> |
+ <a href="/about/Search" title="Search the articles which have been posted previously">Search</a> |
+ <a href="/tag" title="See tagged content">Tag Cloud</a> |
+
+      </div>
+    </div>
+
+<!-- Main body -->
+<div id="content">
+
+
+       <div class="article">
+       <!-- headline + section name -->
+       <h2 class="title">Creating Filesystems with Ruby  and FUSE</h2>
+
+       <div class="tagline"><p>Posted by  <a href="/users/Steve">Steve</a> on Fri  7 Nov 2008  at 19:30 </p></div>
+
+
+<!-- tag start -->
+  <script>
+function addTag(url)
+{
+    $("#current_tags").load( url,
+                             function() {
+                                 $("#new_tag").val( "" )
+                                 $("#add_tag").hide()
+                             })
+
+}
+
+ $(document).ready(function(){
+    $("#new_tag").autocomplete("/ajax.cgi?tag_complete=1;");
+    $('a#toggle').click(function() {
+       $('#add_tag').toggle(400);
+     })
+
+} )
+</script>
+<div class="tags">
+  <span id="current_tags">Tags: 
+
+<a href="/tag/fuse" title="Find more content with this tag" rel="tag">fuse</a>, 
+
+<a href="/tag/programming" title="Find more content with this tag" rel="tag">programming</a>, 
+
+<a href="/tag/ruby" title="Find more content with this tag" rel="tag">ruby</a>
+
+</span>
+  
+</div>
+
+<!-- tag end -->
+
+       <p>The <a href="http://fuse.sourceforge.net/" rel="nofollow">FUSE</a> project allows you to create filesystems in userspace - which means you can create a filesystem without having to get your hands dirty and modify your kernel source.  This is insanely cool, and can be used for many purposes.  Here we're going to look at using the Ruby bindings to create a simple filesystem.</p>
+<p>The FUSE project allows you to create a filesystem entirely in userspace merely by writing a couple of primitives - such as:</p>
+<ul>
+<li>Get contents of directory.</li>
+<li>Get file permissions.</li>
+<li>Write to file.</li>
+</ul>
+<p>With enough of the basic primitives implemented you'll end up with a working filesystem.  Unfortunately unless you're a fan of working in C this process is a little more complex than it should be.  To ease this there are bindings for Perl, Ruby, and other languages which makes getting started very simple.</p>
+<p>My recent FUSE experiments have been <a href="http://www.ruby-lang.org/" rel="nofollow">Ruby</a>-based, using the <a href="http://packages.debian.org/libfusefs-ruby1.8" rel="nofollow">libfusefs-ruby1.8</a> packages.</p>
+<p>Assuming you're working with a recent kernel you should be able to get started writing a filesystem very quickly.  Here's what it took for me:</p>
+<pre class="terminal">
+<span class="prompt">trashvm:~#</span> <span class="input">apt-get install libfusefs-ruby1.8 fuse-utils ruby1.8</span>
+Reading package lists... Done
+Building dependency tree... Done
+The following extra packages will be installed:
+  libfuse2 libruby1.8
+The following NEW packages will be installed
+  fuse-utils libfuse2 libfusefs-ruby1.8 libruby1.8
+0 upgraded, 4 newly installed, 0 to remove and 0 not upgraded.
+Need to get 1716kB of archives.
+After unpacking 6476kB of additional disk space will be used.
+..
+</pre>
+<p>Once I installed the packages I inserted the <tt>fuse</tt> kernel module:</p>
+<pre class="terminal">
+<span class="prompt">trashvm:~#</span> <span class="input">modprobe fuse</span>
+</pre>
+<p>Assuming this completes without errors you're ready to begin!  Lets create a simple filesystem that just proves we can.  Create the file <tt>hello.rb</tt>:</p>
+<pre>
+require 'fusefs'
+
+class HelloDir
+  def contents(path)
+    ['hello.txt']
+  end
+  def file?(path)
+    path == '/hello.txt'
+  end
+  def read_file(path)
+    "Hello, World!\n"
+  end
+end
+
+hellodir = HelloDir.new
+FuseFS.set_root( hellodir )
+
+# Mount under a directory given on the command line.
+FuseFS.mount_under ARGV.shift
+FuseFS.run
+</pre>
+<p>Once you've done that you can mount your filesystem by running:</p>
+<pre class="terminal">
+<span class="prompt">trashvm:~#</span> <span class="input">mkdir hello/</span>
+<span class="prompt">trashvm:~#</span> <span class="input">ruby hello.rb hello/ &amp;</span>
+</pre>
+<p>Once you've done this you should find you've got a directory called "hello/" which has our filesystem mounted in it.  This filesystem just creates a file called "hello.txt" - and when you read it you'll get the expected contents:</p>
+<pre class="terminal">
+<span class="prompt">trashvm:~/hello#</span> <span class="input">ls</span>
+hello.txt
+<span class="prompt">trashvm:~/hello#</span> <span class="input">cat hello</span>
+Hello, World!
+</pre>
+<p>You can now kill the userspace program and all will be gone:</p>
+<pre class="terminal">
+<span class="prompt">trashvm:~#</span> <span class="input">kill -9 %1</span>
+[1]+  Killed                  ruby1.8 hello.rb hello
+<span class="prompt">trashvm:~#</span> <span class="input">umount  hello</span>
+<span class="prompt">trashvm:~#</span> <span class="input">ls hello</span>
+<span class="prompt">trashvm:~#</span>
+</pre>
+<p>All gone.  Now is time to confess that I didn't create that <tt>hello.rb</tt> file - it is one of the examples included with the <a href="http://packages.debian.org/libfusefs-ruby1.8" rel="nofollow">libfusefs-ruby1.8 package</a>.  If you take a look beneath <tt>/usr/share/doc/libfusefs-ruby1.8</tt> directory you'll find several examples which each work in a similar way to the one we've demonstrated.</p>
+<p>So, what could you do with a FUSE filesystem?  Well if you're creative there are almost no limits.  As a more useful example I've placed a simple filesystem I created online at the foot of this article.  This allows you to mount MySQL as a filesystem:</p>
+<pre class="terminal">
+<span class="prompt">skx@gold:/mysql/yawns$</span><span class="input"> ls</span>
+about_pages.data   notifications.data             related.data
+about_pages.sql    notifications.sql              related.sql
+adverts.data       permissions.data               scratchpads.data
+adverts.sql        permissions.sql                scratchpads.sql
+articles.data      poll_anon_voters.data          sessions.data
+articles.sql       poll_anon_voters.sql           sessions.sql
+bookmarks.data     poll_answers.data              submission_notes.data
+bookmarks.sql      poll_answers.sql               submission_notes.sql
+comments.data      poll_questions.data            submissions.data
+comments.sql       poll_questions.sql             submissions.sql
+db_version.data    poll_submissions_answers.data  tags.data
+db_version.sql     poll_submissions_answers.sql   tags.sql
+ip_blacklist.data  poll_submissions.data          tips.data
+ip_blacklist.sql   poll_submissions.sql           tips.sql
+messages.data      poll_voters.data               users.data
+messages.sql       poll_voters.sql                users.sql
+news.data          preferences.data               weblogs.data
+news.sql           preferences.sql                weblogs.sql
+</pre>
+<p>Each directory beneath <tt>/mysql</tt> is a database, and each table of that database is presented as two files:</p>
+<ul>
+<li><tt>foo.sql</tt> - Just the table structure.</li>
+<li><tt>foo.data</tt> - The contents of the table.</li>
+</ul>
+<p>The code is very simple and mostly revolves around invoking <tt>mysqldump</tt> correctly, but despite that it is surprisingly useful.</p>
+<p>I'd love to hear suggestions on interesting uses for FUSE, and what you're doing with it!</p>
+<ul>
+<li><a href="http://www.debian-administration.org/articles/619/mysqlfs.rb" rel="nofollow">mysqlfs.rb</a></li>
+</ul>
+<p>This is the code which implements the MySQL filesystem.  It is very short as it only involves implementing a couple of methods:</p>
+<ul>
+<li><tt>contents</tt> - Return the filenames in a given directory.</li>
+<li><tt>directory?</tt> - Is the given name a directory?</li>
+<li><tt>file?</tt> - Is the given name a file?</li>
+<li><tt>read_file</tt> - Return the contents of a file.</li>
+</ul>
+
+
+
+<div style="text-align: right;">
+<a name="a2a_dd" onmouseover="a2a_show_dropdown(this)" onmouseout="a2a_onMouseOut_delay()" href="http://www.addtoany.com/bookmark?linkname=Creating Filesystems with Ruby  and FUSE&amp;linkurl=http%3A//www.debian-administration.org/articles/619"><img src="http://static.addtoany.com/buttons/share_save_171_16.gif" width="171" height="16" border="0" alt="Share/Save/Bookmark"/></a><script type="text/javascript">a2a_linkname="Creating Filesystems with Ruby  and FUSE";a2a_linkurl="http://www.debian-administration.org/articles/619";</script><script type="text/javascript" src="http://www.addtoany.com/menu/page.js"></script>
+</div>
+
+
+<div class="navigation">
+	<div class="row">
+        <span class="left">
+	<a href="/comment/onarticle/619">Add Comment</a>
+ <a href="/comment/feed/onarticle/619"><img src="/images/xml.gif" title="Subscribe to comments on this article." alt="XML logo" width="36" height="14"></a></span>
+         <span class="right">
+         <a href="/articles/619/print">Printable version</a>
+         </span>
+	<div class="spacer"> </div>
+	</div>
+
+
+	<p>&nbsp;</p>
+         <div class="row">
+	  <span class="left">
+           
+            <a href="/articles/618">&lt;&lt;&lt; Certificate Authority (CA) with OpenSSL</a>
+           
+          </span>
+          <span class="right">
+           
+            <a href="/articles/620">Booting Debian in 14 seconds &gt;&gt;&gt;</a>
+           
+          </span>
+	<div class="spacer"> </div>
+        </div>
+
+	</div>
+</div>
+
+
+
+
+        
+
+	
+	<p></p>
+	<div class="advert">
+	<center>
+	<script type="text/javascript"><!--
+	google_ad_client = "pub-1910202134166551";
+	google_ad_width = 728;
+	google_ad_height = 90;
+	google_ad_format = "728x90_as";
+	google_ad_type = "text_image";
+	google_ad_channel ="4454478967";
+	//--></script>
+	<script type="text/javascript"
+	  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+	</center>
+
+        
+	  <p  style="text-align: right;"><a href="/about/FAQ%20:%20Site%20Adverts">Why are these adverts here?</a></p>
+        
+	</div>
+	
+
+
+
+ <hr />
+ 
+
+<!-- Indent comments.
+     See matching loop to correctly terminate the comment indentation.
+  -->
+
+
+
+
+<!-- Comment entry -->
+<div class="comment">
+  <div class="link">
+   
+   
+    <a href="/articles/619#comment_1">#1</a>
+   
+   
+  </div>
+
+ <div class="title"><a name="comment_1">Re: Creating Filesystems with Ruby  and FUSE</a>
+
+ </div>
+
+ <div class="tagline">
+ Posted by <a href="/users/dkg">dkg</a>  (216.254.xx.xx) on Fri  7 Nov 2008  at 21:55 <br />
+[ <a href="/create/message/dkg">Send Message</a> | <a href="/users/dkg/scratchpad">View dkg's Scratchpad</a> | <a href="/users/dkg/weblog">View Weblogs</a> ]</div>
+
+ <div class="body">
+  Nice article, Steve! And thanks for the example, too. It makes me want to play with FUSE. <p> I find it interesting that FUSE is bringing over big pieces of the <a href="http://www.gnu.org/software/hurd/whatis/translator.html" rel="nofollow">translator concept</a> from microkernels like Hurd to Linux (which i guess is more of a hybrid than a monolithic kernel these days). <p> With subsystems like this, I&#39;m curious (as always) about how they handle error cases, and whether it&#39;s possible to cleanly drop privileges for the process that backs the mountpoint. Have you experimented with either of these questions?
+ </div>
+
+<p class="foot">
+ [
+ 
+  Parent
+ 
+
+ 
+
+ 
+  
+  | <a href="/comment/onarticle/619/1">Reply to this comment</a>
+  
+ 
+
+ 
+
+ 
+
+ 
+  
+  
+ 
+
+ 
+]
+</p>
+
+</div>
+
+<!-- Terminate the indentation of the comments. -->
+
+
+<p></p>
+
+
+<!-- Indent comments.
+     See matching loop to correctly terminate the comment indentation.
+  -->
+
+
+ <div class="indent">
+  
+
+
+
+<!-- Comment entry -->
+<div class="comment">
+  <div class="link">
+   
+   
+    <a href="/articles/619#comment_2">#2</a>
+   
+   
+  </div>
+
+ <div class="title"><a name="comment_2">Re: Creating Filesystems with Ruby  and FUSE</a>
+
+ </div>
+
+ <div class="tagline">
+ Posted by <a href="/users/Steve">Steve</a>  (82.41.xx.xx) on Sat  8 Nov 2008  at 00:23 <br />
+[ <a href="/create/message/Steve">Send Message</a> | <a href="/users/Steve/scratchpad">View Steve's Scratchpad</a> | <a href="/users/Steve/weblog">View Weblogs</a> ]</div>
+
+ <div class="body">
+  <p>The basic error cases seemed to be handled fairly well, but I admit I&#39;ve not hit anything too weird in my current use.<p>The only thing to say is that sometimes errors weren&#39;t clear. For example trying to bind two filesystems to the same directory failed - and the error was misleading.<p>Again permissions have mostly worked as expected; if you&#39;re a member of the fuse group you can bind/unbind new filesystems - but in this piece I only mentioned root because that is simpler.<p>I&#39;ve written a couple of toy filesystems to do different tasks, but so far nothing too useful. I&#39;m sure there are a few killer applications out there <a href="http://fuse.sourceforge.net/wiki/index.php/FileSystems" rel="nofollow">not already implemented</a> it just takes that spark of creativity to come up with them.<p><a href="http://www.steve.org.uk/" rel="nofollow">Steve</a>
+ </div>
+
+<p class="foot">
+ [
+ 
+  <a href="#comment_1">Parent</a>
+ 
+
+ 
+
+ 
+  
+  | <a href="/comment/onarticle/619/2">Reply to this comment</a>
+  
+ 
+
+ 
+
+ 
+
+ 
+  
+  
+ 
+
+ 
+]
+</p>
+
+</div>
+
+<!-- Terminate the indentation of the comments. -->
+
+ </div>
+  
+
+
+<p></p>
+
+
+<!-- Indent comments.
+     See matching loop to correctly terminate the comment indentation.
+  -->
+
+
+
+
+<!-- Comment entry -->
+<div class="comment">
+  <div class="link">
+   
+   
+    <a href="/articles/619#comment_3">#3</a>
+   
+   
+  </div>
+
+ <div class="title"><a name="comment_3">Re: Creating Filesystems with Ruby  and FUSE</a>
+
+ </div>
+
+ <div class="tagline">
+ Posted by <a href="/users/Anonymous">Anonymous</a>  (62.142.xx.xx) on Mon 10 Nov 2008  at 07:50 <br />
+</div>
+
+ <div class="body">
+  It appears that you have a bug in your mysqlfs.rb. <br /><br />The constructor should be initialize not initialise
+ </div>
+
+<p class="foot">
+ [
+ 
+  Parent
+ 
+
+ 
+
+ 
+  
+  | <a href="/comment/onarticle/619/3">Reply to this comment</a>
+  
+ 
+
+ 
+
+ 
+
+ 
+  
+  
+ 
+
+ 
+]
+</p>
+
+</div>
+
+<!-- Terminate the indentation of the comments. -->
+
+
+<p></p>
+
+
+<!-- Indent comments.
+     See matching loop to correctly terminate the comment indentation.
+  -->
+
+
+ <div class="indent">
+  
+
+
+
+<!-- Comment entry -->
+<div class="comment">
+  <div class="link">
+   
+   
+    <a href="/articles/619#comment_4">#4</a>
+   
+   
+  </div>
+
+ <div class="title"><a name="comment_4">Re: Creating Filesystems with Ruby  and FUSE</a>
+
+ </div>
+
+ <div class="tagline">
+ Posted by <a href="/users/Steve">Steve</a>  (82.41.xx.xx) on Mon 10 Nov 2008  at 09:19 <br />
+[ <a href="/create/message/Steve">Send Message</a> | <a href="/users/Steve/scratchpad">View Steve's Scratchpad</a> | <a href="/users/Steve/weblog">View Weblogs</a> ]</div>
+
+ <div class="body">
+  <p>Thanks, that was a last minute addition that was clearly wrong.<p>Updated now.<p><a href="http://www.steve.org.uk/" rel="nofollow">Steve</a>
+ </div>
+
+<p class="foot">
+ [
+ 
+  <a href="#comment_3">Parent</a>
+ 
+
+ 
+
+ 
+  
+  | <a href="/comment/onarticle/619/4">Reply to this comment</a>
+  
+ 
+
+ 
+
+ 
+
+ 
+  
+  
+ 
+
+ 
+]
+</p>
+
+</div>
+
+<!-- Terminate the indentation of the comments. -->
+
+ </div>
+  
+
+
+<p></p>
+
+
+
+
+  <!-- Closing tag for if_error -->
+
+</div>
+
+  <div id="footer">
+	<div>
+<p>Articles and comments are the property of their respective posters.</p>
+<p>Trademarks are the property of their respective owners.<br />  Debian is <a
+href="http://tarr.uspto.gov/servlet/tarr?regser=serial&amp;entry=75386376&amp;action=Request+Status">a registered trademark</a> of <a href="http://www.spi-inc.org">Software in the Public Interest, Inc</a>.</p>
+<p>This site is copyright &copy; 2004-2009 <a class="footer" href="http://www.pink-pony-productions.com/">Pink Pony Productions</a> / <a href="http://www.steve.org.uk/">Steve Kemp</a>.<br />Site hosting provided by <a href="http://www.bytemark.co.uk/">Bytemark Hosting</a>.</p>
+<p>Email: <a class="footer" href="mailto:webmaster@debian-administration.org">webmaster@debian-administration.org</a></p>
+<p><a href="/about/Syndication">Article Feeds in Atom, RSS, &amp; RDF formats</a></p>
+</div></div>
+
+<!-- Right Sidebar -->
+<div id="rightbar">
+  
+
+      <h3 class="sideBarTitle">User Login</h3>
+            <form id="user-login" action="/" method="post">
+	    <input type="hidden" name="target" value="/articles/619" />
+                
+	<p><b>Username</b>:<br />
+        <input id="name" name="lname" type="text" size="14" maxlength="25" /></p>
+	<p><b>Password</b>:<br />
+	<input id="pass" name="lpass" type="password" size="15" maxlength="25" /></p>
+	<p>[ <a href="/login">Advanced Login</a> ]</p>
+        <p><input type="submit" name="login" value="Login" /></p>
+    
+        <p><a href="/create/user">Register Account</a></p>
+            </form>
+
+
+
+
+
+
+   
+        
+
+
+        
+
+        
+           <div class="advert">
+<h3 class="sideBarTitle">Sponsored Links</h3>
+<p></p>
+<div align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-1910202134166551";
+//200x90, created 08/12/07
+google_ad_slot = "2315151555";
+google_ad_width = 200;
+google_ad_height = 90;
+//--></script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+            
+	       <p><a href="/about/FAQ%20:%20Site%20Adverts">Why are these adverts here?</a></p>
+            
+	    </div>
+	
+
+   
+
+
+
+
+
+   
+
+
+  
+
+<h3 class="sideBarTitle">Quick Site Search</h3>
+ <form id="quickSearch" action="/search/" method="get">
+  <p><input size="10" id="search"  name="q">
+  <input type="hidden" name="cmd" value="Search!">
+  <input type="submit" name="go" value="Go"></p>
+ </form>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+</div></div>
+  </body>
+</html>
+

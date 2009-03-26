@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>ActiveScaffold  :: A Ruby on Rails plugin for dynamic, AJAX CRUD interfaces</title>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/activescaffold" />
+  <link href="/stylesheets/reset.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/main.css" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/prototype.js" type="text/javascript"></script>
+  <script src="/javascripts/code_highlighter.js" type="text/javascript"></script>
+  <script src="/javascripts/form_enhancements.js" type="text/javascript"></script>
+  <script src="/javascripts/ruby.js" type="text/javascript"></script>
+  <!--[if IE]><link href="/stylesheets/main-ie.css" rel="stylesheet" type="text/css" /><![endif]-->
+</head>
+<body>
+  <div id="wrap">
+    <div id="header"><a href="/"><h1>ActiveScaffold</h1></a>
+      <h2 class="description">A <a href="http://rubyonrails.org/">Ruby on Rails</a> plugin from the makers of <a href="http://www.ajaxscaffold.com">AjaxScaffold</a></h2>
+      <ul id="nav">
+        
+           <li><a class="selected" href="/">Home</a></li>
+        
+           <li><a href="/docs">Documentation</a></li>
+        
+          
+        
+           <li><a href="/team">Team</a></li>
+        
+           <li><a href="/help">Help</a></li>
+        
+           <li><a href="/contribute">Contribute</a></li>
+        
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="http://demo.activescaffold.com">Demo</a></li>
+        <div class="clear-fix"></div>
+     </ul>
+      <p id="latest-release">
+        source is on <strong>Github</strong>
+        <small>
+          <a href="http://github.com/activescaffold/active_scaffold/zipball/master">download</a> |
+          <a href="http://github.com/activescaffold/active_scaffold/tree/master">git</a>
+        </small>
+      </p>
+      <div id="search">
+        <form method="get" id="sform" action="/search">
+          <input type="text" id="q" value="" name="q" size="15" />
+        </form>
+        <script type="text/javascript">
+          new TextFieldWithExample('q','Search');
+        </script>
+      </div>
+    </div>
+    
+  <div class="content-sidebar">
+  <div id="content">
+    <h2>Welcome</h2>
+    <div class="entry">
+      <p>Most web applications have many more model objects exposed on the backend, or admin side, than they do on the front. Coding interfaces for all those models is redundant and a waste of resources when all you need is <span class="caps">CRUD</span> functionality that&#8217;s smart enough to handle all your ActiveRecord associations.</p>
+
+
+	<p>Enter the ActiveScaffold plugin. The successor to the popular <a href="http://www.ajaxscaffold.com">AjaxScaffold</a> project  that amassed <strong>over 36,000 downloads</strong>, ActiveScaffold provides you with a wealth of dynamically created goodness:</p>
+
+
+	<ul>
+	<li>An AJAXified table interface for creating, updating, and deleting objects</li>
+		<li>Automatic handling of ActiveRecord associations</li>
+		<li>Sorting, Search and Pagination</li>
+		<li>Graceful JavaScript degradation</li>
+		<li>RESTful <span class="caps">API</span> support (XML/YAML/JSON) baked in</li>
+		<li>Sexy <span class="caps">CSS</span> styling and theming support</li>
+		<li>More extension points than you can shake a stick at</li>
+		<li>Guaranteed to work on Firefox 1+, <span class="caps">IE 6</span>+ and Safari 2+</li>
+		<li>Released under the <span class="caps">MIT</span> License, the same one as Rails itself, so you can use it freely in your commercial applications.</li>
+	</ul>
+
+
+	<h3>Getting Started <small>(or read the <a href="tutorials/getting-started">full tutorial</a>)</small></h3>
+
+
+	<p>Install the latest version of the plugin (May require git to be installed):</p>
+
+
+<pre>
+script/plugin install git://github.com/activescaffold/active_scaffold.git -r rails-2.2
+</pre>
+
+	<p>or keep the .git directory and switch to the &#8220;next&#8221; branch (<code>cd vendor/plugins/active_scaffold &#38;&#38; git checkout next</code>) and get the latest updates as the core team submits them. However, <strong>the &#8220;next&#8221; branch can be highly unstable (perhaps not even fully tested) and is not recommended</strong>.</p>
+
+
+	<p>Add this to your layout:</p>
+
+
+<pre><code class="ruby">&lt;%= javascript_include_tag :defaults %&gt;
+&lt;%= active_scaffold_includes %&gt;</code></pre>
+
+	<p>Add this to your controller:</p>
+
+
+<pre><code class="ruby">active_scaffold :&lt;your_model_name&gt;</code></pre>
+
+	<p>.. for example:</p>
+
+
+<pre><code class="ruby">class UsersController &lt; ApplicationController
+  active_scaffold :user
+end</code></pre>
+
+	<p>That&#8217;s it! Your first ActiveScaffold is up and running. But if you crave more, read on!</p>
+
+
+	<h3>Further Reading</h3>
+
+
+	<ul>
+	<li><a href="/tutorials/getting-started">Getting Started</a> &#8211; goes a bit further than the examples on this page</li>
+		<li><a href="/2007/5/24/how-to-approach-active-scaffold">How to Approach ActiveScaffold</a> &#8211; provides some perspective on how you can use ActiveScaffold: use cases, benefits and navigating the documentation.</li>
+	</ul>
+
+
+	<h3>Alternatives</h3>
+
+
+	<p>We want you to find the best dynamic interface builder solution for your individual needs. Here are some other projects attacking similar problems that you might want to check out if ActiveScaffold isn&#8217;t what you&#8217;re looking for:</p>
+
+
+	<ul>
+	<li><a href="http://www.streamlinedframework.org/">Streamlined</a></li>
+		<li><a href="http://hobocentral.net/">Hobo</a></li>
+		<li><a href="http://code.trebex.net/auto-admin">AutoAdmin</a></li>
+	</ul>
+    </div>
+  </div>
+<div id="sidebar">
+  <a href="http://demo.activescaffold.com" id="demo-link">View the Demo</a>
+
+  <ul id="actions">
+    <li class="donate">
+<form action="https://www.paypal.com/cgi-bin/webscr" id="donation-form" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----">
+      <a href="#" onclick="$('donation-form').submit();">
+      Donate<small>Open source doesn't just write itself :)</small>
+      </a>
+</form>
+
+    </li>
+    <li class="whos-using">
+      <a href="http://wiki.activescaffold.com/wiki/published/CompaniesUsingActiveScaffold">
+      Who's using ActiveScaffold?<small>Add your company!</small>
+      </a>
+    </li>
+    <li class="plugins">
+      <a href="http://wiki.activescaffold.com/wiki/published/ThirdPartyPlugins">
+      Third Party Plugins<small>Add-ons for ActiveScaffold</small>
+      </a>
+    </li>
+  </ul>
+
+  <h4>Sponsors</h4>
+  <ul id="sponsors">
+    <li><a id="slimtimer-link" href="http://www.slimtimer.com">SlimTimer.com</a></li>
+    <li><a id="qualitysmith-link" href="http://tinyurl.com/2avtfr">QualitySmith.com</a></li>
+    <li><a id="area17-link" href="http://www.area17.com">Area17.com</a></li>
+  </ul>
+
+</div>
+</div>
+
+
+  </div>
+  <div id="footer">
+    <a id="minielements-link" href="http://www.minielements.com">MiniElements</a>
+    <p>Powered by <a href="http://mephistoblog.com/">Mephisto</a></p>
+  </div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-79951-10";
+urchinTracker();
+</script>
+
+</body>
+</html>

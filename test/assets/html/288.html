@@ -1,0 +1,4386 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+ <script type="text/javascript">
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ </script>
+ <title>Issue 29 - 
+ googleappengine -
+ 
+ Please add ruby support - Google Code</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/6312039727770611853/css/d_20081117.css">
+ 
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/6312039727770611853/css/d_ie.css" >
+<![endif]-->
+</head>
+<body class="t3">
+ <div id="gaia">
+ 
+ <span>
+ 
+ <a href="/p/support/wiki/WhatsNew" style="color:#a03">What's new?</a>
+ | <a href="/p/support/">Help</a>
+ | <a href="/more/">Directory</a>
+ | <a href="http://www.google.com/accounts/Login?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29">Sign in</a>
+ 
+ </span>
+
+ </div>
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+ <table style="padding:0px; margin: 20px 0px 0px 0px; width:100%" cellpadding="0" cellspacing="0">
+ <tr>
+ <td style="width:153px; text-align:center;">
+ <a href="/">
+  
+ <img src="http://www.gstatic.com/codesite/ph/images/code_sm.png"
+ width="153" height="55" alt="Google">
+ 
+ </a>
+ </td>
+ <td style="padding-left: 0.8em">
+ 
+ 
+ <div id="pname" style="margin: 0px 0px -3px 0px">
+ <a href="/p/googleappengine/" style="text-decoration:none; color:#000">googleappengine</a>
+ </div>
+ <div id="psum">
+ <i><a id="project_summary_link" href="/p/googleappengine/" style="text-decoration:none; color:#000">Google App Engine</a></i>
+ </div>
+ 
+ </td>
+ <td style="white-space:nowrap; text-align:right">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="">
+ <input type="submit" name="projectsearch" value="Search Projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+
+<table id="mt" cellspacing="0" cellpadding="0" width="100%" border="0">
+ <tr>
+ <th onclick="if (!cancelBubble) _go('/p/googleappengine/');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="/p/googleappengine/">Project&nbsp;Home</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/googleappengine/downloads/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="/p/googleappengine/downloads/list">Downloads</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/googleappengine/w/list');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="/p/googleappengine/w/list">Wiki</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/googleappengine/issues/list');">
+ <div class="tab active">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="/p/googleappengine/issues/list">Issues</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ 
+ 
+ 
+ <th onclick="if (!cancelBubble) _go('/p/googleappengine/source/checkout');">
+ <div class="tab inactive">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <a onclick="cancelBubble=true;" href="/p/googleappengine/source/checkout">Source</a>
+ </div>
+ </div>
+ </th><td>&nbsp;&nbsp;</td>
+ 
+ 
+ <td width="100%">&nbsp;</td>
+ </tr>
+</table>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ 
+ <td>
+ <div class="issueDetail">
+<div class="isf">
+ 
+ 
+ <span class="inIssueEntry">
+ <a href="entry">New Issue</a>
+ </span> |
+ 
+ <span class="inIssueList">
+ <span>Search</span>
+ <form action="list" method="GET" style="display:inline">
+ <select id="can" name="can" style="font-size:92%">
+ 
+<option disabled="disabled">Search within:</option>
+<option value="1" >&nbsp;All issues</option>
+<option value="2" selected=selected>&nbsp;Open issues</option>
+
+<option value="6" >&nbsp;New issues</option>
+<option value="7" >&nbsp;Issues to verify</option>
+
+ </select>
+ <span>for</span>
+ <input type="text" size="32" id="q" name="q" value="" style="font-size:92%" >
+ 
+ <input type="hidden" name="colspec" id="search_colspec" value="ID Type Status Priority Stars Owner Summary Log Component" >
+ 
+ 
+ 
+ <input type="hidden" name="cells" value="tiles" >
+ <input type="submit" value="Search" style="font-size:92%" >
+ </form>
+ </span> |
+ <span class="inIssueAdvSearch">
+ <a href="advsearch">Advanced Search</a>
+ </span> |
+ <span class="inIssueSearchTips">
+ <a href="searchtips">Search Tips</a>
+ </span>
+</div>
+</div>
+
+ </td>
+ 
+ 
+ 
+ 
+ 
+ 
+ <td height="4" align="right" valign="top" class="bevel-right">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ </td>
+ </tr>
+</table>
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+
+<div id="maincol">
+<!-- IE -->
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+<style type="text/css">
+ .attachments { width:33%; border-top:2px solid #999; padding-top: 3px}
+ .attachments table { margin-bottom: 0.75em; }
+ .attachments table tr td { padding: 0; margin: 0; font-size: 95%; }
+ .label { white-space: nowrap; }
+ .derived { font-style:italic }
+</style>
+<div id="issueheader">
+<table cellpadding="0" cellspacing="0" width="100%"><tbody>
+ <tr>
+ <td class="vt h3" nowrap="nowrap" style="padding:0 5px">
+ 
+ Issue <a href="detail?id=29">29</a>:
+ </td>
+ <td width="90%" class="vt">
+ <span class="h3" >Please add ruby support</span>
+ </td>
+ <td>
+ 
+ <div class="pagination">
+ <a href="detail?id=25" title="Prev">&lsaquo; Prev</a>
+ 7 of 650
+ <a href="detail?id=30" title="Next">Next &rsaquo;</a>
+ </div>
+ </td>
+ </tr>
+ <tr>
+ <td></td>
+ <td nowrap="nowrap">
+ 
+ 
+ 1465 people starred this issue and may be notified of changes.
+ 
+ 
+ </td>
+ <td align="center" nowrap="nowrap">
+ 
+ <a href="http://code.google.com/p/googleappengine/issues/list">Back to list</a>
+ 
+ </td>
+ </tr>
+</tbody></table>
+</div><table width="100%" cellpadding="0" cellspacing="0" border="0" class="issuepage">
+<tbody class="collapse"> 
+ <tr>
+ <td id="issuemeta" rowspan="1000"> 
+ <table cellspacing="0" cellpadding="0">
+ <tr><th align="left">Status:&nbsp;</th>
+ <td width="100%">
+ 
+ Acknowledged
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr><th align="left">Owner:&nbsp;</th><td>
+ 
+ 
+ ----
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ <tr><td colspan="2">
+ <a href="list?q=label:Type-Feature"
+ title=""
+ class="label"><b>Type-</b>Feature</a>
+ </td></tr>
+ 
+ 
+ 
+ <tr><td colspan="2">
+ <a href="list?q=label:Priority-Medium"
+ title=""
+ class="label"><b>Priority-</b>Medium</a>
+ </td></tr>
+ 
+ 
+ 
+ <tr><td colspan="2">
+ <a href="list?q=label:Component-Languages"
+ title=""
+ class="label"><b>Component-</b>Languages</a>
+ </td></tr>
+ 
+ 
+ 
+ 
+ 
+ </table>
+ <br><br>
+ 
+ 
+ 
+ <div style="white-space:nowrap"><a href="http://www.google.com/accounts/Login?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29"
+ >Sign in</a> to add a comment</div>
+ 
+ 
+ 
+ 
+ <br>
+ 
+ 
+ 
+  
+ 
+ 
+ </td>
+ <td class="vt issuedescription" width="100%">
+ <div class="author">
+ Reported by <a href="/u/jbwellsiv/">jbwellsiv</a>,
+ <span class="date" title="Tue Apr  8 11:50:58 2008">Apr 08, 2008</span>
+ </div>
+<pre>
+Would prefer also rails support and merb, but just ruby itself would be a
+great first step.
+</pre>
+
+
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c7"
+ href="#c7">7</a>
+ by
+ <a href="/u/K.Adam.Christensen/">K.Adam.Christensen</a></span>,
+ <span class="date" title="Tue Apr  8 15:35:00 2008">Apr 08, 2008</span>
+<pre>
+<a href="http://rack.rubyforge.org/">http://rack.rubyforge.org/</a> may be something to look into, since it was modeled after WSGI, thus merb and 
+ramaze and other frameworks that use rack could be implemented.
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c8"
+ href="#c8">8</a>
+ by
+ <a href="/u/berlin.brown/">berlin.brown</a></span>,
+ <span class="date" title="Tue Apr  8 15:37:29 2008">Apr 08, 2008</span>
+<pre>
+I think java and ruby will work.  And with java, jruby is a perfectly acceptable ruby
+implementation.  I would prefer CRuby, but it would be nice to have java also.  Some
+of us are multi-lingual like that.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c9"
+ href="#c9">9</a>
+ by
+ <a href="/u/justin.fagnani/">justin.fagnani</a></span>,
+ <span class="date" title="Tue Apr  8 16:02:01 2008">Apr 08, 2008</span>
+<pre>
+The problem isn't a parallel to WSGI, it's a parallel to PyPy. PyPy is what allows the sandboxing that prevents 
+system access and lets Google meter CPU usage. Unless Ruby has something similar, Google would have to 
+engineer it on their own, and that's quite an effort.
+
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c70"
+ href="#c70">70</a>
+ by
+ <a href="/u/waikurosu/">waikurosu</a></span>,
+ <span class="date" title="Wed Apr  9 16:24:06 2008">Apr 09, 2008</span>
+<pre>
+Guys, they're counting stars (the one in the top left-hand corner) not +1 comments,
+please stop spamming so that others have a chance to post useful information.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c81"
+ href="#c81">81</a>
+ by
+ <a href="/u/timuckun/">timuckun</a></span>,
+ <span class="date" title="Wed Apr  9 21:38:52 2008">Apr 09, 2008</span>
+<pre>
+Like this <a href="http://heroku.com/">http://heroku.com/</a> 
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c134"
+ href="#c134">134</a>
+ by
+ <a href="/u/lani.sara/">lani.sara</a></span>,
+ <span class="date" title="Thu Apr 10 03:56:26 2008">Apr 10, 2008</span>
+<pre>
+If you want Ruby on Rails, why don't you try out the Morph Application Platform?
+www.morphexchange.com
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c168"
+ href="#c168">168</a>
+ by
+ <a href="/u/@VxVURFdXABhCXwV1/">r...@ryantm.com</a></span>,
+ <span class="date" title="Thu Apr 10 07:15:20 2008">Apr 10, 2008</span>
+<pre>
+Please stop plusing this, and just Star it. Same effect, but it doesn't clutter the
+comments. Thanks! Also, every time you comment with +1 you are spamming everyone,
+which isn't very nice, thanks!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c171"
+ href="#c171">171</a>
+ by
+ <a href="/u/daniel.croak/">daniel.croak</a></span>,
+ <span class="date" title="Thu Apr 10 07:26:10 2008">Apr 10, 2008</span>
+<pre>
+Can the priority move higher than medium?
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c172"
+ href="#c172">172</a>
+ by
+ <a href="/u/@VxVURFdXABhCXwV1/">r...@ryantm.com</a></span>,
+ <span class="date" title="Thu Apr 10 07:30:20 2008">Apr 10, 2008</span>
+<pre>
+The way to increase the priority is to have more stars than Perl ;) that's probably a
+very naive answer though. Someone should write some good stuff about why Ruby won't
+suck if implemented on GAE and post it here. Or write code that improves Ruby's CGI
+libraries. It's unlikely that RoR would get inside the App Engine because it relies
+heavily on persistent processes to not be slow.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c240"
+ href="#c240">240</a>
+ by
+ <a href="/u/judofyr/">judofyr</a></span>,
+ <span class="date" title="Thu Apr 10 10:17:52 2008">Apr 10, 2008</span>
+<pre>
+Please! Just star, don't comment! We're getting lots of spam!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c242"
+ href="#c242">242</a>
+ by
+ <a href="/u/chriseppstein/">chriseppstein</a></span>,
+ <span class="date" title="Thu Apr 10 10:26:27 2008">Apr 10, 2008</span>
+<pre>
+Stolen from another thread:
+Just a friendly reminder... if you're about to post a comment that says &quot;me too!&quot; or
+&quot;you've got my vote&quot; or &quot;+1&quot;... please just star this issue and leave the
+comments-space clean.  When you star the issue, your vote counts.  Issues with a
+larger number of people starring the issue are likely going to get more attention. 
+More comments, however, are just going to clutter the system and annoy those who have
+already starred the issue, possibly encouraging them to unstar the issue, lowering
+its perceived importance.  Again, comments should be used to update progress on the
+issue itself, not for voting... please leave this to the star.  Thanks.
+
+I apoligize for my earlier +1 :-P
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c258"
+ href="#c258">258</a>
+ by
+ <a href="/u/dsallings/">dsallings</a></span>,
+ <span class="date" title="Thu Apr 10 11:57:03 2008">Apr 10, 2008</span>
+<pre>
+Unstarring.  I don't need an email every time someone has to declare to the world
+that he's an idiot.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c279"
+ href="#c279">279</a>
+ by
+ <a href="/u/@VxVXQVFQARNAXQh1/">ma...@google.com</a></span>,
+ <span class="date" title="Thu Apr 10 12:45:50 2008">Apr 10, 2008</span>
+<pre>
+<i>(No comment was entered for this change.)</i>
+</pre>
+ 
+ 
+ <div class="updates">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <b>Labels:</b> -Type-Defect Type-Feature<br>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c289"
+ href="#c289">289</a>
+ by
+ <a href="/u/rictic/">rictic</a></span>,
+ <span class="date" title="Thu Apr 10 14:55:26 2008">Apr 10, 2008</span>
+<pre>
+Please stop commenting with just +1.  If you're interested in this feature, click the
+star to the left of the name near the top.
+
+There are plenty of people who want to be notified if anything comes of this, but
+don't want to get an email with every &quot;+1&quot; that gets posted.  Google Code's issue
+tracker interface is designed around prioritizing the number of people who have
+starred an issue, not the number of &quot;+1&quot; comments that get added.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c290"
+ href="#c290">290</a>
+ by
+ <a href="/u/drnicwilliams/">drnicwilliams</a></span>,
+ <span class="date" title="Thu Apr 10 15:18:22 2008">Apr 10, 2008</span>
+<pre>
+Sandbox for Ruby - <a href="http://code.whytheluckystiff.net/sandbox/">http://code.whytheluckystiff.net/sandbox/</a>
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c292"
+ href="#c292">292</a>
+ by
+ <a href="/u/rictic/">rictic</a></span>,
+ <span class="date" title="Thu Apr 10 15:46:39 2008">Apr 10, 2008</span>
+<pre>
+Saying &quot;+1&quot; is counter-productive.  You're spamming everyone who's starred the issue,
+causing people to unstar this issue, which devalues the issue.
+
+Stop &quot;+1&quot; spamming.  Star the issue.  The star.  Beside the name of the issue at the
+top of this page.  Click that.
+
+These comments are for discussion of the issue itself. Comment threads are terrible
+voting mechanisms.
+
+(and, following my own advice, I'm shutting up)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c315"
+ href="#c315">315</a>
+ by
+ <a href="/u/binary42/">binary42</a></span>,
+ <span class="date" title="Thu Apr 10 17:15:59 2008">Apr 10, 2008</span>
+<pre>
+What I would like to see is a way the community can help do things like port Ruby to this environment.  I'm sure 
+there are special needs so what I would propose is to allow some sort of limited C API or something that the 
+language must use during runtime as well as some simple call-backs or signals to handle.  With that in place, 
+people could spend their own time porting languages of their choice. So please, add ruby support by adding an 
+open harness for new languages that we can work on.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c318"
+ href="#c318">318</a>
+ by
+ <a href="/u/drnicwilliams/">drnicwilliams</a></span>,
+ <span class="date" title="Thu Apr 10 17:34:28 2008">Apr 10, 2008</span>
+<pre>
+Instead of unstarring, perhaps add a filter to mailbox:
+
+subject:(<a title="Please add ruby support"  href="/p/googleappengine/issues/detail?id=29">Issue 29</a> in googleappengine: Please add ruby support)
+action: Skip Inbox
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c321"
+ href="#c321">321</a>
+ by
+ <a href="/u/rictic/">rictic</a></span>,
+ <span class="date" title="Thu Apr 10 17:58:39 2008">Apr 10, 2008</span>
+<pre>
+How do you star it without commenting?  You... you click the star.  The blue outline
+of a star next to the issue at the top of the page.  Click it.  It becomes yellow and
+filled in.  Noone gets spammed.
+
+This isn't rocket surgery.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c327"
+ href="#c327">327</a>
+ by
+ <a href="/u/codeslinger/">codeslinger</a></span>,
+ <span class="date" title="Thu Apr 10 19:21:47 2008">Apr 10, 2008</span>
+<pre>
+Ruby support would be pretty awesome, but as I understand your execution model for AppEngine you'd most 
+likely have to wait for Rubinius to be farther along to get a VM that can be reasonably sandboxed. Perhaps some 
+of that famous 20% time can be applied to that project to help Ruby support in AppEngine along?
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c333"
+ href="#c333">333</a>
+ by
+ <a href="/u/softmindtechnology/">softmindtechnology</a></span>,
+ <span class="date" title="Thu Apr 10 19:52:14 2008">Apr 10, 2008</span>
+<pre>
++ 1 
+
+Rails + Merb + DataMapper should be included as well.
+
+Yes.... Google is the most trusted name and the best ever. I vote for google as well.
+Google should make this as fst as possible to break the hype MS is creating for IronRuby.
+
+As pr my knowledge... for many years MS just adpots the prpven technology. I am sure
+they will adopt this AppEngine too.
+
+Google should make thuis fast to leave MS years behind.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c396"
+ href="#c396">396</a>
+ by
+ <a href="/u/arthur.kalm/">arthur.kalm</a></span>,
+ <span class="date" title="Fri Apr 11 08:51:55 2008">Apr 11, 2008</span>
+<pre>
+mats.ekblom, they're doing the same thing in every other ticket. The Google guys
+might decide to just close these tickets down because of all the spam :P
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c415"
+ href="#c415">415</a>
+ by
+ <a href="/u/@VxVURFdXABhCXwV1/">r...@ryantm.com</a></span>,
+ <span class="date" title="Fri Apr 11 12:58:55 2008">Apr 11, 2008</span>
+<pre>
+This +1 madness inspired me to write a blog post:
+<a href="http://www.ryantm.com/blog/2008/04/11/more-evidence-that-programmers-arent-smarter-than-other-people/">http://www.ryantm.com/blog/2008/04/11/more-evidence-that-programmers-arent-smarter-than-other-people/</a>
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c479"
+ href="#c479">479</a>
+ by
+ <a href="/u/mats.ekblom/">mats.ekblom</a></span>,
+ <span class="date" title="Mon Apr 14 02:01:18 2008">Apr 14, 2008</span>
+<pre>
+** NO FLAMEWARS PLEASE! **
+
+Every time you add a comment it sends out an EMAIL to everybody. Our inboxes are
+filled with hundreds of useless mails that says &quot;+1&quot;. We are drowning in SPAM :-(
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; TO VOTE FOR RUBY - DO THIS INSTEAD &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+1) Look for the blue outline of a star next to <a title="Please add ruby support"  href="/p/googleappengine/issues/detail?id=29">Issue 29</a>: at the top of this page.
+2) Click on it. The star becomes yellow and filled in.
+3) Now you have voted for ruby. Well done :-)
+
+N O T E : It is the number of stars that counts, not the comments!
+
+Once again:
+
+DO **NOT** ADD A COMMENT (unless you have something IMPORTANT to say). IT SENDS AN
+EMAIL TO EVERYBODY ELSE!!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c480"
+ href="#c480">480</a>
+ by
+ <a href="/u/@VxZQQlBQDhlHWAh5/">s...@samj.net</a></span>,
+ <span class="date" title="Mon Apr 14 04:27:21 2008">Apr 14, 2008</span>
+<pre>
+I just mailed code@google.com with this feedback and suggest those of you annoyed by
+the '+1 spam' let them know what you think as well. Those of you considering posting
+yet another '+1' comment, please refer to the previous comment #479.
+
+Date: Sat, Apr 12, 2008 at 1:31 PM
+Subject: Please fix '+1' SPAM
+To: code@google.com
+
+Hi,
+
+Can you please check comments for '+1' using something like (/\+\s*1/) and warn users
+to make use of the built in 'starring' functionality, giving them a chance to avoid
+spamming everyone. Here's a good example, where almost a thousand people are spammed
+with every '+1' post: <a href="http://code.google.com/p/googleappengine/issues/detail?id=29">http://code.google.com/p/googleappengine/issues/detail?id=29</a>
+
+Thanks,
+
+Sam
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c494"
+ href="#c494">494</a>
+ by
+ <a href="/u/justin.fagnani/">justin.fagnani</a></span>,
+ <span class="date" title="Mon Apr 14 13:48:00 2008">Apr 14, 2008</span>
+<pre>
+Please voice your support for issue comment filtering by *starring* <a title="&quot;+1&quot; comments are spamming my inbox and cluttering the issues, please filter them" class=closed_ref href="/p/googleappengine/issues/detail?id=203"> Issue 203 </a>
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c507"
+ href="#c507">507</a>
+ by
+ <a href="/u/deo@google.com/">deo@google.com</a></span>,
+ <span class="date" title="Tue Apr 15 12:23:08 2008">Apr 15, 2008</span>
+<pre>
++1 spam and some of the related anti-spam comments removed. I'll remove the rest of
+the anti-spam comments once things have settled.
+
+As others have stated, star the issue if you're interested in showing your support.
++1 and &quot;me too!&quot; posts don't have any positive impact, and only serve to annoy other
+users.
+
+Those concerned with why their comments were removed are free to contact me privately.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c512"
+ href="#c512">512</a>
+ by
+ <a href="/u/aquasync/">aquasync</a></span>,
+ <span class="date" title="Fri Apr 18 17:26:05 2008">Apr 18, 2008</span>
+<pre>
+Justin, interesting that you say they're using PyPy (for the CPU monitoring). Do you
+have any links to info about this - can't find any.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c513"
+ href="#c513">513</a>
+ by
+ <a href="/u/minh.souppaya/">minh.souppaya</a></span>,
+ <span class="date" title="Sat Apr 19 03:08:53 2008">Apr 19, 2008</span>
+<pre>
+Python est un excellent langage mais avoir le choix rendra google app meilleur !!
+Saigon
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c518"
+ href="#c518">518</a>
+ by
+ <a href="/u/jftucker/">jftucker</a></span>,
+ <span class="date" title="Wed May  7 00:44:13 2008">May 07, 2008</span>
+<pre>
+May be of interest:
+
+<a href="http://hackety.org/2008/05/05/sneakingRubyThroughGoogleAppEngine.html">http://hackety.org/2008/05/05/sneakingRubyThroughGoogleAppEngine.html</a>
+
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c520"
+ href="#c520">520</a>
+ by
+ <a href="/u/rkisielewski/">rkisielewski</a></span>,
+ <span class="date" title="Mon May 19 20:54:36 2008">May 19, 2008</span>
+<pre>
+Please add support for Ruby and web app framework sitting on the top of Ruby like:
+Rails, Merb etc .... I think adding also additional stacks of languages will position
+Google to become a leader in that space ...
+Openess and flexibility ...
+Also adding support for various admin and deployment tools, managed by community etc.
+could positon Google to be good ASP hosting provider even for evil corp apps :)
+
+Great job Google people, thank you for various solutions ...
+
+Robert K
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c521"
+ href="#c521">521</a>
+ by
+ <a href="/u/rsalvado/">rsalvado</a></span>,
+ <span class="date" title="Tue Jun 17 23:28:33 2008">Jun 17, 2008</span>
+<pre>
++1
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c522"
+ href="#c522">522</a>
+ by
+ <a href="/u/joshuashen/">joshuashen</a></span>,
+ <span class="date" title="Fri Jul  4 07:51:40 2008">Jul 04, 2008</span>
+<pre>
++1 
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c523"
+ href="#c523">523</a>
+ by
+ <a href="/u/jaigouk/">jaigouk</a></span>,
+ <span class="date" title="Fri Jul  4 08:27:59 2008">Jul 04, 2008</span>
+<pre>
++1
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c524"
+ href="#c524">524</a>
+ by
+ <a href="/u/simone.tolotti/">simone.tolotti</a></span>,
+ <span class="date" title="Fri Jul  4 11:29:58 2008">Jul 04, 2008</span>
+<pre>
+rsalvado+joshuashen+jaikogu = 3 ;)
+I'm waiting for people that disagree with this issue to post &quot;-1&quot; comments! :)
+#415 blog post is really funny!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c525"
+ href="#c525">525</a>
+ by
+ <a href="/u/indiehead/">indiehead</a></span>,
+ <span class="date" title="Thu Jul 17 09:33:44 2008">Jul 17, 2008</span>
+<pre>
+definitely would love this, got some really good stuff to upload
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c526"
+ href="#c526">526</a>
+ by
+ <a href="/u/Devyn.Cairns/">Devyn.Cairns</a></span>,
+ <span class="date" title="Wed Jul 23 17:36:06 2008">Jul 23, 2008</span>
+<pre>
+Actually the Freaky Freaky Sandbox would work. It does allow everything that PyPy
+does. (<a href="http://code.whytheluckystiff.net/sandbox/">http://code.whytheluckystiff.net/sandbox/</a>)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c527"
+ href="#c527">527</a>
+ by
+ <a href="/u/Andrey.D.Nikitin/">Andrey.D.Nikitin</a></span>,
+ <span class="date" title="Fri Jul 25 07:42:06 2008">Jul 25, 2008</span>
+<pre>
+Please add support for Ruby 
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c528"
+ href="#c528">528</a>
+ by
+ <a href="/u/mw10013/">mw10013</a></span>,
+ <span class="date" title="Fri Jul 25 12:57:38 2008">Jul 25, 2008</span>
+<pre>
+Pls add support for ruby.  Thx.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c529"
+ href="#c529">529</a>
+ by
+ <a href="/u/dammer2k/">dammer2k</a></span>,
+ <span class="date" title="Sat Jul 26 01:11:37 2008">Jul 26, 2008</span>
+<pre>
+Ruby please :)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c530"
+ href="#c530">530</a>
+ by
+ <a href="/u/cwt137/">cwt137</a></span>,
+ <span class="date" title="Tue Jul 29 09:15:11 2008">Jul 29, 2008</span>
+<pre>
+Hopefully Google is already planning on supporting PHP. They are probably in the 
+process of making a GQL PHP API and locking down PHP like they did for Python.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c531"
+ href="#c531">531</a>
+ by
+ <a href="/u/jwilkins/">jwilkins</a></span>,
+ <span class="date" title="Fri Aug  1 11:09:09 2008">Aug 01, 2008</span>
+<pre>
+another vote for ruby
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c532"
+ href="#c532">532</a>
+ by
+ <a href="/u/michal.bogdan/">michal.bogdan</a></span>,
+ <span class="date" title="Tue Aug  5 16:12:18 2008">Aug 05, 2008</span>
+<pre>
+yep, vote for ruby...
+
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c533"
+ href="#c533">533</a>
+ by
+ <a href="/u/sparkcn/">sparkcn</a></span>,
+ <span class="date" title="Thu Aug  7 05:58:40 2008">Aug 07, 2008</span>
+<pre>
+I love ruby!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c534"
+ href="#c534">534</a>
+ by
+ <a href="/u/hashtrain/">hashtrain</a></span>,
+ <span class="date" title="Sat Aug  9 07:23:53 2008">Aug 09, 2008</span>
+<pre>
+I love ruby!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c535"
+ href="#c535">535</a>
+ by
+ <a href="/u/art.radchenko/">art.radchenko</a></span>,
+ <span class="date" title="Sun Aug 10 01:09:52 2008">Aug 10, 2008</span>
+<pre>
+Ruby! Ruby! Ruby! Ruby! Ruby!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c536"
+ href="#c536">536</a>
+ by
+ <a href="/u/stanislav.pogrebnyak/">stanislav.pogrebnyak</a></span>,
+ <span class="date" title="Sun Aug 10 01:10:45 2008">Aug 10, 2008</span>
+<pre>
+Ruby rulles :)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c537"
+ href="#c537">537</a>
+ by
+ <a href="/u/mitko.kostov/">mitko.kostov</a></span>,
+ <span class="date" title="Thu Aug 21 05:09:47 2008">Aug 21, 2008</span>
+<pre>
+It would be great to see Ruby support in App Engine ;)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c538"
+ href="#c538">538</a>
+ by
+ <a href="/u/@UhBRRlZQBRBFXAJ6/">batl...@lovelysystems.com</a></span>,
+ <span class="date" title="Wed Aug 27 03:13:53 2008">Aug 27, 2008</span>
+<pre>
+-1, stay on python and add features. no reason for other languages
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c540"
+ href="#c540">540</a>
+ by
+ <a href="/u/mitko.kostov/">mitko.kostov</a></span>,
+ <span class="date" title="Wed Aug 27 06:16:52 2008">Aug 27, 2008</span>
+<pre>
+No reason of pricks like you.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c541"
+ href="#c541">541</a>
+ by
+ <a href="/u/@VxZTRlFTABNMWQN7/">k...@ikspres.com</a></span>,
+ <span class="date" title="Thu Aug 28 16:59:11 2008">Aug 28, 2008</span>
+<pre>
+One more vote for Ruby
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c542"
+ href="#c542">542</a>
+ by
+ <a href="/u/Devyn.Cairns/">Devyn.Cairns</a></span>,
+ <span class="date" title="Fri Aug 29 13:44:25 2008">Aug 29, 2008</span>
+<pre>
+I believe that language diversity is the key to this success. Not
+ necessarily just Ruby, I'm talking about other languages too. Not
+ everybody knows python, and not everybody should have to.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c543"
+ href="#c543">543</a>
+ by
+ <a href="/u/rizenine/">rizenine</a></span>,
+ <span class="date" title="Thu Sep  4 09:38:26 2008">Sep 04, 2008</span>
+<pre>
++1 for Ruby.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c544"
+ href="#c544">544</a>
+ by
+ <a href="/u/rizenine/">rizenine</a></span>,
+ <span class="date" title="Thu Sep  4 09:41:56 2008">Sep 04, 2008</span>
+<pre>
+I think it's well within Google's power to add new languages, without hurting Python
+features.
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c545"
+ href="#c545">545</a>
+ by
+ <a href="/u/Rare.Pleasures.Music/">Rare.Pleasures.Music</a></span>,
+ <span class="date" title="Tue Sep 16 05:44:53 2008">Sep 16, 2008</span>
+<pre>
++ 1 for Ruby
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c546"
+ href="#c546">546</a>
+ by
+ <a href="/u/@UBBXRFFRARJAWQR4GQ%3D%3D/">a...@google.com</a></span>,
+ <span class="date" title="Thu Sep 25 15:22:44 2008">Sep 25, 2008</span>
+<pre>
+<i>(No comment was entered for this change.)</i>
+</pre>
+ 
+ 
+ <div class="updates">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <b>Status:</b> Acknowledged<br>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c547"
+ href="#c547">547</a>
+ by
+ <a href="/u/deo@google.com/">deo@google.com</a></span>,
+ <span class="date" title="Mon Oct  6 13:59:57 2008">Oct 06, 2008</span>
+<pre>
+<i>(No comment was entered for this change.)</i>
+</pre>
+ 
+ 
+ <div class="updates">
+ <div class="round4"></div>
+ <div class="round2"></div>
+ <div class="round1"></div>
+ <div class="box-inner">
+ <b>Labels:</b> Component-Languages<br>
+ </div>
+ <div class="round1"></div>
+ <div class="round2"></div>
+ <div class="round4"></div>
+ </div>
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c548"
+ href="#c548">548</a>
+ by
+ <a href="/u/Devyn.Cairns/">Devyn.Cairns</a></span>,
+ <span class="date" title="Tue Oct 21 16:09:13 2008">Oct 21, 2008</span>
+<pre>
+Okay, what does status: acknowledged mean?
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c549"
+ href="#c549">549</a>
+ by
+ <a href="/u/gyaresu/">gyaresu</a></span>,
+ <span class="date" title="Tue Nov 18 21:59:30 2008">Nov 18, 2008</span>
+<pre>
++1 for Ruby.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c551"
+ href="#c551">551</a>
+ by
+ <a href="/u/iyanski/">iyanski</a></span>,
+ <span class="date" title="Wed Nov 19 06:19:07 2008">Nov 19, 2008</span>
+<pre>
++1 comment. count me in. ooops. how do i vote?
+
+
+
+kidding. ;)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c552"
+ href="#c552">552</a>
+ by
+ <a href="/u/theill/">theill</a></span>,
+ <span class="date" title="Wed Nov 19 06:36:53 2008">Nov 19, 2008</span>
+<pre>
+Sorry, think it's time for another of these posts
+
+** NO FLAMEWARS PLEASE! **
+
+Every time you add a comment it sends out an EMAIL to everybody. Our inboxes are
+filled with hundreds of useless mails that says &quot;+1&quot;. We are drowning in SPAM :-(
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; TO VOTE FOR RUBY - DO THIS INSTEAD &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+
+1) Look for the blue outline of a star next to <a title="Please add ruby support"  href="/p/googleappengine/issues/detail?id=29">Issue 29</a>: at the top of this page.
+2) Click on it. The star becomes yellow and filled in.
+3) Now you have voted for ruby. Well done :-)
+
+N O T E : It is the number of stars that counts, not the comments!
+
+Once again:
+
+DO **NOT** ADD A COMMENT (unless you have something IMPORTANT to say). IT SENDS AN
+EMAIL TO EVERYBODY ELSE!!
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c553"
+ href="#c553">553</a>
+ by
+ <a href="/u/alang.yl/">alang.yl</a></span>,
+ <span class="date" title="Thu Nov 20 09:41:03 2008">Nov 20, 2008</span>
+<pre>
++1
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c554"
+ href="#c554">554</a>
+ by
+ <a href="/u/paulpajo/">paulpajo</a></span>,
+ <span class="date" title="Fri Nov 21 01:16:44 2008">Nov 21, 2008</span>
+<pre>
++ for ruby, ftw! :)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c555"
+ href="#c555">555</a>
+ by
+ <a href="/u/hinethql/">hinethql</a></span>,
+ <span class="date" title="Fri Nov 21 01:50:04 2008">Nov 21, 2008</span>
+<pre>
++ for ruby ! and rails
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c556"
+ href="#c556">556</a>
+ by
+ <a href="/u/ithurricane/">ithurricane</a></span>,
+ <span class="date" title="Mon Nov 24 19:56:57 2008">Nov 24, 2008</span>
+<pre>
++1
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c557"
+ href="#c557">557</a>
+ by
+ <a href="/u/gale.tanaka/">gale.tanaka</a></span>,
+ <span class="date" title="Wed Dec  3 01:04:06 2008">Dec 03, 2008</span>
+<pre>
++1
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c558"
+ href="#c558">558</a>
+ by
+ <a href="/u/lukefx/">lukefx</a></span>,
+ <span class="date" title="Wed Dec  3 01:52:22 2008">Dec 03, 2008</span>
+<pre>
++1, please!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c559"
+ href="#c559">559</a>
+ by
+ <a href="/u/andringa.sjoerd/">andringa.sjoerd</a></span>,
+ <span class="date" title="Tue Dec  9 05:36:59 2008">Dec 09, 2008</span>
+<pre>
++1
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c560"
+ href="#c560">560</a>
+ by
+ <a href="/u/sudhakar.sw/">sudhakar.sw</a></span>,
+ <span class="date" title="Mon Jan  5 03:25:47 2009">Jan 05, 2009</span>
+<pre>
+Would love to go back to ruby &amp; start developing apps.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c561"
+ href="#c561">561</a>
+ by
+ <a href="/u/gcxiester/">gcxiester</a></span>,
+ <span class="date" title="Mon Jan 12 21:35:02 2009">Jan 12, 2009</span>
+<pre>
++1 ,please! Hope for the support for ruby!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c562"
+ href="#c562">562</a>
+ by
+ <a href="/u/fredrik.bjork/">fredrik.bjork</a></span>,
+ <span class="date" title="Fri Jan 16 00:28:09 2009">Jan 16, 2009</span>
+<pre>
+*
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c563"
+ href="#c563">563</a>
+ by
+ <a href="/u/mukherjee.siddhartha/">mukherjee.siddhartha</a></span>,
+ <span class="date" title="Tue Jan 27 23:45:59 2009">Jan 27, 2009</span>
+<pre>
+please add ruby on rails
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c564"
+ href="#c564">564</a>
+ by
+ <a href="/u/gotojames/">gotojames</a></span>,
+ <span class="date" title="Sun Feb  1 19:36:01 2009">Feb 01, 2009</span>
+<pre>
+pls, pls, pls.... ruby+rails
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c565"
+ href="#c565">565</a>
+ by
+ <a href="/u/KunXiangR/">KunXiangR</a></span>,
+ <span class="date" title="Wed Feb 25 05:01:30 2009">Feb 25, 2009</span>
+<pre>
+ruby support is a must!!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c566"
+ href="#c566">566</a>
+ by
+ <a href="/u/jacob.gyllenstierna/">jacob.gyllenstierna</a></span>,
+ <span class="date" title="Wed Feb 25 05:14:05 2009">Feb 25, 2009</span>
+<pre>
+Give me AppEngine for Ruby! Plz!!
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c567"
+ href="#c567">567</a>
+ by
+ <a href="/u/minilith/">minilith</a></span>,
+ <span class="date" title="Wed Feb 25 06:28:37 2009">Feb 25, 2009</span>
+<pre>
+And while we are at it: One &quot;please click on the star and don't just write +1&quot;
+message would suffice.
+
+@justin.fagnani
+With respect to sandboxing: Other than python, ruby has already __some__ support for
+that builtin -- see the -T command-line option.
+
+I personally would prefer java + jruby though.
+
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c568"
+ href="#c568">568</a>
+ by
+ <a href="/u/davide.rambaldi/">davide.rambaldi</a></span>,
+ <span class="date" title="Thu Feb 26 00:41:34 2009">Feb 26, 2009</span>
+<pre>
+Interesting library for google data on Ruby On Rails:
+
+<a href="http://code.google.com/intl/en/apis/gdata/articles/gdata_on_rails.html">http://code.google.com/intl/en/apis/gdata/articles/gdata_on_rails.html</a>
+
+Seems that google have started to develop something for ruby/rails...
+
+Ah and please: + 1/0 for ruby ;)
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c569"
+ href="#c569">569</a>
+ by
+ <a href="/u/ch.rauscher/">ch.rauscher</a></span>,
+ <span class="date" title="Sun Mar 15 11:31:23 2009">Mar 15, 2009</span>
+<pre>
+add one from me
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c570"
+ href="#c570">570</a>
+ by
+ <a href="/u/@VxFTR1ZYBBVDXQF9/">apija...@google.com</a></span>,
+ <span class="date" title="Mon Mar 16 10:37:20 2009">Mar 16, 2009</span>
+<pre>
+<a title="pls. add ruby" class=closed_ref href="/p/googleappengine/issues/detail?id=1152"> Issue 1152 </a> has been merged into this issue.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+ 
+ <tr>
+ <td class="vt issuecomment">
+ 
+ 
+ 
+ <span class="author">Comment <a name="c571"
+ href="#c571">571</a>
+ by
+ <a href="/u/costan/">costan</a></span>,
+ <span class="date" title="Mon Mar 16 10:43:28 2009">Mar 16, 2009</span>
+<pre>
+Hint for people who are bored of +1-like comments. If you use Gmail, you can press M
+while a message is open, and mute the entire conversation. Bye bye comments.
+
+Please do that instead of un-starring this bug.
+</pre>
+ 
+ 
+ </td>
+ </tr>
+ 
+ 
+
+
+ 
+ <tr>
+ <td class="vt issuecomment">
+ <img width="10" height="12" src="http://www.gstatic.com/codesite/ph/images/triangle.gif"><a href="http://www.google.com/accounts/Login?continue=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Fgoogleappengine%2Fissues%2Fdetail%3Fid%3D29"
+ >Sign in</a> to add a comment
+ </td>
+ </tr>
+ 
+
+
+</tbody>
+</table>
+<br>
+<script type="text/javascript" src="http://www.gstatic.com/codesite/ph/6312039727770611853/js/dit_scripts_20081013.js"></script>
+
+
+
+
+ 
+
+
+<form name="delcom" action="delComment.do?q=&amp;can=2&amp;sort=&amp;colspec=ID+Type+Status+Priority+Stars+Owner+Summary+Log+Component" method="POST">
+ <input type="hidden" name="sequence_num" value="">
+ <input type="hidden" name="mode" value="">
+ <input type="hidden" name="id" value="29">
+ <input type="hidden" name="token" value="">
+</form>
+ <script type="text/javascript">
+ _onload();
+ function delComment(sequence_num, delete_mode) {
+ var f = document.forms["delcom"];
+ f.sequence_num.value = sequence_num;
+ f.mode.value = delete_mode;
+ 
+ f.submit();
+ return false;
+ }
+ function ackVote() {
+ var vote_feedback = document.getElementById('vote_feedback');
+ if (!vote_feedback) return;
+ var star2 = document.getElementById('star2');
+ if (star2.src.indexOf('off.gif') != -1) {
+ vote_feedback.innerHTML = 'Vote for this issue and get email change notifications.';
+ } else {
+ vote_feedback.innerHTML = 'Your vote has been recorded.';
+ }
+ }
+ </script>
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/6312039727770611853/js/core_scripts_20081103.js"></script>
+ 
+ 
+ 
+ </div>
+<div id="footer" dir="ltr">
+ 
+ <div class="text">
+ 
+ &copy;2009 Google -
+ <a href="/">Code Home</a> -
+ <a href="/tos.html">Terms of Service</a> -
+ <a href="http://www.google.com/privacy.html">Privacy Policy</a> -
+ <a href="/more/">Site Directory</a>
+ 
+ </div>
+</div>
+<script type="text/javascript">
+/**
+ * Reports analytics.
+ * It checks for the analytics functionality (window._gat) every 100ms
+ * until the analytics script is fully loaded in order to invoke siteTracker.
+ */
+function _CS_reportAnalytics() {
+ window.setTimeout(function() {
+ if (window._gat) {
+ var siteTracker = _gat._getTracker("UA-18071-1");
+ siteTracker._initData();
+ siteTracker._trackPageview();
+ 
+ } else {
+ _CS_reportAnalytics();
+ }
+ }, 100);
+}
+</script>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+

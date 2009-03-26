@@ -1,0 +1,377 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><title>dmh2000-C/Java/Python/Ruby</title>
+<link rel="stylesheet" href="../dmh2000.css" type="text/css" media="all" />
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv=" pragma" content="no-cache" />
+<meta name="robots" content="all" />
+</head>
+<body>
+<!-- ========================================== -->
+<!-- TOP  -->
+<!-- ========================================== -->
+<div id="top">
+<h1>[dmh2000] - Essays</h1>
+daveh at dmh2000 dot com
+</div>
+
+<!-- ========================================== -->
+<!-- LEFT -->
+<!-- ========================================== -->
+<div id="left">
+	<p><a href="/index.html">[home]</a></p>
+	<p><a href="http://www.spreadfirefox.com/?q=affiliates&amp;id=0&amp;t=70"><img alt="Get Firefox!" title="Get Firefox!" src="http://www.spreadfirefox.com/community/images/affiliates/Buttons/88x31/get.gif" border="0" /></a></p>
+	<p><a href="http://www.jedit.org"><img src="http://www.jedit.org/made-with-jedit-4.png" alt="Developed with jEdit" border="0" width="96" height="36" /></a></p>
+	<p><img alt="bricks" src="/bricks.jpg" width="96" height="128"/></p>
+
+</div>
+
+<!-- ========================================== -->
+<!-- MIDDLE -->
+<!-- ========================================== -->
+<div id="middle">
+<a href="http://www.dmh2000.com/blog/2006/02/c-java-python-ruby.html">comment on this essay</a>
+<p>
+<i>Update 2006-01-30. Did a lot of surgery on the Ruby code to make it more idiomatic, based on many good comments I 
+received. </i>
+</p>
+<p>
+<i>Update 2006-01-30. Note on lines of code comparisons. The example code isn't trying to do a full-on SLOC comparison of the languages, but
+you can get a feel for the differences. Ruby and Python are much shorter than Java which is much shorter than C++. However
+consider this a very casual comparison because there was not attempt to compress lines of code or make all the comments
+equal length etc.
+</i>
+</p>
+<p>
+<i>Update 2006-01-28. I got a lot of good comments on the article and code. I got a lot of suggested improvements, mostly to Ruby and some to Python.
+Java didn't get any comments. For C++ I got one that is pretty embarassing but sort of makes a point. My brother and his colleagues pointed out that
+I have memory leaks in the C++ code. Oops. The leaks are now fixed. My excuse is that I was writing code in 
+'garbage collected mode' and got burned for not mentally switching to 'C++ mode'. </i>
+</p>
+
+<br/>
+
+<h1>C++ vs Java vs Python vs Ruby : a first impression</h1>
+
+<h2>Executive Summary</h2>
+<p>
+I am a language agnostic journeyman programmer. I am not a fan of a particular language (I almost said 'fanboy') but
+thats a bit inflammatory). I just want to write useful programs
+and have fun doing it. I know C++ and Java pretty well. I did some beginner work in Python and Ruby. I then
+came up with the following conclusions. But before you flame, read the whole article.
+</p>
+<p><a href="cmpframe.html">Go right to the side-by-side comparison</a></p>
+
+<ul>
+<li>C++ vs Java         <br /> Java garbage collection is the big productivity gain <br />Java is significantly slower than C++ <br />C++ is (much) harder to code correctly than any of the others</li>
+<li>Java vs Python/Ruby <br /> Python/Ruby interpreted execution and dynamic typing are big productivity gains over Java. <br />Python/Ruby are slower than Java <br />Python/Ruby 
+programs need less extraneous scaffolding (cleaner code)
+<br />There are two important tradeoffs : [interpreted vs. compiled] and [static vs. dynamic typing] </li>
+<li>Python vs. Ruby     <br /> nearly equivalent</li>
+</ul>
+
+<h3>intro</h3>
+<p>                    
+When running various distributions of Linux, I always ran into the choice of KDE or GNOME. There are plenty of
+advocates on both sides, but there was no overriding authority. Then recently Linus Torvalds came out with a 
+definitive opinion. He took the unequivocal position that
+KDE is best. Not that he is necessarily the final arbiter of user interfaces, but at least he provides a strong
+datapoint, and since he is smarter than me and since all the other opinions seem to come from biased sources, I
+can now pick KDE and feel better about it. Paraphrasing the old IBM criteria, 'no one was ever fired for following 
+a Linus directive'. Heh, after all that it turned out that I wanted to use Ubuntu which works best with GNOME so
+I ended up with that for now. So 'most practical' won out over 'best'. 
+</p><p>
+In the meantime I realized I needed to learn a new language and the current buzz is Python and Ruby. 
+Again I couldn't find a definitive answer of which one is best. From all the buzz, 
+I came up with a vague impression that Ruby is more pure and
+is set to win in the long run, but that Python is currently more practical for now. And Google uses Python, which 
+is a significant datapoint. They aren't idiots over there.
+</p><p>
+To see what I could figure out myself, I decided to code up something in Java, then port it to Python and Ruby and 
+see how I felt about each, and try to identify where the big wins are for each language.
+</p><p>
+One caveat. If something significant is missing from a language, like garbage collection, then I don't 
+want to hear a response that says
+"well, if you use XYZ unsupported library, or you do ABC convoluted technique, then you can do the
+same thing in [put language name here]". I am trying to evaluate the STANDARD here, since of course you
+can probably do anything in any language including assembler if you work hard enough. And the problem with using a nonstandard
+library is not just the extra integration work, it's that you are basing your code on something that may
+fall by the wayside later on and then you are stuck. Sometimes it's worth it but that has to be proven
+on a case-by-case basis as far as I am concerned.
+</p><p>
+<h3>history</h3>
+<p>
+I started in C in 1985, learned C++ in 1990 (Zortech C++) and have been using it ever since. I learned Java 
+in the mid-90's when it was first coming out, and found three big  win's for Java over C++: Garbage collection, 
+portability and simplicity.  Garbage collection and simplicity created big productivity gains, and portability
+is portability. Not having done a garbage collected language before, the productivity gain was readily apparent. 
+The simplicity of Java over C++ was really nice. When coding C++, I needed Meyer's Effective C++ on my desk 
+at all times 
+to be sure I wasn't invoking some weird type coercion or copy constructor/assignment operator anomaly.  And don't
+even start with templates. With
+Java I never needed that because it is just simpler. 
+And the Java libraries were more comprehensive and string handling was easier. So in general I was more productive coding
+away in Java. I still liked C++ but it seems that when programming C++, the fun is in figuring out the language and library
+, like solving a puzzle. That leaves less time to spend on solving the application domain problem.
+</p>
+<h3>the code</h3>
+<p>
+The attached code samples are implementations of a Red-Black tree algorithm adapted from descriptions in
+"Algorithms in C++", Sedgewick and "Introduction To Algorithms",Cormen/Leiserson/Rivest. I picked this
+because it was short but had some complexity. 
+</p>
+<p>
+code notes and disclaimers:
+<ul>
+<li>commenting is sparser than usual to avoid obscuring code</li>
+<li>I probably made some convention errors in Python and Ruby due to ignorance of the proper idioms</li>
+<li>all these programs compile and/or run without warnings and output the same result</li>
+<li>I believe the programs to be correct. there may be bugs but if so they are in all 3 versions</li>
+<li>Java 5.0 SDK,Python 2.4, Ruby 1.8.3, C++ Microsoft Visual C++ 2005 </li>
+</ul>
+<ul>
+<li><a href="cmpframe.html">Compare side by side</a></li>
+<li><a href="RBJava.html">Java implementation</a></li>
+<li><a href="RBPython.html">Python implementation</a></li>
+<li><a href="RBRuby.html">Ruby implementation</a></li>
+<li><a href="RBCpp.html">C++ implementation</a></li>
+<li><a href="prj.zip">the source zip file</a></li>
+</ul>
+<h3>porting</h3>
+<p>
+It was surprisingly easy to port the Java code to Python and then port the Python to Ruby. A lot of it was regular
+expression search and replace, getting some naming conventions right and adapting to a few language differences. 
+During the porting process, the two big gotchas I ran into were Python block indenting errors and Ruby's horrible
+compiler diagnostics. 
+</p>
+<p>Porting the Java code to C++ was much more a hassle. I attempted to make use of as much static type checking
+mechanisms as I could. In Java I used generics for the tree, and in C++ I used templates for the container and
+'const' where appropriate. The big gotchas on porting to C++ were:
+</p>
+<ul>
+<li>The dichotomy between primitive types and objects in C++ is much more pronounced even than Java (and Java is worse off
+than Python or Ruby). This dichotomy makes it hard to write a class that supports both primitives and objects. My
+implementation might need some fixups to work with objects rather than 'int'.</li>
+<li>Java,Ruby and Python all use a consistent reference only scheme to refer to objects which are always on the heap
+or equivalent. In C++, you can have a statically
+declared objects, a pointer to an object, or a reference to an object, each with features and limitations. A C++ 'reference' is
+not the same thing as a reference in the other languages. C++ really wants you to use pointers. These alternatives means that
+when you write something in C++ you have to come up with a consistent strategy for using the 3 types of object access, and your
+strategy might not be the same as what others prefer. There
+is 'more than one way to do it'.
+</li>
+<li>The lack of built-in mechanisms or even just conventions for operations that should be common across types means
+you have to make things up. Like converting a type to string representation. All the other languages have support of one
+kind or another but in C++ you have to make up your own convention</li>
+<li>Maybe its just me, but C++ always leaves you wondering what you might have done wrong. Its hard to tell. If you read Meyer's Effective C++
+you see that there are numerous detailed infrastructure things like constructors and assignment operators that you have to get exactly right or things fail 
+at runtime. C++ is really hard to get right, and I never feel totally secure that I did it properly</li>
+</ul>
+In my opinion (and I have written a lot of C++), use C++ only where you have to for compatibility or performance reasons, or where you arbitrarily decide that
+you would rather use C++ because its more fun because its harder. As Tom Cargill (a noted C++ guy) said,
+<i>"If you think C++ is not overly complicated, just what is a protected abstract virtual base pure virtual private destructor and when was the last time you needed one?".</i></p>
+
+<h4>python block indenting</h4>
+<p>
+It took me a while to get my editor (JEdit) happy with Python and getting to not use tabs. Fortunately 
+I never screwed up the file so bad that the code didn't work but I always had an unpleasant uncertainty 
+about the indentation simmering in the background. Some (or all) of this may be prejudice. I really liked braces better
+than either Ruby Do-End or Python indenting, at least when I was coding. On the other hand, a properly indented Python file looks much much
+cleaner and is easier to read than any of the others because you don't need all the block closing symbols. However
+the explicit 'self' argument makes it look less clean than it could.
+</p>
+
+<h4>ruby syntax errors</h4>
+<p>
+Many of the compiler diagnostics I got during the Ruby porting simply said "syntax error" and gave the line number for
+the last line in the file. Great. I spent a lot of time doing binary searches on my code to find the error source.
+</p>
+
+<h4>The visitor pattern</h4>
+<p>One thing I did differently in each language was try to adapt a 'Visitor' pattern (for traversing the tree) to 
+the preferred idiom for each language. You could of course simply code up a Visitor class that is nearly identical 
+for each language, but instead I did the following. </p>
+<ul>
+<li>    Java   : one scheme  : an anonymous class implementing  a predefined interface.</li>
+<li>    Python : two schemes : a named class similar to Java and just a named function passed in as a parameter.</li>
+<li>    Ruby   : two schemes : a lamba anonymous function, and a Ruby block implementation</li>
+</ul>    
+<p>
+The Java and C++ approaches give you static type checking but takes a lot more cruft to get going. 
+I found the Python named function parameter very convenient. But it doesn't carry any state so if you
+need state then you use a class. Surprisingly, I found the Ruby lambda easier to 
+understand and implement than the Ruby 'block'. That is because my traversal algorithm is recursive, and the lambda
+just gets passed around as a parameter (like the python named function parameter). I didn't exploit the
+full potential of a lambda closure.
+</p><p>
+The Ruby block scheme (pun not intended) requires some tricky syntax in the recursive calls, and
+I could not find a good explanation of how to handle recursive use of blocks in the Ruby documentation. I found
+a single web hit with an example and after fiddling with it I got it to work. I think I understand them now but it is still a bit
+fuzzy. I mean, I know what to do now but it takes some concentration to figure out what exactly is happening and why
+the code looks like it does. I found that viewing a Ruby block as a co-routine (per the documentation) and not as a subroutine to be the best way
+to understand the whole thing.
+</p><p>
+All that said about the Visitors, I am a Python/Ruby novice so possibly I did things the hard way :)
+</p>
+<h3>interpreted vs. compiled</h3>
+<p>There has always been this tradeoff. In fact, the Python/Ruby vs. Java performance controversy sounds a lot like the C/Assembler/Forth
+discussions in the embedded systems world of the early 1980's. Forth was interpreted, it didn't need a compile cycle and it had (supposedly) 
+productivity enhancing features that C didn't have. Development cycles were much shorter with Forth. Performance was
+not as fast as C or assembler but was close. The drawback of Forth was the weirdness of the language. C won out and Forth
+went to the dark corner of mostly forgotten languages. </p>
+<p>Interpreted languages give you a much quicker development cycle, especially on big programs. There is no doubting that.
+Its simply a tradeoff of execution speed vs. productivity. Some applications need the speed. 
+I think it is a premature optimization to say the "I like C/Java better than Python/Ruby because they execute faster".
+Interpreted is better if you can get it. When I was testing the code I experienced the advantage of interpreted. I 
+didn't really measure performance but other sources show the differences. But since Python/Ruby seem to interface to C/C++ pretty readily, I would be very 
+comfortable working in the interpreted world and descending into the netherworld of compiled C/C++ when required. Yes, Python
+is actually compiled for a VM but you don't have an explicit compile operation so it acts to the user like an 
+interpreted language.
+</p>
+<h3>static vs. dynamic type checking</h3>
+<p>Ok, I like the productivity increase provided by dynamic typing because it eliminates a lot of scaffolding. I found
+it quite interesting to see errors pop out at runtime that would normally be compile time in C++/Java. These runtime errors were 
+obviously influenced by the paths taken in the test program (or how far it got before it barfed). For a given run, 
+I clearly wasn't seeing all the instances of this class of errors as I would have with static type checking. 
+</p><p>
+Coming from a statically typed language background, my gut says that dynamic typing creates a risk. The Python/Ruby bloggers say that if you 
+just unit test properly, then there is no problem. <a href="http://www.mindview.net/WebLog/log-0025">Brucke Eckel has a well reasoned
+essay on the issue</a>. I would argue that expecting unit test to catch typing errors has two issues:
+</p>
+<ul>
+<li>in a really big system, its hard to test exhaustively</li>
+<li>testing for type correctness makes the programmer do the work that a computer could do</li>
+</ul>
+<p>
+We static typers may be wrong. I had a similar experience moving from PVCS to <a href="http://subversion.tigris.org">Subversion version control</a>. Oh, My, God,
+no locking? The code will be completely ruined in a week. But it turned out to be a non-issue and Subversion added
+so much less friction to the development cycle that productivity was improved maybe 10%. The collective good experience overrode the 
+predjudice based theoretical 'proof'. The same argument can be made for dynamic vs. static typing. 
+</p><p>
+I wouldn't mind a separate 'lint' tool for Python/Ruby (is it possible?). I use lint for C/C++ religiously. The whole 
+compiled language community is moving towards more static type checking (Java Generics, for example) rather than
+less. Are they all idiots? (don't answer that)</p>
+<p>My conclusion is that dynamic 'duck' typing is more productive, more pleasant, gives cleaner looking code but it incurs a risk that you 
+will get a runtime type exception in your application at some later date. The risk is there, quit denying it. </p>
+
+<h3>the results</h3>
+<p>These results are meant to cover issues I noticed in the porting/testing I did. Not an overall evaluation. If I
+mention stuff that I didn't run into first hand, then throw that out.</p>
+
+<h4>C++ vs Java</h4>
+<ol>
+<li>Garbage collection is THE big win for Java.</li>
+<li>Java simplicity over C++ complexity is a big win for Java.</li>
+<li>C++ is much harder to write and get right than Java or any of the other choices</li>
+<li>C/C++ is way faster than Java</li>
+<li>Language scaffolding requirements are similar for both</li>
+<li>C/C++ is the only way to go for low level systems programming.</li>
+</ol>
+    
+<h4>Java vs Python/Ruby</h4>
+<ol>
+<li>interpreted vs. compiled is a big productivity win for Python/Ruby</li>
+<li>dynamic typing is a big productivity win for Python/Ruby</li>
+<li>Java is way faster than Python or Ruby</li>
+<li>minimal scaffolding is a big productivity win for Python/Ruby.  Makes programming more pleasant not to have to build all the infrastructure.</li>
+<li>mostly first class functions a big win for Python/Ruby. </li>
+<li>built-in lists/arrays and hashes/dictionaries a big win over Java [] and library based collections. Java 5.0 fixes some of this but
+in Java collections still seem tacked on rather than integrated.</li>
+<li>dynamic code loading in Python/Ruby is a big win. Yes you can do it in Java but again, the cruft.</li>
+<li>Ruby OO completeness over Java dichotomy between primitive types vs. objects is a big win for Ruby, less so for Python.</li>
+<li>There is some weirdness in Python and Ruby lexical scoping of names. The documentation for each has several
+warnings about edge cases where names don't bind in the expected way. This gives me a queasy feeling although in
+practice it may not matter. Another win for static type checking.</li>
+<li>Java 'Comparable' interface ugly compared to Python/Ruby built in comparison mechanisms that require only that
+a single function be implemented to get the full set of comparison operators. An example of excess Java
+scaffolding.</li>
+<li>lack of multiline comments  in Python/Ruby was annoying</li>
+</ol>
+<bold>TRADEOFFS</bold>
+<ol>
+<li>static typing is a correctness win for Java, especially with Generics in 5.0. The C++/Java trend is toward stronger static type checking, not less</li>
+<li>dynamic typing is a productivity win for Python/Ruby at the cost of some risk</li>
+<li>interpreted vs. compiled trades off execution speed for shorter development cycles.</li>
+</ol>        
+        
+<h4>Python vs Ruby</h4>
+<p>none of these are that important</p>
+<bold> PYTHON WINS</bold>
+<ol>
+<li>Ruby's compiler/runtime error messages were mostly 'syntax error' with no help. in many cases almost useless</li>
+<li>Why does Ruby use rescue/ensure when the rest of the world has settled on try/catch/finally? I mean, its an arbitrary
+choice so why not follow the general convention?</li>
+<li>Once the indentation is correct, a Python program is the cleanest looking</li>
+</ol>
+<bold>RUBY WINS</bold>
+<ol>
+<li>somewhat uneasy over Python indenting vs. Ruby explicit 'end'. probably a predjudice.</li>
+<li>Python requirement for explicit 'self' parameter to methods and instance variable access is very annoying</li>
+<li>Ruby OO completeness is a win over Python.</li>
+</ol>
+<bold> EQUIVALENT</bold>
+<ol>
+<li>Ruby blocks/lambda/yield seemed more or less equivalent (to me) to Python's named class or function. Didn't seem
+a big win to be able to write an anonymous function inline. In fact, one could argue that anonymous
+classes/functions/lambdas reduce testability because they can't be tested independently of the containing code. But on
+the other hand I wasn't using lambdas in the most complete sense, in which they can act on the containing environment
+in a way that a named function can't.</li>
+
+</ol>
+        
+<p>A final thought on C++. To me the C++ Standard Template Library is distinguished from the other language libraries
+in that it seems to be much more mathematically thought out. 
+The containers and algorithms in the STL all have explicit runtime complexity guarantees. There seems
+to be much more computer science in the STL than in the other language libraries. Java is sort of like that, whereas Ruby
+and Python libraries seem much more ad-hoc. That probably has a lot to do with their open community driven 
+approach to libraries. I really like how the STL was thought out and designed.
+</p>
+
+<h3>conclusion</h3>
+<p>
+Java is more productive than C/C++. Use C/C++ only when speed or bare metal access is called for.
+Python/Ruby is more productive than Java and more pleasant to code in.
+There is a big question on static vs. dynamic typing. I contend that static typing has to be better
+for the purposes of program correctness, but the required cruft reduces productivity. If actual practice in large
+systems shows that in fact runtime typing errors don't occur often and are worth the productivity tradeoff, then I will
+bow to dynamic typing.
+I can't come up with a definitive answer to Python vs. Ruby. They seem very equivalent. Would choose based on practicality 
+in a given situation. My general feeling was that Python annoyed me in ways that Ruby didn't, but I think those
+annoyances would disappear if I was using Python all the time. 
+</p>
+<p>Crap, the whole point was to pick Python or Ruby, but I am back where I started.
+</p>
+<bold>Ok, FLAME ON</bold>
+<p>Code to HTML conversion done with <a href="http://jedit.org">JEdit</a> and the CodeToHTML plugin by André Kaplan.</p>
+<br />
+<a href="http://www.dmh2000.com/blog/2006/02/c-java-python-ruby.html">comment on this essay</a>
+
+</div>
+<!-- ========================================== -->
+<!-- RIGHT -->
+<!-- ========================================== -->
+<div id="right">
+<script type="text/javascript"><!--
+google_ad_client = "pub-6757340722028659";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_channel ="";
+google_color_border = "000000";
+google_color_bg = "F0F0F0";
+google_color_link = "0000FF";
+google_color_url = "008000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+</div>
+
+
+</body>
+</html>

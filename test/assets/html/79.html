@@ -1,0 +1,965 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML dir="LTR" lang="en">
+<HEAD>
+<TITLE>Ruby on Rails on Oracle: A Simple Tutorial</TITLE>
+<STYLE TYPE="text/css">.GroupHeaderid1siteid0{Text-Align:Left;Height:20;Background-Color:#336699;}
+.GroupHeaderLinkid1siteid0{Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#FFFFFF;}
+.GroupHeaderTextid1siteid0{Font-Size:9pt;Font-Family:Arial, Helvetica;Font-Weight:Bold;Color:#FFFFFF;}
+.RegionHeaderid1siteid0{Background-Color:#336699;Text-Align:Left;Height:20;}
+.RegionHeaderTextid1siteid0{Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#FFFFFF;}
+.Bodyid1siteid0{Background-Color:#FFFFFF;}
+.Collateral_Typeid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.Elogger_Trackableid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_AUTHENTICATIONid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_COUNTRYid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_COUNTRY_REGIONid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_DISPLAYABLEid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_INITIATIVES_INVOLVEMENTid1siteid0{Color:#000000;Font-Size:8pt;Font-Family:Arial, Helvetica;}
+.PPG_LANGUAGEid1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.PPG_MASTERid1siteid0{Color:#000000;Font-Size:8pt;Font-Family:Arial, Helvetica;}
+.PPG_OPN_ACCESS_LEVELid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_OPP_LEVELid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PPG_PARTNER_TYPEid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_PRIORITYid1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.PPG_REGIONid1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.PPG_SEARCHABLEid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PPG_SUMMARYid1siteid0{Font-Family:Arial, Helvetica;Color:#000000;Font-Size:8pt;}
+.PPG_TECH_TRACKid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PRSubHeadingid1siteid0{Font-Size:10pt;Font-Weight:Bold;Color:#000000;Font-Family:Arial, Helvetica;}
+.PR_Approvalid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PR_Category1id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PR_Category2id1siteid0{Font-Family:Arial, Helvetica;Font-Size:8pt;Color:#000000;}
+.PR_Category3id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PR_Category4id1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.PR_Category5id1siteid0{Font-Family:Arial, Helvetica;Color:#000000;Font-Size:8pt;}
+.PR_Category6id1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.PR_Category7id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PR_Company1id1siteid0{Font-Family:Arial, Helvetica;Color:#000000;Font-Size:9pt;}
+.PR_Company2id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;}
+.PR_Contact_Name1id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;Font-Weight:Bold;}
+.PR_Contact_Name2id1siteid0{Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PR_Email1id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;}
+.PR_Email2id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;}
+.PR_Headingid1siteid0{Text-Decoration:none;Font-Weight:Bold;Font-Size:12pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PR_Locationid1siteid0{Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PR_Phone1id1siteid0{Font-Family:Arial, Helvetica;Font-Size:9pt;Color:#000000;}
+.PR_Phone2id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;}
+.Searchableid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.authorid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.createdateid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.creatorid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.defaultattributeid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.descriptionid1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.documentsizeid1siteid0{Font-Size:8pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.expiredateid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.inplacedisplayid1siteid0{Font-Size:9pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.itemfunctionid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.keywordsid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.perspectivesid1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.scoreid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.subpagetitleid1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.titleid1siteid0{Color:#000000;Font-Weight:Bold;Font-Size:8pt;Font-Family:Arial, Helvetica;}
+.titleorimageid1siteid0{Color:#336699;Text-Decoration:Underline;Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;}
+.wwsbr_category_id1siteid0{Font-Family:Arial, Helvetica;Font-Size:8pt;Color:#000000;}
+.wwsbr_charset_id1siteid0{Font-Family:Arial, Helvetica;Color:#000000;Font-Size:8pt;}
+.wwsbr_itemtype_id1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.wwsbr_mime_type_id1siteid0{Font-Family:Arial, Helvetica;Font-Size:8pt;Color:#000000;}
+.wwsbr_page_id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.wwsbr_pagegroup_id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.wwsbr_publishdate_id1siteid0{Font-Weight:Bold;Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.wwsbr_updatedate_id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:9pt;}
+.wwsbr_updator_id1siteid0{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.wwsbr_version_number_id1siteid0{Font-Size:8pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.LeftCurve{Background-Position:left top;Background-Repeat:no-repeat;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFl.gif);Background-Attachment:scroll;}
+.PortletBodyColor{}
+.PortletHeaderColor{Background-Color:#999999;}
+.PortletHeaderLink{Color:#000000;Font-Family:Arial, Helvetica;Font-Size:8pt;}
+.PortletHeaderStyle{}
+.PortletHeaderText{Font-Size:10pt;Font-Weight:Bold;Font-Family:Arial, Helvetica;Color:#000000;}
+.PortletHeading1{Font-Family:Arial, Helvetica;Color:#333333;Font-Weight:Bold;Font-Size:9pt;}
+.PortletHeading2{Font-Size:8pt;Font-Weight:Bold;Font-Family:Arial, Helvetica;Color:#666666;}
+.PortletHeading3{Font-Size:7pt;Color:#333333;Font-Weight:Bold;Font-Family:Arial, Helvetica;}
+.PortletHeading4{Color:#333333;Font-Size:7pt;Font-Weight:Bold;Font-Family:Arial, Helvetica;}
+.PortletSubHeaderColor{Background-Color:#CCCCCC;}
+.PortletSubHeaderLink{Font-Size:9pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PortletSubHeaderText{Color:#000000;Font-Size:9pt;Font-Family:Arial, Helvetica;}
+.PortletText1{Font-Family:Arial, Helvetica;Color:#000000;Font-Size:8pt;}
+.PortletText2{Color:#000000;Font-Size:8pt;Font-Family:Arial, Helvetica;}
+.PortletText3{Font-Size:7pt;Font-Family:Arial, Helvetica;Color:#000000;}
+.PortletText4{Font-Size:7pt;Color:#000000;Font-Family:Arial, Helvetica;}
+.RightCurve{Background-Attachment:scroll;Background-Repeat:no-repeat;Background-Position:right top;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFr.gif);}
+.LeftSubTabid1siteid0{Background-Position:left top;Background-Repeat:no-repeat;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFsl.gif);Background-Color:#336699;Background-Attachment:scroll;}
+.LeftTabBgSlantid1siteid0{Background-Color:#CCCC99;Background-Position:left top;Background-Repeat:no-repeat;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFtl.gif);Background-Attachment:scroll;}
+.LeftTabForeSlantid1siteid0{Background-Repeat:no-repeat;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFtl.gif);Background-Attachment:scroll;Background-Color:#336699;Background-Position:left top;}
+.RightSubTabid1siteid0{Background-Attachment:scroll;Background-Color:#336699;Background-Position:right top;Background-Repeat:no-repeat;Background-Image:url(http://www.oracle.com/portalimages/FFFFFFsr.gif);}
+.RightTabBgCurveid1siteid0{Background-Image:url(http://www.oracle.com/portalimages/FFFFFFtr.gif);Background-Repeat:no-repeat;Background-Color:#CCCC99;Background-Attachment:scroll;Background-Position:right top;}
+.RightTabForeCurveid1siteid0{Background-Image:url(http://www.oracle.com/portalimages/FFFFFFtr.gif);Background-Color:#336699;Background-Attachment:scroll;Background-Position:right top;Background-Repeat:no-repeat;}
+.SubTabBgTextid1siteid0{Color:#CCCC99;Font-Size:11pt;Font-Weight:Bold;Text-Decoration:none;Font-Family:Arial, Helvetica;}
+.TabBackgroundColorid1siteid0{Background-Color:#CCCC99;}
+.TabBackgroundTextid1siteid0{Color:#003366;Text-Decoration:none;Font-Size:10pt;Font-Family:Arial, Helvetica;}
+.TabForegroundColorid1siteid0{Background-Color:#336699;}
+.TabForegroundTextid1siteid0{Color:#FFFFFF;Font-Weight:Bold;Font-Size:10pt;Font-Family:Arial, Helvetica;Text-Decoration:none;}
+.portlet-font{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-font-dim{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-msg-status{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-msg-info{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-msg-error{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-msg-alert{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-msg-success{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-section-header{Font-Family:Arial, Helvetica;    Color:#333333;    Font-Weight:Bold;    Font-Size:9pt;    }
+.portlet-section-body{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-section-alternate{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-section-selected{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-section-subheader{Font-Size:8pt;    Font-Weight:Bold;    Font-Family:Arial, Helvetica;    Color:#666666;    }
+.portlet-section-footer{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-section-text{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-table-header{Font-Family:Arial, Helvetica;    Color:#333333;    Font-Weight:Bold;    Font-Size:9pt;    Background-Color:#CCCCCC;    }
+.portlet-table-body{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-table-alternate{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-table-selected{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-table-subheader{Font-Size:8pt;    Font-Weight:Bold;    Font-Family:Arial, Helvetica;    Color:#666666;    }
+.portlet-table-footer{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-table-text{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-form-label{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-form-input-field{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-form-button{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-icon-label{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-dlg-icon-label{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-form-field-label{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.portlet-form-field{Font-Family:Arial, Helvetica;    Color:#000000;    Font-Size:8pt;    }
+.RegionNoBorder{}
+.RegionBorder { border:#999999  1px solid; }
+.RegionHeaderColor { background-color:; border:#999999 0px solid }
+.PageColor { background-color:#FFFFFF}
+ </STYLE>
+<base href="http://www.oracle.com/technology/pub/articles/haefel-oracle-ruby.html">
+<META name="title" content="Ruby on Rails on Oracle: A Simple Tutorial">
+<META name="description" content="">
+<META name="keywords" content="ror, ruby, ruby on rails, xe">
+<META name="author" content="">
+</HEAD>
+<BODY style="margin:0px" class="Bodyid1siteid0" >
+<NOSCRIPT></NOSCRIPT>
+<iframe id="portalIFrame" title="" frameborder="0" width="0" height="0" src="/portalimages/pobtrans.gif"></iframe><SCRIPT TYPE="text/javascript" SRC="http://www.oracle.com/wocportal/pls/wocprod/WOCPROD.wwsbr_javascript.page_js?p_language=us&p_version=10.1.4.0.0.594">
+<!-- Comment out script for old browsers
+//-->
+</SCRIPT>
+<TABLE  WIDTH="100%" id="rg5235"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><DIV id="p33_1960547_33_786765_786765"><TABLE  BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" class="RegionNoBorder">
+<TR><TD class="RegionHeaderColor" WIDTH="100%"><DIV id="pcnt33_1960547_33_786765_786765"><DIV class="Bodyid1siteid0">
+<TABLE  WIDTH="100%" id="rg9714"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><link rel="stylesheet" href="/admin/otn_new.css" type="text/css">
+<script language=Javascript src="/admin/jscripts/portal_lib.js"></script>
+<script language=Javascript src="/admin/jscripts/lib.js"></script><noscript></noscript>
+<script language="JavaScript1.2" src="/admin/jscripts/otn_nav1.js"></script>
+<script language="JavaScript1.2" src="/admin/jscripts/mm_menu.js"></script>
+<script language="JavaScript1.2">mmLoadMenus();</script>
+<script type="text/javascript">
+//var OTNDocsNodeId= "1_374" ;
+//var OTNDocsFId= "-1" ;
+function setFormValues (form,groupname) {
+if(groupname == "Video and Multimedia")
+{
+form.showSimilarDoc.value = "false";
+}else{
+form.showSimilarDoc.value = "true";
+}
+//The following code can be used when a node level search needs to be done. Not used now
+//if(groupname == "OTNDocsNode")
+//{
+// form.nodeid.value = OTNDocsNodeId;
+// form.fid.value = OTNDocsFId;
+//}
+}
+function callSubmit (keyword,formName,keycode) {
+if (keycode==13){
+if(isNotNull(keyword) == true){
+formName.submit();
+}
+}
+}
+</script>
+<style>
+.lightbox_overlay {
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width:100%;
+	height:100%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.6;
+	opacity:.60;
+	filter: alpha(opacity=60);
+	overflow:auto
+}
+.sitefinder_content {
+	position:absolute;
+	right:20px;
+	z-index:1002;
+	overflow: auto;
+	top:10px;
+}
+</style>
+<!--[if lt IE 7]>
+			<style>
+				.lightbox_overlay {
+					display: none;
+					position: absolute;
+					background-color: black;
+					z-index:1001;
+					-moz-opacity: 0.6;
+					opacity:.60;
+					filter: alpha(opacity=60);
+					overflow:auto;
+					top: 0px;
+					left: 0px;
+					height:expression(document.body.clientHeight < document.body.scrollHeight ? document.body.scrollHeight : document.body.clientHeight);
+					width:expression(document.body.clientWidth);}
+			</style>
+		<![endif]-->
+<!--[if IE 7]>
+		<style>
+			.lightbox_overlay {
+				display: none;
+				position: absolute;
+				background-color: black;
+				z-index:1001;
+				-moz-opacity: 0.6;
+				opacity:.60;
+				filter: alpha(opacity=60);
+				overflow:auto;
+				top: 0px;
+				left: 0px;
+				height:expression(document.body.clientHeight < document.body.scrollHeight ? document.body.scrollHeight : document.body.clientHeight);
+				width:expression(document.body.clientWidth);}
+		</style>
+		<![endif]-->
+<script language="javascript">
+		var loaderImg= new Image(32,32);
+    	loaderImg.src = "http://www.oracle.com/admin/images/sitefinder/sitefinder_loader.gif";
+
+		function change()
+		{
+            document.searchForm.group.style.visibility="hidden";
+			document.getElementById("Select Country").style.visibility = "hidden";
+			document.getElementById("light").innerHTML = "<div id='load' style='margin-right:250px; margin-top:50px;'><img src='http://www.oracle.com/admin/images/sitefinder/sitefinder_loader.gif' width='32' height='32' /></div><iframe src='http://www.oracle.com/admin/sitefinder/sitefinder.html' frameborder='0' width='624' height='455' scrolling='no' allowtransparency='true' id='siteid' style='visibility:hidden'></iframe>";
+		}
+		</script>
+<div id="banner">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"> 
+  <tr> 
+    <td align="left" valign="middle" width="169" height="75"><A HREF="/technology/index.html"><IMG SRC="/admin/images/otn/otn_logo_small.gif" hspace="0" BORDER=0 ALT="Oracle Technology Network"></a></td> 
+    <td width="100%" align="left"><form name=searchForm onSubmit="javascript: return isNotNull(this.keyword.value)" action=http://search.oracle.com/search/search method=get target=_top style="margin:0px; padding:0px;">
+      <table width="100%" cellspacing="0" cellpadding="0" height="75">
+        <tr>
+          <td align="right"><script language="JavaScript" type="text/javascript">printWelcome()</script>
+            <a href="javascript:void(0)" onClick="s_objectID='R0:HR:OTN:ORACLEWEBSITEFINDER';document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';change();return false;"><img src="http://oracleimg.com/admin/images/sitefinder/oracle_websites_button.gif" style="margin-left:15px;" alt="Sitefinder" width="101" height="18" border="0" /></a></td>
+        </tr>
+        <tr>
+          <td align="right"><table cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td><input type="hidden" name="default" value="true"/>
+                    <input class=textA  id=Search value="&nbsp;secure search" size=30 name=keyword onClick="javascript: document.searchForm.keyword.value ='';isUserInput=true;" onKeyDown="javascript:isUserInput=true;">
+                    <input type="hidden" name="start" value="1"/>
+                </td>
+                <td>&nbsp;&nbsp;</td>
+                <td><input type="hidden" name="nodeid" value=""/>
+                    <input type="hidden" name="fid" value=""/>
+                    <input type="hidden" name="showSimilarDoc" value="true"/>
+                    <select onkeydown="javascript:callSubmit(document.searchForm.keyword.value,searchForm,event.keyCode)" name="group"
+onchange="javascript: setFormValues(document.searchForm,document.searchForm.group.value)" class="textA" size=1>
+                      <option value="All">All</option>
+                      <option value="Blogs">Blogs</option>
+                      <option value="Oracle.com">Corporate Site</option>
+                      <option value="CRM On Demand">CRM On Demand</option>
+                      <option value="Discussion Forums">Discussion Forums</option>
+                      <option value="Documentation">Documentation</option>
+                      <option value="Education">Education</option>
+                      <option value="Oracle PartnerNetwork (Public)">PartnerNetwork (Public Only)</option>
+                      <option value="Oracle Technology Network" selected>Technology Network</option>
+                      <option value="Video and Multimedia">Video and Multimedia</option>
+                    </select>
+                </td>
+                <td>&nbsp;</td>
+                <td><a onClick="javascript: return isNotNull(document.searchForm.keyword.value)" href="javascript:document.searchForm.submit()"> <img src="/admin/images/20px_search.jpg" width="21" alt="" height="20" vspace="1" hspace="1" border="0" title="Search"/></a></td>
+              </tr>
+          </table></td>
+        </tr>
+      </table>
+    </form></td> 
+  </tr> 
+</table></div>
+<!-- Lightbox Divs -->
+<div style="display: none; margin-right:7px; margin-top:0px; width:624px;" id="light" class="sitefinder_content" align="right">
+  <!--spacer-->
+</div>
+<div style="display: none;" id="fade" class="lightbox_overlay">
+  <!--spacer-->
+  &nbsp;</div>
+<!-- Horizontal Nav Ends Here --></font>
+</TD></TR>
+</TABLE></DIV>
+</DIV></TD></TR>
+</TABLE>
+</DIV></TD></TR>
+</TABLE><TABLE  BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"  summary="">
+<TR>
+<TD VALIGN="top"  width="200">
+<TABLE  WIDTH="100%" id="rg9997"  style="height:0px" border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><DIV id="p33_1960351_33_786765_786765"><TABLE  BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" class="RegionNoBorder">
+<TR><TD class="RegionHeaderColor" WIDTH="100%"><DIV id="pcnt33_1960351_33_786765_786765"><DIV class="Bodyid1siteid0">
+<TABLE  WIDTH="100%" id="rg9701"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><div id="marginTop">
+<TABLE width=180 border=0 cellPadding=0 cellSpacing=0>
+<tr>
+<td id="navBottomTop"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+        <TR>
+          <TD id="navBottomTop"  bgColor=#FFFFFF><A
+                  href="/technology/products/index.html" title="Oracle Products A-Z"
+                  target=_top class="navtitle">PRODUCTS</A></TD>
+        </TR>
+ 
+          <TR>
+            <TD id="navBottomTop" width="96%"><A class="subnavlink" href="/technology/products/database/oracle11g/index.html" target=_top>Database</A><BR>
+<A class="subnavlink" href="/technology/products/middleware/index.html" target=_top>Middleware</A><BR>
+<A class="subnavlink" href="/technology/products/developer-tools/index.html" target=_top>Developer Tools</A><BR>
+<A class="subnavlink" href="/technology/products/oem/index.html" target=_top>Enterprise Management</A><BR>
+<A class="subnavlink" href="/technology/products/applications/index.html" target=_top>Applications Technology</A><BR> <!-- <A class=subnavlink href="/technology/products/exchanges.html" target=_top>Extensions and Plugins</A><BR> -->
+<A class=subnavlink href="/technology/products/index.html" target=_top>Products A-Z</A></TD>
+          </TR>
+<tr>
+<td id="navBottomTop"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+
+          <TR>
+            <TD id="navBottomTop" height="15" bgColor=#FFFFFF><A
+                  href="/technology/tech/index.html" title="Downloads, Articles, Discussions, and More"
+                  target=_top class="navtitle">TECHNOLOGIES</A></TD>
+          </TR>
+          <TR>
+            <TD id="navBottomTop"><A class=subnavlink href="/technology/tech/bi/index.html">BI & Data Warehousing</A><BR>
+<A class=subnavlink href="/technology/tech/embedded/index.html">Embedded</A><BR>
+            <A class=subnavlink href="/technology/tech/java/index.html">Java</A><BR>
+              <A class=subnavlink href="/technology/tech/linux/index.html">Linux</A><BR>
+              <A class=subnavlink href="/technology/tech/dotnet/index.html">.NET</A><BR>
+              <A class=subnavlink href="/technology/tech/php/index.html">PHP</A><BR>
+<A class=subnavlink href="/technology/deploy/security/index.html">Security</A><BR>
+              <A class=subnavlink href="/technology/tech/index.html">Technologies A-Z</A></TD>
+          </TR>
+<tr>
+<td id="navBottomTop"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+
+<TR>
+            <TD id="navBottomTop" height="15" bgColor=#FFFFFF><A
+                  href="/technology/architect/arch_index.html" title="Architecture"
+                  target=_top class="navtitle">ARCHITECTURE</A></TD>
+          </TR>
+          <TR>
+            <TD id="navBottomTop"><A class=subnavlink href="/technology/architect/ent20/index.html">Enterprise 2.0</A><BR>
+            <A class=subnavlink href="/technology/architect/grid/index.html">Grid</A><BR>
+            <A class=subnavlink href="/technology/tech/soa/index.html">Service-Oriented Architecture</A><BR>
+              <A class=subnavlink href="/technology/tech/virtualization/index.html">Virtualization</A><BR></TD>
+          </TR>
+<tr>
+<td id="navBottomTop"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+
+
+          <TR>
+            <TD id="navBottomTop" height="15" bgColor=#FFFFFF><A
+                  href="/technology/community/index.html" title="Interact with the Oracle Community"
+                  target=_top class="navtitle">COMMUNITY</A></TD>
+          </TR>
+          <TR>
+            <TD id="navBottomTop"><A class=subnavlink href="/technology/join/index.html">Join OTN</A><BR>
+<A class=subnavlink href="/technology/community/oracle_ace/index.html">Oracle ACEs </A><br>
+<A class=subnavlink href="http://mix.oracle.com">Oracle Mix </A><br>
+<A class=subnavlink href="http://wiki.oracle.com">Oracle
+                Wiki</A><br>
+<A class=subnavlink href="http://blogs.oracle.com">Blogs</A><br>
+<A class=subnavlink href="/podcasts/index.html">Podcasts</A><br>
+<A class=subnavlink href="/technology/events/index.html">Events</A><br>
+                <A class=subnavlink
+                  href="/newsletters/index.html">Newsletters</a><br>
+                <A class=subnavlink
+                  href="/technology/oramag/oracle/current.html">Oracle
+                Magazine</A><BR>
+<A class=subnavlink
+                  href="/technology/bookstore/index.html">Oracle Books</A><BR><A
+                  class=subnavlink
+                  href="/education/index.html">Certification</A><BR>
+                <A
+                  class=subnavlink
+                  href="/technology/community/user_groups/index.html">User
+                Groups</A><BR>
+                <A
+                  class=subnavlink
+                  href="http://www.oraclewhitepapers.com">Partner
+                White Papers</A>  </TD>
+          </TR>
+				
+				<tr>
+<td id="navBottomTop"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+	<tr>
+<td id="rssTop">&nbsp;</td>
+</tr>
+
+              
+		  <TR>
+ 
+			                  <td id="navBottomTop" class="subnavlink" width="30%" align="left" valign="bottom" nowrap height="27"> 
+                                <select class=textA onChange="location.href=this.options[selectedIndex].value" size=1 name="Select Country" id="Select Country">
+              <option selected>SELECT COUNTRY</option>
+<option value="/technology/global/lad-pt/index.html">Brazil</option>
+              <option value="http://oracle.com/technology/global/cn/index.html">China</option>
+              <option value="/technology/global/jp/index.html">Japan</option>
+              <option value="/technology/global/kr/index.html">Korea</option>
+<option value="/technology/global/lad-es/index.html">Latin America</option>
+            </select></td>
+ 
+          </TR>
+<tr>
+<td id="navOTNBottom"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=1 height=7
+                border=0></td></tr>
+      </TABLE>
+</div>
+<img alt="" src="http://oracleimg.com/admin/images/spacer.gif" border="0" height="10" /></font>
+</TD></TR>
+</TABLE></DIV>
+</DIV></TD></TR>
+</TABLE>
+</DIV></TD></TR>
+</TABLE></TD>
+<TD VALIGN="top"  width="100%">
+<TABLE  WIDTH="100%" id="rg11773"  style="height:0px" border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><DIV id="p33_2473070_33_786765_786765"><TABLE  BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" class="RegionNoBorder">
+<TR><TD class="RegionHeaderColor" WIDTH="100%"><DIV id="pcnt33_2473070_33_786765_786765"><DIV class="Bodyid1siteid0">
+<TABLE  WIDTH="100%" id="rg10214"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><!--[if IE]>
+	<style type="text/css">
+   .rpt_off{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:11px;
+		font-weight:bold;
+		text-indent:5px;
+		padding-top:10px;
+		border:solid 0px;
+        	text-decoration:none;
+	        height:31px;
+	}
+
+   .rpt_on{
+		background-color:#6f6f6f;
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:11px;
+		font-weight:bold;
+		text-indent:5px;
+		padding-top:8px;
+		color:#cccccc;
+		border-top:solid red 2px;
+		border-left:none;
+		border-right:none;
+        	text-decoration:none;
+	        height:31px;
+}
+
+
+			</style>
+		<![endif]-->
+<script language="javascript">
+
+function fixIE6flicker(fix) { 
+try { 
+document.execCommand("BackgroundImageCache", false, fix); 
+} catch(err) { } 
+} 
+fixIE6flicker(true);
+
+
+function mouseover(menuid,listid)
+{
+	document.getElementById(menuid).className='rpt_on';
+	document.getElementById(listid).style.display='block';
+	//document.getElementById(imgid).src='http://oracleimg.com/admin/images/horznav_whtbullet_active.gif';
+}
+function mouseout(menuid,listid)
+{
+	document.getElementById(menuid).className='rpt_off';
+	document.getElementById(listid).style.display='none';
+	//document.getElementById(imgid).src='http://oracleimg.com/admin/images/horznav_whtbullet_inactive.gif';
+}
+
+function is_child_of(parent, child) {
+	if( child != null ) {			
+		while( child.parentNode ) {
+			if( (child = child.parentNode) == parent ) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function fixOnMouseOut(element, event, JavaScript_code) {
+	var current_mouse_target = null;
+	if( event.toElement ) {				
+		current_mouse_target = event.toElement;
+	} else if( event.relatedTarget ) {				
+		current_mouse_target = event.relatedTarget;
+	}
+	if( !is_child_of(element, current_mouse_target) && element != current_mouse_target ) {
+		eval(JavaScript_code);
+	}
+}
+
+function mailpage()
+{
+mail_str = "mailto:?subject=Thought this might interest you: " + document.title;
+mail_str += "&body=I thought you might be interested in this: " + document.title;
+mail_str += ". %0A%0AYou can view it at, " + location.href; 
+location.href = mail_str;
+}
+
+function printerFriendly(template) {
+    top.location = location.protocol 
+      + '//' + location.host 
+      + location.pathname 
+      + '?_template=' + template;
+}
+
+</script>
+<div class="horznavContainer">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td valign="top" width="89"><img src="http://oracleimg.com/admin/images/horznav_shortcuts.gif" align="absmiddle" border="0" height="31" hspace="0" vspace="0"> </td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('gstarted','list1','img1')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'gstarted\',\'list1\',\'img1\');');" >
+            <div class="rpt_off" id="gstarted"><a href="/technology/getting-started/index.html" valign="middle">GETTING STARTED</a></div>
+            <div style="width: 150px;" id="list1" class="dropdown">
+              <ul>
+                <li><a href="/technology/about/index.html">New OTN Users</a></li>
+<li><a href="/technology/architect/index.html">Architects</a></li>
+                <li><a href="/technology/developer/index.html">Developers</a></li>
+                <li><a href="/technology/dba/index.html">DBAs</a></li>
+                <li><a href="/technology/isv/index.html">ISVs</a></li>
+                <li><a href="/technology/getting-started/index.html">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('download','list2','img2')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'download\',\'list2\',\'img2\');');">
+            <div class="rpt_off" id="download"><a href="/technology/software/index.html">DOWNLOADS</a></div>
+            <div style="width: 170px; display: none;" id="list2" class="dropdown">
+              <ul>
+                <li><a href="/technology/software/products/database/index.html">Database</a></li>
+                <li><a href="/technology/software/products/ias/index.html">Application Server</a></li>
+                <li><a href="/technology/software/products/oem/index.html">Enterprise Manager</a></li>
+<li><a href="http://edelivery.oracle.com/linux">Enterprise Linux &amp; Oracle VM</a></li>
+                <li><a href="/technology/software/products/jdev/index.html">JDeveloper</a></li>
+                <li><a href="/technology/software/products/sql/index.html">SQL Developer</a></li>
+                <li><a href="/technology/software/index.html">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div onMouseOver="mouseover('document','list3','img3')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'document\',\'list3\',\'img3\');');" class="mouseoverContainer">
+            <div class="rpt_off" id="document"><a href="/technology/documentation/index.html">DOCUMENTATION</a></div>
+            <div style="width: 155px; display: none;" id="list3" class="dropdown">
+              <ul>
+                <li><a href="/technology/documentation/database.html">Database</a></li>
+                <li><a href="/technology/documentation/appserver.html">Application Server</a></li>
+                <li><a href="/technology/documentation/oem.html">Enterprise Manager</a></li>
+                                <li><a href="/technology/documentation/jdev.html">JDeveloper</a></li>
+<li><a href="http://download.oracle.com/docs/cd/E12151_01/index.htm">SQL Developer</a></li>
+                <li><a href="/technology/documentation/beehive.html">Beehive</a></li>
+                <li><a href="/technology/documentation/applications.html">Applications</a></li>
+                <li><a href="/technology/documentation/index.html">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('forums','list4','img4')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'forums\',\'list4\',\'img4\');');">
+            <div class="rpt_off" id="forums"><a href="http://forums.oracle.com/forums/">FORUMS</a></div>
+            <div style="width: 210px;" id="list4" class="dropdown">
+              <ul>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=48">Technology Network Community</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=18">Database</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=13">Fusion Middleware</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=192">Architecture</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=19">Developer Tools</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=70">Enterprise Manager</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=16">EPM/Business Intelligence</a></li>
+                <li><a href="http://forums.oracle.com/forums/category.jspa?categoryID=10">Technologies</a></li>
+                <li><a href="http://forums.oracle.com/forums/">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('articles','list5','img5')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'articles\',\'list5\',\'img5\');');">
+            <div class="rpt_off" id="articles"><a href="/technology/pub/articles/index.html">ARTICLES</a></div>
+            <div style="width: 150px;" id="list5" class="dropdown">
+              <ul>
+                <li><a href="/technology/pub/articles/tech_arch.html">For Architects</a></li>
+                <li><a href="/technology/pub/articles/tech_dev.html">For Developers</a></li>
+                <li><a href="/technology/pub/articles/tech_dba.html">For DBAs</a></li>
+                <li><a href="/technology/oramag/oracle/current.html">Oracle Mag. Current</a></li>
+                <li><a href="/technology/oramag/oracle/index.html">Oracle Mag. Archives</a></li>
+                <li><a href="/oramag/index.html">Oracle Publishing</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('samplecode','list6','img6')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'samplecode\',\'list6\',\'img6\');');">
+            <div class="rpt_off" id="samplecode"><a href="/technology/sample_code/index.html">SAMPLE CODE</a></div>
+            <div style="width: 150px;" id="list6" class="dropdown">
+              <ul>
+                <li><a href="/technology/tech/java/ajax.html">Ajax</a></li>
+                <li><a href="/technology/tech/java/ejb30.html">EJB</a></li>
+                <li><a href="/technology/sample_code/tech/java/j2ee/index.html">J2EE</a></li>
+                <li><a href="/technology/tech/java/jsf.html">JavaServer Faces</a></li>
+                <li><a href="/technology/sample_code/tech/java/sqlj_jdbc/index.html">JDBC</a></li>
+                <li><a href="/technology/sample_code/tech/pl_sql/index.html">PL/SQL</a></li>
+                <li><a href="/technology/sample_code/index.html">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+        <td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('tutorials','list7','img7')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'tutorials\',\'list7\',\'img7\');');">
+            <div class="rpt_off" id="tutorials"><a href="/technology/obe/start/index.html">TUTORIALS</a></div>
+            <div style="width: 170px;" id="list7" class="dropdown">
+              <ul>
+                <li><a href="/technology/obe/start/index.html">Tutorials Index</a></li>
+                <li><a href="/technology/obe/11gr1_db/index.htm">Database</a></li>
+                <li><a href="/technology/obe/ovm/ovmel5pvmdb11gr1/ovmel5pvmdb11gr1.htm">Oracle VM</a></li>
+			    <li><a href="/technology/obe/fusion_middleware/index.htm">Fusion Middleware</a></li>
+                <li><a href="/technology/obe/obe_as_1012/index.html">Application Server</a></li>
+                <li><a href="/technology/obe/start/em.html">Enterprise Manager</a></li>
+                <li><a href="/technology/obe/obe11jdev/11/index.html">JDeveloper</a></li>
+                <li><a href="/technology/obe/obe_bi/bi.html">Business Intelligence</a></li>
+                <li><a href="/technology/obe/obeocs_1012/admin/install/index.html">Collaboration Suite</a></li>
+				<li><a href="/technology/obe/demos/admin/demos.html">Demos</a></li>
+                <li><a href="/technology/obe/start/index.html">More...</a></li>
+              </ul>
+            </div>
+          </div></td>
+                 <!-- td valign="top"><div class="mouseoverContainer" onMouseOver="mouseover('blogs','list8','img8')" onMouseOut="fixOnMouseOut(this, event, 'mouseout(\'blogs\',\'list8\',\'img8\');');">
+            <div class="rpt_off" id="blogs"><a href="http://blogs.oracle.com">BLOGS</a></div>
+            <div style="width: 170px;" id="list8" class="dropdown">
+              <ul>
+                <li><a href="http://blogs.oracle.com">blogs.oracle.com</a></li>
+                <li><a href="http://blogs.oracle.com/otn/">Oracle's OTN TechBlog</a></li>
+                <li><a href="/technology/syndication/podcasts/index.html">Podcasts</a></li>
+              </ul>
+            </div>
+          </div></td -->
+        <td valign="top" width="1"><img src="http://oracleimg.com/admin/images/horznav_divider.gif" width="1" height="31"></td>
+      </tr>
+  </table>
+</div>
+<div class="pvebbodyContainer">
+  <table align="right" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top" width="20"><img src="http://oracleimg.com/admin/images/tools_corner.gif" align="top" border="0" height="20" hspace="0" vspace="0" width="20"></td>
+      <td class="pvebbodylink" align="center" height="16" nowrap="nowrap" valign="absmiddle"><a href="javascript: printerFriendly('/ocom/print');"><img src="http://oracleimg.com/admin/images/print_button.gif" alt="print" align="absmiddle" border="0" height="16" hspace="0" vspace="0" width="19"></a><a href="javascript: printerFriendly('/ocom/print');"> Printer View</a></td>
+      <td class="pvebbodylink" valign="middle"><img src="http://oracleimg.com/admin/images/tools_divider.gif" valign="middle" border="0" height="20" hspace="0" vspace="0" width="1"></td>
+      <td class="pvebbodylink" align="center" height="16" nowrap="nowrap" valign="absmiddle"><a href="javascript:mailpage();"><img src="http://oracleimg.com/admin/images/email_button.gif" alt="e-mail" align="absmiddle" border="0" height="16" hspace="0" vspace="0" width="19"></a><a href="javascript:mailpage();"> E-mail this page</a></td>
+      <td class="pvebbodylink" valign="middle"><img src="http://oracleimg.com/admin/images/tools_divider.gif" align="middle" border="0" height="20" hspace="0" vspace="0" width="1"></td>
+<script language="javascript">addthis_pub  = 'otn';
+addthis_offset_left = 36; </script>
+      <td class="pvebbodylink" align="center" valign="absmiddle" height="16" nowrap="nowrap" style="padding-right:10px;"><a href="http://www.addthis.com/bookmark.php?v=12&amp;winname=addthis&amp;pub=oraclecom&amp;s=&amp;url=http%3A%2F%2Fwww.oracle.com%2Fproducts%2Findex.html&amp;title=Products%20and%20Services%20%7C%20Oracle" onMouseOver="return addthis_open(this, '', '[URL]', '[TITLE]')" onMouseOut="addthis_close()" onClick="return addthis_sendto()"><img src="http://oracleimg.com/admin/images/addthis_button.gif" width="16" height="16" border="0" alt="Bookmark" hspace="0" vspace="0" align="absmiddle" /> Bookmark</a>
+<script type="text/javascript" src="http://s7.addthis.com/js/152/addthis_widget.js"></script>
+</td>
+    </tr>
+  </table>
+</div></font>
+</TD></TR>
+</TABLE></DIV>
+</DIV></TD></TR>
+</TABLE>
+</DIV></TD></TR>
+</TABLE><TABLE  WIDTH="100%" id="rg5236"  style="height:0px" border="0" cellpadding="0" cellspacing="0" summary=""><TR>
+<TD COLSPAN="1" WIDTH="100%" ><IMG SRC="/portalimages/pobtrans.gif" height="1" width="1" ALT=""></TD>
+</TR>
+</TABLE><TABLE  BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"  summary="">
+<TR>
+<TD VALIGN="top"  width="100%">
+<TABLE  WIDTH="100%" id="rg9999"  style="height:0px" border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><table class="bodycopy" cellspacing="0" cellpadding="8" width="100%" border="0">
+<tbody>
+<tr>
+<td><span class="boldbodycopy"><font color="#666666">Developer: Open Source</font></span> <!-- start of download and tags box -->
+<table cellspacing="0" cellpadding="5" width="200" align="right" border="0">
+<tbody>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" width="200" align="right" border="0">
+<tbody>
+<tr valign="top">
+<td valign="top" colspan="3" height="21">
+<table cellspacing="0" cellpadding="0" width="200" border="0">
+<tbody>
+<tr>
+<td width="1" bgcolor="#cccccc" height="21" rowspan="3"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td width="198" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="100%" border="0"></td>
+<td width="1" bgcolor="#cccccc" height="21" rowspan="3"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td class="portletTitle" width="198" bgcolor="#cccccc" height="19">&nbsp; <b>DOWNLOAD</b></td></tr>
+<tr>
+<td bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr></tbody></table></td></tr>
+<tr>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td valign="top" width="198" bgcolor="#efefef" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="198" border="0"></td>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td valign="top" width="198" height="1">
+<table cellspacing="0" cellpadding="6" border="0">
+<tbody>
+<tr>
+<td valign="top" width="186">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" border="0">
+<tbody>
+<tr>
+<td>
+<table cellpadding="0" width="100%" border="0">
+<tbody>
+<tr>
+<td class="texta"><img height="5" src="http://oracleimg.com/admin/images/ocom/bullet_5x5.gif" width="5" align="baseline" border="0"> <a href="http://www.oracle.com/technology/products/database/oracle11g/index.html">Oracle Database 11<em>g</em></a> <i></i><br>
+  <img height="5" src="http://oracleimg.com/admin/images/ocom/bullet_5x5.gif" width="5" align="baseline" border="0"> <a href="http://rubyinstaller.rubyforge.org/">Ruby and Rails</a></td></tr></tbody></table></td></tr>
+<tr>
+<td colspan="2">&nbsp;</td></tr></tbody></table></td></tr></tbody></table></td>
+<td width="1" bgcolor="#cccccc"><img height="15" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td bgcolor="#cccccc" colspan="3" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr></tbody></table></td></tr>
+<tr>
+<td>
+<table cellspacing="0" cellpadding="0" width="200" align="right" border="0">
+<tbody>
+<tr valign="top">
+<td valign="top" colspan="3" height="21">
+<table cellspacing="0" cellpadding="0" width="200" border="0">
+<tbody>
+<tr>
+<td width="1" bgcolor="#cccccc" height="21" rowspan="3"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td width="198" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="198" border="0"></td>
+<td width="1" bgcolor="#cccccc" height="21" rowspan="3"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td class="portletTitle" width="200" bgcolor="#cccccc" height="19">&nbsp; <b>TAGS</b></td></tr>
+<tr>
+<td bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr></tbody></table></td></tr>
+<tr>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td valign="top" width="198" bgcolor="#efefef" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="198" border="0"></td>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td width="1" bgcolor="#cccccc" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td>
+<td valign="top" width="200" height="1">
+<table cellspacing="0" cellpadding="6" border="0">
+<tbody>
+<tr>
+<td valign="top">
+<table cellspacing="0" cellpadding="1" width="100%" bgcolor="#ffffff" border="0">
+<tbody>
+<tr>
+<td>
+<table cellpadding="0" width="100%" border="0">
+<tbody>
+<tr>
+<td class="bodycopy"><a class="bodylink" href="http://del.icio.us/OracleTechnologyNetwork/opensource">opensource</a>, <a class="bodylink" href="http://del.icio.us/OracleTechnologyNetwork/ruby">ruby</a>, <a href="http://del.icio.us/OracleTechnologyNetwork/rails">rails</a>, <a href="http://del.icio.us/OracleTechnologyNetwork/oracle">oracle</a>, <a href="http://del.icio.us/OracleTechnologyNetwork/11g">11g</a>, <a class="bodylink" href="http://del.icio.us/OracleTechnologyNetwork">All</a></td></tr></tbody></table></td></tr>
+<tr>
+<td colspan="2">&nbsp;</td></tr></tbody></table></td></tr></tbody></table></td>
+<td width="1" bgcolor="#cccccc"><img height="15" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr>
+<tr>
+<td bgcolor="#cccccc" colspan="3" height="1"><img height="1" src="/admin/images/ocom/spacer.gif" width="1" border="0"></td></tr></tbody></table></td></tr></tbody></table><!-- end of download and tags box -->
+<h2>Ruby on Rails on Oracle: A Simple Tutorial</h2>
+<p><span class="italicbodycopy"><em>by Richard Monson-Haefel</em></span> (with  mods for Rails 2.0 by Jesse Hu)</p>
+<p><span class="boldbodycopy"><strong><font size="2">Rails is an easy framework to work with, but like any technology it takes time to master.</font></strong></span></p>
+<p></p>
+<p class="legalese">Updated on January 2009</p>
+<p>&nbsp;<img src="http://www.oracle.com/admin/images/otn/r_arrow.gif"> Comments about this article? Visit the <a class="bodylink" href="http://forums.oracle.com/forums/forum.jspa?forumID=377">Ruby/RoR Discussion Forum</a> 
+<p>You may have already heard about Ruby on Rails, the new application framework that seems to be taking the Web development community, in particular J2EE and PHP programmers, by storm. </p>
+<p>Rails is a capable Web application platform and has gained significant traction among J2EE and PHP programmers. The attraction of both J2EE and PHP programmers makes a lot of sense when you look at the strengths of Rails. For one thing, it uses a strict Model-View-Controller architecture that any self-respecting design-patterns wonk would admire; this explains its attraction to J2EE developers. Second, it's easy to build basic systems with Rails, which is attractive to PHP developers. </p>
+<p>However, Rails has some pretty significant limitations from a database perspective. Rails makes a lot of assumptions about your database layout and application needs. For example, Rails assumes that all tables use a single, non-composite, primary key. Composite primary keys are supported via a <a href="http://compositekeys.rubyforge.org/">Rails plugin</a>. In addition, Rails supports multiple databases and can coordinate transactions among them; Rails does not support two-phase commit.</font> </font></p>
+<p>This article is not intended to be a booster piece for Rails nor is it an expose. It's simply an introduction to the technology. It contains both praise and criticism. At times the criticism might appear a bit heavy handed (especially to Rails enthusiasts), but don't be fooled. Using any Web application framework is going to be tricky, whether it's J2EE, ASP.NET, or PHP. In the long run, you can be a lot more productive with Rails than you can be with many other Web application development platforms, but it takes time to learn the ropes. </p><span class="parahead1">
+<h3>What is Ruby? What is Rails?</h3></span>
+<p>Ruby is a dynamic programming language similar in many respects to Perl, Python, and Smalltalk, but it is its own animal. Java and PHP programmers seem to pick up the language pretty easily and they have been Ruby's biggest supporters. But others have been attracted to the language, too; including Don Box, who is well known as one of the wonkiest-wonks of the Microsoft world. </p>
+<p>Ruby is not new; it was created in 1993, making it older than Java or PHP, both of which were first introduced to the public in 1995. So while Ruby is a mature language, it's been less popular than some other languages. As a result, the ecosystem that surrounds the Ruby programming language is not as rich as those that have grown up around Java, PHP, or Perl. Consequently, you will find fewer frameworks, libraries, books, Web sites, blogs, and other resources dedicated to the language. </p>
+<p>The marketing impotence of the Ruby community changed recently, when David Heinemeier Hanson introduced the Rails framework, arguably the most popular application of Ruby in its history. Rails extends the Ruby programming language into a domain specific language especially well suited for web development. It also leverages ActiveRecord, another language extension that adapts Ruby to object-relational persistence. Other than Rails' lack of support for compound primary keys and two-phase commit, its biggest obstacle to adoption has been that you need to learn a new programming language to use it. This is not something that most people can simply ignore with a lot of hand-waving; learning a new language can be a fun but daunting task. </p>
+<p>If, however, you were interested in expanding your resume, I can think of no other language I would recommend higher than Ruby. Ruby represents the culmination of 10 years of development without the tampering of commercial interests. As a result, Ruby is a delight to work with and, in many cases, is an order of magnitude more productive than Java, C, or Microsoft .NET languages. (The exception may be IronPython, a port of the Python language to the Microsoft .NET environment. Python, like Ruby, is a dynamic and productive programming language.) </p><span class="parahead1">
+<h3><span class="parahead1">What is Rails For?</span> </h3></span>
+<p>Rails is designed from the ground up to create dynamic Web sites that use a relational database backend. It adds key words to the Ruby programming language that make Web applications easier to configure. In addition, it's designed to automatically generate a complete, if somewhat crude, Web application from an existing database schema. The latter is both Ruby's greatest strength and its Achilles' heel. Rails makes assumptions about database schema naming conventions that, if followed, make generating a basic Web site a matter of executing single command. But to do this may require additional configurations or in some cases may not be possible at all. You're also likely to find that just about every database convention that Rails expects can be overridden, but the more overriding that is needed, the less productive the platform becomes. This is why Rails is great when developing "green-field" applications with new databases. Unfortunately, it's not a great solution when dealing with legacy systems. </p>
+<p>The best way to appreciate Rails in green-field application development is via an example. If you already have an Oracle database installed on which you can create new databases and tables, it should take less than 15 minutes to create a complete Web application. In this case, we'll use Ruby of Rails to build a product catalog. </p><span class="parahead1">
+<h3><span class="parahead1">Example: A Simple Product Catalog</span> </h3></span>
+<p>In 2005 I started investing in high-grade (HG) comic books, specifically old issues from as far back as 1946. I created a simple Ruby on Rails database application that allows me to insert, remove, modify and delete new comics as I buy and sell them. It's only intended for my use, so I kept it pretty simple. The application that will be developed in this article is a trimmed down version of the Ruby on Rails application I use at home. </p>
+<p>Although Rails and Oracle Database can be used on a variety of platforms, this article focuses on Windows XP, arguably one of the most frequently used operating systems by Oracle application developers. This example is pretty simple; it's essentially the database equivalent of a "Hello World" programming language example. It's designed to give you a small taste of Ruby, but it doesn't represent the full capabilities of Rails, any more than a "Hello World" example demonstrates the full capabilities of any programming language. </p>
+<p>If you experience problems running this example, it's likely to be for one of three reasons: Either you downloaded the wrong code, your database is not set up to allow you to connect to it, or your Windows XP operating system is giving you problems. In developing this example, I had a number of problems related to versioning and database configuration&mdash;all of which were a result of ignorance. I leaned heavily on a friend of mine, Michael Carland, to get everything working and to make this example as simple as possible. </p>
+<p>The fact of the matter is, getting Ruby on Rails and Oracle to work together is not trivial. In fact, it can be a bit frustrating at times. Follow the directions in this article exactly and you shouldn't have problems. However, once you step outside the boundaries of this example, expect to have some issues. Rails can be very productive, but it's a command-line development environment and doesn't come with all of the "automagic" typically associated with advanced integrated development environments. If you are not a "do-it-yourself" technical person, than I wouldn't recommend Rails to you at this time. </p><span class="boldbodycopy"><strong>Step 1: Set up the Oracle database</strong></span> 
+<p>You wouldn't be reading this article if you were not interested in using Rails in combination with Oracle, so you'll need to have an installed instance of the Oracle database and create a schema for this sample Rails application. The easiest way to do that is to use SQL*Plus as follows. (The assumption is that you already have an Oracle database installed and know how to use it. <a href="http://www.oracle.com/technology/products/database/oracle11g/index.html">Oracle Database 11<em>g</em></a> is used in this turorial.) </p>
+<p>Using SQL*Plus, create a user that you can use for this application. </p><pre>SQL&gt; GRANT CONNECT, RESOURCE TO ruby IDENTIFIED BY ruby;
+SQL&gt; ALTER USER ruby DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+SQL&gt; EXIT</pre>
+<p>If you use a remote Oracle database, you need to install the <a href="http://www.oracle.com/technology/tech/oci/instantclient/index.html">Oracle Database Instant Client</a> which allows you to run your applications without installing the standard Oracle client or having an ORACLE_HOME. To install it, do the following:</p>
+<ol>
+<li>Go to the <a href="http://www.oracle.com/technology/software/tech/oci/instantclient/htdocs/winsoft.html">download page</a> for Oracle Instant Client for Windows.</li>
+<li>Download <a name="file15"><font color="#000000">instantclient-basic-win32-11.1.0.7.0.zip</font></a>.</li>
+<li>Unzip the file under a directory.</li>
+<li>Add path to the directory in the environment variable PATH.</li></ol><strong><span class="boldbodycopy">Step 2: Install Ruby, RubyGems, Rails, and the Ruby/Rails Oracle library</span> </strong>
+<p>There are two pieces of software you'll need in order to use Rails on Windows XP: the Ruby programming language with RubyGems installation package, Rails 2.2.2 (the latest version of Rails), and the Ruby/Rails Oracle database library. To download and install Ruby with the Gems package installer, do the following:</p>
+<ol>
+<li>Go to <a class="bodylink" href="http://rubyinstaller.rubyforge.org/">http://rubyinstaller.rubyforge.org/</a>. 
+<li>Download the <a href="http://rubyforge.org/frs/download.php/29263/ruby186-26.exe" class="bodylink">One-Click Ruby Installer for Windows 1.8.6-26 Final Release</a>.
+<li>Follow the installation instructions. </li></ol>
+<p>Once the Ruby programming platform is installed you can use RubyGems, a Ruby application that allows you to install Ruby frameworks very easily. To install the Rails application development framework, all you need to do is open a command-line prompt and type in a single command. </p><pre>C:\&gt; gem install rails -v 2.2.2</pre>
+<p>And you need to update Rubygems because Rails 2.2.2 requires Rubygems 1.3.1 (or higher).</p><pre>C:\&gt; gem update --system</pre>
+<p>Now that you have Ruby, RubyGems, and Rails installed you can install a specialized code library that will allow your Ruby/Rails applications to talk to your Oracle database server. To install Ruby Oracle library and Rails Oracle Adapter, execute the following commands: </p><pre>C:\&gt; gem install ruby-oci8 -v 1.0.3 <br>C:\&gt; gem install activerecord-oracle-adapter --source http://gems.rubyonrails.org</pre>
+<p>Assuming that everything went smoothly, you have now installed Ruby, Rails, and the Rails-Oracle connection library. You are now ready to create your first Ruby on Rails Web application. </p><span class="boldbodycopy"><strong>Step 3: Create the Web Application</strong></span> 
+<p>In order to create your new Rails application, you will need to create a new Rails project as follows. </p>
+<p>Create a new project using the rails command line application (this will automatically create a new directory). </p><pre>C:\&gt; rails comics_catalog "Cd oracle</pre>
+<p>Change directories so you are in the new project directory created in the previous step. </p><pre>C:\&gt; cd comics_catalog
+C:\comics_catalog&gt;
+</pre>
+<p>Now that you have a new Rails project directory, you'll need to configure your project so that the Rails applications will use the Rails-Oracle connection library. </p>
+<p>Within your project directory, there is a directory called config and in it is a file named database.yml. You need to edit database.yml using your favorite text editor. Initially, the file will look like this: </p>
+<table class="bodycopy" cellspacing="0" cellpadding="7" border="1">
+<tbody>
+<tr>
+<td>
+<p><font face="Courier New" size="2">development:<br>&nbsp; adapter: oracle<br>&nbsp; database: comics_catalog_development<br>&nbsp; username: comics_catalog<br>&nbsp; password: </font>
+<p><font face="Courier New" size="2"># Warning: The database defined as "test" will be erased and<br># re-generated from your development database when you run "rake".<br># Do not set this db to the same as development or production.<br>test:<br>&nbsp; adapter: oracle<br>&nbsp; database: comics_catalog_test<br>&nbsp; username: comics_catalog<br>&nbsp; password: </font>
+<p><font face="Courier New" size="2">production:<br>&nbsp; adapter: oracle<br>&nbsp; database: comics_catalog_production<br>&nbsp; username: comics_catalog<br>&nbsp; password:</font></p></td></tr></tbody></table>
+<p>Different databases require different connection properties. Rails is set up to work with MySQL by default, but you want to re-configure this project to use Oracle. Change the development properties as described on this Oracle on Rails <a class="bodylink" href="http://wiki.rubyonrails.org/rails/pages/Oracle">wiki page</a>. (You could change the test and production properties also, but the scope of this article doesn't include testing or production releases.) When using an Oracle Database on a remote machine, the file will look like this:</p>
+<table class="bodycopy" cellspacing="0" cellpadding="7" border="1">
+<tbody>
+<tr>
+<td>
+<p><font face="Courier New"><font size="2">development:<br>&nbsp; adapter: oracle<br>&nbsp; database: &lt;IP&gt;/&lt;SID&gt;<br>&nbsp; username: ruby<br>&nbsp; password: ruby</font> </font></p></td></tr></tbody></table>
+<p> There are a number of approaches to creating a Web application in Rails, but the simplest by far is to use scaffold, a command line feature in Rails, which will build the entire application in a single command.<pre>C:\comics_catalog&gt; ruby script/generate scaffold comic title:string issue:integer publisher:string</pre>Here "title:string" represents a table column with the type "string" in Rails which is corresponding to the type "varchar2" in Oracle.
+<p>Other than a cascade of output in the command window, what just happened? Well, the Rails code generator created model, view, and controller Ruby code to access the COMICS table. In this case you created the application using the Rails scaffold, which does all the work for you. </p>
+<p>If you make any changes to the database tables, you'll need to run the scaffold command again. Otherwise, your application may not work. </p>
+<p>You haven't created any database tables yet. Rails can help you in a simple way, execute the following command and the table "comics" will be created:</p><pre>C:\comics_catalog&gt; rake db:migrate</pre>
+<p>Now that the web application has been generated, you can start the Ruby Web server, WEBRick. </p><pre>C:\comics_catalog&gt; ruby script/server</pre>
+<p>You can change the Ruby code for your application at anytime without having to restart the web server. However, if you change the database configuration file (i.e. database.yml) you will need to restart the server. </p>
+<p>Now you can access your Rails Comic Catalog application on your own development machine, using your favorite Web browser. Just access the following URL. </p>
+<p><a href="http://localhost:3000/comics/">http://localhost:3000/comics/</a></p>
+<p>Your browser should show a list of comics in your Catalog like the one in Figure 1. </p>
+<center><img src="/technology/pub/images/haefel_ruby_f1.jpg"><br><strong>Figure 1:</strong> Product Catalog List </center>
+<p>When you use the scaffold to create a Rails Web application, it will automatically create three Web components that allow you to see a list of all records in the target database table and to insert, modify, and delete records in that table. Figure 1 shows a list of the sample data. </p>
+<p>In addition to the Listing view, there is also a details view. Just click on any of the "Show" links to see a Web paged dedicated to displaying the data in that particular record. Figure 2 is an example of this details page. </p>
+<center><img src="/technology/pub/images/haefel_ruby_f2.jpg"><br><strong>Figure 2:</strong> The Details Page </center>
+<p>You can also edit any record in the database table. Click on the "Back" link, or use your browser back button to get back to the Listing page, then click on the "Edit" link of any record. Figure 3 shows an example of the Editing view of one of the records in the COMICS database table. </p>
+<center><img src="/technology/pub/images/haefel_ruby_f3.jpg"><br><strong>Figure 3:</strong> The Editing View </center>
+<p>You can also add new records to the COMICS table by going back to the Listing view and clicking on the "New Comic" link. This will present you with an insertion view similar to the one in Figure 3, except the fields will all be blank. </p><span class="parahead1"><strong>Mastering Rails</strong></span> 
+<p>While the Product Catalog example showed how easy it is to create a very simple application using Rails, it's not all that useful except for tracking inventory. You can create much more complicated Web applications with Rails, but that will require that you jump into the code a bit, which would require some study. Rails is an easy framework to work with, but like any technology it takes time to master. </p>
+<p>In order to really master Rails, you should read a book, a number of which will be available later this year, but one that is very good and is available now is <em>Agile Web Programming with Ruby on Rails </em>by David Heninmier Hanson and Dave Thomas (Published by Pragmatic Bookshelf, 2005). Hanson is, of course, the guy who created Rails and Thomas is one of the authors of <em>Programming Ruby: The Pragmatic Programmers' Guide</em> (Pragmatic Bookshelf; 2nd edition, 2004). </p>
+<p><img height="10" src="http://oracleimg.com/admin/images/otn/r_arrow.gif" width="10"> See also: <a class="bodylink" href="/technology/pub/articles/saternos-rails.html">HR Schema on Rails</a>, an exploration of techniques for creating a Ruby on Rails Web application that utilizes a legacy schema. 
+<p><img height="10" src="http://oracleimg.com/admin/images/otn/r_arrow.gif" width="10"> See also: <a class="bodylink" href="http://www.oracle.com/technology/obe/11gr1_db/appdev/rubyrails/rubyrails.htm">Using Oracle and Ruby on Rails</a>, a tutorial that shows you the installation of Ruby/Rails with Oracle and how to develop highly efficient and functional Ruby/Rails applications.</p>
+<hr>
+<span class="boldbodycopy">Richard Monson-Haefel</span> (<a class="bodylink" href="http://www.monson-haefel.com/" target="_blank">http://www.monson-haefel.com/</a>) is a senior Burton analyst and the author of <em>Enterprise JavaBeans</em> (O'Reilly, 2004 ), <em>J2EE Web Services</em> (Addison-Wesley, 2003 ), and <em>Java Message Service</em> (O'Reilly, 2000). His books have won numerous awards. 
+<p><a class="bodylink" href="mailto:otnfeedback_us@oracle.com?subject=Ruby on Rails on Oracle: A Simple Tutorial">Send us your comments</a></p></td></tr></tbody></table></TD></TR>
+</TABLE></TD>
+<TD VALIGN="top"  width="10">
+<TABLE  WIDTH="100%" id="rg10001"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><img src="/admin/images/spacer.gif" border="0" width="10"></font>
+</TD></TR>
+</TABLE></TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+</TABLE>
+<TABLE  BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"  summary="">
+<TR>
+<TD VALIGN="top"  width="20">
+<TABLE  WIDTH="100%" id="rg5239"  border="0" cellpadding="0" cellspacing="0" summary=""></TABLE></TD>
+<TD VALIGN="top"  width="188">
+<TABLE  WIDTH="100%" id="rg5240"  border="0" cellpadding="0" cellspacing="0" summary=""></TABLE></TD>
+<TD VALIGN="top"  width="100%">
+<TABLE  WIDTH="100%" id="rg5238"  border="0" cellpadding="0" cellspacing="0" summary=""></TABLE></TD>
+<TD VALIGN="top"  width="20">
+<TABLE  WIDTH="100%" id="rg5360"  border="0" cellpadding="0" cellspacing="0" summary=""></TABLE></TD>
+</TR>
+</TABLE>
+<TABLE  WIDTH="100%" id="rg5241"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><DIV id="p33_1958580_33_786765_786765"><TABLE  BORDER="0" WIDTH="100%" CELLPADDING="0" CELLSPACING="0" class="RegionNoBorder">
+<TR><TD class="RegionHeaderColor" WIDTH="100%"><DIV id="pcnt33_1958580_33_786765_786765"><DIV class="Bodyid1siteid0">
+<TABLE  BORDER="0" CELLSPACING="0" CELLPADDING="0" WIDTH="100%"  summary="">
+<TR>
+<TD VALIGN="top"  width="20">
+<TABLE  WIDTH="100%" id="rg9911"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=10 border=0></font>
+</TD></TR>
+</TABLE></TD>
+<TD VALIGN="top"  width="100%">
+<TABLE  WIDTH="100%" id="rg9914"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><table align=right><tr><td><script language="javascript">
+function mailpage()
+{
+mail_str = "mailto:?subject=Thought this might interest you: " + document.title;
+mail_str += "&body=I thought you might be interested in this: " + document.title;
+mail_str += ". %0A%0AYou can view it at, " + location.href; 
+location.href = mail_str;
+}
+</script>
+<a href="javascript:mailpage()"><img src="http://oracleimg.com/admin/images/email.gif" width="17" height="15" border="0"></a> <A class=navlink href="javascript:mailpage()">E-mail this page</a>
+</td>
+</tr><tr><td><SCRIPT TYPE="text/javascript">
+function printerFriendly(template) {
+    top.location = location.protocol 
+      + '//' + location.host 
+      + location.pathname 
+      + '?_template=' + template;
+}
+</SCRIPT>
+<A href="javascript: printerFriendly('/ocom/print')" target=""><IMG 
+height=15 alt="Printer View" src="/admin/images/print_17x15.gif" width=17 
+border=0></A> <A class=navlink 
+href="javascript: printerFriendly('/ocom/print')" target="">Printer 
+View</A> 
+</td></tr></table></font>
+</TD></TR>
+</TABLE><TABLE  WIDTH="100%" id="rg9706"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><!-- FOOTER -->
+<div class="greybarhomebot"><!--footer--></div>
+	<table border="0" cellpadding="10" cellspacing="0" width="100%">
+			<tbody><tr>
+				<td width="46%">
+				<a href="/corporate/index.html"><img src="http://oracleimg.com/admin/images/ocom/hp/info_company.gif" alt="Oracle Is The Information Company" border="0" height="11" width="234"></a></td>
+				
+      <td align="right" width="54%" valign="middle"><a href="/corporate/index.html" class="legalese" >About 
+        Oracle</a> <span class="legalese">|</span> <a href="/rss/index.html"> <img src="http://oracleimg.com/admin/images/feed-icon-14x14.png" alt="Oracle RSS Feeds" style="margin-top: 2px;" align="absmiddle" border="0" height="14" width="14"></a> 
+        <span class="legalese">|</span> <a href="/corporate/employment/index.html" class="legalese" >Careers</a> <span class="legalese">|</span> <a href="/corporate/contact/index.html" class="legalese" >Contact 
+        Us</a> <span class="legalese">|</span> <a href="/sitemaps/sitemaps.html" class="legalese">Site Maps</a> <span class="legalese">|</span> <a href="/html/copyright.html" class="legalese">Legal 
+        Notices</a> <span class="legalese">|</span> <a href="/html/terms.html" class="legalese">Terms of Use</a> <span class="legalese">|</span> <a href="/html/privacy.html" class="legalese">Privacy</a></td>
+			</tr>
+			<tr><td colspan="2">
+</td></tr>
+	</tbody></table>
+	
+	<!--/Footer-->
+	
+<!-- Start SiteCatalyst code -->
+
+<script language="JavaScript" src="/admin/jscripts/sitecatalyst/hcode/s_code_otn.js"></script>
+<script language="JavaScript" src="/admin/jscripts/sitecatalyst/hcode/s_code.js"></script>
+
+<!-- ************ DO NOT ALTER ANYTHING BELOW THIS LINE ! ************* -->
+<!--  Below code will send the info to Omniture server -->
+<script language="javascript">var s_code=s.t();if(s_code)document.write(s_code)</script>
+
+<!-- End SiteCatalyst code -->
+</font>
+</TD></TR>
+</TABLE></TD>
+<TD VALIGN="top"  width="20">
+<TABLE  WIDTH="100%" id="rg9912"  border="0" cellpadding="0" cellspacing="0" summary=""><TR ALIGN="LEFT">
+<TD vAlign="top" style="padding:0px 0px 0px 0px;" width="100%"><font class="inplacedisplayid1siteid0"><IMG alt="" src="http://oracleimg.com/admin/images/spacer.gif" width=10 border=0></font>
+</TD></TR>
+</TABLE></TD>
+</TR>
+</TABLE>
+</DIV>
+</DIV></TD></TR>
+</TABLE>
+</DIV></TD></TR>
+</TABLE><!-- Page Metadata Generated On: 26-MAR-2009:09:32:49  Time Taken: 20 msecs -->
+</BODY>
+</HTML>

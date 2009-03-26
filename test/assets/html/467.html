@@ -1,0 +1,1831 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir='ltr'>
+<head>
+<script type="text/javascript">(function() { var a=window;function d(){this.t={};this.tick=function(b,c){this.t[b]=[(new Date).getTime(),c]};this.tick("start")}var e=new d;a.jstiming={Timer:d,load:e};try{a.jstiming.pt=a.external.pageT}catch(f){};function g(b){var c=0;if(b.offsetParent){do c+=b.offsetTop;while(b=b.offsetParent)}return c}a.tickAboveFold=function(b){g(b)<=750&&a.jstiming.load.tick("aft")};var h=false;function i(){if(!h){h=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",i,false):a.attachEvent("onscroll",i); })();</script>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='true' name='MSSmartTagsPreventParsing'/>
+<meta content='blogger' name='generator'/>
+<link href='http://www.blogger.com/favicon.ico' rel='icon' type='image/vnd.microsoft.icon'/>
+<link rel="alternate" type="application/atom+xml" title="On Ruby - Atom" href="http://on-ruby.blogspot.com/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="On Ruby - RSS" href="http://on-ruby.blogspot.com/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="On Ruby - Atom" href="http://www.blogger.com/feeds/24599054/posts/default" />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=24599054" />
+<link rel="me" href="http://www.blogger.com/profile/10492341480170667775" />
+<link rel="openid.server" href="http://www.blogger.com/openid-server.g" />
+<title>On Ruby</title>
+<style id='page-skin-1' type='text/css'><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima
+Designer: Douglas Bowman
+URL:      www.stopdesign.com
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+/* Variable definitions
+====================
+<Variable name="bgcolor" description="Page Background Color"
+type="color" default="#fff">
+<Variable name="textcolor" description="Text Color"
+type="color" default="#333">
+<Variable name="linkcolor" description="Link Color"
+type="color" default="#58a">
+<Variable name="pagetitlecolor" description="Blog Title Color"
+type="color" default="#666">
+<Variable name="descriptioncolor" description="Blog Description Color"
+type="color" default="#999">
+<Variable name="titlecolor" description="Post Title Color"
+type="color" default="#c60">
+<Variable name="bordercolor" description="Border Color"
+type="color" default="#ccc">
+<Variable name="sidebarcolor" description="Sidebar Title Color"
+type="color" default="#999">
+<Variable name="sidebartextcolor" description="Sidebar Text Color"
+type="color" default="#666">
+<Variable name="visitedlinkcolor" description="Visited Link Color"
+type="color" default="#999">
+<Variable name="bodyfont" description="Text Font"
+type="font" default="normal normal 100% Georgia, Serif">
+<Variable name="headerfont" description="Sidebar Title Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
+<Variable name="pagetitlefont" description="Blog Title Font"
+type="font"
+default="normal normal 200% Georgia, Serif">
+<Variable name="descriptionfont" description="Blog Description Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="postfooterfont" description="Post Footer Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="startSide" description="Side where text starts in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="Side where text ends in blog language"
+type="automatic" default="right">
+*/
+/* Use this with templates/template-twocol.html */
+body {
+background:#ffffff;
+margin:0;
+color:#333333;
+font:x-small Georgia Serif;
+font-size/* */:/**/small;
+font-size: /**/small;
+text-align: center;
+}
+a:link {
+color:#5588aa;
+text-decoration:none;
+}
+a:visited {
+color:#999999;
+text-decoration:none;
+}
+a:hover {
+color:#cc6600;
+text-decoration:underline;
+}
+a img {
+border-width:0;
+}
+/* Header
+-----------------------------------------------
+*/
+#header-wrapper {
+width:660px;
+margin:0 auto 10px;
+border:1px solid #cccccc;
+}
+#header-inner {
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+}
+#header {
+margin: 5px;
+border: 1px solid #cccccc;
+text-align: center;
+color:#666666;
+}
+#header h1 {
+margin:5px 5px 0;
+padding:15px 20px .25em;
+line-height:1.2em;
+text-transform:uppercase;
+letter-spacing:.2em;
+font: normal normal 200% Georgia, Serif;
+}
+#header a {
+color:#666666;
+text-decoration:none;
+}
+#header a:hover {
+color:#666666;
+}
+#header .description {
+margin:0 5px 5px;
+padding:0 20px 15px;
+max-width:700px;
+text-transform:uppercase;
+letter-spacing:.2em;
+line-height: 1.4em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+}
+#header img {
+margin-left: auto;
+margin-right: auto;
+}
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+width: 660px;
+margin:0 auto;
+padding:10px;
+text-align:left;
+font: normal normal 100% Georgia, Serif;
+}
+#main-wrapper {
+width: 410px;
+float: left;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+width: 220px;
+float: right;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+margin:1.5em 0 .75em;
+font:normal normal 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#999999;
+}
+/* Posts
+-----------------------------------------------
+*/
+h2.date-header {
+margin:1.5em 0 .5em;
+}
+.post {
+margin:.5em 0 1.5em;
+border-bottom:1px dotted #cccccc;
+padding-bottom:1.5em;
+}
+.post h3 {
+margin:.25em 0 0;
+padding:0 0 4px;
+font-size:140%;
+font-weight:normal;
+line-height:1.4em;
+color:#cc6600;
+}
+.post h3 a, .post h3 a:visited, .post h3 strong {
+display:block;
+text-decoration:none;
+color:#cc6600;
+font-weight:normal;
+}
+.post h3 strong, .post h3 a:hover {
+color:#333333;
+}
+.post-body {
+margin:0 0 .75em;
+line-height:1.6em;
+}
+.post-body blockquote {
+line-height:1.3em;
+}
+.post-footer {
+margin: .75em 0;
+color:#999999;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+line-height: 1.4em;
+}
+.comment-link {
+margin-left:.6em;
+}
+.post img {
+padding:4px;
+border:1px solid #cccccc;
+}
+.post blockquote {
+margin:1em 20px;
+}
+.post blockquote p {
+margin:.75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin:1em 0;
+font-weight: bold;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color: #999999;
+}
+#comments-block {
+margin:1em 0 1.5em;
+line-height:1.6em;
+}
+#comments-block .comment-author {
+margin:.5em 0;
+}
+#comments-block .comment-body {
+margin:.25em 0 0;
+}
+#comments-block .comment-footer {
+margin:-.25em 0 2em;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.1em;
+}
+#comments-block .comment-body p {
+margin:0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar {
+color: #666666;
+line-height: 1.5em;
+}
+.sidebar ul {
+list-style:none;
+margin:0 0 0;
+padding:0 0 0;
+}
+.sidebar li {
+margin:0;
+padding-top:0;
+padding-right:0;
+padding-bottom:.25em;
+padding-left:15px;
+text-indent:-15px;
+line-height:1.5em;
+}
+.sidebar .widget, .main .widget {
+border-bottom:1px dotted #cccccc;
+margin:0 0 1.5em;
+padding:0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #999999;
+font-weight: bold;
+line-height: 1.6em;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+.profile-link {
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+width:660px;
+clear:both;
+margin:0 auto;
+padding-top:15px;
+line-height: 1.6em;
+text-transform:uppercase;
+letter-spacing:.1em;
+text-align: center;
+}
+
+--></style>
+<link type='text/css' rel='stylesheet' href='http://www.blogger.com/widgets/2300090209-widget_css_bundle.css' /> <link rel="stylesheet" type="text/css" href="http://www.blogger.com/v-css/3727950723-blog_controls.css"/>
+ <link rel="stylesheet" type="text/css" href="http://www.blogger.com/dyn-css/authorization.css?targetBlogID=24599054&zx=9c762ec4-6010-406f-b25a-0d55fcd8f4a6"/>
+<style type="text/css">#navbar-iframe { display:block }
+</style>
+
+</head>
+<body>
+<div class='navbar section' id='navbar'><div class='widget Navbar' id='Navbar1'><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="http://www.blogger.com/navbar.g?targetBlogID=24599054&amp;blogName=On+Ruby&amp;publishMode=PUBLISH_MODE_BLOGSPOT&amp;navbarType=BLUE&amp;layoutType=LAYOUTS&amp;homepageUrl=http%3A%2F%2Fon-ruby.blogspot.com%2F&amp;searchRoot=http%3A%2F%2Fon-ruby.blogspot.com%2Fsearch" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="30px" width="100%" id="navbar-iframe" title="Blogger Navigation and Search"></iframe>
+<div></div></div></div>
+<div id='outer-wrapper'><div id='wrap2'>
+<!-- skip links for text browsers -->
+<span id='skiplinks' style='display:none;'>
+<a href='#main'>skip to main </a> |
+      <a href='#sidebar'>skip to sidebar</a>
+</span>
+<div id='header-wrapper'>
+<div class='header section' id='header'><div class='widget Header' id='Header1'>
+<div id='header-inner'>
+<div class='titlewrapper'>
+<h1 class='title'>
+On Ruby
+</h1>
+</div>
+<div class='descriptionwrapper'>
+<p class='description'><span>
+</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id='content-wrapper'>
+<div id='crosscol-wrapper' style='text-align:center'>
+<div class='crosscol section' id='crosscol'></div>
+</div>
+<div id='main-wrapper'>
+<div class='main section' id='main'><div class='widget Blog' id='Blog1'>
+<div class='blog-posts hfeed'>
+<!-- google_ad_section_start -->
+<h2 class='date-header'>Thursday, March 26, 2009</h2>
+<div class='post hentry'>
+<a name='9850993803297190'></a>
+<h3 class='post-title entry-title'>
+<a href='http://on-ruby.blogspot.com/2009/03/author-interview-venkat-subramaniam.html'>Author Interview - Venkat Subramaniam</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p>Here's the third of three Scala book interviews.  <a href="http://www.agiledeveloper.com/blog">Venkat Subramaniam</a> (<a href="http://www.twitter.com/venkat_s">@venkat_s</a>), author of the <a href="http://pragprog.com/">Prag's</a> <a href="http://www.amazon.com/gp/product/193435631X?ie=UTF8&tag=urandomthough-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=193435631X">Programming Scala</a><img src="http://www.assoc-amazon.com/e/ir?t=urandomthough-20&l=as2&o=1&a=193435631X" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />, has a lot to say about Scala and why you should be learning and using it.</p>
+
+<p>You can find more posts about Scala (and Haskell and Erlang) on my <a href="">Functional Programming page</a>.</p>
+
+<hr align="center" width=70% />
+
+<p><strong>Functional Programming languages seem to be an increasingly popular topic.  Why?  What do FP languages teach or do for us?</strong></p>
+
+<p><strong>Venkat</strong> Functional Programming has been around for a long time. Programmers are taking the time over the past few decades to rediscover it.</p>
+<p>A few decades ago low level languages like Assembly and C were popular. As OOP and C++ because prominent, it became increasingly clear that memory management is quite unmanageable. We raised the bar, let the platform deal with memory management and garbage collection. We figured that by relying on a higher level of abstraction we can focus our effort, for better, on application development rather than memory management. This, among other things, brought languages like Java and C# to prominence. When programming in these languages, we don't have to worry any more about memory management.</p>
+<p>As we moved on to create highly responsive applications, we began to realize that dealing with threading and concurrency is another real pain. As soon as you learn how to create a thread, the next thing you learn is how to limit and control it. Multithreaded applications are plagued with issues related to contention, deadlocks, correctness, and complexity of the low level APIs. The gaining availability of multi core processors and multiprocessors is only exasperating these concern. We're eager to put an end to the concurrency issues like we took care of memory management. This is where functional programming comes in.</p>
+<p>Functional Programming advocates assignment-less programming and higher order functions with no side effect. By higher order functions, we mean functions that accept functions as parameters. You pass functions, return functions, and nest functions. Furthermore, these functions solely rely on the input you send them. They're not influenced by any external shared state, and, in turn, do not affect any external shared state. They promote immutability. This eliminates the concern of contention and the need for synchronization. It makes it easier to understand and verify behavior of such functions. However, threads still need to communicate and exchange information. Functional Programming languages like Scala provide an actor based message passing model to realize this.</p>
+
+<p><strong>What makes Scala the right FP language for people to pick up?</strong></p>
+<p><strong>Venkat</strong> Scala is a relatively new language. Other prominent FP languages have come before it. However, quite a few things make Scala special and attractive. It is by far the most powerful statically typed, highly expressive, yet concise language that runs on the Java Virtual Machine (JVM). Scala is fully object oriented, intermixes with Java seamlessly, and provides very strong static typing but without the ceremony that Java adds. Though Scala is entirely a new language, for a moment entertain the thought that Scala is a refactored version of Java, stripped out of its ceremony and threading API, then enhanced with sensible type inference and actor based concurrency model. If Java were to be redesigned in 21st century, it may look a lot like Scala. So, if you are programming on the JVM, and are interested in taking advantage of functional programming capabilities, Scala is a great choice.</p>
+<p><strong>Why is the JVM a good platform for Scala and FP?</strong></p>
+<p><strong>Venkat</strong> Or should we pose the question the other way around, asking why is Scala and FP a good choice on the JVM? I think these two questions go hand in hand.</p>
+<p>The real strength of Java is not the language but the platform, the JVM. There are three things going for it. First, the capability of the virtual machine itself is superb in terms of performance and scalability. It did not start out that way, however, we've seen tremendous improvements over the past few years. Second, a rich set of libraries and frameworks are available for various tasks that enterprise applications demand. Name it, and there is something available already for you (the concern often in this space is availability of too many options, not too little!). Third, influenced by the two above factors, a significant number of enterprise applications already run on the JVM platform.</p>
+<p>Some developers have the luxury of starting out on green field projects and do not have to integrate with other existing applications and components. They have the ability to choose any language and style they desire.</p>
+<p>However, a large number of developers don't have that choice. They develop applications that run and integrate with things on the JVM. Emigrating to another language or another platform to enjoy the benefits of functional programming is really not an option for them. Scala provides a tremendous opportunity here. They can stay right on the powerful platform they're on, continue to developer and maintain their existing Java applications, and at the same time take advantage of functional programming and other related benefits that Scala bring to the platform.</p>
+<p>Since Scala code compiles down to bytecode and integrates seamlessly with Java, you can take advantage of Scala to the extent you desire and makes sense of the project. You can have a small part of your application written in Scala and the rest of the application in Java. As you get comfortable and make the paradigm shift, more and more code and even entire applications can be in Scala. At this point, you can continue to integrate and utilize other components and services running on the JVM. So, the JVM is not simply a good platform. It is a compelling platform to utilize and benefit from functional style of programming.</p>
+
+<p><strong>What kinds of problems are a good fit for Scala?</strong></p>
+<p>Scala's strengths are strong sensible typing, conciseness, pattern matching, and functional style. The first three strengths can help with your traditional programming needs. It will take you less code to achieve your day to day tasks like working with XML, parsing data, manipulating collections of data, ... Scala can help you do the heavy weight lifting with lesser effort. The last strength I mentioned along with the actor based model will help you develop highly concurrent applications without the pain and perils of thread synchronization. On one hand, your concurrent application will be smaller in size. On the other hand, it is devoid of the uncertainty of program correctness due to state contention and deadlocking.</p>
+
+<p><strong>Design patterns and algorithms look differently when implemented in different languages.  Can you give us some examples of elegant patterns or algorithms in Scala?</strong></p>
+<p>The language idioms have a great influence on the design. There are a number of patterns that are easier to implement in Java compared to C++. Similarly, languages that support closures and provide conciseness make lots of things easier and elegant.</p>
+<p>Let's explore one example.</p>
+<p>You are asked to total values in a range from 1 to a given number. You can write a simple loop to do this. Now, you are asked to total only select values, say only even numbers. You could duplicate the code that totals and put a condition statement in it. Now, you are asked to support different criteria, select even number, or select odd numbers, or prime numbers, etc. Spend a few minutes thinking about how you can achieve this in Java.</p>
+<p>I can think of two ways to implement this in Java.</p>
+<p>Approach 1:</p>
+<p>Create an abstract class with an abstract method that will evaluate the selection of a value. Use this abstract method in determining the total. This follows the factory method pattern. Here is the code</p>
+<pre><code>
+// Java code
+public abstract class TotalHelper {
+ abstract public boolean isOKToUse(int number);
+
+ public int totalSelectValuesInRange(int upperLimit) {
+   int sum = 0;
+   for(int i = 1; i <= upperLimit; i++) {
+     if (isOKToUse(i)) sum += i;
+   }
+   return sum;
+ }
+}
+</code></pre>
+<p>Now to use this method, you will have to extend the class and override the isOKToUse() method. Each time you need a different criteria, you have to write yet another class. Quite a bit of work.</p>
+<p>Approach 2:</p>
+<p>Create an interface with the isOKToUse() method and call that method from within the totalSelectValuesInRange() method as shown below:</p>
+<pre><code>
+//Java code
+public interface OKToUse {
+ public boolean isOKToUse(int number);
+}
+
+//Java code
+public class TotalHelper {
+ public int totalSelectValuesInRange(int upperLimit, OKToUse okToUse) {
+   int sum = 0;
+   for(int i = 1; i <= upperLimit; i++) {
+     if (okToUse.isOKToUse(i)) sum += i;
+   }
+   return sum;
+ }
+}
+</code></pre>
+<p>In this case you don't have to create a separate class to derive from TotalHelper, however, you do have to create (inner) classes that implement the OKToUse interface. Here you are using the strategy pattern to solve the problem.</p>
+<p>While both of the above approaches will work, it is a lot of work to implement either approach. You can use IDEs to help generate quite a bit of that code, but that is still a lot of code that you have to look at and maintain.</p>
+<p>Let's see how you can solve the above problem in Scala. We will follow along the lines of the second approach above, but without the interface. Since you can pass functions to functions, the code will be a lot simpler to write. At the same time, since Scala is statically typed, you have compile time type checking to ensure you are dealing with the right types in your code. Let's take a look:</p>
+<pre><code>
+def totalSelectValuesInRange(upperLimit: Int, isOKToUse: Int => Boolean) = {
+ val range = 1 to upperLimit
+ (0 /: range) { (sum, number) =>
+   sum + (if (isOKToUse(number)) number else 0) }
+}
+</code></pre>
+<p>The totalSelectValuesInRange() function takes two parameters. The first one is the upper limit for the range you want to work with. The second parameter is a function which accepts an Int and returns a Boolean. Within the totalSelectValuesInRange() function, you create a range and for each element in the range, you include the element in the sum if it passes the criteria evaluated by the function given in the parameter.</p>
+<p>Here are two examples of using the above code:</p>
+<pre><code>
+Console println "Total of even numbers from 1 to 10 is " +
+ totalSelectValuesInRange(10, _ % 2 == 0)
+
+Console println "Total of odd numbers from 1 to 10 is " +
+ totalSelectValuesInRange(10, _ % 2 == 1)
+</code></pre>
+<p>The output from the above code is shown below:</p>
+<pre><code>
+>scala totalExample.scala
+Total of even numbers from 1 to 10 is 30
+Total of odd numbers from 1 to 10 is 25
+</code></pre>
+<p>When looking at the above example, don't focus on the syntax. Instead focus on the semantics. You can't program any language without understanding the syntax. At the same time, once you get a grasp of the syntax, you navigate at the speed possible. This is when the language conciseness will help. There are quite a few interesting things to observe from the above example.<ol>
+<li>The code is very concise.</li>
+<li>You did not spend time creating interfaces. Instead you passed functions around.</li>
+<li>You did not specify the type repeatedly. When you called the totalSelectValuesInRange, Scala verified that the operation you perform on the parameter to the function (represented by the underscore) is valid operation on an int. For example, if you wrote<br>
+<pre><code>
+totalSelectValuesInRange(10, _.length() > 0)
+</code></pre>
+<br>Scala will give you a compile time error as shown below:
+<pre><code>
+>scala totalExample.scala
+(fragment of totalExample.scala):15: error: value length is not a member of Int
+ totalSelectValuesInRange(10, _.length() &gt; 0)
+                                 ^
+one error found
+!!!
+discarding &lt;script preamble&gt;
+</code></pre>
+<br>Notice how it recognized that the parameter represented by _ is an Int.</li>
+<li>You did not perform a single assignment (val represents immutable data, you can't change or assign to it once you create it). In the Java example you initialized sum to 0 and then continued to update it. In the Scala example, however, you did not assign a value to any variable at all. This last feature comes in very handy when dealing with concurrency.</li></ol></p>
+<p>Imagine for a minute that the numbers you like to total are your asset values in stock investment. You can write a little code that concurrently fetches the stock prices from the web and determine the total value you have invested in it. You can then total these values without any issues of concurrency. And you'd be surprised, you can do that in about two dozen lines of code in Scala, as shown below.</p>
+<pre><code>
+import scala.actors._
+import Actor._
+
+val symbols = Map("AAPL" -> 200, "GOOG" -> 500, "IBM" -> 300)
+val receiver = self
+
+symbols.foreach { stock =>
+ val (symbol, units) = stock
+ actor { receiver ! getTotalValue(symbol, units) }
+}
+
+Console println "Total worth of your investment as of today is " + totalWorth()
+
+def getTotalValue(symbol : String, units : Int) = {
+ val url = "http://ichart.finance.yahoo.com/table.csv?s=" + symbol +
+   "&a=00&b=01&c=" + (new java.util.Date()).getYear()
+
+ val data = io.Source.fromURL(url).mkString
+ units * data.split("\n")(1).split(",")(4).toDouble
+}
+
+def totalWorth() = {
+ val range = 1 to symbols.size
+ (0.0 /: range) { (sum, index) => sum + receiveWithin(10000) { case price : Double => price } }
+}
+</code></pre>
+<p>The actor helped you to dispatch separate concurrent calls to the yahoo web service to fetch the price for the symbols you hold. You multiplied the response you got with the number of units to determine the total value. Finally you messaged that back to the calling actor. In the totalWorth() method you received the response from those calls using the receiveWithin() method and added them up.</p>
+
+<p><em><a href="http://twitter.com/home?status=@gnupate%20posted%20posted%20an%20interview%20with%20@venkat_s%20about%20his%20new%20Scala%20book%20--%20http://tinyurl.com/cnvdpe">Click here to Tweet this article</a></em></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>pate</span>
+</span>
+<span class='post-comment-link'>
+<a class='comment-link' href='https://www.blogger.com/comment.g?blogID=24599054&postID=9850993803297190' onclick=''>0
+comments</a>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=24599054&postID=9850993803297190' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://www.blogger.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-137588700'>
+<a href='http://www.blogger.com/post-edit.g?blogID=24599054&postID=9850993803297190' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://www.blogger.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://on-ruby.blogspot.com/search/label/Books' rel='tag'>Books</a>,
+<a href='http://on-ruby.blogspot.com/search/label/Interview' rel='tag'>Interview</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala' rel='tag'>scala</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala%20books' rel='tag'>scala books</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<h2 class='date-header'>Tuesday, March 17, 2009</h2>
+<div class='post hentry'>
+<a name='4690230388795131961'></a>
+<h3 class='post-title entry-title'>
+<a href='http://on-ruby.blogspot.com/2009/03/dean-wampler-and-alex-payne-author.html'>Dean Wampler and Alex Payne:  Author Interview</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p>There are several good looking Scala books on their way to market.  I'd like to help you get an early look at the books and their authors, so I'm working on a series of Scala author interviews for the <a href="http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html">FP side of On Ruby</a>.  Here's the second of several interviews.</p>
+<p><a href="http://oreilly.com/catalog/9780596157746/index.html">Programming Scala</a> authors <a href="http://polyglotprogramming.com/">Dean Wampler</a> (<a href="http://twitter.com/deanwampler">@deanwampler</a>) and <a href="http://al3x.net/">Alex Payne</a> (<a href="http://twitter.com/al3x">@al3x</a>) have been good enough to answer several questions for me in this interview.</p>
+<hr align="center" width=70% />
+<p><strong>Functional Programming languages seem to be an increasingly popular topic.  Why?  What do FP languages teach or do for us?</strong></p>
+<p><strong>Alex</strong> FP forces you to think differently about solving problems in code, and in a highly structured way. If object-oriented and procedural languages offer a more linguistic approach to programming, functional programming suggests a more mathematical approach. Once you wrap your head around the functional approach to handling collections of data, you'll never think about programming quite the same way. That's the reason that MapReduce, a combination of two fairly simple functional programming concepts, is so essential to what Google does. FP is rich in these powerful abstractions.</p>
+<p><strong>Dean</strong> It seems that every "paradigm" that goes mainstream lurks in the background until some "killer app" comes along for which the paradigm seems tailor made. GUI's did that for OOP. Now, it seems that growing concerns about pervasive concurrency, sometimes called the "multi-core problem", are driving interest in functional programming.</p>
+<p>FP is a promising approach for concurrent programming because in pure FP, variables are immutable and functions have no side effects. If you have immutable variables, no synchronization is required for shared access. All the hard, error-prone programming problems in multithreaded code involve synchronizing access to shared, mutable state. If you get rid of mutable state, those problems just go away.</p>
+<p>Another hallmark of FP is that functions are side-effect free &mdash; they don't change any global or object state. Such functions are inherently simpler to reason about, test, invoke concurrently, you name it.</p>
+<p>Even if you don't care about concurrency (rare, these days), immutable state and side-effect free functions improve code quality, in general. For example, if I have an immutable object "graph", I don't have to worry about passing it to a client that wants to read it. If it's mutable, I have to worry that the client will screw it up in some way. I'd rather screw it up myself, thank you very much!</p>
+
+<p><strong>What makes Scala the right FP language for people to pick up?</strong></p>
+<p><strong>Dean</strong> When I decided to learn an FP language, I picked Scala for very practical reasons; it seemed to be a very good candidate for widespread adoption. Because it runs on the JVM and because Scala code interoperates with Java code so seamlessly, I felt that a lot of Java developers would eventually migrate to Scala, first as a "better Java" and then later as a hybrid object-functional language, all without losing their existing investment in Java technology.</p>
+<p><strong>Alex</strong> It's worth clarifying that Scala is a hybrid Object-Oriented/Functional language. It's the best of both worlds: the power of FP with the familiarity of OOP. That familiarity makes Scala is a great first step into FP for programmers who haven't yet tried a functional language. For those who have, the practicality of doing domain modeling with OOP and interfacing with other JVM languages makes Scala a compelling alternative to strictly functional languages like Haskell and Lisp. All languages seem to gravitate towards an object model over time; see the Common Lisp Object System and the myriad efforts to turn JavaScript's prototyping into more traditional OOP. Why not pick a functional language that already has a mature object model baked in?
+
+<p><strong>Why is the JVM a good platform for Scala and FP?</strong></p>
+<p><strong>Alex</strong> The JVM is a great platform for any language for two reasons: maturity and community. It's widely acknowledged that the JVM isn't just the most mature VMs out there, it's simply one of the most mature of pieces of software out there, on par with the Linux kernel in terms of its history and extensive deployment. The JVM can be tuned, instrumented, profiled, and debugged using a variety of seasoned tools on a multitude of platforms. What's more, there's over a decade's worth of libraries for most any programming task available for the JVM, readily accessible from Scala with essentially no performance penalty. The Java community has already been through the process of producing code to tackle big-time, big-money problems, and that's value you can put to work immediately with Scala.</p>
+<p>Scala's author had a hand in more than one functional programming language for the JVM before embarking on Scala. Coincidentally, he's also responsible for many of the performance gains the JVM has made over the years. Other big FP brains like Clojure's author have found the JVM to be a great host for functional languages. It still has a way to go before it's friendlier to dynamic languages, but the JVM's support for strong typing is a good fit for the FP paradigm.</p>
+<p><strong>Dean</strong> The JVM is arguably the most powerful VM in the world. The global, runtime optimizations it performs are quite extraordinary, doing things a compiler can never do, since it has to rely on static analysis of the code. Of course, the Java ecosystem is also rich with libraries and tools for almost every possible need.  Hence, the JVM is great platform to build upon.</p>
+<p>That's not to say that the JVM is perfect. It has a number of limitations that make FP harder, like functions are not "first-class" citizens (usable as values, arguments to other functions, and able to stand alone, without being a member of a type). Also, the JVM doesn't do tail-call optimization, which is very useful for recursive functions, which are more common in FP. However, language designers have found ways around these limitations and the JVM is definitely going to address these issues in the future.</p>
+<p>By the way, Scala also compiles to .NET byte code, so the .NET community can enjoy Scala goodness, too.</p>
+
+<p><strong>What is the status of Scala on the CLR?  Do you know anything about it's performance?</strong></p>
+<p><strong>Alex</strong> Personally, I haven't worked with Scala on the CLR. My understanding is that CLR support is a lower priority for the developers working on Scala's implementation, and that support may not be complete at this time.</p>
+<p><strong>Dean</strong> I haven't worked with the CLR version, either. I have heard that Microsoft has given a grant to Martin Odersky's team to keep the .NET support current with the Java support.</p>
+
+<p><strong>With the upcoming changes to the JVM (tail call optimization and first class functions among others), will there be changes to Scala?</strong></p>
+<p><strong>Alex</strong> I can't speak for the language's authors, but my understanding is that they track changes to the JVM closely to wring as much performance as they can out of Scala's implementation. As the JVM evolves to embrace its newfound role as host to myriad languages, I'm sure Scala will take advantage of those changes. No other language on the JVM has a team that's as capable of doing so.</p>
+<p><strong>Dean</strong> I've read some detailed blog posts by <a href="http://blog.headius.com/">Charlie Nutter</a>, the JRuby project lead, on the issues they have encountered supporting Ruby features on the JVM. One area of inefficiency is the need to wrap "blocks" (loosely speaking, "bare" functions) in little classes, consuming lots of resources. Some of the features planned for the JVM will certain benefit Scala by eliminating such workarounds.</p>
+
+
+<p><strong>What kinds of problems are a good fit for Scala?</strong></p>
+<p><strong>Dean</strong> Scala's flexible syntax is surprising good for defining "internal" DSL's, for which Ruby is justly famous. If you need an "external" DSL, then the combinator parser library will probably be all you need to build a custom parser. This flexibility also allows Scala to provide some very elegant built-in API's for manipulating XML, building thick-client interfaces with Swing, etc.</p>
+<p>I can't think of another language that has quite the flexibility for small to large scale problems.</p>
+<p><strong>Alex</strong> Scala's name is a shortening of "scaleable language". The goal of its creators was to design a language that scaled from small scripting tasks to desktop GUI applications and all the way up to huge enterprise systems. While Scala is certainly capable of all that, its sweet spot seems to be in producing maintainable back-end systems, particularly those that require non-trivial concurrency. Essentially, it's good for the things that languages like Java and C++ are good for, but without suffering the pains and hassles that often come with those languages.</p>
+<p>That said, I really do believe that Scala scales from scripts on up. I've written tiny scripts that rip through giant XML files that are just as terse as anything I've written in Ruby and many, many times faster (even accounting for the JVM startup time). I've written a small blogging system of the sort that people usually write in Perl, Python, or PHP and found the code far more maintainable. At Twitter, we're using Scala for critical parts of our service's infrastructure, such as our message queue. I certainly believe in the right language for the right problem, but there's not much I wouldn't at least attempt to solve in Scala.</p>
+
+<p><strong>If you were putting together a development team for a scala project, what are some things you'd look for in the candidates?</strong></p>
+<p><strong>Alex</strong> We're <a href="http://twitter.com/jobs">actively hiring engineers at Twitter</a>, and this is definitely something we've had to think about when it comes to Scala experience, or lack thereof. We know the Scala community is small, and that hiring someone with prior Scala is unlikely today. I think that in a couple years, that's going to be a very different story.</p>
+<p>Generally, in-depth experience with OOP, dynamic languages, and a smidge of functional language experience means that a programmer can get up to speed with Scala quickly. If a candidate can tell me what a closure is, or what a combinator is, or describe some basics of type theory, they're going to do fine with Scala. If they can't, though, chances are that they've used those features in other languages and just aren't familiar with the terminology.</p>
+<p>The more experience with the Java SDK a programmer has, the easier it'll be to navigate the landscape of classes that Scala is built on. That's hardly a prerequisite, though, and I can say that from personal experience. I've mostly avoided Java over the past five year of my programming career, and it hasn't taken long to come up to speed with "Javaland" by way of Scala. When I need it, it's there. When I don't (which is most of the time), it's not.</p>
+<p>I think the ideal Scala programmer is passionate about the language she works with every day. You can write perfectly passable code in Scala if you treat as just another tool, but if you really explore its rich set of features, there's so much to take advantage of. It's been great to see our engineers go from zero familiarity with Scala to writing code that uses the language's most advanced features, like parser combinators and actors.</p>
+<p><strong>Dean</strong> Over the years, I've found that really good developers tend to be very curious about other languages. So, even if they have no prior exposure to Scala, they have probably seen variations of its features in other languages. In my "day job", I train and mentor teams trying to adopt agile methods, like the XP practices (TDD, pair programming, etc.). I see so much damage in teams that lack these practices that I would also want my Scala new hires to be good at XP!</p>
+
+<p><strong>It seems a bit strange to talk about so much about a language without showing it off a bit.  Could one of you provide a small program that shows Scala off a bit?</strong></p>
+<p><strong>Alex</strong> Here's an example I used in a presentation:</p>
+<pre><code>
+"showing a nonexistant user returns 404" in {
+  withFormats(List("xml", "json")) { format =>
+    val response = User.show("jack", "asonetibaosneitb", format)
+
+    response mustNot beNull
+    response.code mustEqual 404
+
+    response
+  } mustNot beEmpty
+}
+</code></pre>
+<p>In it, you can see Scala's support for Domain Specific Languages (via use of <a href="http://code.google.com/p/specs/">the Specs BDD library</a>), anonymous functions, and the clarity and fluidity of Scala's syntax. Given how much time a programmer spends (or should be spending!) writing tests, I think this beautiful test code really shows off what Scala can do in just a few lines.</p>
+<p><strong>Dean</strong> Scala's support for building nice DSL's doesn't get enough attention, IMHO. It's a killer feature, for the same reason it's so seductive in Ruby. Here's another DSL example, a snippet of code for a build tool I've been working on.</p>
+<pre><code>
+target('compile -> List('clean, 'build_dir)) {
+    scalac(
+        'files     -> files(srcDir+"**/*.scala", specDir+"**/*.scala"),
+        'classpath -> environment.classpath,
+        'd         -> buildDir,
+        'opts      -> "-unchecked -deprecation"
+    )
+}
+
+target('clean) {
+    deleteRecursively(buildDir)
+}
+
+target('build_dir) {
+    mkdir(buildDir)
+}
+</code></pre>
+<p>It's inspired by Ruby's "rake". You specify targets, named with Scala symbols (e.g., 'compile) and there are built in functions for invoking the compiler, manipulating files and directories, etc.</p>
+<p>By the way, it seems to be an unofficial Scala community requirement that when you do a project to learn Scala, it must either be a build tool or a Twitter client...</p>
+
+
+<p><strong>Design patterns and algorithms look differently when implemented in different languages.  Can you give us some examples of elegant patterns or algorithms in Scala?</strong></p>
+<p><strong>Alex</strong> Scala's implementation of inheritable, extensible cross-cutting concerns in the form of Traits is one of the language's best features. Imagine Ruby modules on steroids and you're getting there. That's a difficult problem for most languages to handle well, and Scala does a great job at it.</p>
+<p>Scala's Actor library is another superbly-implemented part of the language. While Actors in Scala feel "baked in" to the language, in actuality it's a completely self-contained library. The Actor model can be found in Erlang, Io, and a number of other experimental languages, but it feels solid and right at home in Scala.</p>
+<p><strong>Dean</strong> Indeed, the Actor library is another example of the flexible support for building internal DSL's.</p>
+<p>Just for emphasis, let me echo what Alex said about Traits. It's one of the scalability features (in terms of application size and complexity) that I'm most excited about. Here's another way to describe traits;  it is Scala's mechanism for supporting "mixin"-style composition, originally made famous in Lisp and more recently in the form of Ruby modules. You have your main class hierarchy (single inheritance, like Java), but you can mix in abstractions and implementations in a modular way, defined as traits. With Java, you can only "mixin" the abstraction part as interfaces. You have to resort to ad-hoc hacks to add implementations. This composition mechanism solves some of the issues that Java users turn to Aspect-Oriented Programming to solve and it promises to encourage more modular designs that will grow gracefully over time.</p>
+<p>The question of Design Patterns is an interesting one right now. Patterns are getting a lot of bad mouthing from some reputable (and not so reputable) people. Without rehashing the arguments, let's just say that the central argument seems to be that patterns are just workarounds for language deficiencies. I think that misses the point that a good pattern stands on its own merits. If a language supports it "natively", then so much the better!</p>
+<p>Because of Scala's support for FP, especially closures, some design patterns just aren't as important as they are in Java. (I'm looking at you, Visitor!) Rather, API designers can build in elegant hooks for clients to pass in closures to customize behavior, etc.</p>
+<p>Also, traits make patterns like Observer very elegant. I've heard there are some good examples of Observer in <a href="http://oreilly.com/catalog/9780596157746/index.html">a Scala book O'Reilly is publishing</a>, available now as a Rough Cut!!</p>
+
+<p><em><a href="http://twitter.com/home?status=@gnupate%20posted%20an%20interview%20with%20@deanwampler%20and%20@al3x%20about%20their%20new%20Scala%20book%20--%20http://tinyurl.com/d4vxqw">Click here to Tweet this article</a></em></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>pate</span>
+</span>
+<span class='post-comment-link'>
+<a class='comment-link' href='https://www.blogger.com/comment.g?blogID=24599054&postID=4690230388795131961' onclick=''>2
+comments</a>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=24599054&postID=4690230388795131961' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://www.blogger.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-137588700'>
+<a href='http://www.blogger.com/post-edit.g?blogID=24599054&postID=4690230388795131961' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://www.blogger.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://on-ruby.blogspot.com/search/label/Interview' rel='tag'>Interview</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala' rel='tag'>scala</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala%20books' rel='tag'>scala books</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<h2 class='date-header'>Thursday, March 12, 2009</h2>
+<div class='post hentry'>
+<a name='3065806060478213617'></a>
+<h3 class='post-title entry-title'>
+<a href='http://on-ruby.blogspot.com/2009/03/beginning-scala-author-interview-with.html'>Beginning Scala -- Author Interview with David Pollak</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p>There are several good looking Scala books on their way to market.  I'd like to help you get an early look at the books and their authors, so I'm working on a series of Scala author interviews for the <a href="http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html">FP side of On Ruby</a>.  Here's the first of several interviews.</p>
+
+<p> I've spent some time talking with <a href="http://blog.lostlake.org">David Pollak</a> (<a href="http://twitter.com/dpp">@dpp</a>) about his upcoming book from <a href="http://www.apress.com">Apress</a>, <a href="http://www.amazon.com/gp/product/1430219890?ie=UTF8&tag=urandomthough-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=1430219890">Beginning Scala</a><img src="http://www.assoc-amazon.com/e/ir?t=urandomthough-20&l=as2&o=1&a=1430219890" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /> (also available, electronicly, as an <a href="http://apress.com/book/view/1430219890">Alpha book from Apress</a>). Read on to see what he has to say.</p>
+
+<hr align="center" width=70% />
+
+<p><strong>Functional Programming languages seem to be an increasingly popular  topic.  Why?  What do FP languages teach or do for us?</strong></p>
+
+<p><strong>David</strong> I came to Scala via Ruby.  I was doing some Ruby and some Java coding (I've been doing Java since 1996).  My Java code started taking on a "Ruby Flavor" in that I was passing around a lot of code blocks.  In Ruby, passing code block, lambdas, etc. is super-simple.  In Java, I was creating lots of anonymous inner classes and passing them around... it was a syntactic disaster.</p>
+<p>In Scala, passing a function, a block of code, as a parameter is as easy and syntactically pleasing as it is in Ruby (or nearly so... Charlie Nutter has been barfing all over Scala's syntax lately.)  This is the first part of what I understand FP to be.  So, in a way, Ruby is a functional language.</p>
+<p>In addition to the simple ability to pass code blocks as parameters, other touch-stones of FP style coding are:<ul>
+<li>Immutable data structures</li>
+<li>Pattern Matching</li>
+<li>Optionally, a math-driven type system</li>
+<li>Optionally, lazy evaluation</li>
+</ul></p>
+<p>Scala's default collections classes are immutable.  Once an instance has been created, the value of that instance, whether is be a List, a Map (dictionary), etc. never changes.  This is familiar to Java programmers.  Java's String class is immutable.  Once you create a String, you can never change it.  Python requires immutable data structures for keys to dictionaries.  Immutability introduces a new way of approaching a program.  One thinks about methods as things that take input and return output and will always return the same output given the same input.  In Ruby, String is mutable and there have been many a bug in my programs because some other method changed the value of a String out from under me.</p>
+<p>Pattern matching provides a powerful way to use declarative syntax to express business logic.  I'm include an example in the idomatic section of intercepting an incoming HTTP request using pattern matching.</p>
+<p>Scala has a very powerful type system including a type inferencer.  What that means is that you can define very powerful rules (e.g, when building a query, you can only pass a String into a column that is a VARCHAR) in the library, but the end-user gets the syntactic simplicity of Ruby.</p>
+<p>Scala supports lazy evaluation at the language level and in the libraries.  This means that only elements that are actually accessed are computed.</p>
+<p>Functional languages teach us how to think in terms of transformation rather than getting/setting.  Functional programming focuses the developer's eyes and mind on the business logic rather than the boilerplate of flow of control.  Functional programming gives us different kinds of abstractions to compose than objects.  Composing functions and performing operations on collections just as easily as performing operations on single items changes the focus of development to logic rather than mechanisms.</p>
+ 
+<p><strong>What makes Scala the right FP language for people to pick up?</strong></p>
+<p><strong>David</strong> Scala along with OCaml and F# are the "practical" functional languages.  You can get things done out of the gate with any of these languages.  You don't have to learn a lot of theory to get things done with Scala, OCaml or F#.  With these languages, you can dip your toe in the functional waters without having to take an immediate plunge.  Neither of these things is true of Haskell or Erlang.</p>
+<p>Scala and F# have the Java and CLR libraries immediately available which is a killer reason to choose either of these languages.</p>
+<p>Scala has better OO abstractions than does F# or any other language.  Scala seems to have integrated OO and a Type System in a way that no other language has.</p>
+
+<p><strong>Why is your book the right one for people to pick up and learn about Scala?</strong></p>
+<p><strong>David</strong> I take a very simple approach to Scala.  There's very little theory and a whole lot of simple examples and idioms.  I've tried to make sure that the code is oriented toward practical users of Java as well as practical users of Ruby.  The chapters are short and to the point.  More of the code examples can be typed into the REPL (like irb) so the reader can get immediate feedback on the example and the language as a whole.</p>
+
+<p><strong> Why is the JVM a good platform for Scala and FP?</strong></p>
+<p><strong>David</strong>:<ol>
+<li>It just works</li>
+<li>It's very, very fast</li>
+<li>Excellent integration with existing Java libraries</li>
+<li>The ability to intermix Java and Scala (and Groovy and JRuby) in a single project</li>
+<li>The JVM is everywhere and it's well tuned everywhere</li>
+ </ol></p>
+
+<p><strong>What kinds of problems are a good fit for Scala?</strong></p>
+<p><strong>David</strong> Heh... everything from simple scripting on up to extremely complex systems.  With the exception of Erlang's distributed capabilities and C's native device capabilities, I think that every other problem is well solved with Scala.  But, I'm biased. :-)</p>
+ 
+
+<p><strong>Design patterns and algorithms look differently when implemented in  different languages.  Can you give us some examples of elegant patterns or algorithms in Scala?</strong></p>
+
+
+<p><strong>David</strong> A BDD Test:</p>
+<pre><code>
+    object BoxSpec extends Specification {
+      "A Box" can {
+        "be created from a Option. It is Empty if the option is None" in {
+          Box(None) mustBe Empty
+        }
+        "be created from a Option. It is Full(x) if the option is Some(x)" in {
+          Box(Some(1)) must_== Full(1)
+        }
+</code></pre>
+
+<p>A Multi-user web-based chat application:</p>
+<pre><code>
+    case class Messages(m: List[String])
+
+    object ChatServer extends Actor with ListenerManager {
+      private var msgs: List[String] = Nil
+
+      protected def createUpdate = Messages(msgs)
+
+      override val highPriority: PartialFunction[Any, Unit] = {
+        case s: String =>
+          msgs ::= s
+          updateListeners()
+      }
+
+      this.start
+    }
+
+    class Chat extends CometActor with CometListenee {
+      private var msgs: List[String] = Nil
+      
+      def registerWith = ChatServer
+      
+      override def highPriority = {
+        case Messages(m) =>
+          msgs = m
+          reRender(false)
+      }
+      
+      def render =
+      &lt;div&gt;
+        &lt;ul&gt;
+          {
+            msgs.reverse.map(m => &lt;li&gt;{m}&lt;/l&gt;>)
+          }
+        &lt;/ul&gt;
+        {
+          ajaxText("", s => {ChatServer ! s; Noop})
+        }
+      &lt;/div&gt;
+    }
+</code></pre>
+
+<p>A REST API handler:</p>
+
+<pre><code>
+    case Req(ApiPath :: "statuses" :: 
+                        "public_timeline" :: Nil,
+           this.method, GetRequest) => publicTimeline
+
+     def publicTimeline(): Box[TwitterResponse] = {
+        val statusList =
+          Message.findAll(OrderBy(Message.id, 
+                          Descending),
+                          MaxRows(20)).
+            map(msgData _)
+        Full(Right(Map("statuses" -> 
+                  ("status", statusList) )))
+      }
+</code></pre>
+
+<p>One more very nice piece of code... find all the classes used by &lt;p&gt tags in an HTML document:</p>
+<pre><code>
+for {p <- x \\ "p"; ca <- p \ "@class"
+     c <- ca.text.split(" ")} yield c
+</code></pre>
+
+<p><strong>What tricks or tools do you suggest someone beginning to read Scala use?</strong></p>
+<p><strong>David</strong> Don't just read, but use.  Open the Scala REPL and start typing.  Start playing.  Start exploring.  Try to understand the actual thing that happens when certain constructs are used.  In this way, it's 100% the same as a newbie exploring Ruby.  Type a line... see what happens... type another... see what happens.  Touch, feel, play.</p>
+ 
+<p><strong>What are some good Scala code bases to read?</strong></p>
+<p><strong>David</strong> The <a href="http://github.com/dpp/liftweb/tree/338119b8d7a76adcb9f45e9aa8a2b946d9c81118/lift-util/src/main/scala/net/liftweb/util">Lift utils packages</a> is a nice place to start.</p>
+ 
+<p><strong>What blogs are good for learning more about Scala?</strong></p>
+<p><strong>David</strong><ul>
+<li><a href="http://scala-blogs.org">scala-blogs.org</a></li>
+<li><a href="http://technically.us/code">technically.us/code</a></li>
+<li><a href="http://www.drmaciver.com/planetscala/">www.drmaciver.com/planetscala/</a></li>
+<li><a href="http://james-iry.blogspot.com/">james-iry.blogspot.com/</a></li>
+<li><a href="http://www.gracelessfailures.com/">www.gracelessfailures.com</a></li>
+<li><a href="http://jonasboner.com/">jonasboner.com/</a></li>
+<li><a href="http://matt.immute.net/taxonomy/term/11/0">matt.immute.net/taxonomy/term/11/0</a></li>
+<li><a href="http://www.codecommit.com/blog/">www.codecommit.com/blog/</a></li>
+</ul></p>
+
+<p><em><a href="http://twitter.com/home?status=@gnupate%20posted%20an%20interview%20with%20@dpp%20about%20his%20new%20Scala%20book%20--%20http://tinyurl.com/c4t9m6">Click here to Tweet this article</a></em></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>pate</span>
+</span>
+<span class='post-comment-link'>
+<a class='comment-link' href='https://www.blogger.com/comment.g?blogID=24599054&postID=3065806060478213617' onclick=''>0
+comments</a>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=24599054&postID=3065806060478213617' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://www.blogger.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-137588700'>
+<a href='http://www.blogger.com/post-edit.g?blogID=24599054&postID=3065806060478213617' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://www.blogger.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://on-ruby.blogspot.com/search/label/functional%20programming' rel='tag'>functional programming</a>,
+<a href='http://on-ruby.blogspot.com/search/label/Interview' rel='tag'>Interview</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala' rel='tag'>scala</a>,
+<a href='http://on-ruby.blogspot.com/search/label/scala%20books' rel='tag'>scala books</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<h2 class='date-header'>Tuesday, March 10, 2009</h2>
+<div class='post hentry'>
+<a name='2028656210214033962'></a>
+<h3 class='post-title entry-title'>
+<a href='http://on-ruby.blogspot.com/2009/03/reia-new-dynamic-language-on-erlang-vm.html'>Reia - A New Dynamic Language on the Erlang VM</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p><a href="http://unlimitednovelty.com/">Tony Arcieri</a> (<a href="http://twitter.com/bascule">@bascule</a>) Has been in the Ruby community for quite a while.  He's got a <a href="http://revactor.org/">strong interest in concurrency</a>, which lead to my <a href="http://on-ruby.blogspot.com/2008/01/interview-with-revactor-developer-tony.html">interviewing him about Revactor</a> last year.</p>  
+
+<p>When he couldn't get the performance he was looking for with Revactor, he started working on a new Ruby inspired language on the Erlang VM &mdash; <a href="http://wiki.reia-lang.org/wiki/Reia_Programming_Language">Reia</a>.  Tony was kind enough to sit down and spend some time with me doing an interview about his new project.</p>
+
+<hr align="center" width=70% />
+
+<p><strong>Besides yourself, who's using or working on Reia?</strong></p>
+
+<p><strong>Tony</strong> A number of people have made minor contributions.  One of the main people involved is Phil Pirozhkov, who is working on a web framework for Reia called <a href="http://github.com/pirj/ryan/tree/master">Ryan</a>.</p>
+
+<p>The other contributors can be seen on the Github <a href="http://github.com/tarcieri/reia/graphs/impact">impact graph</a>.</p>
+
+<p><strong>Who should be looking at it?</strong></p>
+
+<p><strong>Tony</strong> Anyone interested in using dynamic languages to develop web or other network services, particularly people with a background in object oriented languages but not a lot of background in functional languages.</p>
+ 
+<p><strong>Other than web and network programming, what problem domains do you think Reia will do well in?</strong></p>
+
+<p><strong>Tony</strong> Most of the areas I think it will stand out will be subsets of web or network programming, but perhaps I can go into some of those more specifically.</p>
+
+<p>I think Reia will be good at the sorts of interfacing and automation tasks that Ruby has become incredibly successful at, but will carry with it all the distributed computing power offered by the Erlang/OTP framework.  In that regard I think Reia will do well at automating tasks on distributed systems, particularly in regard to handling failures.</p>
+
+<p>Cloud computing services offer a great platform for building distributed systems for automating tasks.  I think Reia will do quite well there.  It's the same problem domain that <a href="http://www.engineyard.com/">EngineYard</a> is trying to address with <a href="http://www.engineyard.com/vertebra/">Vertebra</a>, but with Reia I hope the solution offered can be accomplished using one language rather than two (Erlang and Ruby in the case of Vertebra).  I also expect Reia could work quite well in conjunction with the Erlangy parts of Vertebra.</p>
+
+<p>I also think Reia could work quite well as a language for Erlang testing as it has full access to the Erlang runtime and excellent Erlang interfacing.  I have strong hopes of seeing a tool like <a href="http://rspec.info/">RSpec</a> implemented in Reia and being able to use it for Erlang testing.  RSpec has seen great success in the Ruby community and I hope I can bring it to the Erlang world.</p>
+
+
+<p><strong>In your blog post <a href="http://unlimitednovelty.com/2009/01/reia-and-object-aware-concurrency.html">Reia and Object Aware Concurrency</a> you talk about object concurrency, is this enough?</strong></p>
+
+<p><strong>Tony</strong> No, and for that reason Reia also has <a href="http://wiki.reia-lang.org/wiki/Processes">processes</a> and the full power of Erlang's actor model exposed at the language level.</p>
+
+<p>Objects are there for cases that can be solved primarily with RPCs.</p>
+
+<p><strong>What about the FP claims that idempotency and freedom from side effects are the high road to concurrency?</strong></p>
+
+
+<p><strong>Tony</strong> While Reia has a number of side effects not present in Erlang, great care is taken to localize side effects.  All operations with side effects use copy on update semantics, and side effects are actually manifest in the form of destructive rebinding (which is in turn compiled to a pure functional form with single assignment).  In most cases the side effects are completely localized to the function they occur in.</p>
+
+<p><strong>What is typing like in Reia &mdash; Static or Dynamic, Strong or Weak?  Why?</strong></p>
+
+<p><strong>Tony</strong> Reia has strong dynamic typing.  This is largely inherited from Erlang which also has strong dynamic typing, although Reia does add automatic type coercion in a few places (e.g. interpolated strings)</p>
+
+<p>I'm a fan of dynamic languages in general and this is one of the characteristics which drew me to Erlang in the first place.  I find dynamic typing less obtrusive than static typing and believe it helps programmers develop more quickly.</p>
+ 
+<p><strong>How are you managing the differences between types in Reia and the Erlang VM?</strong></p>
+
+<p><strong>Tony</strong> Reia's built-in types which do not have direct Erlang equivalents, such as strings and regexes, are represented internally as tagged tuples.  Reia tuples are also tagged to distinguish them from the other types.</p>
+
+<p>Calling out to Reia from Erlang is done through a "reia" module which automatically converts types which have direct equivalents, however types which can't be natively represented in Erlang such as regexes and tuples are left untouched.</p>
+
+<p>Reia has first class syntax for calling out to Erlang which also automatically handles type conversions.</p>
+
+<p><strong>In <a href="">The cutting edge of VM design</a> you wrote:</strong></p>
+<blockquote><p><strong><em>"Approaches like software transactional memory ... are better suited to certain types of concurrency problems than Erlang's shared-nothing process approach."</em></strong></p></blockquote>
+<p><strong> What spaces are the Erlang VM and Reia not well suited for?</strong></p>
+
+<p><strong>Tony</strong> Problems which are intrinsically tied to a central shared state are difficult to address in Erlang (and by virtue of that, Reia as well), because Erlang bends over backwards to avoid shared state.  There are tools like ETS and Mnesia to model shared state, but solutions offered in Erlang are generally going to be much slower than solutions which can concurrently operate on the same state with tools like STM.</p>
+
+<p>Ulf Wiger brought up the <a href="http://shootout.alioth.debian.org/u32q/benchmark.php?test=chameneosredux&lang=hipe&id=1">chameneos-redux problem from the Programming Language Shootout</a> as a benchmark where Erlang does quite poorly.</p>
+
+<p>It would be difficult to add Erlang-style fault tolerance to a system which uses STM (and for that reason it would be difficult to add STM to Erlang).  Erlang isolates state per process, so when errors occur the process can simply crash and get restarted in a clean state by its supervisor.  With STM unless you're able to completely blow away the shared state and start over in the event of a fault, you're left with trying to handle the error and roll back to a clean state, which is a far more difficult problem than Erlang's "just crash and start over clean" approach to fault tolerance.</p>
+
+<p>Problems with a strong sense of time and a need for global synchronization are probably ill-suited for Erlang/Reia and better addressed by a dataflow language.  Erlang/Reia are inherently asynchronous and designed with a work-at-your-own-pace approach in mind, using mailboxes to synchronize execution.  If you want all processes to work in sync with a global clock your best bet would be to look elsewhere.</p>
+
+<p>Numerical computing is another area where Erlang is somewhat weak, although Erlang/HiPE actually does significantly better at this than many other languages, like Perl, PHP, Python, or Ruby.  As I intend to add various degrees of operator overloading to Reia it is only going to get worse in this regard.</p>
+ 
+<p>All that said, the core Erlang developers are largely focused on making the existing model work better and not particularly willing to try to incorporate other concurrency paradigms like STM into the language.  I'm quite happy they're doing that and are focused on the problem of improving this like the SMP scheduler.  However, I'm much more open to experimenting with other approaches to concurrency in Reia.  I would love to see a hybrid STM/actor system and may eventually try to pursue that with Reia.</p>
+
+
+<p><strong>What resources (books, blog posts, papers, etc.) are you looking at as you design/build Reia?</strong></p>
+
+<p><strong>Tony</strong> Other people have been my biggest resource.  I'm constantly soliciting feedback on IRC, mailing lists, and elsewhere.  Some of the best feedback I've received has come from big names in the Erlang community like <a href="http://armstrongonsoftware.blogspot.com/">Joe Armstrong</a>, <a href="http://ulf.wiger.net/weblog/">Ulf Wiger</a> (<a href="http://twitter.com/uwiger">@uwiger</a>), and <a href="http://rvirding.blogspot.com/">Robert Virding</a> (<a href="http://twitter.com/rvirding">@rvirding</a>).</p>
+
+<p>This is a particulary interesting set of questions I went through and tried to make sure I had decent answers for.  I've thought about trying to put together a blog post answering some of the <a href="http://article.gmane.org/gmane.comp.lang.lightweight/2552">questions from the lightweight languages list</a>.</p>
+
+<p>I've read <a href="http://piumarta.com/pepsi/objmodel.pdf">Open Reusable Object Models</a> as well, although I'm not sure I can really fulfill its requirements in Reia.</p>
+
+<p>The <a href="http://www.amazon.com/gp/product/0978739256?ie=UTF8&tag=urandomthough-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=0978739256">The Definitive ANTLR Reference</a><img src="http://www.assoc-amazon.com/e/ir?t=urandomthough-20&l=as2&o=1&a=0978739256" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />from <a href="http://pragprog.com/">the Pragmatic Programmers</a> was what got me started with language development, although I no longer use <a href="http://www.antlr.org/">ANTLR</a>.</p>
+
+<p><strong>If someone wants to get involved with Reia development, where should they start?</strong></p>
+
+<p><strong>Tony</strong> Signing up for the <a href="http://groups.google.com/group/reia">Google group</a> and asking that same question would be a great place to start.</p>
+
+<p>Three areas where contribution from outside developers would be most welcome are: testing, built-in types, and the standard library.  All of these are largely self-hosted in Reia.  Just writing simple tests for presently untested parts of the language would be immensely helpful.  In addition, the built-in types still lack a lot of the functionality present in Ruby and Python.  Dive in, look for a feature from your favorite language which seems to be missing, and add it.</p>
+
+<p><strong>Most people don't try to develop 'the one true language'.  What are your goals with Reia?  How will you know if you've succeeded?</strong></p>
+
+<p><strong>Tony</strong> Reia is certainly intended to be a niche language.  If there's one area I'd like to see it succeed in it would be web application development, particularly for cloud computing applications.  While I think Erlang's process model should make it immensely successful in the area of rendering web pages glued together from a variety of backend services (e.g. memcache, db, search index, queues) Erlang has struggled to succeed in this area.  A number of frameworks are available but none of them have gained widespread adoption.  I don't think anyone sees Erlang as becoming a language recognized for web development any time in the near future.</p>
+
+<p>If a web framework for Reia were to become as popular as Rails I'd certainly regard that as a success :)</p>
+
+<p><em><a href="http://twitter.com/home?status=@gnupate%20posted%20an%20interview%20with%20@bascule,%20the%20developer%20of%20Reia%20--%20http://tinyurl.com/b78mhh">Click here to Tweet this article</a></em></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>pate</span>
+</span>
+<span class='post-comment-link'>
+<a class='comment-link' href='https://www.blogger.com/comment.g?blogID=24599054&postID=2028656210214033962' onclick=''>0
+comments</a>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=24599054&postID=2028656210214033962' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://www.blogger.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-137588700'>
+<a href='http://www.blogger.com/post-edit.g?blogID=24599054&postID=2028656210214033962' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://www.blogger.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://on-ruby.blogspot.com/search/label/erlang' rel='tag'>erlang</a>,
+<a href='http://on-ruby.blogspot.com/search/label/Interview' rel='tag'>Interview</a>,
+<a href='http://on-ruby.blogspot.com/search/label/Reia' rel='tag'>Reia</a>,
+<a href='http://on-ruby.blogspot.com/search/label/Ruby' rel='tag'>Ruby</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<h2 class='date-header'>Monday, March 09, 2009</h2>
+<div class='post hentry'>
+<a name='7442075509575354321'></a>
+<h3 class='post-title entry-title'>
+<a href='http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html'>My Best Functional Programming Posts</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p>What's this?  A page about Functional Programming languages at On Ruby?  Well, I've written about a number of non Ruby topics here, and there's enough FP stuff to warrant it's own page.</p>
+
+<p>At one point, I also ran the <a href="http://on-erlang.blogspot.com">On Erlang</a> blog.  I've decided to merge all of my computer related posts into On Ruby to keep myself sane.</p>
+
+<p>I've looked mostly at Haskell and Erlang, with news, book reviews, and interviews about both.  There's some Scala stuff coming as well.</p>
+
+<p>If you're a Rubyist looking to expand your horizons, there's probably something here for you.  If you don't care about Ruby at all, don't let the blog's name scare you away.</p>
+
+<p>Erlang:<ul>
+<li><a href="http://on-erlang.blogspot.com/2007/04/getting-to-know-erlang-mode.html">Getting to know erlang-mode</a></li>
+<li><a href="http://on-erlang.blogspot.com/2008/02/books-and-rumours-of-books.html">Books and Rumours of Books</a></li>
+<li><a href="http://on-erlang.blogspot.com/2008/02/not-just-rumour.html">Not Just a Rumour</a></li>
+<li><a href="http://on-erlang.blogspot.com/2008/02/more-book-rumours.html">More Book Rumours</a></li>
+<li><a href="http://on-erlang.blogspot.com/2008/02/practical-erlang-mini-interview.html">Practical Erlang Mini-Interview</a></li>
+<li><a href="http://on-ruby.blogspot.com/2008/03/practical-erlang-programming-mini.html">Practical Erlang Programming Mini Interview</a></li>
+<li><a href="http://on-ruby.blogspot.com/2008/09/concurrent-programming-with-erlangotp.html">Concurrent Programming with Erlang/OTP - an early look</a></li>
+</ul></p>
+
+
+<p>Haskell:<ul>
+<li><a href="http://on-ruby.blogspot.com/2008/12/author-interview-real-world-haskell.html">Author Interview: Real World Haskell</a></p>
+<li><a href="http://on-ruby.blogspot.com/2009/02/real-world-haskell-pre-reading-survey.html">Real World Haskell: Pre-Reading Survey</a></p>
+</ul></p>
+
+<p>Scala:<ul>
+<li><a href="http://on-ruby.blogspot.com/2009/03/beginning-scala-author-interview-with.html">Beginning Scala -- Author Interview with David Pollak</a></li>
+<li><a href="http://on-ruby.blogspot.com/2009/03/dean-wampler-and-alex-pa
+yne-author.html">Dean Wampler and Alex Payne:  Author Interview</a></li>
+</ul></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>pate</span>
+</span>
+<span class='post-comment-link'>
+<a class='comment-link' href='https://www.blogger.com/comment.g?blogID=24599054&postID=7442075509575354321' onclick=''>0
+comments</a>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=24599054&postID=7442075509575354321' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://www.blogger.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-137588700'>
+<a href='http://www.blogger.com/post-edit.g?blogID=24599054&postID=7442075509575354321' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://www.blogger.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+Labels:
+<a href='http://on-ruby.blogspot.com/search/label/erlang' rel='tag'>erlang</a>,
+<a href='http://on-ruby.blogspot.com/search/label/functional%20programming' rel='tag'>functional programming</a>,
+<a href='http://on-ruby.blogspot.com/search/label/haskell' rel='tag'>haskell</a>,
+<a href='http://on-ruby.blogspot.com/search/label/my%20best' rel='tag'>my best</a>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<!-- google_ad_section_end -->
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href='http://on-ruby.blogspot.com/search?updated-max=2009-03-09T09%3A29%3A00-07%3A00&max-results=5' id='Blog1_blog-pager-older-link' title='Older Posts'>Older Posts</a>
+</span>
+</div>
+<div class='clear'></div>
+<div class='blog-feeds'>
+<div class='feed-links'>
+Subscribe to:
+<a class='feed-link' href='http://on-ruby.blogspot.com/feeds/posts/default' target='_blank' type='application/atom+xml'>Posts (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id='sidebar-wrapper'>
+<div class='sidebar section' id='sidebar'><div class='widget Profile' id='Profile1'>
+<h2>About Me</h2>
+<div class='widget-content'>
+<a href='http://www.blogger.com/profile/10492341480170667775'><img alt='My Photo' class='profile-img' height='80' src='http://2.bp.blogspot.com/_dYY8u8U4uWg/Sav10zIJpjI/AAAAAAAAAEA/WjDmcTCG7gQ/S220/AuthorPhoto.jpg' width='62'/></a>
+<dl class='profile-datablock'>
+<dt class='profile-data'>Pat Eyler</dt>
+<dd class='profile-textblock'>I'm a mormon, scouter, Rubyist, Linux sys admin, big website infrastructure guy, and soccer fan. Oh, and I'm starting to get into FP as well.
+
+<a href="http://twitter.com/gnupate">Follow me</a> on Twitter.</dd>
+</dl>
+<a class='profile-link' href='http://www.blogger.com/profile/10492341480170667775'>View my complete profile</a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=Profile&widgetId=Profile1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' target='configProfile1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget HTML' id='HTML3'>
+<div class='widget-content'>
+<p align="center">On Ruby is sponsored by</p>
+
+<!-- Start Engine Yard Sponsorship Snippet -->
+<a style="border: none;" href="http://www.engineyard.com/?utm_source=On%2BRuby&utm_medium=Sponsorship&utm_campaign=On%2BRuby%2B-%2BSponsorship">
+<img alt="Sponsored by Engine Yard; Fully-managed Rails hosting" style="border: none;" src="http://www.engineyard.com/images/ey_banner_150x200.png"/></a>
+<!-- End Snippet -->
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=HTML&widgetId=HTML3&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML3"));' target='configHTML3' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Image' id='Image1'>
+<div class='widget-content'>
+<a href='http://mtnwestrubyconf.org'>
+<img alt='' height='79' id='Image1_img' src='http://3.bp.blogspot.com/_dYY8u8U4uWg/SS2pG1b0neI/AAAAAAAAAC8/YO4K0Kb1xII/S220/mwrc2009_logo_small.png' width='124'/>
+</a>
+<br/>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=Image&widgetId=Image1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("Image1"));' target='configImage1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget LinkList' id='LinkList1'>
+<h2>My Best</h2>
+<div class='widget-content'>
+<ul>
+<li><a href='http://on-ruby.blogspot.com/2009/03/ruby-book-posts-collection.html'>My best posts about the best Ruby books</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html'>My Best Functional Programming Posts</a></li>
+</ul>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=LinkList&widgetId=LinkList1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList1"));' target='configLinkList1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget BlogArchive' id='BlogArchive1'>
+<h2>Blog Archive</h2>
+<div class='widget-content'>
+<div id='ArchiveList'>
+<div id='BlogArchive1_ArchiveList'>
+<ul>
+<li class='archivedate expanded'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=close&toggle=YEARLY-1230793200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy toggle-open'>&#9660; </span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/search?updated-min=2009-01-01T00%3A00%3A00-07%3A00&updated-max=2010-01-01T00%3A00%3A00-07%3A00&max-results=33'>2009</a>
+<span class='post-count' dir='ltr'>(33)</span>
+<ul>
+<li class='archivedate expanded'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=close&toggle=MONTHLY-1235890800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy toggle-open'>&#9660; </span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2009_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(10)</span>
+<ul class='posts'>
+<li><a href='http://on-ruby.blogspot.com/2009/03/author-interview-venkat-subramaniam.html'>Author Interview - Venkat Subramaniam</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/dean-wampler-and-alex-payne-author.html'>Dean Wampler and Alex Payne:  Author Interview</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/beginning-scala-author-interview-with.html'>Beginning Scala -- Author Interview with David Pol...</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/reia-new-dynamic-language-on-erlang-vm.html'>Reia - A New Dynamic Language on the Erlang VM</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html'>My Best Functional Programming Posts</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/author-interview-jeremy-mcanallay-ruby.html'>Author Interview: Jeremy McAnallay - Ruby In Pract...</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/author-interview-assaf-arkin-ruby-in.html'>Author Interview: Assaf Arkin - Ruby In Practice</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/what-should-on-ruby-be-doing-in-2009.html'>What Should On Ruby Be Doing In 2009</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/ruby-book-posts-collection.html'>Ruby Book Posts Collection</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/03/mwrc-2009-mini-interview-philippe.html'>MWRC 2009 Mini-Interview:  Philippe Hanrigou</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1233471600000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2009_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(13)</span>
+<ul class='posts'>
+<li><a href='http://on-ruby.blogspot.com/2009/02/tinyrb-interview.html'>Tinyrb Interview</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/blog-buttons-for-mwrc.html'>blog buttons for MWRC</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/mwrc-2009-mini-interview-jim-weirich.html'>MWRC 2009 Mini-Interview:  Jim Weirich</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/raganwald-pareto-and-infrastructure.html'>Raganwald, Pareto, and Infrastructure Operations</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/matt-bauer-interview.html'>Matt Bauer Interview</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/stackful-rubinius-interview.html'>Stackful Rubinius Interview</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/mwrc-speaker-interview-ben-mabey.html'>MWRC speaker interview: Ben Mabey</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/real-world-haskell-pre-reading-survey.html'>Real World Haskell:  Pre-Reading Survey</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/mwrc-speaker-interview-andrew-shafer.html'>MWRC speaker interview: Andrew Shafer</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/beautiful-architecture-my-survey.html'>Beautiful Architecture:  my survey</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/beautiful-architecture-first-look.html'>Beautiful Architecture:  a first look</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/mwrc-speaker-interview-jeremy-mcanally.html'>MWRC speaker interview: Jeremy McAnally</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/02/mwrc-speaker-interview-from-twitter.html'>MWRC Speaker Interview (from twitter)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1230793200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2009_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(10)</span>
+<ul class='posts'>
+<li><a href='http://on-ruby.blogspot.com/2009/01/wicked-cool-ruby-scripts-review.html'>Wicked Cool Ruby Scripts Review</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/couchdb-contest.html'>CouchDB Contest</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/reader-interview-relax-with-couchdb.html'>Reader Interview:  Relax with CouchDB</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/author-interview-relax-with-couchdb.html'>Author Interview: Relax with CouchDB (Round 2)</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/pragmatic-thinking-learning.html'>Pragmatic Thinking &amp; Learning</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/looking-for-serious-ruby-hacktitude.html'>Looking for serious Ruby Hacktitude?</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/ruby-best-practices-mini-interview-2.html'>Ruby Best Practices:  mini-Interview 2</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/sequel-interview-with-jeremy-evans.html'>Sequel Interview with Jeremy Evans</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/editor-interview-talking-about-open.html'>Editor Interview:  Talking about Open Content with...</a></li>
+<li><a href='http://on-ruby.blogspot.com/2009/01/new-years-road-trip.html'>New Year&#39;s Road Trip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=YEARLY-1199170800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/search?updated-min=2008-01-01T00%3A00%3A00-07%3A00&updated-max=2009-01-01T00%3A00%3A00-07%3A00&max-results=50'>2008</a>
+<span class='post-count' dir='ltr'>(76)</span>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1228114800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(14)</span>
+<ul class='posts'>
+<li><a href='http://on-ruby.blogspot.com/2008/12/rails-and-merb-why-merge-at-all.html'>Rails and Merb -- Why Merge At All?</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/rails-and-merb-better-together.html'>Rails and Merb -- Better Together?</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/you-got-your-merb-in-my-rails.html'>You Got your Merb in my Rails</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/author-interview-real-world-haskell.html'>Author Interview: Real World Haskell</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/author-interview-relax-with-couchdb.html'>Author Interview: Relax with CouchDB</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/reading-list-for-holidays.html'>Reading List for the Holidays</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/first-post-veloslc-getting-ball-rolling.html'>First Post:  VeloSLC:  Getting the Ball Rolling</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/apprenticeship-patterns-interview-with.html'>Apprenticeship Patterns Interview with Dave Hoover...</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/authors-story-cautionary-tale.html'>An Authors Story:  a cautionary tale</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/benchmarking-and-refactoring.html'>Benchmarking and Refactoring</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/benchmarking-makes-it-better.html'>Benchmarking Makes it Better</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/tuesday-ruby-tab-sweep-2-dec-2008.html'>Tuesday Ruby Tab Sweep (2 Dec 2008)</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/ruby-best-practices-blogging-contest.html'>A &#39;Ruby Best Practices&#39; Blogging Contest</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/12/ruby-refactoring-workbook-interview.html'>Ruby Refactoring Workbook Interview</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1225522800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(9)</span>
+<ul class='posts'>
+<li><a href='http://on-ruby.blogspot.com/2008/11/three-hours-to-ruby.html'>Three Hours to Ruby</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/11/ruby-best-practices-mini-interview-1.html'>Ruby Best Practices:  mini-Interview 1</a></li>
+<li><a href='http://on-ruby.blogspot.com/2008/11/reek-for-ruby-rocks.html'>reek for Ruby rocks</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1220252400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(4)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1212303600000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1207033200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1204354800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1201849200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(12)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1199170800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2008_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(24)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=YEARLY-1167634800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/search?updated-min=2007-01-01T00%3A00%3A00-07%3A00&updated-max=2008-01-01T00%3A00%3A00-07%3A00&max-results=50'>2007</a>
+<span class='post-count' dir='ltr'>(108)</span>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1196492400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(13)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1193900400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1191222000000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(9)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1188630000000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(6)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1185951600000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1183273200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1180681200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1178002800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(6)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1175410800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(10)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1172732400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(14)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1170313200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(13)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1167634800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2007_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(26)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=YEARLY-1136098800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/search?updated-min=2006-01-01T00%3A00%3A00-07%3A00&updated-max=2007-01-01T00%3A00%3A00-07%3A00&max-results=50'>2006</a>
+<span class='post-count' dir='ltr'>(187)</span>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1164956400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(19)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1162364400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(11)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1159686000000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(24)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1157094000000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(27)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1154415600000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(22)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1151737200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(17)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1149145200000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(24)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1146466800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(15)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1143874800000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(19)</span>
+</li>
+</ul>
+<ul>
+<li class='archivedate collapsed'>
+<a class='toggle' href='http://on-ruby.blogspot.com/?widgetType=BlogArchive&widgetId=BlogArchive1&action=toggle&dir=open&toggle=MONTHLY-1141196400000&toggleopen=MONTHLY-1235890800000'>
+<span class='zippy'>
+
+              &#9658;
+            
+</span>
+</a>
+<a class='post-count-link' href='http://on-ruby.blogspot.com/2006_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(9)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target='configBlogArchive1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget LinkList' id='LinkList3'>
+<h2>Links &amp; Blogs</h2>
+<div class='widget-content'>
+<ul>
+<li><a href='http://www.ruby-lang.org/'>Ruby Lang -- the Official home of Ruby</a></li>
+<li><a href='http://www.ruby-doc.org'>Ruby Documentation</a></li>
+<li><a href='http://www.blogger.com/profile/492048'>Sean Carley</a></li>
+<li><a href='http://www.rubyinside.com'>Ruby Inside</a></li>
+<li><a href='http://blog.zenspider.com/'>zenspider</a></li>
+<li><a href='http://blog.segment7.net'>Eric Hodel</a></li>
+<li><a href='http://blog.grayproductions.net'>James Gray</a></li>
+<li><a href='http://www.chadfowler.com'>Chad Fowler</a></li>
+<li><a href='http://blog.talbott.ws/'>Nathaniel Talbot</a></li>
+<li><a href='http://www.cornetdesign.com/'>Cory Foy</a></li>
+<li><a href='http://dablog.rubypal.com'>David A. Black</a></li>
+</ul>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=LinkList&widgetId=LinkList3&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("LinkList3"));' target='configLinkList3' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class='clear'>&#160;</div>
+</div>
+<!-- end content-wrapper -->
+<div id='footer-wrapper'>
+<div class='footer section' id='footer'><div class='widget HTML' id='HTML1'>
+<div class='widget-content'>
+<!-- Start of StatCounter Code -->
+<script language="javascript" type="text/javascript">
+var sc_project=1592054; 
+var sc_invisible=0; 
+var sc_partition=14; 
+var sc_security="481d603c"; 
+</script>
+
+<script language="javascript" src="http://www.statcounter.com/counter/counter.js" type="text/javascript"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img border="0" alt="counter statistics" src="http://c15.statcounter.com/counter.php?sc_project=1592054&amp;java=0&amp;security=481d603c&amp;invisible=0"/></a> </noscript>
+<!-- End of StatCounter Code --><br/><a href="http://my.statcounter.com/project/standard/stats.php?project_id=1592054&amp;guest=1">Who else is reading this page?</a>
+ 
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-439135-1";
+urchinTracker();
+</script>
+
+<script src="http://embed.technorati.com/embed/8gvpvx3vg.js" type="text/javascript"></script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='http://www.blogger.com/rearrange?blogID=24599054&widgetType=HTML&widgetId=HTML1&action=editWidget' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target='configHTML1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript" src="http://www.blogger.com/widgets/3202355009-widgets.js"></script>
+<script type='text/javascript'>
+_WidgetManager._Init('http://www.blogger.com/rearrange?blogID=24599054', 'http://on-ruby.blogspot.com/','24599054');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID=24599054', 'gmOqxHrS5qN2hdsjpTd8aRoIxa4:1238079111369');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'title': 'On Ruby', 'pageType': 'index', 'url': 'http://on-ruby.blogspot.com/', 'homepageUrl': 'http://on-ruby.blogspot.com/', 'pageName': '', 'pageTitle': 'On Ruby', 'encoding': 'UTF-8', 'locale': 'en-US', 'isPrivate': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42On Ruby - Atom\42 href\75\42http://on-ruby.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42On Ruby - RSS\42 href\75\42http://on-ruby.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42On Ruby - Atom\42 href\75\42http://www.blogger.com/feeds/24599054/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\07524599054\42 /\076', 'meTag': '\74link rel\75\42me\42 href\75\42http://www.blogger.com/profile/10492341480170667775\42 /\76\n', 'openIdOpTag': '\74link rel\75\42openid.server\42 href\75\42http://www.blogger.com/openid-server.g\42 /\76\n', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var a\75window;function d(){this.t\75{};this.tick\75function(b,c){this.t[b]\75[(new Date).getTime(),c]};this.tick(\42start\42)}var e\75new d;a.jstiming\75{Timer:d,load:e};try{a.jstiming.pt\75a.external.pageT}catch(f){};function g(b){var c\0750;if(b.offsetParent){do c+\75b.offsetTop;while(b\75b.offsetParent)}return c}a.tickAboveFold\75function(b){g(b)\74\075750\46\46a.jstiming.load.tick(\42aft\42)};var h\75false;function i(){if(!h){h\75true;a.jstiming.load.tick(\42firstScrollTime\42)}}a.addEventListener?a.addEventListener(\42scroll\42,i,false):a.attachEvent(\42onscroll\42,i); })();\74/script\076'}}]);
+_WidgetManager._SetSystemMarkup({'layout': {'varName': '', 'template': '\74div class\75\47widget-wrap1\47\76\n\74div class\75\47widget-wrap2\47\76\n\74div class\75\47widget-wrap3\47\76\n\74div class\75\47widget-content\47\76\n\74div class\75\47layout-title\47\76\74data:layout-title\76\74/data:layout-title\76\74/div\76\n\74a class\75\47editlink\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 target\75\47chooseWidget\47\76\74data:edit-link\76\74/data:edit-link\76\74/a\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'quickedit': {'varName': '', 'template': '\74div class\75\47clear\47\76\74/div\76\n\74span class\75\47widget-item-control\47\76\n\74span class\75\47item-control blog-admin\47\76\n\74a class\75\47quickedit\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 expr:target\75\47\46quot;config\46quot; + data:widget.instanceId\47 expr:title\75\47data:edit-link\47\76\n\74img alt\75\47\47 height\75\04718\47 src\75\47http://img1.blogblog.com/img/icon18_wrench_allbkg.png\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/span\76\n\74div class\75\47clear\47\76\74/div\076'}, 'all-head-content': {'varName': 'page', 'template': '\74data:blog.latencyHeadScript\76\74/data:blog.latencyHeadScript\76\n\74meta expr:content\75\47\46quot;text/html; charset\75\46quot; + data:page.encoding\47 http-equiv\75\47Content-Type\47/\76\n\74meta content\75\47true\47 name\75\47MSSmartTagsPreventParsing\47/\76\n\74meta content\75\47blogger\47 name\75\47generator\47/\76\n\74link href\75\47http://www.blogger.com/favicon.ico\47 rel\75\47icon\47 type\75\47image/vnd.microsoft.icon\47/\76\n\74data:blog.feedLinks\76\74/data:blog.feedLinks\76\n\74data:blog.meTag\76\74/data:blog.meTag\76\n\74data:blog.openIdOpTag\76\74/data:blog.openIdOpTag\76\n\74b:if cond\75\47data:page.isPrivate\47\76\n\74meta content\75\47NOINDEX,NOFOLLOW\47 name\75\47robots\47/\76\n\74/b:if\076'}});
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'footer',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:team \75\75 \46quot;true\46quot;\47\76\n\74ul\76\n\74b:loop values\75\47data:authors\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.userUrl\47\76\74data:i.display-name\76\74/data:i.display-name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:photo.url !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:userUrl\47\76\74img class\75\47profile-img\47 expr:alt\75\47data:photo.alt\47 expr:height\75\47data:photo.height\47 expr:src\75\47data:photo.url\47 expr:width\75\47data:photo.width\47/\76\74/a\76\n\74/b:if\76\n\74dl class\75\47profile-datablock\47\76\n\74dt class\75\47profile-data\47\76\74data:displayname\76\74/data:displayname\76\74/dt\76\n\74b:if cond\75\47data:showlocation \75\75 \46quot;true\46quot;\47\76\n\74dd class\75\47profile-data\47\76\74data:location\76\74/data:location\76\74/dd\76\n\74/b:if\76\n\74b:if cond\75\47data:aboutme !\75 \46quot;\46quot;\47\76\74dd class\75\47profile-textblock\47\76\74data:aboutme\76\74/data:aboutme\76\74/dd\76\74/b:if\76\n\74/dl\76\n\74a class\75\47profile-link\47 expr:href\75\47data:userUrl\47\76\74data:viewProfileMsg\76\74/data:viewProfileMsg\76\74/a\76\n\74/b:if\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML3', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ImageView', new _WidgetInfo('Image1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:link !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:link\47\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/b:if\76\n\74br/\76\n\74b:if cond\75\47data:caption !\75 \46quot;\46quot;\47\76\n\74span class\75\47caption\47\76\74data:caption\76\74/data:caption\76\74/span\76\n\74/b:if\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('Image1'), {'resize': true}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\74h2\76\74data:title\76\74/data:title\76\74/h2\76\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74ul\76\n\74b:loop values\75\47data:links\47 var\75\47link\47\76\n\74li\76\74a expr:href\75\47data:link.target\47\76\74data:link.name\76\74/data:link.name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('LinkList1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74div id\75\47ArchiveList\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_ArchiveList\46quot;\47\76\n\74b:if cond\75\47data:style \75\75 \46quot;HIERARCHY\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;FLAT\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47flat\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;MENU\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47menu\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}, 'flat': {'varName': 'data', 'template': '\74ul\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74li class\75\47archivedate\47\76\n\74a expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76 (\74data:i.post-count\76\74/data:i.post-count\76)\n      \74/li\76\n\74/b:loop\76\n\74/ul\076'}, 'menu': {'varName': 'data', 'template': '\74select expr:id\75\47data:widget.instanceId + \46quot;_ArchiveMenu\46quot;\47\76\n\74option value\75\47\47\76\74data:title\76\74/data:title\76\74/option\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74option expr:value\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76 (\74data:i.post-count\76\74/data:i.post-count\76)\74/option\76\n\74/b:loop\76\n\74/select\076'}, 'interval': {'varName': 'intervalData', 'template': '\74b:loop values\75\47data:intervalData\47 var\75\47i\47\76\n\74ul\76\n\74li expr:class\75\47\46quot;archivedate \46quot; + data:i.expclass\47\76\n\74b:include data\75\47i\47 name\75\47toggle\47\76\74/b:include\76\n\74a class\75\47post-count-link\47 expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76\n\74span class\75\47post-count\47 dir\75\47ltr\47\76(\74data:i.post-count\76\74/data:i.post-count\76)\74/span\76\n\74b:if cond\75\47data:i.data\47\76\n\74b:include data\75\47i.data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:i.posts\47\76\n\74b:include data\75\47i.posts\47 name\75\47posts\47\76\74/b:include\76\n\74/b:if\76\n\74/li\76\n\74/ul\76\n\74/b:loop\076'}, 'toggle': {'varName': 'interval', 'template': '\74b:if cond\75\47data:interval.toggleId\47\76\n\74b:if cond\75\47data:interval.expclass \75\75 \46quot;expanded\46quot;\47\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +       \46quot;\46amp;dir\75close\46amp;toggle\75\46quot; + data:interval.toggleId +       \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy toggle-open\47\76\46#9660; \74/span\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +         \46quot;\46amp;dir\75open\46amp;toggle\75\46quot; + data:interval.toggleId +         \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy\47\76\n\74b:if cond\75\47data:blog.languageDirection \75\75 \46quot;rtl\46quot;\47\76\n              \46#9668;\n            \74b:else\76\74/b:else\76\n              \46#9658;\n            \74/b:if\76\n\74/span\76\n\74/a\76\n\74/b:if\76\n\74/b:if\076'}, 'posts': {'varName': 'posts', 'template': '\74ul class\75\47posts\47\76\n\74b:loop values\75\47data:posts\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.url\47\76\74data:i.title\76\74/data:i.title\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\076'}}, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LinkListView', new _WidgetInfo('LinkList3', 'sidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\74h2\76\74data:title\76\74/data:title\76\74/h2\76\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74ul\76\n\74b:loop values\75\47data:links\47 var\75\47link\47\76\n\74li\76\74a expr:href\75\47data:link.target\47\76\74data:link.name\76\74/data:link.name\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('LinkList3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main'));
+</script>
+</body>
+</html>

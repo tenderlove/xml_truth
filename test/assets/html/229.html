@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Ruby Performance - The Fishbowl</title>
+    <meta name="generator" content="Movable Type Open Source 4.1" />
+    <link rel="stylesheet" href="http://fishbowl.pastiche.org/styles.css" type="text/css" />
+    <link rel="shortcut icon" href="http://fishbowl.pastiche.org/favicon.ico">
+    
+    
+<link rel="alternate" type="application/atom+xml" title="All Entries Feed (Atom)" href="/atom.xml" />
+<link rel="openid.server" href="http://fishbowl.pastiche.org/plugins/openid-server/server.cgi" />
+<meta name="ICBM" content="-33.84917, 151.21583"/>
+<meta name="DC.title" content="The Fishbowl"/>
+<meta name="description" content="Charles Miller's weblog, covering Apple, Java, and whatever assorted nerdery happens to cross my path."/> 
+
+    <link rel="start" href="http://fishbowl.pastiche.org/" title="Home" />
+        
+
+    
+
+    <link rel="prev" href="http://fishbowl.pastiche.org/2004/10/28/warney/" title="Warney" />
+    <link rel="next" href="http://fishbowl.pastiche.org/2004/11/03/i_just_dont_understand/" title="I Just Don't Understand." />
+    
+    
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-214651-1";
+urchinTracker();
+</script>
+
+
+</head>
+<body class="mt-archive-listing mt-entry-archive layout-wtt">
+  <div id="banner">
+     <h1 id="blog-title"><a href="http://fishbowl.pastiche.org/" accesskey="1">The Fishbowl</a></h1>
+     <p id="blog-subtitle">tail -f /dev/mind > blog</p>
+  </div>
+  <div id="content">
+
+
+<div id="entry-1421" class="entry-asset asset hentry">
+    <div class="asset-header">
+        <h1 id="page-title" class="asset-name entry-title">Ruby Performance</h1>
+        <p class="published">October 28, 2004 11:03 AM</p>
+    </div>
+    <div class="asset-content entry-content">
+
+        <div class="asset-body">
+            <p>If you read my blog with any regularity, you'll know that I really like the Ruby programming language. It's the language I feel most fits the way my brain works, and when I'm writing Ruby code, I feel happier than when I'm writing code in other languages.</p>
+
+<p>That said, I have some pretty serious doubts about the ability of the Ruby interpreter to do real work in its current form.</p>
+
+<p>Take, for example, a 25Mb XML file that I wanted to investigate the contents of. I thought it would be cool to load it up inside Ruby, because then I could use the interpreter to give me an interactive shell to play around with the contents of the document.</p>
+
+<p>Anyway, first here's my baseline: loading the file into a DOM Document object using <a href="http://www.dom4j.org">dom4j</a> on my 1.5Ghz Powerbook:</p>
+
+<pre>Epiphany:/tmp cmiller$ time java -Xmx256M DomTest
+
+real    0m19.413s
+user    0m17.270s
+sys     0m1.070s</pre>
+
+<p>Now, it's Ruby's turn, using <a href="http://www.germane-software.com/software/rexml/">REXML</a> to load a DOM tree:</p>
+
+<pre>Epiphany:/tmp cmiller$ ruby -v
+ruby 1.8.2 (2004-07-16) [powerpc-darwin]
+Epiphany:/tmp cmiller$ time ruby read.rb
+
+real    33m22.680s
+user    14m44.710s
+sys     1m3.670s</pre>
+
+<p>OK, that's a pretty huge difference. Ruby is a <i>factor of fifty slower</i> at parsing XML. At first I thought this might just be REXML's fault. It admits only to being "reasonably fast" on its homepage. Maybe there's just some pathological algorithm going on inside that particular library.</p>
+
+<p>Then, on a hunch, I turned off Ruby's garbage collection with <code>GC.disable</code> and ran the test again.</p>
+
+<pre>Epiphany:/tmp cmiller$ time ruby read-nogc.rb
+
+real    45m20.425s
+user    5m52.830s
+sys     2m37.110s</pre>
+
+<p>The "real" time went up, partly because I was busy doing other stuff at the time, and partly because the amount of memory that was eaten up pushed my Powerbook into swap, but the microbenchmark seems to show that in the first run, Ruby was spending more than half its CPU time doing memory management.</p>
+
+<p>Hopefully, this is something that will be <a href="http://www.rubygarden.org/ruby?Rite">fixed in Ruby 2.0</a>. The plans are to move to bytecode compilation and generational GC, both steps in the right direction. For now, though, 2.0 is quite decidedly vaporware.</p>
+
+<p>So yes. As much as I love the Ruby language, I'm not sure that I'd trust it with too much heavy lifting just yet.</p>
+        </div>
+
+
+    </div>
+    <div class="asset-footer">
+        
+                
+
+    </div>
+</div>
+
+
+
+<div id="trackbacks" class="trackbacks">
+    <h2 class="trackbacks-header">1 TrackBacks</h2>
+    <div class="trackbacks-info">
+        <p>Listed below are links to blogs that reference this entry: <a href="http://fishbowl.pastiche.org/2004/10/28/ruby_performance/">Ruby Performance</a>.</p>
+        <p>TrackBack URL for this entry: <span id="trackbacks-link">http://fishbowl.pastiche.org/mt-tb.cgi/594</span></p>
+    </div>
+    
+        
+    <div class="trackbacks-content">
+        
+        <div class="trackback" id="ping-451">
+            <div class="inner">
+                <div class="trackback-header">
+                    <div class="asset-meta">
+                        <a href="http://www.robot0.com/archives/000111.html" rel="nofollow">links for 2004-11-20</a> from Ms Robot0 on <a href="#ping-451" rel="nofollow">November 20, 2004 11:15 PM</a>
+                    </div>
+                </div>
+                <div class="trackback-content">
+                    <p>
+                        GDS Tips (categories: desktop google) Manageability - Google Desktop Internals Exposed! (categories: desktop google) I hack stuff google hacking database (categories: google googledorks) Jon Udell: RESTful Flash (categories: flash) The Fishbowl: Ruby ... <a href="http://www.robot0.com/archives/000111.html" rel="nofollow">Read More</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        
+    
+</div>
+
+
+
+
+<div id="comments" class="comments">
+    
+    
+        
+    <h2 class="comments-header">7 Comments</h2>
+    <div class="comments-content">
+        
+        <div class="comment" id="comment-1942">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author"><a title="http://www.halfcooked.com/" href="http://www.halfcooked.com/" rel="nofollow">Andy Todd</a></span> on <a href="#comment-1942"><abbr class="published" title="2004-10-28T11:27:32+11:00">October 28, 2004 11:27 AM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>Just from curiousity, what sort of times do you get from the Ruby bindings of libxml2 (http://xmlsoft.org/python.html)?</p>
+
+<p>Mark Pilgrim for one thinks it is suitably speedy - <a href="http://diveintomark.org/archives/2004/02/18/libxml2" rel="nofollow">http://diveintomark.org/archives/2004/02/18/libxml2</a></p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1943">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author"><a title="http://fishbowl.pastiche.org/" href="http://fishbowl.pastiche.org/" rel="nofollow">Charles Miller</a></span> on <a href="#comment-1943"><abbr class="published" title="2004-10-28T11:39:35+11:00">October 28, 2004 11:39 AM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>libxml is very fast, and I assume calling it from the Ruby interpreter wouldn't change that fact very much. The problem is, though, if you have to drop down to coding in C (or mess around with installing C shared libraries) to get reasonable performance, that's taking a lot of the fun out of using Ruby in the first place.</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1944">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author">Kent</span> on <a href="#comment-1944"><abbr class="published" title="2004-10-28T13:48:37+11:00">October 28, 2004  1:48 PM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>Hm, I know that this comparison is unfair but anyways. I've downloaded big.xml file from the xml-xerces/metrics project (4.5M) and these are my benchmark results:</p>
+
+<p>java:</p>
+
+<p>$ time java -cp dom4j-1.5.jar:. Test<br />
+root name: spec</p>
+
+<p>real    0m3.135s<br />
+user    0m2.660s<br />
+sys     0m0.320s</p>
+
+<p>ruby + libxml:</p>
+
+<p>$ time ruby test.rb <br />
+root name: spec</p>
+
+<p>real    0m1.278s<br />
+user    0m1.040s<br />
+sys     0m0.180s</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1945">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author"><a title="http://jonasgalvez.com/" href="http://jonasgalvez.com/" rel="nofollow">Jonas Galvez</a></span> on <a href="#comment-1945"><abbr class="published" title="2004-10-28T14:55:13+11:00">October 28, 2004  2:55 PM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>"The problem is, though, if you have to drop down to coding in C (or mess around with installing C shared libraries) to get reasonable performance, that's taking a lot of the fun out of using Ruby in the first place."</p>
+
+<p>Hmm... I don't know. No matter how good the algorithm is, I think XML parsing on a dynamic language such as Ruby or Python will always be slow. I've been using libxml2 in Python for a long time now, and I haven't had any problem with it yet.</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1946">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author">gabriele</span> on <a href="#comment-1946"><abbr class="published" title="2004-10-28T19:37:01+11:00">October 28, 2004  7:37 PM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>A 50 factor is reasonable. Matz said that if you want extreme performance you should resort to C (or fortran, fwiw). <br />
+It's the same for every non jitted dynamic language (squeak is fast but still really slow compared to VW).</p>
+
+<p>Anyway, I don't really care about dropping down to C (and sometime you can avoid C coding bindings in pure ruby with the Dl module), but I obviously agree that having a faster engine would be nice. <br />
+In thee end, feel free to help with the YARV development it is already 50%-300% faster than ruby1.8 for the things it does :)</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1947">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author">gabriele</span> on <a href="#comment-1947"><abbr class="published" title="2004-10-29T00:34:40+11:00">October 29, 2004 12:34 AM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>I meant reasonable as 'expected' sorry</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    
+        
+        <div class="comment" id="comment-1948">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+                <span class="byline">By <span class="vcard author"><a title="http://fishbowl.pastiche.org/" href="http://fishbowl.pastiche.org/" rel="nofollow">Charles Miller</a></span> on <a href="#comment-1948"><abbr class="published" title="2004-12-03T01:08:31+11:00">December  3, 2004  1:08 AM</abbr></a></span>
+            </div>
+        </div>
+        <div class="comment-content">
+            <p>Comment test</p>
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+        
+    
+    
+    
+
+      <p class="comments-closed">Comments are no longer being accepted for this blog entry. If you really want to make your voice heard, you can always <a href="mailto:cmiller@pastiche.org">email me</a>.</p> 
+
+
+    
+</div>
+
+
+
+<div id="entry-navigation">
+    <p><i>Previously:</i> <a href="http://fishbowl.pastiche.org/2004/10/28/warney/">Warney</a></p>
+    <p><i>Next:</i> <a href="http://fishbowl.pastiche.org/2004/11/03/i_just_dont_understand/">I Just Don't Understand.</a></p>
+</MTEntryNext>
+
+
+
+            </div>
+            <div id="footer">
+                        <div class="footer-navigation"><a title="Atom feed for this site" href="http://fishbowl.pastiche.org/atom.xml"><img alt="Atom Feed"  src="http://fishbowl.pastiche.org/pictures/feed-icon-14x14.png" width="14" height="14" class="feed icon"/></a>
+<p><b>The Fishbowl is the Weblog of Charles Miller.</b> (<a href="/archives/">Archives</a>)</p>
+<p><a href="mailto:cmiller@pastiche.org">cmiller@pastiche.org</a> (email, <a href="xmpp:cmiller@pastiche.org">Jabber</a> and MSN IM)
+| <a href="aim:goaim?screenname=carlfishy">carlfishy</a>@AIM 
+| <a href="ymsgr:sendim?carlfishie">carlfishie</a>@Yahoo IM
+<p><a href="http://flickr.com/photos/cmiller">Flickr</a> | <a href="http://delicio.us/carlfish">delicio.us</a> | <a href="http://twitter.com/carlfish">Twitter</a> | <a href="http://charles.livejournal.com">Livejournal</a></p>
+</div>
+                        <div class="widget-powered widget">
+                            <div class="widget-content">
+                                Powered by <a href="http://www.movabletype.com/">Movable Type Open Source</a>
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

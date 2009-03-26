@@ -1,0 +1,695 @@
+<head><title>Python Vs Ruby</title>
+
+</head>
+<body text=black bgcolor=white><h1><img src="http://c2.com/sig/wiki.gif">
+<a href="fullSearch" rel="nofollow">Python Vs Ruby</a></h1>
+<div id="wiki">
+<strong>So, how do Python and Ruby compare? They look more similar to each other than either does to Perl. What are the differences?</strong>
+<p></p>
+Points of comparison:
+<p></p>
+<UL>
+<li> <em>Overview</em>
+<p></p>
+<li> <em>Heritage and Philosophy</em>
+<p></p>
+<li> <em>Popularity</em>
+<p></p>
+<li> <em>Readability</em>
+<p></p>
+<li> <em>Ease for Beginners</em>
+<p></p>
+<li> <em>Ruby Blocks and Python Lambdas</em>
+<p></p>
+<li> <em>Development Environments</em>
+<p></p>
+<li> <em>Community and Documentation</em>
+<p></p>
+<li> <em>Libraries, Platforms and Applications</em>
+<p></p>
+<li> <em>Performance</em>
+<p></p>
+<li> <em>Opinions : Leaving Python for Ruby / Leaving Ruby for Python (anybody?)</em> 
+<p></p>
+<li> <em>Misc.</em>
+<p></p>
+</UL>
+(See also <a href="wiki?PythonVsRubyCodeExamples">PythonVsRubyCodeExamples</a>, <a href="wiki?PythonRubyAttrComparison">PythonRubyAttrComparison</a>, <a href="wiki?PythonRubyInitializer">PythonRubyInitializer</a>)
+<p></p>
+<hr>
+<strong>Introduction</strong>
+<p></p>
+I just read a good interview with Matz <em>(<a href="wiki?YukihiroMatsumoto">YukihiroMatsumoto</a>)</em>, and found a paragraph to keep in mind when discussing <a href="wiki?PythonVsRuby">PythonVsRuby</a> and other language <a href="wiki?HolyWar">HolyWar</a><strong></strong>s:
+<p></p>
+<DL>
+<dt> <dd>Instead of emphasizing the what, I want to emphasize the how part: how we feel while programming. That's Ruby's main difference from other language designs. I emphasize the feeling, in particular, how I feel using Ruby. I didn't work hard to make Ruby perfect for everyone, because you feel differently from me. No language can be perfect for everyone. I tried to make Ruby perfect for me, but maybe it's not perfect for you. The perfect language for <a href="wiki?GuidoVanRossum">GuidoVanRossum</a> is probably Python. -- <a href="wiki?YukihiroMatsumoto">YukihiroMatsumoto</a> [<a href="http://www.artima.com/intv/ruby.html" rel="nofollow">http://www.artima.com/intv/ruby.html</a>]
+</DL>
+<hr>
+<strong>Overview</strong>
+<p></p>
+Both languages are <a href="wiki?HighLevel">HighLevel</a>, <a href="wiki?GarbageCollected">GarbageCollected</a>, and <a href="wiki?DynamicallyTyped">DynamicallyTyped</a>. Both provide an interactive shell, standard libraries, and persistence support.
+<p></p>
+The reader should be warned that many comments on this page come from people who know only one of the two languages - not both.
+<p></p>
+So far Pythonistas have emphasized their language's <em>ease through consistency</em>, extensive libraries, docs, etc, and argued that Ruby's advantages in elegance are overstated or nonexistent. Rubyists have stressed their language's <em>ease through conceptual elegance</em>, slightly greater depth of OO, the power of <a href="wiki?BlocksInRuby">BlocksInRuby</a>, and the nice feeling you get from doing things the <a href="wiki?RubyWay">RubyWay</a>.
+<p></p>
+A few others have objected that the whole idea of being a &quot;fan&quot; or &quot;-ist&quot; of a language is very silly.
+<p></p>
+<em>Interestingly, those who raise this objection tend to come down on the <a href="wiki?PythonLanguage">PythonLanguage</a> side. Perhaps this indicates a fundamental difference in the philosophy and target audience of the two languages?</em> -- <a href="wiki?AnonymousDonor">AnonymousDonor</a>
+<p></p>
+<em>This is a very silly assumption, which is indeed incorrect based on arbitrary perception. I like Ruby, have never in person talked to someone who codes solely in python, and personally do not code in Python because I needed an OOP approach finally - but being a fan or ist for anything is really stupid.  You go for something because you like this or that way, BUT the ultimate way is how YOU think, not how any language thinks about a particular problem</em> -- Shev
+<p></p>
+How could a such a non-partisan be on the &quot;<a href="wiki?PythonLanguage">PythonLanguage</a> side&quot;?
+<p></p>
+<em>Probably because Python came first for them and they feel that Python is practical enough to not warrant switching sides.</em>
+<p></p>
+For an excellent discussion of the issues by <a href="wiki?AlexMartelli">AlexMartelli</a>, one of the big lights in the <a href="wiki?PythonLanguage">PythonLanguage</a> community, see:  <a href="http://groups.google.com/groups?selm=bhqr78021hp%40enews1.newsguy.com" rel="nofollow">http://groups.google.com/groups?selm=bhqr78021hp%40enews1.newsguy.com</a>
+<p></p>
+<em>I don't agree that that's an &quot;excellent&quot; discussion by any means.  Being quite deeply into Ruby myself, it's easy to see that Martelli doesn't know what he's talking about.  The key point is when he's talking about method call syntax in both languages, and complains that Ruby allows &quot;implicit&quot; calls to methods (that is, calling a nullary method doesn't require parentheses).  There is a very good reason why Ruby's syntax works the way it does: all external access to objects is done through methods.  Ruby doesn't have distinct attribute reference and method call syntaxes.  foo.bar always means &quot;send the message bar to the object that's the value of foo.</em>
+<p></p>
+<strong>I believe that you missed the point: he was arguing that having foo.bar always send message bar to object foo is in his opinion a misfeature, but that he can see that others disagree.  I happen to agree: having foo.bar mean a reference to the message bar and foo.bar() mean calling bar is useful, rather than needing to use the extra syntax Ruby requires.  Reasonable folks can disagree, of course.</strong>
+<p></p>
+<em>I think you are reading way too much into what Martelli actually says in that paragraph.  He calls this a &quot;syntax&quot; issue, and compares it to minor syntactic differences between C and Pascal or VB.  It is in fact a really fundamental difference in the <strong>semantics</strong> of objects in the languages: Ruby uses UniformityOfAccess<a href="wiki?edit=UniformityOfAccess" rel="nofollow">?</a> to enforce encapsulation of object state.  If you want a &quot;public instance variable&quot; called bar, you define a private variable @bar, a getter method bar(), and a setter bar=().  foo.bar = 5 means foo.bar=(5).  If you want trivial, Ruby can define them for you.  If you change your mind later and want to make bar a computed property, you just define the methods explicitly.  In short, public instance variables are a misfeature.</em>
+<p></p>
+<em>As to first-classness of methods, you and Martelli are overestimating the syntactic overhead.  Ruby does have anonymous closures in the form of code blocks, so passing around bits of code is frankly much more convenient to do in Ruby than in Python.  If you spend some time writing and reading idiomatic Ruby, you'll find that there is hardly ever a need to refer to a method; almost every situation where you'd want to do that in Python, in Ruby you use a block.</em>
+<p></p>
+<hr>
+<strong>Heritage and Philosophy</strong>
+<p></p>
+<a href="wiki?RubyLanguage">RubyLanguage</a> inherits from <a href="wiki?SmalltalkLanguage">SmalltalkLanguage</a> and <a href="wiki?PerlLanguage">PerlLanguage</a>. Therefore it believes in both <a href="wiki?EverythingIsAnObject">EverythingIsAnObject</a> and <a href="wiki?ThereIsMoreThanOneWayToDoIt">ThereIsMoreThanOneWayToDoIt</a>. <a href="wiki?BlocksInRuby">BlocksInRuby</a> allow the user a certain amount of flexibility in adding new control structure to the language, but not as much Smalltalk, let alone <a href="wiki?LispLanguage">LispLanguage</a> and <a href="wiki?SchemeLanguage">SchemeLanguage</a>. Like Smalltalk, lots of methods return self. Like Perl, it provides shortcuts.  
+<p></p>
+<a href="wiki?PythonLanguage">PythonLanguage</a> inherits from the <a href="wiki?AlgolFamily">AlgolFamily</a>, specifically the <a href="wiki?AbcLanguage">AbcLanguage</a> (a teaching language) and <a href="wiki?ModulaThree">ModulaThree</a>. It provides for objects and free functions and allows users to code without using objects if you want. It provides a fair number of features from the <a href="wiki?LispFamily">LispFamily</a>, especially for applying functions to lists. Modern Python <em>does</em> support <a href="wiki?LexicalClosure">LexicalClosure</a><strong></strong>s. Most recently Python has added iterators and generators (from <a href="wiki?IconLanguage">IconLanguage</a>), and <a href="wiki?ListComprehension">ListComprehension</a><strong></strong>s (from <a href="wiki?HaskellLanguage">HaskellLanguage</a>). Python's core philosophy is that &quot;There should be one - and preferably only one - obvious way to do it.&quot; It's not an absolute restriction by any means. While there are always more than one way to write code, in Python it's usually (but not always) clear which one is the most idiomatic or &quot;Pythonic.&quot;
+<p></p>
+On the statement &quot;Ruby tends to make more sense if you're from a <a href="wiki?SmalltalkLanguage">SmalltalkLanguage</a> or <a href="wiki?PerlLanguage">PerlLanguage</a> background&quot;:
+<UL>
+<li> In Ruby, many methods return <em>self</em>, or a mutation thereof.
+<li> Ruby supports the idea of method calls as messages. You can even do <em>object.send(&quot;methodname&quot;)</em>
+<li> In Ruby, you've always been able to superclass [<em>you mean subclass?</em>--ErikRose<a href="wiki?edit=ErikRose" rel="nofollow">?</a>] built-in types like strings and lists. Though today you can do that in Python, too.
+<UL>
+<li> No, actually he means superclass, although it's not strictly accurate. You can insert <em>modules</em> into classes (which are always open, so you can tinker with them at any time) which places a class-like-entity in the object's list of immediate parents. You cannot add Class-type parents to them. You can also open up instances of a class with a construct known as a metaclass. (Although that's a misnomer; the ruby community is currently working on naming those classes. &quot;Eigenclass&quot; is a popular term.)
+</UL>
+<li> Everything is a class.
+<li> Ruby supports closures as a first-class data type with well-integrated syntax.
+<p></p>
+</UL>
+On the statement &quot;Python makes more sense if your background is in Algol68 derived languages (Java, C, etc.) and functional languages like Scheme&quot;:
+<UL>
+<li> <a href="wiki?ListComprehension">ListComprehension</a><strong></strong>s [str(item) for item in myList] -&gt; ['2', '4', '53']
+<p></p>
+</UL>
+In ruby this is the map function:
+<PRE>
+ my_list.map{|item| item.to_s} =&gt; ['2', '4', '53']
+<p></p>
+</PRE>
+<em>Python also supports the map function:</em>
+<PRE>
+ map(str, myList) -&gt; ['2', '4', '53']
+<p></p>
+</PRE>
+<em>However, list comprehensions are far more powerful, allowing &quot;if&quot; clauses and multiple for loops:</em>
+<PRE>
+  [(x,y) for x in xrange(3) for y in xrange(3) if x != y] -&gt; [(0, 1), (0, 2), (1, 0), (1, 2), (2, 0), (2, 1)]
+<p></p>
+</PRE>
+You can do the same as above so:
+<PRE>
+  a = []
+  0.upto(2) do |i|
+</PRE><OL>
+<li>upto(2) do |j|
+</OL><PRE>
+	a = a+[[i,j]] if i != j
+	end
+  end
+<p></p>
+</PRE>
+(a different approach is discussed on <a href="wiki?PythonVsRubyCodeExamples">PythonVsRubyCodeExamples</a>)
+<p></p>
+or with a fewer chars:
+<PRE>
+  a=[];0.upto(2)do|i|;0.upto(2)do|j|;a=a+[[i,j]] if i!=j;end;end
+<p></p>
+</PRE>
+or even more simply:
+<PRE>
+  a = []
+  3.times {|x| 3.times {|y| a &lt;&lt; [x,y] if x != y } }
+<p></p>
+</PRE>
+In every case, a = [[0, 1], [0, 2], [1, 0], [1, 2], [2, 0], [2, 1]]
+<p></p>
+<em>Here's Python's equivalent:</em>
+<PRE>
+ a = []
+ for x in range(3):
+	for y in range(3):
+	if x != y: 
+		a += [(x,y)]	
+<p></p>
+</PRE>
+<em>List comprehensions are clearly better for this kind of thing, however.  Removing useful whitespace and jamming a bunch of code points together to save space is no saving if the result is unreadable.</em>
+<p></p>
+Ruby philosopy is also the OO idea of telling the object to do something, instead of doing something with the object. So you don't do string(10) but 10.to_s. -- Brian
+<p></p>
+<em>I'm not quite sure what this is meant to prove... Python's &quot;str&quot; is a class, so str(9) instantiates an object of class str, which determines what to do with the integer parameter &quot;9&quot;.  Even if str were a function, would it matter?  [Yes, I realise that in ruby to_s is a method of object, but...] There are advantages to using foo(blah) over blah.to_foo(), namely that if blah is missing to_foo(), you have to go and add one in, whereas foo(blah) can easily provide default behaviour without having to modify your parent class.  Python objects have hooks (for example, 1.4.__str__()) for object conversion/behaviour, and heavily discourage on-the-fly modification without subclassing.  It's one of those schisms that keeps Python Python and Ruby Ruby, despite any talk that <a href="wiki?PythonAndRubyAreConverging">PythonAndRubyAreConverging</a> ;-).</em>
+<p></p>
+As the previous paragraph says, str(object) calls the __str__() method of object. &quot;str&quot; is really a class, and &quot;object&quot; is the argument of its constructor. I realized how handy subclassing str (or the other builtins) is for tweaking how an object acts. For example, I recently needed to change the behavior of the dict (Python's hash type) to return False when a given key wasn't present in the dictionary. I just subclassed it and changed the behavior of its __getitem__(self, key) method. The resulting class acted exactly like a dictionary, except for the one difference I wanted. According to this article, Ruby also allows subclassing of builtins. Does it allow changing of the behavior of the objects, as opposed to just overriding regular methods?
+<p></p>
+To the previous paragraph: since objects are only interacted with via methods, overriding any methods WILL change the behavior of those objects.  Also, in Ruby, you can change the behavior of an object without having to subclass it.  For example, if you wanted to modify the behavior of all hashes in your code, without going through and changing every hash instantiation using hash literals to use a subclass instead, you could instead modify the Hash class itself.
+<p></p>
+<PRE>
+  class Hash
+    alias_method :get, :[]
+    def [](param)
+      self.get(param) || false
+    end
+  end
+<p></p>
+<p></p>
+</PRE><UL>
+<li> First-class functions
+<li> Closures (with a few simple caveats; see <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/67666" rel="nofollow">http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/67666</a>)
+<p></p>
+</UL>
+On the other hand, note that:
+<UL>
+<li> Nearly everything in Python is an object/class instance -- including classes and the primitive types (ints, etc)
+<li> You can inherit from Python's built-in types (which now include a Smalltalk-type root Object) 
+<li> Lambdas are avoided in modern Python. In most contexts they provide no gain over named functions. <em>This is the heart of the disagreement.  Ruby calls lambdas &quot;blocks&quot; (like Smalltalk), and considers them just about the most important feature of a language; it's these that let us create new control stuctures, instead of only being able to hook existing ones, as in Python.</em> -- Note that Python simply doesn't use closures for things like loops, and many &quot;novel&quot; control structures can be phrased in terms of loops.
+<li> <a href="wiki?BlocksInRuby">BlocksInRuby</a> also provide support for <a href="wiki?FunctionalProgramming">FunctionalProgramming</a>
+<p></p>
+</UL>
+Python distinguishes between statements and expressions, and it does not automatically return the last expressions evaluated in a method/function, which makes it slightly more awkward for <a href="wiki?FunctionalProgramming">FunctionalProgramming</a>.  <em>A None (null) return value is generally intended to indicate that the function/method has a side effect; avoiding implicitly returned values makes it explicit what the programmer intended to return from the function.</em>
+<p></p>
+<em>Python provides for objects and free functions and allows users to code without using objects.</em> Not really. The truth is far more interesting: in Python everything is an object, but a good deal of cleverness has gone into making it so that you don't need to care that this is true, depending on what you're doing. 
+<p></p>
+<em>Maybe, but I don't see what this buys you. The Python language reference (<a href="http://www.python.org/doc/current/ref/ref.html" rel="nofollow">http://www.python.org/doc/current/ref/ref.html</a>) devotes a whole sub-chapter to &quot;Emulating container types&quot;, &quot;Emulating callable Objects&quot;, &quot;Emulating numeric types&quot;, &quot;Emulating sequences&quot; etc. -- only because arrays, sequences etc. are &quot;special&quot; in Python. In Ruby, you just derive from the respective base classes (or extend them directly). So, Ruby's type system is much simpler and cleaner and allows a smaller and simpler language core. And, you write scripts that don't look like OOP in Ruby just as easily because the default &quot;global&quot; namespace is the body of a default &quot;main&quot; object, which just implements all the usual imperative functions like print, gets, eval, etc.</em>  -- <a href="wiki?OlafKlischat">OlafKlischat</a>
+<p></p>
+<em>In Python you can actually derive base types; &quot;emulation&quot; is for implementing standard protocols (or behavior, or interfaces) from scratch in your own classes. Say, to use a database file like a regular hash.</em>
+<p></p>
+<em>Indeed, nothing stops you from inheriting from a native class/type in Python (or from all of them at the same time if that gets you high, since Python supports multiple inheritance).</em> If you try to subclass more than one primitive type more interesting than <em>object</em>, you'll usually be told that &quot;multiple bases have instance lay-out conflict&quot;.
+<p></p>
+<em>Ruby also allows you to write scripts that don't really look like you're using objects.</em>
+<p></p>
+Ruby people complain about Python's lack of blocks, the difficulty of doing
+dynamic code generation, the awkwardness of trying to modify existing classes.
+They complain about these things despite the fact that Python people have
+demonstrated almost-good-enough &quot;Pythonic&quot; ways of doing them. (See
+<a href="wiki?BlocksInPython">BlocksInPython</a>)
+<p></p>
+These are issues with the core language (<a href="wiki?SyntaxMatters">SyntaxMatters</a>); they're much harder to
+fix than a missing library or tool or document. (It could be done in about four
+PEPs, but they'd get shouted down.) Does that make them &quot;killer features&quot;? --
+<a href="wiki?AdamSpitz">AdamSpitz</a>
+<p></p>
+The second two might, because what's beginning to look like the killer app,
+<a href="wiki?RubyOnRails">RubyOnRails</a>, relies upon them.
+<p></p>
+<em>Python has all the features necessary to do the kinds of things <a href="wiki?RubyOnRails">RubyOnRails</a> does, for instance Metaclasses for domain-specific object declarations.</em> -- <a href="wiki?IanBicking">IanBicking</a>
+<hr>
+<strong>Popularity</strong>
+<p></p>
+Well, there's really only one way to gauge this:
+<UL>
+<li> <a href="wiki?SwitchedFromPythonToRuby">SwitchedFromPythonToRuby</a>
+<li> <a href="wiki?SwitchedFromRubyToPython">SwitchedFromRubyToPython</a>
+<li> <a href="wiki?UsingPythonDontNeedRuby">UsingPythonDontNeedRuby</a>
+<li> <a href="wiki?UsingRubyDontNeedPython">UsingRubyDontNeedPython</a>
+<p></p>
+</UL>
+<hr>
+<p></p>
+<strong>Readability</strong>
+<p></p>
+Most people agree that both languages rate highly. Python is farther on along
+providing documentation support like __doc__, but Ruby is following with the rd
+tool and <a href="wiki?RdocFormat">RdocFormat</a>. (<a href="wiki?SelfDocumentingCode">SelfDocumentingCode</a>)
+<p></p>
+As in all cases, much of readability comes down to what you're used to.
+<p></p>
+See <a href="wiki?PythonVsRubyCodeExamples">PythonVsRubyCodeExamples</a> to judge for yourself.
+<p></p>
+<em>I use Ruby over Python when I can.  But I do think Python has an advantage in the <a href="wiki?SyntacticallySignificantWhitespace">SyntacticallySignificantWhitespace</a>.  For me it can become hard to keep track of end's in nested structures.  Glyphs are also relevant.  Pythonists seem to loathe the @'s in Ruby, but then again I __can't stand__ Python's underscores.  For me, they're the absolute worst thing about the language. (See <a href="wiki?TheProblemWithSigils">TheProblemWithSigils</a>)</em>
+<p></p>
+If anyone is having problems keeping track of &quot;nested end's&quot; then they are not
+using a smart (bloated?) enough editor. In Emacs, all you do is use Ruby
+mode and let the auto-indent magic work. When viewing less complex Python and
+Ruby samples side by side, it is interesting to note how they are usually both
+formatted nearly identically. Just take out the &quot;end&quot; constructs, adjust the
+indent level, and a Ruby snippet might even fool an unobservant Python
+programmer when quickly scrolling through a webpage. The biggest thing I enjoy
+about the Ruby syntax over the Python syntax is being able to refactor code and
+have Emacs figure out how to properly indent it for me--I'm pretty lazy.
+<p></p>
+Surprisingly, while some Ruby proponents claim it doesn't enforce indentation
+the way Python does, the parser is sensitive to whitespace. From the Ruby FAQ
+(<a href="http://www.rubycentral.com/faq/rubyfaq-6.html#ss6.5" rel="nofollow">http://www.rubycentral.com/faq/rubyfaq-6.html#ss6.5</a>):
+<p></p>
+<DL>
+<dt> <dd>Ruby works hard to distinguish method calls from operators, and variable names from method names. Unfortunately, there's no way it can get it right all the time. In this case, &quot;a +b&quot; is parsed as &quot;a(+b)&quot;. Remove the space to the left of &quot;+&quot; or add a space to the right of &quot;+,&quot; and it will be parsed as an addition.  <em>This has nothing to do with indentation.  And for what it's worth, Ruby now parses &quot;a +b&quot; the way you'd expect.</em> <strong>Which way is that?</strong>
+<p></p>
+</DL>
+<em>When I heard about Python's use of whitespace for structure, I too was horrified, and I wrote the language off altogether. Some time later, I decided to give Python a go (mostly so I could score more points on geek tests, I think), and found that, indeed, I absolutely hated the dependence on whitespace; all the same, &quot;I can handle C++&quot;, I said to myself, &quot;so I can bloody well stick this out too&quot;. Half an hour later, I was hacking like mad, I'd completely forgotten about the whitespace, and I was in love with Python; I shouldn't have been surprised, but I internalized the new syntax, and after that, I didn't think about it, any more than I think about the braces in Java or the commas in English. A happy ending. The only thing is, now I'm really starting to question the usefulness of static typing, but that's another story ...</em> -- <a href="wiki?TomAnderson">TomAnderson</a>
+<p></p>
+I didn't actually notice that whitespace was signifigant for structure in
+Python for quite a while. Considering that I would normally indent something in
+C++ regardless, the indenting seemed quite natural. The only surprise is when
+you try not to do it, and that is often because you're making something quick.
+The fact that Python won't let you do that will make that &quot;quick code&quot; look
+better in the long run. You really don't notice it after 10 minutes of code,
+and indenting everything will become quite natural (if you are lazy and don't
+already), especially when you start coding in another language again. --
+BradleyArsenault<a href="wiki?edit=BradleyArsenault" rel="nofollow">?</a>
+<p></p>
+Note that IDLE - the IDE that comes with python (and is built with Python)
+allows you to highlight blocks of text and indent, or un-indent the selected
+text as a whole - making refactoring easy compared to using an text editor
+without equivalent support.  That one factor alone made any hesitation
+regarding indention moot. There is also a python lisp module for emacs, that 
+can do the same thing.  --  <a href="wiki?MalcolmCampbell">MalcolmCampbell</a>
+<p></p>
+<em>(See the <a href="wiki?PythonWhiteSpaceDiscussion">PythonWhiteSpaceDiscussion</a>.)</em>
+<p></p>
+I think there is difference in readability philosophy between Ruby and Python.
+Python tends to restrict the amount of <a href="wiki?SyntacticSugar">SyntacticSugar</a>. Ruby tends to bend over
+backwards to make its sweet stuff as elegant as possible, in the hope that
+given good choices you'll make them.  
+<p></p>
+Example: In Ruby, <em>for</em> loops are ugly and bug-prone. <a href="wiki?BlocksInRuby">BlocksInRuby</a>, through
+keywords like .times, .each, and .each_index are simpler to use. Thus, in
+practice, <em>for</em> loops are uncommon. In my opinion, all except possibly
+.each_index are more readable.  -- <a href="wiki?AnonymousDonor">AnonymousDonor</a>
+<p></p>
+On a related note to <a href="wiki?SyntacticSugar">SyntacticSugar</a>, there sometimes comes a point where doing
+things the <em>canonical</em> way becomes just plain verbose, tedious, and ugly.  An
+example pertinent to me is Python's treatment of regular expressions.  I
+migrated to Python from Perl due to the data structures.  But the fact that
+regular expressions are not part of the Python language proper (save as a
+module), and don't have some of the sugary operator syntax of Perl, has
+really been a thorn in my side for what I do.  Perl's treatment may seem more
+cryptic, but its compactness makes it much more readable in the context of
+scripts than Python's verboseness.  I am new to Ruby but I immediately see its
+adoption of Perl-style regular expressions in addition to the data structures I
+appreciate from Python as ultimately enticing.  I in fact first considered Ruby
+as a combination of the best of Python and Perl (though I've since learned
+there's more to it).  Removal of the strict indentation dependence is a bonus
+for me as well. (I don't like to be chained to an editor, especially for quick
+on-the-fly edits, and I don't like that I can't <em>if(0)</em> out large blocks of
+code without marking large blocks and indenting.) -- milesh
+<p></p>
+That's why I still use Perl for small text processing jobs.  Python, however, is marvelous for larger programs, where I find that regular expressions aren't nearly as important as I would have thought.  On occasion the extra effort required to use them at all has made me notice that simple string replacement would be both simpler and faster. -- Eric
+<p></p>
+<hr>
+<p></p>
+<strong>Ease for Beginners</strong>
+<p></p>
+<em>Python's &quot;vanilla&quot; syntax makes it an acceptable choice for use as an embedding and extension language for use by non-programmers. (Ruby's ability to let users redefine fundamental behaviour, like string equality tests, would seem to disqualify it here.)</em>
+<p></p>
+Except that Guido's CPython is currently unusable as an embedding platform due
+to the total lack of any sandbox/restricted execution scheme.  Zope has one,
+but it's deep within Zope, and has gone several name changes through several
+thoroughly unsearchable names (&quot;Restricted Python&quot;, &quot;Python Methods&quot;,
+Script(Python)) - so it's very hard to find as a separate platform.  Ruby's
+&quot;safe&quot; module isn't perfect, but it's there.  -- <a href="wiki?MartinZarate">MartinZarate</a>
+<p></p>
+<em>Restricted execution is missing, but it certainly doesn't keep Python from being embedded in many environments, and in fact it's quite popular for this.  Jython is also a popular extension language for Java projects, and inherits Java's restricted execution. -- <a href="wiki?IanBicking">IanBicking</a></em>
+<p></p>
+Python used to have two &quot;restricted execution&quot; modules: <em>rexec</em> and <em>Bastion</em>. However, changes to the language have made it much more difficult to secure, and both modules were officially declared dead in Python 2.3.
+<p></p>
+One important fact that I haven't seen mentioned is that Python has a mission to be simple for beginners. Ruby strikes me as too complex for being a good beginning language, but great for a programmer who already knows a language or two. Part of the magic of Python is that is has great appeal to beginners, professionals, and academics.
+<p></p>
+<em>Odd. I found Ruby snake-simple to pick up.  You need not think about objects, how to &quot;include&quot; files, or anything too &quot;meta&quot;.  Personal taste, I suppose, but found it easier to get into than Python.</em> -- <a href="wiki?JamesBritt">JamesBritt</a>
+<p></p>
+Yes. I like Ruby better than Python (though lately I've become dissatisfied
+with both of them), but occasionally beginners have asked me for a
+recommendation for a first programming language, and I always tell them,
+&quot;Smalltalk or Python.&quot; -- <a href="wiki?AdamSpitz">AdamSpitz</a>
+<p></p>
+Odd. I think the best way to break in a new programmer/coder is to let him grind his teeth on C++ for a while. Provided he doesn't become obsessed with it, it is IMO the best introduction to programming. There are so many details that the programmer has to take care of himself, the language constructs are so rich that they force many low-level decisions, interaction between code and compiler is intense, and there's the macro engine on top of it, which is quite useful at obfuscating code. Whereas high level, garbage collected languages leave it all to the programmer. Thus not forcing too much &quot;training&quot; to happen for the programmer. Only after some C++ hell is a programmer able to properly use a high level, garbage collected, puerly OO language properly. Just my off topic opinion. -- flj
+<p></p>
+I really disagree. I'm quite a newbie in coding. In fact the first language I
+learned was Python, then I learned Objective-C and C, then Ruby. And I
+<em>really</em> regret that I didn't pick Ruby first instead. I'm not a specialist
+enough to clearly explain why, all I can say is that Ruby feels much more
+&quot;logical&quot; to me. To me, Python was easy to learn but not to use. -- Fred
+<p></p>
+One advantage Ruby has is that you don't need to 'import' external things to do
+simple tasks.  Say getting commandline arguments.  In Ruby they're just there,
+as ARGV.  In Python, you have to import sys, then use sys.argv.  It's not super
+difficult, but it's not as obvious either.  Same goes with most of what's in
+the &quot;os&quot; package in Python.  In Ruby, most of those functions are available
+everywhere as part of Kernel.  As for Ruby's ability to redefine fundamental
+behaviour, *shrug*, in practice, that doesn't often happen, especially not in a
+destructive or dangerous way.  I wouldn't consider it a serious concern.
+-- Merc
+<p></p>
+<em>I don't mean to be snide, but how is ARGV more obvious? Neither seems particularly obvious to me--in either case discovery involves reading or experience.</em> -- LeviCook<a href="wiki?edit=LeviCook" rel="nofollow">?</a> 
+<p></p>
+Correct, although because each side of the inequality contains the same factor,
+they cancel out.  I have a feeling you know this, but 'argv' is a holdover from
+the C programming language, and stands for 'argument vector'.  You are correct,
+though, that knowing this without discovery implies past experience with some
+programming language. -- <a href="wiki?TimLesher">TimLesher</a>
+<p></p>
+Why would the ability to redefine string comparision disqualify? Do you think a
+beginner would get a flash and include into the all shining new high-security
+banking application she's writing:
+<p></p>
+<PRE>
+ Class String
+     def ==(other)
+         self &lt; other
+     end
+ end
+<p></p>
+</PRE>
+I'd imagine she'd just use the standard string comparision. (And maybe one
+would even begin with something other than nuclear warhead control programs.
+;) -- Brian
+<p></p>
+<hr>
+<strong>Ruby Blocks and Python Lambdas</strong>
+<p></p>
+<em>&quot;There are many Ruby users who voluntarily converted from Python and would tend to disagree with the assertion that there are no killer feature differences. The Ruby closure syntax alone is one, for example.&quot;</em>
+<p></p>
+(See <a href="wiki?BlocksInRuby">BlocksInRuby</a> but also <a href="wiki?BlocksInPython">BlocksInPython</a> and <a href="wiki?BlocksInManyLanguages">BlocksInManyLanguages</a>)
+<p></p>
+&quot;<em>...once you are experienced in Ruby you will find blocks to be essential.</em>&quot;
+<p></p>
+This goes to the heart of the the major difference between Ruby and Python. In Python, you're stuck with the control statements provided by the language and have to write classes that work with those statements (by implementing methods with lots of underscores in them). In contrast, a Ruby programmer uses blocks to <em>extend the language</em> with application-specific control statements. Therefore programming becomes a matter of building application-specific languages in terms of primitives provided by the base language.
+<p></p>
+<em>I agree only partly. Python's attitude is towards using uniform language constructions, but you </em>can<em> quite easily add new ones, because the difference between a block and a lambda is quite small. (You can have more than one lambda, while blocks, on the other hand, have closures. Nested scopes were implemented in Python 2.x)</em>
+<p></p>
+Personally, I think this is what programming is all about, but we have become
+stuck with languages that are far too inflexible and syntax-heavy to allow us
+to program in this way. Even Ruby isn't as good for this style of programming
+as <a href="wiki?LispLanguage">LispLanguage</a>, <a href="wiki?SchemeLanguage">SchemeLanguage</a> or <a href="wiki?SmalltalkLanguage">SmalltalkLanguage</a>. Still, it's good to see
+the gradual take up of more expressive languages; eventually, we might work our
+way back to where we were in the 1950s! <a href="wiki?HaHaOnlySerious">HaHaOnlySerious</a>.
+<p></p>
+<em>ApplesToOranges<a href="wiki?edit=ApplesToOranges" rel="nofollow">?</a>.  We're talking human-readable languages here - Python is considered executable pseudocode to many.  Meanwhile, Lisp languages are really just text representations of a parse tree - easier for the computer to read than for me.  I think it is impossible to overstate the advantage blocks provide to Ruby.  Yes, Python has closures and lambdas - hell, C++ does too if you push a code generator hard enough.  The point is that Ruby has them in a pleasant, legible manner.  To see why this is important, look at the horrible mess that the Decorators debate was in the Python world.  Also look at how much of a pain it is to work with metaclasses in Python.  These debates would never have been started in Ruby - the syntax is already there for such things; only the conventions would remain.  If Python had the block feature of Ruby (which is functionally just a really smooth syntax of lambdas) then I'd never touch Ruby again.  I hope Guido learns this lesson before Python 3.0.  Bragging about feature X over feature Y makes about as bunch as much sense as Gentoo users talking about &quot;use&quot; flags - it doesn't matter how much you can tweak your system and personalize it if nobody else wants to touch the whole platform with a ten-foot pole.  Ruby's blocks are a pragmatic, intelligent concept that I'm continually annoyed is so rare in legible languages.  Too bad the rest of the language is so frustrating.  Still, it's better than trying to explain to a newbie what car and cdr mean any day.</em>
+<p></p>
+The difference between Python lambdas and Ruby blocks is that Ruby blocks have
+access to the variables in the scope in which they were defined.
+<em>(<a href="wiki?LexicalClosure">LexicalClosure</a><strong></strong>s. These were added in Python 2.2.)</em> This allows blocks
+to be used in a more expressive manner, such as those described above.
+<p></p>
+For example, your class uses the &quot;for .. in&quot; statement to iterate over the
+private list of elements. If you want to be able to use instances of
+My<strong></strong>List in &quot;for...in&quot; statements, you have to add special support to your
+class to work with the built-in interpreter; namely, the __iter__ method. In
+Ruby, iteration over collections is just a method that passes each element to a
+block. Implementing the &quot;each&quot; method for a new collection (and importing the
+Enumerable module to mix in useful higher-order functions such as collect)
+makes it indistinguishable from all other collections. 
+<em>So both languages require you to write an iterator function rather than using magic.</em>
+<p></p>
+<hr>
+<p></p>
+<strong>Ruby Equivalents for Python List Comprehensions</strong>
+<p></p>
+Moved to <a href="wiki?PythonVsRubyCodeExamples">PythonVsRubyCodeExamples</a>.
+<p></p>
+<hr>
+<p></p>
+<strong>Development Environments</strong>
+<p></p>
+Both languages provide interactive shells (type &quot;python&quot; or &quot;irb&quot;) and
+high-level persistence support.
+<p></p>
+Multiple IDEs are available for Python, including GUI debuggers.
+<p></p>
+A gdb-style debugger is available for each language.
+<p></p>
+Python has a <a href="wiki?RefactoringBrowser">RefactoringBrowser</a>, <a href="wiki?BicycleRepairMan">BicycleRepairMan</a>.  <a href="wiki?RubyLanguage">RubyLanguage</a> now has a
+<a href="wiki?RefactoringBrowser">RefactoringBrowser</a> too, RubyRefactoringBrowser<a href="wiki?edit=RubyRefactoringBrowser" rel="nofollow">?</a> at
+<a href="http://www.kmc.gr.jp/proj/rrb/index-en.html" rel="nofollow">http://www.kmc.gr.jp/proj/rrb/index-en.html</a>
+<p></p>
+Both languages are supported by Emacs modes. Python can be used as an elisp
+replacement - see Pymacs.
+<p></p>
+The current Ruby implementation is closely tied to Unix, making Windows
+performance and ports to new platforms problematic.
+<p></p>
+There is an <a href="wiki?EclipseIde">EclipseIde</a> for Ruby. <a href="wiki?RubyCocoa">RubyCocoa</a> adds support for Ruby to
+<a href="wiki?ProjectBuilder">ProjectBuilder</a>/<a href="wiki?ExCode">ExCode</a> on <a href="wiki?MacOsx">MacOsx</a>.
+<p></p>
+<hr>
+<p></p>
+<strong>Community and Documentation</strong>
+<p></p>
+There's just not as big a community surrounding Ruby. Fewer books, wizards,
+tools, and libraries makes it less appealing than Python for real work.
+<p></p>
+<em>On the other hand, the Ruby community is the friendliest and most helpful you will ever meet. I think that Ruby's community is one of the big selling points of the language.</em>  (However, the same has also been said of the Python community.)
+<p></p>
+<hr>
+<p></p>
+<strong>Libraries</strong>
+<p></p>
+<em>I think that this discussion so far misses many practicalities. For instance, what about <a href="wiki?UniCode">UniCode</a>. More and more software depends on Unicode. Python has rich Unicode support built-in (for example, Unicode literals, Unicode regular expressions, Unicode readers and writers). Ruby 2.0 is supposed to have something even more general than Unicode, but in the meantime it doesn't have anything built in.</em>
+<p></p>
+Python has a much greater range of libraries available to it, and most of those libraries are more mature and better documented than their Ruby counterparts.
+<p></p>
+Ruby, however, can take advantage of Python libraries through the use of Ruby/Python (<a href="http://www.goto.info.waseda.ac.jp/%7Efukusima/ruby/python/doc/index.html" rel="nofollow">http://www.goto.info.waseda.ac.jp/%7Efukusima/ruby/python/doc/index.html</a>) - there are, however, probably performance concerns in doing so.
+<p></p>
+Also, there is a perception out there that the Ruby standard library is smaller but better organized than the Python one.
+<p></p>
+Also, if the size of the libraries/communities/bookshelves was <em>that</em>
+important to use a language, then nobody would discuss why programming
+languages beyond <a href="wiki?PerlLanguage">PerlLanguage</a>, <a href="wiki?JavaLanguage">JavaLanguage</a> or, indeed, <a href="wiki?FortranLanguage">FortranLanguage</a> were
+ever needed or wished. Nothing compares to CPAN (in my opinion).  <strong>But</strong>
+there's obviously more to this than these things: it's not about how many
+books, but if there are enough good books; not how many people, but if there
+are enough friendly people, and so on... I'd say both Python and Ruby match
+these requirements fairly well, as Perl and many other languages do.
+<p></p>
+<em>In general Python's libraries are more plentiful and more mature, so it wins, in my opinion, for COM/CORBA, XML, and networking. They're both kind of awkward for making binaries, but, um, why do you want to make binaries? Both are extremely portable. Ruby's API for C integration is much, much cleaner than Python's. Python C modules have a lot of boilerplate.</em>
+<p></p>
+In either Ruby or Python, a poorly written extension module can block all
+threads. But in Ruby, it may not be possible to make a C library that does
+blocking calls give up its time slice at all.
+<p></p>
+Although I haven't done much with Python C extension modules, I think the main
+cause of the extra boilerplate is Python's use of reference counts* (with cycle
+detection) for garbage collection. Apparently, if you have a situation where
+the code you're interfacing to Ruby does anything tricky with the pointers to
+the wrapped objects (like storing them away for later), Ruby's mark-and-sweep
+GC needs to be told about them - which can cause problems sometimes. I think
+this is a tie again - Ruby's C interface is simpler, whereas the Python
+interface is potentially more flexible.
+<p></p>
+(*) specifically CPython, rather than the Java implementation, Jython
+<p></p>
+One way of wrapping C or C++ is to use the
+<a href="wiki?SimplifiedWrapperAndInterfaceGenerator">SimplifiedWrapperAndInterfaceGenerator</a>.  This can generate interface code for
+many languages, including both Python and Ruby.
+<p></p>
+Python has ctypes which lets you bind to DLLs at runtime
+(<a href="http://starship.python.net/crew/theller/ctypes/" rel="nofollow">http://starship.python.net/crew/theller/ctypes/</a>), which means you can write
+extensions in python.
+<p></p>
+There is pysoftwire which allows you to write python functions in x86 asm at runtime.
+<p></p>
+You can write C like extensions with Pyrex, a hybrid Python/C-like language.
+<p></p>
+There is sip for writing C++ extensions with python.
+<p></p>
+There is the <a href="wiki?BoostPythonLibrary">BoostPythonLibrary</a> for writing C++ extensions for Python.
+<p></p>
+<hr>
+<p></p>
+<strong>Platforms</strong>
+<p></p>
+Python and Ruby are both available for UNIX, DOS, Windows 95/98/NT/2000, Mac OS X, BeOS, Amiga, Acorn Risc OS, and OS/2.
+<p></p>
+Python is also available under Apple, AS400, QNX, VMS, OS390, AROS, Windows CE. (<em>Anybody know if Ruby supports any of those platforms?</em>)
+<p></p>
+Python has a single, nice Windows distribution, but it has a slightly different
+subset of functionality than the Unix version. Some of the POSIXy functions of
+the os module, in particular, are not supported in Windows.
+<p></p>
+And the Apple and Windows Pythons offer unique functionality for their
+platforms too - COM, for example. There's no working around the fact that most
+of POSIX is Unix-specific. But all the stuff you <em>need</em> to run on all
+platforms - regexps and threads and sockets - does. 
+<p></p>
+The Windows Ruby installation includes the Win32Api library which allows access
+to windows DLL calls. Code to call from and to COM is also available. <a href="wiki?RubyCocoa">RubyCocoa</a>
+offers very good support for <a href="wiki?MacOs">MacOs</a>.
+<p></p>
+Ruby failed four of the scripting language tests in the Windows version of the
+notorious <a href="wiki?GreatComputerLanguageShootout">GreatComputerLanguageShootout</a> - including the regexp test. (I'd be
+delighted if someone could get the failing tests to run. Ruby gurus?)
+<p></p>
+The failing tests are:
+<UL>
+<li> Ackermann - runs out of stack space. Python does the same.
+<li> Echo - Due to the inability to &quot;fork&quot; on windows. Python does the same.
+<li> Regexp - This is due to a bug in the code. The official shootout site has the correct code. It is unknown why the code on the Windows site differs. (If you change the 'if m1 == &quot;&quot;' line to 'unless m1', the code functions correctly.)
+<p></p>
+</UL>
+<em>It should be noted that the Java version of the Windows shootout Echo uses threads instead of fork and that writing the equivalent (threaded) client/server in Python is at best trivial (it's probably the same in Ruby). I tried submitting such code some time ago, but never got any feedback.</em>
+<p></p>
+<hr>
+<p></p>
+<strong>Applications</strong>
+<p></p>
+<UL>
+<li> <a href="wiki?ZopeApplicationServer">ZopeApplicationServer</a> is the marquee example of an open-source web application server written in Python.
+<li> Unununium is a next-next-generation OS that has Python as its main language (although its base is written C and assembly) - <a href="http://unununium.org/" rel="nofollow">http://unununium.org/</a>
+<p></p>
+</UL>
+Any good, and big, Ruby projects out there?
+<p></p>
+The Ruby equivalent to Zope is Rails. <a href="wiki?RubyOnRails">RubyOnRails</a> is an open source
+web-application framework for Ruby.  Marketing fluff: Everything needed to
+build real-world applications in fewer lines of code than other frameworks
+spend setting up their XML configuration files.
+<p></p>
+Python caught up recently and has couple of web-application frameworks, each fitting different constituents (compared to &quot;one sice fits all&quot; Ruby approach):
+<UL>
+<li> Django: <a href="http://www.djangoproject.com/" rel="nofollow">http://www.djangoproject.com/</a> - &quot;make 90% easy and simple, even for the price making last 10%, if non-standard, hard&quot;, pronounced by BDFL to be starting point for beginners
+<li> Turbogears: <a href="http://turbogears.org/" rel="nofollow">http://turbogears.org/</a> - &quot;integrate the best available solutions in each area, front-to-back&quot;
+<li> Pylons: <a href="http://pylonshq.com/" rel="nofollow">http://pylonshq.com/</a> - &quot;give me most flexible framework possible and get out of my way&quot;
+<p></p>
+</UL>
+Also, here is a list of Real World examples of Ruby and here is a list of major applications in Ruby.
+<p></p>
+<UL>
+<li> <a href="http://wiki.rubygarden.org/Ruby/page/show/RealWorldRuby" rel="nofollow">http://wiki.rubygarden.org/Ruby/page/show/RealWorldRuby</a>
+<li> <a href="http://www.ruby-lang.org/en/raa-cat.rhtml?category_major=Application" rel="nofollow">http://www.ruby-lang.org/en/raa-cat.rhtml?category_major=Application</a>
+<p></p>
+</UL><DL>
+<dt> <dd>Zope has ubiquitous undo support, provides a unified user interface and API to multiple data sources including its own database (storable inside a RDBMS by using a DA), and the filesystem.  It can be managed through DAV.  <a href="wiki?RubyOnRails">RubyOnRails</a> is still evolving, although it's close to version 1.0 as of Feb 2005. It's lower-level than Zope and uses generators to flesh in some support, like authentication. Version 0.10 no longer requires mod_rewrite and permits easy use of <a href="wiki?RubyOnRails">RubyOnRails</a> with alternate servers like lighttpd. Unlike Zope which some have called un-Pythonic, <a href="wiki?RubyOnRails">RubyOnRails</a> is more like a souped-up Ruby that helps you build web applications. As such, it doesn't come with undos and a full-blown security model.
+<p></p>
+</DL>
+But on the other hand, <a href="wiki?RubyOnRails">RubyOnRails</a> encourages you to <a href="wiki?DoTheSimplestThingThatCouldPossiblyWork">DoTheSimplestThingThatCouldPossiblyWork</a>, which is pleasant. It also lets you get a full-featured project up and running in much less code than Zope. It does discourage some things, and it does lack some features (lack of undo is a legitimate complaint).  But you named some features that Rails has no business providing or is just plain wrong:
+<UL>
+<li> No multiple database support <strong>:</strong> Using multiple databases is almost always bad. Yes, there are legitimate reasons to do it. No, they don't come up very often at all. 
+<li> Filesystem serialization <strong>:</strong> Ruby's standard library provides very natural and powerful ways of doing this already, and because of Ruby's reliance on <a href="wiki?DuckTyping">DuckTyping</a>, you can sneak these items in where <a href="wiki?ActiveRecord">ActiveRecord</a> would normally be expected.
+<li> Security Model <strong>:</strong> Ruby gives you this with $SAFE if you're talking about code-level injection-style attacks. It also cleans SQL statements for you. If you're talking about authentication, Rails does indeed give you an easy way to do this (there is even a generator command just for it!). 
+<li> Requiring Apache &amp; mod_rewrite <strong>:</strong> It most certainly does <em>not</em> require either of these things. The rails project generator gives you setup for these things for free, but you can feel free to use whatever you want. Indeed, it comes with a built-in web server of its own c.o. Webrick (which is awesome for testing/development purposes). <em>Update:</em> The beta of rails now has built-in routes support, which lets you get those pretty URLs without the complexity of mod_rewrite. All you need is to be able to turn all URLs to the web app from <a href="http://domain/path/" rel="nofollow">http://domain/path/</a>(fancy app path) to <a href="http://domain/path/dispatch.cgi" rel="nofollow">http://domain/path/dispatch.cgi</a>?(fancy app path) . This is trivial and supported by many web servers, further divorcing rails from apache without feature loss.
+<p></p>
+</UL>
+<hr>
+<p></p>
+<strong>Performance</strong>
+<p></p>
+Sorry - I thought the fame/notoriety of the <a href="wiki?GreatComputerLanguageShootout">GreatComputerLanguageShootout</a> was
+such that everyone would automatically go to:
+<a href="http://shootout.alioth.debian.org/ruby.php" rel="nofollow">http://shootout.alioth.debian.org/ruby.php</a>
+-- <a href="wiki?JonCoupe">JonCoupe</a>
+<p></p>
+<em>The shootout could use a Ruby expert to submit code for some of their newer benchmarks.</em>
+<p></p>
+<a href="wiki?PythonLanguage">PythonLanguage</a> has a JIT compiler called <a href="wiki?PsycoPython">PsycoPython</a>. It can also be compiled to
+<a href="wiki?JavaByteCode">JavaByteCode</a> or <a href="wiki?DotNet">DotNet</a> <a href="wiki?ByteCode">ByteCode</a> (<a href="wiki?JavaPython">JavaPython</a> and <a href="wiki?IronPython">IronPython</a>). <a href="wiki?YukihiroMatsumoto">YukihiroMatsumoto</a>
+is working on a <a href="wiki?VirtualMachine">VirtualMachine</a> for <a href="wiki?RubyLanguage">RubyLanguage</a> called Rite. Both languages are
+targets for <a href="wiki?PerlSix">PerlSix</a>'s ParrotVirtualMachine<a href="wiki?edit=ParrotVirtualMachine" rel="nofollow">?</a>.
+<p></p>
+<a href="wiki?PyPy">PyPy</a> is a working implementation of Python written in Python, with some
+advanced language translation (currently to C; other targets are expected) to
+make this feasible.
+<p></p>
+<em>Threads are actually pretty simple in Ruby, too. See <a href="http://www.rubycentral.com/downloads/book.html" rel="nofollow">http://www.rubycentral.com/downloads/book.html</a></em>
+<p></p>
+I'd agree that threads are simple in Ruby. But the performance seems lower than
+the standard Python built-in threads, and much, <em>much</em> lower than either
+Python generator threads or the threads that Stackless Python provides. (Again,
+Ruby2 is supposed to fix this.)
+<p></p>
+<hr>
+<p></p>
+<strong>Misc.</strong>
+<p></p>
+<em>There's a (selective) list of references for comparisons of Ruby and Python at <a href="http://www.ruby-doc.org/RubyEyeForThePythonGuy.html" rel="nofollow">http://www.ruby-doc.org/RubyEyeForThePythonGuy.html</a></em>
+<p></p>
+There's also a pair of rants at:
+<a href="http://www.ericw.org/rants/showrant.psp?rant=ruby" rel="nofollow">http://www.ericw.org/rants/showrant.psp?rant=ruby</a>
+<a href="http://www.ericw.org/rants/showrant.psp?rant=python" rel="nofollow">http://www.ericw.org/rants/showrant.psp?rant=python</a>
+<p></p>
+<hr>
+<p></p>
+As someone who has used both (but admittedly favors python) this whole page strikes me as starkly pro-Ruby. If I had to retitle it I would call it &quot;whyCantPythonBeExactlyLikeRuby&quot; -- Jackdied
+<p></p>
+<em>Indeed! Is it just because almost no Python users know of this page (and thus the ratio of Python to Ruby contributors to this page is very low)?</em>
+<p></p>
+I didn't find this page biased towards either language -- I know Python and was
+looking for a comparison to Ruby. I am staying with Python so far, even though
+Ruby is a nice one. -- ShurikO
+<p></p>
+<em>Well, the page clearly states that there are many more Ruby programmers than Python, so it's obvious. I, for one, stand for Python.</em>
+<p></p>
+I think there are probably more Python programmers than Ruby. Before
+<a href="wiki?RubyOnRails">RubyOnRails</a>, Ruby wasn't getting nearly as much attention. I'm not being
+entirely facetious when I suggest that it's because Ruby inspires a high level
+of zealotry, akin to Macs and Amigas. (Those of us who <em>are</em> Mac users also
+get agitated to use a commercial text editor written by a Rails developer,
+because, like Ruby and Rails, the incredible superiority should be intuitively
+obvious to even a casual observer! But that's a different grump. :) )
+<p></p>
+<em>There are definitely more Python programmers than Ruby - probably a factor of ten, perhaps more - and certainly more Python jobs.  Rails may change that.</em>
+<p></p>
+I would guess that most Ruby zealots were/are <a href="wiki?SmalltalkLanguage">SmalltalkLanguage</a> zealots -- Norfy
+<p></p>
+The whole notion that Ruby could be considered in any way comparable to Python is ridiculous. It is like comparing a Yugo to a Mercedes---they look about the same when you first try them out if you've never seen a car before. After a little while, the Yugo is going to break down, but the Mercedes is going to keep going. So even the idea that you can make a serious comparison is heavily biased towards Ruby.
+<p></p>
+<em>Please read <a href="wiki?ParkingTicket">ParkingTicket</a></em>
+<hr>
+<p></p>
+Does <a href="wiki?RubyLanguage">RubyLanguage</a> allow a block to return to the context that <strong>created</strong> (as
+opposed to invoked) it, as in Smalltalk?
+<p></p>
+<em>Yes, though not in the same way that Smalltalk does it (with the ^ operator). Ruby has a <a href="wiki?CallWithCurrentContinuation">CallWithCurrentContinuation</a> method. So, one can create a continuation, capture it in a block, and have the block invoke the continuation. Or something along those lines.</em>
+<p></p>
+Does <a href="wiki?RubyLanguage">RubyLanguage</a> allow an exception handler to return a value from the expression that raised the exception and continue execution at the point where the exception was raised?
+<p></p>
+<em>Nope. Not out of the box. Ruby's exceptions are a lot like Java's or Python's and aren't as rich as Smalltalk's at this point. Ruby does, however, give you room to implement Smalltalk-style exceptions. I don't know of an implementation of recoverable exceptions, but it looks feasible, thanks to call/cc and the fact that all of the built-ins can be overidden and redefined.</em>
+<p></p>
+In my opinion, these are the two foundation stones upon which most other things can be constructed -- in Perl, Python and apparently also Ruby. Having built Smalltalk-style metastructure in <a href="wiki?ObjectiveCee">ObjectiveCee</a>, <a href="wiki?JavaLanguage">JavaLanguage</a>, <a href="wiki?JavaScript">JavaScript</a>, <a href="wiki?PerlLanguage">PerlLanguage</a>, <a href="wiki?PythonLanguage">PythonLanguage</a>, and others, the presence of metastructure is at best a convenience and at worst (as in <a href="wiki?JavaLanguage">JavaLanguage</a>) an obstacle when done badly. <a href="wiki?LexicalClosure">LexicalClosure</a><strong></strong>s without the mentioned return semantics are better than no closures, but make it significantly more tedious to write reusable control structures. Exceptions that cannot be restarted or resumed are, in my opinion, essentially useless.
+<p></p>
+-- <a href="wiki?TomStambaugh">TomStambaugh</a>
+<p></p>
+<em>call/cc is a more fundamental continuation mechanism than non-local exit and recoverable exceptions, and I think you'll find that it makes a serviceable &quot;foundation stone&quot;.</em>
+<p></p>
+You certainly have my attention -- now I'll have to go try out
+<a href="wiki?CallWithCurrentContinuation">CallWithCurrentContinuation</a>. I'm not sure I'd call Smalltalk's behavior a
+&quot;non-local exit&quot;, but I agree that if &quot;call/cc&quot; does the equivalent then the
+rest falls out by turning the crank. This is good information; now I'll have to
+go try it. -- <a href="wiki?TomStambaugh">TomStambaugh</a>
+<p></p>
+<hr>
+I am newbie for both Python and Ruby.  I started from Python and like its style very much, especially its indentation.  But the name of &quot;Python&quot; and snake pictures/icons (e.g., on official Python Tutorial page) made me feel sick.  From this perspective, ruby has a better name than python. So I searched and found ruby and so far am very happy with it.  Plus it has some features like open classes, which people can modify the class anytime.      
+<p></p>
+Names are important and said to carry universal energy messages in ancient cultures.  That's why parents usually give their children positive names.  Suggest Python changes its name to something else, like Pyson, pysong, or pysung, etc.  Names like Java (good smell), Fortran (good fortune), Perl (good looking) are some other good examples. -- fr
+<p></p>
+<em>Well, <a href="wiki?PythonLanguage">PythonLanguage</a> was named after <a href="wiki?MontyPython">MontyPython</a>, a silly comedy troupe which has much more to do with parrots, rabbits, and halibuts than snakes.</em>
+<p></p>
+<hr>
+See <a href="wiki?RubyLanguage">RubyLanguage</a>, <a href="wiki?PythonLanguage">PythonLanguage</a>, <a href="wiki?PythonAndRubyAreConverging">PythonAndRubyAreConverging</a>
+See Also: <a href="wiki?CategoryInManyProgrammingLanguages">CategoryInManyProgrammingLanguages</a>, <a href="wiki?LanguagePissingMatch">LanguagePissingMatch</a>, <a href="wiki?PythonVsPerl">PythonVsPerl</a>
+<p></p>
+<hr>
+<a href="wiki?CategoryProgrammingLanguageComparisons">CategoryProgrammingLanguageComparisons</a> <a href="wiki?CategoryPython">CategoryPython</a> <a href="wiki?CategoryRuby">CategoryRuby</a>
+</div>
+</form>
+<hr>
+<a href="wiki?edit=PythonVsRuby" rel="nofollow"><img src=/wiki.png style="border: none;"> EditText</a> of this page
+(last edited <a href=quickDiff?PythonVsRuby rel="nofollow">March 4, 2009</a>)<br>
+<a href="wiki?FindPage">FindPage</a> by searching (or browse <a href=like rel="nofollow">LikePages</a> or take a <a href=tour rel="nofollow">VisualTour</a>)<br>
+<link rel="alternate" 
+  type="application/wiki" 
+  title="Edit this page!" 
+  href="wiki?edit=PythonVsRuby"/>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2377314-2";
+_udn="c2.com"; 
+urchinTracker();
+</script>
+
+</body>

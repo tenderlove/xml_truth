@@ -1,0 +1,569 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="Twitter is a free social messaging utility for staying connected in real-time" name="description" />
+<meta content="no" http-equiv="imagetoolbar" />
+<meta content="width = 780" name="viewport" />
+<meta content="4FTTxY4uvo0RZTMQqIyhh18HsepyJOctQ+XTOu1zsfE=" name="verify-v1" />
+<meta content="1" name="page" />
+<meta content="IE=EmulateIE7" name="X-UA-Compatible" />
+<meta content="n" name="session-loggedin" />
+<meta content="ruby" name="page-user-screen_name" />
+    <title>Ruby Sinreich (ruby) on Twitter</title>
+    <link href="http://assets1.twitter.com/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="http://assets1.twitter.com/images/twitter_57.png" rel="apple-touch-icon" />
+    
+    <link href="http://assets1.twitter.com/stylesheets/timeline.css?1238020339" media="screen, projection" rel="stylesheet" type="text/css" />
+<link href="http://assets0.twitter.com/stylesheets/master.css?1238020344" media="screen, projection" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+      /* begin custom css */
+.top-navigation > li > a,
+a { color: #FF5500; }
+body {
+  color: #000000;
+  background-color: #EEAADD;
+  background: #EEAADD url(http://s3.amazonaws.com/twitter_production/profile_background_images/4312/pink___orange_tile.gif) fixed repeat top left;}
+#side_base {
+      border-left:1px solid #87bc44;
+    background-color: #e0ff92;
+    width: 199px; line-height: 1.2; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px;
+}
+#side div.last { border-top: 1px solid #87bc44; }
+ul#tabMenu li {
+  display: block; width: 100%;
+  border-top: 1px solid #87bc44;
+}
+ul#tabMenu li a, #side .section h1 { color:#000000; }
+#content tr.hentry:hover a { color:#FF5500; }
+body#profile #content div.hentry:hover a { color:#FF5500;}
+#side .actions { border: 1px solid #87bc44; }
+#side .promotion {
+  background-image:url('http://static.twitter.com/images/pale.png');
+  border: 1px solid #87bc44;
+  text-align: left; font-size: 11px; margin-top: 7px; padding: 6px 10px; width: 152px;
+}
+#side .promotion .definition span {
+  color: #000000;
+}
+#side .promo { border: 1px solid #87bc44; }
+#side .stats td+td {
+  border-left: solid 1px #87bc44;
+  border-right: solid 1px #87bc44; }
+#side div.section-header h1 { color: #000000; }
+#side div.section-header h3.faq-header {
+  border-bottom: 1px solid #87bc44;
+  color: #000000;
+}
+#side .stat a {color: #000000; }
+
+
+/* end custom css */
+
+    .content-bubble-arrow { background-image: url(http://static.twitter.com/images/arr2.gif); }
+  .status-btn input.round-btn { background-image: url('http://static.twitter.com/images/round-btn.gif'); }
+  .status-btn input.round-btn:hover { background-image: url('http://static.twitter.com/images/round-btn-hover.gif'); }
+  .status-btn input.disabled, .status-btn input.disabled:hover { background-image: url('http://static.twitter.com/images/round-btn.gif'); }
+  .hentry .actions .fav { background-image: url('http://static.twitter.com/images/icon_star_full.gif'); }
+  .hentry .actions .non-fav { background-image: url('http://static.twitter.com/images/icon_star_empty.gif'); }
+  .hentry .actions .fav-throb, .hentry .actions a.del-throb { background-image: url('http://static.twitter.com/images/icon_throbber.gif'); }
+  .hentry .actions .del { background-image: url('http://static.twitter.com/images/icon_trash.gif'); }
+  body#show .reply, .hentry .actions .reply { background-image: url('http://static.twitter.com/images/icon_reply.gif'); }
+  .direct_message .actions .reply { background-image: url('http://static.twitter.com/images/icon_direct_reply.gif'); }
+  .direct_message .actions .del { background-image: url('http://static.twitter.com/images/icon_trash.gif'); }
+  .notify { background-image: url('http://static.twitter.com/images/girl.gif'); }
+  .promotion, ul#tabMenu a#keyword_search_tab.hover, ul#tabMenu a:hover { background-image: url('http://static.twitter.com/images/pale.png'); background-color: transparent; }
+  div#follow-toggle.closed { background-image: url('http://static.twitter.com/images/toggle_closed.gif'); }
+  div#follow-toggle.opened { background-image: url('http://static.twitter.com/images/toggle_opened.gif'); }
+  .follow-actions .following { background-image: url('http://static.twitter.com/images/checkmark.gif'); }
+  .loading { background-image: url('http://static.twitter.com/images/loader.gif'); }
+  #more { background-image: url('http://static.twitter.com/images/more.gif'); }
+  #more.loading { background-image: url('http://static.twitter.com/images/ajax.gif'); }
+  body#show .protected { background-image: url('http://static.twitter.com/images/icon_lock.gif'); }
+  #side .promotion { background-image: url('http://static.twitter.com/images/pale.png'); }
+  .rss { background-image: url('http://static.twitter.com/images/rss.gif'); }
+  #flash { background-image: url('http://static.twitter.com/images/girl.gif'); }
+    
+  
+</style>
+          <link rel="alternate" type="application/rss+xml" title="Ruby Sinreich (ruby) (RSS)" href="http://twitter.com/statuses/user_timeline/8569.rss" />
+      <link rel="alternate" type="application/atom+xml" title="Ruby Sinreich (ruby) (Atom)" href="http://twitter.com/statuses/user_timeline/8569.atom" />
+    
+  </head>
+
+  <body class="account" id="profile">
+    <div id="dim-screen"></div>
+    <ul id="accessibility" class="offscreen">
+  <li><a href="#content" accesskey="0">Skip past navigation</a></li>
+  <li>On a mobile phone? Check out <a href="http://m.twitter.com/">m.twitter.com</a>!</li>
+  <li><a href="#footer" accesskey="2">Skip to navigation</a></li>
+    <li><a href="#signin">Skip to sign in form</a></li>
+</ul>
+
+    
+
+    <div id="container" class="subpage">
+            <span id="loader" style="display:none"><img alt="Loader" src="http://assets0.twitter.com/images/loader.gif" /></span>
+      
+  <h1 id="header">
+    <a href="/" title="Twitter: home" accesskey="1" id="logo">
+              <img alt="Twitter.com" height="29" src="http://assets0.twitter.com/images/twitter_logo_125x29.png" width="125" />
+      
+    </a>
+  </h1>
+
+  
+    <div id="profilebox_outer">
+      <div id="profilebird"><img alt="Profile_bird" height="48" id="profilebirdimg" src="http://assets0.twitter.com/images/profile_bird.png" transparent_png="true" width="48" /></div>
+      <div id="profilebox" class="clearfix">
+        <div id="profiletext">
+          <h1>Hey there! <strong>ruby</strong> is using Twitter.</h1>
+          <h2>Twitter is a free service that lets you keep in touch with people through the exchange of quick, frequent answers to one simple question: What are you doing? <strong>Join today</strong> to start receiving <strong>ruby's </strong> updates.</h2>
+        </div>
+        <div id="profilebutton">
+          <form name="account_signup_form" id="account_signup_form" action="/signup">
+            <input id="follow" name="follow" type="hidden" value="ruby" />
+            <input class="profilesubmit" id="join" name="commit" type="submit" value="Join today!" />
+          </form>
+          <p><small>Already using Twitter<br /> from your phone?  <a href="/account/complete">Click here</a>.</small></p>
+        </div>
+      </div>
+    </div>
+  
+
+
+      <div id="flash" style="display:none;">
+        
+      </div>
+      <div class="content-bubble-arrow"></div>
+      
+        <table cellspacing="0" class="columns">
+          <tbody>
+            <tr>
+              <td id="content" class="round-left column">
+                                <div class="wrapper">
+                  
+                  
+  
+
+
+<div class="profile-head">
+
+  
+    
+  
+
+  <h2 class="thumb clearfix">
+          <a href="/account/profile_image/ruby"><img alt="" border="0" height="73" id="profile-image" src="http://s3.amazonaws.com/twitter_production/profile_images/96297277/bellyball2_bigger.jpg" valign="middle" width="73" /></a>
+    
+    ruby
+  </h2>
+  <div class="clear"></div>
+  <div id="follow_actions_8569" class="follow-actions ruby">
+    
+  </div>
+
+  <div class="hentry">
+   
+
+  </div>
+</div>
+
+  <div class="section">
+
+    
+      <ol class="statuses" id="timeline"><li class="hentry status u-ruby latest-status" id="status_1395933492"><span class="status-body"><span class="entry-content">A step in the right direction! Rtwt @<a href="/marshallk">marshallk</a>: Google Implements New Open Standard for Friends Lists <a href="http://bit.ly/c2F8l" rel="nofollow" target="_blank">http://bit.ly/c2F8l</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1395933492" class="entry-date" rel="bookmark"><span class="published">about 2 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1395605117"><span class="status-body"><span class="entry-content">Great news, my midwife & birth center IS in-network! (My insurance company is just confused. But not as much as the hospital is.)</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1395605117" class="entry-date" rel="bookmark"><span class="published">about 3 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1395094150"><span class="status-body"><span class="entry-content">When it comes down to it, I think #UNChospital is even more obnoxiously user-unfriendly than my insurance co. #UnitedHealthCare.</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1395094150" class="entry-date" rel="bookmark"><span class="published">about 5 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1394837186"><span class="status-body"><span class="entry-content">Rtwt @<a href="/Mlsif">Mlsif</a>: Fr @<a href="/nancyscola">nancyscola</a>: "Mary Jane Rule" of Web 2.0: In any truly open forum, a Q about the legal status of pot will rise to the top."</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1394837186" class="entry-date" rel="bookmark"><span class="published">about 6 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1394414390"><span class="status-body"><span class="entry-content">Anyone have advice for responding to #LinkedIn requests from folks to whom you are professionally connected but wouldn't recommend? Awkward!</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1394414390" class="entry-date" rel="bookmark"><span class="published">about 7 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1394236828"><span class="status-body"><span class="entry-content">Rtwt @<a href="/Mlsif">Mlsif</a>: Preview of Obama's 11:30 live online townhall: <a href="http://bit.ly/9knRL" rel="nofollow" target="_blank">http://bit.ly/9knRL</a> We'll be liveblogging it at <a href="http://www.techpresident.com" rel="nofollow" target="_blank">http://www.techpresident.com</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1394236828" class="entry-date" rel="bookmark"><span class="published">about 7 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1394217612"><span class="status-body"><span class="entry-content">Rtwt @<a href="/jaketapper">jaketapper</a>: go here to submit q's or vote - <a href="http://www.whitehouse.gov/openforquestions/" rel="nofollow" target="_blank">http://www.whitehouse.gov/o...</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1394217612" class="entry-date" rel="bookmark"><span class="published">about 7 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1392212312"><span class="status-body"><span class="entry-content">I'm supposed to have a burst of energy here at the end of #pregnancy, but instead am so sleepy. Probably from being so sedentary.</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1392212312" class="entry-date" rel="bookmark"><span class="published">about 18 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1390632676"><span class="status-body"><span class="entry-content">@<a href="/trikegirl">trikegirl</a> If that's true, we should meet there fir dinner sometime. I love Patio Loco, although they were so inconsistent...</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1390632676" class="entry-date" rel="bookmark"><span class="published">about 23 hours ago</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> <a href="http://twitter.com/trikegirl/status/1390616198">in reply to trikegirl</a></span></span></li><li class="hentry status u-ruby" id="status_1389901018"><span class="status-body"><span class="entry-content">Rtwt @<a href="/Pam_Spaulding">Pam_Spaulding</a>: is sorry to hear about the passing of John Hope Franklin. <a href="http://tinyurl.com/cndxgm" rel="nofollow" target="_blank">http://tinyurl.com/cndxgm</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1389901018" class="entry-date" rel="bookmark"><span class="published">11:42 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1389876406"><span class="status-body"><span class="entry-content">I don't know why Twitter didn't try paid "pro" accounts ages ago. Sounds like now they are: <a href="http://is.gd/oVxH" rel="nofollow" target="_blank">http://is.gd/oVxH</a> via @<a href="/seskali">seskali</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1389876406" class="entry-date" rel="bookmark"><span class="published">11:38 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1389284076"><span class="status-body"><span class="entry-content">Thanks for sharing, Holly! Rtwt @<a href="/ntenhross">ntenhross</a>: Slides and commentary from the #npocloud event yesterday:  <a href="http://bit.ly/2BTNda" rel="nofollow" target="_blank">http://bit.ly/2BTNda</a> #nptech</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1389284076" class="entry-date" rel="bookmark"><span class="published">9:49 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1388887869"><span class="status-body"><span class="entry-content">Rtwt @<a href="/kursich">kursich</a>: RT: @<a href="/MyNC">MyNC</a> Working on a story about a plan to change NC law to allow Sunday liquor sales. Vote in our poll <a href="http://bit.ly/aCNH" rel="nofollow" target="_blank">http://bit.ly/aCNH</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1388887869" class="entry-date" rel="bookmark"><span class="published">8:39 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1388768131"><span class="status-body"><span class="entry-content">@<a href="/hollybeee">hollybeee</a> Ouch. I hope it works!</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1388768131" class="entry-date" rel="bookmark"><span class="published">8:18 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1388724116"><span class="status-body"><span class="entry-content">@<a href="/wayfwd">wayfwd</a> Of course I know @<a href="/Jerimee">Jerimee</a>, that's how I found out about A new way forward.</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1388724116" class="entry-date" rel="bookmark"><span class="published">8:11 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> <a href="http://twitter.com/wayfwd/status/1388714175">in reply to wayfwd</a></span></span></li><li class="hentry status u-ruby" id="status_1388457446"><span class="status-body"><span class="entry-content">@<a href="/ayse">ayse</a> Oh no they di-int ask if you had to consult your male partner for b-ball picks! They obv don't know what a bad idea that would be. ;-)</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1388457446" class="entry-date" rel="bookmark"><span class="published">7:22 AM Mar 25th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1383480959"><span class="status-body"><span class="entry-content">In honor of Ada Lovelace Day: props to Terry Grunwald! 18 yrs ago she started NCexChange to help NC #NPtech, gave me a start in 96. #ALD09</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1383480959" class="entry-date" rel="bookmark"><span class="published">11:21 AM Mar 24th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1382619993"><span class="status-body"><span class="entry-content">@<a href="/msfour">msfour</a> It's not YouTube but this is still my favorite dance video: <a href="http://www.zefrank.com/invite/swfs/index2.html" rel="nofollow" target="_blank">http://www.zefrank.com/invi...</a></span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1382619993" class="entry-date" rel="bookmark"><span class="published">8:35 AM Mar 24th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> <a href="http://twitter.com/msfour/status/1382586273">in reply to msfour</a></span></span></li><li class="hentry status u-ruby" id="status_1382589162"><span class="status-body"><span class="entry-content">Hey @<a href="/FindingAda">FindingAda</a>, was Ada the inspiration for young woman in the Tom Stoppard play Arcadia?</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1382589162" class="entry-date" rel="bookmark"><span class="published">8:29 AM Mar 24th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li><li class="hentry status u-ruby" id="status_1382556278"><span class="status-body"><span class="entry-content">Happy Ada Lovelace Day! <a href="http://findingada.com/" rel="nofollow" target="_blank">http://findingada.com/</a> #ALD09</span><span class="meta entry-meta"><a href="http://twitter.com/ruby/status/1382556278" class="entry-date" rel="bookmark"><span class="published">8:23 AM Mar 24th</span></a> <span>from <a href="http://www.twhirl.org/">twhirl</a></span> </span></span></li></ol>
+
+      <div id="pagination">
+        <div id="pagination"><a href="/ruby?max_id=1395933492&amp;page=2&amp;twttr=true" class="round" id="more" rel="next">more</a></div>
+      </div>
+
+    
+  </div>
+
+
+                </div>
+                              </td>
+              
+                <td id="side_base" class="column round-right">
+                                  
+                  <div id="side">
+                      
+<div id="profile" class="section">
+  <span class="section-links">
+      </span>
+  <address>
+    <ul class="about vcard entry-author">
+      <li><span class="label">Name</span> <span class="fn">Ruby Sinreich (ruby)</span></li>
+              <li><span class="label">Location</span> <span class="adr">Chapel Hill, NC</span></li>
+                    <li><span class="label">Web</span> <a href="http://lotusmedia.org" class="url" rel="me nofollow">http://lotusmedia...</a></li>
+      
+            <li id="bio"><span class="label">Bio</span> <span class="bio">progressive activist, local politico, professional organizer, compulsive blogger</span></li>
+          </ul>
+  </address>
+
+  <table class="stats" cellspacing="0">
+  <tr>
+    <td>
+      
+  <a href="/ruby/friends" id="following_count_link" rel="me">
+  <span id="following_count" class="stats_count numeric">419</span>
+    <br/>
+    <span class="label">Following</span>
+  </a>
+    </td>
+    <td>
+      
+  <a href="/ruby/followers" id="follower_count_link" rel="me">
+  <span id="follower_count" class="stats_count numeric">1,958</span>
+    <br/>
+    <span class="label">Followers</span>
+  </a>
+    </td><td>
+    	<a href="/ruby" rel="me"><span id="update_count" class="stats_count numeric">7,356</span><br/>
+    	<span class="label">Updates</span></a>
+    </td>
+  </tr>
+</table>
+
+</div>
+
+<ul id="tabMenu">
+  <li>
+    <a href="/ruby" accesskey="u" id="updates_tab">Updates</a>  </li>
+  <li>
+    <a href="/ruby/favourites" accesskey="f" id="favorites_tab">Favorites</a>  </li>
+</ul>
+
+
+
+
+  <div id="people" class="section last">
+          <h1>Following</h1>
+      
+        <div id="following_list">
+          
+  <span class="vcard">
+    <a href="http://twitter.com/kellan" class="url" rel="contact" title="kellan"><img alt="kellan" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14020052/20070522-517918392-love_this_shot_s_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/Maggie" class="url" rel="contact" title="Maggie Mason"><img alt="Maggie Mason" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/58037791/43photos_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/zephoria" class="url" rel="contact" title="danah boyd"><img alt="danah boyd" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/51224572/Monterey.sm_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/waynesutton" class="url" rel="contact" title="Wayne Sutton"><img alt="Wayne Sutton" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/96027919/WayneSutton-headshot2_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/chrismessina" class="url" rel="contact" title="Chris Messina"><img alt="Chris Messina" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/61151090/graffiti_512_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/brianoberkirch" class="url" rel="contact" title="Brian Oberkirch"><img alt="Brian Oberkirch" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/107339411/Picture_13_mini.png" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/vanderwal" class="url" rel="contact" title="Thomas Vander Wal"><img alt="Thomas Vander Wal" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/100262780/web_alt_soft_smile_vanderwal_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/deanero" class="url" rel="contact" title="Dean Hudson"><img alt="Dean Hudson" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14094232/Photo_28_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/nancyscola" class="url" rel="contact" title="Nancy Scola"><img alt="Nancy Scola" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/73137683/img_scola_headshot_twitter_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/democracy" class="url" rel="contact" title="Steven Clift"><img alt="Steven Clift" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/52909135/steven_mini.gif" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/BrianR" class="url" rel="contact" title="Brian Russell"><img alt="Brian Russell" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/68799070/bcr_smile_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/steveolson" class="url" rel="contact" title="steveolson"><img alt="steveolson" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/82589318/domopic_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/jacksonfox" class="url" rel="contact" title="Jackson Fox"><img alt="Jackson Fox" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/51773529/chinposin_self_square_art_mini.png" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/RobCottingham" class="url" rel="contact" title="Rob Cottingham"><img alt="Rob Cottingham" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/81664056/sitting-typing-rob_mini.png" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/Chuckumentary" class="url" rel="contact" title="Chuck Olsen"><img alt="Chuck Olsen" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/94719576/Picture_141_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/kanter" class="url" rel="contact" title="Beth Kanter"><img alt="Beth Kanter" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/63661963/1316947090_6812521383_o_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/choconancy" class="url" rel="contact" title="Nancy White"><img alt="Nancy White" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/68395912/DSCN2466_mini.JPG" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/habib" class="url" rel="contact" title="Habib"><img alt="Habib" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14474962/196445068_4edf1c806b_o_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/smalljones" class="url" rel="contact" title="Paul Jones"><img alt="Paul Jones" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14573452/pjones_chicken_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/ttobba" class="url" rel="contact" title="Justin Abbott"><img alt="Justin Abbott" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14635432/justin_abbott_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/levjoy" class="url" rel="contact" title="Joshua Levy"><img alt="Joshua Levy" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/83123371/3217717329_ab86577006_m_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/smithmag" class="url" rel="contact" title="SMITH Magazine"><img alt="SMITH Magazine" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14780492/s_mini.gif" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/iwilker" class="url" rel="contact" title="Ian Wilker"><img alt="Ian Wilker" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/78953414/so-nu-457x457_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/ekai" class="url" rel="contact" title="Eddie Codel"><img alt="Eddie Codel" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/14879342/me.head.bman98.orig_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/gillo" class="url" rel="contact" title="gillo"><img alt="gillo" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/15019982/gillo_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/dav" class="url" rel="contact" title="Dav Yaginuma"><img alt="Dav Yaginuma" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/15154972/dav_hat_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/anildash" class="url" rel="contact" title="Anil Dash"><img alt="Anil Dash" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/67064311/sup-dog-profile-pic_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/webb" class="url" rel="contact" title="Marnie Webb"><img alt="Marnie Webb" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/66854092/thumbnail_converse_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/twitter_status" class="url" rel="contact" title="Status Updates"><img alt="Status Updates" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/36881322/twttr_eng_mini.gif" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/geodog" class="url" rel="contact" title="geodog"><img alt="geodog" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/43520272/strangelove_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/condi" class="url" rel="contact" title="Condoleezza Rice"><img alt="Condoleezza Rice" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/31584972/me_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/robmugabe" class="url" rel="contact" title="Robert Mugabe"><img alt="Robert Mugabe" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/16811482/Robert_Mugabe_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/skeskali" class="url" rel="contact" title="Cecily"><img alt="Cecily" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/87087960/Photo_33_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/xicanista" class="url" rel="contact" title="xicanista"><img alt="xicanista" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/53425172/ericarios175_mini.jpg" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/cnnbrk" class="url" rel="contact" title="CNN Breaking News"><img alt="CNN Breaking News" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/67263363/icon.cnnbrk_mini.png" width="24" /></a>
+  </span>
+
+
+  <span class="vcard">
+    <a href="http://twitter.com/fstutzman" class="url" rel="contact" title="Fred Stutzman"><img alt="Fred Stutzman" class="photo fn" height="24" src="http://s3.amazonaws.com/twitter_production/profile_images/85613871/fred_mini.png" width="24" /></a>
+  </span>
+
+
+        </div>
+                  <small><a href="/ruby/friends" rel="me">View All&hellip;</a></small>
+                    </div>
+
+  <div id="feed" class="section last">
+    <a href="/statuses/user_timeline/8569.rss" class="xref rss" rel="alternate" type="application/rss+xml">RSS feed of ruby's updates</a>  </div>
+
+
+
+
+
+                  </div>
+                  <hr />
+                                </td>
+              
+            </tr>
+          </tbody>
+        </table>
+      
+
+      
+  <div id="footer"  class="round">
+    <h3 class="offscreen">Footer</h3>
+  
+    <ul>
+      <li class="first">&copy; 2009 Twitter</li>
+      <li><a href="/about#about">About Us</a></li>
+      <li><a href="/about#contact">Contact</a></li>
+      <li><a href="http://blog.twitter.com">Blog</a></li>
+      <li><a href="http://status.twitter.com">Status</a></li>
+              <li><a href="/downloads">Apps</a></li>
+            <li><a href="http://apiwiki.twitter.com/">API</a></li>
+      <li><a href="http://search.twitter.com">Search</a></li>      <li><a href="http://help.twitter.com">Help</a></li>
+      <li><a href="/jobs">Jobs</a></li>
+      <li><a href="/terms">Terms</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+    </ul>
+  </div>
+
+
+      <hr />
+
+              
+<style>
+
+  #header {
+    text-align: left;
+    margin: 8px 0 0 0;
+  }
+
+  #navigation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1.5em;
+    font-size: 105%;
+    text-align: right; 
+    white-space: nowrap;
+  }
+
+  #navigation ul {
+    display: block;
+    float: right;
+    background-color: #FFF;
+    padding: 7px 6px 7px 3px;
+  }
+
+  .top-nav li {
+    display: inline;
+    margin-left: 6px;
+  }
+
+  .top-nav li.last {
+    margin-right: 6px;
+  }
+
+  .top-nav li.signup-link {
+    margin: 0 3px;
+  }
+
+</style>
+
+
+<div id="navigation">
+  <ul class="horizontal-nav top-nav round" style="display:inline">
+          <li><a href="/login" id="login_link" accesskey="l">Login</a></li>
+      <li class="signup-link"><a href="/signup" id="sign_up_link">Join Twitter!</a></li>
+      </ul>
+</div>
+      
+    </div>
+
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js" type="text/javascript"></script><script src="http://assets0.twitter.com/javascripts/application.js?1238020319" type="text/javascript"></script><script src="http://assets1.twitter.com/javascripts/jquery.color.js?1238020325" type="text/javascript"></script>
+<script src="http://assets3.twitter.com/javascripts/jquery.livequery.js?1238020328" type="text/javascript"></script>
+<script src="http://assets2.twitter.com/javascripts/timeline.js?1238020336" type="text/javascript"></script><script type="text/javascript">
+//<![CDATA[
+      twttr.form_authenticity_token = '9a9b104464cdb39d87f62e969c0ed0644b4faa95';
+    if (window.top !== window.self) { setTimeout(function(){document.body.innerHTML='';},1);window.self.onload=function(evt){document.body.innerHTML='';};}
+//]]>
+</script><script type="text/javascript">
+//<![CDATA[
+
+      $( function () {
+          $('body#profile ul#tabMenu li a#updates_tab, body#favourings ul#tabMenu li a#favorites_tab').isSidebarTab();
+
+      });
+    
+//]]>
+</script>
+
+    
+  
+  <!-- BEGIN google analytics -->
+
+  <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  
+  <script type="text/javascript">
+    try {
+      var pageTracker = _gat._getTracker("UA-30775-6");
+      pageTracker._setDomainName("twitter.com");
+              pageTracker._setVar('Not Logged In');
+              pageTracker._setVar('lang: en');
+            pageTracker._initData();
+              pageTracker._trackPageview('/profile/not_logged_in/ruby');
+          } catch(err) { }
+  </script>
+
+  <!-- END google analytics -->
+
+
+
+
+
+
+  </body>
+
+</html>

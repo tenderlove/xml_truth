@@ -1,0 +1,249 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <title>Ruby / EventMachine - Trac</title><link rel="start" href="/wiki" /><link rel="search" href="/search" /><link rel="help" href="/wiki/TracGuide" /><link rel="stylesheet" href="/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/chrome/common/css/wiki.css" type="text/css" /><link rel="icon" href="/chrome/common/trac.ico" type="image/x-icon" /><link rel="shortcut icon" href="/chrome/common/trac.ico" type="image/x-icon" /><link rel="alternate" href="/wiki/WikiStart?format=txt" title="Plain Text" type="text/x-trac-wiki" /><style type="text/css">
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#trac-content {
+  padding: 1em;
+}
+
+a, a:visited, a:link {
+  color: #D40000; /* #6DA6E2; */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:link:hover,
+a:hover {
+  color: #D40000; /* inherit; */
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#head {
+  margin: 0;
+  padding-top: 30px;
+  text-align: right;
+  background-color: #2763A5;
+  width: 100%;
+}
+
+#head #site_nav {
+  margin-right: 2em;
+  padding-bottom: 5px;
+}
+
+#head #site_nav ul li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 1.5em;
+}
+
+#head #site_nav ul li a,
+#head #site_nav ul li a:visited,
+#head #site_nav ul li a:active {
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+
+#head #site_nav ul li a:hover {
+  background-color: #2763A5;
+  color: white;
+  text-decoration: underline;
+}
+
+#mainnav {
+  border: 0px none;
+  border-bottom: 1px solid #2763A5;
+  background: transparent;
+  padding-bottom: 3px;
+}
+
+#mainnav *:link, #mainnav *:visited {
+  background: transparent url(/chrome/site/tabright10.gif) no-repeat scroll right top;
+  color: white;
+  padding: 0.2em 20px;
+}
+
+#mainnav .active *:link, #mainnav .active *:visited {
+  background: transparent url(/chrome/site/tabright10.gif) no-repeat scroll right top;
+  background-position: 0% -42px;
+  padding: 0.2em 20px;
+}
+
+#mainnav .active *:link, #mainnav .active *:visited {
+  margin-right: 0.2em;
+}
+
+#em-footer {
+  background-color: white; /* #2763A5; */
+  clear: both;
+  margin-top: 5px;
+  width: 100%;
+}
+
+#em-footer p {
+  color: #2763A5; /* white; */
+  padding: 1px;
+  text-align: center;
+}
+
+#em-footer p a {
+  border-bottom: 1px dotted white;
+  font-weight: 100;
+}
+</style>
+ <script type="text/javascript" src="/chrome/common/js/trac.js"></script>
+</head>
+<body>
+
+
+<div id="head">
+  <div id="site_nav">
+    <ul>
+      <li><a href="/wiki/Downloads">Downloads</a></li>
+      <li><a href="/wiki/FAQ">FAQ</a></li>
+      <li><a href="/wiki/Java">Java</a></li>
+      <li><a href="/wiki/Cpp">C++</a></li>
+      <li><a href="/wiki/Documentation">Documentation</a></li>
+      <li><a href="http://rubyforge.org/mailman/listinfo/eventmachine-talk">Mailing List</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="trac-content">
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="http://rubyeventmachine.com/"><img src="/chrome/site/EventMachineLogo.png" alt="" /></a><hr /></div>
+
+<form id="search" action="/search" method="get">
+ <div>
+  <label for="proj-search">Search:</label>
+  <input type="text" id="proj-search" name="q" size="10" accesskey="f" value="" />
+  <input type="submit" value="Search" />
+  <input type="hidden" name="wiki" value="on" />
+  <input type="hidden" name="changeset" value="on" />
+  <input type="hidden" name="ticket" value="on" />
+ </div>
+</form>
+
+
+
+<div id="metanav" class="nav"><ul><li class="first"><a href="/login">Login</a></li><li><a href="/settings">Settings</a></li><li><a accesskey="6" href="/wiki/TracGuide">Help/Guide</a></li><li><a href="/about">About Trac</a></li><li class="last"><a href="/register">Register</a></li></ul></div>
+</div>
+
+<div id="mainnav" class="nav"><ul><li class="active first"><a accesskey="1" href="/wiki">Wiki</a></li><li><a accesskey="2" href="/timeline">Timeline</a></li><li><a accesskey="3" href="/roadmap">Roadmap</a></li><li><a href="/browser">Browse Source</a></li><li><a href="/report">View Tickets</a></li><li class="last"><a accesskey="4" href="/search">Search</a></li></ul></div>
+<div id="main">
+
+
+
+
+<div id="ctxtnav" class="nav">
+ <h2>Wiki Navigation</h2>
+ <ul>
+   <li><a href="/wiki">Start Page</a></li>
+   <li><a href="/wiki/TitleIndex">Index by Title</a></li>
+   <li><a href="/wiki/RecentChanges">Index by Date</a></li>
+   <li class="last"><a href="/wiki/WikiStart?action=diff&amp;version=14">Last Change</a></li>
+ </ul>
+ <hr />
+</div>
+
+<div id="content" class="wiki">
+
+ 
+  
+  
+   
+   <div class="wikipage">
+    <div id="searchable"><h1 id="WhatisEventMachine">What is EventMachine?</h1>
+<p>
+EventMachine is a library for Ruby, C++, and Java programs. It provides event-driven I/O using the Reactor pattern. EventMachine is designed to simultaneously meet two key needs:
+</p>
+<ul><li>Extremely high scalability, performance and stability for the most demanding production environments; and
+</li><li>An API that eliminates the complexities of high-performance threaded network programming, allowing engineers to concentrate on their application logic.
+</li></ul><p>
+This unique combination makes EventMachine a premier choice for designers of critical networked applications, including web servers and proxies, email and IM production systems, authentication/authorization processors, and many more.
+</p>
+<h1 id="LearnMore">Learn More</h1>
+<ul><li><a class="wiki" href="/wiki/GettingStarted">Getting Started</a>
+</li><li><a class="wiki" href="/wiki/LicenseIssues">Licensing</a>
+</li><li><a class="wiki" href="/wiki/GettingHelp">Getting Help</a>
+<ul><li><a class="wiki" href="/wiki/WishList">Wish List</a>
+</li><li><a class="wiki" href="/wiki/FAQ">FAQ</a>
+</li><li><a class="wiki" href="/wiki/CodeSnippets">Code snippets</a>
+</li><li><a class="wiki" href="/wiki/Java">Java</a>
+</li><li><a class="wiki" href="/wiki/Cpp">C++</a>
+</li><li><a class="ext-link" href="http://eventmachine.rubyforge.org"><span class="icon">Documentation</span></a>
+</li></ul></li></ul><ul><li><a class="wiki" href="/wiki/Downloads">Downloads</a>
+</li><li><a class="wiki" href="/wiki/AccessingTheSource">Accessing the Source Code</a>
+</li><li><a class="ext-link" href="http://rubyforge.org/mailman/listinfo/eventmachine-talk"><span class="icon">Mailing List</span></a>
+</li></ul></div>
+   </div>
+   
+  
+  <script type="text/javascript">
+   addHeadingLinks(document.getElementById("searchable"), "Link to this section");
+  </script>
+ 
+ 
+</div>
+
+<script type="text/javascript">searchHighlight()</script>
+<div id="altlinks"><h3>Download in other formats:</h3><ul><li class="first last"><a href="/wiki/WikiStart?format=txt">Plain Text</a></li></ul></div>
+
+</div>
+
+<div id="footer">
+ <hr />
+ <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/chrome/common/trac_logo_mini.png" height="30" width="107"
+   alt="Trac Powered"/></a>
+ <p class="left">
+  Powered by <a href="/about"><strong>Trac 0.10.3</strong></a><br />
+  By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+ </p>
+ <p class="right">
+  Visit the Trac open source project at<br /><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a>
+ </p>
+</div>
+
+
+
+<!-- Close content div, see header -->
+</div>
+
+
+<div id="em-footer">
+<p>
+<a href="#">Support</a> | <a href="#">Privacy</a> | Copyright &copy; 2008 by Bayshore Networks, LLC. All rights Reserved.
+</p>
+</div>
+
+
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-5834783392557104";
+/* 234x60, created 5/16/08 */
+google_ad_slot = "0941746807";
+google_ad_width = 234;
+google_ad_height = 60;
+-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+ </body>
+</html>
+

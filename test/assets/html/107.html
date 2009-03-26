@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		
+  		<title>Rubular: a Ruby regular expression editor and tester</title>
+		
+  	<meta name="keywords" content="regular expression, regex, regexp, ruby, rails, programming, development, editor, tester, builder, tool">	
+    <meta name="description" content="Rubular is a Ruby-based regular expression editor and tester. It's a handy way to test regular expressions as you write them. Rubular is an especially good fit for Ruby and Rails developers, since it uses Ruby on the server to evaluate regexes, but should also be useful for those working in other programming languages and frameworks (Java, PHP, Python, Javascript, etc.)">
+    <script src="/javascripts/prototype.js?1235208179" type="text/javascript"></script>
+    <script src="/javascripts/shortcuts.js?1235208179" type="text/javascript"></script>
+    <script src="/javascripts/vendor.js?1235208179" type="text/javascript"></script>
+    <script src="/javascripts/application.js?1235208179" type="text/javascript"></script>
+    <link href="/stylesheets/application.css?1235208179" media="screen" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 6]>
+      <link href="/stylesheets/iefix.css?1235208179" media="screen" rel="stylesheet" type="text/css" />
+    <![endif]-->
+		
+  </head>
+  <body onload="Rubular.clearFields('','', '')">
+
+    <div id="main">
+
+      <h1><a href="/">Rubular</a></h1>
+      <h2>a Ruby regular expression editor</h2>
+
+      <div id="inner" class="gainlayout">
+
+        <div id="ajax_loader_wrapper" style="display:none"><img alt="Ajax-loader" src="/images/ajax-loader.gif?1235208179" /></div>
+
+				<div id="form_wrapper">
+        <form action="/regex/do_test" id="test_form" method="post">
+          <label id="regex_label" for="regex">Your regular expression:</label><br />
+    
+          <span class="slash">/</span><input id="regex" name="regex" size="80" tabindex="1" type="text" /><span class="slash">/</span><input id="options" name="options" size="8" tabindex="2" type="text" /><br />
+
+          <div id="test_and_result" class="gainlayout">
+            <div id="test_string">
+              <div id="inner_test_string_wrapper">
+              <label for="test">Your test string:</label>
+              <textarea cols="56" id="test" name="test" rows="10" tabindex="3"></textarea>
+							<span id="insert_links">
+								Press <strong>Control+Shift+S</strong> to insert a tab character
+							</span>
+              </div>
+            </div>
+            <div id="result"><div class="notice" id="start_instructions">
+Rubular is a Ruby-based regular expression editor. It's a handy way to test regular expressions as you write them.<br /><br /> 
+  
+To start, enter a regular expression and a test string. Or you can <a href="#" onclick="Rubular.example(); return false;">try an example</a>.
+</div></div>
+          </div>
+
+          <script type="text/javascript">
+//<![CDATA[
+new Form.Observer('test_form', 0.2, function(element, value) {Rubular.testRegex(element, value);})
+//]]>
+</script>
+
+        </form>
+				</div>
+            
+				<div id="ajax_note">&nbsp;</div>
+
+				<div class="form_controls">
+					<a href="#" onclick="Rubular.makePermalink(); return false;">make permalink</a>
+					<a href="#" onclick="Rubular.copyRegexToClipboard(); return false;">copy to clipboard</a>
+        	<a href="#" onclick="Rubular.clearFields(); return false;">clear fields</a>
+				</div>
+				      
+      </div>
+
+      <h3>Regex quick reference</h3>
+
+      <div id="quickref">
+
+        <div style="float:left">
+
+          <table>
+            <tr>
+              <td><code>[abc]</code></td>
+              <td>A single character: a, b or c</td>
+            </tr>
+            <tr>
+              <td><code>[^abc]</code></td>
+              <td>Any single character <em>but</em> a, b, or c</td>
+            </tr>
+            <tr>
+              <td><code>[a-z]</code></td>
+              <td>Any single character in the range a-z</td>
+            </tr>
+            <tr>
+              <td><code>[a-zA-Z]</code></td>
+              <td>Any single character in the range a-z or A-Z</td>
+            </tr>
+            <tr>
+              <td><code>^</code></td>
+              <td>Start of line</td>
+            </tr>
+            <tr>
+              <td><code>$</code></td>
+              <td>End of line</td>
+            </tr>
+            <tr>
+              <td><code>\A</code></td>
+              <td>Start of string</td>
+            </tr>
+            <tr>
+              <td><code>\z</code></td>
+              <td>End of string</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div style="float:left">
+          <table>
+            <tr>
+              <td><code>.</code></td>
+              <td>Any single character</td>
+            </tr>
+          <tr>
+            <td><code>\s</code></td>
+            <td>Any whitespace character</td>
+          </tr>
+          <tr>
+            <td><code>\S</code></td>
+            <td>Any non-whitespace character</td>
+          </tr>
+          <tr>
+            <td><code>\d</code></td>
+            <td>Any digit</td>
+          </tr>
+          <tr>
+            <td><code>\D</code></td>
+            <td>Any non-digit</td>
+          </tr>
+          <tr>
+            <td><code>\w</code></td>
+            <td>Any word character (letter, number, underscore)</td>
+          </tr>
+          <tr>
+            <td><code>\W</code></td>
+            <td>Any non-word character</td>
+          </tr>
+          <tr>
+            <td><code>\b</code></td>
+            <td>Any word boundary character</td>
+          </tr>
+        </table>
+      </div>
+
+      <table>
+        <tr>
+          <td><code>(...)</code></td>
+          <td>Capture everything enclosed</td>
+        </tr>
+        <tr>
+          <td><code>(a|b)</code></td>
+          <td>a or b</td>
+        </tr>
+        <tr>
+          <td><code>a?</code></td>
+          <td>Zero or one of a</td>
+        </tr>
+        <tr>
+          <td><code>a*</code></td>
+          <td>Zero or more of a</td>
+        </tr>
+        <tr>
+          <td><code>a+</code></td>
+          <td>One or more of a</td>
+        </tr>
+        <tr>
+          <td><code>a{3}</code></td>
+          <td>Exactly 3 of a</td>
+        </tr>
+        <tr>
+          <td><code>a{3,}</code></td>
+          <td>3 or more of a</td>
+        </tr>
+        <tr>
+          <td><code>a{3,6}</code></td>
+          <td>Between 3 and 6 of a</td>
+        </tr>        
+      </table>
+
+			<div id="regex_options" style="text-align:center">
+				<p>
+					options:
+					<code>i</code> case insensitive
+					<code>m</code> make dot match newlines
+					<code>x</code> ignore whitespace in regex
+					<code>o</code> perform #{...} substitutions only once
+				</p>
+			</div>
+
+      </div>			
+
+      <div id="birdseed" class="birdseed">
+
+				<p>
+				For a complete Ruby regex guide, see the <a href="http://www.ruby-doc.org/docs/ProgrammingRuby/html/language.html#UJ">Pickaxe</a>.
+				</p>
+
+				<p>Rubular is a free service, but some users have asked how to make a donation. Now you can <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=C86W2J2FYMSQ8&lc=US&item_name=Rubular%20regular%20expression%20editor&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted">donate via Paypal</a>.</p>
+
+      <p>Made by <a href="http://lovitt.net">Michael Lovitt</a>. For questions, comments, or issues, visit the <a href="http://groups.google.com/group/rubular">Rubular Google Group</a>. </p>
+
+      </div>
+
+			<div id="modal_birdseed" class="birdseed">
+				You're using <a href="http://rubular.com" target="_blank">Rubular</a> in modal mode. 
+			</div>
+
+    </div>
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+    _uacct = "UA-2302692-1";
+    urchinTracker();
+    </script>
+
+  </body>
+</html>

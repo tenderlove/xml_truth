@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <title>
+      Gruff Graphs for Ruby | Ruby on Rails for Newbies
+    </title>
+    <meta name="viewport" content="user-scalable=yes, width=900" />
+    <link href='http://feeds.feedburner.com/nubyonrails' rel='alternate' title='RSS' type='application/rss+xml' />
+    <link href='/stylesheets/application.css' media='screen' rel='Stylesheet' type='text/css' />
+    <script src='/javascripts/combined.js' type='text/javascript'></script>
+    <script src='/javascripts/application.js' type='text/javascript'></script>
+  </head>
+  <body class='pages' id='body'>
+    <div class='container clearfix'>
+      <div class='column triple content'>
+        <div>
+          <h2>Gruff Graphs for Ruby</h2>
+          
+          
+          	<p>The Gruff Graphing Library is a project to make beautiful graphs with Ruby. Can be used alone or with Ruby on Rails.</p>
+          
+          
+          	<p><img src="http://topfunky.com/clients/rails/gruff/line_theme_odeo_400.png" alt="" /></p>
+          
+          
+          	<h3>Author</h3>
+          
+          
+          	<p>Geoffrey Grosenbach boss@topfunky.com</p>
+          
+          
+          	<h3>Download</h3>
+          
+          
+          	<p>Install easily with Ruby Gems (RMagick required):</p>
+          
+          
+          <pre>&#x000A;sudo gem install gruff</pre>
+          
+          	<p>The easiest way to use it with a Rails project is to unpack the gem into <code>vendor/plugins</code> and require it from <code>environment.rb</code>.</p>
+          
+          
+          	<ul>
+          	<li><a href="http://rubyforge.org/projects/gruff">RubyForge Project</a></li>
+          		<li><a href="http://gruff.rubyforge.org">Documentation</a></li>
+          		<li><a href="http://github.com/topfunky/gruff/tree/master">Source Code via Git</a></li>
+          		<li><a href="http://jaredlux.nfshost.com/projects/">Gruff Template Plugin</a></li>
+          	</ul>
+          
+          
+          	<p>Also see the tests for examples of how to make a graph.</p>
+          
+          
+          	<h3>Documentation</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://gruff.rubyforge.org">RDoc at Rubyforge</a></li>
+          	</ul>
+          
+          
+          	<h3>Samples</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://geoffreygrosenbach.com/projects/show/5">Samples are in my photo gallery &rarr;</a></li>
+          	</ul>
+          
+          
+          	<p>You can now graph negative numbers (line and bar), specify colors, and customize the graphs in other ways.</p>
+          
+          
+          	<h3>Code Sample</h3>
+          
+          
+          <pre><code class="ruby">&#x000A;#!/usr/bin/ruby&#x000A;&#x000A;require 'rubygems'&#x000A;require 'gruff'&#x000A;&#x000A;g = Gruff::Line.new&#x000A;g.title = "My Graph" &#x000A;&#x000A;g.data("Apples", [1, 2, 3, 4, 4, 3])&#x000A;g.data("Oranges", [4, 8, 7, 9, 8, 9])&#x000A;g.data("Watermelon", [2, 3, 1, 5, 6, 8])&#x000A;g.data("Peaches", [9, 9, 10, 8, 7, 9])&#x000A;&#x000A;g.labels = {0 =&gt; '2003', 2 =&gt; '2004', 4 =&gt; '2005'}&#x000A;&#x000A;g.write('my_fruity_graph.png')&#x000A;</code></pre>
+          
+          	<h3>Install ImageMagick and RMagick</h3>
+          
+          
+          	<p>Yes, it can be a pain. I use DarwinPorts on Mac <span class="caps">OS X</span> and these general instructions (I didn&#8217;t have to manually edit the config as mentioned):</p>
+          
+          
+          	<ul>
+          	<li><a href="http://rmagick.rubyforge.org/install-osx.html">Installing RMagick on Mac <span class="caps">OS X</span></a></li>
+          	</ul>
+          
+          
+          	<h3>Ruby on Rails</h3>
+          
+          
+          	<p>Personally, I prefer to have a &#8220;Reports&#8221; controller that does a call to the database and uses send_data to send the graph back to the browser. That way, you can use Rails caching and save some of the load on your server.</p>
+          
+          
+          	<p>However, you can also use a <a href="http://nubyonrails.com/articles/2005/11/19/gruff-with-rails-typo-rewrite">Rails helper as mentioned here</a>.</p>
+          
+          
+          	<h3>Blog Posts About Gruff</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://nubyonrails.com/articles/2005/11/19/gruff-with-rails-typo-rewrite">Using With Ruby on Rails</a></li>
+          		<li><a href="http://nubyonrails.com/articles/2005/12/22/freeze-other-gems-to-rails-lib-directory">Freezing Gems to ./lib</a></li>
+          		<li><a href="http://nubyonrails.com/articles/2005/10/24/gruff-graphing-library-for-ruby">Initial Samples</a></li>
+          		<li><a href="http://nubyonrails.com/articles/2005/11/14/gruff-0-0-4-bar-pie-area-images">Update</a></li>
+          		<li><a href="http://nubyonrails.com/articles/2005/12/04/gruff-0-0-7">0.0.7</a></li>
+          	</ul>
+          
+          
+          	<h3>Selected Examples of Gruff in Use</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://www.projectlocker.com/site/analytics">Project Locker</a></li>
+          		<li><a href="http://www.podomatic.com/stats_example">podOmatic</a></li>
+          		<li><a href="http://www.paskambink.lt/mcc/"><span class="caps">MCC</span></a>&#8212;Asterisk Phone <span class="caps">PBX</span> Billing app</li>
+          		<li><a href="http://www.dimewise.com">Dimewise</a>&#8212;Track your finances and visualize them with a pie graph, powered by Gruff.</li>
+          		<li><a href="http://bellygraph.com">Bellygraph</a>&#8212;Make your own graphs with a web interface</li>
+          		<li><a href="http://www.evoketv.com">EvokeTV</a></li>
+          		<li><a href="http://www.ruby-forum.com/stats">Ruby Forum Posts</a></li>
+          		<li><a href="http://morale.erikbenson.com/person/erik">Eric Benson&#8217;s Mood-o-Meter</a>&#8212;Record your vital stats, daily!</li>
+          		<li><a href="http://smokinn.tengun.net/files/hockey/version2/generatedHtml/">Hockey Stats</a></li>
+          		<li><a href="http://www.moneygroove.com">MoneyGroove</a></li>
+          		<li><a href="http://www.mojohelpdesk.com/tour.php?c=2">Mojo Helpdesk</a></li>
+          		<li><a href="http://www.casualtyfigures.com/casualtyfigure/default">Casualty Figures</a></li>
+          		<li><a href="http://leonho.com/articles/example-on-graphing-awstats-with-ruby-and-gruff/">Tutorial on Graphing AWStats Web Statistics with Gruff</a></li>
+          		<li><a href="http://jaigouk.blogspot.com/2007/04/buffons-needle-simulation-thruogh-ruby.html">Buffon&#8217;s Needle Simulation</a></li>
+          	</ul>
+          
+          
+          	<h3>Linux Distros that Include Gruff</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://en.opensuse.org/Ruby">OpenSUSE</a></li>
+          	</ul>
+          
+          
+          	<h3>Other Tutorials</h3>
+          
+          
+          	<ul>
+          	<li><a href="http://www.undefined.com/ia/archives/2005/12/gruff_graph_007.html">Gruff with Rails</a></li>
+          		<li><a href="http://www.undefined.com/ia/archives/2005/12/gruff_graph_and_1.html">Gruff with Rails Addendum</a></li>
+          		<li><a href="http://tam.qmix.org/wiki/RubyGruff.html">Gruff�?�グラフ</a></li>
+          		<li><a href="http://rails.office.drecom.jp/ishikawa/archive/10"> Gruff �?�インストール</a></li>
+          	</ul>
+          
+          
+          	<h3>Planned Features</h3>
+          
+          
+          	<ul>
+          	<li>Image-based themes for 3-D looking bar and pie graphs.</li>
+          		<li>Better rounding of left-hand markers.</li>
+          		<li>Better scaling for use in small sizes (i.e. omitting some markers when graphs are less than 400px wide).</li>
+          		<li>Ports to <span class="caps">PDF</span>::Writer and <span class="caps">SVG</span> for use in print.</li>
+          	</ul>
+          
+          
+          	<h3>Other Graphing Libraries</h3>
+          
+          
+          	<p>If Gruff doesn&#8217;t do what you need it to, you might try one of these other tasty delights:</p>
+          
+          
+          	<ul>
+          	<li><a href="http://scruffy.rubyforge.org/">Scruffy, beautiful <span class="caps">SVG</span> Graphs</a></li>
+          		<li><a href="http://www.harderweb.de/harderware/index.php?l=en&#38;p=mrplot">MR Plot</a>&#8212;Good for plotting many points or technical data.</li>
+          		<li><a href="http://www.germane-software.com/software/SVG/SVG::Graph/"><span class="caps">SVG</span> Graphs</a></li>
+          		<li><a href="/pages/sparklines">Sparklines</a>&#8212;Very tiny graphs for use inline with text or small tables.</li>
+          		<li><a href="/pages/css_graphs"><span class="caps">CSS</span> Graphs</a>&#8212;My Rails helper for making simple bar graphs using only <span class="caps">CSS</span>.</li>
+          		<li><a href="http://www.liquidx.net/canvasgraphjs/">Javascript Graphs</a></li>
+          	</ul>
+        </div>
+      </div>
+      <div class='column single first'>
+        <a class='blind_link' href='/'>
+          <h1 id='logo'>
+            <span>
+              Nuby on Rails
+            </span>
+          </h1>
+        </a>
+        <h2>
+          Geoffrey Grosenbach /
+          <strong>
+            Ruby /
+          </strong>
+          Code /
+          <strong>
+            Graphics /
+          </strong>
+          Design /
+          <strong>
+            Rails /
+          </strong>
+          Merb /
+          <strong>
+            Javascript /
+          </strong>
+          CSS
+        </h2>
+        <div id="adzerk">
+            <div id="adzerk_ad_div"></div>
+            <p id="adzerk_by">
+                <a href='http://rubyrow.net'>Ads from Ruby Row</a>
+            </p>
+        </div>
+        <div class='sidebar peepcode_sidebar'>
+          <h2>
+            <strong>
+              New
+            </strong>
+            PeepCode
+            <strong>
+              Screencasts
+            </strong>
+            <strong>
+              <sup><small>$</small></sup>9
+            </strong>
+          </h2>
+          <ul>
+            <li>
+              <a href="http://peepcode.com/products/email">Control Your Email Inbox</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/objective-c-for-rubyists">Objective-C for Rubyists</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/haml-and-sass">Haml and Sass</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/meet-emacs">Meet Emacs</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/productivity-for-programmers">Productivity for Programmers</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/xmpp">XMPP/Jabber with Ruby</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/thinking-sphinx-pdf">Thinking Sphinx PDF</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/unobtrusive-prototype-js">Unobtrusive Prototype.js</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/couchdb-with-rails">CouchDB with Rails</a>
+            </li>
+            <li>
+              <a href="http://peepcode.com/products/rails-on-facebook">Rails on Facebook</a>
+            </li>
+          </ul>
+        </div>
+        <div class='sidebar'>
+          <h2>
+            The
+            <strong>
+              Rails
+            </strong>
+            Podcast
+          </h2>
+          <ul>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/jacob-harris-of-the-new-york-times">Jacob Harris of the New York Times</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/ryan-bates-of-railscasts">Ryan Bates of RailsCasts</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/ryan-tomayko">Ryan Tomayko</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/giles-bowkett">Giles Bowkett</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/jeremy-mcanally">Jeremy McAnally</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/monty-williams-on-maglev">Monty Williams on MagLev</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/rubyconf-2008">RubyConf 2008</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/railsconf-europe-jackie-marr-pat-allan-and-intridea">RailsConf Europe: Jacqui Maher, Pat Allan and Intridea</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/railsconf-europe-rubinius-and-coachtv">RailsConf Europe: Rubinius and CoachTV</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org/programs/1/episodes/erubycon-charles-nutter">erubycon: Charles Nutter</a>
+            </li>
+          </ul>
+        </div>
+        <a class="sponsor" href="http://railsmachine.com"><img src="/images/sponsors/railsmachine.png" /></a>
+        <h2>
+          Manufactured with
+        </h2>
+        <ul>
+          <li>
+            <a href="http://merb.rubyforge.org">Merb</a>
+          </li>
+          <li>
+            <a href="http://haml.hamptoncatlin.com">HAML</a>
+          </li>
+          <li>
+            <a href="http://www.danwebb.net/2007/4/16/low-pro-0-4-released">LowPro</a>
+          </li>
+          <li>
+            <a href="http://prototypejs.org/">Prototype</a>
+          </li>
+          <li>
+            <a href="http://nginx.net">Nginx</a>
+          </li>
+          <li>
+            <a href="http://www.ruby-lang.org">Ruby</a>
+          </li>
+          <li>
+            <a href="http://capify.org/">Capistrano</a>
+          </li>
+          <li>
+            <a href="http://git.or.cz/">Git</a>
+          </li>
+        </ul>
+      </div>
+      <div class='column single second'>
+        <h2>
+          Subscribe
+        </h2>
+        <ul>
+          <li>
+            <a class='feed' href='http://feeds.feedburner.com/nubyonrails'>
+              Articles (RSS)
+            </a>
+          </li>
+          <li>
+            <a class='feed' href='http://nubyonrails.com/comments.xml'>
+              Comments (RSS)
+            </a>
+          </li>
+        </ul>
+        <div class='sidebar'>
+          <h2>
+            <strong>
+              Menu
+            </strong>
+          </h2>
+          <ul class='tight'>
+            <li>
+              <a href="/articles">Archives</a>
+            </li>
+            <li>
+              <a href="/pages/about">About</a>
+            </li>
+            <li>
+              <a href="/tools/pluralize/octopus">The Pluralizer</a>
+            </li>
+          </ul>
+          <h2>
+            Recent
+            <strong>
+              Articles
+            </strong>
+          </h2>
+          <ul>
+            <li>
+              <a href="/articles/emacs-emacs">Emacs? Emacs.</a>
+            </li>
+            <li>
+              <a href="/articles/not-with-a-bang">Not with a bang...</a>
+            </li>
+            <li>
+              <a href="/articles/improve-your-technical-slides">Improve Your Technical Slides</a>
+            </li>
+            <li>
+              <a href="/articles/the-third-seattlerbbq">The Third Seattle.RBBQ</a>
+            </li>
+            <li>
+              <a href="/articles/peepcode-is-looking-to-hire-a-virtual-assistant">PeepCode is [No Longer] Looking to Hire a Virtual Assistant</a>
+            </li>
+            <li>
+              <a href="/articles">&rarr; Older articles</a>
+            </li>
+          </ul>
+          <h2>
+            <strong>
+              Elsewhere
+            </strong>
+          </h2>
+          <ul>
+            <li>
+              <a href="http://peepcode.com">PeepCode Screencasts</a>
+            </li>
+            <li>
+              <a href="http://podcast.rubyonrails.org">Ruby on Rails Podcast</a>
+            </li>
+            <li>
+              <a href="http://rubyonrailsworkshops.com">Rails Workshop Calendar</a>
+            </li>
+            <li>
+              <a href="http://groups.google.com/group/topfunky-jobs">Job Leads</a>
+            </li>
+            <li>
+              <a href="http://theonlineceo.com">Task Scoresheet</a>
+            </li>
+            <li>
+              <a href="/pages/podcast">Podcasting Basics</a>
+            </li>
+            <li>
+              <a href="http://twitter.com/topfunky">Topfunky on Twitter</a>
+            </li>
+            <li>
+              <a href="http://topfunky.com">Topfunky Corporation</a>
+            </li>
+          </ul>
+          <h2>
+            Free
+            <strong>
+              Software
+            </strong>
+          </h2>
+          <ul>
+            <li>
+              <a href="http://topfunky.net/svn/plugins">Topfunky Plugins (svn)</a>
+            </li>
+            <li>
+              <a href="/pages/gruff">Gruff graphs</a>
+            </li>
+            <li>
+              <a href="/pages/sparklines">Sparkline graphs</a>
+            </li>
+            <li>
+              <a href="/pages/css_graphs">CSS graphs</a>
+            </li>
+            <li>
+              <a href="/pages/gullery">Gullery photo gallery</a>
+            </li>
+            <li>
+              <a href="/pages/shovel">Capistrano recipes</a>
+            </li>
+          </ul>
+          <!-- %h2 -->
+          <!-- Projects -->
+          <!-- 
+          -->
+          <!-- = partial "shared/github" -->
+        </div>
+        <p>
+          
+          <p><a href="http://feeds.feedburner.com/nubyonrails"><img src="http://feeds.feedburner.com/~fc/nubyonrails?bg=FFFFFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="Subscribe (RSS)" /></a></p>
+          
+          <script type="text/javascript" src="http://rubyrow.net/AdServer/RUBY/NUBYRAILS/NOCSS"></script>
+          
+          <script src="http://mint-nuby.topfunky.com/mint/?js" type="text/javascript"></script>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

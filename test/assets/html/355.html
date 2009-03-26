@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-US" lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Troubleshooting Ruby Processes - Book Resource Page: Additional tips, content and resources.</title>
+  <link rel="alternate" type="application/atom+xml" title="PH7 Updates - Atom" href="http://feeds.ph7spot.com/ph7" />
+
+  <meta name="verify-v1" content="TaKlN16vlDNVXtQJ5uwsbi8H6zDTd/dJBZWCyKJApi4=" /> <!-- Google WebMaster -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-US" />
+  <meta http-equiv="Author" content="Philippe Hanrigou" />
+  <meta http-equiv="Copyright" content="Philippe Hanrigou" />
+  <meta name="description" content="Troubleshooting Ruby Processes - Book Resource Page: Additional tips, content and resources." />
+
+  
+
+      <link href="/stylesheets/book_packaged.css?1236712511" media="all" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/print_packaged.css?1236712511" media="print" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div class="banner">
+
+  <a href="/"><img alt="PH7 Logo" height="86" id="banner-logo" src="/images/PH7 Logo.png?1236712511" width="122" /></a>  <ul class="section-menu">
+      <li >
+      <a href="/agora" id="blog_link">Blog</a>
+    </li>
+      <li >
+      <a href="/articles" id="articles_link">Articles</a>
+    </li>
+      <li id='current'>
+      <a href="/publications/troubleshooting_ruby_processes" id="publications_link">Publications</a>
+    </li>
+      <li >
+      <a href="/projects" id="projects_link">Projects</a>
+    </li>
+      <li >
+      <a href="/public_speaking" id="speaking_link">Speaking</a>
+    </li>
+      <li >
+      <a href="/about" id="about_link">About</a>
+    </li>
+    </ul>
+
+  <div id="identity-and-contact">
+    <div id="quick-links">
+      <a href="/about/contact_me" id="contact_me_link" title="Contact me"><img alt="Contact me" height="28px" id="email-icon" src="/images/Email Icon - Small.png?1236712511" width="28px" /></a>
+    <a href="/updates/rss" id="feed_link" title="RSS feed"><img alt="RSS Feed Icon" height="28px" id="feed-icon" src="/images/Feed Icon - Small.png?1236712511" width="28px" /></a>
+    </div>
+    <div class="signature"><span class="by">by</span> Philippe Hanrigou</div>
+  </div>
+</div>
+
+
+<div class="content">
+   <h1 id='troubleshooting_ruby_processes__leveraging_system_tools_when_the_usual_ruby_tricks_stop_working'>Troubleshooting Ruby Processes - Leveraging System Tools When the Usual Ruby Tricks Stop Working</h1>
+
+<p class='figure' style='text-align: center; margin-top: -.4em; font: 1.7em Garamond, Georgia, serif;'>Addison-Wesley Professional Ruby Series</p>
+
+<p class='Cartouche' style='text-align: center; clear: right;'><a href='http://safari.informit.com/9780321544681'>Buy the PDF</a> on Informit or read it online with <a href='http://safari.oreilly.com/9780321544681'>Safari</a>.</p>
+
+<p class='Cartouche' style='text-align: center; clear: right;'>If you enjoy the book, consider <a href='http://www.workingwithrails.com/recommendation/new/person/7654-philippe-hanrigou'>recommending me</a> on <a href='http://www.workingwithrails.com'>Working  With Rails</a>. <a href='http://workingwithrails.com/recommendation/new/person/7654-philippe-hanrigou'><img src='/images/Working with Rails Recommendation - Small.png' alt='Recommend Me' /></a></p>
+<blockquote>&#8220;Philippe&#8217;s book yields knowledge of powerful UNIX tools for debugging ruby processes. It is a must read.&#8221;<cite>Wayne E. Seguin, Engine Yard</cite>
+</blockquote>
+<p style='float: left;'><a href='http://safari.informit.com/9780321544681'><img src='/images/troubleshooting_ruby_processes_cover.jpg' alt='Book Cover' /></a></p>
+
+<p>This short cut <strong>introduces key system diagnostic tools to Ruby developers</strong> creating and deploying web applications. When programmers develop a Ruby application they commonly experience complex problems which require some understanding of the underlying operating system to be solved. Difficult to diagnose, these problems can make the difference between a project&#8217;s failure or success.</p>
+<blockquote cite='http://giantrobots.thoughtbot.com/2007/11/8/book-review-troubleshooting-ruby-processes-by-philippe-hanrigou' title='http://giantrobots.thoughtbot.com/2007/11/8/book-review-troubleshooting-ruby-processes-by-philippe-hanrigou'>&#8220;Troubleshooting Ruby Processes does a wonderful job of explaining the details of how to use tools like lsof, strace and gdb, while maintaining a good focus on applying them to ruby and mongrel processes.&#8221;<cite>Tammer Saleh, Thoughtbot</cite>
+</blockquote>
+<p><strong>This short cut demonstrates how to leverage system tools available on Mac OS X, Linux, Solaris, BSD or any other Unix flavor. You will learn how to leverage the raw power of tools such as lsof, strace or gdb to resolve problems that are difficult to diagnose with the standard Ruby development tools</strong>. You will also find <strong>concrete examples</strong> that illustrate how these tools solve <strong>real-life problems</strong> in Ruby development. This expertise will prove especially relevant during the deployment phase of your application. In this way, should your production Mongrel cluster freeze and stop serving HTTP requests, it will not take you 2 days to figure out why!</p>
+<blockquote cite='http://www.rubyinside.com/3-copies-of-troubleshooting-ruby-processes-to-win-664.html' title='http://www.rubyinside.com/3-copies-of-troubleshooting-ruby-processes-to-win-664.html'>&#8220;It’s a useful book to read to learn why problems occur and which tools to solve the problem&#8221;<cite>Peter Cooper, Ruby Inside</cite>
+</blockquote><!-- http://on-ruby.blogspot.com/2007/12/philippe-hanrigou-has-written-excellent.html -->
+<h2 id='tools__downloads'>Tools &amp; Downloads</h2>
+
+<p>A collection of advanced troubleshooting tools you can use for Ruby:</p>
+
+<p><img src='/images/gdb_sign.png' alt='gdb sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /> Download the <a href='/publications/troubleshooting_ruby_processes/gdb_macros_for_ruby'><code>gdb</code> macros</a> described in the book.</p>
+
+<p><a href='/articles/caller_for_all_threads'><img src='/images/caller_for_all_threads_sign.png' alt='caller for all threads sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /></a> Ruby VM <a href='http://github.com/ph7/xray/tree/master/patches_for_mri/caller_for_all_threads_patch_for_MRI_1.8.6.diff?raw=true'>patch</a> to get <a href='/articles/caller_for_all_threads'><code>caller_for_all_threads</code></a> (M.R.I 1.8.6).</p>
+
+<p><a href='/articles/system_timer'><img src='/images/system_timer_sign.png' alt='system timer sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /></a> Native Gem providing <a href='/articles/system_timer'>reliable timeouts</a> for Ruby (M.R.I 1.8).</p>
+
+<p><img src='/images/dtrace_sign.png' alt='DTrace sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /> Out-of-the-box <a href='http://xray.rubyforge.org'>Ruby on Rails instrumentation for DTrace</a>.</p>
+
+<h2 id='supplementory_articles'>Supplementory Articles</h2>
+
+<p>Some parts of this book assumes a basic UNIX knowledge as well as an overall understanding of modern operating systems. Newcomers to Mac OS X and the UNIX platform might benefit from some introductory material in this area, which is why I wrote the articles below. In fact I even bet that some long time UNIX users will find the content interesting: Personally I had a lot of fun writing these articles, especially for &#8221;<a href='/articles/in_unix_everything_is_a_file'>In UNIX Everything is a File</a>&#8221;.</p>
+
+<p><img src='/images/unix_badge.png' alt='UNIX Badge' style='margin: .5em 0 0 -2em; vertical-align: middle;' /></p>
+
+<ul>
+<li>
+<p><a href='/articles/introduction_to_unix_signals_and_system_calls'>&#8220;Introduction to UNIX Signals and System Calls&#8221;</a> is a gentle introduction to UNIX signals and system calls in case you need to refresh your memory or are not familiar with operating system design. <br /><br /></p>
+</li>
+
+<li>
+<p>&#8221;<a href='/articles/in_unix_everything_is_a_file'>In UNIX Everything is a File</a>&#8221; provides some background on the fundamental metaphor of the UNIX operating system: The file constitutes a unified paradigm for accessing system resources.</p>
+</li>
+</ul>
+
+<p><a href='/articles/caller_for_all_threads'><img src='/images/caller_for_all_threads_sign.png' alt='caller for all threads sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /></a></p>
+
+<ul>
+<li>&#8221;<a href='/articles/caller_for_all_threads'>Effortless Thread Dump for Ruby</a>&#8221; describes how you can patch to MRI 1.8.6 to get insight on any problem happening in Ruby. Just send a <code>QUIT</code> signal to your Ruby VM and it will dump a stack trace for <em>all</em> the threads.</li>
+</ul>
+
+<p><img src='/images/dtrace_sign.png' alt='dtrace sign' style='margin: .5em 0 0 -2em; vertical-align: middle;' /></p>
+
+<ul>
+<li><a href='/articles/getting_started_with_dtrace'>Getting Started with DTrace</a></li>
+</ul>
+
+<h2 id='more_coming'>More coming!</h2>
+
+<p><strong>I plan to update this web page with new material, cool tricks, best practices and community-contributed content</strong>. Stay tuned for <a href='http://www.apple.com/macosx/technology/unix.html'>more</a> <a href='http://joyeur.com/2007/10/26/joyent-dtrace-probes-in-apples-leopard'>goodies</a> and <strong>subscribe to the <a href='/updates/rss'>RSS</a> or <a href='/updates/atom'>Atom</a> feed</strong>.</p>
+
+<h2 id='participate'>Participate!</h2>
+
+<p>The art of troubleshooting Ruby processes is evolving quickly as the tools, the platform, and the experience mature. I am especially interested in your feedback on this topic. <strong>If you have any comments, suggestions, ideas, or tricks, please <a href='/about/contact_me'>contact me</a> so that we may further develop our collective knowledge</strong>. Come visit this page from time to time or just subscribe to the <a href='/updates/atom'>feed</a>.</p>
+
+  
+</div>
+
+
+  <p class="Copyright">&copy; Copyright Philippe Hanrigou, all rights reserved.</p>
+  <p class="License">This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5  License</a>.</p>
+
+
+
+<p class="Credits">Original web site design by: <a href="http://jfxdizweb.wordpress.com/">JFX diz*web</a>.</p>  
+
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+<script type="text/javascript">
+_uacct = "UA-1711156-1";
+urchinTracker();
+</script>
+
+
+
+<script src="/javascripts/base_packaged.js?1236712511" type="text/javascript"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+
+  
+
+  jQuery(document).ready(function() { 
+    fix_images_transparency_for_ie(); 
+    decorate_dom_on_windows();
+  });
+
+//]]>
+</script>
+
+</body>
+</html>

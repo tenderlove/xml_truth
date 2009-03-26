@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>the { buckblogs :here }: SQlite3-Ruby Windows Builds</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link href="/stylesheets/base.css" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/syntax.css" rel="stylesheet" type="text/css" />
+  <script src="/javascripts/mephisto/prototype.js" type="text/javascript"></script>
+  <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct = "UA-718320-1";
+    urchinTracker();
+  </script>
+  <link href="/feed/atom.xml" rel="alternate" type="application/atom+xml" />
+</head>
+
+<body>
+<a href="http://github.com/jamis"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
+
+<div id="header">
+  <h1><a href="/">the { buckblogs :here }</a></h1>
+  <h2>assorted_ramblings.by JamisBuck</h2>
+</div>
+
+<div id="content">
+  <div class="post">
+    <div class="header">
+      <h1>SQlite3-Ruby Windows Builds</h1>
+      <p class="auth">
+         Posted by Jamis 
+
+         on December 06, 2008 @ 10:16 PM
+
+       </p>
+    </div>
+    <div class="body">
+       
+      <a name="article_body"></a>
+       <p>So, I&#8217;ve got a new sqlite3-ruby release pending (just a minor bug fix, is all), but I&#8217;ve learned my lesson about releasing a new version without a windows version pre-built.</p>
+
+
+	<p>The problem is, I&#8217;m not a Windows guy. My build environment for Windows is cobbled together and painful to use, when it works at all. I&#8217;ve decided that I won&#8217;t put myself through that pain anymore.</p>
+
+
+	<p>If you are a developer on Windows, and you have a sqlite3 build environment, and would be willing to compile the sqlite3-ruby extension for me, please do the following:</p>
+
+
+	<ol>
+	<li>Add a comment to this post, indicating your name, and what platform you would be willing to build for (cygwin, native windows, whatever. I don&#8217;t even know the right names.)</li>
+		<li>Reload the page, and make sure no one commented before you, claiming those platforms.</li>
+		<li>Grab the latest version of sqlite3-ruby here: <a href="http://github.com/jamis/sqlite3-ruby/tree/master">http://github.com/jamis/sqlite3-ruby/tree/master</a>.</li>
+		<li>Build the extension, and email it to me at jamis at 37signals dot com.</li>
+	</ol>
+
+
+	<p>Once I have a build of sqlite3-ruby for windows, I&#8217;ll release the new gem. (It amazes me how painful Windows makes this process. Mac <span class="caps">OS X</span>, Linux, <span class="caps">BSD</span>, etc. &#8212;you just gem install and build the source. No such luck in the Windows realm, apparently.)</p>
+    </div>
+
+    <p class="meta">
+      
+        Posted in <a class="selected" href="/projects" title="Projects">Projects</a> 
+      
+    </p>
+
+    <div class="comments">
+      <a name="comments" id="comments"></a>
+
+      <div class="header">
+        <h1>Comments</h1>
+        <h2>Have something to add? <a href="#respond">Click here to leave a comment</a>.</h2>
+      </div>
+
+      <div class="commentlist">
+        
+        <div id="comment-5633" class="comment">
+          <a name="comment-5633"></a> 
+
+          <div class="date">
+            <span class="day">06</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>1. Luis Lavena said...</h3>
+          <div class="body"><p>Hey jamis,</p>
+
+
+	<p>I&#8217;m already worked on make your life more easy on this subject:</p>
+
+
+	<p>http://github.com/luislavena/rake-compiler</p>
+
+
+	<p>I didn&#8217;t have the time to completely implement a fix for sqlite3-ruby gem, but got it working and build with the project in a couple of hours.</p>
+
+
+	<p>removed the swig generation from the extconf since it forces the generation of the .c file every time, not only on Windows.</p>
+
+
+	<p>Already forked your project, need to find the time to iron those details.</p>
+
+
+	<p>On the painful note, let me remind you is not as easy you mention, you still need to building tools, the development headers and the library and headers of the gem you&#8217;re installing, and of course, in case of mysql as example, having mysql_config or mysql_config5 in the path.</p>
+
+
+	<p>With proper build process I never had all these problems you guys keep describing, dunno why.</p></div>
+        </div>
+        
+        <div id="comment-5634" class="comment">
+          <a name="comment-5634"></a> 
+
+          <div class="date">
+            <span class="day">07</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>2. yaanno said...</h3>
+          <div class="body"><p>Janmis: I think it is a good idea, letting more platform oriented/binded people to do the painful job so you can focus on the ruby lib.</p>
+
+
+	<p>Luis: You did an amazing work with that compiler library (rubyinstaller is great too). I think we either need a windows build server (like the Java guys) or we should know exactly the build tool set available for the standard developer machines.</p></div>
+        </div>
+        
+        <div id="comment-5635" class="comment">
+          <a name="comment-5635"></a> 
+
+          <h3>3. Elijah Miller said...</h3>
+          <div class="body"><p>This reminds me of big announcement from Perl only a few days ago: Microsoft is giving every <acronym title="RubyGem for Perl">CPAN</acronym> author access to a hosted virtual server providing all versions of windows.</p>
+
+
+	<p>http://tech.slashdot.org/tech/08/12/06/227246.shtml</p>
+
+
+	<p>Add this to their release that bundles windows development files with Perl(aka Strawberry Perl) and you have a great situation for proper windows modules to exist in.</p></div>
+        </div>
+        
+        <div id="comment-5638" class="comment">
+          <a name="comment-5638"></a> 
+
+          <h3>4. Luis Lavena said...</h3>
+          <div class="body"><p>yaanno: rake-compiler can do cross-compilation:</p>
+
+
+	<p>Rake::ExtensionTask.new(&#8216;sqlite3_api&#8217;) do |ext|
+  ext.cross_compile = true
+end</p>
+
+
+	<p>And then you get:</p>
+
+
+	<p>rake cross compile</p>
+
+
+	<p>Add now the gem spec as second parameter, and you get a gem for Windows:</p>
+
+
+	<p>rake cross native gem</p>
+
+
+	<p>The only missing piece is download the headers and libs for Windows, but Jonathan Scott did it for DataObjects:</p>
+
+
+	<p>http://github.com/sam/do/tree/master/do_sqlite3/Rakefile#L113-214</p>
+
+
+	<p>No need to do it exactly like that, but it&#8217;s automated ;-)</p>
+
+
+	<p>So, then you end no needing Windows at all, and people can stop ranting.</p>
+
+
+	<p>Then, we can focus in world peace&#8230;</p></div>
+        </div>
+        
+        <div id="comment-5640" class="comment">
+          <a name="comment-5640"></a> 
+
+          <h3>5. Kragen Javier Sitaker said...</h3>
+          <div class="body"><p>Bravo on dropping Microsoft Windows support.  I&#8217;m sure it won&#8217;t be a popular decision, but it makes the world that little bit better for the rest of us.</p></div>
+        </div>
+        
+        <div id="comment-5642" class="comment">
+          <a name="comment-5642"></a> 
+
+          <h3>6. Bork, Federal Agent said...</h3>
+          <div class="body"><p>@Kragen: troll? I don&#8217;t think he said he&#8217;s dropping Windows support, just that he&#8217;s not making it a priority.</p></div>
+        </div>
+        
+        <div id="comment-5649" class="comment">
+          <a name="comment-5649"></a> 
+
+          <div class="date">
+            <span class="day">08</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>7. Kragen Javier Sitaker said...</h3>
+          <div class="body"><p>@Bork: I don&#8217;t understand why you would stoop to vicious name-calling at your first contact with me, but I wasn&#8217;t trolling.  I was responding to Jamis&#8217;s slightly more recent post about Capistrano at http://groups.google.com/group/capistrano/msg/f5213577eaeadc47 — I would have emailed him directly, but I don&#8217;t have his email address.  He said:</p>
+
+
+	<p>&#8220;Microsoft may be an 800lb gorilla, but it&#8217;s not <em>my</em> gorilla&#8230;</p>
+
+
+	<p>&#8220;Now, if you&#8217;re stuck in Windows by corporate policy, you have my
+sympathy. But I&#8217;m still not budging on this issue. I will not break my
+back or my sanity on Windows troubleshooting any more.</p>
+
+
+	<p>&#8220;On the other hand, if you&#8217;re stuck in Windows by choice, you don&#8217;t
+even have my sympathy. :) It is to <span class="caps">YOU</span> that I&#8217;m speaking, directly,
+when I say that if you want Capistrano on Windows, then it&#8217;s your
+responsibility to do something about it.&#8221;</p>
+
+
+	<p>I think that&#8217;s a courageous move that is likely to win Jamis some enemies, but will make life better for everyone.  Hopefully he&#8217;ll apply the same policy to SQLite3-Ruby too.</p></div>
+        </div>
+        
+        <div id="comment-5653" class="comment">
+          <a name="comment-5653"></a> 
+
+          <div class="date">
+            <span class="day">09</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>8. Jamis said...</h3>
+          <div class="body"><p>@Luis, that sounds like a neat long-term solution. I&#8217;m not entirely clear though: are you volunteering to build sqlite3-ruby for me, or are you suggesting I use rake-compiler myself to do it?</p></div>
+        </div>
+        
+        <div id="comment-5654" class="comment">
+          <a name="comment-5654"></a> 
+
+          <h3>9. David Trasbo said...</h3>
+          <div class="body"><p>Jamis, I would be more than happy to do this for you. I&#8217;m a hobbyist Ruby/Rails developer running Windows. The thing is that I do not know exactly how to do point four. If you&#8217;re not describing the process in details because you don&#8217;t know how it&#8217;s done on Windows, I (ahem) suggest you find someone else&#8230; :)</p></div>
+        </div>
+        
+        <div id="comment-5656" class="comment">
+          <a name="comment-5656"></a> 
+
+          <h3>10. Jamis said...</h3>
+          <div class="body"><p>@David, yeah, when I was building the windows extension for it, it was a painful, tedious process of making sure I had sqlite3 installed with the dev libraries, figuring out how to link against those libraries and the ruby libraries, and figuring out how to build a dll.</p>
+
+
+	<p>All of which was (did I mention?) painful. :/ I don&#8217;t know the process well enough to explain it to someone, though, so I&#8217;ll just sit tight. Thanks, though.</p></div>
+        </div>
+        
+        <div id="comment-5660" class="comment">
+          <a name="comment-5660"></a> 
+
+          <div class="date">
+            <span class="day">10</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>11. Luis Lavena said...</h3>
+          <div class="body"><p>@Jamis: I&#8217;m not saying that I can, but neither that I can&#8217;t.</p>
+
+
+	<p>I have my hands full with current and new One-Click Installer for Windows, but maybe a 4 hours hacking at the airport this weekend can help you out.</p>
+
+
+	<p>Just released rake-compiler to ease the burden from me being injecting some sanity in several open source projects.</p>
+
+
+	<p>If I decide move forward, fork it, introduce what I think are needed fixes to make the build, test and release process of the project easy for both sides, you will still need to officially merge those changes.</p>
+
+
+	<p>Even more, for me to be able to release gems for Windows, I&#8217;ll need to be part of the project at rubyforge, since gems at github cannot be released simultaneously with binaries.</p>
+
+
+	<p>In any of the above cases, you will need to be more responsive, so this is a step back on your &#8220;I&#8217;m not taking care anymore&#8221; statement.</p>
+
+
+	<p>I know you&#8217;re doing this as part of your contribution or whatever, but if I invest any time, I want it to be respected and taken in consideration.</p>
+
+
+	<p>With this I meant to say that patches, like I did for this and other projects cannot sit in a RubyForge ticket for 3 months getting dust.</p>
+
+
+	<p>So, if you feel that what I propose is still be a burden, I don&#8217;t know what else can be done.</p></div>
+        </div>
+        
+        <div id="comment-5662" class="comment">
+          <a name="comment-5662"></a> 
+
+          <h3>12. Jamis said...</h3>
+          <div class="body"><p>@Luis, thanks for the clarification. I just wasn&#8217;t sure if you were volunteering, or merely sharing a useful tip.</p>
+
+
+	<p>As for &#8220;patches&#8230;cannot sit in a Rubyforge ticket for 3 months getting dust,&#8221; why not? What harm did it do to wait 3 months for them to be applied? They were eventually applied, and a new release was made. No one was harmed. It&#8217;s not a big deal.</p>
+
+
+	<p>But if that bothers you, that&#8217;s fine. You&#8217;re certainly never obligated to submit patches.</p>
+
+
+	<p>All I&#8217;m asking, here, is for someone to build a binary for sqlite3-ruby trunk, so that I can bundle a gem and release. Once someone gets it to me, I guarantee I&#8217;ll have a new sqlite3-ruby release either that day, or the next.</p>
+
+
+	<p>If no one steps up and volunteers in another couple of days, I&#8217;m going to just release the gem without a windows version pre-built. Not a big deal, except for windows users.</p></div>
+        </div>
+        
+        <div id="comment-5666" class="comment">
+          <a name="comment-5666"></a> 
+
+          <div class="date">
+            <span class="day">11</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>13. Luis Lavena said...</h3>
+          <div class="body"><p>@Jamis, the problem with the &#8216;sitting 3 months in rubyforge&#8217; is because I&#8217;ve seen releasing happening while these patches are needed to build the Windows version of these gems.</p>
+
+
+	<p>That becomes a big deal.</p>
+
+
+	<p>Also, your process of building the gem is not bullet proof, which I&#8217;ll prefer a more agnostic approach (which I standardized in rake-compiler). So anyone, Windows or Linux or <span class="caps">OSX</span> user can build the gem outside your box or mine.</p>
+
+
+	<p>Can you wait a couple of days? I&#8217;m taking a flight on the weekend, when I&#8217;ll be able to work on this.</p>
+
+
+	<p>From that statement you can see I&#8217;m volunteering, but I&#8217;ll prefer automate the process and do it once than do a crappy on-the-rush release from my side.</p></div>
+        </div>
+        
+        <div id="comment-5670" class="comment">
+          <a name="comment-5670"></a> 
+
+          <h3>14. Jamis said...</h3>
+          <div class="body"><p>@Luis, if you&#8217;re volunteering, I&#8217;ll wait as long as necessary. As for the other, if I released a gem while your tickets were languishing, then that is indeed my fault by my my failure to check the ticket list in RubyForge prior to releasing.</p>
+
+
+	<p>I&#8217;m not a release manager. Frankly, I suck as a release manager. But I do the best I can. I apologize if you were offended by my poor performance as a release manager. I can only say that I&#8217;ll try to do better.</p></div>
+        </div>
+        
+        <div id="comment-5764" class="comment">
+          <a name="comment-5764"></a> 
+
+          <div class="date">
+            <span class="day">23</span>
+            <span class="month">Dec</span>
+            <span class="year">2008</span>
+          </div>
+
+          <h3>15. Ahad said...</h3>
+          <div class="body"><p>I&#8217;m a windows user and a newbie Rails developer.  I have alot of problems with sqlite3.  Yeah Windows makes this extremely painful, so i am using the mysql gem and adapter instead.</p></div>
+        </div>
+        
+        <div id="comment-5830" class="comment">
+          <a name="comment-5830"></a> 
+
+          <div class="date">
+            <span class="day">18</span>
+            <span class="month">Jan</span>
+            <span class="year">2009</span>
+          </div>
+
+          <h3>16. Marie said...</h3>
+          <div class="body"><p>Jamis &#8211; This has <span class="caps">NOTHING</span> to do with this topic but your blog won&#8217;t let someone leave comments on old posts.</p>
+
+
+	<p>Please contact me using the provided e-mail address about possibly getting your old generator files to be used again.</p>
+
+
+	<p>None of the links to any of them work because that host is long gone and I haven&#8217;t found any tools as useful as those.</p>
+
+
+	<p>We can talk but I&#8217;d like to make them available again on my website.</p>
+
+
+	<p>Sorry for the digression.  Please continue with your discussion.</p></div>
+        </div>
+        
+      </div>
+
+    </div>
+  
+  <div class="comment-box">
+
+  </div>
+</div>
+
+</div>
+
+<div id="sidebar">
+  <div class="item">
+    <h1>Search</h1>
+    <div class="content">
+      <form action="/search" id="sform" method="get">
+        <input type="text" id="q" name="q" value="" size="15" />
+      </form>
+    </div>
+  </div>
+
+  <div class="item">
+    <h1>About</h1>
+    <div class="content">
+        <strong>Jamis Buck</strong> is the author of the <a href="http://www.capify.org">Capistrano</a> remote-administration utility, and is currently employed by <a href="http://37signals.com">37signals</a>. Life is good! If you're feeling particularly nosy, you can
+        <a href="http://family.jamisbuck.org/">follow his family blog</a>.
+    </div>
+  </div>
+
+<div class="item">
+<h1>Advertisements</h1>
+<div class="content">
+  <div id="adzerk">
+      <div id="adzerk_ad_div">
+          <script type="text/javascript" src="http://rubyrow.net/AdServer/RUBY/BUCK/VERT"></script>
+      </div>
+      <p id="adzerk_by">
+          <a href='http://rubyrow.net'>Ads from Ruby Row</a>
+      </p>
+  </div>
+</div>
+</div>
+
+  <div class="item">
+    <h1>Sections</h1>
+    <div class="content">
+      <table class="archives">
+
+        <tr class="odd">
+          <td class="date"><a href="/" title="Home">Home</a></td>
+          <td class="count">304</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/announcements" title="Announcements">Announcements</a></td>
+          <td class="count">55</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/essays-and-rants" title="Essays and Rants">Essays and Rants</a></td>
+          <td class="count">28</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/under-the-hood" title="Under the Hood">Under the Hood</a></td>
+          <td class="count">17</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/tips-and-tricks" title="Tips &amp; Tricks">Tips &amp; Tricks</a></td>
+          <td class="count">56</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/spotlight" title="Spotlight">Spotlight</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/reviews" title="Reviews">Reviews</a></td>
+          <td class="count">22</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/redirect" title="Redirect">Redirect</a></td>
+          <td class="count">13</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/projects" title="Projects">Projects</a></td>
+          <td class="count">43</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/life" title="Life">Life</a></td>
+          <td class="count">23</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/metablog" title="Metablog">Metablog</a></td>
+          <td class="count">9</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/odds-and-ends" title="Odds &amp; Ends">Odds &amp; Ends</a></td>
+          <td class="count">32</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="item">
+    <h1>Archives</h1>
+    <div class="content">
+      <table class="archives">
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2009/3">March 2009</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2009/2">February 2009</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2009/1">January 2009</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/12">December 2008</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2008/11">November 2008</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/10">October 2008</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2008/8">August 2008</a></td>
+          <td class="count">6</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/7">July 2008</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2008/6">June 2008</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/5">May 2008</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2008/4">April 2008</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/3">March 2008</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2008/2">February 2008</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2008/1">January 2008</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/11">November 2007</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2007/10">October 2007</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/9">September 2007</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2007/8">August 2007</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/7">July 2007</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2007/6">June 2007</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/5">May 2007</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2007/4">April 2007</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/3">March 2007</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2007/2">February 2007</a></td>
+          <td class="count">14</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2007/1">January 2007</a></td>
+          <td class="count">27</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2006/12">December 2006</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2006/11">November 2006</a></td>
+          <td class="count">9</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2006/10">October 2006</a></td>
+          <td class="count">15</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2006/9">September 2006</a></td>
+          <td class="count">11</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2006/8">August 2006</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2006/5">May 2006</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2006/4">April 2006</a></td>
+          <td class="count">1</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2006/3">March 2006</a></td>
+          <td class="count">7</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2006/2">February 2006</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2006/1">January 2006</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/12">December 2005</a></td>
+          <td class="count">10</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/11">November 2005</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/10">October 2005</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/9">September 2005</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/8">August 2005</a></td>
+          <td class="count">5</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/7">July 2005</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/6">June 2005</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/5">May 2005</a></td>
+          <td class="count">8</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/4">April 2005</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/3">March 2005</a></td>
+          <td class="count">7</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2005/2">February 2005</a></td>
+          <td class="count">7</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2005/1">January 2005</a></td>
+          <td class="count">7</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2004/12">December 2004</a></td>
+          <td class="count">4</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2004/11">November 2004</a></td>
+          <td class="count">8</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2004/10">October 2004</a></td>
+          <td class="count">15</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2004/9">September 2004</a></td>
+          <td class="count">9</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2004/6">June 2004</a></td>
+          <td class="count">2</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2004/5">May 2004</a></td>
+          <td class="count">3</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2004/4">April 2004</a></td>
+          <td class="count">7</td>
+        </tr>
+
+        <tr class="odd">
+          <td class="date"><a href="/archives/2004/3">March 2004</a></td>
+          <td class="count">23</td>
+        </tr>
+
+        <tr class="even">
+          <td class="date"><a href="/archives/2004/2">February 2004</a></td>
+          <td class="count">9</td>
+        </tr>
+
+      </table>
+    </div>
+  </div>
+
+  <div class="item">
+    <h1>License</h1>
+    <div class="content">
+<!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" style="border-width: 0" src="http://creativecommons.org/images/public/somerights20.png"/></a>
+<br /><br />
+<small>This work is licensed under a<br />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Creative Commons Attribution-NonCommercial-ShareAlike 2.5  License</a>.</small><!--/Creative Commons License--><!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+	<Work rdf:about="">
+		<license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+	<dc:date>2006</dc:date>
+	<dc:creator><Agent><dc:title>Jamis Buck</dc:title></Agent></dc:creator>
+	<dc:rights><Agent><dc:title>Jamis Buck</dc:title></Agent></dc:rights>
+	<dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+	<dc:source rdf:resource="http://weblog.jamisbuck.org" />
+	</Work>
+	<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/><permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/><requires rdf:resource="http://web.resource.org/cc/ShareAlike"/></License></rdf:RDF> -->
+    </div>
+  </div>
+
+  <div class="item">
+    <h1>Syndicate</h1>
+    <div class="content">
+      <a href="http://feeds.feedburner.com/buckblog"><img src="http://feeds.feedburner.com/~fc/buckblog?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+    </div>
+  </div>
+
+</div>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal-form">
+  <input type="hidden" name="cmd" value="_xclick" />
+  <input type="hidden" name="business" value="&#106;&#97;&#109;&#105;&#115;&#64;&#106;a&#109;i&#115;&#98;&#117;c&#107;&#46;&#111;&#114;&#103;" />
+  <input type="hidden" id="paypal-item-name" name="item_name" value="Donation" />
+  <input type="hidden" name="no_note" value="0" />
+  <input type="hidden" name="currency_code" value="USD" />
+  <input type="hidden" name="tax" value="0" />
+</form>
+
+</body>
+</html>

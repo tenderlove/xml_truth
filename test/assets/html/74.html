@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="Cables" href="href">
+<title>ruby-growl</title>
+<link rev="made" href="mailto:drbrain@segment7.net">
+<link rel="stylesheet" href="/css/style.css" type="text/css" title="/css/style.css" media="all">
+<meta name="rating" content="general">
+<meta name="generator" content="ZenWeb v. 2.18.0 http://www.zenspider.com/ZSS/Products/ZenWeb/">
+<meta name="author" content="Eric Hodel">
+<meta name="keywords" content="Ruby, Growl">
+<meta name="description" content="A cross-platform Growl notification sender in Ruby.">
+<meta name="ICBM" content="47.6164856, -122.3078842">
+<meta name="DC.title" content="ruby-growl"><script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1189471-3";
+urchinTracker();
+</script>
+</head>
+<body>
+<h1>ruby-growl</h1>
+<H2>What is Growl?</H2>
+
+<P><a href="http://growl.info">Growl</a> is a global notification system for Mac
+OS X.  Applications can register messages which Growl displays on the screen
+in a variety of ways depending upon your preferences.</P>
+
+<H2>Why ruby-growl?</H2>
+
+<P>Growl's existing Ruby bindings only work on Macs, and I wanted my non-Mac
+machines to be able to send Growl notifications.  I peeked inside Growl's
+remote-notification capabilities and wrote up some code that uses UDP to send
+Growl notifications across the network.</P>
+
+<H2>What Do I Need?</H2>
+
+<P>You need a Mac with Growl installed to recieve Growl notifications, <a
+href="http://ruby-lang.org/">Ruby</a> and a kind of network connection
+between the two machines.</P>
+
+<H2>What Do I Get?</H2>
+
+<P>ruby-growl features a library you can use to add Growl notifications to your
+Ruby applications and a command-line tool that is almost option-compatible
+with growlnotify.  (All except for -p is supported, use --priority instead.)</P>
+
+<H2>How Do I Use It?</H2>
+
+<P>First you need to enable "Listen for incoming notifications" and "Allow remote
+application registration" on the Network tab of the Growl Preference Panel to
+send Growl Notifications from ruby-growl.  You'll probably also want to set a
+"UDP password" as well.</P>
+
+<H3>From Your Ruby App</H3>
+
+<PRE><code>
+require 'ruby-growl'
+
+g = Growl.new "localhost", "ruby-growl",
+              ["ruby-growl Notification"]
+g.notify "ruby-growl Notification", "It Came From Ruby-Growl",
+         "Greetings!"</code></PRE>
+
+<H3>From the Command Line</H3>
+
+<PRE><kbd>echo "message" | growl -H localhost</kbd></PRE>
+
+<P>or:</P>
+
+<PRE><kbd>growl -H localhost -m "message"</kbd></PRE>
+
+<H2>Download</H2>
+
+<table border="0">
+<tr><th>Type</th><th>Download</th></tr>
+<tr><td>ruby-growl gem</td><td><a href="ruby-growl-1.0.1.gem">ruby-growl-1.0.1.gem</a></td></tr>
+<tr><td>ruby-growl tgz</td><td><a href="ruby-growl-1.0.1.tgz">ruby-growl-1.0.1.tgz</a></td></tr>
+</table>
+
+<H2>RDoc?</H2>
+
+<P>Yep!  There's <a href="doc/">RDoc for ruby-growl</a>.</P>
+
+<div id="navbar">
+<span id="top"><a id="sitemap" href="/SiteMap.html">Sitemap</a></span> <span id="crumbs"><a href="/index.html">Segment7 Home</a>
+ / <a href="/projects/index.html">Projects</a>
+ / <a href="/projects/ruby/index.html">Ruby Projects</a>
+ / ruby-growl</span></div>
+
+</body>
+</html>

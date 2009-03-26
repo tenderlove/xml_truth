@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><meta name="description" content=" Voices That Matter: Professional Ruby Conference, presented by Addison-Wesley Professional" /><meta name="keywords" content="Ruby, Rails, Open Source, MOngrel, Obie Fernandez, Boston, Voices That Matter, Professional Ruby Conference, Addison-Wesley, InformIT, Pearson Education, Ruby Conference, Matt Bauer, Giles Bowkett, Jared Carroll, Blaine Cook, Thomas Enebo, Cody Fauser, Hal Fulton, James Golick, Philippe Hanrigou, Jacob Harris, Michael Hartl, Shane Harvie, Matt Jankowski, Jon Larkowski, Jon Larkowski, Pat Maddox, Matt Pelletier, Nick Plante, Chad Pytel, Coby Randquist, Tammer Saleh, Ezra Zygmuntowicz, David Berube, Bryan Liles" /><link href="./css/ruby.css" rel="stylesheet" type="text/css" />
+	<script src="../webtrends.js" type="text/javascript"></script>
+	<script type="text/JavaScript">
+	<!--
+	function MM_swapImgRestore() { //v3.0
+	  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+	}
+	
+	function MM_preloadImages() { //v3.0
+	  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+	    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+	    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+	}
+	
+	function MM_findObj(n, d) { //v4.01
+	  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+	    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+	  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+	  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+	  if(!x && d.getElementById) x=d.getElementById(n); return x;
+	}
+	
+	function MM_swapImage() { //v3.0
+	  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+	   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+	}
+
+	function checkWorkshops() {
+		if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_conference_package[0].checked == true) {
+			if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_am_workshop[0].checked == false || document.aspnetForm.ctl00$ContentPlaceHolder1$f_pm_workshop[0].checked == false) {
+				alert("Your current package does not include any workshops.");
+				return false;
+			}
+		}
+		else if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_conference_package[1].checked == true || document.aspnetForm.ctl00$ContentPlaceHolder1$f_conference_package[3].checked == true) {
+			if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_am_workshop[0].checked == true && document.aspnetForm.ctl00$ContentPlaceHolder1$f_pm_workshop[0].checked == true) {
+					alert("Please select a workshop.");
+					return false;
+			}
+			if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_am_workshop[0].checked == false && document.aspnetForm.ctl00$ContentPlaceHolder1$f_pm_workshop[0].checked == false) {
+					alert("Your current package only includes one workshop.");
+					return false;
+			}
+		}
+		else {
+			if (document.aspnetForm.ctl00$ContentPlaceHolder1$f_am_workshop[0].checked == true || document.aspnetForm.ctl00$ContentPlaceHolder1$f_pm_workshop[0].checked == true) {
+					alert("Please make a selection for both workshops.");
+					return false;
+			}
+		}
+		return true;
+	}
+	//-->
+	</script>
+<title>
+	Voices That Matter: Professional Ruby Conference with Obie Fernandez - November 17-20, 2008
+</title></head>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('./images/header/registration_over.gif','./images/header/schedule_over.gif','./images/header/speakers_over.gif','./images/header/sessions_over.gif','./images/header/workshops_over.gif','./images/header/travel_over.gif','./images/header/sponsors_over.gif')">
+	<div id="header">
+	<table id="Table_01" width="790" height="144" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><img src="./images/header/topleft.gif" width="32" height="118" border="0"></td>
+			<td><a href="index.aspx"><img src="./images/header/logo.gif" width="141" height="118" alt="Voices That Matter: Professional Ruby Conference" border="0"></a></td>
+			<td colspan="7"><a href="index.aspx"><img src="./images/header/topright.gif" width="617" height="118" alt="Professional Ruby Conference" border="0"></a></td>
+		</tr>
+		<tr>
+			<td><img src="./images/header/bottomleft.gif" width="32" height="26" border="0"></td>
+			<td><a href="index.aspx"><img src="./images/header/bottomlogo.gif" width="141" height="26" border="0"></a></td>
+
+<td><a href="speakers.aspx" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Speakers','','./images/header/speakers_over.gif',1)"><img src="./images/header/speakers.gif" name="Speakers" width="79" height="26" border="0"></a></td>
+<td><a href="sessions.aspx" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Sessions','','./images/header/sessions_over.gif',1)"><img src="./images/header/sessions.gif" name="Sessions" width="77" height="26" border="0"></a></td>
+<td><a href="sponsors.aspx" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Sponsors','','./images/header/sponsors_over.gif',1)"><img src="./images/header/sponsors.gif" name="Sponsors" width="94" height="26" border="0"></a></td>
+<td><a href="http://www.vtmruby.crowdvine.com/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Connect','','../images/header/connect_over.gif',1)"><img src="./images/header/connect.gif" name="Connect!" width="99" height="26" border="0"></a></td>
+<td><img src="./images/header/emptybutton.gif" width="268" height="26" border="0"></td>
+
+	</tr>
+	</table>
+	</div>
+	<div id="content">
+	
+		
+<table summary="" cellspacing="2">
+	<tr>
+	<td id="columnPrimary" valign="top">
+ <h2>Voices That Matter: Professional Ruby Conference</h2>
+
+
+<p>This conference brought attendees face to face with the Ruby authors whose books are shaping their career. In addition, real-world case studies and a variety of networking opportunities ensured that each participant left with concrete ideas and techniques. Their most difficult questions were answered during the four days of entertaining, informative, and inspiring sessions and conversations. </p>
+
+<p><img src="./images/ruby_crowd.jpg" alt="Professional Ruby Conference" /></p>
+
+<p><img src="./images/ruby_panel.jpg" alt="Professional Ruby Conference" /></p>
+
+<p>See all Professional Ruby Conference photos on <a onclick="newwindow(this)" href="http://www.flickr.com/photos/sd/sets/72157609355648746/">flickr.com</a>.</p>
+
+  </td>
+  <td id="columnSubordinate" valign="top">
+  <p><img src="./images/presentedbyAW.jpg" width="238" height="50" border="0" alt="Presented by Addison-Wesley" /></p>
+
+
+<p><strong><font color="#c40c42">Meet Our Conference Technical Chair</font></strong></p>
+
+<p><img src="./images/speakers/Fernandez100.jpg" alt="Obie Fernandez" style="float:left; width:100px; height:100px; border:0px; margin: 0 5px 3px 0;" /><strong>Obie Fernandez</strong><br />
+CEO and Founder <br />
+Hashrocket, Inc.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<!--  <table summary="" width="246" colspan="2" cellspacing="1" style="border-width: 1px; border-style: solid; border-color: #000000;" >
+      <tr>
+        <td colspan="2"><center><img src="../webdesign2008/images/ourspeakershead.gif" width="238" height="24" /></center></td>
+      </tr>
+		<tr>
+        <td><a href="speakers.aspx#bauer"><img src="./images/speakers/Bauer50.jpg" border="0" /></a></td>
+        <td><a href="speakers.aspx#berube"><img src="./images/speakers/Berube50.jpg" border="0" /></a></td>
+               
+      	</tr>
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#bauer">Matt Bauer</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#berube">David Berube</a></td>
+
+   </tr>
+      
+      <tr>
+      <td><a href="speakers.aspx#bowkett"><img src="./images/speakers/Bowkett50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#carroll"><img src="./images/speakers/Carroll50.jpg" border="0" /></a></td>
+     
+      	</tr>
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#bowkett">Giles Bowkett</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#carroll">Jared Carroll</a></td>
+
+      </tr>
+      
+      <tr>
+       <td><a href="speakers.aspx#cook"><img src="./images/speakers/cook50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#enebo"><img src="./images/speakers/Enebo50.jpg" border="0" /></a></td>
+     
+      </tr>
+      <tr>
+       <td style="font-size : 7.5pt;"><a href="speakers.aspx#cook">Blaine Cook</a></td>
+       <td style="font-size : 7.5pt;"><a href="speakers.aspx#enebo">Thomas Enebo</a></td>
+
+       </tr>
+      
+      <tr>
+       <td><a href="speakers.aspx#fauser"><img src="./images/speakers/Fauser50.jpg" border="0" /></a></td>
+       <td><a href="speakers.aspx#fulton"><img src="./images/speakers/Fulton50.jpg" border="0" /></a></td>
+
+      </tr>
+      <tr>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#fauser">Cody Fauser</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#fulton">Hal Fulton</a></td>
+      
+     
+       </tr>
+       
+       <tr>
+      <td><a href="speakers.aspx#golick"><img src="./images/speakers/Golick50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#hanrigou"><img src="./images/speakers/Hanrigou50.jpg" border="0" /></a></td>
+
+       </tr>
+       
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#golick">James Golick</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#hanrigou">Philippe Hanrigou</a></td>
+
+      </tr>
+       
+      
+      <tr>
+      <td><a href="speakers.aspx#hartl"><img src="./images/speakers/Hartl50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#harvie"><img src="./images/speakers/Harvie50.jpg" border="0" /></a></td>
+
+      </tr>
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#hartl">Michael Hartl</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#harvie">Shane Harvie</a></td>
+     
+        </tr>
+        <tr>
+        <td><a href="speakers.aspx#jankowski"><img src="./images/speakers/Jankowski50.jpg" border="0" /></a></td>
+           <td><a href="speakers.aspx#koffel"><img src="./images/speakers/Koffel50.jpg" border="0" /></a></td>
+           </tr>
+         <tr>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#jankowski">Matt Jankowski</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#koffel">Will Koffel</a></td>
+        </tr>
+        <tr>  
+        <td><a href="speakers.aspx#koski"><img src="./images/speakers/Koski50.jpg" border="0" /></a></td>
+        <td><a href="speakers.aspx#larkowski"><img src="./images/speakers/Larkowski50.jpg" border="0" /></a></td>
+ 		</tr>
+        <tr>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#koski">Ben Koski</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#larkowski">Jon Larkowski</a></td>
+       
+        </tr>
+        <tr>
+     
+        <td><a href="speakers.aspx#liles"><img src="./images/speakers/Liles50.jpg" border="0" /></a></td>
+        <td><a href="speakers.aspx#maddox"><img src="./images/speakers/Maddox50.jpg" border="0" /></a></td>
+
+        </tr>
+        <tr>
+         <td style="font-size : 7.5pt;"><a href="speakers.aspx#liles">Bryan Liles</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#maddox">Pat Maddox</a></td>
+       
+        </tr>
+        
+        <tr>
+        <td><a href="speakers.aspx#metz"><img src="./images/speakers/Metz50.jpg" border="0" /></a></td>
+        <td><a href="speakers.aspx#olsen"><img src="./images/speakers/Olsen50.jpg" border="0" /></a></td>
+                
+</tr>
+        <tr>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#metz">Sandi Metz</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#olsen">Russ Olsen</a></td>
+      </tr>
+      
+       <tr>
+       <td><a href="speakers.aspx#pelletier"><img src="./images/speakers/Pelletier50.jpg" border="0" /></a></td>
+       <td><a href="speakers.aspx#plante"><img src="./images/speakers/Plante50.jpg" border="0" /></a></td>
+       
+      </tr>
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#pelletier">Matt Pelletier</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#plante">Nick Plante</a></td>
+            
+            
+      </tr>
+      <tr>
+      <td><a href="speakers.aspx#pytel"><img src="./images/speakers/Pytel50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#randquist"><img src="./images/speakers/Randquist50.jpg" border="0" /></a>
+      </td>
+      </tr>
+      <tr>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#pytel">Chad Pytel</a></td>
+      <td style="font-size : 7.5pt;"><a href="speakers.aspx#randquist">Coby Randquist</a></td>
+      </tr>
+      <tr>
+      <td><a href="speakers.aspx#saleh"><img src="./images/speakers/Saleh50.jpg" border="0" /></a></td>
+      <td><a href="speakers.aspx#savas"><img src="./images/speakers/Savas50.jpg" border="0" /></a></td>
+      </tr>
+        <tr>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#saleh">Tammer Saleh</a></td>
+        <td style="font-size : 7.5pt;"><a href="speakers.aspx#savas">Foy Savas</a></td>
+        
+        </tr>
+ <tr>
+ <td><img src="./images/speakers/Susser50.jpg" border="0" /></td>
+ <td><a href="speakers.aspx#zygmuntowicz"><img src="./images/speakers/Zygmuntowicz50.jpg" border="0" /></a></td>
+ </tr>
+ <tr>
+  <td style="font-size : 7.5pt;">Josh Susser</td>
+ <td style="font-size : 7.5pt;"><a href="speakers.aspx#zygmuntowicz">Ezra Zygmuntowicz</a></td>
+ </tr>
+  </table> -->
+  </td>
+  </tr>
+  </table>
+  
+
+	
+	</div>
+	<div id="footer">
+		<center>
+		<font size="1">
+		<p>&copy; Pearson Education. All rights reserved.<br />
+		800 East 96th Street, Indianapolis, IN  46240</p>
+		</font>
+		</center>
+	</div>
+	
+	<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>
+	<script type="text/javascript">var pageTracker = _gat._getTracker("UA-433761-16"); pageTracker._initData(); pageTracker._trackPageview();</script>
+
+	<noscript>
+		<img alt="" border="0" name="DCSIMG" width="1" height="1" src="http://statse.webtrendslive.com/dcs16rfvd00000kvx241wj0rx_7t3g/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=8.0.3"/>
+	</noscript>
+	</body>
+
+</html>

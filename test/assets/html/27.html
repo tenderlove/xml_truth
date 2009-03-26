@@ -1,0 +1,665 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- InstanceBegin template="/Templates/ss_template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!--LOCAL STYLE SHEETS FOR DEVELOPMENT ONLY -->
+<link href="typographie.css" rel="stylesheet" type="text/css" />
+<link href="habillage.css" rel="stylesheet" type="text/css" />
+
+
+<!-- InstanceBeginEditable name="doctitle" -->
+
+<title>SapphireSteel :: The Little Book Of Ruby</title>
+
+<!-- InstanceEndEditable -->
+<meta name="description" content="Ruby in Steel :: Ruby On Rails programming in Visual Studio" />
+<meta name="keywords" content="ruby ide, ruby programming, visual studio, rails, plugin, sapphire, steel, ruby in steel, ruby, ide, editor, debugger, fast debugger, cylon, visual" />
+
+	
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+<!-- Ceci est la feuille de style par defaut pour les types internes a SPIP -->
+<link rel="stylesheet" href="spip_style.css" type="text/css" />
+
+<!-- Les feuilles de style specifiques aux presents squelettes -->
+<link rel="stylesheet" href="squelettes/typographie.css" type="text/css" />
+
+<!-- media="..." permet de ne pas utiliser ce style sous Netscape 4 (sinon plantage) -->
+<link rel="stylesheet" href="squelettes/habillage.css" type="text/css" media="print, projection, screen, tv" />
+
+<!-- Lien vers le backend pour navigateurs eclaires -->
+<link rel="alternate" type="application/rss+xml" title="Syndicate the whole site" href="backend.php" />
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /><style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+
+
+<script language="JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+
+
+
+
+
+</head>
+
+<body onLoad="MM_preloadImages('IMG/ss/sapphiresteel_pagegfx_r2_c4_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c5_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c7_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c9_f2.gif','IMG/ss/sapphiresteel_pagegfx_r2_c11_f2.gif');">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="60" nowrap><div align="left">
+      
+
+
+<table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
+	  <tr>
+	   <td background="IMG/ss/sapphiresteel_pagegfx_r1_c3.gif"><a href="http://www.sapphiresteel.com"><img name="sapphiresteel_pagegfx_r1_c1" src="IMG/ss/sapphiresteel_pagegfx_r1_c1.gif" width="296" height="84" border="0" alt="SapphireSteel Software"></a></td>
+	   <td width="355"><table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="355">
+		  <tr>
+		   <td width="355"><img name="sapphiresteel_pagegfx_r1_c4" src="IMG/ss/sapphiresteel_pagegfx_r1_c4.gif" width="355" height="62" border="0" alt=""></td>
+		  </tr>
+		  <tr>
+		   <td><table align="left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="355">
+			  <tr>
+			   <td><a href="http://www.sapphiresteel.com/Buy-Ruby-In-Steel" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c4','','IMG/ss/sapphiresteel_pagegfx_r2_c4_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c4" src="IMG/ss/sapphiresteel_pagegfx_r2_c4.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/spip?page=download" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c5','','IMG/ss/sapphiresteel_pagegfx_r2_c5_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c5" src="IMG/ss/sapphiresteel_pagegfx_r2_c5.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/Ruby-In-Steel-Developer-Overview" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c7','','IMG/ss/sapphiresteel_pagegfx_r2_c7_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c7" src="IMG/ss/sapphiresteel_pagegfx_r2_c7.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/forum" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c9','','IMG/ss/sapphiresteel_pagegfx_r2_c9_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c9" src="IMG/ss/sapphiresteel_pagegfx_r2_c9.gif" width="68" height="22" border="0" alt=""></a></td>
+			   <td><a href="http://www.sapphiresteel.com/-Blog-" onMouseOut="MM_swapImgRestore();" onMouseOver="MM_swapImage('IMG/ss/sapphiresteel_pagegfx_r2_c11','','IMG/ss/sapphiresteel_pagegfx_r2_c11_f2.gif',1);"><img name="IMG/ss/sapphiresteel_pagegfx_r2_c11" src="IMG/ss/sapphiresteel_pagegfx_r2_c11.gif" width="69" height="22" border="0" alt=""></a></td>
+			   <td><img name="IMG/ss/sapphiresteel_pagegfx_r2_c13" src="IMG/ss/sapphiresteel_pagegfx_r2_c13.gif" width="14" height="22" border="0" alt=""></td>
+			  </tr>
+			</table></td>
+		  </tr>
+		</table></td>
+	  </tr>
+	</table>
+
+      
+      
+    </div></td>
+  </tr>
+  <tr>
+    <td><table width="100%" height="100%"  border="0" align="left" cellpadding="0" cellspacing="0" bordercolor="#FF00FF">
+      <tr valign="top">
+        <td width="155" height="100%" background="IMG/ss/sapphiresteel_pagegfx_r3_c1.gif" bgcolor="#ECEBED"><p>&nbsp;</p>
+          <table width="145" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>NAVIGATION</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com" title="Home page" class="menutext">Home</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="spip.php?page=plan" class="menutext">Site
+                  Map </a>	</td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="spip.php?page=recherche" class="menutext">Search</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>RUBY IN STEEL </strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Buy-Ruby-In-Steel">Buy</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip?page=download" class="menutext">Download</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/The-Ruby-In-Steel-User-Guide">User
+                  Guide </a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>Information</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-IDE-Screenshots-of-Ruby-In">Screenshots</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip.php?page=feature-list">Feature List</a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/About-Ruby-In-Steel">License </a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>Developers</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/-Blog-">Blog</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Ruby-In-Steel-Road-Map">Roadmap</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://sapphiresteel.com/forum/">FORUM</a> </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td bgcolor="#ECEBED"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /></td>
+              <td bgcolor="#ECEBED" class="menutext"><strong>COMPANY</strong></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/About-us" class="menutext">About
+                  Us </a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/spip.php?page=contacts" class="menutext">Contact</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext"><a href="http://www.sapphiresteel.com/Press-Information" class="menutext">Press</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td class="menutext">&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+          <p>&nbsp;</p>
+          <table width="155"  border="0" cellpadding="0">
+            <tr>
+              <td width="10">&nbsp;</td>
+              <td align="left" valign="middle" class="smalltext"><a href="http://www.sapphiresteel.com/spip.php?page=backend"><img src="ecrire/img_pack/feed.png" alt="rss" width="24" height="24" border="0" align="middle" /></a> <br />
+                <a href="http://www.sapphiresteel.com/spip.php?page=backend">RSS (SITE)</a></td>
+              <td width="10">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td align="left" valign="middle" class="smalltext"><a href="http://www.sapphiresteel.com/spip.php?page=backend&amp;id_rubrique=1"><img src="ecrire/img_pack/feed.png" alt="rss" width="24" height="24" border="0" align="middle" /></a> <br />                <a href="http://www.sapphiresteel.com/spip.php?page=backend&amp;id_rubrique=1">RSS (BLOG ONLY)</a></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top" class="smalltext">
+			  
+			  <script type="text/javascript" src="http://embed.technorati.com/embed/rnf3duxuht.js"></script>			  </td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top"><br /></td>
+              <td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td>
+              <td valign="top">&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          </table>
+		  
+<!-- InstanceBeginEditable name="leftcol" --><!-- InstanceEndEditable -->
+		  
+          <p>&nbsp;              </p></td>
+        <td height="100%" bgcolor="#FFFFFF"><table width="90%"  border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top">
+			  
+<!-- InstanceBeginEditable name="Main" -->
+			  
+			  
+			  
+
+
+<!-- Une : derniers articles publies -->
+<!--SPIP :: THE ARTICLE -->
+<div class="contenu" >
+
+   <!--Print section name above article-->
+   
+		<div class="section_name"> Section :: Ruby </div>
+	
+
+    <div class="cartouche"> <!--Title Block-->
+    <!--Article logo, sur/title/sub, date-->
+	<img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /> <a href="spip.php?page=print_format&id_article=13" target="_blank" class="smalltext">Format For Printing...</a>
+	
+    
+	<table align="right"><tr><td style="padding:10px;"><img src="local/cache-vignettes/L250xH100/arton13-bffed.gif" alt="" align="left" width='250' height='100' class='spip_logos'  style='height:100px;width:250px;' /></td></tr></table>
+        
+    
+    
+        <h1 class="titre-texte"><!-- debut_surligneconditionnel -->The Little Book Of Ruby<!-- finde_surligneconditionnel--></h1>
+    
+        
+        <div class="author_name">
+        by
+         Huw Collingbourne 
+        </div>
+        
+    
+    
+        <div class="surtitre"><!-- debut_surligneconditionnel -->The Fastest, Easiest Way To Learn Ruby &#8216;by example&#8217;<!-- finde_surligneconditionnel--></div>
+     
+    Saturday 17 June 2006.
+    </div> <!--end: cartouche / Title Block -->
+
+    <div style="line-height: 0em">&nbsp;</div><!-- Bug Mozilla http://bugzilla.mozilla.org/show_bug.cgi?id=200510 -->
+
+
+ <!--optional elements...-->
+
+
+    <div class="chapo"><!-- debut_surligneconditionnel --><p>Download our free eBook and Ruby source code to get up to speed with Ruby in ten easy chapters.</p><!-- finde_surligneconditionnel--></div>   <!--intro/deck-->
+
+
+    <div class="texte"><!-- debut_surligneconditionnel --><div class='spip_document_25 spip_documents spip_documents_center' >
+<img src='IMG/gif/littlebook_onsite_logo.gif' width="450" height="291" alt="" /></div>
+<h3 class="spip">Free eBook</h3>
+<p><i>10 Chapters &#8211; 87 pages&#8230;</i></p>
+
+<dl class='spip_document_27 spip_documents spip_documents_center'  style='float:center;width:120px;'>
+<dt><a href="IMG/pdf/LittleBookOfRuby.pdf" title='PDF - 565.1 kb' type="application/pdf"><img src='prive/vignettes/pdf.png' width='52' height='52' alt='PDF - 565.1 kb' /></a></dt>
+</dl>
+<center><a href='IMG/pdf/LittleBookOfRuby.pdf' class='spip_in'>Download The Little Book of Ruby - 1.1MB</a></center>
+<p>The Little Book Of Ruby is a PDF eBook which will guide you through the fundamentals of Ruby programming. Starting with the basics (strings, numbers, objects and methods) it quickly moves on to explain all you need to know to create your own class hierarchies, use arrays, hashes, iterators, modules, mixins and much more besides&#8230;</p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;See also: <a href='The-Book-Of-Ruby-free-in-depth' class='spip_in'>The Book Of Ruby</a></p>
+
+<h3 class="spip">Free Source Code</h3>
+<p><i>More than 50 little sample programs demonstrate every topic in the book&#8230;</i></p>
+
+<p>Download this Zip file for use with Ruby In Steel 2008 or any other editor/IDE...</p>
+<dl class='spip_document_608 spip_documents spip_documents_center'  style='float:center;width:120px;'>
+<dt><a href="IMG/zip/littlebookofruby2_source.zip" title='Zip - 34.5 kb' type="application/zip"><img src='prive/vignettes/zip.png' width='52' height='52' alt='Zip - 34.5 kb' /></a></dt>
+</dl>
+<center>Source Archive (compatible with Ruby In Steel in VS2008)</center>
+<p>(Or, if you are using Ruby In Steel with Visual Studio 2005, download this one...)</p>
+<dl class='spip_document_80 spip_documents spip_documents_center'  style='float:center;width:120px;'>
+<dt><a href="IMG/zip_zip_little-book-of-ruby-source-07-3.zip" title='Zip - 30.9 kb' type="application/zip"><img src='prive/vignettes/zip.png' width='52' height='52' alt='Zip - 30.9 kb' /></a></dt>
+</dl>
+<center>Source Archive (compatible with Ruby In Steel in VS2005)</center>
+<p>You can load these source files into any Ruby editor or IDE. If you are using <strong>Ruby In Steel</strong> you may be able to load the entire project as a solution (depending on which version of the software you are using). Or you can import it to a new directory (<i>File/New Project/Import</i>) or, using Ruby In Steel Developer, you may Convert it &#8217;in place&#8217; (<i>File/Open/Convert</i>). Each program can be run in Ruby In Steel&#8217;s interactive console just by pressing CTRL-F5.</p>
+
+<div class='spip_document_26 spip_documents spip_documents_center' >
+<img src='IMG/gif/little_book_pdf.gif' width="400" height="326" alt="" /></div>
+<h3 class="spip">Table of Contents</h3>
+<p><strong>Introduction: Welcome To The Little Book Of Ruby</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Learn Ruby In Ten Chapters
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;What Is Ruby? 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;What Is Rails? 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Download Ruby plus an Editor 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Get The Source Code Of The Sample Programs 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Running Ruby Programs 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;How To Use This Book 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Making Sense Of The Text</p>
+
+<p><strong>Chapter One: Strings and Methods</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Strings and Embedded Evaluation 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Methods 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Numbers 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Testing a Condition: if &#8230; then</p>
+
+<p><strong>Chapter Two: Classes and Objects</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Instances and Instance Variables 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Constructors &#8211; new and initialize 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Inspecting Objects</p>
+
+<p><strong>Chapter Three: Class Hierarchies</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Superclasses and Subclasses</p>
+
+<p><strong>Chapter Four: Accessors, Attributes, Class Variables</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Accessor Methods 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Attribute Readers and Writers 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Attributes Create Variables 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Calling Methods of a Superclass 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Class Variables</p>
+
+<p><strong>Chapter Five: Arrays</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Using Arrays 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Creating Arrays 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Multi-Dimensional Arrays 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Iterating Over Arrays 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Indexing Into Arrays</p>
+
+<p><strong>Chapter Six: Hashes</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Creating Hashes 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Indexing Into A Hash 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Hash Operations</p>
+
+<p><strong>Chapter Seven: Loops and Iterators</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;For Loops 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Blocks 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;While Loops 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;While Modifiers 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Until Loops</p>
+
+<p><strong>Chapter Eight: Conditional Statements</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;If..Then..Else 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;And..Or..Not 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;If..Elsif 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Unless 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;If and Unless Modifiers 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Case Statements</p>
+
+<p><strong>Chapter Nine: Modules and Mixins</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;A Module Is Like A Class&#8230; 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Module Methods 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Modules as Namespaces 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Module &#8216;Instance Methods&#8217; 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Included Modules or &#8216;Mixins&#8217; 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Including Modules From Files 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Pre-Defined Modules</p>
+
+<p><strong>Chapter Ten: Saving Files, Moving On&#8230;</strong></p>
+
+<p><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Saving Data 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;YAML 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Files 
+<br /><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" />&nbsp;Moving On&#8230;</p><!-- finde_surligneconditionnel--></div>   <!--main text-->
+
+        
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="2">
+  <tr>
+    <td width="120" align="left" valign="middle">
+	
+<script type="text/javascript">
+digg_skin = 'compact';
+</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script>	</td>
+    <td width="120" align="left" valign="middle">
+<div class="smalltext" id="bookmarks">
+
+
+<a href="http://del.icio.us/post" class="smalltext" onclick="window.open('http://del.icio.us/post?v=4&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=700,height=400'); return false;"><img src="IMG/ss/delicious.png" alt="del.icio.us" width="18" height="18" border="0" align="absmiddle" /> Add to del.icio.us</a></div>	
+<!--bookmarks-->	</td>
+    <td align="left" valign="middle">
+<script>reddit_url='http://www.sapphiresteel.com/The-Little-Book-Of-Ruby'</script>
+<script language="javascript" src="http://reddit.com/button.js?t=1"></script>	
+
+
+<!-- AddThis Bookmark Button BEGIN -->
+<a href="http://www.addthis.com/bookmark.php" onclick="window.open('http://www.addthis.com/bookmark.php?wt=nw&pub=huwcol&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'addthis', 'scrollbars=yes,menubar=no,width=620,height=520,resizable=yes,toolbar=no,location=no,status=no,screenX=200,screenY=100,left=200,top=100'); return false;" title="Bookmark using any bookmark manager!" target="_blank"><img src="http://s9.addthis.com/button1-bm.gif" width="125" height="16" border="0" alt="AddThis Social Bookmark Button" /></a>
+<!-- AddThis Bookmark Button END -->
+
+
+
+
+</td>
+  </tr>
+</table>
+
+ 
+
+
+
+
+
+<!--SPIP :: attached documents (e.g. pdf/mp3)-->
+
+<!--End of attached documents-->
+
+
+
+<!-- SPIP:: Forums -->
+<!--Reply to article link-->
+
+<hr />
+
+
+<br />
+
+
+
+<!--------- Main Forums Loop --------->
+
+
+<!--------- End: Main Forums Loop --------->
+
+</div> <!--contenu-->			  
+
+
+<!-- InstanceEndEditable --></td>
+            </tr>
+          </table>
+          <p>&nbsp;</p>
+          <p align="center"><span class="smalltext">&copy; 2009 SapphireSteel Software. All rights reserved</span></p></td>
+        <td width="156" height="100%" bgcolor="#FFFFFF">
+		
+<p>&nbsp;</p>
+<!-- InstanceBeginEditable name="rightcol" -->
+		
+<!-- SPIP :: Menu de navigation rubriques -->
+<!--Give the link to This Section-->
+
+    <div class="menu">
+    <ol class="rubriques">
+        <div class="menu-header">
+		    This Section
+	    </div>	   
+	    <!--Get a list of sections from root to this section-->
+	    
+    
+    <!--The active section(s)-->
+    <div class="menu-titre"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="-Ruby,10-" title="The Ruby language and resources for learning it">Ruby</a> </div>               
+           
+    
+<!-- SPIP :: Children sections of the current one (if there are any)-->
+
+
+    </ol>
+    </div>
+
+<!-- End: Children sections of the current one (if there are any)-->
+
+<!-- SPIP :: Articles dans la meme rubrique -->
+
+	
+
+	<div class="menu">
+        <ol class="rubriques">
+	<div class="breves">
+		<div class="menu-header">
+		    Articles in this section 
+		</div>
+		<ul>
+	
+		<li class="menu-item">
+		<a href="The-Book-Of-Ruby" >The Book Of Ruby</a>
+		</li>
+	
+		<li class="menu-item">
+		<a href="The-Little-Book-Of-Ruby-in" >The Little Book Of Ruby &#8211; in Brazilian Portuguese</a>
+		</li>
+	
+		<li class="menu-item">
+		<a href="Learning-Ruby" >Learning Ruby</a>
+		</li>
+	
+		</ul>		 
+	</div>
+	</ol>
+	</div>
+	
+	
+
+
+<!-- SPIP :: Display sister sections (if there are any)-->
+
+    
+  
+  <div class="menu">
+        <ol class="rubriques">
+        <div class="menu-header">
+		    Other Sections
+	    </div>
+	    <ul class="menu-liste">
+    
+	    <li class="menu-item"><a href="-Amethyst,27-" title="The Amethyst IDE for developing Flex and AIR applications">Amethyst</a></li>
+    
+	    <li class="menu-item"><a href="-Blog-" title="The Sapphire Steel development blog">Blog</a></li>
+    
+	    <li class="menu-item"><a href="-FAQ-" title="The SapphireSteel Software knowledgebase containing questions and answers relating to Ruby In Steel.">FAQ</a></li>
+    
+	    <li class="menu-item"><a href="-Information,7-" title="Information on the company and our software">Information</a></li>
+    
+	    <li class="menu-item"><a href="-Ruby-In-Steel-Archives-" title="Information on various aspects of the Ruby In Steel IDE. Note that many of the articles in this section are out of date and refer to older (or beta) versions of the software.">Ruby In Steel Archives</a></li>
+    
+	    <li class="menu-item"><a href="-This-Web-Site-" title="Information about the SapphireSteel web site">This Web Site</a></li>
+    
+	    </ul>
+	     </ol>
+    </div>
+    
+    
+
+        </ol>
+    </div>
+
+<!--End: Display sister sections (if there are any)-->
+
+
+
+	
+		
+		
+		
+
+
+<!-- Liens des forums -->
+
+
+
+
+<!-- SPIP :: Menu de navigation mots-cles -->
+
+<div class="menu">
+<ul class="divers" title="Keywords">
+    <div class="menu-header">
+		    Keywords
+	</div>
+	<!--The Words-->
+
+
+<li>
+<div class="menu-titre"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="+-downloads-+" >downloads</a></div>
+</li>
+
+<li>
+<div class="menu-titre"><img src="squelettes-dist/puce.gif" width="8" height="11" alt="-" /><a href="+-ruby-+" >ruby</a></div>
+</li>
+
+</ul>
+</div> <!--menu-->
+
+
+<!-- End: Menu de navigation mots-cles -->
+
+
+
+
+
+	  			  
+		<!-- InstanceEndEditable --></td>
+
+        <td bgcolor="#FFFFFF">&nbsp;&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+
+
+</body>
+<!-- InstanceEnd --></html>
+

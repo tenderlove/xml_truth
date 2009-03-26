@@ -1,0 +1,822 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Welcome to RadRails, the Ruby on Rails authoring environment for Aptana Studio and Eclipse</title>
+    
+	<link rel="stylesheet" href="/themes/aptana/stylesheets/screen.css?1238100259" type="text/css" />
+  <link rel="stylesheet" href="/themes/aptana/stylesheets/navigation.css?1238100259" type="text/css" />
+
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/AptanaBlog" />
+<link rel="alternate" type="text/xml" title="RSS .92" href="http://feeds.feedburner.com/AptanaBlog" />
+<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://feeds.feedburner.com/AptanaBlog" />
+
+	
+	<!--[if lte IE 7]>
+    <link rel="stylesheet" href="/themes/aptana/stylesheets/ie.css?1238100259" type="text/css" />
+    <link rel="stylesheet" href="/themes/aptana/stylesheets/navigation_ie.css?1238100259" type="text/css" />
+    
+    <style type="text/css">
+      #header, #tabpane li a span, .right-sidebar-block h2, #blog_subscribe, #block-testimonial-0 p { 
+        behavior: url(/themes/aptana/stylesheets/iepngfix.htc) 
+      }
+    </style>
+  <![endif]-->
+
+	  <script src="/themes/aptana/js/prototype_1.6.0.3_mouseenter.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="/themes/aptana/js/control.modal.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="/themes/aptana/js/master.js" type="text/javascript" charset="utf-8"></script>
+	  <script src="/themes/aptana/js/iepngfix_tilebg.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+	
+				<a href="/" id="logo">
+				  <strong>Aptana : Born to Script</strong>
+				</a>
+				
+        <div id="navigation_wrapper">
+    <ul id="navigation" class="level1" style="z-index:101;">
+        <li class="first">
+            <a href="http://www.aptana.com/studio" style="font-weight: bold;">DEVELOP</a>
+            <ul class="submenu level2">
+                <li>
+                    <a href="http://www.aptana.com/studio" title="Aptana Studio">Aptana Studio</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/php" title="PHP">&nbsp;+ PHP</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/rails" title="RadRails">&nbsp;+ RadRails</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/python" title="Pydev">&nbsp;+ Pydev</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/jaxer" title="Jaxer">&nbsp;+ Jaxer</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/iphone" title="iPhone">&nbsp;+ iPhone</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/nokia" title="Nokia">&nbsp;+ Nokia</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/air" title="Adobe AIR">&nbsp;+ Adobe AIR</a>
+                </li>
+                <li>
+                    <a href="http://www.aptana.com/plugins" title="More Plugins">&nbsp;+ More Plugins</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="http://www.aptana.com/cloud" style="font-weight: bold;">HOSTING</a>
+        </li>
+        <li class="first second">
+            <a href="http://www.aptana.com/products" style="font-weight: bold;">MORE</a>
+			<ul class="submenu2 level2">
+				<li>
+					<a href="http://www.aptana.com/store">Store</a>
+				</li>
+				<li>
+					<a href="http://tv.aptana.com">Aptana TV</a>
+				</li>
+				<li>
+					<a href="http://www.aptana.com/about">Company</a>
+				</li>
+							</ul>
+        </li>
+        <li>
+            <a href="http://support.aptana.com/">support</a>
+        </li>
+        <li>
+            <a href="http://forums.aptana.com/">community</a>
+        </li>
+        <li class="last">
+            <a href="http://www.aptana.com/blog">blog</a>
+        </li>
+    </ul>
+</div>
+        
+			</div>
+			<div id="main">
+
+				<style type="text/css">
+				  #top { background: url(/themes/aptana/stylesheets/rails_top.jpg) top left no-repeat; }
+				  #top ul li { background: url(/themes/aptana/stylesheets/rails_bullet.png) 0 2px no-repeat; }
+				</style>
+			  <div id="top">
+			    <ul>
+						<li>Leading Ruby on Rails development environment</li>
+				  <li>Integrated shell console, rich code completion for Rails</li>
+				  <li>Integrated debugger support</li>
+				  <li>Ruby profiler available as Pro option</li>
+			    </ul>
+          
+			    <a id="download_link" href="javascript:alert('To install RadRails, first download Aptana Studio then... \n\nStudio 1.1 and prior users: \nAdd RadRails to Aptana Studio by following the Start Page instructions (Help > Aptana Studio Start Page...).  \n\nStudio 1.2 and later users: \nAdd RadRails to Aptana Studio by following the instructions at Help > My Aptana > Plugins');document.location='http://www.aptana.com/studio/download';">
+			      <span>Download now</span>
+			    </a>
+			  </div>
+			  
+			  <!--// SIDEBAR START //-->
+			  
+			  <div id="sidebar">
+					<div id="block-block-25" class="right-sidebar-block">
+  <div class="top_wrapper">
+				
+		<center><img src="/themes/aptana/images/cloudlogo.gif"></center>
+<p>
+Host your Ruby on Rails apps
+<ul>
+<li>Effortless vertical scaling</li>
+<li>Deploy in seconds</li>
+<li>Integration with Aptana Studio streamlines development &gt; staging &gt; production workflows</li>
+</ul>
+</p>
+<p>
+<a href="/cloud/"><b><span style="color:#c00">&gt; Get started for Free</span></b></a>
+</p>
+
+
+
+
+    <div class="bottom_wrapper"></div>
+  </div>
+</div><div id="block-block-11" class="right-sidebar-block">
+  <div class="top_wrapper">
+				  <h2>RadRails Resources</h2>
+				
+		<p>
+<ul class="resource_list">
+<li><a href="http://aptana.tv/#Ruby_on_Rails">Screencasts</a></li>
+<li><a href="http://aptana.com/docs/index.php/RadRails">Docs</a></li>
+<li><a href="http://forums.aptana.com/viewforum.php?f=20">Forums</a></li>
+<li><a href="http://support.aptana.com/">Support</a></li>
+</ul>
+</p>
+<p>
+<ul class="resource_list">
+<li><a href="http://www.aptana.com/dev/index.php/Aptana_Studio_Developer_Wiki#Accessing_the_Aptana_Source">Source</a></li>
+</ul>
+</p>
+    <div class="bottom_wrapper"></div>
+  </div>
+</div><div id="block-testimonial-0" class="right-sidebar-block">
+  <div class="top_wrapper">
+				  <h2>What people are saying</h2>
+				
+		
+			<p cite="">Since Aptana Studio is based on Eclipse, I can take advantage of the vast number of Eclipse plugins like Mylyn, the Bazaar plugin, GotoFile, QuantumDB, SQL Explorer, etc...</p>
+      <cite>
+        <strong>Scott Bronson</strong> <br />
+				Web Consultant<br />
+San Francisco
+      </cite>
+		
+    <div class="bottom_wrapper"></div>
+  </div>
+</div><div id="block-latest_entries-0" class="right-sidebar-block">
+  <div class="top_wrapper">
+				  <h2>Aptana Blog</h2>
+				
+		<a href="/blog/feed" id="blog_subscribe"><span style="display:none">Subscribe</span></a>
+		<div class="blogentry">
+      <p class="dtstart">Tue, 24 Mar, 2009</p>
+      <h3>Java support added to Aptana Cloud</h3>
+
+      <p>
+        <p>
+As of today, March 24, 2009, anyone using <a href="http://www.aptana.com/studio" target="_window">Aptana Studio</a> as a plugin to Eclipse can deploy Java apps to the Cloud via Aptana Cloud Connect.   <a href="http://www.aptana.com/cloud" target="_window">Aptana Cloud Connect</a> integrates Aptana Studio/Eclipse with your cloud hosted Java apps.  It lets you instantly put Java projects and apps into to the Cloud, then manage those apps though development, staging/testing and production cycles.  Right now, you can also <a href="http://www.aptana.com/cloud" target="_window">try the Java service for free</a>.
+        <a href="/blog/jlam/java_now_in_aptana_cloud">more</a>
+      </p>
+    </div>
+    
+		<div class="blogentry">
+      <p class="dtstart">Fri, 13 Mar, 2009</p>
+      <h3>Adobe AIR Development Update for Aptana Studio</h3>
+
+      <p>
+        <p>
+A new version of the Adobe AIR Development Plugin for Aptana Studio has been released.  Use this plugin to create HTML and Ajax apps for Adobe AIR.  There's lots of great new things, but the highlight is the JavaScript Debugger integration with the Adobe AIR runtime.  Now you can set breakpoints, step through code, watch variables, and simplify the whole debug process for the JavaScript apps you create for AIR using Aptana Studio.  
+        <a href="/blog/khakman/adobe_air_update_for_aptana_studio">more</a>
+      </p>
+    </div>
+    <p id="all_blog_posts">
+		<a href="/blog">All blog posts</a>
+  </p>
+    <div class="bottom_wrapper"></div>
+  </div>
+</div>			  </div>
+			  
+			  <!--// SIDEBAR END //-->
+			  
+			  <div id="content">
+          
+<div id="node-37" class="node">
+
+
+
+  
+  <div class="content">
+    			    <h1>End-to-End for Ruby on Rails</h1> 
+<p>Build, deploy and scale Ruby on Rails apps faster using Aptana RadRails and Aptana Cloud, both of which extend Aptana Studio's unprecedented ease for JavaScript, DOM, HTML, CSS, and popular Ajax libraries.</p>
+
+			    <div id="tabwrapper" class="clearfix">
+			      <ul id="tabpane">
+			        <li id="tab_overview">
+			          <a href="#content_overview"><span></span>Overview</a>
+			        </li>
+					<li id="tab_base">
+			          <a href="#content_learn"><span></span>Preview and Learn</a>
+			        </li>
+			        <li id="tab_ajax">
+			          <a href="#content_compare"><span></span>Features and Comparison</a>
+			        </li>
+			      </ul>
+<div style="clear:both;"></div>
+			      <div id="tabcontent">
+			        
+			        <!--// CONTAINER FOR THE OVERVIEW TAB //-->
+			        
+			        <div id="content_overview" class="content_container">
+			          <h2 class="content_intro">Aptana RadRails and Rails in Aptana Cloud</h2>
+			          
+						<div class="screencast clearfix">
+				         <div class="thumbnail">
+				              <a href="http://www.aptana.tv/movies/aptana_radrails_intro/aptana_radrails_intro.html" target="_window"><img src="/images/screencast/rails_intro.jpg" /></a>
+				              <br /><br />
+							  <a href="http://www.aptana.tv/movies/aptana_radrails_intro/aptana_radrails_intro.html" target="_window">Watch screencast</a>
+				            </div>
+				         <div class="description">
+				           
+				           	<h3>RadRails 1.0</h3>
+				           	<p>
+				           	RadRails is an open source IDE for Ruby and the Ruby on Rails framework featuring everything you need to get started
+							fast and get even faster with developing, testing, tuning, and deploying your Ruby and Rails apps.  
+							
+							<!-- Features:
+							<br /><b>+</b> Integrated Rails shell console</li>
+							<br /><b>+</b> Default-install and config of Ruby interpreter, database and debugger</li>
+							<br /><b>+</b> Code completion with type inferencing</li>
+							<br /><b>+</b> Code assist for Ruby, CSS, JS, and HTML inside RHTML files</li>
+							<br /><b>+</b> Type hierarchy view</li>
+							<br /><b>+</b> Go to declaration</li>
+							<br /><b>+</b> Call hierarchy</li>
+							<br /><b>+</b> Full implementation of RDT (Eclipse's Ruby Development Tools project)</li>
+							<br /><b>+</b> Integrated Profiler (Studio Pro only)
+							-->
+							</p>
+						</div>
+						</div>
+						
+
+						<div class="screencast clearfix">
+				         <div class="thumbnail">
+				              <a href="http://tv.aptana.com/videos/rails-on-the-cloud" target="_window"><img src="/images/screencast/rails_cloud.jpg" /></a>
+				              <br /><br />
+							  <a href="http://tv.aptana.com/videos/rails-on-the-cloud" target="_window">Watch screencast</a>
+				            </div>
+				         <div class="description">
+				           
+				           	<h3>Rails in Aptana Cloud <span style="color:#cc0000;">((new))</span></h3>
+				           	<p>
+				           	Deploy, scale, stage, manage and monitor your Ruby on Rails apps and projects right from RadRails and Aptana Studio.  
+							<br /> <br />
+							Features:
+							<br /><b>+</b> Create scalable, hosted Rails servers in seconds</li>
+							<br /><b>+</b> Scalable on-demand</li>
+							<br /><b>+</b> Supports workflows with Capistrano</li>
+							<br /><b>+</b> Stage and test apps before they go live</li>
+							<br /><b>+</b> Integrated source control, database tools</li>
+							<br /><b>+</b> Invite and manage other team members</li>
+							<br /><b>+</b> Manage and monitor with dashboards and alerts</li>
+							<br /><b>+</b> Full root, SSH and SFTP access</li>
+							
+							</p>
+						</div>
+						</div>
+
+						<div class="freetext clearfix">
+						
+						<div class="description">
+				           <h3>JavaScript Ajax, HTML, DOM, CSS</h3>
+				           <p>
+				           	Since RadRails extends Aptana Studio you also get Studio's state-of-the-art 
+							support for Ajax providing savvy 
+							JavaScript code completion and debugging, HTML/CSS/JavaScript 
+							code assist, and support for all the leading Ajax libraries.  
+						  </p>
+							
+			              <h3>Streamlined Development Process</h3>
+			              <p>
+							Aptana Studio makes simplifies the development process.   
+							The database perspective, variety of source control plug-ins, an integrated
+							FTP client (SFTP and FTPS available in Studio Pro), support for deploying to Aptana Cloud 
+							and single-click browser previews for Firefox, IE and Safari all make life much easier.   		                
+			              </p>
+						  
+			              <h3>Cloud Integration</h3>
+			              <p>
+							 Integration with the Cloud connects you to 
+							 scalable Ruby on Rails, PHP, MySQL, Java and Jaxer servers. 
+							 Support for Python coming soon. 			                
+			              </p>
+              
+
+			              <h3>Based on Eclipse</h3>
+			              <p>
+							 Aptana Studio is based on Eclipse.  You can run Aptana Studio standalone, or plug it into other Eclipse-based IDEs
+							 like Adobe Flex Builder, Zend Studio, or Eclipse itself.  You can also
+							 extend Studio with more Aptana plug-ins or other 3rd party plug-ins for Eclipse.
+			              </p>
+			            </div>
+			          </div>
+					  
+					  
+			     
+					  
+			          <!--// BOTTOM INFO CONTAINER WITH "DOWNLOAD NOW" LINK //-->
+			          
+			        </div>
+			        
+					
+					
+			        <!--// CONTAINER FOR THE LEARN TAB //-->
+			        
+			        <div id="content_learn" class="content_container">
+			        	
+						<h2 class="content_intro">Screencasts</h2>
+				          
+						  		<table width=100% style="border-top:none;">
+			
+									<tr>
+										<td style="border-bottom:none;">
+											<a href="http://www.aptana.tv/movies/aptana_radrails_intro/aptana_radrails_intro.html" target="_window">
+											<img src="/images/screencast/rails_intro.jpg"><br />
+											Intro to RadRails</a><br />
+										</td>
+										<td style="border-bottom:none;">
+											<a href="http://www.aptana.tv/movies/aptana_radrails_debugging/aptana_radrails_debugging.html" target="_window">
+											<img src="/images/screencast/rails_debug.jpg"><br />
+											Rails Debugging</a><br />
+										</td>
+										<td style="border-bottom:none;">
+											<a href="http://tv.aptana.com/videos/rails-on-the-cloud" target="_window">
+											<img src="/images/screencast/rails_cloud.jpg"><br />
+											Using Rails in Aptana Cloud</a><br />
+										</td>
+									</tr>
+									<tr><td style="border-bottom:none;"> <br /> </td></tr>
+									<tr>
+						
+										<td style="border-bottom:none;">
+											<a href="http://www.aptana.tv/movies/aptana_radrails_rails_shell/aptana_radrails_rails_shell.html" target="_window">
+											<img src="http://www.aptana.com/images/screencast/rails_shell.jpg"><br />
+											Rails Shell</a><br />
+										</td>
+										<td style="border-bottom:none;">
+											<a href="http://www.aptana.tv/movies/aptana_radrails_type_hierarchy/aptana_radrails_type_hierarchy.html" target="_window">
+											<img src="/images/screencast/ruby_hierarchy.jpg"><br />
+											Ruby Type Hierarchy</a> 
+										</td>
+									</tr>
+									
+						
+									
+								</table>
+						  
+					</div>        
+			        
+					<!--// CONTAINER FOR THE COMPARE TAB //-->
+			        
+			        <div id="content_compare" class="content_container">
+			          <h2 class="content_intro">How does RadRails stack up?</h2>
+				          <p>
+				       			Aptana RadRails is the most feature-complete free, open source Ruby on Rails IDE for Eclipse.
+				          </p>
+<style>
+
+.yes {
+	text-align:center;
+}
+
+.no {
+	text-align:center;
+}
+
+#comparison .feature_header {
+	font-weight: bold;
+	font-size: 120%;
+	border-bottom: 1px solid #666666;
+	padding-top:20px;
+}
+
+#comparison td {
+    padding:5px
+}
+
+#comparison tr.even, #comparison tr.odd, #comparison tbody th {
+border: none;
+}
+
+#comparison tbody th {
+border: none;
+color:#333333;
+font-weight:normal;
+}
+
+</style>
+<a name="compare"></a>
+<table cellpadding="5" cellspacing="0" style="width:600px;" id="comparison" style="border-top:none;">
+
+	<tr>
+		<th class="feature_header" style="text-align:left;border-bottom: 1px solid #333333" width="40%">General</th>
+		<th  align="left" class="feature_header" style="text-align:center;border-bottom: 1px solid #333333" bgcolor="#ffffcc" width="20%"><b>RadRails</b></th>
+		<th  align="left" class="feature_header" style="text-align:center;border-bottom: 1px solid #333333" width="20%">NetBeans</th>
+		<th  align="left" class="feature_header" style="text-align:center;border-bottom: 1px solid #333333" width="20%">3rdRail</th>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Price</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc">Free</td>
+		<td valign="top" width="20%">Free</td>
+		<td valign="top" width="20%">$399</td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">License Type</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc">Open Source</td>
+		<td valign="top" width="20%">Open Source</td>
+		<td valign="top" width="20%">Commercial</td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Available Standalone or as Eclipse Plugin</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>	
+	<tr><td colspan="4" class="feature_header">Interpreter Support/Bundling</td></tr>
+	<tr>
+		<th valign="top" width="40%">Bundled JRuby Interpreter</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>	
+	<tr>
+		<th valign="top" width="40%">Interpreter Support</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> Ruby, JRuby, Rubinius</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> Ruby, JRuby</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> Ruby, JRuby</td>
+	</tr>	
+	<tr><td colspan="4" class="feature_header">Scriptability/Extensibility</td></tr>
+	<tr>
+		<th valign="top" width="40%">Scriptable via Ruby</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>	
+	<tr><td colspan="4" class="feature_header">Debugging / Profiling</td></tr>
+	<tr>
+		<th valign="top" width="40%">Debugger</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> classic and ruby-debug for MRI; ruby-debug bundled with JRuby</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> classic and ruby-debug for MRI; ruby-debug bundled with JRuby</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">JavaScript Debugging</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Profiler</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> (Pro)</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr><td colspan="4" class="feature_header">Editors</td></tr>
+	<tr>
+		<th valign="top" width="40%">HTML Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>	
+	<tr>
+		<th valign="top" width="40%">CSS Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">JavaScript Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">JSON Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> (Pro)</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">SQL Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">YML Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">RHTML/ERb Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>	
+	<tr>
+		<th valign="top" width="40%">XML Editor</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr><td colspan="4" class="feature_header">Ruby Editing</td></tr>
+	<tr>
+		<th valign="top" width="40%">Code Completion</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Type Inferencing</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Ruby-specific search engine (Find usages)</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Code analysis (warnings/errors/hints)</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Type Hierarchy View</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Call Hierarchy View</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Mylyn Integration</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Regular Expression Tester</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Quick Outline</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Spell Checking Support</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Smart Indent</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Mark Occurrences</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr><td colspan="4" class="feature_header">Refactoring</td></tr>
+	<tr>
+		<th valign="top" width="40%">Rename</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /> (1)</td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Convert Local Variable to field</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Encapsulate Field</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="40%">Extract Method</th>
+		<td valign="top" width="20%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="20%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Extract Constant</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Inline Class</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Inline Local Variable</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Inline Method</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Merge Class Parts (internal to file and external)</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Move Field</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Move Method</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Push Down Method</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Pull Up Method</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Split Local Variable</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr><td colspan="4" class="feature_header">Testing</td></tr>
+	
+	<tr>
+		<th valign="top" width="25%">Test::Unit view</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">AutoTest</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">RSpec support</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+	</tr>
+	<tr><td colspan="4" class="feature_header">Rails Specific Functionality</td></tr>
+	<tr>
+		<th valign="top" width="25%">Integrated rails-specific "shell"</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Log Tail View</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+	<tr>
+		<th valign="top" width="25%">Embedded browser</th>
+		<td valign="top" width="25%" bgcolor="#ffffcc"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_cancel.png" alt="no" /></td>
+		<td valign="top" width="25%"><img src="http://www.aptana.com/images/products/button_ok.png" alt="yes" /></td>
+	</tr>
+</table>
+
+<p>Wow, that's lots of features. Did we get it right? Send your feeback to info(at)aptana.com.</p>
+
+<p>Notes: (Pro) Feature available in the Pro edition of Aptana Studio. (1) Handling of instance variables in RHTML mapping to controller instance variables is forthcoming.</p>
+						
+		  
+
+					</div>        
+			        
+
+		   </div>
+	</div>
+
+					  
+					  
+	<!--// STUFF FOR THE SCREENCAST LIGHTBOX //-->
+
+    <link rel="stylesheet" type="text/css" href="/lib/lightview/css/lightview.css" />
+    <script type='text/javascript' src='/lib/lightview/protoculous-effects-packer.js'></script>
+    <script type='text/javascript' src='/lib/lightview/js/lightview.js'></script>
+    <script>
+        function showVideo()
+		{
+			var base = "http://s3.amazonaws.com/com.aptana.screencasts/";
+			var movie = "Studio12Features";
+			var title = "Aptana Studio 1.2 Introductory Screencast | <a href='http://aptana.tv'>See more screencasts at aptana.tv</a> ";
+            var width = '906';
+            var height = '660';
+
+             Lightview.show({
+                href: '/lib/lightview/flvPlayer.swf',
+				'title': title,
+                options: {
+					'width': parseInt(width),
+					'height': parseInt(height),
+					flashvars: "flvToPlay=" + base + movie + ".flv" + "&smoothVideo=true",
+					fullscreen: false
+                }
+			});
+        }
+    </script>			  
+
+
+
+
+	<script>
+		var autoplayvideo = document.location.search;
+		
+		if (autoplayvideo == "?video") {
+			setTimeout('showVideo()',1000);
+		}
+		
+	</script>
+  </div>
+	
+		<!-- 37 -->
+	
+</div>			  </div>
+			  <br class="clear" />
+			  <br class="clear" />
+			</div>
+			<div id="footer">
+			  <p>Copyright 2005-2008 Aptana, Inc. | <a href="/about">Contact Us</a> | <a href="/privacy_policy">Privacy</a></p>
+				<a href="http://aptana.com">
+				  <img src="/images/built_with_aptana.gif?lat=37.772411&lon=-122.400956" alt="built with aptana" title="Aptana" border="0" id="built_with_aptana" />
+				</a>
+			</div>
+    </div>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			var pageTracker = _gat._getTracker("UA-2210703-1");
+			pageTracker._initData();
+			pageTracker._trackPageview();
+		</script>
+  </body>
+</html>

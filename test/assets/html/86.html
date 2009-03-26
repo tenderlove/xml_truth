@@ -1,0 +1,542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Ruby James   &raquo; home</title>
+
+<meta name="generator" content="WordPress 2.3.2" /> <!-- leave this for stats -->
+<meta name="description" content="Ruby James is an up and coming Blues Rock singer with a sultry voice and music and lyrics that explore love,loss and the lure of the road.Her new album is &#8216;Desert Rose&#8217;" />
+<link rel="stylesheet" href="http://rubyjames.com/wp-content/themes/ruby/style.css" type="text/css" media="screen" />
+<link rel="alternate" type="application/rss+xml" title="Ruby James RSS Feed" href="http://rubyjames.com/feed/" />
+<link rel="pingback" href="http://rubyjames.com/xmlrpc.php" />
+
+
+
+ <script src="http://rubyjames.com/wp-content/themes/ruby/javascript/mootools.js" type="text/javascript" charset="utf-8"></script>  
+    <script src="http://rubyjames.com/wp-content/themes/ruby/javascript/menu.js" type="text/javascript" charset="utf-8"></script>   
+    <script src="http://rubyjames.com/wp-content/themes/ruby/javascript/main.js" type="text/javascript" charset="utf-8"></script>
+    
+    
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function submitform()  {
+   var sErrStr, sFieldName;
+   sErrStr = "";
+   sFieldName = "";
+   var email = trim(document.frm.email.value);
+   if (email == "")  {
+       sErrStr += "Please Enter Email\n";
+       if (sFieldName == "")
+           sFieldName = "email";
+   }
+   else if (!emailCheck(document.frm.email.value))  {
+       sErrStr += "Enter Valid E-mail Address\n"
+       if (sFieldName == "")
+           sFieldName = "email"
+   }
+
+
+if(document.frm.businessPhone1 && document.frm.businessPhone2 &&
+document.frm.businessPhone3)
+{
+   if(trim(document.frm.businessPhone1.value) != "" ||
+trim(document.frm.businessPhone2.value) != "" ||
+trim(document.frm.businessPhone3.value) != "")
+   {
+
+if(!phoneValidation(document.frm.businessPhone1,document.frm.businessPhone2,
+document.frm.businessPhone3,'Business Phone Number'))
+           return false;
+   }
+}
+if(document.frm.homePhone1 && document.frm.homePhone2 &&
+document.frm.homePhone3)
+{
+   if(trim(document.frm.homePhone1.value) != "" ||
+trim(document.frm.homePhone2.value) != "" ||
+trim(document.frm.homePhone3.value) != "")
+   {
+
+if(!phoneValidation(document.frm.homePhone1,document.frm.homePhone2,document
+.frm.homePhone3,'Home Phone Number'))
+           return false;
+   }
+}
+if(document.frm.faxNumber1 && document.frm.faxNumber2 &&
+document.frm.faxNumber3)
+{
+   if(trim(document.frm.faxNumber1.value) != "" ||
+trim(document.frm.faxNumber2.value) != "" ||
+trim(document.frm.faxNumber3.value) != "")
+   {
+
+if(!phoneValidation(document.frm.faxNumber1,document.frm.faxNumber2,document
+.frm.faxNumber3,'Fax Phone Number'))
+           return false;
+   }
+}
+if(document.frm.cellPhoneNumber1 && document.frm.cellPhoneNumber2 &&
+document.frm.cellPhoneNumber3)
+{
+   if(document.frm.cellPhoneNumber1.value != "" ||
+document.frm.cellPhoneNumber2.value != "" ||
+document.frm.cellPhoneNumber3.value != "")
+   {
+
+if(!phoneValidation(document.frm.cellPhoneNumber1,document.frm.cellPhoneNumb
+er2,document.frm.cellPhoneNumber3,'Cell Phone Number'))
+           return false;
+
+
+   }
+
+   if(document.frm.CellPhoneCarrier)
+   {
+
+if((document.frm.CellPhoneCarrier.options[document.frm.CellPhoneCarrier.sele
+ctedIndex].value != "") &&  (document.frm.cellPhoneNumber1.value == "" ||
+document.frm.cellPhoneNumber2.value == "" ||
+document.frm.cellPhoneNumber3.value == ""))
+       {
+
+if(!phoneValidation(document.frm.cellPhoneNumber1,document.frm.cellPhoneNumb
+er2,document.frm.cellPhoneNumber3,'Cell Phone Number'))
+           return false;
+       }
+   }
+
+}
+if(document.frm.instantMessenger)
+   {
+       if(document.frm.instantMessenger.type != "hidden")
+       {
+           if(trim(document.frm.instantMessenger.value) != "")
+           {
+               if
+(document.frm.InstantMessengerCarrier.options[document.frm.InstantMessengerC
+arrier.selectedIndex].value == "")  {
+                       sErrStr += "Please Select Instant Message
+Carrier\n";
+                       if (sFieldName == "")
+                           sFieldName = "InstantMessengerCarrier";
+                   }
+           }
+
+if(document.frm.InstantMessengerCarrier.options[document.frm.InstantMessenge
+rCarrier.selectedIndex].value != "" &&
+trim(document.frm.instantMessenger.value) == "")
+           {
+                   sErrStr += "Please Select Instant Messenger\n";
+                   if (sFieldName == "")
+                       sFieldName = "instantMessenger";
+           }
+       }
+   }
+   if (sErrStr != "")
+   {
+       alert("Following are the required fields:- \n"+sErrStr);
+       for (i=0;i<document.frm.elements.length;i++)
+       {
+           if (document.frm.elements[i].name == sFieldName)
+               document.frm.elements[i].focus();
+       }
+       return false;
+   }
+       return true;
+}
+function openSendWindow (num1, num2, num3, carrier)
+{
+   if(document.frm.formID)
+       formID=document.frm.formID.value;
+
+   if(document.frm.cellPhoneNumber1 && document.frm.cellPhoneNumber2 &&
+document.frm.cellPhoneNumber3)
+   {
+
+if(!phoneValidation(document.frm.cellPhoneNumber1,document.frm.cellPhoneNumb
+er2,document.frm.cellPhoneNumber3,'Cell Phone Number'))
+       return false;
+
+        if(document.frm.CellPhoneCarrier)
+        {
+           var
+cellCarrier=document.frm.CellPhoneCarrier.options[document.frm.CellPhoneCarr
+ier.selectedIndex].value
+           if (cellCarrier != "")
+           {
+               var url =
+"http://www.stun1.com/stun/manageforms/sendTestSMSMessage.php?phone="+num1+"
+"+num2+""+num3+"&carrier="+cellCarrier+"&formID="+formID;
+               var url1 =
+"http://www.stun1.com/stun/manageforms/sendTestSMSMessage1.php?phone="+num1+
+""+num2+""+num3+"&carrier="+cellCarrier+"&formID="+formID;
+               //document.frames["I1"].location.replace(url);
+               document.getElementById("myDiv").innerHTML="<img width=1
+height=1 border=0 src='"+url+"'>";
+
+MM_openBrWindow(url1,"sendWin","scrollbars=no,resize=no,width=400,height=200
+");
+           }
+           else    {
+               alert("Please select carrier for Cell Phone.");
+               //return false;
+           }
+       }
+   }
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+ window.open(theURL,winName,features);
+}
+function emailCheck(emailStr)
+{
+   var emailPat=/^(.+)@(.+)$/
+   var specialChars="\\(\\)<>@,;:\\\\\\\"\\.\\[\\]"
+   var validChars="\[^\\s" + specialChars + "\]"
+   var quotedUser="(\"[^\"]*\")"
+   var ipDomainPat=/^\[(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\]$/
+   var atom=validChars + '+'
+   var word="(" + atom + "|" + quotedUser + ")"
+   var userPat=new RegExp("^" + word + "(\\." + word + ")*$")
+   var domainPat=new RegExp("^" + atom + "(\\." + atom +")*$")
+
+   var matchArray=emailStr.match(emailPat)
+   if (matchArray==null) {
+       return false
+   }
+   var user=matchArray[1]
+   var domain=matchArray[2]
+   if (user.match(userPat)==null) {
+       return false
+   }
+   var IPArray=domain.match(ipDomainPat)
+   if (IPArray!=null) {
+         for (var i=1;i<=4;i++) {
+           if (IPArray[i]>255) {
+               return false
+           }
+       }
+       return true
+   }
+   var domainArray=domain.match(domainPat)
+   if (domainArray==null) {
+       return false
+   }
+   var atomPat=new RegExp(atom,"g")
+   var domArr=domain.match(atomPat)
+   var len=domArr.length
+   if (domArr[domArr.length-1].length<2 ||
+       domArr[domArr.length-1].length>4) {
+       return false
+   }
+   if (len<2) {
+      return false
+   }
+   return true;
+}
+
+function ltrim(s)
+{
+   return s.replace(/^\s*/,"")
+}
+
+function rtrim(s)
+{
+   return s.replace(/\s*$/,"");
+}
+
+function trim(s)
+{
+   return rtrim(ltrim(s));
+}
+function isDigit(c)
+{   return ((c >= "0") && (c <= "9"))
+}
+function isEmpty(s)
+{
+   s=trim(s);
+   return ((s == null) || (s.length == 0))
+}
+
+function warnEmpty (theField, s)
+{
+   theField.focus();
+   alert("Please enter " +s);
+   return false;
+}
+
+
+function checkEmpty (theField, s)
+{
+  if(isEmpty(theField.value)) return warnEmpty (theField, s);
+  else return true;
+}
+
+
+function isWhitespace (s)
+
+{   var i;
+
+   var whitespace = " \t\n\r";
+   // Is s empty?
+   if (isEmpty(s)) return true;
+
+   // Search through string's characters one by one
+   // until we find a non-whitespace character.
+   // When we do, return false; if we don't, return true.
+
+   for (i = 0; i < s.length; i++)
+   {
+       // Check that current character isn't whitespace.
+       var c = s.charAt(i);
+
+       if (whitespace.indexOf(c) == -1) return false;
+   }
+
+   // All characters are whitespace.
+   return true;
+}
+function isInteger (s)
+
+{   var i;
+
+   if (isEmpty(s))
+      if (isInteger.arguments.length == 1) return defaultEmptyOK;
+      else return (isInteger.arguments[1] == true);
+
+   // Search through string's characters one by one
+   // until we find a non-numeric character.
+   // When we do, return false; if we don't, return true.
+
+   for (i = 0; i < s.length; i++)
+   {
+       // Check that current character is number.
+       var c = s.charAt(i);
+
+       if (!isDigit(c)) return false;
+   }
+
+   // All characters are numbers.
+   return true;
+}
+function phoneValidation(area,firstdigits,lastdigits,fromPhone)
+{
+
+   if (area.value == null || area.value.length == 0)
+   {
+       alert("Please fill in your "+ fromPhone +" area code.");
+       area.focus()
+       return false;
+   }
+   else
+   {
+       if (area.value.length    < 3)
+       {
+           alert("Your  "+ fromPhone +" area code must be 3 digits.");
+           area.focus();
+           return false;
+       }
+       var PhoneArea = area.value;
+       var FirstPhone = PhoneArea.substring(0, 1);
+       if ((FirstPhone == 0) || (FirstPhone == 1))
+       {
+           alert("International area codes beginning with " + FirstPhone +
+" are not allowed.");
+           area.focus();
+           return false;
+       }
+       if (isInteger(area.value) == false){
+           alert("No letters allowed in your "+ fromPhone +".");
+           area.focus();
+           return false;
+       }
+   }
+   if (firstdigits.value == null || firstdigits.value.length == 0)
+   {
+       alert("Please fill in your "+ fromPhone +" prefix.");
+       firstdigits.focus()
+       return false;
+   }
+   else
+   {
+       if (firstdigits.value.length    < 3)
+       {
+           alert("Your "+ fromPhone +" prefix must be 3 digits.");
+           firstdigits.focus();
+           return false;
+       }
+
+       if (isInteger(firstdigits.value) == false){
+           alert("No letters allowed in your "+ fromPhone +".");
+           firstdigits.focus();
+           return false;
+       }
+   }
+
+   if (lastdigits.value == null || lastdigits.value.length == 0)
+   {
+       alert("Please fill in your "+ fromPhone +" suffix.");
+       lastdigits.focus()
+       return false;
+   }
+
+   else
+   {
+       if (lastdigits.value.length    < 4)
+       {
+           alert("Your "+ fromPhone +" suffix must be 4 digits.");
+           lastdigits.focus();
+           return false;
+       }
+
+       if (isInteger(lastdigits.value) == false){
+           alert("No letters allowed in your "+ fromPhone +".");
+           lastdigits.focus();
+           return false;
+       }
+   }
+
+   if (area.value == 111 || area.value == 222 || area.value == 333 ||
+area.value == 444 || area.value == 555 || area.value == 666 || area.value ==
+777 || area.value == 888 || area.value == 999)
+   {
+       alert("Your "+ fromPhone +" area code is not valid.");
+       area.focus()
+       return false;
+   }
+   if (firstdigits.value == 000 && lastdigits.value == 0000 ||
+firstdigits.value == 111 && lastdigits.value == 1111 || firstdigits.value ==
+222 && lastdigits.value == 2222 || firstdigits.value == 333 &&
+lastdigits.value == 3333 || firstdigits.value == 444 && lastdigits.value ==
+4444 || firstdigits.value == 555 && lastdigits.value == 5555 ||
+firstdigits.value == 666 && lastdigits.value == 6666 || firstdigits.value ==
+777 && lastdigits.value == 7777 || firstdigits.value == 888 &&
+lastdigits.value == 8888 || firstdigits.value == 999 && lastdigits.value ==
+9999)
+   {
+       alert("Your "+ fromPhone +" number is not valid.");
+       firstdigits.focus()
+       return false;
+   }
+   if (lastdigits.value == 0000)
+   {
+       alert("Your "+ fromPhone +" suffix is not valid.");
+       lastdigits.focus()
+       return false;
+   }
+   return true;
+}
+//-->
+</SCRIPT>
+
+
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rubyjames.com/xmlrpc.php?rsd" />
+ <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://rubyjames.com/wp-includes/wlwmanifest.xml" /> 
+</head>
+
+
+
+
+
+<body class="standard">
+
+
+<div id="container">
+  <div id="header">
+  
+  <!-- end #header --></div>
+  
+ <div id="fancymenu">
+<ul>
+
+<li id="home" class="current"><a href="http://rubyjames.com/">Home</a></li>
+
+<li id="news"><a href="http://rubyjames.com/news/">News</a></li>
+
+<li id="tour"><a href="http://rubyjames.com/tour/">tour</a></li>
+
+<li id="music"><a href="http://rubyjames.com/music/">music</a></li>
+
+<li id="video"><a href="http://rubyjames.com/video/">video</a></li>
+
+<li id="shop"><a href="http://rubyjames.com/shop/">shop</a></li>
+
+<li id="press"><a href="http://rubyjames.com/press/">press</a></li>
+
+<li id="bio"><a href="http://rubyjames.com/bio/">bio</a></li>
+
+
+<li id="contact"><a href="http://rubyjames.com/contact/">contact</a></li>
+
+</ul>
+
+
+
+</div>
+
+
+  
+  
+
+  
+  	  <div id="sidebar">
+    <a href="http://rubyjames.com/shop/" id="sideShop" class="sidebarLinkBox" title="Ruby James Shop"><span class="hide">Shop</span></a>
+     <a href="http://myspace.com/rubyjames" id="sideMyspace" class="sidebarLinkBox" title="Hang Out at Ruby's Myspace Page"> <span class="hide">Myspace</span></a>
+  <!--  <a href="" id="sideOrder" class="sidebarLinkBox"><span class="hide">Order</span></a> -->
+   <a href="http://rubyjames.com/join/" id="sideJoin" class="sidebarLinkBox" title="Join the Ruby James Email Newsletter"> <span class="hide">Join</span></a>
+  
+  <!-- end #sidebar1 --></div>
+
+  
+  
+  <div id="mainContent">
+    <div id="flashContent">
+    
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" width="645" height="400" id="test" align="middle">
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="allowFullScreen" value="false" />
+	<param name="movie" value="http://rubyjames.com/slideshow.swf" /><param name="quality" value="high" /><param name="bgcolor" value="#000000" />	<embed src="http://rubyjames.com/slideshow.swf" quality="high" bgcolor="#000000" width="645" height="400" name="test" align="middle" allowScriptAccess="sameDomain" allowFullScreen="false" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+	</object>
+   
+  
+    
+    <!-- end flashContent --></div>
+	<!-- end #mainContent --></div>
+	<!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats --><br class="clearfloat" />
+    <div id="bottomContent">
+    
+    <div id="latest">
+    
+    
+   
+
+  <div class="post" id="post-36">
+   <h2>Studio sessions in Austin with Charlie and Will Sexton</h2>
+
+        <p>Ruby is starting off 2009 in Austin, TX finishing her sophomore album with Austin legends Will and Charlie Sexton.</p>
+  
+
+  </div>
+
+    
+    </div>
+    
+    </div> <!-- end bottom content -->
+  
+<div id="footer">
+
+
+    <p>&nbsp;</p>
+   <hr />
+   <!--
+   
+   <img src="http://rubyjames.com/images/utica.gif" style="margin:0 0 0 8px;"/><br/><br/><br/> -->
+  <img src="http://rubyjames.com/images/eblast/hercules_logo_banner_small.jpg" style="margin:0 0 0 8px;"/>
+  <p>&nbsp;</p>
+   <p>&nbsp;</p>
+  <!-- end #footer --></div>
+<!-- end #container --></div>
+
+		</body>
+</html>

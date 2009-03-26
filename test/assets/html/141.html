@@ -1,0 +1,780 @@
+<HTML>
+<HEAD>
+<meta http-equiv=Content-Type content="text/html;  charset=ISO-8859-1">
+
+<TITLE>Ruby's Headquarters</TITLE>
+
+<script language="javascript">
+//	var hitboxsections = "features,tecspecs,buy,demos,news".split(","); //hitbox.
+//	getURL("javascript:hitBox('n', '" + hitboxsections[i] + "')"); //hitbox.
+
+	function openLink(lnk) {
+		window.open(lnk, "_blank");
+	}
+
+	function hitBox(name, value) {
+		_hbSet(name, value);
+		_hbSend();
+	}
+</script>
+
+<style>
+BODY
+{
+	margin-top:15;
+	margin-bottom:0;
+	margin-right:0;
+	top-margin:15;
+	left-margin:0;
+	color: #333333;
+	font-family: helvetica, arial, verdana;
+	font-size: 100%;  font-size-adjust: 0.50;
+	background-color: #000000;
+	line-height:130%;
+	scrollbar-face-color: #EDEDED; 
+	scrollbar-shadow-color: #DDDDDD; 
+	scrollbar-highlight-color: #DDDDDD; 
+	scrollbar-3dlight-color: #DDDDDD; 
+	scrollbar-darkshadow-color: #CCCCCC; 
+	scrollbar-track-color: #E5E5E5; 
+	scrollbar-arrow-color: #666666; 	
+} 
+
+BODY.print
+{
+	margin-top:0;
+	margin-bottom:0;
+	margin-right:0;
+	top-margin:0;
+	left-margin:0;
+	color: #333333;
+	font-family: helvetica, arial, verdana;
+	font-size: 100%;  font-size-adjust: 0.50;
+	background-color: #FFFFFF;
+	line-height:130%;
+} 
+
+TD
+{
+	font-family: helvetica, arial, verdana;
+	font-size: 75%;  font-size-adjust: 0.50;	
+	line-height:130%;
+} 
+
+BODY.popup
+{
+	margin-top:0;
+	margin-bottom:0;
+	margin-right:0;
+	color: #333333;
+	font-family: helvetica, arial, verdana;
+	font-size: 75%;  font-size-adjust: 0.50;	
+	background-color: #FFFFFF;
+	line-height:130%;
+}
+
+/* Form definitions ------------------------------------------*/
+
+SELECT.menu
+{
+	FONT-SIZE: xx-small;
+	font-family: helvetica, arial, verdana; 
+}
+
+INPUT.menu
+{
+	FONT-SIZE: xx-small;
+	font-family: helvetica, arial, verdana; 
+}
+
+.lower
+{
+    TEXT-TRANSFORM: lowercase
+}
+
+/* HTML re-define ------------------------------------------*/
+
+.mini
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+
+B, STRONG
+{
+	font-family: helvetica, arial, verdana;
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+UL
+{
+	list-style-type: square;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	background-color: transparent;
+	line-height:130%;
+	margin-left: 20px;
+}
+
+LI
+{
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	background-color: transparent;
+	line-height:130%;
+}
+
+.arrow
+{
+    LIST-STYLE: disc url(http://mirror.ati.com/images/arrow_gray.jpg) outside
+}
+
+.header
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #333333;
+	FONT-SIZE: small;
+	font-weight: 800;
+	line-height:130%;
+}
+
+H1, H2, H3
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #333333;
+	FONT-SIZE: small;
+	line-height:130%;
+}
+
+H4
+{
+	font-family: helvetica, arial, verdana;
+	FONT-SIZE: x-small;
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+TD.content
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #333333;
+	line-height:130%;
+}	
+
+/* Awards pages* ------------------------------------------*/
+.awards
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	font-weight: 800;
+	background-color: transparent
+}
+	
+/* Table definitions ------------------------------------------*/
+
+TABLE.long
+{
+	HEIGHT: 100%;
+}
+
+TD.long
+{
+	HEIGHT: 100%;
+}
+
+TR.main-dark, .nopad
+{
+	background-color: #666666;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+}
+
+TR.sub-light, .pad2
+{
+	background-color: #ECECEC;
+	text-align: left;
+}
+
+TD.nav-secondary
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #333333;
+	FONT-SIZE: xx-small;
+}
+
+TH
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #333333;
+	background-color: #ECECEC;
+	line-height:130%;
+}
+
+/* support specific "highlight" area definitions ------------------------------------------*/
+
+.readthis
+{
+	background-color: #ECECEC;
+	line-height:130%;
+}
+
+.readthis table, table.readthis
+{
+	background-color: transparent;
+	line-height:130%;
+}
+
+td.readthis, input.readthis
+{
+	background-color: #ECECEC;
+	line-height:130%;
+}
+
+.readthis td
+{
+	background-color: #ECECEC;
+	line-height:130%;
+}
+
+/* header link definitions ------------------------------------------*/
+
+A.header:active
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #990000;
+	FONT-SIZE: small;
+	font-weight: 800;
+	TEXT-DECORATION: none;
+	background-color: transparent
+}
+
+A.header:visited
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #990000;
+	FONT-SIZE: small;
+	font-weight: 800;
+	TEXT-DECORATION: none;
+	background-color: transparent
+}
+
+A.header:link
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #990000;
+	FONT-SIZE: small;
+	font-weight: 800;
+	TEXT-DECORATION: none;
+	background-color: transparent
+}
+
+A.header:hover
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #990000;
+	FONT-SIZE: small;
+	font-weight: 800;
+	TEXT-DECORATION: underline;
+	background-color: transparent
+}
+
+/* secondary nav link definitions ------------------------------------------*/
+
+A.nav-secondary:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.nav-secondary:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.nav-secondary:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.nav-secondary:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+/* secondary nav link definitions ------------------------------------------*/
+.mini-header
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #666666;
+	font-weight: 800;
+	line-height:130%;
+}
+
+A.home:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.home:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.home:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.home:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+/* breadcrumbs definitions ------------------------------------------*/
+
+A.breadcrumbs:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.breadcrumbs:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.breadcrumbs:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.breadcrumbs:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+.breadcrumbs
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+/* News item definitions ------------------------------------------*/
+
+A.news:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.news:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.news:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.news:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	
+	background-color: transparent;
+	line-height:130%;
+}
+
+/* red bold link definitions ------------------------------------------*/
+
+A.red:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.red:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.red:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+A.red:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	
+	font-weight: 800;
+	background-color: transparent;
+	line-height:130%;
+}
+
+/* legal line link definitions ------------------------------------------*/
+
+.legal2
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #999999;
+	background-color: transparent;
+}
+
+.legal
+{
+	font-family: helvetica, arial, verdana;    
+	COLOR: #999999;
+	FONT-SIZE: xx-small;
+	background-color: transparent;
+}
+
+A.legal:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #999999;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.legal:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #999999;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.legal:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #999999;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+A.legal:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	font-size: xx-small;
+	background-color: transparent
+}
+
+/* quick links definitions ------------------------------------------*/
+
+A.ql:active
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.ql:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #333333;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.ql:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+
+	COLOR: #333333;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.ql:hover
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	line-height:130%;
+	background-color: transparent;
+}
+
+/* table-header definitions ------------------------------------------*/
+
+A.table-header:active
+{
+	TEXT-DECORATION: underline;
+	font-family: helvetica, arial, verdana;
+	COLOR: #FFFFFF;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.table-header:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #FFFFFF;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.table-header:link
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #FFFFFF;
+	line-height:130%;
+	background-color: transparent;
+}
+
+A.table-header:hover
+{
+	TEXT-DECORATION: underline;
+	font-family: helvetica, arial, verdana;
+	COLOR: #FFFFFF;
+	line-height:130%;
+	background-color: transparent;
+}
+
+/* generic link definitions ------------------------------------------*/
+
+A:active
+{
+	TEXT-DECORATION: none;
+	COLOR: #990000;
+	background-color: transparent;
+	font-family: helvetica, arial, verdana
+}
+
+A:link
+{
+	TEXT-DECORATION: none;
+	COLOR: #990000;
+	background-color: transparent;
+	font-family: helvetica, arial, verdana;
+}
+
+A:visited
+{
+	TEXT-DECORATION: none;
+	font-family: helvetica, arial, verdana;
+	COLOR: #990000;
+	background-color: transparent;
+}
+
+A:hover
+{
+	TEXT-DECORATION: underline;
+	COLOR: #990000;
+	background-color: transparent;
+	font-family: helvetica, arial, verdana;
+}
+
+</style>
+<script language="javascript">
+//	var hitboxsections = "features,tecspecs,buy,demos,news".split(","); //hitbox.
+//	getURL("javascript:hitBox('n', '" + hitboxsections[i] + "')"); //hitbox.
+
+	function openLink(lnk) {
+		window.open(lnk, "_blank");
+	}
+
+	function hitBox(name, value) {
+		_hbSet(name, value);
+		_hbSend();
+	}
+</script>
+
+</HEAD>
+<BODY  bgcolor="#999999">
+<!-- URL's used in the movie-->
+<!-- text used in the movie-->
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="middle">
+<table  border="0" align="center"cellspacing="0" cellpadding="0">
+  <tr>
+    <td><script type="text/javascript" src="/includes/flashobject.js"></script>
+		<span id="flashcontent"></span>
+<script type="text/javascript">
+   var fo = new FlashObject("rubySite.swf", "rubysite", "1006", "614", "6", "#000000");
+   fo.addParam("wmode", "opaque");
+   fo.addParam("quality", "high");
+   fo.addParam("allowScriptAccess", "sameDomain");
+   fo.write("flashcontent");
+</script></td>
+  </tr>
+
+</table>
+</td>
+  </tr>
+</table>
+<!--WEBSIDESTORY CODE HBX2.0 (Universal)-->
+<!--COPYRIGHT 1997-2005 WEBSIDESTORY,INC. ALL RIGHTS RESERVED. U.S.PATENT No. 6,393,479B1. MORE INFO:http://websidestory.com/privacy-->
+<script language="javascript">
+var _hbEC=0,_hbE=new Array;function _hbEvent(a,b){b=_hbE[_hbEC++]=new Object();b._N=a;b._C=0;return b;}
+var hbx=_hbEvent("pv");hbx.vpc="HBX0200u";hbx.gn="a.amd.com";
+
+if ( typeof( userDetectedFlash ) == 'undefined' )
+	userDetectedFlash="";
+	
+if ( typeof( appportal_segment ) == 'undefined') 
+    appportal_segment="";
+
+//BEGIN EDITABLE SECTION
+//CONFIGURATION VARIABLES
+hbx.acct="DM531211JBND28EN3;DM570227ELEN28EN3";//ACCOUNT NUMBER(S)
+hbx.pn=unescape(location.pathname.substring(location.pathname.lastIndexOf('/')+1,location.pathname.length)+location.search);//PAGE NAME (WITH DYNAMIC ARGS & UNESCAPED)
+hbx.mlc=unescape("/ati.amd.com"+location.pathname.substring(0,location.pathname.lastIndexOf('/')));//MULTI-LEVEL CONTENT CATEGORY (UNESCAPED)
+hbx.pndef="index.html";//DEFAULT PAGE NAME
+hbx.ctdef="full";//DEFAULT CONTENT CATEGORY
+
+//OPTIONAL PAGE VARIABLES
+//ACTION SETTINGS
+hbx.lc="y";//FORCE LOWER CASE
+hbx.fv="";//FORM VALIDATION MINIMUM ELEMENTS OR SUBMIT FUNCTION NAME
+hbx.lt="auto";//LINK TRACKING
+hbx.dlf="n";//DOWNLOAD FILTER
+hbx.dft="n";//DOWNLOAD FILE NAMING
+hbx.elf="n";//EXIT LINK FILTER
+
+//SEGMENTS AND FUNNELS
+hbx.seg="";//VISITOR SEGMENTATION
+hbx.fnl="";//FUNNELS
+
+//CAMPAIGNS
+hbx.cmp="";//CAMPAIGN ID
+hbx.cmpn="";//CAMPAIGN ID IN QUERY
+hbx.dcmp="";//DYNAMIC CAMPAIGN ID
+hbx.dcmpn="";//DYNAMIC CAMPAIGN ID IN QUERY
+hbx.dcmpe="";//DYNAMIC CAMPAIGN EXPIRATION
+hbx.dcmpre="";//DYNAMIC CAMPAIGN RESPONSE EXPIRATION
+hbx.hra="";//RESPONSE ATTRIBUTE
+hbx.hqsr="";//RESPONSE ATTRIBUTE IN REFERRAL QUERY
+hbx.hqsp="";//RESPONSE ATTRIBUTE IN QUERY
+hbx.hlt="";//LEAD TRACKING
+hbx.hla="";//LEAD ATTRIBUTE
+hbx.gp="";//CAMPAIGN GOAL
+hbx.gpn="";//CAMPAIGN GOAL IN QUERY
+hbx.hcn="";//CONVERSION ATTRIBUTE
+hbx.hcv="";//CONVERSION VALUE
+hbx.cp="null";//LEGACY CAMPAIGN
+hbx.cpd="";//CAMPAIGN DOMAIN
+
+//CUSTOM VARIABLES
+hbx.ci="";//CUSTOMER ID
+hbx.hc1="";//CUSTOM 1
+hbx.hc2=userDetectedFlash;//CUSTOM 2 
+hbx.hc3="";//CUSTOM 3
+hbx.hc4="";//CUSTOM 4
+hbx.hrf="";//CUSTOM REFERRER
+hbx.pec="";//ERROR CODES
+
+//INSERT CUSTOM EVENTS
+
+//END EDITABLE SECTION
+
+//REQUIRED SECTION. CHANGE "YOURSERVER" TO VALID LOCATION ON YOUR WEB SERVER (HTTPS IF FROM SECURE SERVER)
+</script><script language="javascript1.1" src="http://www.ati.com/includes/hbx.js"></script>
+<!--END WEBSIDESTORY CODE-->
+</BODY>
+</HTML>

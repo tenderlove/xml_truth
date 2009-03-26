@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>Joyeur: DTrace for Ruby is available</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" media="screen" type="text/css" href="http://www.joyent.com/stylesheets/master.css?1" />
+		<link rel="stylesheet" media="screen" type="text/css" href="http://www.joyent.com/stylesheets/lang/en.css" />
+		<link rel="stylesheet" media="screen" type="text/css" href="http://www.joyent.com/stylesheets/joyeur.css?1" />
+		<!--[if IE 7]>
+			<link href="http://www.joyent.com/stylesheets/ie7.css" media="screen" rel="Stylesheet" type="text/css" />
+		<![endif]-->
+		<!--[if IE 6]>
+			<link href="http://www.joyent.com/stylesheets/ie6.css" media="screen" rel="Stylesheet" type="text/css" />
+		<![endif]-->
+		<style type="text/css" title="text/css" media="screen">
+		</style>
+		<link rel="Shortcut Icon" type="image/ico" href="http://joyent.com/favicon.ico" />
+		<link rel="alternate" type="application/atom+xml" title="Atom" href="http://joyeur.com/atom/" />
+		<link rel="alternate" type="application/rss+xml" title="RSS" href="http://joyeur.com/rss/" />
+		<script src="http://joyeur.com/javascript/prototype.js" type="text/javascript"></script>
+		<script src="http://joyeur.com/javascript/scriptaculous.js" type="text/javascript"></script>
+
+		<script src="http://joyeur.com/javascript/lightbox.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="http://joyeur.com/css/lightbox.css" type="text/css" media="screen" />
+                <script src="http://joyeur.com/mint/?js" type="text/javascript"></script> 
+		<link rel="apple-touch-icon" href="http://www.joyent.com/img/iphone/joyent.png"/>
+	</head>
+	
+	<body id="weblog" class="coverSheet pro">
+		<div class="topBG">
+		</div>
+		<div class="topBGCover">
+		</div>
+		<h1 id="homeLink"><a href="http://www.joyent.com/">Joyent</a></h1>
+
+		
+		<ul id="tabs">
+			<li class="home">
+				<a href="http://www.joyent.com/">Home</a>	
+			</li>
+			<li class="products">
+				<a href="http://www.joyent.com/products">Products</a>	
+			</li>
+			<li class="services">
+				<a href="http://www.joyent.com/accelerator/scale/">Services</a>	
+			</li>
+			<li class="developers">
+				<a href="http://www.joyent.com/developers">Developers</a>	
+			</li>
+			<li class="partners">
+				<a href="http://www.joyent.com/partners">Partners</a>	
+			</li>
+			<li class="support">
+				<a href="http://www.joyent.com/support">Support</a>	
+			</li>
+			<li class="newsEvents">
+				<a href="http://www.joyent.com/news">News & Events</a>	
+			</li>
+			<li class="weblog">
+				<a href="http://joyeur.com">Weblog</a>	
+			</li>
+			<li class="login">
+				<a href="http://www.joyent.com/login">Login</a>	
+			</li>
+		</ul>	
+		
+		<div id="header">
+			 <a href="/" class="joyeurHomepageLink">Joyeur: Joyent's weblog</a>
+		</div>
+
+		<div id="mainContent">
+			<div id="sidebar">
+				<h4 class="first_header">Search</h4>
+					<form action="http://www.joyeur.com/" method="get">
+						<input type="search" size="14" value="" name="q" style="width:178px;margin-left:8px;" />
+					</form>
+					<div style="display:none;">
+						<form method="get" action="http://www.joyeur.com/">
+<span><input type="text" name="q" value="" size="17" /><input type="submit" value="Search" /></span>
+</form>
+					</div>
+				<h4>Blog Features</h4>
+					<ul class="icon_list">
+						<li class="last">
+							<a href="http://www.joyeur.com/rss?category=Quad-Core" class="iten_block">
+								<img src="http://www.joyent.com/img/joyeur/ad_quadcore.png" width="32" height="32">
+								<strong>Podcast: Quad Core</strong>
+								Faster, Hotter, Scalier
+							</a>
+						</li>
+					</ul>
+				<h4>Our Products</h4>
+					<ul class="icon_list">
+						<li>
+							<div class="iten_block">
+								<a href="http://www.joyent.com/accelerator/" title="click here for more Information">
+									<img src="http://www.joyent.com/img/joyeur/ad_accelerator.png" width="32" height="32">
+								</a>
+								<a href="http://www.joyent.com/accelerator/pricing" class="buy_now">
+									Buy Now &raquo;
+								</a>
+								<a href="http://www.joyent.com/accelerator/" title="click here for more Information">
+									<strong>Accelerator</strong>
+									On Demand Computing
+								</a>
+							</div>
+						</li>
+						<li>
+							<div class="iten_block">
+								<a href="http://www.joyent.com/connector/" title="click here for more Information">
+									<img src="http://www.joyent.com/img/joyeur/ad_connector.png" width="32" height="32">
+								</a>
+								<a href="http://www.joyent.com/connector/pricing/" class="buy_now">
+									Buy Now &raquo;
+								</a>
+								<a href="http://www.joyent.com/connector/" title="click here for more Information">
+									<strong>Connector</strong>
+									Web-Based Collaboration
+								</a>
+							</div>
+						</li>
+						<li class="last">
+							<div class="iten_block">
+								<a href="http://www.joyent.com/connector/bingodisk/" title="click here for more Information">
+									<img src="http://www.joyent.com/img/joyeur/ad_bingodisk.png" width="32" height="32">
+								</a>
+								<a href="http://www.joyent.com/connector/bingodisk/signup-for-bingodisk" class="buy_now">
+									Buy Now &raquo;
+								</a>
+								<a href="http://www.joyent.com/connector/bingodisk/" title="click here for more Information">
+									<strong>BingoDisk</strong>
+									On-Line File Storage
+								</a>
+							</div>
+						</li>
+					</ul>
+				<h4>Follow Us</h4>
+					<ul class="icon_list">
+						<li>
+							<div class="iten_block">
+								<img src="http://www.joyent.com/img/joyeur/avatar_jill.png" width="32" height="32">
+								<strong>Jill</strong>
+								<a href="http://twitter.com/joyent">Twitter</a>, <a href="http://friendfeed.com/joyent">Friendfeed</a>
+							</div>
+						</li>
+						<li>
+							<div class="iten_block">
+								<img src="http://www.joyent.com/img/joyeur/avatar_david.png" width="32" height="32">
+								<strong>David</strong>
+
+<a href="http://www.plurk.com/user/davidpaulyoung">Plurk</a>,
+<a href="http://twitter.com/davidpaulyoung">Twitter</a>,
+<a href="http://friendfeed.com/davidpaulyoung">Friendfeed</a>,
+<a href="http://qik.com/davidpaulyoung">Qik</a>
+							</div>
+						</li>
+						<li class="last">
+							<div class="iten_block">
+								<img src="http://www.joyent.com/img/joyeur/avatar_jason.png" width="32" height="32">
+								<strong>Jason</strong>
+								
+<a href="http://twitter.com/jasonh">Twitter</a>
+
+							</div>
+						</li>
+					</ul>
+				<h4>Categories</h4>
+					<ul class="cat_list groupsList col_2 clearfix"> 
+						<li>
+<a href="http://www.joyeur.com/category/Announcements/">Announcements</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Benr-38-Shanr/">Benr &#38; Shanr</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Blog-Policy/">Blog Policy</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Cloud-Computing/">Cloud Computing</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Coding/">Coding</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Community/">Community</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Connector/">Connector</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Contest/">Contest</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Customers/">Customers</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Elsewhere/">Elsewhere</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Events/">Events</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Facebook/">Facebook</a></li>
+<li>
+<a href="http://www.joyeur.com/category/general/">General</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Industry/">Industry</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Infrastructure/">Infrastructure</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Interviews/">Interviews</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Joyent-Labs/">Joyent Labs</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Joyeurs/">Joyeurs</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Media-Coverage/">Media Coverage</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Meetup/">Meetup</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Newsletter/">Newsletter</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Open-Source/">Open Source</a></li>
+<li>
+<a href="http://www.joyeur.com/category/OpenSolaris/">OpenSolaris</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Partnerships/">Partnerships</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Podcast/">Podcast</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Press-Release/">Press Release</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Quad-Core/">Quad-Core</a></li>
+<li>
+<a href="http://www.joyeur.com/category/recipes/">Recipes</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Reviews/">Reviews</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Slingshot/">Slingshot</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Special-Offers/">Special Offers</a></li>
+<li>
+<a href="http://www.joyeur.com/category/Travel/">Travel</a></li>
+<li>
+<a href="http://www.joyeur.com/category/UI/">UI</a>
+</li>
+					</ul>
+				<h4>Recent Posts</h4>
+					<ul class="cat_list groupsList"> 
+						<li>
+<a href="http://www.joyeur.com/2009/03/18/speaking-at-the-fsf-meeting-libre-planet-09">Speaking at the FSF Meeting, Libre Planet &#39;09</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/03/17/contestant-winners-free-social-apps-infrastructure-upcoming-events">Contestant Winners, Free Social Apps Infrastructure, Upcoming&#160;Events</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/03/17/on-joyent-and-cloud-computing-part-1-of-many">On Joyent and &#34;Cloud Computing&#34;, Part 1 of&#160;Many</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/03/12/try-out-aptana-cloud-for-free">Try Out Aptana Cloud for&#160;Free</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/03/12/why-joyent-banned-all-employees-from-attending-south-by-southwest-interactive-this-year">Why Joyent Banned all Employees from Attending South-by-Southwest Interactive This&#160;Year</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/03/11/light-weight-collaborative-javascript-debugging-js-bin-on-joyent-accelerators">Light-weight, Collaborative Javascript Debugging: JS Bin on Joyent&#160;Accelerators</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/02/24/google-app-engine-misfit-toys-come-to-jill">Google App Engine Misfit Toys: Come to&#160;Jill</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/02/17/open-loving-just-workingness-the-smart-platform-and-javascript">Open, Loving, Just Workingness: The Smart Platform and&#160;Javascript</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/02/16/thank-you-for-the-feedback">Thank you for the&#160;Feedback!</a></li>
+<li>
+<a href="http://www.joyeur.com/2009/02/10/update-and-call-for-topic-suggestions">Update and Call For Topic&#160;Suggestions</a>
+</li>
+						<li class="last"><a href="/archive">Complete Archive &raquo;</a></li>
+					</ul>
+				
+			</div>
+	
+			<div id="content">
+				<h2 class="pageTitle"><strong>Joyent Weblog</strong></h2>
+		
+				<div class="blog-entry">
+<h2><a rel="bookmark" href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available">DTrace for Ruby is&#160;available</a></h2>
+<div class="byline">By <strong> scott</strong>   7 May 07
+</div>
+	<p>In <a href="http://joyeur.com/2007/04/24/solaris-dtrace-and-rails">previous posts</a> we&#8217;ve mentioned we&#8217;re working on a full Ruby DTrace provider set for Ruby 1.8.5.  We&#8217;ve finished a solid base set of probes and it is ready for general consumption.</p>
+
+	<p>The subversion repository is at <a href="http://svn.joyent.com/ruby-dtrace">http://svn.joyent.com/ruby-dtrace</a>.  </p>
+
+	<p>The repository contains:</p>
+
+	<ul>
+		<li>The full Ruby 1.8.5 source with DTrace probes (<a href="http://svn.joyent.com/ruby-dtrace/ruby-1.8.5">http://svn.joyent.com/ruby-dtrace/ruby-1.8.5</a>)</li>
+		<li>Diffs (<a href="http://svn.joyent.com/ruby-dtrace/patches">http://svn.joyent.com/ruby-dtrace/patches</a>)</li>
+		<li>Binaries (<a href="http://svn.joyent.com/ruby-dtrace/binaries/solaris">http://svn.joyent.com/ruby-dtrace/binaries/solaris</a>)</li>
+		<li>Examples (<a href="http://svn.joyent.com/ruby-dtrace/examples">http://svn.joyent.com/ruby-dtrace/examples</a>)</li>
+	</ul>
+
+	<p>There are 3 binaries for Solaris provided here:</p>
+
+	<ol>
+		<li>ruby-x86: Standard <span class="caps">GCC</span> build</li>
+		<li>ruby-CSK: Coolstack compliant build intended to drop into Coolstack 1.1</li>
+		<li>ruby-CSW: Blastwave drop-in binary</li>
+	</ol>
+
+	<p>The warning regarding the ruby-<span class="caps">CSW</span> binary is that it breaks with Blastwave tradition of using Sun Studio.  Instead, <span class="caps">GCC</span> (/usr sfw) was used, due to various build issues with Ruby 1.8.5 and Sun Studio that are not related to the DTrace patch.  The build name has been changed to Solaris 2.8 to ensure that extensions continue to work. You&#8217;re better off using the csw binary for debugging only until we can get a fully compliant build (coming real real soon).</p>
+
+	<h4>Probes</h4>
+
+	<p>The probes that are currently in Ruby-DTrace</p>
+
+<pre>
+Probe name          Description
+</pre>
+<pre>
+function-entry      Probe that fires when a Ruby method is entered.
+</pre>
+<pre>
+function-return     Probe that fires when a Ruby method returns.
+</pre>
+<pre>
+raise               Probe that fires when a Ruby exception is raised.
+</pre>
+<pre>
+rescue              Probe that fires when a Ruby exception is rescued.
+</pre>
+<pre>
+line                Probe that fires for every line of Ruby executed.
+</pre>
+<pre>
+gc-begin            Probe that fires right before a GC cycle begins.
+</pre>
+<pre>
+gc-end              Probe that fires right after a GC cycle finishes.
+</pre>
+<pre>
+object-create-start Probe that fires directly before a Ruby object is allocated.
+</pre>
+<pre>
+object-create-done  Probe that fires when Ruby is finished allocating an object
+</pre>
+<pre>
+object-free         Probe that fires every time a Ruby object is freed.
+</pre>
+<pre>
+ruby-probe          Probe that can be fired from Ruby code (see below).
+</pre>
+
+	<h4>Arguments</h4>
+
+<pre>
+Probe               args[0]            args[1]       args[2]       args[3]
+</pre>
+<pre>
+function-entry      Ruby class         Method name   Source file   Line number
+</pre>
+<pre>
+function-return     Ruby class         Method name   Source file   Line number
+</pre>
+<pre>
+raise               Ruby class         Source file   Line number   -
+</pre>
+<pre>
+rescue              Source file        Line number   -             -
+</pre>
+<pre>
+line                Source file        Line number   -             -
+</pre>
+<pre>
+gc-begin            -                  -             -             -
+</pre>
+<pre>
+gc-end              -                  -             -             -
+</pre>
+<pre>
+object-create-start Ruby type          Source file   Line number   -
+</pre>
+<pre>
+object-create-done  Ruby type          Source file   Line number   -
+</pre>
+<pre>
+object-free         Ruby type          -             -             -
+</pre>
+<pre>
+ruby-probe          Arbitrary string   -             -             -
+</pre>
+
+	<h4>Ruby Tracer Module</h4>
+
+	<p>Included with the patch is a built-in Ruby module called Tracer.  Tracer provides one method, Tracer.fire(str), which will fire the ruby-probe, setting <code>args[0]</code> to the string you pass in.</p>
+
+	<p>We will continue to add and refine probes, will be blogging about some more examples, and we are accepting requests for additional probe points (just email jason at joyent dot com).  We will be developing patches against 1.8.6 in the near future.</p>
+
+</div> <br id="comment" /><ol class="comments">
+	<li>	<p>nice work scott</p>
+
+
+<small>&#8212; <a href="http://theexciter.com" rel="nofollow">Johan Sørensen</a> &#160;&#160; 689 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c002956" id="c002956">#</a></small>
+</li>
+	<li>	<p>Wow, that&#8217;s cool.  Worth running Solaris (even if inside a vm) just for profiling Ruby/Rails apps.  Thanks!</p>
+
+
+<small>&#8212; Geoff &#160;&#160; 688 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c003002" id="c003002">#</a></small>
+</li>
+	<li>	<p>For the love of all that is holy, please get this to work on Leopard.</p>
+
+
+<small>&#8212; alexr &#160;&#160; 688 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c003015" id="c003015">#</a></small>
+</li>
+	<li>	<p>&#62; For the love of all that is holy, please get this to work on Leopard.</p>
+
+	<p>Amen!</p>
+
+
+<small>&#8212; <a href="http://oskarlissheimboethius.com" rel="nofollow">Oskar L-B</a> &#160;&#160; 685 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c003131" id="c003131">#</a></small>
+</li>
+	<li>	<p>Stay tuned :)</p>
+
+
+<small>&#8212; <a href="http://joyeur.com" rel="nofollow">Scott Barron</a> &#160;&#160; 684 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c003167" id="c003167">#</a></small>
+</li>
+	<li>	<p>Nice work guys, keep it up.</p>
+
+
+<small>&#8212; <a href="http://www.subterrain.net/~jbl/" rel="nofollow">Justin Lundy</a> &#160;&#160; 675 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c003505" id="c003505">#</a></small>
+</li>
+	<li>	<p>Is it me or are the binaries available above only for Solaris x86. I&#8217;m running Solaris 10 (<span class="caps">SPARC</span>) with the CoolStack 1.1 version of Ruby but this does not appear to have any DTrace probes in it.</p>
+
+	<p>I tried downloading the ruby-<span class="caps">CSK</span> binary above but like I said, it appears to be an x86 file.</p>
+
+	<p>Is a <span class="caps">SPARC</span> binary for ruby-<span class="caps">CSK</span> available?</p>
+
+
+<small>&#8212; <a href="http://www.mernin.com/blog" rel="nofollow">James Mernin</a> &#160;&#160; 539 days ago &#160;&#160; <a href="http://www.joyeur.com/2007/05/07/dtrace-for-ruby-is-available#c008124" id="c008124">#</a></small>
+</li>
+</ol>
+
+<p>Commenting is closed for this article.</p>
+
+
+
+		
+				<p style="margin-top:3em"></p>
+			</div>
+							
+			<div id="footer">
+					Served from <a href="http://joyent.com/accelerator">Joyent Accelerators</a> &nbsp;|&nbsp; Copyright &copy; 2005-2009 Joyent Inc. All rights reserved. &nbsp;|&nbsp; <a href="http://joyent.com/about/">About Joyent</a>
+					<div class="rssLink"><a href="http://www.joyeur.com/atom/?section=article" title="Subscribe to the Joyeur RSS feed.">RSS</a></div>
+			</div>
+
+		</div>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3025995-6";
+urchinTracker();
+</script>
+	</body>
+</html>
+
+

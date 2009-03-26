@@ -1,0 +1,533 @@
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+
+<head>
+  <title>NetBeans Wiki: Ruby</title>
+  
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" media="screen, projection, print" type="text/css" href="/templates/nbwiki/jspwiki.css"/>
+  <!-- INCLUDERESOURCES (stylesheet) -->
+
+  <!-- INCLUDERESOURCES (inlinecss) -->
+
+  <script src="http://wiki.netbeans.org/scripts/jspwiki-common.js" type="text/javascript"></script>
+  <!-- INCLUDERESOURCES (script) -->
+
+  <link rel="search" href="http://wiki.netbeans.org/FindPage"            title="Search NetBeans Wiki" />
+  <link rel="help"   href="http://wiki.netbeans.org/TextFormattingRules" title="Help" />
+  <link rel="start"  href="http://wiki.netbeans.org/Main"                title="Front page" />
+  <link rel="alternate" type="application/rss+xml" title="RSS wiki feed for the entire site." href="http://wiki.netbeans.org/rss.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS wiki feed for page NetBeans Wiki: Ruby." href="http://wiki.netbeans.org/rss.jsp?page=Ruby&amp;mode=wiki" />
+
+
+
+
+
+
+
+<script type="text/javascript">Wiki.loadBrowserSpecificCSS("http://wiki.netbeans.org/","nbwiki","Ruby");</script>
+
+
+<script type="text/javascript">
+function runOnLoad()
+{ 
+  TabbedSection.onPageLoad();
+  SearchBox.onPageLoad();
+  Wiki.onPageLoad();
+  Sortable.onPageLoad();
+  ZebraTable.onPageLoad();
+  HighlightWord.onPageLoad();
+  Collapsable.onPageLoad();
+  GraphBar.onPageLoad();
+  /* INCLUDERESOURCES (jsfunction) */
+
+}
+
+window.onload = runOnLoad;
+</script>
+
+  
+</head>
+
+<body class="view" bgcolor="#FFFFFF">
+<a name="Top"></a>
+
+<div id="wikibody" >
+  
+
+<div id="header">
+
+  <div class="pagename">Ruby</div>
+
+  <div class="searchbox">
+
+
+<form action="http://wiki.netbeans.org/Search.jsp"
+      onsubmit="SearchBox.submit( this.query.value )"
+      onmouseover="document.getElementById('searchboxMenu').style.visibility='visible'"
+      onmouseout= "document.getElementById('searchboxMenu').style.visibility='hidden'"
+      name="searchForm" id="searchForm" 
+      accept-charset="UTF-8">
+  <div>
+  
+  <input onblur= "if( this.value == '' ) { this.value = 'Search'}; " 
+         onfocus="if( this.value == 'Search' ) { this.value = ''}; "
+         type="text" value="Search" name="query" size="20" 
+         accesskey="f"></input>
+  </div>  
+  <div id="searchboxMenu" style='visibility:hidden;'>
+    <div>
+      <a href="javascript://nop/" 
+         onclick="SearchBox.navigation( 'http://wiki.netbeans.org/__PAGEHERE__','Ruby' );return false;"
+         title="View the selected page">view</a> 
+      | 
+      <a href="javascript://nop/" 
+         onclick="SearchBox.navigation( 'http://wiki.netbeans.org/Edit.jsp?page=__PAGEHERE__','Ruby' );return false;"
+         title="Edit the selected page">edit</a> 
+      | 
+      <a href="javascript://nop/" 
+         onclick="SearchBox.navigation( 'http://wiki.netbeans.org/Search.jsp?query=__PAGEHERE__','Ruby' );return false;"
+         title="Advanced Search">find</a> 
+      [ f ]
+    </div>
+    <div id="recentSearches" > </div>
+  </div>
+
+</form></div>
+
+  <div class="breadcrumbs">Your trail: </div>
+
+  <div id="actionsTop">
+
+
+
+<div class="pageactions">
+    
+  
+    
+      
+
+    
+
+    
+      
+        
+          
+        
+      
+      <span>
+        
+          <a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=Ruby" accesskey="" title="">Page Info</a>
+        
+      </span>
+    
+
+    
+      <span>
+        
+        <a href="/PlainView.jsp?page=Ruby"
+         title="Plain View" >Plain View</a>
+      </span>
+    
+
+    
+      
+        <span>
+          <a class="wikipage" href="http://wiki.netbeans.org/UserPreferences" accesskey="" title="">My Prefs</a>
+        </span>
+      
+    
+   
+ 
+    
+      
+        <span>
+          <a href="/Login.jsp?redirect=Ruby">Log in</a>
+        </span>
+      
+    
+    
+    
+  
+    
+      <div class="pageInfo">
+        
+           This page (revision-127) last changed on
+           <a href="http://wiki.netbeans.org/Diff.jsp?page=Ruby&amp;r1=127&amp;r2=126">
+             06:23 02-Mar-2009
+           </a>
+           by diyaseb.
+        
+  
+        
+  
+        
+  
+      </div>
+    
+</div>
+</div>
+
+  <div style="clear:both; height:0;" > </div>
+
+</div>
+
+  <div id="favorites">
+
+
+  
+
+<a href="http://www.netbeans.org/" title="Front page">
+    <img src="http://wiki.netbeans.org/templates/nbwiki/logo.gif" id="companylogo" alt="NetBeans Wiki" />
+</a>
+
+<!--<div class="block">-->
+<div>
+  
+  <div class="leftmenu">
+     
+<p />
+<p><a class="wikipage" href="http://wiki.netbeans.org/FrontPage">Front Page</a><br />
+</p>
+<hr />
+<a class="wikipage" href="http://wiki.netbeans.org/NetBeansUserFAQ">User FAQ </a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/NetBeansDeveloperFAQ">Developer FAQ </a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/CommunityDocs">Community Docs</a><br />
+<hr />
+<a class="wikipage" href="http://wiki.netbeans.org/Development">Development</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/Quality">Quality</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/NetBeansDreamTeam">Dream Team</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/PopularProjects">Popular Projects</a><br />
+<hr />
+<a class="external" href="http://quality.netbeans.org/dashboard">Bug DashBoard</a><br />
+<a class="external" href="http://deadlock.netbeans.org/hudson/">Hudson</a><br />
+<a class="external" href="http://hg.netbeans.org/main/">Sources</a><br />
+<a class="external" href="http://bits.netbeans.org/download/trunk/nightly/latest/">Nightly</a><br />
+<hr />
+<a class="wikipage" href="http://wiki.netbeans.org/WikiEtiquette">Wiki Etiquette</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/TextFormattingRules">Formatting Rules</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/TermsOfUse">Terms Of Use</a><br />
+<hr />
+<a class="wikipage" href="http://wiki.netbeans.org/UnusedPages">Unlinked Pages</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/UndefinedPages">Undefined Pages</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/PageIndex">Page Index</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/RecentChanges">Recent Changes</a><br />
+<a class="wikipage" href="http://wiki.netbeans.org/FindPage">Find Page</a><br />
+
+    
+  </div>
+
+  <div class="username">
+    
+  </div>
+  
+  
+  <div class="leftmenufooter">
+    <p />
+    
+  </div>
+<hr/>
+  <div class="rssfeed"><a href="http://wiki.netbeans.org/rss.rdf"><img src="http://wiki.netbeans.org/images/xml.png" alt="[RSS]" border="0" title="Aggregate the RSS feed of the entire wiki"/></a></div>
+
+</div>
+</div>
+  <div id="page">
+
+
+
+<div id="pagecontent">
+  
+
+  
+
+  
+
+  <div style="&#xD;&#xA;width:100%;&#xD;&#xA;margin:0px;&#xD;&#xA;line-height:150%;">
+<div style="&#xD;&#xA;background-color:#FFFCF4;&#xD;&#xA;">
+<h2 id="section-Ruby-NetBeansRubySupport">NetBeans Ruby Support</h2>
+<p><table border="0" class="imageplugin" align="left">
+<tr><td><img src="http://wiki.netbeans.org/attach/Ruby/railsproj.png" /></td></tr>
+</table>
+
+The NetBeans Ruby support plug-ins provide an integrated development environment for 
+building, running, testing, and debugging Ruby and Ruby on Rails applications. 
+You can download a Ruby-only version of the NetBeans IDE or add Ruby support to 
+your NetBeans IDE  download. To learn how, 
+see <a class="external" href="http://www.netbeans.org/kb/docs/ruby/setting-up.html">Installing and Configuring Ruby Support</a>. 
+If you want to work on the bleeding edge, see the <a class="wikipage" href="http://wiki.netbeans.org/RubyInstallation">Ruby Installation</a> 
+wiki page for information on getting the latest builds. The <a class="wikipage" href="http://wiki.netbeans.org/RubyRecentChanges">Ruby Recent Changes</a> 
+page tracks the newest features.
+</p></div>
+
+</div>
+<div style="float:left;&#xD;&#xA;width:310px;&#xD;&#xA;margin:0;&#xD;&#xA;padding:.1em;">
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;clear:left;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-NetBeansRubyFeatures">NetBeans Ruby Features</h3>
+</div>
+<ul><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyEditing">Editing</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyRefactoring">Refactoring</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyProjects">Projects</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyOnRails">Ruby on Rails</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyDebugging">Debugging</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyTesting">Unit Testing</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyCodeCoverage">Code Coverage Support</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyRake">Rake Runner</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyCodeTemplates">Live Code Templates</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyHints">Quickfixes and Hints</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyShortcuts">Keyboard Shortcuts</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyPlugins">Additional Plugins</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyGems">Ruby Gems Manager</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyOptions">Ruby Options</a>
+</li><li> <a class="external" href="http://www.netbeans.org/features/ruby/index.html">NetBeans IDE Portal - Ruby and Rails Features Summary</a>
+</li></ul></div>
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-GettingStartedWithNetBeansRubySupport">Getting Started With NetBeans Ruby Support</h3>
+</div>
+<ul><li> <a class="external" href="http://www.netbeans.org/kb/docs/ruby/setting-up.html">Installing and Configuring Ruby Support</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyGems">Installing Ruby Gems</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyInstallation">Installing Development Builds </a>
+</li></ul></div>
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-GettingInvolvedInTheNetBeansRubyCommunity">Getting Involved in the NetBeans Ruby Community</h3>
+</div>
+<ul><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyCommunityInformation">Asking Questions, Submitting Suggestions, and Making Contributions</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyFeedback">Providing Feedback and Reporting Bugs</a>
+</li></ul><p />
+</div>
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-ForContributors">For Contributors</h3>
+</div>
+<ul><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyBuildInstructions">Building from Source</a> 
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyParticipation">Joining the Project</a>
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyCodeIdeas">Projects to Work On</a> 
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyNextReleasePlan">Upcoming Features and Fixes</a>
+</li><li> <a class="external" href="http://wiki.netbeans.org/wiki/view/CommunityDocs">Contributing Documentation</a> 
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyUITests">Running Tests</a> 
+</li></ul></div>
+</div>
+<p />
+<p />
+<div style="&#xD;&#xA;margin-left:318px;&#xD;&#xA;padding:.1em;&#xD;&#xA;">
+<p />
+<p />
+<p />
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-Blogs">Blogs</h3>
+</div>
+<ul><li> <a class="external" href="http://weblogs.java.net/blog/caroljmcdonald/archive/2009/02/building_a_grai_1.html">Carol McDonald: Building a Grails Pet Catalog Using NetBeans 6.5 and MySQL</a>
+</li><li> <a class="external" href="http://blogs.sun.com/divas/entry/telling_netbeans_ide_which_jdk">Chris Kutler: Telling NetBeans IDE Which JDK to Use</a>
+</li><li> <a class="external" href="http://blogs.sun.com/divas/entry/installing_your_own_jruby_to">Chris Kutler: Installing Your Own JRuby to Use With the NetBeans IDE</a>
+</li><li> <a class="external" href="http://niczsoft.com/series/preparing-ruby-on-rails-environment/">Michal Papis at NICZ SOFT: Preparing Ruby on Rails Environment</a> A series of blog posts on setting up Ruby on Rails with NetBeans IDE, PostgreSQL, and Apache 
+</li><li> <a class="external" href="http://ruby.about.com/b/2008/12/30/orienting-yourself-in-netbeans-for-ruby-on-rails.htm">Amanda and Michael's Ruby Blog: Orienting Yourself in NetBeans for Ruby on Rails</a>
+</li><li> <a class="external" href="http://www.fonicmonkey.net/posts/learning-ruby-on-rails-tutorial-part-2/">fonicmonkey: Explained: learning Ruby on Rails (Part 2)</a>
+</li><li> <a class="external" href="http://blogs.sun.com/martink/entry/how_to_debug_from_ruby">Cross-language debugging: from Ruby to Java and back</a>
+</li><li> <a class="external" href="http://blogs.sun.com/divas/entry/my_favorite_netbeans_features">Chris Kutler: My Favorite NetBeans Features</a>
+</li><li> <a class="external" href="http://www.fonicmonkey.net/posts/how-to-learn-ruby-on-rails/">fonicmonkey: Explained: how the hell do I *really* learn Ruby on Rails? </a>
+</li><li> <a class="external" href="http://www.pathf.com/blogs/2008/10/a-java-programmers-transition-to-ruby-on-rails/">A Java Programmer’s transition to Ruby on Rails</a>
+</li><li> <a class="external" href="http://www.notgeeklycorrect.com/english/2008/10/01/nbgit-the-git-plugin-for-netbeans/">Not Geekly Correct: NBGit, a Git Plugin for NetBeans</a>
+</li><li> <a class="external" href="http://karussell.wordpress.com/2008/10/01/my-stony-way-to-find-a-ruby-on-the-rails/">Java and More: My Stony Way to Find a Ruby on the Rails </a>
+</li><li> <a class="external" href="http://blog.entigrate.com/?p=30">The Entigrate Blog: Developing Ruby on Rails Applications using NetBeans and JRuby</a>
+</li></ul></div>
+<p />
+<p />
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-TutorialsArticlesAndScreencasts"> Tutorials, Articles, and Screencasts</h3>
+</div>
+<h4 id="section-Ruby-New">New</h4>
+<ul><li> <a class="external" href="http://www.apress.com/book/view/9781430216360">APRESS.COM : NetBeans™ Ruby and Rails IDE with JRuby </a>
+</li><li> <a class="external" href="http://www.netbeans.org/kb/docs/ruby/quickstart.html">NetBeans IDE Ruby Quick Start Tutorial </a>. November 2008.
+</li><li> <a class="external" href="http://www.netbeans.org/kb/docs/ruby/setting-up.html">Installing and Configuring Ruby Support</a>. November 2008.
+</li></ul><ul><li> <a class="external" href="http://www.netbeans.org/kb/docs/ruby/rapid-ruby-weblog.html">Creating a Ruby Weblog in 10 Minutes (Rails 2.1)</a>. November 2008.
+</li></ul><p />
+<p />
+<h4 id="section-Ruby-Hot">Hot</h4>
+<ul><li> <a class="external" href="http://www.netbeans.org/features/ruby/">NetBeans IDE Features: Ruby </a>
+</li></ul><p><br />
+&gt;&gt; <a class="wikipage" href="http://wiki.netbeans.org/RubyDocumentation">More Ruby Documentation</a><br />
+&gt;&gt; <a class="wikipage" href="http://wiki.netbeans.org/RubyFAQ">Ruby FAQs</a><br />
+&gt;&gt; <a class="external" href="http://developers.sun.com/ruby/">Ruby Developer Resource Center</a> 
+</p>
+</div>
+<div style="&#xD;&#xA;background-color:#F4F7FF;&#xD;&#xA;">
+<div style="&#xD;&#xA;background-color:#F2F2F2;&#xD;&#xA;">
+<h3 id="section-Ruby-RecentWikiPageChangesAndAdditions">Recent Wiki Page Changes and Additions</h3>
+</div>
+<ul><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyNextReleasePlan">Ruby Next Release Plan</a> 10/24/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/FaqRubyRakeFetchingFailed">Faq Ruby Rake Fetching Failed</a> 10/24/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyFAQ">Ruby FAQ</a> 10/24/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/FaqRubyDebuggerRubyToJava">Faq Ruby Debugger Ruby To Java</a> 10/21/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyDebugging">Ruby Debugging</a> 10/21/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/FaqRubyInvalidPlatform">Faq Ruby Invalid Platform</a> 10/20/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyRecentChanges">Ruby Recent Changes</a> 10/20/08
+</li><li> <a class="editpage" href="http://wiki.netbeans.org/Edit.jsp?page=FaqRailsEnvironment" title="Create 'FaqRailsEnvironment'">Faq Rails Environment</a> 10/20/08
+</li><li> <a class="wikipage" href="http://wiki.netbeans.org/RubyShortcuts">Ruby Shortcuts</a> 10/20/08
+</li></ul></div>
+<p />
+</div>
+<p />
+<p />
+<div style="&#xD;&#xA;clear:left;&#xD;&#xA;">
+</div>
+
+<p><a class="external" href="http://www.teachingsolutions.org/mttc.html"> MTTC test </a>-&quot;Who Else Wants To 'Crack-The-Code' Of Your MTTC Test In ONLY 7 Days And Go To $37,857.00 In Michigan Teacher Salary Right Now...Much EASIER Than You Ever Thought Possible?&quot;
+</p>
+<p />
+<p />
+
+  
+
+</div>
+
+
+  <div id="attachments">
+    <h3>Attachments</h3>
+    <div class="zebra-table">
+      <table>
+        
+          <tr>
+            <td><a class="attachment" href="http://wiki.netbeans.org/attach/Ruby/railsproj.png" accesskey="" title="">railsproj.png</a></td>
+            <td><a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=Ruby/railsproj.png" accesskey="" title=""><img src="http://wiki.netbeans.org/images/attachment_big.png" border="0" alt="Info on railsproj.png" /></a></td>
+            <td>4027 bytes</td>
+          </tr>
+        
+      </table>
+    </div>
+  </div>
+
+
+</div>
+  
+
+<div id="footer">
+
+  <div id="actionsBottom">
+
+
+
+<div class="pageactions">
+    
+  
+    
+      
+
+    
+
+    
+      
+        
+          
+        
+      
+      <span>
+        
+          <a class="pageinfo" href="http://wiki.netbeans.org/PageInfo.jsp?page=Ruby" accesskey="" title="">Page Info</a>
+        
+      </span>
+    
+
+    
+      <span>
+        
+        <a href="/PlainView.jsp?page=Ruby"
+         title="Plain View" >Plain View</a>
+      </span>
+    
+
+    
+      
+        <span>
+          <a class="wikipage" href="http://wiki.netbeans.org/UserPreferences" accesskey="" title="">My Prefs</a>
+        </span>
+      
+    
+   
+ 
+    
+      
+        <span>
+          <a href="/Login.jsp?redirect=Ruby">Log in</a>
+        </span>
+      
+    
+    
+    
+  
+    
+      <div class="pageInfo">
+        
+           This page (revision-127) last changed on
+           <a href="http://wiki.netbeans.org/Diff.jsp?page=Ruby&amp;r1=127&amp;r2=126">
+             06:23 02-Mar-2009
+           </a>
+           by diyaseb.
+        
+  
+        
+  
+        
+  
+      </div>
+    
+</div>
+</div>
+
+  <div class="copyright"></div>
+
+  <div class="wikiversion">
+  </div>
+
+  <div style="clear:both; height:0px;" > </div>
+
+</div>
+
+  <div style="clear:both; height:0px;" > </div>
+</div>
+<a name="Bottom"></a>
+
+<!-- Begin Google webtracking analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." :
+"http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost +
+"google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2149007-1");
+pageTracker._setDomainName("netbeans.org");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!-- End Google webtracking analytics-->
+
+<!-- Begin SiteCatalyst code -->
+<script language="JavaScript" src="http://www.netbeans.org/images/js/s_code_remote.js" type="text/javascript"></script>
+<!-- End SiteCatalyst code -->
+
+</body>
+</html>
+
+
+

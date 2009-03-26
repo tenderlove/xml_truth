@@ -1,0 +1,1016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Gluttonous : Understanding Ruby Symbols</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta content="32.867098, -117.211597" name="ICBM" />
+  <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://glu.ttono.us/xml/rsd" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/Gluttonous" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://feeds.feedburner.com/Gluttonous" />
+  <script src="/javascripts/cookies.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/prototype.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/effects.js?1155250443" type="text/javascript"></script>
+  <script src="/javascripts/typo.js?1155250443" type="text/javascript"></script>
+  
+  <script type="text/javascript"></script>
+  <link href="/stylesheets/theme/azure.css?1215021856" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/user-styles.css?1155250443" media="all" rel="Stylesheet" type="text/css" />
+  <link href="/stylesheets/theme/print.css?1215021856" media="print" rel="Stylesheet" type="text/css" />
+  <link href='http://www.myopenid.com/server' rel='openid.server' />
+  <link href='http://kevinclark.myopenid.com/' rel='openid.delegate' />
+</head>
+
+<body>
+  <div id="container" class="clearfix">
+      <div id="header">
+        <div id="logo">
+          <h1 id="sitename"><a href="/">Gluttonous</a></h1>
+          <h2 id="subtitle"></h2>
+        </div>
+      </div>
+      
+      <div id="search"> <form action="/articles/search" id="sform" method="get">
+ <label for="q">Live Search:</label><input type="text" id="q" name="q" value="" size="15" />
+<img alt="Spinner-blue" id="search_spinner" src="/images/spinner-blue.gif?1155250442" style="display:none;" />
+</form>
+<script type="text/javascript">
+//<![CDATA[
+new Form.Element.Observer('q', 1, function(element, value) {new Ajax.Updater('search-results', '/live/search', {asynchronous:true, evalScripts:true, onComplete:function(request){Element.hide('search_spinner')}, onLoading:function(request){Element.show('search_spinner')}, parameters:'q=' + escape($F('q'))})})
+//]]>
+</script></div>
+      
+
+      <div id="content" class="clearfix">
+        <div id="main">
+          <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+       xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+       xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+    rdf:about=""
+    trackback:ping="http://glu.ttono.us/articles/trackback/3"
+    dc:title="Understanding Ruby Symbols"
+    dc:identifier="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols"
+    dc:description="Update 8/25: This post has been translated into korean. Update 12/12: I found a &lt;a href=&quot;http://www.4coders.com/index.php?modulo=contenido&amp;amp;op=detalle&amp;amp;tipo=a&amp;amp"
+    dc:creator="kevin"
+    dc:date="2006-08-10T19:03:12-04:00" />
+</rdf:RDF>
+-->
+
+<div class="post" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_article'); }"  onmouseout="Element.hide('admin_article');" >
+  <a href="/admin/content/edit/3" class="admintools" id="admin_article" style="display: none">edit</a>
+  <h2>Understanding Ruby Symbols</h2>
+  <p class="auth">Posted by kev
+  <span class="typo_date" title="Fri, 19 Aug 2005 22:11:00 GMT">Fri, 19 Aug 2005 22:11:00 GMT</span></p>
+  <div id="adsense">
+  <script type="text/javascript"><!--
+google_ad_client = "pub-1730274975094059";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "FFFFFF";
+google_color_bg = "FFFFFF";
+google_color_link = "5189B5";
+google_color_url = "000000";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+  </div>
+  <p>Update 8/25: This post has been translated into <a href="http://wiki.rubykr.org/show/KoreanDoc_UnderstandingRubySymbols">korean</a>.</p>
+
+<p>Update 12/12: I found a <a href="http://www.4coders.com/index.php?modulo=contenido&amp;op=detalle&amp;tipo=a&amp;id=37">spanish translation</a> today.</p>
+
+<p>Symbols in ruby are an enigma. We use them, but many don&#8217;t really understand them.</p>
+
+<h2>So really, what is a symbol?</h2>
+
+<p>Simply, a symbol is something that you use to represent names and strings. What this boils down to is a way to efficiently have descriptive names while saving the space one would use to generate a string for each naming instance.</p>
+
+<h2>The Case of Dr. Jones</h2>
+
+<p>Dr. Jones is a Psycologist. He regularly uses word association tests to diagnose patients and uses ruby to keep track of everything. His first patient, Why, steps up to the plate:</p>
+
+<pre>
+Dr J: Red
+Why : Ruby
+Dr J: Transportation
+Why : Rails
+Dr J: Chunky
+Why : Bacon
+</pre>
+
+<p>Dr Jones creates a hash to store his data:</p>
+
+<p><code>
+    why = {"red" => "ruby", "transportation" => "rails", "chunky" => "bacon"}
+</code></p>
+
+<p>Dr. Jones&#8217;s second patient, Bob, turns in his survey results:</p>
+
+<p>
+<code>
+    bob = {"red" => "paint", "transportation" => "car", "chunky" => "fat"}
+</code>
+</p>
+
+<h3>The Problem</h3>
+
+<p>After running several hundred word association tests, Dr. Jones begins to realize that he&#8217;s running out of memory! On a hunch, Jones runs tests in irb:</p>
+
+<pre>
+<code>
+> patient1 = { "ruby" => "red" }
+> patient2 = { "ruby" => "programming" }
+> patient1.each_key {|key| puts key.object_id.to_s}
+211006
+> patient2.each_key {|key| puts key.object_id.to_s}
+203536
+</code>
+</pre>
+
+<p>Well look at that, each time he creates a hash to store his information, ruby creates a new string object in a different memory location for each key. Fortunately, there&#8217;s an alternative.</p>
+
+<h3>Symbols to the Rescue</h3>
+
+<p>Unlike strings, symbols of the same name are initialized and exist in memory only once during a session of ruby. Symbols are most obviously useful when you&#8217;re going to be reusing strings representing something else. Reproducing Dr. Jones&#8217;s tests, we are able to see this directly:</p>
+
+<pre>
+<code>
+> patient1 = { :ruby => "red" }
+> patient2 = { :ruby => "programming" }
+> patient1.each_key {|key| puts key.object_id.to_s}
+3918094
+> patient2.each_key {|key| puts key.object_id.to_s}
+3918094
+</code>
+</pre>
+
+<p>Using symbols, we&#8217;ve used a single memory address to represent the word ruby in our word association tests. Over time, this can save alot of space.</p>
+
+<h2>So I&#8217;m no shrink, when else will I want to use symbols?</h2>
+
+<p>Symbols are useful whenever you&#8217;re going to be reusing a word over and over to represent something else, whether its a key in a hash or the method you&#8217;re using in an http query. An example from the latest and greatest web framework <a href=""http://www.rubyonrails.com"">Ruby on Rails</a> is its use of symbols in routes and links. Rails defines actions within controllers to do things within the framework before rendering a web page, so a link in Rails may look like:</p>
+
+<pre>
+<code>
+    link_to("View Article", :controller => "articles", :action => "show", :id => 1)
+</code>
+</pre>
+
+<p>When an application may have hundreds of links, or atleast hundreds of references to different actions and controllers, it is significantly more efficient to use symbols than strings.</p>
+
+<p>Finally, its important to note that the usefulness of symbols is not restricted to keys in hashes. For example, if one was writing a http client or server they might use get and post several times within their application, and it might be appropriate to use:</p>
+
+<pre>
+<code>
+    do_this if query == :get<br />
+    ...
+    send_message_to_server(:post,filename)
+</code>
+</pre>
+
+<p>Any time a string could be used over and over, a symbol may be a good candidate for replacement.</p>
+
+<h3>Updates</h3>
+
+<p>In #ruby-lang on Freenode (irc.freenode.net) Aria and nome presented helpful additions to this article.</p>
+
+<pre>
+11:58 < Aria> Also, the entirely realistic reasoning for using symbols: If you 
+              are going to refer to a method name, use a symbol. Because /by 
+              defining the method/, the symbol exists anyway.
+
+12:03 < nome> kevinclark: the intention of symbols are for identification of 
+              (user-level, primarily) constructs: a slot in a hash, a method, 
+              an option, etc.
+</pre>
+
+<p>Also note Aria&#8217;s response to Geoff&#8217;s question in the comments:</p>
+
+<pre>
+Geoff -
+I'd be interested in knowing exactly how
+much memory 1,000 strings ("red") uses over :red.
+
+And remember, outside of Rails, "red" != :red
+
+Aria - 
+How much memory? 20 bytes per object, plus storage for the data, 3 bytes,
+plus the length storage (4 byes)—so 27,000 bytes or so.
+
+Versus one copy of the entry in the symbol table, which is likely to be just 
+a few bytes (I could check, but I know for certain it’s in the tens, not tens 
+of thousands of bytes range.)
+</pre>
+
+<p>Jim Weirich notes:</p>
+
+<pre>
+I (generally) use the following rule on string vs symbols:
+
+(1) If the contents (i.e. the sequence of characters) of the object is important, use a String.
+
+(2) If the identity of the object is important, use a Symbol.
+</pre>
+
+<p>Reports of errors and omissions are welcome and should be sent to kevin [dot] clark [at] gmail [dot] com </p>
+</div>
+<p class="meta">
+  Posted in <a href="/articles/category/coding" rel="tag">Coding</a>, <a href="/articles/category/ruby" rel="tag">Ruby</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/08/19/understanding-ruby-symbols#comments">33 comments</a>&nbsp;<strong>|</strong>&nbsp;<a href="/articles/2005/08/19/understanding-ruby-symbols#trackbacks">5 trackbacks</a>
+</p>
+
+  <a name="comments"></a><h4 class="blueblk">Comments</h4>
+    <ol class="comment-list" id="commentList">
+  
+    <li id="comment-32"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_32'); }"  onmouseout="Element.hide('admin_comment_32');" >
+  <div id="admin_comment_32" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/32', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-32&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/32" class="admintools">edit</a></div>
+  <a name="comment-32"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://nubyonrails.topfunky.com">Geoff</a></strong> </cite> said 8 minutes later:<br />
+  <p>Good article. I&#8217;d be interested in knowing exactly how much memory 1,000 strings (&#8220;red&#8221;) uses over :red.</p>
+
+
+	<p>And remember, outside of Rails, &#8220;red&#8221; != :red</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="32";
+//--></script>
+<!-- mmc mmid:32 mmdate:2005-08-19 18:19:29 mmauthor:Geoff -->
+</li>
+<li id="comment-33"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_33'); }"  onmouseout="Element.hide('admin_comment_33');" >
+  <div id="admin_comment_33" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/33', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-33&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/33" class="admintools">edit</a></div>
+  <a name="comment-33"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Aredridel</strong> </cite> said 40 minutes later:<br />
+  <p>How much memory? 20 bytes per object, plus storage for the data, 3 bytes, plus the length storage (4 byes)&#8212;so 27,000 bytes  or so.</p>
+
+
+	<p>Versus one copy of the entry in the symbol table, which is likely to be just a few bytes (I could check, but I know for certain it&#8217;s in the tens, not tens of thousands of bytes range.)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="33";
+//--></script>
+<!-- mmc mmid:33 mmdate:2005-08-19 18:51:14 mmauthor:Aredridel -->
+</li>
+<li id="comment-34"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_34'); }"  onmouseout="Element.hide('admin_comment_34');" >
+  <div id="admin_comment_34" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/34', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-34&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/34" class="admintools">edit</a></div>
+  <a name="comment-34"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://null">anonymous coward</a></strong> </cite> said about 3 hours later:<br />
+  <p>there is a typo in your example:
+&#8220;do_this if query = :get&#8221; should be &#8220;do_this if query == :get&#8221;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="34";
+//--></script>
+<!-- mmc mmid:34 mmdate:2005-08-19 20:42:25 mmauthor:anonymous coward -->
+</li>
+<li id="comment-35"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_35'); }"  onmouseout="Element.hide('admin_comment_35');" >
+  <div id="admin_comment_35" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/35', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-35&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/35" class="admintools">edit</a></div>
+  <a name="comment-35"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 3 hours later:<br />
+  <p>AC: Quite right, I&#8217;ll fix that.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="35";
+//--></script>
+<!-- mmc mmid:35 mmdate:2005-08-19 21:07:46 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-36"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_36'); }"  onmouseout="Element.hide('admin_comment_36');" >
+  <div id="admin_comment_36" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/36', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-36&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/36" class="admintools">edit</a></div>
+  <a name="comment-36"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=10d4acbfdaccb4eee687a428ca00a5d8&amp;size=60" />
+  <cite><strong><a href="http://onestepback.org">Jim Weirich</a></strong> </cite> said about 3 hours later:<br />
+  <p>I (generally) use the following rule on string vs symbols:</p>
+
+
+	<p>(1) If the contents (i.e. the sequence of characters) of the object is important, use a String.</p>
+
+
+	<p>(2) If the identity of the object is important, use a Symbol.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="36";
+//--></script>
+<!-- mmc mmid:36 mmdate:2005-08-19 21:24:58 mmauthor:Jim Weirich -->
+</li>
+<li id="comment-37"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_37'); }"  onmouseout="Element.hide('admin_comment_37');" >
+  <div id="admin_comment_37" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/37', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-37&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/37" class="admintools">edit</a></div>
+  <a name="comment-37"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>anon</strong> </cite> said about 4 hours later:<br />
+  <p>another typo: missing &#8221; at the end of rails in
+ why = {&#8220;red&#8221; =&gt; &#8220;ruby&#8221;, &#8220;transportation&#8221; =&gt; &#8220;rails, &#8220;chunky&#8221; =&gt; &#8220;bacon&#8221;}</p>
+
+
+	<p>It&#8217;s a good article but I feel I don&#8217;t grasp the concept of symbols yet.
+For example in RoR with LoginSystem symbols are also used like this (in application.rb)</p>
+
+
+	<p>include LoginSystem
+model :user</p>
+
+
+	<p>What does it mean?
+Is it some kind of &#8220;reference&#8221; to an instance of the class User &lt; ActiveRecord::Base ?
+How does the magic work to be able to write such things like @request.session[:user] ?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="37";
+//--></script>
+<!-- mmc mmid:37 mmdate:2005-08-19 22:04:16 mmauthor:anon -->
+</li>
+<li id="comment-38"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_38'); }"  onmouseout="Element.hide('admin_comment_38');" >
+  <div id="admin_comment_38" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/38', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-38&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/38" class="admintools">edit</a></div>
+  <a name="comment-38"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said about 6 hours later:<br />
+  <p>anon, in your example:
+model :user</p>
+
+
+	<p>This code calls the method <a href="http://api.rubyonrails.org/classes/ActionController/Dependencies/ClassMethods.html#M000045">model</a> and passes the symbol :user as an argument. model in turn sets its arguments as models that the current controller depends on. So the point is, rather than saying</p>
+
+
+	<p>model &#8220;myModel&#8221;</p>
+
+
+	<p>and creating a string each time you want to do this, and then within the dependency methods checking against &#8220;myModel&#8221; (creating a new string each time we do this) we just reference the single :myModel. We&#8217;re still checking to see if the model is myModel and acting accordingly, but saving all the memory we would use with strings.</p>
+
+
+	<p>Similarly, in @request.session[:user], we&#8217;re treating :user like we would a string in a hash, but saving the space that would be assigned in order to create the new object &#8220;user&#8221; by using the already created :user.</p>
+
+
+	<p>If this doesn&#8217;t cover it, please, follow up.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="38";
+//--></script>
+<!-- mmc mmid:38 mmdate:2005-08-19 23:43:56 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-39"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_39'); }"  onmouseout="Element.hide('admin_comment_39');" >
+  <div id="admin_comment_39" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/39', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-39&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/39" class="admintools">edit</a></div>
+  <a name="comment-39"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>trans</strong> </cite> said about 7 hours later:<br />
+  <p>Least anyone think symbols are restricted in there content:</p>
+
+
+	<pre><code>:"this is a !@#$% symbol too!"</code></pre>
+
+
+	<p>The difference to point: Like Numerics, Symbols are immutable, but Strings are not.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="39";
+//--></script>
+<!-- mmc mmid:39 mmdate:2005-08-20 01:26:50 mmauthor:trans -->
+</li>
+<li id="comment-40"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_40'); }"  onmouseout="Element.hide('admin_comment_40');" >
+  <div id="admin_comment_40" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/40', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-40&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/40" class="admintools">edit</a></div>
+  <a name="comment-40"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=e2fd9ab152cac59a0ca5b61a20519015&amp;size=60" />
+  <cite><strong><a href="http://flgr.0x42.net/">Florian Groß</a></strong> </cite> said about 8 hours later:<br />
+  <p>And to be even more detailed: The content of Symbols <strong>is</strong> restricted over that of Strings. Symbols can never contain \0 and Ruby tries to keep you from using empty symbols. (Though the latter is still possible.)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="40";
+//--></script>
+<!-- mmc mmid:40 mmdate:2005-08-20 02:16:15 mmauthor:Florian Groß -->
+</li>
+<li id="comment-41"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_41'); }"  onmouseout="Element.hide('admin_comment_41');" >
+  <div id="admin_comment_41" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/41', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-41&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/41" class="admintools">edit</a></div>
+  <a name="comment-41"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Porges</strong> </cite> said about 11 hours later:<br />
+  <p>I like to think of like this: If you need to print the contents of a string at any time, use a string. Otherwise use a smybol :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="41";
+//--></script>
+<!-- mmc mmid:41 mmdate:2005-08-20 04:47:42 mmauthor:Porges -->
+</li>
+<li id="comment-42"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_42'); }"  onmouseout="Element.hide('admin_comment_42');" >
+  <div id="admin_comment_42" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/42', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-42&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/42" class="admintools">edit</a></div>
+  <a name="comment-42"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>anon</strong> </cite> said about 15 hours later:<br />
+  <p>Kevin: if I understand you correctly, I was wrong when I asked if it was some kind of “reference�? to an instance of a class. It has nothing to do with it. For some reason I thought of symbols of &#8220;stuff somewhat like C/C++ pointers&#8221; but it&#8217;s not, or maybe only pointing against strings.
+Anyway I think I got it now.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="42";
+//--></script>
+<!-- mmc mmid:42 mmdate:2005-08-20 09:01:39 mmauthor:anon -->
+</li>
+<li id="comment-45"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_45'); }"  onmouseout="Element.hide('admin_comment_45');" >
+  <div id="admin_comment_45" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/45', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-45&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/45" class="admintools">edit</a></div>
+  <a name="comment-45"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.livejournal.com/users/ga_woo">Gavri Fernandez</a></strong> </cite> said 1 day later:<br />
+  <p>Geoff: &#8220;red&#8221; != :red even in Rails. It&#8217;s just that Rails uses HashWithIndifferentAccess instead of Hash everywhere.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="45";
+//--></script>
+<!-- mmc mmid:45 mmdate:2005-08-21 11:50:34 mmauthor:Gavri Fernandez -->
+</li>
+<li id="comment-47"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_47'); }"  onmouseout="Element.hide('admin_comment_47');" >
+  <div id="admin_comment_47" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/47', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-47&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/47" class="admintools">edit</a></div>
+  <a name="comment-47"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.ahmadh.com/weblog/">Ahmad Alhashemi</a></strong> </cite> said 3 days later:<br />
+  <p>I used to confuse symbols with variable names. I read everything I could find about them, including in Learning Ruby 2.</p>
+
+
+	<p>I only &#8220;got it&#8221; when I understood this fact: symbols are literal values. Just like that!</p>
+
+
+	<p>They are literal values, just like the number 3 and the string &#8220;red&#8221;.</p>
+
+
+	<p>I believe that I&#8217;m not the only one confusing symbols with variable names. I read somewhere trying to explain symbols that variable and method names change in what they are referring to in different places, while symbols always mean the same thing.</p>
+
+
+	<p>This is even more confusing, because it is makes you think that symbols are special kind of variables. But when you know that they are literal values, you will think: of course they will not change their meaning! Just like the literal 3, it always means the same thing!</p>
+
+
+	<p>That is also why you can say:
+v = :s</p>
+
+
+	<p>But you can&#8217;t say:
+:s = v</p>
+
+
+	<p>This will give you a syntax error.</p>
+
+
+	<p>I hope this added to your already excellent explanation.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="47";
+//--></script>
+<!-- mmc mmid:47 mmdate:2005-08-22 19:47:20 mmauthor:Ahmad Alhashemi -->
+</li>
+<li id="comment-48"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_48'); }"  onmouseout="Element.hide('admin_comment_48');" >
+  <div id="admin_comment_48" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/48', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-48&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/48" class="admintools">edit</a></div>
+  <a name="comment-48"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 3 days later:<br />
+  <p>Clarifications and additions are more than welcome.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="48";
+//--></script>
+<!-- mmc mmid:48 mmdate:2005-08-22 20:24:05 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-49"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_49'); }"  onmouseout="Element.hide('admin_comment_49');" >
+  <div id="admin_comment_49" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/49', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-49&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/49" class="admintools">edit</a></div>
+  <a name="comment-49"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong><a href="http://www.amiroff.com">Metin Amiroff</a></strong> </cite> said 3 days later:<br />
+  <p>Very helpfull article and great comments. Much appreciated.</p>
+
+
+	<p>I am a ruby newbie and these symbols were like a black hole for me. Now, everything&#8217;s much much clear. Thanks again!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="49";
+//--></script>
+<!-- mmc mmid:49 mmdate:2005-08-23 17:42:10 mmauthor:Metin Amiroff -->
+</li>
+<li id="comment-66"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_66'); }"  onmouseout="Element.hide('admin_comment_66');" >
+  <div id="admin_comment_66" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/66', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-66&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/66" class="admintools">edit</a></div>
+  <a name="comment-66"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>anon</strong> </cite> said 69 days later:<br />
+  <p>Rails uses HashWithIndifferentAccess like mentioned in a previous comment.. and what that does is converts any key to a string.</p>
+
+
+	<p>hash[:symbol] turns into hash[&#8220;symbol&#8221;], both when setting and accessing.</p>
+
+
+	<p>doesn&#8217;t that mean the benifit of using symbols is lost?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="66";
+//--></script>
+<!-- mmc mmid:66 mmdate:2005-10-27 18:23:04 mmauthor:anon -->
+</li>
+<li id="comment-78"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_78'); }"  onmouseout="Element.hide('admin_comment_78');" >
+  <div id="admin_comment_78" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/78', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-78&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/78" class="admintools">edit</a></div>
+  <a name="comment-78"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Alex S.</strong> </cite> said 71 days later:<br />
+  <p>as a newbie to Ruby this Blog entry helped al lot to understand Symbols. thanks</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="78";
+//--></script>
+<!-- mmc mmid:78 mmdate:2005-10-29 22:34:14 mmauthor:Alex S. -->
+</li>
+<li id="comment-92"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_92'); }"  onmouseout="Element.hide('admin_comment_92');" >
+  <div id="admin_comment_92" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/92', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-92&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/92" class="admintools">edit</a></div>
+  <a name="comment-92"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>yoav</strong> </cite> said 87 days later:<br />
+  <p>considering what was said here about HashWithIndifferentAccess in ror, is it possible to disable this and &#8220;force&#8221; rails to use only symbols?</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="92";
+//--></script>
+<!-- mmc mmid:92 mmdate:2005-11-15 14:10:50 mmauthor:yoav -->
+</li>
+<li id="comment-94"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_94'); }"  onmouseout="Element.hide('admin_comment_94');" >
+  <div id="admin_comment_94" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/94', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-94&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/94" class="admintools">edit</a></div>
+  <a name="comment-94"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>somebody</strong> </cite> said 95 days later:<br />
+  <p>What I don&#8217;t get is why nobody does this in Rails:</p>
+
+
+<p><code>link_to("View Article", :controller =&gt; :articles, :action =&gt; :show, :id =&gt; 1)</code></p>
+
+	<p>Why give &#8220;articles&#8221; and &#8220;show&#8221; as strings? Especially &#8220;show&#8221; as you&#8217;re refering to a method.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="94";
+//--></script>
+<!-- mmc mmid:94 mmdate:2005-11-22 19:19:23 mmauthor:somebody -->
+</li>
+<li id="comment-98"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_98'); }"  onmouseout="Element.hide('admin_comment_98');" >
+  <div id="admin_comment_98" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/98', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-98&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/98" class="admintools">edit</a></div>
+  <a name="comment-98"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=5ca52d3f74b04afadfdc24e7ca177df2&amp;size=60" />
+  <cite><strong><a href="http://programmin.prim8.net">prim8</a></strong> </cite> said 100 days later:<br />
+  <p>&#8216;What I don’t get is why nobody does this in Rails:</p>
+
+
+	<p>link_to(&#8220;View Article&#8221;, :controller =&gt; :articles, :action =&gt; :show, :id =&gt; 1)&#8217;</p>
+
+
+The action symbols do work fine like this, but I have been having problems when I refer to the controller by symbol.  It did work at one time, but at some point stopped working.
+<pre>
+class AlbumController &lt; ApplicationController
+  layout :photo
+end
+</pre>
+This gives: NoMethodError: undefined method `photo&#8217; for #&lt;AlbumController:0&#215;5a16f48&gt;
+
+Not sure why it thinks photo is a method, it works fine when I refer to the controller with: 
+<pre>
+layout 'photo'
+</pre>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="98";
+//--></script>
+<!-- mmc mmid:98 mmdate:2005-11-28 14:25:40 mmauthor:prim8 -->
+</li>
+<li id="comment-110"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_110'); }"  onmouseout="Element.hide('admin_comment_110');" >
+  <div id="admin_comment_110" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/110', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-110&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/110" class="admintools">edit</a></div>
+  <a name="comment-110"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>azreal</strong> </cite> said 105 days later:<br />
+  <p>cool article.
+Now I understant the concept!
+thank you!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="110";
+//--></script>
+<!-- mmc mmid:110 mmdate:2005-12-03 16:28:44 mmauthor:azreal -->
+</li>
+<li id="comment-115"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_115'); }"  onmouseout="Element.hide('admin_comment_115');" >
+  <div id="admin_comment_115" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/115', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-115&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/115" class="admintools">edit</a></div>
+  <a name="comment-115"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Michael Bevilacqua-Linn</strong> </cite> said 108 days later:<br />
+  <p>Thanks so much for writing this.  Much like you say, I&#8217;ve been using symbols without understanding what exactly they are.  Now I do.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="115";
+//--></script>
+<!-- mmc mmid:115 mmdate:2005-12-05 17:24:18 mmauthor:Michael Bevilacqua-Linn -->
+</li>
+<li id="comment-124"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_124'); }"  onmouseout="Element.hide('admin_comment_124');" >
+  <div id="admin_comment_124" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/124', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-124&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/124" class="admintools">edit</a></div>
+  <a name="comment-124"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=fe83ddc6b200c6d6a32d7dcc5aca0876&amp;size=60" />
+  <cite><strong><a href="http://subtlegradient.com">Thomas Aylott</a></strong> </cite> said 113 days later:<br />
+  <p>Wow.. I think I <em>&#8216;get it&#8217;</em></p>
+
+
+	<p>Symbols are like constants whose name <strong>is</strong> their value.
+Just like the number <code>5</code> has both the name <code>5</code> and the value <code>5</code> so the symbol <code>:howdy</code> is the word <code>howdy</code>. It&#8217;s just like <em>&#8220;howdy&#8221;</em> but <strong>Better™</strong></p>
+
+
+	<p>that&#8217;s pretty neat.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="124";
+//--></script>
+<!-- mmc mmid:124 mmdate:2005-12-11 17:07:18 mmauthor:Thomas Aylott -->
+</li>
+<li id="comment-125"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_125'); }"  onmouseout="Element.hide('admin_comment_125');" >
+  <div id="admin_comment_125" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/125', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-125&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/125" class="admintools">edit</a></div>
+  <a name="comment-125"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Douglas</strong> </cite> said 115 days later:<br />
+  <p>&gt; link_to(&#8220;View Article&#8221;, :controller =&gt; :articles, :action =&gt; :show, :id =&gt; 1)</p>
+
+
+	<p>&gt; Why give “articles�? and “show�? as 
+&gt; strings? Especially “show�? as you’re 
+&gt; refering to a method.</p>
+
+
+	<p>With the keys (:controller and action and id), the uniqueness of the key is the most important feature. (We happen to use symbols because they are unique and hint at meening.) With the values (&#8220;articles&#8221;, &#8220;show&#8221;) the content is the most important thing, we use strings instead.</p>
+
+
+	<p>Just a convention :)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="125";
+//--></script>
+<!-- mmc mmid:125 mmdate:2005-12-13 16:08:25 mmauthor:Douglas -->
+</li>
+<li id="comment-153"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_153'); }"  onmouseout="Element.hide('admin_comment_153');" >
+  <div id="admin_comment_153" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/153', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-153&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/153" class="admintools">edit</a></div>
+  <a name="comment-153"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>twifkak</strong> </cite> said 122 days later:<br />
+  <p>To make it starkly clear, symbols are (I&#8217;m told) <strong>never garbage collected</strong>. So you should be very wary about doing things like <code>:"thing_#{value}"</code>.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="153";
+//--></script>
+<!-- mmc mmid:153 mmdate:2005-12-19 20:07:26 mmauthor:twifkak -->
+</li>
+<li id="comment-195"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_195'); }"  onmouseout="Element.hide('admin_comment_195');" >
+  <div id="admin_comment_195" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/195', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-195&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/195" class="admintools">edit</a></div>
+  <a name="comment-195"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>howdy</strong> </cite> said 161 days later:<br />
+  <p>If you had this in C:</p>
+
+
+<pre><code>#define ID_NAME     0
+#define ID_ADDRESS  1</code></pre>
+
+	<p>That&#8217;s basically what you achieve with symbols like :name and :address in ruby, right?  Except you don&#8217;t have to associate them with numbers yourself, the interpreter does that for you.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="195";
+//--></script>
+<!-- mmc mmid:195 mmdate:2006-01-28 00:04:07 mmauthor:howdy -->
+</li>
+<li id="comment-198" class="author_comment"  onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_198'); }"  onmouseout="Element.hide('admin_comment_198');" >
+  <div id="admin_comment_198" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/198', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-198&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/198" class="admintools">edit</a></div>
+  <a name="comment-198"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6f792b946bbf30845314eb501da5e040&amp;size=60" />
+  <cite><strong><a href="http://glu.ttono.us">Kevin Clark</a></strong> </cite> said 161 days later:<br />
+  <p>howdy: Not quite. Ruby does have constants, which is what happens when you <code>#define</code> in C. Symbols are similar, but have no value themselves. They&#8217;re really just a label that has meaning to the coder as they aren&#8217;t variables.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="198";
+//--></script>
+<!-- mmc mmid:198 mmdate:2006-01-28 01:28:23 mmauthor:Kevin Clark -->
+</li>
+<li id="comment-240"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_240'); }"  onmouseout="Element.hide('admin_comment_240');" >
+  <div id="admin_comment_240" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/240', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-240&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/240" class="admintools">edit</a></div>
+  <a name="comment-240"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>hsitz</strong> </cite> said 188 days later:<br />
+  <p>Seems to me like howdy&#8217;s example is not so far off, at least in pointing out similarity in use between C constants and Ruby symbols.</p>
+
+
+	<p>The similarity lies in the fact that Ruby symbols do link up to integers &#8220;under the covers&#8221;.  It&#8217;s just that we don&#8217;t care what value is linked to the symbol; all we care about is uniqueness, that every use of the symbol link up to same integer.</p>
+
+
+	<p>The difference is that in howdy&#8217;s C constant example, the symbols link up to an integer &#8220;under the covers&#8221;, but also (as constants) refer to the constant integer value they are assigned within the program.</p>
+
+
+	<p>To see how Ruby symbols link up to integers in the internal workings of the interpreter you can use the object_id and/or to_int methods:</p>
+
+
+	<p>e.g., assume
+f1 = :fred
+f2 = :fred</p>
+
+
+	<p>then f1, f2, and fred will all have same internal representation:</p>
+
+
+	<p>in example I just did on my computer, 
+f1.object_id is 4073742
+f2.object_id is 4073742, and
+:fred.object_id is 4073742</p>
+
+
+	<p>And the to_int method provides another unique integer representation: 
+f1.to_int is 15913
+f2.to_int is 15913
+:fred.to_int is 15913</p>
+
+
+	<p>Perhaps someone can clarify why the to_int method is needed.  Is object_id not already guaranteed to be an integer?</p>
+
+
+	<p>Also, someone said in a previous post that it was impossible to reference the string value of a symbol name from the symbol.  This can in fact be done:</p>
+
+
+	<p>in my above example,</p>
+
+
+	<p>:fred.to_s is &#8220;fred&#8221; 
+:f1.to_s is &#8220;fred&#8221; 
+:f2.to_s is &#8220;fred&#8221;</p>
+
+
+	<p>and id2name is synonomous with to_s, so, e.g.,</p>
+
+
+	<p>:fred.id2name is &#8220;fred&#8221;</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="240";
+//--></script>
+<!-- mmc mmid:240 mmdate:2006-02-24 09:42:23 mmauthor:hsitz -->
+</li>
+<li id="comment-259"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_259'); }"  onmouseout="Element.hide('admin_comment_259');" >
+  <div id="admin_comment_259" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/259', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-259&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/259" class="admintools">edit</a></div>
+  <a name="comment-259"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>vhg119</strong> </cite> said 197 days later:<br />
+  <p>To Ahmad Alhashemi 
+AND Thomas Aylott</p>
+
+
+	<p>Thanks to your comments, I NOW GET IT!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="259";
+//--></script>
+<!-- mmc mmid:259 mmdate:2006-03-04 19:44:29 mmauthor:vhg119 -->
+</li>
+<li id="comment-367"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_367'); }"  onmouseout="Element.hide('admin_comment_367');" >
+  <div id="admin_comment_367" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/367', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-367&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/367" class="admintools">edit</a></div>
+  <a name="comment-367"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=6e275737114e311f00ec7321467a75d0&amp;size=60" />
+  <cite><strong><a href="http://apperceptions.org">Markus Sandy</a></strong> </cite> said 218 days later:<br />
+  <p>I agree with Howdy.  His examples are not the same as constants in C (use &#8220;const&#8221; for that).  Those are &#8220;macros&#8221; which are mearly symbols that are expanded upon before compilation.  Nice post.</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="367";
+//--></script>
+<!-- mmc mmid:367 mmdate:2006-03-26 10:32:37 mmauthor:Markus Sandy -->
+</li>
+<li id="comment-375"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_375'); }"  onmouseout="Element.hide('admin_comment_375');" >
+  <div id="admin_comment_375" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/375', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-375&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/375" class="admintools">edit</a></div>
+  <a name="comment-375"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Roman</strong> </cite> said 220 days later:<br />
+  <p>Thanks Thomas Aylott. I now get it too!</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="375";
+//--></script>
+<!-- mmc mmid:375 mmdate:2006-03-28 02:02:58 mmauthor:Roman -->
+</li>
+<li id="comment-377"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_377'); }"  onmouseout="Element.hide('admin_comment_377');" >
+  <div id="admin_comment_377" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/377', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-377&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/377" class="admintools">edit</a></div>
+  <a name="comment-377"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=d41d8cd98f00b204e9800998ecf8427e&amp;size=60" />
+  <cite><strong>Hardy</strong> </cite> said 221 days later:<br />
+  <p>Wow, this was an excellent find.  I finally get it (between the original posting and some of the comments).</p>
+
+
+	<p>This should be reproduced in the pickaxe : b</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="377";
+//--></script>
+<!-- mmc mmid:377 mmdate:2006-03-29 02:48:23 mmauthor:Hardy -->
+</li>
+<li id="comment-432"   onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_comment_432'); }"  onmouseout="Element.hide('admin_comment_432');" >
+  <div id="admin_comment_432" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this comment?')) { new Ajax.Request('/articles/nuke_comment/432', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;comment-432&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/comments/article/3/edit/432" class="admintools">edit</a></div>
+  <a name="comment-432"></a>
+  <img alt="Avatar" class="gravatar" src="http://www.gravatar.com/avatar.php?gravatar_id=792af4d95a8ff4da442ababc0dc06423&amp;size=60" />
+  <cite><strong>Clint Checketts</strong> </cite> said 229 days later:<br />
+  <p>I&#8217;m a bit late to this post, but I think I&#8217;m finally understanding symbols.</p>
+
+
+	<p>I would compare a symbol to a Java 1.5 enumerations on steroids. Like a very versatile constant (if that helps anyone)</p>
+  <script type="text/javascript"><!--
+if(!mmcomments){var mmcomments=[];}mmcomments[mmcomments.length]="432";
+//--></script>
+<!-- mmc mmid:432 mmdate:2006-04-06 00:52:03 mmauthor:Clint Checketts -->
+</li>
+
+  
+  </ol>
+
+  <a name="trackbacks"></a><h4 class="blueblk">Trackbacks</h4>
+  <p>
+    Use the following link to trackback from your own site:<br/>
+    <span class="light-bg">http://glu.ttono.us/articles/trackback/3</span>
+    </p>
+  <ol class="trackback-list" id="trackbackList"><li id="trackback-60" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_60'); }"  onmouseout="Element.hide('admin_trackback_60');" >
+  <div id="admin_trackback_60" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/60', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-60&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/3/edit/60" class="admintools">edit</a></div>
+  <a name="trackback-60"></a>
+  From <strong>Mando.org</strong><br />
+  <a href="http://www.mando.org/mt/archives/2005/08/symbols_and_has_1.html" rel="nofollow">Symbols and Hashes</a><br/>
+  A genius I can only presume is named Kevin Clark has posted a nice little explanation about symbols and hashes in Ruby. If you're using Ruby on Rails and have been having issues with some of the syntax constructs (like...
+</li>
+<li id="trackback-61" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_61'); }"  onmouseout="Element.hide('admin_trackback_61');" >
+  <div id="admin_trackback_61" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/61', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-61&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/3/edit/61" class="admintools">edit</a></div>
+  <a name="trackback-61"></a>
+  From <strong>Panasonic Youth</strong><br />
+  <a href="http://www.robsanheim.com/?p=56" rel="nofollow">Comparing Ruby Symbols to Java String interning</a><br/>
+  Ruby Symbols are kinda like interned Strings in Java, only different ...
+</li>
+<li id="trackback-62" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_62'); }"  onmouseout="Element.hide('admin_trackback_62');" >
+  <div id="admin_trackback_62" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/62', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-62&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/3/edit/62" class="admintools">edit</a></div>
+  <a name="trackback-62"></a>
+  From <strong>atog</strong><br />
+  <a href="http://atog.be/archives/2005/08/22/ruby-symbols/" rel="nofollow">Ruby Symbols.</a><br/>
+  Understanding Ruby Symbols ...
+</li>
+<li id="trackback-96" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_96'); }"  onmouseout="Element.hide('admin_trackback_96');" >
+  <div id="admin_trackback_96" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/96', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-96&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/3/edit/96" class="admintools">edit</a></div>
+  <a name="trackback-96"></a>
+  From <strong>betweenGo</strong><br />
+  <a href="http://betweengo.com/uncategorized/2005/11/28/understanding-ruby-symbols/" rel="nofollow">Understanding Ruby Symbols</a><br/>
+  Excellent post about Ruby symbols, especially important considering Ruby on Rails uses symbols all the time. ...
+</li>
+<li id="trackback-194" onmouseover="if (getCookie('is_admin') == 'yes') { Element.show('admin_trackback_194'); }"  onmouseout="Element.hide('admin_trackback_194');" >
+  <div id="admin_trackback_194" style="display: none"><a class="admintools" href="#" onclick="if (confirm('Are you sure you want to delete this trackback?')) { new Ajax.Request('/articles/nuke_trackback/194', {asynchronous:true, evalScripts:true, onComplete:function(request){new Effect.Puff(&quot;trackback-194&quot;,{duration:0.6});}}); }; return false;">nuke</a><a href="/admin/trackbacks/article/3/edit/194" class="admintools">edit</a></div>
+  <a name="trackback-194"></a>
+  From <strong>jsquintz.com</strong><br />
+  <a href="http://www.jsquintz.com/?p=3" rel="nofollow">Ruby Symbols</a><br/>
+  I found a great article talking about symbols in Ruby, this provides a great explaination on an important part of the language that books seem to skim over. Working on a pretty big RoR project with a pretty rudimentary understanding of the languag...
+</li>
+</ol>
+
+<p class="postmetadata alt">
+  <small>
+  <a href="http://glu.ttono.us/xml/rss20/article/3/feed.xml" title="RSS Feed">RSS feed for this post</a>
+  <a href="http://glu.ttono.us/articles/trackback/3" >trackback uri</a>
+  </small>
+</p>
+
+  <p>Comments are disabled</p>
+
+<script type="text/javascript"><!--
+if(!mmposts){var mmposts=[];}mmposts[mmposts.length]="3";
+//--></script>
+<!-- mmp mmid:3 mmdate:2005-08-19 18:11:00 mmurl:/articles/2005/08/19/understanding-ruby-symbols mmtitle:Understanding Ruby Symbols -->
+<script src="http://feeds.feedburner.com/~s/Gluttonous?i=http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols" type="text/javascript" charset="utf-8"></script>
+
+          <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+        </div>
+        
+        <div id="sidebar">
+          
+            <div id="search-results"></div>
+            
+              
+      
+<div class="sidebar-node">
+  <h3>About</h3>
+My name is Kevin Clark. I'm a <a href="http://ruby-lang.org">Ruby</a> hacker making awesome things at <a href="http://powerset.com">Powerset</a> in San Francisco.
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Understanding</h3>
+<a href="http://glu.ttono.us/articles/2005/08/19/understanding-ruby-symbols">Ruby Symbols</a><br />
+<a href="http://glu.ttono.us/articles/2005/09/05/environments-in-rails-0-13-1">Environments in Rails 0.13.1</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/27/the-joy-of-migrations">The Joy of Migrations</a><br />
+<a href="http://glu.ttono.us/articles/2005/10/30/why-and-how-ruby-and-rails-unit-testing">Ruby (and Rails) Unit Testing</a><br />
+<a href="http://glu.ttono.us/articles/2006/02/06/rails-best-practices-tips-and-tricks">Rails Best Practices, Tips and Tricks</a><br />
+<a href="http://glu.ttono.us/articles/2006/03/21/rails-for-designers">Rails for Designers</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/22/guide-environments-in-rails-1-1">Environments in Rails 1.1</a><br />
+<a href="http://glu.ttono.us/articles/2006/05/29/guide-test-driven-rjs-with-arts">Test Driven RJS with ARTS</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Cheat Sheets</h3>
+<a href="http://glu.ttono.us/articles/2006/05/22/configuring-rails-environments-the-cheat-sheet">Configuring Rails Environments</a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3>Categories</h3>
+<ul id="categories">
+  
+  <li><a href="/articles/category/web-dev">Web Dev</a> <em>(14)</em></li>
+  
+  
+  <li><a href="/articles/category/coding">Coding</a> <em>(37)</em></li>
+  
+  
+  <li><a href="/articles/category/rails">Rails</a> <em>(74)</em></li>
+  
+  
+  <li><a href="/articles/category/op-ed">Op-Ed</a> <em>(7)</em></li>
+  
+  
+  <li><a href="/articles/category/reviews">Reviews</a> <em>(3)</em></li>
+  
+  
+  <li><a href="/articles/category/musings">Musings</a> <em>(18)</em></li>
+  
+  
+  <li><a href="/articles/category/ruby">Ruby</a> <em>(69)</em></li>
+  
+  
+  <li><a href="/articles/category/hacks">Hacks</a> <em>(22)</em></li>
+  
+  
+  <li><a href="/articles/category/sdrug">sd.rb</a> <em>(10)</em></li>
+  
+  
+  <li><a href="/articles/category/testing">testing</a> <em>(17)</em></li>
+  
+  
+  <li><a href="/articles/category/documentation">documentation</a> <em>(6)</em></li>
+  
+  
+  <li><a href="/articles/category/sightings">sightings</a> <em>(19)</em></li>
+  
+  
+  <li><a href="/articles/category/guides">guides</a> <em>(8)</em></li>
+  
+  
+  <li><a href="/articles/category/cheat-sheets">cheat sheets</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/business">business</a> <em>(1)</em></li>
+  
+  
+  <li><a href="/articles/category/summer-of-code">summer of code</a> <em>(5)</em></li>
+  
+</ul>
+
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<a href="http://feeds.feedburner.com/Gluttonous"><img src="http://feeds.feedburner.com/~fc/Gluttonous?bg=5189b5&amp;fg=333333&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a>
+
+</div>
+
+
+      
+<div class="sidebar-node">
+  <h3></h3>
+<!-- Creative Commons License -->
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" border="0" src="http://creativecommons.org/images/public/somerights20.gif" /></a><br />
+<!-- /Creative Commons License -->
+
+
+<!--
+
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+   <license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+   <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+</License>
+
+</rdf:RDF>
+
+-->
+
+
+</div>
+
+
+  
+
+
+            
+            
+            <a href="http://typo.leetsoft.com/" class="powered"><img alt="Powered" src="/images/powered.gif?1155250442" /></a>
+            </div>
+
+            <br clear="all" />
+      </div>
+      <div id="footer">
+        <ul>
+          <li><a href="http://validator.w3.org/check?uri=referer">Valid XHTML 1.0</a></li>
+          <li><a href="http://jigsaw.w3.org/css-validator/validator?uri=http://glu.ttono.us/">Valid CSS</a></li>
+        </ul>
+      </div>
+  </div>
+<script type="text/javascript" src="http://tracker.measuremap.com/a/562"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-89073-1";
+urchinTracker();
+</script>
+</body>
+</html>
+

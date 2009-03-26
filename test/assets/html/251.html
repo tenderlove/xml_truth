@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>JS.Class - Ruby-style JavaScript</title>
+    <link href="stylesheets/application.css" media="all" rel="stylesheet" type="text/css"/><link href="stylesheets/twilight.css" media="all" rel="stylesheet" type="text/css"/>
+    <script language="javascript" src="javascripts/prettify.js" type="text/javascript"></script>
+  </head>
+  <body onload='prettyPrint()'>
+    <div id='header'>
+      <div class='sub'>
+        <h1>
+          <a href="/">JS.Class</a>
+          <span>Ruby-style JavaScript</span>
+        </h1>
+        <div id='download'>
+          <a href='/assets/JS.Class.2-0-2.zip' onclick="trackDownload('2.0.2')">
+            Download v2.0
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class='sub'>
+      <div id='content'>
+        <p><code>JS.Class</code> is a library designed to facilitate object-oriented development in JavaScript. It
+        implements Ruby&#8217;s core object, module and class system and some of its metaprogramming facilities,
+        giving you a powerful base to build well-structured OO programs.</p>
+        
+        
+        <pre class="prettyprint">
+        var Event = new JS.Class({
+          include: JS.Observable,
+        
+          fire: function(data) {
+            this.notifyObservers('fire', data);
+          }
+        });</pre>
+        
+        	<h3>Features</h3>
+        
+        
+        	<p><code>JS.Class</code> is designed to make JavaScript behave like Ruby in terms of its <span class="caps">OOP</span> structures.
+        To this end, it provides the following features:</p>
+        
+        
+        	<ul>
+        	<li>Classes and modules with Ruby-compatible inheritance</li>
+        		<li>Subclassing and mixins</li>
+        		<li>Late-binding arguments-optional <code>super</code> calls to parent classes and mixins</li>
+        		<li>Singleton methods and eigenclasses</li>
+        		<li><code>included</code>, <code>extended</code> and <code>inherited</code> hooks</li>
+        		<li>Method binding</li>
+        		<li>Ports of various standard Ruby modules, including <code>Enumerable</code>, <code>Observable</code>, <code>Comparable</code>,
+          <code>Forwardable</code></li>
+        	</ul>
+        
+        
+        	<p>Its inheritance system supports late-bound <code>super()</code> calls to parent classes and modules,
+        including calls from singleton methods. It has been designed to mimick Ruby as closely as
+        possible, so if you know Ruby you should feel right at home.</p>
+        
+        
+        	<h3>Download version 2.0</h3>
+        
+        
+        	<p>2.0 is a complete rewrite of the 1.6 core to build a more Ruby-like system. It fixes a number
+        of <code>Module</code>-related bugs in 1.6, has an inheritance model completely compatible with Ruby&#8217;s,
+        and boosts method call performance. It also adds three new packages to the standard library:
+        <code>Package</code>, <code>Set</code> and <code>StackTrace</code>.</p>
+        
+        
+        	<p><a href="/assets/JS.Class.2-0-2.zip" onclick="trackDownload('2.0.2')">Download JS.Class 2.0.2</a></p>
+        
+        
+        	<p>Most code based on version 1.x will be compatible with this release, but there a few <a href="/upgrade.html">issues
+        to be aware of</a>. If you have code you cannot update to 2.0 at present, 1.6 is
+        still available:</p>
+        
+        
+        	<p><a href="/assets/JS.Class.1-6-3.zip" onclick="trackDownload('1.6.3')">Download JS.Class 1.6.3</a></p>
+        
+        
+        	<h3>Acknowledgements</h3>
+        
+        
+        	<p><code>JS.Class</code> was initially inspired by, and borrows ideas from, these open-source projects:</p>
+        
+        
+        	<ul>
+        	<li>The <a href="http://prototypejs.org">Prototype</a> framework, &copy; 2005-2007 Sam Stephenson</li>
+        		<li>Alex Arnell&#8217;s <a href="http://www.twologic.com/projects/inheritance/">Inheritance</a> library, &copy; 2006, Alex Arnell</li>
+        		<li><a href="http://dean.edwards.name/weblog/2006/03/base/">Base</a>, &copy; 2006-7, Dean Edwards</li>
+        	</ul>
+        
+        
+        	<p>The standard library has been influenced by techniques demonstrated in
+        <a href="http://www.apress.com/book/view/9781590599082">Pro JavaScript Design Patterns</a>, and contains
+        ports of a few standard Ruby modules.</p>
+        
+        
+        	<p><code>JS.Class</code> is &copy; 2007&ndash;2008 James Coglan. You can find update announcements via
+        <a href="http://blog.jcoglan.com/category/jsclass/">my blog</a>. The source code is <a href="http://github.com/jcoglan/js.class">hosted on
+        Github</a>.</p>
+      </div>
+      <div id='sidebar'>
+        <h4>Core reference</h4>
+        <ul>
+          <li>
+            <a href="/classes.html">Creating classes</a>
+          </li>
+          <li>
+            <a href="/modules.html">Using Modules</a>
+          </li>
+          <li>
+            <a href="/modifyingmodules.html">Modifying classes/modules</a>
+          </li>
+          <li>
+            <a href="/singletonmethods.html">Singleton methods</a>
+          </li>
+          <li>
+            <a href="/classmethods.html">Class methods</a>
+          </li>
+          <li>
+            <a href="/inheritance.html">Inheritance</a>
+          </li>
+          <li>
+            <a href="/binding.html">Method binding</a>
+          </li>
+          <li>
+            <a href="/hooks.html">Metaprogramming hooks</a>
+          </li>
+          <li>
+            <a href="reflection.html">Reflection</a>
+          </li>
+          <li>
+            <a href="interfaces.html">Interfaces</a>
+          </li>
+          <li>
+            <a href="singletons.html">Singletons</a>
+          </li>
+        </ul>
+        <h4>Standard library</h4>
+        <ul>
+          <li>
+            <a href="command.html">Command</a>
+          </li>
+          <li>
+            <a href="comparable.html">Comparable</a>
+          </li>
+          <li>
+            <a href="decorator.html">Decorator</a>
+          </li>
+          <li>
+            <a href="enumerable.html">Enumerable</a>
+          </li>
+          <li>
+            <a href="forwardable.html">Forwardable</a>
+          </li>
+          <li>
+            <a href="/linkedlist.html">Linked lists</a>
+          </li>
+          <li>
+            <a href="methodchain.html">MethodChain</a>
+          </li>
+          <li>
+            <a href="packages.html">Packages</a>
+          </li>
+          <li>
+            <a href="observable.html">Observable</a>
+          </li>
+          <li>
+            <a href="proxies.html">Proxies</a>
+          </li>
+          <li>
+            <a href="set.html">Set</a>
+          </li>
+          <li>
+            <a href="stacktrace.html">StackTrace</a>
+          </li>
+          <li>
+            <a href="state.html">State</a>
+          </li>
+          <li>
+            <a href="ruby.html">Ruby</a>
+          </li>
+        </ul>
+      </div>
+      <div style='clear: both;'>
+      </div>
+    </div>
+    <div id='footer'>
+      <div class='sub'>
+        <p><code>JS.Class</code>, &copy; 2007&ndash;2008 James Coglan. Released under an <span class="caps">MIT</span>-style license.</p>
+      </div>
+    </div>
+  </body>
+  <script type='text/javascript'>
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type='text/javascript'>
+    isLocal = !!( /localhost|192\.168/i.test(window.location.href) );
+    if (!isLocal) {
+      var pageTracker = _gat._getTracker("UA-873493-4");
+      pageTracker._initData();
+      pageTracker._trackPageview();
+    }
+    trackDownload = function(version) {
+      if (!isLocal) pageTracker._trackPageview('/download/' + version + '/');
+      return true;
+    };
+  </script>
+</html>

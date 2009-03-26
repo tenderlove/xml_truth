@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="resource-type" content="Document" />
+	<title>Digital Web Magazine	 - Ruby on Rails for the Rest of Us	</title>
+	
+	<meta name="description" content="Digital Web Magazine - Ruby on Rails for the Rest of Us" />
+	<meta name="keywords" content="justin williams, justin, williams, Ruby on Rails for the Rest of Us, ruby on rails, rails, ruby, php, basecamp, mephisto, twitter, iconbuffet, hosting rails, Rails Solutions: Ruby on Rails Made Easy, Rails Solutions, Ruby on Rails Made Easy" />
+	<meta name="distribution" content="local" />
+	<meta name="copyright" content="Copyright 0 Digital Web Magazine" />
+	<meta name="type" content="index" />
+	<meta name="pubdate" content="20061204" />
+	<link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+
+	<link rel="bookmark" href="#masthead" title="Top of the Page" />
+	<link rel="bookmark" href="#globalNav" title="Navigation" />
+	<link rel="search" href="/search/" title="Search Digital Web Magazine" />
+	<link rel="bookmark" href="#content" title="Content" />
+	<link rel="copyright" href="javascript:alert('Copyright 0 Digital Web Magazine')" />
+	
+<link rel="stylesheet" type="text/css" href="/css/article.css" media="screen" title="Digital Web Magazine Style" /><link rel="alternate stylesheet" type="text/css" href="/css/print.css" media="screen" title="Print Preview" />
+<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_012534339689088502956%3A645mphn3x04"></script>
+<script type="text/javascript" src="/js/api.js"></script>
+<script src="/mint/?js" type="text/javascript"></script>
+</head>
+<body id="article">
+
+	
+
+<h1 id="masthead"><a href="/"><img src="/images/dw_logo_big.gif" width="316" height="77" alt="Digital Web Magazine" /></a></h1>
+<p id="slogan">The web professional's online magazine of choice.</p>
+
+<div id="content" class="column">
+	
+		<h1>Ruby on Rails for the Rest of Us</h1>
+
+	<div id="comment_invite_top">
+		<strong>Got something to say?</strong>
+		<p><a href="/articles/ruby_on_rails_for_the_rest_of_us/comments/">Share your comments</a> on this topic with other web professionals</p>
+	</div>
+
+	<p class="location">In: <a href="/types/articles/" >Articles</a></p>
+				<p class="author">By <a href="/about/contributors/justin_williams" >Justin Williams</a></p>
+		<p class="date">Published on December 4, 2006</p>
+
+	<h3>What Is Ruby On Rails?</h3>
+<p>
+You&#8217;ve probably heard of Ruby on Rails, which has been generating noise in the web development field over the past year. While buzz and hype are nothing new to our industry, it&#8217;s always beneficial to cut through that hype and the jargon to understand what a new technology really is about.
+</p>
+<p>
+Ruby on Rails is an open-source web development framework that allows you to rapidly develop data-driven applications using the Ruby programming language. By <em>applications</em> I don&#8217;t mean software applications such as Photoshop that run on your desktop.  Instead, I am referring to web applications such as Basecamp and Flickr. Like a desktop app, a web application solves a problem. For example, Basecamp lets you manage your client projects easily via the web, and Flickr lets you share photos with friends and family effortlessly.
+</p>
+<p>
+Rails has three major goals:
+</p>
+<ul>
+	<li>
+		Simplicity: Developing applications should be easier, since many data-driven sites share a common set of parameters. For example, instead of focusing on writing code that will connect your application to a database, Rails handles all of that for you, thus allowing you to spend that time working with your actual application logic.
+	</li>
+	<li>
+		Logical: Rails follows the Model-View-Controller (MVC) architecture for application development, which allows for a logical separation of your application logic, business rules, and user views.  By keeping these things segregated, it not only makes initial development easy, it also makes updates and maintenance to your system quicker.
+	</li>
+	<li>
+		Happiness: Since developing using Ruby on Rails strives to be simple and logical, it will in turn lead to a happy (and more productive) developer.
+	</li>
+</ul>
+<p>
+Before we investigate the Ruby on Rails framework, we should first gain an understanding of its core: Ruby. Ruby is an object-oriented, interpreted programming language. Interpreted programming languages are read line by line instead of by compiling the code into an executable that is unreadable to a human being (but is much quicker to process by a computer). Other interpreted languages include JavaScript and PHP. On the other hand, C++ and Java are compiled languages. For example, you can simply view JavaScript by viewing a web page&#8217;s source in your browser. But if you try to view the Calculator application that comes with Mac OS X, a compiled application, your text editor will only show garbage characters:
+</p>
+<img src="http://www.digital-web.com/images/articles/Calculator_In_Textmate.gif" alt="Calculator application in TextMate" />
+<p>
+Ruby was developed in 1993 by Yukihiro Matsumoto, and first released to the public in 1995. Matsumoto designed Ruby primarily to reduce the workload of developers by following the principle of least surprise, meaning that the language typically behaves as the programmer expects: Methods are named using common English terms that appropriately define the action being performed. For example, Ruby has actions called strip, split, delete, and upcase to perform actions on strings of text. Each of those names intuitively explains the action they perform.
+</p>
+<p>
+Ruby had a small, loyal following (small compared to the number of people interested in Ruby today) when, in late 2003, David Heinemeier Hansson and 37Signals began working on a web-based project management solution for small teams.
+</p>
+<p>
+Initially, Hansson looked to create the application using PHP, but became frustrated with some of the shortcomings of the language. Many PHP programmers find themselves in the same shoes, repeating the same code in multiple places while building a system, for example. This process can be monotonous, redundant, and time-consuming.
+</p>
+<p>
+Instead of succumbing to the same development process again by using PHP, he looked for a better solution, and found Ruby. Using it, he developed Basecamp in two man-months. In the process, Hansson realized that a lot of the code he was writing could be extracted into a framework that could be used as part of other future applications. In July 2004, he did just that, and released his framework, Rails, to the public.
+</p>
+<h3>How is it different from PHP and other languages?</h3>
+<p>
+The first thing you realize is that PHP is a programming language and Rails is a framework. A language is used to control the behavior of your computer using its own syntax and semantics. A framework, such as Rails, is a set of common methods, libraries, and support applications that is used as the foundation for another application. By building on top of a framework, you are given a lot of functionality for free. In other words, anything that is provided to you by the framework is fair game for use in your application without you having to implement the functionality yourself. For example, part of any web programing project usually involved writing a connector to connect your application to a database such as MySQL. With Ruby on Rails, the connector to the database is already provided, so you don&#8217;t have to spend time writing that code again. The only work you need to do is set a few options for your database login credentials.
+</p>
+<p>
+In the past few years, development via frameworks has exploded on both the web and desktop platforms. Microsoft has been touting its .Net development framework as the new way of developing native applications for Windows XP and Vista. .Net isn&#8217;t a programming language&#8212;in fact, you can build your application with .Net using C# or Visual Basic (among other languages).
+</p>
+<p>
+Apple also has touted framework development&#8212;their Cocoa framework hit the mainstream with the release of Mac OS X in 2001. The most popular programming language for building Cocoa applications is Objective-C. By using Cocoa, Mac developers are given a lot of functionality for free.
+</p>
+<h3>How difficult is Ruby on Rails to learn and work with?</h3>
+<p>
+The most challenging part of learning Ruby on Rails is getting used to the Ruby syntax. Let&#8217;s compare a basic &#8220;if&#8221; statement in both PHP and Ruby.
+</p>
+<pre>
+<code>&lt;?
+if ($age &gt; 16) {
+echo "You are $age and capable of driving.";
+} else {
+echo "You are $age and can't drive yet.";
+}
+?&gt;</code>
+</pre>
+<pre>
+<code>if age &gt; 16
+puts "You are #{age} and capable of driving" 
+else
+puts "You are #{age} and can't drive yet." 
+end</code>
+</pre>
+<p>
+There are a few things you probably notice right off the bat:
+</p>
+<ol>
+	<li>Ruby doesn&#8217;t wrap its decision structures in curly braces nor does it wrap the comparison in parentheses.</li>
+	<li>Semicolons are a thing of the past.</li>
+	<li>The Ruby code is more readable to the human eye.</li>
+</ol>
+<p>
+There are some similarities between PHP and Rails, in that you can embed code in an HTML-based template.
+</p>
+<pre>
+<code>&lt;div id="greeting"&gt;
+&lt;p&gt;Hello, you are &lt;? echo $age ?&gt; years old.&lt;/strong&gt;
+&lt;/div&gt;</code>
+</pre>
+<pre>
+<code>&lt;div id="greeting"&gt;
+&lt;p&gt;Hello, you are &lt;%= age %&gt; years old.&lt;/strong&gt;
+&lt;/div&gt;</code>
+</pre>
+<p>
+This is a very bare bones example, but it does show a few of the differences between PHP and Rails. To execute PHP in a template, you use <code>&lt;? ?&gt;</code> whereas with Rails you have an option of using <code>&lt;%= %&gt;</code> or <code>&lt;% %&gt;</code> (notice the equals sign). If you attach the equals sign, the code will be output on the user&#8217;s browser. This is great when you want to show the result of an action you perform in your application: getting a list of user accounts, for example. The <code>&lt;% %&gt;</code> escape characters are for logic code embedded in your template that doesn&#8217;t need to be printed on the screen, such as the example below.
+</p>
+<pre>
+<code>&lt;% @students.each do |s| %&gt;
+&lt;p&gt;&lt;%= s.name %&gt;&lt;/p&gt;
+&lt;% end %&gt;</code><br /></pre>
+<pre>
+<code>&lt;?
+foreach ($students as $s) {
+echo "&lt;p&gt;$s&lt;/p&gt;";
+}
+?&gt;</code><br /></pre>
+<p>
+In the first example, we are using Ruby&#8217;s <code>&lt;% %&gt;</code> character sequence to tell our application to iterate through an array called <code>@students</code> (an array is just a collection of objects). It then prints the name of each student on the user&#8217;s screen. PHP can do the same thing (with a bit of a different syntax), but notice that you don&#8217;t have a different character sequence to differentiate between code that is just executed on the server and what is actually shown to the user in their browser window.
+</p>
+<p>
+If you have any experience working with a programming language (PHP or not), you shouldn&#8217;t have any trouble learning the basics of Ruby and using that knowledge to build an application using Ruby on Rails. Even if you don&#8217;t have any programming experience, getting started with Ruby on Rails is still an easy task, but you may need to learn some basic programming principles before getting started with Rails. A great introduction to programming tutorials is JoAnne Allen&#8217;s <a href="http://webmonkey.com/webmonkey/98/37/index3a.html?tw=backend" title="JoAnne Allen's intro to programming">Introduction to Programming</a>. It will teach you the basics of variables, conditionals, and methods.
+</p>
+<h3>What can I do with Rails?</h3>
+<p>
+There are several different types of applications that are being built with Rails, and they are being developed by a variety of sources. As the main creators of Ruby on Rails, it&#8217;s obvious that 37Signals is using the framework to power their suite of applications. Their main product, Basecamp, has thousands of users, and is widely seen as one of the most successful Rails applications on the market today.
+</p>
+<img src="http://www.digital-web.com/images/articles/Basecamp.gif" alt="Basecamp screenshot" />
+<p>
+Besides <span class="caps">B2B</span> services such as Basecamp, there are several blogging platforms that have been built on Rails. The latest is a powerful engine called Mephisto. Like Wordpress, Mephisto is an open source project with developers from around the world who have helped build it into a preferred blogging solution for Rails fans.
+</p>
+<img src="http://www.digital-web.com/images/articles/Mephisto.gif" alt="Mephisto screenshot" />
+<p>
+One of the most interesting uses of Ruby on Rails is Twitter. Built by the team behind the Odeo podcasting service, Obvious Corp., Twitter allows you to keep track of your friends via <span class="caps">SMS</span> text messaging, IM, or the web by posting status updates. After setting up your cell phone to work with Twitter, you can then send a text message to Twitter&#8217;s <span class="caps">SMS</span> shortcode with a status update, and it will automatically be posted to the Twitter site. These updates can then be spread to your contact&#8217;s cell phones, so they can see what you are up to anytime during the day.
+</p>
+<img src="http://www.digital-web.com/images/articles/Twitter.gif" alt="Twitter screenshot" />
+<p>
+Ruby on Rails is also able to handle e-commerce. Firewheel Design&#8217;s IconBuffet allows customers to purchase icon sets using their credit cards.
+</p>
+<img src="http://www.digital-web.com/images/articles/IconBuffet.gif" alt="IconBuffet screenshot" />
+<p>
+Ruby on Rails is powerful enough to handle almost any type of data-driven application you throw at it.
+</p>
+<h3>When to use Ruby on Rails</h3>
+<p>
+With any new technology, people think they need to adopt it for any project they take on.  Look at the number of sites that jumped on the AJAX bandwagon in the past year.
+</p>
+<p>
+The most notable reason to build a Rails application is that you are wanting to build a data driven application easily. As I mentioned earlier, Rails has the code already baked into the framework to connect your application to a database, so you don&#8217;t have to invest any time writing common code that tends to be found in any web application. What&#8217;s more, Rails also includes a technology called <em>scaffolding</em> that will create a skeleton application. The scaffolding contains the models, views, and controllers. Models are the objects you are working with: a user, a real estate listing or a city. Controllers contain all the actions that your application perform. A scaffolded controller creates the basic actions to add, remove, edit, update, and show whatever type of model you are working with. Views are the actual pages that are shown to your users. They are a mix of HTML and Ruby code. It&#8217;s similar to mixing HTML with PHP includes. In fact, if you&#8217;re a designer who has built web sites using PHP includes, the process should be familiar when developing Rails templates: You are still doing the same sort of work, but with a little difference of syntax.
+</p>
+<p>
+With scaffolding, all you need to do is define data columns and Rails can handle the rest. Scaffolding is a great way to hash out a data model quickly.
+</p>
+<p>
+Another reason to build on top of the Rails framework, rather than starting from scratch with a language like PHP, is because time is of the essence. Since you are given so much for free with Ruby on Rails, you can rapidly develop your application in less time than with non-framework based development. Clients will appreciate the rapid development because they always need their projects finished yesterday.
+</p>
+<p>
+Since Ruby on Rails is a new technology, if you wish to use it for client development, be prepared to learn on the job. While it&#8217;s been my goal in this article to try and ease your mind about the ease of developing with Ruby on Rails, I would be lying if I didn&#8217;t say that it can sometimes be confusing when you are first getting started, especially if you are coming from a non-framework  background such as PHP. There are several outlets available to assist you with your initial Ruby on Rails development venture.
+</p>
+<p>
+Online resources such as the Ruby on Rails Wiki and mailing list are great places to search for existing answers to common problems.  There is also the #rubyonrails <abbr title="Internet relay chat">IRC</abbr> channel on the Freenode network if you are hoping to get a quicker answer.  Finally, there are several great books on Ruby on Rails available.
+</p>
+<ul>
+	<li>
+		<a href="http://www.amazon.com/exec/obidos/ASIN/097669400X/digitalwebmagazi" title="Agile Web Development With Ruby on Rails on Amazon.com">Agile Web Development With Ruby on Rails</a> &#8211; Dave Thomas and David Heinemeier Hansson
+	</li>
+	<li>
+		<a href="http://www.amazon.com/exec/obidos/ASIN/1590597524/digitalwebmagazi" title="Rails Solutions: Ruby on Rails Made Easy on Amazon.com">Rails Solutions: Ruby on Rails Made Easy</a> &#8211; Justin Williams (to be published January, 2007)
+	</li>
+	<li>
+		<a href="http://www.amazon.com/exec/obidos/ASIN/0977616606/digitalwebmagazi" title="Rails Recipes on Amazon.com">Rails Recipes</a> &#8211; Chad Fowler
+	</li>
+</ul>
+<p>
+Finally, you should only consider Rails if a solution you need doesn&#8217;t already exist. I am a proponent of not reinventing the wheel. <span class="pullquote">If a solution for a problem you are trying to solve already exists, be it in Ruby on Rails or another language, investigate it before you go about trying to implement your own with Rails.</span> For example, just because there isn&#8217;t an eBay-clone written in Ruby on Rails doesn&#8217;t mean you should write one if there is a perfectly good solution already available in PHP or another language. While it&#8217;s nice to have your own stamp in an entire code base, sometimes it&#8217;s not economical or logical to ignore a preexisting solution if it will accomplish exactly what you want.
+</p>
+<p>
+If you find that those solutions don&#8217;t match what you need and it&#8217;s worth the time investment, I can wholeheartedly recommend you build your application using Rails. Not only is it quicker to develop via a framework, but Rails also is elegant and easy to use.
+</p>
+<p>
+Some developers are also building static web sites as Rails applications rather than mixing static HTML and PHP includes.  Personally I prefer to stick with PHP and HTML, since it&#8217;s easier to publish on a web host. Unless you need some sort of database access in your web site, there&#8217;s really no need to use Rails in this instance: Use the solution that fits the project best.
+</p>
+<h3>Hosting Rails</h3>
+<p>
+Once you develop a Ruby on Rails application, you need somewhere to host it. Not every web host supports Ruby on Rails like they do PHP. More and more hosting providers are starting to adopt Rails as their customers ask for it, but you should check with your current host to see if they support Rails before trying to deploy.
+</p>
+<p>
+If you find your host isn&#8217;t capable of supporting Rails, you can find a host ready and willing to server your Rails application on the Ruby on Rails wiki&#8217;s <a href="http://wiki.rubyonrails.org/rails/pages/RailsWebHosts" title="Ruby on Rails' wiki about hosting providers">web host list</a>.
+</p>
+<h3>Summary</h3>
+<p>
+I hope this article has offered you a basic introduction to the Ruby on Rails framework. We&#8217;ve defined what Rails is and how it differs from other languages such as PHP. We&#8217;ve looked at several examples of Rails applications that are already up and running successfully, and we&#8217;ve discussed when it&#8217;s best to use the framework for your development practices.
+</p>
+<p>
+If you think Rails is something you want to investigate more, you can get started with the framework in a no-hassle way on both Windows and Mac OS X. Windows users should look to the InstantRails project for an all-in-one solution for developing with Rails. Mac OS X users should check out Locomotive.
+</p>
+<p>
+The goal of this article wasn&#8217;t to get you ready to start developing with Ruby on Rails, but to instead introduce you to some of the concepts and thoughts behind the framework. I&#8217;ve listed several resources that should help you with learning the framework. Good luck!
+</p>
+<h3>References</h3>
+<p>
+<a href="http://rubyonrails.com/" title="Ruby on Rails Web site">Ruby on Rails Homepage</a><br />
+<a href="http://weblog.rubyonrails.org/" title="Ruby on Rails Blog">Ruby on Rails Weblog</a><br />
+<a href="http://api.rubyonrails.org/" title="Ruby on Rails API documentation">API Reference</a><br />
+<a href="http://wiki.rubyonrails.org/rails" title="Ruby on Rails Wiki">Wiki</a><br />
+<a href="http://groups.google.com/group/rubyonrails-talk" title="Ruby on Rails Mailing List">Mailing List</a><br />
+<a href="http://developer.apple.com/tools/rubyonrails.html" title="Using Rails on Mac OS X">Using Rails on Mac OS X</a><br />
+<a href="http://www.onlamp.com/pub/a/onlamp/2005/01/20/rails.html" title="Rolling with Ruby on Rails Tutorial">Rolling With Ruby on Rails Tutorial</a><br />
+<a href="http://www.therailsway.com/" title="The Rails Way Web site">The Rails Way</a>
+</p>
+	<div id="comment_invite_bottom">
+		<strong>Got something to say?</strong>
+				<p><a href="/articles/ruby_on_rails_for_the_rest_of_us/comments/" >Share&nbsp;your&nbsp;comments&nbsp;&nbsp;with&nbsp;other&nbsp;professionals</a>&nbsp;(9&nbsp;comments)</p>
+	</div>
+	
+	<ul id="bookmarks">
+		<li class="magnolia"><a href="http://ma.gnolia.com/bookmarklet/add?url=http://www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;description=Ruby+on+Rails+for+the+Rest+of+Us">Add to Magnolia</a></li><li class="myyahoo"><a href="http://myweb2.search.yahoo.com/myresults/bookmarklet?u=http://www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;t=Ruby+on+Rails+for+the+Rest+of+Us">Add to My Yahoo!</a></li><li class="newsvine"><a href="http://www.newsvine.com/_tools/seed&amp;save?u=http://www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;h=Ruby+on+Rails+for+the+Rest+of+Us">Add to Newsvine</a></li><li class="digg"><a href="http://digg.com/submit?phase=2&amp;url=http%3A//www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;title=Ruby+on+Rails+for+the+Rest+of+Us">Digg this story</a></li><li class="delicious"><a href="http://del.icio.us/post?url=http://www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;title=Ruby+on+Rails+for+the+Rest+of+Us" onclick="window.open('http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url=http://www.digital-web.com/articles/ruby_on_rails_for_the_rest_of_us&amp;title=Ruby on Rails for the Rest of Us', 'delicious','toolbar=no,width=700,height=400'); return false;">Add to Del.icio.us</a></li>	</ul>
+
+	<p id="topics" style="margin-top: 0.75em;">
+		<strong>Related Topics</strong>: 
+		<a href="/topics/basics" >Basics</a>, <a href="/topics/programming" >Programming</a>, <a href="/topics/web_maintenance" >Web Maintenance</a>, <a href="/topics/php" >PHP</a>	</p>
+	<div id="bio">
+					<div class="clearhak">&nbsp;</div>
+			<img src="/images/profiles/justin_williams.jpg" width="100" />
+			<p><a href="http://www.digital-web.com/about/contributors/justin_williams/" title="Justin Williams' bio page">Justin Williams</a>, author of <a href="http://www.amazon.com/exec/obidos/ASIN/1590597524/digitalwebmagazi" title="Ruby on Rails Solutions via Amazon.com">Rails Solutions: Ruby on Rails Made Easy</a>, is the owner and lead developer of <a href="http://www.secondgearllc.com/" title="Second Gear LLC Web site">Second Gear</a>, a Web and software development shop that specializes in Ruby on Rails and Mac OS X development, and founder of <a href="http://maczealots.com/" title="MacZealots Web site">MacZealots.com</a>.  When not blogging or coding, you can find him watching copious amounts of TV or playing video games. 			</p>
+			</div>
+</div>
+
+
+<div id="footer">
+		<p class="banner ad"></p>
+	<p>Copyright &#169; 1994-2009 <a href="/about/copyright/">Digital Web Magazine</a>. All Rights Reserved.</p>
+</div>
+
+<ul id="globalNav">
+	<li id="articlesLink"><a href="/">Home</a></li><li id="contactLink"><a href="/contact/">Contact</a></li><li id="aboutLink"><a href="/about/">About</a></li><li id="eventsLink"><a href="/events/">Events</a></li></ul>
+
+<p style="position:absolute; right:23px; top:25px; z-index:100;"><a href="/about/site/"><img src="/images/hostedby.gif" alt="Media Temple" width="117" height="14" border="0" /></a></p>
+
+<ul id="sortNav">
+	<li id="topicLink"><a href="/topics/">Articles by topic</a></li><li id="dateLink"><a href="/dates/">Articles by date</a></li><li id="authorLink"><a href="/authors/">Articles by author</a></li><li id="titleLink"><a href="/titles/">Articles by title</a></li><li id="typeLink"><a href="/types/">Articles by type</a></li>	<li class="search">
+		<!-- Google CSE Search Box Begins -->
+		  <form id="searchbox_012534339689088502956:645mphn3x04" action="/search/">
+		  	<label for="searchTerms">Search</label>
+			<input name="q" type="text" id="searchTerms" />
+			<input type="hidden" name="cx" value="012534339689088502956:645mphn3x04" />
+			<input type="hidden" name="cof" value="FORID:9" />
+			<input type="image" src="/images/go.gif" alt="GO!" id="searchSubmit" />
+		  </form>
+		<!-- Google CSE Search Box Ends -->
+	</li>
+</ul>
+
+<div id="sideAds" style="top:390px">
+	<p class="button ad"><a href='http://www.digital-web.com/adserver/adclick.php?bannerid=1&amp;zoneid=1&amp;source=&amp;dest=http%3A%2F%2Fwww.blueflavor.com%2F' target='_self' onMouseOver="self.status='Blue Flavor - Web. Mobile. Experience.'; return true;" onMouseOut="self.status='';return true;"><img src='http://www.digital-web.com/adserver/adimage.php?filename=banner_mini_blueflavor.gif&amp;contenttype=gif' width='135' height='100' alt='Blue Flavor - Web. Mobile. Experience.' title='Blue Flavor - Web. Mobile. Experience.' border='0'></a><span id="beacon_1" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src='http://www.digital-web.com/adserver/adlog.php?bannerid=1&amp;clientid=2&amp;zoneid=1&amp;source=&amp;block=0&amp;capping=0&amp;cb=3e476eb5f02e0907d840066b2961eec3' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></span></p>
+	<p id="creditads" class="text ad">
+		Publishing services provided by <a href="http://www.blueflavor.com/">Blue Flavor</a><br /><br />
+		Photos provided courtesy of <a href="http://www.istockphoto.com/">iStockPhoto.com</a><br /><br />
+		Publication managed with the help of <a href="http://www.basecamphq.com/">Basecamp</a><br /><br />
+		Newsletter powered by <a href="http://www.campaignmonitor.com/">Campaign Monitor</a><br /><br />
+		Content system developed by <a href="http://www.visicswire.com/">visicswire</a><br /><br />
+		Code managed with help from <a href="http://beanstalkapp.com">Beanstalk</a>
+	</p>
+	
+	<div id="sbgoog">
+	</div>
+</div>
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	_uacct = "UA-104641-1";
+	urchinTracker();
+	</script>
+</body>
+</html>

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+  <head profile="http://gmpg.org/xfn/11">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- leave this for stats -->
+    <meta name="generator" content="WordPress 2.7.1" />
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="glyphobet • глыфобет • γλυφοβετ RSS Feed" href="http://glyphobet.net/blog/feed/atom" />
+    <link rel="pingback" href="https://glyphobet.net/blog/xmlrpc.php" />
+   <!--
+    <link rel="stylesheet" href="https://glyphobet.net/blog/wp-content/themes/glyphobet/style.css" type="text/css" media="screen" />
+   -->
+    <link rel="stylesheet" href="http://glyphobet.net/blog/wp-content/themes/glyphobet/style.css" type="text/css" media="screen" />
+
+    <title>Ruby&#8217;s not ready - glyphobet • глыфобет • γλυφοβετ</title>
+    <!-- -->
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://glyphobet.net/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://glyphobet.net/blog/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 2.7.1" />
+
+		<style type="text/css">
+						ol.footnotes li {list-style-type:decimal;}
+						ol.footnotes{font-size:0.8em;}		</style>
+		  </head>
+  <body>
+    <div id="page">
+      <div id="header">
+        <h1>
+          <a href="http://glyphobet.net/blog/">glyphobet • глыфобет • γλυφοβετ</a>
+        </h1>
+        <div class="description subtle">
+          musings over a tuna fish sandwich	  <small>
+            <a href="/blog/category/essay/">&raquo;essays</a>
+            <a href="/blog/category/blurb/">&raquo;blurbs</a>
+	    <a href="/blog/category/travelog/">&raquo;travelog</a>
+          </small>
+        </div>
+      </div><div id="content" class="widecolumn">
+            <div class="post essay" id="post-228">
+                  <h2>
+	     <a href="http://glyphobet.net/blog/essay/228" rel="bookmark" title="Permanent Link to Ruby&#8217;s not ready">Ruby&#8217;s not ready</a>
+          </h2>
+	        <div class="postmetadata subtle">
+          Monday, April 7th, 2008 at 13:22          &nbsp;
+	          </div>
+        <div class="entry">
+          <h4>Introduction</h4>
+<p>A few weeks ago, I learned <a href="http://ruby-lang.org/">Ruby</a> and <a href="http://rubyonrails.org/">Ruby on Rails</a> to compare them head-to-head against <a href="http://www.python.org/">Python</a> and <a href="http://pylonshq.com/">Pylons</a>, in preparation for a new project. When I began, I knew nothing about Ruby or Ruby on Rails. I have tried to be as objective as possible: before beginning this project, I wrote in email on March 5th:</p>
+<blockquote><p>I promise we&#8217;ll be as objective as humanly possible; if Ruby and Ruby on Rails truly is better, we&#8217;ll happily use RoR and never look back. I want to know that I&#8217;m using the absolute best tool for the job.</p></blockquote>
+<p>Since then, I have reimplemented one complex nine-hundred line Python library, <a href="http://devsuki.com/pottymouth">PottyMouth</a>, in Ruby. <a href="http://brainsik.theory.org/.:./">Another team member</a> has also reimplemented parts the Pylons web application <a href="http://spydentify.com">Spydentify</a> in Ruby on Rails.</p>
+<p>The best tool for the job is Python &amp; Pylons. While Rails and Pylons are similar, shortcomings in Ruby compared to Python make Python &amp; Pylons the clear choice. I make three basic arguments against using Ruby:</p>
+<p><span id="more-228"></span></p>
+<p><script src="http://glyphobet.net/highlight/highlight.js" type="text/javascript"></script><script type="text/javascript"><!--
+initHighlightingOnLoad("ruby", "python", "perl");
+// --></script></p>
+<ul>
+<li>The language and its implementation are incomplete and immature. Immature implementations breed performance issues. A project loses time when it must implement missing or incomplete functionality.</li>
+<li>The language is inconsistent and needlessly complex. Inconsistency and complexity confuses people and confusion breeds bugs.</li>
+<li>The documentation is incomplete. Incomplete documentation breeds bugs as you might misuse a feature. And  a project slows down while you read the language or library source code, or ask the community for help with undocumented features.</li>
+</ul>
+<p>I believe Ruby would fare poorly against other languages, not just Python, on these angles as well.</p>
+<p>Why have Ruby and Ruby on Rails gained so much traction, despite these issues? Aside from the Rails hype, it&#8217;s because they are not insurmountable issues. It is possible to build a large application in Ruby; many people have. But any programmer building a large application in Ruby will have to deal with the issues listed here at some point. These are all issues that do not appear right away. A project doesn&#8217;t face them until a website reaches maturity, develops lots of features, fields traffic from lots of users, or until a project hires programmers who aren&#8217;t Ruby experts or experienced enough to anticipate these issues.</p>
+<p>My point is simply that Python (and other languages), allow you to handle most of these issues more elegantly, or avoid them completely.</p>
+<p><em><a href="http://glyphobet.net/blog/feed/atom">Subscribe here</a> if you&#8217;d like to be notified of any follow-up posts (for an article this long, I&#8217;m sure there will be a few), or if you&#8217;d like to read my critiques, positive and negative, of other things technological.</em></p>
+<h4>Contents</h4>
+<ol>
+<li> <a href="#encoding">Unicode and encodings</a></li>
+<li> <a href="#regexp">Regular Expressions</a></li>
+<li> <a href="#docs">Documentation</a></li>
+<li> <a href="#migration">Migration to Ruby 1.9/2.0</a></li>
+<li> <a href="#performance">Performance</a></li>
+<li> <a href="#scoping">Scoping</a>
+<ol>
+<li> <a href="#def-default-expr">One nice thing about Ruby&#8217;s scoping</a></li>
+</ol>
+</li>
+<li> <a href="#tmtowtdi">There&#8217;s more than one way to do it</a>
+<ol>
+<li> <a href="#to_str">String conversion</a></li>
+<li> <a href="#print">print, p and puts</a></li>
+<li> <a href="#ranges">Ranges and slices</a></li>
+<li> <a href="#require">require and load</a></li>
+<li> <a href="#throw">Raising exceptions, throwing strings</a></li>
+<li> <a href="#dothen">do and then are extraneous</a></li>
+<li> <a href="#synonyms">length and size, update and merge</a></li>
+</ol>
+</li>
+<li> <a href="#object">Object model</a></li>
+<li> <a href="#keywords">Faking keyword arguments</a></li>
+<li> <a href="#libraries">Libraries</a>
+<ol>
+<li> <a href="#sap">SAP support</a></li>
+<li> <a href="#datetime">DateTime support</a></li>
+</ol>
+</li>
+<li> <a href="#debug">Debugging</a></li>
+<li> <a href="#frameworks">Rails &amp; Pylons</a></li>
+<li> <a href="#cool">Cool things about Ruby</a></li>
+<li> <a href="#conclusion">Conclusion</a></li>
+<li> <a href="#further-reading">Further reading</a></li>
+</ol>
+<h4 id="encoding">Unicode and encodings</h4>
+<p>If you&#8217;re already familiar with Ruby&#8217;s problems with Unicode, feel free to skip this section. Ruby did not have any support for Unicode character strings when it was <a href="http://migo.sixbit.org/papers/Introduction_to_Ruby/slide-62.html">originally</a> <a href="http://blog.nicksieger.com/articles/2006/10/20/rubyconf-history-of-ruby">released</a> in 1996. This is only slightly silly for a language that was invented after <a href="http://unicode.org/history/">Unicode 1.0</a> was released in 1992. It is inexcusably shortsighted that Ruby has not added Unicode objects over the last twelve years.</p>
+<p><a href="http://wiki.rubyonrails.org/rails/pages/iconv">A third-party Ruby library for conversion</a> ties into the Unix iconv program, allowing conversion between two different encodings. However, converted strings are still sequences of bytes. This means that using most of the string methods (<code>slice</code>, <code>reverse</code>, <code>size</code>, <code>index</code>, <code>downcase</code>, <code>upcase</code>, <code>strip</code>) and indexing into the string with <code>[]</code> notation <a href="http://wiki.rubyonrails.org/rails/pages/HowToUseUnicodeStrings">do not work</a> in non-ASCII encoded strings. You can get the desired results out of these methods by first accessing the <code>.chars</code> attribute of non-ASCII strings. This is less desirable because the programmer must remember to use <code>.chars</code> whenever he or she is working with non-ASCII strings.</p>
+<p>A better solution would be to support first-class Unicode objects, as strings of Unicode characters, natively in the language.</p>
+<p>There is <a href="http://www.fngtps.com/2006/01/encoding-in-rails">a third-party Unicode support library</a> that replaces Ruby&#8217;s String class and adds Unicode support, but it is acknowledged to be hackish, potentially dangerous, and makes Ruby somewhat slower.</p>
+<p>Unicode support may or may not be forthcoming in Ruby 2.0. <a href="http://www.tbray.org/ongoing/When/200x/2006/10/22/Unicode-and-Ruby">There are certainly members of the community advocating it</a>.</p>
+<p><!-- BUG check footnote --></p>
+<p>This means, among other things, that there is no built-in support in Rails&#8217; HTML generation<sup><a href="http://glyphobet.net/blog/essay/228#footnote_0_228" id="identifier_0_228" class="footnote-link footnote-identifier-link" title="Even the Rails documentation at noobkit.org, the official documentation for the official Rails IRC channel, can&#8217;t seem to get Unicode support working (scroll down to &#8220;3. Go to localhost:3000/ and get &#8216;Welcome aboard: Youâ€™re riding the Rails!&#8217;&#8221;).">1</a></sup> , for converting Unicode characters to HTML entities. <a href="http://snippets.dzone.com/posts/show/1161">This page details how to hack around this problem</a>; but this is something that should be automatic and built-in, not hacked around.</p>
+<p>Python&#8217;s built-in Unicode and encodings support, which is a first-class, native Unicode object and a full suite of built-in encodings, was <a href="http://svn.python.org/projects/python/trunk/Misc/HISTORY">introduced in Python 1.6 in 2000</a>. It has evolved into an extremely reliable, secure and versatile Unicode implementation. It is also extremely simple to use.</p>
+<p>Python supports all of the encodings that Ruby supports via iconv, and a number that it doesn&#8217;t, including Quoted-Printable, the encoding used for the vast majority of email messages, and MBCS, the encoding used by Windows FAT32 and NTFS file-systems.</p>
+<p>Because Python&#8217;s built-in Unicode support is so robust, the vast majority of Python libraries all convert to Unicode when accepting input, and convert to the proper encoding when producing output. Multi-language support and correct encoding handling is usually a non-issue when building a Python application.  For example, non-ASCII input to, and output from, a Pylons web application Just Works™.</p>
+<h4 id="regexp">Regular Expressions</h4>
+<p>For a language that borrows so heavily from Perl, the regular expression support in Ruby is pretty disappointing. Regular expressions might not seem like a very important part of a language, but it&#8217;s an interesting litmus test because Python, Perl, and JavaScript all support essentially the same regular expression syntax.  Ruby&#8217;s regular expressions, however, were so broken that I switched to Ruby 1.9 to finish porting <a href="http://devsuki.com/pottymouth">PottyMouth</a>.</p>
+<p>Ruby&#8217;s <code>Regexp::MULTILINE</code> flag doesn&#8217;t behave the way multiline does in other languages. In other languages, the multiline flag is off by default, and when enabled, it considers <code>.</code> to include newlines and <code>^</code> and <code>$</code> to match right after, and right before, every newline:</p>
+<p>In Perl:</p>
+<pre><code class="perl">if ( "foo\nbar\nbaz" =~ /^bar/m ) { print "yes\n"; } else { print "no\n";}
+yes
+if ( "foo\nbar\nbaz" =~ /^bar/ ) { print "yes\n"; } else { print "no\n"; }
+no
+</code></pre>
+<p>In Python:</p>
+<pre><code class="python">&gt;&gt;&gt; import re
+# This matches
+&gt;&gt;&gt; re.search('^baz', "foo\nbar\nbaz", re.MULTILINE)
+&lt;_sre.SRE_Match object at 0xb7c4bf38&gt;
+
+# This does not match
+&gt;&gt;&gt; re.search('^baz', "foo\nbar\nbaz")
+</code></pre>
+<p>However, in Ruby, the <code>Regexp::MULTILINE</code> flag appears to only affect the interpretation of <code>.</code>, not <code>^</code> and <code>$</code>, making it more like Python&#8217;s <code>re.DOTALL</code> or Perl&#8217;s <code>/s</code> switch.</p>
+<p>in Ruby:</p>
+<pre><code class="ruby">irb(main):001:0&gt; /^baz/.match("foo\nbar\nbaz")
+=&gt; #&lt;MatchData:0xb7cd42b0&gt;
+irb(main):002:0&gt; /^baz/m.match("foo\nbar\nbaz")
+=&gt; #&lt;MatchData:0xb7cdb740&gt;
+
+irb(main):003:0&gt; Regexp.new('^baz').match("foo\nbar\nbaz")
+=&gt; #&lt;MatchData:0xb7cc7df8&gt;
+irb(main):004:0&gt; Regexp.new('^baz', Regexp::MULTILINE).match("foo\nbar\nbaz")
+=&gt; #&lt;MatchData:0xb7cb59dc&gt;
+</code></pre>
+<p>There is <em>no documentation whatsoever</em> of the actual semantics of <code>Regexp::MULTILINE</code>, so it&#8217;s not clear whether this is an accident, a bug, or an intentional departure from the standard. Either way, it makes the language more difficult to learn and less predictable to use.</p>
+<p>There&#8217;s also no documentation whatsoever of the actual semantics of <code>Regexp::EXTENDED</code>. The <a href="http://www.ruby-doc.org/core/files/lib/eregex_rb.html">eregex.rb file</a> in the Ruby source just adds support for <code>&amp;</code> and <code>|</code> logical operators, and <a href="http://www.ruby-doc.org/core/files/lib/eregex_rb.html">the only documentation is the message</a> &#8220;This is just a proof of concept toy.&#8221; As best I can tell, regular expressions in Ruby <em>always</em> behave like extended regular expressions, supporting <code>?</code>, <code>+</code>, <code>|</code> and <code>\N</code>, regardless of whether you use the extended flag or not. What does the extended flag actually do?  I don&#8217;t know.</p>
+<p>Ruby&#8217;s Regular expressions also match <a href="http://www.ruby-doc.org/core/classes/Regexp.html#M001219">only ASCII and a small set of encodings</a>, including UTF-8 and the Japanese encodings EUC and SJIS. Want to write a regular expression that matches UTF-16, Latin-1, or raw Unicode?  You&#8217;ll have to use the third-party <a href="http://www.geocities.jp/kosako3/oniguruma/">Oniguruma</a> package or a different programming language. You can&#8217;t use pure Ruby.</p>
+<p>Lastly, positive and negative look-behind <a href="http://objectmix.com/ruby/351406-regex-ruby-question.html">aren&#8217;t supported</a> in Ruby 1.8. I only noticed this because the code I was porting used negative look-behind expressions. Ruby 1.9 adds look-behind. The options for Ruby 1.8 users are to install 1.9 or the third-party <a href="http://www.geocities.jp/kosako3/oniguruma/">Oniguruma</a> package, which also supports many more encodings (but still not raw Unicode).</p>
+<p>Both Python and Perl support positive and negative look-behind and Unicode regular expressions natively.</p>
+<p>In general, it&#8217;s a bad sign when a third-party reimplements a large chunk of functionality in an existing piece of software. It means that the existing functionality was just plain not good enough. And, for open source projects, it means that the existing project was unable, or unwilling, to solve the problem, or let others contribute patches to solve the problem, within the project. The fact that this happened for both Ruby&#8217;s encoding and regular expression support is disturbing.</p>
+<h4 id="docs">Documentation</h4>
+<p>The Standard Library Documentation for Ruby is woefully incomplete. For example:</p>
+<ul>
+<li>There is no documentation whatsoever for:
+<ul>
+<li> <a href="http://www.ruby-doc.org/stdlib/libdoc/digest/rdoc/index.html">the digest library</a>, which contains the SHA1 and MD5 check-sum tools. These tools are critical for generating secure cookies and storing user passwords securely.  Without documentation, you have to go read the Ruby source code to know that your application is secure.</li>
+<li> <a href="http://www.ruby-doc.org/stdlib/libdoc/racc/rdoc/index.html">Racc</a>, a LALR(1) parser generator for Ruby</li>
+</ul>
+</li>
+<li> <a href="http://www.ruby-doc.org/stdlib/libdoc/gdbm/rdoc/index.html">The documentation for gdbm</a> only includes a list of constants it defines. No methods, descriptions, or anything else.</li>
+<li> <a href="http://www.ruby-doc.org/stdlib/libdoc/syslog/rdoc/classes/Syslog.html">The documentation for the syslog module</a> is useless. It lists one method, <code>close</code>. A useful <code>syslog</code> library would have to have at least <code>open</code> and <code>write</code> functionality.</li>
+<li> The <a href="http://www.ruby-doc.org/stdlib/libdoc/tcltklib/rdoc/index.html">link to the tcltklib module documentation returns an error page</a>.</li>
+<li> The <a href="http://www.ruby-doc.org/stdlib/libdoc/profiler/rdoc/index.html">Profiler documentation</a> is extremely limited. It looks like it would be possible to <em>use</em> the profiler, but there&#8217;s no information about <em>how</em> it works, which is critical when you are profiling an application.</li>
+<li> As noted above, the regular expression documentation doesn&#8217;t cover <code>MULTILINE</code> or <code>EXTENDED</code>.</li>
+</ul>
+<p>In general, the majority of modules listed have no description page. None of the pages specifically state which version of Ruby they were written for.</p>
+<p>Ruby&#8217;s development and documentation writing appear to be two disconnected endeavors, and the documentation <a href="http://www.ruby-doc.org/stdlib/status.html">is acknowledged to be incomplete</a>. In fact, there is no single rally point for Ruby material. A visit to the <a href="http://www.ruby-lang.org/en/documentation/">the official Ruby documentation page</a> lists a variety of documentation, tutorials, examples, etc. spread across many different websites with varying levels of completeness and relevancy to the current version of Ruby. There is no single tutorial or language overview which is complete for the current version of Ruby 1.8.x (over four years old).</p>
+<p>This doesn&#8217;t inspire confidence. Are there any libraries that aren&#8217;t listed at all?  And how many of the existing libraries have documentation that is incomplete, out-of-date, or incorrect?</p>
+<p>By contrast, Python&#8217;s standard library documentation is <a href="http://docs.python.org/">complete</a>, <a href="http://www.python.org/doc/versions/">versioned and dated</a>.</p>
+<h4 id="migration">Migration to Ruby 1.9/2.0</h4>
+<p>It&#8217;s not clear what&#8217;s happening with regard to Ruby 1.9 and/or 2.0. Ruby 1.9 has been under development since (at least) 2006. (It may have been under development longer than that; the lack of any official documentation about it makes it hard to know for sure. <a href="http://rubiverse.com/podcasts/4-zed-shaw-on-leaving-ruby">This podcast claims it&#8217;s been around longer than Perl 6</a>, which would make Ruby 2.0 almost as old as Ruby itself.) An experimental/development version, 1.9.0, was released in December 2007. I tested against the version of Ruby 1.9 in Ubuntu 7.10: 1.9.0+20070830-2ubuntu1.</p>
+<p>Quite a few things that are allegedly <a href="http://eigenclass.org/hiki.rb?Changes+in+Ruby+1.9">new in Ruby 1.9</a> actually exist in Ruby 1.8, and it&#8217;s not clear whether they&#8217;ve been back-ported or whether their behavior has only subtly changed.</p>
+<p>For example return value unpacking, <code>%</code> string formatting, and newlines inside the ternary operator are supposedly new in 1.9, but work exactly the same in 1.8. Other things that are supposed to be introduced in Ruby 1.9, like multiple splats, don&#8217;t (yet) work at all in 1.9.</p>
+<p>Other improvements in Ruby 1.9 include literal hash syntax, block-local variables, and, as already noted, better encoding and regular expression support.</p>
+<p><a href="http://www.rubygarden.org/Ruby/page/show/Rite">Some documents</a> <a href="http://learnruby.com/ruby-1.9.html">indicate</a> that Ruby 2.0 is going to be different in ways that will break existing Ruby 1.x programs severely. They also contain disturbing statements like <a href="http://www.rubygarden.org/Ruby/page/show/Rite">this one about the new garbage collector:</a> &#8220;It will be (mostly) thread safe.&#8221; Being (mostly) thread safe is like being mostly pregnant.  You either are, or you aren&#8217;t.</p>
+<p>There are two explanations for this lack of clear plan for Ruby 2.0. Either Ruby 2.0 is so far off that no such document would be useful yet, or nobody in the Ruby community has thought about these issues yet. Both of these would be bad signs. Either way, it&#8217;s a total mystery how difficult it will be to move to Ruby 2.0, or when that move might have to happen.</p>
+<p>Python, on the other hand, has been in the 2.x series for a long time. Planning for Python 2.0 began while Python 1.5 was the current version. In September 2000, as Python 1.6 was released, there was a complete outline available of what to expect from Python 2.0. Python 2.0 was released in October, 2000. Programs written eight years ago for Python 2.0 will still run, unmodified under Python 2.5. Many Python 1.x programs will <em>also</em> run under 2.5.</p>
+<p>Python 2.6 and Python 3.0 are slated for release this summer. The Python 3.0 process has been going on for about a year. There is <a href="http://docs.python.org/dev/3.0/whatsnew/3.0.html">a clear outline of exactly what&#8217;s changing between 2 and 3</a>, and guidelines for how to write Python code that will run equally well under 2.6 and 3.0. The Python developers are also providing a conversion program that will automatically translate between 2.6 and 3.0 code, and warn programmers about code it was not able to translate.</p>
+<p>Python proves that a programming language can evolve safely, easily, and largely free of hassles. Future versions should not be a potential wild-card (or worse, a complete clusterfuck, as with PHP).</p>
+<p>For a piece of software that&#8217;s going to be the core of your business for as long as you are in business &#8212; hopefully many, many years &#8212; why choose anything other than a language with a migration process like Python&#8217;s?</p>
+<h4 id="performance">Performance</h4>
+<p>It&#8217;s difficult to precisely evaluate the difference in execution time between different languages. However, <a href="http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=all&amp;lang2=python">The Computer Language Benchmark Game</a> gives a pretty strong indication that Ruby is slow. On its tests, <a href="http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=ruby&amp;lang2=python">Python is 3×-4× as fast as Ruby</a>. Ruby is <a href="http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=ruby&amp;lang2=tcl">slower than TCL</a>, a language that is twenty years old. Ruby is <a href="http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=ruby&amp;lang2=javascript">about the same speed as JavaScript</a> (in Mozilla&#8217;s SpiderMonkey interpreter). The only thing <a href="http://shootout.alioth.debian.org/gp4/benchmark.php?test=all&amp;lang=ruby&amp;lang2=swiprolog">slower than Ruby is Prolog</a>.</p>
+<p>The notorious <a href="http://www.zedshaw.com/rants/rails_is_a_ghetto.html">Rails is a Ghetto</a> article outlines performance problems in Ruby and Rails that, disturbingly, went unaddressed for long periods of time. In the worst one, the author reported serious performance issues to the Rails community, which largely ignored the problem or denied its existence. Meanwhile, the problem had been identified and patched by someone else, but the Ruby core developers ignored the patch for a year.</p>
+<p>In another incident in the same article, the original Rails author admits that the original Rails code required about four hundred restarts a day, or six to seven restarts per thread per day. Four hundred restarts a day means four-hundred chances for a database transaction to fail, four hundred chances for a verification email to be sent by the system without the corresponding data being stored in the database, four hundred chances for the user&#8217;s browser to not receive all the data it needs to correctly render a page or display data.</p>
+<p>Even for a project for which performance is not the primary concern, these trends should be cause for concern. Serious performance issues mean buying more RAM, and upgrading servers sooner.</p>
+<h4 id="scoping">Scoping</h4>
+<p>Ruby&#8217;s scoping rules are complex:</p>
+<ol type="1">
+<li>Files, modules, classes, defs and blocks create new scopes.</li>
+<li>Local variables have no sigil and begin with a lowercase letter. They are available only in the scope they are defined in.</li>
+<li>&#8220;Constants&#8221; have no sigil and begin with an uppercase letter. They are available in the scope they are defined in and in all enclosed scopes.
+<ol type="a">
+<li>&#8220;Constants&#8221; are not constant; they can be reassigned whenever you like, just like everything else.</li>
+</ol>
+</li>
+<li>Globals begin with the <code>$</code> sigil and are global.</li>
+<li> Instance attributes begin with the <code>@</code> sigil and are, by default, protected, or available only inside the class.
+<ol type="a">
+<li>Instance attributes can be made available outside the class with <code>attr_accessor</code> or <code>attr_reader</code>.</li>
+</ol>
+</li>
+<li> Class attributes begin with the <code>@@</code> sigil and are available only inside the class.
+<ol type="a">
+<li>Unlike instance attributes, class attributes cannot be accessed outside the class with <code>attr_accessor</code> or friends.</li>
+</ol>
+</li>
+<li>Methods are, by default, public.</li>
+<li>Methods can be made private or protected with the <code>private</code> or <code>protected</code> keywords.
+<ol type="a">
+<li> <code>protected</code> <a href="http://weblog.jamisbuck.org/2007/2/23/method-visibility-in-ruby">doesn&#8217;t mean what you think it means</a>. Both private and protected methods are available within the class and within all containing subclasses.</li>
+</ol>
+</li>
+</ol>
+<p>The terminology used to refer to non-constant &#8220;constants&#8221; is extremely unfortunate.</p>
+<p>Why isn&#8217;t the full range of public/protected/private scopes available to attributes as well as methods?  Why is a totally different convention used to scope attributes? Why can&#8217;t class attributes be accessed outside the class like instance attributes?</p>
+<p>What is the point of the subtle, weird difference between protected and private?  What problem does it solve?  Why don&#8217;t protected and private work the way they do in Java and PHP?</p>
+<p>Clear, consistent, simple scoping makes it easy to keep track of what variables are available where.  Complex scoping rules mean there&#8217;s more to remember, there are more mistakes to make and more ways to get confused.  Mistakes and confusion cause bugs.</p>
+<p>Python uses just a naming convention to convey whether a variable should be thought of as private or protected. Both Python and Ruby can be <a href="http://en.wikipedia.org/wiki/Monkey_patch">monkeypatched</a> to modify private and protected attributes or methods, so it&#8217;s best to think of private and protected as purely advisory in either language. Experienced Pythonistas learn that <code>someobj.__private__</code> is a red flag; the fact that you must <em>always</em> monkeypatch to do this in Ruby might provide an additional disincentive to doing it, but it also makes it easier to do it on accident.</p>
+<h5 id="def-default-expr">One nice thing about Ruby&#8217;s scoping</h5>
+<p>There&#8217;s one place where Ruby&#8217;s scope behavior is better than Python&#8217;s. Default argument values in function definitions are (re)evaluated each time a method is called in Ruby. In Python, default argument values get evaluated in the containing scope when the function is defined. This can get you into trouble in Python, if a default value is a mutable type. If you&#8217;re modifying the value, it&#8217;ll persist across subsequent calls to foo:</p>
+<pre><code class="python">def foo(arg=[]):</code></pre>
+<p>In Python, you end up having to do this:</p>
+<pre><code class="python">def foo(arg=None):
+if foo is None:
+foo=[]
+# some code
+</code></pre>
+<p>This is definitely less clear than in Ruby, where you can simply say what you mean:</p>
+<pre><code class="ruby">def foo(arg=[])
+# some code
+end
+</code></pre>
+<h4 id="tmtowtdi">There&#8217;s more than one way to do it</h4>
+<p>We can thank Larry Wall and Perl for <a href="http://en.wikipedia.org/wiki/There_is_more_than_one_way_to_do_it">There&#8217;s more than one way to do it</a>. TMTOWTDI is bad, because to really <em>know</em> a language, you must know each of several ways to do similar, but different things, and each synonym. If there is only one way to do it, you only have to remember that one way, instead of many. Programmers spend more time reading code than writing it, and often, they&#8217;re reading <em>other</em> people&#8217;s code, so they can&#8217;t get away with remembering only their favorite way to do it. The more you have to remember, the more likely you are to forget, make a mistake, or have to stop to check the documentation. Mistakes breed bugs, and checking the documentation takes time.  While not nearly as bad as Perl on this front, Ruby commits some serious TMTOWTDI.</p>
+<h5 id="to_str">String conversion</h5>
+<p>Some Ruby objects have an extra stringification method, <tt>.to_str</tt>, as well as the standard <tt>.to_s</tt>. <tt>.to_s</tt> is an explicit cast, used whenever you need a string representation of an object. <tt>.to_str</tt> is an implicit cast, which gets called when you are using a string-like object in a context that requires a string. (This illustrates a philosophical difference between Python on the one hand and Ruby and Perl on the other; Python <em>never</em> does context-sensitive implicit conversion.)</p>
+<p>The naming of these methods is atrocious &#8212; they are radically semantically different, yet the name of one is an abbreviation of the name of another. What happens if you write code that critically relies on this distinction, go work in another language for six months, and then get called in to fix a critical production bug in that code? Would you remember which is which, and what the difference was, exactly? I wouldn&#8217;t. And <a href="http://briancarper.net/2006/09/26/ruby-to_s-vs-to_str/">the presence of both has confused people other than me</a>. <tt>.to_str</tt> should be named something like <tt>.stringcontext</tt>.</p>
+<p>What is the use case for <code>to_s</code>&#8217;s concatenation of arrays and hashes?  It just runs keys, values, and items together in a string, making it impossible to tell whether it was a number, a string, a hash or an array that you just stringified:</p>
+<pre><code class="ruby">
+irb(main):001:0&gt; h = {1=&gt;2}
+=&gt; {1=&gt;2}
+irb(main):002:0&gt; a = [1,2]
+=&gt; [1, 2]
+irb(main):003:0&gt; h.to_s
+=&gt; "12"
+irb(main):004:0&gt; a.to_s
+=&gt; "12"
+irb(main):005:0&gt; a.to_s == h.to_s
+=&gt; true
+</code></pre>
+<p>When is this useful? It&#8217;s not human-readable, and it&#8217;s not computer-readable.  It&#8217;s just mangled garbage. It&#8217;s even worse when you call <code>to_s</code> on more complex data structures:</p>
+<pre><code class="ruby">
+irb(main):001:0&gt; c = [1, :two, {:foo=&gt;['bar', 'baz'], :key=&gt;'val'}, [7,8], 9]
+=&gt; [1, :two, {:key=&gt;"val", :foo=&gt;["bar", "baz"]}, [7, 8], 9]
+irb(main):002:0&gt; c.to_s
+=&gt; "1twokeyvalfoobarbaz789"
+</code></pre>
+<p>As a side note, Python has two stringification methods as well, <tt>str()</tt> and <tt>repr()</tt>. <tt>str()</tt> provides a string representation, and <tt>repr()</tt> provides a string that can be <tt>eval()</tt>-ed or pasted into a Python interpreter. Ruby appears to have no equivalent of <tt>repr()</tt>, aside from <tt>p</tt>, which leads to the next topic&#8230;.</p>
+<h5 id="print">print, p and puts</h5>
+<p>What is the difference between <code>print</code>, <code>p</code>, and <code>puts</code>? This isn&#8217;t documented. <code>p</code> is a sort of poor-man&#8217;s <code>repr()</code>, printing each argument in a form that could be pasted into Ruby source code on a separate line. Strangely, there&#8217;s no way to capture the output of <code>p</code> and store that string for later. <code>print</code> prints each of its arguments without any space between them. <code>puts</code> prints each of its arguments, or each item in each collection argument, on a separate line.  Why does Ruby need all three? Are you going to be able to remember which one behaves each way, and use the right one at the right time?</p>
+<p>Not only does Python get away with one, but the behavior of <code>print</code> in Python is exactly what I&#8217;ve wanted out of print, or printf, in every programming languge I&#8217;ve ever used &#8212; print the <code>str()</code>-ification of every argument, separated by spaces, with a newline at the end. If you want all the arguments concatenated, or on separate lines, you can join on empty string, or <code>"\n"</code>. If you don&#8217;t want a trailing newline, use a trailing comma.</p>
+<p>The behavior of puts is even weirder; it seems to stop descending into collections at some point. Note that the hash item is just stringified, but the items in the array inside the array are printed on separate lines:</p>
+<pre><code class="ruby">
+irb(main):001:0&gt; c = [1, :two, {:foo=&gt;['bar', 'baz'], :key=&gt;'val'}, [7,8], 9]
+=&gt; [1, :two, {:key=&gt;"val", :foo=&gt;["bar", "baz"]}, [7, 8], 9]
+irb(main):002:0&gt; puts c
+1
+two
+keyvalfoobarbaz
+7
+8
+9
+=&gt; nil
+</code></pre>
+<h5 id="ranges">Ranges and slices</h5>
+<p><!-- BUG check footnote --></p>
+<p>Ruby has two range operators, <code>..</code> and <code>...</code>. Why?  The only difference is that the <em>shorter</em> one, with two periods, returns a <em>longer</em> range, and the <em>longer</em> one returns a <em>shorter</em> range, not including the endpoint. Can this <em>possibly</em> get any more confusing? <sup><a href="http://glyphobet.net/blog/essay/228#footnote_1_228" id="identifier_1_228" class="footnote-link footnote-identifier-link" title="Perhaps Ruby could also use ...., which would return an even shorter range, not including the beginning or end points.">2</a></sup> The language should have one, not two. It is not hard to add or subtract one when you want a range with, or without, its endpoints.</p>
+<p>Python&#8217;s <code>range()</code> and <code>xrange()</code> built-in, and its slice syntax, are less confusing, as they never include the endpoint. They are also more powerful, because they allow a third &#8220;step&#8221; argument. Want every other, or every third, element in a list, or a range that steps by 2 or 3? Try <code>l[::2]</code> or <code>l[::3]</code>, <code>range(start, stop, 2)</code> or <code>range(start, stop, 3)</code>. Want the list in reverse? <code>[::-1]</code> Want a range in reverse? <code>range(stop, start, -1)</code>. Python&#8217;s syntax is simpler, easier to remember, and more powerful to boot.</p>
+<p>Ruby&#8217;s range operators are also used to see if a value is in a particular range, like this:</p>
+<pre><code class="ruby">irb(main):001:0&gt; (0..2**1000) === 2**999
+=&gt; true
+</code></pre>
+<p>This has a disturbingly clever ring to it. The range operator doesn&#8217;t actually walk through every element in the 2**1000 element range and compare it to 2**999 &#8212; if it did, this code wouldn&#8217;t execute instantaneously. It&#8217;s doing something like this underneath: <tt>2**999 &gt;= 0 and 2**999 &lt; 2**1000</tt>. The only reason to use a range operator like this, when it&#8217;s about as much typing to just say what you mean directly, is when you have a range that you&#8217;re passing around as a variable.</p>
+<p>In Python, the corresponding idiom is <code>0 &lt;= 2**999 &lt; 2**1000</code>, but the ternary comparison syntax doesn&#8217;t work in Ruby, so you have to write <code>0 &lt;= 2*999 and 2*999 &lt; 2**1000</code> in Ruby. Python&#8217;s <code>xrange()</code> can also be passed around like a variable, but you test for membership with <code>value in myrange</code> instead of <code>===</code>.</p>
+<p>Now imagine you&#8217;re someone who hasn&#8217;t seen Ruby before, or who has been working in some other language for months, who is now tasked with fixing a critical bug which relies on this strange, non-obvious idiom. Are you going to know, or remember, that <code>===</code> combined with <code>..</code> has special semantics?  Compare that to how difficult of a time you will have understanding <code>lower &lt; value &lt; upper</code>, or <code>value in myrange</code>, in Python code. Simplicity and straightforward syntax has a significant long-term benefit.</p>
+<h5 id="require">require and load</h5>
+<p>Ruby has two ways to handle code in other files <code>require</code> and <code>load</code>.  <a href="http://ruby.about.com/od/learnruby/ss/require_load.htm">The difference</a> is that <code>require</code> loads the code only once per application, and <code>load</code> loads it each time the interpreter sees <code>load</code>.  Yet again, there&#8217;s more to remember to be fluent in Ruby.  This distinction is of dubious value; if you have code that you want to run more than once, put it in a method and call the method.  Don&#8217;t make the interpreter re-load, re-parse, and re-run the file.</p>
+<p>And there&#8217;s more.  The Ruby interpreter <code>require</code>s/<code>load</code>s the file corresponding to the path specified by a string. Unlike Python, Ruby has no concept of set of paths to search for modules by name, so you see <a href="http://blog.8thlight.com/articles/2007/10/08/micahs-general-guidelines-on-ruby-require">recipes like this to establish a file&#8217;s location and find modules installed on a system.</a></p>
+<p>And because Ruby loads strings as paths instead of modules by name, <a href="http://ghouston.blogspot.com/2007/05/ruby-require-idiom.html">you can trick the interpreter into accidentally requiring a file twice</a>. Oops! Python provides <code>__import__</code> if you <em>need</em> to reload a module, but by default, it only loads modules <em>once</em> per application.</p>
+<p>And finally, since <code>require</code> and <code>load</code> just pull the contents of another file into your local namespace, there&#8217;s no simple way to pull in just a single class or variable from a module. And there&#8217;s no way to ensure that classes in the file you&#8217;re importing don&#8217;t clobber classes in the file you&#8217;re importing it into.  Want to attack lots of Ruby applications?  Just write a helpful library with obfuscated code that overrides a common class, in something like HTTP or cookie authentication code, and adds a back door.</p>
+<h5 id="throw">Raising exceptions, throwing symbols</h5>
+<p>Exception handling in Ruby is handled with <code>raise/begin/rescue</code>.  Python uses <code>raise/try/except</code>, and Java &amp; JavaScript use <code>throw/try/catch</code> to perform essentially the same exception handling. But Ruby also has <code>throw/catch</code>, which is unrelated to exception handling. It <a href="http://briancarper.net/2006/12/03/perl-vs-ruby-breaking-from-nested-loops/">is normally used as a way to achieve labeled break</a>.</p>
+<p>Now, labeled break is a feature that <a href="http://www.python.org/dev/peps/pep-3136/">I&#8217;d very much like to see in Python</a>, but this feature in Ruby is essentially <code>goto</code> &#8212; and it&#8217;s even more powerful than <code>goto</code> in C, since it is not confined to single functions. Rather than debating the merits of <code>goto</code>, I&#8217;ll just ask this: does Ruby have to use terms that are commonly associated with exception handling, for a feature that is <em>totally unrelated</em> to exception handling?</p>
+<h5 id="dothen">do and then are extraneous</h5>
+<p>Ruby&#8217;s <code>while</code> and <code>if</code> statements can optionally have <code>do</code> and <code>then</code> keywords following them:</p>
+<pre><code class="ruby">while condition do
+# some code
+end
+if condition then
+# some code
+end
+</code></pre>
+<p>This is just one more extra variation that Ruby programmers have to remember to be able to read other people&#8217;s code.</p>
+<h5 id="synonyms">length and size, update and merge</h5>
+<p>What is the difference between the <code>length</code> and <code>size</code> methods on String, Array, and Hash? There is none. Hashes have <code>update</code> and <code>merge</code> methods. What&#8217;s the difference? None.</p>
+<p>These are particularly atrocious synonyms, because the English words they are based on <em>aren&#8217;t</em> synonymous. What if you have a class representing a geometric object, and you want <code>length</code> and <code>size</code> to return different measurements?  What if you have a class representing a wiki page or source code repository, and you want <code>update</code> and <code>merge</code> to perform radically different operations? When someone else is reading your code, and they&#8217;ve been trained that these two methods are synonymous in Ruby, and they might forget that the methods aren&#8217;t synonymous in this particular code.</p>
+<h4 id="object">Object model</h4>
+<p>Ruby doesn&#8217;t require <code>self</code> to be explicitly passed in to methods. Python has explicit <code>self</code>, and <a href="http://effbot.org/pyfaq/why-must-self-be-used-explicitly-in-method-definitions-and-calls.htm">for</a> <a href="http://zephyrfalcon.org/weblog/arch_d7_2003_07_12.html#e283">good</a> <a href="http://zephyrfalcon.org/weblog/arch_d7_2003_07_26.html#e298">reason</a>.</p>
+<p>Rather than using <code>self</code> to get at class and instance attributes, Ruby uses <code>@</code> and <code>@@</code>. You can get at <code>self</code>, to pass it to a method in another object, by calling <code>self</code>. And you can get at the superclass&#8217;s method of the same name by calling <code>super</code>. Arguably, if you need to get at a different method on the superclass, rather than that different method on <code>self</code>, then your object&#8217;s inheritance is broken. This is different from Python, but still fine.</p>
+<p>You can delegate to another method on that class by simply calling that method. And here&#8217;s the problem with Ruby&#8217;s object model: because you don&#8217;t need to use <code>@</code> to access methods, it&#8217;s too easy to accidentally shadow a method with a local variable.</p>
+<p>There&#8217;s at least one case that requires <code>self</code> as an explicit reciever: <a href="http://www.rubyfleebie.com/use-self-explicitly/">when calling an attribute writer</a>. Otherwise you&#8217;re just shadowing the attribute writer method locally. It&#8217;s not clear that there might not be other rare cases that require <code>self</code> as an explicit reciever too. This seems dangerous; in Python, <code>self</code> is always required. In Ruby, you <em>almost</em> always don&#8217;t need <code>self</code>, except in the rare case where you do. This feels like an accident, or an overly clever solution. Clever solutions make me suspicious, and inconsistency breeds bugs. Simple solutions, like Python&#8217;s strict reliance on explicit <code>self</code>, make me confident I&#8217;m writing reliable code.</p>
+<h4 id="keywords">Faking keyword arguments</h4>
+<p>Ruby doesn&#8217;t support keyword arguments. The commmon idiom to &#8220;fake&#8221; keyword arguments lacks the expressiveness and versatility of Python.</p>
+<p>In Python, you can have a function definition like this:</p>
+<pre><code class="python">def HTMLTag(tagname, parent=None, *children, **attributes):
+</code></pre>
+<p>And you can call this function in many different ways:</p>
+<pre><code class="python">HTMLTag("br")
+HTMLTag("div", parent=bodytag)
+HTMLTag("div", bodytag, p1, p2, p3, width="100%")
+HTMLTag("a", p1, href="http://google.com", *["google"])
+HTMLTag("a", p1, "google", href="http://google.com",)
+HTMLTag("hr", width=77, parent=div, height=4, color="#000")
+HTMLTag("hr", **{'parent':1, 'width':77, 'height':4, 'class':'ruler'})
+</code></pre>
+<p>Keyword arguments with default values may not seem like a very critical feature to be missing. But it&#8217;s one of the most powerful idioms in Python, because there are a lot of cases where arguments act like configuration, modifying a function&#8217;s behavior. If you can leave these modifiers off in the common case, code is faster to write and easier to read; you don&#8217;t have to remember the common modifier values; and you&#8217;re less likely to use the wrong modifier.</p>
+<p>Ruby does support the <code>*</code> expansion and collection of Arrays, similar to Python. And it does support default values for optional arguments:</p>
+<pre><code class="ruby">def tallandskinny(height=100, width=1)
+print height, " tall ", width, " wide"
+end
+
+tallandskinny()
+# prints "100 tall 1 wide"
+tallandskinny(1)
+# prints "1 tall 1 wide"
+tallandskinny(1, 100)
+# prints "1 tall 100 wide"
+</code></pre>
+<p>But the optional arguments can&#8217;t be passed in as key-words in a different order. Ruby collects any key-value pairs in an argument list into a Hash, but that hash takes the place of a <em>single</em> argument position; it has nothing to do with the parameter names in the method definition. Here, the hash gets assigned to <code>height</code> and then stringified:</p>
+<pre><code class="ruby">tallandskinny(:width=&gt;100, :height=&gt;1)
+# prints "width100height1 tall 1 wide"
+</code></pre>
+<p>To duplicate Python&#8217;s keyword argument behavior, you have to write something significantly more complicated:</p>
+<pre><code class="ruby">def tallandskinny(kwargs={})
+defaults = {:width=&gt;1, :height=&gt;100}
+
+kwargs = defaults.update(kwargs)
+print kwargs[:height], " tall ", kwargs[:width], " wide"
+end
+</code></pre>
+<p>People on the #ruby-lang IRC channel were quick to point me to snippets of code like this and say &#8220;Ruby can fake Python-style keyword arguments easily.&#8221;  And they&#8217;re right, you <em>can</em> fake it. But users (programmers, in this case) shouldn&#8217;t have to resort to tricks to get a piece of software (a programming language, in this case) to work the way they want it to work. If users are doing this, it means the software has failed to provide the features its users need.</p>
+<p>It looks like keyword arguments are at least <a href="http://www.rubyist.net/~matz/slides/rc2005/mgp00010.html">under consideration for a future version of Ruby</a>.</p>
+<h4 id="libraries">Libraries</h4>
+<h5 id="sap">SAP support</h5>
+<p>SAP support is critical to the application that I&#8217;ll be working on. <a href="http://raa.ruby-lang.org/project/sapnwrfc">Ruby&#8217;s SAP support</a> is alpha, version 0.06, and hasn&#8217;t been updated in over a year. <a href="http://pysaprfc.sourceforge.net/">Python&#8217;s SAP support</a> is 1.0, and has been around for four years and there is <a class="https" href="https://www.sdn.sap.com/irj/sdn/go/portal/prtroot/docs/library/uuid/13904ef8-0a01-0010-4695-9ef907e7d1c9">documentation written by a SAP developer</a>.</p>
+<h5 id="datetime">DateTime support</h5>
+<p>Ruby supports Date and DateTime objects natively, but there&#8217;s no duration or timedelta support built-in. There&#8217;s only <a href="http://wiki.rubyonrails.org/rails/pages/Duration">a third party Duration library</a> written by the Rails people, no doubt to support the SQL duration type. It&#8217;s unacceptable that a duration/timedelta isn&#8217;t built in. Why not?  Because if it were built-in, subtracting two dates could return a timedelta, instead of a Rational, as it does in Ruby:</p>
+<pre><code class="ruby">require 'date'
+irb(main):002:0&gt; puts Date.new(2008, 03, 29) - DateTime.new(2008, 3, 28, 22, 8 )
+7/90
+</code></pre>
+<p>It&#8217;s not helpful to know that the time delta between 2008-3-28 22:08 and 2008-3-29 is 7/90ths (of a day). What would be helpful is to know that it&#8217;s 1:52:00, like in Python:</p>
+<pre><code class="python">&gt;&gt;&gt; from datetime import datetime
+&gt;&gt;&gt; dur = datetime(2008, 3, 29) - datetime(2008, 3, 28, 22, 8 )
+&gt;&gt;&gt; print dur, type(dur)
+1:52:00 &lt;type 'datetime.timedelta'&gt;
+</code></pre>
+<h4 id="debug">Debugging</h4>
+<p>Ruby tracebacks <a href="http://keturn.livejournal.com/231123.html">don&#8217;t print the line of code</a> on which the error occurred. Compare these two tracebacks, each in programs that divide by zero three function calls deep:</p>
+<pre><code class="ruby">hack.rb:10:in `/': divided by 0 (ZeroDivisionError)
+from hack.rb:10:in `baz'
+from hack.rb:6:in `bar'
+from hack.rb:2:in `foo'
+from hack.rb:13
+</code></pre>
+<pre><code class="python">Traceback (most recent call last):
+File "hack.py", line 10, in &lt;module&gt;
+foo(0)
+File "hack.py", line 2, in foo
+bar(arg)
+File "hack.py", line 5, in bar
+baz(arg)
+File "hack.py", line 8, in baz
+8/arg
+ZeroDivisionError: integer division or modulo by zero
+</code></pre>
+<p>Often you can see exactly what&#8217;s going wrong just from a Python traceback, because you can see the line of code that was a problem. Debugging Ruby is slower and more difficult because it doesn&#8217;t provide this information.</p>
+<p>By the way, Perl&#8217;s even worse than Ruby at providing useful information when there&#8217;s an error:</p>
+<pre><code class="perl">Illegal division by zero at hack.pl line 10.</code></pre>
+<h4 id="frameworks">Rails &amp; Pylons</h4>
+<p>The Ruby on Rails and Pylons web frameworks are more or less comparable. A good chunk of Rails&#8217; core has been ported to the Python <a href="http://pylonshq.com/WebHelpers/module-index.html">webhelpers package</a>, which is used by Pylons (and other Python web frameworks).  There doesn&#8217;t seem to be any major features in one web framework and not the other.  Pylons has in-browser debugging (off by default in production code) and, since it relies on existing, and pluggable, templating, ORM, and other modules, may be slightly more mature and flexible. Rails&#8217; DB migration is more mature than SQLAlchemy&#8217;s.</p>
+<h4 id="cool">Cool things about Ruby</h4>
+<p>Ruby&#8217;s block arguments have interesting potential, especially if you were writing a heavily thread-based or event-based application. Of course, a traditional MVC web application doesn&#8217;t really need threads or events (unless you&#8217;re writing a HTTP server too). Most places where I&#8217;ve used, or seen examples of, block arguments in Ruby are places where I would have used a list comprehension in Python. In other words, block arguments are far more powerful than their common use case.</p>
+<p>Metaprogramming with Ruby clearly takes less code than in Python. I don&#8217;t think there&#8217;s anything that Ruby does that Python cannot, or vice versa, with regards to metaprogramming. I&#8217;ve needed real metaprogramming in Python extremely rarely, and I don&#8217;t know if I&#8217;d use the metaprogramming in Ruby any more frequently.  The examples of metaprogramming with Ruby that I&#8217;ve seen (<a href="http://poignantguide.net/ruby/chapter-6.html#section3">The Poignant Guide&#8217;s chapter</a>, or the way ActiveRecord works) would have been doable, in Python at least, by inheriting from a base class and using class attributes on the derived class as configuration variables. So, whatever win that Ruby gets from easier metaprogramming is minor.</p>
+<h4 id="conclusion">Conclusion</h4>
+<p>Ruby has standard libraries that are so poor the community has provided drop-in replacements. The documentation about the current and future versions of the language is extremely lacking.  The core implementation of the language is not competitive with other interpreted languages. And the language itself is full of idiosyncracies and inconsistencies that are neither useful nor lend themselves to cleaner, simpler code. The language is not without promise or potential, but in its current state there is no reason to choose it over a mature, robust language like Python.</p>
+<p><em>I&#8217;d like to thank <a href="http://brainsik.theory.org/.:./">Jeremy Avnet</a>, <a href="http://www.hackerdashery.com/">Steve Hazel</a>, Greg Hazel, and Ross Cohen for their comments and corrections on drafts of this article. Nonetheless, all inflammatory opinions and any inaccuracies are my responsibility. <a href="http://glyphobet.net/blog/feed/atom">Subscribe here</a> to read any follow-ups to this article.</em></p>
+<p><em>Read the follow-up:</em> <a title="Permanent Link to Ruby’s not ready: comments, corrections, and clarifications" rel="bookmark" href="http://glyphobet.net/blog/essay/230">Ruby’s not ready: comments, corrections, and clarifications</a></p>
+<ol class="footnotes"><li id="footnote_0_228" class="footnote">Even <a href="http://noobkit.com/show/ruby/rails/rails-edge/rails-edge.html">the Rails documentation at noobkit.org</a>, the official documentation for the official Rails IRC channel, can&#8217;t seem to get Unicode support working (scroll down to &#8220;3. Go to localhost:3000/ and get &#8216;Welcome aboard: Youâ€™re riding the Rails!&#8217;&#8221;).<a href="http://glyphobet.net/blog/essay/228#identifier_0_228" class="footnote-link footnote-back-link">↩</a></li><li id="footnote_1_228" class="footnote">Perhaps Ruby could also use <code>....</code>, which would return an <em>even shorter</em> range, not including the beginning <em>or</em> end points.<a href="http://glyphobet.net/blog/essay/228#identifier_1_228" class="footnote-link footnote-back-link">↩</a></li></ol>          
+          <div class="postmetadata subtle center">
+            &nbsp; posted by <a href="/blog/?page_id=2">glyphobet</a> &nbsp;
+	                <br/>
+	    <br/>
+	    &nbsp;
+	    <script>reddit_url='http://glyphobet.net/blog/essay/228'</script>
+            <script>reddit_title='http://glyphobet.net/blog/essay/228'</script>
+            <script type="text/javascript" src="http://reddit.com/button.js?t=1"></script>
+            &nbsp;
+            <a href="javascript:window.location=%22http://news.ycombinator.com/submitlink?u=%22+encodeURIComponent(document.location)+%22&t=%22+encodeURIComponent(document.title)" title="Submit to News.YC" style="border:0px;"><img src="http://ycombinator.com/images/y18.gif"></a>
+            &nbsp;
+            <a href="http://www.stumbleupon.com/submit?url=http://glyphobet.net/blog/essay/228&title=Ruby&#8217;s not ready" title="Submit to StumbleUpon" style="border:0px;"><img src="http://glyphobet.net/blog/wp-content/themes/glyphobet/images/stumbleupon_icon_32x32.png"></a>
+            <br/>
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="alignleft">&laquo; <a href="http://glyphobet.net/blog/blurb/227">What a DVCS gets you (definitely)</a></div>
+        <div class="alignright"><a href="http://glyphobet.net/blog/blurb/229">Something about Git</a> &raquo;</div>
+      </div>
+
+      
+<!-- You can start editing here. -->
+
+<h4 id="comments">
+  7 trackbacks</h4>
+<div class="postmetadata subtle">
+  respond via <a href="http://glyphobet.net/blog/essay/228/trackback " rel="trackback">trackback</a> only</div>
+
+  <div class="commentlist">
+
+    
+      <div class="alt" id="comment-955">
+        <h5><a href='http://yerblogsucks.com/?p=5' rel='external nofollow' class='url'>Yer Blog Sucks &raquo; Oh good I&#8217;m not the only one</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-955" title="">
+            April 7th, 2008 at 22:33          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>A much more level-headed person than I wrote an in-depth essay on why Ruby is not quite ready for prime time&#8230;.</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="" id="comment-957">
+        <h5><a href='http://blog.burningbush.us/index.php/2008/04/08/why-ruby-sucks/' rel='external nofollow' class='url'>Fiery Bits</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-957" title="">
+            April 8th, 2008 at 05:33          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p><strong>Why Ruby sucks&#8230;.</strong></p>
+<p>Obviously I don&#8217;t think that Ruby sucks.  But this guy does.  Alright, he doesn&#8217;t say it sucks, just that it isn&#8217;t ready.<br />
+Now, I love Ruby, and I came to it from Python, but he makes a lot of good points, and the article is (I think) &#8230;</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="alt" id="comment-958">
+        <h5><a href='http://andrewdupont.net/2008/04/08/thought-rubys-not-ready/' rel='external nofollow' class='url'>Painfully Obvious &raquo; Blog Archive &raquo; Thought: Ruby&#8217;s not ready?</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-958" title="">
+            April 8th, 2008 at 08:42          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>&#8230;I don&#8217;t agree with the central premise, I think this exploration of Ruby&#8217;s flaws is mosly fair and accurate. Individual developers may decide whether it&#8217;s worth it to use&#8230;</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="" id="comment-959">
+        <h5><a href='http://codedemigod.com/blog/?p=118' rel='external nofollow' class='url'>Code Vault &raquo; Blog Archive &raquo; On getting Ruby-fied and its aftereffects</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-959" title="">
+            April 8th, 2008 at 11:35          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>Ruby’s not ready - glyphobet does a much better job at going over Ruby&#8217;s faults.</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="alt" id="comment-962">
+        <h5><a href='http://www.rubyinside.com/interesting-ruby-tidbits-that-dont-need-separate-posts-21-849.html' rel='external nofollow' class='url'>Interesting Ruby Tidbits That Don&#8217;t Need Separate Posts #21</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-962" title="">
+            April 9th, 2008 at 16:54          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>A Python developer takes Ruby, rips it apart, and explains in 6000+ words why Ruby sucks compared to Python. It’s a ballsy essay, and if it were a lot shorter and not as well written, I’d be calling it Troll Of The Month. As it is, I think he’s missing the point a lot of the time (he tends to think Python’s better because he likes its conventions more than Ruby’s - not a compelling argument), but it’s an interesting read none the less. Anything that keeps our minds open to the fact that Ruby != perfection is worth a look.</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="" id="comment-1537">
+        <h5><a href='http://glyphobet.net/blog/essay/231' rel='external nofollow' class='url'>Eight Python warts - glyphobet • глыфобет • γλυφοβετ</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-1537" title="">
+            January 15th, 2009 at 10:49          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>I love Python, but a few things still bug me about it. I&#8217;ve bashed on several other technologies; here&#8217;s some Python bashing&#8230;.</p>
+        </div>
+      </div>
+
+      
+    
+      <div class="alt" id="comment-1545">
+        <h5><a href='http://glyphobet.net/blog/essay/328' rel='external nofollow' class='url'>What isn&#8217;t new in Ruby 1.9.1 (or in Python) - glyphobet • глыфобет • γλυφοβετ</a> says:</h5>
+                <small class="subtle commentmetadata">
+          <a href="#comment-1545" title="">
+            January 31st, 2009 at 18:38          </a>
+	  &nbsp;
+                  </small>
+
+        <div style="margin-left:2em;font-size:0.75em;">
+          <p>For someone like me who tried an older version of Ruby, there&#8217;s nothing to read that will tell me whether it&#8217;s worth checking out.</p>
+        </div>
+      </div>
+
+      
+    
+  </div>
+
+ 
+
+
+      
+</div>
+      <div id="footer" class="subtle">
+        <a href="http://glyphobet.net/blog/feed/atom">subscribe</a>
+        &nbsp;
+        <a href="https://glyphobet.net/blog/wp-login.php">Log in</a> 
+	&nbsp;
+        <a href="/blog/?page_id=2">about</a> 
+	&nbsp;
+	<a href="/blog/?page_id=208">faq</a>
+	<form method="get" id="searchform" action="http://glyphobet.net/blog/">
+  <input type="text" value="" name="s" id="searchfield" />
+  <input type="submit" id="searchbutton" value="Search" />
+</form>
+        hosted by 
+        <a href="http://theory.org/"><img src="http://glyphobet.net/blog/wp-content/themes/glyphobet/images/theory.org.png" style="border:0;vertical-align:middle;" alt="Theory.org"/></a>
+        and powered by (a heavily hacked version of)
+        <a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress</a>
+        <!-- 12 queries. 0.553 seconds. -->
+      </div>
+    </div>
+    <script src="http://stats.wordpress.com/e-200913.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'2627699',v:'ext',post:'228'});
+var load_cmc = function(){linktracker_init(2627699,228,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+  </body>
+</html>
+
+<!-- Dynamic Page Served (once) in 0.551 seconds -->
+<!-- Cached page generated by WP-Super-Cache on 2009-03-26 14:07:48 -->

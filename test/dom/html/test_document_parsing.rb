@@ -7,13 +7,14 @@ module XmlTruth
       # This benchmark is for comparing document parsing speeds
       class DocumentParsingTest < TestCase
         def setup
-          @n        = (ENV['N'] || 100).to_i
-          @filename = File.join(ASSETS, 'tlm.html')
-          @stat     = File.stat(@filename)
-          @html      = File.read(@filename)
+          @n          = (ENV['N'] || 100).to_i
+          @file_list  = Dir[File.join(ASSETS, 'html', '*.html')]
 
-          puts
-          puts "#{name} N=#{@n}"
+          @stat = Struct.new(:size).new(
+            @file_list.map { |x|
+              File.stat(x)
+            }.inject(0) { |m,o| m + o.size }
+          )
 
           GC.start
         end
@@ -24,48 +25,36 @@ module XmlTruth
 
         def test_in_memory_parsing
           bm(12) do |x|
-            measure('null') do @n.times {
-              @html.split(/\n/)
+            GC.start
+            measure('hpricot') do @n.times {
+              @file_list.each { |file| Hpricot(File.read(file)) }
             } end
 
             GC.start
             measure('nokogiri') do @n.times {
-              Nokogiri::HTML(@html)
+              @file_list.each { |file| Nokogiri::HTML(File.read(file)) }
             } end
 
+            # libxml-ruby breaks
             #GC.start
             #measure('libxml-ruby') do @n.times {
             #  LibXML::XML::HTMLParser.string(@html).parse
             #} end
-
-            GC.start
-            measure('hpricot') do @n.times {
-              Hpricot(@html)
-            } end
           end
         end
 
         def test_IO_parsing
           bm(12) do |x|
-            measure('null') do @n.times {
-              File.open(@filename) { |xml|
-                xml.each_line { |line| }
-              }
+            GC.start
+            measure('hpricot') do @n.times {
+              @file_list.each { |file| File.open(file) { |html| Hpricot(html) }}
             } end
 
             GC.start
             measure('nokogiri') do @n.times {
-              File.open(@filename) { |xml| Nokogiri::HTML(xml) }
-            } end
-
-            #GC.start
-            #measure('libxml-ruby') do @n.times {
-            #  File.open(@filename) { |xml| LibXML::XML::HTMLParser.io(xml).parse }
-            #} end
-
-            GC.start
-            measure('hpricot') do @n.times {
-              File.open(@filename) { |xml| Hpricot(xml) }
+              @file_list.each { |file|
+                File.open(file) { |html| Nokogiri::HTML(html) }
+              }
             } end
           end
         end

@@ -1,0 +1,401 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Ruby is a very popular open-source language which lends itself especially well to object-oriented programming for the Web. If you've ever thought about combining Ruby with Yahoo!'s open APIs and Web services, read on.">
+<title>Ruby Developer Center - Yahoo! Developer Network</title>
+<link rel="shortcut icon" href="http://l.yimg.com/a/i/ydn/favicon.ico" type="image/x-icon">
+
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/yui/2.5.0/build/reset-fonts-grids/reset-fonts-grids.css">
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/yui/2.4.1/build/menu/assets/skins/sam/menu.css">
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/yui/2.5.1/build/button/assets/skins/sam/button.css">
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/yui/2.5.2/build/container/assets/skins/sam/container.css">
+<link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/yui/2.5.2/build/datatable/assets/skins/sam/datatable.css">
+
+<!-- Site-wide CSS -->
+  <link rel="stylesheet" type="text/css" href="http://l.yimg.com/a/lib/ydn/site/ydn-76114.css">
+
+</head>
+
+<body style="margin: 0;">
+<div id="bodycontainer">
+
+<!--[if IE 6]>
+
+<style type="text/css" media="screen">
+#topAreaR p{margin:0;padding:0;}
+
+#headeraL{float:left;color:#9f9f9f;font-size:85%;}
+#searchFld{height:1.46em;border:1px solid #cecece;}
+#searchFld{margin:0;}
+#sub{position:relative;left:2px;}
+
+#headeraL{height:4em;}
+
+#subHIntCont{position:relative;top:0em;}
+
+#ydnNav{float:left;padding:0;top:1em;}
+.yuimenubaritemlabel{padding:0;}
+
+#headerSubSandbag {top:5.9em;}
+
+h4.fullHorange{width:98%;margin:0;}
+#recBlPst{width:18em;}
+#recBlPst3{width:17em;}
+#upcomingEventsBoxCont{width:17.7em;float:right;padding:0;}
+#upcomingEventsBox{float:right;margin:0}
+#upcomingEventsBox .blogRackTitle{margin-left:.3em;width:15em}
+#upcomingEventsBox .blogRackDate{margin-left:.67em;}
+
+#topFeaturedTabs ul li strong strong{background-color:#9dc1d6;}
+#topFeaturedTabs ul li strong strong strong{background-color:#9dc1d6;}
+#topFeaturedTabs ul li a:hover strong strong{background-color:#6fa4c3;}
+#topFeaturedTabs ul li a:hover strong strong strong{background-color:#6fa4c3;}
+
+.prefTabs{color:#aaa;float:left;position:relative;margin:.5em .8em 0em 2em;font-weight:bold;}
+#featureBox1, #featureBox2, #featureBox3, #featureBox4{border:1px solid #d9d9d9;}
+.innerSubMenuArea{border:1px solid #d9d9d9;}
+
+#breadcrumbs{position:relative;top:1.8em;}
+
+#getAppBox{border:1px solid #D9D9D9;}
+
+</style>
+
+<![endif]-->
+<!--[if IE 7]>
+
+<style type="text/css" media="screen">
+#subHIntCont{position:relative;top:0;}
+#ydnNav{float:left;padding:.1em 0;position:relative;left:0;}
+#ydnNav .yuimenu .colGroup { margin-right: 1.5em;  }
+#breadcrumbs{position:relative;top:1.8em;}
+</style>
+
+<![endif]-->
+
+
+    <div id="topMaxCont">
+        <div id="topContainer">
+            <div id="topIntCont">
+                <span id="topAreaL">
+                    <ul class="glblLinks">
+                        <li class="first"><a href="http://www.yahoo.com">Yahoo!</a></li>
+                        <li><a href="http://my.yahoo.com">My Yahoo!</a></li>
+                        <li><a href="http://mail.yahoo.com">Mail</a></li>
+                    </ul>
+                </span>
+                <span id="topAreaR">
+                    <p>Welcome, <strong>guest</strong>
+                    <a href="https://login.yahoo.com/config/login?.done=http%3A%2F%2Fdeveloper.yahoo.com%2Fruby%2Findex.html&.src=devnet&.intl=us">Sign In</a></p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="headerMaxCont"><div id="headerMainSandbag"></div><div id="headerSubSandbag"></div>
+        <div id="headerContainer">
+            <span id="headeraL">
+                <a href="/"><img src="http://l.yimg.com/a/i/ydn/ydn-logo.gif" class="ydnLogo" height="53" width="408" alt="Yahoo! Developer Network"></a>
+            </span>
+            <span id="headeraR">
+                <div id="searchArea">
+                    <ul class="srchOptns">
+                        <!-- li class="first"><strong>YDN Site</strong></li>
+                        <li>Code</li>
+                        <li>Web</li -->
+                    </ul>
+                    <span class="srchFld"><form action="http://search.yahoo.com/search" method="get"><input type="text" name="va" value="" id="searchFld"><input type="hidden" name="vs" value="developer.yahoo.com"><input type="hidden" name="vs" value="developer.yahoo.net"><input type="submit" naame="sub" value="Search" id="sub" class="ygbt"></form></span>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div id="subHMaxCont">
+        <div id="subHContainer">
+            <div id="subHIntCont">
+                <div id="ydnNav" class="yuimenubar yuimenubarnav">  <!-- Start: main top nav -->
+                    <div class="bd">
+                        <ul class="first-of-type">
+                            <li class="yuimenubaritem first-of-type"><a class="yuimenubaritemlabel" href="/dashboard/"><em>My Projects</em></a></li>
+                            <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#"><em>API<span class="lowerc">s</span> &amp; Web Services<img src="http://l.yimg.com/a/i/ydn/top-nav-arrow-off.gif" alt="" class="dropArrow"></em></a>
+                                <div class="yuimenu innerSubMenuArea">
+                                    <div class="bd" style="_width: 45em; ">
+                                        <span class="x1"><span class="x1a"></span></span>
+                                        <span class="x2"><span class="x2a"></span></span>
+                                        <div class="colGroup">
+                                            <p class="subMenuH">API<span class="lowerc">s</span> and Web Services</p>
+                                            <ul class="inner">
+                                                <li><a href="/search/boss/">BOSS</a></li>
+                                                <li><a href="/flickr/">Flickr</a></li>
+                                                <li><a href="/mail/">Mail</a></li>
+                                                <li><a href="/maps/">Maps</a></li>
+                                            </ul>
+                                            <ul class="inner">
+                                                <li><a href="/myyahoo/">My Yahoo!</a></li>
+                                                <li><a href="/searchmonkey/">SearchMonkey</a></li>
+                                                <li><a href="/social/">Social</a></li>
+                                                <li><a href="/social/updates/">Updates</a></li>
+                                            </ul>
+                                            <ul>
+                                                <li><a href="/yap/">YAP</a></li>
+                                                <li><a href="/yos/">YOS</a></li>
+                                                <li><a href="/yql/">YQL</a></li>
+                                                <li><a href="/everything.html"><strong>All APIs &raquo;</strong></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="colGroup">
+                                            <p class="subMenuH">RSS Feeds</p>
+                                            <ul>
+                                                <li><a href="/finance/">Finance</a></li>
+                                                <li><a href="/traffic/">Traffic</a></li>
+                                                <li><a href="/weather/">Weather</a></li>
+                                                <li><a href="/rss/"><strong>All Feeds &raquo;</strong></a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="colGroup last">
+                                            <p class="subMenuH">Developer Kits</p>
+                                            <ul>
+                                                <li><a href="/download/">Search</a></li>
+                                                <li><a href="/mobile/">Mobile</a></li>
+                                                <li><a href="http://widgets.yahoo.com/workshop/">Konfabulator</a></li>
+                                                <li><a href="/i18n/">i18n</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#"><em>Resources<img src="http://l.yimg.com/a/i/ydn/top-nav-arrow-off.gif" alt="" class="dropArrow"></em></a>
+                                <div class="innerSubMenuArea yuimenu">
+                                    <span class="x1"><span class="x1a"></span></span>
+                                    <span class="x2"><span class="x2a"></span></span>
+                                    <div class="bd" style="_width: 38em; ">
+                                        <div class="colGroup">
+                                            <p class="subMenuH">Updates</p>
+                                            <ul>
+                                                <li><a href="http://developer.yahoo.net/blog/">Blog</a></li>
+                                                <li><a href="http://developer.yahoo.net/blogs/theater/">YDN Theater</a></li>
+                                                <li><a href="/hacku/">Hack U</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="colGroup">
+                                            <p class="subMenuH">Code & Design</p>
+                                            <ul>
+                                                <li><a href="/flash/">ASTRA Library</a></li>
+                                                <li><a href="/ypatterns/">Design Pattern Library</a></li>
+                                                <li><a href="/yui/">YUI Library</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="colGroup last">
+                                            <p class="subMenuH">Best Practices</p>
+                                            <ul>
+                                                <li><a href="/performance/">Exceptional Performance</a></li>
+                                                <li><a href="/security/">Security Best Practices</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="yuimenubaritem"><a class="yuimenubaritemlabel" href="#"><em>Support<img src="http://l.yimg.com/a/i/ydn/top-nav-arrow-off.gif" alt="" class="dropArrow"></em></a>
+                                <div class="innerSubMenuArea yuimenu">
+                                    <span class="x1"><span class="x1a"></span></span>
+                                    <span class="x2"><span class="x2a"></span></span>
+                                    <div class="bd">
+                                        <div class="colGroup last">
+                                            <p class="subMenuH">Help</p>
+                                            <ul style="*width: 10em; ">
+                                                <li><a href="/community/">YDN Communities</a></li>
+                                                <li><a href="/faq/">FAQs</a></li>
+                                                <li><a href="/register/">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>     <!-- end bd class -->
+                </div>
+            <!-- End: main top nav -->
+            </div>
+        </div>
+    </div>
+
+    <div id="topDropMaxCont">
+        <div id="topDropContainer">
+            <div id="topDropIntCont">
+                <div id="breadcrumbs">
+                    <span class="bcString"><a href="/">YDN</a></span>
+                    <span class="bcSep"></span>
+                    <span class="bcString">Ruby Developer Center</span>
+                </div>
+           </div>
+        </div>
+    </div>
+<div id="mainCMaxCont">
+    <div id="mainCContainer">
+        <div id="mainCIntCont">
+            <div id="internalContainer">
+                <div id="doc4" class="yui-t6">
+                    <div id="bd">
+                        <div id="yui-main">
+                        <div class="yui-b">
+<h2>Welcome to the Ruby Developer Center</h2>
+	<p><a href="http://www.ruby-lang.org">Ruby</a> is a very popular open-source language which lends itself especially well to object-oriented programming for the Web. If you've ever thought about combining Ruby with Yahoo!'s open APIs and Web services, read on.</p>
+    <ul class="topspace">
+      <li class="bullist"><a href="#howto">HOWTO Articles</a> to help you understand our technologies and how you can use them better with Ruby.</li>
+	   <li class="bullist"><a href="#bbauth">Browser-Based Authentication</a> so you can let users authenticate using their Yahoo! credentials.</li>
+      <li class="bullist"><a href="#resources">Useful Resources </a> on the web where you can find source code and helpful tools. </li>
+      <li class="bullist"><a href="#reference">Educational sites</a> where you can learn how to program using Ruby. </li>
+      <li class="bullist"><a href="#community">Community Resources</a> where you can join our mailing list and discuss the Yahoo! APIs with us and with other Ruby developers. </li>
+    </ul>
+
+
+<h3 class="first">HOWTOs <a name="howto"></a></h3>
+
+<ul class="topspace">
+  <li class="bullist"><a href="ruby-rest.html">Make Yahoo! Web Service REST calls with Ruby</a></li>
+  <li class="bullist"><a href="ruby-cache.html">Cache API calls using Ruby</a></li>
+  <li class="bullist"><a href="ruby-xml.html">Parse XML using Ruby</a></li>
+  <li class="bullist"><a href="ruby-json.html">Parse JSON using Ruby</a></li>
+</ul>
+
+<h3>Browser-Based Authentication <a name="bbauth"></a></h3>
+
+<ul class="topspace">
+  <li class="bullist"><a href="http://premshree.livejournal.com/118739.html">Ruby wrapper for bbauth</a></li>
+  <li class="bullist"><a href="http://metaatem.net/2006/09/29/using-yahoos-bbauth-with-rails">Using bbauth with Rails</a></li>
+  <li class="bullist"><a href="http://chuddup.com/blog/archive/27/drop-in-yahoo-browser-">A Rails plug-in for bbauth </a> </li>
+</ul>
+
+<h3>Useful Resources <a name="resources"></a></h3>
+
+<ul class="topspace">
+  <li class="bullist"><a href="http://ruby-lang.org/">ruby-lang.org</a> is the official Ruby homepage.</li>
+  <li class="bullist"><a href="http://ruby-doc.org/">Ruby-Doc.org</a> has good documentation on the Ruby APIs.</li>
+  <li class="bullist"><a href="http://raa.ruby-lang.org/">The Ruby Application Archive</a> contains loads of Ruby applications and libraries.</li>
+  <li class="bullist"><a href="http://rubyforge.org/">RubyForge</a> is the home for open source Ruby projects.</li>
+</ul>
+
+<h3>Learning Ruby <a name="reference"></a></h3>
+<ul class="topspace">
+  <li class="bullist"><a href="http://www.rubycentral.com/book/">Programming Ruby</a>, also known as <i>The PickAxe</i>, is a complete reference for Ruby.</li>
+  <li class="bullist"><a href="http://poignantguide.net/ruby/">why's (poignant) guide to Ruby</a> teaches you Ruby in a fun way.</li>
+  <li class="bullist"><a href="http://www.ruby-doc.org/docs/UsersGuide/rg/">Ruby user's guide</a> by Matz, the creator of Ruby. (Translated to English.)</li>
+  <li class="bullist"><a href="http://tryruby.hobix.com/">TryRuby</a> is an online Ruby tutorial that runs in real time.</li>
+</ul>
+
+<h3>Ruby On Rails</h3>
+<p>If you're just getting started with Ruby, check out <a href="http://rubyonrails.com">Ruby On Rails</a>.  From their site:</p>
+<blockquote>"Ruby On Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern. From the Ajax in the view, to the request and response in the controller, to the domain model wrapping the database, Rails gives you a pure-Ruby development environment. To go live, all you need to add is a database and a web server."</blockquote>
+
+<h3>Community Resources</h3> <a name="community"></a>
+<p>Discuss how to work with the Yahoo! Web Services and other APIs using Ruby on the <a href="http://groups.yahoo.com/group/ydn-ruby/">ydn-ruby</a> mailing list. Please note that this is not a general Ruby programming list; try to keep your questions focused to discussion about the Yahoo! APIs.</p>
+<p>We also provide individual lists for each of the web services and APIs we support; your questions are always welcome there as well. See the <a href="http://developer.yahoo.com/community">Yahoo! Developer Network Community</a> page for more information on these mailing lists.</p>                        </div>
+                        </div>
+                        <div class="yui-b" id="ydnRack">
+
+<div id="getAppBox" class="dropSbox">
+    <span class="x1"><span class="x1a"></span></span>
+    <span class="x2"><span class="x2a"></span></span>
+    <span class="getAppHBl"><h4 class="getAppH">Ready to get started?</h4></span>
+
+    <p>By applying for an Application ID for this service, you hereby agree to the <a href="/terms/">Terms of Use</a></p>
+    <div id="ctaBtnArea" class="yui-skin-sam">
+        <span id="actionButton" class="actionButton yui-button yui-link-button"><span class="first-child">
+            <a href="/wsregapp/">Build an Application</a>
+        </span></span>
+    </div>
+</div>
+
+
+
+
+<div id="recentBlogArtsBox" class="">
+    <span class="getAppHBl"><h4 class="recentBlog"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/">Yahoo! Groups Discussions</a><a href="http://rss.groups.yahoo.com/group/ydn-ruby/rss" class="rssImg"><img src="http://l.yimg.com/a/i/nt/ic/ut/bsc/rss16_1.gif"></a></h4><span class="viewallAbs"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/">view all</a></span></span>
+    <div class="bd">
+        <p class="blogRackTitle"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/message/311">Check out my photos on Facebook</a></p>
+        <p class="blogRackDate">Sun, 15 Mar 2009 </p>
+        <p class="blogRackTitle"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/message/310">Check out my photos on Facebook</a></p>
+        <p class="blogRackDate">Sun, 15 Mar 2009 </p>
+        <p class="blogRackTitle"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/message/309">Check out my photos on Facebook</a></p>
+        <p class="blogRackDate">Sun, 15 Mar 2009 </p>
+        <p class="blogRackTitle"><a href="http://tech.groups.yahoo.com/group/ydn-ruby/message/308">Regarding issue in yui tree-view</a></p>
+        <p class="blogRackDate">Wed, 10 Dec 2008 </p>
+    </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="clearfooter" style="padding-top: 40px; ">
+<!-- used to make room for the #footer -->
+</div>
+
+<div id="JSfooterMain">
+    <div id="JSfooterMax">
+        <div id="JSfooter">
+            <div class="footerSection" id="libList">
+                <h2 class="openFooter" id="libListHeader"><div id="libListArrow" class="openArrow"></div> YDN LIBRARIES & BEST PRACTICES</h2>
+                <div id="libListContent"></div>
+            </div>
+            <div class="footerDivider"> </div>
+            <div class="footerSection" id="apiList">
+                <h2 class="openFooter" id="apiListHeader"><div id="apiListArrow" class="openArrow"></div> YAHOO! APIs & WEB SERVICES</h2>
+                <div id="apiListContent"></div>
+            </div>
+            <div class="footerDivider"> </div>
+            <div class="footerSection" id="langList">
+                <h2 class="openFooter" id="langListHeader"><div id="langListArrow" class="openArrow"></div> LANGUAGE CENTERS</h2>
+                <div id="langListContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END:accordion footer -->
+<div>
+    <div id="footerBotMainCont">
+    <div id="footerBotMaxCont">
+    <div id="footerBotContainer">
+    <div id="footerBotInternal">
+    <div id="ydnfoot_bot">
+    <ul id="footerLinks">
+        <li class="first"><a href="/faq/">FAQs</a></li>
+        <li><a href="/community/" rel="nofollow">Forums</a></li>
+        <li><a href="/terms/" rel="nofollow">Terms of Use</a></li>
+    </ul>
+    <div id="footerLegal">
+        <p>Copyright &copy; 2009 Yahoo! Inc. All rights reserved. <a href="http://info.yahoo.com/copyright/details.html" rel="nofollow">Copyright</a> | <a href="http://info.yahoo.com/privacy/us/yahoo/devel/details.html" rel="nofollow">Privacy Policy</a></p>
+        <p>Help us continue to improve the Yahoo! Developer Network: <a href="http://developer.yahoo.net/forum/index.php?showforum=22" rel="nofollow">Send Your Suggestions</a></p>
+    </div>
+    </div>
+    </div> <!-- end id="ydnfoot" -->
+    </div>
+    </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+  src="http://l.yimg.com/a/combo?yui/2.5.2/build/yahoo-dom-event/yahoo-dom-event.js&yui/2.5.2/build/animation/animation-min.js&yui/2.5.2/build/container/container-min.js&yui/2.5.2/build/menu/menu-min.js&yui/2.6.0/build/element/element-beta-min.js&yui/2.5.2/build/animation/animation-min.js&yui/2.5.2/build/connection/connection-min.js&yui/2.5.2/build/dragdrop/dragdrop-min.js&yui/2.5.2/build/selector/selector-beta-min.js&yui/2.5.2/build/tabview/tabview-min.js&yui/2.5.2/build/button/button-min.js&yui/2.6.0/build/datasource/datasource-min.js&yui/2.6.0/build/datatable/datatable-min.js">
+</script>
+
+
+  <script type="text/javascript" src="http://l.yimg.com/a/lib/ydn/site/ydn-76753b.js"></script>
+
+<script>    var aButton = new YAHOO.widget.Button('actionButton');
+</script>
+</body>
+</html>
+
+<!-- SpaceID=0 robot -->
+
+<!-- VER-17 -->
+<!-- p2.ydn.sp1.yahoo.com uncompressed/chunked Thu Mar 26 13:43:20 PDT 2009 -->

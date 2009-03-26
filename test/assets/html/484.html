@@ -1,0 +1,1297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="generator" content="Planet/2.0 +http://www.planetplanet.org" />
+
+    <title>Planet Ruby</title>
+
+    <link rel="stylesheet" href="stylesheet.css" />
+
+    <link rel="icon" href="http://planetruby.0x42.net/favicon.ico" type="image/png" />
+
+    <link rel="alternate" type="application/atom+xml" title="Atom"    href="http://planetruby.0x42.net/atom.xml"     />
+    <link rel="alternate" type="application/rss+xml"  title="RSS 1.0" href="http://planetruby.0x42.net/rss10.xml"    />
+    <link rel="alternate" type="application/rss+xml"  title="RSS 2.0" href="http://planetruby.0x42.net/rss20.xml"    />
+    <link rel="alternate" type="application/rdf+xml"  title="FOAF"    href="http://planetruby.0x42.net/foafroll.xml" />
+    <link rel="alternate" type="text/x-opml"          title="OPML"    href="http://planetruby.0x42.net/opml.xml"     />
+  </head>
+
+  <body>
+    <div id="header"><h1>Planet Ruby</h1></div>
+
+    <div id="wrapper">
+      <div id="sidebar">
+        <ul>
+            <li>
+              <a href="http://www.chadfowler.com/" title="ChadFowler.com - Home">Chad Fowler</a>
+            </li>
+            <li>
+              <a href="http://blog.headius.com/" title="Headius">Charles Oliver Nutter</a>
+            </li>
+            <li>
+              <a href="http://chneukirchen.org/blog" title="chris blogs: Ruby stuff">Chris Neukirchen</a>
+            </li>
+            <li>
+              <a href="http://pragdave.blogs.pragprog.com/pragdave/" title="PragDave">Dave Thomas</a>
+            </li>
+            <li>
+              <a href="http://eli.thegreenplace.net" title="Eli Bendersky's website » Ruby">Eli Bendersky</a>
+            </li>
+            <li>
+              <a href="http://blog.fallingsnow.net" title="evan.musing &amp;lt;&amp;lt; current">Evan Phoenix</a>
+            </li>
+            <li>
+              <a href="http://weblog.jamisbuck.org/" title="the { buckblogs :here } - Home">Jamis Buck</a>
+            </li>
+            <li>
+              <a href="http://onestepback.org/index.cgi" title="{ |one, step, back| }">Jim Weirich</a>
+            </li>
+            <li>
+              <a href="http://lylejohnson.name/blog" title="Lovable Lyle » Ruby">Lyle Johnson</a>
+            </li>
+            <li>
+              <a href="http://eigenclass.org" title="eigenclass">Mauricio Fernandez</a>
+            </li>
+            <li>
+              <a href="http://blog.nicksieger.com/" title="Nick Sieger">Nick Sieger</a>
+            </li>
+            <li>
+              <a href="" title="Blog">Nitro/Og</a>
+            </li>
+            <li>
+              <a href="http://www.oreillynet.com/ruby" title="O'Reilly News:Ruby">O'Reilly Ruby</a>
+            </li>
+            <li>
+              <a href="http://ola-bini.blogspot.com/" title="Ola Bini: Programming Language Synchronicity">Ola Bini</a>
+            </li>
+            <li>
+              <a href="http://on-ruby.blogspot.com/" title="On Ruby">Pat Eyler</a>
+            </li>
+            <li>
+              <a href="http://technomancy.us/" title="Technomancy">Phil Hagelberg</a>
+            </li>
+            <li>
+              <a href="http://t-a-w.blogspot.com/search/label/rlisp" title="taw's blog">RLisp</a>
+            </li>
+            <li>
+              <a href="http://www.rubyweeklynews.org/" title="Ruby Weekly News">Ruby Weekly News</a>
+            </li>
+            <li>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+            </li>
+            <li>
+              <a href="" title="">Ryan Davis</a>
+            </li>
+            <li>
+              <a href="" title="">Stephen Touset</a>
+            </li>
+            <li>
+              <a href="" title="">Steven Baker</a>
+            </li>
+            <li>
+              <a href="http://tomcopeland.blogs.com/juniordeveloper/" title="Junior developer: Ruby">Tom Copeland</a>
+            </li>
+            <li>
+              <a href="http://t-a-w.blogspot.com/search/label/ruby" title="taw's blog">Tomasz Wegrzanowski</a>
+            </li>
+            <li>
+              <a href="http://blog.emptyway.com" title="The Empty Way » JRuby">Vladimir Sizikov</a>
+            </li>
+            <li>
+              <a href="http://errtheblog.com/" title="Err the Blog">err.the_blog</a>
+            </li>
+        </ul>
+
+        <p>
+          Missing something?<br/>
+          <a href="http://termos.vemod.net/contact">Contact Christoffer!</a>
+        </p>
+      </div>
+
+      <div id="posts">
+<h2>March 26, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://eigenclass.org" title="eigenclass">Mauricio Fernandez</a>
+ &#x2014; <a href="http://eigenclass.org/R2/writings/object-size-ruby-ocaml">Memory footprint of objects in Ruby 1.8, EE, 1.9, and OCaml</a>            </h3>
+            <div class="meta">
+
+2009/03/26 11:39 AM            </div>
+            <div class="body"><p>With Ruby 1.9.1 being out for a while now, it's time to review my calculations regarding the memory footprint of objects, since 1.9 incorporates some optimizations that improve significantly on 1.8. I also measured the footprint of OCaml objects while I was at it.</p><p><b>Addendum</b>: added note about Ruby Enterprise Edition (Ruby EE), a patched Ruby 1.8.6 used with Phusion Passenger; see below.</p><p>This table summarizes the results (sizes in bytes on x86; around (exactly, for OCaml) twice as much on x86-64 --- the malloc overhead might differ):</p><table>
+<tbody>
+<tr>
+<th></th>
+<th>Ruby 1.8</th></tr></tbody></table>
+<th>Ruby EE</th>
+<th>Ruby 1.9</th>
+<th>OCaml</th>
+
+<tr>
+<th>object with no IVs</th>
+<td>20</td>
+<td>20</td>
+<td>20</td>
+<td>12</td>
+</tr>
+
+<tr>
+<th>object 1 IV</th>
+<td>120</td>
+<td>96</td>
+<td>20</td>
+<td>16</td>
+</tr>
+
+<tr>
+<th>object 2 IVs</th>
+<td>144</td>
+<td>112</td>
+<td>20</td>
+<td>20</td>
+</tr>
+
+<tr>
+<th>object 3 IV</th>
+<td>168</td>
+<td>128</td>
+<td>20</td>
+<td>24</td>
+</tr>
+
+<tr>
+<th>object 4 IV</th>
+<td>192</td>
+<td>144</td>
+<td>48</td>
+<td>28</td>
+</tr>
+
+<tr>
+<th>struct (Struct or record) 1 elm.</th>
+<td>32</td>
+<td>24</td>
+<td>20</td>
+<td>8</td>
+</tr>
+
+<tr>
+<th>struct 2 elms.</th>
+<td>36</td>
+<td>28</td>
+<td>20</td>
+<td>12</td>
+</tr>
+
+<tr>
+<th>struct 3 elms.</th>
+<td>40</td>
+<td>32</td>
+<td>20</td>
+<td>16</td>
+</tr>
+
+<tr>
+<th>struct 4 elms.</th>
+<td>44</td>
+<td>36</td>
+<td>44</td>
+<td>20</td>
+</tr>
+
+
+
+<p>(The Ruby EE gains come from the TCMalloc allocator and these are best case figures; the actual footprint will be between them and those for Ruby 1.8.)</p><p>Keep in mind that both Ruby 1.8 and 1.9 can suffer from heavy memory fragmentation (both internal and external) when allocating many objects (also, objects might be retained for an arbitrarily long amount of time because the GC is conservative). OCaml has no such problem, as it has got a generational, exact GC with a copying GC in the minor heap and an incremental mark &amp; sweep &amp; compact GC in the major heap.</p><p><a href="http://eigenclass.org/R2/writings/object-size-ruby-ocaml">Read more...</a></p><div class="feedflare">
+<a href="http://feeds2.feedburner.com/~ff/eigenclass?a=oqAAxhVR0Zg:ZdvM-4XcFyw:yIl2AUoC8zA"><img src="http://feeds2.feedburner.com/~ff/eigenclass?d=yIl2AUoC8zA" border="0" /></a>
+</div></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://on-ruby.blogspot.com/" title="On Ruby">Pat Eyler</a>
+ &#x2014; <a href="http://on-ruby.blogspot.com/2009/03/author-interview-venkat-subramaniam.html">Author Interview - Venkat Subramaniam</a>            </h3>
+            <div class="meta">
+                <a href="http://on-ruby.blogspot.com/2009/03/author-interview-venkat-subramaniam.html">pate (noreply@blogger.com)</a> @
+
+2009/03/26 08:08 AM            </div>
+            <div class="body">Here's the third of three Scala book interviews.  Venkat Subramaniam (@venkat_s), author of the Prag's Programming Scala, has a lot to say about Scala and why you should be learning and using it.
+
+You can find more posts about Scala (and Haskell and Erlang) on my Functional Programming page.
+
+
+
+Functional Programming languages seem to be an increasingly popular topic.  Why?  What do FP languages</div>
+          </div>
+<h2>March 24, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://weblog.jamisbuck.org/" title="the { buckblogs :here } - Home">Jamis Buck</a>
+ &#x2014; <a href="http://weblog.jamisbuck.org/2009/3/24/buckets-preview">Buckets: Preview</a>            </h3>
+            <div class="meta">
+                <a href="http://weblog.jamisbuck.org/2009/3/24/buckets-preview">Jamis</a> @
+
+2009/03/24 02:30 PM            </div>
+            <div class="body"><p>So, yeah. With <a href="http://weblog.jamisbuck.org/2009/2/25/net-ssh-capistrano-and-saying-goodbye">Capistrano and friends off my plate</a>, I’ve actually found time to work on a project that has been in the works for <em>years</em> (and that’s no exaggeration, I first mentioned it in a blog post in <a href="http://weblog.jamisbuck.org/2004/10/31/too-many-distractions">October 2004</a>). I’ve named it and renamed it (“Penny Pincher”, “Chump Change”, “Make Me Rich”, and “BudgetWise”) but its current incarnation is “Buckets”.</p>
+
+
+	<p>Buckets is a simple web-based personal finance application that I’ve been working on, written specifically for my wife and me. Its focus is on simple budgeting, and reducing debt, and It is intentionally “feature-poor”. It is loosely based on an <a href="http://www.daveramsey.com/etc/cms/index.cfm?intContentID=3461">envelope budgeting strategy</a>, and while it definitely isn’t the only web-based finance app using such a strategy, it just may be the simplest.</p>
+
+
+	<p>I recorded a screencast demonstrating the budgeting aspect of Buckets; it’s a 5M QuickTime movie, 2:42 in length. <a href="http://buckblog.s3.amazonaws.com/videos/buckets-01.mov">Click here to view it, if you care to.</a>.</p>
+
+
+	<p>Buckets is still private: it has been deployed and my wife and I are using it, but that’s it. The source code is in a private repository on <a href="http://www.github.com">GitHub</a>, and the production instance of the app is currently only accessible to me. That will change eventually (maybe a couple of weeks, depending on how initial testing goes), but I want to make sure it’s actually going to be useful before I open it up.</p></div>
+          </div>
+<h2>March 23, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://pragdave.blogs.pragprog.com/pragdave/" title="PragDave">Dave Thomas</a>
+ &#x2014; <a href="http://pragdave.blogs.pragprog.com/pragdave/2009/03/shipping-the-rails-book.html">Shipping the Rails Book</a>            </h3>
+            <div class="meta">
+                <a href="http://pragdave.blogs.pragprog.com/pragdave/2009/03/shipping-the-rails-book.html">Dave Thomas</a> @
+
+2009/03/23 06:43 PM            </div>
+            <div class="body"><p><a href="http://pragdave.blogs.pragprog.com/.a/6a00d83451c41c69e201156f3e4305970b-pi"><img alt="Rails3" border="0" class="at-xid-6a00d83451c41c69e201156f3e4305970b " src="http://pragdave.blogs.pragprog.com/.a/6a00d83451c41c69e201156f3e4305970b-800wi" title="Rails3" /></a>
+ Last week we completed our largest direct shippment, as we sent out the preorders for <a href="http://pragprog.com/titles/rails3" target="_blank">Agille Web Development with Rails, Third Edition</a>. We had tons of books delivered, and bought tens of thousands of dollars of shipping supplies and postage, but despite the volume everything went well (apart from the inevitable paper cuts). I even learned where the big boys go to the Post Office (which turns out to be a pretty impressive facility right next to DFW airport).</p><p>So I thought I'd share just a couple of statistics. Domestically, we shipped books to every state except North Dakota. Internationally we shipped to three US bases, and a total of 55 different countries (from Angola to Vietnam). Sometimes I close my eyes and think of the trajectories of all those books spreading out from Raleigh and Dallas—it's a cool picture.</p><p>So, if you bought a Rails book from us: thank you! It's been an interesting year (way longer than would would have liked, but that's the joy of working with a rapidly changing technology). We hope you enjoy the result. And, remember, we now have <a href="http://pragprog.com/frequently-asked-questions/ebooks" target="_blank">eBook formats</a>&#0160; available for your Kindle, iPhone, and so on.</p></div>
+          </div>
+<h2>March 21, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://technomancy.us/" title="Technomancy">Phil Hagelberg</a>
+ &#x2014; <a href="http://technomancy.us/123">in which is recounted a tale of versions</a>            </h3>
+            <div class="meta">
+                <a href="http://technomancy.us/123">Phil Hagelberg</a> @
+
+2009/03/21 11:12 PM            </div>
+            <div class="body"><p>There are a number of ways to solve the problem of distributing
+  prerelease gems in Ruby. Indicating a version is a prerelease in
+  the documentation alone won't cut it; it's bound to sneak on to a
+  production system and be forgotten about. Some projects simply
+  don't bump the version until it's final, but this means if you try
+  out a prerelease version it will replace an existing stable one,
+  which is bad news. Up until recently, Rails marked them by
+  counting backwards from the target, so the prerelease for 2.1.0
+  was 2.0.999. This ends up being better, but it still breaks when
+  another gem says it depends on any version of Rails in the 2.0
+  series since 2.0.999 should be in the 2.1 series and introduces
+  changes that will break gems expecting 2.0. Now Rails has changed
+  strategies, saying that 2.1.0 is actually a prerelease, and that
+  the first stable version would be 2.1.1. This is safer in terms of
+  dependencies, but much more confusing to users; they expect 2.1.0
+  to be the actual release.</p>
+
+<img src="http://technomancy.us/i/moss.jpg" alt="moss" align="right" />
+
+<p>So during RubyConf, I worked
+  with <a href="http://alexvollmer.com">Alex Vollmer</a>
+  and <a href="http://blog.hasmanythrough.com">Josh Susser</a> to
+  <a href="http://technomancy.us/117">fix the problem from within RubyGems</a>. The idea
+  was that you should be able to mark a given version as a
+  prerelease, and it wouldn't be downloaded unless someone
+  specifically asked to include prereleases. This way in-development
+  gems can get served without projects needing to run their own gem
+  servers or rely on github; everything can be done through
+  RubyForge. It also has the advantage of being much more clear;
+  there's no need for each project to have their own policy on the
+  matter. I've finally finished committing the new functionality to
+  RubyGems trunk, so if you're interested in creating a prerelease
+  gem, I'd encourage you to grab a copy of trunk and try it out:</p>
+
+<p><tt>$ svn co svn://rubyforge.org/var/svn/rubygems/trunk rubygems</tt></p>
+<p><tt>$ cd rubygems &amp;&amp; sudo ruby setup.rb</tt></p>
+
+<p>Once it's installed, try releasing a gem (using hoe or whatever)
+  with a version with a segment that contains letters, and it will
+  be considered prerelease. 2.2.0.rc1 or 1.6.5.a would work. The
+  numeric segments are sorted as you'd expect, and the alphanumeric
+  segments are sorted with String#sort, but prereleases always sort
+  lower than releases within a version series. So 2.2.0 would be
+  higher than 2.2.0.rc1 though they'd both be in the 2.2
+  series. This should ease a lot of confusion in this area. As
+  always, if you run into any problems,
+  please <a href="http://rubyforge.org/tracker/?atid=575&amp;group_id=126&amp;func=browse">report
+  them on the tracker</a> since a 1.3.2 release is not far away.</p>
+
+<img src="http://technomancy.us/i/mtns.jpg" alt="mountains" align="left" />
+
+<p>In other news, it appears that you should be very careful when
+  you <a href="http://twitter.com/technomancy/statuses/1313409184">complain
+  about how software isn't being maintained</a>. I had been keeping
+  my own fork
+  of <a href="http://github.com/technomancy/gitjour">Gitjour</a>,
+  which is a tool for sharing repositories over local networks when
+  either your Internet connection is unreliable (like at tech
+  conferences) or when you can't be bothered to host a repo
+  somewhere. My fork allowed gitjour to work with Avahi and had a
+  few other tweaks and had never made it back upstream, but it
+  seemed like there was a lot of uncoordinated development on them
+  across github forks as well.</p>
+
+<img src="http://technomancy.us/i/instaweb.png" alt="instaweb" align="left" />
+
+<p>Somehow my call for the maintainers to step up got turned around
+  into me <i>becoming</i> the maintainer. Not exactly what I had
+  expected, but I was happy to be able to help out. I ended up
+  pushing out my fixes in a release as well as pulling in
+  some <a href="http://github.com/alexvollmer/gitjour/commit/bd843d2aaeae4a5b721dbefd3725d5868645903c">nice
+  web-related stuff from Alex</a>. <tt>gitjour web</tt> will now
+  throw up
+  an <a href="http://www.kernel.org/pub/software/scm/git/docs/git-instaweb.html">instaweb</a>
+  instance, and <tt>gitjour browse</tt> will let you look through
+  all the instawebs being advertised locally. So if you're headed to
+  a conference at which you plan to hack any time soon, be sure to
+  not leave home without a copy of gitjour. You know the <tt>sudo
+  gem install</tt> drill.</p>
+
+<p>Finally, there's been a recent turn of events that's left me
+  without work for the present. As I've hopefully made obvious, I've
+  got a pretty decent portfolio of free software contributions, but if
+  you're not convinced,
+  visiting <a href="http://technomancy.us/projects">http://technomancy.us/projects</a>
+  should do the trick. My <a href="http://technomancy.us/resume">r&eacute;sum&eacute;</a>
+  may also be of interest. Thanks for reading.</p></div>
+          </div>
+<h2>March 20, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+ &#x2014; <a href="http://feedproxy.google.com/~r/RidingRails/~3/uB7GqE_-jWk/this-week-in-edge-rails">This Week in Edge Rails</a>            </h3>
+            <div class="meta">
+                <a href="http://feedproxy.google.com/~r/RidingRails/~3/uB7GqE_-jWk/this-week-in-edge-rails">Mike Gunderloy</a> @
+
+2009/03/20 02:53 PM            </div>
+            <div class="body"><h3>March 14, 2009 – March 20, 2009</h3>
+
+
+	<p>The big news in Rails this week, of course, was the <a href="http://weblog.rubyonrails.org/2009/3/16/rails-2-3-templates-engines-rack-metal-much-more">release of Rails 2.3</a>. But that certainly doesn’t mean the Rails edge story is over! To the contrary, we’re embarking on one of the more ambitious and exciting Rails projects of all: the creation of Rails 3.0. Read on to see where things stand.</p>
+
+
+	<p><b>Final 2.3 Changes</b><br /></p>
+
+
+	<p>A few things went in to Rails 2.3 in the days leading up to release. These include:</p>
+
+
+	<ul>
+	<li><span class="caps">DDL</span> transactions for SQLite databases <a href="http://github.com/rails/rails/commit/ac3848201dfd7400708d3ccae0acb9388318fb99">commit</a></li>
+		<li>Compatibility between <code>render :file</code> and <code>Pathname</code> <a href="http://github.com/rails/rails/commit/7706b57034e91820cf83445aede57c54ab66ac2d">commit</a></li>
+		<li>ActionController class naming conventions for Metal <a href="http://github.com/rails/rails/commit/5f10533949457e3797c8f0b51eb30a9268bceb4d">commit</a></li>
+	</ul>
+
+
+	<p><b> Rails 2.3.2.1</b><br /></p>
+
+
+	<p>Shortly after the release of Rails 2.3, which was version 2.3.2, it became necessary to make a Rails 2.3.2.1 tag. This is because the tagged 2.3.2 version in the Rails repository is actually missing an important fix (the installable gem version of Rails has the fix). The net result is that <code>rake rails:freeze:edge RELEASE=2.3.2</code> would freeze a bad version of Rails into your application.</p>
+
+
+	<p>To fix this, the Rails team has re-tagged the master tree at a safer spot, after the critical fix. This new tag is for release 2.3.2.1. So if you’re freezing Rails 2.3 into your applications (as opposed to running it from gems) be sure to use <code>rake rails:freeze:edge RELEASE=2.3.2.1</code>. That .1 makes all the difference.</p>
+
+
+	<p><b>The Road to Rails 3.0</b><br /></p>
+
+
+	<p>Now that 2.3 is out, what’s next? Rails 3.0, which has been a distant speck on the horizon for a while, is rapidly getting closer. The Rails core team is discussing exactly how to proceed, but the bottom line is that you are shortly going to see a <em>lot</em> of changes on edge Rails, as work that’s been going on in various forks gets merged back into the master branch. You’ll want to be cautious about using edge on existing applications. In particular, changes to the Rails internals may result in many plugins needing to be rewritten. Rails edge will continue to be the cutting-edge solution, but you’ll need to keep up with the changes and be prepared to work with them if you choose to run on edge.</p>
+
+
+	<p>But this doesn’t mean that Rails 2 is frozen in time either. There’s a new <a href="http://github.com/rails/rails/commits/2-3-stable">2-3-stable</a> branch in the Rails repository which will host any maintenance releases to the current release version. There will continue to be some work on making sure the 2.x releases of Rails work well, though the center of gravity of Rails framework development will shift quickly to Rails 3.0.</p>
+
+
+	<p>So stay tuned. We’ll continue to keep you posted with Rails 3.0 developments as they happen: the process will continue, as always, to be transparent and to welcome ideas and feedback.</p></div>
+          </div>
+<h2>March 19, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+ &#x2014; <a href="http://feedproxy.google.com/~r/RidingRails/~3/e_HXkdlOfJM/get-paid-to-work-on-rails">Get Paid to Work on Rails</a>            </h3>
+            <div class="meta">
+                <a href="http://feedproxy.google.com/~r/RidingRails/~3/e_HXkdlOfJM/get-paid-to-work-on-rails">Mike Gunderloy</a> @
+
+2009/03/19 07:13 PM            </div>
+            <div class="body"><p>Last year, as you may recall, Rails got <a href="http://weblog.rubyonrails.org/2008/8/16/josh-peek-officially-joins-the-rails-core">thread safety and a new core committer</a> thanks to our participation in the <a href="http://code.google.com/soc/">Google Summer of Code</a> program under the auspices of <a href="http://rubycentral.org/">Ruby Central</a>. This year, we’re pleased to announce, Ruby on Rails has been accepted into Google Summer of Code as a <a href="http://rubycentral.org/">sponsoring organization</a> in its own right.</p>
+
+
+	<p>What does this mean to you? Potentially, if you’re the right person, you can get <em>paid</em> to work on the Rails core code this summer!</p>
+
+
+	<p>The “right person” in this case is one who is at least 18 years old (sorry, Google’s rule, not ours!), a full- or part-time college student, and passionate about improving Rails. We’re building a potential list of <a href="http://wiki.rubyonrails.org/gsoc/2009/ideas">project ideas</a> on the Rails wiki, but we welcome other interesting proposals. We’re especially interested in work that meshes well with the <a href="http://weblog.rubyonrails.org/2008/12/23/merb-gets-merged-into-rails-3">plans for Rails 3.0</a>, which will be in full swing by the time GSoC launches. If your proposal gets accepted, Google will pay you $4500 over the course of three months to work on the code.</p>
+
+
+	<p>If you’re interested, head over to the <a href="http://socghop.appspot.com/">GSoC site</a> and start reading about the process. Student applications can be submitted starting March 23.</p>
+
+
+	<p>What if you’re not a student? You can still help out by brainstorming ideas on the Rails wiki. Or if you’re a Rails guru and ready to make a strong commitment to help out the next generation of developers, you can <a href="http://socghop.appspot.com/org/apply_mentor/google/gsoc2009">apply to be a mentor</a>.</p>
+
+
+	<p>We’re looking forward to working with this year’s students, and expecting some outstanding contributions to Rails as a result!</p></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://www.chadfowler.com/" title="ChadFowler.com - Home">Chad Fowler</a>
+ &#x2014; <a href="http://www.chadfowler.com/2009/3/19/railsconf-speaker-interview-michael-bleigh">RailsConf Speaker Interview: Michael Bleigh</a>            </h3>
+            <div class="meta">
+                <a href="http://www.chadfowler.com/2009/3/19/railsconf-speaker-interview-michael-bleigh">chad</a> @
+
+2009/03/19 02:36 PM            </div>
+            <div class="body"><p>Next up in my <a href="http://chadfowler.com/railsconf-speaker-interviews">series of RailsConf speaker interviews</a> is <a href="http://mbleigh.com/">Michael Bleigh</a>, who is Creative Director and Open-Source Activist at <a href="http://intridea.com">Intridea</a> in Washington D.C.</p>
+
+
+	<p>Michael will be presenting <a href="http://en.oreilly.com/rails2009/public/schedule/detail/8517">Twitter on Rails</a> at RailsConf this year, highlighting a small but growing trend of applications using Twitter as a communication platform.</p>
+
+
+	<h2>You work on <a href="https://www.presentlyapp.com">Present.ly</a> and you’re
+giving a talk on Twitter apps at RailsConf. Micro-update services is
+obviously a topic that has you excited. Why is that?</h2>
+
+
+	<p>I wasn’t a super-early adopter of Twitter; I honestly think it’s
+something that takes some time to “get.” Then one day I woke up and
+realized that without even trying I was getting all kinds of news and
+information that I might not even have heard otherwise. The beauty of
+Twitter (and Present.ly for teams and organizations) is that it’s a
+fast, passive medium: you don’t have to make an effort to keep up to
+date, it just sort of happens. It works with two-way communication,
+too; on our team if I have a quick syntax or sanity check question
+about my code, I post it up on Present.ly and get five responses
+within three minutes. Micro-updates excite me because I feel like I’m
+getting smarter just by glancing at growl notifications for a few
+seconds every couple of minutes while I’m working. It’s effortless.</p>
+
+
+	<h2>What are the coolest Twitter applications you’ve seen?</h2>
+
+
+	<p>It’s hard to pick out just a few; from a client perspective I’ve been
+using <a href="http://thecosmicmachine.com/">EventBox</a> lately. It’s integrated
+Twitter search feeds are really useful for keeping an eye on all of
+Intridea’s brands (as well as my plugins and open-source projects).
+While I don’t think anyone has nailed it perfectly yet, aggregators
+like <a href="http://tweetmeme.com/">TweetMeme</a> are interesting in their
+attempts to bubble up content from the noise. Honestly, I don’t think
+there are just a couple cool apps; I think that Twitter’s true
+strength is this really energetic ecosystem around creating cool stuff
+with the <span class="caps">API</span>. That’s what my talk is all about: lowering the barriers
+to people making cool stuff with Twitter. With the hundreds of apps
+currently available I still think we’ve only scratched the surface of
+the utility that Twitter-based applications can provide.</p>
+
+
+	<h2>What does it mean to be “Open Source Activist” for a company?
+Should other companies fill this role?</h2>
+
+
+	<p>As the “Open Source Activist” I’m basically just trying to push people
+to package up what they’re doing and share it with the community,
+whether it’s through a Ruby gem, a plugin, or just a blog post. My
+colleagues are making cool stuff all of the time, and sharing that
+cool stuff with the community is absolutely beneficial for the
+company, the individual, and everyone who finds it useful. We’ve had
+clients come to us and when they’re vetting our work it’ll be “Oh
+yeah, I’ve used that plugin! You guys wrote that?”</p>
+
+
+	<p>I think that every company needs someone who is pushing for that
+community involvement. Pushing for us to blog more often and release
+more open source doesn’t just yield intangible reputation benefits:
+I’ve learned really cool techniques from other people at Intridea that
+they used for a project on which I’m not currently working. I’m always
+excited to foster that kind of sharing environment because the rewards
+are just great. I could go on for hours and I strongly encourage that
+every company working with Ruby or Rails try to release at least a few
+open-source libraries and write some blog posts to share your
+knowledge and expertise with the world at large.</p>
+
+
+	<p>We really believe in putting our money where our mouth is on the
+open-source front. When we wrote mobile applications for Present.ly on
+five different platforms it was a no-brainer to me to <a href="http://github.com/presently">release them
+all as open-source</a>. Open source, open
+APIs and open communication foster innovation in amazing ways, and
+anything I can do to make that happen more often I will.</p>
+
+
+	<h2>Why is Twitter Search special and/or interesting?</h2>
+
+
+	<p>Twitter Search is special because it’s intrinsically a different beast
+than Google and other search engines. It’s not indexing information,
+it’s indexing <b>conversation</b>, and it does it in real time. If I’m
+trying to find information about something that happened in the last
+24 hours (like <a href="http://intridea.com/2009/1/22/twitter-search-plus-find-replies-inline-with-twitter-search">who was that old woman on Lost?</a>), I don’t use Google
+anymore; I turn to Twitter because it will have up-to-the-second
+information that just isn’t available anywhere else. Obviously it
+doesn’t replace the usefulness of other search engines, but it opens
+up whole new channels of information discovery. Honestly search and
+Twitter are such a natural and amazing fit that it’s surprising that
+it took a third party (Summize) to come along and realize that
+potential. I really look forward to where they (and third parties) are
+going to take the technology in the next year or two.</p>
+
+
+	<h2>As I understand it, Intridea started as a consulting group but has
+quickly developed a set of products that have gotten some positive
+press. How do you balance consulting and product development? Do they
+support and feed off of each other?</h2>
+
+
+	<p>The balance actually works really well. We have a few people full time
+on products and then we rotate in services people either part-time or
+full-time depending on our client engagements at the time. I think
+it’s been great for both sides of the company to have both services
+and products: we can try really bleeding edge and experimental things
+on the products and then bring that knowledge to the client work we
+do. Likewise, everyone at Intridea on the services side has an almost
+inhuman work ethic and an ability to juggle several projects at once
+so when they come on to the products they can pick it up fast and get
+things done. Consulting has also allowed us to try a number of
+products without ever having to accept outside funding.</p>
+
+
+	<p>A number of our products also grew out of needs that clients would
+have again and again. For instance <a href="http://scalr.net">Scalr</a> is a great
+piece of software (don’t ask me about how it works, it’s over my
+head!) that gives us the ability to provide amazing scalable cloud
+hosting to our clients. <a href="http://www.gomediaplug.com/">MediaPlug</a>
+similarly provides an easy infrastructure that saves our clients time
+and money. We scratch our own itches with our products and that
+usually means that there are benefits for the consulting side of our
+business with every product we make. I’m honored and privileged to
+work with so many brilliant people and be allowed to pursue so many
+amazing ideas.</p></div>
+          </div>
+<h2>March 18, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://onestepback.org/index.cgi" title="{ |one, step, back| }">Jim Weirich</a>
+ &#x2014; <a href="http://onestepback.org/index.cgi/Tech/Adhearsion/TheAdhearsionDemo.red">The Adhearsion Demo From Mountain West Ruby Conf</a>            </h3>
+            <div class="meta">
+
+2009/03/18 05:01 PM            </div>
+            <div class="body"><p><em>Try Jay&#8217;s demo at home.</em></p>
+
+
+	<h2>Jay Phillip&#8217;s Adhearsion Demo at the Moutain West Ruby Conf</h2>
+
+
+	<p>Jay Phillip&#8217;s talk at <span class="caps">MWRC</span> attempted to get the audience involved in
+actually running an Adhearsion demo on their own laptops.
+Unfortunately, the demo at <span class="caps">MWRC</span> was plagued with firewall and network
+problems, but eventually I was able to get it working. Here are the
+steps needed.</p>
+
+
+	<p>Go ahead, try this at home.  It&#8217;s a lot of fun.</p>
+
+
+	<h3>Step 1&#8212;Sign up for an Adhearsion account.</h3>
+
+
+	<p>You can do that here: <a href="http://adhearsion.com/signup">http://adhearsion.com/signup</a></p>
+
+
+	<p>You will need a skype account to complete the sign-up.  After signing
+up, you should get an email with a link that you need to click before
+your account is activated.  Go ahead and activate the account now.</p>
+
+
+	<h3>Step 2&#8212;Install the Adhearsion Gem</h3>
+
+
+	<p>Run:</p>
+
+
+<pre>
+   gem install adhearsion
+</pre>
+
+	<p>I&#8217;m running the 0.8.2 version of the gem.</p>
+
+
+	<h3>Step 3&#8212;Create an Adhearsion project</h3>
+
+
+	<p>Run:</p>
+
+
+<pre>
+  ahn create project_name
+</pre>
+
+	<h3>Step 4&#8212;Enable the Sandbox</h3>
+
+
+	<p>Run:</p>
+
+
+<pre>
+  cd project_name
+  ahn enable component sandbox
+</pre>
+
+	<h3>Step 5&#8212;Edit Your Credentials</h3>
+
+
+	<p>Edit the file: <tt>components/sandbox/sandbox.yml</tt> and update the
+username and password you used when you created the Adhearsion account
+in step 1.</p>
+
+
+	<h3>Step 6&#8212;Create a Dial Plan for the Sandbox</h3>
+
+
+	<p>Edit the <tt>dialplan.rb</tt> file to contain the following:</p>
+
+
+<pre class="ruby-code">
+adhearsion {
+  simon_game
+}
+
+sandbox {
+  play "hello-world" 
+}
+</pre>
+
+	<p>The adhearsion section should alread be in the file.  You will be
+adding the sandbox section.</p>
+
+
+	<h3>Step 7&#8212;Star the Adhearsion Server</h3>
+
+
+	<p>Run:</p>
+
+
+<pre>
+  cd ..
+  ahn start project_name
+</pre>
+
+You should see:
+<pre>
+INFO ahn: Adhearsion initialized!
+</pre>
+
+	<p>Errors at this stage might mean that your adhearsion account isn&#8217;t
+setup properly, you don&#8217;t have the right user name and password (in
+step 5), or that you have firewall issues preventing you from
+connecting to the Adhearsion server.</p>
+
+
+	<h3>Step 8&#8212;Call The Sandbox</h3>
+
+
+	<p>Using Skype, call the Skype user named <b>sandbox.adhearsion.com</b>.
+You should hear a hello world message.</p>
+
+
+	<h3>Step 9&#8212;Change the Dial Plan</h3>
+
+
+	<p>Just for fun, change the <tt>dialplan.rb</tt> file to contain:</p>
+
+
+<pre class="ruby-code">
+adhearsion {
+  simon_game
+}
+
+sandbox {
+  play "hello-world" 
+  play "tt-monkeys" 
+}
+</pre>
+
+	<p>(Add the tt-monkeys line to the sandbox dial plan).</p>
+
+
+	<p>Now call the sandbox again (skyping user sandbox.adhearsion.com)
+to hear the change in the dial plan.  Monkeys <span class="caps">FTW</span>.</p>
+
+
+	<h3>More Examples</h3>
+
+
+	<p>Here&#8217;s a example of what can be done in a dial plan.  I was just
+goofing around with my dial plan.</p>
+
+
+<pre>
+adhearsion {
+  simon_game
+}
+
+sandbox {
+  play "vm-enter-num-to-call" 
+  digits = input 1, :timeout =&gt; 10.seconds
+  case digits
+  when '1'
+    play "hello-world" 
+  when '2'
+    play "tt-monkeys" 
+  when '3'
+    play "what-are-you-wearing" 
+  when '4'
+    play 'conf-unmuted'
+  when '5'
+    play 'tt-weasels'
+  when '6'
+    play "pbx-invalidpark" 
+  when '7'
+    play "1000", "dollars" 
+  when '8'
+    play "followme/sorry" 
+  when '9'
+    simon_game
+  when '0'
+    play Time.now
+  else
+    play "demo-nomatch" 
+  end
+  sleep 1
+  play "demo-thanks" 
+}
+</pre>
+
+	<p>See <a href="http://adhearsion.com/examples">http://adhearsion.com/examples</a>
+for more dialplan examples.</p>
+
+
+	<h2>That&#8217;s It</h2>
+
+
+	<p>Think about what you are doing.  You are calling the Adhearsion server
+and controlling how that remote server responds by the adhearsion
+program running on your own local box.  That is wild.</p>
+
+
+	<p>The adhearsion sandbox makes it easy to play around with telephony
+programming without any investment in the associated hardware.</p>
+
+
+	<p>I hope this demo encourages you to give Adhearsion a try.</p></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://onestepback.org/index.cgi" title="{ |one, step, back| }">Jim Weirich</a>
+ &#x2014; <a href="http://onestepback.org/index.cgi/Tech/Conferences/RailsConf2009/SpeakingAt.red">You Are Invited</a>            </h3>
+            <div class="meta">
+
+2009/03/18 01:01 PM            </div>
+            <div class="body"><p><em>All Rails Conf 2009 speakers are invited to a special event.</em></p>
+
+
+	<h2>Who?</h2>
+
+
+	<p>Anyone speaking at RailsConf 2009</p>
+
+
+	<h2>When?</h2>
+
+
+	<p>Sunday, May 3, 4:00PM &#8211; 6:00PM<br />
+(The day before RailsConf 2009 officially begins)</p>
+
+
+	<h2>Where?</h2>
+
+
+	<p>Las Vegas Hilton in Pavilion 1</p>
+
+
+	<h2>What?</h2>
+
+
+	<p><b><em>Presentations for Presenters.</em></b></p>
+
+
+	<h2>Why?</h2>
+
+
+	<p>You&#8217;ve come all the way to Las Vegas to tell the world about your
+latest Ruby/Rails project or idea.  You want to make sure that you
+really get your message across.  So, how do you do that?</p>
+
+
+	<p>The <b><em>Presentations for Presenters</em></b> session will give you
+practical tips for improving your RailsConf presentation.  We will
+cover all aspects of planning, preparing, creating and delivering your
+talk, so that your unique message will get across to your audience.</p>
+
+
+	<p>Plus we will have a lot of fun.  Hope to see you there.</p>
+
+
+	<h2>What do I need to do?</h2>
+
+
+	<p>Start planning now to attend.  Since this session is actually the day
+<em>before</em> RailsConf officially begins, make sure that your
+travel plans gets you there in time.</p></div>
+          </div>
+<h2>March 17, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://on-ruby.blogspot.com/" title="On Ruby">Pat Eyler</a>
+ &#x2014; <a href="http://on-ruby.blogspot.com/2009/03/beginning-scala-author-interview-with.html">Beginning Scala -- Author Interview with David Pollak</a>            </h3>
+            <div class="meta">
+                <a href="http://on-ruby.blogspot.com/2009/03/beginning-scala-author-interview-with.html">pate (noreply@blogger.com)</a> @
+
+2009/03/17 09:29 AM            </div>
+            <div class="body">There are several good looking Scala books on their way to market.  I'd like to help you get an early look at the books and their authors, so I'm working on a series of Scala author interviews for the FP side of On Ruby.  Here's the first of several interviews.
+
+ I've spent some time talking with David Pollak (@dpp) about his upcoming book from Apress, Beginning Scala (also available,</div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://on-ruby.blogspot.com/" title="On Ruby">Pat Eyler</a>
+ &#x2014; <a href="http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html">My Best Functional Programming Posts</a>            </h3>
+            <div class="meta">
+                <a href="http://on-ruby.blogspot.com/2009/03/my-best-functional-programming-posts.html">pate (noreply@blogger.com)</a> @
+
+2009/03/17 08:07 AM            </div>
+            <div class="body">What's this?  A page about Functional Programming languages at On Ruby?  Well, I've written about a number of non Ruby topics here, and there's enough FP stuff to warrant it's own page.
+
+At one point, I also ran the On Erlang blog.  I've decided to merge all of my computer related posts into On Ruby to keep myself sane.
+
+I've looked mostly at Haskell and Erlang, with news, book reviews, and</div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://on-ruby.blogspot.com/" title="On Ruby">Pat Eyler</a>
+ &#x2014; <a href="http://on-ruby.blogspot.com/2009/03/dean-wampler-and-alex-payne-author.html">Dean Wampler and Alex Payne:  Author Interview</a>            </h3>
+            <div class="meta">
+                <a href="http://on-ruby.blogspot.com/2009/03/dean-wampler-and-alex-payne-author.html">pate (noreply@blogger.com)</a> @
+
+2009/03/17 08:06 AM            </div>
+            <div class="body">There are several good looking Scala books on their way to market.  I'd like to help you get an early look at the books and their authors, so I'm working on a series of Scala author interviews for the FP side of On Ruby.  Here's the second of several interviews.
+Programming Scala authors Dean Wampler (@deanwampler) and Alex Payne (@al3x) have been good enough to answer several questions for me in</div>
+          </div>
+<h2>March 16, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://www.chadfowler.com/" title="ChadFowler.com - Home">Chad Fowler</a>
+ &#x2014; <a href="http://www.chadfowler.com/2009/3/16/railsconf-speaker-interview-obie-fernandez">RailsConf Speaker Interview: Obie Fernandez</a>            </h3>
+            <div class="meta">
+                <a href="http://www.chadfowler.com/2009/3/16/railsconf-speaker-interview-obie-fernandez">chad</a> @
+
+2009/03/16 04:07 PM            </div>
+            <div class="body"><p>Continuing my series of <a href="http://chadfowler.com/railsconf-speaker-interviews">RailsConf speaker interviews</a>, next up is <a href="http://obiefernandez.com/">Obie Fernandez</a></p>
+
+
+	<p>Obie started and runs the Rails consultancy <a href="http://www.hashrocket.com/">Hashrocket</a> and is the author of the best selling <a href="http://www.amazon.com/Rails-Way-Addison-Wesley-Professional-Ruby/dp/0321445619?&amp;camp=212361&amp;creative=383837&amp;linkCode=wss&amp;tag=obiefernandez-20">The Rails Way</a>.</p>
+
+
+	<p>At RailsConf, Obie will be presenting a <a href="http://en.oreilly.com/rails2009/public/schedule/detail/7721">Blood, Sweat, and Rails</a>, which if it’s anything like his talk at last year’s <a href="http://www.akitaonrails.com/2008/7/13/rails-summit-latin-america-2008">Rails Summit Latin America</a> will no doubt be educational, thought provoking and entertaining. It might even include some Def Leppard music if we’re lucky.</p>
+
+
+	<h2>I’ve had dreams of starting my own business and doing my own thing. I’ve learned over time that fear is the biggest thing getting in my way. Is that something you encountered to?  How do you overcome it?</h2>
+
+
+	<p>I started at least half-a-dozen real businesses between the ages of 15
+and 21. Those experiences taught me that I didn’t know enough, either
+about business or just in terms of plain ole life experience to
+successfully run a business. So I waited, and waited, almost 15 years
+until trying again in earnest. All the while wishing I was my own
+boss, but not feeling ready to make the leap. Fear of failure was a
+big part of that, as well as many other fears, like not being able to
+pay my child support obligations.</p>
+
+
+	<p>As for overcoming the fear, I’m guessing that everyone is going to
+have different tipping points. One commonality though, is probably to
+give yourself distance from the culture of fear that permeates our
+world. I did away with my “normal” television watching habits a long
+time ago—nowadays our television goes weeks without being turned on
+—most commercials prey on pervasive fear culture of our society.
+Fear of death, fear of getting sick, fear of accidents, of not being
+successful enough.  Get rid of it!</p>
+
+
+	<p>If you really want to succeed, you have to distance yourself from
+whiners and low-achievers too. We all have toxic people in our lives,
+you gotta put space between you and them if you want to overcome the
+fear and negativity that they breed.</p>
+
+
+	<p>My tipping point to success was building a solid reputation online via
+my blog and getting so good at what I was doing that I didn’t have to
+particularly worry about going back to fulltime employment if I
+happened to fall flat on my face as an independent.</p>
+
+
+	<h2>Is there a place for fixed bid projects in the world of Rails consulting? What would you say are the pros and cons? I’ve had very bad experience with fixed bid projects in large companies. I’m wondering if there’s a way to do it right.</h2>
+
+
+	<p>I think fixed-bid contracting for custom web applications is a
+horrible idea, overall. I slept on this question for a few days and
+dug back in my memory over the last dozen years of consulting: I’ve
+never heard of anyone being happy with the outcome of a fixed-bid
+project.</p>
+
+
+	<p>The fundamental problem with fixed-bid is the fluid and living nature
+of all but the tiniest single-purpose webapps. Once you start
+development, there are going to be changes necessary. A lot of those
+will feel “easy” and/or “logical” as if they should have been included
+in the requirements to begin with. Pressure will be on to include
+those changes in the original budget, especially if you’re focused on
+customer service and keeping that client happy. Doubly so if the
+client is on a tight budget and simply doesn’t have more money to pay.
+Your hands are tied and odds are you’re going to suffer the
+consequences.</p>
+
+
+	<p>I don’t think there’s a “right” way to do fixed-bid. You’d have to
+have a really awesome and understanding client and implement a very
+rigorous change-control policy that I suspect would encumber the whole
+development process to a large and unenjoyable degree.</p>
+
+
+	<p>If possible, invest the time in helping your client to understand the
+nature of variable scope and why it’s in their best interest.</p>
+
+
+	<p>(Note: Obie recently covered this topic on his own weblog <a href="http://blog.obiefernandez.com/content/2009/02/explain-variable-scope-with-ponies.html">here</a>)</p>
+
+
+	<h2>Hashrocket currently focuses on Rails projects. Do you see any technologies coming up that you might focus some or all of the team on?</h2>
+
+
+	<p>No, not right now. I’m very focused on being the best of the best in
+one particular niche: large-scale, custom web application development.
+And I don’t think that there’s any technology that even comes close to
+what you get with Rails for that. There’s always lots of cool and
+exciting new things going on, the latest craze seems to be iPhone
+development. We have a number of people interested in that, but I will
+not take the company in that direction. It would be detrimental to
+lose focus from what we do best.</p>
+
+
+	<h2>What if I’m a developer who has no dreams of becoming an entrepreneur…what does it buy me to understand sales, marketing, managing client relationships and what-not?</h2>
+
+
+	<p>Unless you’re independently wealthy, when it comes to landing a good
+job and keeping it, you’re always going to have to hustle to promote
+yourself. Lessons in sales and marketing apply whether you’re selling
+a product, a company’s services or your own services. What are you
+doing when you prepare a resume? When you go on an interview? Selling!
+Get good at it, or suffer the crappy jobs and work environments that
+you will get otherwise.</p>
+
+
+	<p>As for client relationships, if someone is paying you, they’re your
+client. Doesn’t matter if you answer to another company or to a
+manager. The skills of maintaining a healthy relationship and knowing
+how to properly set expectations apply to everyone.</p>
+
+
+	<h2>Agile processes are obviously a cornerstone of your company. How do you draw the line between passion and dogma?</h2>
+
+
+	<p>That’s an interesting distinction. Passion is undeniably necessary for
+success. Without passion, without the ability to inspire others, via
+your words and/or actions, you’re not going to get very far in life. I
+believe that Agile software development “just is” and I’m very
+passionate about that. It just is the way that you do quality
+software. Not doing quality software? That’s fine, but I won’t work
+with you. Nowadays Agile is far enough along in mindshare that I don’t
+feel I have to sell it very much or get anywhere near dogmatic about
+it. As in everything, I try to keep an open mind and if a better
+philosophy evolves, maybe it’s “Lean Sofware” or maybe it’s something
+else, I’ll go with the flow. Until then, I stick to my principles.
+Passionately.</p>
+
+
+	<h2>What’s got you excited these days outside of your programming and entrepreneurial life?</h2>
+
+
+	<p>I guess I’d have to say travel, more than anything else. Last year I
+was blessed to be able to take my kids on a few good vacations,
+including a fancy three-week trip around the world with stops in South
+Africa and Far East. This year it’s looking like I’m going to be
+spending a lot of time in Europe and South America, so I’m definitely
+excited about that. It’s a big world out there. Get out and see it
+while you still can!</p></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+ &#x2014; <a href="http://feedproxy.google.com/~r/RidingRails/~3/_IiihsT0HtI/rails-2-3-templates-engines-rack-metal-much-more">Rails 2.3: Templates, Engines, Rack, Metal, much more!</a>            </h3>
+            <div class="meta">
+                <a href="http://feedproxy.google.com/~r/RidingRails/~3/_IiihsT0HtI/rails-2-3-templates-engines-rack-metal-much-more">David</a> @
+
+2009/03/16 02:56 PM            </div>
+            <div class="body"><p>Rails 2.3 is finally done and out the door. This is one of the most substantial upgrades to Rails in a very long time. A brief rundown of the top hitters:</p>
+
+
+	<ul>
+	<li><strong>Templates</strong>: Allows your new skeleton Rails application to be built your way with your default stack of gems, configs, and more.</li>
+		<li><strong>Engines</strong>: Share reusable application pieces complete with routes that Just Work, models, view paths, and the works.</li>
+		<li><strong>Rack</strong>: Rails now runs on Rack which gives you access to all the middleware goodness.</li>
+		<li><strong>Metal</strong>: Write super fast pieces of optimized logic that routes around Action Controller.</li>
+		<li><strong>Nested forms</strong>: Deal with complex forms so much easier.</li>
+	</ul>
+
+
+	<p>And that’s just the tip of the iceberg. We’ve put together a complete guide for <a href="http://guides.rubyonrails.org/2_3_release_notes.html">the Rails 2.3 release notes</a> with much more information. Be sure to checkout the section on <a href="http://guides.rubyonrails.org/2_3_release_notes.html#deprecated">what was deprecated</a> when you’re ready to upgrade your application.</p>
+
+
+	<p>You install 2.3 with (the final version is marked <a href="http://github.com/rails/rails/tree/v2.3.2">2.3.2</a>):</p>
+
+
+<code>gem install rails</code>
+
+	<p>If you’re running on Passenger, be sure to <a href="http://blog.phusion.nl/2009/03/13/phusion-passenger-212-final-released/">upgrade to 2.1.2</a> as well. Rails 2.3 doesn’t run on older versions of Passenger!</p>
+
+
+	<p>We hope you’ll love it.</p></div>
+          </div>
+<h2>March 13, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+ &#x2014; <a href="http://feedproxy.google.com/~r/RidingRails/~3/dYKwyVqXfOY/this-week-in-edge-rails">This Week in Edge Rails</a>            </h3>
+            <div class="meta">
+                <a href="http://feedproxy.google.com/~r/RidingRails/~3/dYKwyVqXfOY/this-week-in-edge-rails">Mike Gunderloy</a> @
+
+2009/03/13 12:23 PM            </div>
+            <div class="body"><h3>March 6, 2009 – March 13, 2009</h3>
+
+
+	<p>Things have been pretty busy on the development side since the release of <a href="http://weblog.rubyonrails.org/2009/3/5/rails-2-3-rc2-final-stop-before-release">Rails 2.3 <span class="caps">RC2</span></a>. The core team has been making a serious effort to review all of the open bugs and patches with an eye towards getting us a solid release. At this point, the bar for new features is set fairly high, but even so, there have been an incredible 94 commits in the week since <span class="caps">RC2</span> – mostly fixes to ensure expected behavior and stability. Here are some of the highlights.</p>
+
+
+	<h2>Swappable Parsers for XMLmini</h2>
+
+
+	<p>The support for <span class="caps">XML</span> parsing in ActiveSupport has been made more flexible by allowing you to swap in different parsers. By default, it uses the standard <span class="caps">REXML</span> implementation, but you can easily specify the faster LibXML or Nokogiri implementations for your own applications, provided you have the appropriate gems installed:</p>
+
+
+<pre><code>
+XmlMini.backend = 'LibXML'
+XmlMini.backend = 'Nokogiri'
+</code></pre>
+
+	<p><a href="http://github.com/rails/rails/commit/822c41d69d9228c9912d29ac45155d3a16bb5c50">commit</a> <a href="http://github.com/rails/rails/commit/694998ee4fb8d257ba78424cab630846327a0889">commit</a></p>
+
+
+	<h2>rake gem Task Rewrite</h2>
+
+
+	<p>The internals of the various <code>rake gem</code> tasks have been substantially revised, to make the system work better for a variety of cases. The gem system now knows the difference between development and runtime dependencies, has a more robust unpacking system, gives better information when querying for the status of gems, and is less prone to “chicken and egg” dependency issues when you’re bringing things up from scratch. There are also fixes for using gem commands under JRuby and for dependencies that try to bring in external copies of gems that are already vendored.</p>
+
+
+	<p><a href="http://github.com/rails/rails/commit/99d75a7b02bf430a124b9c3e2515850959d78acf">commit</a> <a href="http://github.com/rails/rails/commit/5b751ae0b3f6c10a1053e4a2e04fd92d228d787f">commit</a> <a href="http://github.com/rails/rails/commit/9d906707bea997016fd370e33e12dbc21cfcc531">commit</a></p>
+
+
+	<h2>Routing Fixes</h2>
+
+
+	<p>A couple of small fixes to the routing engine. First, member routes with requirements now work (previously the requirements were ignored):</p>
+
+
+<pre><code>
+map.resources :orders, 
+  :requirements =&gt; { :id =&gt; %r([^/;,?]+) }, 
+  :member =&gt; { :accept =&gt; :get }
+</code></pre>
+
+	<p><a href="http://github.com/rails/rails/commit/5b7527ca44521edf9782b3d7f449bf09a29267f2">commit</a></p>
+
+
+	<p>Also, shallow routes now work properly with namespaces (<a href="http://github.com/rails/rails/commit/5c87e9adddc22703a3dbbb785e32fafe0e91ce78">commit</a>) and you can now use the <code>OPTIONS</code> verb in route conditions (<a href="http://github.com/rails/rails/commit/5e0f6214d2421a4931c85ee6a239158c69e57b65">commit</a>).</p>
+
+
+	<h2>Client-side Caching Improvements</h2>
+
+
+	<p>The <code>expires_in</code>, <code>stale</code>, and <code>fresh_when</code> methods now accept a <code>:public</code> option to make them work well with proxy caching.</p>
+
+
+<pre><code>
+expires_in 10.minutes, :public =&gt; true
+fresh_when :last_modified =&gt; @user.updated_at.utc, 
+  :public =&gt; true
+fresh_when :etag =&gt; @user, :public =&gt; true
+</code></pre>
+
+	<p><a href="http://github.com/rails/rails/commit/f2a32bd0dedf11021027e36cc2c99f97434cae17">commit</a></p>
+
+
+	<h2>Odds and Ends</h2>
+
+
+	<p>The <code>String#parameterize</code> method now accepts an optional separator character.</p>
+
+
+<pre><code>
+"My big duck".parameterize =&gt;      "my-big-duck" 
+"My big duck".parameterize('_') =&gt; "my_big_duck" 
+</code></pre>
+
+	<p><a href="http://github.com/rails/rails/commit/20d3892f46c553e8ca3d4e8d223a3bd92789556d">commit</a></p>
+
+
+	<p>The <code>ActiveRecord::Base#invalid?</code> method now works as the opposite of <code>ActiveRecord::Base#valid?</code>. (<a href="http://github.com/rails/rails/commit/96eaeee4467a03cba3c4c30aeb6fc6afe545ae1d">commit</a>)</p>
+
+
+	<p>The <code>ActiveSupport::Json.decode</code> method now handles <code>\u0000</code> style escape sequences. (<a href="http://github.com/rails/rails/commit/9b9b2937ce3bef3bca9d22821e76c40cc74fa689">commit</a>)</p>
+
+
+	<p>You can now set content types such as <code>multipart/mixed</code> in Action Mailer. (<a href="http://github.com/rails/rails/commit/1dff106888d671dac07f93711ecb319170132c56">commit</a>)</p>
+
+
+	<p>Rails 2.3 will ship with a bundled version of Rack, but if you have Rack 1.0 installed as a gem it will use the gem version instead. (<a href="http://github.com/rails/rails/commit/0a887e2386a827f554c685dccf91701bb38422b5">commit</a>)</p></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://blog.headius.com/" title="Headius">Charles Oliver Nutter</a>
+ &#x2014; <a href="http://blog.headius.com/2009/03/more-compiling-ruby-to-java-types.html">More Compiling Ruby to Java Types</a>            </h3>
+            <div class="meta">
+                <a href="http://blog.headius.com/2009/03/more-compiling-ruby-to-java-types.html">Charles Oliver Nutter (charles.nutter@sun.com)</a> @
+
+2009/03/13 02:01 AM            </div>
+            <div class="body">I did another pass on <a href="http://blog.headius.com/2009/03/compiling-ruby-to-java-types.html">compiler2</a>, and managed to wire in signature support. So let's look at a couple examples:<br /><pre>class MyRubyClass<br /> def helloWorld<br />   puts "Hello from Ruby"<br /> end<br /> def goodbyeWorld(a)<br />   puts a<br /> end<br /><br /> signature :helloWorld, [] =&gt; Java::void<br /> signature :goodbyeWorld, [java.lang.String] =&gt; Java::void<br />end</pre><br />In this case we have our friend MyRubyClass once again, with helloWorld and goodbyeWorld methods. You'll recall from <a href="http://blog.headius.com/2009/03/compiling-ruby-to-java-types.html">my previous post</a> that these two methods originally compiled as returning IRubyObject, and goodbyeWorld compiled as receiving a single IRubyObject parameter.<br /><br />But with signature support, things are so much cooler! The two "signature" lines at the bottom of the class (syntax and structure are totally up for debate) associated signatures with the two methods. helloWorld receives no parameters and has a void return type. goodbyeWorld receives a single String parameter and has a void return type.<br /><br />The compiler takes this new information, and produces a more normal-looking set of Java signatures:<br /><pre>Compiled from "MyObject.java.rb"<br />public class MyObject extends org.jruby.RubyObject{<br />   static {};<br />   public MyObject();<br />   public void helloWorld();<br />   public void goodbyeWorld(java.lang.String);<br />}</pre><br />Huzzah! There's almost nothing here to give away that we're actually dealing with Ruby code under the covers. And the code that consumes this is just as simple:<br /><pre>public class MyObjectTest {<br /> public static void main(String[] args) {<br />   MyObject obj = new MyObject();<br />   obj.helloWorld();<br />   obj.goodbyeWorld("hello");<br /> }<br />}</pre><br />And that's literally all there is to it. Here's a more advanced example:<br /><pre>class MyRubyClass<br /> %w[boolean byte short char int long float double].each do |type|<br />   java_type = Java.send type<br />   eval "def #{type}Method(a); a; end"<br />   signature "#{type}Method", [java_type] => java_type<br /> end<br />end</pre><br />This time we're actually *generating* the methods, looping over a list of Java primitives and eval'ing a method for each. So this is *runtime* generation of methods, like any good Rubyist loves to do. And of course, this is absolutely no problem for compiler2:<br /><pre>Compiled from "MyObject2.java.rb"<br />public class MyObject2 extends org.jruby.RubyObject{<br />   static {};<br />   public MyObject2();<br />   public double doubleMethod(double);<br />   public int intMethod(int);<br />   public char charMethod(char);<br />   public short shortMethod(short);<br />   public boolean booleanMethod(boolean);<br />   public float floatMethod(float);<br />   public long longMethod(long);<br />   public byte byteMethod(byte);<br />}</pre><br />All the methods are there, just as you'd expect them! Fantastic!!! (Though the ordering is a little peculiar; I think that's because we don't have an ordered method table in our class impl. Does it matter?)<br /><br />Even better, the above methods are doing the same type coercion on the way in and out that we do for any other Java-based method calling. So your integral numerics are presented to Ruby as Fixnums, floating-point numerics are Floats, and booleans come through as Ruby true or false.<br /><br />There's certainly more work to be done:<br /><ul><li>There's no support for overloads at the moment, but I'll likely provide a method aliasing facility so you can define multiple Ruby methods and then say which one maps to which overload. And of course, you'll be able to define multiple overloads that go to the same method body if you wish.</li><li>I also have not wired in varargs, but it will be an easy match to Ruby's restargs. And optional arguments could automatically generate different-arity Java signatures.</li><li>Annotations will also be trivial to add; it's just a matter of attaching appropriate metadata and having compiler2 emit them. So you'll be able to use JavaEE 5, JUnit4, and any other frameworks that depend on having annotations present.</li></ul>Of course this is all checked into JRuby trunk, so feel free to give it a try. Stop by JRuby mailing lists or IRC if you have questions. And it's all still written in Ruby; signature support bloated the compiler up to a whopping 178 lines of code, most of that for dealing with the JVM opcodes for primitive types.<div><br /></div><div>This is just the beginning!</div><div class="blogger-post-footer"><img width="1" height="1" src="http://res1.blogblog.com/tracker/20975090-8033589621548222311?l=blog.headius.com" /></div></div>
+          </div>
+<h2>March 11, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://weblog.rubyonrails.org/" title="Riding Rails - home">Ruby on Rails</a>
+ &#x2014; <a href="http://feedproxy.google.com/~r/RidingRails/~3/Wy7Ie6o7Td0/rails-guides-gets-a-team-and-a-mailing-list">Update on Rails Guides and Documentation</a>            </h3>
+            <div class="meta">
+                <a href="http://feedproxy.google.com/~r/RidingRails/~3/Wy7Ie6o7Td0/rails-guides-gets-a-team-and-a-mailing-list">Pratik Naik</a> @
+
+2009/03/11 08:02 PM            </div>
+            <div class="body"><p>We have been working on the <a href="http://guides.rubyonrails.org">Rails guides</a> for some months now. With substantial contributions from <a href="http://guides.rubyonrails.org/credits.html">a variety of authors</a>, things are looking even better in the <a href="http://guides.rails.info">next version</a> of the guides. That makes this the right time to take the overall documentation efforts to the next level.</p>
+
+
+	<p><strong>Announcing the Documentation Team</strong><br />
+We’re very happy to announce a formal <a href="http://guides.rails.info/credits.html">documentation team</a> – consisting of <a href="http://www.hashref.com">Xavier Noria</a>, Mike Gunderloy and myself. However, eventually Mike and I will be just acting as advisors to the documentation team. So we’re definitely looking to empower some new faces here. If you’ve been working on improving the documentation and guides, keep up the good work and you’ll be on the team soon enough!</p>
+
+
+	<p>The documentation team will be to responsible for keeping the guides and <span class="caps">API</span> documentation up-to-date, working to improve the Rails documentation, and also helping more people contribute to the documentation efforts.</p>
+
+
+	<p><strong>Documentation Mailing List and <span class="caps">IRC</span></strong><br />
+As part of the renewed documentation effort, we’re launching a mailing list. So go ahead and subscribe to <a href="http://groups.google.com/group/rubyonrails-docs">rubyonrails-docs</a>. The mailing list will be the main point of communication with the documentation team. If you have any suggestions or need any help, please post it to the mailing list. For quick questions, you can also find some of the team in the #docrails room on <span class="caps">IRC</span> most hours of the day.</p>
+
+
+	<p><strong>How to Contribute</strong><br />
+If you’re new to the Rails documentation process (or want to get involved for the first time!), you might want to have a look at the <a href="http://guides.rails.info/contributing_to_rails.html#contributingtothe-rails-documentation">Contributing to the Rails Documentation</a> section of the <em>Contributing to Rails</em> guide.</p></div>
+          </div>
+<h2>March 10, 2009</h2>          <div class="post">
+            <h3>
+              <a href="http://blog.headius.com/" title="Headius">Charles Oliver Nutter</a>
+ &#x2014; <a href="http://blog.headius.com/2009/03/compiling-ruby-to-java-types.html">Compiling Ruby to Java Types</a>            </h3>
+            <div class="meta">
+                <a href="http://blog.headius.com/2009/03/compiling-ruby-to-java-types.html">Charles Oliver Nutter (charles.nutter@sun.com)</a> @
+
+2009/03/10 06:52 PM            </div>
+            <div class="body">"Compiler #2" as it has been affectionately called is a compiler to turn normal Ruby classes into Java classes, so they can be constructed and called by normal Java code. When I asked for 1.3 priorities, this came out way at the top. Tom thought perhaps I asked for trouble putting it on the list, and he's probably right (like asking "prioritize these: sandwich, pencil, shiny gold ring with 5kt diamond, banana"), but I know this has been a pain point for people.<br /><br />I have just landed an early prototype of the compiler on trunk. I made a few decisions about it today:<br /><ul><li>It will use my bytecode DSL "<a href="http://kenai.com/projects/jvmscript">BiteScript</a>", just like <a href="http://kenai.com/projects/duby">Duby</a> does</li><li>It will use the *runtime* definition of a class to generate the Java version</li></ul>The second point is an important one. Instead of having an offline compiler that inspects a file and generates code from it, the compiler will actually used the runtime class to create a Java version. This means you'll be able to use all the usual metaprogramming facilities, and at whatever point the compiler picks up your class it will see all those methods.<br /><br />Here's an example:<div><br /><pre># myruby.rb<br />require 'rbconfig'<br /><br />class MyRubyClass<br />  def helloWorld<br />    puts "Hello from Ruby"<br />  end<br />  if Config::CONFIG['host_os'] =~ /mswin32/<br />    def goodbyeWorld(a)<br />      puts a<br />    end<br />  else<br />    def nevermore(*a)<br />      puts a<br />    end<br />  end<br />end</pre><br />Here we have a class that defines two methods. The first, always defined, is helloWorld. The second is conditionally either goodbyeWorld or nevermore, based on whether we're on Windows. Yes, it's a contrived example...bear with me.<br /><br />The compiler2 prototype can be invoked as follows (assuming bitescript is checked out into ../bitescript):<br /><br /><pre>jruby -I ../bitescript/lib/ tool/compiler2.rb MyObject MyRubyClass myruby</pre><br />A breakdown of these arguments is as follows:<br /><ul><li>-I ../bitescript/lib includes bitescript</li><li>tool/compiler2.rb is the compiler itself</li><li>MyObject is the name we'd like the Java class to have</li><li>MyRubyClass is the name of the Ruby class we want it to front</li><li>myruby is the library we want it to require to load that class</li></ul>Running this on OS X and dumping the resulting Java class gives us:<br /><br /><pre>Compiled from "MyObject.java.rb"<br />public class MyObject extends org.jruby.RubyObject{<br /> static {};<br /> public MyObject();<br /> public org.jruby.runtime.builtin.IRubyObject helloWorld();<br /> public org.jruby.runtime.builtin.IRubyObject nevermore(org.jruby.runtime.builtin.IRubyObject[]);<br />}</pre><br />The first thing to notice is that the compiler has generated a method for nevermore, since I'm not on Windows. I believe this will be unique among dynamic languages on the JVM: we will make the *runtime* set of methods available through the Java type, not just the static set present at compile time.<br /><br />Because there are no type signatures specified for MyRubyClass, all types have defaulted to IRubyObject. Type signature logic will come along shortly. And notice also this extends RubyObject; a limitation of the current setup is that you won't be able to use compiler2 to create subclasses. That will come later.<br /><br />Once you've run this, you've got a MyObject that can be instantiated and used directly. Behind the scenes, it uses a global JRuby instance, so JRuby's still there and you still need it in classpath, but you won't have to instantiate a runtime, pass it around, and so on. It should make integrating JRuby into Java frameworks that want a real class much easier.<br /><br />So, thoughts? Questions? Have a look at the code under <a href="http://svn.codehaus.org/jruby/trunk/jruby/tool/compiler2.rb">tool/compiler2.rb</a> in JRuby's repository. The entire compiler is so far only 78 lines of Ruby code.</div><div class="blogger-post-footer"><img width="1" height="1" src="http://res1.blogblog.com/tracker/20975090-2990005581464266831?l=blog.headius.com" /></div></div>
+          </div>
+          <div class="post">
+            <h3>
+              <a href="http://www.chadfowler.com/" title="ChadFowler.com - Home">Chad Fowler</a>
+ &#x2014; <a href="http://www.chadfowler.com/2009/3/10/railsconf-speaker-interview-charlie-nutter-and-evan-phoenix">RailsConf Speaker Interview: Charlie Nutter and Evan Phoenix</a>            </h3>
+            <div class="meta">
+                <a href="http://www.chadfowler.com/2009/3/10/railsconf-speaker-interview-charlie-nutter-and-evan-phoenix">chad</a> @
+
+2009/03/10 02:30 PM            </div>
+            <div class="body"><p>As I did for last year’s <a href="http://chadfowler.com/rubyconf-speaker-interviews">RubyConf</a>, I’m starting a series of interviews of speakers at this year’s <a href="http://railsconf.org">RailsConf</a> to be held May 4-7 in Las Vegas.</p>
+
+
+	<p>First up are two of my Ruby heroes: <a href="http://blog.headius.com/">Charlie Nutter</a> and <a href="http://blog.fallingsnow.net/">Evan Phoenix</a>, leaders of the <a href="http://jruby.org">JRuby</a> and <a href="http://rubini.us">Rubinius</a> projects respectively. Whenever two people with the brains and determination to create a working Ruby implementation get together and want to impart some hard-earned wisdom, it’s well worth listening.</p>
+
+
+	<p>Charlie and Evan will be jointly presenting a session called <a href="http://en.oreilly.com/rails2009/public/schedule/detail/8680">What Makes Ruby Go: An Implementation Primer</a> at RailsConf.  Probably one of the nerdier sessions at the conference, but as you’ll see there are big practical benefits to learning how Ruby implementations work, even for those of us who don’t have the time, skill, or interest to create our own.</p>
+
+
+	<h2>This being a Rails conference, what’s the benefit for the average attendee in learning how to make a Ruby implementation? How can learning how to program Ruby itself help us become better Ruby (and Rails) programmers?</h2>
+
+
+	<p><em>Evan</em>: One thing we’re going to focus is not just how to build a ruby implementation, but rather helping people understand how certain things have to be implemented and how they effect you. A great example is the method cache and how Object#extend effects it. This helps educate people on how using Object#extend in their code effects their application.</p>
+
+
+	<p><em>Charlie</em>: Ruby does a really good job of hiding implementation details and hardware details and platform details. Unfortunately sometimes those are the details that mean the difference between a good application and a great one. My hope with this talk is that Ruby and Rails developers will not only learn how their favorite language is implemented, but how to make better use of its features.</p>
+
+
+	<p>I think it will also be important for Rubyists to understand Ruby implementation details in the future, since there are very real limitations on how many features and how much performance you can squeeze out of Ruby. It’s often too easy for Ruby users to say “just make it faster” when they don’t understand how difficult it may be to do so.</p>
+
+
+	<h2>Did you both get into this language/vm implementation thing as a hobby? How do you go from zero to leading a dynamic language implementation?</h2>
+
+
+	<p><em>Evan</em>: Yep, just something fun to work on in my spare time. Following in others footsteps certainly helped the project along. Reading a lot of papers and such on early Smalltalk systems helped give me a good perspective.</p>
+
+
+	<p><em>Charlie</em>: I got into JRuby after attending RubyConf 2004, where I was amazed that without knowing Ruby I understood every presentation. Since I was firmly rooted in the Java world, and since the JRuby project existed and was being managed by an old friend, I thought I’d try to help out.</p>
+
+
+	<p>Since then, we’ve almost completely rewritten JRuby. We’ve taken it from being the slowest Ruby impl to one of the fastest. Where we could barely run any 1.8 code before, we now have dozens of production users. And we’re not even done yet; we have a great start on 1.9 support, and we have plans that could double performance again over the next couple months. It’s been a wild ride; Ruby and JRuby have changed my life.</p>
+
+
+	<h2>How long do you think it will be before we start seeing Ruby 1.9 as the mainstream version everyone (developers and language implementors) is targeting?</h2>
+
+
+	<p><em>Evan</em>: Honestly, I’ve got no idea. Implementors will likely not put too much energy into 1.9 compatibility until a lot of developers start calling for it. Because of all the changes to the APIs, my guess is that people will only start using 1.9 on new projects. So once 1.9 has been established as ‘stable enough’, people will consider using it when they’re getting started on something new.</p>
+
+
+	<p>I think the biggest issue is not new applications, but rather libraries. Today’s rails apps probably use at least 10 gems. Those 10 developers that have to be aware of 1.9 compatibility. If they’re not, it’s likely that those gems will have issues under 1.9. How gem users and gem authors decided to sort out 1.9 compatibility will be something interesting to watch for.</p>
+
+
+	<p><em>Charlie</em>: Ruby 1.9 is a great step forward for the C implementation, both in its improved performance and and its new features. But Ruby has reached a point in its lifecycle Java reached some years ago: getting people to move to a new version is like pulling teeth. We deal with people on a regular basis still running Java 1.4, even though it’s no longer a supported platform and was first released over six years ago. I don’t think it will be that bad for Ruby 1.9, but it’s a very similar situation.</p>
+
+
+	<p>Ruby has matured, and is being used for mission-critical applications around the world. And along with that maturity comes a need for stability, not just stability in the implementations but stability of features and stability of development processes. Ruby 1.9.1, by most measures the first reasonably “stable” 1.9 release, has been out for less than two months, and it’s unclear how much more its features will change in 1.9.2 and beyond. It’s not battle-tested. It’s unfamiliar. And it will take time for people to start depending on 1.9 to help pay their bills…certainly more than a couple months.</p>
+
+
+	<h2>If you had to quit using and developing for Ruby today, what do you think you would focus on?</h2>
+
+
+	<p><em>Evan</em>: Hm. Lately I’ve been interested in Cocoa programming, both desktop and iPhone, so it’s likely I’d play with that to a certain extent.</p>
+
+
+	<p>Knowing me, I’d probably start work on a brand new language and VM for fun. :)</p>
+
+
+	<p><em>Charlie</em>: I don’t intend to work on JRuby forever, so this is a question often on my mind.</p>
+
+
+	<p>In general, I hope to spend the rest of my life helping open platforms like the <span class="caps">JVM</span> “win” against closed, proprietary alternatives. My work on JRuby has been a lot of fun, but I’ve also been trying to prove a point: that the <span class="caps">JVM</span> is the best hope for language implementations in the future. Yes, it has its warts, and there’s some work needed to better support dynamic and functional languages. But it’s an amazing piece of technology, already one of the fastest (if not the fastest) managed runtimes in existence. With implementations like JRuby stretching it and nudging it forward, we’ll all benefit…and we’ll be able to use any language we choose.</p>
+
+
+	<p>So if I didn’t work on or with Ruby anymore…I’d probably be doing the same thing for other languages on the <span class="caps">JVM</span>. But I like Ruby best so far :)</p>
+
+
+	<h2>Creating an implementation of Ruby takes countless hours of work. How do you avoid burning out, and what are you passionate about outside of programming?</h2>
+
+
+	<p><em>Evan</em>: This takes work for me, to avoid burnout. I’ve grown good at telling when I’m starting to go down that road and take action. One of the first things I do is a change of scenery, typically this means working in a coffee shop for the day. I also head up to San Francisco usually once a month to work in the EY office, which helps.</p>
+
+
+	<p>Getting outside for some exercise helps clear my head and reduce stress levels, which also stave off burnout.</p>
+
+
+	<p>I also try and switch gears within Rubinius. Usually my burnout is associated with frustration with one particular aspect of the project, for instance debugging a garbage collector. The project is big enough that I can set that aside for a bit and switch to something more exciting. This helps me keep my brain engaged in the project as a whole, but avoid that frustration.</p>
+
+
+	<p><em>Charlie</em>: For me, programming is not what leads to burnout. I’ve done this stuff my whole life, and it’s hard for me to <strong>not</strong> be hacking at any hour of the day. It’s more than my job, it’s my vocation. My risk of burnout comes from the constant arms race with other Ruby implementations, other <span class="caps">JVM</span> language implementations, other managed platforms, and so on.</p>
+
+
+	<p>While I’m proud of what we’ve accomplished with JRuby, I feel like I need to keep working at a breakneck pace to continue proving my point. Whenever someone posts a benchmark showing we’re slower, I feel obligated to fix the problem. Whenever someone talks about a new <span class="caps">JVM</span> dynamic language or Ruby implementation performing better, I feel like I am personally under attack. I’ve poured my heart and soul into JRuby, and there’s a lot of my spirit in there. If JRuby fails, I fail, so I work hard (maybe too hard) to ensure that doesn’t happen.</p>
+
+
+	<p>Of course, it could be I need to get out more. :)</p></div>
+          </div>
+      </div>
+    </div>
+
+    <div id="about">
+      Last updated at 2009/03/26 08:31 PM |
+      Presented by <a href="mailto:aredridel@theinternetco.net">Aredridel</a>
+      and <a href="http://termos.vemod.net/christoffer-sawicki">Christoffer Sawicki</a> |
+      Hosted at <a href="http://www.theinternetco.net/">The Internet Company</a>
+    </div>
+    
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-136664-10");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+    </script>
+  </body>
+</html>

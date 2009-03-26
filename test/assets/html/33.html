@@ -1,0 +1,620 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/bitwisepage.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta name="Content-Type" content="text/html; charset=iso-8859-1">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Bitwise Magazine :: Ruby programming tutorial</title>
+<!-- InstanceEndEditable --><script>
+// Change colour of table cell background on hover
+function menuhover( tableCellRef, hoverFlag ) {
+	if ( hoverFlag ) {
+	tableCellRef.style.backgroundColor = '#CACAFF';
+	} else {
+		tableCellRef.style.backgroundColor = '';
+	} 
+}
+</script>
+
+<style type="text/css">
+<!--
+body {
+	background-image: url();
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #F4F4F4;
+}
+-->
+</style>
+<link href="../../../../../css/bwstyle.css" rel="stylesheet" type="text/css">
+<meta name="description" content="Bitwise Magazine :: the free online magazine for programmers and technical users">
+<meta name="keywords" content="bitwise, bitwise magazine, programming, computer programming, visual basic tutorial, ruby programming, ruby on rails, visual basic code, free source code, visual studio, visual studio integration, vb code, microsoft, borland, delphi, delphi source code, delphi tutorial, php, smalltalk, squeak smalltalk, smalltalk tutorial, C#, .NET, programmer, technical, language, rants, raves, bytegeist, rants and raves, rants & raves">
+
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+
+<body>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="60" nowrap><div align="left">
+      <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="176"><a href="../../../../../index.html"><img src="../../../../../images/graphics/page/whitelogobarslice_r1_c1.gif" width="176" height="78" border="0"></a></td>
+          <td background="../../../../../images/graphics/page/whitelogobarbackground.gif"><img src="../../../../../images/graphics/page/whitelogobarslice_r1_c3.gif" width="247" height="78" align="right"></td>
+        </tr>
+      </table>
+    </div></td>
+  </tr>
+  <tr>
+    <td><table width="100%"  border="0" align="left" cellpadding="0" cellspacing="0" bordercolor="#FF00FF">
+      <tr valign="top">
+        <td width="155" background="../../../../../images/graphics/page/whitelogobarverticalpatternthin.gif" bgcolor="#FFFFFF"><p>&nbsp;</p>
+          <table width="155"  border="0" cellpadding="0">
+            <tr>
+              <td width="10">&nbsp;</td>
+              <td><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td><A 
+            href="../../../../../index.html" class="menutext">Home</A>                  </tr>
+                  <tr>
+                    <td><a href="../../../../archives/archives.html" class="menutext">Archives</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="../../../../other/about.html" class="menutext">About us...</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="../../../../other/advertising.html" class="menutext">Advertising</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="../../../../other/contacts.html" class="menutext">Contacts</a> </td>
+                  </tr>
+                  <tr>
+                    <td><a href="../../../../other/sitemap.html" class="menutext">Site Map</a> </td>
+                  </tr>
+              </table></td>
+              <td width="10">&nbsp;</td>
+            </tr>
+          </table>          
+          <!-- InstanceBeginEditable name="leftcolumn" -->
+          
+          <!-- InstanceEndEditable -->
+          <p align="center">
+          
+            <a href="http://www.sapphiresteel.com" target="_blank"><img src="../../../../../images/graphics/banners/other/sapphiresteel/ruby_steel_120x600.gif" alt="ruby in steel" border="0"></a> </p>
+          <p>&nbsp;              </p></td>
+        <td bgcolor="#FFFFFF"><table width="100%"  border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top"><!-- InstanceBeginEditable name="Body" -->
+                <table width="95%"  border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="50%" valign="top"><table width="100%"  border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td width="70%" valign="top"><span class="heading"><span class="productname"><img src="../../../../../images/icons/rubyicon.gif" width="54" height="54" align="absmiddle"></span>&nbsp;AN
+                            INTRODUCTION TO RUBY <br>
+                          </span><span class="strap1">Ruby is a modern language
+                          which harks back to the founding principles of Object
+                          Orientation. This month <a href="../../../../bios/bio_huw_collingbourne.html">Huw
+                          Collingbourne</a> begins a series which will guide
+                          you, step-by-step, into the fascinating world of Ruby
+                          programming</span></td>
+                        <td valign="top"><table width="100%" height="100%"  border="1" cellpadding="5" cellspacing="0">
+                            <tr>
+                              <td><span class="smalltext"><strong>Requirements: <br>
+                                </strong><a href="http://www.ruby-lang.org/" target="_blank">Ruby</a></span>
+                                <p>&nbsp;</p>
+                                <span class="smalltext"><strong> Download The
+                                Source Code: <br>
+                                          <a href="../../../../../src/ruby/intro/ruby1src.zip" class="link"> ruby1src.zip</a></strong></span></td>
+                            </tr>
+                        </table></td>
+                      </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td valign="top"><p>&nbsp;</p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><strong>Note</strong>: For a more complete Ruby tutorial, download
+                            Huw's free eBook (and source code), <a href="http://www.sapphiresteel.com/The-Little-Book-Of-Ruby">The
+                            Little Book Of Ruby</a>, from SapphireSteel Software. </td>
+                        </tr>
+                      </table>
+                      <p class="strap2">See also: <a href="ruby2.html">Part Two</a> of this series </p>
+                      <p>You will be reading a great deal about
+                        Ruby programming in Bitwise in the coming months. We
+                        feel that Ruby is a language with huge potential. In
+                        fact, in our opinion, it is one of the most exciting
+                        languages to emerge in a long time. It has a simple
+                        but flexible syntax; it can be used for creating standalone
+                        or web applications; it  combines the power of &lsquo;scripting&rsquo; languages
+                        such as Perl or Python with the elegance of a pure OOP
+                        language such as Smalltalk. And, as an added bonus, it
+                        doesn&rsquo;t look like C! </p>
+                      <p align="center"><img src="../../../../../images/scrshots/prog/ruby/intro/1/helloworld.gif" width="500" height="377"><br>
+                          <span class="picturecaption"> With any new language
+                              you have to start somewhere and &lsquo;Hello
+                        world&rsquo; is as good a place as any. Here is our first
+                        Ruby program running inside the Ruby In Steel environment
+                        for Visual Studio</span></p>
+                      <p>Currently much of the excitement surrounding Ruby can
+                        be attributed to a web development framework called Rails &ndash;  giving
+                        a combination which is popularly known as &lsquo;<a href="http://www.rubyonrails.org" target="_blank">Ruby
+                        On Rails</a>&rsquo;. While Rails
+                        is an impressive framework, it is not the be-all and
+                        end-all of Ruby. Indeed, if you decide to leap right
+                        into Rails development without first mastering Ruby,
+                        you may find that you end up with an application
+                        that you don&rsquo;t even understand. Moreover, Rails
+                        can be a good deal trickier to install than Ruby alone
+                        (it needs a database such as MySQL plus a web server;
+                        and it doesn&rsquo;t work as seamlessly as one might
+                        wish with Apache); what's more, online hosting of Rails
+                        applications is currently offered by very few hosting
+                        companies.</p>
+                      <p>We shall certainly be looking at Rails later on. However,
+                        in this series we shall be dealing exclusively with the
+                        Ruby language itself and its standard libraries. </p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><p><span class="subheading">Install Ruby&hellip;</span><br>
+                            You can download Ruby &ndash; the interpreter itself
+                            and its class library - from the Ruby site at: <a href="http://www.ruby-lang.org/" target="_blank">http://www.ruby-lang.org/</a>.
+                            For Windows users there is a one-click Ruby installer
+                            with additional tools such as the FreeRIDE and SciTE
+                            code editors and documentation at: <a href="http://rubyinstaller.rubyforge.org/wiki/wiki.pl" target="_blank">http://rubyinstaller.rubyforge.org/wiki/wiki.pl</a></p>
+                            <div align="center"><img src="../../../../../images/scrshots/prog/ruby/intro/1/scite.gif" width="487" height="306"><br>
+                              <span class="picturecaption">The SciTE editor includes a split-pane view so
+                              that you can see your code on the left and run
+                              your program on the right                            </span></div></td>
+                        </tr>
+                      </table>
+                      <p>The first thing you have to know about the Ruby language
+                        is that it&rsquo;s easy to use. To prove this, let&rsquo;s
+                        look at the code of the traditional &lsquo;Hello world&rsquo; program.
+                        Here&nbsp;  it is:</p>
+                      <p class="sourcecode">puts 'hello world'</p>
+                      <p>That is it in its entirety. One method, <span class="sourcecodeBold">puts</span>,
+                        and one string, &lsquo;hello world&rsquo;. No headers
+                        or class definitions, no import sections or main functions.
+                        This really is as simple as it gets. <a href="../../../../../src/ruby/intro/ruby1src.zip">Download
+                        our source files</a>. Then load up the code, <strong>1helloworld.rb</strong>,
+                        and run it.</p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><span class="subheading">RUNNING RUBY PROGRAMS</span><br>
+  It is often useful to keep a Command window open
+                                in the source directory containing your Ruby
+                                program files. Assuming that the Ruby interpreter
+                                is correctly pathed on your system, you will
+                                then be able to run programme by entering <strong>ruby &lt;program
+                                name&gt;</strong> like this:
+                                <p class="sourcecodeBold">ruby 1helloworld.rb</p>
+                            <p>Optionally, you may want to download the free
+                              Ruby IDE, <a href="http://rubyforge.org/projects/freeride/" target="_blank">FreeRIDE</a>.
+                              This will automatically open a Ruby command window
+                              when you run a program; note, however, it may also
+                              shut down this window (somewhat too rapidly) if
+                              a syntax error occurs. </p>
+                            <p>Most of the screenshots in this article show
+                              an early beta of <strong>Ruby In Steel 'Personal
+                              Edition' </strong>&ndash; a
+                              free Ruby IDE for Visual Studio 2005. The final
+                              version of Ruby In Steel PE 1.0 was released after
+                              this article was published. A commercial edition
+                              of Ruby In Steel ('Developer Edition') has also
+                              been released, which includes the ultra-fast 'Cylon'
+                              debugger and powerful analytical IntelliSense capabilities.
+                              To download, evaluate or buy <strong>Ruby In Steel</strong>,
+                            go to the SapphireSteel Software site: <a href="http://www.sapphiresteel.com" target="_blank">http://www.sapphiresteel.com</a></p></td>
+                        </tr>
+                      </table>
+                      <p>Having &lsquo;put&rsquo; a string to the output (here,
+                        our command window), the obvious next step is to &lsquo;get&rsquo; a
+                        string. As you might guess, the Ruby method for this
+                        is <span class="sourcecodeBold">gets</span>. I&rsquo;ve written a program that prompts
+                        the user for his or her name &ndash; let&rsquo;s suppose
+                        it is &ldquo;Fred&rdquo; - and then displays a greeting: &ldquo;Hello
+                        Fred&rdquo;. Load and run <strong>2helloname.rb</strong> to try this out.
+                        Here is the code:</p>
+                      <p class="sourcecode">print('Enter your name: ' )<br>
+                        name = gets()<br>
+                        puts( &quot;Hello #{name}&quot; )</p>
+                      <p>While this is still very simple, there are a few important
+                        details that need to be explained. First, notice that
+                        I&rsquo;ve used <span class="sourcecodeBold">print</span> rather than <span class="sourcecodeBold">puts</span> to display the
+                        prompt. This is because <span class="sourcecodeBold">puts</span> adds a linefeed at the end
+                        whereas <span class="sourcecodeBold">print</span> does not; in the present case I want the
+                        cursor to remain on the same line as the prompt. </p>
+                      <p>On the next line I use <span class="sourcecodeBold">gets()</span> to
+                        read in a string when the user presses Enter. This string
+                        is assigned to the variable, <span class="sourcecodeBold">name</span>.
+                        Notice that I have not pre-declared this variable, nor
+                        have I specified its type. In Ruby you can create variables
+                        as and when you need them and Ruby  &lsquo;infers&rsquo; their
+                        types. In the present case I have assigned a string to
+                        <span class="sourcecodeBold">name</span> so Ruby knows that the type of the <span class="sourcecodeBold">name</span> variable
+                        must be a string. </p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><strong>Note</strong>: Ruby is <strong><em>case
+                              sensitive</em></strong>. A variable called
+                            <span class="sourcecodeBold">myvar</span> is different from one called <span class="sourcecodeBold">myVar</span>. A variable
+                            such as <span class="sourcecodeBold">name</span> in our sample project must begin with
+                            a lowercase character (if it begins with an uppercase
+                            character Ruby will treat it as a constant).</td>
+                        </tr>
+                      </table>
+                      <p>Incidentally, the braces following <span class="sourcecodeBold">gets()</span> are optional
+                        as are the braces enclosing the strings after <span class="sourcecodeBold">print</span> and
+                        <span class="sourcecodeBold">puts</span>; the code would run just the same if you removed
+                        the braces. However, Ruby is increasingly moving towards
+                        the use of braces &ndash; particularly when passing arguments
+                        to methods - and, in some cases, the interpreter will
+                        warn you if you omit them. </p>
+                      <p>The last line in our sample code is rather interesting:</p>
+                      <p class="sourcecode">puts(  &quot;Hello #{name}&quot; )</p>
+                      <p>Here the <span class="sourcecodeBold">name</span> variable
+                        is embedded into the string itself. This is done by placing
+                        the variable name between two curly braces preceded by
+                        a hash (&lsquo;pound&rsquo;)
+                        character <span class="sourcecodeBold">#{}</span>. This
+                        kind of &lsquo;embedded&rsquo;  evaluation
+                        only works with strings delimited by double quotes. If
+                        you were to try this with a string delimited by single
+                        quotes, the variable would not be evaluated and the string <strong>&lsquo;Hello
+                        #{name}&rsquo;</strong> would be displayed exactly as entered.</p>
+                      <p>It isn&rsquo;t only variables which can be embedded
+                        in double-quoted strings. You can also embed non-printing
+                        characters such as newlines <strong>&ldquo;\n&rdquo;</strong> and tabs <strong>&ldquo;\t&rdquo;</strong>.
+                        You can even embed bits of program code and mathematical
+                        expressions. Let&rsquo;s assume that you have a method
+                        called <span class="sourcecodeBold">showname</span>, which returns the string &lsquo;Fred&rsquo;.
+                        The following string would, in the process of evaluation,
+                        call the <span class="sourcecodeBold">showname</span> method and, as a result, it would display
+                        the string &ldquo;Hello Fred&rdquo;:</p>
+                      <p class="sourcecode">puts( &quot;Hello #{showname}&quot; ) </p>
+                      <p>See if you can figure out what would be displayed by
+                        the following:</p>
+                      <p class="sourcecode">puts(  &quot;\n\t#{(1+2) * 3}&quot; )</p>
+                      <p>Now run the <strong>3string_eval.rb</strong> program to see if you were
+                        right. </p>
+                      <p>Numbers are just as easy to use as strings. For example,
+                        let&rsquo;s suppose you want to calculate the selling
+                        price or &lsquo;grand total&rsquo; of some item based
+                        on its ex-tax value or &lsquo;subtotal&rsquo;. To do
+                        this you would need to multiply the subtotal by the applicable
+                        tax rate and add the result to the value of the subtotal.
+                        Assuming the subtotal to be $100 and the tax rate to
+                        be 17.5%, this Ruby program (<strong>4calctax.rb</strong>) does the calculation
+                        and displays the result:</p>
+                      <p class="sourcecode">subtotal = 100.00<br>
+                        taxrate = 0.175 <br>
+                        tax = subtotal * taxrate<br>
+                        puts &quot;Tax on $#{subtotal} is $#{tax}, so grand total
+                        is $#{subtotal+tax}&quot;</p>
+                      <p>Obviously, this program would be more useful if it could
+                        perform calculations on varying subtotals. Here is a
+                        simple version of a Tax Calculator:</p>
+                      <p class="sourcecode">taxrate = 0.175 <br>
+                        print &quot;Enter price (ex tax): &quot;<br>
+                        s = gets<br>
+                        subtotal = s.to_f<br>
+                        tax = subtotal * taxrate<br>
+                        puts &quot;vat on $#{subtotal} is $#{tax}, so grand total
+                        is $#{subtotal+tax}&quot;</p>
+                      <p>Here <span class="sourcecodeBold">to_f</span> is a method
+                        of the String class. It attempts to convert the string,
+                        <span class="sourcecodeBold">s</span>, to a floating point number. For example, the string &ldquo;145.45&rdquo; would
+                        be converted to the floating point number, 145.45. If
+                        the string cannot be converted, 0.0 is returned. So,
+                        for instance, <span class="sourcecodeBold">&ldquo;Hello
+                        world&rdquo;.to_f</span> would return 0.0. </p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><strong>Note</strong>: &lsquo;<em><strong>Method</strong></em>&rsquo; is the object oriented
+                            term for a procedure, function or subroutine which
+                            is defined inside a class. In OOP terminology, you
+                            don&rsquo;t call functions and pass arguments to
+                            them; you send messages to methods. The idea is that
+                            an object &ndash; such as a string &ndash; has various
+                            ways (i.e. &lsquo;methods&rsquo;) of responding to
+                            messages that are sent to it. </td>
+                        </tr>
+                      </table>
+                      <p>The problem with the simple tax calculator code shown
+                        above is that it accepts <em>minus</em> subtotals and calculates
+                        <em>minus tax</em> on them &ndash; a situation upon which the
+                        Government is unlikely to look favourably! I therefore
+                        need to check for minus figures and, when found, set
+                        them to zero. This is my new code, which you will find
+                        in <strong>5taxcalculator.rb</strong>:</p>
+                      <p class="sourcecode">taxrate = 0.175 <br>
+                        print &quot;Enter price (ex tax): &quot;<br>
+                        s = gets<br>
+                        subtotal = s.to_f<br>
+                        if (subtotal &lt; 0.0)&nbsp; then<br>
+  &nbsp; subtotal = 0.0 <br>
+                        end<br>
+                        tax = subtotal * taxrate<br>
+                        puts &quot;vat on $#{subtotal} is $#{tax}, so grand total
+                        is $#{subtotal+tax}&quot;</p>
+                      <p>The Ruby <span class="sourcecodeBold">if</span> test is similar to an <span class="sourcecodeBold">if</span> test in other programming
+                        languages. Note, however, that the braces are once again
+                        optional, as is the <span class="sourcecodeBold">then</span>. However, if you were to write
+                        the following, with no line break after the test condition,
+                        the <span class="sourcecodeBold">then</span> would be obligatory:</p>
+                      <p class="sourcecode">if (subtotal &lt; 0.0) then subtotal = 0.0 </p>
+                      <p>Putting everything on one line like this adds nothing
+                        to the clarity of the code, which is why I prefer to
+                        avoid it. My long familiarity with Pascal instinctively
+                        makes me want to add a <span class="sourcecodeBold">then</span> after
+                        the <span class="sourcecodeBold">if</span> condition,
+                        however; but, as this really is not required, you may
+                        look upon this as a wilful eccentricity of mine. The
+                        <span class="sourcecodeBold">end</span> keyword that terminates the if block is not optional.
+                        Forget to add it and your code will not run.</p>
+                      <p>Instead of going through all the rest of Ruby&rsquo;s
+                        syntax - its types, loops, modules and so on (but fear
+                        not, we&rsquo;ll come back to those later) - let&rsquo;s
+                        wrap up for now with a look at how to create classes
+                        and objects. It may seem no big deal to say that Ruby
+                        is object oriented. Aren&rsquo;t <em>all</em> languages, these
+                        days? Well, up to a point. Most modern OOP languages
+                        (Java, C++, C#, Object Pascal and so on) have a greater
+                        or lesser degree of OOP features. Ruby, on the other
+                        hand, is obsessively Object Oriented. In fact, unless
+                        you program in Smalltalk, it is likely to be the most
+                        object oriented language you have ever used. Every chunk
+                        of data &ndash; from simple things like numbers and strings
+                        to complicated things like modules and applications  &ndash; is
+                        an object. And almost everything you do with an object
+                        is done by a method. Even operators such as plus <span class="sourcecodeBold">+</span> and
+                        minus <span class="sourcecodeBold">&ndash;</span> are methods. Consider the following:</p>
+                      <p class="sourcecode">x = 1 + 2</p>
+                      <p>Here <span class="sourcecodeBold">+</span> is a method
+                        of the Fixnum (Integer) object, 1. The value 2 is sent
+                        to this method and the result, 3, is returned and assigned
+                        to the object, <span class="sourcecodeBold">x</span>.
+                        Incidentally, the operator, <span class="sourcecodeBold">=</span>,
+                        is one of the rare exceptions to the rule that &ldquo;everything
+                        you do with an object is done by a method&rdquo;. The
+                        assignment operator is a special built-in thingummy (not
+                        the formal terminology, you understand) and is not a
+                        method of anything. </p>
+                      <p>Now let&rsquo;s see how to create objects of our own.
+                        As in most other OOP languages, a Ruby object is defined
+                        by a class. The class is like a blueprint from which
+                        individual objects are constructed. For example, this
+                        class defines a dog:</p>
+                      <p class="sourcecode">class Dog<br>
+                        &nbsp; def set_name( aName )<br>
+  &nbsp; &nbsp; @myname = aName<br>
+  &nbsp; end<br>
+                        end</p>
+                      <p>Note that the class definition begins with the keyword
+                        <span class="sourcecodeBold">class</span> (all lower
+                        case) and the name of the class itself, which must begin
+                        with an uppercase letter. The class contains a method <span class="sourcecodeBold">set_name</span>.
+                        This takes an incoming argument,
+                        <span class="sourcecodeBold">aName</span>. The body of
+                        the method assigns the value of <span class="sourcecodeBold">aName</span>                        to
+                        a variable called <span class="sourcecodeBold">@myname</span>.
+                        Variables beginning with the <span class="sourcecodeBold">@</span> character
+                        are &lsquo;instance variables&rsquo; &ndash; that
+                        means that they belong to individuals objects &ndash;  or &lsquo;instances&rsquo; of
+                        the class. It is not necessary to pre-declare instance
+                        variables.</p>
+                      <p>I can create instances of the Dog class by calling the
+                        <span class="sourcecodeBold">new</span> method. Here I am creating two dog objects (note
+                        that while class names begin uppercase letters, object
+                        names begin with lowercase letters):</p>
+                      <p class="sourcecode">mydog = Dog.new<br>
+                        yourdog = Dog.new</p>
+                      <p>At the moment, these two dogs have no names. So the
+                        next thing I do is call the <span class="sourcecodeBold">set_name</span> method to give them
+                        names:</p>
+                      <p class="sourcecode">mydog.set_name( 'Fido' )<br>
+                        yourdog.set_name( 'Bonzo' )</p>
+                      <p>Having given each dog a name, I need to have some way
+                        to find out its name later on. How shall I do this? I
+                        can&rsquo;t poke about inside an object to get at the
+                        <span class="sourcecodeBold">@name</span> variable, since the internal details of each object
+                        are known only to the object itself. This is a fundamental
+                        principle of &lsquo;pure&rsquo; object orientation: the
+                        internal representation of each object is private. There
+                        are precisely defined ways into each object (for example,
+                        the method <span class="sourcecodeBold">set_name</span>) and precisely defined ways out (logically,
+                        this might be another method called <span class="sourcecodeBold">get_name</span>). Only the
+                        object itself can mess around with its internal state.
+                        The outside world cannot. This is called &lsquo;encapsulation&rsquo;.</p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><strong>Note</strong>: In Ruby, <em><strong>encapsulation</strong></em> is not quite as rigorously
+                            enforced as it initially appears. There are some
+                            very dirty tricks that you can do to mess around
+                            inside an object. For the sake of clarity (and to
+                            make sure you don&rsquo;t have nightmares), we shall,
+                            for now, silently pass over these &lsquo;features&rsquo; of
+                            the language&hellip;</td>
+                        </tr>
+                      </table>
+                      <p>OK, so as we need each dog to know its own name, let&rsquo;s
+                        give it a <span class="sourcecodeBold">get_name</span> method:</p>
+                      <p class="sourcecode">def get_name<br>
+  &nbsp;&nbsp;&nbsp;return
+  @myname<br>
+                        end</p>
+                      <p>The <span class="sourcecodeBold">return</span> keyword here is optional. Ruby methods will
+                        always return the last expression evaluated. For the
+                        sake of clarity (and to avoid unexpected results from
+                        methods of more complexity than this one!) we shall make
+                        a habit of explicitly returning any values which we plan
+                        to use. Finally, let&rsquo;s give the dog some behaviour
+                        by asking it to talk. Here is the finished class definition:</p>
+                      <p class="sourcecode">class Dog&nbsp;&nbsp; <br>
+&nbsp;                        def set_name( aName )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @myname
+= aName<br>
+&nbsp; end</p>
+                      <p class="sourcecode">&nbsp;&nbsp;def get_name<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return
+                        @myname<br>
+&nbsp;&nbsp;end</p>
+                      <p class="sourcecode">&nbsp;&nbsp;def talk<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 'woof!'<br>
+&nbsp;&nbsp;end<br>
+                        end</p>
+                      <p>Now, we can create a dog, name it, display its name
+                        and ask it to talk like this:</p>
+                      <p class="sourcecode">mydog = Dog.new<br>
+                        mydog.set_name( 'Fido' )<br>
+                        puts(mydog.get_name)<br>
+                        puts(mydog.talk)</p>
+                      <p>I&rsquo;ve written an expanded version of this code
+                        in the <strong>6dogs.rb</strong> program. This also contains a Cat class
+                        which is similar to the Dog class apart from the fact
+                        that its talk method returns a <em>miaow</em> instead of a <em>woof</em>. </p>
+                      <p align="center"><img src="../../../../../images/scrshots/prog/ruby/intro/1/dogs.gif" width="494" height="297"><br>
+                        <span class="picturecaption">Here I am talking to my dogs and cats using the Steel
+                          IDE</span></p>
+                      <p>This example, incidentally, is based on a classic Smalltalk
+                        demo program which illustrates how the same &lsquo;message&rsquo; (such
+                        as <span class="sourcecodeBold">talk</span>) can be sent to different objects (such as cats
+                        and dogs), and each different object responds differently
+                        to the same message with its own special method (here
+                        the <span class="sourcecodeBold">talk</span> method). The ability to have different classes
+                        containing methods with the same name goes by the fancy
+                        Object Orientated name of polymorphism &ndash; a term
+                        which, once remembered, can safely be forgotten&hellip;</p>
+                      <p>When you run this program, the code is executed in sequence.
+                        The code of the classes themselves is not executed until
+                        instances of those classes (objects) are created by the
+                        code at the bottom of the file. In this series, I will
+                        frequently mix class definitions with &lsquo;free standing&rsquo; code
+                        which executes when the program is run. This may not
+                        be the way you would want to write a major application
+                        but for just &lsquo;trying things out&rsquo; it is extremely
+                        convenient.</p>
+                      <table width="95%"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+                        <tr>
+                          <td><strong>Note</strong>: If Ruby is an Object
+                              Orientated language, you may think it odd that
+                              we can enter &lsquo;free
+                            floating&rsquo; methods into a code file. In fact,
+                            it turns out that when you run a program, Ruby creates
+                            a <span class="sourcecodeBold">main</span> object and any code that appears inside a
+                            code unit is, in fact, running inside the <span class="sourcecodeBold">main</span> object.
+                            You can easily verify this. Create a new source code
+                            file, add the code below then run it to view the
+                            output:<br>
+                            <br>                              <span class="sourcecode">puts self<br>
+                            puts self.class</span></td>
+                        </tr>
+                      </table>
+                      <p>One obvious defect of this program is that the two classes,
+                        Cat and Dog, are highly repetitious. It would make more
+                        sense to have one class, Animal, which has <span class="sourcecodeBold">get_name</span> and
+                        <span class="sourcecodeBold">set_name</span> methods and two descendent classes, Cat and
+                        Dog, which contain only the behaviour &ndash; <em>woofing</em>                        or <em>miaowing</em> &ndash; specific to that species of animal.
+                        We&rsquo;ll be finding out how to do this next month.</p>
+                      <p>Finally, let&rsquo;s look at another example of a user-defined
+                        class. Load up <strong>7treasure.rb</strong>. This is an adventure game
+                        in the making. It contains two classes, Thing and Treasure.
+                        The Thing class is very similar to the Cat and Dog classes
+                        from the last program &ndash; well, apart from the fact
+                        that it doesn&rsquo;t <em>woof</em> or <em>miaow</em>, of course. The Treasure
+                        class has a few interesting extras, however. First of
+                        all, it hasn&rsquo;t got <span class="sourcecodeBold">get_name</span> and <span class="sourcecodeBold">set_name</span> methods.
+                        Instead, it contains a method named <span class="sourcecodeBold">initialize</span> which
+                        takes two arguments whose values are assigned to the
+                        <span class="sourcecodeBold">@name</span> and <span class="sourcecodeBold">@description</span> variables.</p>
+                      <p align="center"><img src="../../../../../images/scrshots/prog/ruby/intro/1/treasure.gif" width="473" height="294"><br>
+                        <span class="picturecaption">I've overriden the Treasure class's <strong>to_s</strong> method so that
+                        it returns a nicely formatted string description</span> </p>
+                      <p>When a class contains a method named <span class="sourcecodeBold">initialize</span> this
+                        will be automatically called when a new object is created
+                        using the <span class="sourcecodeBold">new</span> method. It is a good idea to use an <span class="sourcecodeBold">initialize</span>                        method to set the values of an object&rsquo;s instance
+                        variables. This has two clear benefits over setting each
+                        instance variable using methods such <span class="sourcecodeBold">set_name</span>. First
+                        of all, a complex class may contain numerous instance
+                        variables and you can set the values of all of them with
+                        the single <span class="sourcecodeBold">initialize</span> method rather than with many separate &lsquo;set&rsquo; methods;
+                        secondly, if the variables are all automatically initialised
+                        at the time of object creation, you will never end up
+                        with an &lsquo;empty&rsquo; variable (like the <span class="sourcecodeBold">nil</span> value
+                        returned when we tried to display the name of <span class="sourcecodeBold">someotherdog</span>                        in the <strong>6dogs.rb</strong> program).</p>
+                      <p>Finally, I have created a method called <span class="sourcecodeBold">to_s</span> which is
+                        intended to return a string representation of a Treasure
+                        object. The method name, <span class="sourcecodeBold">to_s</span>, is not arbitrary. The
+                        same method name is used throughout the standard Ruby
+                        object hierarchy. In fact, the <span class="sourcecodeBold">to_s</span> method is defined
+                        for the Object class itself which is the ultimate ancestor
+                        of all other classes in the Ruby library. By redefining
+                        the <span class="sourcecodeBold">to_s</span> method, I have added new behaviour which is
+                        more appropriate to the Treasure class than the default
+                        method. In other words, I have  &lsquo;overridden&rsquo; its
+                        <span class="sourcecodeBold">to_s</span> method. To see how <span class="sourcecodeBold">to_s</span> can be used with a variety
+                        of objects and to test how a Treasure object would be
+                        converted to a string in the absence of an overridden
+                        <span class="sourcecodeBold">to_s</span> method, try out the <strong>8to_s.rb</strong> program.</p>
+                      <p>While the <strong>7treasure.rb</strong> program may
+                        lay the foundations for a game containing a variety of
+                        different types of object, its code is still repetitive.
+                        After all, why have a Thing class, which contains a name
+                        and a Treasure class which also contains a name? It would
+                        make more sense to regard a Treasure as a type of Thing.
+                        In a complete game, other objects such as Rooms and Weapons
+                        might be yet other types of Thing. It is clearly time
+                        to start working on a proper class hierarchy. That&rsquo;s
+                        what we shall do next month&hellip;</p>
+                      <p>&nbsp;</p>
+                      <p class="smalltext">February 2006</p>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td valign="top">&nbsp;</td>
+                  </tr>
+                </table>
+              <!-- InstanceEndEditable --></td>
+            </tr>
+          </table>
+          <div align="center">
+</div>		  
+		  
+		  </p>
+          <hr width="95%" size="1" noshade>
+          <p align="center"><a href="../../../../../index.html" class="smallmenutext">Home</a> <span class="rantsmalltext">|</span> <a href="../../../../archives/archives.html" class="smallmenutext">Archives</a> <span class="rantsmalltext">|</span> <a href="../../../../other/contacts.html" class="smallmenutext">Contacts</a> </p>
+          <p align="center" class="smalltext"><a href="../../../../other/terms.html" class="link">Copyright</a> &copy; 2006
+            Dark Neon Ltd. :: not to be reproduced without permission </p></td>
+        <td width="156" bgcolor="#FFFFFF"><!-- InstanceBeginEditable name="rightcolumn" --><!-- InstanceEndEditable -->
+		 
+         
+         
+          <p>
+		    
+	          <!-- #BeginLibraryItem "/Library/Ad Google Ad 120x600.lbi" -->
+	          <script type="text/javascript"><!--
+google_ad_client = "pub-3510833642149154";
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = "120x600_as";
+google_ad_channel ="7072489387";
+google_color_border = "003333";
+google_color_bg = "FFFFFF";
+google_color_link = "990000";
+google_color_url = "CC0000";
+google_color_text = "000000";
+//--></script>
+	          <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+          </script>
+              <!-- #EndLibraryItem -->	</p>
+		  </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,713 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" class=" ">
+
+<head id="ctl00_ctl00_HeadTag"><meta http-equiv="X-UA-Compatible" content="IE=7" /><link id="ctl00_ctl00_MasterCss" type="text/css" rel="stylesheet" href="http://i1.codeplex.com/css/v14806/i10243/StyleSheet.ashx" /><link rel="SHORTCUT ICON" href="../favicon.ico" />
+    <style type="text/css">.SideBar, .SideBarPadding{display:none;}.MainContent{width:auto;}.SiteContentTable{width:100%;}</style>
+    <style id="ctl00_ctl00_Header_ProjectStyles" type="text/css">.SiteHeader,.SiteHeaderLeft{height:45px !important;overflow:hidden;}.SiteContent{padding:0 1em 1em 1em;margin-top:0;min-height:225px;}.FF .SiteContentTable{clear:both;}.ProjectContent{min-height:225px;}.Safari .ProjectContent{padding-top:0em;}.IE6 .ProjectTitleControl{position:relative;}.CanvasMargin{width:0;}h1.ProjectHeader{font-size:2em;font-weight:bold;margin-bottom:0;}.ProjectHeader a{color:#3E62A6;}.IE table.MinWidthContent{table-layout:auto !important;}.ProjectMessage{border:solid 0.1em #ccc;background-color:#F1FCEE;padding:1em;}</style>
+    
+    <style type="text/css">.ProjectContent{padding:0;}</style>
+    <style type="text/css">
+        .WikiHolder
+        {
+        	margin: 0 1em 0 1em;
+        }
+        #WikiBreadCrumbs
+        {
+        	margin: 0.25em 0 1em 0;
+        }
+        .SecondarySearchButton 
+        {
+        	margin:0 0 0 -0.2em;
+        }
+        .FF .SecondarySearchButton 
+        {
+            margin:-0.1em 0 0 -0.2em;
+            height: 22px;
+        }
+        .IE .SecondarySearchButton
+        {
+        	width: 22px;
+        	height: 22px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function setWikiCommentTextBoxFocus()
+        {
+            var wikiComment = $get('ctl00_ctl00_MasterContent_Content_commentsControl_commentTextBox');
+            if (wikiComment)
+            {
+                wikiComment.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <meta id="ctl00_ctl00_Header_WTProjectName" name="WT.pi" content="informationcardruby"></meta>
+<meta id="ctl00_ctl00_PageDescription" name="Description" content="Information card authentication plugin for Ruby on Rails relying parties." />
+    <script type="text/javascript">
+        //WebTrends Globals
+		var ProductionDomains="codeplex.com";var gDomain="m.webtrends.com";var gTrackEvents=1;var a=ProductionDomains.split(',');var b=0;for(var i=0;i<a.length;i++){if(window.location.host.indexOf(a[i])!=-1){b++;}}if(b!=0){var gDcsId="dcsnbepko00000c1t09pkmw6c_3y7n";}if(b==0){var gDcsId="dcseyn9uo100004ncoak1iy6c_3p2y";}var gFpc="WT_FPC";if(document.cookie.indexOf(gFpc+"=")==-1){document.write("<SCR"+"IPT TYPE='text/javascript' SRC='"+"http"+(window.location.protocol.indexOf('https:')==0?'s':'')+"://"+gDomain+"/"+gDcsId+"/wtid.js"+"'><\/SCR"+"IPT>");}var gFpcDom=".codeplex.com";
+    </script>
+<link rel="alternate" type="application/rss+xml" title="Information Card Ruby" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx" /><link rel="alternate" type="application/rss+xml" title="Information Card Ruby-Issue Tracker" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2finformationcardruby" /><link rel="alternate" type="application/rss+xml" title="Information Card Ruby-Releases" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2frelease%2finformationcardruby" /><link rel="alternate" type="application/rss+xml" title="Information Card Ruby-Source Code" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2finformationcardruby" /><link rel="alternate" type="application/rss+xml" title="Information Card Ruby-Wiki" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2finformationcardruby" /><link rel="alternate" type="application/rss+xml" title="Information Card Ruby-Reviews" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2freview%2finformationcardruby" /><title>
+	Information Card Ruby - Home
+</title></head>
+
+<body onload="masterLoad();">
+    <form name="aspnetForm" method="POST" action="/informationcardruby/" id="aspnetForm" autocomplete="off" enctype="multipart/form-data">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTI5NzAyMjY3Ng9kFgJmD2QWAmYPZBYEZg9kFggCAQ8WAh4EaHJlZgU4aHR0cDovL2kxLmNvZGVwbGV4LmNvbS9jc3MvdjE0ODA2L2kxMDI0My9TdHlsZVNoZWV0LmFzaHhkAgMPZBYEZg8WAh4JaW5uZXJodG1sBZ4ELlNpdGVIZWFkZXIsLlNpdGVIZWFkZXJMZWZ0e2hlaWdodDo0NXB4ICFpbXBvcnRhbnQ7b3ZlcmZsb3c6aGlkZGVuO30uU2l0ZUNvbnRlbnR7cGFkZGluZzowIDFlbSAxZW0gMWVtO21hcmdpbi10b3A6MDttaW4taGVpZ2h0OjIyNXB4O30uRkYgLlNpdGVDb250ZW50VGFibGV7Y2xlYXI6Ym90aDt9LlByb2plY3RDb250ZW50e21pbi1oZWlnaHQ6MjI1cHg7fS5TYWZhcmkgLlByb2plY3RDb250ZW50e3BhZGRpbmctdG9wOjBlbTt9LklFNiAuUHJvamVjdFRpdGxlQ29udHJvbHtwb3NpdGlvbjpyZWxhdGl2ZTt9LkNhbnZhc01hcmdpbnt3aWR0aDowO31oMS5Qcm9qZWN0SGVhZGVye2ZvbnQtc2l6ZToyZW07Zm9udC13ZWlnaHQ6Ym9sZDttYXJnaW4tYm90dG9tOjA7fS5Qcm9qZWN0SGVhZGVyIGF7Y29sb3I6IzNFNjJBNjt9LklFIHRhYmxlLk1pbldpZHRoQ29udGVudHt0YWJsZS1sYXlvdXQ6YXV0byAhaW1wb3J0YW50O30uUHJvamVjdE1lc3NhZ2V7Ym9yZGVyOnNvbGlkIDAuMWVtICNjY2M7YmFja2dyb3VuZC1jb2xvcjojRjFGQ0VFO3BhZGRpbmc6MWVtO31kAgIPFgQeB2NvbnRlbnQFE2luZm9ybWF0aW9uY2FyZHJ1YnkeB1Zpc2libGVnZAIEDxYEHwIFSUluZm9ybWF0aW9uIGNhcmQgYXV0aGVudGljYXRpb24gcGx1Z2luIGZvciBSdWJ5IG9uIFJhaWxzIHJlbHlpbmcgcGFydGllcy4fA2dkAgYPFgIeBFRleHQF2AQvL1dlYlRyZW5kcyBHbG9iYWxzDQoJCXZhciBQcm9kdWN0aW9uRG9tYWlucz0iY29kZXBsZXguY29tIjt2YXIgZ0RvbWFpbj0ibS53ZWJ0cmVuZHMuY29tIjt2YXIgZ1RyYWNrRXZlbnRzPTE7dmFyIGE9UHJvZHVjdGlvbkRvbWFpbnMuc3BsaXQoJywnKTt2YXIgYj0wO2Zvcih2YXIgaT0wO2k8YS5sZW5ndGg7aSsrKXtpZih3aW5kb3cubG9jYXRpb24uaG9zdC5pbmRleE9mKGFbaV0pIT0tMSl7YisrO319aWYoYiE9MCl7dmFyIGdEY3NJZD0iZGNzbmJlcGtvMDAwMDBjMXQwOXBrbXc2Y18zeTduIjt9aWYoYj09MCl7dmFyIGdEY3NJZD0iZGNzZXluOXVvMTAwMDA0bmNvYWsxaXk2Y18zcDJ5Ijt9dmFyIGdGcGM9IldUX0ZQQyI7aWYoZG9jdW1lbnQuY29va2llLmluZGV4T2YoZ0ZwYysiPSIpPT0tMSl7ZG9jdW1lbnQud3JpdGUoIjxTQ1IiKyJJUFQgVFlQRT0ndGV4dC9qYXZhc2NyaXB0JyBTUkM9JyIrImh0dHAiKyh3aW5kb3cubG9jYXRpb24ucHJvdG9jb2wuaW5kZXhPZignaHR0cHM6Jyk9PTA/J3MnOicnKSsiOi8vIitnRG9tYWluKyIvIitnRGNzSWQrIi93dGlkLmpzIisiJz48XC9TQ1IiKyJJUFQ+Iik7fXZhciBnRnBjRG9tPSIuY29kZXBsZXguY29tIjtkAgEPZBYGAgEPZBYMAgEPZBYEAgEPDxYCHgtOYXZpZ2F0ZVVybAUoaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL2QWAmYPDxYGHgpJbWFnZUFsaWduCyokU3lzdGVtLldlYi5VSS5XZWJDb250cm9scy5JbWFnZUFsaWduAB4ISW1hZ2VVcmwFfGh0dHA6Ly9kb3dubG9hZC5jb2RlcGxleC5jb20vUHJvamVjdC9Eb3dubG9hZC9GaWxlRG93bmxvYWQuYXNweD9Qcm9qZWN0TmFtZT1pbmZvcm1hdGlvbmNhcmRydWJ5JkRvd25sb2FkSWQ9MTI0NjgmQnVpbGQ9MTQ4MDYfA2dkZAIDDw8WAh8FBShodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vZBYCZg9kFgICAQ8PFgQfBAUVSW5mb3JtYXRpb24gQ2FyZCBSdWJ5HwNoZGQCAw9kFgJmD2QWAgIBDw8WAh8HBTpodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTQ4MDYvc2VhcmNoLWJ1dHRvbi1vZmYuZ2lmFgQeC29ubW91c2VvdmVyBVBqYXZhc2NyaXB0OnRoaXMuc3JjPSdodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTQ4MDYvc2VhcmNoLWJ1dHRvbi1vbi5naWYnOx4Kb25tb3VzZW91dAVRamF2YXNjcmlwdDp0aGlzLnNyYz0naHR0cDovL2kzLmNvZGVwbGV4LmNvbS9JbWFnZXMvdjE0ODA2L3NlYXJjaC1idXR0b24tb2ZmLmdpZic7ZAIED2QWBGYPDxYCHwNoZBYCAgMPZBYCZg9kFgICAQ9kFgQCBQ8PFgIfA2hkZAIHDw8WAh8DaGRkAgEPZBYCAgMPZBYCAgEPZBYCAgEPZBYCAgEPZBYCAgEPFgIfAAVgaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1Byb2plY3QvRWRpdFByb2plY3REZXRhaWxzLmFzcHg/Rm9jdXNFbGVtZW50PURlc2NyaXB0aW9uZAIFD2QWAmYPFgIfA2gWAmYPDxYCHwUFR2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L0VkaXRQcm9qZWN0RGV0YWlscy5hc3B4ZGQCBg8PFgIfA2hkZAIHD2QWCAIBD2QWEgIBDxYCHgVjbGFzcwUQVGFiIEFjdGl2ZVRhYk5ldxYCAgEPDxYCHwUFKGh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9kZAIDDxYCHwoFElRhYiBJbmFjdGl2ZVRhYk5ldxYCAgEPDxYCHwUFU2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9SZWxlYXNlL1Byb2plY3RSZWxlYXNlcy5hc3B4P1JlbGVhc2VJZD00MzUyZGQCBQ8WBB8KBRJUYWIgSW5hY3RpdmVUYWJOZXcfA2gWAgIBDw8WAh8FBThodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vVGhyZWFkL0xpc3QuYXNweGRkAgcPFgIfCgUSVGFiIEluYWN0aXZlVGFiTmV3FgICAQ8PFgIfBQU6aHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1dvcmtJdGVtL0xpc3QuYXNweGRkAgkPFgIfCgUSVGFiIEluYWN0aXZlVGFiTmV3FgICAQ8PFgIfBQVSaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1NvdXJjZUNvbnRyb2wvTGlzdERvd25sb2FkYWJsZUNvbW1pdHMuYXNweGRkAgsPFgIfCgUSVGFiIEluYWN0aXZlVGFiTmV3FgICAQ8PFgIfBQUtaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL3N0YXRzZGQCDQ8WAh8KBRJUYWIgSW5hY3RpdmVUYWJOZXcWAgIBDw8WAh8FBUFodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vUGVvcGxlL1Byb2plY3RQZW9wbGUuYXNweGRkAg8PFgIfCgUSVGFiIEluYWN0aXZlVGFiTmV3FgICAQ8PFgIfBQUvaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL2xpY2Vuc2VkZAIRD2QWBAICD2QWAgIDD2QWBGYPZBYCAgEPZBYEAgEPDxYCHwcFOGh0dHA6Ly9pMy5jb2RlcGxleC5jb20vSW1hZ2VzL3YxNDgwNi9hcnJvd19kc2NfZ3JlZW4uZ2lmZGQCAw8PFgIfBwUxaHR0cDovL2kzLmNvZGVwbGV4LmNvbS9JbWFnZXMvdjE0ODA2L2ljb25fcnNzLmdpZmRkAgEPZBYCAgEPZBYCAgEPZBYOAgEPZBYCAgEPDxYCHwUFP2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweGRkAgMPDxYCHwNoZBYCAgEPDxYCHwUFe2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZmZvcnVtJTJmaW5mb3JtYXRpb25jYXJkcnVieWRkAgUPZBYCAgEPDxYCHwUFfmh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZndvcmtpdGVtJTJmaW5mb3JtYXRpb25jYXJkcnVieWRkAgcPZBYCAgEPDxYCHwUFfWh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZnJlbGVhc2UlMmZpbmZvcm1hdGlvbmNhcmRydWJ5ZGQCCQ9kFgICAQ8PFgIfBQV8aHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1Byb2plY3QvUHJvamVjdFJzcy5hc3B4P1Byb2plY3RSU1NGZWVkPWNvZGVwbGV4JTNhJTJmJTJmcmV2aWV3JTJmaW5mb3JtYXRpb25jYXJkcnVieWRkAgsPZBYCAgEPDxYCHwUFgwFodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vUHJvamVjdC9Qcm9qZWN0UnNzLmFzcHg/UHJvamVjdFJTU0ZlZWQ9Y29kZXBsZXglM2ElMmYlMmZzb3VyY2Vjb250cm9sJTJmaW5mb3JtYXRpb25jYXJkcnVieWRkAg0PZBYCAgEPDxYCHwUFemh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Qcm9qZWN0L1Byb2plY3RSc3MuYXNweD9Qcm9qZWN0UlNTRmVlZD1jb2RlcGxleCUzYSUyZiUyZndpa2klMmZpbmZvcm1hdGlvbmNhcmRydWJ5ZGQCBA9kFgRmDw8WAh8HBTpodHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTQ4MDYvYXJyb3dfcmlnaHRfZ3JlZW4uZ2lmZGQCAg8PFgIfBwUxaHR0cDovL2kzLmNvZGVwbGV4LmNvbS9JbWFnZXMvdjE0ODA2L2ljb25fcnNzLmdpZmRkAgMPZBYCAgEPZBYMAgEPDxYEHwUFbGh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9XaWtpL0VkaXQuYXNweD90aXRsZT1Ib21lJmFjdGlvbj1FZGl0JnZlcnNpb249MjMmcmVmZXJyaW5nVGl0bGU9SG9tZR8DaGRkAgMPDxYCHwNoZGQCBQ8PFgQfBAURVmlldyBBbGwgQ29tbWVudHMfBQVFaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL3dpa2kvY29tbWVudHMvdmlldz90aXRsZT1Ib21lZGQCCQ8PFgIfBQV/amF2YXNjcmlwdDpvcGVuUHJldmlld1dpa2lXaW5kb3coJ2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9XaWtpL1ByaW50LmFzcHg/dGl0bGU9SG9tZSZ2ZXJzaW9uPTIzJmFjdGlvbj1QcmludCcpO2RkAg0PDxYCHwUFTWh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9XaWtpL0luZm8uYXNweD90aXRsZT1Ib21lJmFjdGlvbj1JbmZvZGQCEQ8PFgIfBQU4aHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1dpa2kvUmVjZW50LmFzcHhkZAIFD2QWAgIBD2QWDAIDDxYCHgtfIUl0ZW1Db3VudAIBFgICAQ9kFgICAQ8PFgQfBAUESG9tZR8FBTZodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vV2lraS9WaWV3LmFzcHhkZAIFD2QWAgIBDw8WAh8EBbBcPGRpdiBjbGFzcz0id2lraWRvYyI+DQo8aDI+DQpQcm9qZWN0IEhvbWUgUGFnZQ0KPC9oMj5Gb3IgZXZlcnl0aGluZyBJbmZvcm1hdGlvbiBDYXJkIFJ1YnksIHZpc2l0IDxhIGhyZWY9Imh0dHA6Ly93d3cuaW5mb3JtYXRpb25jYXJkcnVieS5jb20iIGNsYXNzPSJleHRlcm5hbExpbmsiPmh0dHA6Ly93d3cuaW5mb3JtYXRpb25jYXJkcnVieS5jb208c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT48YnIgLz4gPGJyIC8+PGI+V2hhdCBpcyBJbmZvcm1hdGlvbiBDYXJkIFJ1Ynk/PC9iPjxiciAvPkluZm9ybWF0aW9uIENhcmQgPGEgaHJlZj0iaHR0cDovL3d3dy5ydWJ5LWxhbmcub3JnL2VuLyIgY2xhc3M9ImV4dGVybmFsTGluayI+UnVieTxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPiBwcm92aWRlcyBhIDxhIGhyZWY9Imh0dHA6Ly93aWtpLnJ1YnlvbnJhaWxzLm9yZy9yYWlscy9wYWdlcy9QbHVnaW5zIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5yYWlscyBwbHVnaW48c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4gIGFuZCBzdXBwb3J0aW5nIGxpYnJhcnkgZm9yIGludGVncmF0aW5nIDxhIGhyZWY9Imh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9XaWtpL1ZpZXcuYXNweD90aXRsZT1QZXJzb25hbCUyMENhcmQmYW1wO3JlZmVycmluZ1RpdGxlPUhvbWUiPnBlcnNvbmFsIGluZm9ybWF0aW9uIGNhcmRzPC9hPiB0byB5b3VyIDxhIGhyZWY9Imh0dHA6Ly93d3cucnVieW9ucmFpbHMub3JnLyIgY2xhc3M9ImV4dGVybmFsTGluayI+UnVieSBvbiBSYWlsczxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPiByZWx5aW5nIHBhcnR5IHdlYiBhcHBsaWNhdGlvbi4gIEluIHRoZSBJZGVudGl0eSBNZXRhc3lzdGVtLCBhbiBhcHBsaWNhdGlvbiB0aGF0IHJlcXVlc3RzIGFuZCBjb25zdW1lcyBkaWdpdGFsIGlkZW50aXRpZXMgYWJvdXQgYW4gaW5kaXZpZHVhbCBpcyBjYWxsZWQgYSByZWx5aW5nIHBhcnR5LiAgQXMgd2UgZGV2ZWxvcCBhbmQgbGVhcm4gZnJvbSB0aGlzIHByb2plY3QsIEluZm9ybWF0aW9uIENhcmQgUnVieSB3aWxsIGdlbmVyYXRlIGEgZGV2ZWxvcGVyIGd1aWRlbGluZSBmb3IgaW50ZWdyYXRpbmcgaW5mb3JtYXRpb24gY2FyZHMgdG8geW91ciByYWlscyB3ZWJzaXRlLCBtdWNoIGluIHRoZSBzcGlyaXQgb2YgPGEgaHJlZj0iaHR0cDovL2NhcmRzcGFjZS5uZXRmeDMuY29tL2ZpbGVzL2ZvbGRlcnMvc2FtcGxlc19yY18xL2VudHJ5NjAwMC5hc3B4IiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj4gQWNjZXB0aW5nIEluZm9ybWF0aW9uIENhcmRzIHRvIHlvdXIgQVNQLk5FVCBzaXRlPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+IC0gaWYgd2UgaGF2ZSBkb25lIHRoZSBwbHVnaW4gcmlnaHQsIHRoaXMgZ3VpZGVsaW5lIHdpbGwgYmUgc2hvcnQgYW5kIHN3ZWV0LjxiciAvPiA8YnIgLz48Yj5Qcm9qZWN0IENvbnRyaWJ1dG9yczwvYj48YnIgLz5JbmZvcm1hdGlvbiBDYXJkIFJ1YnkgaXMgYW4gb3BlbiBzb3VyY2UgY29sbGFib3JhdGlvbiBwcm9qZWN0IGRyaXZlbiBieTogPGJyIC8+PGEgaHJlZj0iaHR0cDovL3d3dy5taWNyb3NvZnQuY29tIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5NaWNyb3NvZnQ8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4gYW5kIDxhIGhyZWY9Imh0dHA6Ly93d3cudGhvdWdodHdvcmtzLmNvbSIgY2xhc3M9ImV4dGVybmFsTGluayI+VGhvdWdodFdvcmtzPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+LjxiciAvPiA8YnIgLz48dGFibGU+DQo8dHI+DQo8dGg+PGltZyBzcmM9Imh0dHA6Ly9pMy5jb2RlcGxleC5jb20vUHJvamVjdC9Eb3dubG9hZC9GaWxlRG93bmxvYWQuYXNweD9Qcm9qZWN0TmFtZT1pbmZvcm1hdGlvbmNhcmRydWJ5JmFtcDtEb3dubG9hZElkPTEyNDcwIiBhbHQ9Im1pY3Jvc29mdC5naWYiIC8+ICA8L3RoPjx0aD4gPGltZyBzcmM9Imh0dHA6Ly9pMy5jb2RlcGxleC5jb20vUHJvamVjdC9Eb3dubG9hZC9GaWxlRG93bmxvYWQuYXNweD9Qcm9qZWN0TmFtZT1pbmZvcm1hdGlvbmNhcmRydWJ5JmFtcDtEb3dubG9hZElkPTEyNDcxIiBhbHQ9InRob3VnaHR3b3Jrcy5wbmciIC8+IDwvdGg+DQo8L3RyPjx0cj4NCjx0ZD5NaWNyb3NvZnQgaXMgdGhlIHByb2plY3Qgc3BvbnNvciBhbmQgYmVpbmcgPGEgaHJlZj0iaHR0cDovL2NhcmRzcGFjZS5uZXRmeDMuY29tLyIgY2xhc3M9ImV4dGVybmFsTGluayI+Q2FyZFNwYWNlIGV4cGVydHM8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4sIHByb3ZpZGVzIGFyY2hpdGVjdHVyYWwgZ3VpZGFuY2UgYW5kIGJlc3QgcHJhY3RpY2VzIGluIHRoZSBJZGVudGl0eSBNZXRhU3lzdGVtLjwvdGQ+PHRkPiBUaG91Z2h0V29ya3MgaXMgYWN0aXZlbHkgaW52b2x2ZWQgaW4gc29tZSBvZiB0aGUgd29ybGQncyA8YSBocmVmPSJodHRwOi8vd3d3LnRob3VnaHR3b3Jrcy5jb20vcnVieS5odG1sIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5sZWFkaW5nIFJ1YnkgcHJvamVjdHM8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4gYW5kIGlzIGV4Y2l0ZWQgdG8gYmUgZHJpdmluZyB0aGUgZGV2ZWxvcG1lbnQgb24gSW5mb3JtYXRpb24gQ2FyZCBSdWJ5LjwvdGQ+DQo8L3RyPg0KPC90YWJsZT4gPGJyIC8+PGI+V2hhdCBpcyBDYXJkU3BhY2U/PC9iPjxiciAvPkluIHRoZSBJZGVudGl0eSBNZXRhc3lzdGVtLCB0aGVyZSBhcmUgc2V2ZXJhbCBwbGF5ZXJzIGluY2x1ZGluZyB0aGUgPGk+dXNlcjwvaT4sIHRoZSA8aT5pZGVudGl0eSBzZWxlY3RvcjwvaT4gYW5kIHRoZSA8aT5yZWx5aW5nIHBhcnR5PC9pPi4gIFRoaXMgcHJvamVjdCBhbGxvd3MgYSA8aT5yZWx5aW5nIHBhcnR5PC9pPiAoeW91ciB3ZWJzaXRlKSB0byBhY2NlcHQgYW5kIHByb2Nlc3MgaW5mb3JtYXRpb24gY2FyZHMgZnJvbSBhIDxpPnVzZXI8L2k+LiAgICA8YnIgLz4gPGJyIC8+RnJvbSA8YSBocmVmPSJodHRwOi8vY2FyZHNwYWNlLm5ldGZ4My5jb20vIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5odHRwOi8vY2FyZHNwYWNlLm5ldGZ4My5jb20vPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+IDxiciAvPiZxdW90O1dpbmRvd3MgQ2FyZFNwYWNlIGlzIGEgcGllY2Ugb2YgY2xpZW50IHNvZnR3YXJlIHRoYXQgZW5hYmxlcyB1c2VycyB0byBwcm92aWRlIHRoZWlyIGRpZ2l0YWwgaWRlbnRpdHkgdG8gb25saW5lIHNlcnZpY2VzIGluIGEgc2ltcGxlLCBzZWN1cmUgYW5kIHRydXN0ZWQgd2F5LiBJdCBpcyB3aGF0IGlzIGtub3duIGFzIGFuIDxpPmlkZW50aXR5IHNlbGVjdG9yPC9pPjogIHdoZW4gYSB1c2VyIOKAkyBvciBzdWJqZWN0IOKAkyBuZWVkcyB0byBhdXRoZW50aWNhdGUgdG8gYSB3ZWJzaXRlIG9yIGEgd2ViIHNlcnZpY2UsIENhcmRTcGFjZSBwb3BzIHVwIGEgc3BlY2lhbCBzZWN1cml0eS1oYXJkZW5lZCBVSSB3aXRoIGEgc2V0IG9mIOKAnGNhcmRz4oCdICBmb3IgdGhlIHVzZXIgdG8gY2hvb3NlIGZyb20uIEVhY2ggY2FyZCBoYXMgc29tZSBpZGVudGl0eSBkYXRhIGFzc29jaWF0ZWQgd2l0aCBpdCDigJMgdGhvdWdoIHRoaXMgaXMgbm90IGFjdHVhbGx5IHN0b3JlZCBpbiB0aGUgY2FyZCDigJMgYW5kIGhhcyBiZWVuIGdpdmVuIHRvIHRoZSB1c2VyIGJ5IGFuIGlkZW50aXR5IHByb3ZpZGVyIHN1Y2ggYXMgdGhlaXIgYmFuaywgZW1wbG95ZXIgb3IgZ292ZXJubWVudC4gSW4gZmFjdCwgdGhlIHVzZXIgY2FuIGFsc28gYWN0IGFzIGFuIGlkZW50aXR5IHByb3ZpZGVyIOKAkyB0aGlzIGlzIGVzc2VudGlhbGx5IHdoYXQgd2UgZG8gZXZlcnkgdGltZSB3ZSByZWdpc3RlciBhdCBhIHdlYnNpdGUuIFRoZSBDYXJkU3BhY2UgVUkgZW5hYmxlcyB1c2VycyB0byBjcmVhdGUgUGVyc29uYWwgY2FyZHMgYW5kIGFzc29jaWF0ZSBhIGxpbWl0ZWQgc2V0IG9mIGlkZW50aXR5IGRhdGEuIFdoZW4gdGhlIHVzZXIgY2hvb3NlcyBhIGNhcmQsIGEgcmVxdWVzdCBpbiB0aGUgZm9ybSBvZiBhIHdlYiBzZXJ2aWNlIGNhbGwgZ29lcyB0byB0aGUgcmVsZXZhbnQgcHJvdmlkZXIsIGFuZCBhIHNpZ25lZCBhbmQgZW5jcnlwdGVkIHNlY3VyaXR5IHRva2VuIGlzIHJldHVybmVkIGNvbnRhaW5pbmcgdGhlIHJlcXVpcmVkIGluZm9ybWF0aW9uIChlLmcuIGNyZWRpdCBsaW1pdCwgZW1wbG95ZXLigJlzIG5hbWUgYW5kIGFkZHJlc3MsIG9yIHBlcmhhcHMgYSBzb2NpYWwgc2VjdXJpdHkgbnVtYmVyKS4gVGhlIHVzZXIsIGluIGNvbnRyb2wgb2YgdGhlIGZsb3cgb2YgaW5mb3JtYXRpb24gYXQgYWxsIHRpbWVzLCB0aGVuIGRlY2lkZXMgd2hldGhlciB0byByZWxlYXNlIHRoaXMgaW5mb3JtYXRpb24gdG8gdGhlIHJlcXVlc3Rpbmcgb25saW5lIHNlcnZpY2UuIElmIHRoZSB1c2VyIGFwcHJvdmVzIHRoZW4gdGhlIHRva2VuIGlzIHNlbnQgb24gdG8gdGhpcyA8aT5yZWx5aW5nIHBhcnR5PC9pPiB3aGVyZSB0aGUgdG9rZW4gaXMgcHJvY2Vzc2VkIGFuZCB0aGUgdXNlciBpcyBhdXRoZW50aWNhdGVkLiZxdW90OzxiciAvPiA8YnIgLz48Yj5PcGVuIFN0YW5kYXJkczwvYj48YnIgLz5UaGUgSW5mb3JtYXRpb24gQ2FyZCBtb2RlbCBpcyBidWlsdCBvbiBvcGVuLCA8YSBocmVmPSJodHRwOi8vd3d3Lm1pY3Jvc29mdC5jb20vaW50ZXJvcC9vc3AvZGVmYXVsdC5tc3B4IiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5pbnRlcm9wZXJhYmxlIGNvbW11bmljYXRpb24gc3RhbmRhcmRzPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+ICB0aGF0IGhhdmUgYmVlbiBpbXBsZW1lbnRlZCBvbiBXaW5kb3dzIGFuZCBvdGhlciBwbGF0Zm9ybXMuICBDYXNlIGluIHBvaW50LCB0aGUgcmVseWluZyBwYXJ0eSBjYW4gYmUgaW1wbGVtZW50ZWQgaW4gUnVieSBvbiBSYWlscyAodGhhdCdzIHVzISkuICBGb3IgbW9yZSBpbmZvcm1hdGlvbiBvbiBpbnRlcm9wZXJhYmlsaXR5LCB0YWtlIGEgbG9vayBhdCB0aGUgPGEgaHJlZj0iaHR0cDovL2Rvd25sb2FkLm1pY3Jvc29mdC5jb20vZG93bmxvYWQvMS8xL2EvMTFhYzY1MDUtZTRjMC00ZTA1LTk4N2MtNmYxZDMxODU1Y2QyL0lkZW50aXR5LVNlbGVjdG9yLUludGVyb3AtUHJvZmlsZS12MS5wZGYiIGNsYXNzPSJleHRlcm5hbExpbmsiPklkZW50aXR5IFNlbGVjdG9yIEludGVyb3BlcmFiaWxpdHkgUHJvZmlsZTxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPi48YnIgLz4gPGJyIC8+PGI+VGhlIEdlbmVyYWwgSWRlYTwvYj48YnIgLz5Mb3N0IGluIHRoZSBJZGVudGl0eSBNZXRhc3lzdGVtPyBOZWVkIG1vcmUgaW5mb3JtYXRpb24gb24gaW5mb3JtYXRpb24gY2FyZHM/IE5vIHdvcnJpZXMhIEJlbG93IGlzIGEgZGlhZ3JhbSBvZiBhIHR5cGljYWwgc2NlbmFyaW8gdG8gc2V0IHlvdXIgbWVudGFsIGNvbnRleHQgLSBoZXJlLCB3ZSBoYXZlIG91ciBzdGFyIHVzZXIgTW9sbHkgd2hvIHdvdWxkIGxpa2UgdG8gbG9naW4gaW50byB5b3VyIHJhaWxzIGFwcGxpY2F0aW9uIHdpdGggaGVyIHBlcnNvbmFsIGluZm9ybWF0aW9uIGNhcmQuICBOb3RlIHRoYXQgdGhpcyBkaWFncmFtIGlzIHVsdHJhIHNpbXBsZSBhbmQgYnkgbm8gbWVhbnMgY29ycmVjdCAtIGx1Y2tpbHkgZm9yIHlvdSwgd2UgaGF2ZSB0aGUgZ29vZCBmb2xrcyBhdCBNaWNyb3NvZnQgdG8gcHJvdmlkZSB1cyB3aXRoIHRoZSBwcm9wZXIgZ3VpZGFuY2UgYXQgPGEgaHJlZj0iaHR0cDovL2NhcmRzcGFjZS5uZXRmeDMuY29tLyIgY2xhc3M9ImV4dGVybmFsTGluayI+Y2FyZHNwYWNlLm5ldGZ4LmNvbTxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPi48YnIgLz4gPGJyIC8+PGltZyBzcmM9Imh0dHA6Ly9pMy5jb2RlcGxleC5jb20vUHJvamVjdC9Eb3dubG9hZC9GaWxlRG93bmxvYWQuYXNweD9Qcm9qZWN0TmFtZT1pbmZvcm1hdGlvbmNhcmRydWJ5JmFtcDtEb3dubG9hZElkPTEyNDgzIiBhbHQ9ImZsb3dfc21hbGwucG5nIiAvPjxiciAvPlNxdWludGluZz8gVG8gdmlldyBhIGxhcmdlciBpbWFnZSwgY2xpY2sgaGVyZTogPGEgaHJlZj0iaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1dpa2kvVmlldy5hc3B4P3RpdGxlPVRoZSUyMEdlbmVyYWwlMjBJZGVhJmFtcDtyZWZlcnJpbmdUaXRsZT1Ib21lIj5UaGUgR2VuZXJhbCBJZGVhPC9hPjxiciAvPiA8YnIgLz48Yj5Vc2VyIFNjZW5hcmlvczwvYj48YnIgLz5UbyBnZXQgc3RhcnRlZCwgd2UgaGF2ZSBpZGVudGlmaWVkIHN0b3JpZXMgYW5kIHRhc2tzLiAgVG8gaGVscCB5b3UgZ2V0IGEgZmVlbCBmb3Igd2hhdCB3ZSBhcmUgd29ya2luZyBvbiwgc29tZSBhcmUgbGlzdGVkIGJlbG93OjxiciAvPiA8YnIgLz5BcyBhIHVzZXIsIEkgd291bGQgbGlrZSB0bzo8YnIgLz48dWw+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1dvcmtJdGVtL1ZpZXcuYXNweD9Xb3JrSXRlbUlkPTQ2MiI+UmVnaXN0ZXIgZm9yIGFuIGFjY291bnQgd2l0aCBhbiBpbmZvcm1hdGlvbiBjYXJkPC9hPjwvbGk+PGxpPjxhIGhyZWY9Imh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Xb3JrSXRlbS9WaWV3LmFzcHg/V29ya0l0ZW1JZD00NjEiPkxvZ2luIHdpdGggYW4gaW5mb3JtYXRpb24gY2FyZDwvYT48L2xpPjxsaT48YSBocmVmPSJodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vV29ya0l0ZW0vVmlldy5hc3B4P1dvcmtJdGVtSWQ9NDY4Ij5Bc3NvY2lhdGUgYW4gaW5mb3JtYXRpb24gY2FyZCB3aXRoIGhpcy9oZXIgZXhpc3RpbmcgYWNjb3VudDwvYT48L2xpPjxsaT48YSBocmVmPSJodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vV29ya0l0ZW0vVmlldy5hc3B4P1dvcmtJdGVtSWQ9NDQ1Ij5SZWNvdmVyIGEgbG9zdCBpbmZvcm1hdGlvbiBjYXJkPC9hPjwvbGk+PGxpPjxhIGhyZWY9Imh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Xb3JrSXRlbS9WaWV3LmFzcHg/V29ya0l0ZW1JZD00NjMiPk1hbmFnZSBpbmZvcm1hdGlvbiBjYXJkcyBhc3NvY2lhdGVkIHdpdGggYW4gYWNjb3VudDwvYT48L2xpPjxsaT48YSBocmVmPSJodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vV29ya0l0ZW0vVmlldy5hc3B4P1dvcmtJdGVtSWQ9NDY0Ij5Mb2dpbiB3aXRoIGEgY29udmVudGlvbmFsIHVzZXJuYW1lICZhbXA7IHBhc3N3b3JkPC9hPjwvbGk+DQo8L3VsPiA8YnIgLz48Yj5EZXNpZ24gZ29hbHM8L2I+PGJyIC8+PHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Xb3JrSXRlbS9WaWV3LmFzcHg/V29ya0l0ZW1JZD00NDciPlByb3ZpZGUgYSBwbHVnaW4gdG8gcHJvdmlkZSBvdXQtb2YtdGhlLWJveCBpbmZvcm1hdGlvbiBjYXJkIGF1dGhlbnRpY2F0aW9uPC9hPjwvbGk+PGxpPjxhIGhyZWY9Imh0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9Xb3JrSXRlbS9WaWV3LmFzcHg/V29ya0l0ZW1JZD00NTAiPlByb3ZpZGUgZG9jdW1lbnRhdGlvbiBhcyB0byBob3cgdG8gaW5jb3Jwb3JhdGUgaW5mb3JtYXRpb24gY2FyZHMgdG8geW91ciB3ZWJzaXRlPC9hPiA8L2xpPjxsaT5Qcm92aWRlIGEgd2VsbCB0ZXN0ZWQgcGx1Z2luIHRoYXQgc28gdGhhdCBmZWxsb3cgZGV2ZWxvcGVycyB1c2luZyBpdCBjYW4gc2xlZXAgYXQgbmlnaHQgYW5kIHN0YXkgdXAgbGF0ZSBhdCBuaWdodCBjb250cmlidXRpbmcgdG8gaXQuPC9saT48bGk+U2ltcGxpY2l0eS4gIEZyb20gPGEgaHJlZj0iaHR0cDovL3NhZmFyaS5vcmVpbGx5LmNvbS8wMzIxNDgzNTEwIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5KYW1lcyBBZGFtczxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPiBvbiByYWlscyBwbHVnaW5zLCAmcXVvdDtJdCB3YXMgdGhlIHNtYWxsIG1hbW1hbHMgd2hvIHN1cnZpdmVkIHdoZW4gdGhlIHRoZSBkaW5vc2F1cnMgZGllZCBvdXQuJnF1b3Q7PC9saT48bGk+RXh0cmFjdCwgZG9uJ3QgZXhwZWN0IGl0LiAgVG8gYWNoaWV2ZSB0aGlzIHNpbXBsaWNpdHkgdGhhdCBKYW1lcyBkZXNjcmliZXMsIHdlJ3JlIG5vdCBnb2luZyB0byBzdGFydCBieSBidWlsZGluZyBhIHBsdWdpbiB0byBoYW5kbGUgZXZlcnkgY29uY2VpdmFibGUgY2FyZHNwYWNlIHNjZW5hcmlvLiAgSW5zdGVhZCwgd2Ugd2lsbCBmaXJzdCBzcGlrZSBhbiBhcHBsaWNhdGlvbiB0byBhdXRoZW50aWNhdGUgcGVyc29uYWwgaW5mb3JtYXRpb24gY2FyZHMgLSB3ZSdsbCBsZWFybiBmcm9tIGl0LCBpbW1lcnNlIGluIGl0LCBiZSBhdCBvbmUgd2l0aCB0aGUgaW5mb3JtYXRpb24gY2FyZCBhbmQgdGhlbiBmcm9tIHRoZXJlLCBleHRyYWN0IG91dCB3aGF0IG1ha2VzIHNlbnNlLiAgQWZ0ZXJhbGwsIGV2ZXJ5IHBpZWNlIG9mIGNvZGUganVzdCB3YW50cyB0byBoYXZlIGEgcHVycG9zZS48L2xpPg0KPC91bD4gPGJyIC8+PGI+U2NvcGU8L2I+PGJyIC8+VG8ga2VlcCB0aGluZ3Mgc2ltcGxlLCBJbmZvcm1hdGlvbiBDYXJkIFJ1Ynkgd2lsbCBvbmx5IGFkZHJlc3MgPGEgaHJlZj0iaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1dpa2kvVmlldy5hc3B4P3RpdGxlPVBlcnNvbmFsJTIwQ2FyZCZhbXA7cmVmZXJyaW5nVGl0bGU9SG9tZSI+cGVyc29uYWwgaW5mb3JtYXRpb24gY2FyZHM8L2E+IGFuZCBTQU1MIHNlY3VyaXR5IHRva2VucywgYXMgZ2VuZXJhdGVkIGJ5IFdpbmRvd3MgQ2FyZFNwYWNlLiA8YnIgLz4gPGJyIC8+PGI+VGVjaG5pY2FsIE5vdGVzPC9iPjxiciAvPlRvIHVzZSBjYXJkc3BhY2Ugd2l0aCB5b3VyIHJhaWxzIGFwcGxpY2F0aW9uLCB5b3UgbmVlZCB0aGUgZm9sbG93aW5nOjxiciAvPjx1bD4NCjxsaT5TU0w6IFRoZSBXaW5kb3dzIENhcmRTcGFjZSBJZGVudGl0eSBTZWxlY3RvciByZXF1aXJlcyBhbiBTU0wgY2hhbm5lbC4gVG8gc2V0dXAgYSBSdWJ5IG9uIFJhaWxzIHdlYnNpdGUgY29uZmlndXJlZCBvdmVyIEhUVFBTLCBhbiBvcHRpb24gaXMgdG8gc2V0dXAgYW4gQXBhY2hlIFNTTCB2aXJ0dWFsIGhvc3Qgd2hpY2ggcHJveGllcyByZXF1ZXN0cyB0byB5b3VyIG1vbmdyZWwgc2VydmVyIG9yIGNsdXN0ZXIuPC9saT48bGk+PGEgaHJlZj0iaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3dpbmRvd3MvcHJvZHVjdHMvd2luZmFtaWx5L2llL2RlZmF1bHQubXNweCIgY2xhc3M9ImV4dGVybmFsTGluayI+SW50ZXJuZXQgRXhwbG9yZXIgNzxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPiAob3IgRmlyZUZveCB3aXRoIENhcmRzcGFjZSBwbHVnaW4pPC9saT48bGk+V2luZG93cyBWaXN0YSBvciBXaW5kb3dzIFhQIHdpdGggPGEgaHJlZj0iaHR0cDovL3d3dy5uZXRmeDMuY29tLyIgY2xhc3M9ImV4dGVybmFsTGluayI+Lk5FVCAzLjAgRnJhbWV3b3JrPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+PC9saT48bGk+TXlTUUw6IFRoaXMgcHJvamVjdCB3aWxsIHVzZSBNeVNRTCBhcyB0aGUgdW5kZXJseWluZyBkYXRhYmFzZS48L2xpPg0KPC91bD4gPGJyIC8+PGI+RmVlZGJhY2s8L2I+PGJyIC8+V2UgYmVsaWV2ZSBpbiBzaG9ydCBmZWVkYmFjayBsb29wcy4gIFdlIHdhbnQgdG8gZGVwbG95IG9mdGVuIGFuZCBhbHdheXMga25vdyB0aGUgc3RhdHVzIG9mIG91ciBjb2RlYmFzZS4gU28sIHdlIGhhdmUgYSBsaXZlIHNlcnZlciB3aGljaCB3aWxsIHJ1biB0aGUgbGF0ZXN0IGNvZGViYXNlIGFuZCBhIGNvbnRpbnVvdXMgaW50ZWdyYXRpb24gc2VydmVyIHRvIHRlbGwgdXMgd2hvIHRvIHRoYW5rIGZvciBmaXhpbmcgdGhlIGJ1aWxkLjxiciAvPjx1bD4NCjxsaT5BIGxpdmUgZGVtbyBjYW4gYmUgZm91bmQgYXQ6IDxhIGhyZWY9Imh0dHBzOi8vd3d3LmluZm9ybWF0aW9uY2FyZHJ1YnkuY29tL2ZvcnVtcyIgY2xhc3M9ImV4dGVybmFsTGluayI+aHR0cHM6Ly93d3cuaW5mb3JtYXRpb25jYXJkcnVieS5jb20vZm9ydW1zPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+PC9saT48bGk+VGhlIDxhIGhyZWY9Imh0dHA6Ly9jcnVpc2Vjb250cm9scmIudGhvdWdodHdvcmtzLmNvbS8iIGNsYXNzPSJleHRlcm5hbExpbmsiPmNydWlzZWNvbnRyb2wucmI8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4gc2VydmVyIGNhbiBiZSBmb3VuZCBhdDogPGEgaHJlZj0iaHR0cDovL2NydWlzZWNvbnRyb2wuaW5mb3JtYXRpb25jYXJkcnVieS5jb20iIGNsYXNzPSJleHRlcm5hbExpbmsiPmh0dHA6Ly9jcnVpc2Vjb250cm9sLmluZm9ybWF0aW9uY2FyZHJ1YnkuY29tPHNwYW4gY2xhc3M9ImV4dGVybmFsTGlua0ljb24iPjwvc3Bhbj48L2E+PC9saT4NCjwvdWw+IDxiciAvPk1vcmUgaW1wb3J0YW50bHksIGxldCB1cyBrbm93IHdoYXQgeW91IGxpa2UgYW5kIGV2ZW4gbW9yZSBpbXBvcnRhbnRseSwgd2hhdCB5b3UgZG9uJ3QgbGlrZSEgPGJyIC8+IDxiciAvPjxiPldoZXJlJ3MgdGhlIGNvZGU/PC9iPjxiciAvPlRoZSBjb2RlIHJlc2lkZXMgYXQgPGEgaHJlZj0iaHR0cDovL3d3dy5ydWJ5Zm9yZ2Uub3JnIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5SdWJ5Rm9yZ2U8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4gdW5kZXIgdGhlIHByb2plY3QgPGEgaHJlZj0iaHR0cDovL3J1Ynlmb3JnZS5vcmcvcHJvamVjdHMvaW5mb3JtYXRpb25jYXJkLyIgY2xhc3M9ImV4dGVybmFsTGluayI+SW5mb3JtYXRpb24gQ2FyZDxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPi4gPGJyIC8+IDxiciAvPjxiPkNvZGVQbGV4IGFuZCBSdWJ5Rm9yZ2U8L2I+PGJyIC8+SW4gYnJpbmdpbmcgdG9nZXRoZXIgcGxhdGZvcm1zIGFuZCB0ZWNobm9sb2dpZXMgKGl0J3MgdHJ1bHkgYSBiZWF1dGlmdWwgdGhpbmcpLCB0aGVyZSBhcmUgbmF0dXJhbGx5IG1vcmUgY2hvaWNlcywgaW5jbHVkaW5nIHRoZSBwcm9qZWN0IGhvbWUgZm9yIG9wZW4gc291cmNlIHByb2plY3RzIC0gbmFtZWx5IDxhIGhyZWY9Imh0dHA6Ly93d3cuY29kZXBsZXguY29tIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5Db2RlUGxleDxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPiBhbmQgPGEgaHJlZj0iaHR0cDovL3d3dy5ydWJ5Zm9yZ2Uub3JnIiBjbGFzcz0iZXh0ZXJuYWxMaW5rIj5SdWJ5Rm9yZ2U8c3BhbiBjbGFzcz0iZXh0ZXJuYWxMaW5rSWNvbiI+PC9zcGFuPjwvYT4uICBUaGUgYXBwcm9hY2ggdGhhdCB3ZSd2ZSB0YWtlbiBpcyB0byB1c2UgYm90aC4gIFdlJ2xsIHVzZSBDb2RlUGxleCdzIHdpa2kgYW5kIFJ1YnlGb3JnZSdzIGlzc3VlIHRyYWNrZXIsIG1haWxpbmcgbGlzdCBhbmQgc3VidmVyc2lvbiByZXBvc2l0b3J5IHRvIGhvdXNlIHRoZSBjb2RlYmFzZSBpbiA8YSBocmVmPSJodHRwOi8vc3VidmVyc2lvbi50aWdyaXMub3JnLyIgY2xhc3M9ImV4dGVybmFsTGluayI+c3VidmVyc2lvbjxzcGFuIGNsYXNzPSJleHRlcm5hbExpbmtJY29uIj48L3NwYW4+PC9hPi4gIFdlJ2xsIHRyeSBvdXIgdmVyeSBiZXN0IG5vdCB0byBkdXBsaWNhdGUgaW5mb3JtYXRpb24gYmV0d2VlbiB0aGUgc2l0ZXMgYW5kIG1ha2UgaXQgaW50dWl0aXZlIHdoZXJlIHRvIGZpbmQgdGhpbmdzLiAgV2UnZCBsb3ZlIHRvIGhlYXIgeW91ciBjb21tZW50cyBvciBvcGluaW9ucyBhcyB0byB3aGF0IHlvdSB3b3VsZCBsaWtlIHRvIHNlZSE8YnIgLz4NCjwvZGl2PmRkAgcPZBYGAgEPDxYCHg1EYXRlVGltZVZhbHVlBlCsonpAjckIZGQCAw8PFgQfBAUHam9lcG9vbh8FBS9odHRwOi8vd3d3LmNvZGVwbGV4LmNvbS9zaXRlL3VzZXJzL3ZpZXcvam9lcG9vbmRkAgUPFgIfBAUCMjNkAgsPZBYCAgEPFgQfBAUkVGhlIHdpa2kgcGFnZSAnSG9tZScgZG9lcyBub3QgZXhpc3QuHwNoZAIPDxYCHwNnFggCAQ8PFgQfBQU4aHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1RocmVhZC9MaXN0LmFzcHgfA2hkZAIDDxYCHwNoZAIFDw8WAh8FBWNodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vUmVsZWFzZS9Qcm9qZWN0UmVsZWFzZXMuYXNweD9SZWxlYXNlSWQ9NDM1MiZSYXRlUmV2aWV3PXRydWVkZAIHDw8WAh8FBU1odHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vd2lraS9jb21tZW50cy9hcmNoaXZlL3ZpZXc/dGl0bGU9SG9tZWRkAhEPDxYCHwNoZBYCAgEPZBYCAgEPZBYCZg9kFgYCAQ8WAh8DZ2QCAw8WAh8LZmQCBQ8WAh8DZxYCAgEPDxYCHwUFkAFodHRwczovL3d3dy5jb2RlcGxleC5jb20vc2l0ZS9sb2dpbj9SZWRpcmVjdFVybD1odHRwJTNhJTJmJTJmaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20lMmZXaWtpJTJmVmlldy5hc3B4JTNmRm9jdXNFbGVtZW50JTNkY29tbWVudFRleHRCb3hkZAIHDxYCHgV3aWR0aAUDMTUlFgICAQ8PFgQeCENzc0NsYXNzBTRTdGFuZGFyZFBhZGRpbmcgU2lkZUJhciBSaWdodFNpZGVCYXIgR3JhZGllbnRTaWRlQmFyHgRfIVNCAgJkFgICAQ9kFgYCAQ9kFgJmD2QWAgICD2QWBmYPZBYCAgEPZBYCZg8PFgIfBQVRaHR0cDovL2luZm9ybWF0aW9uY2FyZHJ1YnkuY29kZXBsZXguY29tL1JlbGVhc2UvUHJvamVjdFJlbGVhc2VzLmFzcHgjUmVsZWFzZUZpbGVzZGQCAQ9kFgICAQ9kFgQCAQ9kFgpmDw8WAh8EBTBpbmZvcm1hdGlvbl9jYXJkX2F1dGhlbnRpPHdicj48L3dicj5jYXRpb24gMC4xLjBkZAIBDw8WAh8MBgDA9ukbgMkIZGQCAg8WAh8DaBYCAgEPZBYCZg8WAh4FVmFsdWUFATBkAgMPDxYCHwQFDDI3IGRvd25sb2Fkc2RkAgQPDxYCHwUFU2h0dHA6Ly9pbmZvcm1hdGlvbmNhcmRydWJ5LmNvZGVwbGV4LmNvbS9SZWxlYXNlL1Byb2plY3RSZWxlYXNlcy5hc3B4P1JlbGVhc2VJZD00MzUyZGQCAw8PFgIfA2hkZAICD2QWAgIBD2QWAgIBDw8WAh8FBURodHRwOi8vaW5mb3JtYXRpb25jYXJkcnVieS5jb2RlcGxleC5jb20vUmVsZWFzZS9Qcm9qZWN0UmVsZWFzZXMuYXNweGRkAgMPZBYCZg9kFgJmD2QWAgIBD2QWAgICD2QWBGYPZBYCAgEPZBYGAgIPDxYCHwNoZGQCBA8PFgIfA2hkZAIHDw8WAh8DaGRkAgEPZBYCAgEPZBYKAgEPZBYCAgEPZBYCAgEPDxYCHwQFAjEzZGQCAw9kFgICAQ9kFgICAQ8PFgIfBAUBOGRkAgUPZBYCAgEPZBYCAgEPDxYCHwQFBDEuNjNkZAIHD2QWAgIBD2QWAgIBDw8WAh8EBQEwZGQCCQ9kFgICAQ9kFgICAQ8PFgIfBAUBMGRkAgcPDxYCHwNoZBYCZg9kFgICAw9kFgICAQ9kFgICAQ9kFgICAQ88KwAJAGQCAw8WAh8EBb8DPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPg0KICAgIHZhciBDb2RlUGxleF9TdXJ2ZXlQcm9maWxlID0gbmV3IE9iamVjdCgpOw0KICAgIENvZGVQbGV4X1N1cnZleVByb2ZpbGUuQ29va2llRG9tYWluID0gJy5jb2RlcGxleC5jb20nOw0KICAgIENvZGVQbGV4X1N1cnZleVByb2ZpbGUuRnJlcXVlbmN5ID0gMC4wMDg7DQoJQ29kZVBsZXhfU3VydmV5UHJvZmlsZS5Vc2VDb29raWUgPSB0cnVlOw0KCUNvZGVQbGV4X1N1cnZleVByb2ZpbGUuV2VpZ2h0ID0gMTAwOw0KICAgIENvZGVQbGV4X1N1cnZleVByb2ZpbGUuUGFnZVVybCA9ICcvc2l0ZS9saWJyYXJ5L3N2eS9TaXRlUmVjcnVpdF9UcmFja2VyX3AyNjM4NjM2NS5odG0nDQo8L3NjcmlwdD4NCjxzY3JpcHQgc3JjPSIvc2l0ZS9saWJyYXJ5L3N2eS9icm9rZXIuanMiIHR5cGU9InRleHQvamF2YXNjcmlwdCI+PC9zY3JpcHQ+ZAIEDw8WAh8HBS5odHRwOi8vaTMuY29kZXBsZXguY29tL0ltYWdlcy92MTQ4MDYvYmxhbmsucG5nFgIeBm9ubG9hZAUZc2VsZi5sb2dvSW1hZ2VMb2FkZWQ9dHJ1ZWQYAQUeX19Db250cm9sc1JlcXVpcmVQb3N0QmFja0tleV9fFgIFO2N0bDAwJGN0bDAwJE1hc3RlckNvbnRlbnQkUHJvamVjdFNlYXJjaENvbnRyb2wkU2VhcmNoQnV0dG9uBUNjdGwwMCRjdGwwMCRNYXN0ZXJDb250ZW50JFN1YlRhYk1lbnUkc2VhcmNoV2lraUNvbnRyb2wkU2VhcmNoQnV0dG9uLSRO8Z8eHYBDHw6RcanAvTmo7kc=" />
+
+
+<script type="text/javascript">
+//<![CDATA[
+function AddCommentWithAjaxPostback(){
+__doPostBack('ctl00$ctl00$MasterContent$Content$commentsControl$addCommentButton','')
+}
+ 
+            function WikiSearchButton_Click(input){
+                var textbox=$get('ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl_searchTextBox');
+                if(textbox&&!textbox.dirty){
+                    textbox.value='';
+                    return false;
+                }
+            }//]]>
+</script>
+
+<script src="/ScriptResource.axd?d=6VVu5Ke4gBJTR09B2ii6TcP9WU4C51KA7EKFP-uUxurdD8cvCE7hOM7T4vidb0EgMPfYb_iGrhDLi9oTWyCBTQxA7zEBXPtN5lJ85SGBDkA1&amp;t=ffffffff8e174df2" type="text/javascript"></script>
+<script src="http://i1.codeplex.com/scripts/v14806/i32766/ScriptLoader.ashx" type="text/javascript"></script>
+<script src="http://i1.codeplex.com/scripts/v14806/i1/ScriptLoader.ashx" type="text/javascript"></script>
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWCwKiyM24CgLYp/iUDgKD35z6DQKGwZOLDQKLnYSGDwKslafNDwKd07TTAwK35rvtDwKny47JDwLZ+qnkBwLgxqCFDaKo1ecRmSKq7SfT/AN4PaOKxJxC" />
+    
+    <table id="CanvasTable" cellpadding=0 cellspacing=0>
+        <tr valign="top">
+            <td>
+                <div id="Canvas">
+                    <div id="CanvasContent">
+                        
+    <div id="ProjectHeader">
+        <table class="FullWidth" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td class="FullWidth" valign="bottom">
+                    <div class="ProjectLogoLeft">
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td style="height:90px;" valign="middle">
+                                    <div style="padding-left: 1.1em; padding-top: 1.1em; padding-bottom:.8em;">
+                                        
+                                        
+<div class="ProjectTitleControl HalfMarginBottom">
+    <a id="ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectTitleLink" href="http://informationcardruby.codeplex.com/"><img id="ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectLogo" src="http://download.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=informationcardruby&amp;DownloadId=12468&amp;Build=14806" border="0" /></a>
+    <a id="ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectTitleLink1" href="http://informationcardruby.codeplex.com/"><h1 id="ctl00_ctl00_MasterContent_ProjectTitleControl1_ProjectHeader" class="ProjectHeader NoMargin">
+            
+        </h1></a>
+</div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>    
+                </td>
+                <td valign="top">
+                    <div class="ProjectLogoRight" onmouseover="this.style.cursor = 'hand';" onmouseout="this.style.cursor = 'default';">
+                        <div class="LogoLinkOuter">
+                            <a href='http://www.codeplex.com' class="LogoLink" title="CodePlex Home"><div class="LogoLinkInner">CodePlex Home</div></a>
+                        </div>
+                    </div>
+                </td>
+                <td valign="top" class="StandardPaddingTop SiteHeaderProjectRight" style="padding-right: 1.7em; padding-left: .1em">
+                    
+        <div class="NoWrap ProjectSignInControl">
+            <a href="https://www.codeplex.com/site/register" id="registerLink" class="ZoomFix">Register</a>
+            <span class="VerticalBarTop ZoomFix">|</span>
+            <a href="https://www.codeplex.com/site/login?RedirectUrl=http%3a%2f%2fwww.codeplex.com%2fWiki%2fView.aspx%3fProjectName%3dinformationcardruby" id="signInLink" class="ZoomFix">Sign In</a>
+            <span class="VerticalBarTop ZoomFix">|</span>
+            <a class="ZoomFix" href='http://www.codeplex.com'>CodePlex Home</a>
+        </div>
+    
+                    <div style="margin-top: .5em;">
+                        <div id="ctl00_ctl00_MasterContent_ProjectSearchControl_ProjectSearchPanel" class="ProjectSearchPanel NoWrap">
+	
+    <script type="text/javascript">
+        function ProjectSearchButton_Click(input) {
+            suppressUnsavedData();
+            
+            var textbox=$get('ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox');
+            if(textbox&&!textbox.dirty){
+                textbox.value='';
+// Uncomment to prevent empty searches
+//                return false;
+            }
+        }
+    </script>
+    <div class="ProjectSearchPanel">
+        <input name="ctl00$ctl00$MasterContent$ProjectSearchControl$SearchTextBox" type="text" maxlength="500" id="ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox" class="SingleLineTextBox ProjectSearchTextBox" />
+        <input type="image" name="ctl00$ctl00$MasterContent$ProjectSearchControl$SearchButton" id="ctl00_ctl00_MasterContent_ProjectSearchControl_SearchButton" class="ProjectSearchButton" onmouseover="javascript:this.src='http://i3.codeplex.com/Images/v14806/search-button-on.gif';" onmouseout="javascript:this.src='http://i3.codeplex.com/Images/v14806/search-button-off.gif';" src="http://i3.codeplex.com/Images/v14806/search-button-off.gif" alt="Search" onclick="return ProjectSearchButton_Click(this);" border="0" />
+        
+        
+    </div>
+
+</div>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="ProjectBody" class="SiteContent">
+        <div id="ProjectDetailsDiv">
+            
+
+<script type="text/javascript">
+    function VerifyProjectDeletion()
+    {
+        var result = confirm("Are you sure you want to delete this project?  You will not be able to recover it later");
+        if (result)
+            ShowUpdatingPanel();
+        else
+            allowUnsavedDataAlert();
+        return result;
+    }
+    function ShowPublishPanel()
+    {
+        ShowUpdatingPanel();
+    }
+    function ShowUpdatingPanel()
+    {
+        var publishButton=$get('ctl00_ctl00_MasterContent_ProjectCountdown_PublishProject_PublishButton');
+        var deleteButton=$get('ctl00_ctl00_MasterContent_ProjectCountdown_PublishProject_DeleteButton');
+
+        setTimeout(function() { CodePlex.UpdateProgress.displayPanelAndDisableControls('Updating...', publishButton, deleteButton) }, 1);
+    }
+</script>
+<div class="ClearBoth"></div>
+<div class="StandardPaddingBottom">
+
+
+</div>
+
+            
+
+        </div>
+            
+        <table class="SiteContentTable" cellspacing="0" cellpadding="0">
+            <tr valign="top">
+               <td class="MainContent">
+                    <div class="MainContentMinWidthContent">
+                        
+                        
+                        <div id="ctl00_ctl00_MasterContent_ProjectContentPanel" class="ProjectContent">
+	
+                            <div id="MenuDiv">
+                                
+    
+<div class="TabStripNew">
+    <table cellpadding="0" cellspacing="0" border="0" class="FullWidth">
+        <tr>
+            <td id="ctl00_ctl00_MasterContent_Tabs_homeTabCell" class="Tab ActiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_homeTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/"><div class="TabPadding">Home</div></a>
+            </td>
+	
+            <td id="ctl00_ctl00_MasterContent_Tabs_releasesTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_releasesTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=4352"><div class="TabPadding">Releases</div></a>
+            </td>
+	
+            
+            <td id="ctl00_ctl00_MasterContent_Tabs_workItemsTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_workItemsTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/WorkItem/List.aspx"><div class="TabPadding">Issue Tracker</div></a>
+            </td>
+	
+            <td id="ctl00_ctl00_MasterContent_Tabs_sourceTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_sourceTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/SourceControl/ListDownloadableCommits.aspx"><div class="TabPadding">Source Code</div></a>
+            </td>
+	
+            <td id="ctl00_ctl00_MasterContent_Tabs_statsTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_statsTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/stats"><div class="TabPadding">Stats</div></a>
+            </td>
+	
+            <td id="ctl00_ctl00_MasterContent_Tabs_peopleTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_peopleTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/People/ProjectPeople.aspx"><div class="TabPadding">People</div></a>
+            </td>
+	
+            <td id="ctl00_ctl00_MasterContent_Tabs_licenseTabCell" class="Tab InactiveTabNew">
+                <a id="ctl00_ctl00_MasterContent_Tabs_licenseTab" class="TabLinkNew" href="http://informationcardruby.codeplex.com/license"><div class="TabPadding">License</div></a>
+            </td>
+	
+            <td class="FullWidth LastTabNew" nowrap="nowrap">
+                <style id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_ProjectDirectoryStyles" type="text/css">
+        .FF .RightMarginFix{
+            margin-right: 1px;
+        }
+        .HoverPanel{
+            position: absolute; 
+            display: none;
+            z-index: 3; 
+        }
+        .IE .HoverPanel{
+            margin-left: -1px;
+        }
+        .IE7 HoverPanel{
+            margin-top: 1px;
+        }
+        .IE6 .HoverPanel .Content{
+	        margin-top: -13px;
+        }
+        .LeftHoverWidth{
+            width: 16.4em;
+        }
+        .HoverClosePanel{
+            width: 4em;
+            position: absolute; 
+            right: 2em;
+            top: -1.9em;
+            z-index: 1;
+        }
+        .HoverClosePanel .RoundedContent{
+            min-height: 2em;
+            height: 2em;
+        }
+        .HoverContentPanel{
+            position:relative;
+            z-index: 2;
+        }
+        .MockPanelBorder{
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+        .IE6 .SiteContentTable{
+            table-layout:fixed;
+        }
+</style>
+    
+<script type="text/javascript">
+        function setMaxHeight(divName, bottomPixelPadding){
+            var constraindiv = $get(divName);
+            var divpoint = CodePlex.UI.getElementPosition(constraindiv);
+            var maxHeight = $get('Canvas').offsetHeight - divpoint.y - bottomPixelPadding;
+            var scrollHeight = constraindiv.scrollHeight;
+            constraindiv.style.height = (scrollHeight > maxHeight) ? maxHeight + 'px' : 'auto';
+        }
+        function placeHover(linkname, hovername) {
+            var link = $get(linkname);
+            var hoverdiv = $get(hovername);
+            var point = CodePlex.UI.getElementPosition(link);
+            hoverdiv.style.left = (point.x - 135) + 'px';
+            hoverdiv.style.top = (point.y - 7) + 'px';
+            hoverdiv.style.display = 'block';
+            
+        }
+        function closeHover(hovername) {
+            $get(hovername).style.display = '';
+        }
+        function closeHovers() {
+            $get('rssHoverDiv').style.display = '';
+        }
+</script>
+    
+<div id="rssHoverDiv" class="HoverPanel LeftHoverWidth AlignLeft">
+        <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel" class="ContentPanelBox SideBarControl HoverContentPanel" style="">
+		<div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_headerPanel" class="HeaderPanel Header">
+			
+    
+                <div class="StandardPaddingBottom">
+                    <div style="float:right">
+                        <a href="#" onclick="allowUnsavedDataAlert();closeHover('rssHoverDiv'); return false;">Close</a>
+                    </div>
+                    <div style="float:left" onclick="allowUnsavedDataAlert();closeHover('rssHoverDiv');">
+                        <a href="#" onclick="return false;"><img id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ArrowDownImg3" src="http://i3.codeplex.com/Images/v14806/arrow_dsc_green.gif" height="9" width="9" border="0" /></a>
+                        <a href="#" onclick="return false;">RSS</a>
+                        <img id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_rssFeedImageHover" hspace="5" src="http://i3.codeplex.com/Images/v14806/icon_rss.gif" alt="RSS Feed" border="0" style="border: 0px; vertical-align: bottom;" />
+                    </div>
+                    <div class="ClearBoth"></div>
+                </div>
+           
+
+		</div><div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_contentPanel" class="StandardPadding">
+			
+    
+           <ul id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_FeedsPanel" class="RssFeedsPanel">
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ProjectPanel">
+				
+                <li>
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ProjectRssLink" title="All Project Updates" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx">All Project Updates</a>
+                </li>
+            
+			</div>
+            
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_IssueTrackerPanel">
+				
+                <li>    
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_IssueTrackerRssLink" title="New and updated work items" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fworkitem%2finformationcardruby">Issue Tracker</a>
+                </li>
+            
+			</div>
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReleasesPanel">
+				
+                <li>
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReleasesRssLink" title="New and updated releases" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2frelease%2finformationcardruby">Releases</a>
+                </li>
+            
+			</div>  
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReviewsPanel">
+				
+                <li>
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_ReviewsRssLink" title="New and updated reviews" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2freview%2finformationcardruby">Reviews</a>
+                </li>
+            
+			</div>          
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_SourceControlPanel">
+				
+                <li>
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_SourceControlRssLink" title="New check-ins" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fsourcecontrol%2finformationcardruby">Source Code</a>
+                </li>
+            
+			</div>
+            <div id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_WikiPanel">
+				
+                <li>
+                    <a id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_RssHoverContentPanel_WikiRssLink" title="New and updated wiki pages" class="ArrowSmall NoUnderline" href="http://informationcardruby.codeplex.com/Project/ProjectRss.aspx?ProjectRSSFeed=codeplex%3a%2f%2fwiki%2finformationcardruby">Wiki</a>
+                </li>
+            
+			</div>
+        </ul>
+           
+
+		</div>
+	</div>  
+</div>
+    
+<div class="StandardPaddingBottom">
+    <span  id="rssHoverLink" onclick="closeHovers();placeHover('rssHoverLink', 'rssHoverDiv');suppressUnsavedData();">
+    <span id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_FeedsLabel"><img id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_rssRightArrow" title="RSS Feed" src="http://i3.codeplex.com/Images/v14806/arrow_right_green.gif" align="absmiddle" border="0" />
+        <a href="#" onclick="return false;">RSS</a>
+        <img id="ctl00_ctl00_MasterContent_Tabs_rssFeeds_rssFeedImage" hspace="5" src="http://i3.codeplex.com/Images/v14806/icon_rss.gif" alt="RSS Feed" border="0" style="border: 0px; vertical-align:bottom; " /></span>
+    </span>
+</div>
+    
+        
+
+            </td>
+        </tr>
+    </table>
+</div>
+                                
+    <table cellpadding="0" cellspacing="0" style="width: 100%">
+            <tr id="wikiTop" width="100%">
+            <td align="left" nowrap="nowrap">
+                <div id="ctl00_ctl00_MasterContent_SubTabMenu_wikiLinksPanel">
+		
+                    
+                    
+                    <a id="ctl00_ctl00_MasterContent_SubTabMenu_CommentsHyperLink" onclick="return setWikiCommentTextBoxFocus();" href="http://informationcardruby.codeplex.com/wiki/comments/view?title=Home">View All Comments</a>
+                    <span id="ctl00_ctl00_MasterContent_SubTabMenu_CommentsPipe">|</span>
+                    <a id="ctl00_ctl00_MasterContent_SubTabMenu_printerFriendlyHyperLink" href="javascript:openPreviewWikiWindow('http://informationcardruby.codeplex.com/Wiki/Print.aspx?title=Home&amp;version=23&amp;action=Print');">Print View</a>
+                    <span id="ctl00_ctl00_MasterContent_SubTabMenu_printerPipe">|</span> 
+                    <a id="ctl00_ctl00_MasterContent_SubTabMenu_pageInfoHyperLink" href="http://informationcardruby.codeplex.com/Wiki/Info.aspx?title=Home&amp;action=Info">Page Info</a>
+                    <span id="ctl00_ctl00_MasterContent_SubTabMenu_changesPipe">|</span> 
+                    <a id="ctl00_ctl00_MasterContent_SubTabMenu_changesHyperlink" href="http://informationcardruby.codeplex.com/Wiki/Recent.aspx">Change History (all pages)</a>
+                
+	</div>
+            </td>
+            <td align="right" class="NoWrap StandardPadding">
+                <span id="ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl"><div id="ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl_searchPanel" class="SearchWikiControl">
+		<input name="ctl00$ctl00$MasterContent$SubTabMenu$searchWikiControl$searchTextBox" type="text" maxlength="500" id="ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl_searchTextBox" class="SingleLineTextBox ProjectSearchTextBox WikiSearchTextBox" /><input type="image" name="ctl00$ctl00$MasterContent$SubTabMenu$searchWikiControl$SearchButton" id="ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl_SearchButton" class="SecondarySearchButton" onmouseover="javascript:this.src='http://i3.codeplex.com/Images/v14806/go-on.gif';" onmouseout="javascript:this.src='http://i3.codeplex.com/Images/v14806/go-off.gif';" src="http://i3.codeplex.com/Images/v14806/go-off.gif" alt="Search" align="top" onclick="WikiSearchButton_Click(this);" border="0" />
+	</div></span>
+            </td>
+        </tr>
+    </table>
+
+                            </div>
+                            <table cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td valign="top" >
+                                        <div id="ctl00_ctl00_MasterContent_ContentPanel" class="Content">
+		
+                                            
+ 
+
+    <input name="ctl00$ctl00$MasterContent$Content$ReferringTitleHidden" type="hidden" id="ctl00_ctl00_MasterContent_Content_ReferringTitleHidden" value="Home" />
+
+    <div class="WikiHolder">
+        
+                <div id="WikiBreadCrumbs" class="breadcrumbs">
+            
+                    <a href="http://informationcardruby.codeplex.com/Wiki/View.aspx">Home</a>
+            
+                </div>
+            
+
+        
+        <div id="ctl00_ctl00_MasterContent_Content_WikiContent" class="WikiContent">
+            <span id="ctl00_ctl00_MasterContent_Content_wikiSourceLabel"><div class="wikidoc">
+<h2>
+Project Home Page
+</h2>For everything Information Card Ruby, visit <a href="http://www.informationcardruby.com" class="externalLink">http://www.informationcardruby.com<span class="externalLinkIcon"></span></a><br /> <br /><b>What is Information Card Ruby?</b><br />Information Card <a href="http://www.ruby-lang.org/en/" class="externalLink">Ruby<span class="externalLinkIcon"></span></a> provides a <a href="http://wiki.rubyonrails.org/rails/pages/Plugins" class="externalLink">rails plugin<span class="externalLinkIcon"></span></a>  and supporting library for integrating <a href="http://informationcardruby.codeplex.com/Wiki/View.aspx?title=Personal%20Card&amp;referringTitle=Home">personal information cards</a> to your <a href="http://www.rubyonrails.org/" class="externalLink">Ruby on Rails<span class="externalLinkIcon"></span></a> relying party web application.  In the Identity Metasystem, an application that requests and consumes digital identities about an individual is called a relying party.  As we develop and learn from this project, Information Card Ruby will generate a developer guideline for integrating information cards to your rails website, much in the spirit of <a href="http://cardspace.netfx3.com/files/folders/samples_rc_1/entry6000.aspx" class="externalLink"> Accepting Information Cards to your ASP.NET site<span class="externalLinkIcon"></span></a> - if we have done the plugin right, this guideline will be short and sweet.<br /> <br /><b>Project Contributors</b><br />Information Card Ruby is an open source collaboration project driven by: <br /><a href="http://www.microsoft.com" class="externalLink">Microsoft<span class="externalLinkIcon"></span></a> and <a href="http://www.thoughtworks.com" class="externalLink">ThoughtWorks<span class="externalLinkIcon"></span></a>.<br /> <br /><table>
+<tr>
+<th><img src="http://i3.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=informationcardruby&amp;DownloadId=12470" alt="microsoft.gif" />  </th><th> <img src="http://i3.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=informationcardruby&amp;DownloadId=12471" alt="thoughtworks.png" /> </th>
+</tr><tr>
+<td>Microsoft is the project sponsor and being <a href="http://cardspace.netfx3.com/" class="externalLink">CardSpace experts<span class="externalLinkIcon"></span></a>, provides architectural guidance and best practices in the Identity MetaSystem.</td><td> ThoughtWorks is actively involved in some of the world's <a href="http://www.thoughtworks.com/ruby.html" class="externalLink">leading Ruby projects<span class="externalLinkIcon"></span></a> and is excited to be driving the development on Information Card Ruby.</td>
+</tr>
+</table> <br /><b>What is CardSpace?</b><br />In the Identity Metasystem, there are several players including the <i>user</i>, the <i>identity selector</i> and the <i>relying party</i>.  This project allows a <i>relying party</i> (your website) to accept and process information cards from a <i>user</i>.    <br /> <br />From <a href="http://cardspace.netfx3.com/" class="externalLink">http://cardspace.netfx3.com/<span class="externalLinkIcon"></span></a> <br />&quot;Windows CardSpace is a piece of client software that enables users to provide their digital identity to online services in a simple, secure and trusted way. It is what is known as an <i>identity selector</i>:  when a user – or subject – needs to authenticate to a website or a web service, CardSpace pops up a special security-hardened UI with a set of “cards”  for the user to choose from. Each card has some identity data associated with it – though this is not actually stored in the card – and has been given to the user by an identity provider such as their bank, employer or government. In fact, the user can also act as an identity provider – this is essentially what we do every time we register at a website. The CardSpace UI enables users to create Personal cards and associate a limited set of identity data. When the user chooses a card, a request in the form of a web service call goes to the relevant provider, and a signed and encrypted security token is returned containing the required information (e.g. credit limit, employer’s name and address, or perhaps a social security number). The user, in control of the flow of information at all times, then decides whether to release this information to the requesting online service. If the user approves then the token is sent on to this <i>relying party</i> where the token is processed and the user is authenticated.&quot;<br /> <br /><b>Open Standards</b><br />The Information Card model is built on open, <a href="http://www.microsoft.com/interop/osp/default.mspx" class="externalLink">interoperable communication standards<span class="externalLinkIcon"></span></a>  that have been implemented on Windows and other platforms.  Case in point, the relying party can be implemented in Ruby on Rails (that's us!).  For more information on interoperability, take a look at the <a href="http://download.microsoft.com/download/1/1/a/11ac6505-e4c0-4e05-987c-6f1d31855cd2/Identity-Selector-Interop-Profile-v1.pdf" class="externalLink">Identity Selector Interoperability Profile<span class="externalLinkIcon"></span></a>.<br /> <br /><b>The General Idea</b><br />Lost in the Identity Metasystem? Need more information on information cards? No worries! Below is a diagram of a typical scenario to set your mental context - here, we have our star user Molly who would like to login into your rails application with her personal information card.  Note that this diagram is ultra simple and by no means correct - luckily for you, we have the good folks at Microsoft to provide us with the proper guidance at <a href="http://cardspace.netfx3.com/" class="externalLink">cardspace.netfx.com<span class="externalLinkIcon"></span></a>.<br /> <br /><img src="http://i3.codeplex.com/Project/Download/FileDownload.aspx?ProjectName=informationcardruby&amp;DownloadId=12483" alt="flow_small.png" /><br />Squinting? To view a larger image, click here: <a href="http://informationcardruby.codeplex.com/Wiki/View.aspx?title=The%20General%20Idea&amp;referringTitle=Home">The General Idea</a><br /> <br /><b>User Scenarios</b><br />To get started, we have identified stories and tasks.  To help you get a feel for what we are working on, some are listed below:<br /> <br />As a user, I would like to:<br /><ul>
+<li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=462">Register for an account with an information card</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=461">Login with an information card</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=468">Associate an information card with his/her existing account</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=445">Recover a lost information card</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=463">Manage information cards associated with an account</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=464">Login with a conventional username &amp; password</a></li>
+</ul> <br /><b>Design goals</b><br /><ul>
+<li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=447">Provide a plugin to provide out-of-the-box information card authentication</a></li><li><a href="http://informationcardruby.codeplex.com/WorkItem/View.aspx?WorkItemId=450">Provide documentation as to how to incorporate information cards to your website</a> </li><li>Provide a well tested plugin that so that fellow developers using it can sleep at night and stay up late at night contributing to it.</li><li>Simplicity.  From <a href="http://safari.oreilly.com/0321483510" class="externalLink">James Adams<span class="externalLinkIcon"></span></a> on rails plugins, &quot;It was the small mammals who survived when the the dinosaurs died out.&quot;</li><li>Extract, don't expect it.  To achieve this simplicity that James describes, we're not going to start by building a plugin to handle every conceivable cardspace scenario.  Instead, we will first spike an application to authenticate personal information cards - we'll learn from it, immerse in it, be at one with the information card and then from there, extract out what makes sense.  Afterall, every piece of code just wants to have a purpose.</li>
+</ul> <br /><b>Scope</b><br />To keep things simple, Information Card Ruby will only address <a href="http://informationcardruby.codeplex.com/Wiki/View.aspx?title=Personal%20Card&amp;referringTitle=Home">personal information cards</a> and SAML security tokens, as generated by Windows CardSpace. <br /> <br /><b>Technical Notes</b><br />To use cardspace with your rails application, you need the following:<br /><ul>
+<li>SSL: The Windows CardSpace Identity Selector requires an SSL channel. To setup a Ruby on Rails website configured over HTTPS, an option is to setup an Apache SSL virtual host which proxies requests to your mongrel server or cluster.</li><li><a href="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx" class="externalLink">Internet Explorer 7<span class="externalLinkIcon"></span></a> (or FireFox with Cardspace plugin)</li><li>Windows Vista or Windows XP with <a href="http://www.netfx3.com/" class="externalLink">.NET 3.0 Framework<span class="externalLinkIcon"></span></a></li><li>MySQL: This project will use MySQL as the underlying database.</li>
+</ul> <br /><b>Feedback</b><br />We believe in short feedback loops.  We want to deploy often and always know the status of our codebase. So, we have a live server which will run the latest codebase and a continuous integration server to tell us who to thank for fixing the build.<br /><ul>
+<li>A live demo can be found at: <a href="https://www.informationcardruby.com/forums" class="externalLink">https://www.informationcardruby.com/forums<span class="externalLinkIcon"></span></a></li><li>The <a href="http://cruisecontrolrb.thoughtworks.com/" class="externalLink">cruisecontrol.rb<span class="externalLinkIcon"></span></a> server can be found at: <a href="http://cruisecontrol.informationcardruby.com" class="externalLink">http://cruisecontrol.informationcardruby.com<span class="externalLinkIcon"></span></a></li>
+</ul> <br />More importantly, let us know what you like and even more importantly, what you don't like! <br /> <br /><b>Where's the code?</b><br />The code resides at <a href="http://www.rubyforge.org" class="externalLink">RubyForge<span class="externalLinkIcon"></span></a> under the project <a href="http://rubyforge.org/projects/informationcard/" class="externalLink">Information Card<span class="externalLinkIcon"></span></a>. <br /> <br /><b>CodePlex and RubyForge</b><br />In bringing together platforms and technologies (it's truly a beautiful thing), there are naturally more choices, including the project home for open source projects - namely <a href="http://www.codeplex.com" class="externalLink">CodePlex<span class="externalLinkIcon"></span></a> and <a href="http://www.rubyforge.org" class="externalLink">RubyForge<span class="externalLinkIcon"></span></a>.  The approach that we've taken is to use both.  We'll use CodePlex's wiki and RubyForge's issue tracker, mailing list and subversion repository to house the codebase in <a href="http://subversion.tigris.org/" class="externalLink">subversion<span class="externalLinkIcon"></span></a>.  We'll try our very best not to duplicate information between the sites and make it intuitive where to find things.  We'd love to hear your comments or opinions as to what you would like to see!<br />
+</div></span>
+        </div>
+         
+        <div id="WikiInfo" class="wikiSource"  >
+            <div id="ctl00_ctl00_MasterContent_Content_editedInfoPanel">
+			
+                <span class="SubText">
+                    Last edited <span class="smartDate" LocalTimeTicks="1183706669" id="ctl00_ctl00_MasterContent_Content_wikiEditDateLiteral">Jul 6 2007 at 12:24 AM<abbr></abbr></span>&nbsp;by&nbsp;<a id="ctl00_ctl00_MasterContent_Content_wikiEditByLink" href="http://www.codeplex.com/site/users/view/joepoon">joepoon</a>, version 23
+                </span>
+            
+		</div>
+            
+            
+            
+        </div>
+        
+        <div id="Comments">
+            <div id="ctl00_ctl00_MasterContent_Content_CommentsNotification">
+            <p>  
+                    <div style="height:.1em;background:#b6b6b6;width:19.2em;line-height:.1em">&nbsp;</div>
+                </p>
+                <p>
+                    Want to leave feedback?<br />
+                    Please use   <a id="ctl00_ctl00_MasterContent_Content_ReviewsLink" href="http://informationcardruby.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=4352&amp;RateReview=true">Reviews</a> instead.
+                </p>
+                <p>
+                    
+                </p>
+            </div>
+            
+        </div>
+    </div>
+
+                                        
+	</div>
+                                    </td>
+                                    <td id="ctl00_ctl00_MasterContent_RightSideBarCell" valign="top" width="15%">
+                                        <div id="ctl00_ctl00_MasterContent_RightSideBarPanel" class="StandardPadding SideBar RightSideBar GradientSideBar">
+		
+                                            
+        <div id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar" class="ContentPanelBox SideBarControl CurrentReleaseBackground" style="">
+			<div id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_headerPanel" class="Header StandardPaddingBottom ">
+				
+    
+        <script type="text/javascript">
+            function ShowLicenseModalPopup() {
+                var height = 430;
+                if (CodePlex.UI.isFF) height = 450;
+                $('#LicenseAgreePanel').dialog({
+                    dialogClass: 'LicensePanel',
+                    modal: true,
+                    height: height/12+'em',
+                    width: '58em',
+                    overlay: { background: 'black', opacity: .4 },
+                    open: function() { $('#LicenseAgreePanel').show().focus(); }
+                });
+                return false;
+            }
+            function submitDownloadFile() { 
+                $('#LicenseAgreePanel').hide().dialog('close').appendTo('#LicenseSubmitArea');
+                __doPostBack('ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$AgreeButton','')
+            }  
+        </script>
+        <h2><a id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_downloadsLink" href="http://informationcardruby.codeplex.com/Release/ProjectReleases.aspx#ReleaseFiles">Downloads</a></h2>
+        
+            <br />Current release:
+        
+    
+
+			</div><div id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_contentPanel" class="Content">
+				
+    
+             <div id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_ReleasePanel">
+					
+            <div><span id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseTitleLabel">information_card_authenti<wbr></wbr>cation 0.1.0</span></div>
+            <div>
+                <div><span class="smartDate full" LocalTimeTicks="1182261600" id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseDateLiteral">Tue Jun 19 2007 at 7:00 AM<abbr></abbr></span>&nbsp;<img id="DevelopmentStatusHelpIcon" src='http://i3.codeplex.com/Images/v14806/HelpIcon.gif' style='display: none;' alt='' title='' /></div>
+                
+                <div><span id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_downloadsAndReviewsLabel">27 downloads</span></div>
+                <div><a id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_releaseLink" href="http://informationcardruby.codeplex.com/Release/ProjectReleases.aspx?ReleaseId=4352">More info</a></div>
+            </div>
+               
+            
+
+                                    
+        
+				</div>
+            
+            
+        <div ID="LicenseAgreePanel" style="display:none;" title="To download the file you must agree to the following license.">
+            <div class="Body">
+                <textarea name="ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$LicenceText" rows="20" cols="20" readonly="readonly" id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_LicenceText" class="CommentBox"></textarea>
+            </div>
+            <div class="Buttons">
+                <input type="submit" name="ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$AgreeButton" value="I Agree" onclick="submitDownloadFile();return false;" id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_AgreeButton" class="DefaultButton" />
+                <input type="submit" name="ctl00$ctl00$MasterContent$RightSideBar$CurrentRelease$Sidebar$DisagreeButton" value="I Disagree" onclick="$('#LicenseAgreePanel').dialog('close');" id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_DisagreeButton" class="Button" />
+            </div>
+        </div>
+        
+    
+
+			</div><div id="ctl00_ctl00_MasterContent_RightSideBar_CurrentRelease_Sidebar_footerPanel" class="Footer">
+				
+    
+        <div class="ClearBoth"></div>
+        
+        
+
+			</div>
+		</div>
+    
+        <div id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_ActivityUpdatePanel">
+			
+        <div id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar" class="ContentPanelBox SideBarControl" style="">
+				<div id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_headerPanel" class="Header StandardPaddingBottom">
+					
+    
+                <div class="FloatLeft"><h2>Activity</h2></div>
+                <div class="FloatRight" style="vertical-align:bottom;padding-top:.1em;">
+                    <span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_SevenLabel">7</span>
+                    <a id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_ThirtyLink" href="javascript:__doPostBack('ctl00$ctl00$MasterContent$RightSideBar$ProjectActivity$Sidebar$ThirtyLink','')">30</a>
+                    <a id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_AllLink" href="javascript:__doPostBack('ctl00$ctl00$MasterContent$RightSideBar$ProjectActivity$Sidebar$AllLink','')">All</a>
+                    days
+                </div>
+                <div class="ClearBoth"></div>
+            
+
+				</div><div id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_contentPanel" class="ClearBoth">
+					
+    
+                <table cellspacing="0" cellpadding="0" width="100%">
+                    <tr id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_PageViewsRow" class="AlternateBackground">
+						<td><div class="StandardPaddingTop StandardPaddingBottom">Page Views</div></td>
+						<td align="right"><div><span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_pageViews">13</span></div></td>
+					</tr>
+					
+                    <tr id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_VisitsRow" class="StandardBackground">
+						<td><div class="StandardPaddingTop StandardPaddingBottom">Visits</div></td>
+						<td align="right"><div><span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_visits">8</span></div></td>
+					</tr>
+					
+                    <tr id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_PPVistRow" class="AlternateBackground">
+						<td><div class="StandardPaddingTop StandardPaddingBottom">Pages Per Visit</div></td>
+						<td align="right"><div><span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_pagesPerVisit">1.63</span></div></td>
+					</tr>
+					
+                    <tr id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_WIClosedRow" class="StandardBackground">
+						<td><div class="StandardPaddingTop StandardPaddingBottom">Work Items Closed</div></td>
+						<td align="right"><div><span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_workItemsClosed">0</span></div></td>
+					</tr>
+					        
+                    <tr id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_PostsRow" class="AlternateBackground">
+						<td><div class="StandardPaddingTop StandardPaddingBottom">Discussion Posts</div></td>
+						<td align="right"><div><span id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_forumPosts">0</span></div></td>
+					</tr>
+					 
+                </table>    
+            
+
+				</div><div id="ctl00_ctl00_MasterContent_RightSideBar_ProjectActivity_Sidebar_footerPanel" class="Footer">
+					
+    
+                <img src="http://i3.codeplex.com/Images/v14806/WT_logo_180x20.gif" alt="WebTrends" class="StandardMarginTop"/>
+                
+
+				</div>
+			</div>
+    
+		</div>
+
+        
+        
+
+                                        
+	</div>
+                                    </td>
+	
+                                </tr>
+                            </table>
+                        
+</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+                    </div>
+                </div>
+                <div id="UpdateProgressPanel" class="UpdateProgress">
+                    <span id="UpdateProgressText" class="UpdateProgressText">Updating...</span>
+                </div>
+                <div id="Analytics" style="width: 70%">
+                    
+                    <script type="text/javascript">
+    var CodePlex_SurveyProfile = new Object();
+    CodePlex_SurveyProfile.CookieDomain = '.codeplex.com';
+    CodePlex_SurveyProfile.Frequency = 0.008;
+	CodePlex_SurveyProfile.UseCookie = true;
+	CodePlex_SurveyProfile.Weight = 100;
+    CodePlex_SurveyProfile.PageUrl = '/site/library/svy/SiteRecruit_Tracker_p26386365.htm'
+</script>
+<script src="/site/library/svy/broker.js" type="text/javascript"></script>
+                    <noscript>
+                        <img alt="" id="DCSIMG" width="1" height="1" src="http://m.webtrends.com/dcsnbepko00000c1t09pkmw6c_3y7n/njs.gif?dcsuri=/nojavascript&amp;WT.js=No" />
+                    </noscript>
+                    <img id="ctl00_ctl00_BlankImage" onload="self.logoImageLoaded=true" src="http://i3.codeplex.com/Images/v14806/blank.png" height="0" width="0" border="0" />
+                    <script language="javascript" type="text/javascript">
+                        var date = new Date();
+                        var timezoneOffset = date.getTimezoneOffset() / 60 * -1;
+                        var timezoneOffsetCookie = getCookie("TimezoneOffset");
+                        var firstTimeSetTimezoneCookie = false;
+
+                        if (timezoneOffsetCookie == null || timezoneOffsetCookie != timezoneOffset) {
+                            firstTimeSetTimezoneCookie = true;
+                            document.cookie = "TimezoneOffset=" + timezoneOffset + '; domain=.codeplex.com';
+                        }
+                    </script>
+                </div>
+            </td>
+        </tr>
+        <tr valign="bottom">
+            <td>
+                <div id="CanvasFooter">
+                    © 2006-2009 Microsoft
+                    <span class="VerticalBar">|</span>
+                    <a href='http://codeplex.codeplex.com/'>About CodePlex</a>
+                    <span class="VerticalBar">|</span>
+                    <a href='http://privacy.microsoft.com'>Privacy Statement</a>
+                    <span class="VerticalBar">|</span>
+                    <a href='http://www.codeplex.com/Legal/Terms.aspx'>Terms of Use</a>
+                    <span class="VerticalBar">|</span>
+                    <a href='http://www.codeplex.com/Legal/Conduct.aspx'>Code of Conduct</a>
+                    <span class="VerticalBar">|</span>
+                    <a href='http://blogs.msdn.com/CodePlex/'>CodePlex Blog</a>
+                    <span class="VerticalBar">|</span>
+                    Version 2009.3.10.14806
+                </div>
+            </td>
+        </tr>
+    </table>
+     
+
+<script type="text/javascript">
+//<![CDATA[
+new CodePlex.PromptBox('Search all CodePlex projects').initialize('ctl00_ctl00_MasterContent_ProjectSearchControl_SearchTextBox');new CodePlex.PromptBox('Search Wiki').initialize('ctl00_ctl00_MasterContent_SubTabMenu_searchWikiControl_searchTextBox');Sys.Application.initialize();
+//]]>
+</script>
+</form>
+</body>
+</html>

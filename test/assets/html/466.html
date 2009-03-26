@@ -1,0 +1,1123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+	<title>
+			
+				Ruby Community Content on InfoQ
+			
+			
+		</title>
+    
+	
+	<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="copyright" content="&copy; 2006 C4Media" />
+<meta name="author" content="alex[at]c4media[dot]com" />
+
+
+	
+	
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/style.css;jsessionid=24CC539414C0C503E087FD7908833416" />
+    <link rel="stylesheet" type="text/css" media="print" href="/styles/print.css;jsessionid=24CC539414C0C503E087FD7908833416" />
+    <!--[if IE]>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/style-ie.css;jsessionid=24CC539414C0C503E087FD7908833416" />
+    <![endif]-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <script src="/scripts/JSResource_en.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>    
+	<script src="/scripts/commons.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/scripts/ContentSummary.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/scripts/CategoryManagement.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/scripts/__utm.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/dwr/engine.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/dwr/util.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/dwr/interface/UserCategoryUtil.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	<script src="/dwr/interface/DWRRewriteAction.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+	
+	
+		
+		<meta name="keywords" content="Ruby,ruby"/>
+		<meta name="description" content="InfoQ.com (Information Queue) is an independent online community focused on change and innovation in enterprise software development, targeted primarily at the technical architect, technical team lead (senior developer), and project manager. InfoQ serves the Java, .NET, Ruby, SOA, and Agile communities with daily news written by domain experts, articles, video interviews, video conference presentations, and mini-books.  InfoQ offers personalization features allowing you to customize the site and your RSS feed to the specific subset of content you are interested in."/>
+		
+
+</head>
+
+<body > 
+
+
+
+
+
+<script src="/scripts/prototype.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+<script src="/scripts/login.js;jsessionid=24CC539414C0C503E087FD7908833416" type="text/javascript"></script>
+<script type="text/javascript">
+var loginLanguage='en';
+var loginURL='/login.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var registerURL='/reginit.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var reactivateURL='/reactivate.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var reserpasswordURL='/resetpassword.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var loggedIn=false;
+var logoutURL='/logout.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var editUserURL='/edituser.action;jsessionid=24CC539414C0C503E087FD7908833416';
+var aboutURL='/about.jsp;jsessionid=24CC539414C0C503E087FD7908833416';
+var homeURL='/;jsessionid=24CC539414C0C503E087FD7908833416';
+</script>
+<div id="tooltip" style="display:none;"></div>
+<div id="loginWindow" style="display:none;">
+	
+
+
+
+
+<div id="innerLoginWindow" class="popup login-popup" style="display:none; z-index: 25550; position: absolute;">
+		<div class="popup-wrapper">
+			<p class="popup-close"><a href="javascript:void(0);" onclick="javascript:hideLoginWindow();">Close</a></p>
+			<h2>Existing Users:</h2>
+			<div id="loginArea">
+				<div id="loginAreaFields">
+					<form onsubmit="doLogin();return false;" style="margin-bottom: 1px;">
+						<p><label for="username">Email:</label> <input id="username" name="username" style="width: 100%;" type="text"></p>
+						<p><label for="password">Password:</label> <input id="password" name="password" style="width: 100%;" onkeydown="if ((event.which &amp;&amp; event.which == 13)||(event.keyCode &amp;&amp; event.keyCode == 13)){doLogin();return false;} else return true;" type="password"></p>
+						<p><input value="Login" type="submit"></p>
+					</form>	
+				</div>
+				<div id="loginUpperArea" style="display:none;"></div>
+				<div style="display: none; text-align: left;" id="loginMessage"></div>	
+				<h2>New Users:</h2>
+				<p><input value="Register" id="submitButton" onclick="javascript:document.location.href='/reginit.action'" type="button"></p>
+			</div>
+		</div>
+</div>
+</div>
+<div id="tagPopup" style="display:none;"></div>
+<div id="container">
+	<h1 class="logo"><a href="#">InfoQ</a></h1>
+
+	
+
+
+
+
+
+
+
+<div id="header">
+	<p class="skip"><a href="#content">Skip to Content</a></p>
+
+	<div id="quote"><p>Tracking change and innovation in the enterprise software development community</p></div>
+
+	<div style="float: left;width: 29%;position: relative;margin: 0 0 2px 0;padding: 0;">
+		
+
+
+
+
+
+
+<p style="margin:0;padding: 6px 37px 0 0;margin: 0;float: right;">
+	En | <a href="/cn/;jsessionid=24CC539414C0C503E087FD7908833416">中文</a> | <a href="/jp/;jsessionid=24CC539414C0C503E087FD7908833416">日本語</a> | <a href="/br/;jsessionid=24CC539414C0C503E087FD7908833416">Br</a>
+	
+</p>
+<p style="margin: 0;padding: 6px 9px;text-align:left;">
+	<a href="http://www.qconlondon.com" target="_blank">QCon London 3/09</a>
+	
+</p>
+	</div>
+</div>
+
+
+	
+	
+	<div id="sidebar">
+	<div id="sidebar-wrapper">
+		
+
+
+
+
+<div class="s-logo">
+	
+	<p class="r-logo"><a href="/;jsessionid=24CC539414C0C503E087FD7908833416">InfoQ</a></p>
+</div>
+
+
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+<span style="font-size: x-small;#font-size: xx-small;">
+
+    
+    
+345,935 Feb unique visitors
+</span>
+
+
+
+
+		
+		
+
+
+
+
+
+
+	<div class="box-simple">
+		<div class="box-simple-top"></div>
+		<div id="mainLoginArea" class="box-simple-content">
+			
+			
+			<ul>
+	            <li><a href="/reginit.action;jsessionid=24CC539414C0C503E087FD7908833416">Register</a></li>
+			    <li><a href="javascript:void(0)" onClick="javascript:showLoginWindow(this,ALIGN_LEFT,new Function('void(0);'));">Login</a></li>
+	            <li><a href="/about.jsp;jsessionid=24CC539414C0C503E087FD7908833416">About us</a></li>
+	            
+	            
+		        	
+		        		
+		        	
+	   	            <li><a href="/rss/rss.action?token=kTQs5xYqbhbzEhcZSsynHHKdk50lU2nq">Personal feed <img src="/styles/i/btn-rss-blue.gif;jsessionid=24CC539414C0C503E087FD7908833416" alt="RSS Feed" /></a></li>
+				
+			    <li><a href="/;jsessionid=24CC539414C0C503E087FD7908833416">Home</a></li>
+			</ul>
+			
+		</div>
+		<div class="box-simple-bottom"></div>
+	</div>
+
+
+		
+
+
+
+
+
+
+<div id="mainCommunitiesArea" class="box">
+    <h2>Your Communities</h2>
+    <div class="top-corners"><div></div></div>
+    <div class="box-content">
+    <div class="box-content-2">
+    	
+
+
+
+
+<script language="JavaScript">
+var communityChangeMessage = 'Your new preferences will be used starting with the next refresh.';
+</script>	
+
+<div id="communities">
+    <ul>
+	
+		<li><input type="checkbox" name="java" value="true" checked="checked" id="community1" onclick="includeExcludeCommunity(this);"/>
+ <a href='/java/'>Java</a></li>
+	
+		<li><input type="checkbox" name="dotnet" value="true" checked="checked" id="community4" onclick="includeExcludeCommunity(this);"/>
+ <a href='/dotnet/'>.NET</a></li>
+	
+		<li><input type="checkbox" name="ruby" value="true" checked="checked" id="community5" onclick="includeExcludeCommunity(this);"/>
+ <a href='/ruby/'>Ruby</a></li>
+	
+		<li><input type="checkbox" name="soa" value="true" checked="checked" id="community2" onclick="includeExcludeCommunity(this);"/>
+ <a href='/soa/'>SOA</a></li>
+	
+		<li><input type="checkbox" name="agile" value="true" checked="checked" id="community3" onclick="includeExcludeCommunity(this);"/>
+ <a href='/agile/'>Agile</a></li>
+	
+		<li><input type="checkbox" name="architecture" value="true" checked="checked" id="community1389" onclick="includeExcludeCommunity(this);"/>
+ <a href='/architecture/'>Architecture</a></li>
+	
+    </ul>
+</div>
+<div id="communitiesMessage"></div>
+    </div></div>
+    <div class="bottom-corners"><div></div></div>
+</div>
+
+
+
+
+		
+
+
+
+
+
+<script type="text/javascript">
+	function doSearch(){
+		var searchString = document.getElementById("searchId").value;
+		document.getElementById("searchTerm").value =  searchString + " site:www.infoq.com";		
+		document.getElementById("submitForm").submit();
+	}
+	
+	function clearSearchText(){	
+		var searchtext =  document.getElementById("searchId").value
+		if(searchtext==JSResource.search){
+			document.getElementById("searchId").value="";
+		}
+	}
+</script>
+<form action="http://www.google.com/search" method="GET" id="submitForm" target="_blank">
+	<input type="hidden" name="q" id="searchTerm" />
+</form>
+
+	<div style="background: url('/images/bg-search.gif;jsessionid=24CC539414C0C503E087FD7908833416') no-repeat 0 4px;">	
+			<input type="text" name="search" id="searchId" value="Search" style="width: 85%; border: 0px none; background-color: transparent; height: 19px; padding-left:9px; padding-right:9px; padding-top:0; padding-bottom:0" onclick="clearSearchText();" onkeypress="if ((event.which && event.which == 13)||(event.keyCode && event.keyCode == 13)){doSearch();}" onblur="if(this.value=='') this.value=JSResource.search"/>	
+			<a href="#" onclick="doSearch();return false;"><img src="/images/btn-search.gif;jsessionid=24CC539414C0C503E087FD7908833416" alt="Search" /></a> 
+	</div>
+
+		
+
+
+
+
+<div class="box-simple">
+<div class="box-simple-top"></div>
+<div id="featuredTopics" class="box-simple-content">
+	
+
+
+
+
+
+    <h2>Featured Topics</h2>
+    <div>
+		<ul>
+			<li><a href="/collaboration/;jsessionid=24CC539414C0C503E087FD7908833416">Team Collaboration</a></li>
+            <li><hr style="width: 100%; height: 1px; border: 0; color: #C8C8C8; background-color: #C8C8C8;"/></li>            
+            <li><a href="/ria/;jsessionid=24CC539414C0C503E087FD7908833416">RIA/Ajax</a></li>
+            <li><hr style="width: 100%; height: 1px; border: 0; color: #C8C8C8; background-color: #C8C8C8;"/></li>
+            <li><a href="/governance/;jsessionid=24CC539414C0C503E087FD7908833416">SOA Governance</a></li>
+        </ul>
+	</div>
+		
+	
+</div>
+<div class="box-simple-bottom"></div>
+</div>
+		
+		
+		
+		
+		
+			
+
+
+
+
+
+
+
+
+	<div class="box-ekit-left">
+		<div class="box-ekit-title"></div>
+		<p><a href="http://www.infoq.com/vendorcontent/show.action?vcr=496">Open Source SOA</a></p>
+	</div>
+	
+	<div class="box-webinar-left">
+		<div class="box-webinar-title"></div>
+		<!-- div class="box-simple-top"></div>
+		<div class="box-webinar-content"-->
+			<p><a href="http://www.infoq.com/vendorcontent/show.action?vcr=520">Best Practices for Application Performance Management</a></p>
+			<p>Presented by Forrester and dynaTrace</br><b>March 31</b></p>
+		<!-- /div>
+		<div class="box-simple-bottom"></div-->
+	</div>
+
+
+
+
+
+<div class="box-simple">
+	<div class="box-simple-top"></div>
+	<div class="box-simple-content">
+		<p class="banner" id="bannerparagraph">
+			
+
+
+
+
+
+	<a class="towerAdLeft" id="sk-81" href="http://clk.atdmt.com/MRT/go/116704915/direct/01/" onclick="Ads.clickSkyscraper(this, 81 );" target="_blank"><img src="http://view.atdmt.com/MRT/view/116704915/direct/01/"/></a>
+
+
+
+		</p>
+	</div>
+	<div class="box-simple-bottom"></div>
+</div>
+
+
+	<div class="box-simple">
+		<div class="box-simple-top"></div>
+		<div class="box-simple-content adsTower2" id="leftbartextlinks">
+			<div style="width:120px;background:white;">
+				
+
+
+
+
+
+<h3>Sponsored Links</h3>
+
+
+<p>Save 30% &amp;<br/><a id="tl-100" onclick="Ads.clickTextLink(this, 100);" href="http://www.microsoft.com/visualstudio/en-us/howtobuy/vsts-2008-offers.mspx" target="_blank">Upgrade to<br/>Visual Studio</a></p>
+
+
+			</div>
+		</div>
+		<div class="box-simple-bottom"></div>
+	</div>
+
+
+<div class="box-simple">
+	<div class="box-simple-top"></div>
+	<div class="box-simple-content">
+		<p class="banner">
+			<img src="/styles/i/banners/books.gif;jsessionid=24CC539414C0C503E087FD7908833416" usemap="#booksmap" alt="" />
+			<map name="booksmap">
+				<area href="http://www.infoq.com/minibooks/scrum-xp-from-the-trenches" alt="Scrum and XP from the Trenches" title="Scrum and XP from the Trenches" shape=rect coords="0,75,120,100">
+				<area href="http://www.infoq.com/minibooks/starting-struts2" alt="Starting Struts 2" title="Starting Struts 2" shape=rect coords="0,110,120,125">		     	
+				<area href="http://www.infoq.com/minibooks/agile-patterns" alt="Agile Patterns: The Technical Cluster" title="Agile Patterns: The Technical Cluster" shape=rect coords="0,130,120,160">
+				<area href="http://www.infoq.com/minibooks/ruby" alt="Mr. Neighborly's Humble Little Ruby Book" title="Mr. Neighborly's Humble Little Ruby Book" shape=rect coords="0,165,120,205">
+				<area href="http://www.infoq.com/minibooks/grails" alt="Getting Started with Grails" title="Getting Started with Grails" shape=rect coords="0,210,120,235">
+				<area href="http://www.infoq.com/minibooks/domain-driven-design-quickly" alt="Domain Driven Design Quickly" title="Domain Driven Design Quickly" shape=rect coords="0,245,120,270">
+				<area href="http://www.infoq.com/minibooks/scrum-checklists" alt="Scrum Checklists" title="Scrum Checklists" shape=rect coords="0,275,120,290">
+				<area href="http://www.infoq.com/minibooks/enterprise-soa" alt="Enterprise SOA Adoption Strategies" title="Enterprise SOA Adoption Strategies" shape=rect coords="0,300,120,323">
+				<area href="http://www.infoq.com/minibooks/vsnettt" alt="Visual Studio .NET Tips and Tricks" title="Visual Studio .NET Tips and Tricks" shape=rect coords="0,330,120,355">
+				<area href="http://www.infoq.com/minibooks/JTDS" alt="Java Transaction Design Strategies" title="Java Transaction Design Strategies" shape=rect coords="0,365,120,390">
+			</map>
+		</p>
+	</div>
+    <div class="box-simple-bottom"></div>
+</div>
+
+		
+
+		<div class="sidebar-bottom"></div>
+	</div>
+	</div>
+	
+
+	<div id="clearer"></div>
+
+	
+	<div id="content-full">
+	<div id="content-wrapper">
+		
+		
+
+	<!-- box start -->
+	<div class="box">
+	
+		<h2>Community Specific Content View</h2>
+	
+	
+	
+	<div class="top-corners"><div></div></div>
+	<div class="box-content">
+	<div class="box-content-4">
+		<h1>
+			
+				Ruby Community Content on InfoQ
+			
+			
+		</h1>
+		<br/>
+	
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">Latest featured content about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/presentations/Evolving-JVM-Ola-Bini/en/smallimage/Ola.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/presentations/Evolving-JVM-Ola-Bini;jsessionid=24CC539414C0C503E087FD7908833416">Evolving the Java Platform</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/java;jsessionid=24CC539414C0C503E087FD7908833416" name="java" id="1" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Java</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/LanguageDesign;jsessionid=24CC539414C0C503E087FD7908833416" name="LanguageDesign" id="3,886" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Language Design</a>,</dd>
+				
+					<dd><a href="/Language;jsessionid=24CC539414C0C503E087FD7908833416" name="Language" id="3,547" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Language</a></dd>
+				
+			</dl>
+			<p>
+				In this presentation recorded at QCon London 2008, Ola Bini talks about the current status of the JVM regarding languages running on top of it and the need to evolve in order to support dynamic languages.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Ola Bini</strong>
+					
+					on Mar 23, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/presentations/Evolving-JVM-Ola-Bini;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+								1 comment
+							
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+	  </ul>
+	
+
+
+	
+			
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">News about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+			<h1><a href="/news/2009/03/xml-roundup;jsessionid=24CC539414C0C503E087FD7908833416">Ruby XML Roundup: Hpricot 0.7, Stable Libxml-ruby and Nokogiri</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/performance-scalability;jsessionid=24CC539414C0C503E087FD7908833416" name="performance-scalability" id="87" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Performance & Scalability</a></dd>
+				
+			</dl>
+			<p>
+				A few recent software releases have improved Ruby's XML support. After last years release of the Nokogiri XML library, Hpricot 0.7 has now been released with performance improvements. Also, libxml-ruby, which is built on the same XML library as Nokogiri has been released and recently caught up with Nokogiri's speed.
+
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Werner Schuster</strong>
+					
+					on Mar 24, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/news/2009/03/xml-roundup;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+			<h1><a href="/news/2009/03/test-swarm;jsessionid=24CC539414C0C503E087FD7908833416">Crowdsourcing JavaScript Integration Testing with Test Swarm</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/dotnet;jsessionid=24CC539414C0C503E087FD7908833416" name="dotnet" id="4" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">.NET</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a>,</dd>
+				
+					<dd><a href="/java;jsessionid=24CC539414C0C503E087FD7908833416" name="java" id="1" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Java</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/ria;jsessionid=24CC539414C0C503E087FD7908833416" name="ria" id="8" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Rich Internet Apps</a>,</dd>
+				
+					<dd><a href="/javascript;jsessionid=24CC539414C0C503E087FD7908833416" name="javascript" id="255" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Javascript</a></dd>
+				
+			</dl>
+			<p>
+				John Resig creator of the jQuery JavaScript library, has released Test Swarm, a platform for distributed continuous integration testing for client-side JavaScript. Frustrated with traditional JavaScript testing environments that don’t scale, John’s new project, aims to provide a systems for outsourcing browser related testing to large groups of people or communities.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Dionysios G. Synodinos</strong>
+					
+					on Mar 24, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/news/2009/03/test-swarm;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+		 
+			
+			
+			
+		
+		<li style="width:100%;"><a style="float:left;" href="/bycategory/newsbycategory.action;jsessionid=24CC539414C0C503E087FD7908833416?idx=2&amp;alias=ruby" >More news about Ruby &gt;&gt;</a></li>
+	  
+	  </ul>
+	
+
+
+	
+			
+			
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">Articles about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/articles/gregg-pollack-scaling-rails/en/smallimage/Gregg-pollack-1.png;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/articles/gregg-pollack-scaling-rails;jsessionid=24CC539414C0C503E087FD7908833416">Gregg Pollack and the How-To of Scaling Rails</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/rubyonrails;jsessionid=24CC539414C0C503E087FD7908833416" name="rubyonrails" id="177" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby on Rails</a></dd>
+				
+			</dl>
+			<p>
+				Ruby on Rails has done well since its introduction a few years ago but has taken some criticism for not being able to scale. Developers know there is always a right way and a wrong way to solve any problem and scaling Ruby on Rails is no different.  Learn about what is being done to address Ruby on Rails and scaling to the enterprise.  
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Robert Bazinet</strong>
+					
+					on Mar 11, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/articles/gregg-pollack-scaling-rails;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/articles/groovy-1-6/en/smallimage/groovy-logo.png;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/articles/groovy-1-6;jsessionid=24CC539414C0C503E087FD7908833416">What's New in Groovy 1.6</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/java;jsessionid=24CC539414C0C503E087FD7908833416" name="java" id="1" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Java</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/category_announcements;jsessionid=24CC539414C0C503E087FD7908833416" name="category_announcements" id="1,304" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Announcements</a>,</dd>
+				
+					<dd><a href="/dynamic_languages;jsessionid=24CC539414C0C503E087FD7908833416" name="dynamic_languages" id="213" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Dynamic Languages</a></dd>
+				
+			</dl>
+			<p>
+				Groovy project lead writes about Groovy 1.6 changes and improvements, including include performance enhancements, integration of JMX Builder, and OSGi readiness.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Guillaume LaForge</strong>
+					
+					on Feb 27, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/articles/groovy-1-6;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+								19 comments
+							
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+		 
+			
+			
+			
+		
+		<li style="width:100%;"><a style="float:left;" href="/bycategory/contentbycategory.action;jsessionid=24CC539414C0C503E087FD7908833416?idx=2&amp;ct=1&amp;alias=ruby" >More articles about Ruby &gt;&gt;</a></li>
+	  
+	  </ul>
+	
+
+
+	
+			
+			
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">Interviews about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/interviews/todd-halcyon/en/smallimage/MattTodd.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/interviews/todd-halcyon;jsessionid=24CC539414C0C503E087FD7908833416">Matt Todd on Halcyon</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/webframework;jsessionid=24CC539414C0C503E087FD7908833416" name="webframework" id="6" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Web Frameworks</a></dd>
+				
+			</dl>
+			<p>
+				In this interview recorded at RubyFringe, Matt Todd talks about his work on the Halcyon framework and how to stop worrying and simple start implementing ideas, dumb or not. 
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Matt Todd</strong>
+					
+					on Mar 19, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/interviews/todd-halcyon;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/interviews/Testing-Is-Overrated-Luke-Francl/en/smallimage/Luke Francl.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/interviews/Testing-Is-Overrated-Luke-Francl;jsessionid=24CC539414C0C503E087FD7908833416">Luke Francl Explains Why Testing Is Overrated</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/agile;jsessionid=24CC539414C0C503E087FD7908833416" name="agile" id="3" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Agile</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/deliveringquality;jsessionid=24CC539414C0C503E087FD7908833416" name="deliveringquality" id="619" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Delivering Quality</a>,</dd>
+				
+					<dd><a href="/software_testing;jsessionid=24CC539414C0C503E087FD7908833416" name="software_testing" id="277" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Software Testing</a>,</dd>
+				
+					<dd><a href="/Defects;jsessionid=24CC539414C0C503E087FD7908833416" name="Defects" id="4,554" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Defects</a></dd>
+				
+			</dl>
+			<p>
+				In this interview filmed during RubyFringe 2008, Luke Francl explains his position towards testing. While supporting unit testing, he thinks testing is not going to reveal all application defects. Development teams should also practice code reviews and usability tests which are likely to discover bugs not visible though other methods.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Luke Francl</strong>
+					
+					on Feb 18, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/interviews/Testing-Is-Overrated-Luke-Francl;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+		 
+			
+			
+			
+		
+		<li style="width:100%;"><a style="float:left;" href="/bycategory/contentbycategory.action;jsessionid=24CC539414C0C503E087FD7908833416?idx=2&amp;ct=2&amp;alias=ruby" >More interviews about Ruby &gt;&gt;</a></li>
+	  
+	  </ul>
+	
+
+
+	
+			
+			
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">Presentations about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/presentations/straw-yellowpages/en/smallimage/JStraw.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/presentations/straw-yellowpages;jsessionid=24CC539414C0C503E087FD7908833416">YELLOWPAGES.COM: Behind the Curtain</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/architecture;jsessionid=24CC539414C0C503E087FD7908833416" name="architecture" id="1,389" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Architecture</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a>,</dd>
+				
+					<dd><a href="/java;jsessionid=24CC539414C0C503E087FD7908833416" name="java" id="1" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Java</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/performance-scalability;jsessionid=24CC539414C0C503E087FD7908833416" name="performance-scalability" id="87" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Performance & Scalability</a>,</dd>
+				
+					<dd><a href="/rubyonrails;jsessionid=24CC539414C0C503E087FD7908833416" name="rubyonrails" id="177" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby on Rails</a></dd>
+				
+			</dl>
+			<p>
+				This talk explains how YELLOWPAGES.COM, one of the highest-traffic websites in the U.S., was written using Ruby on Rails, how it was scaled to handle the traffic and how the software architecture evolved. Also: the reasons for choosing Ruby on Rails.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>John Straw</strong>
+					
+					on Mar 12, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/presentations/straw-yellowpages;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+								7 comments
+							
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/presentations/Taming-Effect-Simon-Peyton-Jones/en/smallimage/SPJones.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/presentations/Taming-Effect-Simon-Peyton-Jones;jsessionid=24CC539414C0C503E087FD7908833416">Taming Effects with Functional Programming</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/java;jsessionid=24CC539414C0C503E087FD7908833416" name="java" id="1" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Java</a>,</dd>
+				
+					<dd><a href="/dotnet;jsessionid=24CC539414C0C503E087FD7908833416" name="dotnet" id="4" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">.NET</a>,</dd>
+				
+					<dd><a href="/architecture;jsessionid=24CC539414C0C503E087FD7908833416" name="architecture" id="1,389" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Architecture</a>,</dd>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/LanguageDesign;jsessionid=24CC539414C0C503E087FD7908833416" name="LanguageDesign" id="3,886" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Language Design</a>,</dd>
+				
+					<dd><a href="/Language;jsessionid=24CC539414C0C503E087FD7908833416" name="Language" id="3,547" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Language</a>,</dd>
+				
+					<dd><a href="/Programming;jsessionid=24CC539414C0C503E087FD7908833416" name="Programming" id="210" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Programming</a></dd>
+				
+			</dl>
+			<p>
+				In this presentation recorded during QCon London 2008, Simon Peyton-Jones advertises the need for programming purity achieved especially through use of functional languages and the increased attention given to functional programming.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Simon Peyton-Jones</strong>
+					
+					on Mar 09, 2009,
+				</li>
+				
+					<li class="comments">
+						<a href="/presentations/Taming-Effect-Simon-Peyton-Jones;jsessionid=24CC539414C0C503E087FD7908833416"><span>&nbsp;</span>
+							
+							
+								Discuss
+							
+						</a>
+					</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+		 
+			
+			
+			
+		
+		<li style="width:100%;"><a style="float:left;" href="/bycategory/contentbycategory.action;jsessionid=24CC539414C0C503E087FD7908833416?idx=3&amp;ct=5&amp;alias=ruby" >More presentations about Ruby &gt;&gt;</a></li>
+	  
+	  </ul>
+	
+
+
+	
+			
+			
+			
+			<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+
+
+
+
+
+
+	
+	
+	  <h3 class="tag-head" style="clear:both;">Books about Ruby</h3>
+	
+	  
+		<div class="entry" style="clear:both;">
+			
+				
+			
+			
+				<p class="image"><img style="clear:both;display:block;" src="/resource/minibooks/ruby/en/smallimage/rightbar.jpg;jsessionid=24CC539414C0C503E087FD7908833416" alt=""/></p>
+			
+			<h1><a href="/minibooks/ruby;jsessionid=24CC539414C0C503E087FD7908833416">Mr. Neighborly's Humble Little Ruby Book</a></h1>
+			<dl class="tags">
+				<dt class="community">Community</dt>
+				
+					<dd><a href="/ruby;jsessionid=24CC539414C0C503E087FD7908833416" name="ruby" id="5" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Ruby</a></dd>
+				
+				<dt class="topics">Topics</dt>
+				
+					<dd><a href="/dynamic_languages;jsessionid=24CC539414C0C503E087FD7908833416" name="dynamic_languages" id="213" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Dynamic Languages</a>,</dd>
+				
+					<dd><a href="/Programming;jsessionid=24CC539414C0C503E087FD7908833416" name="Programming" id="210" onclick="try {CategoryPopup.showPopup(this);} catch(e) {}; return false;">Programming</a></dd>
+				
+			</dl>
+			<p>
+				The Humble Little Ruby Book covers the base syntax of the language, including working with values, flow control, and object oriented programming, into some of the library functionality of Ruby, such as databases, web services, and string manipulation.
+			</p>
+			<ul class="info link-col">
+				<li class="author">
+					<span>&nbsp;</span>By&nbsp;<strong>Jeremy McAnally</strong>
+					
+					on Jan 28, 2007,
+				</li>
+				
+			</ul>
+		</div>
+	  
+	
+	  
+	  <ul class="newsnav link-col">
+	  
+	  </ul>
+	
+
+
+	
+	<div class="box-bottom"></div>
+	</div></div> 
+	<div class="bottom-corners"><div></div></div>
+	</div>
+	<!-- box end -->
+
+
+		
+	</div></div>
+	
+		
+	<div class="clearer"></div>
+	
+	
+
+
+
+
+
+
+	<div id="footer">
+		<p>
+			InfoQ.com and all content copyright &#169; 2006-2008 C4Media Inc.
+			InfoQ.com hosted at <a href="http://www.contegix.com/">Contegix</a>, the best ISP we've ever worked with.
+			<a href="/PrivacyPolicy.jsp;jsessionid=24CC539414C0C503E087FD7908833416">Privacy policy</a>
+		</p>
+	</div>
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+	var includeName = 'Include';
+	var excludeName = 'Exclude';
+	var includeHint = 'You can include this category.';
+	var excludeHint = 'You can exclude this category.';
+	var excludeCategoryMessage = 'You can re-include from your profile personalization, or right now.<BR />';
+	var viewallCategoryMessage = 'You can view all items that belong to this category.';
+	var busyMessage = 'Please wait...';
+	var contextPath = '' + '/';
+	var viewallCategoryPath= 'en';
+	var includeExcludeLink= true;
+</script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6608133-2");
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+
+</body>
+</html>
+

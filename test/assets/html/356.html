@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<!--
+pastebin.com Copyright 2006 Paul Dixon - email suggestions to lordelph at gmail.com
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>ruby private pastebin - collaborative debugging tool</title>
+<meta name="ROBOTS" content="NOARCHIVE"/>
+<link rel="stylesheet" type="text/css" media="screen" href="/pastebin.css?ver=6" />
+
+<script type="text/javascript" src="/pastebin.js?ver=7"></script>
+</head>
+
+
+<body onload="initPastebin()">
+<div style="display:none;">
+<h1 style="display: none;">pastebin - collaborative debugging</h1>
+<p style="display: none;">pastebin is a collaborative debugging tool allowing you to share
+and modify code snippets while chatting on IRC, IM or a message board.</p>
+<p style="display: none;">This site is developed to XHTML and CSS2 W3C standards.  
+If you see this paragraph, your browser does not support those standards and you 
+need to upgrade.  Visit <a href="http://www.webstandards.org/upgrade/" target="_blank">WaSP</a>
+for a variety of options.</p>
+</div>
+
+<div id="titlebar">ruby private pastebin - collaborative debugging tool <a href="/pastebin.php?help=1">What's a private pastebin?</a></div>
+
+
+
+<div id="menu">
+
+<h1>Recent Posts</h1>
+<ul>
+<li><a href="http://ruby.pastebin.com/m27a40e8e">Anonymous</a><br/>4 hours ago</li>
+<li><a href="http://ruby.pastebin.com/m74574159">Anonymous</a><br/>4 hours ago</li>
+<li><a href="http://ruby.pastebin.com/f3f2b0abd">Anonymous</a><br/>9 days ago</li>
+<li><a href="http://ruby.pastebin.com/m1e4ed981">rubinh0</a><br/>11 days ago</li>
+<li><a href="http://ruby.pastebin.com/m4cc4d9e6">rubinh0</a><br/>25 days ago</li>
+<li><a href="http://ruby.pastebin.com/m21856e10">Cian</a><br/>26 days ago</li>
+<li><a href="http://ruby.pastebin.com/mf5f1b3a">Anonymous</a><br/>29 days ago</li>
+<li><a href="http://ruby.pastebin.com/m26bba69a">Anonymous</a><br/>29 days ago</li>
+<li><a href="http://ruby.pastebin.com/m2bb807c">freshtonic</a><br/>29 days ago</li>
+<li><a href="http://ruby.pastebin.com/f645a43c3">thaCURSEDpie</a><br/>53 days ago</li>
+<li><a rel="nofollow" href="/pastebin.php">Make new post</a></li></ul>
+<h1>News</h1>
+
+<p>For news and feedback see my <a title="View pastebin related posts on my blog" href="http://blog.dixo.net/category/pastebin/">blog</a>.</p>
+<!--
+<h1>Translations?</h1>
+
+<p>Anyone interested in
+a <a href="http://blog.dixo.net/2006/05/10/translate-pastebin/">translated
+version of pastebin?</a>. If you'd like to volunteer as a translator or
+just want to give some feedback on the idea, please 
+<a href="http://blog.dixo.net/2006/05/10/translate-pastebin/">leave a comment</a>
+</p>
+-->
+
+<h1>About</h1><p>Pastebin is a tool for collaborative debugging or editing, <a href="/pastebin.php?help=1">See help for details</a>. 
+<!--
+
+<form method="get" action="http://www.php.net/search.php">
+<h1>PHP Manual</h1>
+<input type="text" size="9" name="pattern"/>
+<input type="hidden" name="show" value="quickref"/>
+<input type="submit" value="go"/>
+</form>
+
+<form method="get" action="http://www.mysql.com/search/?">
+<h1>MySQL Manual</h1>
+<input type="hidden" name="base" value="http://dev.mysql.com"/>
+<input type="hidden" name="lang" value="en"/>
+<input type="hidden" name="doc" value="1"/>
+<input type="hidden" name="m" value="o"/>
+<input type="text" size="9" name="q"/>
+<input type="submit" value="go"/>
+</form>
+-->
+
+<h1>Credits</h1><p>Software developed by <a href="http://blog.dixo.net/about/">Paul Dixon</a>
+<!--  
+<p>
+    <a href="http://validator.w3.org/check/referer"><img
+        src="http://www.w3.org/Icons/valid-xhtml10"
+        alt="Valid XHTML 1.0!" height="31" width="88" border="0"/></a>
+</p>
+-->
+
+</div>
+
+
+<div id="content">
+
+<script type="text/javascript"><!--
+google_ad_client = "pub-3281640380846080";
+google_ad_width = 728;
+google_ad_height = 90;
+google_ad_format = "728x90_as";
+google_ad_type = "text_image";
+google_ad_channel ="";
+google_color_border = "D9D0C3";
+google_color_bg = "D9D0C3";
+google_color_link = "474C7F";
+google_color_url = "888888";
+google_color_text = "000000";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br/>
+<br/>
+<form name="editor" method="post" action="/pastebin.php">
+<input type="hidden" name="parent_pid" value=""/>
+
+<br/> 
+Syntax highlighting:<select name="format"><option  value="text">None</option><option  value="bash">Bash</option><option  value="c">C</option><option  value="cpp">C++</option><option  value="html4strict">HTML</option><option  value="java">Java</option><option  value="javascript">Javascript</option><option  value="lua">Lua</option><option  value="perl">Perl</option><option  value="php">PHP</option><option  value="python">Python</option><option selected="selected" value="ruby">Ruby</option><option value="text">----------------------------</option><option  value="text">None</option><option  value="abap">ABAP</option><option  value="actionscript">ActionScript</option><option  value="ada">Ada</option><option  value="apache">Apache Log File</option><option  value="applescript">AppleScript</option><option  value="asm">ASM (NASM based)</option><option  value="asp">ASP</option><option  value="autoit">AutoIt</option><option  value="bash">Bash</option><option  value="blitzbasic">Blitz Basic</option><option  value="bnf">BNF</option><option  value="c">C</option><option  value="c_mac">C for Macs</option><option  value="caddcl">CAD DCL</option><option  value="cadlisp">CAD Lisp</option><option  value="cpp">C++</option><option  value="csharp">C#</option><option  value="cfm">ColdFusion</option><option  value="css">CSS</option><option  value="d">D</option><option  value="delphi">Delphi</option><option  value="diff">Diff</option><option  value="dos">DOS</option><option  value="eiffel">Eiffel</option><option  value="erlang">Erlang</option><option  value="fortran">Fortran</option><option  value="freebasic">FreeBasic</option><option  value="genero">Genero</option><option  value="gml">Game Maker</option><option  value="groovy">Groovy</option><option  value="haskell">Haskell</option><option  value="html4strict">HTML</option><option  value="idl">IDL</option><option  value="ini">INI</option><option  value="inno">Inno Script</option><option  value="java">Java</option><option  value="javascript">Javascript</option><option  value="latex">Latex</option><option  value="lisp">Lisp</option><option  value="lua">Lua</option><option  value="lsl2">Linden Scripting Language</option><option  value="matlab">MatLab</option><option  value="m68k">M68000 Assembler</option><option  value="mpasm">MPASM</option><option  value="mirc">mIRC</option><option  value="mysql">MySQL</option><option  value="nsis">NullSoft Installer</option><option  value="objc">Objective C</option><option  value="ocaml">OCaml</option><option  value="oobas">Openoffice.org BASIC</option><option  value="oracle8">Oracle 8</option><option  value="pascal">Pascal</option><option  value="perl">Perl</option><option  value="php">PHP</option><option  value="plswl">PL/SQL</option><option  value="python">Python</option><option  value="qbasic">QBasic/QuickBASIC</option><option  value="rails">Rails</option><option  value="robots">Robots</option><option  value="ruby">Ruby</option><option  value="scheme">Scheme</option><option  value="smalltalk">Smalltalk</option><option  value="smarty">Smarty</option><option  value="sql">SQL</option><option  value="tcl">TCL</option><option  value="unreal">unrealScript</option><option  value="vb">VisualBasic</option><option  value="vbnet">VB.NET</option><option  value="visualfoxpro">VisualFoxPro</option><option  value="xml">XML</option><option  value="z80">Z80 Assembler</option></select><br/>
+<br/>
+
+To highlight particular lines, prefix each line with @@<br/>
+<textarea id="code" class="codeedit" name="code2" cols="80" rows="10" onkeydown="return onTextareaKey(this,event)"></textarea>
+
+<div id="namebox">
+	
+<label for="poster">Your Name</label><br/>
+<input type="text" maxlength="24" size="24" id="poster" name="poster" value="" />
+<input type="submit" name="paste" value="Send"/>
+<br />
+<input type="checkbox" name="remember" value="1"  />Remember me so that I can delete my post
+</div>
+
+
+<div id="expirybox">
+
+
+<div id="expiryradios">
+<label>How long should your post be retained?</label><br/>
+
+<input type="radio" id="expiry_day" name="expiry" value="d"  />
+<label id="expiry_day_label" for="expiry_day">a day</label>
+
+<input type="radio" id="expiry_month" name="expiry" value="m" checked="checked" />
+<label id="expiry_month_label" for="expiry_month">a month</label>
+
+<input type="radio" id="expiry_forever" name="expiry" value="f"  />
+<label id="expiry_forever_label" for="expiry_forever">forever</label>
+</div>
+
+<div id="expiryinfo"></div>
+	
+</div>
+
+<div id="email">
+<input type="text" size="8" name="email" value="" />
+</div>
+
+<div id="end"></div>
+
+</form>
+
+</div>
+</body>
+</html>

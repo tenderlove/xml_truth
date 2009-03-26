@@ -1,0 +1,1579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Ruby Annotation</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css"
+  href="http://www.w3.org/StyleSheets/TR/W3C-REC">
+  <link rel="Appendix" title="Available Character Encodings" href="encodings">
+</head>
+
+<body>
+
+<div class="head">
+<p><a href="http://www.w3.org/"><img alt="W3C"
+src="http://www.w3.org/Icons/w3c_home" width="72" height="48"></a></p>
+
+<h1>Ruby Annotation</h1>
+
+<h2><acronym title="World Wide Web Consortium">W3C</acronym> Recommendation
+31 May 2001 (Markup errors corrected 25 June 2008)</h2>
+<dl>
+  <dt>This version:</dt>
+    <dd><a
+      href="http://www.w3.org/TR/2001/REC-ruby-20010531/">http://www.w3.org/TR/2001/REC-ruby-20010531</a>
+      <br>
+      (<a href="ruby.zip">ZIP archive</a>)</dd>
+  <dt>Latest version:</dt>
+    <dd><a href="http://www.w3.org/TR/ruby/">http://www.w3.org/TR/ruby</a><br>
+    </dd>
+  <dt>Previous version:</dt>
+    <dd><a
+      href="http://www.w3.org/TR/2001/PR-ruby-20010406/">http://www.w3.org/TR/2001/PR-ruby-20010406</a></dd>
+  <dt>Editors:</dt>
+    <dd>Marcin <span class="familyname">Sawicki</span> (until 10 October,
+      1999)</dd>
+    <dd><a href="mailto:michelsu@microsoft.com">Michel <span
+      class="familyname">Suignard</span></a>, Microsoft</dd>
+    <dd><a href="mailto:mimasa@w3.org">Masayasu <span
+      class="familyname">Ishikawa</span></a>
+      (<span lang="ja">石川 雅康</span>), <acronym
+      title="World Wide Web Consortium">W3C</acronym></dd>
+    <dd><a href="mailto:duerst@w3.org">Martin <span
+      class="familyname">Dürst</span></a>, <acronym
+      title="World Wide Web Consortium">W3C</acronym></dd>
+    <dd><a href="mailto:texin@progress.com">Tex <span
+      class="familyname">Texin</span></a>, Progress Software Corp.</dd>
+    <dd>(See <a href="#ack">Acknowledgements</a> for additional
+    contributors)</dd>
+</dl>
+
+<p class="copyright"><a
+href="http://www.w3.org/Consortium/Legal/ipr-notice-20000612#Copyright">Copyright</a>
+©1998-2001 <a href="http://www.w3.org/"><acronym
+title="World Wide Web Consortium">W3C</acronym></a><sup>®</sup> (<a
+href="http://www.lcs.mit.edu/"><acronym
+title="Massachusetts Institute of Technology">MIT</acronym></a>, <a
+href="http://www.inria.fr/"><acronym lang="fr"
+title="Institut National de Recherche en Informatique et Automatique">INRIA</acronym></a>,
+<a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. <acronym
+title="World Wide Web Consortium">W3C</acronym> <a
+href="http://www.w3.org/Consortium/Legal/ipr-notice-20000612#Legal_Disclaimer">liability</a>,
+<a
+href="http://www.w3.org/Consortium/Legal/ipr-notice-20000612#W3C_Trademarks">trademark</a>,
+<a
+href="http://www.w3.org/Consortium/Legal/copyright-documents-19990405">document
+use</a> and <a
+href="http://www.w3.org/Consortium/Legal/copyright-software-19980720">software
+licensing</a> rules apply.</p>
+<hr>
+</div>
+
+<div>
+<h2><a id="Abstract" name="Abstract">Abstract</a></h2>
+
+<p>"Ruby" are short runs of text alongside the base text, typically used in
+East Asian documents to indicate pronunciation or to provide a short
+annotation. This specification defines markup for ruby, in the form of an
+XHTML module [<a href="#xhtmlmod">XHTMLMOD</a>].</p>
+</div>
+
+<div>
+<h2><a id="Status" name="Status">Status of This Document</a></h2>
+
+<p><em>This section describes the status of this document at the time of its
+publication. Other documents may supersede this document. The <a
+href="http://www.w3.org/TR/ruby/#Status">latest status</a> of this series of
+documents is maintained at the W3C.</em></p>
+
+<p>This document has been reviewed by W3C Members and other interested
+parties and has been endorsed by the Director as a W3C Recommendation. It is
+a stable document and may be used as reference material or cited as a
+normative reference from another document. W3C's role in making the
+Recommendation is to draw attention to the specification and to promote its
+widespread deployment. This enhances the functionality and interoperability
+of the Web.</p>
+
+<p>This document has been produced as part of the W3C <a
+href="http://www.w3.org/International/Activity">Internationalization
+Activity</a> by the <a
+href="http://www.w3.org/International/Group/">Internationalization Working
+Group</a> (I18N WG, <a
+href="http://cgi.w3.org/MemberAccess/AccessRequest">members only</a>) with
+the help of the Internationalization Interest Group (I18N IG). Comments
+should be sent to the <a
+href="http://lists.w3.org/Archives/Public/www-i18n-comments/">publicly
+archived</a> mailing list <a
+href="mailto:www-i18n-comments@w3.org">www-i18n-comments@w3.org</a>. Comments
+in languages other than English, in particular Japanese, are also welcome.
+Public discussion of this document takes place on the <a
+href="mailto:www-international@w3.org">www-international@w3.org</a> mailing
+list (see <a
+href="http://lists.w3.org/Archives/Public/www-international/">archive</a>).</p>
+
+<p>Due to its subject matter, and to make the examples more realistic, this
+document includes examples using a wide range of characters. Not all user
+agents may be able to display all characters. Depending on the user agent,
+changing the configuration can improve the situation. Also, great care has
+been taken to serve this document in <a href="encodings">various character
+encodings</a> to cover a wide range of user agents and configurations.</p>
+
+<p>Information related to this document can be found on the <a
+href="http://www.w3.org/International/O-HTML-ruby">public ruby page</a>
+(http://www.w3.org/International/O-HTML-ruby). This includes <a
+href="http://www.w3.org/International/O-HTML-ruby#Translations">translations</a>
+of this specification as well as potential <a
+href="http://www.w3.org/2001/05/ruby-errata">errata</a>. A list
+of current <a href="http://www.w3.org/TR/">W3C Recommendations and other
+technical documents</a> can be found at http://www.w3.org/TR.</p>
+
+<p>There have been no declarations regarding patents related to this
+specification within the Internationalization Working Group.</p>
+<hr>
+</div>
+
+<h2><a id="Contents" name="Contents">Contents</a></h2>
+
+<div class="toc">
+<ul>
+  <li class="informative">1.  <a href="#intro">Introduction</a>
+    <ul>
+      <li>1.1  <a href="#what">What is ruby?</a></li>
+      <li>1.2  <a href="#markup-overview">Ruby markup overview</a>
+        <ul>
+          <li>1.2.1  <a href="#simple-ruby1">Simple ruby markup</a></li>
+          <li>1.2.2  <a href="#simple-parenthesis">Simple ruby markup with
+            parentheses</a></li>
+          <li>1.2.3  <a href="#complex">Complex ruby markup</a></li>
+          <li>1.2.4  <a href="#summary">Summary</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="normative">2.  <a href="#definition">Formal definition of ruby
+    markup</a>
+    <ul>
+      <li>2.1  <a href="#abstract-def">Abstract definition of ruby
+        markup</a></li>
+      <li>2.2  <a href="#ruby">The <code>ruby</code> element</a></li>
+      <li>2.3  <a href="#rbc">The <code>rbc</code> element</a></li>
+      <li>2.4  <a href="#rtc">The <code>rtc</code> element</a></li>
+      <li>2.5  <a href="#rb">The <code>rb</code> element</a></li>
+      <li>2.6  <a href="#rt">The <code>rt</code> element</a></li>
+      <li>2.7  <a href="#rp">The <code>rp</code> element</a></li>
+    </ul>
+  </li>
+  <li>3. <a href="#rendering">Rendering and Styling Considerations</a>
+    <ul>
+      <li>3.1  <a href="#web">Ruby on the Web vs. traditional typographic
+        usage</a></li>
+      <li>3.2  <a href="#font">Font size of ruby text</a></li>
+      <li>3.3  <a href="#positioning">Positioning of ruby text</a></li>
+      <li>3.4  <a href="#presentation">Presentation of ruby markup</a></li>
+      <li>3.5  <a href="#non-visual">Considerations for non-visual
+        rendering</a></li>
+      <li>3.6  <a href="#rp-alternatives">Alternatives to the
+        <code>rp</code> element</a></li>
+    </ul>
+  </li>
+  <li>4. <a href="#conformance">Conformance Criteria</a></li>
+  <li><a href="#appendix">Appendices</a>
+    <ul>
+      <li class="normative">A.  <a href="#module">Ruby module for <acronym
+        title="Extensible HyperText Markup Language">XHTML</acronym></a></li>
+      <li class="informative">B.  <a href="#design">Notes on design
+        decisions</a></li>
+      <li class="informative">C.  <a href="#compatibility">Notes on
+        backwards compatibility</a></li>
+      <li class="informative">D.  <a href="#glossary">Glossary</a></li>
+      <li class="informative">E.  <a href="#changes">Changes from Proposed
+        Recommendation</a></li>
+    </ul>
+  </li>
+  <li class="informative"><a href="#ack">Acknowledgements</a></li>
+  <li class="informative ref"><a href="#ref">References</a></li>
+</ul>
+</div>
+<hr>
+
+<div class="informative">
+<h2><a id="intro" name="intro">1.  Introduction</a></h2>
+
+<p>This section is <em>informative</em>.</p>
+
+<p>This document presents an overview of ruby annotation and defines the
+markup for it. Several examples are provided. However, this document does not
+specify any mechanisms for presentation or styling of ruby annotation; this
+is part of the respective style sheet languages.</p>
+
+<p>This document is organized as follows:</p>
+
+<p><a href="#what">Section 1.1</a> gives an overview of ruby annotation.</p>
+
+<p><a href="#markup-overview">Section 1.2</a> gives an overview of the
+markup for ruby annotation.</p>
+
+<p><a href="#definition">Section 2</a> provides the normative definition of
+ruby markup.</p>
+
+<p><a href="#rendering">Section 3</a> discusses typical rendering and
+styling of ruby text.</p>
+
+<p><a href="#conformance">Section 4</a> provides conformance criteria.</p>
+
+<div>
+<h3><a id="what" name="what">1.1 What is ruby?</a></h3>
+
+<p><em>Ruby</em> is the term used for a run of text that is associated with
+another run of text, referred to as the <em>base text</em>. Ruby text is used
+to provide a short annotation of the associated base text. It is most often
+used to provide a <em>reading</em> (pronunciation guide). Ruby annotations
+are used frequently in Japan in many kinds of publications, including books
+and magazines. Ruby is also used in China, especially in schoolbooks.</p>
+
+<p>Ruby text is usually presented alongside the base text, using a smaller
+typeface. The name "ruby" in fact originated from the name of the 5.5<abbr
+title="points">pt</abbr> font size in British printing, which is about half
+the 10<abbr title="points">pt</abbr> font size commonly used for normal text.
+<a href="#fig1.1">Figure 1.1</a> shows an example, with three ideographs
+(kanji) as base text, and six hiragana giving the reading (shinkansen -
+Japanese bullet train).</p>
+
+<div class="figure">
+<p><a id="fig1.1" name="fig1.1"><img
+alt="At the bottom left, three Japanese ideographs from left to right. On top of them, six hiragana characters at half size. To the right, arrows and text saying 'ruby base' (bottom) and 'ruby text' (top)."
+class="example" height="33" width="140" src="shinkansen-top.gif"></a></p>
+
+<p><strong>Figure 1.1</strong>: Ruby text giving the reading of each
+character of the base text.</p>
+</div>
+
+<p>East Asian typography has developed various features that do not appear in
+western typography. Most of these can be addressed appropriately with style
+sheet languages such as <acronym title="Cascading Style Sheets">CSS</acronym>
+or <acronym title="Extensible Style Language">XSL</acronym>. However,
+additional markup is required to define the association between base text and
+ruby text.</p>
+
+<p>This specification defines such markup, designed to be usable with
+<acronym title="Extensible HyperText Markup Language">XHTML</acronym>, so
+that ruby text is available on the Web without using special workarounds or
+graphics. Although this specification gives examples of actual rendering to
+make it easier for most readers to understand the markup, all such examples
+are informational only. This document does not specify any mechanisms for
+presentation or styling; this is part of the respective style sheet
+languages.</p>
+
+<p>Sometimes more than one ruby text is associated with the same base text. A
+typical example is to indicate both meaning as well as reading for the same
+base text. In such cases, ruby texts may appear on both sides of the base
+text. Ruby text before the base text is often used to indicate reading; ruby
+text after the base text is often used to indicate meaning. <a
+href="#fig1.2">Figure 1.2</a> shows an example of base text with two ruby
+texts, giving reading using hiragana and Latin letters.</p>
+
+<div class="figure">
+<p><a id="fig1.2" name="fig1.2"><img
+alt="At the left, three Japanese ideographs from left to right. On top of them, six hiragana characters at half size. Below the ideographs, the text 'shinkansen'. To the right, arrows and text saying 'ruby base' (middle), 'ruby text' (top), and 'ruby text 2' (bottom)."
+class="example" height="49" width="149"
+src="shinkansen-top-bottom.gif"></a></p>
+
+<p><strong>Figure 1.2</strong>: Two ruby texts applied to the same base
+text.</p>
+</div>
+
+<p>In addition, each ruby text may be associated with different, but
+overlapping, parts of the base text, such as <a id="fig1.3" name="fig1.3">in
+the following example:</a></p>
+
+<div class="figure">
+
+<table>
+  <tbody>
+    <tr class="rt" style="text-align: center">
+      <td>Month</td>
+      <td>Day</td>
+      <td>Year</td>
+    </tr>
+    <tr class="rb" style="text-align: center">
+      <td><strong>10</strong></td>
+      <td><strong>31</strong></td>
+      <td><strong>2002</strong></td>
+    </tr>
+    <tr class="rt" style="text-align: center">
+      <td colspan="3">Expiration Date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Figure 1.3</strong>: Base text with two ruby texts using different
+associations</p>
+</div>
+
+<p>In this example, the base text is the date "10 31 2002". One ruby text is
+the phrase "Expiration Date". This ruby text is associated with the entire
+base text. The other ruby text has 3 parts: "Month", "Day" and "Year". Each
+part is associated with a different part of the base text. "Month" is
+associated with "10", "Day" is associated with "31", and "Year" is associated
+with "2002".</p>
+</div>
+
+<div>
+<h3><a id="markup-overview" name="markup-overview">1.2 Ruby markup
+overview</a></h3>
+
+<p>The markup defined in this specification is designed to cover all the
+above cases, namely markup for one or two ruby texts associated with the same
+base text and markup for associations of substrings of the ruby text(s) with
+components of the base text.</p>
+
+<p>There are two variants of ruby markup, called <em>simple ruby markup</em>
+and <em>complex ruby markup</em>. Simple ruby markup associates a single ruby
+text with a run of base text. Simple ruby markup can also specify a fallback
+mechanism to allow display of ruby text by (older) browsers that do not know
+about ruby markup. Complex ruby markup can associate two ruby texts with one
+base text, and can define a more fine-grained association between components
+of the ruby text and the base text. However, complex ruby markup does not
+provide a fallback mechanism for browsers that do not understand ruby
+markup.</p>
+
+<p>This section gives an overview of the markup for ruby defined in this
+specification. A full formal definition can be found in <a
+href="#definition">Section 2</a>.</p>
+
+<div>
+<h4><a id="simple-ruby1" name="simple-ruby1">1.2.1 Simple ruby markup</a></h4>
+
+<p>In the simplest case, ruby markup defines a <code>ruby</code> element
+which contains one <code>rb</code> element for the base text and one
+<code>rt</code> element for the ruby text. This <code>ruby</code> element
+therefore creates an association between the base text and the ruby text, and
+is sufficient for most cases.<a id="fig1.4" name="fig1.4"> Here is an example
+of simple ruby markup:</a></p>
+
+<div class="figure">
+<pre class="xml">&lt;ruby&gt;
+  &lt;rb&gt;WWW&lt;/rb&gt;
+  &lt;rt&gt;World Wide Web&lt;/rt&gt;
+&lt;/ruby&gt;</pre>
+
+<p><strong>Figure 1.4</strong>: Example of simple ruby markup</p>
+</div>
+
+<p><a id="fig1.5" name="fig1.5">This may be rendered as follows:</a></p>
+
+<div class="figure">
+<p><img
+alt="At the bottom left, three large letters reading 'WWW'. On top of them, in smaller letters, the text 'World Wide Web'. To the right, arrows and text saying 'ruby base' (bottom) and 'ruby text' (top)."
+class="example" height="30" width="145" src="ruby-en-ex.gif"></p>
+
+<p><strong>Figure 1.5</strong>: Example of rendering for simple ruby markup
+in <a href="#fig1.4">Figure 1.4</a></p>
+</div>
+
+<p class="note"><strong>Note</strong>: The name of this enclosing element,
+"&lt;<code>ruby</code>&gt;", should be interpreted to mean that its contents
+are <em>associating</em> ruby text with base text. It must not be
+misunderstood to mean that everything inside, including the base text,
+<em>is</em> ruby. The name of the enclosing element was chosen to compactly
+and clearly identify the function of the markup construct; the names for the
+other elements were chosen to keep the overall length short.</p>
+</div>
+
+<div>
+<h4><a id="simple-parenthesis" name="simple-parenthesis">1.2.2 Simple ruby
+markup with parentheses</a></h4>
+
+<p>Some user agents might not understand ruby markup, or may not be able to
+render ruby text appropriately. In either situation, it is generally
+preferable to render ruby text, so that information is not lost. A generally
+acceptable fallback is to place the ruby text immediately after the base
+text, and to enclose the ruby text in parentheses. The parentheses reduce the
+potential for confusing the ruby text with other text. (It should be noted
+that text in parentheses in Japanese typography is never called "ruby".)</p>
+
+<p>For compatibility with older user agents that do not understand ruby
+markup and simply render the content of elements they do not understand,
+<code>rp</code> elements can be added to simple ruby markup to distinguish
+ruby text.</p>
+
+<p>The element name <code>rp</code> stands for "ruby parenthesis". The
+<code>rp</code> elements and the parentheses (or other characters) inside
+them are provided as a fallback mechanism only. User agents that ignore
+unknown elements, but render their contents, will display the contents of
+each <code>rp</code> element. Therefore the <code>rp</code> element can be
+used to denote both the beginning and end of ruby text.</p>
+
+<p>User agents that do know about ruby markup will recognize the
+<code>rp</code> element, and intentionally not display its contents. Instead,
+they will render the simple ruby markup in a more appropriate way.</p>
+
+<p><a id="fig1.6" name="fig1.6">The following example demonstrates the use of
+the <code>rp</code> element:</a></p>
+
+<div class="figure">
+<pre class="xml">&lt;ruby&gt;
+  &lt;rb&gt;WWW&lt;/rb&gt;
+  &lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;World Wide Web&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+&lt;/ruby&gt;</pre>
+
+<p><strong>Figure 1.6</strong>: Example of simple ruby markup including
+<code>rp</code> elements for fallback</p>
+</div>
+
+<p>User agents that either:</p>
+<ul>
+  <li>do not know about ruby markup but render the contents of unknown
+    elements, or</li>
+  <li>cannot render the ruby text alongside the base text,</li>
+</ul>
+
+<p><a id="fig1.7" name="fig1.7">will render the above markup as:</a></p>
+
+<div class="figure">
+<p><strong>WWW (World Wide Web)</strong></p>
+
+<p><strong>Figure 1.7</strong>: Rendering of simple ruby markup using
+fallback parentheses</p>
+</div>
+
+<p>User agents that do know about ruby markup, and that have more
+sophisticated presentation styles for ruby text, will choose to not render
+the parentheses. For example, the markup of <a href="#fig1.6">figure 1.6</a>
+can be rendered as shown in the next figure.</p>
+
+<div class="figure">
+<p><a id="fig1.8" name="fig1.8"><img
+alt="EAt the bottom left, three large letters reading 'WWW'. On top of them, in smaller letters, the text 'World Wide Web'. To the right, arrows and text saying 'ruby base' (bottom) and 'ruby text' (top)."
+class="example" height="30" width="145" src="ruby-en-ex.gif"></a></p>
+
+<p><strong>Figure 1.8</strong>: <code>rp</code> element ignored in favor of
+more sophisticated rendering</p>
+</div>
+</div>
+
+<div>
+<h4><a id="complex" name="complex">1.2.3 Complex ruby markup</a></h4>
+
+<p>Complex ruby markup is used to associate more than one ruby text with a
+base text, or to associate parts of ruby text with parts of base text.</p>
+
+<p>Complex ruby markup provides for multiple <code>rb</code> and
+<code>rt</code> elements. This specification defines container elements that
+make the association between the individual elements clear. The ruby base
+container element, <code>rbc</code>, encloses <code>rb</code> elements. There
+can be one or two ruby text container elements, <code>rtc</code>, that
+enclose <code>rt</code> elements. This allows association of two ruby text
+containers with the same base text. With complex ruby markup it is also
+possible to associate parts of the base text with parts of a ruby text by
+using a number of <code>rb</code> elements, and a corresponding number of
+<code>rt</code> elements. In addition, the <code>rt</code> element may use
+the <code>rbspan</code> attribute to indicate that a single <code>rt</code>
+element spans (is associated with) multiple <code>rb</code> elements. This is
+similar to the <a
+href="http://www.w3.org/TR/html4/struct/tables.html#adef-colspan"><code>colspan</code></a>
+attribute of the <code>th</code> and <code>td</code> elements in tables ([<a
+href="#html4">HTML4</a>], section 11.2.6).</p>
+
+<p>Where and how each part of complex ruby markup is rendered is defined as
+part of the respective style sheet languages; see also section 3 for further
+information.</p>
+
+<p><a id="fig1.9" name="fig1.9">The following example shows all these
+features.</a></p>
+
+<div class="figure">
+<pre class="xml">&lt;ruby&gt;
+  &lt;rbc&gt;
+    &lt;rb&gt;10&lt;/rb&gt;
+    &lt;rb&gt;31&lt;/rb&gt;
+    &lt;rb&gt;2002&lt;/rb&gt;
+  &lt;/rbc&gt;
+  &lt;rtc&gt;
+    &lt;rt&gt;Month&lt;/rt&gt;
+    &lt;rt&gt;Day&lt;/rt&gt;
+    &lt;rt&gt;Year&lt;/rt&gt;
+  &lt;/rtc&gt;
+  &lt;rtc&gt;
+    &lt;rt rbspan="3"&gt;Expiration Date&lt;/rt&gt;
+  &lt;/rtc&gt;
+&lt;/ruby&gt;</pre>
+
+<p><strong>Figure 1.9</strong>: Complex ruby markup to associate two ruby
+texts with different parts of the same base text.</p>
+</div>
+
+<p>In this example, the first ruby text container encloses 3 components
+("Month", "Day", "Year"). Each of these components is associated with a
+corresponding component in the base text ("10", "31", "2002"). The second
+ruby text container ("Expiration Date") consists of a single ruby text, and
+is associated with the entire base text ("10 31 2002"). <a id="fig1.10"
+name="fig1.10">It may be rendered as shown in figure 1.10.</a></p>
+
+<div class="figure">
+
+<table>
+  <tbody>
+    <tr class="rt" style="text-align: center">
+      <td>Month</td>
+      <td>Day</td>
+      <td>Year</td>
+    </tr>
+    <tr class="rb" style="text-align: center">
+      <td><strong>10</strong></td>
+      <td><strong>31</strong></td>
+      <td><strong>2002</strong></td>
+    </tr>
+    <tr class="rt" style="text-align: center">
+      <td colspan="3">Expiration Date</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Figure 1.10</strong>: Rendering of the complex ruby markup in <a
+href="#fig1.9">figure 1.9</a></p>
+</div>
+
+<p>The example shows that the  association of ruby text with base text can be
+more or less granular as needed. For example, the ruby text can be associated
+with the entire base text in cases where:</p>
+<ul>
+  <li>a more detailed relationship is unknown, or</li>
+  <li>when the reading or annotation only applies to the whole unit and
+    cannot be split into pieces.</li>
+</ul>
+
+<p>More fine-grained associations can also be made when the relationships are
+known. For these situations, an improved rendering can therefore be provided.
+For example, a person's name can be decomposed into family name and given
+name, or a <span lang="ja">kanji</span> compound or phrase can be decomposed
+into semantic subparts or individual characters. With either fine or course
+granularity, the spans of the ruby text can be set with the corresponding
+spacing in the base text, and better readability and a more balanced layout
+may be achieved.</p>
+
+<p>The <code>rp</code> element is not available in the case of complex ruby
+markup. There are two reasons for this. First, the <code>rp</code> element is
+only a fallback mechanism, and it was considered that this is much more
+important for the more frequent simple case. Second, for the more complex
+cases, it is difficult to come up with a reasonable fallback display, and
+constructing markup for such cases can be even more difficult if not
+impossible.</p>
+</div>
+
+<div>
+<h4><a id="summary" name="summary">1.2.4 Summary</a></h4>
+
+<p>In summary, the <code>ruby</code> element serves as a container for one of
+the following:</p>
+<ul>
+  <li>a combination of <code>rb</code>, <code>rt</code> and possibly
+    <code>rp</code> elements (<strong>simple ruby markup</strong>) for:
+    <ul>
+      <li>Association of a single ruby text with a single base text</li>
+      <li>Fallback in case the ruby markup is not understood.</li>
+    </ul>
+  </li>
+  <li>a combination of a single <code>rbc</code> and one or two
+    <code>rtc</code> container elements (<strong>complex ruby
+    markup</strong>) for:
+    <ul>
+      <li>Associating two ruby texts with the same base text</li>
+      <li>Defining more fine-grained associations between parts of a ruby
+        text and parts of the base text.</li>
+    </ul>
+  </li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="normative">
+<h2><a id="definition" name="definition">2.  Formal definition of ruby
+markup</a></h2>
+
+<p>This section is <em>normative</em>.</p>
+
+<p>This section contains the formal syntax definition and the specification
+of the functionality of the ruby markup. Some familiarity with the <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym> Modularization
+framework, in particular the "<cite>Modularization of <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym></cite>" [<a
+href="#xhtmlmod">XHTMLMOD</a>] specification, is assumed.</p>
+
+<div>
+<h3><a id="abstract-def" name="abstract-def">2.1  Abstract definition of
+ruby markup</a></h3>
+
+<p>The following is the abstract definition of the elements for ruby markup,
+which is consistent with the <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym> Modularization
+framework [<a href="#xhtmlmod">XHTMLMOD</a>]. Further definitions of <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym> abstract modules
+can be found in [<a href="#xhtmlmod">XHTMLMOD</a>].</p>
+
+<table border="1" summary="Elements and Attributes for Ruby Module">
+  <thead>
+    <tr>
+      <th scope="col">Elements</th>
+      <th scope="col">Attributes</th>
+      <th scope="col">Minimal Content Model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td abbr="element"><a id="ruby-abstract" name="ruby-abstract"
+        href="#ruby">ruby</a></td>
+      <td abbr="attribute">Common</td>
+      <td abbr="content" class="content">(rb, (rt | (rp, rt, rp)))</td>
+    </tr>
+    <tr>
+      <td abbr="element"><a id="rbc-abstract" name="rbc-abstract"
+        href="#rbc">rbc</a></td>
+      <td abbr="attribute">Common</td>
+      <td abbr="content" class="content">rb+</td>
+    </tr>
+    <tr>
+      <td abbr="element"><a id="rtc-abstract" name="rtc-abstract"
+        href="#rtc">rtc</a></td>
+      <td abbr="attribute">Common</td>
+      <td abbr="content" class="content">rt+</td>
+    </tr>
+    <tr>
+      <td abbr="element"><a id="rb-abstract" name="rb-abstract"
+        href="#rb">rb</a></td>
+      <td abbr="attribute">Common</td>
+      <td abbr="content" class="content">(PCDATA | Inline - ruby)*</td>
+    </tr>
+    <tr>
+      <td abbr="element"><a id="rt-abstract" name="rt-abstract"
+        href="#rt">rt</a></td>
+      <td abbr="attribute">Common, rbspan (CDATA)</td>
+      <td abbr="content" class="content">(PCDATA | Inline - ruby)*</td>
+    </tr>
+    <tr>
+      <td abbr="element"><a id="rp-abstract" name="rp-abstract"
+        href="#rp">rp</a></td>
+      <td abbr="attribute">Common</td>
+      <td abbr="content" class="content">PCDATA*</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The maximal content model for the <code>ruby</code> element is as
+follows:</p>
+<pre class="content">((rb, (rt | (rp, rt, rp))) | (rbc, rtc, rtc?))</pre>
+
+<p>The minimal content model for the <code>ruby</code> element corresponds to
+simple ruby markup. The <code>(rbc, rtc, rtc?)</code> alternative of the
+maximal content model for the <code>ruby</code> element corresponds to
+complex ruby markup.</p>
+
+<p>An implementation of this abstract definition as an <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym> <acronym
+title="Document Type Definition">DTD</acronym> module can be found in <a
+href="#module">Appendix A</a>. An <abbr
+title="Extensible Markup Language">XML</abbr> Schema [<a
+href="#xmlschema">XMLSchema</a>] implementation is being worked on (see [<a
+href="#ModSchema">ModSchema</a>]).</p>
+</div>
+
+<div>
+<h3><a id="ruby" name="ruby">2.2  The <code>ruby</code> element</a></h3>
+
+<p>The <code>ruby</code> element is an inline (or text-level) element that
+serves as an overall container. It contains either the <a
+href="#rb"><code>rb</code></a>, <a href="#rt"><code>rt</code></a> and
+optional <a href="#rp"><code>rp</code></a> elements (simple ruby markup) or
+the <a href="#rbc"><code>rbc</code></a> and <a
+href="#rtc"><code>rtc</code></a> elements (complex ruby markup).</p>
+
+<p>In the case of simple ruby markup, the <code>ruby</code> element contains
+either an <a href="#rb"><code>rb</code></a> element followed by an <a
+href="#rt"><code>rt</code></a> element, or a sequence of an <a
+href="#rb"><code>rb</code></a> element, an <a href="#rp"><code>rp</code></a>
+element, an <a href="#rt"><code>rt</code></a> element and another <a
+href="#rp"><code>rp</code></a> element. The content of the <a
+href="#rt"><code>rt</code></a> element is taken as ruby text and associated
+with the content of the <code><a href="#rb"><code>rb</code></a></code>
+element as the base text. The content of the <a
+href="#rp"><code>rp</code></a> elements, if present, is ignored.</p>
+
+<p>In the case of complex ruby markup, the <code>ruby</code> element contains
+an <a href="#rbc"><code>rbc</code></a> element followed by one or two <a
+href="#rtc"><code>rtc</code></a> elements. The content of the subelements of
+each <a href="#rtc"><code>rtc</code></a> element is taken as ruby text and
+associated with the content of the subelements of the <a
+href="#rbc"><code>rbc</code></a> element as the base text.</p>
+
+<p>The <code>ruby</code> element has common attributes only. Examples of
+common attributes include: <code>id</code>, <code>class</code> or
+<code>xml:lang</code>. Common attributes depend on the markup language with
+which ruby markup is used. In the case of [<a href="#xhtml11">XHTML 1.1</a>],
+these are defined in <a
+href="http://www.w3.org/TR/xhtml-modularization/abstract_modules.html#s_commonatts">XHTML
+Modularization, Section 5.1</a> [<a href="#xhtmlmod">XHTMLMOD</a>].</p>
+</div>
+
+<div>
+<h3><a id="rbc" name="rbc">2.3  The <code>rbc</code> element</a></h3>
+
+<p>The <code>rbc</code> (ruby base container) element serves as the container
+for <a href="#rb"><code>rb</code></a> elements in the case of complex ruby
+markup. Only one <code>rbc</code> element may appear inside a <a
+href="#ruby"><code>ruby</code></a> element.</p>
+
+<p>The <code>rbc</code> element has common attributes only.</p>
+</div>
+
+<div>
+<h3><a id="rtc" name="rtc">2.4  The <code>rtc</code> element</a></h3>
+
+<p>The <code>rtc</code> (ruby text container) element serves as the container
+for <a href="#rt"><code>rt</code></a> elements in the case of complex ruby
+markup. One or two <code>rtc</code> elements may appear inside a <a
+href="#ruby"><code>ruby</code></a> element to associate ruby texts with a
+single base text, represented by an <a href="#rbc"><code>rbc</code></a>
+element. More than two <code>rtc</code> elements MUST NOT appear inside a <a
+href="#ruby"><code>ruby</code></a> element.</p>
+
+<p>The <code>rtc</code> element has common attributes only.</p>
+</div>
+
+<div>
+<h3><a id="rb" name="rb">2.5  The <code>rb</code> element</a></h3>
+
+<p>The <code>rb</code> (ruby base) element serves to markup the base text.
+For simple ruby markup, only one <code>rb</code> element may appear. For
+complex ruby markup, multiple <code>rb</code> elements may appear inside an
+<a href="#rbc"><code>rbc</code></a> element. Each <code>rb</code> element is
+associated with a corresponding <a href="#rt"><code>rt</code></a> element,
+for fine-grained control of ruby presentation.</p>
+
+<p>The <code>rb</code> element may contain inline elements or character data
+as its content, but the <a href="#ruby"><code>ruby</code></a> element is not
+allowed as its descendant element.</p>
+
+<p>The <code>rb</code> element has common attributes only.</p>
+</div>
+
+<div>
+<h3><a id="rt" name="rt">2.6  The <code>rt</code> element</a></h3>
+
+<p>The <code>rt</code> element is the markup for ruby text. For simple ruby
+markup, only one <code>rt</code> element may appear. For complex ruby markup,
+multiple <code>rt</code> elements may appear inside an <a
+href="#rtc"><code>rtc</code></a> element, and each <code>rt</code> element
+contains the ruby text for the relevant base text, represented by the
+corresponding <a href="#rb"><code>rb</code></a> element.</p>
+
+<p>The <code>rt</code> element may contain inline elements or character data
+as its content, but the <a href="#ruby"><code>ruby</code></a> element is not
+allowed as its descendant element.</p>
+
+<p>The <code>rt</code> element has common attributes and the
+<code>rbspan</code> attribute. In complex ruby markup, the
+<code>rbspan</code> attribute allows an <code>rt</code> element to span
+multiple <a href="#rb"><code>rb</code></a> elements. The value shall be an
+integer value greater than zero ("0"). The default value of this attribute is
+one ("1"). The <code>rbspan</code> attribute should not be used in simple
+ruby markup, and user agents should ignore the <code>rbspan</code> attribute
+when it appears in simple ruby markup.</p>
+</div>
+
+<div>
+<h3><a id="rp" name="rp">2.7  The <code>rp</code> element</a></h3>
+
+<p>The <code>rp</code> element can be used in the case of simple ruby markup
+to specify characters that can denote the beginning and end of ruby text when
+user agents do not have other ways to present ruby text distinctively from
+the base text. Parentheses (or similar characters) can provide an acceptable
+fallback. In this situation, ruby text will only degrade to be rendered
+inline and enclosed in the fallback parentheses. This is the least
+inappropriate rendering under the condition that only inline rendering is
+available. The <code>rp</code> element cannot be used with complex ruby
+markup.</p>
+
+<p>The <code>rp</code> element has common attributes only.</p>
+
+<p>Using parentheses for the fallback may lead to confusion between runs of
+text intended to be ruby text and other runs that happen to be enclosed
+within parentheses. The document or style sheet author should be aware of the
+potential for that confusion and is advised to choose an unambiguous
+delimiter for the fallback.</p>
+</div>
+</div>
+
+<div class="informative">
+<h2><a id="rendering" name="rendering">3. Rendering and styling
+considerations</a></h2>
+
+<p>This section is <em>informative</em>.</p>
+
+<p>This section discusses various aspects of rendering and styling in the
+context of ruby markup as defined in this document. However, this document
+does not specify any mechanisms for presentation/styling; this is left to the
+respective style sheet languages. Formatting properties for styling ruby are
+under development for <acronym title="Cascading Style Sheets">CSS</acronym>
+and <acronym title="Extensible Style Language">XSL</acronym>. See for example
+"<cite>CSS3 module: Ruby</cite>" [<a href="#css3-ruby">CSS3-RUBY</a>]
+(<em>work in progress</em>) for more details.</p>
+
+<p>Details of ruby formatting in a Japanese print context can be found in
+JIS-X-4051 [<a href="#jis">JIS4051</a>].</p>
+
+<div>
+<h3><a id="web" name="web">3.1 Ruby on the Web vs. traditional typographic
+usage</a></h3>
+
+<p>The term "ruby" in Japanese is only used for text visually rendered
+alongside the base text. Considerations for such cases are given in <a
+href="#font">section 3.2</a> (font size), <a href="#positioning">section
+3.3</a> (positioning), and <a href="#presentation">section 3.4</a>
+(presentation of ruby markup). This kind of presentation should be used
+wherever possible. However, introducing ruby to the Web may lead to some
+phenomena and problems that are not present in traditional typography.
+Structural markup for ruby, as defined in this specification, cannot
+guarantee that ruby text will always be rendered alongside the base text.
+There are a very wide variety of current and future output devices for
+documents marked up with <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym>. The following
+are possible scenarios and reasons for different rendering:</p>
+<ul>
+  <li>On non-visual user agents such as voice browsers and braille user
+    agents, only sequential rendering is possible. See <a
+    href="#non-visual">section 3.5</a> for more consideration on non-visual
+    rendering.</li>
+  <li>On display devices with low resolution, displaying ruby text at the
+    usual size may not be feasible. Fallbacks may be used. See <a
+    href="#rp-alternatives">section 3.6</a> for additional details.</li>
+  <li>For educational purposes, it may in some cases be interesting to hide
+    the ruby text and make it available as a pop-up. This is impossible on
+    paper, but easily possible on a dynamic display device.</li>
+</ul>
+</div>
+
+<div>
+<h3><a id="font" name="font">3.2 Font size of ruby text</a></h3>
+
+<p>In typical usage, the font size of ruby text is normally about half the
+font size of the base text. In fact, the name "ruby" originated from the name
+of the 5.5<abbr title="points">pt</abbr> font size in British printing, which
+is about half the 10<abbr title="points">pt</abbr> font size commonly used
+for normal text.</p>
+</div>
+
+<div>
+<h3><a id="positioning" name="positioning">3.3 Positioning of ruby
+text</a></h3>
+
+<p>There are several positions where the ruby text can appear relative to its
+base text. Because East Asian text may be rendered vertically as well as
+horizontally, the terms "before" and "after" are used here rather than
+"above" and "below" or "right side" and "left side". The words "before" and
+"after" should be understood as "before"/"after" the line containing the base
+text. The correspondence is shown in the following table:</p>
+
+<table border="1" cellpadding="8" class="rendering">
+  <tbody>
+    <tr>
+      <th>terminology</th>
+      <td><strong>Horizontal Layout</strong><br>
+        (left-to-right, top-to-bottom)</td>
+      <td><strong>Vertical Layout</strong><br>
+        (top-to-bottom, right-to-left)</td>
+    </tr>
+    <tr>
+      <th abbr='position'>before</th>
+      <td abbr='horizontal'>above</td>
+      <td abbr='vertical'>right-side</td>
+    </tr>
+    <tr>
+      <th abbr='position'>after</th>
+      <td abbr='horizontal'>below</td>
+      <td abbr='vertical'>left-side</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Ruby texts are most frequently placed before the base text (see <a
+href="#fig1.1">figure 1.1</a> and <a href="#fig3.2">figure 3.2</a>).
+Sometimes, especially in horizontal educational documents, ruby text may
+appear after the base text, i.e. below (see <a href="#fig3.1">figure
+3.1</a>). In Chinese, it is rather common that <span lang="zh">Pinyin</span>
+ruby text appears after the base text. Ruby text may also appear after the
+base text in vertical layout (see <a href="#fig3.3">figure 3.3</a>). In all
+these cases, the writing direction of the ruby text is the same as that of
+its base text, that is vertical if the base text is vertical, and horizontal
+if the base text is horizontal.</p>
+
+<div class="figure">
+<p><a id="fig3.1" name="fig3.1"><img
+alt="At the top left, three Japanese ideographs from left to right. Below them, the text 'shinkansen'. To the right, arrows and text saying 'ruby base' (top) and 'ruby text' (bottom)."
+class="example" height="36" width="142" src="shinkansen-bottom.gif"></a></p>
+
+<p><strong>Figure 3.1</strong>: Ruby text (Latin letters) after/below the
+base text (Japanese ideographs)</p>
+</div>
+
+<div class="figure">
+<p><a id="fig3.2" name="fig3.2"><img
+alt="At the top left, three Japanese ideographs from top to bottom. To their right, six hiragana characters at half size. At the bottom, arrows and text saying 'ruby base' (left) and 'ruby text' (right)."
+class="example" height="141" width="33" src="shinkansen-right.gif"></a></p>
+
+<p><strong>Figure 3.2</strong>: Ruby text in vertical writing (before/to the
+right)</p>
+</div>
+
+<div class="figure">
+<p><a id="fig3.3" name="fig3.3"><img
+alt="Example showing ruby on the left side of vertical Japanese text"
+class="example" height="141" width="37" src="shinkansen-left.gif"></a></p>
+
+<p><strong>Figure 3.3</strong>: Ruby text in vertical writing (after/to the
+left).</p>
+</div>
+
+<p>In traditional Chinese texts, "<span lang="zh">Bopomofo</span>" ruby text
+can appear along the right side of the base text even in horizontal
+layout.</p>
+
+<div class="figure">
+<p><a id="fig3.4" name="fig3.4"><img
+alt="From the right, a large Chinese ideograph, three smaller bopomofo letters from top to bottom (in blue), a bopomofo accent mark (in red), another large Chinese ideograph, two smaller bopomofo letters from top to bottom (in blue) and another bopomofo accent mark (in red)."
+class="example" height="42" width="138" src="bopomofo.gif"></a></p>
+
+<p><strong>Figure 3.4</strong>: "<span lang="zh">Bopomofo</span>" ruby text
+in traditional Chinese (ruby text shown in blue/red for clarity) in
+horizontal layout</p>
+</div>
+
+<p>Note that <span lang="zh">Bopomofo</span> tone marks (in the above example
+shown in red for clarity) seem to appear in a separate column (along the
+right side of the <span lang="zh">Bopomofo</span> ruby text) and therefore
+might be seen as "ruby on ruby". However, they are simply encoded as part of
+the ruby text. The details of this encoding are not addressed in this
+document.</p>
+</div>
+
+<div>
+<h3><a id="presentation" name="presentation">3.4 Presentation of ruby
+markup</a></h3>
+
+<p>This specification does not prescribe how ruby markup will be displayed.
+Style sheets, in general, will be used to specify the exact behavior of ruby
+markup.</p>
+
+<div class="note">
+<p><strong>Note.</strong> Although the rendering of the ruby texts should be
+controlled by style sheets, in case no style information is provided by the
+author or the user, it is recommended that visual user agents place the ruby
+text before the base text when only one ruby text is used. This is also the
+case for simple ruby. When there are two ruby texts, the first ruby text
+should be placed before the base text, and the second ruby text should be
+placed after the base text. A sample user agent default style sheet which
+describes this formatting will be provided by [<a
+href="#css3-ruby">CSS3-RUBY</a>] or its successor document.</p>
+
+<p>For non-visual rendering, in the absence of style sheet information, it is
+recommended that both the base text and the ruby text(s) should be rendered,
+with an indication (e.g. different voice, different pitch, ...) of the status
+of each.</p>
+</div>
+
+<p><a id="fig3.5" name="fig3.5">In order for style sheets to be able to apply
+styling, or for other mechanisms to render ruby text appropriately, it is
+very important to provide enough information on the function of each
+component. The following example illustrates the use of the class attribute
+to allow style sheets to define the exact presentation of the ruby text. The
+class "<samp>reading</samp>" is used for a ruby text that indicates reading.
+The class "<samp>annotation</samp>" is used to indicate ruby text that is
+used for annotation. The <code>xml:lang</code> attribute indicates the
+language of the text.</a></p>
+
+<div class="figure">
+<pre class="xml">&lt;ruby xml:lang="ja"&gt;
+  &lt;rbc&gt;
+    &lt;rb&gt;斎&lt;/rb&gt;
+    &lt;rb&gt;藤&lt;/rb&gt;
+    &lt;rb&gt;信&lt;/rb&gt;
+    &lt;rb&gt;男&lt;/rb&gt;
+  &lt;/rbc&gt;
+  &lt;rtc class="reading"&gt;
+    &lt;rt&gt;さい&lt;/rt&gt;
+    &lt;rt&gt;とう&lt;/rt&gt;
+    &lt;rt&gt;のぶ&lt;/rt&gt;
+    &lt;rt&gt;お&lt;/rt&gt;
+  &lt;/rtc&gt;
+  &lt;rtc class="annotation"&gt;
+    &lt;rt rbspan="4" xml:lang="en"&gt;W3C Associate Chairman&lt;/rt&gt;
+  &lt;/rtc&gt;
+&lt;/ruby&gt;</pre>
+
+<p><strong>Figure 3.5</strong>: Ruby markup with <code>class</code> and
+<code>xml:lang</code> attributes.</p>
+</div>
+
+<p>Using a style sheet specifying horizontal text, rendering of the reading
+before the base text, and rendering of the annotation after the base text,
+the markup above could be rendered like this:</p>
+
+<div class="figure">
+<p><a id="fig3.6" name="fig3.6"><img src="chairman.gif"
+alt="In the middle, four Japanese ideographs from left to right. On top of that, hiragana letters in smaller size (two hiragana for each of the three first ideographs, one hiragana for the latest ideograph). At the bottom, the text 'W3C Associate Chairman'."></a></p>
+
+<p><strong>Figure 3.6</strong>: Horizontal rendering of two ruby texts
+associated with a single base text.</p>
+</div>
+</div>
+
+<div>
+<h3><a id="non-visual" name="non-visual">3.5 Considerations for non-visual
+rendering</a></h3>
+
+<p>Documents containing ruby markup may in some cases need to be rendered by
+non-visual user agents such as voice browsers and braille user agents. For
+such rendering scenarios, it is important to understand that:</p>
+<ul>
+  <li>Depending on the user and the situation, different ways of rendering
+    may be appropriate.</li>
+  <li>Ruby text that represents reading may have to be treated differently
+    from ruby text that contains other information.</li>
+  <li>For appropriate non-visual rendering, it is important to indicate the
+    function of each ruby text.</li>
+  <li>There often are some differences between the reading indicated by the
+    ruby text and the actual pronunciation.</li>
+  <li>The reader may be interested in getting information about the
+    (ideographic) base text.</li>
+</ul>
+
+<p>Depending on a user's needs, the way a text should be read may vary from
+very quick and 'cursory' reading to very careful and detailed reading. This
+may lead to different ways of treating ruby text in non-visual rendering,
+from skipping ruby text in fast reading to detailed exploration of the ruby
+structure and the actual characters used in careful reading.</p>
+
+<p>In the frequent case that ruby texts represent reading, rendering both the
+base text and the ruby text may produce annoying duplications. A speech
+synthesizer may be able to correctly pronounce the base text based on a large
+dictionary, or it may in other cases be able to select the right
+pronunciation based on the reading given by the ruby text.</p>
+
+<p>Not all ruby texts represent pronunciations. Authors should distinguish
+ruby texts used for different purposes by using the <code>class</code>
+attribute. This is demonstrated above by using <samp>class="reading"</samp>
+for ruby text used to indicate reading.</p>
+
+<p>Ruby text indicating reading may not produce the correct pronunciation
+even in cases where the script used at first glance seems perfectly phonetic.
+For example, <span lang="zh">Bopomofo</span> is associated independently for
+each character of the base text; context-dependent sound or tone changes are
+not reflected. Similarly, in Japanese, spelling irregularities can occur,
+such as using "<span lang='ja'>は</span>" (<span lang='ja'>hiragana ha</span>) for the topic suffix pronounced "<span lang='ja'>わ</span>" (<span lang='ja'>wa</span>),
+or using vowels for indicating lengthening. For such cases, authors may want
+to supply the actual pronunciation with special markup designed for that
+purpose, or may rely on the aural rendering system being able to handle such
+cases correctly.</p>
+</div>
+
+<div>
+<h3><a id="rp-alternatives" name="rp-alternatives">3.6 Alternatives to the
+<code>rp</code> element</a></h3>
+
+<p>If the author is not concerned about fallbacks for user agents that
+neither know about ruby markup nor support <acronym
+title="Cascading Style Sheets, level 2">CSS2</acronym> [<a
+href="#css2">CSS2</a>] or <acronym
+title="Extensible Style Language">XSL</acronym> [<a href="#xsl">XSL</a>]
+style sheets, then the <code>rp</code> elements are not needed.</p>
+
+<p>Nevertheless, it is possible to parenthesize ruby text as a fallback if
+for example the device resolution is not appropriate for traditional ruby
+rendering. Using [<a href="#css2">CSS2</a>], the parentheses can be generated
+using the <a
+href="http://www.w3.org/TR/1998/REC-CSS2-19980512/generate.html#content">'content'
+property</a> ([<a href="#css2">CSS2</a>], section 12.2) with the <a
+href="http://www.w3.org/TR/1998/REC-CSS2-19980512/generate.html#before-after-content">:before
+and :after pseudo-elements</a> ([<a href="#css2">CSS2</a>], section 12.1), <a
+id="fig3.8" name="fig3.8">as for example in the following style
+fragment:</a></p>
+
+<div class="figure">
+<pre class="style">rt:before { content: "(" }
+rt:after { content: ")" }</pre>
+
+<p><strong>Figure 3.8</strong>: <acronym
+title="Cascading Style Sheets, level 2">CSS2</acronym> style fragment to
+generate parentheses around an <code>rt</code> element</p>
+</div>
+
+<p>In the above example, parentheses will be automatically generated around
+the <code>rt</code> element. It is assumed that the above style rules are
+used together with style rules that position the ruby text inline. Generation
+of parentheses is straightforward with <acronym
+title="XSL Transformations">XSLT</acronym> [<a href="#xslt">XSLT</a>].</p>
+</div>
+</div>
+
+<div class="normative">
+<h2><a name="conformance">4. Conformance Criteria</a></h2>
+
+<p>This section is <em>normative</em>.</p>
+
+<p>Within the context of this specification, conformance can be claimed for
+markup, document types, module implementations,  documents, generators, and
+interpreters. In most of these cases, two levels of conformance are
+available: simple conformance and full conformance. Simple conformance means
+that the conforming object supports the minimal content model of the ruby
+element in <a href="#abstract-def">section
+2.1</a>, i.e. only simple ruby markup. Full conformance means that the
+conforming object supports the maximal content model of the ruby element in
+<a href="#abstract-def">section 2.1</a>,
+i.e. that both simple and complex ruby markup are supported.</p>
+
+<p>Markup is <em>conforming simple ruby markup</em> if it contains one or
+more <code>ruby</code> elements and the content of all those elements
+(including their children) conforms to the minimal content model in <a
+href="#abstract-def">section 2.1</a> (i.e.
+only simple ruby markup is allowed). Markup is <em>conforming full ruby
+markup</em> if it contains one or more <code>ruby</code> elements and the
+content of all those elements (including their children) conforms to the
+maximal content model in <a
+href="#abstract-def">section 2.1</a> (i.e.
+both simple and complex ruby markup is allowed).</p>
+
+<p>A document type is a <em>conforming simple ruby markup document type</em>
+if it integrates conforming simple ruby markup by adding the
+<code>ruby</code> element to the appropriate elements (such as inline
+elements) and by defining the necessary elements and attributes. A document
+type is a <em>conforming full ruby markup document type</em> if it integrates
+conforming full ruby markup by adding the <code>ruby</code> element to the
+appropriate elements (such as inline elements) and by defining the necessary
+elements and attributes.</p>
+
+<p>A module implementation (e.g. with DTD or XML Schema technology) is a
+<em>conforming simple ruby module implementation</em> if it is designed to
+integrate simple ruby markup with other modules into document types as
+described above. A module implementation is a <em>conforming complex ruby
+module implementation</em> if it is designed to integrate full ruby markup
+with other modules into document types as described above. A module
+implementation is a <em>conforming full ruby module implementation</em> if it
+is designed to integrate either simple or full ruby markup with other modules
+into document types as described above (e.g. by providing a switch, or by
+providing two separate module implementations).</p>
+
+<p>A document is a <em>conforming simple ruby markup document</em> if it
+contains conforming simple ruby markup and does not contain complex ruby
+markup or non-conforming ruby markup. A document is a <em>conforming full
+ruby markup document</em> if it contains conforming full ruby markup and does
+not contain non-conforming ruby markup.</p>
+
+<p>A generator is a <em>conforming simple ruby markup generator</em> if it
+generates conforming simple ruby markup and does not generate complex ruby
+markup or non-conforming ruby markup. A generator is a <em>conforming full
+ruby markup generator</em> if it generates conforming full ruby markup and
+does not generate non-conforming ruby markup.</p>
+
+<p>An interpreter is a <em>conforming simple ruby markup interpreter</em> if
+it rejects nonconforming simple ruby markup, accepts conforming simple ruby
+markup, and, where it interprets ruby markup, does so in accordance with this
+specification. An interpreter is a <em>conforming full ruby markup
+interpreter</em> if it rejects nonconforming ruby markup, accepts conforming
+full ruby markup, and, where it interprets ruby markup, does so in accordance
+with this specification. Examples of interpreters are server-side analysis or
+transformation tools and renderers.</p>
+
+<p>For XHTML Modularization conformance, please see section 3 of [<a
+href="#xhtmlmod">XHTMLMOD</a>].</p>
+</div>
+<hr>
+
+<div>
+<h2><a id="appendix" name="appendix">Appendices</a></h2>
+
+<div class="informative">
+<h2><a id="module" name="module">A.  Ruby module for <acronym
+title="Extensible HyperText Markup Language">XHTML</acronym></a></h2>
+
+<p>This appendix is <em>informative</em>.</p>
+
+<p>The following is a link to the Ruby <acronym
+title="Document Type Definition">DTD</acronym> module that is used in
+<acronym title="Extensible HyperText Markup Language">XHTML</acronym> 1.1 [<a
+href="#xhtml11">XHTML11</a>].</p>
+<ul>
+  <li><a href="xhtml-ruby-1.mod"><acronym
+    title="Extensible HyperText Markup Language">XHTML</acronym> Ruby
+    Module</a></li>
+</ul>
+</div>
+
+<div class="informative">
+<h2><a id="design" name="design">B. Notes on design decisions</a></h2>
+
+<p>This appendix is <em>informative</em>. This appendix contains some notes
+on design decisions, based on questions and comments received during the Last
+Call review.</p>
+
+<p>There were proposals to change e.g. &lt;rbc&gt;&lt;rb&gt;...&lt;/rbc&gt;
+to &lt;rb&gt;&lt;rbc&gt;...&lt;/rb&gt; (and similar for rt/rtc). This looks
+in some way more natural. However, in XML, the content of an element is
+either mixed content (both character data and elements, without sequence or
+occurrence restrictions) or element content (only elements, with
+restrictions). This means that it is impossible to say that &lt;rb&gt;
+contains either only &lt;rbc&gt; elements or only character data and inline
+elements.</p>
+
+<p>There were various proposals for removing the <code><a
+href="#rp">rp</a></code> element from the minimal content model. They were
+considered, but rejected for the following reasons:</p>
+<ul>
+  <li>Recognition and removal of the <code><a href="#rp">rp</a></code>
+    elements by a receiver understanding ruby markup is extremely simple to
+    implement; the burden on implementations is minimal. Both CSS and XSL
+    provide easy mechanisms to remove the <code><a href="#rp">rp</a></code>
+    elements or to avoid displaying them.</li>
+  <li>Displaying ruby text in parentheses is not desirable, because it can be
+    confused with ordinary parenthesized text, but such a confusion is highly
+    preferable to the confusion created should ruby text appear inline, as
+    part of the actual text, without any distinguishing features.</li>
+</ul>
+
+<p>It was suggested to change the names of the elements, in particular to
+change &lt;ruby&gt; to &lt;gloss&gt;.  However, while ruby markup is indeed
+in some way similar to the markup that would be needed for glosses, it is not
+designed for that purpose.</p>
+</div>
+
+<div class="informative">
+<h2><a id="compatibility" name="compatibility">C.  Notes on backwards
+compatibility</a></h2>
+
+<p>This appendix is <em>informative</em>.</p>
+
+<p>For historical reasons, some authoring tools might generate ruby markup
+without the start and end tags of the <code>rb</code> element, like:</p>
+
+<div class="figure">
+<pre class="sgml">&lt;ruby&gt;
+  A
+  &lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;aaa&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+&lt;/ruby&gt;</pre>
+</div>
+
+<p>rather than the following:</p>
+
+<div class="figure">
+<pre class="xml">&lt;ruby&gt;
+  &lt;rb&gt;A&lt;/rb&gt;
+  &lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;aaa&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;
+&lt;/ruby&gt;</pre>
+</div>
+
+<p>The former markup is not conforming to this specification, but user agents
+that care about compatibility with documents generated by such authoring
+tools may treat the former markup as if it were written like the latter.</p>
+</div>
+
+<div class="informative">
+<h2><a id="glossary" name="glossary">D.  Glossary</a></h2>
+
+<p>This appendix is <em>informative</em>.</p>
+<dl>
+  <dt><a id="g-RB" name="g-RB"><strong>Base text</strong></a></dt>
+    <dd>Run of text that has a <a href="#g-RT">ruby text</a> associated with
+      it.</dd>
+  <dt><a id="g-bopomofo" name="g-bopomofo"><strong
+  lang="zh">Bopomofo</strong></a></dt>
+    <dd>37 characters and 4 tone marks used as phonetics in Chinese,
+      especially standard Mandarin.</dd>
+  <dt><a href="#complex" id="g-complex" name="g-complex"><strong>Complex ruby
+  markup</strong></a></dt>
+    <dd>In this specification: Ruby markup that allows association of two <a
+      href="#g-RT">ruby texts</a> with a single <a href="#g-RB">base text</a>
+      as well as fine-grained associations between parts of the <a
+      href="#g-RT">ruby texts</a> and the <a href="#g-RB">base text</a>.</dd>
+  <dt><a id="g-GR" name="g-GR"><strong>Group ruby</strong></a></dt>
+    <dd>In Japanese typography: Ruby text associated with more than one
+      character of the base text.</dd>
+  <dt><a id="g-hiragana" name="g-hiragana"><strong
+  lang="ja">Hiragana</strong></a></dt>
+    <dd>Japanese syllabic script, or character of that script. Rounded and
+      cursive in appearance. Subset of the Japanese writing system, used
+      together with kanji and katakana. In recent times, mostly used to write
+      Japanese words when kanji are not available or appropriate, and word
+      endings and particles.</dd>
+  <dt><a id="g-ideograph"
+  name="g-ideograph"><strong>Ideograph</strong></a></dt>
+    <dd>A character that is used to represent an idea, word, or word
+      component, in contrast to a character from an alphabetic or syllabic
+      script. The most well-known ideographic script is used (with some
+      variation) in East Asia (China, Japan, Korea,...).</dd>
+  <dt><a id="g-kana" name="g-kana"><strong lang="ja">Kana</strong></a></dt>
+    <dd>Collective term for hiragana and katakana.</dd>
+  <dt><a id="g-katakana" name="g-katakana"><strong
+  lang="ja">Katakana</strong></a></dt>
+    <dd>Japanese syllabic script, or character of that script. Angular in
+      appearance. Subset of the Japanese writing system, used together with
+      kanji and hiragana. In recent times, mainly used to write foreign
+    words.</dd>
+  <dt><a id="g-kanji" name="g-kanji"><strong lang="ja">Kanji</strong></a></dt>
+    <dd>Japanese term for ideographs; ideographs used in Japanese. Subset of
+      the Japanese writing system, used together with hiragana and
+    katakana.</dd>
+  <dt><a id="g-monoruby" name="g-monoruby"><strong>Monoruby</strong></a></dt>
+    <dd>In Japanese typography: Ruby associated with a single character of
+      the base text.</dd>
+  <dt><a id="g-reading" name="g-reading"><strong>Reading</strong></a></dt>
+    <dd>For ideographs: Technical term; indication of possible pronunciation.
+      Different from pronunciation in various respects: script used may not
+      be fully phonetic; actual pronunciation is speaker-dependent;
+      pronunciation may not be realized when reading a text silently. In
+      Chinese or Korean, some ideographs have several readings. In Japanese,
+      most ideographs have at least two readings, and some have a lot more.
+      Readings also may depend on context.</dd>
+  <dt><a id="g-RT" name="g-RT"><strong>Ruby text</strong></a></dt>
+    <dd>Run of text that appears in the immediate vicinity of another run of
+      text (called <a href="#g-RB">"ruby base"</a>) and serves as an
+      annotation or a pronunciation guide associated with the base.</dd>
+  <dt><a href="#simple-ruby1" id="g-SR" name="g-SR"><strong>Simple ruby
+  markup</strong></a></dt>
+    <dd>In this specification: Ruby markup that associates a single <a
+      href="#g-RT">ruby text</a> with a single <a href="#g-RB">ruby base</a>,
+      optionally providing some delimiters such as parentheses for
+    fallback.</dd>
+</dl>
+</div>
+
+<div class="informative">
+<h2><a id="changes" name="changes">E.  Changes from Proposed
+Recommendation</a></h2>
+
+<p>This appendix is <em>informative</em>.</p>
+
+<p>Changes from the <a
+href="http://www.w3.org/TR/2001/PR-ruby-20010406/">Proposed
+Recommendation</a> (http://www.w3.org/TR/2001/PR-ruby-20010406):</p>
+<ul>
+  <li>Added conformance section</li>
+  <li>Streamlined terms 'ruby text' and 'base text'</li>
+  <li>Changed 'part of' to 'used by' in <a href='#module'>Appendix A</a>
+      ([<a href='#xhtml11'>XHTML11</a>] does not contain any module definitions)</li>
+  <li>Added link to [<a href='#ModSchema'>ModSchema</a>]
+  <li>Fixed Appendix numbering and table of contents</li>
+  <li>Fixed link in Section 3.3 (to fig. 1.1 rather than 1.3)</li>
+  <li>Added Japanese titles for [<a href="#jis">JIS4051</a>] and [<a
+    href="#jdcm">JIS4052</a>]</li>
+  <li>Fixed various typos and minor grammatical mistakes</li>
+</ul>
+</div>
+</div>
+
+<div class="informative">
+<h2><a id="ack" name="ack">Acknowledgements</a></h2>
+
+<p>This section is <em>informative</em>.</p>
+
+<p>Takao <span class="familyname">Suzuki</span> (<span
+lang="ja">鈴木 孝雄</span>) and Chris <span
+class="familyname">Wilson</span> have contributed to previous drafts as
+editors.</p>
+
+<p>This specification would not have been possible without the help from the
+members of the W3C I18N WG, in particular Mark <span
+class="familyname">Davis</span> and Hideki <span
+class="familyname">Hiura</span> (<span lang="ja">樋浦 秀樹</span>), and
+the members of the W3C I18N IG.</p>
+
+<p>Additional contributors include Murray <span
+class="familyname">Altheim</span>, Laurie Anna <span
+class="familyname">Edlund</span>, Arye <span
+class="familyname">Gittelma</span>, Koji <span
+class="familyname">Ishii</span>, Rick <span
+class="familyname">Jelliffe</span>, Eric <span
+class="familyname">LeVine</span>, Chris <span
+class="familyname">Lilley</span>, Charles <span
+class="familyname">McCathieNevile</span>, Shigeki <span
+class="familyname">Moro</span> (<span lang="ja">師 茂樹</span>), Chris
+<span class="familyname">Pratley</span>, Nobuo <span
+class="familyname">Saito</span> (<span lang="ja">斎藤 信男</span>), Rahul
+<span class="familyname">Sonnad</span>, Chris <span
+class="familyname">Thrasher</span>.</p>
+
+<p>The markup defined in this specification was coordinated with the ruby
+markup in [<a href="#jdcm">JIS4052</a>], developed by WG 2 (Typesetting) of
+the Electronic Document Processing System Standardization Investigation and
+Research Committee of the Japanese Standards Association. We would like to
+thank the members of WG 2, in particular Kohji <span
+class="familyname">Shibano</span> (<span lang="ja">芝野 耕司</span>,
+chair), and Masafumi <span class="familyname">Yabe</span> (<span
+lang="ja">家辺 勝文, liaison</span>), for their collaboration.
+Technically, the markup for ruby in [<a href="#jdcm">JIS4052</a>] differs
+from the markup in this specification in two points: First, there is an
+alternative form of markup not compatible with XML, based on special symbols,
+and second, the <a href="#rp"><code>rp</code></a> element is not
+permitted.</p>
+
+<p>Valuable Last Call comments were also received from: The HTML WG, the CSS
+WG, the XSL WG, the WAI P&amp;F WG, Steven <span
+class="familyname">Pemberton</span>, Trevor <span
+class="familyname">Hill</span>, Susan <span class="familyname">Lesch</span>,
+and Frank Yung-Fong <span class="familyname">Tang</span>. Akira <span
+class="familyname">Uchida</span> (内田 明) provided feedback from a
+translator's viewpoint.</p>
+
+<p>An earlier proposal for markup for ruby, using attributes, is described in
+[<a href="#dur97">DUR97</a>].</p>
+</div>
+
+<div class="informative ref">
+<h2><a id="ref" name="ref">References</a></h2>
+
+<h3>Normative References</h3>
+<dl>
+  <dt>[<a id="xhtml11" name="xhtml11">XHTML11</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2001/REC-xhtml11-20010531/"><acronym
+      title="Extensible HyperText Markup Language">XHTML</acronym><sup>&trade;</sup>
+      1.1 - Module-based <acronym
+      title="Extensible HyperText Markup Language">XHTML</acronym></a></cite>",
+      <acronym title="World Wide Web Consortium">W3C</acronym>
+      Recommendation</em></dd>
+    <dd>M. Altheim, S. McCarron, <abbr title="Editors">eds.</abbr>, 31 May
+      2001<br>
+      Available at: http://www.w3.org/TR/2001/REC-xhtml11-20010531<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/xhtml11/">http://www.w3.org/TR/xhtml11</a></dd>
+</dl>
+<dl>
+  <dt>[<a id="xhtmlmod" name="xhtmlmod">XHTMLMOD</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410/">Modularization
+      of <acronym
+      title="Extensible HyperText Markup Language">XHTML</acronym><sup>&trade;</sup></a></cite>",
+      <acronym title="World Wide Web Consortium">W3C</acronym>
+      Recommendation</em></dd>
+    <dd>M. Altheim <em>et al.</em>, <abbr title="editors">eds.</abbr>, 10
+      April 2001 <br>
+      Available at:
+      http://www.w3.org/TR/2001/REC-xhtml-modularization-20010410<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/xhtml-modularization/">http://www.w3.org/TR/xhtml-modularization</a></dd>
+  <dt>[<a id="xml1" name="xml1">XML</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2000/REC-xml-20001006">Extensible Markup
+      Language (<abbr title="Extensible Markup Language">XML</abbr>) 1.0
+      (Second Edition)</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Recommendation</em></dd>
+    <dd>T. Bray, J. Paoli, C. M. Sperberg-McQueen, E. Maler, <abbr
+      title="editors">eds.</abbr>, 6 October 2000<br>
+      Available at: http://www.w3.org/TR/2000/REC-xml-20001006<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/REC-xml">http://www.w3.org/TR/REC-xml</a></dd>
+</dl>
+
+<h3>Informative References</h3>
+<dl>
+  <dt>[<a id="css2" name="css2">CSS2</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/1998/REC-CSS2-19980512/">Cascading Style
+      Sheets, level 2 (<acronym
+      title="Cascading Style Sheets, level 2">CSS2</acronym>)
+      Specification</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Recommendation</em></dd>
+    <dd>B. Bos, H. W. Lie, C. Lilley and I. Jacobs, <abbr
+      title="editors">eds.</abbr>, 12 May 1998<br>
+      Available at: http://www.w3.org/TR/1998/REC-CSS2-19980512<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/REC-CSS2/">http://www.w3.org/TR/REC-CSS2</a></dd>
+  <dt>[<a id="css3-ruby" name="css3-ruby">CSS3-RUBY</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2001/WD-css3-ruby-20010216/">CSS3 module:
+      Ruby</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Working Draft</em></dd>
+    <dd>M. Suignard, <abbr title="editor">ed.</abbr>, 16 February 2001<br>
+      Available at: http://www.w3.org/TR/2001/WD-css3-ruby-20010216/<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/css3-ruby/">http://www.w3.org/TR/css3-ruby</a></dd>
+  <dt>[<a id="dur97" name="dur97">DUR97</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/International/draft-duerst-ruby-01">Ruby in the
+      Hypertext Markup Language</a></cite>", Internet Draft</em></dd>
+    <dd>Martin Dürst, 28 February 1997, <em>expired</em><br>
+      Available at: http://www.w3.org/International/draft-duerst-ruby-01</dd>
+  <dt>[<a id="html4" name="html4">HTML4</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/1999/REC-html401-19991224/"><acronym
+      title="HyperText Markup Language">HTML</acronym> 4.01
+      Specification</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Recommendation</em></dd>
+    <dd>D. Raggett, A. Le Hors, I. Jacobs, <abbr
+      title="editors">eds.</abbr>, 24 December 1999<br>
+      Available at: http://www.w3.org/TR/1999/REC-html401-19991224<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/html4/">http://www.w3.org/TR/html4</a></dd>
+  <dt>[<a id="jis" name="jis">JIS4051</a>]</dt>
+    <dd><em>"<cite>Line composition rules for Japanese documents</cite>"</em>
+      (<span lang="ja">日本語文書の行組版方法</span>)</dd>
+    <dd>JIS X 4051-1995, Japanese Standards Association, 1995 (in
+    Japanese)</dd>
+  <dt>[<a id="jdcm" name="jdcm">JIS4052</a>]</dt>
+    <dd><em>"<cite>Exchange format for Japanese documents with composition
+      markup</cite>"</em> (<span
+      lang="ja">日本語文書の組版指定交換形式</span>)</dd>
+    <dd>JIS X 4052:2000, Japanese Standards Association, 2000 (in
+    Japanese)</dd>
+<dt>[<a id='ModSchema' name='ModSchema'>ModSchema</a>]</dt>
+    <dd><em>"<cite><a
+      href='http://www.w3.org/TR/2001/WD-xhtml-m12n-schema-20010322/'>Modularization
+      of XHTML&#8482; in XML Schema</a></cite>", <acronym
+      title="World Wide Web  Consortium">W3C</acronym> Working Draft</em></dd>
+    <dd>Daniel Austin and Shane McCarron, <abbr
+      title="editors">eds.</abbr>, 22 March 2001<br>
+      Available at: http://www.w3.org/TR/2001/WD-xhtml-m12n-schema-20010322<br>
+      The latest version is available at: <a 
+      href="http://www.w3.org/TR/xhtml-m12n-schema/">http://www.w3.org/TR/xhtml-m12n-schema</a></dd>
+<dt>[<a id="xmlschema" name="xmlschema">XMLSchema</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2001/REC-xmlschema-1-20010502/"><abbr
+      title="Extensible Markup Language">XML</abbr> Schema Part 1:
+      Structures</a></cite>", <acronym
+      title="World Wide Web  Consortium">W3C</acronym>
+    Recommendation</em></dd>
+    <dd>H. S. Thompson, D. Beech, M. Maloney, N. Mendelsohn, <abbr
+      title="editors">eds.</abbr>, 2 May 2001<br>
+      Available at: http://www.w3.org/TR/2001/REC-xmlschema-1-20010502<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/xmlschema-1/">http://www.w3.org/TR/xmlschema-1</a></dd>
+    <dd>See also "<cite><abbr title="Extensible Markup Language">XML</abbr>
+      Schema Part 2: Datatypes</cite>", available at: <a
+      href="http://www.w3.org/TR/xmlschema-2/">http://www.w3.org/TR/xmlschema-2</a></dd>
+  <dt>[<a id="xsl" name="xsl">XSL</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/2000/CR-xsl-20001121/">Extensible Style
+      Language (<acronym
+      title="Extensible Style Language">XSL</acronym>)</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Candidate
+      Recommendation</em></dd>
+    <dd>S. Adler <em>et al.</em>, <abbr title="editors">eds.</abbr>, 21
+      November 2000<br>
+      Available at: http://www.w3.org/TR/2000/CR-xsl-20001121<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/xsl/">http://www.w3.org/TR/xsl</a></dd>
+  <dt>[<a id="xslt" name="xslt">XSLT</a>]</dt>
+    <dd><em>"<cite><a
+      href="http://www.w3.org/TR/1999/REC-xslt-19991116"><acronym
+      title="Extensible Style Language">XSL</acronym> Transformations
+      (<acronym title="XSL Transformations">XSLT</acronym>) Version
+      1.0</a></cite>", <acronym
+      title="World Wide Web Consortium">W3C</acronym> Recommendation</em></dd>
+    <dd>J. Clark, <abbr title="editor">ed.</abbr>, 16 November 1999<br>
+      Available at: http://www.w3.org/TR/1999/REC-xslt-19991116<br>
+      The latest version is available at: <a
+      href="http://www.w3.org/TR/xslt">http://www.w3.org/TR/xslt</a></dd>
+</dl>
+</div>
+</body>
+</html>

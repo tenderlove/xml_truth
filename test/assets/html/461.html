@@ -1,0 +1,1388 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Programming Ruby: The Pragmatic Programmer's Guide</title>
+    <link rel="StyleSheet" href="pr_style.css" type="text/css" media="screen">
+  </head>
+  <body bgcolor="white">
+    <table bgcolor="#c09090" cellpadding="3" border="0" cellspacing="0" width="100%">
+      <tr>
+        <td colspan="3">
+          <table bgcolor="#701a1a" cellpadding="20" width="100%">
+            <tr>
+              <td width="6in">
+                <h1 class="header">Programming Ruby</h1>
+                <h3 class="subheader">The Pragmatic Programmer's Guide</h3>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td width="33%" align="left">
+          <a class="pickaxe/subheader" href="roadmap.html">Previous &lt;</a>
+        </td>
+        <td width="33%" align="center" valign="middle">
+          <a class="pickaxe/subheader" href="/pickaxe">Contents ^</a>
+          <br>
+        </td>
+        <td width="33%" align="right">
+          <a class="pickaxe/subheader" href="tut_classes.html">Next &gt;</a>
+          <br>
+        </td>
+      </tr>
+    </table>
+<!--
+Copyright (c) 2001 by Addison Wesley Longman, Inc. This material may
+be distributed only subject to the terms and conditions set forth in
+the Open Publication License, v1.0 or later (the latest version is
+presently available at http://www.opencontent.org/openpub/).
+<P></P>
+Distribution of substantively modified versions of this document is
+prohibited without the explicit permission of the copyright holder.
+<P></P>
+Distribution of the work or derivative of the work in any standard
+(paper) book form is prohibited unless prior permission is obtained
+from the copyright holder.
+-->
+<h1>Ruby.new</h1>
+    <hr>
+    <br>
+<P></P>
+When we originally wrote this book, we had a grand plan (we were
+younger then). We wanted to document the language from the top down,
+starting with classes and objects, and ending with the nitty-gritty
+syntax details. It seemed like a good idea at the time. After all,
+most everything in Ruby is an object, so it made sense to talk about
+objects first.
+<P></P>
+Or so we thought.
+<P></P>
+Unfortunately, it turns out to be difficult to describe a language
+that way. If you haven't covered strings, <code>if</code> statements,
+assignments, and other details, it's difficult to write examples of
+classes. Throughout our top-down description, we kept coming across
+low-level details we needed to cover so that the example code would
+make sense.
+<P></P>
+So, we came up with another grand plan (they don't call us pragmatic
+for nothing). We'd still describe Ruby starting at the top. But before
+we did that, we'd add a short chapter that described all the common
+language features used in the examples along with the special vocabulary
+used in Ruby, a kind of minitutorial to bootstrap us into the rest of
+the book.
+<h2><a name="S1">Ruby Is an Object-Oriented Language</a></h2>
+<P></P>
+Let's say it again. Ruby is a genuine object-oriented language.
+Everything you manipulate is an object, and the results of those
+manipulations are themselves objects. However, many languages make the
+same claim, and they often have a different interpretation of what
+object-oriented means and a different terminology for the concepts
+they employ.
+<P></P>
+So, before we get too far into the details, let's briefly look at the
+terms and notation that <em>we'll</em> be using.
+<P></P>
+When you write object-oriented code, you're normally looking to model
+concepts from the real world in your code. Typically during this modeling
+process you'll discover categories of things that need to be
+represented in code. In a jukebox, the concept of a ``song'' might be
+such a category.  In Ruby, you'd define a <em>class</em> to represent
+each of these entities.  A class is a combination of state (for
+example, the name of the song) and methods that use that state (perhaps
+a method to play the song).
+<P></P>
+Once you have these classes, you'll typically want to create a number
+of <em>instances</em> of each. For the jukebox system containing a class
+called <code>Song</code>, you'd have separate instances for popular hits such
+as ``Ruby Tuesday,'' ``Enveloped in Python,'' ``String of Pearls,''
+``Small talk,'' and so on. The word <em>object</em> is used
+interchangeably with class instance (and being lazy typists, we'll
+probably be using the word ``object'' more frequently).
+<P></P>
+In Ruby, these objects are created by calling a constructor, a special
+method associated with a class. The standard constructor is called
+<code>new</code>.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+song1&nbsp;=&nbsp;Song.new("Ruby&nbsp;Tuesday")
+song2&nbsp;=&nbsp;Song.new("Enveloped&nbsp;in&nbsp;Python")
+#&nbsp;and&nbsp;so&nbsp;on
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+These instances are both derived from the same class, but they have
+unique characteristics.  First, every object has a unique <em>object
+  identifier</em> (abbreviated as <em>object id</em>). Second, you can
+define <em>instance variables</em>,
+variables with values that are
+unique to each instance.  These instance variables hold an object's
+state.  Each of our songs, for example, will probably have an instance
+variable that holds the song title.
+<P></P>
+Within each class, you can define <em>instance methods</em>.
+Each method
+is a chunk of functionality which may be called from within the class
+and (depending on accessibility constraints) from outside. These
+instance methods in turn have access to the object's instance
+variables, and hence to the object's state.
+<P></P>
+Methods are invoked by sending a message to an object.
+The message
+contains the method's name, along with any parameters the method may
+need.<em>[This idea of expressing  method calls in the form of
+  messages comes from Smalltalk.]</em> When an object receives a message,
+it looks into its own class for a corresponding method. If found, that 
+method is executed. If the method <em>isn't</em> found, ... well,
+we'll get to that later.
+<P></P>
+This business of methods and messages may sound complicated, but in
+practice it is very natural. Let's look at some method calls.
+(Remember that the arrows in the code examples show the values
+returned by the corresponding expressions.)
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="500">
+<tr>
+  <td valign="top">
+          <code>"gin&nbsp;joint".length</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>9</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>"Rick".index("c")</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>2</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>-1942.abs</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>1942</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>sam.play(aSong)</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>"duh&nbsp;dum,&nbsp;da&nbsp;dum&nbsp;de&nbsp;dum&nbsp;..."</code>
+        </td>
+</tr>
+</table>
+<P></P>
+
+<P></P>
+Here, the thing before the period is called the <em>receiver</em>, and
+the name after the period is the method to be invoked.
+The first
+example asks a string for its length, and the second asks a different
+string to find the index of the letter ``c.'' The third line has a
+number calculate its absolute value. Finally, we ask Sam to play us
+a song.
+<P></P>
+It's worth noting here a major difference between Ruby and most other
+languages. In (say) Java, you'd find the absolute value of some number 
+by calling a separate function and passing in that number. You might
+write
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+number&nbsp;=&nbsp;Math.abs(number)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Java&nbsp;code
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+In Ruby, the ability to determine an absolute value is built into
+numbers---they take care of the details internally. You simply send
+the message <code>abs</code> to a number object and let it do the work.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+number&nbsp;=&nbsp;number.abs
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The same applies to all Ruby objects: in C you'd write
+<code>strlen(name)</code>, while in Ruby it's <code>name.length</code>, and so
+on. This is part of what we mean when we say that Ruby is a genuine OO 
+language.
+<h2><a name="S2">Some Basic Ruby</a></h2>
+<P></P>
+Not many people like to read heaps of boring syntax rules when they're
+picking up a new language. So we're going to cheat. In this section
+we'll hit some of the highlights, the stuff you'll just <em>have</em> to
+know if you're going to write Ruby programs. Later, in Chapter
+18, which begins on page 199, we'll go into
+all the gory details.
+<P></P>
+Let's start off with a simple Ruby program. We'll write a method that
+returns a string, adding to that string a person's
+name. We'll then invoke that method a couple of times.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+def&nbsp;sayGoodnight(name)
+&nbsp;&nbsp;result&nbsp;=&nbsp;"Goodnight,&nbsp;"&nbsp;+&nbsp;name
+&nbsp;&nbsp;return&nbsp;result
+end
+<P></P>
+#&nbsp;Time&nbsp;for&nbsp;bed...
+puts&nbsp;sayGoodnight("John-Boy")
+puts&nbsp;sayGoodnight("Mary-Ellen")
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+First, some general observations. Ruby syntax is clean. You don't
+need semicolons at the ends of statements as long as you put each
+statement on a separate line.  Ruby comments start with a
+<code>#</code> character and run to the end of the line. Code layout is
+pretty much up to you; indentation is not significant.
+<P></P>
+Methods are defined with the keyword <code>def</code>, followed by the method
+name (in this case, ``<code>sayGoodnight</code>'') and the method's
+parameters between parentheses.  Ruby doesn't use braces to delimit
+the bodies of compound statements and definitions. Instead, you simply
+finish the body with the keyword <code>end</code>.  Our method's body is
+pretty simple. The first line concatenates the literal string
+``Goodnight,<img src="visible_space.gif" width="15" height="10" align="bottom" alt="[visible space]">'' to the parameter <code>name</code> and assigns the result to
+the local variable result. The next line returns that result to the
+caller. Note that we didn't have to declare the variable <code>result</code>;
+it sprang into existence when we assigned to it.
+<P></P>
+Having defined the method, we call it twice. In both cases we pass the
+result to the method <code>puts</code>, which simply outputs its argument
+followed by a newline.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+Goodnight,&nbsp;John-Boy
+Goodnight,&nbsp;Mary-Ellen
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The line ``<code>puts sayGoodnight("John-Boy")</code>'' contains two method calls, 
+one to <code>sayGoodnight</code> and the other to <code>puts</code>. Why does one call
+have its arguments in parentheses while the other doesn't? In this
+case it's purely a matter of taste. The following lines are all
+equivalent.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+puts&nbsp;sayGoodnight&nbsp;"John-Boy"
+puts&nbsp;sayGoodnight("John-Boy")
+puts(sayGoodnight&nbsp;"John-Boy")
+puts(sayGoodnight("John-Boy"))
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+However, life isn't always that simple, and precedence rules can make
+it difficult to know which argument goes with which method invocation,
+so we recommend using parentheses in all but the simplest cases.
+<P></P>
+This example also shows some Ruby string objects. There are many ways
+to create a string object, but probably the most common is to use
+string literals: sequences of characters between single or double
+quotation marks. The difference between the two forms is the amount of 
+processing Ruby does on the string while constructing the literal. In
+the single-quoted case, Ruby does very little. With a few exceptions,
+what you type into the string literal becomes the string's value.
+<P></P>
+In the double-quoted case, Ruby does more work. First, it looks for
+substitutions---sequences that start with a backslash character---and
+replaces them with some binary value. The most common of these is
+``<code>\n</code>'', which is replaced with a newline character.
+When a
+string containing a newline is output, the ``<code>\n</code>'' forces a
+line break.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+puts&nbsp;"And&nbsp;Goodnight,\nGrandma"
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+And&nbsp;Goodnight,
+Grandma
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The second thing that Ruby does with double-quoted strings 
+is expression interpolation. Within the string, the sequence
+<code>#{</code>
+    <em>expression</em>
+    <code>}</code> is replaced by the value of
+<em>expression</em>. We could use this to rewrite our previous method.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+def&nbsp;sayGoodnight(name)
+&nbsp;&nbsp;result&nbsp;=&nbsp;"Goodnight,&nbsp;#{name}"
+&nbsp;&nbsp;return&nbsp;result
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+When Ruby constructs this string object, it looks at the current value 
+of <code>name</code> and substitutes it into the string. Arbitrarily complex 
+expressions are allowed in the <code>#{...}</code> construct. As a
+shortcut, you don't need to supply the braces when the expression is
+simply a global, instance, or class variable. For more
+information on strings, as well as on the other Ruby standard types, see
+Chapter 5, which begins on page 47.
+<P></P>
+Finally, we could simplify this method some more. The value returned
+by a Ruby method is the value of the last expression evaluated, so we
+can get rid of the <code>return</code> statement altogether.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+def&nbsp;sayGoodnight(name)
+&nbsp;&nbsp;"Goodnight,&nbsp;#{name}"
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+We promised that this section would be brief. We've got just one more
+topic to cover: Ruby names. For brevity, we'll be using some terms
+(such as class variable) that we aren't going to
+define here. However, by talking about the rules now, you'll be ahead
+of the game when we actually come to discuss instance variables and
+the like later.
+<P></P>
+Ruby uses a convention to help it distinguish the usage of a name: the
+first characters of a name indicate how the name is used.
+Local variables, method parameters, and method names should all start
+with a lowercase letter or with an underscore. Global variables are
+prefixed with a dollar sign ($), while instance variables begin with
+an ``at'' sign (@). Class variables start with two ``at'' signs (@@). Finally,
+class names, module names, and constants should
+start with an uppercase letter. Samples of different names are given
+in Table 2.1 on page 10.
+<P></P>
+Following this initial character, a name can be any combination of
+letters, digits, and underscores (with the proviso that the character
+following an @ sign may not be a digit).
+<P></P>
+<table border="2" width="500" bgcolor="#ffe0e0">
+      <tr>
+        <td>
+  <b>Example variable and class names</b>
+<center>
+    <table class="codebox" cellspacing="0" border="0" cellpadding="3">
+<tr bgcolor="#ff9999">
+<td colspan="4" valign="top">
+                  <b>Variables</b>
+                </td>
+  <td valign="top">
+                  <b>Constants and</b>
+                </td>
+</tr>
+<tr bgcolor="#ff9999">
+  <td valign="top">
+                  <b>Local</b>
+                </td>
+  <td valign="top">
+                  <b>Global</b>
+                </td>
+  <td valign="top">
+                  <b>Instance</b>
+                </td>
+  <td valign="top">
+                  <b>Class</b>
+                </td>
+  <td valign="top">
+                  <b>Class Names</b>
+                </td>
+</tr>
+<tr>
+  <td valign="top">
+                  <code>name</code>
+                </td>
+  <td valign="top">
+                  <code>$debug</code>
+                </td>
+  <td valign="top">
+                  <code>@name</code>
+                </td>
+  <td valign="top">
+                  <code>@@total</code>
+                </td>
+  <td valign="top">
+                  <code>PI</code>
+                </td>
+</tr>
+<tr>
+  <td valign="top">
+                  <code>fishAndChips</code>
+                </td>
+  <td valign="top">
+                  <code>$CUSTOMER</code>
+                </td>
+  <td valign="top">
+                  <code>@point_1</code>
+                </td>
+  <td valign="top">
+                  <code>@@symtab</code>
+                </td>
+  <td valign="top">
+                  <code>FeetPerMile</code>
+                </td>
+</tr>
+<tr>
+  <td valign="top">
+                  <code>x_axis</code>
+                </td>
+  <td valign="top">
+                  <code>$_</code>
+                </td>
+  <td valign="top">
+                  <code>@X</code>
+                </td>
+  <td valign="top">
+                  <code>@@N</code>
+                </td>
+  <td valign="top">
+                  <code>String</code>
+                </td>
+</tr>
+<tr>
+  <td valign="top">
+                  <code>thx1138</code>
+                </td>
+  <td valign="top">
+                  <code>$plan9</code>
+                </td>
+  <td valign="top">
+                  <code>@_</code>
+                </td>
+  <td valign="top">
+                  <code>@@x_pos</code>
+                </td>
+  <td valign="top">
+                  <code>MyClass</code>
+                </td>
+</tr>
+<tr>
+  <td valign="top">
+                  <code>_26</code>
+                </td>
+  <td valign="top">
+                  <code>$Global</code>
+                </td>
+  <td valign="top">
+                  <code>@plan9</code>
+                </td>
+  <td valign="top">
+                  <code>@@SINGLE</code>
+                </td>
+  <td valign="top">
+                  <code>Jazz_Song</code>
+                </td>
+</tr>
+<tr>
+                <td colspan="9" bgcolor="#ff9999" height="2"><img src="dot.gif" width="1" height="1"></td>
+              </tr>
+            </table>
+<P></P>
+</center>
+</td>
+      </tr>
+    </table>
+<P></P>
+<h2><a name="S3">Arrays and Hashes</a></h2>
+<P></P>
+Ruby's arrays and hashes are indexed collections. Both store
+collections of objects, accessible using a key. With arrays, the key
+is an integer, whereas hashes support any object as a key.  Both
+arrays and hashes grow as needed to hold new elements.  It's more
+efficient to access array elements, but hashes provide more
+flexibility. Any particular array or hash can hold objects of
+differing types; you can have an array containing an integer, a
+string, and a floating point number, as we'll see in a minute.
+<P></P>
+You can create and initialize a new array using an array literal---a
+set of elements between square brackets. Given an array object, you
+can access individual elements by supplying an index between
+square brackets, as the next example shows.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="500">
+<tr>
+<td colspan="3" valign="top">
+          <code>a&nbsp;=&nbsp;[&nbsp;1,&nbsp;'cat',&nbsp;3.14&nbsp;]&nbsp;&nbsp;&nbsp;#&nbsp;array&nbsp;with&nbsp;three&nbsp;elements</code>
+        </td>
+</tr>
+<tr>
+<td colspan="3" valign="top">
+          <code>#&nbsp;access&nbsp;the&nbsp;first&nbsp;element</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>a[0]</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>1</code>
+        </td>
+</tr>
+<tr>
+<td colspan="3" valign="top">
+          <code>#&nbsp;set&nbsp;the&nbsp;third&nbsp;element</code>
+        </td>
+</tr>
+<tr>
+<td colspan="3" valign="top">
+          <code>a[2]&nbsp;=&nbsp;nil</code>
+        </td>
+</tr>
+<tr>
+<td colspan="3" valign="top">
+          <code>#&nbsp;dump&nbsp;out&nbsp;the&nbsp;array</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>a</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>[1,&nbsp;"cat",&nbsp;nil]</code>
+        </td>
+</tr>
+</table>
+<P></P>
+
+<P></P>
+You can create empty arrays either by using an array literal with no
+elements or by using the array object's constructor, <a href="ref_c_array.html#Array.new">
+      <code>Array.new</code>
+    </a>.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+empty1&nbsp;=&nbsp;[]
+empty2&nbsp;=&nbsp;Array.new
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Sometimes creating arrays of words can be a pain, what with all the
+quotes and commas. Fortunately, there's a shortcut: <code>%w</code> does just 
+what we want.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="500">
+<tr>
+<td colspan="3" valign="top">
+          <code>a&nbsp;=&nbsp;%w{&nbsp;ant&nbsp;bee&nbsp;cat&nbsp;dog&nbsp;elk&nbsp;}</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>a[0]</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>"ant"</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>a[3]</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>"dog"</code>
+        </td>
+</tr>
+</table>
+<P></P>
+
+<P></P>
+Ruby hashes are similar to arrays. A hash literal uses braces rather than
+square brackets. The literal must supply two objects for every
+entry: one for the key, the other for the value.
+<P></P>
+For example, you might want to map musical instruments to their
+orchestral sections. You could do this with a hash.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+instSection&nbsp;=&nbsp;{
+&nbsp;&nbsp;'cello'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'string',
+&nbsp;&nbsp;'clarinet'&nbsp;&nbsp;=&gt;&nbsp;'woodwind',
+&nbsp;&nbsp;'drum'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'percussion',
+&nbsp;&nbsp;'oboe'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'woodwind',
+&nbsp;&nbsp;'trumpet'&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'brass',
+&nbsp;&nbsp;'violin'&nbsp;&nbsp;&nbsp;&nbsp;=&gt;&nbsp;'string'
+}
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Hashes are indexed using the same square bracket notation as arrays.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="500">
+<tr>
+  <td valign="top">
+          <code>instSection['oboe']</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>"woodwind"</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>instSection['cello']</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>"string"</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>instSection['bassoon']</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>nil</code>
+        </td>
+</tr>
+</table>
+<P></P>
+
+<P></P>
+As the last example shows, a hash by default returns <code>nil</code> when
+indexed by a key it doesn't contain. Normally this is convenient, as
+<code>nil</code> means <code>false</code> when used in conditional expressions.
+Sometimes you'll want to change this default. For example, if you're
+using a hash to count the number of times each key occurs, it's
+convenient to have the default value be zero. This is easily done by
+specifying a default value when you create a new, empty
+hash.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="500">
+<tr>
+<td colspan="3" valign="top">
+          <code>histogram&nbsp;=&nbsp;Hash.new(0)</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>histogram['key1']</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>0</code>
+        </td>
+</tr>
+<tr>
+<td colspan="3" valign="top">
+          <code>histogram['key1']&nbsp;=&nbsp;histogram['key1']&nbsp;+&nbsp;1</code>
+        </td>
+</tr>
+<tr>
+  <td valign="top">
+          <code>histogram['key1']</code>
+        </td>
+  <td valign="top">»</td>
+  <td valign="top">
+          <code>1</code>
+        </td>
+</tr>
+</table>
+<P></P>
+
+<P></P>
+Array and hash objects have lots of useful methods: see the discussion
+starting on page 33, and the reference sections starting on
+pages 278 and 317, for details.
+<h2><a name="S4">Control Structures</a></h2>
+<P></P>
+Ruby has all the usual control structures, such as <code>if</code> statements
+and <code>while</code> loops. Java, C, and Perl programmers may well get
+caught by the lack of braces around the bodies of these
+statements. Instead, Ruby uses the keyword <code>end</code> to signify the end 
+of a body.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+if&nbsp;count&nbsp;&gt;&nbsp;10
+&nbsp;&nbsp;puts&nbsp;"Try&nbsp;again"
+elsif&nbsp;tries&nbsp;==&nbsp;3
+&nbsp;&nbsp;puts&nbsp;"You&nbsp;lose"
+else
+&nbsp;&nbsp;puts&nbsp;"Enter&nbsp;a&nbsp;number"
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Similarly, <code>while</code> statements are terminated with <code>end</code>.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+while&nbsp;weight&nbsp;&lt;&nbsp;100&nbsp;and&nbsp;numPallets&nbsp;&lt;=&nbsp;30
+&nbsp;&nbsp;pallet&nbsp;=&nbsp;nextPallet()
+&nbsp;&nbsp;weight&nbsp;+=&nbsp;pallet.weight
+&nbsp;&nbsp;numPallets&nbsp;+=&nbsp;1
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Ruby <em>statement modifiers</em> are a useful shortcut if the body of an
+<code>if</code> or <code>while</code> statement is just a single expression. Simply
+write the expression, followed by <code>if</code> or <code>while</code> and the
+condition.
+For example, here's a simple <code>if</code> statement.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+if&nbsp;radiation&nbsp;&gt;&nbsp;3000
+&nbsp;&nbsp;puts&nbsp;"Danger,&nbsp;Will&nbsp;Robinson"
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Here it is again, rewritten using a statement modifier.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+puts&nbsp;"Danger,&nbsp;Will&nbsp;Robinson"&nbsp;if&nbsp;radiation&nbsp;&gt;&nbsp;3000
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Similarly, a <code>while</code> loop such as 
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+while&nbsp;square&nbsp;&lt;&nbsp;1000
+&nbsp;&nbsp;&nbsp;square&nbsp;=&nbsp;square*square
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+becomes the more concise
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+square&nbsp;=&nbsp;square*square&nbsp;&nbsp;while&nbsp;square&nbsp;&lt;&nbsp;1000
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+These statement modifiers should seem familiar to Perl programmers.
+<h2><a name="S5">Regular Expressions</a></h2>
+<P></P>
+Most of Ruby's built-in types will be familiar to all programmers.  A
+majority of languages have strings, integers, floats, arrays, and so
+on.  However, until Ruby came along, regular expression support was
+generally  built into only the so-called scripting languages, such as
+Perl, Python, and awk. This is a shame: regular expressions, although
+cryptic, are a powerful tool for working with text.
+<P></P>
+Entire books have been written about regular expressions (for example,
+<em>Mastering Regular Expressions</em>&nbsp;), so we
+won't try to cover everything in just a short section. Instead, we'll
+look at just a few examples of regular expressions in action. You'll
+find full coverage of regular expressions starting
+on page 56.
+<P></P>
+A regular expression is simply a way of specifying a <em>pattern</em> of
+characters to be matched in a string. In Ruby, you typically create a
+regular expression by writing a pattern between slash characters
+(/<em>pattern</em>/).  And, Ruby being Ruby, regular expressions are of
+course objects and can be manipulated as such.
+<P></P>
+For example, you could write a pattern that matches a string
+containing the text ``Perl'' or the text ``Python'' using the
+following regular expression.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+/Perl|Python/
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The forward slashes delimit the pattern, which consists of the two
+things we're matching, separated by a pipe character (``<code>|</code>'').
+You can use parentheses within patterns, just as you can in arithmetic 
+expressions, so you could also have written this pattern as
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+/P(erl|ython)/
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+You can also specify repetition within patterns. <code>/ab+c/</code> matches a 
+string containing an ``a'' followed by one or more ``b''s, followed by 
+a ``c''. Change the plus to an asterisk, and <code>/ab*c/</code> creates a
+regular expression that matches an ``a'', zero or more ``b''s, and a
+``c''.
+<P></P>
+You can also match one of a group of characters within a pattern. Some
+common examples are character classes such as ``<code>\s</code>'', which
+matches a whitespace character (space, tab, newline, and so on),
+``<code>\d</code>'', which matches any digit, and ``<code>\w</code>'', which matches
+any character that may appear in a typical word. The single character
+``.'' (a period) matches any character.
+<P></P>
+We can put all this together to produce some useful regular
+expressions.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+/\d\d:\d\d:\d\d/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;a&nbsp;time&nbsp;such&nbsp;as&nbsp;12:34:56
+/Perl.*Python/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Perl,&nbsp;zero&nbsp;or&nbsp;more&nbsp;other&nbsp;chars,&nbsp;then&nbsp;Python
+/Perl\s+Python/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;Perl,&nbsp;one&nbsp;or&nbsp;more&nbsp;spaces,&nbsp;then&nbsp;Python
+/Ruby&nbsp;(Perl|Python)/&nbsp;#&nbsp;Ruby,&nbsp;a&nbsp;space,&nbsp;and&nbsp;either&nbsp;Perl&nbsp;or&nbsp;Python
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Once you have created a pattern, it seems a shame not to use it. The
+match operator ``<code>=~</code>'' can be used to match a string against a
+regular expression. If the pattern is found in the string, <code>=~</code>
+returns its starting position, otherwise it returns <code>nil</code>. This means
+you can use regular expressions as the condition in <code>if</code> and
+<code>while</code> statements. For example, the following code fragment writes
+a message if a string contains the text 'Perl' or 'Python'.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+if&nbsp;line&nbsp;=~&nbsp;/Perl|Python/
+&nbsp;&nbsp;puts&nbsp;"Scripting&nbsp;language&nbsp;mentioned:&nbsp;#{line}"
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The part of a string matched by a regular expression can also be
+replaced with different text using one of Ruby's substitution methods.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+line.sub(/Perl/,&nbsp;'Ruby')&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;replace&nbsp;first&nbsp;'Perl'&nbsp;with&nbsp;'Ruby'
+line.gsub(/Python/,&nbsp;'Ruby')&nbsp;#&nbsp;replace&nbsp;every&nbsp;'Python'&nbsp;with&nbsp;'Ruby'
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+We'll have a lot more to say about regular expressions as we go
+through the book.
+<h2><a name="S6">Blocks and Iterators</a></h2>
+<P></P>
+This section briefly describes one of Ruby's particular strengths.  We're
+about to look at code blocks: chunks of code that you can associate
+with method invocations, almost as if they were parameters. This is an
+incredibly powerful feature. You can use code blocks to implement
+callbacks (but they're simpler than Java's anonymous inner classes),
+to pass around chunks of code (but they're more flexible than C's
+function pointers), and to implement iterators.
+<P></P>
+Code blocks are just chunks of code between braces or
+<code>do</code>...<code>end</code>.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+{&nbsp;puts&nbsp;"Hello"&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;this&nbsp;is&nbsp;a&nbsp;block
+<P></P>
+do&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#
+&nbsp;&nbsp;club.enroll(person)&nbsp;&nbsp;#&nbsp;and&nbsp;so&nbsp;is&nbsp;this
+&nbsp;&nbsp;person.socialize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#
+end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Once you've created a block, you can associate it with a call to a
+method. That method can then invoke the block one or more times
+using the Ruby <code>yield</code> statement.  The following example shows this
+in action. We define a method that calls <code>yield</code> twice. We then
+call it, putting a block on the same line, after the call (and after
+any arguments to the method).<em>[Some people like to think of
+  the association of a block with a method as a kind of parameter
+  passing. This works on one level, but it isn't really the whole
+  story. You might be better off thinking of the block and the method
+  as coroutines, which
+  transfer control back and forth between themselves.]</em>
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+def&nbsp;callBlock
+&nbsp;&nbsp;yield
+&nbsp;&nbsp;yield
+end
+<P></P>
+callBlock&nbsp;{&nbsp;puts&nbsp;"In&nbsp;the&nbsp;block"&nbsp;}
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+In&nbsp;the&nbsp;block
+In&nbsp;the&nbsp;block
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+See how the code in the block (<code>puts "In the block"</code>) is executed
+twice, once for each call to <code>yield</code>.
+<P></P>
+You can provide parameters to the call to
+<code>yield</code>: these will be passed to the block. Within the block, you
+list the names of the arguments to receive these parameters between
+vertical bars (``|'').
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+  def callBlock
+    yield , 
+  end
+<P></P>
+  callBlock { |, | ... }
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Code blocks are used throughout the Ruby library to implement
+iterators: methods that return successive elements from some kind of
+collection, such as an array. 
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+a&nbsp;=&nbsp;%w(&nbsp;ant&nbsp;bee&nbsp;cat&nbsp;dog&nbsp;elk&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;create&nbsp;an&nbsp;array
+a.each&nbsp;{&nbsp;|animal|&nbsp;puts&nbsp;animal&nbsp;}&nbsp;&nbsp;#&nbsp;iterate&nbsp;over&nbsp;the&nbsp;contents
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+ant
+bee
+cat
+dog
+elk
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Let's look at how we might implement the <code>Array</code> class's <code>each</code>
+iterator that we used in the previous example.  The <code>each</code>
+iterator loops through every element in the array,
+calling <code>yield</code> for each one. In pseudo code, this might look like:
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+#&nbsp;within&nbsp;class&nbsp;Array...
+def&nbsp;each
+&nbsp;&nbsp;for&nbsp;each&nbsp;element
+&nbsp;&nbsp;&nbsp;&nbsp;yield(element)
+&nbsp;&nbsp;end
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+You could then iterate over an array's elements by calling its
+<code>each</code> method and supplying a block. This block would be called for
+each element in turn.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+[&nbsp;'cat',&nbsp;'dog',&nbsp;'horse'&nbsp;].each&nbsp;do&nbsp;|animal|
+&nbsp;&nbsp;print&nbsp;animal,&nbsp;"&nbsp;--&nbsp;"
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+cat&nbsp;--&nbsp;dog&nbsp;--&nbsp;horse&nbsp;--
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Similarly, many looping constructs that are built into languages such 
+as C and Java are simply method calls in Ruby, with the methods
+invoking the associated block zero or more times.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+5.times&nbsp;{&nbsp;&nbsp;print&nbsp;"*"&nbsp;}
+3.upto(6)&nbsp;{|i|&nbsp;&nbsp;print&nbsp;i&nbsp;}
+('a'..'e').each&nbsp;{|char|&nbsp;print&nbsp;char&nbsp;}
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+*****3456abcde
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+Here we ask the number 5 to call a block five times, then ask
+the number 3 to call a block, passing in successive values until
+it reaches 6. Finally, the range of characters from ``a'' to ``e''
+invokes a block using the method <code>each</code>.
+<h2><a name="S7">Reading and 'Riting</a></h2>
+<P></P>
+Ruby comes with a comprehensive I/O library. However, in most of the
+examples in this book we'll stick to a few simple methods. We've
+already come across two methods that do output. <code>puts</code> writes each
+of its arguments, adding a newline after each. <code>print</code> also writes
+its arguments, but with no newline. Both can be used to write to any
+I/O object, but by default they write to the console.
+<P></P>
+Another output method we use a lot is <code>printf</code>, which prints
+its arguments under the control of a format string (just like
+<code>printf</code> in C or Perl).
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+printf&nbsp;"Number:&nbsp;%5.2f,&nbsp;String:&nbsp;%s",&nbsp;1.23,&nbsp;"hello"
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<em>produces:</em>
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+Number:&nbsp;&nbsp;1.23,&nbsp;String:&nbsp;hello
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+In this example, the format string <code>"Number: %5.2f, String: %s"</code>
+tells <code>printf</code> to substitute in a floating point number
+(allowing five characters in total, with two after the decimal point)
+and a string.
+<P></P>
+There are many ways to read input into your program. Probably the most 
+traditional is to use the routine <code>gets</code>, which returns the next
+line from your program's standard input stream.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+line&nbsp;=&nbsp;gets
+print&nbsp;line
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The <code>gets</code> routine has a side effect: as well as returning the line 
+just read, it also stores it into the global variable
+<code>$_</code>. This variable is special, in that it is used as the
+default argument in many circumstances. If you call <code>print</code> with no
+argument, it prints the contents of <code>$_</code>. If you write an <code>if</code> 
+or <code>while</code> statement with just a regular expression as the
+condition, that expression is matched against <code>$_</code>. While viewed
+by some purists as a rebarbative barbarism, these abbreviations can
+help you write some concise programs. For example, the following
+program prints all lines in the input stream that contain the word
+``Ruby.''
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+while&nbsp;gets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;assigns&nbsp;line&nbsp;to&nbsp;$_
+&nbsp;&nbsp;if&nbsp;/Ruby/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;matches&nbsp;against&nbsp;$_
+&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;prints&nbsp;$_
+&nbsp;&nbsp;end
+end
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+The ``Ruby way'' to write this would be to use an iterator.
+<P></P>
+
+<table class="codebox" cellspacing="0" border="0" cellpadding="3" width="400">
+      <tr>
+        <td>
+          <pre>
+ARGF.each&nbsp;{&nbsp;|line|&nbsp;&nbsp;print&nbsp;line&nbsp;&nbsp;if&nbsp;line&nbsp;=~&nbsp;/Ruby/&nbsp;}
+</pre>
+        </td>
+      </tr>
+    </table>
+
+<P></P>
+This uses the predefined object <code>ARGF</code>, which represents the
+input stream that can be read by a program.
+<h2><a name="S8">Onward and Upward</a></h2>
+<P></P>
+That's it. We've finished our lightning-fast tour of some of the
+basic features of Ruby.  We've had a brief look at objects, methods,
+strings, containers, and regular expressions, seen some simple control
+structures, and looked at some rather nifty iterators. Hopefully, this
+chapter has given you enough ammunition to be able to attack the rest
+of this book.
+<P></P>
+Time to move on, and up---up to a higher level. Next, we'll be looking
+at classes and objects, things that are at the same time both the 
+highest-level constructs in Ruby and the essential underpinnings of
+the entire language.
+
+<p></p>
+    <hr>
+    <table bgcolor="#a03030" cellpadding="10" border="0" cellspacing="0">
+      <tr>
+        <td width="33%" align="left">
+          <a class="pickaxe/subheader" href="roadmap.html">Previous &lt;</a>
+        </td>
+        <td width="33%" align="center" valign="middle">
+          <a class="pickaxe/subheader" href="/pickaxe">Contents ^</a>
+          <br>
+        </td>
+        <td width="33%" align="right">
+          <a class="pickaxe/subheader" href="tut_classes.html">Next &gt;</a>
+          <br>
+        </td>
+      </tr>
+    </table>
+    <p></p>
+    <font size="-1">Extracted from the book "Programming Ruby -
+     The Pragmatic Programmer's Guide"</font>
+    <br>
+    <font size="-3">
+      Copyright
+      &#169;
+2001 by Addison Wesley Longman, Inc. This material may
+be distributed only subject to the terms and conditions set forth in
+the Open Publication License, v1.0 or later (the latest version is
+presently available at
+      <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>)).
+        <p></p>
+Distribution of substantively modified versions of this document is
+prohibited without the explicit permission of the copyright holder.
+          <p></p>
+Distribution of the work or derivative of the work in any standard
+(paper) book form is prohibited unless prior permission is obtained
+from the copyright holder.
+        <br>
+    </font>
+  </body>
+</html>

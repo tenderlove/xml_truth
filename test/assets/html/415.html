@@ -1,0 +1,1828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+				<title>  Monkeypatching is Destroying Ruby | Virtuous Code</title>
+		
+	<!-- Basic Meta Data -->
+	<meta name="Copyright" content="Copyright 2008 Jestro LLC" />
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="http://avdi.org/devblog/wp-content/themes/vigilance/images/favicon.ico" />
+
+	<!--Stylesheets-->
+	<link href="http://avdi.org/devblog/wp-content/themes/vigilance/style.css" type="text/css" media="screen" rel="stylesheet" />
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://avdi.org/devblog/wp-content/themes/vigilance/css/ie.css" />
+	<![endif]-->
+	<!--[if lte IE 6]>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://avdi.org/devblog/wp-content/themes/vigilance/css/ie6.css" />
+	<![endif]-->
+
+	<!--Wordpress-->
+	<link rel="alternate" type="application/rss+xml" title="Virtuous Code RSS Feed" href="http://avdi.org/devblog/feed/" />
+	<link rel="pingback" href="http://avdi.org/devblog/xmlrpc.php" />
+	<!--WP Hook-->
+  	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://avdi.org/devblog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://avdi.org/devblog/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://avdi.org/devblog/wp-includes/js/jquery/jquery.js?ver=1.2.6'></script>
+<script type='text/javascript' src='http://avdi.org/devblog/wp-includes/js/comment-reply.js?ver=20081210'></script>
+<meta name="generator" content="WordPress 2.7" />
+
+
+<!-- Creative Commons License added by Creative-Commons-Configurator plugin - Get it at: http://www.g-loaded.eu/ -->
+<link rel="license" type="text/html" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/" />
+
+<style type="text/css"><!--
+.cc-block { width: 90%; margin: 8px auto; padding: 4px; text-align: center; border: 1px solid #cccccc; color: #000000; background-color: #eef6e6; }
+--></style>
+
+<link rel="stylesheet" type="text/css" href="http://avdi.org/devblog/wp-content/plugins/friendfeed-activity-widget/widget.css" />
+	<script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+		<link href="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Styles/SyntaxHighlighter.css" type="text/css" rel="stylesheet" />
+	<script charset="utf-8" type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#tabs=web%2Cpost%2Cemail&amp;charset=utf-8&amp;style=default&amp;publisher=bb46271b-7beb-4c2b-929c-de82ad9d7f42&amp;linkfg=%2358181b&amp;wp=2.7"></script></head>
+<body>
+<div id="wrapper">
+	<div id="header" class="clear">
+		<div id="title"><a href="http://avdi.org/devblog">Virtuous Code</a></div>		<div id="description">
+			<h2>&#8220;&#8230;the three great virtues of a programmer: laziness, impatience, and hubris.&#8221; &#8212; Larry Wall</h2>
+		</div><!--end description-->
+		<div id="nav">
+			<ul>
+				<li class="page_item "><a href="http://avdi.org/devblog">Home</a></li>
+                <li class="page_item page-item-2"><a href="http://avdi.org/devblog/about/" title="About">About</a></li>
+			</ul>
+		</div><!--end nav-->
+	</div><!--end header-->
+	<div id="content" class="pad">
+		 
+
+
+
+
+
+    						<div class="post" id="post-18">
+			<div class="post-header">
+        <h1>Monkeypatching is Destroying Ruby</h1>
+        <div id="single-date" class="date"><span>2008</span> February 23</div>
+			</div><!--end post header-->
+			<div class="meta clear">
+				<div class="tags">tags: <a href="http://avdi.org/devblog/tag/monkeypatching/" rel="tag">monkeypatching</a>, <a href="http://avdi.org/devblog/tag/patterns/" rel="tag">patterns</a>, <a href="http://avdi.org/devblog/tag/plugins/" rel="tag">plugins</a>, <a href="http://avdi.org/devblog/tag/practices/" rel="tag">practices</a>, <a href="http://avdi.org/devblog/tag/rails/" rel="tag">rails</a>, <a href="http://avdi.org/devblog/tag/ruby/" rel="tag">ruby</a></div>
+				<div class="author">by avdi</div>
+			</div><!--end meta-->
+			<div class="entry clear">
+				<p>(The title of this post is intended to be deliberately provocative, as well as being a nod to Steven Colbert&#8217;s &#8220;The People Destroying America&#8221; segments. It&#8217;s provocative because I want to get people talking about this issue.&Acirc;&nbsp; I don&#8217;t actually think that monkey patching is &#8220;destroying&#8221; Ruby, but I do think the proliferation of the technique has real and troubling implications for Ruby&#8217;s future.)</p>
+
+<p>&#8220;Monkey patching&#8221;, for anyone who doesn&#8217;t know, refers to the practice of extending or modifying existing code by changing classes at run-time.  It is a powerful technique that has become popular in the Ruby community at least in part because the Ruby language makes it so easy.  Any class can be re-opened at any time and amended in any way.</p>
+
+<p>I believe the term first arose in the Python community, as a derogatory term for a practice which that community tended to frown on.  The Ruby community, on the other hand, has embraced the term and the practice with enthusiasm.  I&#8217;m starting to think that the Pythonistas&#8217; attitude may have been justified.</p>
+
+<p>Here&#8217;s what crystalized it for me.  The other day I wrote a small Rails plugin (<a href="http://avdi.org/projects/nulldb/">NullDB</a>).  It was inspired largely by another plugin, <a href="http://unit-test-ar.rubyforge.org/">UnitRecord</a>.  UnitRecord is by &#8220;Dan Manges&#8221;:[http://www.dcmanges.com/], a talented Rails developer whom I have a lot of respect for.</p>
+
+<p>UnitRecord is implemented almost entirely as a set of monkey patches.  When invoked, it dynamically modifies several standard Ruby and Rails classes, including <code>ActiveRecord::Base</code>, <code>Test::Unit::TestCase</code>.&Acirc;&nbsp; As a result of this implementation, it is tightly coupled to the inner workings of ActiveRecord.&Acirc;&nbsp; A small change to Rails and it could cease to work, and such a failure would be difficult to debug. Indeed, one of the reasons I decided to write <a href="http://avdi.org/projects/nulldb/">NullDB</a> was because of just such a failure.</p>
+
+<p>In writing <a href="http://avdi.org/projects/nulldb/">NullDB</a>, I discovered that I could achieve the same functionality without resorting to monkey patching.&Acirc;&nbsp; Instead of modifying existing classes, it implements the Rails &#8220;Database Adapter <span class="caps">API</span>&#8220;:[http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/AbstractAdapter.html].&Acirc;&nbsp; The finished library is shorter than <a href="http://unit-test-ar.rubyforge.org/">UnitRecord</a>, is composed entirely of implemetations of public <span class="caps">API</span>s, and contains zero monkey patches.&Acirc;&nbsp; The code is also easier to understand, in my opinion, because of the lack of metaprogramming.</p>
+
+<p>Now, I did not write this post to gloat about how my library is better than Dan&#8217;s.&Acirc;&nbsp; As I said before, I have a lot of respect for Dan.&Acirc;&nbsp; He&#8217;s a smart guy; I&#8217;ve learned a great deal from &#8220;his blog&#8221;:[http://www.dcmanges.com/]; and it&#8217;s safe to say I would be a poorer Rails programmer if it weren&#8217;t for hm.</p>
+
+<p>And this is really the point.&Acirc;&nbsp; Monkey patching is the new black.&Acirc;&nbsp; it&#8217;s what all the hip kids are doing.&Acirc;&nbsp; To the point that smart, experienced hackers reach for a monkey patch as their tool of first resort, <em>even when a simpler, more traditional solution is possible</em>.</p>
+
+<p>I don&#8217;t believe this situation to be sustainable.&Acirc;&nbsp; Where I work, we are already seeing subtle, difficult-to-debug problems crop up as the result of monkey patching in plugins.&Acirc;&nbsp; Patches interact in unpredictable, combinatoric ways.&Acirc;&nbsp; And by their nature, bugs caused by monkey patches&Acirc;&nbsp; are more difficult to track down than those introduced by more traditional classes and methods.&Acirc;&nbsp; As just one example: on one project, it was a known caveat that we could not rely on class inheritable attributes as provided by ActiveSupport.&Acirc;&nbsp; No one knew why.&Acirc;&nbsp; Every Model we wrote had to use awkward workarounds.&Acirc;&nbsp; Eventually we tracked it down in a plugin that generated admin consoles.&Acirc;&nbsp; It was overwriting <code>Class.inherited()</code>.&Acirc;&nbsp; It took us months to find this out.</p>
+
+<p>This is just going to get worse if we don&#8217;t do something about it.&Acirc;&nbsp; And the &#8220;something&#8221; is going to have to be a cultural shift, not a technical fix.&Acirc;&nbsp; I believe it is time for experienced Ruby programmers to wean ourselves off of monkey patching, and start demonstrating more robust techniques.</p>
+
+<p>I see the problem as one of convenience: sure, Ruby provides us with an immense toolbox, bigger than that of most other languages. But we&#8217;re like lazy carpenters: sure, we have a whole garage full of tools, but there&#8217;s a hammer laying right there on the floor next to us, and it&#8217;s easier to reach for the hammer instead of getting up and fetching the right tool for the job.&Acirc;&nbsp; But those tools <strong>do</strong> exist.&Acirc;&nbsp; Indeed, most of the patterns in the &#8220;software pattern literature&#8221;:[http://c2.com/ppr/index.html] are inspired at least partly by the need to manage extension in robust and maintainable ways.</p>
+
+<p>I look at the Emacs community as an inspiration.&Acirc;&nbsp; Emacs, as many of you probably know, is essentially just a lisp machine.&Acirc;&nbsp; Emacs Lisp, the language it is written in, is every bit as dynamic as Ruby.&Acirc;&nbsp; Functions can be replaced at any time, by code in any package.&Acirc;&nbsp; And because all Emacs Lisp code is intended to extend the Emacs editor, it is not uncommon for hundreds of different Emacs Lisp packages to be running in the same process, all coexisting and interacting. And yet, for the most part this melting pot of extensions all function together smoothly and without breakage.</p>
+
+<p>Why?&Acirc;&nbsp; I think the biggest reason is community conventions.&Acirc;&nbsp; I&#8217;ve read a lot of ELisp code, and I have very rarely seen the equivalent of Ruby-style monkey patching.&Acirc;&nbsp; Even the <code>advice</code> mechanism, an <acronym title="Aspect Oriented Programming">AOP</acronym>-like feature which enables functions to be dynamically wrapped and chained, somewhat like Rails&#8217; <code>alias_method_chain</code>, is used sparingly.&Acirc;&nbsp; Instead, every mature Emacs extension exposes a plethora of &#8220;hooks&#8221;, extension points that other packages can attach their own handlers to.&Acirc;&nbsp; Other packages add their handlers to these hooks, and to hooks that the core Emacs code provides, and thus they cooperate largely without collisions.</p>
+
+<p>Hooks are just one of the techniques available to us for robustly handling extension in a language as dynamic and powerful as Ruby.&Acirc;&nbsp;&Acirc;&nbsp; Another is using the dependency injection style<sup class="footnote"><a href="#fn1">1</a></sup> to decouple classes from each other and allow third parties to substitute their own classes without monkey patching.&Acirc;&nbsp; Another un-sexy but important practice is simply writing clear and comprehensive documentation of our classes&#8217; <span class="caps">API</span>s and extension points.</p>
+
+<p>But the most important thing we can do is set an example.&Acirc;&nbsp; This is my call to action, my line in the sand: as experienced Ruby programmers, let us demonstrate solid, sustainable practices in our own code.&Acirc;&nbsp; Let us use monkey patching sparingly, as a tool for exploration and experiment, and only in production code as a last resort.&Acirc;&nbsp; Let&#8217;s produce <span class="caps">API</span>s that are amenable to extension without having to be patched.&Acirc;&nbsp; And let us begin to develop some community-wide conventions and tools for writing extensible classes.</p>
+
+<p class="footnote" id="fn1"><sup>1</sup> <span class="caps">UPDATE</span> A commenter on ruby-talk felt that my use of &#8220;Dependency Injection&#8221; revealed an &#8220;Enterprisey&#8221; bias.&Acirc;&nbsp; Let me be clear that when I say &#8220;dependency injection style&#8221;, I&#8217;m not talking about using elaborate DI frameworks.&Acirc;&nbsp; I&#8217;m just talking about writing classes that allow their collaborators to be passed in, either via constructors or setters, rather than having hard-coded collaborators.</p><p><script type="text/javascript">SHARETHIS.addEntry({ title: "Monkeypatching is Destroying Ruby", url: "http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/" });</script></p>
+<!-- Creative Commons License -->
+<div class="cc-block"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" class="cc-button" /></a><br />This work, unless otherwise expressly stated, is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License</a>.</div>
+<!-- /Creative Commons License -->
+        			</div><!--end entry-->
+			<div class="post-footer">
+				<p>from &rarr; <a href="http://avdi.org/devblog/category/uncategorized/" title="View all posts in Uncategorized" rel="category tag">Uncategorized</a></p>
+			</div><!--end post footer-->
+		</div><!--end post-->
+				
+<link rel="stylesheet" href="http://disqus.com/stylesheets/virtuouscode/disqus.css" type="text/css" media="screen" />
+
+<div id="disqus_thread">
+	<div id="dsq-content">
+		<div id="dsq-post-top" style="display: none">
+							<div id="dsq-auth">
+					<div class="dsq-by"><a href="http://disqus.com/" target="_blank"><img src="http://media.disqus.com/images/embed/dsq-button-120x19.png" alt="discussion by DISQUS" /></a></div>
+					<div class="dsq-auth-header">
+						<h3 id="dsq-add-new-comment">Add New Comment</h3>
+						<span id="dsq-auth-as"><noscript><br />You must have JavaScript enabled to comment.</noscript></span>
+					</div>
+				</div>
+					</div>
+		<div style="margin:10px 0">
+			<a id="dsq-options-toggle" href="#" onclick="Dsq.Thread.toggleOptions(); return false"><img src="http://media.disqus.com/images/embed/dsq-options-plus.png" /></a>
+		</div>
+
+		<div id="dsq-options" style="display:none">
+			<span id="dsq-auth-wrap"></span>
+			<div id="dsq-extra-links">
+				<li>
+					<img src="http://media.disqus.com/images/embed/bullet-feed.png" /><strong>Subscribe</strong>:&nbsp;
+					<a href="http://virtuouscode.disqus.com/monkeypatching_is_destroying_ruby/latest.rss">This Thread</a>
+				</li>
+				<li>
+					<img src="http://media.disqus.com/images/embed/bullet-go.png" /><strong>Go to</strong>:&nbsp;
+					<a href="http://disqus.com/track/">My Comments</a>&nbsp;&middot;&nbsp;
+					<a href="http://virtuouscode.disqus.com/monkeypatching_is_destroying_ruby/">Community Page</a>
+				</li>
+			</div>
+			<div class="dsq-extra-meta">
+									Sort thread by:
+					<select onchange="Dsq.Thread.sortBy(this.value);">
+						<option value="hot" >Hot comments</option>
+						<option value="best" >Best comments</option>
+						<option value="newest" >Newest first</option>
+						<option value="oldest" >Oldest first</option>
+					</select>
+							</div>
+		</div>
+
+		<h3 id="dsq-comments-count">
+							Viewing 16 Comments					</h3>
+
+		<div id="dsq-alerts">
+			<p id="dsq-alerts-approve" style="display: none">Thanks. Your comment is awaiting approval by a moderator.</p>
+			<p id="dsq-alerts-claim" style="display: none">Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.</p>
+		</div>
+
+		<ul id="dsq-comments">
+															<div id="comment-1471654"></div>
+					<li id="dsq-comment-1471654" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471654" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471654">
+							<li id="dsq-rate-up-1471654"><a id="dsq-rate-up-a-1471654" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471654"><a id="dsq-rate-down-a-1471654" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471654" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471654">
+								<a id="dsq-avatar-1471654" href="http://disqus.com/people/6a29caa1a66ae5e3772ed976f6b63527/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=6a29caa1a66ae5e3772ed976f6b63527&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471654" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471654">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471654" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471654" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471654" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471654" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471654" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471654" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471654" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471654">
+																	<span id="dsq-author-user-1471654">
+										Adam Byrtek									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471654" class="dsq-header-time" href="#comment-1471654" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471654" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471654" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471654" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471654" class="dsq-comment-message">Many good points in this article. Teenagers never listen to their parents&#39; advice. The Ruby community by rejecting some well-known practices (like dependency injection and proper encapsulation) will have to reinvent it in some form in the future.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471654">
+															<a href="#" id="dsq-reply-link-1471654">reply</a>
+								<span id="dsq-edit-wrap-1471654" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471654" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471654" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471654" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471654" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471654" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471654"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471654" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471654"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471654">/people/6a29caa1a66ae5e3772ed976f6b63527/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471654"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471654"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471654"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471654"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471654"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471654"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471654"><img src="http://www.gravatar.com/avatar.php?gravatar_id=6a29caa1a66ae5e3772ed976f6b63527&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471653"></div>
+					<li id="dsq-comment-1471653" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471653" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471653">
+							<li id="dsq-rate-up-1471653"><a id="dsq-rate-up-a-1471653" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471653"><a id="dsq-rate-down-a-1471653" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471653" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471653">
+								<a id="dsq-avatar-1471653" href="http://disqus.com/people/86aa98f4668f58e42f2193118c7f9da2/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=86aa98f4668f58e42f2193118c7f9da2&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471653" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471653">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471653" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471653" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471653" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471653" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471653" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471653" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471653" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471653">
+																	<span id="dsq-author-user-1471653">
+										Mark									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471653" class="dsq-header-time" href="#comment-1471653" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471653" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471653" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471653" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471653" class="dsq-comment-message">sorry but ruby!=rails<br><br>your problem is that all the monkeys are using rails at the moment, and consequently 95% of rails developers are monkeys<br><br>give it a few more months and i am sure they will all jump on the bandwagen and head off to the Next Big Thing(tm)</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471653">
+															<a href="#" id="dsq-reply-link-1471653">reply</a>
+								<span id="dsq-edit-wrap-1471653" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471653" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471653" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471653" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471653" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471653" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471653"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471653" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471653"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471653">/people/86aa98f4668f58e42f2193118c7f9da2/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471653"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471653"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471653"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471653"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471653"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471653"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471653"><img src="http://www.gravatar.com/avatar.php?gravatar_id=86aa98f4668f58e42f2193118c7f9da2&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471655"></div>
+					<li id="dsq-comment-1471655" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471655" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471655">
+							<li id="dsq-rate-up-1471655"><a id="dsq-rate-up-a-1471655" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471655"><a id="dsq-rate-down-a-1471655" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471655" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471655">
+								<a id="dsq-avatar-1471655" href="http://disqus.com/people/f708e13377c3fc2a163cb502dce8f94e/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=f708e13377c3fc2a163cb502dce8f94e&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471655" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471655">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471655" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471655" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471655" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471655" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471655" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471655" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471655" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471655">
+																	<span id="dsq-author-user-1471655">
+										Tim Dysinger									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471655" class="dsq-header-time" href="#comment-1471655" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471655" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471655" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471655" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471655" class="dsq-comment-message">I wrote a similar smaller article 5 months ago.  I totally agree.  <br><br><a href="http://dysinger.net/2007/10/20/ruby-lasagna/" rel="nofollow">http://dysinger.net/2007/10/20/ruby-lasagna/</a></div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471655">
+															<a href="#" id="dsq-reply-link-1471655">reply</a>
+								<span id="dsq-edit-wrap-1471655" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471655" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471655" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471655" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471655" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471655" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471655"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471655" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471655"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471655">/people/f708e13377c3fc2a163cb502dce8f94e/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471655"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471655"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471655"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471655"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471655"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471655"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471655"><img src="http://www.gravatar.com/avatar.php?gravatar_id=f708e13377c3fc2a163cb502dce8f94e&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471656"></div>
+					<li id="dsq-comment-1471656" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471656" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471656">
+							<li id="dsq-rate-up-1471656"><a id="dsq-rate-up-a-1471656" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471656"><a id="dsq-rate-down-a-1471656" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471656" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471656">
+								<a id="dsq-avatar-1471656" href="http://disqus.com/people/c9c7a65848f13e2b1a226bbe43bc3672/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=c9c7a65848f13e2b1a226bbe43bc3672&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471656" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471656">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471656" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471656" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471656" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471656" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471656" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471656" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471656" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471656">
+																	<span id="dsq-author-user-1471656">
+										Pete Yandell									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471656" class="dsq-header-time" href="#comment-1471656" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471656" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471656" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471656" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471656" class="dsq-comment-message">In general I agree with you that monkey patching is a dangerous technique, and it&#39;s use should always be weighed against the risks. However, none of the monkey-patching related bugs that I&#39;ve come across have been hard to track down.<br><br>I generally use small commits, and have reasonably solid tests, so I can tell if the introduction of a plugin or library breaks something.<br><br>Once I&#39;ve identified a problem, I pull out the debugger. It&#39;s pretty easy to spot monkey patches when you&#39;re stepping through code.<br><br>I&#39;m curious as to what it was about your Class.inherited() issue that required months to find. Care to elaborate, in the interests of illustrating how monkey patching shouldn&#39;t be done?</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471656">
+															<a href="#" id="dsq-reply-link-1471656">reply</a>
+								<span id="dsq-edit-wrap-1471656" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471656" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471656" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471656" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471656" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471656" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471656"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471656" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471656"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471656">/people/c9c7a65848f13e2b1a226bbe43bc3672/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471656"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471656"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471656"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471656"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471656"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471656"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471656"><img src="http://www.gravatar.com/avatar.php?gravatar_id=c9c7a65848f13e2b1a226bbe43bc3672&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471657"></div>
+					<li id="dsq-comment-1471657" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471657" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471657">
+							<li id="dsq-rate-up-1471657"><a id="dsq-rate-up-a-1471657" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471657"><a id="dsq-rate-down-a-1471657" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471657" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471657">
+								<a id="dsq-avatar-1471657" href="http://disqus.com/people/4c9ee4afc50f488713db903e30c0dc2e/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=4c9ee4afc50f488713db903e30c0dc2e&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471657" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471657">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471657" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471657" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471657" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471657" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471657" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471657" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471657" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471657">
+																	<span id="dsq-author-user-1471657">
+										Rolf									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471657" class="dsq-header-time" href="#comment-1471657" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471657" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471657" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471657" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471657" class="dsq-comment-message">That you had to look for this "Class.inherited()" scares me to death. I must admit that I don&#39;t consider myself a RoR developer, but I haven&#39;t had to look for anything like that in any other language I have used. Lame.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471657">
+															<a href="#" id="dsq-reply-link-1471657">reply</a>
+								<span id="dsq-edit-wrap-1471657" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471657" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471657" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471657" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471657" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471657" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471657"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471657" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471657"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471657">/people/4c9ee4afc50f488713db903e30c0dc2e/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471657"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471657"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471657"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471657"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471657"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471657"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471657"><img src="http://www.gravatar.com/avatar.php?gravatar_id=4c9ee4afc50f488713db903e30c0dc2e&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471658"></div>
+					<li id="dsq-comment-1471658" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471658" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471658">
+							<li id="dsq-rate-up-1471658"><a id="dsq-rate-up-a-1471658" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471658"><a id="dsq-rate-down-a-1471658" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471658" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471658">
+								<a id="dsq-avatar-1471658" href="http://disqus.com/people/884124d0169f41668fb3f948b2ba8b0a/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=884124d0169f41668fb3f948b2ba8b0a&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471658" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471658">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471658" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471658" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471658" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471658" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471658" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471658" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471658" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471658">
+																	<span id="dsq-author-user-1471658">
+										Adam Kennedy									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471658" class="dsq-header-time" href="#comment-1471658" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471658" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471658" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471658" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471658" class="dsq-comment-message">Some other precedents for why doing stuff like this is a bad idea.<br><br>The Perl community has a long-standing love/hate-affair with making changes that impose "spooky action at a distance".<br><br>They call it "black magic" and it is generally considered it a last resort. Black Magic that makes GLOBAL changes to things like inheritance is often characterised as being "Octarine" (see disk world novels), because it tends to work ok when there&#39;s only one person doing it, but start to mix a few together and KABOOM!<br><br>Second example is the JavaScript prototype.js library, which modifies the core Object class, breaking a few things in the process. One of the main reasons people quit using prototype is that it doesn&#39;t "play well with others" (libraries) as a result. Half the other libraries out there seem to have been spawned in part because of this problem.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471658">
+															<a href="#" id="dsq-reply-link-1471658">reply</a>
+								<span id="dsq-edit-wrap-1471658" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471658" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471658" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471658" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471658" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471658" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471658"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471658" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471658"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471658">/people/884124d0169f41668fb3f948b2ba8b0a/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471658"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471658"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471658"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471658"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471658"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471658"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471658"><img src="http://www.gravatar.com/avatar.php?gravatar_id=884124d0169f41668fb3f948b2ba8b0a&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471659"></div>
+					<li id="dsq-comment-1471659" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471659" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471659">
+							<li id="dsq-rate-up-1471659"><a id="dsq-rate-up-a-1471659" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471659"><a id="dsq-rate-down-a-1471659" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471659" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471659">
+								<a id="dsq-avatar-1471659" href="http://disqus.com/people/881326d807cb15fec8ece230ed37d5e5/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=881326d807cb15fec8ece230ed37d5e5&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471659" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471659">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471659" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471659" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471659" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471659" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471659" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471659" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471659" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471659">
+																	<span id="dsq-author-user-1471659">
+										Ed C.									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471659" class="dsq-header-time" href="#comment-1471659" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471659" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471659" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471659" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471659" class="dsq-comment-message">@Adam, RE: prototype, you have outdate info - that was in the bad old days when Prototype extended not just Object but "Object.prototype" which caused problems. It no longer does this.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471659">
+															<a href="#" id="dsq-reply-link-1471659">reply</a>
+								<span id="dsq-edit-wrap-1471659" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471659" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471659" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471659" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471659" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471659" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471659"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471659" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471659"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471659">/people/881326d807cb15fec8ece230ed37d5e5/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471659"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471659"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471659"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471659"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471659"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471659"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471659"><img src="http://www.gravatar.com/avatar.php?gravatar_id=881326d807cb15fec8ece230ed37d5e5&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471660"></div>
+					<li id="dsq-comment-1471660" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471660" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471660">
+							<li id="dsq-rate-up-1471660"><a id="dsq-rate-up-a-1471660" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471660"><a id="dsq-rate-down-a-1471660" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471660" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471660">
+								<a id="dsq-avatar-1471660" href="http://disqus.com/people/dd521b7911352127217de208e0a86f4f/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=dd521b7911352127217de208e0a86f4f&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471660" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471660">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471660" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471660" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471660" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471660" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471660" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471660" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471660" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471660">
+																	<a id="dsq-author-user-1471660" href="http://devender.wordpress.com/">
+										Devender Gollapally									</a>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471660" class="dsq-header-time" href="#comment-1471660" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471660" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471660" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471660" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471660" class="dsq-comment-message">Nice post, hey maybe by the time Ruby is as old as Lisp, Ruby will also have a good set of conventions.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471660">
+															<a href="#" id="dsq-reply-link-1471660">reply</a>
+								<span id="dsq-edit-wrap-1471660" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471660" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471660" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471660" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471660" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471660" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471660"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471660" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471660">http://devender.wordpress.com/</span>
+								<span style="display: none" id="dsq-hidden-userurl-1471660">/people/dd521b7911352127217de208e0a86f4f/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471660"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471660"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471660"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471660"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471660"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471660"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471660"><img src="http://www.gravatar.com/avatar.php?gravatar_id=dd521b7911352127217de208e0a86f4f&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471661"></div>
+					<li id="dsq-comment-1471661" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471661" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471661">
+							<li id="dsq-rate-up-1471661"><a id="dsq-rate-up-a-1471661" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471661"><a id="dsq-rate-down-a-1471661" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471661" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471661">
+								<a id="dsq-avatar-1471661" href="http://disqus.com/people/0b4f8d87ced7e628ec543d7171fb56bc/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=0b4f8d87ced7e628ec543d7171fb56bc&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471661" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471661">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471661" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471661" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471661" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471661" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471661" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471661" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471661" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471661">
+																	<span id="dsq-author-user-1471661">
+										andrew									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471661" class="dsq-header-time" href="#comment-1471661" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471661" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471661" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471661" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471661" class="dsq-comment-message">A few things...<br><br>You do monkey-patch in your NullDB. You reopen AR::Base to add a nulldb_connection method. Maybe it isn&#39;t as magic as eval, or defnine_method but it is still altering an existing class without subclassing or mix-in.<br><br>Subclassing isn&#39;t always possible. With AR::Base subclasses have special semantic meaning, ie. Single Table Inheritance. That is why everything with ActiveRecord is done through mix-ins +/or eval. (You can subclass AR::Base not for STI but it&#39;s a pain)<br><br>People write bad code in any language. Ruby is interpreted. Classes are objects and can be modified at anytime. Hell, even attr_accessor is a monkey-patch. You are correct that we need to be more careful about how we use Ruby. But the really important thing is to understand all of the code you use. Whether it is the Rails framework or a plugin, understand it enough to debug it. Then you can eval as much as you like.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471661">
+															<a href="#" id="dsq-reply-link-1471661">reply</a>
+								<span id="dsq-edit-wrap-1471661" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471661" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471661" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471661" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471661" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471661" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471661"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471661" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471661"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471661">/people/0b4f8d87ced7e628ec543d7171fb56bc/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471661"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471661"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471661"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471661"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471661"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471661"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471661"><img src="http://www.gravatar.com/avatar.php?gravatar_id=0b4f8d87ced7e628ec543d7171fb56bc&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471662"></div>
+					<li id="dsq-comment-1471662" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471662" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471662">
+							<li id="dsq-rate-up-1471662"><a id="dsq-rate-up-a-1471662" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471662"><a id="dsq-rate-down-a-1471662" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471662" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471662">
+								<a id="dsq-avatar-1471662" href="http://disqus.com/people/4dea430d31b993abaf41cd9b54f8128d/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=4dea430d31b993abaf41cd9b54f8128d&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471662" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471662">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471662" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471662" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471662" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471662" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471662" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471662" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471662" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471662">
+																	<a id="dsq-author-user-1471662" href="http://avdi.org">
+										avdi									</a>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471662" class="dsq-header-time" href="#comment-1471662" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471662" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471662" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471662" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471662" class="dsq-comment-message">@andrew:<br><br>&gt; You do monkey-patch in your NullDB. You reopen AR::Base to add a nulldb_connection method.<br><br>True.  This, unfortunately, is part of the contract of the<br>ActiveRecord connection adapter API - you are expected to do this if<br>you want connection_establish :adapter =&gt; :foo to work.  Whether this<br>is a true "monkey patch" is debatable; a lot of people only consider<br>such a thing a monkey patch if it actually *redefines* existing<br>methods.  Of course, the Rails guys could easily have avoided the<br>whole question by giving us a less-silly API that allowed us to simply<br>register a new database connection class.<br><br>&gt; Subclassing isn&#39;t always possible. With AR::Base subclasses have special<br>&gt; semantic meaning, ie. Single Table Inheritance. That is why everything with<br>&gt; ActiveRecord is done through mix-ins +/or eval. (You can subclass AR::Base<br>&gt; not for STI but it&#39;s a pain)<br><br>It&#39;s not a pain, you just set abstract_class = true.<br><br>&gt; Whether it is the Rails framework or a plugin, understand it enough to debug<br>&gt; it. Then you can eval as much as you like.<br><br>This is easy to say, but in real world large projects it simply isn&#39;t<br>feasible to understand all of the code in the project, let alone all<br>of the third-party code it depends on.  That is why community<br>conventions are essential for maintainability.<br><br>Thanks for the comment!</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471662">
+															<a href="#" id="dsq-reply-link-1471662">reply</a>
+								<span id="dsq-edit-wrap-1471662" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471662" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471662" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471662" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471662" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471662" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471662"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471662" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471662">http://avdi.org</span>
+								<span style="display: none" id="dsq-hidden-userurl-1471662">/people/4dea430d31b993abaf41cd9b54f8128d/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471662"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471662"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471662"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471662"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471662"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471662"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471662"><img src="http://www.gravatar.com/avatar.php?gravatar_id=4dea430d31b993abaf41cd9b54f8128d&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471663"></div>
+					<li id="dsq-comment-1471663" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471663" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471663">
+							<li id="dsq-rate-up-1471663"><a id="dsq-rate-up-a-1471663" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471663"><a id="dsq-rate-down-a-1471663" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471663" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471663">
+								<a id="dsq-avatar-1471663" href="http://disqus.com/people/15f2a792cccb4521d58120eb92827109/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=15f2a792cccb4521d58120eb92827109&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471663" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471663">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471663" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471663" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471663" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471663" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471663" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471663" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471663" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471663">
+																	<span id="dsq-author-user-1471663">
+										andrew									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471663" class="dsq-header-time" href="#comment-1471663" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471663" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471663" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471663" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471663" class="dsq-comment-message">&gt;"monkey patch" is debatable<br>Ah, there is no such thing as a ruby "monkey patch" or "meta-programming" anyway.<br><br><a href="http://dablog.rubypal.com/2007/1/7/meta-shmeta-learning-ruby-horizontally" rel="nofollow">http://dablog.rubypal.com/2007/1/7/meta-shmeta-...</a><br><br>&gt; less-silly API<br>true<br><br>&gt; self.abstract_class = true<br>good in theory, not in practice ( if your inheritance is more than one level deep, easier [and more maintainable] to whip out some eval than set this in each subclass )<br><br>&gt; community conventions are essential for maintainability<br>also good in theory, but deadlines kill the virtue and bring out the kludge, i&#39;m still sticking to knowing your code :)</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471663">
+															<a href="#" id="dsq-reply-link-1471663">reply</a>
+								<span id="dsq-edit-wrap-1471663" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471663" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471663" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471663" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471663" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471663" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471663"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471663" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471663"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471663">/people/15f2a792cccb4521d58120eb92827109/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471663"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471663"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471663"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471663"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471663"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471663"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471663"><img src="http://www.gravatar.com/avatar.php?gravatar_id=15f2a792cccb4521d58120eb92827109&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471664"></div>
+					<li id="dsq-comment-1471664" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471664" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471664">
+							<li id="dsq-rate-up-1471664"><a id="dsq-rate-up-a-1471664" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471664"><a id="dsq-rate-down-a-1471664" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471664" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471664">
+								<a id="dsq-avatar-1471664" href="http://disqus.com/people/b4d2526bd4549a6984b828da056cf597/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=b4d2526bd4549a6984b828da056cf597&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471664" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471664">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471664" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471664" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471664" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471664" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471664" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471664" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471664" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471664">
+																	<span id="dsq-author-user-1471664">
+										Nathan									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471664" class="dsq-header-time" href="#comment-1471664" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471664" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471664" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471664" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471664" class="dsq-comment-message">@andrew: so you&#39;re saying I can&#39;t take Rails as a black box and simply use it as my web application framework? I have to know the internals as well, just so I can avoid being clobbered by a bad monkeypatch? This is wrong. A framework should support my application, not undermine it. Don&#39;t get me wrong, I like Ruby and I like Rails, but I do not like the monkeypatch-as-programming-model approach that many Rails developers seem to have taken.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471664">
+															<a href="#" id="dsq-reply-link-1471664">reply</a>
+								<span id="dsq-edit-wrap-1471664" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471664" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471664" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471664" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471664" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471664" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471664"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471664" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471664"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471664">/people/b4d2526bd4549a6984b828da056cf597/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471664"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471664"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471664"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471664"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471664"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471664"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471664"><img src="http://www.gravatar.com/avatar.php?gravatar_id=b4d2526bd4549a6984b828da056cf597&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471665"></div>
+					<li id="dsq-comment-1471665" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471665" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471665">
+							<li id="dsq-rate-up-1471665"><a id="dsq-rate-up-a-1471665" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471665"><a id="dsq-rate-down-a-1471665" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471665" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471665">
+								<a id="dsq-avatar-1471665" href="http://disqus.com/people/15f2a792cccb4521d58120eb92827109/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=15f2a792cccb4521d58120eb92827109&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471665" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471665">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471665" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471665" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471665" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471665" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471665" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471665" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471665" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471665">
+																	<span id="dsq-author-user-1471665">
+										andrew									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471665" class="dsq-header-time" href="#comment-1471665" title="Permalink">1 year ago</a>
+								<span id="dsq-points-1471665" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471665" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471665" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471665" class="dsq-comment-message">Nathan: You can use Rails as a black box framework. You can read some tutorials and start programming, use the API docs as needed. But you cannot throw a bunch gems, plugins, generators and engines into your app and expect to be able to debug without an understanding of the code you have written and used. I have worked with .net developers in the past. I present them with a bug and they shrug their shoulders, "that&#39;s part of the framework, i don&#39;t know". Hoorah for open-source, huzzah for eval, I can change anything because I can read and understand the source ( all of it ), and can modify everything.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471665">
+															<a href="#" id="dsq-reply-link-1471665">reply</a>
+								<span id="dsq-edit-wrap-1471665" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471665" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471665" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471665" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471665" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471665" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471665"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471665" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471665"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471665">/people/15f2a792cccb4521d58120eb92827109/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471665"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471665"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471665"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471665"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471665"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471665"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471665"><img src="http://www.gravatar.com/avatar.php?gravatar_id=15f2a792cccb4521d58120eb92827109&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471666"></div>
+					<li id="dsq-comment-1471666" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471666" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471666">
+							<li id="dsq-rate-up-1471666"><a id="dsq-rate-up-a-1471666" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471666"><a id="dsq-rate-down-a-1471666" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471666" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471666">
+								<a id="dsq-avatar-1471666" href="http://disqus.com/people/eaa158fdcfc1535841f594e776a17991/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=eaa158fdcfc1535841f594e776a17991&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471666" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471666">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471666" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471666" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471666" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471666" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471666" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471666" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471666" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471666">
+																	<span id="dsq-author-user-1471666">
+										Guoping Huang									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471666" class="dsq-header-time" href="#comment-1471666" title="Permalink">11 months ago</a>
+								<span id="dsq-points-1471666" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471666" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471666" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471666" class="dsq-comment-message">I totally agreed with you on Monkeypatching as a style to code libraries. Patches are just patches. They are not organized codes. However, Monkeypatching does have is values in  patching buggy codes and it should stay that way. Combined with the open source nature of Ruby, it is a powerful tool to patch things up the correct way without modifying the 3rd party codes. <br><br>We used it in our ShellShadow merb app and it&#39;s working pretty well.See a blog post here.<br><br><a href="http://odwks.com/2008/04/monkeypatching-merb/" rel="nofollow">http://odwks.com/2008/04/monkeypatching-merb/</a><br>And yes, it should not be the means for developing libraries(which should uses public api&#39;s).</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471666">
+															<a href="#" id="dsq-reply-link-1471666">reply</a>
+								<span id="dsq-edit-wrap-1471666" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471666" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471666" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471666" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471666" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471666" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471666"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471666" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471666"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471666">/people/eaa158fdcfc1535841f594e776a17991/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471666"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471666"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471666"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471666"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471666"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471666"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471666"><img src="http://www.gravatar.com/avatar.php?gravatar_id=eaa158fdcfc1535841f594e776a17991&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-1471667"></div>
+					<li id="dsq-comment-1471667" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-1471667" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-1471667">
+							<li id="dsq-rate-up-1471667"><a id="dsq-rate-up-a-1471667" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-1471667"><a id="dsq-rate-down-a-1471667" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-1471667" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-1471667">
+								<a id="dsq-avatar-1471667" href="http://disqus.com/people/dacecedc1028725c1f0defc517d8d799/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=dacecedc1028725c1f0defc517d8d799&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-1471667" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-1471667">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-1471667" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-1471667" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-1471667" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-1471667" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-1471667" href="#">Remove&nbsp;Post</a></li>
+																						<li><a id="dsq-block-email-1471667" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-1471667" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-1471667">
+																	<span id="dsq-author-user-1471667">
+										darkgoob									</span>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-1471667" class="dsq-header-time" href="#comment-1471667" title="Permalink">11 months ago</a>
+								<span id="dsq-points-1471667" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-1471667" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-1471667" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-1471667" class="dsq-comment-message">There are "programming language communities"? People *actually* hold affiliation to programming languages? <br><br>This is all so very odd. Are there tattoos involved? I bet there are.<br><br>You guys should like, have a Ruby sports team of some kind, which would play against the Python team, and all the others of course. <br><br>Man, it sounds like people need to take off their Buddy Holly glasses and stop drinking so much damn coffee.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-1471667">
+															<a href="#" id="dsq-reply-link-1471667">reply</a>
+								<span id="dsq-edit-wrap-1471667" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-1471667" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-1471667" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-1471667" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-1471667" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-1471667" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-1471667"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-1471667" style="display:none">
+															<span style="display: none" id="dsq-hidden-blog-1471667"></span>
+								<span style="display: none" id="dsq-hidden-userurl-1471667">/people/dacecedc1028725c1f0defc517d8d799/</span>
+								<span style="display: none" id="dsq-hidden-facebook-1471667"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-1471667"></span>
+								<span style="display: none" id="dsq-hidden-twitter-1471667"></span>
+								<span style="display: none" id="dsq-hidden-delicious-1471667"></span>
+								<span style="display: none" id="dsq-hidden-flickr-1471667"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-1471667"></span>
+														<span style="display: none" id="dsq-hidden-avatar-1471667"><img src="http://www.gravatar.com/avatar.php?gravatar_id=dacecedc1028725c1f0defc517d8d799&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+																			<div id="comment-6234648"></div>
+					<li id="dsq-comment-6234648" style="margin-left:0px" class="dsq-comment">
+						<ul class="dsq-comment-rate" id="dsq-rate-loading-6234648" style="display: none"><img src="http://media.disqus.com/images/loading-small.gif" /></ul>
+						<ul class="dsq-comment-rate" id="dsq-rate-6234648">
+							<li id="dsq-rate-up-6234648"><a id="dsq-rate-up-a-6234648" class="dsq-arrows" href="#" title="Rate Up"><img src="http://media.disqus.com/images/embed/arrow2-up.png" alt="^" /></a></li>
+							<li id="dsq-rate-down-6234648"><a id="dsq-rate-down-a-6234648" class="dsq-arrows" href="#" title="Rate Down"><img src="http://media.disqus.com/images/embed/arrow2-down.png" alt="v" /></a></li>
+						</ul>
+						<div id="dsq-comment-header-6234648" class="dsq-comment-header">
+							<div class="dsq-header-avatar" id="dsq-header-avatar-6234648">
+								<a id="dsq-avatar-6234648" href="http://disqus.com/people/gambling/" title="Profile">
+									<img src="http://www.gravatar.com/avatar.php?gravatar_id=5c82adfb2b0dbc40a0ff918f4b86a124&size=32&default=http://media.disqus.com/images/noavatar32.png" />
+								</a>
+								<ul id="dsq-menu-6234648" class="dsq-menu" style="display:none">
+																		<li><a href="#comment-6234648">Permalink</a></li>
+									<li style="display: none">
+										<a id="dsq-admin-toggle-6234648" class="dsq-admin-toggle" href="#">
+											Admin<img src="http://media.disqus.com/images/embed/pointer-right.png" />
+										</a>
+									</li>
+									<li id="dsq-admin-panel-6234648" class="dsq-admin-panel" style="display: none">
+										<ul>
+											<li id="dsq-admin-email-6234648" class="dsq-admin-email"></li>
+											<li id="dsq-admin-ip-6234648" class="dsq-admin-ip"></li>
+											<li><a id="dsq-remove-6234648" href="#">Remove&nbsp;Post</a></li>
+																							<li><a id="dsq-block-username-6234648" href="#">Block username</a></li>
+																						<li><a id="dsq-block-email-6234648" href="#">Block email</a></li>
+											<li><a id="dsq-block-ip-6234648" href="#">Block IP address</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+
+							<cite id="dsq-cite-6234648">
+																	<a id="dsq-author-user-6234648" href="http://www.gambling.ph">
+										gambling									</a>
+															</cite>
+
+							<span class="dsq-header-meta">
+								<a id="dsq-time-6234648" class="dsq-header-time" href="#comment-6234648" title="Permalink">1 month ago</a>
+								<span id="dsq-points-6234648" class="dsq-header-points" style="display: none">1 point</span>
+							</span>
+						</div>
+
+						<div class="dsq-comment-body">
+							<p id="dsq-login-6234648" style="display:none">Please <a href="http://disqus.com/login/?next=article:3022480">login</a> to rate.</p>
+							<p id="dsq-comment-alert-6234648" class="dsq-comment-alert" style="display: none">
+								Do you already have an account? <a href="http://disqus.com/claim/">Log in and claim this comment</a>.
+							</p>
+							<div id="dsq-comment-message-6234648" class="dsq-comment-message">It&#39;s just way too easy to monkey patch in ruby.. thats one of its biggest vulnerabilities.</div>
+
+													</div>
+
+						<div class="dsq-comment-footer" id="dsq-comment-footer-6234648">
+															<a href="#" id="dsq-reply-link-6234648">reply</a>
+								<span id="dsq-edit-wrap-6234648" style="display: none">
+									&nbsp;<a href="#" id="dsq-edit-6234648" style="display: none">edit</a>
+								</span>
+								<span id="dsq-reblog-wrap-6234648" style="display: none">
+									&nbsp;<a href="#" id="dsq-reblog-6234648" class="dsq-reblog">reblog</a>
+								</span>
+								<span id="dsq-post-report-6234648" style="display: none">
+									&nbsp;<a id="dsq-post-report-a-6234648" href="#" class="dsq-post-report">flag</a>
+								</span>
+								
+								<div id="dsq-reply-6234648"><!-- iframe .dsq-post-reply  injected here --></div>
+													</div>
+
+						<div id="dsq-hidden-data-6234648" style="display:none">
+															<span style="display: none" id="dsq-hidden-clout-6234648">0</span>
+								<span style="display: none" id="dsq-hidden-userurl-6234648">/people/gambling/</span>
+								<span style="display: none" id="dsq-hidden-follow-6234648">/people/gambling/following/</span>
+
+								<span style="display: none" id="dsq-hidden-blog-6234648">http://www.gambling.ph</span>
+								<span style="display: none" id="dsq-hidden-facebook-6234648"></span>
+								<span style="display: none" id="dsq-hidden-linkedin-6234648"></span>
+								<span style="display: none" id="dsq-hidden-twitter-6234648"></span>
+								<span style="display: none" id="dsq-hidden-delicious-6234648"></span>
+								<span style="display: none" id="dsq-hidden-flickr-6234648"></span>
+								<span style="display: none" id="dsq-hidden-tumblr-6234648"></span>
+														<span style="display: none" id="dsq-hidden-avatar-6234648"><img src="http://www.gravatar.com/avatar.php?gravatar_id=5c82adfb2b0dbc40a0ff918f4b86a124&size=32&default=http://media.disqus.com/images/noavatar32.png" /></span>
+						</div>
+					</li>
+									</ul>
+		<div id="dsq-pagination">
+&nbsp;		</div>
+		<div id="dsq-post-bottom" style="display: none">
+							<div id="dsq-auth">
+					<div class="dsq-by"><a href="http://disqus.com/" target="_blank"><img src="http://media.disqus.com/images/embed/dsq-button-120x19.png" alt="discussion by DISQUS" /></a></div>
+					<div class="dsq-auth-header">
+						<h3 id="dsq-add-new-comment">Add New Comment</h3>
+						<span id="dsq-auth-as"><noscript><br />You must have JavaScript enabled to comment.</noscript></span>
+					</div>
+				</div>
+					</div>
+					<h3>Trackbacks</h3>
+			<p>(<a href="http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/trackback/" rel="trackback">Trackback URL</a>)</p>
+			<ul id="dsq-references">
+																																																																																																																																														<li>
+								<cite><a href='http://ruby.tie-rack.org/52/boy-what-isnt-destroying-ruby-these-days/' rel='external nofollow' class='url'>Ruby, a message to you &raquo; Boy, what ISN&#8217;T destroying Ruby these days?</a></cite>
+								<p class="dsq-meta">February 26, 2008 at 6:37 pm</p>
+								<p class="dsq-content">[...] Monkey Patching [...] </p>
+							</li>
+																																																																																								<li>
+								<cite><a href='http://www.postal-code.com/binarycode/2008/02/27/monkey-vs-donkey-fight/' rel='external nofollow' class='url'>Binary Code &raquo; Monkey vs. Donkey: Fight!</a></cite>
+								<p class="dsq-meta">February 27, 2008 at 1:28 pm</p>
+								<p class="dsq-content">[...] Is monkey-patching over-used? Abused? I don&#8217;t know; I honestly don&#8217;t have an opinion on that. My experience says less ...</p>
+							</li>
+																																																																																																							<li>
+								<cite><a href='http://camilolopez.com/?p=23' rel='external nofollow' class='url'>Geekvicious Journal &raquo; Blog Archive &raquo; Hands-off my global namespace.</a></cite>
+								<p class="dsq-meta">March 19, 2008 at 8:03 pm</p>
+								<p class="dsq-content">[...] Well, after all monkey patching might be destroying ruby. [...] </p>
+							</li>
+																												<li>
+								<cite><a href='http://yournewssite.info/2008/03/25/news/monkeypatching-is-destroying-ruby/' rel='external nofollow' class='url'>News &raquo; Monkeypatching is Destroying Ruby</a></cite>
+								<p class="dsq-meta">March 25, 2008 at 2:21 am</p>
+								<p class="dsq-content">[...] Monkeypatching is Destroying Ruby (via). Deliberately provocative title, but makes a well considered case for restrained use of monkey ...</p>
+							</li>
+																																																																									<li>
+								<cite><a href='http://torontotechjobs.wordpress.com/2008/04/17/mdlogix-ruby-on-rails-software-engineer/' rel='external nofollow' class='url'>mdlogix: Ruby on Rails Software Engineer &laquo; Toronto Technology Jobs</a></cite>
+								<p class="dsq-meta">April 17, 2008 at 6:28 am</p>
+								<p class="dsq-content">[...] got some expertise with Rails in-house, including Virtuous Code&#8217;s Avdi Grimm (&#8217;Monkey-Patching is Destroying Ruby&#8216;).  And they&#8217;ve just brought ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://cyberwforum.com/cyberwblog/monkeypatching-for-humans/' rel='external nofollow' class='url'>Monkeypatching For Humans | The CyberwBlog</a></cite>
+								<p class="dsq-meta">July 14, 2008 at 3:21 am</p>
+								<p class="dsq-content">[...] class had subtly different behaviors from the String you&#8217;ve learned to use? Monkeypatching can be incredibly dangerous in the ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://www.markhneedham.com/blog/2008/09/25/easily-misused-language-features/' rel='external nofollow' class='url'>Easily misused language features at Mark Needham</a></cite>
+								<p class="dsq-meta">September 25, 2008 at 2:18 pm</p>
+								<p class="dsq-content">[...] great flexibility when working effectively with 3rd party libraries for example but can lead to difficult debugging problems if ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://remark.wordpress.com/2008/09/30/ruby-tuesday-20-%c2%a0prevent-monkeypatching/' rel='external nofollow' class='url'>Ruby Tuesday #20 : Prevent monkeypatching &laquo; Re.Mark</a></cite>
+								<p class="dsq-meta">September 30, 2008 at 11:06 am</p>
+								<p class="dsq-content">[...] between the Ruby and Python communities.  Some think it&#8217;s a good thing, while others take a different view.  If ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://blog.jayaraja.com/?p=2743' rel='external nofollow' class='url'>Sweetraskels Blog&raquo; Blog Archive &raquo; Monkeypatching For Humans</a></cite>
+								<p class="dsq-meta">December 12, 2008 at 9:42 pm</p>
+								<p class="dsq-content">[...] class had subtly different behaviors from the String you&#8217;ve learned to use? Monkeypatching can be incredibly dangerous in the ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://www.hilpers.it/1733519-django-vs-zope/3' rel='external nofollow' class='url'>django vs zope? - Pagina 3 | hilpers</a></cite>
+								<p class="dsq-meta">January 18, 2009 at 5:33 am</p>
+								<p class="dsq-content">[...] usa pesantemente pratiche di programmazione poco raccomandabili:  Monkeypatching is Destroying Ruby http://avdi.org/devblog/2008/02/23/w...stroying-ruby/   &gt; Ma se hai ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://www.keyongtech.com/4889210-monkeypatching-is-destroying-ruby' rel='external nofollow' class='url'>Monkeypatching is Destroying Ruby | keyongtech</a></cite>
+								<p class="dsq-meta">January 18, 2009 at 9:12 am</p>
+								<p class="dsq-content">[...]  I wrote a blog post with the intentionally provocative title above, which can be found here:  http://avdi.org/devblog/?p=18 ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://benanne.net/code/?p=186' rel='external nofollow' class='url'>Scoped mixins | self.collect(&amp;:code)</a></cite>
+								<p class="dsq-meta">January 21, 2009 at 3:58 pm</p>
+								<p class="dsq-content">[...] won&#8217;t go into much detail here about why they could be considered harmful; enough has already been written about ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://blog.fogus.me/2008/02/25/linkage-20070225/' rel='external nofollow' class='url'>-= Linkage 2007.02.25 =-</a></cite>
+								<p class="dsq-meta">January 26, 2009 at 7:38 am</p>
+								<p class="dsq-content">[...] On Monkeys and Ruby?&lt;br/&gt; [...] </p>
+							</li>
+																												<li>
+								<cite><a href='http://tagaholic.blogspot.com/feeds/5260830352959762229/comments/default' rel='external nofollow' class='url'>Tagaholic</a></cite>
+								<p class="dsq-meta">January 31, 2009 at 2:10 pm</p>
+								<p class="dsq-content">Can We Share Our Extensions Without MonkeyPatching?...
+
+As Ruby programmers, I think we enjoy the ease and power of being able ...</p>
+							</li>
+																												<li>
+								<cite><a href='http://tagaholic.blogspot.com/2009/01/can-we-share-our-extensions-without.html' rel='external nofollow' class='url'>Tagaholic</a></cite>
+								<p class="dsq-meta">January 31, 2009 at 2:29 pm</p>
+								<p class="dsq-content">Can We Share Our Extensions Without MonkeyPatching?...
+
+As Ruby programmers, I think we enjoy the ease and power of being able ...</p>
+							</li>
+																												</ul>
+			</div>
+</div>
+
+
+<!-- embed_thread_profile.html -->
+
+<!-- profile -->
+<div id="dsq-template-profile" class="dsq-popupdiv" style="display:none">
+	<div id="dsq-popup-profile">
+		<div id="dsq-popup-top">
+		</div>
+		<div id="dsq-popup-body" class="clearfix">
+			<div id="dsq-popup-body-padding">
+				<div id="dsq-popup-header">
+					<a class="dsq-close-link" href="#" onclick="Dsq.Popup.hidePopup(); return false">close</a>
+					<span id="dsq-profile-avatar"></span>
+					<cite>
+						<span id="dsq-profile-cite"></span>(<a id="dsq-profile-userurl" href="#"></a>)
+					</cite>
+				</div>
+				<div id="dsq-profile-services">
+					<a id="dsq-profile-clout" class="dsq-profile-badge" href="#"></a>
+					<ul>
+						<li style="display:none">
+							<a id="dsq-service-blog" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/blog.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-facebook" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/facebook.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-linkedin" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/linkedin.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-twitter" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/twitter.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-delicious" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/delicious.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-flickr" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/flickr.png" />
+							</a>
+						</li>
+						<li style="display:none">
+							<a id="dsq-service-tumblr" href="#" target="_blank">
+								<img src="http://media.disqus.com/images/embed/services/tumblr.png" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="dsq-profile-status">
+					<p class="dsq-profile-label">status via twitter</p>
+					<p></p>
+				</div>
+				<div id="dsq-profile-recentcomments">
+					<p class="dsq-profile-label">recent comments <span>(<a href="#" id="dsq-profile-follow">follow comments</a>)</span></p>
+					<ul id="dsq-profile-commentlist"></ul>
+				</div>
+				<div class="show-more"><a href="#" id="dsq-profile-showmore">View Profile »</a></div>
+				<div class="powered-by"><a href="http://disqus.com">Powered by <span class="disqus">Disqus</span></a>&nbsp;&middot;&nbsp;<a href="http://disqus.com">Learn more</a></div>
+			</div> <!-- padding -->
+		</div> <!-- body -->
+		<div id="dsq-popup-bottom"></div>
+	</div>
+</div>
+
+<!-- reblog -->
+<div id="dsq-template-reblog" class="dsq-reblogdiv">
+	<div id="dsq-popup-profile">
+		<div id="dsq-popup-top">
+		</div>
+		<div id="dsq-popup-body" class="clearfix">
+			<div id="dsq-popup-body-padding">
+				<div id="dsq-popup-header">
+					<a class="dsq-close-link" id="dsq-close-reblog" href="#" onclick="Dsq.Popup.hidePopup(); return false">close</a>
+					<cite>Reblog this comment</cite>
+				</div>
+				<div id="dsq-reblog-form">
+				</div>
+				<div class="powered-by"><a href="http://disqus.com">Powered by <span class="disqus">Disqus</span></a>&nbsp;&middot;&nbsp;<a href="http://disqus.com/">Learn more</a></div>
+			</div> <!-- padding -->
+		</div> <!-- body -->
+		<div id="dsq-popup-bottom"></div>
+	</div>
+</div>
+
+<!-- /embed_thread_profile.html -->
+
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<script type="text/javascript">
+</script>
+<script type="text/javascript" charset="utf-8">
+	var disqusMediaUrl = "http://media.disqus.com";
+	var threadEl = document.getElementById('dsq-content');
+	var disqus_url = 'http://avdi.org/devblog/2008/02/23/why-monkeypatching-is-destroying-ruby/ ';
+</script>
+<script type="text/javascript" src="http://disqus.com/scripts/virtuouscode/disqus.js?t=monkeypatching_is_destroying_ruby"></script>
+<script type="text/javascript" src="http://disqus.com/api/v1/embed_reply.js?forum_url=virtuouscode&thread_id=3022480"></script>
+			</div><!--end content-->
+	<div id="sidebar">
+  	      	<ul>
+  				<li id="text-346613101" class="widget widget_text">			<h2 class="widgettitle">Feed</h2>			<div class="textwidget"><p><a href="http://feeds2.feedburner.com/VirtuousCode" rel="alternate" type="application/rss+xml"><img src="http://www.feedburner.com/fb/images/pub/feed-icon16x16.png" alt="" style="vertical-align:middle;border:0"/></a>&nbsp;<a href="http://feeds2.feedburner.com/VirtuousCode" rel="alternate" type="application/rss+xml">Subscribe in a reader</a></p></div>
+		</li><li id="search" class="widget widget_search"><h2 class="widgettitle">Search</h2>
+<form method="get" id="search_form" action="http://avdi.org/devblog/">
+	<div>
+    <input type="text" value="type and press enter" name="s" id="s" onfocus="if (this.value == 'type and press enter') {this.value = '';}" onblur="if (this.value == '') {this.value = 'type and press enter';}" />
+    <input type="hidden" value="Search" />
+  </div>
+</form>
+</li><li id="lijit-search" class="widget lijit_std_widget"><h2 class="widgettitle">Search All My Content</h2><script type="text/javascript" src="http://www.lijit.com/informers/wijits?username=avdi&js=1"></script><a style="color: #999" href="http://www.lijit.com" id="lijit_wijit_pvs_link">Lijit Search</a></li>		<li id="recent-posts" class="widget widget_recent_entries">			<h2 class="widgettitle">Recent Posts</h2>			<ul>
+						<li><a href="http://avdi.org/devblog/2009/03/16/go-fetch/">Go Fetch </a></li>
+						<li><a href="http://avdi.org/devblog/2009/03/04/writing-facades-on-legacy-code/">Writing Facades on Legacy Code </a></li>
+						<li><a href="http://avdi.org/devblog/2009/03/02/smart-requires-in-ruby/">Smart Requires in Ruby </a></li>
+						<li><a href="http://avdi.org/devblog/2009/02/24/tdd-accelerates-development/">TDD Accelerates Development </a></li>
+						<li><a href="http://avdi.org/devblog/2009/02/12/hire-reg-braithwaite/">Hire Reg Braithwaite! </a></li>
+						</ul>
+		</li><li id="linkcat-92" class="widget widget_links"><h2 class="widgettitle">Friends &amp; Colleagues</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://smartic.us/">Bryan Liles</a></li>
+<li><a href="http://japhr.blogspot.com/">Chris Strom</a></li>
+<li><a href="http://evan.tiggerpalace.com/">Evan Light</a></li>
+<li><a href="http://thesaj.wordpress.com/">Jason Epperson</a></li>
+<li><a href="http://jeff.dallien.net/">Jeff Dallien</a></li>
+<li><a href="http://oneeyedgringo.blogspot.com/" rel="co-worker">Kevin Compton</a></li>
+<li><a href="http://www.ideaforge.org/blog/">Luke Galea</a></li>
+<li><a href="http://www.subelsky.com/">Mike Subelsky</a></li>
+<li><a href="http://ekenosen.net/nick/devblog/">Nicholas Evans</a></li>
+<li><a href="http://techspeak.plainlystated.com/" rel="acquaintance co-worker">Patrick Schless</a></li>
+<li><a href="http://paulbarry.com/">Paul Barry</a></li>
+<li><a href="http://github.com/raganwald/homoiconic/tree/master">Reginald Braithwaite</a></li>
+<li><a href="http://www.seanr.ca/tech/" rel="acquaintance">Sean Miller</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-91" class="widget widget_links"><h2 class="widgettitle">Links</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://github.com/avdi">Avdi @ Github</a></li>
+<li><a href="https://rubyforge.org/users/avdi/">Avdi @ Rubyforge</a></li>
+<li><a href="http://twitter.com/avdi">Avdi @ Twitter</a></li>
+<li><a href="http://avdi.org" rel="me" title="My Home Page">Home</a></li>
+<li><a href="http://avdi.livejournal.com" title="My personal journal">Inventing Avdi</a></li>
+<li><a href="http://thelazyfair.org" title="The practice of abundance">The Lazy Faire</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-17" class="widget widget_links"><h2 class="widgettitle">Projects</h2>
+	<ul class='xoxo blogroll'>
+<li><a href="http://alter-ego.rubyforge.org">AlterEgo</a></li>
+<li><a href="http://clafamatt.rubyforge.org" title="Class Family Attributes for Ruby">ClaFamAtt</a></li>
+<li><a href="http://fail-fast.rubyforge.org" title="Ruby assertion methods for lightweight contract checking">FailFast</a></li>
+<li><a href="http://hookr.rubyforge.org" title="A publish/subscribe event hook framework in Ruby">HookR</a></li>
+<li><a href="http://nulldb.rubyforge.org" title="The Null Object pattern for ActiveRecord">NullDB</a></li>
+<li><a href="http://utilitybelt.rubyforge.org/" title="Pimp your IRB">UtilityBelt</a></li>
+
+	</ul>
+</li>
+<li id="ffactivity" class="widget widget_ffactivity"><h2 class="widgettitle">FriendFeed</h2><!-- Updated on Thu, 26 Mar 2009 13:55:22 -0700 -->
+<div id="ff-activity">
+<div class="ff-event ff-facebook ff-event-odd" style="background-image: url('http://friendfeed.com/static/images/icons/facebook.png?v=3188364f61a5caec6cea3db52bd7ee92');">
+	<p class="title"><a href="http://www.facebook.com/profile.php?id=1210547532&amp;story_fbid=62562615207" class="external">Avdi Packing up an office is always a little sad even when the change is a positive one.</a></p>
+	<p class="ff-meta"><small><a href="http://www.facebook.com/profile.php?id=1210547532" class="external">Thursday 11:17</a></small></p>
+</div>
+<div class="ff-event ff-twitter ff-event-even" style="background-image: url('http://friendfeed.com/static/images/icons/twitter.png?v=df0a0affa8100c494df42159627a38b0');">
+	<p class="title">Packing up an office is always a little sad even when the change is a positive one.</p>
+	<p class="ff-meta"><small><a href="http://twitter.com/avdi" class="external">Thursday 11:17</a></small></p>
+</div>
+<div class="ff-event ff-gmailgoogle-talk ff-event-odd" style="background-image: url('http://friendfeed.com/static/images/icons/googletalk.png?v=3b074086846ac5c0a711395ebf5d464a');">
+	<p class="title">Updated status: Packing up an office is always a little sad even when the change is a positive one.</p>
+	<p class="ff-meta"><small><a href="http://talk.google.com/" class="external">Thursday 11:22</a></small></p>
+</div>
+<div class="ff-event ff-friendfeed ff-event-even" style="background-image: url('http://friendfeed.com/static/images/icons/internal.png?v=e471e9afdf04ae568dcbddb5584fc6c0');">
+	<p class="title"><a href="http://friendfeed.com/e/45ddeb61-f417-4558-ab4b-534cee56bc40" class="external">Packing up an office is always a little sad even when the change is a positive one.</a></p>
+	<p class="ff-meta"><small><a href="http://friendfeed.com/avdi" class="external">Thursday 11:17</a></small></p>
+</div>
+<div class="ff-event ff-facebook ff-event-odd" style="background-image: url('http://friendfeed.com/static/images/icons/facebook.png?v=3188364f61a5caec6cea3db52bd7ee92');">
+	<p class="title"><a href="http://www.facebook.com/profile.php?id=1210547532&amp;story_fbid=75966642003" class="external">Avdi Yesterday I learned how to mess with plists in Lisp. #standup.</a></p>
+	<p class="ff-meta"><small><a href="http://www.facebook.com/profile.php?id=1210547532" class="external">Thursday 7:42</a></small></p>
+</div>
+<div class="ff-event ff-twitter ff-event-even" style="background-image: url('http://friendfeed.com/static/images/icons/twitter.png?v=df0a0affa8100c494df42159627a38b0');">
+	<p class="title">Yesterday I learned how to mess with plists in Lisp. #<a href="http://hashtags.org/tag/standup/">standup</a> </p>
+	<p class="ff-meta"><small><a href="http://twitter.com/avdi" class="external">Thursday 7:42</a></small></p>
+</div>
+<div class="ff-event ff-gmailgoogle-talk ff-event-odd" style="background-image: url('http://friendfeed.com/static/images/icons/googletalk.png?v=3b074086846ac5c0a711395ebf5d464a');">
+	<p class="title">Updated status: Yesterday I learned how to mess with plists in Lisp. #standup</p>
+	<p class="ff-meta"><small><a href="http://talk.google.com/" class="external">Thursday 7:42</a></small></p>
+</div>
+<p class="ff-account"><a href="http://friendfeed.com/avdi" rel="me" class="external">My FriendFeed profile &#8230;</a></p>
+</div>
+
+</li>		<li id="text-343580411" class="widget widget_text">			<h2 class="widgettitle">Bookshelf</h2>			<div class="textwidget"><div style="margin:0px;">
+  <embed width="190" height="300" src="http://www.goodreads.com/images/widget/widget2.swf" quality="high" wmode="transparent" FlashVars="id=364832&amp;shelf=development&amp;title=Avdi's Bookshelf&amp;sort=date_added&amp;order=d&amp;params=amazon,thlafa-20,dest_site,amazon"></embed>
+</div>
+<div style="margin:0px;">
+	<a href="http://www.goodreads.com/user/show/364832" target="_blank"><img alt="Widget_logo" border="0" height="32" src="http://www.goodreads.com/images/widget/widget_logo.gif" title="my goodreads profile" width="190" /></a>
+</div>
+
+</div>
+		</li><li id="archives" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>		<ul>
+			<li><a href='http://avdi.org/devblog/2009/03/' title='March 2009'>March 2009</a></li>
+	<li><a href='http://avdi.org/devblog/2009/02/' title='February 2009'>February 2009</a></li>
+	<li><a href='http://avdi.org/devblog/2009/01/' title='January 2009'>January 2009</a></li>
+	<li><a href='http://avdi.org/devblog/2008/12/' title='December 2008'>December 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/11/' title='November 2008'>November 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/10/' title='October 2008'>October 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/09/' title='September 2008'>September 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/08/' title='August 2008'>August 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/07/' title='July 2008'>July 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/06/' title='June 2008'>June 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/05/' title='May 2008'>May 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/04/' title='April 2008'>April 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/03/' title='March 2008'>March 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/02/' title='February 2008'>February 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2008/01/' title='January 2008'>January 2008</a></li>
+	<li><a href='http://avdi.org/devblog/2007/12/' title='December 2007'>December 2007</a></li>
+		</ul>
+</li><li id="tag_cloud" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2><a href='http://avdi.org/devblog/tag/activerecord/' class='tag-link-20' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>activerecord</a>
+<a href='http://avdi.org/devblog/tag/alter-ego/' class='tag-link-81' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>alter-ego</a>
+<a href='http://avdi.org/devblog/tag/art/' class='tag-link-31' title='1 topic' rel="tag" style='font-size: 8pt;'>art</a>
+<a href='http://avdi.org/devblog/tag/bdd/' class='tag-link-70' title='3 topics' rel="tag" style='font-size: 9.1666666666667pt;'>bdd</a>
+<a href='http://avdi.org/devblog/tag/books/' class='tag-link-25' title='1 topic' rel="tag" style='font-size: 8pt;'>books</a>
+<a href='http://avdi.org/devblog/tag/c/' class='tag-link-11' title='1 topic' rel="tag" style='font-size: 8pt;'>c++</a>
+<a href='http://avdi.org/devblog/tag/community/' class='tag-link-52' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>community</a>
+<a href='http://avdi.org/devblog/tag/conferences/' class='tag-link-5' title='3 topics' rel="tag" style='font-size: 9.1666666666667pt;'>conferences</a>
+<a href='http://avdi.org/devblog/tag/decor/' class='tag-link-33' title='1 topic' rel="tag" style='font-size: 8pt;'>decor</a>
+<a href='http://avdi.org/devblog/tag/design/' class='tag-link-3' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>design</a>
+<a href='http://avdi.org/devblog/tag/diversions/' class='tag-link-30' title='1 topic' rel="tag" style='font-size: 8pt;'>diversions</a>
+<a href='http://avdi.org/devblog/tag/extensions/' class='tag-link-36' title='1 topic' rel="tag" style='font-size: 8pt;'>extensions</a>
+<a href='http://avdi.org/devblog/tag/gems/' class='tag-link-78' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>gems</a>
+<a href='http://avdi.org/devblog/tag/generics/' class='tag-link-10' title='1 topic' rel="tag" style='font-size: 8pt;'>generics</a>
+<a href='http://avdi.org/devblog/tag/hacks/' class='tag-link-34' title='1 topic' rel="tag" style='font-size: 8pt;'>hacks</a>
+<a href='http://avdi.org/devblog/tag/homestar-runner/' class='tag-link-28' title='1 topic' rel="tag" style='font-size: 8pt;'>homestar runner</a>
+<a href='http://avdi.org/devblog/tag/humor/' class='tag-link-38' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>humor</a>
+<a href='http://avdi.org/devblog/tag/injection/' class='tag-link-37' title='1 topic' rel="tag" style='font-size: 8pt;'>injection</a>
+<a href='http://avdi.org/devblog/tag/irb/' class='tag-link-14' title='1 topic' rel="tag" style='font-size: 8pt;'>irb</a>
+<a href='http://avdi.org/devblog/tag/java/' class='tag-link-12' title='1 topic' rel="tag" style='font-size: 8pt;'>java</a>
+<a href='http://avdi.org/devblog/tag/javascript/' class='tag-link-9' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>javascript</a>
+<a href='http://avdi.org/devblog/tag/languages/' class='tag-link-6' title='3 topics' rel="tag" style='font-size: 9.1666666666667pt;'>languages</a>
+<a href='http://avdi.org/devblog/tag/legacy/' class='tag-link-24' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>legacy</a>
+<a href='http://avdi.org/devblog/tag/libraries/' class='tag-link-77' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>libraries</a>
+<a href='http://avdi.org/devblog/tag/monkeypatching/' class='tag-link-21' title='7 topics' rel="tag" style='font-size: 11.5pt;'>monkeypatching</a>
+<a href='http://avdi.org/devblog/tag/mst3k/' class='tag-link-27' title='1 topic' rel="tag" style='font-size: 8pt;'>mst3k</a>
+<a href='http://avdi.org/devblog/tag/ninjas/' class='tag-link-39' title='1 topic' rel="tag" style='font-size: 8pt;'>ninjas</a>
+<a href='http://avdi.org/devblog/tag/office/' class='tag-link-29' title='1 topic' rel="tag" style='font-size: 8pt;'>office</a>
+<a href='http://avdi.org/devblog/tag/openid/' class='tag-link-40' title='1 topic' rel="tag" style='font-size: 8pt;'>openid</a>
+<a href='http://avdi.org/devblog/tag/patterns/' class='tag-link-7' title='3 topics' rel="tag" style='font-size: 9.1666666666667pt;'>patterns</a>
+<a href='http://avdi.org/devblog/tag/pipecleaners/' class='tag-link-32' title='1 topic' rel="tag" style='font-size: 8pt;'>pipecleaners</a>
+<a href='http://avdi.org/devblog/tag/plugins/' class='tag-link-19' title='3 topics' rel="tag" style='font-size: 9.1666666666667pt;'>plugins</a>
+<a href='http://avdi.org/devblog/tag/practices/' class='tag-link-22' title='4 topics' rel="tag" style='font-size: 9.75pt;'>practices</a>
+<a href='http://avdi.org/devblog/tag/professionalism/' class='tag-link-16' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>professionalism</a>
+<a href='http://avdi.org/devblog/tag/projects/' class='tag-link-17' title='1 topic' rel="tag" style='font-size: 8pt;'>Projects</a>
+<a href='http://avdi.org/devblog/tag/rails/' class='tag-link-18' title='4 topics' rel="tag" style='font-size: 9.75pt;'>rails</a>
+<a href='http://avdi.org/devblog/tag/refactoring/' class='tag-link-23' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>refactoring</a>
+<a href='http://avdi.org/devblog/tag/releases/' class='tag-link-85' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>releases</a>
+<a href='http://avdi.org/devblog/tag/repl/' class='tag-link-15' title='1 topic' rel="tag" style='font-size: 8pt;'>repl</a>
+<a href='http://avdi.org/devblog/tag/ruby/' class='tag-link-13' title='25 topics' rel="tag" style='font-size: 22pt;'>ruby</a>
+<a href='http://avdi.org/devblog/tag/scala/' class='tag-link-8' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>scala</a>
+<a href='http://avdi.org/devblog/tag/smalltalk/' class='tag-link-50' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>smalltalk</a>
+<a href='http://avdi.org/devblog/tag/sustainability/' class='tag-link-35' title='1 topic' rel="tag" style='font-size: 8pt;'>sustainability</a>
+<a href='http://avdi.org/devblog/tag/tdd/' class='tag-link-71' title='2 topics' rel="tag" style='font-size: 8.5833333333333pt;'>tdd</a>
+<a href='http://avdi.org/devblog/tag/testing/' class='tag-link-4' title='4 topics' rel="tag" style='font-size: 9.75pt;'>testing</a></li>  	</ul>
+  	<ul class="thin-sidebar spad">
+  		  		  	</ul>
+  	<ul class="thin-sidebar">
+  		  		  	</ul>
+	</div><!--end sidebar-->	<div id="footer">
+		    <p class="right">Copyright 2009 Avdi Grimm</p>
+		<p><a href="http://themes.jestro.com/vigilance/">Vigilance Theme</a> by <a href="http://www.jestro.com">Jestro</a></p>
+	
+	</div><!--end footer-->
+</div><!--end wrapper-->
+<script type="text/javascript"><!-- 
+amzn_cl_tag="thlafa-20";
+//--></script>
+<script type="text/javascript" src="http://cls.assoc-amazon.com/s/cls.js"></script>
+<script type="text/javascript" src="http://www.assoc-amazon.com/s/link-enhancer?tag=thlafa-20&o=1">
+</script>
+<noscript>
+    <img src="http://www.assoc-amazon.com/s/noscript?tag=thlafa-20" alt="" />
+</noscript>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shCore.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCSharp.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushPhp.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushJScript.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushJava.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushVb.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushSql.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushXml.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushDelphi.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushPython.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushRuby.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCss.js"></script>
+<script class="javascript" src="http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCpp.js"></script>
+<script class="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = 'http://avdi.org/devblog/wp-content/plugins/google-syntax-highlighter/Scripts/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+<script src="http://stats.wordpress.com/e-200913.js" type="text/javascript"></script>
+<script type="text/javascript">
+st_go({blog:'6386493',v:'ext',post:'18'});
+var load_cmc = function(){linktracker_init(6386493,18,2);};
+if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+else load_cmc();
+</script>
+</body>
+</html>
+	

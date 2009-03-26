@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Sphinx Client API for Ruby | Dmytro Shteflyuk's Home</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		<link rel="stylesheet" href="http://kpumuk.info/wp-content/themes/kpumuk/style.css?v=0.7.0" type="text/css" media="screen" />
+		<link rel="stylesheet" href="http://kpumuk.info/wp-content/themes/kpumuk/print.css?v=0.7.0" type="text/css" media="print" />
+		<!--[if lt IE 8]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
+    <![endif]-->
+		
+		<link rel="alternate" type="application/rss+xml" title="Dmytro Shteflyuk&#8217;s Home RSS Feed" href="http://kpumuk.info/feed/" />
+		<link rel="shortcut icon" type="image/ico" href="http://kpumuk.info/wp-content/themes/kpumuk/favicon.ico" />
+		
+		<link rel="pingback" href="http://kpumuk.info/xmlrpc.php" />
+			<link rel='archives' title='January 2009' href='http://kpumuk.info/2009/01/' />
+	<link rel='archives' title='December 2008' href='http://kpumuk.info/2008/12/' />
+	<link rel='archives' title='January 2008' href='http://kpumuk.info/2008/01/' />
+	<link rel='archives' title='December 2007' href='http://kpumuk.info/2007/12/' />
+	<link rel='archives' title='September 2007' href='http://kpumuk.info/2007/09/' />
+	<link rel='archives' title='August 2007' href='http://kpumuk.info/2007/08/' />
+	<link rel='archives' title='May 2007' href='http://kpumuk.info/2007/05/' />
+	<link rel='archives' title='April 2007' href='http://kpumuk.info/2007/04/' />
+	<link rel='archives' title='March 2007' href='http://kpumuk.info/2007/03/' />
+	<link rel='archives' title='January 2007' href='http://kpumuk.info/2007/01/' />
+	<link rel='archives' title='December 2006' href='http://kpumuk.info/2006/12/' />
+	<link rel='archives' title='November 2006' href='http://kpumuk.info/2006/11/' />
+	<link rel='archives' title='October 2006' href='http://kpumuk.info/2006/10/' />
+	<link rel='archives' title='May 2006' href='http://kpumuk.info/2006/05/' />
+	<link rel='archives' title='April 2006' href='http://kpumuk.info/2006/04/' />
+	<link rel='archives' title='March 2006' href='http://kpumuk.info/2006/03/' />
+	<link rel='archives' title='February 2006' href='http://kpumuk.info/2006/02/' />
+	<link rel='archives' title='January 2006' href='http://kpumuk.info/2006/01/' />
+	<link rel='archives' title='October 2005' href='http://kpumuk.info/2005/10/' />
+		<link rel="stylesheet" href="http://kpumuk.info/wp-content/plugins/codecolorer/styles.php" type="text/css" />
+<link rel='stylesheet' href='http://kpumuk.info/wp-content/plugins/shadowbox-js/skin/classic/skin.css?ver=2.7' type='text/css' media='screen' />
+<link rel='stylesheet' href='http://kpumuk.info/wp-content/plugins/shadowbox-js/css/extras.css?ver=2.7' type='text/css' media='screen' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://kpumuk.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://kpumuk.info/wp-includes/wlwmanifest.xml" /> 
+<script type='text/javascript' src='http://kpumuk.info/wp-includes/js/jquery/jquery.js?ver=1.2.6'></script>
+<script type='text/javascript' src='http://kpumuk.info/wp-content/plugins/shadowbox-js/js/adapter/shadowbox-jquery.js?ver=2.7'></script>
+<script type='text/javascript' src='http://kpumuk.info/wp-content/plugins/shadowbox-js/js/shadowbox-2.0.js?ver=2.7'></script>
+<script type='text/javascript' src='http://kpumuk.info/wp-content/plugins/shadowbox-js/js/lang/shadowbox-en.js?ver=2.7'></script>
+<script type='text/javascript' src='http://kpumuk.info/wp-content/plugins/shadowbox-js/skin/classic/skin.js?ver=2.7'></script>
+<script type='text/javascript' src='http://kpumuk.info/wp-includes/js/jquery/jquery.form.js?ver=2.02'></script>
+<meta name="generator" content="WordPress 2.7" />
+
+
+<!-- all in one seo pack 1.4.6.15 [206,272] -->
+<meta name="description" content="The Sphinx Client API is used to communicate with searchd daemon and get search results from Sphinx. It is used in large applications with a lot of data to" />
+<meta name="keywords" content="sphinx library ruby rails search mysql postgresql full+text proximity stemming scalability" />
+<!-- /all in one seo pack -->
+<link rel="stylesheet" href="http://kpumuk.info/wp-content/plugins/contact-form-7/stylesheet.css" type="text/css" /><script type='text/javascript' src='http://kpumuk.info/wp-content/plugins/contact-form-7/contact-form-7.js'></script>
+
+	<meta name="now-reading-version" content="4.4.3" />
+	
+		<link rel="stylesheet" type="text/css" href="http://kpumuk.info/wp-content/plugins/openid/f/openid.min.css?ver=519" /><meta http-equiv="Content-Language" content="en" />
+<!-- Begin Shadowbox JS -->
+<script type="text/javascript">
+	var shadowbox_conf = {
+		animate: true,
+		animateFade: true,
+		animSequence: "wh",
+		modal: false,
+		overlayColor: "#000",
+		overlayOpacity: 0.8,
+		flashBgColor: "#000000",
+		autoplayMovies: true,
+		showMovieControls: true,
+		slideshowDelay: 0,
+		resizeDuration: 0.55,
+		fadeDuration: 0.35,
+		displayNav: true,
+		continuous: false,
+		displayCounter: true,
+		counterType: "default",
+		counterLimit: 10,
+		viewportPadding: 20,
+		handleOversize: "resize",
+		handleUnsupported: "link",
+		initialHeight: 160,
+		initialWidth: 320,
+		enableKeys: true,
+		flvPlayer: "http://kpumuk.info/wp-content/plugins/shadowbox-js/flvplayer.swf"
+	};
+	window.onload = function(){
+		Shadowbox.init(shadowbox_conf);
+	};
+</script>
+<!-- End Shadowbox JS -->
+
+		<script src="http://kpumuk.info/wp-content/themes/kpumuk/js/main.js?v=0.7.0" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="container" class="no-left">
+  			<div id="header">
+  				<h3>
+  					<a href="http://kpumuk.info" title="Dmytro Shteflyuk&#8217;s Home">
+  						<img src="http://kpumuk.info/wp-content/themes/kpumuk/images/logo.png" width="361" height="98" alt="Dmytro Shteflyuk&#8217;s Home" />
+						<span>Dmytro Shteflyuk&#8217;s Home</span>
+					</a>
+				</h3>
+				<p>thoughts about programming</p>
+			</div>
+			<div id="menu">
+				<ul>
+					<li><a href="http://kpumuk.info" title="Blog">Blog</a></li>
+					<li class="page_item page-item-87"><a href="http://kpumuk.info/curriculum-vitae/" title="Resume">Resume</a></li>
+<li class="page_item page-item-89 current_page_ancestor"><a href="http://kpumuk.info/projects/" title="Projects">Projects</a></li>
+<li class="page_item page-item-147"><a href="http://kpumuk.info/tags/" title="Tag Cloud">Tag Cloud</a></li>
+<li class="page_item page-item-187"><a href="http://kpumuk.info/library/" title="Library">Library</a></li>
+<li class="page_item page-item-122"><a href="http://kpumuk.info/contact/" title="Contact">Contact</a></li>
+				</ul>
+									<ul class="right">
+						<li class="language_item"><a href="/projects/ror-plugins/sphinx/lang-pref/ru/" rel="nofollow"><img src="http://kpumuk.info/wp-content/plugins/polyglot_flags/ru.png" alt="Русский" title="Русский" />Русский</a></li><li class="language_item current_language_item"><a href="/projects/ror-plugins/sphinx/lang-pref/en/" rel="nofollow"><img src="http://kpumuk.info/wp-content/plugins/polyglot_flags/us.png" alt="English" title="English" />English</a></li>					</ul>
+							</div>
+			<div id="wrapper-left">
+				<div id="wrapper-right">
+
+<div id="wrapper">
+	<div id="content">
+			
+		<div class="entry hentry" id="post-136">
+			<h1><a href="http://kpumuk.info/projects/ror-plugins/sphinx/" rel="bookmark" title="Permanent link to Sphinx Client API for Ruby" class="entry-title">Sphinx Client API for Ruby</a></h1>
+			<div class="date">Apr <span>05</span></div>
+			<div class="details">
+				<abbr class="published" title="2007-04-05T11:39:04Z">2007 11:39</abbr>
+								  &#183; <a href='http://kpumuk.info/projects/ror-plugins/sphinx/lang/ru/' rel="alternate" hreflang="ru"><img src="http://kpumuk.info/wp-content/plugins/polyglot_flags/ru.png" alt="Русский" title="Русский" /></a>  								(20,967 views)			</div>
+			<div class="entrytext entry-content">
+				<p><img src="http://kpumuk.info/wp-content/uploads/projects/sphinx.jpg" style="float: left; margin: 10px 20px 10px 0px" /> The Sphinx Client API is used to communicate with <tt>searchd</tt> daemon and get search results from <a href="http://www.sphinxsearch.com/" onclick="javascript:pageTracker._trackPageview ('/outbound/www.sphinxsearch.com');">Sphinx</a>. It is used in large applications with a lot of data to provide fast, reliable search engine. Ruby API is a port of PHP API, which could be found inside your Sphinx distributive. Below you could find information on how to install and use it.</p>
+<p><strong>Warning</strong>: If you used this plugin before version <strong>0.3.0</strong> released, check the <a href="#documentation">documentation</a>, because I have fixed any differences between PHP and this API implementation, and all functions has been renamed.</p>
+<h2>Installation</h2>
+<p>Sphinx Client API for Ruby has been implemented as plugin for Ruby on Rails (but you able to use it in standalone Ruby application as well, there are no dependencies on other libraries). All you need is to <a href="#download">download</a> plugin sources and unpack them to the <tt>vendor/plugins/sphinx</tt> directory.</p>
+<h2>Documentation<a name="documentation"></a></h2>
+<p>You can find documentation <a href="http://kpumuk.info/files/rails/plugins/sphinx/rdoc/">here</a>. Also you can build the documentation by running following command inside the <tt>vendor/plugins/sphinx</tt> directory:</p>
+<div class="codecolorer-container text vibrant" style="overflow:auto;white-space:nowrap;width:455px"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br /></div></td><td><div class="text codecolorer" style="font-family:Monaco,Lucida Console,monospace">rake rdoc</div></td></tr></tbody></table></div>
+<p>Here is short example:</p>
+<div class="codecolorer-container ruby vibrant" style="overflow:auto;white-space:nowrap;width:455px"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br /></div></td><td><div class="ruby codecolorer" style="font-family:Monaco,Lucida Console,monospace"><span class="re1">@sphinx</span> = <span class="re2">Sphinx::Client</span>.<span class="me1">new</span><br />
+<span class="re1">@sphinx</span>.<span class="me1">SetSortMode</span><span class="br0">&#40;</span><span class="re2">Sphinx::Client::SPH_SORT_ATTR_ASC</span>, <span class="st0">'created_at'</span><span class="br0">&#41;</span><br />
+results = <span class="re1">@sphinx</span>.<span class="me1">Query</span><span class="br0">&#40;</span><span class="st0">'test'</span><span class="br0">&#41;</span><br />
+<br />
+<span class="kw3">puts</span> <span class="st0">&quot;Searched for:&quot;</span><br />
+results<span class="br0">&#91;</span><span class="st0">'words'</span><span class="br0">&#93;</span>.<span class="me1">each</span> <span class="kw1">do</span> <span class="sy0">|</span>word, info<span class="sy0">|</span><br />
+&nbsp; <span class="kw3">puts</span> <span class="st0">&quot; &nbsp; &nbsp;#{word} found #{info['hits']} times in #{info['docs']} documents&quot;</span><br />
+<span class="kw1">end</span><br />
+<span class="kw3">print</span> <span class="st0">&quot;<span class="es0">\n</span>Results #{results['total']} of #{results['total_found']}; &quot;</span><br />
+<span class="kw3">puts</span> <span class="st0">&quot;Total time: #{results['time']}&quot;</span><br />
+results<span class="br0">&#91;</span><span class="st0">'matches'</span><span class="br0">&#93;</span>.<span class="me1">each</span> <span class="kw1">do</span> <span class="sy0">|</span>doc<span class="sy0">|</span><br />
+&nbsp; <span class="kw3">puts</span> <span class="st0">&quot;Document ##{doc['id']} (weight #{doc['weight']}):&quot;</span><br />
+&nbsp; doc<span class="br0">&#91;</span><span class="st0">'attrs'</span><span class="br0">&#93;</span>.<span class="me1">each</span> <span class="kw1">do</span> <span class="sy0">|</span>attr, value<span class="sy0">|</span><br />
+&nbsp; &nbsp; <span class="kw3">puts</span> <span class="st0">&quot; &nbsp; &nbsp;#{attr}: #{value}&quot;</span><br />
+&nbsp; <span class="kw1">end</span><br />
+<span class="kw1">end</span></div></td></tr></tbody></table></div>
+<h2>Download<a name="download"></a></h2>
+<p>The latest version of &#8220;Sphinx Client API&#8221; is <strong>0.3.1</strong>, and it can be downloaded here:</p>
+<p align="center"><a href="http://kpumuk.info/files/rails/plugins/sphinx-0.3.1.zip" title="Download Sphinx Client API version 0.3.1" class="download_button"><span class="v_caption">version</span><span class="version">0.3.1</span><span class="t_caption">Download</span><span class="title">Sphinx Client API</span></a></p>
+<p>Also you can download client library for current Sphinx 0.9.8 r1112 development snapshot here: <strong><a href="http://kpumuk.info/files/rails/plugins/sphinx-0.4.0-r1112.zip" title="Sphinx Client API v0.4.0-r1112">Sphinx Client API v0.4.0-r1112</a></strong>. <strong>WARNING,</strong> this is a current development snapshot rather than tested and approved release. Even though it is already used in production at some sites, it still has some known issues, and might have showstopper ones, too. Please use with care and do <a href="http://sphinxsearch.com/bugs/" onclick="javascript:pageTracker._trackPageview ('/outbound/sphinxsearch.com');">report any issues</a> you might run into.</p>
+<p>If you have any proposals, want to send feedback or found bugs, please post comments. It’s very important for me!</p>
+<h2>Changelog</h2>
+<ul>
+<li><strong>v0.3.1</strong> (Dec 9, 2007)
+<ul>
+<li>Fixed bug with search results sorting order.</li>
+</ul>
+</li>
+<li><strong>v0.3.0</strong> (Apr 3, 2007)
+<ul>
+<li>Fixed bug with processing attributes in query response (thanks to shawn).</li>
+<li>Fixed bug query processing time round-up (thanks to <a href="http://metavid.ucsc.edu/" target="_blank" onclick="javascript:pageTracker._trackPageview ('/outbound/metavid.ucsc.edu');">michael</a>).</li>
+<li>API updated in compliance with PHP API for Sphinx 0.9.7.</li>
+<li>RSpec tests added</li>
+</ul>
+</li>
+<li><strong>v0.2.0</strong> (Dec 20, 2006)
+<ul>
+<li>Imporved exceptions handling.</li>
+<li>API updated in compliance with PHP API for Sphinx 0.9.7 RC2.</li>
+</ul>
+</li>
+<li><strong>v0.1.0</strong> (Nov 26, 2006)
+<ul>
+<li>Initial plugin implementation.</li>
+</ul>
+</li>
+</ul>
+<h2>Other plugins</h2>
+<p>Full list of plugins I have implemented is available <a href="http://kpumuk.info/projects/ror-plugins/">here</a>.</p>
+							</div>
+
+		 			 		<div class="entrytext">
+		 			
+	<h3 class="comments-title"><a name="comments"></a>10 Responses to this entry</h3>
+	<p class="comments-meta">
+		Subscribe to comments with <a href='http://kpumuk.info/projects/ror-plugins/sphinx/feed/'><abbr title="Really Simple Syndication">RSS</abbr></a>					or <a href="http://kpumuk.info/projects/ror-plugins/sphinx/trackback/" rel="trackback">TrackBack</a> to 'Sphinx Client API for Ruby'.
+			</p>
+	<div class="commentlist">
+					<div class=" comment" id="comment-62458">
+				<div class="no"><a href="#comment-62458">1</a></div>
+				<div class="author">
+				  Quang  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2007-06-18 at 7.08 am </div>
+				
+				<p>Hi, I have a huge data in MySQl. Before I found Sphinx, I intend to build my old indexes and then build a tag cloud base on those indexes.<br />
+Now I wonder, can Sphinx and Client API help me in building tag cloud base on Sphinx indexes ?</p>
+			</div>
+
+								<div class="alt comment" id="comment-62459">
+				<div class="no"><a href="#comment-62459">2</a></div>
+				<div class="author">
+				  Quang  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2007-06-18 at 7.10 am </div>
+				
+				<p>Sorry, in the previous comment. I mean &#8220;my own indexes&#8221;, not &#8220;my old indexes&#8221;.<br />
+My English is not good :D !</p>
+			</div>
+
+								<div class=" comment" id="comment-86460">
+				<div class="no"><a href="#comment-86460">3</a></div>
+				<div class="author">
+				  <a href="http://www.sameshirteveryday.com/2007/08/14/morning-brew-61/" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/www.sameshirteveryday.com');">Morning Brew #61</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2007-08-14 at 6.27 pm </div>
+				
+				<p>[...] - Rails wrapper for Ruby API for Sphinx, a full-text search [...]</p>
+			</div>
+
+								<div class="alt comment" id="comment-129281">
+				<div class="no"><a href="#comment-129281">4</a></div>
+				<div class="author">
+				  <a href="http://kpumuk.info/ror-plugins/sphinx-client-api-0-3-1-and-0-4-0-r909-for-sphinx-0-9-8-r909-released/" rel='external nofollow' class='url'>Sphinx Client API 0.3.1 and 0.4.0 r909 for Sphinx 0.9.8 r909 released || Dmytro Shteflyuk&#8217;s Home</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2007-12-09 at 9.33 pm </div>
+				
+				<p>[...] I have a good news: Sphinx Client API has been updated and now it supports all brand new features of the unstable Sphinx 0.9.8 development snapshot. What does it mean for you as a developer? What features you will get if you would decide to switch to the new version? I will describe most valuable improvements of the Sphinx in this article, and will show how to use them with new Sphinx Client API 0.4.0 r909. [...]</p>
+			</div>
+
+								<div class=" comment" id="comment-205816">
+				<div class="no"><a href="#comment-205816">5</a></div>
+				<div class="author">
+				  <a href="http://www.weebadde.com/?p=8" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/www.weebadde.com');">Weebadde, Chandana Prabode &raquo; Blog Archive &raquo; Indexing with Sphinx</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2008-05-20 at 5.30 am </div>
+				
+				<p>[...] ruby/rails plugin rather than trying to reinvent the wheel. I found two plugins; acts_as_sphinx and Sphinx Client API for Ruby (SCAFR). They are both very similar except acts_as_sphinx has act methods to load models from the [...]</p>
+			</div>
+
+								<div class="alt comment" id="comment-205819">
+				<div class="no"><a href="#comment-205819">6</a></div>
+				<div class="author">
+				  <a href="http://www.weebadde.com" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/www.weebadde.com');">Prabode</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2008-05-20 at 5.33 am </div>
+				
+				<p>Wanted to let you know I used your API with some refactoring in my project. Pls see my post for more information at <a href="http://www.weebadde.com/?p=8" rel="nofollow">http://www.weebadde.com/?p=8</a>. I am happy contribute the refactored code.</p>
+			</div>
+
+								<div class=" comment" id="comment-212059">
+				<div class="no"><a href="#comment-212059">7</a></div>
+				<div class="author">
+				  Leonid S. Pavlov  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2008-06-07 at 1.52 pm </div>
+				
+				<p>Hi!</p>
+<p>This is my port of BuildKeywords Sphinx function from sphinxapi.php. Maybe you find it interesting and include it in future versions of your plugin.</p>
+<p>&#8212;-</p>
+<div class="codecolorer-container ruby vibrant" style="overflow:auto;white-space:nowrap;width:455px;height:300px"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9<br />10<br />11<br />12<br />13<br />14<br />15<br />16<br />17<br />18<br />19<br />20<br />21<br />22<br />23<br />24<br />25<br />26<br />27<br />28<br />29<br />30<br />31<br />32<br />33<br />34<br />35<br />36<br />37<br />38<br />39<br />40<br />41<br />42<br />43<br />44<br />45<br />46<br />47<br />48<br />49<br />50<br />51<br />52<br />53<br />54<br />55<br />56<br />57<br />58<br />59<br />60<br />61<br />62<br />63<br />64<br />65<br />66<br />67<br />68<br />69<br />70<br />71<br />72<br />73<br />74<br />75<br />76<br />77<br />78<br />79<br />80<br />81<br /></div></td><td><div class="ruby codecolorer" style="font-family:Monaco,Lucida Console,monospace"><span class="co1"># = sphinx_ex.rb - extend Sphinx Client API by Dmytro Shteflyuk</span><br />
+<span class="co1"># </span><br />
+<span class="co1"># Author:: &nbsp; &nbsp;Leonid S. Pavlov &lt;mailto:leonid.pavlov at gmail dot com&gt;.</span><br />
+<span class="co1"># Copyright:: Copyright (c) 2008 Leonid S. Pavlov</span><br />
+<span class="co1"># License:: &nbsp; Distributes under the same terms as Ruby</span><br />
+<br />
+<br />
+<span class="kw1">module</span> Sphinx<br />
+&nbsp; <span class="kw1">class</span> Client<br />
+<br />
+&nbsp; &nbsp; SEARCHD_COMMAND_KEYWORDS = <span class="nu0">3</span><br />
+&nbsp; &nbsp; VER_COMMAND_KEYWORDS = 0x100<br />
+&nbsp; &nbsp; <br />
+&nbsp; &nbsp; <span class="co1"># Keywords generation</span><br />
+&nbsp; &nbsp; <span class="co1">#</span><br />
+&nbsp; &nbsp; <span class="co1"># Connect to searchd server, and generate keyword list for a given query.</span><br />
+&nbsp; &nbsp; <span class="co1">#</span><br />
+&nbsp; &nbsp; <span class="co1"># * &lt;tt&gt;query&lt;/tt&gt; is query string</span><br />
+&nbsp; &nbsp; <span class="co1"># * &lt;tt&gt;index&lt;/tt&gt; is index name (or names) to query</span><br />
+&nbsp; &nbsp; <span class="co1"># * &lt;tt&gt;hits&lt;/tt&gt; is the bool flag for counting words hits in indexed documents</span><br />
+&nbsp; &nbsp; <span class="co1">#</span><br />
+&nbsp; &nbsp; <span class="co1"># Returns an array of words on success.</span><br />
+&nbsp; &nbsp; <span class="co1"># Returns false on failure.</span><br />
+&nbsp; &nbsp; <span class="co1">#</span><br />
+&nbsp; &nbsp; <span class="co1"># Usage example:</span><br />
+&nbsp; &nbsp; <span class="co1"># &nbsp; &nbsp;sphinx.BuildKeywords('test1', '*', true)</span><br />
+&nbsp; &nbsp; <span class="co1">#</span><br />
+&nbsp; &nbsp; <span class="kw1">def</span> BuildKeywords<span class="br0">&#40;</span>query, index, hits<span class="br0">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; assert <span class="br0">&#123;</span> query.<span class="me1">instance_of</span>? <span class="kw3">String</span> <span class="br0">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; assert <span class="br0">&#123;</span> index.<span class="me1">instance_of</span>? <span class="kw3">String</span> <span class="br0">&#125;</span><br />
+&nbsp; &nbsp; &nbsp; assert <span class="br0">&#123;</span> hits.<span class="me1">instance_of</span>?<span class="br0">&#40;</span><span class="kw4">TrueClass</span><span class="br0">&#41;</span> <span class="sy0">||</span> hits.<span class="me1">instance_of</span>?<span class="br0">&#40;</span><span class="kw4">FalseClass</span><span class="br0">&#41;</span> <span class="br0">&#125;</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; sock = <span class="kw2">self</span>.<span class="me1">Connect</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; <span class="co1"># build request</span><br />
+&nbsp; &nbsp; &nbsp; request = Request.<span class="me1">new</span> &nbsp; &nbsp; &nbsp; &nbsp; <span class="co1"># v.1.0 req &nbsp; </span><br />
+&nbsp; &nbsp; &nbsp; request.<span class="me1">put_string</span> query &nbsp; &nbsp; &nbsp;<span class="co1"># req query</span><br />
+&nbsp; &nbsp; &nbsp; request.<span class="me1">put_string</span> index &nbsp; &nbsp; &nbsp;<span class="co1"># req index</span><br />
+&nbsp; &nbsp; &nbsp; request.<span class="me1">put_int</span> hits ? <span class="nu0">1</span> : <span class="nu0">0</span> &nbsp;<span class="co1"># req hits</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; <span class="co1"># send query, get response</span><br />
+&nbsp; &nbsp; &nbsp; len = request.<span class="me1">to_s</span>.<span class="me1">length</span><br />
+&nbsp; &nbsp; &nbsp; request = <span class="br0">&#91;</span>SEARCHD_COMMAND_KEYWORDS, VER_COMMAND_KEYWORDS, len<span class="br0">&#93;</span>.<span class="me1">pack</span><span class="br0">&#40;</span><span class="st0">'nnN'</span><span class="br0">&#41;</span> <span class="sy0">+</span> request.<span class="me1">to_s</span> &nbsp; &nbsp; <span class="co1"># add header</span><br />
+&nbsp; &nbsp; &nbsp; sock.<span class="me1">send</span><span class="br0">&#40;</span>request, <span class="nu0">0</span><span class="br0">&#41;</span> &nbsp; &nbsp; <br />
+&nbsp; &nbsp; &nbsp; response = GetResponse<span class="br0">&#40;</span>sock, VER_COMMAND_KEYWORDS<span class="br0">&#41;</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; <span class="co1"># parse response</span><br />
+&nbsp; &nbsp; &nbsp; pos = <span class="nu0">0</span><br />
+&nbsp; &nbsp; &nbsp; res = <span class="br0">&#91;</span><span class="br0">&#93;</span><br />
+&nbsp; &nbsp; &nbsp; rlen = response.<span class="me1">length</span><br />
+&nbsp; &nbsp; &nbsp; nwords = response<span class="br0">&#91;</span>pos, <span class="nu0">4</span><span class="br0">&#93;</span>.<span class="me1">unpack</span><span class="br0">&#40;</span><span class="st0">'N*'</span><span class="br0">&#41;</span>.<span class="me1">first</span><br />
+&nbsp; &nbsp; &nbsp; pos <span class="sy0">+</span>= <span class="nu0">4</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; <span class="kw1">for</span> i <span class="kw1">in</span> 0...<span class="me1">nwords</span> <span class="kw1">do</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; len = response<span class="br0">&#91;</span>pos, <span class="nu0">4</span><span class="br0">&#93;</span>.<span class="me1">unpack</span><span class="br0">&#40;</span><span class="st0">'N*'</span><span class="br0">&#41;</span>.<span class="me1">first</span>; pos <span class="sy0">+</span>= <span class="nu0">4</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; tokenized = response<span class="br0">&#91;</span>pos, len<span class="br0">&#93;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; pos <span class="sy0">+</span>= len;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; len = response<span class="br0">&#91;</span>pos, <span class="nu0">4</span><span class="br0">&#93;</span>.<span class="me1">unpack</span><span class="br0">&#40;</span><span class="st0">'N*'</span><span class="br0">&#41;</span>.<span class="me1">first</span>; pos <span class="sy0">+</span>= <span class="nu0">4</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; normalized = response<span class="br0">&#91;</span>pos, len<span class="br0">&#93;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; pos <span class="sy0">+</span>= len;<br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; res <span class="sy0">&lt;&lt;</span> <span class="br0">&#123;</span> <span class="st0">'tokenized'</span> <span class="sy0">=&gt;</span> tokenized, <span class="st0">'normalized'</span> <span class="sy0">=&gt;</span> normalized <span class="br0">&#125;</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>hits<span class="br0">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ndocs, nhits = response<span class="br0">&#91;</span>pos, <span class="nu0">8</span><span class="br0">&#93;</span>.<span class="me1">unpack</span><span class="br0">&#40;</span><span class="st0">'N*N*'</span><span class="br0">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; pos <span class="sy0">+</span>= <span class="nu0">8</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; res<span class="br0">&#91;</span>i<span class="br0">&#93;</span>.<span class="me1">merge</span>!<span class="br0">&#40;</span><span class="st0">'docs'</span> <span class="sy0">=&gt;</span> ndocs, <span class="st0">'hits'</span> <span class="sy0">=&gt;</span> nhits<span class="br0">&#41;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">if</span> pos <span class="sy0">&gt;</span> rlen<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="re1">@error</span> = <span class="st0">'incomplete reply'</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="kw3">raise</span> SphinxResponseError, <span class="re1">@error</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br />
+&nbsp; &nbsp; &nbsp; <span class="kw1">end</span><br />
+<br />
+&nbsp; &nbsp; &nbsp; <span class="kw2">return</span> res<br />
+&nbsp; &nbsp; <span class="kw1">end</span><br />
+<br />
+&nbsp; <span class="kw1">end</span><br />
+<span class="kw1">end</span></div></td></tr></tbody></table></div>
+			</div>
+
+								<div class="alt comment" id="comment-212467">
+				<div class="no"><a href="#comment-212467">8</a></div>
+				<div class="author">
+				  <a href="http://cotoha.info" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/cotoha.info');">COTOHA</a>  			  				</div>
+				<div class="meta">said on 2008-06-09 at 2.36 pm </div>
+				
+				<p>забавый баг на стыке CodeColorer&#8217;а и Google Reader&#8217;а:</p>
+<p><a href="http://cotoha.info/wp-content/uploads/2008/06/code-colorer-in-google.png" rel="nofollow" onclick="javascript:pageTracker._trackPageview ('/outbound/cotoha.info');"><img src='http://cotoha.info/wp-content/uploads/2008/06/code-colorer-in-google.png' title='' alt='' width="400" /></a>  </p>
+<p>текст внутри колореровского контейнера &#8220;тянется&#8221; под следующие посты в ридере&#8230; с чего бы это?</p>
+			</div>
+
+								<div class=" comment" id="comment-219127">
+				<div class="no"><a href="#comment-219127">9</a></div>
+				<div class="author">
+				  <a href="http://ochronus.hu/handling-a-huge-amount-of-fulltext-searches-26.html" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/ochronus.hu');">Handling a huge amount of fulltext searches | ochronus onLine</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2008-07-03 at 9.14 pm </div>
+				
+				<p>[...] your users&#8217; searches, sphinx and memcache. Spice and stuff: a good ruby sphinx api - try this. You&#8217;ll also need a decent memcache api in ruby - go for the creators&#8217; recommendation, [...]</p>
+			</div>
+
+								<div class="alt comment" id="comment-230601">
+				<div class="no"><a href="#comment-230601">10</a></div>
+				<div class="author">
+				  <a href="http://ochronus.hu/chyrp/handling-a-huge-amount-of-fulltext-searches-part-2---the-internals-2/" rel='external nofollow' class='url' onclick="javascript:pageTracker._trackPageview ('/outbound/ochronus.hu');">Ochronus onLine &raquo; Handling a huge amount of fulltext searches part 2 - the internals</a>  			      				<span class="subscription" title="Subscribed to comments">@</span>
+          				</div>
+				<div class="meta">said on 2008-08-15 at 9.48 am </div>
+				
+				<p>[...] and stuff: a good ruby sphinx api - try&nbsp;this. You&rsquo;ll also need a decent memcache api in ruby - go for the creators&rsquo; recommendation, [...]</p>
+			</div>
+
+						</div>
+
+
+
+
+	<h3 class="reply">Post a comment</h3>
+	<div class="postinput"><div id="addcomment">
+					<form action="http://kpumuk.info/wp-comments-post.php" method="post" id="commentform">
+				
+									<p>
+						<input type="text" class="text" name="author" id="author" value="" size="22" tabindex="1" title="Name" />
+						<label for="author">Name (required)</label>
+					</p>
+					<p>
+						<input type="text" class="text" name="email" id="email" value="" size="22" tabindex="2" />
+						<label for="email">Email (will not be published) (required)</label>
+					</p>
+					<p>
+						<input type="text" class="text" name="url" id="url" value="" size="22" tabindex="3" />
+						<label for="url">Website</label>
+					</p>
+								
+				<p><small>You can use simple HTML-formatting tags (like <strong>&lt;a&gt;</strong>, <strong>&lt;ul&gt;</strong> and others). To format your code sample use <tt>&lt;code lang="php"&gt;$a = "hello";&lt;/code&gt;</tt> (allowed languages are ruby, php, yaml, html, csharp, javascript). Also you could use <tt>&lt;code&gt;$a = "hello";&lt;/code&gt;</tt> and its syntax would not be highlighted. If you are not using <strong>&lt;code&gt;</strong> tag, replace &lt; sign with <tt>&amp;lt;</tt>.</small></p>
+				<p><textarea name="comment" class="text" id="comment" tabindex="4" rows="80" cols="7"></textarea></p>
+				<p>
+					<a href="javascript:document.getElementById('commentform').submit();" class="submit" title="Please review your comment before submitting">Submit Comment</a>
+					<input type="hidden" name="comment_post_ID" value="136" />
+				</p>
+				
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;" />
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+			</form>
+			</div></div>
+
+		 		</div>
+					</div>
+
+	
+	
+	</div>
+</div>
+
+
+<div id="right">
+	<h2>Syndication</h2>
+	<dl><dt class="clearfix">
+		<a href="http://kpumuk.info/feed/lang/en/" title="Syndicate this site using RSS 2.0" style="float:left;margin-right: 10px;margin-top: 5px"><img src="http://kpumuk.info/wp-content/themes/kpumuk/images/subscribe.gif" width="48" height="48" alt="Syndicate this site using RSS 2.0" /></a>
+		<a href="http://kpumuk.info/feed/lang/en/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr> (Eng)</a><br />
+		<a href="http://feeds.feedburner.com/kpumuk-ru" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr> (Rus)</a><br />
+		<a href="http://kpumuk.info/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a>
+	</dt></dl>
+	<h2>Latest Articles</h2>
+			<dl><dt><a href="http://kpumuk.info/ruby-on-rails/memo-3-advanced-usage-of-ruby-hashes-and-arrays/" rel="Bookmark" title="Permanent Link to Memo #3: Advanced usage of Ruby hashes and arrays">Memo #3: Advanced usage of Ruby hashes and arrays</a></dt><dd><span class="details">January 23, 2009 02:59</span><span class="comments"><a href="http://kpumuk.info/ruby-on-rails/memo-3-advanced-usage-of-ruby-hashes-and-arrays/#comments">6 Comments</a></span></dd></dl><dl><dt><a href="http://kpumuk.info/development/memo-2-useful-git-tricks-with-remote-branches/" rel="Bookmark" title="Permanent Link to Memo #2: Useful Git tricks with remote branches">Memo #2: Useful Git tricks with remote branches</a></dt><dd><span class="details">December 23, 2008 00:59</span><span class="comments"><a href="http://kpumuk.info/development/memo-2-useful-git-tricks-with-remote-branches/#comments">3 Comments</a></span></dd></dl><dl><dt><a href="http://kpumuk.info/development/memo-1-installing-mysql-and-memcached-gems-on-mac-os-x-with-macports/" rel="Bookmark" title="Permanent Link to Memo #1: Installing mysql and memcached gems on Mac OS X with MacPorts">Memo #1: Installing mysql and memcached gems on Mac OS X with MacPorts</a></dt><dd><span class="details">December 22, 2008 21:20</span><span class="comments"><a href="http://kpumuk.info/development/memo-1-installing-mysql-and-memcached-gems-on-mac-os-x-with-macports/#comments">No Comments</a></span></dd></dl><dl><dt><a href="http://kpumuk.info/facebook/fbeditor-editor-tag-in-facebook-applications/" rel="Bookmark" title="Permanent Link to fb:editor FBML tag in Facebook applications">fb:editor FBML tag in Facebook applications</a></dt><dd><span class="details">January 16, 2008 20:59</span><span class="comments"><a href="http://kpumuk.info/facebook/fbeditor-editor-tag-in-facebook-applications/#comments">14 Comments</a></span></dd></dl><dl><dt><a href="http://kpumuk.info/asp-net/coalesce-operator-in-c-sharp-2-0/" rel="Bookmark" title="Permanent Link to Coalesce ?? operator in C# 2.0">Coalesce ?? operator in C# 2.0</a></dt><dd><span class="details">January 14, 2008 21:18</span><span class="comments"><a href="http://kpumuk.info/asp-net/coalesce-operator-in-c-sharp-2-0/#comments">17 Comments</a></span></dd></dl>		<h2>Currently reading:</h2>
+<div class="now-reading">
+			<ul class="books-list">
+							<li>
+					<a href="http://kpumuk.info/library/tony-buzan/the-mind-map-book-how-to-use-radiant-thinking-to-maximize-your-brains-untapped-potential/" title="The Mind Map Book: How to Use Radiant Thinking to Maximize Your Brain&#8217;s Untapped Potential by Tony Buzan" class="book-image">
+						<img border="0" src="http://rcm-images.amazon.com/images/I/51TKRMTSN8L._SL110_.jpg" alt="The Mind Map Book: How to Use Radiant Thinking to Maximize Your Brain&#8217;s Untapped Potential" width="60" height="96" />
+					</a>
+				</li>
+							<li>
+					<a href="http://kpumuk.info/library/baron-schwartz/high-performance-mysql-optimization-backups-replication-and-more/" title="High Performance MySQL: Optimization, Backups, Replication, and More by Baron Schwartz" class="book-image">
+						<img border="0" src="http://ecx.images-amazon.com/images/I/51gdw6JWdoL._SL160_.jpg" alt="High Performance MySQL: Optimization, Backups, Replication, and More" width="60" height="96" />
+					</a>
+				</li>
+					</ul>
+		<div class="clear"></div>
+		
+	<p><a href="http://kpumuk.info/library/">View full Library</a></p>
+</div>
+	</div>
+<div class="clear">&nbsp;</div>
+				</div>
+			</div>
+			<div style="background: #545655; color: #BFC1BE; float: left; width: 100%;text-align:center">
+				<div id="latest">Copyright &copy; 2005 - 2008, Dmytro Shteflyuk</div>
+			</div>
+		</div>
+	<!-- Google Analytics Tracking by Google Analyticator: http://cavemonkey50.com/code/google-analyticator/ -->
+	<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+
+	<script type="text/javascript">
+		var pageTracker = _gat._getTracker("UA-1546917-1");
+		pageTracker._initData();
+		pageTracker._trackPageview();
+	</script>
+</body>
+</html>

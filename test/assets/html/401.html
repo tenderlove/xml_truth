@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtm...sitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+				<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+		<title>LiteSpeed Technologies Inc. - Ruby LSAPI Module</title>
+<meta name="title" content="Ruby LSAPI Module" />
+<meta name="author" content="Administrator" />
+<meta name="description" content="LiteSpeed - the ultimate solution for your web infrastructure." />
+<meta name="keywords" content="LiteSpeed, lite speed, lightspeed, web server, http, PHP, lsapi, ssl, secure, jsp, throttling, servelet, ruby, ruby rails, rubyonrails, anti-ddos, load balancer" />
+<meta name="Generator" content="Joomla! - Copyright (C) 2005 - 2007 Open Source Matters. All rights reserved. JoomSEF SEO by Artio (http://www.artio.net) - databases, information system and web applications" />
+<meta name="robots" content="index, follow" />
+<base href="http://www.litespeedtech.com/" />
+	<link rel="shortcut icon" href="http://www.litespeedtech.com/images/favicon.ico" />
+			<link rel='Shortcut Icon' type='image/x-icon' href='/static/image/favicon.ico' />
+		<link rel='stylesheet' type='text/css' href='http://www.litespeedtech.com/templates/litespeed/css/template.css' />
+		<link rel='stylesheet' type='text/css' href='/static/css/lsws_style.css' />
+
+			<script type="text/javascript"><!--//--><![CDATA[//><!--
+			
+			sfHover = function() {
+				var sfEls = document.getElementById("nav").getElementsByTagName("LI");
+				for (var i=0; i<sfEls.length; i++) {
+					sfEls[i].onmouseover=function() {
+						this.className+=" sfhover";
+					}
+					sfEls[i].onmouseout=function() {
+						this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+					}
+				}
+			}
+			if (window.attachEvent) window.attachEvent("onload", sfHover);
+			
+			//--><!]]></script>
+		<!--[if IE]>
+<link rel='stylesheet' type='text/css' href='http://www.litespeedtech.com/templates/litespeed/css/ie.css' />
+<![endif]-->
+
+	</head>
+
+	<body>
+	
+	
+	<div class="lspage">
+	
+	<TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0 bgcolor="#FCFCFC"><tr>
+	    <td valign="top"><TABLE WIDTH="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+		<TR>
+		  <TD width="393" height="73"><a href="/" target="_self"><img src="http://www.litespeedtech.com/templates/litespeed/images/lswslogo3.png" alt="LiteSpeed Technologies" width="152" height="53" hspace="30" border="0"></a></TD>
+		  <TD width="573" align="right" valign="top" class="hd-lnk"><br style="line-height:13px;">
+        <a
+	href="http://www.litespeedtech.com/products/webserver/download/"><img
+	src="/static/image/icon-download.gif" alt="Download" width="12"
+	height="12" hspace="4" vspace="2" border="0" align="absmiddle"></a>
+<a
+href="http://www.litespeedtech.com/products/webserver/download/">Download</a>
+&nbsp;&nbsp;<img src="/static/image/link-separator.gif" name="" width="1"
+height="13" vspace="2" align="absmiddle">&nbsp; 
+<a
+href="http://blog.litespeedtech.com/"><img src="/static/image/icon-blog.gif"
+alt="Blog" width="12" height="12" hspace="4" vspace="2" border="0"
+align="absmiddle"></a><span class="hd-lnk">
+<a
+href="http://blog.litespeedtech.com/">Blog</a></span> &nbsp;&nbsp;<img
+src="/static/image/link-separator.gif" name="" width="1" height="13"
+vspace="2" align="absmiddle">&nbsp;
+<a
+href="http://www.litespeedtech.com/support/wiki/"><img
+src="/static/image/icon-wiki.gif" alt="Wiki" width="12" height="12" hspace="4"
+vspace="2" border="0" align="absmiddle"></a><span class="hd-lnk">
+<a
+href="http://www.litespeedtech.com/support/wiki/">Wiki</a></span>
+&nbsp;&nbsp;<img src="/static/image/link-separator.gif" name="" width="1"
+height="13" vspace="2" align="absmiddle">&nbsp; 
+
+<a
+href="http://www.litespeedtech.com/support/forum/"><img
+src="/static/image/icon-forum.gif" alt="Forum" width="18" height="14"
+hspace="4" vspace="2" border="0" align="absmiddle"></a><span class="hd-lnk">
+<a
+href="http://www.litespeedtech.com/support/forum/">Forum</a></span>
+&nbsp;&nbsp;<img src="/static/image/link-separator.gif" name="" width="1"
+height="13" vspace="2" align="absmiddle">&nbsp; 
+<a href="http://store.litespeedtech.com/"><img
+src="/static/image/icon-store.gif" alt="" width="16" height="16" hspace="4"
+vspace="2" border="0" align="absmiddle"></a><span class="hd-lnk">
+<a
+href="http://store.litespeedtech.com/">Store</a></span> &nbsp;&nbsp;<img
+src="/static/image/link-separator.gif" name="" width="1" height="13"
+vspace="2" align="absmiddle">&nbsp; 
+<a
+href="http://www.litespeedtech.com/company/about/"><img
+src="/static/image/icon-contact.gif" alt="Contact" width="12" height="12"
+hspace="4" vspace="2" border="0" align="absmiddle"></a><span class="hd-lnk">
+<a
+href="http://www.litespeedtech.com/company/about/">Contact</a></span>
+&nbsp;&nbsp;&nbsp;
+	        </TD> 
+	        </TR>
+		
+	</TABLE></td></tr>
+	<TR>
+		<TD height="27" style="background-image:url(http://www.litespeedtech.com/templates/litespeed/images/navbar-back.gif);background-repeat: repeat-x">
+		<div id="nav" class='xui_menu'>		<div class="moduletable">
+			<ul  id="mainlevel"><li><a href="http://www.litespeedtech.com/home.html" class="mainlevel">Home</a></li><li><a href="#" class="mainlevel">Products</a><ul ><li><a href="http://www.litespeedtech.com/products/webserver/overview/" class="sublevel">Web Server</a></li><li><a href="http://www.litespeedtech.com/products/loadbalancer/overview/" class="sublevel">Load Balancer</a></li><li><a href="http://www.litespeedtech.com/products/lsapi/overview/" class="sublevel">LiteSpeed SAPI</a></li></ul></li><li><a href="#" class="mainlevel">Solutions</a><ul ><li><a href="http://www.litespeedtech.com/solutions/webhosting/" class="sublevel">Web Hosting</a></li><li><a href="http://www.litespeedtech.com/solutions/onlinegame/" class="sublevel">Online Gaming</a></li><li><a href="http://www.litespeedtech.com/solutions/php/" class="sublevel">PHP Application</a></li><li><a href="http://www.litespeedtech.com/solutions/rails/" class="sublevel">Rails Hosting</a></li><li><a href="http://www.litespeedtech.com/solutions/casestudies/" class="sublevel">Case Studies</a></li></ul></li><li><a href="#" class="mainlevel">Resources</a><ul ><li><a href="http://www.litespeedtech.com/docs/" class="sublevel">Documentation</a></li><li><a href="http://www.litespeedtech.com/library/whitepaper/" class="sublevel">White Papers</a></li><li><a href="http://www.litespeedtech.com/library/benchmarks/" class="sublevel">Benchmarks</a></li><li><a href="http://www.litespeedtech.com/testimonials.html" class="sublevel">Testimonials</a></li><li><a href="http://www.litespeedtech.com/faq.html" class="sublevel">FAQ</a></li><li><a href="http://www.litespeedtech.com/how-tos.html" class="sublevel">HOW-TOs</a></li></ul></li><li><a href="#" class="mainlevel">Support</a><ul ><li><a href="http://www.litespeedtech.com/support/services/" class="sublevel">Services</a></li><li><a href="http://www.litespeedtech.com/support/wiki/" class="sublevel">Wiki</a></li><li><a href="http://www.litespeedtech.com/support/forum/" class="sublevel">Forum</a></li></ul></li><li><a href="#" class="mainlevel">Company</a><ul ><li><a href="http://www.litespeedtech.com/company/about/" class="sublevel">About</a></li><li><a href="http://www.litespeedtech.com/news.html" class="sublevel">News</a></li><li><a href="http://blog.litespeedtech.com/" class="sublevel">Blog</a></li><li><a href="http://www.litespeedtech.com/company/management/" class="sublevel">Management</a></li><li><a href="http://www.litespeedtech.com/company/partners/" class="sublevel">Partners</a></li><li><a href="http://www.litespeedtech.com/careers.html" class="sublevel">Careers</a></li></ul></li></ul>		</div>
+		</div></TD>
+	</TR>
+		<tr><td>
+	
+	
+	<table id="container" style="margin-top:0px;width:100%" bgcolor="#FCFCFC" border="0" cellspacing="0" cellpadding="0">
+	    <tr>
+	
+	 
+	        <td id="c1" valign="top" nowrap width=110>
+	            <table id="subnav" width="100%" border="0" cellspacing="0" cellpadding="10">
+	                <tr>
+	
+	                    <td nowrap width=1%>
+	                    		<div class="moduletable">
+			<ul  id="mainlevel"><li class="mainlevel_active"><a href="#" class="mainlevel">Products</a><ul ><li class="sublevel"><a href="http://www.litespeedtech.com/products/webserver/overview/" class="sublevel">Web Server</a><ul ><li class="sublevel"><a href="http://www.litespeedtech.com/overview-2.html" class="sublevel">Overview</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-web-server-features.html" class="sublevel">Features</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/performance-benchmarks.html" class="sublevel">Benchmark</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/products/webserver/demo/" class="sublevel">Demo</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-web-server-editions.html" class="sublevel">Editions</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/products/webserver/download/" class="sublevel">Download</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-web-server-release-log.html" class="sublevel">Release Log</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/buy-litespeed-web-server.html" class="sublevel">Purchase</a></li></ul></li><li class="sublevel"><a href="http://www.litespeedtech.com/products/loadbalancer/overview/" class="sublevel">Load Balancer</a><ul ><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-load-balancer-overview.html" class="sublevel">Overview</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/products/loadbalancer/download/" class="sublevel">Download</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-load-balancer-release-log.html" class="sublevel">Release Log</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/buy-litespeed-load-balancer.html" class="sublevel">Purchase</a></li></ul></li><li class="sublevel_active"><a href="http://www.litespeedtech.com/products/lsapi/overview/" class="sublevel">LiteSpeed SAPI</a><ul ><li class="sublevel"><a href="http://www.litespeedtech.com/lsapi-litespeed-server-application-programming-interface-2.html" class="sublevel">Overview</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/php-litespeed-sapi.html" class="sublevel">PHP</a></li><li class="sublevel_current"><a href="http://www.litespeedtech.com/ruby-lsapi-module.html" class="sublevel" id="active_menu">Ruby</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/products/lsapi/download/" class="sublevel">Download</a></li><li class="sublevel"><a href="http://www.litespeedtech.com/litespeed-sapi-release-log.html" class="sublevel">Release Log</a></li></ul></li></ul></li></ul>		</div>
+					</td>
+	                </tr>
+	            </table>
+	        </td>
+	
+	
+	        <td id='c2' style='padding:10px; padding-top: 20px;' valign='top' colspan=2>
+	
+					
+								<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+					Ruby LSAPI Module									</td>
+								<td align="right" width="100%" class="buttonheading">
+					<a href="http://www.litespeedtech.com/index2.php?option=com_content&amp;task=view&amp;id=26&amp;pop=1&amp;page=0&amp;Itemid=42" target="_blank" onclick="window.open('http://www.litespeedtech.com/index2.php?option=com_content&amp;task=view&amp;id=26&amp;pop=1&amp;page=0&amp;Itemid=42','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no'); return false;" title="Print">
+						<img src="http://www.litespeedtech.com/images/M_images/printButton.png"  alt="Print" name="Print" align="middle" border="0" /></a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="http://www.litespeedtech.com/index2.php?option=com_content&amp;task=emailform&amp;id=26&amp;itemid=42" target="_blank" onclick="window.open('http://www.litespeedtech.com/index2.php?option=com_content&amp;task=emailform&amp;id=26&amp;itemid=42','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no'); return false;" title="E-mail">
+					<img src="http://www.litespeedtech.com/images/M_images/emailButton.png"  alt="E-mail" name="E-mail" align="middle" border="0" /></a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+				
+
+
+             <!-- #BeginEditable "content" --> 
+
+
+                    
+<p>Ruby LSAPI Module is a Ruby extension for Ruby and LiteSpeed intergration, 
+  which not only delivers the best performance among all Ruby APIs, together 
+  the dedicate configuration in LiteSpeed web server, it is
+  the easiest and most efficient solution for Ruby on Rails application deployment.
+
+</p><h3>Features</h3>
+<ul>
+<li>Best Performance</li>
+  By utilizing persistent connection between web server ruby process as well as
+  highly optimized protocol, Ruby LSAPI delivers better performance than any
+  other web server, ruby API combinations.
+<li>Dynamic Spawn = Fast startup and less memory usage</li>
+  With the built-in Process Manager in LSAPI, number of ruby processes is 
+  adjusted based on current load, the CPU intensive Rails framework 
+  initialization only takes place once.  
+<li>Easy Rails Configuration</li>
+  With the dedicate configuration for Rails in LiteSpeed web server, 
+  deploying a Rails application is juat a few clicks away. <br />
+  <a href="http://i.nfectio.us/litespeed2/litespeed2.html">a 4 minutes demo video</a>
+  created by Bob Silva.
+
+</ul>
+<h3> User's opinions</h3>
+  <ul>
+  <li><!--<script type="text/javascript">
+digg_url = 'http://www.digg.com/software/LiteSpeed_Best_platform_to_host_Ruby_on_Rails';
+</script>
+<script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script> -->
+  <a href="http://www.digg.com/software/LiteSpeed_Best_platform_to_host_Ruby_on_Rails">LiteSpeed: Best platform to host Ruby on Rails?</a>
+  </li><li><a href="http://blog.viget.com/tech/2006/11/27/ruby-on-rails-making-the-jump-to-litespeed/">Ruby on Rails: Making the Jump to LiteSpeed</a>
+  </li><li><a href="http://www.benmyles.com/2007/2/6/four-reasons-to-love-litespeed">Four Reasons to Love Litespeed</a>
+  </li><li><a href="http://www.monkeytreats.com/2007/3/16/litespeed-kicks-ass">LiteSpeed kicks ass</a></li>
+  <li><a href="http://www.artima.com/forums/flat.jsp?forum=123&amp;thread=174959">LiteSpeed Web Server 2.2 includes Rails Support</a>
+  </li></ul>
+
+<h3>Install</h3>
+ Ruby LSAPI can be installed through ruby gem. Just do
+<pre>  gem install ruby-lsapi</pre>
+ Or, it can be installed manually with our tgz package, download the package 
+ <a href="http://www.litespeedtech.com/products/lsapi/download/">here</a>, then expand the package, 
+ do 
+<pre>  $ ruby setup.rb config
+  $ ruby setup.rb setup
+  # ruby setup.rb install </pre>
+
+<h3>Usage</h3>
+ Ruby LSAPI can be used to create best performing persistent CGI scripts 
+ in Ruby, an LSAPI application, existing CGI script can be converted easily.<br />
+ 
+ A Ruby Script Runner,lsruby_runner.rb is available in our package as a 
+ container for execution of unmodified CGI scripts.<br />
+ More information is available in the README file in ruby LSAPI package. <br />
+
+ The most common way of using ruby LSAPI is for Ruby On Rail application 
+ deployment. And it is super easy. 
+ Want to deploy a RoR application in a minute, you can do it with
+ LiteSpeed. Tutorials: <br />
+ <ul>
+   <li><a href="/support/wiki/doku.php?id=litespeed_wiki:ruby_rails_easy">Easy configuration</a></li>
+   <li><a href="/support/wiki/doku.php?id=litespeed_wiki:ruby_rails">Step by step configuration</a></li>
+   <li><a href="/support/wiki/doku.php?id=litespeed_wiki:capistrano">Using capistrano</a></li>
+  </ul>
+
+<h3>Configuration</h3>
+There are a few environment variables that can be tweaked to tune ruby 
+LSAPI process.
+
+<ul>
+
+<li>LSAPI_CHILDREN                (default: 0)</li>
+
+LSAPI_CHILDREN controls the maximum number of children processes can be
+started by the first ruby process started by web server. When set to &lt;=1,
+the first ruby process will handle request by itself, without starting any
+child process. When LSAPI_CHILDREN is &gt;1, the LSAPI application is stared in
+"Self Managed Mode", which will start children processes based on demand.
+With Rails easy configuration, LSAPI_CHILDREN is set to the value of
+"Max Connections" by web server, no need to set it explicitly.
+
+Usually, there is no need to set value of LSAPI_CHILDREN over 100 in most
+server environment. 
+
+<li>LSAPI_AVOID_FORK              (default: 0)</li>
+
+LSAPI_AVOID_FORK specifies the policy of the internal process manager in
+"Self Managed Mode". When set to 0, the internal process manager will stop
+and start children process on demand to save system resource. This is
+preferred in a shared hosting environment. When set to 1, the internal
+process manager will try to avoid freqently stopping and starting children
+process. This might be preferred in a dedicate hosting environment.
+
+
+<li>LSAPI_EXTRA_CHILDREN          (default: 1/3 of LSAPI_CHILDREN or 0)</li>
+
+LSAPI_EXTRA_CHILDREN controls the maximum number of extra children processes
+can be started when some or all existing children processes are in
+malfunctioning state. Total number of children processes will be reduced to
+LSAPI_CHILDREN level as soon as service is back to normal. 
+When LSAPI_AVOID_FORK is set to 0, the default value is 1/3 of
+LSAPI_CHIDLREN, When LSAPI_AVOID_FORK is set to 1, the default value is 0.
+
+
+<li>LSAPI_MAX_REQS                (default value: 10000)</li>
+
+LSAPI_MAX_REQS specifies the maximum number of requests each child
+process will handle before it exits automatically. This parameter can
+help reducing memory usage when there are memory leaks in the application. 
+
+
+<li>LSAPI_MAX_IDLE   (default value: 300 seconds)</li>
+
+In Self Managed Mode, LSAPI_MAX_IDLE controls how long a idle child  
+process will wait for a new request before exit. This option help 
+releasing system resources taken by idle processes.
+
+
+<li>LSAPI_MAX_IDLE_CHILDREN  (default value: 1/3 of LSAPI_CHILDREN or LSAPI_CHILDREN)</li>
+
+In Self Managed Mode, LSAI_MAX_IDLE_CHILDREN controls how many idle 
+children processes are allowed. Excessive idle children processes
+will be killed by the parent process.
+When LSAPI_AVOID_FORK is set to 0, the default value is 1/3 of
+LSAPI_CHIDLREN, When LSAPI_AVOID_FORK is set to 1, the default value
+is LSAPI_CHILDREN.
+
+<li>LSAPI_MAX_PROCESS_TIME   (default value: 300 seconds)</li>
+
+In Self Managed Mode, LSAPI_MAX_PROCESS_TIME controls the maximum 
+processing time allowed when processing a request. If a child process
+can not finish processing of a request in the given time period, it 
+will be killed by the parent process. This option can help getting rid 
+of dead or runaway child process.
+
+
+<li>LSAPI_PGRP_MAX_IDLE      (default value: FOREVER )</li>
+
+In Self Managed Mode, LSAPI_PGRP_MAX_IDLE controls how long the parent
+process will wait before exiting when there is no child process.
+This option help releasing system resources taken by an idle parent 
+process.
+
+
+<li>LSAPI_PPID_NO_CHECK</li>
+
+By default a LSAPI application check the existence of its parent process
+and exits automatically if the parent process died. This is to reduce 
+orphan process when web server is restarted. However, it is desireable 
+to disable this feature, such as when a LSAPI process was started 
+manually from command line. LSAPI_PPID_NO_CHECK should be set when 
+you want to disable the checking of existence of parent process.
+
+</ul>
+
+<h3>License</h3>
+
+LSAPI library code is under BSD license.<br />
+
+LSAPI ruby extension code is under Ruby license.
+
+
+
+
+
+
+
+
+             <br /><br />
+
+
+        			</td>
+		</tr>
+				</table>
+
+		<span class="article_seperator">&nbsp;</span>
+
+					<div class="back_button">
+				<a href='javascript:history.go(-1)'>
+					[ Back ]</a>
+			</div>
+								
+	        </td></tr>
+	
+		<TR>
+			<TD colspan='2'><br style='line-height:8px; background-color:#EDEAEA;'></TD>
+		</TR>
+	        
+	</table></td></tr>
+	
+		
+	
+	</table></div>
+	     
+	
+	<div style='margin-left:20px;font-size:10px;color:gray;margin-top:10px;' align=center>
+			<div class="moduletable">
+			&copy; Copyright 2003-2008 LiteSpeed Technologies, Inc. All rights reserved. <a href="/privacy/">Privacy Policy</a>. 
+		</div>
+			</div>
+	
+	        
+	
+	
+	<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	_uacct = "UA-220257-4";
+	urchinTracker();
+	</script>
+	
+			</body></html><!-- 1238101698 -->

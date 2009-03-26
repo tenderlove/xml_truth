@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>Ruby Springs Lodge</title>
+	<style type="text/css">
+		body {
+			background: #2C2828;
+			margin:0;
+		}
+		body, html { width: 100%; height: 100%; }
+		#container {
+			width: 790px;
+			height: 500px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -395px;
+			margin-top: -250px;
+		}
+	</style>
+	<script type="text/javascript" src="scripts/ufo.js"></script>
+	<script type="text/javascript" src="scripts/jquery-1.2.6.min.js"></script>
+	<script type="text/javascript" src="scripts/shadowbox-2.0.js"></script>
+	<script type='text/javascript'>
+		Shadowbox.loadSkin('classic', 'skin');
+	
+		$(window).load(function() {
+			Shadowbox.init({
+			        skipSetup: true
+			    });
+		});
+		
+		function openShadowbox(path, title) {
+			Shadowbox.open({
+			        player:     'swf',
+			        title:      title,
+			        content:    path,
+			        height:     500,
+			        width:      500
+			    });
+		}
+	</script>
+</head>
+<body>
+<div id="container">
+	To view this website you need the latest version of Adobe's Flash Player. Please visit <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash&promoid=BIOW" target="_blank">Adobe</a> to install the player.
+</div>
+
+<script type="text/javascript">
+	var FO = { movie:"rs.swf", width:"790", height:"500", majorversion:"8", build:"0", bgcolor:"#2C2828" };
+	UFO.create(FO, "container");
+</script>
+</body>
+</html>

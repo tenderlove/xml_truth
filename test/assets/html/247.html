@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Developing OAuth clients in Ruby</title>
+	<link href="/stylesheets/base_1219533404.css" media="screen" rel="Stylesheet" type="text/css" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<!-- OpenID YADIS discovery -->
+    <link rel="openid.server" href="https://www.myopenid.com/server">
+    <link rel="openid.delegate" href="http://pelle.myopenid.com/">
+    <meta http-equiv="X-XRDS-Location" content="http://www.myopenid.com/xrds?username=pelle.myopenid.com" />
+		<meta name="microid" 
+		        content="mailto+http:sha1:720cee805164bb2417e86664eacb4f101d10188a"/>
+	<meta name="viewport" content="width = 740" /> 
+	<script src="/javascripts/base_1219533404.js" type="text/javascript"></script>
+	 
+	 <link rel="alternate" type="application/rss+xml"  title="Stake Ventures (RSS)"  href="http://feeds.feedburner.com/StakeVentures" />
+	
+</head>
+
+<body>
+<div id="container">
+  <div id="header">
+    <h1><span><a href="/">Stake Ventures</a></span></h1>
+    <h2>Bootstrapping tales</h2>
+  </div>
+
+  <div id="page">
+    <div id="content">
+      <!--
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rdf:Description
+  rdf:about=""
+  trackback:ping="http://stakeventures.com/articles/trackback/271"
+  dc:title="Developing OAuth clients in Ruby"
+  dc:identifier="http://stakeventures.com/articles/read/271"
+  dc:description="On the request of many people here is a quick guide to developing OAuth Consumer Application (Consumer==Client in OAuth Speak) in Ruby. I will be using Agree2 as the sample applic"
+  dc:creator="pelle"
+  dc:date="2008-07-23T20:36:17+00:00" />
+</rdf:RDF>
+-->
+
+<div class="atomentry" id="article-271">
+  <h2 class="title">
+    Developing OAuth clients in Ruby 
+    <span class="comment_count">5</span>
+  </h2>
+
+  <p class="author">
+    Posted by <cite><a href="/pages/whoami">Pelle</a></cite>
+    <abbr class="published" title="2008-02-23T17:32:33+00:00"><span class="typo_date" title="Sat, 23 Feb 2008 17:32:33 GMT">Sat, 23 Feb 2008 17:32:33 GMT</span></abbr>
+  </p>
+
+  <div class="content">
+    <p>On the request of many people here is a quick guide to developing <a href="http://oauth.net">OAuth</a> Consumer Application (Consumer==Client in OAuth Speak) in Ruby.</p>
+
+
+	<p>I will be using <a href="https://agree2.com">Agree2</a> as the sample application here, so feel free to go <a href="https://agree2.com/users/new">Register</a> and load up a irb session to follow along. You could also do the same with <a href="http://twitter.com/oauth">Twitter&#8217;s OAuth</a> or any other OAuth server.</p>
+
+
+	<p>The general process is:</p>
+
+
+	<ol>
+	<li>Register your consumer application with the OAuth compliant service to receive your Consumer Credentials (This is only done once)</li>
+		<li>You initiate the OAuth Token exchange process for a user by requesting a <a href="http://code.google.com/p/oauth-plugin/wiki/RequestToken">RequestToken</a> from the Service</li>
+		<li>You store the <a href="http://code.google.com/p/oauth-plugin/wiki/RequestToken">RequestToken</a> in your database or in the users session object</li>
+		<li>You redirect your user to the service providers authorize_url with the RequestToken&#8217;s key appended</li>
+		<li>Your user is asked by the service provider to authorize your RequestToken</li>
+		<li>Your user clicks yes and is redirected to your CallBack <span class="caps">URL</span></li>
+		<li>Your callback action exchanges the <a href="http://code.google.com/p/oauth-plugin/wiki/RequestToken">RequestToken</a> for an <a href="http://code.google.com/p/oauth-plugin/wiki/AccessToken">AccessToken</a></li>
+		<li>Now you can access your users data by performing http requests signed by your consumer credentials and the AccessToken.</li>
+		<li>????</li>
+		<li><span class="caps">PROFIT</span>!!!</li>
+	</ol>
+
+
+	<h3>Get your Consumer Credentials</h3>
+
+
+	<p>Once you are logged in to <a href="https://agree2.com">Agree2</a> click the <a href="https://agree2.com/oauth">Manage OAuth Applications</a> link in the footer:</p>
+
+
+	<p><img src="http://img.skitch.com/20080222-xtsxck1dhph4dmjmsijcw29t8i.preview.jpg" alt="" /></p>
+
+
+	<p>All OAuth capable applications require you to register your own application first to get your consumer credentials:</p>
+
+
+	<p><img src="http://img.skitch.com/20080223-bs9ugxuwh6r34rxc6q1utxeghn.preview.jpg" alt="" /></p>
+
+
+	<p>Click <a href="https://agree2.com/oauth/new">Register your application</a></p>
+
+
+	<p><img src="http://img.skitch.com/20080222-gdwdhb9ras2i88trwqx41eq3km.preview.jpg" alt="" /></p>
+
+
+	<p>Enter the name of your application, the url of your application, the callback url and an optional support url.</p>
+
+
+	<p>The callback url is the url that Agree2 redirects to after a user has authorized a token for you. For now just enter a url like http://myapp.com/oauth_client/callback. Click register and hey presto:</p>
+
+
+	<p><img src="http://img.skitch.com/20080222-r3jmsmwi2322xyes67i5amg4yt.preview.jpg" alt="" /></p>
+
+
+	<p>These are your applications Consumer Credentials.</p>
+
+
+	<h3>Hooking up your code</h3>
+
+
+	<p>As we are nice guys here at <a href="https://agree2.com">Agree2</a> also provides actual sample Ruby code on the credentials screen. I will go through this step by step.</p>
+
+
+	<p>First of all you need to install the oauth gem (make sure you have at least 0.2.2):</p>
+
+
+<pre><code>sudo gem install oauth</code></pre>
+
+	<p>Your code needs to require the gem and the consumer part of the library:</p>
+
+
+<pre><code>gem 'oauth'
+require 'oauth/consumer'</code></pre>
+
+	<p>Instantiate your Consumer object with your credentials:</p>
+
+
+<pre><code>@consumer=OAuth::Consumer.new "AVff2raXvhMUxFnif06g", 
+                              "u0zg77R1bQqbzutAusJYmTxqeUpWVt7U2TjWlzbVZkA", 
+                              {:site=&gt;"https://agree2.com"}</code></pre>
+
+	<p>Now request a token from Agree2. This method actually performs a signed http request to https://agree2.com/oauth/request_token :</p>
+
+
+<pre><code>@request_token=@consumer.get_request_token</code></pre>
+
+	<p>Now you need to redirect the user to the authorize_url</p>
+
+
+	<p>If you&#8217;re in irb just output the url:</p>
+
+
+<pre><code>@request_token.authorize_url</code></pre>
+
+	<p>In a real rails application you would perform a redirect:</p>
+
+
+<pre><code>redirect_to @request_token.authorize_url</code></pre>
+
+	<p>The user will be taken to this screen to authorize the token:</p>
+
+
+	<p><img src="http://img.skitch.com/20080222-dpbsuhd17wf7yne7ecjt93ekh9.preview.jpg" alt="" /></p>
+
+
+	<p>I think we need to work a bit on the user interface for this. But it does work. The user authorizes the token. and the user is redirected to the callback url you specified earlier.</p>
+
+
+	<p>In your callback action you now need to exchange the request token for an AccessToken:</p>
+
+
+<pre><code>@access_token=@request_token.get_access_token</code></pre>
+
+	<p>Now you are ready to do whatever you wanted to do:</p>
+
+
+<pre><code># Request all your users agreements
+@response=@access_token.get "/agreements.xml"</code></pre>
+
+	<p>The access token object has all the normal http request methods and returns a standard ruby http response.</p>
+
+
+	<p>Our next step is to integrate this with ActiveResource. This is being worked on now. Once this is done I will update this tutorial.</p>
+
+
+	<p>If your company needs help getting your OAuth Strategy right or implementing OAuth in your application I&#8217;m available for consulting work <a href="mailto:pelle@stakeventures.com">pelle@stakeventures.com</a>.</p>
+
+      
+          <p class="agree2_ad"><a href="https://agree2.com/masters/38f8f05d70c7d84f28e349e3a16f8444bdaf4ea8">Create a simple NDA with zero legalese in no time at all and for free at our service Agree2.</a></p>
+    
+  </div>
+  <div class="timecert"><iframe src="http://timecert.org/c151043d882db157404ccc90daf9dda185864bd6.iframe" width="450px" height="30px"></iframe></div>
+
+  <ul class="meta">
+    <li class="categories">Posted in <a href="/articles/category/programming" rel="category tag">Programming</a>, <a href="/articles/category/data-portability" rel="category tag">Data Portability</a>, <a href="/articles/category/agree2" rel="category tag">Agree2</a></li>
+    <li>Meta 
+      <a href="/articles/2008/02/23/developing-oauth-clients-in-ruby#trackbacks">no trackbacks</a>,
+      <a href="/articles/2008/02/23/developing-oauth-clients-in-ruby#comments">5 comments</a>,
+      <a href="/articles/2008/02/23/developing-oauth-clients-in-ruby">permalink</a>
+    </li>
+  </ul>
+</div>
+
+<p><script src="http://feeds.feedburner.com/~s/StakeVentures?i=http://stakeventures.com/articles/2008/02/23/developing-oauth-clients-in-ruby" type="text/javascript" charset="utf-8"></script></p>
+  <h5><a name="trackbacks">Trackbacks</a></h5>
+  <p>
+    Use the following link to trackback from your own site:<br />
+    http://stakeventures.com/articles/trackback/271
+  </p>    
+
+    
+
+  <h5><a name="comments">Comments</a></h5> 
+  <p><a href="#commentform">Leave a response</a></p>
+  
+  <div id="comments_div">
+    <ol id="comments" class="comments">
+<li class="comment" id="comment-683">
+  <div class="author">
+    <div><img alt="Avatar" src="http://www.gravatar.com/avatar.php?size=60&amp;gravatar_id=82d03ae92dea14674627f52ced299bbf" /></div>
+    <cite><a href="http://www.correcty.org">Ajit</a></cite>
+    <abbr title="2008-02-24T10:12:04+00:00">Sun Feb 24 10:12:04 +0000 2008</abbr>
+  </div>
+
+  <div class="content">
+    <p>This is all very informative! There is almost a step-by-step illustration to the whole process. Thanks. I shall follow the general procedure.</p>
+  </div>
+</li>
+<li class="comment" id="comment-684">
+  <div class="author">
+    <div><img alt="Avatar" src="http://www.gravatar.com/avatar.php?size=60&amp;gravatar_id=a25421f6c79d5f381fab65c82abf85e8" /></div>
+    <cite><a href="http://highearthorbit.com">Andrew Turner</a></cite>
+    <abbr title="2008-02-27T20:39:44+00:00">Wed Feb 27 20:39:44 +0000 2008</abbr>
+  </div>
+
+  <div class="content">
+    <p>Your tutorial is missing some key steps.</p>
+
+
+	<p>It assumes the @request_token and @consumer stay around. This obviously isn&#8217;t true if you want some way to only requiring authorization once, but then repeatedly access resources &#8211; say, in a Rails app.</p>
+
+
+	<p>What are the steps to recreating a client after you have stored the Access Tokens?</p>
+  </div>
+</li>
+<li class="comment" id="comment-685">
+  <div class="author">
+    <div><img alt="Avatar" src="http://www.gravatar.com/avatar.php?size=60&amp;gravatar_id=2de0467d1db18b880332b154a7ff6a3a" /></div>
+    <cite><a href="http://humbroll.com">humbroll</a></cite>
+    <abbr title="2008-03-02T21:57:47+00:00">Sun Mar 02 21:57:47 +0000 2008</abbr>
+  </div>
+
+  <div class="content">
+    <p>thanks for your tutorial<sub>! 
+what a fantastic simple steps.
+cheer up</sub>!</p>
+  </div>
+</li>
+<li class="comment" id="comment-713">
+  <div class="author">
+    <div><img alt="Avatar" src="http://www.gravatar.com/avatar.php?size=60&amp;gravatar_id=d41d8cd98f00b204e9800998ecf8427e" /></div>
+    <cite>Arjan van Bentem</cite>
+    <abbr title="2008-04-19T12:19:58+00:00">Sat Apr 19 12:19:58 +0000 2008</abbr>
+  </div>
+
+  <div class="content">
+    <p>&lt;p&gt;@Andrew, get authorised tokens once (using Ruby or some &lt;a href=&#8221;http://term.ie/oauth/example/client.php&#8221;&gt;online test client&lt;/a&gt;) and ensure the server keeps the tokens authorised for a long time. Next:&lt;/p&gt;
+&lt;pre&gt;
+@consumer= (just like above)</p>
+
+
+	<p>@accesstoken = OAuth::AccessToken.new(@consumer, &#8216;access token&#8217;, &#8216;access token secret&#8217;)
+&lt;/pre&gt;</p>
+  </div>
+</li>
+<li class="comment" id="comment-730">
+  <div class="author">
+    <div><img alt="Avatar" src="http://www.gravatar.com/avatar.php?size=60&amp;gravatar_id=d41d8cd98f00b204e9800998ecf8427e" /></div>
+    <cite>Arjan van Bentem</cite>
+    <abbr title="2008-06-22T05:39:18+00:00">Sun Jun 22 05:39:18 +0000 2008</abbr>
+  </div>
+
+  <div class="content">
+    <p>To set another User-Agent or Accept in the  HTTP  headers, use something like:</p>
+
+
+	<p>@response=@access_token.get &#8221;/agreements.xml&#8221;, {&#8220;User-Agent&#8221; =&gt; &#8220;my user agent&#8221;}</p>
+  </div>
+</li>
+
+</ol>
+  </div>
+
+<form action="/articles/comment/271" method="post" onsubmit="new Ajax.Request('/articles/comment/271', {asynchronous:true, evalScripts:true, onLoading:function(request){commentLoading()}, parameters:Form.serialize(this)}); return false;">
+
+<div id="preview" style="display:none"></div>
+
+<fieldset>
+  <legend>Comments</legend>
+  <p>
+    <label>Name:<br /> 
+      <input id="comment_author" name="comment[author]" size="30" type="text" />
+    </label>
+  </p>
+  
+  <p>
+    <label>Email: <small>(<a href="http://gravatar.com">gravatar</a> enabled)</small><br />
+      <input id="comment_email" name="comment[email]" size="30" type="text" />
+    </label>
+  </p>
+  <p>
+    <label>Url:<br />
+      <input id="comment_url" name="comment[url]" size="30" type="text" />
+    </label>
+  </p>
+    
+  <p>
+    <label>
+      Comments:
+      <small><a href="http://hobix.com/textile/">Textile enabled</a></small>
+      <br />
+      <textarea cols="40" id="comment_body" name="comment[body]" rows="20"></textarea>
+    </label>
+  </p>
+  
+  <p>
+    <input name="commit" type="submit" value="Submit" /> (sorry javascript required)
+    <img alt="Spinner" id="spinner" src="/images/spinner.gif?1219533404" style="display:none" />
+  </p>
+</fieldset>
+</form>
+
+
+      <script type="text/javascript">
+//<![CDATA[
+show_dates_as_local_time()
+//]]>
+</script>
+    </div>
+
+    <div id="sidebar">
+      <!-- sidebar components -->
+              <div class="sidebar-node">  
+    <h3>About me</h3>
+<ul>
+<li><a href="/pages/whoami" rel="me">Bio and contact info</a></li>
+<li><a href="/pages/clients" rel="me">Selected clients</a></li>
+<li><a href="/pages/oss" rel="me">Open Source projects</a></li>
+<li><a href="https://agree2.com/users/1" rel="me">My Agree2 Profile</a></li>
+<li><a href="http://www.linkedin.com/in/pelleb" rel="me">My Linked In profile</a></li>
+<li><a href="http://twitter.com/PelleB" rel="me">Twitter</a></li>
+<li><a href="http://blog.extraeagle.com" rel="me">Extra Eagle LLC - Our Startup</a></li>
+<li><a href="http://neubia.com" rel="me">Neubia - My old geek blog</a></li>
+<li><a href="http://econotrix.com" rel="me">Econotrix - My libertarian blog</a></li>
+</ul>
+
+<div style="width:176px;text-align:center"><embed src="http://twitter.com/flash/twitter_badge.swf"  flashvars="color1=102&type=user&id=810776"  quality="high" width="176" height="176" name="twitter_badge" align="middle" allowScriptAccess="always" wmode="transparent" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" /><br><a style="font-size: 10px; color: #000066; text-decoration: none" href="http://twitter.com/PelleB">follow PelleB at http://twitter.com</a></div>
+<p><a href="http://feeds.feedburner.com/~r/StakeVentures/~6/2"><img src="http://feeds.feedburner.com/StakeVentures.2.gif" alt="Stake Ventures" style="border:0"></a></p>
+
+<h3>My photos</h3>
+<p>
+<a href="http://flickr.com/photos/pelle/" rel="me"><img src="http://bighugelabs.com/flickr/profilewidget/randomint.compact/000000/ffffff/36235961@N00.jpg" border="0" alt="pelleb. Get yours at bighugelabs.com/flickr" title="pelleb. Get yours at bighugelabs.com/flickr" /></a>
+</p>
+
+
+
+<h3>Other under Programming</h3>
+<ul>
+	
+	<li><a href="/articles/2008/12/04/rubygem-is-from-mars-aptget-is-from-venus">RubyGem is from Mars, AptGet is from Venus</a></li>
+	
+	<li><a href="/articles/2008/06/24/rspactor-compatibility-with-newish-rspec-versions">RSpactor compatibility with newish RSpec versions</a></li>
+	
+	<li><a href="/articles/2008/06/17/lessons-learnt-as-a-ruby-programmer-playing-with-google-appengine">Lessons learnt as a Ruby Programmer playing with Google AppEngine</a></li>
+	
+	<li><a href="/articles/2008/06/09/talk-org-opensourced-and-stats-from-keynote">Talk.org OpenSourced and stats from Keynote</a></li>
+	
+	<li><a href="/articles/2008/06/09/just-in-time-for-the-keynote-my-new-google-app-engine-twitter-clone-talk-org">Just in time for the Keynote my new Google App Engine Twitter clone Talk.org</a></li>
+	
+	<li><a href="/articles/2008/04/05/video-of-keynote-panel-at-rubyfools-2008-in-copenhagen">Video of Keynote Panel at RubyFools 2008 in Copenhagen</a></li>
+	
+	<li><a href="/articles/2008/03/25/social-user-interface-design-at-snapsummit">Social User Interface Design at SnapSummit</a></li>
+	
+	<li><a href="/articles/2008/02/23/developing-oauth-clients-in-ruby">Developing OAuth clients in Ruby</a></li>
+	
+	<li><a href="/articles/2008/01/30/important-oauth-for-ruby-milestone">Important OAuth for Ruby milestone</a></li>
+	
+	<li><a href="/articles/2007/11/27/more-oauth-for-rails">More OAuth for Rails</a></li>
+	
+	<li><a href="/articles/2007/11/26/how-to-turn-your-rails-site-into-an-oauth-provider">How to turn your rails site into an OAuth Provider</a></li>
+	
+	<li><a href="/articles/2007/11/04/the-new-instant-ruby-api-for-agree2-templates">The new Instant Ruby API for Agree2 Templates</a></li>
+	
+	<li><a href="/articles/2007/11/04/openauthsocial-or-reallyopensocial">OpenAuthSocial or (ReallyOpenSocial)</a></li>
+	
+	<li><a href="/articles/2007/10/04/agree2-nearly-ready">Agree2 nearly ready</a></li>
+	
+	<li><a href="/articles/2007/09/19/san-francisco-september-ruby-meetup">San Francisco September Ruby meetup</a></li>
+	
+	<li><a href="/articles/2007/07/19/installable-game-for-the-iphone">Installable game for the iPhone</a></li>
+	
+	<li><a href="/articles/2007/07/01/2-small-wishes-that-could-save-hours-of-tapping-on-the-iphone">2 small wishes that could save hours of tapping on the iPhone</a></li>
+	
+	<li><a href="/articles/2007/06/30/notes-on-the-iphone">Notes on the iPhone</a></li>
+	
+	<li><a href="/articles/2007/06/28/games-on-iphone-via-quartz-composer">Games  on iPhone via Quartz Composer?</a></li>
+	
+	<li><a href="/articles/2007/06/26/useful-css3-support-targeting-iphone-and-perhaps-mobile-opera">Useful CSS3 support targeting iPhone and perhaps mobile opera?</a></li>
+	
+	<li><a href="/articles/2007/06/19/repost-of-wwdc-iphone-safari-info">Repost of WWDC iPhone Safari info</a></li>
+	
+	<li><a href="/articles/2007/06/19/more-iphone-web-development-info">More iPhone web development info</a></li>
+	
+	<li><a href="/articles/2007/05/22/railsconf-message-board">RailsConf Message Board</a></li>
+	
+	<li><a href="/articles/2007/05/18/at-railsconf">At RailsConf</a></li>
+	
+	<li><a href="/articles/2007/05/01/introducing-dom-resource">Introducing DOM-Resource</a></li>
+	
+	<li><a href="/articles/2007/04/23/video-of-blaine-cooks-scaling-twitter">Video of Blaine Cook's Scaling Twitter</a></li>
+	
+	<li><a href="/articles/2007/04/21/at-silicon-valley-ruby-conference">At Silicon Valley Ruby Conference</a></li>
+	
+	<li><a href="/articles/2006/11/29/why-unfair-competition-is-rails-secret-weapon">Why unfair competition is Rail's secret weapon</a></li>
+	
+	<li><a href="/articles/2006/11/05/november-meetup-at-copenhagen-rb">November meetup at Copenhagen.rb</a></li>
+	
+	<li><a href="/articles/2006/09/20/great-meeting-for-copenhagen-rb">Great meeting for Copenhagen.rb</a></li>
+	
+	<li><a href="/articles/2006/09/19/giving-a-talk-tonight-at-copenhagen-rb">Giving a talk tonight at Copenhagen.rb</a></li>
+	
+	<li><a href="/articles/2006/09/13/peepcode-rocks">PeepCode rocks</a></li>
+	
+	<li><a href="/articles/2006/07/20/new-release-of-ezcrypto">New release of EzCrypto</a></li>
+	
+	<li><a href="/articles/2006/06/29/rails-meetup-tonight-in-copenhagen">Rails meetup tonight in Copenhagen</a></li>
+	
+	<li><a href="/articles/2006/06/08/rails-and-or-entrepreneurs-in-panama-and-argentina">Rails and/or entrepreneurs in Panama and Argentina</a></li>
+	
+	<li><a href="/articles/2006/03/28/congratulations-on-the-rails-1-1-release">Congratulations on the Rails 1.1 release</a></li>
+	
+	<li><a href="/articles/2006/03/16/amazon-s3-library-for-ruby">Amazon S3 library for Ruby</a></li>
+	
+	<li><a href="/articles/2006/03/09/who-will-create-a-live-clipboard-for-rails-plugin-first">Who will create a Live Clipboard for Rails plugin first?</a></li>
+	
+	<li><a href="/articles/2006/03/03/new-version-0-3-of-ezcrypto-released">New version 0.3 of EzCrypto released</a></li>
+	
+	<li><a href="/articles/2005/12/13/congratulations-to-david-and-all-for-rails-1-0-and-a-new-site">Congratulations to David and all for Rails 1.0 and a new site</a></li>
+	
+	<li><a href="/articles/2005/10/30/released-ezcrypto-0-2-with-activecrypto-support-for-rails">Released EzCrypto 0.2 with ActiveCrypto support for Rails</a></li>
+	
+	<li><a href="/articles/2005/10/20/rails-is-growing-up">Rails is growing up</a></li>
+	
+	<li><a href="/articles/2005/10/19/sneak-peak-of-activecrypto-for-ruby-on-rails">Sneak peak of ActiveCrypto for Ruby on Rails</a></li>
+	
+	<li><a href="/articles/2005/09/14/finally-back-to-business">Finally back to business</a></li>
+	
+	<li><a href="/articles/2005/07/20/first-release-of-my-ezcrypto-library-for-ruby">First release of my EzCrypto library for Ruby</a></li>
+	
+	<li><a href="/articles/2005/06/29/met-up-with-sean-treadway-last-night">Met up with Sean Treadway last night</a></li>
+	
+	<li><a href="/articles/2005/06/28/the-cheap-can-sometimes-be-expensive">The cheap can sometimes be expensive</a></li>
+	
+	<li><a href="/articles/2005/06/16/crypto-in-ruby">Crypto in ruby</a></li>
+	
+	<li><a href="/articles/2005/06/10/debugging-in-front-of-doc-and-scoble-at-reboot">Debugging in front of Doc and Scoble at reboot</a></li>
+	
+	<li><a href="/articles/2005/06/07/backpack-integration-will-be-first">Backpack integration will be first</a></li>
+	
+	<li><a href="/articles/2005/06/07/open-security-disclosure">Open security disclosure</a></li>
+	
+	<li><a href="/articles/2005/06/06/ruby-on-rails-makes-throwing-out-and-rewriting-a-nobrainer">Ruby on Rails makes throwing out and rewriting a nobrainer</a></li>
+	
+	<li><a href="/articles/2005/06/03/stakeitout-beta-now-live">StakeItOut/Beta now live</a></li>
+	
+	<li><a href="/articles/2005/06/02/nearly-in-beta">Nearly in beta</a></li>
+	
+	<li><a href="/articles/2005/05/31/finally">Finally</a></li>
+	
+	<li><a href="/articles/2005/05/30/frustration-with-last-minute-debugging">Frustration with last minute debugging</a></li>
+	
+</ul>
+
+
+<h3>Categories:</h3>
+<ul>
+	
+	<li><a href="/articles/category/programming">Programming (56)</a></li>
+	
+	<li><a href="/articles/category/morale">Morale (38)</a></li>
+	
+	<li><a href="/articles/category/wideword">WideWord (37)</a></li>
+	
+	<li><a href="/articles/category/legal">Legal (33)</a></li>
+	
+	<li><a href="/articles/category/funding">Funding (28)</a></li>
+	
+	<li><a href="/articles/category/global">Global (27)</a></li>
+	
+	<li><a href="/articles/category/marketing">Marketing (19)</a></li>
+	
+	<li><a href="/articles/category/wideblog">WideBlog (17)</a></li>
+	
+	<li><a href="/articles/category/anti-patterns">Anti-patterns (16)</a></li>
+	
+	<li><a href="/articles/category/cool-micro-sites-and-businesses">Cool micro sites and businesses (16)</a></li>
+	
+	<li><a href="/articles/category/hosting">Hosting (14)</a></li>
+	
+	<li><a href="/articles/category/money">Money (14)</a></li>
+	
+	<li><a href="/articles/category/stakeitout-releases">StakeItOut Releases (12)</a></li>
+	
+	<li><a href="/articles/category/talk-org">Talk.org (9)</a></li>
+	
+	<li><a href="/articles/category/data-portability">Data Portability (8)</a></li>
+	
+	<li><a href="/articles/category/business-models">Business Models (7)</a></li>
+	
+	<li><a href="/articles/category/payment-systems">Payment systems (7)</a></li>
+	
+	<li><a href="/articles/category/partnering">Partnering (6)</a></li>
+	
+	<li><a href="/articles/category/agree2">Agree2 (5)</a></li>
+	
+	<li><a href="/articles/category">Financial Innovation (5)</a></li>
+	
+	<li><a href="/articles/category/widesheet">WideSheet (4)</a></li>
+	
+	<li><a href="/articles/category/timecert">TimeCert (4)</a></li>
+	
+	<li><a href="/articles/category/gadgets">Gadgets (4)</a></li>
+	
+	<li><a href="/articles/category/think-outside-the-rounded-box">Think outside the rounded box (4)</a></li>
+	
+	<li><a href="/articles/category/consulting">Consulting (4)</a></li>
+	
+	<li><a href="/articles/category">Business Ideas (2)</a></li>
+	
+	<li><a href="/articles/category">Black Swan (2)</a></li>
+	
+</ul>
+<!-- Text Link Ads -->
+
+
+	<h3>My sponsors</h3>
+		<ul id="text_links">
+					<li> <a href="http://www.forbes.com/lists/2005/54/TTQT.html">Ron Burkle</a> </li>
+					<li> <a href="http://www.rebuz.com/transact/1201transact/casden.htm">the casden company</a> </li>
+					<li> <a href="http://www.remingtonfinancialindia.com/">Remington Financial Group</a> </li>
+					<li> <a href="http://www.zoominfo.com/people/Watros_Donald_53930441.aspx">Don Watros</a> </li>
+					<li> <a href="http://www.text-link-ads.com/?ref=30735">Sell Text Link ads on your site</a> </li>
+				</ul>
+
+<div>
+<h3>Latest from my other Blogs</h3>
+<a href="http://panamafaq.com/"><img src="http://feeds.feedburner.com/PanamaFaq.gif" height="67" width="200" style="border:0" alt="Panama FAQ"/></a>
+<br/>
+<a href="http://econotrix.com/"><img src="http://feeds.feedburner.com/Econotrix.gif" style="border:0" alt="EconoTrix"/></a>
+</div>
+
+
+    </div>
+    <br style="clear:both;" />
+  </div>
+  <div id="footer">
+    <hr />
+    <p><a href="/">Stake Ventures</a> &copy; 2005-2007 Pelle Braendgaard
+	<br/><br/>
+	<!--Creative Commons License--><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/"><img alt="Creative Commons License" style="border-width: 0" src="http://creativecommons.org/images/public/somerights20.png"/></a><br/>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/">Creative Commons Attribution-Noncommercial-Share Alike 2.5  License</a>.<!--/Creative Commons License--><!-- <rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+		<Work rdf:about="">
+			<license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/2.5/" />
+		<dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+		</Work>
+		<License rdf:about="http://creativecommons.org/licenses/by-nc-sa/2.5/"><permits rdf:resource="http://web.resource.org/cc/Reproduction"/><permits rdf:resource="http://web.resource.org/cc/Distribution"/><requires rdf:resource="http://web.resource.org/cc/Notice"/><requires rdf:resource="http://web.resource.org/cc/Attribution"/><prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/><permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/><requires rdf:resource="http://web.resource.org/cc/ShareAlike"/></License></rdf:RDF> -->
+		</p>
+    <ul>
+      <li>styled with <a href="http://quotedprintable.com/pages/scribbish">scribbish</a></li>
+    </ul>
+  </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-256448-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

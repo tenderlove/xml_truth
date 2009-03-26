@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="generator" content="MediaWiki 1.15alpha" />
+		<meta name="keywords" content="Ruby Programming,Ruby Programming/ASCII,Ruby Programming/Alternate quotes,Ruby Programming/Built-in Modules,Ruby Programming/Classes and objects,Ruby Programming/Data types,Ruby Programming/Exceptions,Ruby Programming/GUI Toolkit Modules/Qt4,Ruby Programming/GUI Toolkit Modules/Tk,Ruby Programming/Hello world,Ruby Programming/Here documents" />
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Ruby_Programming&amp;action=edit" />
+		<link rel="edit" title="Edit this page" href="/w/index.php?title=Ruby_Programming&amp;action=edit" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikibooks (en)" />
+		<link rel="copyright" href="http://www.gnu.org/copyleft/fdl.html" />
+		<link rel="alternate" type="application/rss+xml" title="Wikibooks RSS Feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=rss" />
+		<link rel="alternate" type="application/atom+xml" title="Wikibooks Atom Feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom" />
+		<title>Ruby Programming - Wikibooks, collection of open-content textbooks</title>
+		<link rel="stylesheet" href="/skins-1.5/common/shared.css?207xx" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/skins-1.5/common/commonPrint.css?207xx" type="text/css" media="print" />
+		<link rel="stylesheet" href="/skins-1.5/monobook/main.css?207xx" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/skins-1.5/chick/main.css?207xx" type="text/css" media="handheld" />
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE50Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/skins-1.5/monobook/IE55Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/skins-1.5/monobook/IE60Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/skins-1.5/monobook/IE70Fixes.css?207xx" type="text/css" media="screen" /><![endif]-->
+		<link rel="stylesheet" href="/w/extensions/FlaggedRevs/flaggedrevs.css?56" type="text/css" />
+		<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" />
+		<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="print" />
+		<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Handheld.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" media="handheld" />
+		<link rel="stylesheet" href="/w/index.php?title=MediaWiki:Monobook.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=2678400&amp;action=raw&amp;maxage=2678400" type="text/css" />
+		<link rel="stylesheet" href="/w/index.php?title=-&amp;action=raw&amp;maxage=2678400&amp;gen=css" type="text/css" />
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins-1.5/common/IEFixes.js?207xx"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		<script type= "text/javascript">/*<![CDATA[*/
+		var skin = "monobook";
+		var stylepath = "/skins-1.5";
+		var wgArticlePath = "/wiki/$1";
+		var wgScriptPath = "/w";
+		var wgScript = "/w/index.php";
+		var wgVariantArticlePath = false;
+		var wgActionPaths = {};
+		var wgServer = "http://en.wikibooks.org";
+		var wgCanonicalNamespace = "";
+		var wgCanonicalSpecialPageName = false;
+		var wgNamespaceNumber = 0;
+		var wgPageName = "Ruby_Programming";
+		var wgTitle = "Ruby Programming";
+		var wgAction = "view";
+		var wgArticleId = "844";
+		var wgIsArticle = true;
+		var wgUserName = null;
+		var wgUserGroups = null;
+		var wgUserLanguage = "en";
+		var wgContentLanguage = "en";
+		var wgBreakFrames = false;
+		var wgCurRevisionId = 1443766;
+		var wgVersion = "1.15alpha";
+		var wgEnableAPI = true;
+		var wgEnableWriteAPI = true;
+		var wgSeparatorTransformTable = ["", ""];
+		var wgDigitTransformTable = ["", ""];
+		var wgMWSuggestTemplate = "http://en.wikibooks.org/w/api.php?action=opensearch\x26search={searchTerms}\x26namespace={namespaces}\x26suggest";
+		var wgDBname = "enwikibooks";
+		var wgSearchNamespaces = [0, 4, 112];
+		var wgMWSuggestMessages = ["with suggestions", "no suggestions"];
+		var wgRestrictionEdit = [];
+		var wgRestrictionMove = [];
+		/*]]>*/</script>
+
+		<script type="text/javascript" src="/skins-1.5/common/wikibits.js?207xx"><!-- wikibits js --></script>
+		<!-- Head Scripts -->
+		<script type="text/javascript" src="/skins-1.5/common/ajax.js?207xx"></script>
+		<script type="text/javascript" src="/skins-1.5/common/mwsuggest.js?207xx"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var wgNotice='';var wgNoticeLocal='';
+/*]]>*/</script>		<script type="text/javascript" src="http://upload.wikimedia.org/centralnotice/wikibooks/en/centralnotice.js?207xx"></script>
+<script type="text/javascript">
+var wgFlaggedRevsParams = {"tags": {"composition": 3, "accuracy": 2, "coverage": 2}};
+var wgFlaggedRevsParams2 = {"tags": {"reliability": 3, "completeness": 2, "npov": 2, "presentation": 1}};
+var wgStableRevisionId = 0;
+var wgAjaxFeedback = {"sendingMsg": "Submitting...", "sentMsg": "Thank you!"}
+var wgAjaxReview = {"sendingMsg": "Submitting...", "sentMsg": "Review complete!", "actioncomplete": "Action complete"}
+</script>
+<script type="text/javascript" src="/w/extensions/FlaggedRevs/flaggedrevs.js?56"></script>
+		<script type="text/javascript" src="/w/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=monobook"><!-- site js --></script>
+	</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Ruby_Programming skin-monobook">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+		<div id="siteNotice"><script type='text/javascript'>if (wgNotice != '') document.writeln(wgNotice);</script><script type="text/javascript" language="JavaScript">
+/* <![CDATA[ */
+document.writeln("\x3cdiv style=\"text-align:center;\"\x3eYou are invited to participate in research that aims to explore the motivations among Wikibookians\' participation.\x3cbr/\x3eTo \x3ca href=\"http://easstudents.cw.unisa.edu.au/com/survey/wikisurveyen_interface/Results/survey/indexEN.htm\" class=\"external text\" title=\"http://easstudents.cw.unisa.edu.au/com/survey/wikisurveyen_interface/Results/survey/indexEN.htm\" rel=\"nofollow\"\x3etake the survey\x3c/a\x3e, use \x3ci\x3emotivations\x3c/i\x3e as your username and \x3ci\x3ewikiproject\x3c/i\x3e as your password. The study has been approved by UniSA Human Ethics.\x3c/div\x3e\n");
+/* ]]> */
+</script></div>		<h1 id="firstHeading" class="firstHeading">Ruby Programming</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Wikibooks, the open-content textbooks collection</h3>
+			<div id="contentSub"><div id='mw-revisiontag' class='flaggedrevs_notice plainlinks noprint'><span class='fr-icon-current plainlinks'></span>There are no reviewed revisions of this page, so it may <b>not</b> have been <a href="/wiki/Help:Page_validation" title="Help:Page validation" class="mw-redirect">checked</a> for quality.</div></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<div id="toc" style="font-size:small;"><a href="/wiki/Subject:Computer_science" title="Subject:Computer science">Computer Science</a> &gt; <a href="/wiki/Subject:Programming" title="Subject:Programming">Programming</a> &gt; <b>Ruby</b></div>
+<div class="thumb tright">
+<div class="thumbinner" style="width:152px;"><a href="/wiki/File:Ruby_logo.png" class="image" title="Ruby was named after the precious gem."><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Ruby_logo.png/150px-Ruby_logo.png" width="150" height="150" border="0" class="thumbimage" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:Ruby_logo.png" class="internal" title="Enlarge"><img src="/skins-1.5/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>
+Ruby was named after <a href="http://en.wikipedia.org/wiki/Ruby" class="extiw" title="wikipedia:Ruby">the precious gem</a>.</div>
+</div>
+</div>
+<p><b>Ruby</b> is an <a href="http://en.wikipedia.org/wiki/interpreted" class="extiw" title="w:interpreted">interpreted</a>, object-oriented <a href="http://en.wikipedia.org/wiki/scripting" class="extiw" title="w:scripting">scripting</a> language. Its creator, <a href="http://en.wikipedia.org/wiki/Yukihiro_Matsumoto" class="extiw" title="wikipedia:Yukihiro Matsumoto">Yukihiro Matsumoto</a>, a.k.a "Matz" released it to the public in 1995.</p>
+<p>The book is currently broken down into several sections, and is intended to be read sequentially. <a href="#Getting_started" title="">Getting started</a> will show how to install and get started with Ruby in your environment. <a href="#Basic_Ruby" title="">Basic Ruby</a> demonstrates the main features of the language syntax. The final section, <a href="#Intermediate_Ruby" title="">Intermediate Ruby</a> covers a selection of slightly more advanced topics. Each section is designed to be self contained. Finally, the <a href="#Ruby_language" title="">Ruby language</a> section is organized like a reference to the language.</p>
+<p><br /></p>
+<table id="toc" class="toc" summary="Contents">
+<tr>
+<td>
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1"><a href="#Table_of_Contents"><span class="tocnumber">1</span> <span class="toctext">Table of Contents</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Getting_started"><span class="tocnumber">1.1</span> <span class="toctext">Getting started</span></a></li>
+<li class="toclevel-2"><a href="#Basic_Ruby"><span class="tocnumber">1.2</span> <span class="toctext">Basic Ruby</span></a></li>
+<li class="toclevel-2"><a href="#Intermediate_Ruby"><span class="tocnumber">1.3</span> <span class="toctext">Intermediate Ruby</span></a></li>
+<li class="toclevel-2"><a href="#Ruby_reference"><span class="tocnumber">1.4</span> <span class="toctext">Ruby reference</span></a></li>
+<li class="toclevel-2"><a href="#Modules"><span class="tocnumber">1.5</span> <span class="toctext">Modules</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#External_links"><span class="tocnumber">2</span> <span class="toctext">External links</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Learning_Ruby"><span class="tocnumber">2.1</span> <span class="toctext">Learning Ruby</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Books"><span class="tocnumber">2.1.1</span> <span class="toctext">Books</span></a></li>
+<li class="toclevel-3"><a href="#Quick_Reference"><span class="tocnumber">2.1.2</span> <span class="toctext">Quick Reference</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+//<![CDATA[
+ if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } 
+//]]>
+</script>
+<p><a name="Table_of_Contents" id="Table_of_Contents"></a></p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=1" title="Edit section: Table of Contents">edit</a>]</span> <span class="mw-headline">Table of Contents</span></h2>
+<table align="center" style="background-color: #F7F7FF; border: 2px solid #CCCCFF;">
+<tr>
+<th colspan="5" style="background-color: #DFEFFF; text-align: center;"><a href="/wiki/Help:Development_stages" title="Help:Development stages">Wikibook Development Stages</a></th>
+</tr>
+<tr>
+<td style="border-right: 1px solid #CCCCCC; padding: 0px 3px;">Sparse text <a href="/wiki/File:00%25.svg" class="image" title="Image:00%.svg"><img alt="Image:00%.svg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/00%25.svg/9px-00%25.svg.png" width="9" height="9" border="0" /></a></td>
+<td style="border-right: 1px solid #CCCCCC; padding: 0px 3px;">Developing text <a href="/wiki/File:25%25.svg" class="image" title="Image:25%.svg"><img alt="Image:25%.svg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/25%25.svg/9px-25%25.svg.png" width="9" height="9" border="0" /></a></td>
+<td style="border-right: 1px solid #CCCCCC; padding: 0px 3px;">Maturing text <a href="/wiki/File:50%25.svg" class="image" title="Image:50%.svg"><img alt="Image:50%.svg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/50%25.svg/9px-50%25.svg.png" width="9" height="9" border="0" /></a></td>
+<td style="border-right: 1px solid #CCCCCC; padding: 0px 3px;">Developed text <a href="/wiki/File:75%25.svg" class="image" title="Image:75%.svg"><img alt="Image:75%.svg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/49/75%25.svg/9px-75%25.svg.png" width="9" height="9" border="0" /></a></td>
+<td style="padding: 0px 3px;">Comprehensive text: <a href="/wiki/File:100%25.svg" class="image" title="Image:100%.svg"><img alt="Image:100%.svg" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/100%25.svg/9px-100%25.svg.png" width="9" height="9" border="0" /></a></td>
+</tr>
+</table>
+<p><br /></p>
+<p><a name="Getting_started" id="Getting_started"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=2" title="Edit section: Getting started">edit</a>]</span> <span class="mw-headline">Getting started</span></h3>
+<dl>
+<dd><a href="/wiki/Ruby_Programming/Overview" title="Ruby Programming/Overview">Overview</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Installing_Ruby" title="Ruby Programming/Installing Ruby">Installing Ruby</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Ruby_editors" title="Ruby Programming/Ruby editors">Ruby editors</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Notation_conventions" title="Ruby Programming/Notation conventions">Notation conventions</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Interactive_Ruby" title="Ruby Programming/Interactive Ruby">Interactive Ruby</a></dd>
+</dl>
+<p><a name="Basic_Ruby" id="Basic_Ruby"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=3" title="Edit section: Basic Ruby">edit</a>]</span> <span class="mw-headline">Basic Ruby</span></h3>
+<dl>
+<dd><a href="/wiki/Ruby_Programming/Hello_world" title="Ruby Programming/Hello world">Hello world</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Strings" title="Ruby Programming/Strings">Strings</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Alternate_quotes" title="Ruby Programming/Alternate quotes">Alternate quotes</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Here_documents" title="Ruby Programming/Here documents">Here documents</a></dd>
+<dd><a href="/wiki/Ruby_Programming/ASCII" title="Ruby Programming/ASCII">ASCII</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Introduction_to_objects" title="Ruby Programming/Introduction to objects">Introduction to objects</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Ruby_basics" title="Ruby Programming/Ruby basics">Ruby basics</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Data_types" title="Ruby Programming/Data types">Data types</a> -- numbers, strings, hashes and arrays</dd>
+<dd><a href="/wiki/Ruby_Programming/Writing_methods" title="Ruby Programming/Writing methods">Writing methods</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Classes_and_objects" title="Ruby Programming/Classes and objects">Classes and objects</a></dd>
+<dd><a href="/wiki/Ruby_Programming/Exceptions" title="Ruby Programming/Exceptions">Exceptions</a></dd>
+</dl>
+<p><a name="Intermediate_Ruby" id="Intermediate_Ruby"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=4" title="Edit section: Intermediate Ruby">edit</a>]</span> <span class="mw-headline">Intermediate Ruby</span></h3>
+<dl>
+<dd><a href="/wiki/Ruby_Programming/Unit_testing" title="Ruby Programming/Unit testing">Unit testing</a></dd>
+<dd><a href="/wiki/Ruby_Programming/RubyDoc" title="Ruby Programming/RubyDoc">RubyDoc</a></dd>
+<dd><a href="/w/index.php?title=Ruby_Programming/Rake&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Rake (does not exist)">Rake</a></dd>
+</dl>
+<p><a name="Ruby_reference" id="Ruby_reference"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=5" title="Edit section: Ruby reference">edit</a>]</span> <span class="mw-headline">Ruby reference</span></h3>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax" title="Ruby Programming/Syntax">Syntax</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology" title="Ruby Programming/Syntax/Lexicology">Lexicology</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology#Identifiers" title="Ruby Programming/Syntax/Lexicology">Identifiers</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology#Comments" title="Ruby Programming/Syntax/Lexicology">Comments</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology#Embedded_Documentation" title="Ruby Programming/Syntax/Lexicology">Embedded Documentation</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology#Reserved_Words" title="Ruby Programming/Syntax/Lexicology">Reserved Words</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Lexicology#Expressions" title="Ruby Programming/Syntax/Lexicology">Expressions</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants" title="Ruby Programming/Syntax/Variables and Constants">Variables and Constants</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Local" title="Ruby Programming/Syntax/Variables and Constants">Local Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Instance" title="Ruby Programming/Syntax/Variables and Constants">Instance Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Class" title="Ruby Programming/Syntax/Variables and Constants">Class Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Global" title="Ruby Programming/Syntax/Variables and Constants">Global Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Constants" title="Ruby Programming/Syntax/Variables and Constants">Constants</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Pseudo_Variables" title="Ruby Programming/Syntax/Variables and Constants">Pseudo Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Variables_and_Constants#Pre-defined_Variables" title="Ruby Programming/Syntax/Variables and Constants">Pre-defined Variables</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals" title="Ruby Programming/Syntax/Literals">Literals</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Numerics" title="Ruby Programming/Syntax/Literals">Numerics</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Strings" title="Ruby Programming/Syntax/Literals">Strings</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Interpolation" title="Ruby Programming/Syntax/Literals">Interpolation</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Backslash_Notation" title="Ruby Programming/Syntax/Literals">Backslash Notation</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Alternate_Notation" title="Ruby Programming/Syntax/Literals">The % Notation</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Command_Expansion" title="Ruby Programming/Syntax/Literals"><s>Command Expansion</s></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Regular_Expressions" title="Ruby Programming/Syntax/Literals"><s>Regular Expressions</s></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Arrays" title="Ruby Programming/Syntax/Literals">Arrays</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Hashes" title="Ruby Programming/Syntax/Literals">Hashes</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Ranges" title="Ruby Programming/Syntax/Literals">Ranges</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Literals#Symbols" title="Ruby Programming/Syntax/Literals">Symbols</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators" title="Ruby Programming/Syntax/Operators">Operators</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#Assignment" title="Ruby Programming/Syntax/Operators">Assignment</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#Self_Assignment" title="Ruby Programming/Syntax/Operators">Self Assignment</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#Multiple_Assignment" title="Ruby Programming/Syntax/Operators">Multiple Assignment</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#Conditional_Assignment" title="Ruby Programming/Syntax/Operators">Conditional Assignment</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#Scope" title="Ruby Programming/Syntax/Operators">Scope</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#and" title="Ruby Programming/Syntax/Operators"><code>and</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#or" title="Ruby Programming/Syntax/Operators"><code>or</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Operators#not" title="Ruby Programming/Syntax/Operators"><code>not</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures" title="Ruby Programming/Syntax/Control Structures">Control Structures</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#Conditional_Branches" title="Ruby Programming/Syntax/Control Structures">Conditional Branches</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#if" title="Ruby Programming/Syntax/Control Structures"><code>if</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#if_modifier" title="Ruby Programming/Syntax/Control Structures"><code>if</code> modifier</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#unless" title="Ruby Programming/Syntax/Control Structures"><code>unless</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#unless_modifier" title="Ruby Programming/Syntax/Control Structures"><code>unless</code> modifier</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#case" title="Ruby Programming/Syntax/Control Structures"><code>case</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#Loops" title="Ruby Programming/Syntax/Control Structures">Loops</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#while" title="Ruby Programming/Syntax/Control Structures"><code>while</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#while_modifier" title="Ruby Programming/Syntax/Control Structures"><code>while</code> modifier</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#until" title="Ruby Programming/Syntax/Control Structures"><code>until</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#until_modifier" title="Ruby Programming/Syntax/Control Structures"><code>until</code> modifier</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#for" title="Ruby Programming/Syntax/Control Structures"><code>for</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#for_in" title="Ruby Programming/Syntax/Control Structures"><code>for</code> ... <code>in</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#break" title="Ruby Programming/Syntax/Control Structures"><code>break</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#redo" title="Ruby Programming/Syntax/Control Structures"><code>redo</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#next" title="Ruby Programming/Syntax/Control Structures"><code>next</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#retry" title="Ruby Programming/Syntax/Control Structures"><code>retry</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#Exception_Handling" title="Ruby Programming/Syntax/Control Structures">Exception Handling</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#raise" title="Ruby Programming/Syntax/Control Structures"><code>raise</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#begin" title="Ruby Programming/Syntax/Control Structures"><code>begin</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#rescue_modifier" title="Ruby Programming/Syntax/Control Structures"><code>rescue</code> modifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#Miscellanea" title="Ruby Programming/Syntax/Control Structures">Miscellanea</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#return" title="Ruby Programming/Syntax/Control Structures"><code>return</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Control_Structures#returning" title="Ruby Programming/Syntax/Control Structures"><code>returning</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Method_Calls" title="Ruby Programming/Syntax/Method Calls">Methods</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Method_Calls#super" title="Ruby Programming/Syntax/Method Calls"><code>super</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Method_Calls#Iterators" title="Ruby Programming/Syntax/Method Calls">Iterators</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Method_Calls#yield" title="Ruby Programming/Syntax/Method Calls"><code>yield</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes" title="Ruby Programming/Syntax/Classes">Classes</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Class_Definition" title="Ruby Programming/Syntax/Classes">Class Definition</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Instance_Variables" title="Ruby Programming/Syntax/Classes">Instance Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Class_Variables" title="Ruby Programming/Syntax/Classes">Class Variables</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Class_Methods" title="Ruby Programming/Syntax/Classes">Class Methods</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Instantiation" title="Ruby Programming/Syntax/Classes">Instantiation</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Declaring_Visibility" title="Ruby Programming/Syntax/Classes">Declaring Visibility</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Private" title="Ruby Programming/Syntax/Classes">Private</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Public" title="Ruby Programming/Syntax/Classes">Public</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Protected" title="Ruby Programming/Syntax/Classes">Protected</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Instance_Variables" title="Ruby Programming/Syntax/Classes">Instance Variables</a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Inheritance" title="Ruby Programming/Syntax/Classes">Inheritance</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Mixing_in_Modules" title="Ruby Programming/Syntax/Classes">Mixing in Modules</a></li>
+<li><a href="/wiki/Ruby_Programming/Syntax/Classes#Ruby_Class_Meta-Model" title="Ruby Programming/Syntax/Classes">Ruby Class Meta-Model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Reference" title="Ruby Programming/Reference">Reference</a>
+<ul>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Built-In_Functions&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Built-In Functions (does not exist)">Built-in Functions</a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Predefined_Variables" title="Ruby Programming/Reference/Predefined Variables">Predefined Variables</a> <a href="/wiki/File:25%25.svg" class="image" title="Development stage: 25%"><img alt="Development stage: 25%" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/25%25.svg/9px-25%25.svg.png" width="9" height="9" border="0" /></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Predefined_Classes" title="Ruby Programming/Reference/Predefined Classes">Predefined Classes</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects" title="Ruby Programming/Reference/Objects"><code>Object</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Array" title="Ruby Programming/Reference/Objects/Array"><code>Array</code></a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Class&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Class (does not exist)"><code>Class</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Exception" title="Ruby Programming/Reference/Objects/Exception"><code>Exception</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/FalseClass" title="Ruby Programming/Reference/Objects/FalseClass"><code>FalseClass</code></a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/IO&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/IO (does not exist)"><code>IO</code></a>
+<ul>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/IO/File&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/IO/File (does not exist)"><code>File</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/IO/File/File::Stat" title="Ruby Programming/Reference/Objects/IO/File/File::Stat"><code>File::Stat</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Method&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Method (does not exist)"><code>Method</code></a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Module&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Module (does not exist)"><code>Module</code></a>
+<ul>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Module/Class&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Module/Class (does not exist)"><code>Class</code></a></li>
+</ul>
+</li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/NilClass&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/NilClass (does not exist)"><code>NilClass</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Numeric" title="Ruby Programming/Reference/Objects/Numeric"><code>Numeric</code></a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Numeric/Integer" title="Ruby Programming/Reference/Objects/Numeric/Integer"><code>Integer</code></a>
+<ul>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Numeric/Integer/Bignum&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Numeric/Integer/Bignum (does not exist)"><code>Bignum</code></a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Numeric/Integer/Fixnum&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Numeric/Integer/Fixnum (does not exist)"><code>Fixnum</code></a></li>
+</ul>
+</li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Numeric/Float&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Numeric/Float (does not exist)"><code>Float</code></a></li>
+</ul>
+</li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Range&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Range (does not exist)"><code>Range</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Regexp" title="Ruby Programming/Reference/Objects/Regexp"><code>Regexp</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/String" title="Ruby Programming/Reference/Objects/String"><code>String</code></a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Struct&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Struct (does not exist)"><code>Struct</code></a>
+<ul>
+<li><a href="/w/index.php?title=Ruby_Programming/Reference/Objects/Struct/Struct::Tms&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Reference/Objects/Struct/Struct::Tms (does not exist)"><code>Struct::Tms</code></a></li>
+</ul>
+</li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Symbol" title="Ruby Programming/Reference/Objects/Symbol"><code>Symbol</code></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/Time" title="Ruby Programming/Reference/Objects/Time"><code>Time</code></a> <a href="/wiki/File:25%25.svg" class="image" title="Development stage: 25%"><img alt="Development stage: 25%" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/34/25%25.svg/9px-25%25.svg.png" width="9" height="9" border="0" /></a></li>
+<li><a href="/wiki/Ruby_Programming/Reference/Objects/TrueClass" title="Ruby Programming/Reference/Objects/TrueClass"><code>TrueClass</code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a name="Modules" id="Modules"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=6" title="Edit section: Modules">edit</a>]</span> <span class="mw-headline">Modules</span></h3>
+<ul>
+<li><a href="/wiki/Ruby_Programming/Built-in_Modules" title="Ruby Programming/Built-in Modules">Built-in Modules</a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/Database_Interface_Modules&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/Database Interface Modules (does not exist)">Database Interface Modules</a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/GUI_Toolkit_Modules&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/GUI Toolkit Modules (does not exist)">GUI Toolkit Modules</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/GUI_Toolkit_Modules/Tk" title="Ruby Programming/GUI Toolkit Modules/Tk">Tk</a></li>
+<li><a href="/w/index.php?title=Ruby_Programming/GUI_Toolkit_Modules/GTK2&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/GUI Toolkit Modules/GTK2 (does not exist)">GTK2</a></li>
+<li><a href="/wiki/Ruby_Programming/GUI_Toolkit_Modules/Qt4" title="Ruby Programming/GUI Toolkit Modules/Qt4">Qt4</a></li>
+</ul>
+</li>
+<li><a href="/w/index.php?title=Ruby_Programming/XML_Processing&amp;action=edit&amp;redlink=1" class="new" title="Ruby Programming/XML Processing (does not exist)">XML Processing</a>
+<ul>
+<li><a href="/wiki/Ruby_Programming/XML_Processing/REXML" title="Ruby Programming/XML Processing/REXML">REXML</a></li>
+</ul>
+</li>
+</ul>
+<p><a name="External_links" id="External_links"></a></p>
+<h2><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=7" title="Edit section: External links">edit</a>]</span> <span class="mw-headline">External links</span></h2>
+<table class="plainlinks noprint messagebox notice" style="width:250px; float:right; clear:right; margin-left:10px;">
+<tr style="vertical-align:middle;">
+<td style="padding:0.1em; text-align:center; vertical-align:middle; width:45px;"><a href="/wiki/File:Wikipedia-logo.png" class="image" title="Wikipedia-logo.png"><img alt="" src="http://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Wikipedia-logo.png/40px-Wikipedia-logo.png" width="40" height="40" border="0" /></a></td>
+<td style="color:black; text-align:left; vertical-align:middle; padding:0.5em; padding-left:0em;">
+<p><a href="http://en.wikipedia.org/wiki/Main_Page" class="extiw" title="w:Main Page">Wikipedia</a> has related information at<br />
+<span class="plainlinks"><a href="http://en.wikipedia.org/wiki/Special:Search/Ruby_Programming_Language?go=Go" class="external text" title="http://en.wikipedia.org/wiki/Special:Search/Ruby_Programming_Language?go=Go" rel="nofollow"><i><b>Ruby Programming Language</b></i></a></span></p>
+</td>
+</tr>
+</table>
+<p><br /></p>
+<ul>
+<li><a href="http://www.ruby-lang.org/" class="external text" title="http://www.ruby-lang.org/" rel="nofollow">Ruby homepage</a></li>
+<li><a href="http://www.ruby-doc.org/" class="external text" title="http://www.ruby-doc.org/" rel="nofollow">Ruby Documentation Homepage</a></li>
+<li><a href="http://ruby-talk.org/ruby/ruby-talk/index.shtml" class="external text" title="http://ruby-talk.org/ruby/ruby-talk/index.shtml" rel="nofollow">Ruby-Talk: The Ruby Mailing List</a></li>
+<li><a href="http://www.nitroproject.org/" class="external text" title="http://www.nitroproject.org/" rel="nofollow">Ruby's Nitro/Og Web Toolkit</a></li>
+<li><a href="http://www.rubyonrails.com/" class="external text" title="http://www.rubyonrails.com/" rel="nofollow">Ruby on Rails</a></li>
+<li><a href="http://www.railslodge.com/" class="external text" title="http://www.railslodge.com/" rel="nofollow">Ruby on Rails plugin directory</a></li>
+<li><a href="http://www.rubyforge.org/" class="external text" title="http://www.rubyforge.org/" rel="nofollow">RubyForge: The Repository for Open-source Ruby Projects</a></li>
+<li><a href="http://www.rubywizards.com/" class="external text" title="http://www.rubywizards.com/" rel="nofollow">Ruby Wizards Discussion Forum</a></li>
+</ul>
+<p><a name="Learning_Ruby" id="Learning_Ruby"></a></p>
+<h3><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=8" title="Edit section: Learning Ruby">edit</a>]</span> <span class="mw-headline">Learning Ruby</span></h3>
+<ul>
+<li><a href="http://www.meshplex.org/wiki/Ruby/Ruby_on_Rails_programming_tutorials" class="external text" title="http://www.meshplex.org/wiki/Ruby/Ruby_on_Rails_programming_tutorials" rel="nofollow">A Ruby Tutorial that Anyone can Edit</a></li>
+<li><a href="http://www.yoyobrain.com/cardboxes/preview/103" class="external text" title="http://www.yoyobrain.com/cardboxes/preview/103" rel="nofollow">Learning Ruby</a> A free tool to find and learn Ruby concepts</li>
+</ul>
+<p><a name="Books" id="Books"></a></p>
+<h4><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=9" title="Edit section: Books">edit</a>]</span> <span class="mw-headline">Books</span></h4>
+<ul>
+<li><a href="http://www.oreilly.com/catalog/9780596516178/" class="external text" title="http://www.oreilly.com/catalog/9780596516178/" rel="nofollow">The Ruby Programming Language</a> by David Flanagan, Yukihiro Matsumoto aka "Matz", the creator of Ruby.</li>
+<li><a href="http://pragprog.com/titles/ruby3" class="external text" title="http://pragprog.com/titles/ruby3" rel="nofollow">Programming Ruby 3</a> (aka "Pickaxe") - this 2008 version covers Ruby 1.9</li>
+<li><a href="http://www.rubycentral.com/book/" class="external text" title="http://www.rubycentral.com/book/" rel="nofollow">Programming Ruby (a.k.a. 'Pickaxe Book') 1st edition online</a></li>
+<li><a href="http://www.oreilly.com/catalog/9781593271480/Ruby" class="external text" title="http://www.oreilly.com/catalog/9781593271480/Ruby" rel="nofollow">by Example</a></li>
+<li><a href="http://rubylearning.com/download/downloads.html" class="external text" title="http://rubylearning.com/download/downloads.html" rel="nofollow">Ruby Study Notes</a></li>
+<li><a href="http://poignantguide.net/ruby/" class="external text" title="http://poignantguide.net/ruby/" rel="nofollow">Why's (Poignant) Guide To Ruby</a></li>
+<li><a href="http://www.humblelittlerubybook.com/book/" class="external text" title="http://www.humblelittlerubybook.com/book/" rel="nofollow">Humble Little Ruby Book</a></li>
+</ul>
+<p><a name="Quick_Reference" id="Quick_Reference"></a></p>
+<h4><span class="editsection">[<a href="/w/index.php?title=Ruby_Programming&amp;action=edit&amp;section=10" title="Edit section: Quick Reference">edit</a>]</span> <span class="mw-headline">Quick Reference</span></h4>
+<ul>
+<li><a href="http://www.zenspider.com/Languages/Ruby/QuickRef.html" class="external text" title="http://www.zenspider.com/Languages/Ruby/QuickRef.html" rel="nofollow">Ruby Quick Reference (some of more obscure expressions are explained)</a></li>
+<li><a href="http://www.rubyinside.com/ruby-cheat-sheet-734.html" class="external text" title="http://www.rubyinside.com/ruby-cheat-sheet-734.html" rel="nofollow">Ruby Cheat Sheets (a list of some different Ruby cheat sheets)</a></li>
+</ul>
+
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 272/1000000
+Post-expand include size: 3250/2048000 bytes
+Template argument size: 679/2048000 bytes
+Expensive parser function count: 0/500
+-->
+
+<!-- Saved in parser cache with key enwikibooks:pcache:idhash:844-0!1!0!default!!en!2 and timestamp 20090322211459 -->
+<div class="printfooter">
+Retrieved from "<a href="http://en.wikibooks.org/wiki/Ruby_Programming">http://en.wikibooks.org/wiki/Ruby_Programming</a>"</div>
+			<div id='catlinks' class='catlinks'><div id="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Subjects</a>:&#32;<span dir='ltr'><a href="/wiki/Category:Scripting_languages" title="Category:Scripting languages">Scripting languages</a></span> | <span dir='ltr'><a href="/wiki/Category:Ruby" title="Category:Ruby">Ruby</a></span></div><div id="mw-hidden-catlinks" class="mw-hidden-cats-hidden">Hidden category:&#32;<span dir='ltr'><a href="/wiki/Category:Alphabetical/R" title="Category:Alphabetical/R">Alphabetical/R</a></span></div></div>			<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+	
+				 <li id="ca-nstab-main" class="selected"><a href="/wiki/Ruby_Programming" title="View the content page [c]" accesskey="c">Book</a></li>
+				 <li id="ca-talk"><a href="/wiki/Talk:Ruby_Programming" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-edit"><a href="/w/index.php?title=Ruby_Programming&amp;action=edit" title="You can edit this page.&#10;Please use the preview button before saving [e]" accesskey="e">Edit this page</a></li>
+				 <li id="ca-history"><a href="/w/index.php?title=Ruby_Programming&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Ruby_Programming" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://upload.wikimedia.org/wikibooks/en/b/bc/Wiki.png);" href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+	<div class='generated-sidebar portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="/wiki/Main_Page" title="Visit the main page">Main Page</a></li>
+				<li id="n-help"><a href="/wiki/Help:Contents" title="The place to find out">Help</a></li>
+				<li id="n-Cookbook"><a href="/wiki/Cookbook:Table_of_Contents">Cookbook</a></li>
+				<li id="n-Wikijunior"><a href="/wiki/Wikijunior">Wikijunior</a></li>
+				<li id="n-Browse"><a href="/wiki/Wikibooks:Card_Catalog_Office">Browse</a></li>
+				<li id="n-Featured-Books"><a href="/wiki/Wikibooks:Featured_books">Featured Books</a></li>
+				<li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="The list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li>
+				<li id="n-sitesupport"><a href="http://wikimediafoundation.org/wiki/Donate" title="Support us">Donations</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="/w/index.php" id="searchform"><div>
+				<input type='hidden' name="title" value="Special:Search"/>
+				<input id="searchInput" name="search" type="text" title="Search Wikibooks [f]" accesskey="f" value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
+			</div></form>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-community'>
+		<h5>community</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-currentevents"><a href="/wiki/Wikibooks:Bulletin_board" title="Find background information on current events">Bulletin Board</a></li>
+				<li id="n-portal"><a href="/wiki/Wikibooks:Community_Portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-Reading-room"><a href="/wiki/Wikibooks:Reading_room">Reading room</a></li>
+				<li id="n-Help-cleanup"><a href="/wiki/Wikibooks:Maintenance">Help cleanup</a></li>
+				<li id="n-Policy-discussions-and-votes"><a href="/wiki/Wikibooks:Policies_and_guidelines/Vote">Policy discussions and votes</a></li>
+				<li id="n-contact"><a href="/wiki/Wikibooks:Contact_us">Contact us</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class='generated-sidebar portlet' id='p-coll-create_a_book'>
+		<h5>Create a book</h5>
+		<div class='pBody'>
+<ul id="collectionPortletList"><li>
+	<a href="/w/index.php?title=Special:Book/add_article/&amp;arttitle=Ruby_Programming&amp;oldid=0" onclick="collectionCall('AddArticle', [wgNamespaceNumber, wgTitle, 0]); return false;" rel="nofollow" title="Add the current wiki page to your book">Add wiki page</a>
+</li>							<li><a href="http://en.wikibooks.org/wiki/Help:Collections" title="Show help about the book tool">Collections help</a></li></ul><script type="text/javascript">
+/* <![CDATA[ */
+	function collectionCall(func, args) {
+		sajax_request_type = 'POST';
+		sajax_do_call('wfAjaxCollection' + func, args, function(xhr) {
+			sajax_request_type = 'GET';
+			sajax_do_call('wfAjaxCollectionGetPortlet', [func], function(xhr) {
+				document.getElementById('collectionPortletList').parentNode.innerHTML = xhr.responseText;
+			});
+		});
+	}
+/* ]]> */
+</script>		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Ruby_Programming" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Ruby_Programming" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/w/index.php?title=Ruby_Programming&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/w/index.php?title=Ruby_Programming&amp;oldid=1443766" title="Permanent link to this version of the page">Permanent link</a></li>
+				<li id="t-download-as-pdf"><a href="/w/index.php?title=Special:Book/render_article/&amp;arttitle=Ruby_Programming&amp;oldid=1443766&amp;writer=rl" rel="nofollow">PDF version</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-lang" class="portlet">
+		<h5>In other languages</h5>
+		<div class="pBody">
+			<ul>
+				<li class="interwiki-de"><a href="http://de.wikibooks.org/wiki/Ruby-Programmierung">Deutsch</a></li>
+				<li class="interwiki-eo"><a href="http://eo.wikibooks.org/wiki/Lernolibro_pri_Rubeno">Esperanto</a></li>
+				<li class="interwiki-fr"><a href="http://fr.wikibooks.org/wiki/Programmation_Ruby">Français</a></li>
+				<li class="interwiki-ja"><a href="http://ja.wikibooks.org/wiki/Ruby">日本語</a></li>
+				<li class="interwiki-nl"><a href="http://nl.wikibooks.org/wiki/Programmeren_in_Ruby">Nederlands</a></li>
+				<li class="interwiki-pl"><a href="http://pl.wikibooks.org/wiki/Ruby">Polski</a></li>
+				<li class="interwiki-ru"><a href="http://ru.wikibooks.org/wiki/Ruby">Русский</a></li>
+				<li class="interwiki-zh"><a href="http://zh.wikibooks.org/wiki/Programming:Ruby">中文</a></li>
+			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/skins-1.5/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+				<div id="f-copyrightico"><a href="http://wikimediafoundation.org/"><img src="/images/wikimedia-button.png" border="0" alt="Wikimedia Foundation"/></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 15 March 2009, at 08:00.</li>
+					<li id="copyright">All text is available under the terms of the <a class='internal' href="/wiki/GNU_Free_Documentation_License">GNU Free Documentation License</a> (see <b><a class='internal' href="/wiki/Wikibooks:Copyrights">Copyrights</a></b> for details).<br />
+Wikibooks® is a registered trademark of the Wikimedia Foundation, Inc.<br /></li>
+					<li id="privacy"><a href="http://wikimediafoundation.org/wiki/Privacy_policy" title="wikimedia:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="/wiki/Wikibooks:About" title="Wikibooks:About">About Wikibooks</a></li>
+					<li id="disclaimer"><a href="/wiki/Wikibooks:General_disclaimer" title="Wikibooks:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		<script type="text/javascript">if (window.runOnloadHook) runOnloadHook();</script>
+<!-- Served by srv205 in 0.079 secs. --></body></html>
